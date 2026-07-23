@@ -1,0 +1,11 @@
+{
+  "name": "llm-lineage",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Source-backed research corpus and interactive history of large language models.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "validate:corpus": "node scripts/validate-corpus.mjs"
+  }
+}

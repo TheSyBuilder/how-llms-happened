@@ -83,7 +83,7 @@ Relationships use two separate labels: what kind of connection is proposed, and 
 - **Inherited mechanism** — primary sources show the same mechanism passing between works, but the historical influence is not directly stated.
 - **Editorial synthesis** — a useful historiographic interpretation or conceptual affinity.
 
-Only documented influence may be rendered as an unqualified causal lineage edge. Inherited mechanisms and editorial synthesis must remain visually and textually distinct. Each edge is independently removable; deleting a weak relationship must not require deleting its nodes.
+Documented influence may be rendered as a carefully qualified causal connection when the cited source supports that wording; no evidence class licenses an unqualified causal claim. Inherited mechanisms and editorial synthesis must remain visually and textually distinct. Each edge is independently removable; deleting a weak relationship must not require deleting its nodes.
 
 ## Dates and versions
 
