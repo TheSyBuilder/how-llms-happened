@@ -24,7 +24,7 @@ This repository currently establishes the research contract before product imple
 - [Editorial method](docs/editorial-method.md) defines inclusion, sourcing, uncertainty, and lineage rules.
 - [Historical scope](docs/historical-scope.md) records the opening boundary, supporting evidence, limitations, and the test that would reopen the decision.
 - [Corpus format](docs/corpus-format.md) defines the machine-readable evidence model and validation rules.
-- [Opening corpus](data/corpus.json) encodes the Markov–Shannon sequence with source-located claims, qualified relationships, and separate beginner/expert objectives.
+- [Research corpus](data/corpus.json) encodes the Markov–Shannon opening and the 1975 statistical-decoder bridge with source-located claims, qualified relationships, and separate beginner/expert objectives.
 
 The current milestone expands this source-backed structure through the classical statistical and neural-language-model branches. A vertical product slice will follow only after its sequence and interactions have written, verifiable learning objectives.
 

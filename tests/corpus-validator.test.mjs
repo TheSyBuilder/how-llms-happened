@@ -23,8 +23,35 @@ function assertRejected(candidate, expectedMessage) {
   );
 }
 
-test("accepts the checked-in opening corpus", () => {
+test("accepts the checked-in corpus", () => {
   assert.deepEqual(validateCorpus(corpus, schema), []);
+});
+
+test("retains the sourced 1975 statistical-decoder bridge", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "jelinek-1975-statistical-decoder",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "shannon-1948-to-jelinek-1975",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.deepEqual(relationship?.from, {
+    kind: "work",
+    id: "shannon-1948-communication",
+  });
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: "jelinek-1975-statistical-decoder",
+  });
+  assert.equal(relationship?.evidenceClass, "inherited-mechanism");
+  assert.equal(relationship?.causalLanguage, "prohibited");
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
 test("rejects an incomplete source record", () => {
@@ -337,10 +364,10 @@ test("requires rationale when a work is marked excluded", () => {
 test("rejects provenance dates later than the corpus asOf date", () => {
   for (const mutate of [
     (candidate) => {
-      candidate.sources[0].accessDate = "2026-07-24";
+      candidate.sources[0].accessDate = "2099-01-01";
     },
     (candidate) => {
-      candidate.claims[0].checkedDate = "2026-07-24";
+      candidate.claims[0].checkedDate = "2099-01-01";
     },
   ]) {
     const candidate = copyCorpus();

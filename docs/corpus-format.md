@@ -2,7 +2,7 @@
 
 LLM Lineage keeps research evidence separate from interface copy. The canonical corpus is [data/corpus.json](../data/corpus.json), and its structural contract is [schemas/corpus.schema.json](../schemas/corpus.schema.json).
 
-The checked-in opening slice covers Markov’s 1913 *Eugene Onegin* study and Shannon’s 1948 and 1951 papers. It is intentionally small enough to audit claim by claim before the corpus expands.
+The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, and Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder. It remains small enough to audit claim by claim while the classical statistical branch expands.
 
 ## What the corpus represents
 
@@ -32,11 +32,12 @@ Every chronology event records a value and its precision:
 A work’s `chronology.orderingEventId` selects the event used for timeline order. Other events remain visible rather than being collapsed into one date. Every event also carries `dateEvidence`; validation rejects a date whose precision is finer than the cited record supports.
 Historical dates that have not been calendar-normalized use `source-as-printed` with a note instead of silently pretending to be Gregorian.
 
-That distinction matters in the opening slice:
+That distinction matters in the current corpus:
 
 - Markov’s article records the date printed for the 1913 Academy presentation, the year-level journal publication, the December 2006 English translation, and its January 2007 online publication separately.
 - Shannon’s 1948 article has July and October journal installments with different DOI records.
 - Shannon’s 1951 issue is ordered with month precision even though a later catalog displays a day.
+- Jelinek, Bahl, and Mercer’s article separates its March 1974 manuscript-received date from the May 1975 journal issue; the institution’s 1 January catalog date is not used for ordering.
 
 Versions are also explicit. An original article, translation, or corrected reprint can have different sources and pagination without silently sharing a locator.
 
@@ -72,10 +73,11 @@ Relationship direction is earlier or contributing node → later or receiving no
 
 Only `documented-influence` may opt into carefully qualified causal explanation. Strong causal phrases remain rejected even there: a citation documents a connection, but does not by itself prove that one work caused another. A dated-before-B relationship is not enough.
 
-The opening slice demonstrates the distinction:
+The current corpus demonstrates the distinction:
 
 - Markov 1913 → Shannon 1948 is an editorially useful conceptual parallel. Shannon cites Fréchet rather than Markov, and the reviewed evidence does not document direct influence from the *Onegin* study, so causal language is prohibited.
 - Shannon 1948 → Shannon 1951 is documented: the later paper cites the earlier article and describes its prediction method as a new way to estimate the entropy and redundancy defined there.
+- Shannon 1948 → Jelinek, Bahl, and Mercer 1975 is an inherited mechanism: Shannon models language as a context-conditioned stochastic source and explains recovery from noise using source redundancy, while the 1975 decoder uses a corpus-estimated word-sequence probability in posterior speech decoding. The 1975 paper does not cite Shannon, so the edge prohibits paper-specific causal language.
 
 ## Priority language
 
@@ -108,7 +110,7 @@ The validator checks the JSON Schema and cross-record editorial rules, including
 - learning objectives whose cited claims belong to their stated work;
 - both beginner and expert objectives for every included work.
 
-The test suite mutates the valid opening corpus to prove that these failure cases are rejected.
+The test suite mutates the valid corpus to prove that these failure cases are rejected.
 
 ## Expansion rule
 

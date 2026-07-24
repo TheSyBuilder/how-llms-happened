@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-23",
+  "asOf": "2026-07-24",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -486,6 +486,148 @@
           "resolutionCondition": "The interface must show the paper’s labels and a separate normalized explanation."
         }
       ]
+    },
+    {
+      "id": "jelinek-1975-statistical-decoder",
+      "title": "Design of a Linguistic Statistical Decoder for the Recognition of Continuous Speech",
+      "authors": [
+        "Frederick Jelinek",
+        "Lalit R. Bahl",
+        "Robert L. Mercer"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "F. Jelinek, L. R. Bahl, and R. L. Mercer, “Design of a Linguistic Statistical Decoder for the Recognition of Continuous Speech,” IEEE Transactions on Information Theory 21(3), 250–256 (May 1975).",
+      "chronology": {
+        "orderingEventId": "jelinek-1975-may",
+        "events": [
+          {
+            "id": "jelinek-1974-manuscript",
+            "kind": "manuscript-received",
+            "label": "Manuscript received",
+            "date": {
+              "value": "1974-03-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "jelinek-1975-full-text",
+                "precision": "day",
+                "locator": "Article masthead, printed p. 250"
+              }
+            ],
+            "versionId": "jelinek-1975-original",
+            "sourceIds": [
+              "jelinek-1975-full-text"
+            ]
+          },
+          {
+            "id": "jelinek-1975-may",
+            "kind": "journal-publication",
+            "label": "Journal publication",
+            "date": {
+              "value": "1975-05",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "jelinek-1975-publisher",
+                "precision": "month",
+                "locator": "IEEE Transactions on Information Theory volume 21, issue 3, May 1975"
+              },
+              {
+                "sourceId": "jelinek-1975-full-text",
+                "precision": "month",
+                "locator": "Article masthead, printed p. 250"
+              }
+            ],
+            "versionId": "jelinek-1975-original",
+            "sourceIds": [
+              "jelinek-1975-publisher",
+              "jelinek-1975-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "jelinek-1975-original",
+          "kind": "journal",
+          "label": "Original journal article",
+          "language": "en",
+          "bibliography": {
+            "citation": "F. Jelinek, L. R. Bahl, and R. L. Mercer, “Design of a Linguistic Statistical Decoder for the Recognition of Continuous Speech,” IEEE Transactions on Information Theory 21(3), 250–256 (May 1975).",
+            "venue": "IEEE Transactions on Information Theory",
+            "volume": "21",
+            "issues": [
+              "3"
+            ],
+            "pages": [
+              "250-256"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/TIT.1975.1055384"
+              }
+            ]
+          },
+          "sourceIds": [
+            "jelinek-1975-publisher",
+            "jelinek-1975-ibm-record",
+            "jelinek-1975-full-text"
+          ],
+          "notes": "The manuscript-received day and the May 1975 journal issue are recorded as separate chronology events. The IBM archive’s 1 January catalog date is not used for ordering."
+        }
+      ],
+      "canonicalVersionId": "jelinek-1975-original",
+      "preferredSourceIds": [
+        "jelinek-1975-publisher",
+        "jelinek-1975-full-text"
+      ],
+      "sourceIds": [
+        "jelinek-1975-publisher",
+        "jelinek-1975-ibm-record",
+        "jelinek-1975-full-text",
+        "jelinek-2009-dawn-statistical-asr"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper formulates a modular, corpus-estimated word-sequence probability within a factorized speech-decoding objective. It belongs as an engineering integration point on the statistical-ASR branch without being treated as the sole hinge in that broader line of work."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "language-model-guided-decoding",
+        "corpus-estimated-language-model",
+        "sparse-language-model-estimation"
+      ],
+      "significance": {
+        "beginner": "When speech sounds are ambiguous, the decoder combines how well a candidate matches the sounds with how plausible its word sequence is in the domain.",
+        "expert": "The maximum-a-posteriori decoder factors Pr(W|A;L) into a language-model probability Pr(W|L) and a front-end likelihood Pr(A|W;L), then searches finite-state hypotheses by likelihood."
+      },
+      "limitations": [
+        "The article specifies a decoder that the IBM group planned to implement; it does not report end-to-end recognition accuracy or an experiment isolating the language-model contribution.",
+        "The target is carefully spoken speech in a relatively noiseless environment, with a roughly 10,000-word vocabulary and a two-million-word corpus of laser patent applications.",
+        "The decoder begins from a phonetic-symbol string supplied by a separate, speaker-trained acoustic processor rather than learning directly from waveforms; pronunciation and phonological probabilities are also speaker-dependent.",
+        "The instantiated language model uses explicit recent-word, part-of-speech, and content-class state features rather than learned distributed representations.",
+        "The paper leaves probability estimation for unseen language-model transitions under investigation.",
+        "Partial-hypothesis likelihoods use an approximation, and the described decoder scores the best state path while assuming that the loss relative to marginalizing all paths for a word sequence is negligible.",
+        "The work concerns speech transcription and does not present the language model as a standalone text generator."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The paper uses an information-theoretic framing but does not cite Shannon’s 1948 or 1951 papers; the atlas therefore records mechanism continuity without asserting paper-specific influence.",
+          "resolutionCondition": "A source explicitly naming Shannon’s 1948 or 1951 paper as an influence would be required to document a paper-specific path."
+        },
+        {
+          "status": "open",
+          "note": "The explanatory weight of this design article relative to its companion 1975 channel-decoding paper and Jelinek’s broader 1976 treatment has not yet received a claim-level comparison.",
+          "resolutionCondition": "Compare the three primary texts before considering whether one should represent the statistical-ASR branch as a core hinge."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -516,7 +658,9 @@
       "claimIds": [
         "shannon-1948-discrete-source",
         "shannon-1948-ngram-context",
-        "shannon-1948-context-entropy"
+        "shannon-1948-context-entropy",
+        "jelinek-1975-language-model-interface",
+        "jelinek-1975-state-context"
       ],
       "uncertainties": []
     },
@@ -576,6 +720,44 @@
         "shannon-1951-entropy-bounds",
         "shannon-1951-long-context-result",
         "shannon-1951-bound-caveat"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "language-model-guided-decoding",
+      "name": "Language-model-guided decoding",
+      "kind": "mechanism",
+      "description": "A decoder can rank candidate word sequences by combining their language-model probability with the likelihood of the observed signal.",
+      "claimIds": [
+        "jelinek-1975-decoder-design",
+        "jelinek-1975-bayes-decomposition",
+        "jelinek-1975-language-model-interface",
+        "jelinek-1975-decoding-approximation",
+        "jelinek-1975-likelihood-search",
+        "jelinek-1975-state-path-approximation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "corpus-estimated-language-model",
+      "name": "Corpus-estimated language model",
+      "kind": "mechanism",
+      "description": "A structured sequence model can obtain transition probabilities from counts over a domain corpus.",
+      "claimIds": [
+        "jelinek-1975-corpus-scope",
+        "jelinek-1975-state-context",
+        "jelinek-1975-transition-estimation",
+        "jelinek-1975-unseen-transitions"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "sparse-language-model-estimation",
+      "name": "Sparse language-model estimation",
+      "kind": "problem",
+      "description": "A corpus can leave plausible sequence transitions unobserved, so raw zero counts are not sufficient probability estimates.",
+      "claimIds": [
+        "jelinek-1975-unseen-transitions"
       ],
       "uncertainties": []
     }
@@ -856,6 +1038,89 @@
         "pageEnd": 64
       },
       "accessNote": "Open facsimile retaining printed pages 50–64; printed page numbers, not PDF indices, are used in claim locators."
+    },
+    {
+      "id": "jelinek-1975-publisher",
+      "relatedWorkIds": [
+        "jelinek-1975-statistical-decoder"
+      ],
+      "title": "IEEE publisher record for the linguistic statistical decoder",
+      "url": "https://doi.org/10.1109/TIT.1975.1055384",
+      "accessDate": "2026-07-24",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "jelinek-1975-original"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The DOI registration and journal issue record give IEEE Transactions on Information Theory 21(3), May 1975, pp. 250–256; no publication day is asserted."
+    },
+    {
+      "id": "jelinek-1975-ibm-record",
+      "relatedWorkIds": [
+        "jelinek-1975-statistical-decoder"
+      ],
+      "title": "IBM Research record for the linguistic statistical decoder",
+      "url": "https://research.ibm.com/publications/design-of-a-linguistic-statistical-decoder-for-the-recognition-of-continuous-speech",
+      "accessDate": "2026-07-24",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "jelinek-1975-original"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Official employer archive preserving the title, authors, venue, and abstract; its 1 January catalog date is not used because the printed journal issue and DOI metadata give May."
+    },
+    {
+      "id": "jelinek-1975-full-text",
+      "relatedWorkIds": [
+        "jelinek-1975-statistical-decoder"
+      ],
+      "title": "Author-uploaded reading copy of the linguistic statistical decoder",
+      "url": "https://www.researchgate.net/publication/220049390_Design_of_a_Linguistic_Statistical_Decoder_for_the_Recognition_of_Continuous_Speech",
+      "accessDate": "2026-07-24",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "jelinek-1975-original"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 250,
+        "pageEnd": 256
+      },
+      "accessNote": "ResearchGate labels this as author content uploaded by Robert L. Mercer; the scan retains printed pages 250–256 and bears an IEEE institutional-use restriction. It is used for inspection and exact locators, is not described as openly licensed, and is not redistributed by this repository."
+    },
+    {
+      "id": "jelinek-2009-dawn-statistical-asr",
+      "relatedWorkIds": [
+        "jelinek-1975-statistical-decoder"
+      ],
+      "title": "ACL Lifetime Achievement Award: The Dawn of Statistical ASR and MT",
+      "url": "https://aclanthology.org/J09-4004/",
+      "accessDate": "2026-07-24",
+      "sourceClass": "scholarly-history",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 483,
+        "pageEnd": 494
+      },
+      "accessNote": "ACL Anthology copy of Frederick Jelinek’s 2009 participant retrospective in Computational Linguistics 35(4), 483–494; used for historical framing rather than as evidence for the 1975 paper’s technical claims."
     }
   ],
   "claims": [
@@ -1450,6 +1715,280 @@
       "limitations": [],
       "uncertainties": [],
       "checkedDate": "2026-07-23"
+    },
+    {
+      "id": "jelinek-1975-decoder-design",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "language-model-guided-decoding"
+      ],
+      "statement": "The proposed linguistic statistical decoder takes a phonetic-symbol string from an acoustic processor and searches for the most likely input sentence through a statistical language model, pronunciation modeling, phonetic matching, and word-level search control.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "Abstract and §I, printed p. 250",
+            "section": "Abstract; I. Introduction",
+            "pageStart": 250,
+            "pageEnd": 250
+          },
+          "support": "Defines the decoder input, selection goal, and four interacting components."
+        }
+      ],
+      "limitations": [
+        "The introduction says the decoder will be implemented; this architecture description is not an end-to-end recognition result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-bayes-decomposition",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "language-model-guided-decoding"
+      ],
+      "statement": "For acoustic observation A and language L, the decoder ranks word sequences W by Pr(W|A;L), factoring the posterior into the language-model probability Pr(W|L) and front-end likelihood Pr(A|W;L), with the denominator Pr(A|L) independent of W.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV Bayes factorization, printed p. 252",
+            "section": "IV. Language Model",
+            "pageStart": 252,
+            "pageEnd": 252
+          },
+          "support": "States the posterior objective, its factorization, the provider of each factor, and why the denominator can be ignored for ranking."
+        }
+      ],
+      "limitations": [
+        "The probability identity defines the ranking criterion; it does not establish that the component models are well estimated."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-language-model-interface",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "language-model-guided-decoding"
+      ],
+      "statement": "The decoding procedure treats the language model as a provider of word-sequence probabilities Pr(W|L) and is not tied to the finite-state form chosen for the paper’s implementation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV language-model interface note, printed p. 252",
+            "section": "IV. Language Model",
+            "pageStart": 252,
+            "pageEnd": 252
+          },
+          "support": "Says the decoder asks only for Pr(W|L) and does not depend on how the language model obtains it."
+        }
+      ],
+      "limitations": [
+        "The article instantiates only a probabilistic finite-state language model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-corpus-scope",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "corpus-estimated-language-model"
+      ],
+      "statement": "The target setting is carefully spoken speech in a relatively noiseless environment, with a roughly 10,000-word vocabulary and a two-million-word corpus of laser patent applications used to construct the language model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§I target and corpus description, printed p. 250",
+            "section": "I. Introduction",
+            "pageStart": 250,
+            "pageEnd": 250
+          },
+          "support": "Specifies the speech conditions, domain corpus size, vocabulary size, and the corpus’s language-model role."
+        }
+      ],
+      "limitations": [
+        "The scope is a narrow technical domain and does not establish broad-domain or noisy-speech performance."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-state-context",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "corpus-estimated-language-model"
+      ],
+      "statement": "The finite-state language-model state records recent words, recent parts of speech, and selected content-class representatives intended to capture local grammaticality and longer-range content effects.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV state definition and motivation, printed pp. 252–253",
+            "section": "IV. Language Model",
+            "pageStart": 252,
+            "pageEnd": 253
+          },
+          "support": "Defines the state vector and explains the intended roles of part-of-speech and content-class context."
+        }
+      ],
+      "limitations": [
+        "The context representation depends on explicit labels and equivalence classes rather than jointly learned continuous features."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-transition-estimation",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "corpus-estimated-language-model"
+      ],
+      "statement": "After labeling the corpus and determining content classes, the language-model transition probabilities are estimated by constructing the corpus state sequence and counting observed transitions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV transition estimation, printed p. 253",
+            "section": "IV. Language Model",
+            "pageStart": 253,
+            "pageEnd": 253
+          },
+          "support": "Describes the labeled-corpus state sequence and count-based transition estimates."
+        }
+      ],
+      "limitations": [
+        "The pipeline depends on a probabilistic part-of-speech algorithm described elsewhere and a distinct content-class selection procedure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-unseen-transitions",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "corpus-estimated-language-model",
+        "sparse-language-model-estimation"
+      ],
+      "statement": "The paper warns that language-model transitions absent from the corpus should not automatically receive zero probability and leaves their probability estimation under investigation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV unseen-transition caveat, printed p. 253",
+            "section": "IV. Language Model",
+            "pageStart": 253,
+            "pageEnd": 253
+          },
+          "support": "Separates an unobserved count from a justified zero probability and states that estimation methods were still being investigated."
+        }
+      ],
+      "limitations": [
+        "The article does not select or evaluate a smoothing solution for this problem."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-decoding-approximation",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "language-model-guided-decoding"
+      ],
+      "statement": "For an incomplete sentence hypothesis, the decoder replaces the exact remainder-output probability with a Markov approximation based on observed front-end output, so the paper states that the resulting likelihood is no longer exact.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§V approximation following equation (2), printed p. 253",
+            "section": "V. Decoding Principles",
+            "pageStart": 253,
+            "pageEnd": 253,
+            "equation": "2"
+          },
+          "support": "Identifies the dropped dependence, the replacement Markov model, and the resulting inexact partial likelihood."
+        }
+      ],
+      "limitations": [
+        "The paper does not quantify the search or recognition effect of this approximation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-likelihood-search",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "language-model-guided-decoding"
+      ],
+      "statement": "The decoder maintains partial state sequences in descending likelihood order and accepts the associated word sequence when the highest-likelihood stack entry reaches a sentence-final state.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§V stack algorithm, printed pp. 253–254",
+            "section": "V. Decoding Principles",
+            "pageStart": 253,
+            "pageEnd": 254
+          },
+          "support": "Defines likelihood ordering, successor expansion, the stopping condition, and the accepted word sequence."
+        }
+      ],
+      "limitations": [
+        "The search operates on language-model state sequences, not directly on marginalized word-sequence probabilities."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-1975-state-path-approximation",
+      "workId": "jelinek-1975-statistical-decoder",
+      "ideaIds": [
+        "language-model-guided-decoding"
+      ],
+      "statement": "A word-sequence likelihood would sum the likelihoods of every state sequence yielding those words, but the described decoder selects the most likely word-and-part-of-speech state sequence and the authors state that they expect the resulting performance loss to be negligible.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "End of §VI, printed p. 254",
+            "section": "VI. Decoder Implementation",
+            "pageStart": 254,
+            "pageEnd": 254
+          },
+          "support": "Contrasts marginal word-sequence likelihood with state-sequence selection and labels the expected loss as the authors’ belief."
+        }
+      ],
+      "limitations": [
+        "The negligible-loss expectation is not supported by a reported recognition comparison in this paper."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-24"
     }
   ],
   "relationships": [
@@ -1527,6 +2066,97 @@
       ],
       "causalLanguage": "qualified",
       "uncertainties": []
+    },
+    {
+      "id": "shannon-1948-to-jelinek-1975",
+      "from": {
+        "kind": "work",
+        "id": "shannon-1948-communication"
+      },
+      "to": {
+        "kind": "work",
+        "id": "jelinek-1975-statistical-decoder"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "inherited-mechanism",
+      "confidence": "high",
+      "rationale": "Shannon models language as a context-conditioned stochastic source and explains that its redundancy can aid recovery under noise; the 1975 decoder uses a corpus-estimated Pr(W|L) alongside a front-end likelihood in posterior speech decoding. An author retrospective links the IBM formulation to information theory generally, but the 1975 paper does not cite Shannon, so this edge records mechanism continuity without a paper-specific influence claim.",
+      "claimIds": [
+        "shannon-1948-discrete-source",
+        "shannon-1948-ngram-context",
+        "jelinek-1975-bayes-decomposition",
+        "jelinek-1975-language-model-interface"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "shannon-1948-july-scan",
+          "locator": {
+            "label": "§§2–3, BSTJ pp. 384–388",
+            "section": "2. The Discrete Source of Information; 3. The Series of Approximations to English",
+            "pageStart": 384,
+            "pageEnd": 388
+          },
+          "support": "Defines discrete stochastic sources and language approximations whose next-symbol or next-word probabilities depend on source state and context."
+        },
+        {
+          "sourceId": "shannon-1948-july-scan",
+          "locator": {
+            "label": "§14 discussion, BSTJ p. 414",
+            "section": "14. Discussion",
+            "pageStart": 414,
+            "pageEnd": 414
+          },
+          "support": "Explains that source redundancy can be used at the receiving point and that corrupted English letters can be reconstructed from context."
+        },
+        {
+          "sourceId": "shannon-1948-october-scan",
+          "locator": {
+            "label": "Continuous-channel decoding example, BSTJ p. 640",
+            "section": "24. Channel Capacity with an Average Power Limitation",
+            "pageStart": 640,
+            "pageEnd": 640
+          },
+          "support": "Describes receiver selection of the most probable a-posteriori transmitted signal in a noisy-channel example."
+        },
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV posterior factorization and language-model interface, printed p. 252",
+            "section": "IV. Language Model",
+            "pageStart": 252,
+            "pageEnd": 252
+          },
+          "support": "Uses the word-sequence probability Pr(W|L) as the language-model factor in posterior speech decoding."
+        },
+        {
+          "sourceId": "jelinek-2009-dawn-statistical-asr",
+          "locator": {
+            "label": "Participant retrospective, pp. 487–488",
+            "section": "3. IBM’s Initial Formulation",
+            "pageStart": 487,
+            "pageEnd": 488
+          },
+          "support": "Jelinek describes the IBM noisy-channel formulation as an information-theory problem and identifies the 1975 decoder paper among the early accounts of that approach."
+        },
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "Complete reference list, printed p. 256",
+            "section": "References",
+            "pageStart": 256,
+            "pageEnd": 256
+          },
+          "support": "The complete bibliography contains no Shannon entry, supporting an inherited-mechanism classification rather than documented influence."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No direct citation or primary participant account tying this specific 1975 paper to Shannon’s 1948 article has been identified.",
+          "resolutionCondition": "A contemporary citation or specific participant account would be required to classify the edge as documented influence."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -1663,6 +2293,59 @@
         "Inequalities"
       ],
       "successCriterion": "The learner can identify which bound depends on ideal ranking and enumerate the main sampling and protocol caveats."
+    },
+    {
+      "id": "beginner-jelinek-1975-decoding",
+      "mode": "beginner",
+      "objective": "Explain why an ambiguous speech transcription can change when the decoder considers both sound fit and the plausibility of a word sequence, without treating the language model as if it hears audio.",
+      "workIds": [
+        "jelinek-1975-statistical-decoder"
+      ],
+      "ideaIds": [
+        "language-model-guided-decoding",
+        "corpus-estimated-language-model"
+      ],
+      "claimIds": [
+        "jelinek-1975-decoder-design",
+        "jelinek-1975-bayes-decomposition",
+        "jelinek-1975-corpus-scope"
+      ],
+      "prerequisites": [
+        "Probability as a weighted choice",
+        "Speech recognition as choosing among candidate transcriptions"
+      ],
+      "successCriterion": "Given an ambiguous phonetic input, the learner can separate acoustic fit from sequence plausibility and name one domain limit of the model."
+    },
+    {
+      "id": "expert-jelinek-1975-decoder",
+      "mode": "expert",
+      "objective": "Trace the posterior factorization through the finite-state language probability and likelihood-ordered search, distinguish the unresolved sparse-count estimation problem, and identify where partial-hypothesis scoring and state-path selection depart from exact word-sequence inference.",
+      "workIds": [
+        "jelinek-1975-statistical-decoder"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "language-model-guided-decoding",
+        "corpus-estimated-language-model",
+        "sparse-language-model-estimation"
+      ],
+      "claimIds": [
+        "jelinek-1975-bayes-decomposition",
+        "jelinek-1975-language-model-interface",
+        "jelinek-1975-state-context",
+        "jelinek-1975-transition-estimation",
+        "jelinek-1975-unseen-transitions",
+        "jelinek-1975-decoding-approximation",
+        "jelinek-1975-likelihood-search",
+        "jelinek-1975-state-path-approximation"
+      ],
+      "prerequisites": [
+        "Conditional probability and Bayes’ rule",
+        "Maximum-a-posteriori decoding",
+        "Finite-state Markov models",
+        "Latent-path marginalization and heuristic search"
+      ],
+      "successCriterion": "The learner can separate the language prior, front-end likelihood, normalization, transition estimation, and two search approximations while preserving the paper’s stated scope."
     }
   ]
 }
