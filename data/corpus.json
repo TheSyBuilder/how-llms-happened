@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/corpus.schema.json",
-  "schemaVersion": "0.1.0",
+  "schemaVersion": "0.2.0",
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-24",
+  "asOf": "2026-07-25",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -628,6 +628,132 @@
           "resolutionCondition": "Compare the three primary texts before considering whether one should represent the statistical-ASR branch as a core hinge."
         }
       ]
+    },
+    {
+      "id": "jelinek-mercer-1980-interpolation",
+      "title": "Interpolated Estimation of Markov Source Parameters from Sparse Data",
+      "authors": [
+        "Frederick Jelinek",
+        "Robert L. Mercer"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "F. Jelinek and R. L. Mercer, “Interpolated Estimation of Markov Source Parameters from Sparse Data,” in E. S. Gelsema and L. N. Kanal, eds., Pattern Recognition in Practice, 381–397 (Amsterdam: North-Holland, 1980).",
+      "chronology": {
+        "orderingEventId": "jelinek-mercer-1980-proceedings",
+        "events": [
+          {
+            "id": "jelinek-mercer-1980-proceedings",
+            "kind": "proceedings-publication",
+            "label": "Proceedings publication",
+            "date": {
+              "value": "1980",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "jelinek-mercer-1980-ndl-record",
+                "precision": "year",
+                "locator": "National Diet Library bibliographic record, publication year 1980"
+              },
+              {
+                "sourceId": "jelinek-mercer-1980-full-text",
+                "precision": "year",
+                "locator": "Proceedings header, printed p. 381"
+              }
+            ],
+            "versionId": "jelinek-mercer-1980-proceedings-version",
+            "sourceIds": [
+              "jelinek-mercer-1980-ndl-record",
+              "jelinek-mercer-1980-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "jelinek-mercer-1980-proceedings-version",
+          "kind": "proceedings",
+          "label": "Original proceedings chapter",
+          "language": "en",
+          "bibliography": {
+            "citation": "F. Jelinek and R. L. Mercer, “Interpolated Estimation of Markov Source Parameters from Sparse Data,” in E. S. Gelsema and L. N. Kanal, eds., Pattern Recognition in Practice: Proceedings of an International Workshop Held in Amsterdam, May 21–23, 1980, 381–397 (Amsterdam: North-Holland, 1980).",
+            "venue": "Pattern Recognition in Practice: Proceedings of an International Workshop Held in Amsterdam, May 21–23, 1980",
+            "pages": [
+              "381-397"
+            ],
+            "identifiers": [
+              {
+                "type": "isbn",
+                "value": "0-444-86115-7",
+                "label": "ISBN-10 for the proceedings volume"
+              },
+              {
+                "type": "isbn",
+                "value": "978-0-444-86115-3",
+                "label": "ISBN-13 for the proceedings volume"
+              }
+            ]
+          },
+          "sourceIds": [
+            "jelinek-mercer-1980-ndl-record",
+            "jelinek-mercer-1980-book-record",
+            "jelinek-mercer-1980-jglobal-record",
+            "jelinek-mercer-1980-full-text"
+          ],
+          "notes": "The proceedings year is supported at year precision. The workshop dates belong to the volume title; the paper’s presentation day and a more precise proceedings publication date have not been established."
+        }
+      ],
+      "canonicalVersionId": "jelinek-mercer-1980-proceedings-version",
+      "preferredSourceIds": [
+        "jelinek-mercer-1980-ndl-record",
+        "jelinek-mercer-1980-book-record"
+      ],
+      "sourceIds": [
+        "jelinek-mercer-1980-ndl-record",
+        "jelinek-mercer-1980-book-record",
+        "jelinek-mercer-1980-jglobal-record",
+        "jelinek-mercer-1980-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper turns sparse Markov transition estimation into an explicit prediction problem, combines detailed and tied estimates by interpolation, and develops held-out and deleted procedures for testing the combination on data treated as unseen. It belongs as a statistical-estimation branch without being treated as a text-only or neural language model."
+      },
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-transition-estimation",
+        "deleted-estimation"
+      ],
+      "significance": {
+        "beginner": "A transition missing from a finite sample is not necessarily impossible, so the estimator blends a specific but fragile estimate with a broader estimate whose evidence is stronger.",
+        "expert": "The paper linearly interpolates detailed and tied Forward–Backward transition estimates, fits reliability-dependent weights on held-out or deleted blocks, and gives fixed and relaxed deleted-interpolation procedures."
+      },
+      "limitations": [
+        "The method is formulated for general finite-state Markov sources, including null transitions; the paper does not present the recursive higher-order-to-lower-order word n-gram equation commonly associated with later Jelinek–Mercer language-model smoothing.",
+        "The model structure and state-tying design are supplied by the experimenter, while the paper notes that a real generator’s structure is normally unknown and can be too large.",
+        "The held-out split size, deletion-block length, occupancy thresholds, state tying, and initial transition distributions are unresolved design choices that depend on the modeled situation.",
+        "The fixed deleted procedure uses a computational shortcut whose component estimates still depend implicitly on all data; the paper says separate per-block Forward–Backward runs would avoid it at higher cost.",
+        "The abstract reports simulations and successful speech-process applications, but the chapter gives no simulation table, dataset specification, quantitative comparison, or recognition metric from which to reconstruct those results.",
+        "The work estimates finite-state transition probabilities and does not learn distributed representations or a standalone text generator."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The National Diet Library record and the inspected chapter give pp. 381–397, ending with the complete reference list. J-GLOBAL additionally indexes pp. 401–402, whose content and relation to the chapter were not available for inspection.",
+          "resolutionCondition": "Inspect the complete proceedings volume at pp. 398–402 to determine whether pp. 401–402 are discussion pages associated with this contribution."
+        },
+        {
+          "status": "open",
+          "note": "The 1980 bibliography does not cite the 1975 decoder paper; it cites a different, then-forthcoming chapter by Jelinek, Mercer, and Bahl. The atlas therefore relates the two works editorially rather than as documented paper-specific influence.",
+          "resolutionCondition": "A contemporary citation or participant source explicitly connecting the two papers would be required to upgrade the relationship evidence class."
+        },
+        {
+          "status": "open",
+          "note": "The abstract’s simulation and speech-application claims cannot be evaluated quantitatively from the inspected chapter.",
+          "resolutionCondition": "Locate the referenced experiment report or associated proceedings discussion with enough detail to identify the data, comparison, and result."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -755,9 +881,42 @@
       "id": "sparse-language-model-estimation",
       "name": "Sparse language-model estimation",
       "kind": "problem",
-      "description": "A corpus can leave plausible sequence transitions unobserved, so raw zero counts are not sufficient probability estimates.",
+      "description": "A finite sample can leave plausible sequence transitions with zero observed or expected counts, so an estimated probability of zero need not mark an impossible transition.",
       "claimIds": [
-        "jelinek-1975-unseen-transitions"
+        "jelinek-1975-unseen-transitions",
+        "jelinek-mercer-1980-modeling-scope",
+        "jelinek-mercer-1980-sparse-zero-failure"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "interpolated-transition-estimation",
+      "name": "Interpolated transition estimation",
+      "kind": "mechanism",
+      "description": "A transition estimate can blend a detailed distribution with a more broadly tied distribution, with the mixing weight reflecting their relative reliability.",
+      "claimIds": [
+        "jelinek-mercer-1980-forward-backward-baseline",
+        "jelinek-mercer-1980-linear-interpolation",
+        "jelinek-mercer-1980-held-out-interpolator",
+        "jelinek-mercer-1980-deleted-interpolator",
+        "jelinek-mercer-1980-fixed-deleted",
+        "jelinek-mercer-1980-relaxed-deleted",
+        "jelinek-mercer-1980-estimator-network"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "deleted-estimation",
+      "name": "Deleted estimation",
+      "kind": "mechanism",
+      "description": "A block is evaluated as if unseen while estimation is intended to rely on retained observations, making the tuning target resemble future prediction more closely than training-data fit; practical shortcuts can retain implicit full-data dependence.",
+      "claimIds": [
+        "jelinek-mercer-1980-deleted-interpolator",
+        "jelinek-mercer-1980-fixed-deleted",
+        "jelinek-mercer-1980-fixed-shortcut",
+        "jelinek-mercer-1980-open-settings",
+        "jelinek-mercer-1980-relaxed-deleted",
+        "jelinek-mercer-1980-estimator-network"
       ],
       "uncertainties": []
     }
@@ -1121,6 +1280,84 @@
         "pageEnd": 494
       },
       "accessNote": "ACL Anthology copy of Frederick Jelinek’s 2009 participant retrospective in Computational Linguistics 35(4), 483–494; used for historical framing rather than as evidence for the 1975 paper’s technical claims."
+    },
+    {
+      "id": "jelinek-mercer-1980-ndl-record",
+      "relatedWorkIds": [
+        "jelinek-mercer-1980-interpolation"
+      ],
+      "title": "National Diet Library record for the interpolation paper",
+      "url": "https://ndlsearch.ndl.go.jp/en/books/R100000136-I1573387448854586240",
+      "accessDate": "2026-07-25",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "jelinek-mercer-1980-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "National Diet Library record federated from CiNii; gives the paper title, 1980 proceedings venue, and pp. 381–397. Its abbreviated author heading is not used as the complete author record."
+    },
+    {
+      "id": "jelinek-mercer-1980-book-record",
+      "relatedWorkIds": [
+        "jelinek-mercer-1980-interpolation"
+      ],
+      "title": "National Repository Library record for Pattern Recognition in Practice",
+      "url": "https://kansalliskirjasto.finna.fi/Record/vaari.844752",
+      "accessDate": "2026-07-25",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "jelinek-mercer-1980-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Finnish National Library service record for the North-Holland proceedings volume; gives the editors, publication year, ISBN 0-444-86115-7, and Amsterdam workshop dates."
+    },
+    {
+      "id": "jelinek-mercer-1980-jglobal-record",
+      "relatedWorkIds": [
+        "jelinek-mercer-1980-interpolation"
+      ],
+      "title": "J-GLOBAL record for the interpolation paper",
+      "url": "https://jglobal.jst.go.jp/en/detail?JGLOBAL_ID=200902099770182130",
+      "accessDate": "2026-07-25",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "jelinek-mercer-1980-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Japan Science and Technology Agency index record. It lists pp. 381–397 and, separately, pp. 401–402; the latter pages were not available for inspection and are not used as chapter or claim locators."
+    },
+    {
+      "id": "jelinek-mercer-1980-full-text",
+      "relatedWorkIds": [
+        "jelinek-mercer-1980-interpolation"
+      ],
+      "title": "ReCAP library scan of the interpolation paper",
+      "url": "https://rdhawkins.com/wp-content/uploads/2023/07/4404_recap_document.pdf",
+      "accessDate": "2026-07-25",
+      "sourceClass": "primary-full-text",
+      "authority": "third-party-host",
+      "versionIds": [
+        "jelinek-mercer-1980-proceedings-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 381,
+        "pageEnd": 397
+      },
+      "accessNote": "A recipient-hosted Princeton ReCAP electronic-document-delivery facsimile. The scan includes its ReCAP receipt, the North-Holland header, and printed pp. 381–397 through the complete references. It is used for inspection and exact locators, is not described as openly licensed or rights-holder-authorized for redistribution, and is not copied into this repository."
     }
   ],
   "claims": [
@@ -1989,6 +2226,322 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-24"
+    },
+    {
+      "id": "jelinek-mercer-1980-modeling-scope",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "sparse-language-model-estimation"
+      ],
+      "statement": "Given a specified Markov-source structure, the paper adjusts transition probabilities to model observed output without assuming that the data were actually generated by that source, then focuses on predicting unseen output when the observations are sparse.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "Abstract, printed p. 381",
+            "section": "Abstract",
+            "pageStart": 381,
+            "pageEnd": 381
+          },
+          "support": "Frames the method as sparse transition-probability estimation for predicting unseen data."
+        },
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "End of §1, printed p. 385",
+            "section": "1. Introduction",
+            "pageStart": 385,
+            "pageEnd": 385
+          },
+          "support": "States that the source structure is specified, the data need not come from that source, and the remainder of the paper concerns sparse observations."
+        }
+      ],
+      "limitations": [
+        "The procedure estimates parameters inside a supplied structure; it does not infer the true Markov-source structure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-forward-backward-baseline",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation"
+      ],
+      "statement": "The recapped Forward–Backward procedure forms posterior expected transition counts and normalized probability updates with a nondecreasing observed-data likelihood, while the paper warns that recovering an underlying source would require restrictive structural and optimization conditions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§§2–3, equations (6)–(17), printed pp. 385–389",
+            "section": "2. The Forward–Backward Algorithm; 3. Maximum Likelihood Properties of the F-B Algorithm",
+            "pageStart": 385,
+            "pageEnd": 389,
+            "equation": "6-17"
+          },
+          "support": "Defines expected counts, normalized updates, forward/backward recursions, the likelihood property, and the practical qualifications."
+        }
+      ],
+      "limitations": [
+        "The likelihood property concerns fit to the observed data and does not guarantee useful prediction on unseen data or recovery of a globally optimal parameterization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-sparse-zero-failure",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "sparse-language-model-estimation"
+      ],
+      "statement": "A genuinely positive but rare transition can be absent from the observed sample, receive a zero expected count, and end with an estimated probability of zero even though the model is intended to predict future output.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§4 sparse-data failure case, printed p. 389",
+            "section": "4. The Sparse Data Problem",
+            "pageStart": 389,
+            "pageEnd": 389
+          },
+          "support": "Contrasts future prediction with training-data fit and traces an unobserved rare transition to a zero final estimate."
+        }
+      ],
+      "limitations": [
+        "The example motivates smoothing but does not quantify the frequency or downstream cost of the failure for a particular language model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-linear-interpolation",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation"
+      ],
+      "statement": "For each state, equation (18) combines a detailed transition estimate with an estimate from tied states as λ_s q_s(t) + (1−λ_s) q*_s(t), choosing λ_s near one when the detailed estimate is reliable and near zero when it is not.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§4 interpolation rule and Figure 4, printed pp. 389–391",
+            "section": "4. The Sparse Data Problem",
+            "pageStart": 389,
+            "pageEnd": 391,
+            "equation": "18"
+          },
+          "support": "Defines the two component distributions, their reliability-weighted linear combination, and an equivalent interpolated Markov-source construction."
+        }
+      ],
+      "limitations": [
+        "The detailed and tied distributions depend on an externally chosen state structure and tying scheme."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-held-out-interpolator",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation"
+      ],
+      "statement": "The held-out interpolator estimates the detailed and tied component distributions on one data split and estimates the interpolation weights on the remaining observations so that the weights are not tuned on the same data as the components.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§4 held-out interpolator, printed p. 390",
+            "section": "4. The Sparse Data Problem",
+            "pageStart": 390,
+            "pageEnd": 390
+          },
+          "support": "Defines the split between component estimation and weight estimation and states the partition’s unresolved choices."
+        }
+      ],
+      "limitations": [
+        "The paper leaves open how large the component-estimation split should be and whether final component distributions should use that split or all observations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-deleted-interpolator",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "deleted-estimation"
+      ],
+      "statement": "The deleted-interpolator rationale evaluates an omitted item or block using component estimates formed from retained observations, treating the omitted data as analogous to future output and the retained data as past evidence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§4 deleted-interpolator rationale, printed pp. 390–392",
+            "section": "4. The Sparse Data Problem",
+            "pageStart": 390,
+            "pageEnd": 392
+          },
+          "support": "Explains substring deletion and the analogy between deleted observations and unseen future data."
+        }
+      ],
+      "limitations": [
+        "This is the intended deletion logic; the fixed implementation later uses a shortcut that retains implicit full-data dependence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-fixed-deleted",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "deleted-estimation"
+      ],
+      "statement": "Fixed deleted interpolation partitions the observations into blocks, forms detailed and tied distributions that explicitly omit the evaluated block, estimates interpolation weights with the matching block-specific distributions, and groups weights by state-occupancy ranges.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§5 fixed deleted interpolation, equations (19)–(26), printed pp. 392–394",
+            "section": "5. Fixed Deleted Interpolation",
+            "pageStart": 392,
+            "pageEnd": 394,
+            "equation": "19-26"
+          },
+          "support": "Defines block counters, leave-block-out component distributions, occupancy-bucketed weights, and final aggregate distributions."
+        }
+      ],
+      "limitations": [
+        "The block and occupancy partitions are design choices rather than consequences of the likelihood objective."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-fixed-shortcut",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "deleted-estimation"
+      ],
+      "statement": "In the published fixed procedure, the block-specific component distributions omit the evaluated block explicitly but still depend on it implicitly because their expected counts came from an ordinary Forward–Backward pass over all observations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "Footnote to §5, printed pp. 393–394",
+            "section": "5. Fixed Deleted Interpolation",
+            "pageStart": 393,
+            "pageEnd": 394,
+            "paragraph": "Footnote below equations (24)–(26)"
+          },
+          "support": "Identifies the implicit dependence, the exact alternative of separate per-block runs, and the authors’ sufficiently-long-block approximation claim."
+        }
+      ],
+      "limitations": [
+        "The paper does not measure the approximation error and only states that sufficiently long deletion blocks should make the difference small."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-open-settings",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "deleted-estimation"
+      ],
+      "statement": "Deletion-block length, occupancy thresholds, state tying, and initial transition distributions remain situation-dependent settings, and a larger deletion block is described as more conservative because it weakens the detailed estimates and lowers their weights.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "End of §5 and start of §7, printed pp. 394–395",
+            "section": "5. Fixed Deleted Interpolation; 7. Some Generalizations",
+            "pageStart": 394,
+            "pageEnd": 395
+          },
+          "support": "States the experimental nature of block and threshold choices and lists unresolved tying and initialization questions."
+        }
+      ],
+      "limitations": [
+        "The chapter gives no selection criterion or sensitivity analysis for these settings."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-relaxed-deleted",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "deleted-estimation"
+      ],
+      "statement": "Relaxed deleted interpolation places the mixture and component states in one tied state space and iteratively estimates block-specific transition distributions together, using counts for each block that are accumulated from the other blocks before forming the final aggregate model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§6 relaxed procedure, equations (27)–(29), printed pp. 394–395",
+            "section": "6. Relaxed Deleted Interpolation",
+            "pageStart": 394,
+            "pageEnd": 395,
+            "equation": "27-29"
+          },
+          "support": "Defines the enlarged tied state space, block-specific iteration, convergence loop, and final aggregation."
+        }
+      ],
+      "limitations": [
+        "The paper describes better parameter complementarity as a hoped-for advantage rather than a demonstrated comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
+    },
+    {
+      "id": "jelinek-mercer-1980-estimator-network",
+      "workId": "jelinek-mercer-1980-interpolation",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "deleted-estimation"
+      ],
+      "statement": "The method is generalized to multiple, hierarchical, and partly fixed component estimators, while the paper relates deletion-based estimation to earlier jackknife and cross-validation work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§7 generalizations and statistical context, printed pp. 395–397",
+            "section": "7. Some Generalizations",
+            "pageStart": 395,
+            "pageEnd": 397
+          },
+          "support": "Discusses competing and nested tying, arbitrary fixed components, estimator comparison by mixture weights, and prior deleted-estimation traditions."
+        }
+      ],
+      "limitations": [
+        "These networked and hierarchical combinations are proposed directions, not reported comparative experiments in the chapter."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-25"
     }
   ],
   "relationships": [
@@ -2155,6 +2708,69 @@
           "status": "open",
           "note": "No direct citation or primary participant account tying this specific 1975 paper to Shannon’s 1948 article has been identified.",
           "resolutionCondition": "A contemporary citation or specific participant account would be required to classify the edge as documented influence."
+        }
+      ]
+    },
+    {
+      "id": "jelinek-1975-to-jelinek-mercer-1980",
+      "from": {
+        "kind": "work",
+        "id": "jelinek-1975-statistical-decoder"
+      },
+      "to": {
+        "kind": "work",
+        "id": "jelinek-mercer-1980-interpolation"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "medium",
+      "rationale": "The 1975 decoder flags unobserved language-model transitions as a probability-estimation gap. The 1980 paper formulates the analogous general Markov-source failure and supplies reliability-weighted interpolation with held-out and deleted estimation. The works belong to the same IBM speech-research program, but the later paper’s complete bibliography does not cite the 1975 decoder, so the connection is editorial rather than paper-specific influence.",
+      "claimIds": [
+        "jelinek-1975-transition-estimation",
+        "jelinek-1975-unseen-transitions",
+        "jelinek-mercer-1980-sparse-zero-failure",
+        "jelinek-mercer-1980-linear-interpolation",
+        "jelinek-mercer-1980-deleted-interpolator"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "jelinek-1975-full-text",
+          "locator": {
+            "label": "§IV transition counts and unseen-transition caveat, printed p. 253",
+            "section": "IV. Language Model",
+            "pageStart": 253,
+            "pageEnd": 253
+          },
+          "support": "The earlier paper estimates language-model transitions from counts, warns that an absent transition should not automatically receive zero probability, and leaves the estimation method open."
+        },
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "§4 sparse-data problem and interpolation, printed pp. 389–392",
+            "section": "4. The Sparse Data Problem",
+            "pageStart": 389,
+            "pageEnd": 392,
+            "equation": "18"
+          },
+          "support": "The later paper traces an unobserved rare transition to a zero estimate, combines detailed and tied distributions, and motivates held-out and deleted weighting."
+        },
+        {
+          "sourceId": "jelinek-mercer-1980-full-text",
+          "locator": {
+            "label": "Complete reference list, printed p. 397",
+            "section": "References",
+            "pageStart": 397,
+            "pageEnd": 397
+          },
+          "support": "The six-item bibliography omits the 1975 decoder and instead cites a different, then-forthcoming chapter by Jelinek, Mercer, and Bahl."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Matching problems, overlapping authors, and a shared research program do not establish that this 1980 paper was derived from the 1975 article.",
+          "resolutionCondition": "A contemporary citation or participant account naming the 1975 decoder as a source for the 1980 work would be required to document influence."
         }
       ]
     }
@@ -2346,6 +2962,59 @@
         "Latent-path marginalization and heuristic search"
       ],
       "successCriterion": "The learner can separate the language prior, front-end likelihood, normalization, transition estimation, and two search approximations while preserving the paper’s stated scope."
+    },
+    {
+      "id": "beginner-jelinek-mercer-1980-interpolation",
+      "mode": "beginner",
+      "objective": "Explain why a transition absent from a finite sample need not be impossible, why a fragile specific estimate can share weight with a broader estimate, and why that blend should be judged on observations treated as new.",
+      "workIds": [
+        "jelinek-mercer-1980-interpolation"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-transition-estimation"
+      ],
+      "claimIds": [
+        "jelinek-mercer-1980-sparse-zero-failure",
+        "jelinek-mercer-1980-linear-interpolation",
+        "jelinek-mercer-1980-held-out-interpolator"
+      ],
+      "prerequisites": [
+        "Counts and conditional probabilities",
+        "Training data versus new observations"
+      ],
+      "successCriterion": "Given high- and low-evidence states, the learner can choose the direction in which λ should move and explain why zero observations do not by themselves prove impossibility."
+    },
+    {
+      "id": "expert-jelinek-mercer-1980-deleted-estimation",
+      "mode": "expert",
+      "objective": "Derive the equation (18) mixture, distinguish held-out, fixed-deleted, shortcut, and relaxed procedures, and identify which structural settings and empirical claims remain unresolved.",
+      "workIds": [
+        "jelinek-mercer-1980-interpolation"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-transition-estimation",
+        "deleted-estimation"
+      ],
+      "claimIds": [
+        "jelinek-mercer-1980-forward-backward-baseline",
+        "jelinek-mercer-1980-sparse-zero-failure",
+        "jelinek-mercer-1980-linear-interpolation",
+        "jelinek-mercer-1980-held-out-interpolator",
+        "jelinek-mercer-1980-deleted-interpolator",
+        "jelinek-mercer-1980-fixed-deleted",
+        "jelinek-mercer-1980-fixed-shortcut",
+        "jelinek-mercer-1980-open-settings",
+        "jelinek-mercer-1980-relaxed-deleted"
+      ],
+      "prerequisites": [
+        "Finite-state Markov models",
+        "Maximum-likelihood estimation",
+        "Forward–Backward estimation",
+        "Held-out evaluation and cross-validation"
+      ],
+      "successCriterion": "The learner can trace which observations inform each component and weight, locate the fixed procedure’s implicit full-data dependence, and separate a defined algorithm from an unevaluated application claim."
     }
   ]
 }

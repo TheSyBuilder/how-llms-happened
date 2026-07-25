@@ -341,6 +341,7 @@
             "translation-publication",
             "preprint",
             "conference-presentation",
+            "proceedings-publication",
             "technical-report"
           ]
         },
@@ -706,6 +707,7 @@
             "institutional-repository",
             "institutional-host",
             "public-archive",
+            "third-party-host",
             "scholarly-edition"
           ]
         },
@@ -1044,6 +1046,7 @@
             "extends",
             "combines",
             "challenges",
+            "addresses",
             "makes-practical",
             "enables",
             "conceptual-parallel"
@@ -1073,6 +1076,7 @@
         },
         "sourceEvidence": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/$defs/evidence"
           }

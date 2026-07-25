@@ -54,6 +54,67 @@ test("retains the sourced 1975 statistical-decoder bridge", () => {
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the guarded 1980 deleted-interpolation branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "jelinek-mercer-1980-interpolation",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "jelinek-mercer-1980-proceedings-version",
+  );
+  const scan = corpus.sources.find(
+    (item) => item.id === "jelinek-mercer-1980-full-text",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "jelinek-1975-to-jelinek-mercer-1980",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.chronology.events[0].kind, "proceedings-publication");
+  assert.deepEqual(version?.bibliography.pages, ["381-397"]);
+  assert.equal(scan?.sourceClass, "primary-full-text");
+  assert.equal(scan?.authority, "third-party-host");
+  assert.deepEqual(scan?.pagination, {
+    scheme: "printed",
+    pageStart: 381,
+    pageEnd: 397,
+  });
+  assert.equal(work?.preferredSourceIds.includes(scan?.id), false);
+  assert.equal(relationship?.connectionType, "addresses");
+  assert.equal(relationship?.evidenceClass, "editorial-synthesis");
+  assert.equal(relationship?.causalLanguage, "prohibited");
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("depend implicitly on all data"),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("does not present the recursive higher-order-to-lower-order"),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("gives no simulation table, dataset specification"),
+    ),
+  );
+  assert.ok(
+    corpus.claims.some(
+      (claim) => claim.id === "jelinek-mercer-1980-fixed-shortcut",
+    ),
+  );
+  assert.ok(
+    corpus.claims.some(
+      (claim) => claim.id === "jelinek-mercer-1980-open-settings",
+    ),
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("rejects an incomplete source record", () => {
   const candidate = copyCorpus();
   delete candidate.sources[0].accessDate;
@@ -77,6 +138,13 @@ test("rejects an invalid relationship type", () => {
   candidate.relationships[0].connectionType = "inspired-by";
 
   assertRejected(candidate, "unknown relationship type");
+});
+
+test("rejects a relationship without source evidence", () => {
+  const candidate = copyCorpus();
+  candidate.relationships[0].sourceEvidence = [];
+
+  assertRejected(candidate, "sourceEvidence: must contain at least 1 item");
 });
 
 test("rejects causal rendering without documented influence", () => {

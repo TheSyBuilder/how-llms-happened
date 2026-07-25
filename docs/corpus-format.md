@@ -2,7 +2,7 @@
 
 LLM Lineage keeps research evidence separate from interface copy. The canonical corpus is [data/corpus.json](../data/corpus.json), and its structural contract is [schemas/corpus.schema.json](../schemas/corpus.schema.json).
 
-The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, and Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder. It remains small enough to audit claim by claim while the classical statistical branch expands.
+The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder, and Jelinek and Mercer’s 1980 treatment of interpolation and deleted estimation for sparse Markov sources. It remains small enough to audit claim by claim while the classical statistical branch expands.
 
 ## What the corpus represents
 
@@ -38,6 +38,7 @@ That distinction matters in the current corpus:
 - Shannon’s 1948 article has July and October journal installments with different DOI records.
 - Shannon’s 1951 issue is ordered with month precision even though a later catalog displays a day.
 - Jelinek, Bahl, and Mercer’s article separates its March 1974 manuscript-received date from the May 1975 journal issue; the institution’s 1 January catalog date is not used for ordering.
+- Jelinek and Mercer’s proceedings chapter is ordered at year precision. The Amsterdam workshop dates are container metadata, not evidence of the paper’s presentation day or the volume’s publication day.
 
 Versions are also explicit. An original article, translation, or corrected reprint can have different sources and pagination without silently sharing a locator.
 
@@ -61,13 +62,15 @@ Every claim requires at least one source location. Locators use the numbering pr
 
 The `support` field explains why the location is relevant; it is not a substitute for reading the source.
 
+Source provenance is independent of source content. The inspected 1980 facsimile is recorded as a primary full text on a third-party host, while library catalog records remain the preferred bibliographic sources. The corpus neither infers an open license from public accessibility nor republishes the scan.
+
 ## Relationship discipline
 
 Relationship direction is earlier or contributing node → later or receiving node. Each edge has:
 
 - a `connectionType`, such as `extends` or `conceptual-parallel`;
 - an `evidenceClass`: `documented-influence`, `inherited-mechanism`, or `editorial-synthesis`;
-- claim IDs and, when influence is documented, direct source evidence;
+- claim IDs and direct source evidence for every relationship;
 - a `causalLanguage` gate for rendering;
 - confidence, rationale, and uncertainty.
 
@@ -78,6 +81,9 @@ The current corpus demonstrates the distinction:
 - Markov 1913 → Shannon 1948 is an editorially useful conceptual parallel. Shannon cites Fréchet rather than Markov, and the reviewed evidence does not document direct influence from the *Onegin* study, so causal language is prohibited.
 - Shannon 1948 → Shannon 1951 is documented: the later paper cites the earlier article and describes its prediction method as a new way to estimate the entropy and redundancy defined there.
 - Shannon 1948 → Jelinek, Bahl, and Mercer 1975 is an inherited mechanism: Shannon models language as a context-conditioned stochastic source and explains recovery from noise using source redundancy, while the 1975 decoder uses a corpus-estimated word-sequence probability in posterior speech decoding. The 1975 paper does not cite Shannon, so the edge prohibits paper-specific causal language.
+- Jelinek, Bahl, and Mercer 1975 → Jelinek and Mercer 1980 is an editorial `addresses` edge: the earlier decoder leaves unseen-transition estimation open, while the later chapter treats the analogous sparse-transition problem for general Markov sources. The later chapter does not cite the 1975 paper, so the edge does not assert direct influence.
+
+The 1980 chapter’s abstract mentions simulations and speech applications, but the inspected chapter supplies no dataset, table, metric, baseline, or numerical result. The corpus therefore records that gap as a limitation instead of promoting it into an empirical-performance claim.
 
 ## Priority language
 
