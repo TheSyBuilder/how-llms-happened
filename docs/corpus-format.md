@@ -2,15 +2,15 @@
 
 LLM Lineage keeps research evidence separate from interface copy. The canonical corpus is [data/corpus.json](../data/corpus.json), and its structural contract is [schemas/corpus.schema.json](../schemas/corpus.schema.json).
 
-The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder, and Jelinek and Mercer’s 1980 treatment of interpolation and deleted estimation for sparse Markov sources. It remains small enough to audit claim by claim while the classical statistical branch expands.
+The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder, Jelinek and Mercer’s 1980 treatment of interpolation and deleted estimation for sparse Markov sources, and the reciprocally cross-referenced 1982 handbook chapter that applies the method to a word-trigram model. It remains small enough to audit claim by claim while the classical statistical branch expands.
 
 ## What the corpus represents
 
 The format separates six record types:
 
-1. **Works** hold a display citation, inclusion rationale, chronology, versions, limitations, and beginner/expert significance. Each version owns its machine-readable bibliography.
+1. **Works** hold a display citation, inclusion rationale, chronology, versions, limitations, and beginner/expert significance. Each version owns its machine-readable bibliography, including structured series, chapter, container editors, publisher, publication places, and identifiers when relevant.
 2. **Ideas** name the mechanisms, formalisms, findings, objectives, problems, or constraints that connect works.
-3. **Sources** identify the exact publisher record, original text, translation, reprint, or archive consulted, with an access date and version scope.
+3. **Sources** identify the exact publisher record, original text, search snippet, translation, reprint, or archive consulted, with an access date and version scope.
 4. **Claims** are atomic statements with a directness label, confidence, source locator, limitations, and uncertainty.
 5. **Relationships** connect works or ideas using both a connection type and an independent evidence class.
 6. **Learning objectives** define different beginner and expert outcomes over the same work, idea, and claim IDs.
@@ -39,8 +39,9 @@ That distinction matters in the current corpus:
 - Shannon’s 1951 issue is ordered with month precision even though a later catalog displays a day.
 - Jelinek, Bahl, and Mercer’s article separates its March 1974 manuscript-received date from the May 1975 journal issue; the institution’s 1 January catalog date is not used for ordering.
 - Jelinek and Mercer’s proceedings chapter is ordered at year precision. The Amsterdam workshop dates are container metadata, not evidence of the paper’s presentation day or the volume’s publication day.
+- Jelinek, Mercer, and Bahl’s handbook chapter is also ordered at year precision. Publisher, Crossref, and original-volume records support 1982, but no authoritative month or day has been identified.
 
-Versions are also explicit. An original article, translation, or corrected reprint can have different sources and pagination without silently sharing a locator.
+Versions are also explicit. An article, book chapter, proceedings paper, translation, or corrected reprint can have different sources and pagination without silently sharing a locator.
 
 ## Evidence locators
 
@@ -62,7 +63,9 @@ Every claim requires at least one source location. Locators use the numbering pr
 
 The `support` field explains why the location is relevant; it is not a substitute for reading the source.
 
-Source provenance is independent of source content. The inspected 1980 facsimile is recorded as a primary full text on a third-party host, while library catalog records remain the preferred bibliographic sources. The corpus neither infers an open license from public accessibility nor republishes the scan.
+Source provenance is independent of source content. The inspected 1980 facsimile is recorded as a primary full text on a third-party host, while library catalog records remain the preferred bibliographic sources. For the 1982 volume, Internet Archive is metadata-only because its scan is restricted; separately recorded Google Books query-conditioned search snippets supply the inspected claim locators, while the publisher and Crossref deposits remain the preferred bibliographic records. The corpus neither treats snippets as complete full text nor infers an open license from public accessibility, and it republishes neither scan.
+
+A structured publisher reference list may identify a cited work for relationship evidence, but it cannot stand in for a primary-text claim locator. The validator keeps those evidence roles separate.
 
 ## Relationship discipline
 
@@ -82,8 +85,9 @@ The current corpus demonstrates the distinction:
 - Shannon 1948 → Shannon 1951 is documented: the later paper cites the earlier article and describes its prediction method as a new way to estimate the entropy and redundancy defined there.
 - Shannon 1948 → Jelinek, Bahl, and Mercer 1975 is an inherited mechanism: Shannon models language as a context-conditioned stochastic source and explains recovery from noise using source redundancy, while the 1975 decoder uses a corpus-estimated word-sequence probability in posterior speech decoding. The 1975 paper does not cite Shannon, so the edge prohibits paper-specific causal language.
 - Jelinek, Bahl, and Mercer 1975 → Jelinek and Mercer 1980 is an editorial `addresses` edge: the earlier decoder leaves unseen-transition estimation open, while the later chapter treats the analogous sparse-transition problem for general Markov sources. The later chapter does not cite the 1975 paper, so the edge does not assert direct influence.
+- Jelinek and Mercer 1980 → Jelinek, Mercer, and Bahl 1982 is a documented `builds-on` edge: the published chapter names the 1980 paper as the detailed source for its method and instantiates it as a four-component trigram mixture. The 1980 paper also cites the chapter as forthcoming, so qualified rendering must preserve the unresolved development order rather than imply a simple priority sequence.
 
-The 1980 chapter’s abstract mentions simulations and speech applications, but the inspected chapter supplies no dataset, table, metric, baseline, or numerical result. The corpus therefore records that gap as a limitation instead of promoting it into an empirical-performance claim.
+The 1980 chapter’s abstract mentions simulations and speech applications, but the inspected chapter supplies no dataset, table, metric, baseline, or numerical result. The 1982 chapter reports that unseen trigrams account for roughly 23% of trigram occurrences in new text samples for that model, but the cited passage does not expose the samples or counts needed to reconstruct that result. Both gaps remain explicit limitations rather than being promoted into stronger empirical claims.
 
 ## Priority language
 

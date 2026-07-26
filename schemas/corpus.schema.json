@@ -237,6 +237,7 @@
           "enum": [
             "doi",
             "isbn",
+            "issn",
             "report-number",
             "catalog-id"
           ]
@@ -263,6 +264,31 @@
         },
         "venue": {
           "$ref": "#/$defs/nonEmptyString"
+        },
+        "series": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "chapter": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "editors": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "publisher": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "publicationPlaces": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
         },
         "volume": {
           "$ref": "#/$defs/nonEmptyString"
@@ -342,6 +368,7 @@
             "preprint",
             "conference-presentation",
             "proceedings-publication",
+            "book-publication",
             "technical-report"
           ]
         },
@@ -395,6 +422,7 @@
             "corrected-reprint",
             "preprint",
             "proceedings",
+            "book-chapter",
             "journal"
           ]
         },
@@ -461,6 +489,7 @@
             "lecture",
             "journal-article",
             "conference-paper",
+            "book-chapter",
             "technical-report",
             "book",
             "dataset",
@@ -693,6 +722,7 @@
             "publisher-record",
             "official-record",
             "primary-full-text",
+            "primary-snippet",
             "scholarly-translation",
             "scholarly-history",
             "corrected-reprint",
@@ -727,7 +757,8 @@
             "enum": [
               "metadata",
               "full-text",
-              "claim-location"
+              "claim-location",
+              "reference-list"
             ]
           }
         },

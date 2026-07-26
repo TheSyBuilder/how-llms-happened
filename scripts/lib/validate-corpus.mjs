@@ -321,7 +321,11 @@ function checkEvidence(
   path,
   sources,
   errors,
-  { expectedWorkIds = [], requiredWorkIds = [] } = {},
+  {
+    expectedWorkIds = [],
+    requiredWorkIds = [],
+    allowReferenceList = false,
+  } = {},
 ) {
   if (!evidence || typeof evidence !== "object") {
     return;
@@ -330,9 +334,12 @@ function checkEvidence(
   const source = sources.get(evidence.sourceId);
   if (!source) {
     errors.push(`${path}.sourceId: unknown source "${evidence.sourceId}"`);
-  } else if (!asArray(source.supports).includes("claim-location")) {
+  } else if (
+    !asArray(source.supports).includes("claim-location") &&
+    !(allowReferenceList && asArray(source.supports).includes("reference-list"))
+  ) {
     errors.push(
-      `${path}.sourceId: source "${evidence.sourceId}" is not marked for claim locations`,
+      `${path}.sourceId: source "${evidence.sourceId}" is not marked for an allowed evidence location`,
     );
   } else {
     const relatedWorkIds = new Set(source.relatedWorkIds ?? []);
@@ -1016,6 +1023,7 @@ function semanticValidation(corpus, schema, errors) {
             relationship.evidenceClass === "documented-influence"
               ? targetWorkIds
               : [],
+          allowReferenceList: true,
         },
       );
     }

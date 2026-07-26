@@ -115,6 +115,90 @@ test("retains the guarded 1980 deleted-interpolation branch", () => {
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the sourced 1982 word-trigram application bridge", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-statistical-methods",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-book-chapter",
+  );
+  const archive = corpus.sources.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-internet-archive-scan",
+  );
+  const snippets = corpus.sources.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-google-books-snippets",
+  );
+  const referenceList = corpus.sources.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-crossref-record",
+  );
+  const relationship = corpus.relationships.find(
+    (item) =>
+      item.id === "jelinek-mercer-1980-to-jelinek-mercer-bahl-1982",
+  );
+  const unseenClaim = corpus.claims.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-unseen-trigram-rate",
+  );
+  const trigramClaim = corpus.claims.find(
+    (item) =>
+      item.id === "jelinek-mercer-bahl-1982-four-way-trigram-interpolation",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.artifactType, "book-chapter");
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.chronology.events[0].kind, "book-publication");
+  assert.equal(version?.kind, "book-chapter");
+  assert.deepEqual(version?.bibliography.editors, [
+    "Paruchuri R. Krishnaiah",
+    "Laveen N. Kanal",
+  ]);
+  assert.equal(
+    version?.bibliography.publisher,
+    "North-Holland Publishing Company",
+  );
+  assert.equal(version?.bibliography.series, "Handbook of Statistics");
+  assert.equal(version?.bibliography.chapter, "25");
+  assert.deepEqual(version?.bibliography.pages, ["549-573"]);
+  assert.ok(
+    version?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "issn" && identifier.value === "0169-7161",
+    ),
+  );
+  assert.equal(archive?.sourceClass, "institutional-archive");
+  assert.deepEqual(archive?.supports, ["metadata"]);
+  assert.equal(archive?.pagination, undefined);
+  assert.equal(snippets?.sourceClass, "primary-snippet");
+  assert.equal(snippets?.authority, "third-party-host");
+  assert.deepEqual(snippets?.supports, ["claim-location"]);
+  assert.deepEqual(snippets?.pagination, {
+    scheme: "printed",
+    pageStart: 549,
+    pageEnd: 573,
+  });
+  assert.equal(work?.preferredSourceIds.includes(archive?.id), false);
+  assert.equal(work?.preferredSourceIds.includes(snippets?.id), false);
+  assert.deepEqual(referenceList?.supports, ["metadata", "reference-list"]);
+  assert.equal(referenceList?.pagination, undefined);
+  assert.equal(relationship?.connectionType, "builds-on");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(relationship?.rationale.includes("overlapping preparation"));
+  assert.ok(
+    unseenClaim?.limitations.some((item) =>
+      item.includes("corpus-specific occurrence statistic"),
+    ),
+  );
+  assert.ok(
+    trigramClaim?.statement.includes("four component contexts"),
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("rejects an incomplete source record", () => {
   const candidate = copyCorpus();
   delete candidate.sources[0].accessDate;
@@ -211,6 +295,16 @@ test("rejects evidence from a source unrelated to the claim work", () => {
   claim.evidence[0].sourceId = "markov-2006-open-translation";
 
   assertRejected(candidate, "unrelated to the evidenced work");
+});
+
+test("limits reference-list records to relationship evidence", () => {
+  const candidate = copyCorpus();
+  const claim = candidate.claims.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-training-prediction-gap",
+  );
+  claim.evidence[0].sourceId = "jelinek-mercer-bahl-1982-crossref-record";
+
+  assertRejected(candidate, "not marked for an allowed evidence location");
 });
 
 test("rejects relationship edges that reverse chronology", () => {
