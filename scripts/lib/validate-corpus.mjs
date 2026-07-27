@@ -572,6 +572,28 @@ function semanticValidation(corpus, schema, errors) {
       );
     }
 
+    const canonicalVersion = asArray(work.versions).find(
+      (version) => version?.id === work.canonicalVersionId,
+    );
+    if (canonicalVersion) {
+      if (canonicalVersion.title !== work.title) {
+        errors.push(
+          `${path}.canonicalVersionId: canonical version title must match the work title`,
+        );
+      }
+
+      const canonicalAuthors = asArray(canonicalVersion.authors);
+      const workAuthors = asArray(work.authors);
+      if (
+        canonicalAuthors.length !== workAuthors.length ||
+        canonicalAuthors.some((author, index) => author !== workAuthors[index])
+      ) {
+        errors.push(
+          `${path}.canonicalVersionId: canonical version authors must match the work authors in order`,
+        );
+      }
+    }
+
     if (!eventIds.has(work.chronology?.orderingEventId)) {
       errors.push(
         `${path}.chronology.orderingEventId: unknown chronology event "${work.chronology?.orderingEventId}"`,

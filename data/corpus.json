@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/corpus.schema.json",
-  "schemaVersion": "0.3.0",
+  "schemaVersion": "0.4.0",
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-26",
+  "asOf": "2026-07-27",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -120,6 +120,10 @@
       "versions": [
         {
           "id": "markov-1913-original",
+          "title": "An Example of Statistical Investigation of the Text Eugene Onegin Concerning the Connection of Samples in Chains",
+          "authors": [
+            "A. A. Markov"
+          ],
           "kind": "original",
           "label": "1913 Russian lecture and journal text",
           "language": "ru",
@@ -149,6 +153,10 @@
         },
         {
           "id": "markov-2006-english-translation",
+          "title": "An Example of Statistical Investigation of the Text Eugene Onegin Concerning the Connection of Samples in Chains",
+          "authors": [
+            "A. A. Markov"
+          ],
           "kind": "translation",
           "label": "2006 peer-reviewed English translation",
           "language": "en",
@@ -274,6 +282,10 @@
       "versions": [
         {
           "id": "shannon-1948-original",
+          "title": "A Mathematical Theory of Communication",
+          "authors": [
+            "C. E. Shannon"
+          ],
           "kind": "journal",
           "label": "Original two-installment journal article",
           "language": "en",
@@ -312,6 +324,10 @@
         },
         {
           "id": "shannon-1948-corrected",
+          "title": "A Mathematical Theory of Communication",
+          "authors": [
+            "C. E. Shannon"
+          ],
           "kind": "corrected-reprint",
           "label": "Corrected combined reprint",
           "language": "en",
@@ -422,6 +438,10 @@
       "versions": [
         {
           "id": "shannon-1951-original",
+          "title": "Prediction and Entropy of Printed English",
+          "authors": [
+            "C. E. Shannon"
+          ],
           "kind": "journal",
           "label": "Original journal article",
           "language": "en",
@@ -553,6 +573,12 @@
       "versions": [
         {
           "id": "jelinek-1975-original",
+          "title": "Design of a Linguistic Statistical Decoder for the Recognition of Continuous Speech",
+          "authors": [
+            "Frederick Jelinek",
+            "Lalit R. Bahl",
+            "Robert L. Mercer"
+          ],
           "kind": "journal",
           "label": "Original journal article",
           "language": "en",
@@ -673,6 +699,11 @@
       "versions": [
         {
           "id": "jelinek-mercer-1980-proceedings-version",
+          "title": "Interpolated Estimation of Markov Source Parameters from Sparse Data",
+          "authors": [
+            "Frederick Jelinek",
+            "Robert L. Mercer"
+          ],
           "kind": "proceedings",
           "label": "Original proceedings chapter",
           "language": "en",
@@ -808,12 +839,87 @@
               "jelinek-mercer-bahl-1982-crossref-record",
               "jelinek-mercer-bahl-1982-internet-archive-scan"
             ]
+          },
+          {
+            "id": "bahl-jelinek-mercer-1983-manuscript-received",
+            "kind": "manuscript-received",
+            "label": "Journal companion manuscript received",
+            "date": {
+              "value": "1981-02-23",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+                "precision": "day",
+                "locator": "Printed p. 179, manuscript-history line"
+              }
+            ],
+            "versionId": "bahl-jelinek-mercer-1983-journal-companion",
+            "sourceIds": [
+              "bahl-jelinek-mercer-1983-author-full-text"
+            ]
+          },
+          {
+            "id": "bahl-jelinek-mercer-1983-manuscript-revised",
+            "kind": "manuscript-revised",
+            "label": "Journal companion manuscript revised",
+            "date": {
+              "value": "1982-09-28",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+                "precision": "day",
+                "locator": "Printed p. 179, manuscript-history line"
+              }
+            ],
+            "versionId": "bahl-jelinek-mercer-1983-journal-companion",
+            "sourceIds": [
+              "bahl-jelinek-mercer-1983-author-full-text"
+            ]
+          },
+          {
+            "id": "bahl-jelinek-mercer-1983-journal-publication",
+            "kind": "journal-publication",
+            "label": "Journal companion publication",
+            "date": {
+              "value": "1983-03",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahl-jelinek-mercer-1983-ieee-record",
+                "precision": "month",
+                "locator": "IEEE Transactions on Pattern Analysis and Machine Intelligence, volume PAMI-5, issue 2, March 1983"
+              },
+              {
+                "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+                "precision": "month",
+                "locator": "Journal masthead, printed p. 179"
+              }
+            ],
+            "versionId": "bahl-jelinek-mercer-1983-journal-companion",
+            "sourceIds": [
+              "bahl-jelinek-mercer-1983-ieee-record",
+              "bahl-jelinek-mercer-1983-author-full-text"
+            ]
           }
         ]
       },
       "versions": [
         {
           "id": "jelinek-mercer-bahl-1982-book-chapter",
+          "title": "Continuous Speech Recognition: Statistical Methods",
+          "authors": [
+            "Frederick Jelinek",
+            "Robert L. Mercer",
+            "Lalit R. Bahl"
+          ],
           "kind": "book-chapter",
           "label": "Original handbook chapter",
           "language": "en",
@@ -871,6 +977,48 @@
             "jelinek-mercer-bahl-1982-google-books-snippets"
           ],
           "notes": "The chapter is ordered at year precision because no authoritative month or day was identified. The publisher record and original volume agree on 1982; later platform and DOI-registration dates are not treated as publication dates."
+        },
+        {
+          "id": "bahl-jelinek-mercer-1983-journal-companion",
+          "title": "A Maximum Likelihood Approach to Continuous Speech Recognition",
+          "authors": [
+            "Lalit R. Bahl",
+            "Frederick Jelinek",
+            "Robert L. Mercer"
+          ],
+          "kind": "journal",
+          "label": "Closely overlapping journal companion",
+          "language": "en",
+          "bibliography": {
+            "citation": "L. R. Bahl, F. Jelinek, and R. L. Mercer, “A Maximum Likelihood Approach to Continuous Speech Recognition,” IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. PAMI-5, no. 2, pp. 179–190, March 1983.",
+            "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+            "publisher": "Institute of Electrical and Electronics Engineers",
+            "volume": "PAMI-5",
+            "issues": [
+              "2"
+            ],
+            "pages": [
+              "179-190"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/TPAMI.1983.4767370",
+                "label": "Journal article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0162-8828",
+                "label": "Print ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahl-jelinek-mercer-1983-ieee-record",
+            "bahl-jelinek-mercer-1983-ibm-record",
+            "bahl-jelinek-mercer-1983-author-full-text"
+          ],
+          "notes": "The corpus groups this bibliographically separate article as a companion version because every promoted lineage claim is present in both publications with the same section and equation numbering and substantially the same wording. This is an editorial deduplication decision, not an assertion that the authors or publishers designated the article as a revision or that either publication derived from the other. The article reports receipt on 23 February 1981 and revision on 28 September 1982, while the handbook publication is known only to year precision."
         }
       ],
       "canonicalVersionId": "jelinek-mercer-bahl-1982-book-chapter",
@@ -883,12 +1031,15 @@
         "jelinek-mercer-bahl-1982-crossref-record",
         "jelinek-mercer-bahl-1982-internet-archive-scan",
         "jelinek-mercer-bahl-1982-google-books-snippets",
-        "jelinek-mercer-1980-full-text"
+        "jelinek-mercer-1980-full-text",
+        "bahl-jelinek-mercer-1983-ieee-record",
+        "bahl-jelinek-mercer-1983-ibm-record",
+        "bahl-jelinek-mercer-1983-author-full-text"
       ],
       "inclusion": {
         "status": "branch",
         "confidence": "high",
-        "rationale": "The chapter applies sparse-transition interpolation to a named trigram language model, reports how often unseen trigrams recur in new text, and gives a concrete deleted-estimation procedure. It supplies a word-trigram instantiation of the general 1980 estimator while remaining a broad speech-recognition survey rather than a standalone general-purpose language-model paper."
+        "rationale": "The canonical chapter applies sparse-transition interpolation to a named trigram language model, reports how often unseen trigrams recur in new text, and gives a concrete deleted-estimation procedure. It supplies a word-trigram instantiation of the general 1980 estimator while remaining a broad speech-recognition survey rather than a standalone general-purpose language-model paper. Claim-level comparison found the same eight promoted lineage claims in the differently titled 1983 journal article, so that publication is recorded as a companion version rather than a second lineage node."
       },
       "ideaIds": [
         "word-trigram-language-modeling",
@@ -905,7 +1056,8 @@
         "The reported 23% unseen-trigram share is not reconstructible from the chapter passage because the new-text sample, its size, and the evaluation protocol are not specified there.",
         "Equation (8.1) blends detailed and tied transition estimates; the inspected section does not present the compact recursive trigram-to-bigram-to-unigram notation associated with later descriptions of Jelinek–Mercer smoothing.",
         "The chapter discusses a statistical language component within a larger speech system and does not learn distributed representations, semantics, or long-context dependencies.",
-        "The chapter is a broad survey of the IBM continuous-speech-recognition program; its atlas inclusion is limited to the sourced trigram and deleted-interpolation bridge."
+        "The chapter is a broad survey of the IBM continuous-speech-recognition program; its atlas inclusion is limited to the sourced trigram and deleted-interpolation bridge.",
+        "Grouping the differently titled 1983 article, with its different author order, as a companion version is an editorial deduplication choice. It does not assert that the authors or publishers designated it as an edition, reprint, or derivative."
       ],
       "uncertainties": [
         {
@@ -921,6 +1073,15 @@
         {
           "status": "resolved",
           "note": "The 1980 paper cites this chapter as forthcoming, while this chapter cites the 1980 paper for the detailed method; the reciprocal cross-references show overlapping preparation but do not establish the works’ development order."
+        },
+        {
+          "status": "resolved",
+          "note": "All eight promoted lineage claims are present in both publications with matching section structure, equation numbering, quantitative values, and substantially the same wording; the 1983 article supplies no separate claim needed by the current LLM-lineage slice."
+        },
+        {
+          "status": "open",
+          "note": "No inspected source labels the 1983 article an edition or reprint of the chapter. Its 23 February 1981 receipt and 28 September 1982 revision dates, combined with the chapter’s year-only publication date, do not establish either text’s development order.",
+          "resolutionCondition": "A contemporary draft history, publisher statement, correspondence, or specific participant account would be required to replace the editorial companion grouping with a documented version or derivation relationship."
         }
       ]
     }
@@ -1634,6 +1795,67 @@
         "pageEnd": 573
       },
       "accessNote": "Query-conditioned search snippets for specific text on printed pp. 555 and 565–568 were consulted for claim wording and locators. Full pages and complete equation images were not browsable. Snippet availability can vary by query, account, and region; this record is not treated as open full text or an open license, and no scan is copied into this repository."
+    },
+    {
+      "id": "bahl-jelinek-mercer-1983-ieee-record",
+      "relatedWorkIds": [
+        "jelinek-mercer-bahl-1982-statistical-methods"
+      ],
+      "title": "IEEE publisher record for A Maximum Likelihood Approach to Continuous Speech Recognition",
+      "url": "https://doi.org/10.1109/TPAMI.1983.4767370",
+      "accessDate": "2026-07-27",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bahl-jelinek-mercer-1983-journal-companion"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The IEEE DOI registration gives the differently titled Bahl–Jelinek–Mercer article, IEEE Transactions on Pattern Analysis and Machine Intelligence PAMI-5(2), March 1983, pp. 179–190, ISSN 0162-8828. The DOI license link is not treated as evidence of an open license."
+    },
+    {
+      "id": "bahl-jelinek-mercer-1983-ibm-record",
+      "relatedWorkIds": [
+        "jelinek-mercer-bahl-1982-statistical-methods"
+      ],
+      "title": "IBM Research record for A Maximum Likelihood Approach to Continuous Speech Recognition",
+      "url": "https://research.ibm.com/publications/a-maximum-likelihood-approach-to-continuous-speech-recognition",
+      "accessDate": "2026-07-27",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahl-jelinek-mercer-1983-journal-companion"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Official employer archive preserving the article title, Bahl–Jelinek–Mercer author order, venue, abstract, and 1983 year. Its 1 January catalog date is not used for chronology because the printed journal issue and IEEE metadata give March."
+    },
+    {
+      "id": "bahl-jelinek-mercer-1983-author-full-text",
+      "relatedWorkIds": [
+        "jelinek-mercer-bahl-1982-statistical-methods"
+      ],
+      "title": "Author-uploaded reading copy of A Maximum Likelihood Approach to Continuous Speech Recognition",
+      "url": "https://www.researchgate.net/publication/224377724_A_Maximum_Likelihood_Approach_to_Continuous_Speech_Recognition",
+      "accessDate": "2026-07-27",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "bahl-jelinek-mercer-1983-journal-companion"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 179,
+        "pageEnd": 190
+      },
+      "accessNote": "ResearchGate labels this as author content uploaded by Robert L. Mercer. The scan retains printed pp. 179–190, reports manuscript receipt on 23 February 1981 and revision on 28 September 1982, and bears an IEEE licensed-use restriction. It is used for inspection and exact locators, is not described as openly licensed, and is not redistributed by this repository."
     }
   ],
   "claims": [
@@ -2825,7 +3047,7 @@
       "ideaIds": [
         "word-trigram-language-modeling"
       ],
-      "statement": "The chapter defines an N-gram language model whose state before a word consists of the N−1 most recent words, yielding a product of next-word probabilities conditioned on those recent words.",
+      "statement": "Both the 1982 chapter and its 1983 journal companion define an N-gram language model whose state before a word consists of the N−1 most recent words, yielding a product of next-word probabilities conditioned on those recent words.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -2839,13 +3061,24 @@
             "equation": "4.5 and following unnumbered display"
           },
           "support": "Defines the state as the N−1 latest words and writes the resulting finite-context approximation to the word-sequence probability."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "The Language Model, printed p. 182",
+            "section": "IV. Notation and Terminology — The Language Model",
+            "pageStart": 182,
+            "pageEnd": 182,
+            "equation": "4.5 and following unnumbered display"
+          },
+          "support": "The journal companion presents the same finite-context state definition and equations."
         }
       ],
       "limitations": [
         "The chapter says N-gram models are computationally practical only for small N and proposes syntactic state descriptions, rather than larger N alone, for longer-term dependence."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-trigram-training-scale",
@@ -2853,7 +3086,7 @@
       "ideaIds": [
         "word-trigram-language-modeling"
       ],
-      "statement": "The IBM Laser Patent Text trigram model described in the chapter was estimated from a corpus of 1.5 million words.",
+      "statement": "Both publications describe an IBM Laser Patent Text trigram model estimated from a corpus of 1.5 million words.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -2866,13 +3099,23 @@
             "pageEnd": 565
           },
           "support": "Names the IBM Research corpus, identifies the model as a trigram model, and states the 1.5-million-word training scale."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII Laser Patent Text trigram scale, printed p. 186",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 186,
+            "pageEnd": 186
+          },
+          "support": "The journal companion names the same trigram model and 1.5-million-word corpus."
         }
       ],
       "limitations": [
         "The passage does not specify the corpus vocabulary, tokenization, document split, or date."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-unseen-trigram-rate",
@@ -2881,7 +3124,7 @@
         "word-trigram-language-modeling",
         "sparse-language-model-estimation"
       ],
-      "statement": "For that Laser Patent Text model, the chapter reports that a next trigram in new text has roughly 0.23 probability of being a trigram never observed in the 1.5-million-word training corpus.",
+      "statement": "For that Laser Patent Text model, both publications report that a next trigram in new text has roughly 0.23 probability of being a trigram never observed in the 1.5-million-word training corpus.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -2894,6 +3137,16 @@
             "pageEnd": 565
           },
           "support": "Reports that unobserved training trigrams constitute 23% of trigrams in new samples and restates this as a roughly 0.23 next-trigram probability."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII unseen-trigram report, printed p. 186",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 186,
+            "pageEnd": 186
+          },
+          "support": "The journal companion contains both the 23% occurrence report and its roughly 0.23 next-trigram restatement."
         }
       ],
       "limitations": [
@@ -2901,7 +3154,7 @@
         "The passage does not identify the new samples, their size, or the counting protocol, so the number cannot be independently reconstructed from the chapter."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-training-prediction-gap",
@@ -2910,7 +3163,7 @@
         "word-trigram-language-modeling",
         "sparse-language-model-estimation"
       ],
-      "statement": "Maximum-likelihood estimation assigns zero probability to trigrams absent from the training sample, so the chapter distinguishes fitting that sample from predicting new text and points to Jelinek and Mercer’s 1980 paper for the detailed remedy.",
+      "statement": "Both publications state that maximum-likelihood estimation assigns zero probability to trigrams absent from the training sample, distinguish fitting that sample from predicting new text, and point to Jelinek and Mercer’s 1980 paper for the detailed remedy.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -2923,13 +3176,23 @@
             "pageEnd": 565
           },
           "support": "Contrasts the model’s adequacy for training data with prediction of new data, describes the zero estimate for unseen trigrams, and says the method is presented in detail in reference [15]."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII sparse-data failure and reference [15], printed p. 186",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 186,
+            "pageEnd": 186
+          },
+          "support": "The journal companion presents the same training-versus-prediction distinction and cites reference [15]."
         }
       ],
       "limitations": [
         "The zero-probability result concerns the unsmoothed maximum-likelihood estimate; it is not a property of every trigram model."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-linear-interpolation",
@@ -2937,7 +3200,7 @@
       "ideaIds": [
         "interpolated-transition-estimation"
       ],
-      "statement": "Equation (8.1) estimates each transition by linearly blending a detailed distribution with a tied distribution, with the mixture weight near one when the detailed estimate is reliable and near zero when it is not.",
+      "statement": "Equation (8.1), shared by the 1982 chapter and 1983 journal companion, estimates each transition by linearly blending a detailed distribution with a tied distribution, with the mixture weight near one when the detailed estimate is reliable and near zero when it is not.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -2951,13 +3214,24 @@
             "equation": "8.1"
           },
           "support": "Defines the detailed and tied estimates, their linear mixture, and the intended reliability direction of the weight."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII detailed-and-tied interpolation, printed p. 186",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 186,
+            "pageEnd": 186,
+            "equation": "8.1"
+          },
+          "support": "The journal companion presents the same detailed-and-tied mixture with the same equation number and reliability interpretation."
         }
       ],
       "limitations": [
         "The mixture applies to the transition distribution as a whole, not only to unseen trigrams, and its behavior depends on an externally chosen tying relation."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-deleted-weight-estimation",
@@ -2966,7 +3240,7 @@
         "interpolated-transition-estimation",
         "deleted-estimation"
       ],
-      "statement": "The chapter partitions the data into blocks, estimates component distributions without the evaluated block, uses that block to estimate interpolation weights, and shares weights among states grouped by relative-frequency ranges.",
+      "statement": "Both publications partition the data into blocks, estimate component distributions without the evaluated block, use that block to estimate interpolation weights, and share weights among states grouped by relative-frequency ranges.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -2979,13 +3253,23 @@
             "pageEnd": 567
           },
           "support": "Separates component and weight data by deletion block, defines reliability groupings, and describes the blockwise estimation cycle."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII deleted-block weight estimation, printed pp. 186–187",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 186,
+            "pageEnd": 187
+          },
+          "support": "The journal companion contains the same deleted-block construction, relative-frequency ranges, and blockwise weight estimation."
         }
       ],
       "limitations": [
         "The block partition and relative-frequency ranges are modeling choices whose sensitivity is not isolated in the chapter."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-deleted-interpolation-name",
@@ -2994,7 +3278,7 @@
         "interpolated-transition-estimation",
         "deleted-estimation"
       ],
-      "statement": "The chapter calls the blockwise predictive procedure deleted interpolation and generalizes it to multiple tied component estimates.",
+      "statement": "Both publications call the blockwise predictive procedure deleted interpolation and generalize it to multiple tied component estimates.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -3008,13 +3292,24 @@
             "equation": "8.9"
           },
           "support": "Names the procedure and extends the two-distribution construction to a mixture over multiple state-tying partitions."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII naming and multiple-component generalization, printed p. 187",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 187,
+            "pageEnd": 187,
+            "equation": "8.9"
+          },
+          "support": "The journal companion uses the same name and extends the mixture over multiple tying partitions under the same equation number."
         }
       ],
       "limitations": [
         "Recording the chapter’s terminology does not establish a priority claim for the name or method."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     },
     {
       "id": "jelinek-mercer-bahl-1982-four-way-trigram-interpolation",
@@ -3024,7 +3319,7 @@
         "interpolated-transition-estimation",
         "deleted-estimation"
       ],
-      "statement": "For the Laser Patent Text trigram model, the chapter applies deleted interpolation to four component contexts: the exact preceding word pair; the earlier word generalized to its part of speech while the later word remains lexical; both words generalized to their parts of speech; and all preceding word pairs. The weights are tied by a frequency-derived reliability class.",
+      "statement": "For the Laser Patent Text trigram model, both publications apply deleted interpolation to four component contexts: the exact preceding word pair; the earlier word generalized to its part of speech while the later word remains lexical; both words generalized to their parts of speech; and all preceding word pairs. The weights are tied by a frequency-derived reliability class.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -3039,6 +3334,18 @@
             "equation": "8.10-8.12"
           },
           "support": "Defines the exact and part-of-speech-based history classes, the frequency grouping used for weight sharing, and the resulting four-component trigram mixture."
+        },
+        {
+          "sourceId": "bahl-jelinek-mercer-1983-author-full-text",
+          "locator": {
+            "label": "§VIII four-component trigram application and Figure 13, printed p. 187",
+            "section": "VIII. Parameter Estimation from Insufficient Data",
+            "pageStart": 187,
+            "pageEnd": 187,
+            "figure": "13",
+            "equation": "8.10-8.12"
+          },
+          "support": "The journal companion presents the same four context classes, frequency grouping, Figure 13, and equations (8.10)–(8.12)."
         }
       ],
       "limitations": [
@@ -3046,7 +3353,7 @@
         "The chapter gives no controlled ablation that isolates the mixture’s perplexity or recognition gain."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-26"
+      "checkedDate": "2026-07-27"
     }
   ],
   "relationships": [

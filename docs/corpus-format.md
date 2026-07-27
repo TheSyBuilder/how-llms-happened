@@ -2,13 +2,13 @@
 
 LLM Lineage keeps research evidence separate from interface copy. The canonical corpus is [data/corpus.json](../data/corpus.json), and its structural contract is [schemas/corpus.schema.json](../schemas/corpus.schema.json).
 
-The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder, Jelinek and Mercer’s 1980 treatment of interpolation and deleted estimation for sparse Markov sources, and the reciprocally cross-referenced 1982 handbook chapter that applies the method to a word-trigram model. It remains small enough to audit claim by claim while the classical statistical branch expands.
+The checked-in corpus covers Markov’s 1913 *Eugene Onegin* study, Shannon’s 1948 and 1951 papers, Jelinek, Bahl, and Mercer’s 1975 statistical speech decoder, Jelinek and Mercer’s 1980 treatment of interpolation and deleted estimation for sparse Markov sources, and the reciprocally cross-referenced 1982 handbook chapter that applies the method to a word-trigram model. It also records the differently titled 1983 IEEE article, with its different author order, as a journal companion to that chapter after a claim-level comparison. It remains small enough to audit claim by claim while the classical statistical branch expands.
 
 ## What the corpus represents
 
 The format separates six record types:
 
-1. **Works** hold a display citation, inclusion rationale, chronology, versions, limitations, and beginner/expert significance. Each version owns its machine-readable bibliography, including structured series, chapter, container editors, publisher, publication places, and identifiers when relevant.
+1. **Works** hold a display citation, inclusion rationale, chronology, versions, limitations, and beginner/expert significance. Each version owns its title, ordered authors, and machine-readable bibliography, including structured series, chapter, container editors, publisher, publication places, and identifiers when relevant.
 2. **Ideas** name the mechanisms, formalisms, findings, objectives, problems, or constraints that connect works.
 3. **Sources** identify the exact publisher record, original text, search snippet, translation, reprint, or archive consulted, with an access date and version scope.
 4. **Claims** are atomic statements with a directness label, confidence, source locator, limitations, and uncertainty.
@@ -40,8 +40,11 @@ That distinction matters in the current corpus:
 - Jelinek, Bahl, and Mercer’s article separates its March 1974 manuscript-received date from the May 1975 journal issue; the institution’s 1 January catalog date is not used for ordering.
 - Jelinek and Mercer’s proceedings chapter is ordered at year precision. The Amsterdam workshop dates are container metadata, not evidence of the paper’s presentation day or the volume’s publication day.
 - Jelinek, Mercer, and Bahl’s handbook chapter is also ordered at year precision. Publisher, Crossref, and original-volume records support 1982, but no authoritative month or day has been identified.
+- The companion IEEE article separately records manuscript receipt on 23 February 1981, revision on 28 September 1982, and its March 1983 journal issue. IBM’s 1 January catalog date is not substituted for the printed issue month.
 
-Versions are also explicit. An article, book chapter, proceedings paper, translation, or corrected reprint can have different sources and pagination without silently sharing a locator.
+Versions are also explicit. An article, book chapter, proceedings paper, translation, or corrected reprint can have different titles, ordered authors, sources, and pagination without silently sharing an identity or locator. The work-level title, authors, artifact type, and display citation describe the canonical version; validation requires the title and ordered authors to match that version.
+
+The 1983 article is grouped with the 1982 chapter for publication provenance, not represented as another intellectual advance. All eight promoted lineage claims are present in both publications with matching section structure, equation numbering, quantitative values, and substantially the same wording. The grouping does not assert that the authors or publishers called it an edition or reprint, nor that either text derived from the other: the article’s manuscript history and the chapter’s year-only publication date leave development order unresolved.
 
 ## Evidence locators
 
@@ -63,7 +66,7 @@ Every claim requires at least one source location. Locators use the numbering pr
 
 The `support` field explains why the location is relevant; it is not a substitute for reading the source.
 
-Source provenance is independent of source content. The inspected 1980 facsimile is recorded as a primary full text on a third-party host, while library catalog records remain the preferred bibliographic sources. For the 1982 volume, Internet Archive is metadata-only because its scan is restricted; separately recorded Google Books query-conditioned search snippets supply the inspected claim locators, while the publisher and Crossref deposits remain the preferred bibliographic records. The corpus neither treats snippets as complete full text nor infers an open license from public accessibility, and it republishes neither scan.
+Source provenance is independent of source content. The inspected 1980 facsimile is recorded as a primary full text on a third-party host, while library catalog records remain the preferred bibliographic sources. For the 1982 volume, Internet Archive is metadata-only because its scan is restricted; separately recorded Google Books query-conditioned search snippets supply the inspected claim locators, while the publisher and Crossref deposits remain the preferred bibliographic records. The 1983 claim comparison uses an author-uploaded IEEE scan that retains printed pagination and an institutional-use restriction; the scan is non-preferred, is not described as openly licensed, and is not redistributed. The corpus neither treats snippets as complete full text nor infers an open license from public accessibility.
 
 A structured publisher reference list may identify a cited work for relationship evidence, but it cannot stand in for a primary-text claim locator. The validator keeps those evidence roles separate.
 
@@ -113,6 +116,7 @@ The validator checks the JSON Schema and cross-record editorial rules, including
 - complete source records and evidence locators;
 - valid calendar values and source-supported date precision;
 - unique IDs and valid references across works, versions, sources, ideas, claims, and objectives;
+- structured version titles and ordered authors, with canonical-version identity matching the work;
 - source/work/version scope and evidence pages within the cited source’s pagination;
 - controlled relationship and evidence labels;
 - direct source evidence for documented influence;

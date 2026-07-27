@@ -87,7 +87,9 @@ Documented influence may be rendered as a carefully qualified causal connection 
 
 ## Dates and versions
 
-The corpus records submission, public preprint, conference, and journal dates separately when they differ. The interface must state which date controls ordering. Materially different versions receive version notes rather than silently sharing claims.
+The corpus records submission, revision, public preprint, conference, and journal dates separately when they differ. The interface must state which date controls ordering. Materially different versions receive version-specific titles, ordered authors, bibliography, sources, and notes rather than silently sharing identity or claims.
+
+A differently titled companion publication may share a work only when a claim-level comparison shows that a second node would duplicate the same lineage contribution. The canonical publication remains explicit, and the grouping must not imply an official edition relationship, derivation, development order, or second historical advance that the sources do not document.
 
 ## Uncertainty and disagreement
 

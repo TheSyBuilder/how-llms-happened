@@ -27,6 +27,13 @@ test("accepts the checked-in corpus", () => {
   assert.deepEqual(validateCorpus(corpus, schema), []);
 });
 
+test("binds the corpus to the current schema contract", () => {
+  const candidate = copyCorpus();
+  candidate.schemaVersion = "0.3.0";
+
+  assertRejected(candidate, "must equal \"0.4.0\"");
+});
+
 test("retains the sourced 1975 statistical-decoder bridge", () => {
   const work = corpus.works.find(
     (item) => item.id === "jelinek-1975-statistical-decoder",
@@ -197,6 +204,85 @@ test("retains the sourced 1982 word-trigram application bridge", () => {
     trigramClaim?.statement.includes("four component contexts"),
   );
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains the 1983 article as a versioned companion, not a second lineage node", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "jelinek-mercer-bahl-1982-statistical-methods",
+  );
+  const companion = work?.versions.find(
+    (item) => item.id === "bahl-jelinek-mercer-1983-journal-companion",
+  );
+  const received = work?.chronology.events.find(
+    (item) => item.id === "bahl-jelinek-mercer-1983-manuscript-received",
+  );
+  const revised = work?.chronology.events.find(
+    (item) => item.id === "bahl-jelinek-mercer-1983-manuscript-revised",
+  );
+  const published = work?.chronology.events.find(
+    (item) => item.id === "bahl-jelinek-mercer-1983-journal-publication",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "bahl-jelinek-mercer-1983-author-full-text",
+  );
+  const overlapClaimIds = [
+    "jelinek-mercer-bahl-1982-word-ngram-state",
+    "jelinek-mercer-bahl-1982-trigram-training-scale",
+    "jelinek-mercer-bahl-1982-unseen-trigram-rate",
+    "jelinek-mercer-bahl-1982-training-prediction-gap",
+    "jelinek-mercer-bahl-1982-linear-interpolation",
+    "jelinek-mercer-bahl-1982-deleted-weight-estimation",
+    "jelinek-mercer-bahl-1982-deleted-interpolation-name",
+    "jelinek-mercer-bahl-1982-four-way-trigram-interpolation",
+  ];
+
+  assert.equal(
+    work?.canonicalVersionId,
+    "jelinek-mercer-bahl-1982-book-chapter",
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "jelinek-mercer-bahl-1982-book-publication",
+  );
+  assert.equal(companion?.kind, "journal");
+  assert.equal(
+    companion?.title,
+    "A Maximum Likelihood Approach to Continuous Speech Recognition",
+  );
+  assert.deepEqual(companion?.authors, [
+    "Lalit R. Bahl",
+    "Frederick Jelinek",
+    "Robert L. Mercer",
+  ]);
+  assert.deepEqual(companion?.bibliography.pages, ["179-190"]);
+  assert.ok(
+    companion?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.1109/TPAMI.1983.4767370",
+    ),
+  );
+  assert.equal(received?.date.value, "1981-02-23");
+  assert.equal(revised?.kind, "manuscript-revised");
+  assert.equal(revised?.date.value, "1982-09-28");
+  assert.equal(published?.date.value, "1983-03");
+  assert.equal(fullText?.sourceClass, "primary-full-text");
+  assert.equal(fullText?.authority, "author");
+  assert.equal(work?.preferredSourceIds.includes(fullText?.id), false);
+  assert.ok(fullText?.accessNote.includes("not described as openly licensed"));
+  assert.equal(
+    corpus.works.some(
+      (item) => item.id === "bahl-jelinek-mercer-1983-maximum-likelihood",
+    ),
+    false,
+  );
+  for (const claimId of overlapClaimIds) {
+    const claim = corpus.claims.find((item) => item.id === claimId);
+    assert.ok(
+      claim?.evidence.some((item) => item.sourceId === fullText?.id),
+      `${claimId} must retain its companion-version locator`,
+    );
+  }
 });
 
 test("rejects an incomplete source record", () => {
@@ -461,6 +547,32 @@ test("rejects version IDs reused by different works", () => {
   candidate.works[2].versions[0].id = "shannon-1948-original";
 
   assertRejected(candidate, "is already used by work");
+});
+
+test("requires structured title and authors on every version", () => {
+  const candidate = copyCorpus();
+  delete candidate.works[0].versions[0].title;
+  delete candidate.works[0].versions[0].authors;
+
+  assertRejected(candidate, "title: is required");
+  assertRejected(candidate, "authors: is required");
+});
+
+test("rejects a canonical version title that disagrees with its work", () => {
+  const candidate = copyCorpus();
+  candidate.works[0].versions[0].title = "Different canonical title";
+
+  assertRejected(candidate, "canonical version title must match the work title");
+});
+
+test("rejects canonical version authors that disagree with its work", () => {
+  const candidate = copyCorpus();
+  candidate.works[3].versions[0].authors.reverse();
+
+  assertRejected(
+    candidate,
+    "canonical version authors must match the work authors in order",
+  );
 });
 
 test("treats reordered duplicate objects as equal", () => {
