@@ -285,6 +285,82 @@ test("retains the 1983 article as a versioned companion, not a second lineage no
   }
 });
 
+test("retains Good attribution and Katz recursive backoff as distinct contributions", () => {
+  const good = corpus.works.find(
+    (item) => item.id === "good-1953-population-frequencies",
+  );
+  const katz = corpus.works.find(
+    (item) => item.id === "katz-1987-sparse-data",
+  );
+  const katzVersion = katz?.versions.find(
+    (item) => item.id === "katz-1987-journal-version",
+  );
+  const katzFullText = corpus.sources.find(
+    (item) => item.id === "katz-1987-full-text",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "good-1953-to-katz-1987",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(katz?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(good?.inclusion.status, "context");
+  assert.ok(
+    good?.limitations.some((item) =>
+      item.includes("credits A. M. Turing"),
+    ),
+  );
+  assert.equal(katz?.inclusion.status, "branch");
+  assert.equal(katz?.chronology.orderingEventId, "katz-1987-journal-publication");
+  assert.equal(
+    katz?.chronology.events.find(
+      (item) => item.id === "katz-1987-journal-publication",
+    )?.date.value,
+    "1987-03",
+  );
+  assert.deepEqual(katzVersion?.bibliography.pages, ["400-401"]);
+  assert.ok(
+    katzVersion?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.1109/TASSP.1987.1165125",
+    ),
+  );
+  assert.equal(katzFullText?.authority, "institutional-host");
+  assert.equal(katz?.preferredSourceIds.includes(katzFullText?.id), false);
+  assert.ok(katzFullText?.accessNote.includes("not described as openly licensed"));
+  assert.equal(relationship?.connectionType, "extends");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(
+    relationship?.uncertainties.some((item) =>
+      item.note.includes("credits Turing"),
+    ),
+  );
+  assert.ok(
+    corpus.claims
+      .find((item) => item.id === "katz-1987-zero-estimate-gate")
+      ?.statement.includes("retained higher-order estimate is zero"),
+  );
+  assert.ok(
+    corpus.claims
+      .find((item) => item.id === "katz-1987-novelty-boundary")
+      ?.statement.includes("not in the use of Turing’s formulas"),
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id === "jelinek-mercer-bahl-1982-statistical-methods" &&
+        item.to.id === "katz-1987-sparse-data",
+    ),
+    false,
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("rejects an incomplete source record", () => {
   const candidate = copyCorpus();
   delete candidate.sources[0].accessDate;
@@ -567,7 +643,9 @@ test("rejects a canonical version title that disagrees with its work", () => {
 
 test("rejects canonical version authors that disagree with its work", () => {
   const candidate = copyCorpus();
-  candidate.works[3].versions[0].authors.reverse();
+  candidate.works
+    .find((work) => work.id === "jelinek-1975-statistical-decoder")
+    .versions[0].authors.reverse();
 
   assertRejected(
     candidate,

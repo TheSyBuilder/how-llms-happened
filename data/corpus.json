@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-27",
+  "asOf": "2026-07-28",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -504,6 +504,114 @@
           "status": "open",
           "note": "The paper’s reported long-context condition and its N versus N-1 indexing should be preserved rather than silently normalized.",
           "resolutionCondition": "The interface must show the paper’s labels and a separate normalized explanation."
+        }
+      ]
+    },
+    {
+      "id": "good-1953-population-frequencies",
+      "title": "The Population Frequencies of Species and the Estimation of Population Parameters",
+      "authors": [
+        "I. J. Good"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "I. J. Good, “The Population Frequencies of Species and the Estimation of Population Parameters,” Biometrika 40(3–4), 237–264 (December 1953).",
+      "chronology": {
+        "orderingEventId": "good-1953-journal-publication",
+        "events": [
+          {
+            "id": "good-1953-journal-publication",
+            "kind": "journal-publication",
+            "label": "Journal publication",
+            "date": {
+              "value": "1953-12-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "good-1953-oup-record",
+                "precision": "day",
+                "locator": "Oxford Academic article record, published 1 December 1953"
+              }
+            ],
+            "versionId": "good-1953-journal-version",
+            "sourceIds": [
+              "good-1953-oup-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "good-1953-journal-version",
+          "title": "The Population Frequencies of Species and the Estimation of Population Parameters",
+          "authors": [
+            "I. J. Good"
+          ],
+          "kind": "journal",
+          "label": "Original journal article",
+          "language": "en",
+          "bibliography": {
+            "citation": "I. J. Good, “The Population Frequencies of Species and the Estimation of Population Parameters,” Biometrika, vol. 40, no. 3–4, pp. 237–264, December 1953.",
+            "venue": "Biometrika",
+            "publisher": "Oxford University Press on behalf of the Biometrika Trust",
+            "volume": "40",
+            "issues": [
+              "3-4"
+            ],
+            "pages": [
+              "237-264"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1093/biomet/40.3-4.237",
+                "label": "Oxford Academic article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0006-3444",
+                "label": "Print ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "good-1953-oup-record",
+            "good-1953-full-text"
+          ],
+          "notes": "The Oxford Academic record supplies the issue date and modern publisher DOI. The inspected facsimile preserves the original pagination and the article’s explicit acknowledgment of Turing."
+        }
+      ],
+      "canonicalVersionId": "good-1953-journal-version",
+      "preferredSourceIds": [
+        "good-1953-oup-record"
+      ],
+      "sourceIds": [
+        "good-1953-oup-record",
+        "good-1953-full-text"
+      ],
+      "inclusion": {
+        "status": "context",
+        "confidence": "high",
+        "rationale": "Good’s paper publishes the frequency-of-frequencies estimate and unseen-mass identities that Katz later cites and adapts. It is represented as context because its main formulation concerns species-frequency estimation rather than a conditional language model, even though the paper names literary vocabulary as another application."
+      },
+      "ideaIds": [
+        "frequency-of-frequencies-discounting"
+      ],
+      "significance": {
+        "beginner": "The number of types seen once can tell us something about how much probability may still belong to types never seen at all.",
+        "expert": "Good expresses low-frequency probabilities through smoothed frequencies of frequencies, credits Turing for the central adjusted-count formula, and derives represented mass near 1 − n₁/N with unseen mass near n₁/N."
+      },
+      "limitations": [
+        "The paper’s primary formulation concerns species in a population, not conditional word-sequence probabilities or a language-model decoding system.",
+        "Good explicitly credits A. M. Turing for formula (2); representing the published paper as a work node does not make Good the sole originator of the estimator.",
+        "The adjusted-count formula is meant to use smoothed nᵣ values; substituting raw, sparse frequency-of-frequency counts without that caveat can produce unstable or undefined estimates.",
+        "The paper does not contain Katz’s history-conditioned normalization, zero-estimate gate, or recursive lower-order m-gram backoff."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The article itself attributes formula (2) and a large share of the credit to A. M. Turing while publishing the derivation and broader treatment under Good’s sole authorship."
         }
       ]
     },
@@ -1084,6 +1192,190 @@
           "resolutionCondition": "A contemporary draft history, publisher statement, correspondence, or specific participant account would be required to replace the editorial companion grouping with a documented version or derivation relationship."
         }
       ]
+    },
+    {
+      "id": "katz-1987-sparse-data",
+      "title": "Estimation of Probabilities from Sparse Data for the Language Model Component of a Speech Recognizer",
+      "authors": [
+        "Slava M. Katz"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "S. M. Katz, “Estimation of Probabilities from Sparse Data for the Language Model Component of a Speech Recognizer,” IEEE Transactions on Acoustics, Speech, and Signal Processing 35(3), 400–401 (March 1987).",
+      "chronology": {
+        "orderingEventId": "katz-1987-journal-publication",
+        "events": [
+          {
+            "id": "katz-1987-manuscript-received",
+            "kind": "manuscript-received",
+            "label": "Manuscript received",
+            "date": {
+              "value": "1986-05-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "katz-1987-full-text",
+                "precision": "day",
+                "locator": "Printed p. 400, manuscript-history line"
+              }
+            ],
+            "versionId": "katz-1987-journal-version",
+            "sourceIds": [
+              "katz-1987-full-text"
+            ]
+          },
+          {
+            "id": "katz-1987-manuscript-revised",
+            "kind": "manuscript-revised",
+            "label": "Manuscript revised",
+            "date": {
+              "value": "1986-09-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "katz-1987-full-text",
+                "precision": "day",
+                "locator": "Printed p. 400, manuscript-history line"
+              }
+            ],
+            "versionId": "katz-1987-journal-version",
+            "sourceIds": [
+              "katz-1987-full-text"
+            ]
+          },
+          {
+            "id": "katz-1987-journal-publication",
+            "kind": "journal-publication",
+            "label": "Journal publication",
+            "date": {
+              "value": "1987-03",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "katz-1987-ieee-record",
+                "precision": "month",
+                "locator": "IEEE Transactions on Acoustics, Speech, and Signal Processing, volume 35, issue 3, March 1987"
+              },
+              {
+                "sourceId": "katz-1987-crossref-record",
+                "precision": "month",
+                "locator": "Crossref publisher deposit, published-print date March 1987"
+              },
+              {
+                "sourceId": "katz-1987-full-text",
+                "precision": "month",
+                "locator": "Journal masthead, printed pp. 400–401"
+              }
+            ],
+            "versionId": "katz-1987-journal-version",
+            "sourceIds": [
+              "katz-1987-ieee-record",
+              "katz-1987-crossref-record",
+              "katz-1987-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "katz-1987-journal-version",
+          "title": "Estimation of Probabilities from Sparse Data for the Language Model Component of a Speech Recognizer",
+          "authors": [
+            "Slava M. Katz"
+          ],
+          "kind": "journal",
+          "label": "Original journal article",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. M. Katz, “Estimation of Probabilities from Sparse Data for the Language Model Component of a Speech Recognizer,” IEEE Transactions on Acoustics, Speech, and Signal Processing, vol. 35, no. 3, pp. 400–401, March 1987.",
+            "venue": "IEEE Transactions on Acoustics, Speech, and Signal Processing",
+            "publisher": "Institute of Electrical and Electronics Engineers",
+            "volume": "35",
+            "issues": [
+              "3"
+            ],
+            "pages": [
+              "400-401"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/TASSP.1987.1165125",
+                "label": "Journal article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0096-3518",
+                "label": "Print ISSN"
+              },
+              {
+                "type": "catalog-id",
+                "value": "1165125",
+                "label": "IEEE document number"
+              }
+            ]
+          },
+          "sourceIds": [
+            "katz-1987-ieee-record",
+            "katz-1987-crossref-record",
+            "katz-1987-full-text"
+          ],
+          "notes": "The article is ordered by its March 1987 journal issue. Crossref’s day-valued license-start field and its 2004 DOI-registration date are not treated as publication dates; the printed article supplies the author’s full name and manuscript history."
+        }
+      ],
+      "canonicalVersionId": "katz-1987-journal-version",
+      "preferredSourceIds": [
+        "katz-1987-ieee-record",
+        "katz-1987-crossref-record"
+      ],
+      "sourceIds": [
+        "katz-1987-ieee-record",
+        "katz-1987-crossref-record",
+        "katz-1987-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The article gives a compact, explicit account of discounting low-count m-grams, reserving probability mass for unseen events, and conditionally falling back to normalized lower-order distributions. It also contrasts this nonlinear backoff construction with Jelinek–Mercer deleted estimation. The work is retained as a classical statistical-language-model branch rather than evidence about neural representation learning or long-context modeling."
+      },
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "significance": {
+        "beginner": "A rare phrase should not consume all the model’s trust, and an m-gram should not be treated as impossible solely because it was absent at the current order. Katz discounts uncertain observed counts, keeps probability in reserve, and uses a broader lower-order pattern when the more specific estimate is zero.",
+        "expert": "The estimator combines adjusted low-count Turing coefficients, an explicit unseen-mass budget, and a zero-estimate gate that rescales the recursively defined lower-order conditional distribution by α; counts above k are left undiscounted."
+      },
+      "limitations": [
+        "The article is a two-page treatment of an m-gram component for IBM speech recognizers; it does not model distributed representations, semantics, or dependencies beyond the chosen finite context.",
+        "The recursion uses a lower order when the higher-order estimate is zero rather than linearly mixing every order; the paper separately reports an optional d₁ = 0 space-saving variant that deliberately makes singleton estimates zero.",
+        "The article attributes its frequency-of-frequencies estimator to Turing through Good’s 1953 paper and explicitly locates its own novelty in nonlinear backoff, not in Turing’s formulas.",
+        "Table I reports one 100-sentence test on models estimated from approximately 750,000 words of office correspondence, without vocabulary, tokenization, split, uncertainty, or implementation details sufficient for reproduction.",
+        "The recommendation that k be about five and the assertion of weak sensitivity to the discount coefficients are practical statements without a displayed sensitivity analysis.",
+        "The institutionally hosted scan retains an IEEE copyright line and has no verified open license; it is used for inspection and is not redistributed."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The article states that its novelty lies in the nonlinear backoff procedure with explicit unseen-mass estimation, not in the use of Turing’s formulas."
+        },
+        {
+          "status": "open",
+          "note": "The paper does not specify enough experimental detail to reconstruct the three Table I model implementations or assess variation beyond the reported perplexities.",
+          "resolutionCondition": "Locate a contemporary experiment report, implementation description, or archived model configuration giving the corpus split, vocabulary, preprocessing, estimator settings, and repeated evaluation."
+        },
+        {
+          "status": "open",
+          "note": "No publisher-authorized open full text or author-hosted copy was identified; the inspected university-hosted scan is not treated as evidence of redistribution permission.",
+          "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required to classify the article as open full text."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -1217,7 +1509,19 @@
         "jelinek-mercer-1980-modeling-scope",
         "jelinek-mercer-1980-sparse-zero-failure",
         "jelinek-mercer-bahl-1982-unseen-trigram-rate",
-        "jelinek-mercer-bahl-1982-training-prediction-gap"
+        "jelinek-mercer-bahl-1982-training-prediction-gap",
+        "katz-1987-turing-adjusted-count",
+        "katz-1987-discounting-definition",
+        "katz-1987-global-unseen-mass",
+        "katz-1987-history-reserved-mass",
+        "katz-1987-lower-order-allocation",
+        "katz-1987-recursive-backoff",
+        "katz-1987-zero-estimate-gate",
+        "katz-1987-count-threshold",
+        "katz-1987-low-count-renormalization",
+        "katz-1987-practical-k",
+        "katz-1987-singleton-space-variant",
+        "katz-1987-singleton-performance-report"
       ],
       "uncertainties": []
     },
@@ -1275,6 +1579,56 @@
         {
           "status": "resolved",
           "note": "The idea is scoped to the chapter’s Laser Patent Text example and is not treated as evidence about unrestricted corpora."
+        }
+      ]
+    },
+    {
+      "id": "frequency-of-frequencies-discounting",
+      "name": "Frequency-of-frequencies discounting",
+      "kind": "mechanism",
+      "description": "Counts of how many event types occur once, twice, and so on can adjust unreliable low counts and estimate how much total probability should remain for unseen events.",
+      "claimIds": [
+        "good-1953-frequency-of-frequencies",
+        "good-1953-turing-attribution",
+        "good-1953-unseen-mass",
+        "katz-1987-turing-adjusted-count",
+        "katz-1987-discounting-definition",
+        "katz-1987-global-unseen-mass",
+        "katz-1987-count-threshold",
+        "katz-1987-low-count-renormalization",
+        "katz-1987-practical-k",
+        "katz-1987-singleton-space-variant",
+        "katz-1987-novelty-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Katz attributes the adjusted-count estimator to Turing through Good’s 1953 paper; the corpus does not treat it as Katz’s invention."
+        }
+      ]
+    },
+    {
+      "id": "recursive-ngram-backoff",
+      "name": "Recursive m-gram backoff",
+      "kind": "mechanism",
+      "description": "For an observed history, a nonzero discounted higher-order estimate is used directly; when that estimate is zero, α rescales eligible lower-order probabilities so they sum to the current history’s reserved mass β̃. When the history itself is unseen, the estimator recurses directly to a shorter history.",
+      "claimIds": [
+        "katz-1987-history-reserved-mass",
+        "katz-1987-lower-order-allocation",
+        "katz-1987-recursive-backoff",
+        "katz-1987-zero-estimate-gate",
+        "katz-1987-count-threshold",
+        "katz-1987-low-count-renormalization",
+        "katz-1987-practical-k",
+        "katz-1987-singleton-space-variant",
+        "katz-1987-singleton-performance-report",
+        "katz-1987-perplexity-comparison",
+        "katz-1987-novelty-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This is a zero-estimate gate, not interpolation across all orders; α rescales the lower-order distribution over eligible unseen continuations to the reserved mass β̃ rather than acting as a convex mixture weight."
         }
       ]
     }
@@ -1856,6 +2210,110 @@
         "pageEnd": 190
       },
       "accessNote": "ResearchGate labels this as author content uploaded by Robert L. Mercer. The scan retains printed pp. 179–190, reports manuscript receipt on 23 February 1981 and revision on 28 September 1982, and bears an IEEE licensed-use restriction. It is used for inspection and exact locators, is not described as openly licensed, and is not redistributed by this repository."
+    },
+    {
+      "id": "good-1953-oup-record",
+      "relatedWorkIds": [
+        "good-1953-population-frequencies"
+      ],
+      "title": "Oxford Academic record for The Population Frequencies of Species and the Estimation of Population Parameters",
+      "url": "https://academic.oup.com/biomet/article/40/3-4/237/195998",
+      "accessDate": "2026-07-28",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "good-1953-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Publisher record confirming I. J. Good, Biometrika 40(3–4), pp. 237–264, publication on 1 December 1953, and DOI 10.1093/biomet/40.3-4.237. The article is listed as available for purchase, not as open access."
+    },
+    {
+      "id": "good-1953-full-text",
+      "relatedWorkIds": [
+        "good-1953-population-frequencies"
+      ],
+      "title": "Readable facsimile of Good’s population-frequencies article",
+      "url": "https://gwern.net/doc/statistics/order/capture/1953-good-2.pdf",
+      "accessDate": "2026-07-28",
+      "sourceClass": "primary-full-text",
+      "authority": "third-party-host",
+      "versionIds": [
+        "good-1953-journal-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 237,
+        "pageEnd": 264
+      },
+      "accessNote": "A third-party reading copy retaining printed pp. 237–264. No verified open license accompanies the copy; it is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
+    },
+    {
+      "id": "katz-1987-ieee-record",
+      "relatedWorkIds": [
+        "katz-1987-sparse-data"
+      ],
+      "title": "IEEE publisher record for Estimation of Probabilities from Sparse Data for the Language Model Component of a Speech Recognizer",
+      "url": "https://ieeexplore.ieee.org/document/1165125",
+      "accessDate": "2026-07-28",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "katz-1987-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Canonical IEEE publisher record for document 1165125 and the article’s title and bibliographic metadata. The access-controlled publisher page is not treated as an open full-text source."
+    },
+    {
+      "id": "katz-1987-crossref-record",
+      "relatedWorkIds": [
+        "katz-1987-sparse-data"
+      ],
+      "title": "Crossref publisher deposit for the Katz sparse-data article",
+      "url": "https://api.crossref.org/works/10.1109%2FTASSP.1987.1165125",
+      "accessDate": "2026-07-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "katz-1987-journal-version"
+      ],
+      "supports": [
+        "metadata",
+        "reference-list"
+      ],
+      "accessNote": "IEEE-deposited metadata confirms the journal, volume 35, issue 3, pp. 400–401, March 1987, DOI, print ISSN, and seven references. The abbreviated author field is supplemented by the printed article; the 2004 DOI-registration date and a day-valued license-start field are not publication-date evidence."
+    },
+    {
+      "id": "katz-1987-full-text",
+      "relatedWorkIds": [
+        "katz-1987-sparse-data"
+      ],
+      "title": "University-hosted reading copy of the Katz sparse-data article",
+      "url": "https://www.cis.upenn.edu/~danroth/Teaching/CS598-05/Papers/Katz87.pdf",
+      "accessDate": "2026-07-28",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-host",
+      "versionIds": [
+        "katz-1987-journal-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 400,
+        "pageEnd": 401
+      },
+      "accessNote": "A University of Pennsylvania teaching copy of the published two-page IEEE article, retaining printed pp. 400–401, the full equation and reference sequence, manuscript history, masthead, and IEEE copyright line. No independent redistribution license is provided; the copy is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
     }
   ],
   "claims": [
@@ -3354,6 +3812,497 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-27"
+    },
+    {
+      "id": "good-1953-frequency-of-frequencies",
+      "workId": "good-1953-population-frequencies",
+      "ideaIds": [
+        "frequency-of-frequencies-discounting"
+      ],
+      "statement": "For nᵣ distinct species each observed r times in a sample of size N, Good estimates the expected population frequency of an arbitrary species observed r times as r*/N, where r* ≈ (r + 1)nᵣ₊₁/nᵣ, and states that the nᵣ values should first be smoothed.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "good-1953-full-text",
+          "locator": {
+            "label": "Adjusted-count expectation and smoothed form, printed p. 238",
+            "section": "1. Introduction",
+            "pageStart": 238,
+            "pageEnd": 238,
+            "equation": "2 and 2′"
+          },
+          "support": "Relates r*/N to the expected population frequency of an arbitrary species observed r times, gives the approximate frequency-of-frequencies ratio, and supplies the smoothed form."
+        }
+      ],
+      "limitations": [
+        "The source’s species-frequency setup is not yet a conditional language model.",
+        "The smoothing qualification is part of the result; the raw count-of-counts ratio is not presented as universally stable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "good-1953-turing-attribution",
+      "workId": "good-1953-population-frequencies",
+      "ideaIds": [
+        "frequency-of-frequencies-discounting"
+      ],
+      "statement": "Good states that A. M. Turing suggested formula (2) to him with an intuitive demonstration and says that a large part of the credit for the paper should be given to Turing.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "good-1953-full-text",
+          "locator": {
+            "label": "Turing acknowledgment, printed p. 237",
+            "section": "1. Introduction",
+            "pageStart": 237,
+            "pageEnd": 237,
+            "paragraph": "Paragraph beginning “The formula (2)”"
+          },
+          "support": "Records Good’s explicit account of Turing’s role and his allocation of credit."
+        }
+      ],
+      "limitations": [
+        "The article remains a sole-authored publication by I. J. Good; this acknowledgment is not a bibliographic coauthorship claim.",
+        "The record preserves the participant attribution without making an exhaustive priority claim about all antecedents."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "good-1953-unseen-mass",
+      "workId": "good-1953-population-frequencies",
+      "ideaIds": [
+        "frequency-of-frequencies-discounting"
+      ],
+      "statement": "Good derives an approximate total probability 1 − n₁/N for species represented in the sample and an approximate probability n₁/N that the next observation belongs to a previously unseen species.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "good-1953-full-text",
+          "locator": {
+            "label": "Represented and unseen population mass, printed p. 239",
+            "section": "1. Introduction",
+            "pageStart": 239,
+            "pageEnd": 239,
+            "equation": "8–9"
+          },
+          "support": "States the represented-population estimate and its complementary probability of a new species on the next draw."
+        }
+      ],
+      "limitations": [
+        "This is a population-level estimate in the article’s species formulation, not a context-specific conditional reserved mass.",
+        "The formulas are approximate and the surrounding text preserves the article’s smoothing conditions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-turing-adjusted-count",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting"
+      ],
+      "statement": "With nᵣ denoting the number of distinct words or m-grams observed exactly r times and N the sample size, Katz uses Turing’s estimate Pₜ = r*/N with r* = (r + 1)nᵣ₊₁/nᵣ.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Count-of-counts definition and Turing adjusted count, printed p. 400",
+            "pageStart": 400,
+            "pageEnd": 400,
+            "equation": "1–3"
+          },
+          "support": "Defines N and nᵣ and gives the adjusted-count and probability formulas."
+        }
+      ],
+      "limitations": [
+        "The article calls these Turing estimates and cites I. J. Good’s 1953 paper; this claim does not attribute the adjusted-count estimator to Katz.",
+        "The two-page treatment does not discuss smoothing the nᵣ sequence or handling a zero nᵣ₊₁."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-discounting-definition",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting"
+      ],
+      "statement": "Katz calls replacement of raw count r by a modified count r′ “discounting,” defines the discount coefficient dᵣ = r′/r, and calls the choice r′ = r* Turing’s discounting.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Discounting and coefficient definition, printed p. 400",
+            "pageStart": 400,
+            "pageEnd": 400,
+            "equation": "3–6"
+          },
+          "support": "Defines count replacement as discounting, defines dᵣ, and specializes the replacement to Turing’s adjusted count."
+        }
+      ],
+      "limitations": [
+        "The article attributes the adjusted-count choice to Turing and cites I. J. Good’s 1953 paper; this claim records Katz’s terminology and notation, not sole authorship of the estimator."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-global-unseen-mass",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting"
+      ],
+      "statement": "Under the article’s unmodified Turing identities, the probability assigned to observed m-grams sums to 1 − n₁/N, leaving total probability n₁/N for all m-grams unseen in the sample; the same quantity equals the probability removed from observed events.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Observed and unseen probability-mass identities, printed p. 400",
+            "pageStart": 400,
+            "pageEnd": 400,
+            "equation": "7–11"
+          },
+          "support": "Derives the observed-event total, the n₁/N unseen-event total, and equality with the mass removed by discounting."
+        }
+      ],
+      "limitations": [
+        "n₁/N is the corpus-level total for unseen m-grams, not the reserved mass for every conditioning history and not the probability of any one unseen event."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-history-reserved-mass",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "For an observed conditioning history, the estimator assigns each seen continuation its discounted relative frequency and defines a history-specific reserved mass β̃ as one minus the sum of those seen-continuation estimates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Conditional discount and reserved-mass definition, printed p. 400",
+            "pageStart": 400,
+            "pageEnd": 400,
+            "equation": "12–14"
+          },
+          "support": "Defines the discounted conditional estimate for observed continuations and the context-specific probability left for unseen continuations."
+        }
+      ],
+      "limitations": [
+        "The context-specific β̃ is distinct from the corpus-level n₁/N total and from the later normalization multiplier α."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-lower-order-allocation",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "For an observed current history and a continuation unseen after it, the estimator allocates the reserved mass in proportion to a previously defined lower-order conditional distribution; α equals the reserved mass divided by that lower-order distribution’s total probability over continuations eligible for backoff.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Lower-order allocation and α normalization, printed pp. 400–401",
+            "pageStart": 400,
+            "pageEnd": 401,
+            "equation": "15–16"
+          },
+          "support": "Assigns α times the lower-order estimate to unseen continuations and chooses α so those eligible continuations sum to the current history’s reserved mass β̃."
+        }
+      ],
+      "limitations": [
+        "α is a normalization multiplier, not the reserved probability mass itself and not necessarily a convex interpolation weight bounded by one.",
+        "The allocation is not uniform: lower-order relative probabilities determine how unseen continuations share the reserved mass."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-recursive-backoff",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "When the current conditioning history has zero count, the estimator drops its oldest word and directly uses the lower-order conditional estimator.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Recursive unseen-history fallback, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "equation": "17"
+          },
+          "support": "Defines the conditional estimate for a zero-count history by dropping the oldest word and using the already-defined lower-order estimator."
+        }
+      ],
+      "limitations": [
+        "The paper assumes that a lower-level estimator has already been defined and does not spell out every implementation base case."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-zero-estimate-gate",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "The combined estimator uses a nonzero discounted higher-order estimate directly and activates the α-scaled lower-order term only when the retained higher-order estimate is zero.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Zero-estimate backoff gate, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "equation": "18–19"
+          },
+          "support": "Combines the current-order estimate with an indicator-controlled lower-order term whose indicator is active exactly when the current estimate is zero."
+        }
+      ],
+      "limitations": [
+        "This is hard backoff rather than interpolation across orders for every event.",
+        "Counts from one through k ordinarily retain discounted current-order estimates; the separately reported d₁ = 0 variant is an optional singleton-discard exception."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-count-threshold",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "The modified estimator treats counts above k as reliable and leaves them undiscounted by setting dᵣ = 1 for r > k.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Count cutoff, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "equation": "20"
+          },
+          "support": "Sets dᵣ = 1 for counts above k."
+        }
+      ],
+      "limitations": [
+        "The cutoff controls which positive counts are discounted; it is not the ordinary trigger for lower-order backoff."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-low-count-renormalization",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "For 1 ≤ r ≤ k, Katz sets dᵣ = [r*/r − (k + 1)nₖ₊₁/n₁] / [1 − (k + 1)nₖ₊₁/n₁], constraining the low-count coefficients so the probability removed from observed events remains n₁/N after counts above k are left undiscounted.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Low-count mass constraint and adjusted coefficients, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "equation": "21–23"
+          },
+          "support": "States the retained unseen-mass constraint and derives the adjusted discount coefficients for counts from one through k."
+        }
+      ],
+      "limitations": [
+        "The formula uses the article’s count-of-counts quantities directly; the two-page treatment does not discuss smoothing gaps or denominator edge cases.",
+        "This cutoff correction is Katz’s modification of the inherited Turing discount, not a restatement of Good’s formula alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-practical-k",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "Katz says that k around five is a good practical choice for the count cutoff.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Practical cutoff recommendation, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "paragraph": "Paragraph immediately after equation (23)"
+          },
+          "support": "Describes k = 5 or so as a good practical choice."
+        }
+      ],
+      "limitations": [
+        "The recommendation is not a theorem or universal optimum, and the paper reports no selection procedure or sensitivity table for k."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-singleton-space-variant",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "The article describes a space-saving variant with d₁ = 0, equivalent to discarding all singletons, and says that choice was used in a compact language model for a PC-based speech recognizer.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Singleton-discard implementation report, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "paragraph": "Paragraph beginning with precomputation of α"
+          },
+          "support": "Identifies d₁ = 0 with discarding singletons and connects that space-saving choice to the compact language model used in the PC recognizer."
+        }
+      ],
+      "limitations": [
+        "This implementation report does not establish that singletons are generally useless or that every language model can remove them safely."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-singleton-performance-report",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "The article reports that setting d₁ = 0 did not affect model performance in the authors’ experiments.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Singleton-discard performance report, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "paragraph": "Paragraph beginning with precomputation of α"
+          },
+          "support": "Reports that the d₁ = 0 choice did not affect performance in the authors’ experiments."
+        }
+      ],
+      "limitations": [
+        "The article provides no dedicated ablation table, metric, model configuration, or test conditions for this result.",
+        "The report is specific to the authors’ experiments and does not show that singleton removal is lossless across domains or models."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-perplexity-comparison",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "recursive-ngram-backoff"
+      ],
+      "statement": "Using models estimated from approximately 750,000 words of office correspondence and evaluated on 100 sentences, Table I reports perplexities of 117 for Katz backoff, 118 for Jelinek–Mercer deleted estimation, and 119 for Nádas’s method in the 2-gram row, and 88, 89, and 91 respectively in the 3-gram row.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Three-model perplexity comparison, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "table": "I",
+            "paragraph": "Comparison and test-corpus description below Table I"
+          },
+          "support": "Labels the three model columns, reports both rows of perplexities, defines lower perplexity as better, and states the approximate training scale and 100-sentence test size."
+        }
+      ],
+      "limitations": [
+        "Katz backoff is one point below Jelinek–Mercer in each row; the article supplies no uncertainty estimates or significance test for those small differences.",
+        "The vocabulary, tokenization, corpus split, estimator configurations, and test-sentence provenance are not specified well enough to reproduce the comparison.",
+        "The result supports only the displayed office-correspondence experiment, not a broad claim that backoff is superior across domains or scales."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "katz-1987-novelty-boundary",
+      "workId": "katz-1987-sparse-data",
+      "ideaIds": [
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "statement": "The article explicitly locates its contribution in the nonlinear backoff procedure that uses an explicit estimate of unseen-m-gram probability, not in the use of Turing’s formulas.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Contribution boundary, printed p. 401",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "paragraph": "Final paragraph before References"
+          },
+          "support": "Separates the nonlinear backoff contribution from the inherited Turing computation."
+        }
+      ],
+      "limitations": [
+        "This is the author’s scope statement, not an exhaustive priority review of every earlier backoff or smoothing method.",
+        "The claim therefore avoids unqualified priority words and does not identify Katz as the originator of Good–Turing estimation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-28"
     }
   ],
   "relationships": [
@@ -3645,6 +4594,67 @@
           "status": "open",
           "note": "Because the 1980 paper already cites the chapter as forthcoming while the published chapter cites the 1980 paper for the detailed method, the evidence supports reciprocal cross-reference and reuse, not a simple one-way priority claim.",
           "resolutionCondition": "Contemporary drafts, correspondence, or a specific participant account would be required to reconstruct the development sequence more finely than publication order."
+        }
+      ]
+    },
+    {
+      "id": "good-1953-to-katz-1987",
+      "from": {
+        "kind": "work",
+        "id": "good-1953-population-frequencies"
+      },
+      "to": {
+        "kind": "work",
+        "id": "katz-1987-sparse-data"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Katz cites Good’s 1953 article for Turing’s frequency-of-frequencies estimate, adopts its adjusted counts and aggregate unseen-mass identity, and adapts that machinery to conditional m-gram estimation through cutoff-adjusted discounting and normalized recursive lower-order backoff. The edge represents the documented use of the published source while preserving Good’s explicit credit to Turing.",
+      "claimIds": [
+        "good-1953-frequency-of-frequencies",
+        "good-1953-turing-attribution",
+        "good-1953-unseen-mass",
+        "katz-1987-turing-adjusted-count",
+        "katz-1987-discounting-definition",
+        "katz-1987-global-unseen-mass",
+        "katz-1987-history-reserved-mass",
+        "katz-1987-lower-order-allocation",
+        "katz-1987-recursive-backoff",
+        "katz-1987-zero-estimate-gate",
+        "katz-1987-count-threshold",
+        "katz-1987-low-count-renormalization",
+        "katz-1987-novelty-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Turing estimates, unseen-mass identities, and reference [1], printed pp. 400–401",
+            "pageStart": 400,
+            "pageEnd": 401,
+            "equation": "1–11",
+            "paragraph": "Reference 1"
+          },
+          "support": "The later article cites Good as reference [1], restates the adjusted-count estimator, and carries its n₁/N unseen-mass identity into the sparse m-gram construction."
+        },
+        {
+          "sourceId": "katz-1987-full-text",
+          "locator": {
+            "label": "Conditional recursion, cutoff adjustment, and contribution boundary, printed pp. 400–401",
+            "pageStart": 400,
+            "pageEnd": 401,
+            "equation": "12–23",
+            "paragraph": "Final paragraph before References"
+          },
+          "support": "The later article builds the conditional normalization and recursive zero-estimate gate, adjusts low-count coefficients around k, and distinguishes that backoff construction from the inherited Turing formulas."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Good is the sole author of the 1953 paper, but the paper credits Turing for formula (2) and a large share of the work; the edge must not be rendered as sole-origin attribution to Good."
         }
       ]
     }
@@ -3947,6 +4957,69 @@
         "Finite-state and word N-gram models"
       ],
       "successCriterion": "The learner can reconstruct the exact-pair, first-word-POS, two-POS, and all-pairs components and the frequency-conditioned weights, identify which data estimate each quantity, and state why neither the 23% report nor publication order proves a universal or priority claim."
+    },
+    {
+      "id": "beginner-katz-1987-backoff",
+      "mode": "beginner",
+      "objective": "Explain how discounting saves probability for unseen phrases, why lower-order patterns divide that reserve instead of replacing every higher-order estimate, and how zero-estimate backoff differs from interpolation.",
+      "workIds": [
+        "katz-1987-sparse-data"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "claimIds": [
+        "katz-1987-global-unseen-mass",
+        "katz-1987-history-reserved-mass",
+        "katz-1987-lower-order-allocation",
+        "katz-1987-recursive-backoff",
+        "katz-1987-zero-estimate-gate",
+        "katz-1987-novelty-boundary"
+      ],
+      "prerequisites": [
+        "Counts and conditional probabilities",
+        "Seen versus unseen examples",
+        "Probability mass summing to one"
+      ],
+      "successCriterion": "Given seen, rare, and unseen higher-order phrases, the learner can say which keeps a discounted higher-order estimate, which triggers lower-order backoff, and why the lower-order probabilities must be renormalized."
+    },
+    {
+      "id": "expert-katz-1987-estimator",
+      "mode": "expert",
+      "objective": "Trace the estimator from frequency-of-frequencies counts through global and history-specific reserved mass, derive α over eligible lower-order continuations, apply the zero-estimate recursion and k cutoff, and evaluate the limited Table I comparison without attributing Turing’s formulas to Katz.",
+      "workIds": [
+        "katz-1987-sparse-data"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "frequency-of-frequencies-discounting",
+        "recursive-ngram-backoff"
+      ],
+      "claimIds": [
+        "katz-1987-turing-adjusted-count",
+        "katz-1987-discounting-definition",
+        "katz-1987-global-unseen-mass",
+        "katz-1987-history-reserved-mass",
+        "katz-1987-lower-order-allocation",
+        "katz-1987-recursive-backoff",
+        "katz-1987-zero-estimate-gate",
+        "katz-1987-count-threshold",
+        "katz-1987-low-count-renormalization",
+        "katz-1987-practical-k",
+        "katz-1987-singleton-space-variant",
+        "katz-1987-singleton-performance-report",
+        "katz-1987-perplexity-comparison",
+        "katz-1987-novelty-boundary"
+      ],
+      "prerequisites": [
+        "Conditional m-gram maximum-likelihood estimation",
+        "Frequency-of-frequencies estimators",
+        "Normalization of conditional distributions",
+        "Perplexity"
+      ],
+      "successCriterion": "The learner can distinguish n₁/N, β̃, and α; reconstruct the seen and unseen branches of equations (13)–(23); state what k does; and report the comparison with its corpus, sample-size, and attribution limits."
     }
   ]
 }
