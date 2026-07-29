@@ -361,6 +361,178 @@ test("retains Good attribution and Katz recursive backoff as distinct contributi
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the original Kneser–Ney backoff distributions without later variants", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "kneser-ney-1995-improved-backing-off",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "kneser-ney-1995-proceedings-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "kneser-ney-1995-full-text",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "katz-1987-to-kneser-ney-1995",
+  );
+  const contextClaim = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-context-diversity",
+  );
+  const discountClaim = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-absolute-discount",
+  );
+  const singletonClaim = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-singleton-distribution",
+  );
+  const datasetScope = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-dataset-and-evaluation-scope",
+  );
+  const estimatorSetup = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-estimator-setup",
+  );
+  const tableOne = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-table-one-results",
+  );
+  const arpaComparison = corpus.claims.find(
+    (item) => item.id === "kneser-ney-1995-arpa-comparison",
+  );
+  const recursiveBackoff = corpus.ideas.find(
+    (item) => item.id === "recursive-ngram-backoff",
+  );
+  const beginnerObjective = corpus.learningObjectives.find(
+    (item) => item.id === "beginner-kneser-ney-1995-context-diversity",
+  );
+  const expertObjective = corpus.learningObjectives.find(
+    (item) => item.id === "expert-kneser-ney-1995-estimator",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "kneser-ney-1995-proceedings-publication",
+  );
+  assert.equal(work?.chronology.events[0].date.value, "1995");
+  assert.equal(work?.chronology.events[0].date.precision, "year");
+  assert.deepEqual(version?.bibliography.pages, ["181-184"]);
+  assert.ok(
+    version?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.1109/ICASSP.1995.479394",
+    ),
+  );
+  assert.ok(
+    version?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "isbn" && identifier.value === "0-7803-2431-5",
+    ),
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 181,
+    pageEnd: 184,
+  });
+  assert.equal(fullText?.authority, "institutional-host");
+  assert.equal(work?.preferredSourceIds.includes(fullText?.id), false);
+  assert.ok(fullText?.accessNote.includes("not described as openly licensed"));
+  assert.equal(relationship?.connectionType, "extends");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "medium");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.deepEqual(
+    relationship?.claimIds.filter((claimId) =>
+      claimId.startsWith("katz-1987-"),
+    ),
+    ["katz-1987-novelty-boundary"],
+  );
+  assert.ok(
+    relationship?.uncertainties.some((item) =>
+      item.note.includes("neither labeled as the experimental baseline"),
+    ),
+  );
+  assert.ok(contextClaim?.statement.includes("N₊(·,ĥ,w)"));
+  assert.ok(contextClaim?.statement.includes("repeated token frequency"));
+  assert.ok(
+    discountClaim?.limitations.some((item) =>
+      item.includes("does not claim it as a new contribution"),
+    ),
+  );
+  assert.ok(singletonClaim?.statement.includes("N₁(·,ĥ,w)/N₁(·,ĥ,·)"));
+  assert.ok(
+    singletonClaim?.limitations.some((item) =>
+      item.includes("second sum in equation (16)"),
+    ),
+  );
+  assert.ok(
+    datasetScope?.statement.includes(
+      "official 1992 and 1993 evaluation material",
+    ),
+  );
+  assert.ok(datasetScope?.statement.includes("trigram rescoring"));
+  assert.ok(
+    estimatorSetup?.statement.includes(
+      "every fallback distribution is itself smoothed",
+    ),
+  );
+  assert.equal(
+    tableOne?.statement,
+    "Table 1 reports standard, singleton, and marginal-constraint perplexity/error-rate pairs of 161.0/11.9%, 145.7/11.2%, and 144.3/11.1% for full WSJ 45k models; 169.4/11.9%, 152.6/11.4%, and 150.6/11.5% after removing singleton trigrams; and Verbmobil perplexities of 105.4, 97.9, and 96.2.",
+  );
+  assert.equal(
+    arpaComparison?.statement,
+    "Using the same WSJ training data and 20,000-word vocabulary as the official ARPA 1993 model, Table 2 reports bigram perplexities of 213.3 for ARPA and 207.5 for the marginal-constraint model, and trigram perplexities of 147.0 and 134.0 respectively.",
+  );
+  assert.ok(
+    work?.limitations.some(
+      (item) =>
+        item.includes("later interpolated Kneser–Ney") &&
+        item.includes("modified Kneser–Ney"),
+    ),
+  );
+  assert.ok(
+    work?.significance.expert.includes("while a separate leave-one-out path"),
+  );
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("final ARPA comparison adds one bigram row"),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some(
+      (item) => item.includes("up to about 10%") && item.includes("11.1%"),
+    ),
+  );
+  assert.ok(
+    recursiveBackoff?.uncertainties.some((item) =>
+      item.note.startsWith("In Katz’s estimator"),
+    ),
+  );
+  assert.equal(
+    beginnerObjective?.claimIds.includes(
+      "kneser-ney-1995-table-one-results",
+    ),
+    false,
+  );
+  assert.ok(
+    expertObjective?.successCriterion.includes(
+      "unbenchmarked author report",
+    ),
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id === "jelinek-mercer-1980-interpolation" &&
+        item.to.id === work?.id,
+    ),
+    false,
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("rejects an incomplete source record", () => {
   const candidate = copyCorpus();
   delete candidate.sources[0].accessDate;
@@ -475,6 +647,23 @@ test("rejects relationship edges that reverse chronology", () => {
   [relationship.from, relationship.to] = [relationship.to, relationship.from];
 
   assertRejected(candidate, "must run from the earlier work to the later work");
+});
+
+test("rejects reversed addresses and challenges edges", () => {
+  for (const connectionType of ["addresses", "challenges"]) {
+    const candidate = copyCorpus();
+    const relationship = candidate.relationships.find(
+      (item) => item.connectionType === "addresses",
+    );
+    assert.ok(relationship);
+    relationship.connectionType = connectionType;
+    [relationship.from, relationship.to] = [
+      relationship.to,
+      relationship.from,
+    ];
+
+    assertRejected(candidate, "must run from the earlier work to the later work");
+  }
 });
 
 test("does not reject lineage when imprecise date intervals overlap", () => {

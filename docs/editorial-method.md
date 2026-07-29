@@ -73,6 +73,7 @@ Relationships use two separate labels: what kind of connection is proposed, and 
 - **Extends** — preserves a mechanism while expanding its scope or capability.
 - **Combines** — joins previously separate ideas.
 - **Challenges** — supplies evidence or an argument against an earlier assumption.
+- **Addresses** — treats a problem or limitation exposed by another work without necessarily adopting its method.
 - **Makes practical** — removes a documented obstacle to use or scale.
 - **Enables** — provides a necessary mechanism later reused elsewhere.
 - **Conceptual parallel** — helps explain an idea but has no demonstrated causal path.

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-28",
+  "asOf": "2026-07-29",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1376,6 +1376,147 @@
           "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required to classify the article as open full text."
         }
       ]
+    },
+    {
+      "id": "kneser-ney-1995-improved-backing-off",
+      "title": "Improved Backing-Off for M-Gram Language Modeling",
+      "authors": [
+        "Reinhard Kneser",
+        "Hermann Ney"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "R. Kneser and H. Ney, “Improved Backing-Off for M-Gram Language Modeling,” ICASSP ’95, vol. 1, 181–184 (1995).",
+      "chronology": {
+        "orderingEventId": "kneser-ney-1995-proceedings-publication",
+        "events": [
+          {
+            "id": "kneser-ney-1995-proceedings-publication",
+            "kind": "proceedings-publication",
+            "label": "ICASSP proceedings publication",
+            "date": {
+              "value": "1995",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "kneser-ney-1995-rwth-bibliography",
+                "precision": "year",
+                "locator": "RWTH author-group proceedings bibliography, year 1995"
+              },
+              {
+                "sourceId": "kneser-ney-1995-full-text",
+                "precision": "year",
+                "locator": "Printed IEEE proceedings paper and copyright line, pp. 181–184, 1995"
+              }
+            ],
+            "versionId": "kneser-ney-1995-proceedings-version",
+            "sourceIds": [
+              "kneser-ney-1995-rwth-bibliography",
+              "kneser-ney-1995-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "kneser-ney-1995-proceedings-version",
+          "title": "Improved Backing-Off for M-Gram Language Modeling",
+          "authors": [
+            "Reinhard Kneser",
+            "Hermann Ney"
+          ],
+          "kind": "proceedings",
+          "label": "Original ICASSP proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Kneser and H. Ney, “Improved Backing-Off for M-Gram Language Modeling,” in 1995 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP ’95), vol. 1, pp. 181–184, Detroit, Michigan, May 1995.",
+            "venue": "1995 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP ’95)",
+            "publisher": "Institute of Electrical and Electronics Engineers",
+            "volume": "1",
+            "pages": [
+              "181-184"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/ICASSP.1995.479394",
+                "label": "Proceedings-paper DOI"
+              },
+              {
+                "type": "isbn",
+                "value": "0-7803-2431-5",
+                "label": "Proceedings volume ISBN"
+              },
+              {
+                "type": "catalog-id",
+                "value": "479394",
+                "label": "IEEE document number"
+              }
+            ]
+          },
+          "sourceIds": [
+            "kneser-ney-1995-ieee-record",
+            "kneser-ney-1995-crossref-record",
+            "kneser-ney-1995-rwth-bibliography",
+            "kneser-ney-1995-full-text"
+          ],
+          "notes": "The RWTH author-group bibliography supplies May 1995 and Detroit as part of the conference citation. The ordering event remains at year precision because that field does not separately establish a proceedings-release month or paper-presentation day. IEEE, the RWTH bibliography, and the printed paper support the 1995 year; IEEE and Crossref confirm the title, abbreviated author order, volume, pages, and DOI. Crossref’s null issued date and later DOI-deposit date are not publication dates."
+        }
+      ],
+      "canonicalVersionId": "kneser-ney-1995-proceedings-version",
+      "preferredSourceIds": [
+        "kneser-ney-1995-ieee-record",
+        "kneser-ney-1995-crossref-record",
+        "kneser-ney-1995-rwth-bibliography"
+      ],
+      "sourceIds": [
+        "kneser-ney-1995-ieee-record",
+        "kneser-ney-1995-crossref-record",
+        "kneser-ney-1995-rwth-bibliography",
+        "kneser-ney-1995-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper makes the lower-order distribution itself an object of estimation for unseen m-grams. Its distinct-context and singleton-count solutions explain why raw lower-order frequency can be a poor fallback signal and provide a major classical backoff node whose later interpolated and modified variants require separate treatment."
+      },
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "significance": {
+        "beginner": "A word that is frequent in only a few fixed phrases should not automatically look likely after every unseen context. The fallback distribution asks how broadly a word continues different contexts, not only how often it appears.",
+        "expert": "The paper preserves a normalized seen/unseen backoff form and optimizes its lower-order distribution in two ways: the marginal-constraint path yields distinct-context counts under absolute discounting, while a separate leave-one-out path yields singleton-event counts."
+      },
+      "limitations": [
+        "The paper is a four-page ICASSP treatment whose main Verbmobil and Wall Street Journal comparisons use trigram language models; its final ARPA comparison adds one bigram row, and it does not model distributed representations, semantics, or long context.",
+        "The marginal derivation treats the denominator in equation (6) as constant with respect to the predicted word, and the leave-one-out derivation makes an analogous approximation to the second sum in equation (16).",
+        "The simple distinct-context result assumes nested history classes, reliable coarse marginals, one unique coarser class for each detailed history, and a single absolute discount with 0 < d < 1.",
+        "The experiments use nonlinear interpolation from Ney, Essen, and Kneser 1994 as a slight variant of absolute discounting for seen events, and smooth every backoff distribution by an unspecified method to avoid zero probabilities.",
+        "The paper does not present the later interpolated Kneser–Ney formulation or modified Kneser–Ney’s count-dependent D₁, D₂, and D₃₊ discounts; those later variants must not be projected into its equations.",
+        "The abstract’s claim of perplexity improvements up to about 10% is approximate: Table 1’s compact marginal-constraint row changes from 169.4 to 150.6, an 11.1% relative reduction.",
+        "The reported 5% word-error improvement is an approximate relative summary, not a five-percentage-point reduction: the best full WSJ row changes from 11.9% to 11.1%.",
+        "No significance analysis, confidence interval, runtime benchmark, measured memory footprint, discount-tuning procedure, complete preprocessing description, or test-set size is reported.",
+        "The institutionally hosted PDF retains an IEEE copyright line and provides no explicit open license; it is used for inspection and is not redistributed."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The paper’s exact presentation day and the proceedings-release date have not been established.",
+          "resolutionCondition": "Inspect an authoritative ICASSP 1995 program or session schedule identifying the paper’s presentation."
+        },
+        {
+          "status": "resolved",
+          "note": "The original paper derives a backoff distribution and two related approximations; it is not evidence for the later interpolated or multi-discount modified formulations that often share the Kneser–Ney name."
+        },
+        {
+          "status": "open",
+          "note": "The RWTH-hosted published PDF is publicly readable but has no verified redistribution license.",
+          "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required to classify the full text as openly licensed."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -1521,7 +1662,11 @@
         "katz-1987-low-count-renormalization",
         "katz-1987-practical-k",
         "katz-1987-singleton-space-variant",
-        "katz-1987-singleton-performance-report"
+        "katz-1987-singleton-performance-report",
+        "kneser-ney-1995-standard-backoff-bias",
+        "kneser-ney-1995-backoff-form",
+        "kneser-ney-1995-free-backoff-distribution",
+        "kneser-ney-1995-context-diversity"
       ],
       "uncertainties": []
     },
@@ -1611,7 +1756,7 @@
       "id": "recursive-ngram-backoff",
       "name": "Recursive m-gram backoff",
       "kind": "mechanism",
-      "description": "For an observed history, a nonzero discounted higher-order estimate is used directly; when that estimate is zero, α rescales eligible lower-order probabilities so they sum to the current history’s reserved mass β̃. When the history itself is unseen, the estimator recurses directly to a shorter history.",
+      "description": "A higher-order m-gram model can use a seen-event estimate directly and send unseen events to a normalized lower-order distribution. Katz makes that estimator recursive with an explicit reserved-mass calculation; Kneser and Ney preserve the seen/unseen structure while redesigning the fallback distribution.",
       "claimIds": [
         "katz-1987-history-reserved-mass",
         "katz-1987-lower-order-allocation",
@@ -1623,12 +1768,48 @@
         "katz-1987-singleton-space-variant",
         "katz-1987-singleton-performance-report",
         "katz-1987-perplexity-comparison",
-        "katz-1987-novelty-boundary"
+        "katz-1987-novelty-boundary",
+        "kneser-ney-1995-backoff-form",
+        "kneser-ney-1995-free-backoff-distribution",
+        "kneser-ney-1995-marginal-constraint",
+        "kneser-ney-1995-absolute-discount",
+        "kneser-ney-1995-context-diversity",
+        "kneser-ney-1995-singleton-distribution"
       ],
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "This is a zero-estimate gate, not interpolation across all orders; α rescales the lower-order distribution over eligible unseen continuations to the reserved mass β̃ rather than acting as a convex mixture weight."
+          "note": "In Katz’s estimator, this is a zero-estimate gate, not interpolation across all orders; α rescales the lower-order distribution over eligible unseen continuations to the reserved mass β̃ rather than acting as a convex mixture weight."
+        },
+        {
+          "status": "resolved",
+          "note": "The papers reuse Greek letters for different quantities: Katz’s α is a lower-order multiplier and β̃ is reserved mass, whereas Kneser and Ney’s α is the seen-event estimate, β is the fallback distribution, and γ is its normalizer."
+        }
+      ]
+    },
+    {
+      "id": "context-diversity-backoff-distributions",
+      "name": "Context-diversity backoff distributions",
+      "kind": "mechanism",
+      "description": "A fallback distribution for an unseen higher-order event can depend on how many distinct detailed contexts contain the observed continuation, or on how many such context–continuation events are singletons, rather than on the continuation’s raw token frequency.",
+      "claimIds": [
+        "kneser-ney-1995-standard-backoff-bias",
+        "kneser-ney-1995-backoff-form",
+        "kneser-ney-1995-free-backoff-distribution",
+        "kneser-ney-1995-marginal-constraint",
+        "kneser-ney-1995-absolute-discount",
+        "kneser-ney-1995-context-diversity",
+        "kneser-ney-1995-singleton-distribution",
+        "kneser-ney-1995-dataset-and-evaluation-scope",
+        "kneser-ney-1995-estimator-setup",
+        "kneser-ney-1995-table-one-results",
+        "kneser-ney-1995-arpa-comparison",
+        "kneser-ney-1995-cost-claim"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The distinct-context equation is the original paper’s marginal-constraint backoff distribution; later interpolated and modified Kneser–Ney estimators add mechanisms not present in this record."
         }
       ]
     }
@@ -2314,6 +2495,86 @@
         "pageEnd": 401
       },
       "accessNote": "A University of Pennsylvania teaching copy of the published two-page IEEE article, retaining printed pp. 400–401, the full equation and reference sequence, manuscript history, masthead, and IEEE copyright line. No independent redistribution license is provided; the copy is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
+    },
+    {
+      "id": "kneser-ney-1995-ieee-record",
+      "relatedWorkIds": [
+        "kneser-ney-1995-improved-backing-off"
+      ],
+      "title": "IEEE publisher record for Improved Backing-Off for M-Gram Language Modeling",
+      "url": "https://ieeexplore.ieee.org/document/479394",
+      "accessDate": "2026-07-29",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "kneser-ney-1995-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Canonical IEEE publisher record for document 479394, the ICASSP 1995 paper, and DOI 10.1109/ICASSP.1995.479394. The access-controlled publisher page is not treated as an open full-text source."
+    },
+    {
+      "id": "kneser-ney-1995-crossref-record",
+      "relatedWorkIds": [
+        "kneser-ney-1995-improved-backing-off"
+      ],
+      "title": "Crossref publisher deposit for the Kneser–Ney proceedings paper",
+      "url": "https://api.crossref.org/works/10.1109%2FICASSP.1995.479394",
+      "accessDate": "2026-07-29",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "kneser-ney-1995-proceedings-version"
+      ],
+      "supports": [
+        "metadata",
+        "reference-list"
+      ],
+      "accessNote": "IEEE-deposited metadata confirms the abbreviated author order, conference, Detroit event location, IEEE publisher, volume 1, pp. 181–184, DOI, and seven references including Katz 1987. Its issued date is null; the 2002 Crossref creation date is not publication evidence."
+    },
+    {
+      "id": "kneser-ney-1995-rwth-bibliography",
+      "relatedWorkIds": [
+        "kneser-ney-1995-improved-backing-off"
+      ],
+      "title": "RWTH author-group bibliography for Improved Backing-Off for M-Gram Language Modeling",
+      "url": "https://www-i6.informatik.rwth-aachen.de/publications/singlebibtex.php?id=951",
+      "accessDate": "2026-07-29",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "kneser-ney-1995-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The RWTH Aachen author-group bibliography gives Reinhard Kneser and Hermann Ney, the ICASSP venue, May 1995, Detroit, and pp. 181–184, and links the institutional reading copy."
+    },
+    {
+      "id": "kneser-ney-1995-full-text",
+      "relatedWorkIds": [
+        "kneser-ney-1995-improved-backing-off"
+      ],
+      "title": "RWTH-hosted reading copy of Improved Backing-Off for M-Gram Language Modeling",
+      "url": "https://www-i6.informatik.rwth-aachen.de/publications/download/951/Kneser-ICASSP-1995.pdf",
+      "accessDate": "2026-07-29",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-host",
+      "versionIds": [
+        "kneser-ney-1995-proceedings-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 181,
+        "pageEnd": 184
+      },
+      "accessNote": "An institutional author-group copy of the published four-page IEEE paper, retaining printed pp. 181–184, equations (1)–(20), both tables, the complete bibliography, and an IEEE copyright line. No explicit open license accompanies the file; it is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
     }
   ],
   "claims": [
@@ -4303,6 +4564,370 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "kneser-ney-1995-standard-backoff-bias",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "The paper argues that using the ordinary coarser probability as the fallback distribution discards evidence that the detailed event was unseen: although dollars is frequent in the Wall Street Journal corpus, its concentration after numbers and a few country names makes it a poor high-probability continuation after an unobserved predecessor.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Motivation for a nonstandard backoff distribution, printed p. 181",
+            "section": "1. Introduction",
+            "pageStart": 181,
+            "pageEnd": 181,
+            "paragraph": "Dollars example"
+          },
+          "support": "Explains the lost unseen-event information and contrasts the word’s high ordinary probability with its narrow predecessor distribution."
+        }
+      ],
+      "limitations": [
+        "The dollars example is a qualitative motivation, not a separately tabulated corpus analysis or a general claim about every frequent word."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-backoff-form",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "Equations (1)–(2) assign α(w|h) to an event with N(h,w) > 0 and γ(h)β(w|ĥ) when N(h,w) = 0, where each detailed history h maps to one less-specific class ĥ and γ(h) normalizes the complete conditional distribution.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "General seen/unseen backoff form, printed pp. 181–182",
+            "section": "2. Backing-Off",
+            "pageStart": 181,
+            "pageEnd": 182,
+            "equation": "1–2"
+          },
+          "support": "Defines the two probability branches, the nested history classes, and the normalizer determined by the seen estimate and fallback distribution."
+        }
+      ],
+      "limitations": [
+        "Kneser and Ney’s α is the seen-event estimate, β is the fallback distribution, and γ is its normalizer; these roles must not be conflated with Katz’s α multiplier and β̃ reserved mass."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-free-backoff-distribution",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "Where the standard construction keeps β(w|ĥ) equal to the ordinary coarser probability p(w|ĥ), the paper instead leaves β free and estimates it for the unseen-event branch while keeping the seen-event estimator separable.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Fallback distribution made free, printed p. 182",
+            "section": "2. Backing-Off",
+            "pageStart": 182,
+            "pageEnd": 182,
+            "paragraph": "Paragraph following equation (2)"
+          },
+          "support": "Contrasts the usual fixed fallback distribution with the paper’s decision to optimize its parameters alongside the remaining model parameters."
+        }
+      ],
+      "limitations": [
+        "This is a scoped description of the paper’s proposed approach, not an exhaustive priority claim over all earlier smoothing methods."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-marginal-constraint",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "The marginal-constraint derivation chooses β so that the marginal of the resulting joint distribution over detailed histories matches a specified coarser distribution, then obtains the normalized equation (7) after approximating equation (6)’s denominator as constant with respect to w.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Marginal constraint and normalized approximation, printed p. 182",
+            "section": "3. Marginal Distribution as Constraint",
+            "pageStart": 182,
+            "pageEnd": 182,
+            "equation": "3–7"
+          },
+          "support": "States the marginal equality, substitutes the seen/unseen model, makes the constant-denominator approximation, and normalizes the resulting fallback distribution."
+        }
+      ],
+      "limitations": [
+        "The result is approximate and assumes that the required coarse marginal and history distribution can be estimated reliably; it is not an unconditional proof of exact marginal preservation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-absolute-discount",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "For the simple marginal-constraint specialization, equation (8) assumes the seen-event estimate α(w|h) = [N(h,w) − d]/N(h) with one absolute discount satisfying 0 < d < 1, and equation (9) uses maximum-likelihood coarse marginals.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Absolute-discount specialization, printed p. 182",
+            "section": "3. Marginal Distribution as Constraint",
+            "pageStart": 182,
+            "pageEnd": 182,
+            "equation": "8–10"
+          },
+          "support": "Gives the single-discount seen estimate, its range, the marginal maximum-likelihood estimates, and the resulting expression before count notation is defined."
+        }
+      ],
+      "limitations": [
+        "Absolute discounting is an assumption used in the derivation and is cited to Ney, Essen, and Kneser 1994; the 1995 paper does not claim it as a new contribution.",
+        "The experiments use a nonlinear-interpolation variant described as only a slight variant of equation (8), not an identified later multi-discount modified Kneser–Ney estimator."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-context-diversity",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "Equations (11)–(13) set β(w|ĥ) to N₊(·,ĥ,w)/N₊(·,ĥ,·): the numerator counts distinct detailed histories g compatible with ĥ for which N(g,w) > 0, so repeated token frequency beyond presence in a context is ignored.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Distinct-context fallback distribution, printed p. 182",
+            "section": "3. Marginal Distribution as Constraint",
+            "pageStart": 182,
+            "pageEnd": 182,
+            "equation": "11–13"
+          },
+          "support": "Defines both distinct-event counts, gives their normalized ratio, and says only whether a word appeared in a coarse context matters while its event frequency is ignored."
+        }
+      ],
+      "limitations": [
+        "The paper states the result for generic nested equivalence classes; the familiar bigram-to-unigram continuation distribution is a specialization, not the only case represented by the notation.",
+        "The equation is a backoff distribution for zero-count events in this paper, not the later interpolated Kneser–Ney probability used for seen events as well."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-singleton-distribution",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "The leave-one-out derivation yields β(w|ĥ) = N₁(·,ĥ,w)/N₁(·,ĥ,·), where N₁ counts compatible detailed-history events observed exactly once; the paper says this resembles equation (13) because most of its distinct-event summands are singletons.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Leave-one-out singleton distribution, printed p. 183",
+            "section": "4. Leaving-One-Out",
+            "pageStart": 183,
+            "pageEnd": 183,
+            "equation": "14–20"
+          },
+          "support": "Defines leave-one-out likelihood, makes the stated constant-term approximation, normalizes singleton counts, and compares the result with the distinct-context solution."
+        }
+      ],
+      "limitations": [
+        "The derivation treats the second sum in equation (16) as constant with respect to w; equation (20) is therefore an approximate leave-one-out solution.",
+        "This singleton-based fallback distribution is separate from Katz’s optional d₁ = 0 mechanism, which discards singleton estimates for a different purpose."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-dataset-and-evaluation-scope",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "The main comparison uses about 30,000 words of transliterations from a few hundred Verbmobil dialogues with a closed 2,000-word vocabulary and about 40 million preprocessed Wall Street Journal words with an open 45,000-word vocabulary and 99.7% coverage; WSJ testing uses the official 1992 and 1993 evaluation material, with word error measured by trigram rescoring in recognizer [1].",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Corpora, vocabularies, and evaluation scope, printed p. 183",
+            "section": "5. Experimental Results",
+            "pageStart": 183,
+            "pageEnd": 183,
+            "paragraph": "First and third paragraphs"
+          },
+          "support": "Specifies both corpora and vocabularies, the 1992–1993 WSJ evaluation material, and the recognizer-rescoring route used for word-error measurement."
+        }
+      ],
+      "limitations": [
+        "The paper does not give exact train, development, and test split sizes, complete preprocessing, or enough recognizer settings for reproduction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-estimator-setup",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "The main standard, singleton, and marginal-constraint comparisons use trigram models and share the nonlinear-interpolation estimator from Ney, Essen, and Kneser 1994, which the paper describes as a slight variant of absolute discounting for seen events. The standard model uses the ordinary coarser distribution, the alternatives use equations (20) and (13), and every fallback distribution is itself smoothed by an unspecified method to avoid zeros.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Compared estimators and fallback smoothing, printed p. 183",
+            "section": "5. Experimental Results",
+            "pageStart": 183,
+            "pageEnd": 183,
+            "paragraph": "Second paragraph"
+          },
+          "support": "Identifies the trigram setup, shared seen-event estimator, standard and two proposed fallback distributions, and additional smoothing of every fallback distribution."
+        }
+      ],
+      "limitations": [
+        "The paper does not give discount values or tuning, the additional fallback-smoothing procedure, or enough estimator configuration detail for exact reproduction.",
+        "Section 5 initially says all experiments use trigrams, while the final matched-data-and-vocabulary comparison in Table 2 also reports a bigram row; the corpus preserves both statements rather than suppressing the tension."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-table-one-results",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "Table 1 reports standard, singleton, and marginal-constraint perplexity/error-rate pairs of 161.0/11.9%, 145.7/11.2%, and 144.3/11.1% for full WSJ 45k models; 169.4/11.9%, 152.6/11.4%, and 150.6/11.5% after removing singleton trigrams; and Verbmobil perplexities of 105.4, 97.9, and 96.2.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Perplexity and word-error results, printed p. 184",
+            "section": "5. Experimental Results",
+            "pageStart": 184,
+            "pageEnd": 184,
+            "table": "1"
+          },
+          "support": "Labels the full, compact, and Verbmobil blocks and provides all nine perplexity values and six WSJ error rates."
+        }
+      ],
+      "limitations": [
+        "No repeated runs, uncertainty estimates, or significance tests are reported, and the test-set sizes are not given.",
+        "The authors’ approximate 5% error-rate summary is relative, not a five-percentage-point reduction; the largest displayed full-model change is 0.8 percentage point.",
+        "Compact models remove singleton trigrams, but the paper reports no measured storage sizes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-arpa-comparison",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "Using the same WSJ training data and 20,000-word vocabulary as the official ARPA 1993 model, Table 2 reports bigram perplexities of 213.3 for ARPA and 207.5 for the marginal-constraint model, and trigram perplexities of 147.0 and 134.0 respectively.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Matched-data-and-vocabulary ARPA comparison, printed p. 184",
+            "section": "5. Experimental Results",
+            "pageStart": 184,
+            "pageEnd": 184,
+            "table": "2"
+          },
+          "support": "States the matched training data and vocabulary, reports both bigram and trigram rows, and describes the trigram difference as about 9%."
+        }
+      ],
+      "limitations": [
+        "The paper does not identify the ARPA baseline’s smoothing algorithm or supply enough configuration detail to attribute the difference solely to the fallback distribution.",
+        "The approximately 9% statement applies to the trigram comparison; the bigram difference is substantially smaller."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "kneser-ney-1995-cost-claim",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "ideaIds": [
+        "context-diversity-backoff-distributions"
+      ],
+      "statement": "The authors describe both proposed fallback distributions as independent of the specific model and as adding virtually no or no extra computational cost to model computation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Model-independence and cost statement, printed p. 182",
+            "section": "2. Backing-Off",
+            "pageStart": 182,
+            "pageEnd": 182,
+            "paragraph": "Closing paragraph"
+          },
+          "support": "Describes the proposed backoff distribution as independent of the specific m-gram model and as requiring virtually no extra computational effort."
+        },
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Conclusion cost statement, printed p. 184",
+            "section": "6. Conclusions",
+            "pageStart": 184,
+            "pageEnd": 184,
+            "paragraph": "Conclusion"
+          },
+          "support": "Concludes that the proposed fallback distributions add no extra computational cost to model computation."
+        }
+      ],
+      "limitations": [
+        "No runtime, build-time, memory, or scaling benchmark accompanies the statement, so it is retained as an author-reported implementation claim rather than a measured result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-29"
     }
   ],
   "relationships": [
@@ -4655,6 +5280,75 @@
         {
           "status": "resolved",
           "note": "Good is the sole author of the 1953 paper, but the paper credits Turing for formula (2) and a large share of the work; the edge must not be rendered as sole-origin attribution to Good."
+        }
+      ]
+    },
+    {
+      "id": "katz-1987-to-kneser-ney-1995",
+      "from": {
+        "kind": "work",
+        "id": "katz-1987-sparse-data"
+      },
+      "to": {
+        "kind": "work",
+        "id": "kneser-ney-1995-improved-backing-off"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "medium",
+      "rationale": "Kneser and Ney cite Katz among established smoothing and backoff strategies and alongside Good for Turing–Good seen-event estimates. Their generic model retains a normalized seen-versus-unseen backoff gate while making the fallback distribution β itself free, then derives distributions based on distinct detailed contexts or singleton events. The edge records Katz as an acknowledged antecedent for this scoped extension, not as the experimental baseline or the method’s sole or immediate source.",
+      "claimIds": [
+        "katz-1987-novelty-boundary",
+        "kneser-ney-1995-backoff-form",
+        "kneser-ney-1995-free-backoff-distribution",
+        "kneser-ney-1995-marginal-constraint",
+        "kneser-ney-1995-context-diversity",
+        "kneser-ney-1995-singleton-distribution"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Katz citations in the smoothing and backoff discussion, printed pp. 181–182",
+            "section": "1. Introduction; 2. Backing-Off",
+            "pageStart": 181,
+            "pageEnd": 182,
+            "paragraph": "Introductory smoothing citations and Turing–Good citation"
+          },
+          "support": "The later paper cites Katz as reference [5] in its smoothing and backoff background and alongside Good for Turing–Good seen-event estimates."
+        },
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Katz reference [5], printed p. 184",
+            "section": "References",
+            "pageStart": 184,
+            "pageEnd": 184,
+            "paragraph": "Reference 5"
+          },
+          "support": "The bibliography identifies Katz’s full 1987 sparse-data language-modeling article."
+        },
+        {
+          "sourceId": "kneser-ney-1995-full-text",
+          "locator": {
+            "label": "Seen/unseen form and free fallback distribution, printed pp. 181–182",
+            "section": "2. Backing-Off",
+            "pageStart": 181,
+            "pageEnd": 182,
+            "equation": "1–2"
+          },
+          "support": "The later paper preserves a normalized seen/unseen backoff form, describes the ordinary coarser probability as the usual fallback, and changes the construction by optimizing that distribution."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper also cites single-author Jelinek 1991 and Ney, Essen, and Kneser 1994; its experiments use the latter’s nonlinear-interpolation/absolute-discounting setup. Katz is therefore neither labeled as the experimental baseline nor established as the exclusive or immediate predecessor."
+        },
+        {
+          "status": "resolved",
+          "note": "The complete bibliography does not cite Jelinek and Mercer 1980, so this paper does not support a documented edge from the corpus’s 1980 interpolation node."
         }
       ]
     }
@@ -5020,6 +5714,66 @@
         "Perplexity"
       ],
       "successCriterion": "The learner can distinguish n₁/N, β̃, and α; reconstruct the seen and unseen branches of equations (13)–(23); state what k does; and report the comparison with its corpus, sample-size, and attribution limits."
+    },
+    {
+      "id": "beginner-kneser-ney-1995-context-diversity",
+      "mode": "beginner",
+      "objective": "Compare raw word frequency with the number of different contexts a word completes, explain why context diversity can be the better fallback signal after an unseen phrase, and keep probability-mass discounting separate from the rule that distributes that mass.",
+      "workIds": [
+        "kneser-ney-1995-improved-backing-off"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "claimIds": [
+        "kneser-ney-1995-standard-backoff-bias",
+        "kneser-ney-1995-backoff-form",
+        "kneser-ney-1995-free-backoff-distribution",
+        "kneser-ney-1995-context-diversity"
+      ],
+      "prerequisites": [
+        "Counts and conditional probabilities",
+        "Seen versus unseen phrases",
+        "Probability mass summing to one"
+      ],
+      "successCriterion": "Given two candidate continuations with token counts and distinct-predecessor counts, the learner can identify which the ordinary fallback favors, which the context-diversity fallback favors, and why discounting and fallback allocation are different steps."
+    },
+    {
+      "id": "expert-kneser-ney-1995-estimator",
+      "mode": "expert",
+      "objective": "Reconstruct the seen/unseen backoff form, derive the approximate marginal-constraint and leave-one-out distributions through equations (1)–(20), audit both experiment tables and the authors’ unbenchmarked computation-cost claim, and distinguish the original backoff estimator from later interpolated and multi-discount modified Kneser–Ney variants.",
+      "workIds": [
+        "kneser-ney-1995-improved-backing-off"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "recursive-ngram-backoff",
+        "context-diversity-backoff-distributions"
+      ],
+      "claimIds": [
+        "kneser-ney-1995-standard-backoff-bias",
+        "kneser-ney-1995-backoff-form",
+        "kneser-ney-1995-free-backoff-distribution",
+        "kneser-ney-1995-marginal-constraint",
+        "kneser-ney-1995-absolute-discount",
+        "kneser-ney-1995-context-diversity",
+        "kneser-ney-1995-singleton-distribution",
+        "kneser-ney-1995-dataset-and-evaluation-scope",
+        "kneser-ney-1995-estimator-setup",
+        "kneser-ney-1995-table-one-results",
+        "kneser-ney-1995-arpa-comparison",
+        "kneser-ney-1995-cost-claim"
+      ],
+      "prerequisites": [
+        "Conditional m-gram backoff and normalization",
+        "Absolute discounting",
+        "Marginal distributions",
+        "Leave-one-out estimation",
+        "Perplexity and word error rate"
+      ],
+      "successCriterion": "The learner can compute N₊ and N₁ for a toy hierarchy, state both constant-term approximations and all absolute-discount assumptions, distinguish Kneser–Ney’s α/β/γ from Katz notation, reproduce the reported table conditions, classify the no-extra-cost statement as an unbenchmarked author report, and identify which common later formulas are absent from the 1995 paper."
     }
   ]
 }

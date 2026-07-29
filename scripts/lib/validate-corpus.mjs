@@ -1108,6 +1108,8 @@ function semanticValidation(corpus, schema, errors) {
       "makes-practical",
       "enables",
       "conceptual-parallel",
+      "challenges",
+      "addresses",
     ]);
     if (
       chronologicalTypes.has(relationship.connectionType) &&
