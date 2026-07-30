@@ -334,6 +334,10 @@ function checkEvidence(
   const source = sources.get(evidence.sourceId);
   if (!source) {
     errors.push(`${path}.sourceId: unknown source "${evidence.sourceId}"`);
+  } else if (asArray(source.supports).includes("version-boundary")) {
+    errors.push(
+      `${path}.sourceId: version-boundary source "${evidence.sourceId}" cannot support promoted claims or relationships`,
+    );
   } else if (
     !asArray(source.supports).includes("claim-location") &&
     !(allowReferenceList && asArray(source.supports).includes("reference-list"))
@@ -716,6 +720,11 @@ function semanticValidation(corpus, schema, errors) {
             `${eventPath}.sourceIds[${sourceIndex}]: source "${sourceId}" is unrelated to work "${work.id}"`,
           );
         }
+        if (source && asArray(source.supports).includes("version-boundary")) {
+          errors.push(
+            `${eventPath}.sourceIds[${sourceIndex}]: version-boundary source "${sourceId}" cannot establish chronology for the promoted version family`,
+          );
+        }
       }
 
       let supportedPrecision = 0;
@@ -791,9 +800,19 @@ function semanticValidation(corpus, schema, errors) {
 
     if (
       source.sourceClass !== "scholarly-history" &&
+      !asArray(source.supports).includes("version-boundary") &&
       asArray(source.versionIds).length === 0
     ) {
       errors.push(`${path}.versionIds: primary work sources need a version binding`);
+    }
+
+    if (
+      asArray(source.supports).includes("version-boundary") &&
+      asArray(source.versionIds).length > 0
+    ) {
+      errors.push(
+        `${path}.versionIds: version-boundary sources must remain outside the work's version family`,
+      );
     }
 
     for (const [versionIndex, versionId] of asArray(

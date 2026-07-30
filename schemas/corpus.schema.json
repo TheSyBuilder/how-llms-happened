@@ -25,7 +25,7 @@
       "minLength": 1
     },
     "schemaVersion": {
-      "const": "0.4.0"
+      "const": "0.5.0"
     },
     "corpusId": {
       "$ref": "#/$defs/id"
@@ -362,6 +362,7 @@
             "lecture",
             "manuscript-received",
             "manuscript-revised",
+            "manuscript-accepted",
             "journal-publication",
             "online-publication",
             "translation-publication",
@@ -435,6 +436,7 @@
             "preprint",
             "proceedings",
             "book-chapter",
+            "technical-report",
             "journal"
           ]
         },
@@ -770,7 +772,8 @@
               "metadata",
               "full-text",
               "claim-location",
-              "reference-list"
+              "reference-list",
+              "version-boundary"
             ]
           }
         },

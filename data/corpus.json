@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/corpus.schema.json",
-  "schemaVersion": "0.4.0",
+  "schemaVersion": "0.5.0",
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-29",
+  "asOf": "2026-07-30",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1479,7 +1479,7 @@
       "inclusion": {
         "status": "branch",
         "confidence": "high",
-        "rationale": "The paper makes the lower-order distribution itself an object of estimation for unseen m-grams. Its distinct-context and singleton-count solutions explain why raw lower-order frequency can be a poor fallback signal and provide a major classical backoff node whose later interpolated and modified variants require separate treatment."
+        "rationale": "The paper makes the lower-order distribution itself an object of estimation for unseen m-grams. Its distinct-context and singleton-count solutions explain why raw lower-order frequency can be a poor fallback signal and provide a major classical backoff node; the later interpolated and modified variants are recorded as a separate, sourced extension."
       },
       "ideaIds": [
         "sparse-language-model-estimation",
@@ -1495,7 +1495,7 @@
         "The marginal derivation treats the denominator in equation (6) as constant with respect to the predicted word, and the leave-one-out derivation makes an analogous approximation to the second sum in equation (16).",
         "The simple distinct-context result assumes nested history classes, reliable coarse marginals, one unique coarser class for each detailed history, and a single absolute discount with 0 < d < 1.",
         "The experiments use nonlinear interpolation from Ney, Essen, and Kneser 1994 as a slight variant of absolute discounting for seen events, and smooth every backoff distribution by an unspecified method to avoid zero probabilities.",
-        "The paper does not present the later interpolated Kneser–Ney formulation or modified Kneser–Ney’s count-dependent D₁, D₂, and D₃₊ discounts; those later variants must not be projected into its equations.",
+        "The paper does not present the later interpolated Kneser–Ney formulation or modified Kneser–Ney’s count-dependent D₁, D₂, and D₃₊ discounts; the separate Chen–Goodman record must not be projected backward into its equations.",
         "The abstract’s claim of perplexity improvements up to about 10% is approximate: Table 1’s compact marginal-constraint row changes from 169.4 to 150.6, an 11.1% relative reduction.",
         "The reported 5% word-error improvement is an approximate relative summary, not a five-percentage-point reduction: the best full WSJ row changes from 11.9% to 11.1%.",
         "No significance analysis, confidence interval, runtime benchmark, measured memory footprint, discount-tuning procedure, complete preprocessing description, or test-set size is reported.",
@@ -1515,6 +1515,252 @@
           "status": "open",
           "note": "The RWTH-hosted published PDF is publicly readable but has no verified redistribution license.",
           "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required to classify the full text as openly licensed."
+        }
+      ]
+    },
+    {
+      "id": "chen-goodman-1998-empirical-smoothing",
+      "title": "An Empirical Study of Smoothing Techniques for Language Modeling",
+      "authors": [
+        "Stanley F. Chen",
+        "Joshua Goodman"
+      ],
+      "artifactType": "technical-report",
+      "displayCitation": "S. F. Chen and J. Goodman, “An Empirical Study of Smoothing Techniques for Language Modeling,” Harvard Computer Science Group Technical Report TR-10-98 (August 1998).",
+      "chronology": {
+        "orderingEventId": "chen-goodman-1998-technical-report",
+        "events": [
+          {
+            "id": "chen-goodman-1998-technical-report",
+            "kind": "technical-report",
+            "label": "Harvard technical-report publication",
+            "date": {
+              "value": "1998-08",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chen-goodman-1998-harvard-full-text",
+                "precision": "month",
+                "locator": "Harvard Computer Science Group report cover, TR-10-98, August 1998"
+              }
+            ],
+            "versionId": "chen-goodman-1998-technical-report-version",
+            "sourceIds": [
+              "chen-goodman-1998-harvard-full-text"
+            ]
+          },
+          {
+            "id": "chen-goodman-1999-manuscript-received",
+            "kind": "manuscript-received",
+            "label": "Journal manuscript received",
+            "date": {
+              "value": "1999-01-28",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chen-goodman-1999-full-text",
+                "precision": "day",
+                "locator": "Printed p. 394, received line"
+              }
+            ],
+            "versionId": "chen-goodman-1999-journal-version",
+            "sourceIds": [
+              "chen-goodman-1999-full-text"
+            ]
+          },
+          {
+            "id": "chen-goodman-1999-manuscript-accepted",
+            "kind": "manuscript-accepted",
+            "label": "Journal manuscript accepted",
+            "date": {
+              "value": "1999-07-08",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chen-goodman-1999-full-text",
+                "precision": "day",
+                "locator": "Printed p. 394, accepted line"
+              }
+            ],
+            "versionId": "chen-goodman-1999-journal-version",
+            "sourceIds": [
+              "chen-goodman-1999-full-text"
+            ]
+          },
+          {
+            "id": "chen-goodman-1999-journal-publication",
+            "kind": "journal-publication",
+            "label": "Computer Speech & Language issue publication",
+            "date": {
+              "value": "1999-10",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chen-goodman-1999-elsevier-record",
+                "precision": "month",
+                "locator": "Computer Speech & Language volume 13, issue 4, October 1999"
+              },
+              {
+                "sourceId": "chen-goodman-1999-crossref-record",
+                "precision": "month",
+                "locator": "Crossref issued date 1999-10"
+              }
+            ],
+            "versionId": "chen-goodman-1999-journal-version",
+            "sourceIds": [
+              "chen-goodman-1999-elsevier-record",
+              "chen-goodman-1999-crossref-record",
+              "chen-goodman-1999-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "chen-goodman-1998-technical-report-version",
+          "title": "An Empirical Study of Smoothing Techniques for Language Modeling",
+          "authors": [
+            "Stanley F. Chen",
+            "Joshua Goodman"
+          ],
+          "kind": "technical-report",
+          "label": "Expanded Harvard technical report",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. F. Chen and J. Goodman, “An Empirical Study of Smoothing Techniques for Language Modeling,” Harvard Computer Science Group Technical Report TR-10-98, Cambridge, Massachusetts, August 1998.",
+            "venue": "Harvard Computer Science Group Technical Report",
+            "publisher": "Harvard University",
+            "publicationPlaces": [
+              "Cambridge, Massachusetts"
+            ],
+            "identifiers": [
+              {
+                "type": "report-number",
+                "value": "TR-10-98",
+                "label": "Harvard Computer Science Group report number"
+              },
+              {
+                "type": "catalog-id",
+                "value": "1/25104739",
+                "label": "Harvard DASH repository handle"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chen-goodman-1998-harvard-full-text"
+          ],
+          "notes": "The report cover is dated August 1998 and controls the month-level ordering event; its inner title page says 24 July 1998, which is retained as a document date rather than treated as a public-release date. The report calls itself an extension of Chen and Goodman 1996 and Chen 1996 and is the first inspected version containing the promoted interpolated and modified Kneser–Ney claims."
+        },
+        {
+          "id": "chen-goodman-1999-journal-version",
+          "title": "An empirical study of smoothing techniques for language modeling",
+          "authors": [
+            "Stanley F. Chen",
+            "Joshua Goodman"
+          ],
+          "kind": "journal",
+          "label": "Peer-reviewed journal version",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. F. Chen and J. Goodman, “An empirical study of smoothing techniques for language modeling,” Computer Speech & Language 13(4), 359–394 (October 1999).",
+            "venue": "Computer Speech & Language",
+            "publisher": "Academic Press",
+            "volume": "13",
+            "issues": [
+              "4"
+            ],
+            "pages": [
+              "359-394"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1006/csla.1999.0128",
+                "label": "Journal-article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0885-2308",
+                "label": "Print ISSN"
+              },
+              {
+                "type": "catalog-id",
+                "value": "S0885230899901286",
+                "label": "Publisher item identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chen-goodman-1999-elsevier-record",
+            "chen-goodman-1999-crossref-record",
+            "chen-goodman-1999-full-text"
+          ],
+          "notes": "The journal article calls the 1998 report its extended version and preserves the promoted mechanism and principal evaluation claims with different equation and figure numbering. The printed article and publisher record end at p. 394; Crossref’s deposited range ends at p. 393, so the printed version controls pagination. The article records receipt on 28 January 1999, acceptance on 8 July 1999, and publication in the October 1999 issue."
+        }
+      ],
+      "canonicalVersionId": "chen-goodman-1998-technical-report-version",
+      "preferredSourceIds": [
+        "chen-goodman-1998-harvard-full-text"
+      ],
+      "sourceIds": [
+        "chen-goodman-1998-harvard-full-text",
+        "chen-goodman-1999-elsevier-record",
+        "chen-goodman-1999-crossref-record",
+        "chen-goodman-1999-full-text",
+        "chen-goodman-1996-acl-boundary"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The expanded report turns the continuation-based lower-order distribution into an explicitly interpolated recursive estimator, adds separate discounts for one-, two-, and three-or-more-count n-grams, and evaluates those choices across multiple corpora, training sizes, and n-gram orders. It closes the atlas’s classical smoothing branch without moving those later mechanisms into the 1995 paper."
+      },
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-transition-estimation",
+        "context-diversity-backoff-distributions",
+        "interpolated-kneser-ney-smoothing",
+        "modified-kneser-ney-discounts"
+      ],
+      "significance": {
+        "beginner": "In the tested implementations, two separate choices can improve a count model: simpler continuation patterns can still contribute when a longer phrase has been seen, and phrases seen once, twice, or at least three times need not surrender the same amount of probability.",
+        "expert": "The report recasts the Kneser–Ney continuation distribution as recursive interpolation, assigns per-order D₁, D₂, and D₃₊ discounts, distinguishes held-out, fixed-count, and hard-backoff variants, and evaluates those implementation choices under a broad cross-entropy protocol."
+      },
+      "limitations": [
+        "The work studies smoothing for count-based word n-gram models, chiefly bigrams and trigrams; it does not model distributed representations, neural parameter sharing, semantics, or long context.",
+        "The same-title 1996 ACL paper reports an earlier comparison and two different smoothing methods but contains no Kneser–Ney treatment. It is prior research, not a version of this modified-Kneser–Ney record, and the contribution is ordered at the August 1998 report.",
+        "The fixed D₁, D₂, and D₃₊ equations are attributed to Klaus Ries through personal communication. The journal version also says Ney, Martin, and Wessel 1997 independently used two discounts, so the corpus makes no sole-priority claim about multiple discounts.",
+        "The strongest comparisons are bounded to the authors’ implementations, four English corpora, tested training sizes, word n-gram orders, held-out procedures, and cross-entropy metric; they are not universal superiority claims.",
+        "Many conditions are shown as curves without confidence intervals or p-values. The report warns that single-run variation can be comparable to roughly one-percent perplexity differences and recommends repeated runs where possible.",
+        "The authors’ `kneser-ney` baseline recursively smooths lower orders and tunes a separate discount at each order on held-out data. Its reported performance must not be attributed to the exact hard-backoff estimator printed in Kneser and Ney 1995.",
+        "The count-estimated fixed variant avoids held-out optimization but depends on count-of-counts values n₁ through n₄ and generally performs slightly worse in the reported comparisons.",
+        "The Harvard copy is publicly readable under repository terms for Other Posted Material, not a verified work-level Creative Commons license. The inspected journal copy is third-party hosted and has no verified redistribution license; neither file is redistributed here."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 1996 conference paper is excluded from this version family because its complete text and bibliography contain no Kneser–Ney treatment; both later versions describe it as previous research rather than as the source of the promoted mechanisms."
+        },
+        {
+          "status": "resolved",
+          "note": "The 1998 report and 1999 journal article are grouped because the journal explicitly calls the report its extended version and both contain the promoted interpolation, three-discount, implementation, and evaluation claims."
+        },
+        {
+          "status": "open",
+          "note": "The report’s exact public-release day is not established; the cover supplies August 1998 while the inner title page is dated 24 July 1998.",
+          "resolutionCondition": "An authoritative Harvard distribution, accession, or announcement record would be required to order the report more precisely than month level."
+        },
+        {
+          "status": "open",
+          "note": "Neither the Harvard repository terms nor the publicly reachable journal reading copy establishes an unrestricted work-level reuse license.",
+          "resolutionCondition": "A rights-holder statement or explicit license for the report and journal version would be required before either full text could be redistributed."
         }
       ]
     }
@@ -1666,7 +1912,10 @@
         "kneser-ney-1995-standard-backoff-bias",
         "kneser-ney-1995-backoff-form",
         "kneser-ney-1995-free-backoff-distribution",
-        "kneser-ney-1995-context-diversity"
+        "kneser-ney-1995-context-diversity",
+        "chen-goodman-1998-interpolated-form",
+        "chen-goodman-1998-three-discount-form",
+        "chen-goodman-1998-evaluation-scope"
       ],
       "uncertainties": []
     },
@@ -1686,7 +1935,11 @@
         "jelinek-mercer-bahl-1982-linear-interpolation",
         "jelinek-mercer-bahl-1982-deleted-weight-estimation",
         "jelinek-mercer-bahl-1982-deleted-interpolation-name",
-        "jelinek-mercer-bahl-1982-four-way-trigram-interpolation"
+        "jelinek-mercer-bahl-1982-four-way-trigram-interpolation",
+        "chen-goodman-1998-interpolated-form",
+        "chen-goodman-1998-recursive-lower-orders",
+        "chen-goodman-1998-implementation-variants",
+        "chen-goodman-1998-interpolation-comparison"
       ],
       "uncertainties": []
     },
@@ -1791,7 +2044,7 @@
       "id": "context-diversity-backoff-distributions",
       "name": "Context-diversity backoff distributions",
       "kind": "mechanism",
-      "description": "A fallback distribution for an unseen higher-order event can depend on how many distinct detailed contexts contain the observed continuation, or on how many such context–continuation events are singletons, rather than on the continuation’s raw token frequency.",
+      "description": "A lower-order distribution can depend on how many distinct detailed contexts contain the observed continuation, or on how many such context–continuation events are singletons, rather than on the continuation’s raw token frequency. The original paper uses it for backoff; later work also interpolates it into seen-event estimates.",
       "claimIds": [
         "kneser-ney-1995-standard-backoff-bias",
         "kneser-ney-1995-backoff-form",
@@ -1804,12 +2057,61 @@
         "kneser-ney-1995-estimator-setup",
         "kneser-ney-1995-table-one-results",
         "kneser-ney-1995-arpa-comparison",
-        "kneser-ney-1995-cost-claim"
+        "kneser-ney-1995-cost-claim",
+        "chen-goodman-1998-continuation-distribution",
+        "chen-goodman-1998-overview-results"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "The distinct-context equation is the original paper’s marginal-constraint backoff distribution; later interpolated and modified Kneser–Ney estimators add mechanisms not present in this record."
+        }
+      ]
+    },
+    {
+      "id": "interpolated-kneser-ney-smoothing",
+      "name": "Interpolated Kneser–Ney smoothing",
+      "kind": "mechanism",
+      "description": "A discounted higher-order n-gram estimate is recursively added to a scaled continuation-based lower-order distribution for every continuation, so lower-order evidence contributes to both seen and unseen events.",
+      "claimIds": [
+        "chen-goodman-1998-interpolated-form",
+        "chen-goodman-1998-continuation-distribution",
+        "chen-goodman-1998-recursive-lower-orders",
+        "chen-goodman-1998-implementation-variants",
+        "chen-goodman-1998-evaluation-scope",
+        "chen-goodman-1998-overview-results",
+        "chen-goodman-1998-interpolation-comparison"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Interpolation is a later formulation: the 1995 Kneser–Ney paper applies its optimized lower-order distribution through a seen/unseen backoff gate."
+        }
+      ]
+    },
+    {
+      "id": "modified-kneser-ney-discounts",
+      "name": "Modified Kneser–Ney count-dependent discounts",
+      "kind": "mechanism",
+      "description": "Each n-gram order can use separate absolute discounts for events observed once, twice, and three or more times, with the interpolation weight returning the total removed mass through the continuation distribution.",
+      "claimIds": [
+        "chen-goodman-1998-three-discount-form",
+        "chen-goodman-1998-fixed-discount-estimates",
+        "chen-goodman-1998-implementation-variants",
+        "chen-goodman-1998-evaluation-scope",
+        "chen-goodman-1998-overview-results",
+        "chen-goodman-1998-multi-discount-comparison",
+        "chen-goodman-1998-heldout-fixed-comparison",
+        "chen-goodman-1998-count-diagnostic"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The three discount tiers, interpolation choice, and parameter-estimation choice remain separate properties; “modified Kneser–Ney” must not be reduced to any one of them."
+        },
+        {
+          "status": "resolved",
+          "note": "The fixed three-discount equations cite Klaus Ries through personal communication, and the journal article reports an independent two-discount proposal by Ney, Martin, and Wessel 1997."
         }
       ]
     }
@@ -2575,6 +2877,112 @@
         "pageEnd": 184
       },
       "accessNote": "An institutional author-group copy of the published four-page IEEE paper, retaining printed pp. 181–184, equations (1)–(20), both tables, the complete bibliography, and an IEEE copyright line. No explicit open license accompanies the file; it is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
+    },
+    {
+      "id": "chen-goodman-1998-harvard-full-text",
+      "relatedWorkIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "title": "Harvard DASH copy of Technical Report TR-10-98",
+      "url": "https://dash.harvard.edu/bitstreams/7312037d-c1da-6bd4-e053-0100007fdf3b/download",
+      "accessDate": "2026-07-30",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chen-goodman-1998-technical-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 2,
+        "pageEnd": 63
+      },
+      "accessNote": "The official Harvard repository copy includes a repository citation wrapper, the August 1998 report cover, the inner 24 July 1998 title page, printed text pages 2–63, equations, figures, and references. DASH identifies the item as Other Posted Material under repository terms; that does not establish a work-level Creative Commons license, so the file is not redistributed here."
+    },
+    {
+      "id": "chen-goodman-1999-elsevier-record",
+      "relatedWorkIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "title": "Elsevier publisher record for the Chen–Goodman journal article",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0885230899901286",
+      "accessDate": "2026-07-30",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "chen-goodman-1999-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher record gives Computer Speech & Language 13(4), October 1999, pp. 359–394, the two authors, abstract, PII, and DOI 10.1006/csla.1999.0128. Full text currently requires purchase or organizational access."
+    },
+    {
+      "id": "chen-goodman-1999-crossref-record",
+      "relatedWorkIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "title": "Crossref publisher deposit for the Chen–Goodman journal article",
+      "url": "https://api.crossref.org/works/10.1006%2Fcsla.1999.0128",
+      "accessDate": "2026-07-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "chen-goodman-1999-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher deposit confirms the two authors, October 1999 issue, volume 13, issue 4, DOI, ISSN, and publisher. Its page range ends at 393, while the publisher record and printed article contain p. 394; the printed version controls the corpus range."
+    },
+    {
+      "id": "chen-goodman-1999-full-text",
+      "relatedWorkIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "title": "University-hosted reading copy of the Chen–Goodman journal article",
+      "url": "https://u.cs.biu.ac.il/~yogo/courses/mt2013/papers/chen-goodman-99.pdf",
+      "accessDate": "2026-07-30",
+      "sourceClass": "primary-full-text",
+      "authority": "third-party-host",
+      "versionIds": [
+        "chen-goodman-1999-journal-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 359,
+        "pageEnd": 394
+      },
+      "accessNote": "A university course copy of the 36-page published article with printed pp. 359–394, article number, equations, figures, references, and the received and accepted dates. It is non-preferred, has no verified open license, and is used only for claim and version comparison rather than redistributed."
+    },
+    {
+      "id": "chen-goodman-1996-acl-boundary",
+      "relatedWorkIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "title": "ACL Anthology record and full text for the same-title 1996 precursor",
+      "url": "https://aclanthology.org/P96-1041/",
+      "accessDate": "2026-07-30",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "reference-list",
+        "version-boundary"
+      ],
+      "accessNote": "The publisher-hosted nine-page ACL paper and its complete bibliography were inspected to define the version boundary. They compare earlier smoothing methods and define average-count and one-count variants but contain no Kneser–Ney discussion or citation. ACL marks pre-2016 Anthology materials CC BY-NC-SA 3.0; the paper is treated as prior research, not as a version of the 1998 modified-Kneser–Ney work."
     }
   ],
   "claims": [
@@ -4928,6 +5336,518 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-29"
+    },
+    {
+      "id": "chen-goodman-1998-interpolated-form",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-transition-estimation",
+        "interpolated-kneser-ney-smoothing"
+      ],
+      "statement": "Equation (22) adds the discounted higher-order estimate to a scaled lower-order Kneser–Ney distribution for every continuation; the report contrasts this with the original piecewise backoff form and says the lower-order distribution is therefore interpolated for words with nonzero as well as zero higher-order counts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Interpolated form and contrast with original backoff, printed pp. 15–16",
+            "section": "2.7 Kneser-Ney Smoothing",
+            "pageStart": 15,
+            "pageEnd": 16,
+            "equation": "22"
+          },
+          "support": "Displays the additive higher- and lower-order form, prints the original zero-count gate for comparison, and explicitly identifies the report’s form as interpolation rather than backoff."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal interpolation formula and original-form contrast, printed p. 367",
+            "section": "2.7. Kneser–Ney smoothing",
+            "pageStart": 367,
+            "pageEnd": 367,
+            "equation": "13"
+          },
+          "support": "Restates the same seen-and-unseen interpolation claim in the journal version."
+        }
+      ],
+      "limitations": [
+        "This is a later formulation of the continuation distribution, not the seen/unseen estimator printed in Kneser and Ney 1995.",
+        "The report says its formulation yields a cleaner derivation of essentially the same continuation formula; that statement does not make the complete interpolated estimator identical to the original backoff model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-continuation-distribution",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "context-diversity-backoff-distributions",
+        "interpolated-kneser-ney-smoothing"
+      ],
+      "statement": "Equations (21)–(23) preserve the Kneser–Ney lower-order continuation distribution: for a shortened history, the numerator counts distinct preceding words that occur with the history and continuation, and the denominator counts all distinct preceding-word and continuation pairs for that history.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Continuation-count rederivation, printed pp. 15–17",
+            "section": "2.7 Kneser-Ney Smoothing",
+            "pageStart": 15,
+            "pageEnd": 17,
+            "equation": "21–23"
+          },
+          "support": "States the marginal constraint, derives the distinct-predecessor unigram, and generalizes the normalized continuation-count distribution to higher orders."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal continuation-count equations, printed pp. 367–368",
+            "section": "2.7. Kneser–Ney smoothing",
+            "pageStart": 367,
+            "pageEnd": 368,
+            "equation": "12–14"
+          },
+          "support": "Provides the journal version’s corresponding marginal constraint, derivation, and generalized ratio."
+        }
+      ],
+      "limitations": [
+        "The continuation distribution is credited to Kneser and Ney 1995; Chen and Goodman supply a different interpolation-based derivation and implementation around it.",
+        "The report first demonstrates the result for a bigram-to-unigram step and then generalizes it recursively."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-three-discount-form",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "The modified form uses D(c) = 0 for a zero count, D₁ for count one, D₂ for count two, and D₃₊ for counts at least three; its interpolation weight returns the removed mass as [D₁N₁(h·) + D₂N₂(h·) + D₃₊N₃₊(h·)]/c(h).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Three discount tiers and normalization, printed pp. 19–20",
+            "section": "3 Modified Kneser-Ney Smoothing",
+            "pageStart": 19,
+            "pageEnd": 20,
+            "paragraph": "Opening equations"
+          },
+          "support": "Defines the piecewise discount, the modified interpolated probability, and the history-specific normalization weight."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal three-discount construction, printed p. 370",
+            "section": "3. Modified Kneser–Ney smoothing",
+            "pageStart": 370,
+            "pageEnd": 370,
+            "paragraph": "Opening equations"
+          },
+          "support": "Restates all three count tiers and the normalized interpolation weight."
+        }
+      ],
+      "limitations": [
+        "The source continues to write pKN for this modified form; the corpus uses the descriptive name without silently changing the printed notation.",
+        "D₃₊ is one shared discount for every count of three or more, not a separate parameter for each larger count."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-fixed-discount-estimates",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "Equation (26) defines count-estimated discounts with Y = n₁/(n₁ + 2n₂), D₁ = 1 − 2Y(n₂/n₁), D₂ = 2 − 3Y(n₃/n₂), and D₃₊ = 3 − 4Y(n₄/n₃), where nᵣ counts n-gram types observed r times at the relevant order.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Fixed count-of-counts estimates, printed p. 20",
+            "section": "3 Modified Kneser-Ney Smoothing",
+            "pageStart": 20,
+            "pageEnd": 20,
+            "equation": "26"
+          },
+          "support": "Prints Y and all three discount estimates and cites Ries 1997 for the analogous relations."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal fixed estimates and attribution boundary, printed pp. 370–371",
+            "section": "3. Modified Kneser–Ney smoothing",
+            "pageStart": 370,
+            "pageEnd": 371,
+            "equation": "17"
+          },
+          "support": "Restates the formulas, cites Ries, and reports an independent two-discount proposal by Ney, Martin, and Wessel 1997."
+        }
+      ],
+      "limitations": [
+        "The fixed equations require nonzero n₁, n₂, and n₃ wherever they appear as denominators and use the observed n₄ value, which may be zero; the paper does not specify a fallback for every degenerate count-of-counts case.",
+        "The equations are attributed to Klaus Ries through personal communication, and the journal version records independently developed multiple-discount work; they are not represented as an unqualified sole-priority result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-recursive-lower-orders",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "interpolated-kneser-ney-smoothing"
+      ],
+      "statement": "The evaluated Kneser–Ney implementation recursively smooths every lower-order distribution in a form analogous to the highest-order estimator but replaces ordinary top-order counts with distinct-predecessor continuation counts; it uses a separate discount Dₙ at each n-gram order and terminates at a uniform zeroth-order distribution.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Recursive lower-order implementation, printed p. 23",
+            "section": "4.1.6 Kneser-Ney Smoothing",
+            "pageStart": 23,
+            "pageEnd": 23,
+            "paragraph": "Implementation definition"
+          },
+          "support": "Defines the lower-order recursion, uniform termination, and per-order discount parameters used by the authors’ implementation."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal Kneser–Ney implementation, printed p. 372",
+            "section": "4.1. Smoothing implementations",
+            "pageStart": 372,
+            "pageEnd": 372,
+            "paragraph": "Kneser–Ney smoothing"
+          },
+          "support": "Preserves the recursive lower-order and per-order parameter choices in the journal version."
+        }
+      ],
+      "limitations": [
+        "This implementation adds choices not fully specified by the four-page 1995 paper; its empirical results are scoped to the authors’ implementation rather than attributed directly to the exact original estimator."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-implementation-variants",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "interpolated-kneser-ney-smoothing",
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "The implementation `kneser-ney-mod` uses three discounts at each n-gram order and optimizes them on held-out data; `kneser-ney-mod-fix` instead uses equation (26), and `kneser-ney-mod-backoff` replaces interpolation with a hard-backoff version.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Named modified-Kneser–Ney variants, printed p. 23",
+            "section": "4.1.7 Modified Kneser-Ney Smoothing",
+            "pageStart": 23,
+            "pageEnd": 23,
+            "paragraph": "Complete subsection"
+          },
+          "support": "Separates the optimized, fixed-count, and backoff variants by exactly the parameter and combination choices named in the claim."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal implementation variants, printed p. 372",
+            "section": "4.1. Smoothing implementations",
+            "pageStart": 372,
+            "pageEnd": 372,
+            "paragraph": "Modified Kneser–Ney smoothing"
+          },
+          "support": "Restates all three named implementation variants."
+        }
+      ],
+      "limitations": [
+        "The best-performing named variant changes interpolation, discount tiers, and parameter estimation relative to the original 1995 estimator; comparisons must identify which variant is being discussed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-evaluation-scope",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-kneser-ney-smoothing",
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "The empirical protocol compares author-implemented smoothing methods by test cross-entropy over multiple training sizes, word n-gram orders, and the Brown, North American Business news, Switchboard, and Broadcast News corpora, with most tunable parameters selected on held-out data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Study variables and evaluation objective, printed p. 2",
+            "section": "Abstract; 1 Introduction",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "paragraph": "Abstract and opening overview"
+          },
+          "support": "Names training size, corpus, count cutoff, n-gram order, and test cross-entropy as controlled parts of the study."
+        },
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Implemented methods, four corpora, and typical parameter setting, printed pp. 20–21",
+            "section": "4 Experimental Methodology; 4.1 Smoothing Implementations",
+            "pageStart": 20,
+            "pageEnd": 21,
+            "paragraph": "Methodology and implementation openings"
+          },
+          "support": "Lists the compared smoothing families and four corpora, then states that tunable parameters are typically optimized on held-out data while the following implementation descriptions preserve exceptions."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal study dimensions and metric, printed pp. 359–361",
+            "section": "Abstract; 1. Introduction",
+            "pageStart": 359,
+            "pageEnd": 361,
+            "paragraph": "Study overview"
+          },
+          "support": "Confirms the comparison across training sizes, corpora, count cutoffs, and n-gram orders using test cross-entropy."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal implementations, corpora, and parameter setting, printed p. 371",
+            "section": "4. Experimental methodology; 4.1. Smoothing implementations",
+            "pageStart": 371,
+            "pageEnd": 371,
+            "paragraph": "Opening paragraphs"
+          },
+          "support": "Lists the implementations and four corpora and states that most algorithms have tunable parameters selected to optimize held-out perplexity."
+        }
+      ],
+      "limitations": [
+        "The corpora are English and the central plots concern count-based word bigrams and trigrams; the results are not direct evidence about neural or multilingual language models.",
+        "The report supplies many more implementation and experiment details than the journal article, but neither artifact packages the evaluated code, splits, or model files for exact reproduction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-overview-results",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "context-diversity-backoff-distributions",
+        "interpolated-kneser-ney-smoothing",
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "In the overview plots, the authors’ single-discount `kneser-ney` and three-discount `kneser-ney-mod` implementations have lower test cross-entropy than every non-Kneser–Ney algorithm shown across all plotted training sizes, corpora, and bigram/trigram conditions; the text says the same holds for unshown methods except other Kneser–Ney variants.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Overall comparison across four corpora, printed pp. 30–33",
+            "section": "5.1.1 Overall Performance Differences",
+            "pageStart": 30,
+            "pageEnd": 33,
+            "figure": "8–11"
+          },
+          "support": "Plots the named implementations across corpus, order, and training-size conditions and states the bounded all-condition comparison."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal overall comparison, printed pp. 378–379",
+            "section": "5.1.1. Overall performance differences",
+            "pageStart": 378,
+            "pageEnd": 379,
+            "figure": "6"
+          },
+          "support": "Presents the compact journal overview and the same exception for other Kneser–Ney variations."
+        }
+      ],
+      "limitations": [
+        "This is an empirical ordering of the tested implementations, not a theorem or an unrestricted claim about every smoothing algorithm, corpus, order, or parameterization.",
+        "The overview graph omits some implementations; the exception for other Kneser–Ney variants is essential to the authors’ wording."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-multi-discount-comparison",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "For the WSJ/NAB curves, `kneser-ney-mod` has lower test cross-entropy than the otherwise matched single-discount `kneser-ney` implementation at every plotted training size for both bigram and trigram models; the gap is smaller on the largest data, and the authors report similar behavior on the other corpora.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Single- versus three-discount comparison, printed pp. 37–39",
+            "section": "5.1.4 Kneser-Ney Smoothing and Variations",
+            "pageStart": 37,
+            "pageEnd": 39,
+            "figure": "17"
+          },
+          "support": "Compares the two implementations over WSJ/NAB sizes and orders and qualifies the behavior on larger data and unplotted corpora."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal single- versus three-discount curves, printed pp. 381–382",
+            "section": "5.1.4. Kneser–Ney smoothing and variations",
+            "pageStart": 381,
+            "pageEnd": 382,
+            "figure": "9, top"
+          },
+          "support": "Restates the matched comparison and its corpus and large-data qualifications."
+        }
+      ],
+      "limitations": [
+        "The compared implementations also share the report’s recursive lower-order treatment and held-out tuning; the result isolates the number of discount tiers within that implementation family, not against the exact 1995 paper.",
+        "Similar behavior on the other three corpora is asserted in prose rather than displayed in the cited figure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-interpolation-comparison",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "interpolated-transition-estimation",
+        "interpolated-kneser-ney-smoothing"
+      ],
+      "statement": "The interpolated `kneser-ney-mod` implementation has lower test cross-entropy than its hard-backoff counterpart at every plotted training size for both bigram and trigram models on WSJ/NAB and Broadcast News; the report says the other two corpora behave similarly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Interpolated versus backoff curves, printed pp. 36–38",
+            "section": "5.1.3 Backoff vs. Interpolation",
+            "pageStart": 36,
+            "pageEnd": 38,
+            "figure": "15–16"
+          },
+          "support": "Plots the paired modified-Kneser–Ney implementations on two corpora and both orders and states the consistent direction and unplotted-corpus behavior."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal interpolation comparison, printed pp. 380–381",
+            "section": "5.1.3. Backoff vs. interpolation",
+            "pageStart": 380,
+            "pageEnd": 381,
+            "figure": "8"
+          },
+          "support": "Shows the compact Broadcast News comparison and reports similar behavior on the other corpora."
+        }
+      ],
+      "limitations": [
+        "The lower cross-entropy result is specific to modified Kneser–Ney in this comparison; the same section reports different backoff/interpolation orderings for Witten–Bell and absolute discounting.",
+        "The count-by-count analysis later reports that backoff can be closer on a separate expected-to-actual-mass diagnostic, so cross-entropy and calibration-like criteria must not be collapsed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-heldout-fixed-comparison",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "The held-out-tuned `kneser-ney-mod` curves have lower test cross-entropy than `kneser-ney-mod-fix` across the displayed WSJ/NAB training sizes for bigrams and trigrams; the gap is often small on large data, while the fixed variant needs no external parameter optimization.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Held-out versus fixed-discount comparison, printed pp. 39–41",
+            "section": "5.1.4 Kneser-Ney Smoothing and Variations",
+            "pageStart": 39,
+            "pageEnd": 41,
+            "figure": "20–21"
+          },
+          "support": "Compares the optimized and count-estimated variants, noting both the performance pattern and the fixed variant’s lack of external parameters."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal optimized versus fixed comparison, printed pp. 381–382",
+            "section": "5.1.4. Kneser–Ney smoothing and variations",
+            "pageStart": 381,
+            "pageEnd": 382,
+            "figure": "9, bottom"
+          },
+          "support": "Restates the comparison, the large-data qualification, and the practical optimization tradeoff."
+        }
+      ],
+      "limitations": [
+        "The fixed variant’s portability advantage and the tuned variant’s measured cross-entropy advantage are different criteria; the result does not make one uniformly preferable.",
+        "Held-out tuning assumes representative external data and introduces additional parameters and optimization choices."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "chen-goodman-1998-count-diagnostic",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "ideaIds": [
+        "modified-kneser-ney-discounts"
+      ],
+      "statement": "The count-by-count analysis finds that the empirically ideal average discount rises sharply for the smallest counts and then levels off; separate D₁ and D₂ values move modified Kneser–Ney closer to that pattern, while the reported gain from splitting counts above two is marginal.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Ideal-discount diagnostic, printed pp. 45–46",
+            "section": "5.2.1 Expected vs. Actual Counts, Overall",
+            "pageStart": 45,
+            "pageEnd": 46,
+            "figure": "25"
+          },
+          "support": "Defines the ideal average discount, plots its count dependence, and ties the one-, two-, and three-plus tiers to the observed shape."
+        },
+        {
+          "sourceId": "chen-goodman-1999-full-text",
+          "locator": {
+            "label": "Journal ideal-discount analysis, printed pp. 383–385",
+            "section": "5.2.1. Expected vs. actual counts, overall",
+            "pageStart": 383,
+            "pageEnd": 385,
+            "figure": "10–11"
+          },
+          "support": "Preserves the diagnostic and the qualification that extra discount splits above count two add little."
+        }
+      ],
+      "limitations": [
+        "The diagnostic is empirical and condition-specific; it motivates the tier structure but is not a proof that three discounts are optimal for every corpus or order.",
+        "The report’s ideal discount is an average over n-grams with the same training count and does not remove within-count variation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-30"
     }
   ],
   "relationships": [
@@ -5349,6 +6269,89 @@
         {
           "status": "resolved",
           "note": "The complete bibliography does not cite Jelinek and Mercer 1980, so this paper does not support a documented edge from the corpus’s 1980 interpolation node."
+        }
+      ]
+    },
+    {
+      "id": "kneser-ney-1995-to-chen-goodman-1998",
+      "from": {
+        "kind": "work",
+        "id": "kneser-ney-1995-improved-backing-off"
+      },
+      "to": {
+        "kind": "work",
+        "id": "chen-goodman-1998-empirical-smoothing"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Chen and Goodman explicitly cite Kneser and Ney 1995, retain its continuation-based lower-order distribution, place that distribution in a recursive interpolated estimator, and add separate discounts for one-, two-, and three-or-more-count events. The edge records the documented extension while keeping the original hard-backoff estimator, later interpolation, and later discount tiers distinct.",
+      "claimIds": [
+        "kneser-ney-1995-context-diversity",
+        "chen-goodman-1998-interpolated-form",
+        "chen-goodman-1998-continuation-distribution",
+        "chen-goodman-1998-three-discount-form",
+        "chen-goodman-1998-count-diagnostic"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Attribution, interpolation, and continuation distribution, printed pp. 15–17",
+            "section": "2.7 Kneser-Ney Smoothing",
+            "pageStart": 15,
+            "pageEnd": 17,
+            "equation": "21–23"
+          },
+          "support": "The later report names Kneser and Ney 1995, describes its lower-order construction, contrasts the original backoff equation with the interpolated form, and retains the normalized continuation counts."
+        },
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Three-discount extension, printed pp. 19–20",
+            "section": "3 Modified Kneser-Ney Smoothing",
+            "pageStart": 19,
+            "pageEnd": 20,
+            "equation": "26"
+          },
+          "support": "The later report replaces the single discount with D₁, D₂, and D₃₊ and gives the fixed count-of-counts estimates."
+        },
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Held-out, fixed-count, and backoff implementation variants, printed p. 23",
+            "section": "4.1.7 Modified Kneser-Ney Smoothing",
+            "pageStart": 23,
+            "pageEnd": 23,
+            "paragraph": "Complete subsection"
+          },
+          "support": "Separates the held-out-tuned, equation-(26) fixed, and hard-backoff implementations."
+        },
+        {
+          "sourceId": "chen-goodman-1998-harvard-full-text",
+          "locator": {
+            "label": "Kneser and Ney 1995 reference, printed p. 62",
+            "section": "References",
+            "pageStart": 62,
+            "pageEnd": 62,
+            "paragraph": "Kneser and Ney reference"
+          },
+          "support": "The complete bibliography identifies the 1995 ICASSP paper by title, authors, venue, volume, and pages."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 1995 source supplies the continuation-based backoff distribution but not the later all-event interpolation or count-dependent D₁, D₂, and D₃₊ tiers."
+        },
+        {
+          "status": "resolved",
+          "note": "The fixed three-discount equations cite Klaus Ries through personal communication, and the journal version records independently developed two-discount work by Ney, Martin, and Wessel 1997; the edge is not a sole-priority claim for multiple discounts."
+        },
+        {
+          "status": "resolved",
+          "note": "The target work’s empirical Kneser–Ney baseline recursively smooths lower orders and tunes per-order discounts, so its plotted results are not silently reassigned to the exact estimator printed in 1995."
         }
       ]
     }
@@ -5774,6 +6777,70 @@
         "Perplexity and word error rate"
       ],
       "successCriterion": "The learner can compute N₊ and N₁ for a toy hierarchy, state both constant-term approximations and all absolute-discount assumptions, distinguish Kneser–Ney’s α/β/γ from Katz notation, reproduce the reported table conditions, classify the no-extra-cost statement as an unbenchmarked author report, and identify which common later formulas are absent from the 1995 paper."
+    },
+    {
+      "id": "beginner-chen-goodman-1998-two-levers",
+      "mode": "beginner",
+      "objective": "Separate two changes often bundled under modified Kneser–Ney: interpolation lets a lower-order continuation signal contribute even after a phrase has been observed, while count-tier discounts reserve different amounts of probability for one-, two-, and higher-count events.",
+      "workIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-kneser-ney-smoothing",
+        "modified-kneser-ney-discounts"
+      ],
+      "claimIds": [
+        "chen-goodman-1998-interpolated-form",
+        "chen-goodman-1998-continuation-distribution",
+        "chen-goodman-1998-three-discount-form",
+        "chen-goodman-1998-multi-discount-comparison",
+        "chen-goodman-1998-interpolation-comparison"
+      ],
+      "prerequisites": [
+        "Counts and conditional probabilities",
+        "Weighted mixtures",
+        "Seen and unseen phrases",
+        "Reserved probability mass"
+      ],
+      "successCriterion": "Given a toy history with continuations observed once, twice, and at least three times, the learner can choose the matching discount tier, identify both terms in the interpolated estimate, and predict how interpolation differs from switching to a fallback only after a zero count."
+    },
+    {
+      "id": "expert-chen-goodman-1998-modified-estimator",
+      "mode": "expert",
+      "objective": "Reconstruct the report’s interpolated Kneser–Ney and multi-discount equations, distinguish the implemented variants, and audit the controlled comparisons without turning bounded experimental results or cited antecedents into universal or priority claims.",
+      "workIds": [
+        "chen-goodman-1998-empirical-smoothing"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "interpolated-transition-estimation",
+        "context-diversity-backoff-distributions",
+        "interpolated-kneser-ney-smoothing",
+        "modified-kneser-ney-discounts"
+      ],
+      "claimIds": [
+        "chen-goodman-1998-interpolated-form",
+        "chen-goodman-1998-continuation-distribution",
+        "chen-goodman-1998-three-discount-form",
+        "chen-goodman-1998-fixed-discount-estimates",
+        "chen-goodman-1998-recursive-lower-orders",
+        "chen-goodman-1998-implementation-variants",
+        "chen-goodman-1998-evaluation-scope",
+        "chen-goodman-1998-overview-results",
+        "chen-goodman-1998-multi-discount-comparison",
+        "chen-goodman-1998-interpolation-comparison",
+        "chen-goodman-1998-heldout-fixed-comparison",
+        "chen-goodman-1998-count-diagnostic"
+      ],
+      "prerequisites": [
+        "Conditional N-gram estimation",
+        "Absolute discounting and normalization",
+        "Continuation counts",
+        "Held-out parameter estimation",
+        "Cross-entropy and perplexity"
+      ],
+      "successCriterion": "The learner can reconstruct report equations (21)–(26), explain the normalization term and D₁/D₂/D₃₊ branches, distinguish backoff, interpolated, single-discount, multi-discount, held-out, and fixed variants, and report each comparison with its corpus, order, training-size, and attribution limits."
     }
   ]
 }

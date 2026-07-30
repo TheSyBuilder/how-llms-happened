@@ -29,9 +29,9 @@ test("accepts the checked-in corpus", () => {
 
 test("binds the corpus to the current schema contract", () => {
   const candidate = copyCorpus();
-  candidate.schemaVersion = "0.3.0";
+  candidate.schemaVersion = "0.4.0";
 
-  assertRejected(candidate, "must equal \"0.4.0\"");
+  assertRejected(candidate, "must equal \"0.5.0\"");
 });
 
 test("retains the sourced 1975 statistical-decoder bridge", () => {
@@ -531,6 +531,216 @@ test("retains the original Kneser–Ney backoff distributions without later vari
     false,
   );
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains modified Kneser–Ney as a separately versioned later extension", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "chen-goodman-1998-empirical-smoothing",
+  );
+  const report = work?.versions.find(
+    (item) => item.id === "chen-goodman-1998-technical-report-version",
+  );
+  const journal = work?.versions.find(
+    (item) => item.id === "chen-goodman-1999-journal-version",
+  );
+  const boundarySource = corpus.sources.find(
+    (item) => item.id === "chen-goodman-1996-acl-boundary",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "kneser-ney-1995-to-chen-goodman-1998",
+  );
+  const fixedDiscounts = corpus.claims.find(
+    (item) => item.id === "chen-goodman-1998-fixed-discount-estimates",
+  );
+  const recursiveLowerOrders = corpus.claims.find(
+    (item) => item.id === "chen-goodman-1998-recursive-lower-orders",
+  );
+  const evaluationScope = corpus.claims.find(
+    (item) => item.id === "chen-goodman-1998-evaluation-scope",
+  );
+  const interpolationComparison = corpus.claims.find(
+    (item) => item.id === "chen-goodman-1998-interpolation-comparison",
+  );
+  const heldoutComparison = corpus.claims.find(
+    (item) => item.id === "chen-goodman-1998-heldout-fixed-comparison",
+  );
+  const countDiagnostic = corpus.claims.find(
+    (item) => item.id === "chen-goodman-1998-count-diagnostic",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.artifactType, "technical-report");
+  assert.equal(
+    work?.canonicalVersionId,
+    "chen-goodman-1998-technical-report-version",
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "chen-goodman-1998-technical-report",
+  );
+  assert.equal(work?.chronology.events[0].date.value, "1998-08");
+  assert.equal(
+    work?.chronology.events.find(
+      (event) => event.id === "chen-goodman-1999-manuscript-accepted",
+    )?.date.value,
+    "1999-07-08",
+  );
+  assert.equal(report?.kind, "technical-report");
+  assert.ok(
+    report?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "report-number" &&
+        identifier.value === "TR-10-98",
+    ),
+  );
+  assert.equal(journal?.kind, "journal");
+  assert.deepEqual(journal?.bibliography.pages, ["359-394"]);
+  assert.ok(
+    journal?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.1006/csla.1999.0128",
+    ),
+  );
+  assert.deepEqual(boundarySource?.versionIds, []);
+  assert.ok(boundarySource?.supports.includes("version-boundary"));
+  assert.ok(
+    boundarySource?.accessNote.includes("contain no Kneser–Ney discussion"),
+  );
+  assert.equal(relationship?.connectionType, "extends");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(fixedDiscounts?.statement.includes("D₁ = 1 − 2Y(n₂/n₁)"));
+  assert.ok(
+    recursiveLowerOrders?.statement.includes(
+      "replaces ordinary top-order counts",
+    ),
+  );
+  assert.ok(evaluationScope?.statement.includes("most tunable parameters"));
+  assert.ok(
+    interpolationComparison?.statement.includes(
+      "hard-backoff counterpart",
+    ),
+  );
+  assert.deepEqual(heldoutComparison?.evidence[0].locator, {
+    label: "Held-out versus fixed-discount comparison, printed pp. 39–41",
+    section: "5.1.4 Kneser-Ney Smoothing and Variations",
+    pageStart: 39,
+    pageEnd: 41,
+    figure: "20–21",
+  });
+  assert.equal(
+    countDiagnostic?.evidence[0].locator.section,
+    "5.2.1 Expected vs. Actual Counts, Overall",
+  );
+  assert.ok(
+    relationship?.sourceEvidence.some(
+      (evidence) => evidence.locator.pageStart === 23,
+    ),
+  );
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("attributed to Klaus Ries"),
+    ),
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("rejects an unbound primary-work source without a version-boundary role", () => {
+  const candidate = copyCorpus();
+  const source = candidate.sources.find(
+    (item) => item.id === "chen-goodman-1996-acl-boundary",
+  );
+  source.supports = source.supports.filter(
+    (support) => support !== "version-boundary",
+  );
+
+  assertRejected(candidate, "primary work sources need a version binding");
+});
+
+test("rejects binding version-boundary evidence into the promoted version family", () => {
+  const candidate = copyCorpus();
+  const source = candidate.sources.find(
+    (item) => item.id === "chen-goodman-1996-acl-boundary",
+  );
+  source.versionIds = ["chen-goodman-1998-technical-report-version"];
+
+  assertRejected(
+    candidate,
+    "version-boundary sources must remain outside the work's version family",
+  );
+});
+
+test("rejects version-boundary sources as promoted relationship evidence", () => {
+  const candidate = copyCorpus();
+  const relationship = candidate.relationships.find(
+    (item) => item.id === "kneser-ney-1995-to-chen-goodman-1998",
+  );
+  relationship.sourceEvidence[0].sourceId =
+    "chen-goodman-1996-acl-boundary";
+
+  assertRejected(
+    candidate,
+    "cannot support promoted claims or relationships",
+  );
+});
+
+test("rejects version-boundary sources as promoted claim evidence", () => {
+  const candidate = copyCorpus();
+  const source = candidate.sources.find(
+    (item) => item.id === "chen-goodman-1996-acl-boundary",
+  );
+  const claim = candidate.claims.find(
+    (item) => item.id === "chen-goodman-1998-interpolated-form",
+  );
+  source.supports.push("claim-location");
+  source.pagination = {
+    scheme: "printed",
+    pageStart: 310,
+    pageEnd: 318,
+  };
+  claim.evidence[0] = {
+    sourceId: source.id,
+    locator: {
+      label: "Mutated boundary evidence",
+      pageStart: 310,
+      pageEnd: 310,
+    },
+    support: "Mutation fixture.",
+  };
+
+  assertRejected(
+    candidate,
+    "cannot support promoted claims or relationships",
+  );
+});
+
+test("rejects version-boundary sources as promoted chronology evidence", () => {
+  const candidate = copyCorpus();
+  const work = candidate.works.find(
+    (item) => item.id === "chen-goodman-1998-empirical-smoothing",
+  );
+  const event = work.chronology.events.find(
+    (item) => item.id === "chen-goodman-1998-technical-report",
+  );
+  event.sourceIds = ["chen-goodman-1996-acl-boundary"];
+  event.dateEvidence = [
+    {
+      sourceId: "chen-goodman-1996-acl-boundary",
+      precision: "month",
+      locator: "Mutation fixture",
+    },
+  ];
+
+  assertRejected(
+    candidate,
+    "cannot establish chronology for the promoted version family",
+  );
 });
 
 test("rejects an incomplete source record", () => {
