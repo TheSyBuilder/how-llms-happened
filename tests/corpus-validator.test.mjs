@@ -651,6 +651,139 @@ test("retains modified Kneser–Ney as a separately versioned later extension", 
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "bengio-2000-neural-probabilistic-language-model",
+  );
+  const conference = work?.chronology.events.find(
+    (item) => item.id === "bengio-2000-nips-conference",
+  );
+  const proceedings = work?.chronology.events.find(
+    (item) => item.id === "bengio-2001-nips-proceedings",
+  );
+  const nips = work?.versions.find(
+    (item) => item.id === "bengio-2000-nips-version",
+  );
+  const jmlr = work?.versions.find(
+    (item) => item.id === "bengio-2003-jmlr-version",
+  );
+  const nipsFullText = corpus.sources.find(
+    (item) => item.id === "bengio-2000-neurips-full-text",
+  );
+  const jmlrFullText = corpus.sources.find(
+    (item) => item.id === "bengio-2003-jmlr-full-text",
+  );
+  const priorArtBoundary = corpus.claims.find(
+    (item) => item.id === "bengio-2003-prior-neural-language-models",
+  );
+  const brown = corpus.claims.find(
+    (item) => item.id === "bengio-2003-brown-comparison",
+  );
+  const ap = corpus.claims.find(
+    (item) => item.id === "bengio-2003-ap-comparison",
+  );
+  const directPath = corpus.claims.find(
+    (item) => item.id === "bengio-2003-direct-path-inconclusive",
+  );
+  const promotedClaims = corpus.claims.filter(
+    (item) => item.workId === work?.id,
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "jelinek-mercer-1980-to-bengio-2000",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.artifactType, "journal-article");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "bengio-2000-nips-conference",
+  );
+  assert.equal(conference?.kind, "conference-presentation");
+  assert.equal(conference?.date.value, "2000");
+  assert.equal(proceedings?.kind, "proceedings-publication");
+  assert.equal(proceedings?.date.value, "2001-05-11");
+  assert.equal(
+    work?.chronology.events.some(
+      (event) => event.id === "bengio-2002-jmlr-submission",
+    ),
+    false,
+  );
+  assert.equal(work?.canonicalVersionId, "bengio-2003-jmlr-version");
+  assert.deepEqual(nips?.authors, [
+    "Yoshua Bengio",
+    "Réjean Ducharme",
+    "Pascal Vincent",
+  ]);
+  assert.deepEqual(jmlr?.authors, [
+    "Yoshua Bengio",
+    "Réjean Ducharme",
+    "Pascal Vincent",
+    "Christian Jauvin",
+  ]);
+  assert.deepEqual(nips?.bibliography.pages, ["932-938"]);
+  assert.deepEqual(jmlr?.bibliography.pages, ["1137-1155"]);
+  assert.ok(jmlr?.notes.includes("submission in April 2002"));
+  assert.equal(nipsFullText?.pagination, undefined);
+  assert.equal(nipsFullText?.supports.includes("claim-location"), false);
+  assert.deepEqual(jmlrFullText?.pagination, {
+    scheme: "printed",
+    pageStart: 1137,
+    pageEnd: 1155,
+  });
+  assert.ok(nipsFullText?.accessNote.includes("not described as openly licensed"));
+  assert.ok(jmlrFullText?.accessNote.includes("no verified open license"));
+  assert.ok(priorArtBoundary?.statement.includes("was not new"));
+  assert.ok(brown?.statement.includes("unreported/265/252"));
+  assert.ok(brown?.statement.includes("19.2% reduction relative to 312"));
+  assert.ok(ap?.statement.includes("104/109"));
+  assert.ok(ap?.statement.includes("6.8%"));
+  assert.ok(
+    directPath?.statement.includes("100 hidden units rather than 50"),
+  );
+  for (const claim of promotedClaims) {
+    assert.ok(
+      claim.evidence.every(
+        (evidence) => evidence.sourceId === "bengio-2003-jmlr-full-text",
+      ),
+      `${claim.id} must retain a JMLR-only evidence scope`,
+    );
+  }
+  assert.deepEqual(relationship?.from, {
+    kind: "work",
+    id: "jelinek-mercer-1980-interpolation",
+  });
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: work?.id,
+  });
+  assert.equal(relationship?.connectionType, "combines");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(
+    relationship?.rationale.includes(
+      "not to the feed-forward architecture as a whole",
+    ),
+  );
+  for (const comparatorId of [
+    "katz-1987-sparse-data",
+    "kneser-ney-1995-improved-backing-off",
+    "chen-goodman-1998-empirical-smoothing",
+  ]) {
+    assert.equal(
+      corpus.relationships.some(
+        (item) => item.from.id === comparatorId && item.to.id === work?.id,
+      ),
+      false,
+    );
+  }
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("rejects an unbound primary-work source without a version-boundary role", () => {
   const candidate = copyCorpus();
   const source = candidate.sources.find(

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-30",
+  "asOf": "2026-07-31",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1763,6 +1763,234 @@
           "resolutionCondition": "A rights-holder statement or explicit license for the report and journal version would be required before either full text could be redistributed."
         }
       ]
+    },
+    {
+      "id": "bengio-2000-neural-probabilistic-language-model",
+      "title": "A Neural Probabilistic Language Model",
+      "authors": [
+        "Yoshua Bengio",
+        "Réjean Ducharme",
+        "Pascal Vincent",
+        "Christian Jauvin"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "Y. Bengio, R. Ducharme, P. Vincent, and C. Jauvin, “A Neural Probabilistic Language Model,” Journal of Machine Learning Research 3, 1137–1155 (February 2003).",
+      "chronology": {
+        "orderingEventId": "bengio-2000-nips-conference",
+        "events": [
+          {
+            "id": "bengio-2000-nips-conference",
+            "kind": "conference-presentation",
+            "label": "NeurIPS 2000 conference paper",
+            "date": {
+              "value": "2000",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bengio-2000-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS proceedings record, NIPS 2000"
+              },
+              {
+                "sourceId": "nips-13-mit-press-record",
+                "precision": "year",
+                "locator": "MIT Press description of papers presented at the 2000 conference"
+              }
+            ],
+            "versionId": "bengio-2000-nips-version",
+            "sourceIds": [
+              "bengio-2000-neurips-record",
+              "bengio-2000-neurips-metadata",
+              "bengio-2000-neurips-full-text",
+              "nips-13-mit-press-record"
+            ]
+          },
+          {
+            "id": "bengio-2001-nips-proceedings",
+            "kind": "proceedings-publication",
+            "label": "Advances in Neural Information Processing Systems 13 publication",
+            "date": {
+              "value": "2001-05-11",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "nips-13-mit-press-record",
+                "precision": "day",
+                "locator": "MIT Press product record, publication date"
+              }
+            ],
+            "versionId": "bengio-2000-nips-version",
+            "sourceIds": [
+              "nips-13-mit-press-record"
+            ]
+          },
+          {
+            "id": "bengio-2003-jmlr-publication",
+            "kind": "journal-publication",
+            "label": "JMLR publication",
+            "date": {
+              "value": "2003-02",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bengio-2003-jmlr-record",
+                "precision": "month",
+                "locator": "Official JMLR citation, volume 3, February 2003"
+              },
+              {
+                "sourceId": "bengio-2003-jmlr-full-text",
+                "precision": "month",
+                "locator": "Printed p. 1137, “Published 2/03”"
+              }
+            ],
+            "versionId": "bengio-2003-jmlr-version",
+            "sourceIds": [
+              "bengio-2003-jmlr-record",
+              "bengio-2003-jmlr-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "bengio-2000-nips-version",
+          "title": "A Neural Probabilistic Language Model",
+          "authors": [
+            "Yoshua Bengio",
+            "Réjean Ducharme",
+            "Pascal Vincent"
+          ],
+          "kind": "proceedings",
+          "label": "NeurIPS conference version",
+          "language": "en",
+          "bibliography": {
+            "citation": "Y. Bengio, R. Ducharme, and P. Vincent, “A Neural Probabilistic Language Model,” in T. K. Leen, T. G. Dietterich, and V. Tresp, eds., Advances in Neural Information Processing Systems 13, 932–938 (MIT Press, 2001), presented at NIPS 2000.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "Advances in Neural Information Processing Systems",
+            "editors": [
+              "Todd K. Leen",
+              "Thomas G. Dietterich",
+              "Volker Tresp"
+            ],
+            "publisher": "MIT Press",
+            "volume": "13",
+            "pages": [
+              "932-938"
+            ],
+            "identifiers": [
+              {
+                "type": "isbn",
+                "value": "978-0-262-12241-2",
+                "label": "Hardcover proceedings ISBN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bengio-2000-neurips-record",
+            "bengio-2000-neurips-metadata",
+            "bengio-2000-neurips-full-text",
+            "nips-13-mit-press-record"
+          ],
+          "notes": "The official proceedings record classifies the paper under NIPS 2000 and the metadata file gives pp. 932–938. MIT Press dates the physical volume to 11 May 2001. The paper has three authors and reports Brown and French Hansard experiments with direct, cycling, and short-list output variants."
+        },
+        {
+          "id": "bengio-2003-jmlr-version",
+          "title": "A Neural Probabilistic Language Model",
+          "authors": [
+            "Yoshua Bengio",
+            "Réjean Ducharme",
+            "Pascal Vincent",
+            "Christian Jauvin"
+          ],
+          "kind": "journal",
+          "label": "JMLR journal version",
+          "language": "en",
+          "bibliography": {
+            "citation": "Y. Bengio, R. Ducharme, P. Vincent, and C. Jauvin, “A Neural Probabilistic Language Model,” Journal of Machine Learning Research 3, 1137–1155 (February 2003).",
+            "venue": "Journal of Machine Learning Research",
+            "volume": "3",
+            "pages": [
+              "1137-1155"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "bengio-2003-jmlr-record",
+            "bengio-2003-jmlr-full-text"
+          ],
+          "notes": "This canonical version adds Christian Jauvin, uses Brown and Associated Press News corpora, expands the fixed-window architecture, optimization, parallel implementation, baselines, ablations, and limitations, and records submission in April 2002 and publication in February 2003."
+        }
+      ],
+      "canonicalVersionId": "bengio-2003-jmlr-version",
+      "preferredSourceIds": [
+        "bengio-2003-jmlr-record",
+        "bengio-2003-jmlr-full-text"
+      ],
+      "sourceIds": [
+        "bengio-2000-neurips-record",
+        "bengio-2000-neurips-metadata",
+        "bengio-2000-neurips-full-text",
+        "nips-13-mit-press-record",
+        "bengio-2003-jmlr-record",
+        "bengio-2003-jmlr-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The work trains jointly learned continuous word representations and a normalized neural next-word distribution in experiments reaching a 17,964-word vocabulary and a 13,994,528-word training stream. The authors position this as pushing an acknowledged prior idea to large scale; its controlled Brown comparisons expose the roles of context, hidden units, and a count-model mixture, making it the atlas’s audited neural-language-model turning point without treating the Transformer as the beginning."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "sparse-language-model-estimation",
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization",
+        "neural-ngram-model-mixtures"
+      ],
+      "significance": {
+        "beginner": "Instead of storing every phrase as an unrelated case, the model learns a reusable vector for each word and a predictor that can transfer probability behavior across nearby vectors. The paper’s implemented model still sees only a fixed number of previous words.",
+        "expert": "The canonical model concatenates shared lookup-table vectors for an n−1-word context, applies optional hidden and direct paths, normalizes the full vocabulary with a softmax, and jointly optimizes embeddings and predictor parameters by penalized likelihood. Its results and compute profile expose both the representational gain and the full-softmax bottleneck."
+      },
+      "limitations": [
+        "The canonical experiments use a fixed n−1-word window; recurrent architectures are discussed as an allowed implementation and future direction, not evaluated as the main model.",
+        "One vector represents every occurrence of a word, which the authors identify as a poor fit for polysemy.",
+        "Full-vocabulary normalization dominates computation: for the Associated Press configuration, weighted sums feeding the output units account for about 99.7% of the estimated numerical operations.",
+        "The strongest Brown result, test perplexity 252, includes a fixed mixture with an interpolated trigram; the corresponding neural model without that mixture reports 276.",
+        "The paper’s statement that the best n-gram is 24% above the best neural result compares 312 with 252; it is not a 24% baseline-relative perplexity reduction, which is about 19.2%.",
+        "The Associated Press comparison reports 109 for the neural/trigram mixture and 117 for the strongest listed modified Kneser–Ney baseline; the baseline-relative reduction is about 6.8%, although the paper summarizes the gap as about 8%.",
+        "The Associated Press run stopped after five epochs, took approximately three weeks on 40 CPUs, and showed no signs of overfitting on the validation set according to the authors.",
+        "Evaluation is limited to English next-word perplexity on Brown and Associated Press News splits, with no downstream task, confidence intervals, significance tests, or multiple-seed analysis.",
+        "The JMLR paper explicitly says neural language models were not new and cites earlier examples; the corpus does not assign it sole priority for the idea.",
+        "The NeurIPS and JMLR versions differ in authors, datasets, architecture variants, baselines, and results, so numerical claims are not transferred between them.",
+        "The official reading copies are publicly accessible, but no explicit Creative Commons license was verified and the corpus does not redistribute them."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 2000 conference paper and 2003 journal article are grouped editorially because they share the exact title, first three authors, and core three-step mechanism; neither inspected source explicitly calls the journal article an extended or revised version."
+        },
+        {
+          "status": "open",
+          "note": "The exact NIPS 2000 presentation day has not been established.",
+          "resolutionCondition": "An authoritative conference program or session schedule identifying this paper’s presentation would be required for day-level ordering."
+        },
+        {
+          "status": "open",
+          "note": "The paper’s explicitly cited representation and neural-joint-model precursors are not yet audited as corpus nodes.",
+          "resolutionCondition": "Audit Bengio and Bengio 2000a/2000b, Hinton 1986, Elman 1990, and the acknowledged earlier neural language models before adding those lineage edges."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for either official full text.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDFs as open content."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -1795,7 +2023,8 @@
         "shannon-1948-ngram-context",
         "shannon-1948-context-entropy",
         "jelinek-1975-language-model-interface",
-        "jelinek-1975-state-context"
+        "jelinek-1975-state-context",
+        "bengio-2003-fixed-window-factorization"
       ],
       "uncertainties": []
     },
@@ -1915,7 +2144,9 @@
         "kneser-ney-1995-context-diversity",
         "chen-goodman-1998-interpolated-form",
         "chen-goodman-1998-three-discount-form",
-        "chen-goodman-1998-evaluation-scope"
+        "chen-goodman-1998-evaluation-scope",
+        "bengio-2003-ngram-generalization-limit",
+        "bengio-2003-joint-word-feature-learning"
       ],
       "uncertainties": []
     },
@@ -2112,6 +2343,72 @@
         {
           "status": "resolved",
           "note": "The fixed three-discount equations cite Klaus Ries through personal communication, and the journal article reports an independent two-discount proposal by Ney, Martin, and Wessel 1997."
+        }
+      ]
+    },
+    {
+      "id": "jointly-learned-word-representations",
+      "name": "Jointly learned word representations",
+      "kind": "mechanism",
+      "description": "A shared lookup table maps each word type to a continuous vector, and those vectors are optimized together with the probability model rather than supplied as fixed external features.",
+      "claimIds": [
+        "bengio-2003-joint-word-feature-learning",
+        "bengio-2003-smooth-feature-generalization",
+        "bengio-2003-feedforward-softmax-architecture",
+        "bengio-2003-polysemy-limit"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper describes learned continuous word features and distributed representations; the atlas uses modern embedding terminology only as explanatory interface language, not as a quotation or priority claim."
+        }
+      ]
+    },
+    {
+      "id": "feedforward-neural-language-modeling",
+      "name": "Fixed-window feed-forward neural language modeling",
+      "kind": "mechanism",
+      "description": "A feed-forward network predicts the next word from a fixed window of shared word vectors, optionally combining a nonlinear hidden path with a direct input-to-output path.",
+      "claimIds": [
+        "bengio-2003-prior-neural-language-models",
+        "bengio-2003-fixed-window-factorization",
+        "bengio-2003-feedforward-softmax-architecture",
+        "bengio-2003-penalized-likelihood-training",
+        "bengio-2003-evaluation-scope",
+        "bengio-2003-brown-comparison",
+        "bengio-2003-ap-comparison",
+        "bengio-2003-context-ablation",
+        "bengio-2003-hidden-unit-ablation",
+        "bengio-2003-direct-path-inconclusive",
+        "bengio-2003-recurrent-future-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "full-vocabulary-softmax-normalization",
+      "name": "Full-vocabulary neural normalization",
+      "kind": "mechanism",
+      "description": "One score per vocabulary item is exponentiated and normalized into a next-word distribution, coupling every training example to the full output vocabulary.",
+      "claimIds": [
+        "bengio-2003-feedforward-softmax-architecture",
+        "bengio-2003-penalized-likelihood-training",
+        "bengio-2003-scaling-tradeoff",
+        "bengio-2003-parameter-parallel-mitigation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "neural-ngram-model-mixtures",
+      "name": "Neural and count-model mixtures",
+      "kind": "mechanism",
+      "description": "A neural next-word distribution can be linearly mixed with an interpolated n-gram distribution so their different generalization behavior contributes to one normalized predictor.",
+      "claimIds": [
+        "bengio-2003-neural-trigram-mixture"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The recorded evidence concerns the paper’s fixed equal-weight neural/interpolated-trigram mixtures, not a general claim that mixtures always improve either component."
         }
       ]
     }
@@ -2983,6 +3280,122 @@
         "version-boundary"
       ],
       "accessNote": "The publisher-hosted nine-page ACL paper and its complete bibliography were inspected to define the version boundary. They compare earlier smoothing methods and define average-count and one-count variants but contain no Kneser–Ney discussion or citation. ACL marks pre-2016 Anthology materials CC BY-NC-SA 3.0; the paper is treated as prior research, not as a version of the 1998 modified-Kneser–Ney work."
+    },
+    {
+      "id": "bengio-2000-neurips-record",
+      "relatedWorkIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "title": "Official NeurIPS record for the conference paper",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2000/hash/728f206c2a01bf572b5940d7d9a8fa4c-Abstract.html",
+      "accessDate": "2026-07-31",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-2000-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official proceedings page identifies the title, three authors, abstract, and NIPS 2000 conference record and links the published PDF and metadata."
+    },
+    {
+      "id": "bengio-2000-neurips-metadata",
+      "relatedWorkIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "title": "Official NeurIPS metadata for the conference paper",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2000/file/728f206c2a01bf572b5940d7d9a8fa4c-Metadata.json",
+      "accessDate": "2026-07-31",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-2000-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official JSON record confirms the title, ordered authors, year 2000, volume 13, and pp. 932–938."
+    },
+    {
+      "id": "bengio-2000-neurips-full-text",
+      "relatedWorkIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "title": "Official NeurIPS full text of the conference paper",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2000/file/728f206c2a01bf572b5940d7d9a8fa4c-Paper.pdf",
+      "accessDate": "2026-07-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-2000-nips-version"
+      ],
+      "supports": [
+        "full-text",
+        "reference-list"
+      ],
+      "accessNote": "The official seven-page proceedings PDF was inspected in full. It has no visible printed folios, so it is not used for page-located claims; the official metadata separately establishes pp. 932–938. It is publicly readable but not described as openly licensed and is not redistributed."
+    },
+    {
+      "id": "nips-13-mit-press-record",
+      "relatedWorkIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "title": "MIT Press record for Advances in Neural Information Processing Systems 13",
+      "url": "https://mitpress.mit.edu/9780262122412/advances-in-neural-information-processing-systems-13/",
+      "accessDate": "2026-07-31",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-2000-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher describes the volume as papers presented at the 2000 conference and gives a physical publication date of 11 May 2001. That publication date is recorded separately from the conference year."
+    },
+    {
+      "id": "bengio-2003-jmlr-record",
+      "relatedWorkIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "title": "Official JMLR record for the journal article",
+      "url": "https://www.jmlr.org/papers/v3/bengio03a.html",
+      "accessDate": "2026-07-31",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-2003-jmlr-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the four authors, volume 3, February 2003, pp. 1137–1155, abstract, and link to the article PDF. It lists no DOI and no Creative Commons license."
+    },
+    {
+      "id": "bengio-2003-jmlr-full-text",
+      "relatedWorkIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "title": "Official JMLR full text of the journal article",
+      "url": "https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf",
+      "accessDate": "2026-07-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-2003-jmlr-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1137,
+        "pageEnd": 1155
+      },
+      "accessNote": "The official 19-page article was inspected in full, including equations, both result tables, limitations, references, and the printed submission/publication line. The PDF carries author copyright and no verified open license; it is used for evidence and not redistributed."
     }
   ],
   "claims": [
@@ -5848,6 +6261,530 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-30"
+    },
+    {
+      "id": "bengio-2003-ngram-generalization-limit",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "sparse-language-model-estimation"
+      ],
+      "statement": "The paper characterizes ordinary n-gram generalization as interpolation or backoff among short observed fragments and targets two missing capabilities: using farther context and transferring probability behavior among similar words.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Sparse n-gram motivation, printed pp. 1138–1139",
+            "pageStart": 1138,
+            "pageEnd": 1139,
+            "section": "1. Introduction"
+          },
+          "support": "Contrasts short-context count estimators with the desired use of longer context and word similarity."
+        }
+      ],
+      "limitations": [
+        "This is the authors’ diagnosis and motivation, not an experimental decomposition of every n-gram estimator’s errors."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-joint-word-feature-learning",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "jointly-learned-word-representations"
+      ],
+      "statement": "The paper’s three-part program associates each vocabulary item with a distributed feature vector, expresses sequence probability through those vectors, and learns the representation and probability model jointly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Three-step approach, printed p. 1139",
+            "pageStart": 1139,
+            "pageEnd": 1139,
+            "section": "1.1 Fighting the Curse of Dimensionality with Distributed Representations"
+          },
+          "support": "Enumerates the word-vector association, probability model, and simultaneous learning steps."
+        }
+      ],
+      "limitations": [
+        "The paper does not claim that neural language models or distributed representations as broad ideas were new."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-smooth-feature-generalization",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "jointly-learned-word-representations"
+      ],
+      "statement": "The authors propose that a smooth probability function over nearby word-feature configurations can transfer probability mass behavior from a training sentence to many neighboring sentences formed by substituting words with similar representations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Feature-space generalization argument, printed pp. 1139–1140",
+            "pageStart": 1139,
+            "pageEnd": 1140,
+            "section": "1.1 Fighting the Curse of Dimensionality with Distributed Representations"
+          },
+          "support": "Explains how a high-probability sentence can generalize to neighboring feature-vector configurations."
+        }
+      ],
+      "limitations": [
+        "The smooth-neighbor account is the paper’s explanatory mechanism; the experiments do not separately measure semantic neighborhood quality or visualize learned neighbors."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-prior-neural-language-models",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "The related-work section explicitly says the general idea of neural-network language modeling was not new, cites Miikkulainen and Dyer as an earlier example, and describes Xu and Rudnicky as an independent proposal.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Neural-language-model prior-art boundary, printed p. 1140",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "section": "1.2 Relation to Previous Work"
+          },
+          "support": "States the non-novelty boundary and names earlier and independent neural language-model work."
+        }
+      ],
+      "limitations": [
+        "This claim records the authors’ own prior-art boundary; it does not establish an exhaustive earliest-work survey."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-fixed-window-factorization",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "For the implemented experiments, the next-word distribution conditions on a fixed context of the preceding n−1 words, and the sentence probability is factorized into those conditional next-word probabilities.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Fixed-context model definition, printed p. 1141",
+            "pageStart": 1141,
+            "pageEnd": 1141,
+            "section": "2. A Neural Model"
+          },
+          "support": "Defines the product of next-word conditionals and the fixed n−1-word context used by the experiments."
+        }
+      ],
+      "limitations": [
+        "The fixed-window experiment must not be rendered as a recurrent model or as evidence of learned unbounded context."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-feedforward-softmax-architecture",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "A shared |V|×m lookup table C maps each context word to a feature vector; the concatenated vectors x feed optional hidden and direct paths y = b + Wx + U tanh(d + Hx), and a softmax normalizes the resulting scores across the vocabulary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Lookup, network, and softmax definition, printed pp. 1141–1143",
+            "pageStart": 1141,
+            "pageEnd": 1143,
+            "section": "2. A Neural Model",
+            "equation": "1"
+          },
+          "support": "Defines C, the concatenated input, normalized output, and equation (1) with hidden and direct paths."
+        }
+      ],
+      "limitations": [
+        "The direct input-to-output path is optional, and the paper does not provide a controlled result isolating it from hidden-layer size and training duration."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-penalized-likelihood-training",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "Training uses stochastic gradient ascent on average log likelihood with a weight-decay penalty on weights but not biases, jointly updating the word-feature and network parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Objective and optimization, printed pp. 1142–1143",
+            "pageStart": 1142,
+            "pageEnd": 1143,
+            "section": "2. A Neural Model; 3. Parallel Implementation"
+          },
+          "support": "Gives the penalized log-likelihood objective, bias exception, and stochastic gradient procedure."
+        }
+      ],
+      "limitations": [
+        "The reported experiments do not include multiple random seeds or optimization uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-scaling-tradeoff",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "The parameter count grows linearly with vocabulary size and is dominated by approximately |V|(nm+h), while evaluating and differentiating the full-vocabulary softmax is identified as the main computational bottleneck.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Parameter count and softmax cost, printed pp. 1143–1144",
+            "pageStart": 1143,
+            "pageEnd": 1144,
+            "section": "2. A Neural Model; 3. Parallel Implementation"
+          },
+          "support": "Supplies the full parameter formula, its dominant term, and the output-computation bottleneck."
+        }
+      ],
+      "limitations": [
+        "Linear parameter growth does not imply cheap training; each normalized prediction still touches the full output vocabulary in this implementation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-parameter-parallel-mitigation",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "The implementation partitions output units across CPUs; for the Associated Press configuration, weighted sums feeding the output units account for about 99.7% of the estimated numerical operations, and the authors report communication overhead of about one-fifteenth of total epoch time and what they call an “almost perfect speed-up” on their fast-network cluster.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Output partitioning and compute report, printed pp. 1144–1146",
+            "pageStart": 1144,
+            "pageEnd": 1146,
+            "section": "3. Parallel Implementation"
+          },
+          "support": "Describes the parallel partition, operation estimate, communication overhead, and qualitative speedup report."
+        }
+      ],
+      "limitations": [
+        "The paper gives no processor-count scaling curve, hardware-normalized throughput, or comparison with non-normalized alternatives."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-evaluation-scope",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "The canonical evaluation uses English next-word perplexity: Brown has 1,181,041 words split 800,000/200,000/181,041 for training/validation/test and a final 16,383-word vocabulary, while Associated Press News uses 13,994,528/963,138/963,071 words and a final 17,964-word vocabulary; baselines include interpolated trigrams, modified Kneser–Ney models, and class models selected with validation data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Datasets, baselines, and model selection, printed pp. 1146–1148",
+            "pageStart": 1146,
+            "pageEnd": 1148,
+            "section": "4. Experimental Results; 4.1 Experimental Setup"
+          },
+          "support": "Defines both splits and preprocessing, the perplexity metric, comparison systems, and validation procedure."
+        }
+      ],
+      "limitations": [
+        "The paper reports no downstream task, statistical significance test, confidence interval, or repeated-seed analysis.",
+        "The Associated Press training set is much larger than Brown, but the two tables use different model configurations and are not a controlled corpus-size ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-brown-comparison",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "Table 1 reports Brown train/validation/test perplexities of 182/284/268 for MLP1; unreported/275/257 for mixed MLP2; 201/327/310 for MLP3; unreported/286/272 for mixed MLP4; 209/296/279 for MLP5; unreported/273/259 for mixed MLP6; 210/309/293 for MLP7; unreported/284/270 for mixed MLP8; 175/280/276 for no-direct MLP9; and unreported/265/252 for mixed no-direct MLP10. MLP1/2 use n=5, h=50, m=60; MLP3/4 use n=5, h=0, m=60; MLP5/6 use n=5, h=50, m=30; MLP7/8 use n=3, h=50, m=30; all have direct connections. MLP9/10 use n=5, h=100, m=30 without direct connections; each even-numbered row is mixed. The order-3 deleted-interpolation trigram reports 31/352/336; modified Kneser–Ney orders 3, 4, and 5 report validation/test 334/323, 332/321, and 332/321. Class backoff reports 348/334, 354/340, 326/312, 335/319, and 343/326 for order 3 with 150, 200, 500, 1000, and 2000 classes, then 327/312 for orders 4 and 5 with 500 classes. The strongest listed class result, 312, is about 24% above 252, equivalent to a 19.2% reduction relative to 312.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Brown perplexity comparison, printed pp. 1148–1149",
+            "pageStart": 1148,
+            "pageEnd": 1149,
+            "section": "4.2 Results",
+            "table": "1"
+          },
+          "support": "Table 1 and its discussion give the configurations, baselines, values, and authors’ 24% comparison."
+        }
+      ],
+      "limitations": [
+        "The 252 result includes a fixed neural/trigram mixture; the corresponding no-mixture MLP9 row reports 276.",
+        "The table gives point estimates without confidence intervals, significance tests, or repeated runs."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-ap-comparison",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "Table 2 reports Associated Press validation/test perplexities of 104/109 for the n=6, h=60, m=100 neural/interpolated-trigram mixture with direct connections, 126/132 for order-3 deleted interpolation, and 121/127, 113/119, and 112/117 for modified Kneser–Ney orders 3, 4, and 5. The change from the strongest listed modified Kneser–Ney row, 117, to 109 is a baseline-relative reduction of about 6.8% despite the paper’s summary of the gap as about 8%.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Associated Press perplexity comparison, printed p. 1150",
+            "pageStart": 1150,
+            "pageEnd": 1150,
+            "section": "4.2 Results",
+            "table": "2"
+          },
+          "support": "Table 2 and its discussion give the neural mixture and modified Kneser–Ney values."
+        }
+      ],
+      "limitations": [
+        "The Table 2 row is labeled MLP10 but uses n=6, h=60, and m=100 rather than Table 1’s MLP10 configuration.",
+        "Training stopped after five epochs, took about three weeks on 40 CPUs, and showed no signs of overfitting on the validation set according to the authors.",
+        "The table gives point estimates without confidence intervals, significance tests, or repeated runs."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-context-ablation",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "In matched Brown configurations, using four context words instead of two changes test perplexity from 293 to 279 without the trigram mixture and from 270 to 259 with it.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Context-window comparison, printed p. 1149",
+            "pageStart": 1149,
+            "pageEnd": 1149,
+            "section": "4.2 Results",
+            "table": "1"
+          },
+          "support": "MLP5 versus MLP7 and MLP6 versus MLP8 isolate the reported context-window change."
+        }
+      ],
+      "limitations": [
+        "This comparison contrasts two and four preceding words within one small-corpus setup; it does not establish scaling behavior for long context."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-hidden-unit-ablation",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "In matched Brown configurations, adding 50 hidden units changes test perplexity from 310 to 268 without the trigram mixture and from 272 to 257 with it.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Hidden-unit comparison, printed p. 1149",
+            "pageStart": 1149,
+            "pageEnd": 1149,
+            "section": "4.2 Results",
+            "table": "1"
+          },
+          "support": "MLP1 versus MLP3 and MLP2 versus MLP4 isolate the reported hidden-layer change."
+        }
+      ],
+      "limitations": [
+        "The comparison covers one hidden-layer size and one Brown setup; it is not a general depth or capacity study."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-neural-trigram-mixture",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "neural-ngram-model-mixtures"
+      ],
+      "statement": "A fixed equal-weight mixture with the interpolated trigram lowers Brown test perplexity in every paired Table 1 configuration, including 276 to 252 for MLP9/MLP10, and the Associated Press result is also reported for a mixed model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Mixture definition and Brown pairs, printed pp. 1147–1149",
+            "pageStart": 1147,
+            "pageEnd": 1149,
+            "section": "4.1 Experimental Setup; 4.2 Results",
+            "table": "1"
+          },
+          "support": "Defines the 0.5 mixture and reports all paired Brown results."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Associated Press mixed-model result, printed p. 1150",
+            "pageStart": 1150,
+            "pageEnd": 1150,
+            "section": "4.2 Results",
+            "table": "2"
+          },
+          "support": "Reports the mixed neural/trigram configuration used for the Associated Press row."
+        }
+      ],
+      "limitations": [
+        "The mixture weight is fixed rather than tuned, and the paired evidence does not isolate why the two component models complement each other.",
+        "The strongest headline results should not be attributed to the bare neural model alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-direct-path-inconclusive",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "The paper says the Brown results are inconclusive about the direct input-to-output path because the no-direct model uses 100 hidden units rather than 50 and trains for 20 rather than 10 epochs, although its reported perplexity is slightly lower.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Direct-path comparison boundary, printed p. 1149",
+            "pageStart": 1149,
+            "pageEnd": 1149,
+            "section": "4.2 Results",
+            "table": "1"
+          },
+          "support": "The authors explicitly identify the hidden-size and training-duration confounds."
+        }
+      ],
+      "limitations": [
+        "The comparison cannot support a causal claim that adding or removing the direct path improves perplexity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-recurrent-future-boundary",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "Although the framework permits recurrent implementations, the paper’s main experiments use feed-forward fixed-window networks and leave richer recurrent or paragraph-level context to future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Allowed recurrent implementation, printed p. 1142",
+            "pageStart": 1142,
+            "pageEnd": 1142,
+            "section": "2. A Neural Model"
+          },
+          "support": "States that the general function could be implemented with a recurrent network while the described experiment uses the feed-forward form."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Future longer-context directions, printed pp. 1151–1152",
+            "pageStart": 1151,
+            "pageEnd": 1152,
+            "section": "5.2 Future Work; 6. Conclusion"
+          },
+          "support": "Proposes time-delay, recurrent, and paragraph-level extensions as future directions rather than evaluated properties of the main model."
+        }
+      ],
+      "limitations": [
+        "The paper is not experimental evidence for a recurrent neural language model or paragraph-scale memory."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "bengio-2003-polysemy-limit",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "jointly-learned-word-representations"
+      ],
+      "statement": "The authors say polysemous words are probably not served well because one learned vector per word type must represent all of the word’s senses.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Single-vector polysemy limitation, printed p. 1152",
+            "pageStart": 1152,
+            "pageEnd": 1152,
+            "section": "5.2 Future Work; 6. Conclusion"
+          },
+          "support": "Names the inability of one word vector to represent distinct senses as an important limitation."
+        }
+      ],
+      "limitations": [
+        "The paper proposes future improvements but does not evaluate a contextual or multi-sense representation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-07-31"
     }
   ],
   "relationships": [
@@ -6354,6 +7291,67 @@
           "note": "The target work’s empirical Kneser–Ney baseline recursively smooths lower orders and tunes per-order discounts, so its plotted results are not silently reassigned to the exact estimator printed in 1995."
         }
       ]
+    },
+    {
+      "id": "jelinek-mercer-1980-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "jelinek-mercer-1980-interpolation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Bengio et al. cite Jelinek and Mercer’s interpolated estimation in the count-model background, define mixtures between their neural distribution and an interpolated trigram, and report the mixed variants separately. The relationship applies to those neural/trigram mixtures, not to the feed-forward architecture as a whole.",
+      "claimIds": [
+        "jelinek-mercer-1980-linear-interpolation",
+        "bengio-2003-neural-trigram-mixture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Neural and trigram mixture definition, printed p. 1143",
+            "section": "2. A Neural Model",
+            "pageStart": 1143,
+            "pageEnd": 1143,
+            "paragraph": "Mixture of models"
+          },
+          "support": "Defines mixtures between the neural distribution and an interpolated trigram, including the fixed equal-weight form used in Table 1."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Jelinek–Mercer trigram and mixed-model results, printed pp. 1147–1150",
+            "section": "4.1 N-Gram Models; 4.2 Results",
+            "pageStart": 1147,
+            "pageEnd": 1150,
+            "table": "1–2"
+          },
+          "support": "Cites Jelinek and Mercer for the interpolated trigram, defines its component mixture, and reports the neural/trigram rows separately."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Jelinek and Mercer reference, printed p. 1154",
+            "section": "References",
+            "pageStart": 1154,
+            "pageEnd": 1154,
+            "paragraph": "Jelinek and Mercer 1980 reference"
+          },
+          "support": "The bibliography identifies the corpus’s 1980 interpolation work by title and authors."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is scoped to explicitly reported mixed models; the paper does not derive its neural architecture from Jelinek–Mercer interpolation."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -6841,6 +7839,70 @@
         "Cross-entropy and perplexity"
       ],
       "successCriterion": "The learner can reconstruct report equations (21)–(26), explain the normalization term and D₁/D₂/D₃₊ branches, distinguish backoff, interpolated, single-discount, multi-discount, held-out, and fixed variants, and report each comparison with its corpus, order, training-size, and attribution limits."
+    },
+    {
+      "id": "beginner-bengio-2003-shared-representations",
+      "mode": "beginner",
+      "objective": "Manipulate a word substitution and trace how a shared learned vector changes one fixed-window next-word distribution, distinguishing smooth reuse across similar words from count-model backoff and from unlimited context.",
+      "workIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling"
+      ],
+      "claimIds": [
+        "bengio-2003-ngram-generalization-limit",
+        "bengio-2003-joint-word-feature-learning",
+        "bengio-2003-smooth-feature-generalization",
+        "bengio-2003-fixed-window-factorization",
+        "bengio-2003-polysemy-limit"
+      ],
+      "prerequisites": [
+        "Conditional next-word probabilities",
+        "N-gram counts and backoff",
+        "Vectors as coordinates"
+      ],
+      "successCriterion": "The learner can explain why one learned word vector is reused across contexts, predict how replacing a word with a nearby vector can change the output smoothly, identify the n−1-word window, and name the one-vector-per-word polysemy limit."
+    },
+    {
+      "id": "expert-bengio-2003-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the lookup, hidden/direct paths, softmax, and penalized-likelihood objective; quantify the vocabulary-scaling bottleneck; and audit the Brown and Associated Press results with their mixture, ablation, denominator, optimization, and uncertainty boundaries.",
+      "workIds": [
+        "bengio-2000-neural-probabilistic-language-model"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization",
+        "neural-ngram-model-mixtures"
+      ],
+      "claimIds": [
+        "bengio-2003-fixed-window-factorization",
+        "bengio-2003-feedforward-softmax-architecture",
+        "bengio-2003-penalized-likelihood-training",
+        "bengio-2003-scaling-tradeoff",
+        "bengio-2003-parameter-parallel-mitigation",
+        "bengio-2003-evaluation-scope",
+        "bengio-2003-brown-comparison",
+        "bengio-2003-ap-comparison",
+        "bengio-2003-context-ablation",
+        "bengio-2003-hidden-unit-ablation",
+        "bengio-2003-neural-trigram-mixture",
+        "bengio-2003-direct-path-inconclusive",
+        "bengio-2003-recurrent-future-boundary"
+      ],
+      "prerequisites": [
+        "Conditional language-model likelihood",
+        "Vector concatenation and affine maps",
+        "Hyperbolic tangent and softmax",
+        "Stochastic gradient optimization",
+        "Perplexity and relative change"
+      ],
+      "successCriterion": "The learner can map C, x, H, U, W, and y through equation (1), explain why normalization costs scale with |V|, reproduce the controlled context and hidden-unit comparisons, distinguish bare from mixed models, compute the 19.2% and 6.8% baseline-relative reductions, and state why the direct-path and recurrence conclusions are bounded."
     }
   ]
 }

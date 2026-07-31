@@ -40,7 +40,7 @@ Later dates make useful act boundaries, but each presupposes part of the story t
 |---|---|---|
 | 1954 — Zellig Harris, “Distributional Structure” | A rigorous linguistic program for describing elements through their environments. | This is an important linguistic branch, not a next-symbol model or the invention of contemporary vector embeddings. Treating it as the sole origin would lose the probability-and-prediction spine. |
 | 1986 — Rumelhart, Hinton, and Williams, “Learning representations by back-propagating errors” | A widely influential demonstration that multilayer networks can learn useful internal representations through error-driven weight updates. | It is an enabling neural-learning branch, not a language-modeling paper. Earlier incarnations of reverse-mode differentiation are documented in the historical literature, so the atlas will not call this paper the unqualified invention of backpropagation. |
-| 2003 — Bengio et al., “A Neural Probabilistic Language Model” | Jointly learned continuous word features and a neural conditional probability model, showing improved generalization over strong n-gram baselines. | It is a strong boundary for the modern neural-language-model act, not the full history. Section 1.2 explicitly notes earlier neural language modeling and related representation work. |
+| 2000/2003 — Bengio et al., “A Neural Probabilistic Language Model” | Jointly learned continuous word features and a neural conditional probability model, with a three-author NIPS version followed by the canonical four-author JMLR treatment. | It is a strong boundary for the modern neural-language-model act, not the full history. Section 1.2 explicitly notes earlier neural language modeling and related representation work, and the strongest reported JMLR results mix neural and trigram probabilities. |
 | 2017 — Vaswani et al., “Attention Is All You Need” | Replaced recurrence and convolution in an encoder–decoder transduction architecture with attention-based context mixing, improving parallelism on the reported translation tasks. | It is an architectural convergence point. Attention, sequence prediction, learned representations, encoder–decoder modeling, and the training objective all have earlier lineages. The paper is not, by itself, the first pretrained large language model. |
 
 Primary records for these alternatives:
@@ -48,7 +48,9 @@ Primary records for these alternatives:
 - [Harris, “Distributional Structure”](https://doi.org/10.1080/00437956.1954.11659520).
 - [Rumelhart, Hinton, and Williams, “Learning representations by back-propagating errors”](https://doi.org/10.1038/323533a0).
 - [Griewank, “Who Invented the Reverse Mode of Differentiation?”](https://doi.org/10.4171/DMS/6/38), a scholarly historical survey used for the priority caveat above.
-- [Bengio et al., “A Neural Probabilistic Language Model”](https://www.jmlr.org/papers/v3/bengio03a.html).
+- [Bengio, Ducharme, and Vincent, NIPS 2000 record for “A Neural Probabilistic Language Model”](https://proceedings.neurips.cc/paper_files/paper/2000/hash/728f206c2a01bf572b5940d7d9a8fa4c-Abstract.html).
+- [MIT Press, *Advances in Neural Information Processing Systems 13*](https://mitpress.mit.edu/9780262122412/advances-in-neural-information-processing-systems-13/), for the proceedings-volume publication date.
+- [Bengio et al., JMLR record for “A Neural Probabilistic Language Model”](https://www.jmlr.org/papers/v3/bengio03a.html).
 - [Vaswani et al., “Attention Is All You Need”](https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html).
 
 ## Narrative shape
@@ -76,4 +78,4 @@ Markov may remain a prologue only while removing it leaves the technical spine i
 
 ## Source notes
 
-Sources were accessed on 2026-07-22. Publication metadata comes from the linked publisher or proceedings records. Claims about the contents of Shannon 1948, Shannon 1951, Bengio et al. 2003, and Vaswani et al. 2017 were checked against the papers themselves; the Harris and Rumelhart summaries were checked against their publisher records. The Markov claim uses the peer-reviewed English translation of the 1913 lecture, and the backpropagation priority caveat uses Griewank’s historical survey. The scope remains subject to the boundary test and to later corpus-level prior-art review.
+The boundary sources were last rechecked on 2026-07-31. Publication metadata comes from the linked publisher or proceedings records. Claims about the contents of Shannon 1948, Shannon 1951, Bengio et al. 2000/2003, and Vaswani et al. 2017 were checked against the papers themselves; the Harris and Rumelhart summaries were checked against their publisher records. The Bengio chronology keeps the 2000 conference, 11 May 2001 proceedings-volume publication, and February 2003 journal publication distinct. The Markov claim uses the peer-reviewed English translation of the 1913 lecture, and the backpropagation priority caveat uses Griewank’s historical survey. The scope remains subject to the boundary test and to later corpus-level prior-art review.
