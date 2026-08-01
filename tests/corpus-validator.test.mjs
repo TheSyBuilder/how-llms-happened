@@ -29,9 +29,9 @@ test("accepts the checked-in corpus", () => {
 
 test("binds the corpus to the current schema contract", () => {
   const candidate = copyCorpus();
-  candidate.schemaVersion = "0.4.0";
+  candidate.schemaVersion = "0.5.0";
 
-  assertRejected(candidate, "must equal \"0.5.0\"");
+  assertRejected(candidate, "must equal \"0.6.0\"");
 });
 
 test("retains the sourced 1975 statistical-decoder bridge", () => {
@@ -651,6 +651,182 @@ test("retains modified Kneser–Ney as a separately versioned later extension", 
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the guarded NIPS 1999, IDIAP, and IEEE neural joint-distribution family", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "bengio-bengio-1999-neural-joint-distributions",
+  );
+  const conference = work?.chronology.events.find(
+    (item) => item.id === "bengio-bengio-1999-nips-conference",
+  );
+  const journalPublication = work?.chronology.events.find(
+    (item) => item.id === "bengio-bengio-2000-ieee-publication",
+  );
+  const proceedingsPublication = work?.chronology.events.find(
+    (item) => item.id === "bengio-bengio-2000-nips-proceedings",
+  );
+  const nips = work?.versions.find(
+    (item) => item.id === "bengio-bengio-1999-neurips-version",
+  );
+  const report = work?.versions.find(
+    (item) => item.id === "bengio-bengio-2000-idiap-report-version",
+  );
+  const journal = work?.versions.find(
+    (item) => item.id === "bengio-bengio-2000-ieee-journal-version",
+  );
+  const nipsFullText = corpus.sources.find(
+    (item) => item.id === "bengio-bengio-1999-neurips-full-text",
+  );
+  const idiapFullText = corpus.sources.find(
+    (item) => item.id === "bengio-bengio-2000-idiap-full-text",
+  );
+  const factorization = corpus.claims.find(
+    (item) => item.id === "bengio-bengio-1999-factorized-joint-model",
+  );
+  const sharedNetwork = corpus.claims.find(
+    (item) => item.id === "bengio-bengio-1999-shared-conditional-network",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "bengio-bengio-2000-pruned-network-results",
+  );
+  const featureBridge = corpus.claims.find(
+    (item) => item.id === "bengio-bengio-2000-language-feature-bridge",
+  );
+  const training = corpus.claims.find(
+    (item) => item.id === "bengio-bengio-1999-likelihood-map-training",
+  );
+  const adaptation = corpus.claims.find(
+    (item) => item.id === "bengio-2003-joint-distribution-adaptation",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "bengio-bengio-1999-to-bengio-2000",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+  const expertObjective = corpus.learningObjectives.find(
+    (objective) =>
+      objective.id === "expert-bengio-bengio-1999-model-and-evidence",
+  );
+  const languageSpecificIdeas = [
+    "conditional-stochastic-language-source",
+    "jointly-learned-word-representations",
+    "feedforward-neural-language-modeling",
+    "full-vocabulary-softmax-normalization",
+  ];
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.displayCitation.includes("NIPS"), false);
+  assert.equal(work?.versions.length, 3);
+  assert.equal(
+    work?.canonicalVersionId,
+    "bengio-bengio-2000-ieee-journal-version",
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "bengio-bengio-1999-nips-conference",
+  );
+  assert.equal(conference?.date.value, "1999");
+  assert.equal(journalPublication?.date.value, "2000-05");
+  assert.equal(proceedingsPublication?.date.value, "2000-06-20");
+  assert.deepEqual(nips?.authors, ["Yoshua Bengio", "Samy Bengio"]);
+  assert.deepEqual(journal?.authors, ["Samy Bengio", "Yoshua Bengio"]);
+  assert.equal(report?.kind, "technical-report");
+  assert.deepEqual(nips?.bibliography.pages, ["400-406"]);
+  assert.ok(
+    journal?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" && identifier.value === "10.1109/72.846725",
+    ),
+  );
+  assert.deepEqual(nipsFullText?.pagination, {
+    scheme: "printed",
+    pageStart: 400,
+    pageEnd: 406,
+  });
+  assert.deepEqual(idiapFullText?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 8,
+  });
+  assert.ok(idiapFullText?.accessNote.includes("no visible printed IEEE folios"));
+  assert.ok(idiapFullText?.accessNote.includes("no work-level open license"));
+  assert.deepEqual(featureBridge?.ideaIds, [
+    "low-dimensional-feature-encoding-for-large-domains",
+  ]);
+  assert.ok(
+    work?.ideaIds.includes("low-dimensional-feature-encoding-for-large-domains"),
+  );
+  assert.equal(training?.evidence[0].locator.section, "2.1. Discussion");
+  assert.ok(
+    expertObjective?.claimIds.includes(
+      "bengio-bengio-1999-likelihood-map-training",
+    ),
+  );
+  for (const claim of corpus.claims.filter((item) =>
+    item.evidence.some(
+      (evidence) =>
+        evidence.sourceId === "bengio-bengio-2000-idiap-full-text",
+    ),
+  )) {
+    for (const evidence of claim.evidence.filter(
+      (item) => item.sourceId === "bengio-bengio-2000-idiap-full-text",
+    )) {
+      assert.equal(evidence.locator.pageStart, undefined);
+      assert.equal(evidence.locator.pageEnd, undefined);
+    }
+  }
+  for (const claim of [factorization, sharedNetwork]) {
+    assert.deepEqual(
+      new Set(claim?.evidence.map((evidence) => evidence.sourceId)),
+      new Set([
+        "bengio-bengio-1999-neurips-full-text",
+        "bengio-bengio-2000-idiap-full-text",
+      ]),
+    );
+  }
+  assert.equal(sharedNetwork?.evidence[0].locator.pageStart, 401);
+  assert.equal(sharedNetwork?.evidence[1].locator.figure, "2");
+  assert.ok(results?.statement.includes("p = .20"));
+  assert.ok(results?.statement.includes("16.55 for Soybean"));
+  assert.deepEqual(
+    results?.evidence.map((evidence) => evidence.sourceId),
+    ["bengio-bengio-2000-idiap-full-text"],
+  );
+  assert.equal(
+    adaptation?.evidence.every(
+      (evidence) => evidence.sourceId === "bengio-2003-jmlr-full-text",
+    ),
+    true,
+  );
+  assert.equal(
+    languageSpecificIdeas.some((ideaId) => work?.ideaIds.includes(ideaId)),
+    false,
+  );
+  assert.deepEqual(relationship?.from, {
+    kind: "work",
+    id: work?.id,
+  });
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: "bengio-2000-neural-probabilistic-language-model",
+  });
+  assert.equal(relationship?.connectionType, "builds-on");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(
+    relationship?.claimIds.includes("bengio-2003-joint-distribution-adaptation"),
+  );
+  assert.ok(
+    relationship?.sourceEvidence.every(
+      (evidence) => evidence.sourceId === "bengio-2003-jmlr-full-text",
+    ),
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family", () => {
   const work = corpus.works.find(
     (item) => item.id === "bengio-2000-neural-probabilistic-language-model",
@@ -685,11 +861,17 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   const directPath = corpus.claims.find(
     (item) => item.id === "bengio-2003-direct-path-inconclusive",
   );
+  const jointAdaptation = corpus.claims.find(
+    (item) => item.id === "bengio-2003-joint-distribution-adaptation",
+  );
   const promotedClaims = corpus.claims.filter(
     (item) => item.workId === work?.id,
   );
   const relationship = corpus.relationships.find(
     (item) => item.id === "jelinek-mercer-1980-to-bengio-2000",
+  );
+  const precursorRelationship = corpus.relationships.find(
+    (item) => item.id === "bengio-bengio-1999-to-bengio-2000",
   );
   const modes = new Set(
     corpus.learningObjectives
@@ -745,6 +927,10 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   assert.ok(
     directPath?.statement.includes("100 hidden units rather than 50"),
   );
+  assert.ok(
+    work?.ideaIds.includes("neural-joint-distribution-factorization"),
+  );
+  assert.ok(jointAdaptation?.statement.includes("variable-length word sequences"));
   for (const claim of promotedClaims) {
     assert.ok(
       claim.evidence.every(
@@ -769,6 +955,12 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
       "not to the feed-forward architecture as a whole",
     ),
   );
+  assert.deepEqual(precursorRelationship?.to, {
+    kind: "work",
+    id: work?.id,
+  });
+  assert.equal(precursorRelationship?.connectionType, "builds-on");
+  assert.equal(precursorRelationship?.evidenceClass, "documented-influence");
   for (const comparatorId of [
     "katz-1987-sparse-data",
     "kneser-ney-1995-improved-backing-off",
@@ -1118,6 +1310,20 @@ test("rejects evidence pages outside the source pagination", () => {
   claim.evidence[0].locator.pageEnd = 999;
 
   assertRejected(candidate, "falls outside source pagination");
+});
+
+test("rejects PDF page positions as locators for an unpaginated manuscript", () => {
+  const candidate = copyCorpus();
+  const claim = candidate.claims.find(
+    (item) => item.id === "bengio-bengio-2000-language-feature-bridge",
+  );
+  claim.evidence[0].locator.pageStart = 4;
+  claim.evidence[0].locator.pageEnd = 4;
+
+  assertRejected(
+    candidate,
+    "unpaginated PDF evidence must use stable structural anchors",
+  );
 });
 
 test("requires pageStart whenever a locator supplies pageEnd", () => {

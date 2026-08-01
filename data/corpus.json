@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/corpus.schema.json",
-  "schemaVersion": "0.5.0",
+  "schemaVersion": "0.6.0",
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-07-31",
+  "asOf": "2026-08-01",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1765,6 +1765,293 @@
       ]
     },
     {
+      "id": "bengio-bengio-1999-neural-joint-distributions",
+      "title": "Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks",
+      "authors": [
+        "Samy Bengio",
+        "Yoshua Bengio"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "S. Bengio and Y. Bengio, “Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks,” IEEE Transactions on Neural Networks 11(3), 550–557 (May 2000), DOI 10.1109/72.846725.",
+      "chronology": {
+        "orderingEventId": "bengio-bengio-1999-nips-conference",
+        "events": [
+          {
+            "id": "bengio-bengio-1999-nips-conference",
+            "kind": "conference-presentation",
+            "label": "NIPS 1999 conference paper",
+            "date": {
+              "value": "1999",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bengio-bengio-1999-neurips-record",
+                "precision": "year",
+                "locator": "Official proceedings record, NIPS 1999"
+              },
+              {
+                "sourceId": "nips-12-mit-press-record",
+                "precision": "year",
+                "locator": "MIT Press subtitle, Proceedings of the 1999 Conference"
+              }
+            ],
+            "versionId": "bengio-bengio-1999-neurips-version",
+            "sourceIds": [
+              "bengio-bengio-1999-neurips-record",
+              "bengio-bengio-1999-neurips-metadata",
+              "bengio-bengio-1999-neurips-full-text",
+              "nips-12-mit-press-record"
+            ]
+          },
+          {
+            "id": "bengio-bengio-2000-idiap-report",
+            "kind": "technical-report",
+            "label": "IDIAP research-report version",
+            "date": {
+              "value": "2000",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bengio-bengio-2000-idiap-report-record",
+                "precision": "year",
+                "locator": "Institutional record, publication year 2000 and report number IDIAP-RR-01-2000"
+              }
+            ],
+            "versionId": "bengio-bengio-2000-idiap-report-version",
+            "sourceIds": [
+              "bengio-bengio-2000-idiap-report-record",
+              "bengio-bengio-2000-idiap-full-text"
+            ]
+          },
+          {
+            "id": "bengio-bengio-2000-ieee-publication",
+            "kind": "journal-publication",
+            "label": "IEEE Transactions on Neural Networks publication",
+            "date": {
+              "value": "2000-05",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bengio-bengio-2000-crossref-record",
+                "precision": "month",
+                "locator": "Publisher deposit, issued May 2000"
+              },
+              {
+                "sourceId": "bengio-bengio-2000-idiap-journal-record",
+                "precision": "year",
+                "locator": "Institutional journal-paper record, publication year 2000"
+              }
+            ],
+            "versionId": "bengio-bengio-2000-ieee-journal-version",
+            "sourceIds": [
+              "bengio-bengio-2000-doi-record",
+              "bengio-bengio-2000-crossref-record",
+              "bengio-bengio-2000-idiap-journal-record"
+            ]
+          },
+          {
+            "id": "bengio-bengio-2000-nips-proceedings",
+            "kind": "proceedings-publication",
+            "label": "Advances in Neural Information Processing Systems 12 publication",
+            "date": {
+              "value": "2000-06-20",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "nips-12-mit-press-record",
+                "precision": "day",
+                "locator": "MIT Press product record, publication date"
+              }
+            ],
+            "versionId": "bengio-bengio-1999-neurips-version",
+            "sourceIds": [
+              "nips-12-mit-press-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "bengio-bengio-1999-neurips-version",
+          "title": "Modeling High-Dimensional Discrete Data with Multi-Layer Neural Networks",
+          "authors": [
+            "Yoshua Bengio",
+            "Samy Bengio"
+          ],
+          "kind": "proceedings",
+          "label": "NIPS proceedings treatment",
+          "language": "en",
+          "bibliography": {
+            "citation": "Y. Bengio and S. Bengio, “Modeling High-Dimensional Discrete Data with Multi-Layer Neural Networks,” in S. A. Solla, T. K. Leen, and K.-R. Müller, eds., Advances in Neural Information Processing Systems 12, 400–406 (MIT Press, 2000), presented at NIPS 1999.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "Advances in Neural Information Processing Systems",
+            "editors": [
+              "Sara A. Solla",
+              "Todd K. Leen",
+              "Klaus-Robert Müller"
+            ],
+            "publisher": "MIT Press",
+            "volume": "12",
+            "pages": [
+              "400-406"
+            ],
+            "identifiers": [
+              {
+                "type": "isbn",
+                "value": "978-0-262-19450-1",
+                "label": "Hardcover proceedings ISBN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bengio-bengio-1999-neurips-record",
+            "bengio-bengio-1999-neurips-metadata",
+            "bengio-bengio-1999-neurips-full-text",
+            "nips-12-mit-press-record"
+          ],
+          "notes": "The official proceedings record places the paper at NIPS 1999, while MIT Press published the volume on 20 June 2000. This proceedings treatment uses Yoshua Bengio then Samy Bengio as author order and reports the factorized neural estimator and four tabular evaluations on printed pp. 400–406; no DOI was located in the official records."
+        },
+        {
+          "id": "bengio-bengio-2000-idiap-report-version",
+          "title": "Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks",
+          "authors": [
+            "Samy Bengio",
+            "Yoshua Bengio"
+          ],
+          "kind": "technical-report",
+          "label": "IDIAP research-report version",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Bengio and Y. Bengio, “Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks,” IDIAP-RR-01-2000 (IDIAP, 2000).",
+            "venue": "IDIAP Research Report",
+            "publisher": "IDIAP",
+            "identifiers": [
+              {
+                "type": "report-number",
+                "value": "IDIAP-RR-01-2000",
+                "label": "Institutional report number"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bengio-bengio-2000-idiap-report-record",
+            "bengio-bengio-2000-idiap-full-text"
+          ],
+          "notes": "The institutional record identifies this eight-page document as IDIAP-RR-01-2000 and says it was published in the IEEE special issue. It preserves the journal-title treatment and contains more extensive technical detail than the NIPS paper, but the repository file has eight unnumbered PDF pages rather than printed IEEE folios, so it remains a distinct technical-report version for source provenance."
+        },
+        {
+          "id": "bengio-bengio-2000-ieee-journal-version",
+          "title": "Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks",
+          "authors": [
+            "Samy Bengio",
+            "Yoshua Bengio"
+          ],
+          "kind": "journal",
+          "label": "IEEE journal version",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Bengio and Y. Bengio, “Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks,” IEEE Transactions on Neural Networks 11(3), 550–557 (May 2000).",
+            "venue": "IEEE Transactions on Neural Networks",
+            "publisher": "IEEE",
+            "volume": "11",
+            "issues": [
+              "3"
+            ],
+            "pages": [
+              "550-557"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/72.846725",
+                "label": "Journal-article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "1045-9227",
+                "label": "Print ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bengio-bengio-2000-doi-record",
+            "bengio-bengio-2000-crossref-record",
+            "bengio-bengio-2000-idiap-journal-record"
+          ],
+          "notes": "The canonical citation follows the DOI deposit and institutional journal record. The IEEE article appears to be a fuller treatment of the NIPS conference paper because the mechanism, abstract, datasets, and table structure closely overlap, but no inspected primary record explicitly labels one an extension of the other."
+        }
+      ],
+      "canonicalVersionId": "bengio-bengio-2000-ieee-journal-version",
+      "preferredSourceIds": [
+        "bengio-bengio-2000-doi-record",
+        "bengio-bengio-2000-crossref-record",
+        "bengio-bengio-2000-idiap-journal-record"
+      ],
+      "sourceIds": [
+        "bengio-bengio-1999-neurips-record",
+        "bengio-bengio-1999-neurips-metadata",
+        "bengio-bengio-1999-neurips-full-text",
+        "nips-12-mit-press-record",
+        "bengio-bengio-2000-idiap-report-record",
+        "bengio-bengio-2000-idiap-full-text",
+        "bengio-bengio-2000-doi-record",
+        "bengio-bengio-2000-crossref-record",
+        "bengio-bengio-2000-idiap-journal-record"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The work supplies the explicitly cited neural joint-distribution mechanism that the later neural probabilistic language model adapts: an ordered product of conditional distributions whose constrained hidden units share computation across predictions. Its separate NIPS, IDIAP, and IEEE records preserve the 1999 conference event and distinct 2000 publication artifacts without treating bibliographic suffixes as chronology or asserting a direction among the companion treatments."
+      },
+      "ideaIds": [
+        "neural-joint-distribution-factorization",
+        "low-dimensional-feature-encoding-for-large-domains"
+      ],
+      "significance": {
+        "beginner": "A huge table of every possible variable combination becomes a sequence of smaller questions. A constrained neural network answers those questions while reusing hidden features, so evidence from observed combinations can inform combinations the data did not contain.",
+        "expert": "The model applies an order-sensitive chain factorization, parameterizes normalized conditionals with triangular grouped connectivity and shared deterministic hidden units, grows as O(n²H) under its stated construction, and trains by likelihood or MAP; its pruning rule and four-dataset likelihood study expose both the intended capacity control and its empirical limits."
+      },
+      "limitations": [
+        "The model operates on fixed-dimensional vectors of variables; it does not itself implement variable-length language modeling or time-shared next-word prediction.",
+        "The variable order is chosen rather than learned, and the approximation can change when that order changes.",
+        "General marginalization can require a combinatorial sum; missing values are tractable only in restricted cases described by the authors.",
+        "The connectivity-pruning procedure uses pairwise Kolmogorov–Smirnov tests and a cross-validated threshold, so it is a heuristic rather than a search over all higher-order dependencies.",
+        "The empirical study covers four UCI or STATLOG tabular density-estimation tasks and negative log likelihood; it does not establish language-model, classification, or outlier-detection performance.",
+        "The paired test described by the authors conditions on the learned model and does not include variability from selecting a different training set.",
+        "The NIPS and repository-manuscript result tables differ slightly for pruned LARC, so numerical values remain version-specific.",
+        "The official and institutional reading copies are publicly accessible, but no paper-level open-content license was verified and no PDF is redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The NIPS, IDIAP, and IEEE records are grouped as one intellectual work because the two full texts share a near-identical abstract, factorization, constrained architecture, pruning method, four datasets, and table structure, and the 2003 JMLR paper cites the 2000 publications together as one prior model. No directed edge is asserted among the versions."
+        },
+        {
+          "status": "open",
+          "note": "The exact NIPS 1999 presentation day has not been established.",
+          "resolutionCondition": "An authoritative conference program or session schedule identifying this paper would be required for day-level ordering."
+        },
+        {
+          "status": "open",
+          "note": "The relationship between the IDIAP report artifact and the publisher’s journal version is described by the institutional records but not by an explicit author statement about manuscript stage.",
+          "resolutionCondition": "A dated submission history or author statement would be required to label the repository document as a submitted, accepted, or final manuscript."
+        },
+        {
+          "status": "open",
+          "note": "No paper-level open-content license was found for the official NeurIPS PDF or the IDIAP repository manuscript.",
+          "resolutionCondition": "A rights-holder statement or explicit work-level license would be required before either file could be redistributed."
+        }
+      ]
+    },
+    {
       "id": "bengio-2000-neural-probabilistic-language-model",
       "title": "A Neural Probabilistic Language Model",
       "authors": [
@@ -1948,6 +2235,7 @@
       "ideaIds": [
         "conditional-stochastic-language-source",
         "sparse-language-model-estimation",
+        "neural-joint-distribution-factorization",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling",
         "full-vocabulary-softmax-normalization",
@@ -1982,8 +2270,8 @@
         },
         {
           "status": "open",
-          "note": "The paper’s explicitly cited representation and neural-joint-model precursors are not yet audited as corpus nodes.",
-          "resolutionCondition": "Audit Bengio and Bengio 2000a/2000b, Hinton 1986, Elman 1990, and the acknowledged earlier neural language models before adding those lineage edges."
+          "note": "The paper’s explicitly cited representation and earlier neural-language-model precursors are not yet audited as corpus nodes.",
+          "resolutionCondition": "Audit Hinton 1986, Elman 1990, Miikkulainen and Dyer 1991, and Xu and Rudnicky 2000 before adding those lineage edges."
         },
         {
           "status": "open",
@@ -2343,6 +2631,48 @@
         {
           "status": "resolved",
           "note": "The fixed three-discount equations cite Klaus Ries through personal communication, and the journal article reports an independent two-discount proposal by Ney, Martin, and Wessel 1997."
+        }
+      ]
+    },
+    {
+      "id": "neural-joint-distribution-factorization",
+      "name": "Neural factorization of joint distributions",
+      "kind": "mechanism",
+      "description": "An ordered product of normalized conditional distributions is parameterized by a constrained neural network whose deterministic hidden units can share computation across several conditionals.",
+      "claimIds": [
+        "bengio-bengio-1999-factorized-joint-model",
+        "bengio-bengio-1999-shared-conditional-network",
+        "bengio-bengio-1999-quadratic-capacity",
+        "bengio-bengio-1999-likelihood-map-training",
+        "bengio-bengio-1999-pruning-heuristic",
+        "bengio-bengio-2000-tabular-evaluation",
+        "bengio-bengio-2000-pruned-network-results",
+        "bengio-bengio-2000-statistical-cautions",
+        "bengio-2003-joint-distribution-adaptation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The hidden units are deterministic shared computations, not latent random variables; normalization comes from the product of normalized conditionals."
+        },
+        {
+          "status": "resolved",
+          "note": "The precursor’s suggestion to represent large-domain values such as words with low-dimensional features is not treated as an implemented language model or as priority evidence for jointly learned word embeddings."
+        }
+      ]
+    },
+    {
+      "id": "low-dimensional-feature-encoding-for-large-domains",
+      "name": "Low-dimensional feature encoding for large domains",
+      "kind": "mechanism",
+      "description": "Values of a large categorical domain can be represented through multiple low-dimensional features before applying a joint-distribution estimator; in the audited precursor this is a proposal for text, not an implemented or learned representation.",
+      "claimIds": [
+        "bengio-bengio-2000-language-feature-bridge"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The record preserves the paper’s proposed encoding bridge without treating it as experimental language-model evidence or as priority evidence for learned word representations."
         }
       ]
     },
@@ -3282,6 +3612,182 @@
       "accessNote": "The publisher-hosted nine-page ACL paper and its complete bibliography were inspected to define the version boundary. They compare earlier smoothing methods and define average-count and one-count variants but contain no Kneser–Ney discussion or citation. ACL marks pre-2016 Anthology materials CC BY-NC-SA 3.0; the paper is treated as prior research, not as a version of the 1998 modified-Kneser–Ney work."
     },
     {
+      "id": "bengio-bengio-1999-neurips-record",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "Official NeurIPS record for the neural joint-distribution conference paper",
+      "url": "https://proceedings.neurips.cc/paper/1999/hash/e6384711491713d29bc63fc5eeb5ba4f-Abstract.html",
+      "accessDate": "2026-08-01",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-bengio-1999-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official proceedings page identifies the title, ordered authors, abstract, and NIPS 1999 record and links the full text and metadata. It supplies no DOI or paper-level open license."
+    },
+    {
+      "id": "bengio-bengio-1999-neurips-metadata",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "Official NeurIPS metadata for the neural joint-distribution conference paper",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/1999/file/e6384711491713d29bc63fc5eeb5ba4f-Metadata.json",
+      "accessDate": "2026-08-01",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-bengio-1999-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official JSON record confirms the title, author order Yoshua Bengio then Samy Bengio, book title, source identifier, and printed pp. 400–406. The official landing page and MIT Press volume record separately establish the NIPS 1999 and volume 12 context."
+    },
+    {
+      "id": "bengio-bengio-1999-neurips-full-text",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "Official NeurIPS full text of the neural joint-distribution conference paper",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/1999/file/e6384711491713d29bc63fc5eeb5ba4f-Paper.pdf",
+      "accessDate": "2026-08-01",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-bengio-1999-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 400,
+        "pageEnd": 406
+      },
+      "accessNote": "The official seven-page proceedings PDF retains printed pp. 400–406 and was inspected in full. It is publicly readable, but no paper-level open-content license was verified and the file is not redistributed here."
+    },
+    {
+      "id": "nips-12-mit-press-record",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "MIT Press record for Advances in Neural Information Processing Systems 12",
+      "url": "https://mitpress.mit.edu/9780262194501/advances-in-neural-information-processing-systems-12/",
+      "accessDate": "2026-08-01",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-bengio-1999-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher describes the volume as proceedings of the 1999 conference, identifies the three editors and hardcover ISBN, and gives a physical publication date of 20 June 2000. That date is recorded separately from the conference year."
+    },
+    {
+      "id": "bengio-bengio-2000-idiap-report-record",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "IDIAP research-report record for Taking on the Curse of Dimensionality",
+      "url": "https://publications.idiap.ch/publications/show/1326",
+      "accessDate": "2026-08-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bengio-bengio-2000-idiap-report-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The institutional record identifies the title, authors, 2000 date, and report number IDIAP-RR-01-2000 and notes publication in the IEEE Transactions on Neural Networks special issue."
+    },
+    {
+      "id": "bengio-bengio-2000-idiap-full-text",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "IDIAP repository manuscript of Taking on the Curse of Dimensionality",
+      "url": "https://publications.idiap.ch/attachments/reports/2000/rr00-01.pdf",
+      "accessDate": "2026-08-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bengio-bengio-2000-idiap-report-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 8
+      },
+      "accessNote": "The official employer repository’s eight-page manuscript was inspected in full. The pagination envelope records its eight unnumbered PDF pages, but promoted evidence uses stable section, equation, figure, table, or paragraph anchors rather than PDF-viewer positions because this copy has no visible printed IEEE folios. It is linked to both the IDIAP report and journal records, but no work-level open license was verified and it is not redistributed here."
+    },
+    {
+      "id": "bengio-bengio-2000-doi-record",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "IEEE DOI record for Taking on the Curse of Dimensionality",
+      "url": "https://doi.org/10.1109/72.846725",
+      "accessDate": "2026-08-01",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bengio-bengio-2000-ieee-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The DOI resolves to IEEE document 846725 for the journal article. The publisher version may require access and is not used for claim locators."
+    },
+    {
+      "id": "bengio-bengio-2000-crossref-record",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "Crossref publisher deposit for Taking on the Curse of Dimensionality",
+      "url": "https://api.crossref.org/works/10.1109%2F72.846725",
+      "accessDate": "2026-08-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "bengio-bengio-2000-ieee-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher deposit confirms the title, author order S. Bengio then Y. Bengio, IEEE Transactions on Neural Networks 11(3), pp. 550–557, May 2000, DOI, and ISSN. Its relation field does not state a link to the NIPS paper."
+    },
+    {
+      "id": "bengio-bengio-2000-idiap-journal-record",
+      "relatedWorkIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "title": "IDIAP journal-paper record for Taking on the Curse of Dimensionality",
+      "url": "https://publications.idiap.ch/publications/show/832",
+      "accessDate": "2026-08-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bengio-bengio-2000-ieee-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The authors’ institutional record classifies the item as a 2000 journal paper, gives the two authors and IDIAP-RR 00-01 note, and links the repository manuscript. The manuscript is represented separately as the technical-report version."
+    },
+    {
       "id": "bengio-2000-neurips-record",
       "relatedWorkIds": [
         "bengio-2000-neural-probabilistic-language-model"
@@ -3315,7 +3821,7 @@
       "supports": [
         "metadata"
       ],
-      "accessNote": "The official JSON record confirms the title, ordered authors, year 2000, volume 13, and pp. 932–938."
+      "accessNote": "The official JSON record confirms the title, ordered authors, book title, source identifier, and pp. 932–938. The official landing page and MIT Press volume record separately establish the NIPS 2000 and volume 13 context."
     },
     {
       "id": "bengio-2000-neurips-full-text",
@@ -6263,6 +6769,316 @@
       "checkedDate": "2026-07-30"
     },
     {
+      "id": "bengio-bengio-1999-factorized-joint-model",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "For a fixed ordered vector of discrete variables, the model writes the joint probability as the product of successive conditionals P(Zᵢ | Z₁,…,Zᵢ₋₁); because the learned conditionals are approximate, changing the variable order can change the resulting approximation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-1999-neurips-full-text",
+          "locator": {
+            "label": "Ordered joint factorization, printed p. 401",
+            "section": "1. Introduction",
+            "pageStart": 401,
+            "pageEnd": 401,
+            "equation": "1"
+          },
+          "support": "Defines the left-to-right product and warns that the approximation depends on the selected order."
+        },
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, ordered factorization",
+            "section": "I. Introduction",
+            "equation": "1"
+          },
+          "support": "Preserves the same chain factorization and ordering caveat in the journal-title treatment."
+        }
+      ],
+      "limitations": [
+        "The probability identity itself is exact, but the order sensitivity described here concerns the finite-capacity learned approximation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-1999-shared-conditional-network",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "A grouped three-layer feed-forward network parameterizes all conditionals: triangular connectivity prevents an output group from seeing its current or later variables, normalized outputs such as softmax define each conditional, and deterministic hidden units can feed several output groups to share computation while the product remains a normalized joint distribution.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-1999-neurips-full-text",
+          "locator": {
+            "label": "Figure 1 and grouped neural architecture, printed pp. 401–403",
+            "section": "2. Proposed Architecture",
+            "pageStart": 401,
+            "pageEnd": 403,
+            "figure": "1"
+          },
+          "support": "Defines the input, hidden, and output groups, allowed connections, shared hidden computation, and normalized outputs."
+        },
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, constrained shared architecture",
+            "section": "I. Introduction; II. Proposed Architecture",
+            "figure": "2"
+          },
+          "support": "Explains how constrained connectivity and hidden-unit sharing preserve ordered left-to-right conditionals and a normalized joint."
+        }
+      ],
+      "limitations": [
+        "The shared hidden units are deterministic computations, not latent random variables requiring marginal inference."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-1999-quadratic-capacity",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "Under the paper’s construction with H hidden units per hidden group, the number of parameters grows as O(n²H); increasing H raises approximation capacity, but the authors argue that available data limits how many useful high-order dependencies can be learned.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-1999-neurips-full-text",
+          "locator": {
+            "label": "Capacity and resource analysis, printed p. 403",
+            "section": "2.1. Discussion",
+            "pageStart": 403,
+            "pageEnd": 403,
+            "paragraph": "First paragraph"
+          },
+          "support": "States the O(n²H) growth and relates hidden-group size to useful high-order dependencies under finite data."
+        }
+      ],
+      "limitations": [
+        "The asymptotic expression applies to the specified grouped architecture and does not include optimization time, activation cost, or every categorical-output encoding detail."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-1999-likelihood-map-training",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "Training maximizes the sum of log joint probabilities over the training examples with conjugate-gradient or stochastic online gradient optimization; the paper also permits a MAP objective with a parameter prior and reports weight decay scaled by each neuron’s fan-in.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-1999-neurips-full-text",
+          "locator": {
+            "label": "Likelihood, MAP, and optimization, printed p. 403",
+            "section": "2.1. Discussion",
+            "pageStart": 403,
+            "pageEnd": 403,
+            "paragraph": "Training-criterion paragraph"
+          },
+          "support": "Defines the summed log-likelihood objective, the MAP alternative, both optimization routes, and the fan-in-scaled weight-decay prior used in experiments."
+        }
+      ],
+      "limitations": [
+        "The passage names optimization procedures but does not provide convergence guarantees, repeated runs, or an optimization comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-1999-pruning-heuristic",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "The sparse variant removes input-to-hidden and hidden-to-output connections according to pairwise Kolmogorov–Smirnov dependence statistics, with the pruning threshold selected by cross-validation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-1999-neurips-full-text",
+          "locator": {
+            "label": "Dependency-based topology selection, printed p. 404",
+            "section": "2.2. Choice of topology",
+            "pageStart": 404,
+            "pageEnd": 404,
+            "paragraph": "Complete subsection"
+          },
+          "support": "Defines the pairwise statistic, its use for both connection classes, and cross-validation of the cutoff."
+        },
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, dependency-based topology selection",
+            "section": "II.E. Choice of topology"
+          },
+          "support": "Preserves the pairwise dependency test and threshold-selection procedure."
+        }
+      ],
+      "limitations": [
+        "Pairwise screening can miss dependencies that become useful only jointly with other variables; the paper presents the rule as a heuristic."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-2000-language-feature-bridge",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "low-dimensional-feature-encoding-for-large-domains"
+      ],
+      "statement": "The journal-title treatment distinguishes many low-cardinality variables from a few variables with very large domains, names textual data as an example of the latter, and proposes representing each word through several low-dimensional features before applying the estimator.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, large-domain variables and text",
+            "section": "II.A. Discussion",
+            "paragraph": "Paragraph distinguishing the two high-dimensional discrete-data regimes"
+          },
+          "support": "Names text and word variables and proposes a low-dimensional feature representation as a bridge to the estimator."
+        }
+      ],
+      "limitations": [
+        "This subsection proposes a representation strategy; it does not implement a language model, learn word features, or evaluate text."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-2000-tabular-evaluation",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "The IDIAP manuscript compares full and pruned neural estimators with naive Bayes, an ordinary Bayesian network, LARC, and pruned LARC on DNA, Mushroom, Audiology, and Soybean density-estimation tasks, plus an order-2 multi-Binomial model on DNA only; it selects neural size, regularization, smoothing, and pruning settings with five-fold cross-validation on the training portion and evaluates average test negative log likelihood.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, datasets, models, and protocol",
+            "section": "III. Experiments",
+            "table": "I"
+          },
+          "support": "Specifies the four datasets and splits, comparison models, tuning ranges, cross-validation, and test log-likelihood metric."
+        }
+      ],
+      "limitations": [
+        "The four tasks are fixed-dimensional tabular density-estimation problems rather than language data, and the protocol does not report repeated random splits."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-2000-pruned-network-results",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "In the repository manuscript’s Table I, the pruned neural network has the lowest mean test negative log likelihood on all four datasets—82.9 for DNA, 31.25 for Mushroom, 16.37 for Audiology, and 16.55 for Soybean—and the reported pairwise tests favor it over each comparator except pruned LARC on Audiology, where p = .20.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, result table and paired comparisons",
+            "section": "III.A. Results",
+            "table": "I"
+          },
+          "support": "Reports all model means, standard deviations of the average, and p-values and identifies the Audiology pruned-LARC exception."
+        }
+      ],
+      "limitations": [
+        "Lower values are better because the metric is negative log likelihood; these exact numbers belong to the repository manuscript and differ slightly from the conference table for pruned LARC.",
+        "The result is bounded to the listed implementations, splits, hyperparameter selection, and likelihood metric."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-bengio-2000-statistical-cautions",
+      "workId": "bengio-bengio-1999-neural-joint-distributions",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "The authors caution that their paired significance calculation treats test-case log likelihoods as independent and conditions on the learned model, omitting variability from selecting another training set; they also state that likelihood comparisons do not by themselves establish usefulness for classification or outlier detection.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-bengio-2000-idiap-full-text",
+          "locator": {
+            "label": "Repository manuscript, statistical and task cautions",
+            "section": "III.A. Results",
+            "paragraph": "Discussion following Table I"
+          },
+          "support": "States the test assumptions, training-set-variability omission, and distinction between likelihood and task usefulness."
+        }
+      ],
+      "limitations": [
+        "This claim records the authors’ own cautions and does not recompute the tests from the underlying case-level scores."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "bengio-2003-joint-distribution-adaptation",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "statement": "The JMLR paper cites both Bengio and Bengio 2000 publications for the prior neural factorization of a high-dimensional discrete joint distribution and says its language model adapts that idea to variable-length word sequences by reusing the conditional prediction function across time and sharing learned word-feature parameters across input positions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Prior joint model and language adaptation, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "First paragraph"
+          },
+          "support": "Cites the two precursor publications together, describes the shared factorization, and specifies the variable-length, repeated-word-domain, and parameter-sharing adaptations."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Bengio and Bengio references, printed p. 1153",
+            "section": "References",
+            "pageStart": 1153,
+            "pageEnd": 1153,
+            "paragraph": "Bengio and Bengio 2000a,b entries"
+          },
+          "support": "Identifies the IEEE and NIPS publications by their titles, venues, volumes, and pages."
+        }
+      ],
+      "limitations": [
+        "The documented adaptation concerns the joint-distribution mechanism; it is not evidence that the precursor already implemented language modeling or jointly learned word vectors, and it is not a sole-priority claim for neural language models."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-01"
+    },
+    {
       "id": "bengio-2003-ngram-generalization-limit",
       "workId": "bengio-2000-neural-probabilistic-language-model",
       "ideaIds": [
@@ -7293,6 +8109,61 @@
       ]
     },
     {
+      "id": "bengio-bengio-1999-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "bengio-bengio-1999-neural-joint-distributions"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Bengio et al. cite both publications in the precursor family, describe their neural product-of-conditionals joint model, and identify the language model as a large-scale application of the same idea with word-valued variables, one conditional prediction function reused across time, and learned word-feature parameters shared across input positions. The edge is limited to that neural joint-distribution mechanism and does not assign the precursor priority for word representations or neural language modeling.",
+      "claimIds": [
+        "bengio-bengio-1999-factorized-joint-model",
+        "bengio-bengio-1999-shared-conditional-network",
+        "bengio-2003-joint-distribution-adaptation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Documented joint-model adaptation, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "First paragraph"
+          },
+          "support": "The target paper cites Bengio and Bengio 2000a,b together, restates their joint-distribution construction, and describes the language-model changes as an application of the same idea."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Precursor bibliography entries, printed p. 1153",
+            "section": "References",
+            "pageStart": 1153,
+            "pageEnd": 1153,
+            "paragraph": "Bengio and Bengio 2000a,b entries"
+          },
+          "support": "The complete target bibliography resolves both members of the precursor version family."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge targets one intellectual work rather than drawing an unsupported direction between its conference, research-report, and journal versions."
+        },
+        {
+          "status": "resolved",
+          "note": "The target separately credits earlier distributed-representation and neural-language-model research, so this edge is scoped to neural autoregressive joint-density modeling."
+        }
+      ]
+    },
+    {
       "id": "jelinek-mercer-1980-to-bengio-2000",
       "from": {
         "kind": "work",
@@ -7841,19 +8712,73 @@
       "successCriterion": "The learner can reconstruct report equations (21)–(26), explain the normalization term and D₁/D₂/D₃₊ branches, distinguish backoff, interpolated, single-discount, multi-discount, held-out, and fixed variants, and report each comparison with its corpus, order, training-size, and attribution limits."
     },
     {
+      "id": "beginner-bengio-bengio-1999-conditional-questions",
+      "mode": "beginner",
+      "objective": "Turn one joint assignment into an ordered sequence of conditional questions, then trace how constrained shared hidden units let those questions reuse evidence without treating the hidden units as random variables, word vectors, or future-aware features.",
+      "workIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "ideaIds": [
+        "neural-joint-distribution-factorization",
+        "low-dimensional-feature-encoding-for-large-domains"
+      ],
+      "claimIds": [
+        "bengio-bengio-1999-factorized-joint-model",
+        "bengio-bengio-1999-shared-conditional-network",
+        "bengio-bengio-2000-language-feature-bridge"
+      ],
+      "prerequisites": [
+        "Joint and conditional probability",
+        "Multiplication rule for probabilities",
+        "Basic neural-network layers"
+      ],
+      "successCriterion": "Given three discrete variables and an ordering, the learner can write the three conditional factors, identify which inputs each output may inspect, explain what hidden computation is shared, predict why another order can change an approximate model, and distinguish the paper’s word-feature proposal from an implemented language model."
+    },
+    {
+      "id": "expert-bengio-bengio-1999-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the ordered neural density estimator, its connectivity and normalization constraints, O(n²H) capacity statement, likelihood or MAP training, and pruning rule; then audit the four-dataset evidence with its version-specific table and statistical boundaries.",
+      "workIds": [
+        "bengio-bengio-1999-neural-joint-distributions"
+      ],
+      "ideaIds": [
+        "neural-joint-distribution-factorization"
+      ],
+      "claimIds": [
+        "bengio-bengio-1999-factorized-joint-model",
+        "bengio-bengio-1999-shared-conditional-network",
+        "bengio-bengio-1999-quadratic-capacity",
+        "bengio-bengio-1999-likelihood-map-training",
+        "bengio-bengio-1999-pruning-heuristic",
+        "bengio-bengio-2000-tabular-evaluation",
+        "bengio-bengio-2000-pruned-network-results",
+        "bengio-bengio-2000-statistical-cautions"
+      ],
+      "prerequisites": [
+        "Chain rule for joint distributions",
+        "Categorical softmax likelihood",
+        "Feed-forward neural networks",
+        "Maximum likelihood and MAP estimation",
+        "Cross-validation and paired tests"
+      ],
+      "successCriterion": "The learner can derive the product and log-likelihood objectives, verify the triangular no-future connectivity and normalization argument, state the conditions behind O(n²H), reproduce the pruning decision rule, and report the four-dataset result without transferring conference-table values or omitting the Audiology and training-variability cautions."
+    },
+    {
       "id": "beginner-bengio-2003-shared-representations",
       "mode": "beginner",
-      "objective": "Manipulate a word substitution and trace how a shared learned vector changes one fixed-window next-word distribution, distinguishing smooth reuse across similar words from count-model backoff and from unlimited context.",
+      "objective": "Begin with the cited tabular product-of-conditionals model, then manipulate a word substitution and trace how its language adaptation reuses one conditional prediction function across time and learned word features across input positions, distinguishing smooth reuse from count-model backoff and unlimited context.",
       "workIds": [
         "bengio-2000-neural-probabilistic-language-model"
       ],
       "ideaIds": [
         "sparse-language-model-estimation",
+        "neural-joint-distribution-factorization",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling"
       ],
       "claimIds": [
         "bengio-2003-ngram-generalization-limit",
+        "bengio-2003-joint-distribution-adaptation",
         "bengio-2003-joint-word-feature-learning",
         "bengio-2003-smooth-feature-generalization",
         "bengio-2003-fixed-window-factorization",
@@ -7864,23 +8789,25 @@
         "N-gram counts and backoff",
         "Vectors as coordinates"
       ],
-      "successCriterion": "The learner can explain why one learned word vector is reused across contexts, predict how replacing a word with a nearby vector can change the output smoothly, identify the n−1-word window, and name the one-vector-per-word polysemy limit."
+      "successCriterion": "The learner can state how the cited fixed-vector joint estimator changes for variable-length word sequences, explain why one conditional prediction function is reused across time and learned word features are shared across input positions and contexts, predict how replacing a word with a nearby vector can change the output smoothly, identify the n−1-word window, and name the one-vector-per-word polysemy limit."
     },
     {
       "id": "expert-bengio-2003-model-and-evidence",
       "mode": "expert",
-      "objective": "Reconstruct the lookup, hidden/direct paths, softmax, and penalized-likelihood objective; quantify the vocabulary-scaling bottleneck; and audit the Brown and Associated Press results with their mixture, ablation, denominator, optimization, and uncertainty boundaries.",
+      "objective": "Map the cited neural joint-distribution factorization onto the language model’s time-shared predictor, then reconstruct the lookup, hidden/direct paths, softmax, and penalized-likelihood objective; quantify the vocabulary-scaling bottleneck; and audit the Brown and Associated Press results with their mixture, ablation, denominator, optimization, and uncertainty boundaries.",
       "workIds": [
         "bengio-2000-neural-probabilistic-language-model"
       ],
       "ideaIds": [
         "conditional-stochastic-language-source",
+        "neural-joint-distribution-factorization",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling",
         "full-vocabulary-softmax-normalization",
         "neural-ngram-model-mixtures"
       ],
       "claimIds": [
+        "bengio-2003-joint-distribution-adaptation",
         "bengio-2003-fixed-window-factorization",
         "bengio-2003-feedforward-softmax-architecture",
         "bengio-2003-penalized-likelihood-training",
@@ -7902,7 +8829,7 @@
         "Stochastic gradient optimization",
         "Perplexity and relative change"
       ],
-      "successCriterion": "The learner can map C, x, H, U, W, and y through equation (1), explain why normalization costs scale with |V|, reproduce the controlled context and hidden-unit comparisons, distinguish bare from mixed models, compute the 19.2% and 6.8% baseline-relative reductions, and state why the direct-path and recurrence conclusions are bounded."
+      "successCriterion": "The learner can identify the shift from fixed vectors and position-specific conditionals to variable-length sequences and one conditional prediction function reused across time, distinguish that from word-feature sharing across input positions, map C, x, H, U, W, and y through equation (1), explain why normalization costs scale with |V|, reproduce the controlled context and hidden-unit comparisons, distinguish bare from mixed models, compute the 19.2% and 6.8% baseline-relative reductions, and state why the direct-path and recurrence conclusions are bounded."
     }
   ]
 }

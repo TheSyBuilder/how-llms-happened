@@ -407,6 +407,16 @@ function checkEvidence(
       `${path}.locator.pageEnd: ${locator.pageEnd} falls outside source pagination ${source.pagination.pageStart}–${source.pagination.pageEnd}`,
     );
   }
+
+  if (
+    source?.pagination?.scheme === "pdf-page" &&
+    locator &&
+    (Number.isInteger(locator.pageStart) || Number.isInteger(locator.pageEnd))
+  ) {
+    errors.push(
+      `${path}.locator: unpaginated PDF evidence must use stable structural anchors rather than PDF page positions`,
+    );
+  }
 }
 
 function checkNodeReference(reference, path, works, ideas, errors) {
