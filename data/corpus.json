@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-01",
+  "asOf": "2026-08-03",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1194,6 +1194,145 @@
       ]
     },
     {
+      "id": "hinton-1986-learning-distributed-representations",
+      "title": "Learning Distributed Representations of Concepts",
+      "authors": [
+        "Geoffrey E. Hinton"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "G. E. Hinton, “Learning Distributed Representations of Concepts,” Proceedings of the Eighth Annual Conference of the Cognitive Science Society, 1–12 (1986).",
+      "chronology": {
+        "orderingEventId": "hinton-1986-conference-presentation",
+        "events": [
+          {
+            "id": "hinton-1986-conference-presentation",
+            "kind": "conference-presentation",
+            "label": "Scheduled Cognitive Science Society presentation",
+            "date": {
+              "value": "1986-08-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hinton-1986-cogsci-proceedings",
+                "precision": "day",
+                "locator": "Official conference program, Friday 15 August 1986 schedule; conference held 15–17 August in Amherst"
+              }
+            ],
+            "versionId": "hinton-1986-proceedings-version",
+            "sourceIds": [
+              "hinton-1986-cogsci-proceedings"
+            ]
+          },
+          {
+            "id": "hinton-1986-proceedings-publication",
+            "kind": "proceedings-publication",
+            "label": "Cognitive Science Society proceedings publication",
+            "date": {
+              "value": "1986",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hinton-1986-cogsci-proceedings",
+                "precision": "year",
+                "locator": "Official proceedings title and copyright pages, 1986"
+              },
+              {
+                "sourceId": "hinton-1986-escholarship-record",
+                "precision": "year",
+                "locator": "Institutional repository citation, publication year 1986"
+              }
+            ],
+            "versionId": "hinton-1986-proceedings-version",
+            "sourceIds": [
+              "hinton-1986-cogsci-proceedings",
+              "hinton-1986-escholarship-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "hinton-1986-proceedings-version",
+          "title": "Learning Distributed Representations of Concepts",
+          "authors": [
+            "Geoffrey E. Hinton"
+          ],
+          "kind": "proceedings",
+          "label": "Original Cognitive Science Society proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "G. E. Hinton, “Learning Distributed Representations of Concepts,” in Proceedings of the Eighth Annual Conference of the Cognitive Science Society, pp. 1–12, Amherst, Massachusetts, 1986.",
+            "venue": "Proceedings of the Eighth Annual Conference of the Cognitive Science Society",
+            "publisher": "Lawrence Erlbaum Associates",
+            "publicationPlaces": [
+              "Hillsdale, New Jersey"
+            ],
+            "pages": [
+              "1-12"
+            ],
+            "identifiers": [
+              {
+                "type": "isbn",
+                "value": "0-89859-864-8",
+                "label": "Proceedings ISBN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "hinton-1986-cogsci-proceedings",
+            "hinton-1986-escholarship-record",
+            "hinton-1986-author-full-text"
+          ],
+          "notes": "The official program supplies the scheduled presentation date of 15 August 1986; the proceedings publication itself is dated only to 1986. The eScholarship record’s normalized January date and 2024 repository-ingest date are not treated as publication events. No DOI or open-content license was verified."
+        }
+      ],
+      "canonicalVersionId": "hinton-1986-proceedings-version",
+      "preferredSourceIds": [
+        "hinton-1986-cogsci-proceedings",
+        "hinton-1986-escholarship-record",
+        "hinton-1986-author-full-text"
+      ],
+      "sourceIds": [
+        "hinton-1986-cogsci-proceedings",
+        "hinton-1986-escholarship-record",
+        "hinton-1986-author-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper supplies a concrete, inspected example in which a network learns internal distributed codes from relational propositions and uses their geometry to generalize within a small structured domain. Bengio et al. later cite this work when describing learned distributed representations for symbolic data. It is retained as a representation-learning precursor, not as a language model or a claim of priority for distributed representations, backpropagation, or modern word vectors."
+      },
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization"
+      ],
+      "significance": {
+        "beginner": "Neutral person and relation symbols are translated into learned compact patterns whose similarities reflect useful family-tree regularities, allowing some unseen relations to be completed without hand-written semantic features.",
+        "expert": "A deterministic feed-forward sigmoid network learns separate six-unit role-specific codes for person and relation inputs, exposes isomorphic family structure in those codes, and tests four withheld relation instances across two random initializations."
+      },
+      "limitations": [
+        "The experiment uses two synthetic isomorphic family trees, 24 people, 12 relation types, and 104 relation instances; four facts are withheld and the same entities, relations, and templates remain in training.",
+        "Only two random initializations are reported: one network answers 4 of 4 held-out facts correctly and the other answers 3 of 4. There is no baseline, confidence interval, significance test, or broader held-out study.",
+        "The paper describes the chosen layered family-task architecture as somewhat arbitrary and demonstrates only one feasible design, not the best or only design.",
+        "The architecture is feed-forward, not recurrent, and its role-specific six-unit codes are not one shared modern word-embedding table.",
+        "The word-form analogy is explicitly limited: lexical ambiguity such as bank would require phrase or sentence context that the simulation does not model.",
+        "The author says there is no domain-independent prescriptive theory of sensible generalization; the reported result is bounded to particular structured domains.",
+        "The learned-unit interpretations are qualitative readings of weights rather than quantitative disentanglement measurements, and sex is omitted from one code because it is redundant for the task.",
+        "The family relations encode binary-sex and heteronormative assumptions that require historical contextualization.",
+        "The paper calls major aspects of the learning procedure biologically implausible; the paper and complete proceedings have no verified open redistribution license."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The day-level ordering represents the scheduled conference presentation, while proceedings publication remains at year precision."
+        }
+      ]
+    },
+    {
       "id": "katz-1987-sparse-data",
       "title": "Estimation of Probabilities from Sparse Data for the Language Model Component of a Speech Recognizer",
       "authors": [
@@ -1374,6 +1513,205 @@
           "status": "open",
           "note": "No publisher-authorized open full text or author-hosted copy was identified; the inspected university-hosted scan is not treated as evidence of redistribution permission.",
           "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required to classify the article as open full text."
+        }
+      ]
+    },
+    {
+      "id": "elman-1988-finding-structure-in-time",
+      "title": "Finding Structure in Time",
+      "authors": [
+        "Jeffrey L. Elman"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "J. L. Elman, “Finding Structure in Time,” Cognitive Science 14(2), 179–211 (March 1990); earlier version: CRL Technical Report 8801 (April 1988).",
+      "chronology": {
+        "orderingEventId": "elman-1988-crl-report-publication",
+        "events": [
+          {
+            "id": "elman-1988-crl-report-publication",
+            "kind": "technical-report",
+            "label": "CRL Technical Report 8801",
+            "date": {
+              "value": "1988-04",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "elman-1988-crl-report-abstract",
+                "precision": "month",
+                "locator": "CRL Newsletter 2(4), printed p. 3, Technical Report 8801/April entry"
+              }
+            ],
+            "versionId": "elman-1988-crl-report-version",
+            "sourceIds": [
+              "elman-1988-crl-report-abstract"
+            ]
+          },
+          {
+            "id": "elman-1990-cognitive-science-publication",
+            "kind": "journal-publication",
+            "label": "Cognitive Science journal publication",
+            "date": {
+              "value": "1990-03",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "elman-1990-wiley-record",
+                "precision": "month",
+                "locator": "Publisher record, publication history, March 1990"
+              },
+              {
+                "sourceId": "elman-1990-crossref-record",
+                "precision": "month",
+                "locator": "Crossref publisher deposit, issued March 1990"
+              }
+            ],
+            "versionId": "elman-1990-cognitive-science-journal-version",
+            "sourceIds": [
+              "elman-1990-wiley-record",
+              "elman-1990-crossref-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "elman-1988-crl-report-version",
+          "title": "Finding Structure in Time",
+          "authors": [
+            "Jeffrey L. Elman"
+          ],
+          "kind": "technical-report",
+          "label": "Earlier CRL technical report",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. L. Elman, “Finding Structure in Time,” Center for Research in Language Technical Report 8801, University of California, San Diego, April 1988.",
+            "venue": "Center for Research in Language Technical Reports",
+            "publisher": "University of California, San Diego",
+            "identifiers": [
+              {
+                "type": "report-number",
+                "value": "CRL-TR-8801",
+                "label": "CRL Technical Report 8801"
+              }
+            ]
+          },
+          "sourceIds": [
+            "elman-1988-crl-report-abstract",
+            "elman-1990-author-publications-record"
+          ],
+          "notes": "The contemporary CRL newsletter identifies Technical Report 8801/April and supplies only an abstract. The author’s publication record describes the report as an earlier version that is unavailable and superseded by the journal article. Report-specific material, including the abstract’s pronominal-reference simulation, is not transferred to the journal version or promoted as a claim."
+        },
+        {
+          "id": "elman-1990-cognitive-science-journal-version",
+          "title": "Finding Structure in Time",
+          "authors": [
+            "Jeffrey L. Elman"
+          ],
+          "kind": "journal",
+          "label": "Canonical Cognitive Science journal article",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. L. Elman, “Finding Structure in Time,” Cognitive Science, vol. 14, no. 2, pp. 179–211, March 1990.",
+            "venue": "Cognitive Science",
+            "volume": "14",
+            "issues": [
+              "2"
+            ],
+            "pages": [
+              "179-211"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1207/s15516709cog1402_1",
+                "label": "Current article DOI"
+              },
+              {
+                "type": "doi",
+                "value": "10.1016/0364-0213(90)90002-E",
+                "label": "Legacy Elsevier DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0364-0213",
+                "label": "Print ISSN"
+              },
+              {
+                "type": "issn",
+                "value": "1551-6709",
+                "label": "Electronic ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "elman-1990-author-publications-record",
+            "elman-1990-wiley-record",
+            "elman-1990-crossref-record",
+            "elman-1990-sciencedirect-record",
+            "elman-1990-ucsd-full-text"
+          ],
+          "notes": "Wiley and Crossref support March 1990 and the current DOI. The ScienceDirect legacy publisher record associates the same article with Cognitive Science 14(2), April–June 1990, and DOI 10.1016/0364-0213(90)90002-E; both DOI identifiers remain attached to this single journal version. The separate 1991 Machine Learning article on simple recurrent networks and grammatical structure is not a version of this work."
+        }
+      ],
+      "canonicalVersionId": "elman-1990-cognitive-science-journal-version",
+      "preferredSourceIds": [
+        "elman-1990-wiley-record",
+        "elman-1990-crossref-record",
+        "elman-1990-sciencedirect-record",
+        "elman-1990-ucsd-full-text"
+      ],
+      "sourceIds": [
+        "elman-1988-crl-report-abstract",
+        "elman-1990-author-publications-record",
+        "elman-1990-wiley-record",
+        "elman-1990-crossref-record",
+        "elman-1990-sciencedirect-record",
+        "elman-1990-ucsd-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The work connects next-item prediction, carried hidden state, and emergent task-dependent internal structure in inspected sequence experiments. Its simple recurrent architecture is a consequential precursor for recurrent modeling, while Bengio et al. later cite the journal article specifically for learned distributed representations of symbolic data. The record keeps those two contributions distinct and does not recast the experiments as a normalized language model."
+      },
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "simple-recurrent-context-memory",
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "significance": {
+        "beginner": "A copy of the previous hidden pattern lets the same current item produce different predictions after different histories, and learning to predict the next item organizes hidden states without supplying word-class labels.",
+        "expert": "The architecture copies hidden activation one-for-one through fixed unit-weight links, trains the remaining paths with local next-step error, and reports task-dependent lexical-state geometry and successor-frequency fit on controlled generated sequences."
+      },
+      "limitations": [
+        "The hidden-to-context copy connections are fixed at weight 1.0; only the input/context-to-hidden and hidden-to-output paths are trained. The article does not describe full backpropagation through earlier copied states.",
+        "The lexical experiment uses 29 words in 10,000 generated two- and three-word sentences, orthogonal one-hot 31-bit inputs, 150 hidden units plus 150 context units, and six passes; it is not a natural-corpus language-model evaluation.",
+        "The paper inconsistently reports 27,534, 27,354, and 27,454 words for the lexical corpus. These source counts remain unresolved and are not normalized into one value.",
+        "Network output activations need not sum to one. The reported successor-frequency comparison is not a normalized softmax distribution, likelihood objective, or perplexity evaluation.",
+        "Averaging a word’s hidden states across contexts can create a clustering artifact because preceding contexts are category-dependent; the described token-level check is not displayed and has no quantitative clustering metric.",
+        "The memory is practically bounded by finite numerical precision, repeated nonlinear transformation, exponential decay, and delayed-error training; representational capacity remains open.",
+        "The experiments report no seed count, confidence intervals, recurrence ablation, modern baseline, natural-language-scale syntax test, or reproducible implementation, and the conclusions are described as preliminary.",
+        "The unavailable superseded 1988 report cannot support journal-specific technical claims, and its abstract mentions a pronominal-reference simulation absent from the inspected 1990 article.",
+        "No Creative Commons or other redistribution license was verified for the journal article or the institutionally hosted scan."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The full CRL Technical Report 8801 is unavailable, so its complete overlap with and differences from the journal article cannot be audited.",
+          "resolutionCondition": "Locate and compare a complete report copy against the March 1990 journal text."
+        },
+        {
+          "status": "open",
+          "note": "The journal article gives three incompatible lexical-corpus totals: 27,534, 27,354, and 27,454 words.",
+          "resolutionCondition": "An archived generator output, code release, or author correction would be required to resolve the count."
+        },
+        {
+          "status": "resolved",
+          "note": "The current Wiley DOI and the legacy Elsevier DOI in the ScienceDirect record identify the same journal article rather than separate versions."
         }
       ]
     },
@@ -2236,6 +2574,7 @@
         "conditional-stochastic-language-source",
         "sparse-language-model-estimation",
         "neural-joint-distribution-factorization",
+        "learned-distributed-symbol-representations",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling",
         "full-vocabulary-softmax-normalization",
@@ -2270,8 +2609,8 @@
         },
         {
           "status": "open",
-          "note": "The paper’s explicitly cited representation and earlier neural-language-model precursors are not yet audited as corpus nodes.",
-          "resolutionCondition": "Audit Hinton 1986, Elman 1990, Miikkulainen and Dyer 1991, and Xu and Rudnicky 2000 before adding those lineage edges."
+          "note": "The paper’s cited Hinton 1986 and Elman 1990 representation precursors are now audited; the separately cited neural-language-model precursors remain outside the promoted corpus.",
+          "resolutionCondition": "Audit Miikkulainen and Dyer 1991 and Xu and Rudnicky 2000 before adding paper-specific lineage edges for those neural-language-model antecedents."
         },
         {
           "status": "open",
@@ -2739,6 +3078,106 @@
         {
           "status": "resolved",
           "note": "The recorded evidence concerns the paper’s fixed equal-weight neural/interpolated-trigram mixtures, not a general claim that mixtures always improve either component."
+        }
+      ]
+    },
+    {
+      "id": "learned-distributed-symbol-representations",
+      "name": "Learned distributed representations for symbols",
+      "kind": "mechanism",
+      "description": "A system can learn multi-unit internal patterns for otherwise discrete symbols so task-relevant regularities are encoded across several units rather than supplied as hand-written symbolic features.",
+      "claimIds": [
+        "hinton-1986-network-chosen-representations",
+        "hinton-1986-family-tree-architecture",
+        "hinton-1986-family-feature-structure",
+        "hinton-1986-word-meaning-boundary",
+        "hinton-1986-squared-error-batch-training",
+        "hinton-1986-implementation-boundaries",
+        "elman-1990-emergent-lexical-classes",
+        "elman-1990-contextual-token-representations",
+        "elman-1990-novel-word-context-test",
+        "bengio-2003-distributed-representation-precursors"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This shared idea records a broad representation principle. It does not equate Hinton’s role-specific family codes, Elman’s context-dependent hidden states, and Bengio’s static jointly learned word lookup rows."
+        }
+      ]
+    },
+    {
+      "id": "similarity-based-distributed-generalization",
+      "name": "Similarity-based generalization in learned representation space",
+      "kind": "mechanism",
+      "description": "Learned internal geometry can expose task-relevant similarities so a model’s behavior transfers among structurally related cases rather than depending only on exact symbolic identity.",
+      "claimIds": [
+        "hinton-1986-domain-regularity-geometry",
+        "hinton-1986-family-tree-architecture",
+        "hinton-1986-family-feature-structure",
+        "hinton-1986-held-out-family-generalization",
+        "hinton-1986-generalization-theory-limit"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The Hinton evidence is restricted to two small isomorphic family graphs and four withheld facts; it is not broad semantic or cross-domain transfer evidence."
+        }
+      ]
+    },
+    {
+      "id": "simple-recurrent-context-memory",
+      "name": "Simple recurrent context memory",
+      "kind": "mechanism",
+      "description": "A copy of the previous hidden activation is supplied as context for the next step, making current state and output depend jointly on the current input and an iterated summary of prior processing.",
+      "claimIds": [
+        "elman-1990-jordan-attribution",
+        "elman-1990-simple-recurrent-context",
+        "elman-1990-task-dependent-memory",
+        "elman-1990-contextual-token-representations",
+        "elman-1990-memory-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The copied hidden-to-context links are fixed at 1.0; this idea must not be rendered as though every recurrent connection is learned or the paper trained with full backpropagation through time."
+        }
+      ]
+    },
+    {
+      "id": "next-item-prediction-training",
+      "name": "Next-item prediction as a training task",
+      "kind": "objective",
+      "description": "The observed next element supplies a local target, and pressure to predict it can make hidden state encode regularities in the preceding sequence.",
+      "claimIds": [
+        "elman-1990-next-word-prediction-setup",
+        "elman-1990-successor-likelihood-fit",
+        "elman-1990-emergent-lexical-classes",
+        "elman-1990-novel-word-context-test"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "For Elman’s lexical experiment this objective uses unnormalized output activations on generated sentences; it is not a softmax language-model likelihood or perplexity objective."
+        }
+      ]
+    },
+    {
+      "id": "emergent-contextual-lexical-structure",
+      "name": "Emergent contextual lexical structure",
+      "kind": "finding",
+      "description": "Hidden states induced by prediction over controlled word sequences can cluster by generator-defined lexical roles even though the input vectors themselves carry no category or meaning labels.",
+      "claimIds": [
+        "elman-1990-next-word-prediction-setup",
+        "elman-1990-successor-likelihood-fit",
+        "elman-1990-emergent-lexical-classes",
+        "elman-1990-contextual-token-representations",
+        "elman-1990-clustering-artifact-check",
+        "elman-1990-novel-word-context-test"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The plotted type averages can reflect category-dependent preceding contexts; the paper’s described token-level check is not displayed and supplies no quantitative cluster metric."
         }
       ]
     }
@@ -3364,6 +3803,67 @@
       "accessNote": "A third-party reading copy retaining printed pp. 237–264. No verified open license accompanies the copy; it is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
     },
     {
+      "id": "hinton-1986-cogsci-proceedings",
+      "relatedWorkIds": [
+        "hinton-1986-learning-distributed-representations"
+      ],
+      "title": "Official proceedings and program for the Eighth Annual Conference of the Cognitive Science Society",
+      "url": "https://cognitivesciencesociety.org/wp-content/uploads/2019/01/cogsci_8.pdf",
+      "accessDate": "2026-08-03",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "hinton-1986-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Cognitive Science Society’s complete proceedings supply the 1986 volume title, Lawrence Erlbaum Associates imprint, ISBN 0-89859-864-8, Amherst conference dates of 15–17 August, the Friday 15 August schedule entry, and Hinton’s paper at printed pp. 1–12. The file is used for bibliographic and chronology evidence; its all-rights-reserved notice is not treated as an open license."
+    },
+    {
+      "id": "hinton-1986-escholarship-record",
+      "relatedWorkIds": [
+        "hinton-1986-learning-distributed-representations"
+      ],
+      "title": "eScholarship record for Learning Distributed Representations of Concepts",
+      "url": "https://escholarship.org/uc/item/79w838g1",
+      "accessDate": "2026-08-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "hinton-1986-proceedings-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The University of California repository record confirms Geoffrey E. Hinton, the paper title, Cognitive Science Society venue, and 1986 year. Its normalized 1 January date and 2024 repository-ingest timestamp are not publication events, and the record exposes no Creative Commons license."
+    },
+    {
+      "id": "hinton-1986-author-full-text",
+      "relatedWorkIds": [
+        "hinton-1986-learning-distributed-representations"
+      ],
+      "title": "Author-hosted full text of Learning Distributed Representations of Concepts",
+      "url": "https://www.cs.toronto.edu/~hinton/absps/families.pdf",
+      "accessDate": "2026-08-03",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "hinton-1986-proceedings-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 12
+      },
+      "accessNote": "Author-hosted scan inspected in full and retaining printed pp. 1–12, equations, figures, footnotes, and references. The paper states ©1986 Geoffrey E. Hinton and no verified open redistribution license; it is linked for inspection and is not copied into this repository."
+    },
+    {
       "id": "katz-1987-ieee-record",
       "relatedWorkIds": [
         "katz-1987-sparse-data"
@@ -3424,6 +3924,123 @@
         "pageEnd": 401
       },
       "accessNote": "A University of Pennsylvania teaching copy of the published two-page IEEE article, retaining printed pp. 400–401, the full equation and reference sequence, manuscript history, masthead, and IEEE copyright line. No independent redistribution license is provided; the copy is non-preferred, is not described as openly licensed, and is not redistributed by this repository."
+    },
+    {
+      "id": "elman-1988-crl-report-abstract",
+      "relatedWorkIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "title": "CRL Newsletter abstract for Technical Report 8801",
+      "url": "https://crl.ucsd.edu/newsletter/2-4/2-4.pdf",
+      "accessDate": "2026-08-03",
+      "sourceClass": "primary-snippet",
+      "authority": "institutional-host",
+      "versionIds": [
+        "elman-1988-crl-report-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The contemporary April 1988 CRL Newsletter identifies “Finding Structure in Time,” Jeff Elman, as Technical Report 8801/April and prints an abstract on p. 3. It is not the report full text. The abstract mentions a pronominal-reference simulation that is not promoted as a journal-version claim."
+    },
+    {
+      "id": "elman-1990-author-publications-record",
+      "relatedWorkIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "title": "Jeffrey Elman publication record for Finding Structure in Time",
+      "url": "https://jeffelman.ucsd.edu/research/publications/",
+      "accessDate": "2026-08-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "elman-1988-crl-report-version",
+        "elman-1990-cognitive-science-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author-maintained bibliography identifies the Cognitive Science article and calls CRL Technical Report 8801 an earlier version that is no longer available and has been superseded by the published article. It does not supply the report’s April 1988 date. Its obsolete direct PDF link is not treated as full-text access."
+    },
+    {
+      "id": "elman-1990-wiley-record",
+      "relatedWorkIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "title": "Wiley record for Finding Structure in Time",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog1402_1",
+      "accessDate": "2026-08-03",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "elman-1990-cognitive-science-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The current publisher record identifies Jeffrey L. Elman, Cognitive Science 14(2), pp. 179–211, March 1990, and DOI 10.1207/s15516709cog1402_1. A “Free Access” label is not treated as a Creative Commons or redistribution license."
+    },
+    {
+      "id": "elman-1990-crossref-record",
+      "relatedWorkIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "title": "Crossref publisher deposit for Finding Structure in Time",
+      "url": "https://api.crossref.org/works/10.1207%2Fs15516709cog1402_1",
+      "accessDate": "2026-08-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "elman-1990-cognitive-science-journal-version"
+      ],
+      "supports": [
+        "metadata",
+        "reference-list"
+      ],
+      "accessNote": "The structured publisher deposit gives March 1990, volume 14, issue 2, pp. 179–211, current DOI 10.1207/s15516709cog1402_1, both ISSNs, and the deposited references. It does not supply the legacy Elsevier DOI."
+    },
+    {
+      "id": "elman-1990-sciencedirect-record",
+      "relatedWorkIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "title": "ScienceDirect legacy publisher record for Finding Structure in Time",
+      "url": "https://www.sciencedirect.com/science/article/pii/036402139090002E",
+      "accessDate": "2026-08-03",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "elman-1990-cognitive-science-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The legacy publisher record identifies Jeffrey L. Elman’s article in Cognitive Science, volume 14, issue 2, April–June 1990, pp. 179–211, and DOI 10.1016/0364-0213(90)90002-E. The issue coverage does not replace Wiley’s March 1990 first-publication month."
+    },
+    {
+      "id": "elman-1990-ucsd-full-text",
+      "relatedWorkIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "title": "UCSD-hosted reading copy of Finding Structure in Time",
+      "url": "https://cogsci.ucsd.edu/~rik/courses/readings/elman90-fsit.pdf",
+      "accessDate": "2026-08-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-host",
+      "versionIds": [
+        "elman-1990-cognitive-science-journal-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 179,
+        "pageEnd": 211
+      },
+      "accessNote": "University-hosted scan retaining printed pp. 179–211, figures, tables, footnotes, and references. No verified open redistribution license accompanies the scan; it is used for inspection and exact locators and is not copied into this repository."
     },
     {
       "id": "kneser-ney-1995-ieee-record",
@@ -5489,6 +6106,299 @@
       "checkedDate": "2026-07-28"
     },
     {
+      "id": "hinton-1986-network-chosen-representations",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "learned-distributed-symbol-representations"
+      ],
+      "statement": "The paper trains a network on propositions expressed with neutral local symbols and has the network choose internal distributed activity patterns that expose useful features rather than supplying similarity patterns by hand.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Learned internal-pattern motivation, printed p. 1",
+            "section": "Abstract",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "States that the learning procedure chooses activity patterns from propositions so implicit features can become explicit in internal representations."
+        },
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Local symbols mapped to learned patterns, printed p. 5",
+            "section": "2.2 Giving the Network the Freedom to Choose Representations",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "figure": "4"
+          },
+          "support": "Describes learned hidden patterns between local input and output symbols rather than externally assigned feature codes."
+        }
+      ],
+      "limitations": [
+        "The evidence is a small relational simulation, not a text corpus, and the paper does not claim a domain-independent representation recipe."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-domain-regularity-geometry",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "Hinton argues that arbitrary distributed patterns need not support useful transfer; internal representations help when their similarity structure makes regularities of a particular domain easy for later layers to express.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Useful versus arbitrary representation geometry, printed pp. 3–4",
+            "section": "2.1 Choosing Role-Specific Representations",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "Contrasts arbitrary random codes with representations whose similarities expose domain regularities and simplify relational inferences."
+        }
+      ],
+      "limitations": [
+        "The passage is a mechanism argument illustrated by the family-tree domain, not a quantitative comparison of representation geometries across tasks."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-family-tree-architecture",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "In the family-relation task, 24 local person-1 inputs and 12 local relation inputs feed separate six-unit learned representation groups, then a 12-unit central layer and a six-unit penultimate layer predict one of 24 local person-2 outputs; the deterministic network is trained with backpropagation to complete a relation triple.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Family-tree network and task, printed pp. 5–7",
+            "section": "3. A Network that Learns Distributed Representations",
+            "pageStart": 5,
+            "pageEnd": 7,
+            "figure": "5"
+          },
+          "support": "Specifies the role-specific input, representation, central, penultimate, and output groups and the relation-completion training task."
+        }
+      ],
+      "limitations": [
+        "These role-specific codes are not a shared word lookup table, and the architecture has no recurrent state or language-model normalization.",
+        "The author describes this layered architecture as somewhat arbitrary and claims only that it is one feasible design, not the best or only design."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-family-feature-structure",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "Inspection of learned weights and activations is interpreted as encoding tree identity or nationality, generation, family branch, and output-person sex, while sex is absent from the person-1 code because it is redundant for predicting the specified relations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Qualitative interpretation of learned features, printed pp. 7–8",
+            "section": "3.1 The Representations",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "figure": "6–7"
+          },
+          "support": "Names the family-tree properties associated with particular learned-unit patterns and explains why one property is redundant for one role."
+        }
+      ],
+      "limitations": [
+        "The feature labels are qualitative author interpretations rather than ablations, probes, or quantitative disentanglement measurements."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-held-out-family-generalization",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "Four of 104 relation instances are withheld while 100 are trained for 1,500 sweeps; across two random initializations, one network answers 4 of 4 withheld facts and the other 3 of 4 under a 0.5 output threshold, with less sharply separated test activations than on training facts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Training split and duration, printed p. 6",
+            "section": "3. A Network that Learns Distributed Representations",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "Reports 104 relation instances, training on 100 of them for 1,500 sweeps, and updating the weights after each sweep."
+        },
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Two-run held-out results, printed p. 9",
+            "section": "3.3 Generalization",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "figure": "8"
+          },
+          "support": "Reports testing the four remaining instances from two random initializations, the 4/4 and 3/4 outcomes, the 0.5 correctness threshold, and softer held-out activations."
+        }
+      ],
+      "limitations": [
+        "The four withheld facts reuse trained people, relation types, and isomorphic graph templates; two runs provide no uncertainty estimate or evidence of cross-domain transfer."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-word-meaning-boundary",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "learned-distributed-symbol-representations"
+      ],
+      "statement": "The paper treats written word forms only as an analogy for neutral symbols and notes that lexical ambiguity such as bank requires phrase or sentence context, which the family-tree simulation does not model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Word-form and ambiguity qualification, printed p. 5",
+            "section": "2.2 Giving the Network the Freedom to Choose Representations",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "paragraph": "Footnote 3"
+          },
+          "support": "Explains that orthographic forms do not encode meaning and that ambiguous words need larger linguistic context absent from the simulation."
+        }
+      ],
+      "limitations": [
+        "The paper does not train on sentences or evaluate lexical meaning, ambiguity resolution, or next-word prediction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-generalization-theory-limit",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "The author says there is no domain-independent prescriptive theory of sensible generalization and limits the demonstration to learning regularities that support appropriate transfer in particular domains.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Scope of sensible generalization, printed pp. 9–10",
+            "section": "3.3 Generalization",
+            "pageStart": 9,
+            "pageEnd": 10
+          },
+          "support": "Limits the generalization account to domain-dependent regularities and rejects a universal prescriptive account."
+        }
+      ],
+      "limitations": [
+        "This explicit boundary rules out presenting the family-tree result as general semantic transfer."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-squared-error-batch-training",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "learned-distributed-symbol-representations"
+      ],
+      "statement": "The paper derives backpropagation from a summed squared-error objective over fixed input-output cases, accumulates derivatives over all cases before changing the weights, and uses a momentum term that carries the previous sweep’s weight change into the current update.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Summed squared-error objective, printed p. 10",
+            "section": "4. The Back-Propagation Learning Procedure",
+            "pageStart": 10,
+            "pageEnd": 10,
+            "equation": "3"
+          },
+          "support": "Defines total error as a half-sum of squared differences over cases and output units and derives gradients for its minimization."
+        },
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Batch accumulation and momentum update, printed p. 11",
+            "section": "4. The Back-Propagation Learning Procedure",
+            "pageStart": 11,
+            "pageEnd": 11,
+            "equation": "8–9"
+          },
+          "support": "States that the reported experiments accumulate derivatives over every input-output case before a weight update, then gives the gradient and momentum update equations."
+        }
+      ],
+      "limitations": [
+        "The simulations use a liberal 0.8/0.2 target-band variant of squared error rather than a sequence-probability likelihood, and the paper applies backpropagation attributed to Rumelhart, Hinton, and Williams rather than claiming to introduce it."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "hinton-1986-implementation-boundaries",
+      "workId": "hinton-1986-learning-distributed-representations",
+      "ideaIds": [
+        "learned-distributed-symbol-representations"
+      ],
+      "statement": "Hinton describes the layered family-task architecture as a somewhat arbitrary choice that demonstrates one possible design rather than the best or only design, and describes many aspects of the learning procedure as biologically implausible, especially a backward phase unlike any process then known in the brain.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Architecture-choice boundary, printed p. 6",
+            "section": "3. A Network that Learns Distributed Representations",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "Calls the layered-network choice somewhat arbitrary and says the experiment establishes only one way to perform the task, not the best or only way."
+        },
+        {
+          "sourceId": "hinton-1986-author-full-text",
+          "locator": {
+            "label": "Biological-plausibility boundary, printed p. 11",
+            "section": "4. The Back-Propagation Learning Procedure",
+            "pageStart": 11,
+            "pageEnd": 11
+          },
+          "support": "Calls many aspects biologically implausible and distinguishes the backward pass from processes known to occur in the brain."
+        }
+      ],
+      "limitations": [
+        "These qualifications bound architectural and biological interpretation; they do not negate the paper’s computational demonstration within the family-relation task."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
       "id": "katz-1987-turing-adjusted-count",
       "workId": "katz-1987-sparse-data",
       "ideaIds": [
@@ -5891,6 +6801,339 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-28"
+    },
+    {
+      "id": "elman-1990-jordan-attribution",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "simple-recurrent-context-memory"
+      ],
+      "statement": "Elman explicitly develops Jordan’s recurrent-state proposal but changes the feedback source: Jordan copies output activity into state units, whereas Elman copies the previous hidden pattern into context units.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Jordan architecture and Elman modification, printed pp. 182–184",
+            "section": "Networks with Memory",
+            "pageStart": 182,
+            "pageEnd": 184,
+            "figure": "1–2"
+          },
+          "support": "Attributes the state-unit architecture to Jordan and contrasts output feedback with Elman’s hidden-activation copy."
+        }
+      ],
+      "limitations": [
+        "This attribution prevents treating the article as the origin of recurrent state generally; Jordan’s work is not yet a promoted corpus node."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-simple-recurrent-context",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "simple-recurrent-context-memory"
+      ],
+      "statement": "At each step the previous hidden activation is copied one-for-one into context units through fixed connections of weight 1.0; the current input and copied context feed the hidden layer, while input/context-to-hidden and hidden-to-output connections are trainable.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Fixed context copy and trainable paths, printed pp. 182–184",
+            "section": "Networks with Memory",
+            "pageStart": 182,
+            "pageEnd": 184,
+            "figure": "2"
+          },
+          "support": "Specifies unit-weight hidden-to-context copying and distinguishes those fixed links from the trainable feed-forward paths."
+        }
+      ],
+      "limitations": [
+        "Current-step output error updates trainable connections locally; the article does not propagate that error through earlier copied states and should not be described as full backpropagation through time."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-task-dependent-memory",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "simple-recurrent-context-memory"
+      ],
+      "statement": "Because current hidden activity depends on both the current input and the preceding hidden state, the internal representation of time is intertwined with task processing and varies with the stimulus rather than acting as a literal clock or fixed delay line.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Task- and stimulus-dependent temporal state, printed p. 184",
+            "section": "Internal Representation of Time",
+            "pageStart": 184,
+            "pageEnd": 184
+          },
+          "support": "Explains why recurrent hidden state encodes time implicitly through the task and input history rather than as an external spatial position."
+        },
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Processing and memory conclusion, printed pp. 207–208",
+            "section": "Conclusions",
+            "pageStart": 207,
+            "pageEnd": 208
+          },
+          "support": "Reiterates that memory and processing are integrated in the evolving hidden state."
+        }
+      ],
+      "limitations": [
+        "Task-dependent state does not imply unbounded or perfectly retained memory."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-next-word-prediction-setup",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "statement": "The lexical experiment generates 10,000 two- and three-word sentences from 29 word types, concatenates them without sentence boundaries, encodes words as orthogonal one-hot 31-bit inputs, and uses 150 hidden units plus 150 context units while training the network for six passes to predict the next word.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Generated lexical corpus and network setup, printed pp. 195–198",
+            "section": "Discovering Lexical Classes From Word Order",
+            "pageStart": 195,
+            "pageEnd": 198,
+            "table": "3–5"
+          },
+          "support": "Gives the vocabulary, sentence generator, boundary-free stream, one-hot dimensionality, hidden/context size, passes, and next-word target."
+        }
+      ],
+      "limitations": [
+        "The source is internally inconsistent about the resulting token count: it prints 27,534 on pp. 195 and 197, 27,354 on pp. 196 and 199, and 27,454 on pp. 204–205; none is silently normalized here.",
+        "The generated micro-language is not a natural corpus, and the paper supplies no seed count, held-out language-model split, or recurrence ablation."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The article’s three incompatible lexical-corpus totals cannot be reconciled from the paper.",
+          "resolutionCondition": "Inspect archived generator output, code, or an author correction."
+        }
+      ],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-successor-likelihood-fit",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "statement": "After a raw next-word RMS error of 0.88, compared with 1.0 when every output is turned off, the paper compares network outputs with empirical successor-frequency vectors and reports RMS 0.053 (SD 0.100) and cosine 0.916 (SD 0.123), while explicitly noting that network outputs need not sum to one.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Successor-vector comparison and normalization boundary, printed pp. 197–198",
+            "section": "Discovering Lexical Classes From Word Order",
+            "pageStart": 197,
+            "pageEnd": 198
+          },
+          "support": "Reports the raw RMS and 1.0 all-outputs-off comparator, gives the empirical-vector RMS and cosine values, and distinguishes normalized empirical frequencies from unnormalized network activations."
+        }
+      ],
+      "limitations": [
+        "These activations are not a normalized next-word probability distribution, and the result is not a likelihood, softmax, perplexity, or held-out language-model evaluation.",
+        "The statistics summarize a controlled generated-corpus analysis without confidence intervals or repeated-run uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-emergent-lexical-classes",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "statement": "Although the fixed one-hot inputs contain no form-class or meaning features, clustering the prediction-trained hidden states separates nouns from verbs and further groups words by generator-defined subclasses.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Hidden-state lexical clustering, printed pp. 198–201",
+            "section": "Discovering Lexical Classes From Word Order",
+            "pageStart": 198,
+            "pageEnd": 201,
+            "figure": "7"
+          },
+          "support": "Describes the absence of lexical labels in the inputs and interprets the hierarchical clustering by major and finer generator-defined categories."
+        }
+      ],
+      "limitations": [
+        "The categories are properties of a hand-written sentence generator, not evidence that the model recovered unrestricted natural-language syntax or meaning."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-contextual-token-representations",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "simple-recurrent-context-memory",
+        "emergent-contextual-lexical-structure"
+      ],
+      "statement": "A word has no single hidden representation in isolation: its hidden pattern depends on the current one-hot word and prior context, allowing different token occurrences of the same type to occupy related but nonidentical states.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Context-dependent hidden representations, printed pp. 198–199",
+            "section": "Discovering Lexical Classes From Word Order",
+            "pageStart": 198,
+            "pageEnd": 199
+          },
+          "support": "States that hidden activity is evoked by each word and its context and that the network has no representation of a word in isolation."
+        },
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Similar but nonidentical contextual tokens, printed pp. 205–206",
+            "section": "Types, Tokens, and Structured Representations",
+            "pageStart": 205,
+            "pageEnd": 206,
+            "figure": "9"
+          },
+          "support": "Reports that occurrences of one lexical type have very similar but nonidentical hidden representations and shows token subtrees labeled by their originating contexts."
+        }
+      ],
+      "limitations": [
+        "These recurrent hidden states differ from Bengio et al.’s static per-word lookup rows and should not be rendered as interchangeable embeddings."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-clustering-artifact-check",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "emergent-contextual-lexical-structure"
+      ],
+      "statement": "The paper warns that averaging hidden states by word type can manufacture apparent clusters because preceding contexts are category-dependent, then says a clustering over every token kept occurrences associated with their word types.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Averaging-artifact warning, printed p. 199",
+            "section": "Discovering Lexical Classes From Word Order",
+            "pageStart": 199,
+            "pageEnd": 199,
+            "paragraph": "Footnote 6"
+          },
+          "support": "Warns that category-dependent preceding contexts can make type-averaged hidden patterns cluster even without learning and says the result should be checked on individual tokens."
+        },
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Completed all-token clustering check, printed p. 205",
+            "section": "Types, Tokens, and Structured Representations",
+            "pageStart": 205,
+            "pageEnd": 205
+          },
+          "support": "Describes clustering all 27,454 token patterns and reports that no lexical instance appears in a branch belonging to another item."
+        }
+      ],
+      "limitations": [
+        "The token-level dendrogram is not displayed and no cluster-quality metric is reported, so the check cannot be independently audited from the article."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-novel-word-context-test",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "statement": "With learned weights frozen, the novel symbol ZOG is substituted for MAN in 10,000 generated sentences; its contextual hidden states fall into the corresponding region without additional weight learning.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Novel-word substitution test, printed pp. 201–202",
+            "section": "Discovering Lexical Classes From Word Order",
+            "pageStart": 201,
+            "pageEnd": 202,
+            "figure": "8"
+          },
+          "support": "Describes the ZOG-for-MAN substitution, frozen weights, generated contexts, and resulting hidden-state placement."
+        }
+      ],
+      "limitations": [
+        "The test changes only a symbol inside the same hand-written generator and does not evaluate new natural-language vocabulary or learning from sparse real contexts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
+      "id": "elman-1990-memory-boundary",
+      "workId": "elman-1988-finding-structure-in-time",
+      "ideaIds": [
+        "simple-recurrent-context-memory"
+      ],
+      "statement": "The article identifies finite numerical precision, repeated nonlinear transformation and exponential decay, and delayed error as practical memory limits, leaves representational capacity open, and calls for more systematic memory and dynamical analysis.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Practical memory constraints, printed pp. 203–204",
+            "section": "Types, Tokens, and Structured Representations",
+            "pageStart": 203,
+            "pageEnd": 204
+          },
+          "support": "Names numerical, dynamical, and learning constraints and leaves capacity unresolved."
+        },
+        {
+          "sourceId": "elman-1990-ucsd-full-text",
+          "locator": {
+            "label": "Preliminary conclusions and open analyses, printed pp. 208–209",
+            "section": "Conclusions",
+            "pageStart": 208,
+            "pageEnd": 209
+          },
+          "support": "Calls the findings preliminary and requests systematic memory tests and analysis of temporal trajectories."
+        }
+      ],
+      "limitations": [
+        "The article does not establish long-context competence, natural-language-scale syntax learning, or an unbounded recurrent memory."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
     },
     {
       "id": "kneser-ney-1995-standard-backoff-bias",
@@ -7040,6 +8283,46 @@
       "checkedDate": "2026-08-01"
     },
     {
+      "id": "bengio-2003-distributed-representation-precursors",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "learned-distributed-symbol-representations"
+      ],
+      "statement": "The JMLR article says its language model combines the probabilistic mechanism with the established idea of learning a distributed representation for symbolic data, citing Hinton 1986 and Elman 1990 in that representation context.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Distributed-symbol representation precursors, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Second paragraph"
+          },
+          "support": "Names Hinton 1986 and Elman 1990 while describing learned distributed representation of symbolic data as one ingredient combined with the probabilistic mechanism."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Elman and Hinton bibliography entries, printed pp. 1153–1154",
+            "section": "References",
+            "pageStart": 1153,
+            "pageEnd": 1154,
+            "paragraph": "Elman 1990 and Hinton 1986 entries"
+          },
+          "support": "Resolves the cited representation precursors to Finding Structure in Time and Learning Distributed Representations of Concepts."
+        }
+      ],
+      "limitations": [
+        "The citation supports a representation-learning connection only. It does not say that the target inherits Hinton’s family-tree task or Elman’s recurrent state; the evaluated Bengio models use static per-word lookup rows and fixed-window feed-forward prediction.",
+        "The passage does not support a sole-priority claim for distributed representations or word vectors."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-03"
+    },
+    {
       "id": "bengio-2003-joint-distribution-adaptation",
       "workId": "bengio-2000-neural-probabilistic-language-model",
       "ideaIds": [
@@ -8109,6 +9392,131 @@
       ]
     },
     {
+      "id": "hinton-1986-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "hinton-1986-learning-distributed-representations"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Both the conference and journal versions cite Hinton 1986 while describing learned distributed representation of symbolic data as an established ingredient combined with their probabilistic sequence mechanism. The edge carries only that representation-learning principle: the target does not inherit Hinton’s family-relation task, role-specific encoders, squared-error objective, or feed-forward family-tree architecture, and the edge makes no priority claim.",
+      "claimIds": [
+        "hinton-1986-network-chosen-representations",
+        "hinton-1986-family-tree-architecture",
+        "bengio-2003-distributed-representation-precursors"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Distributed-symbol representation precursor in Section 1.2",
+            "section": "1.2 Relation to Previous Work",
+            "paragraph": "First paragraph"
+          },
+          "support": "The conference version describes distributed representation for symbols as an early connectionist idea and cites Hinton 1986 as reference [5]."
+        },
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Hinton 1986 reference [5]",
+            "section": "References",
+            "paragraph": "Reference [5]"
+          },
+          "support": "Reference [5] identifies Learning Distributed Representations of Concepts by author, title, venue, and year."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Hinton representation citation, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Second paragraph"
+          },
+          "support": "The target names Hinton 1986 when identifying learned distributed representation for symbolic data as one ingredient combined with its probabilistic mechanism."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Hinton 1986 reference, printed p. 1154",
+            "section": "References",
+            "pageStart": 1154,
+            "pageEnd": 1154,
+            "paragraph": "Hinton 1986 entry"
+          },
+          "support": "The target bibliography identifies Learning Distributed Representations of Concepts by title, author, venue, and year."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target versions’ citations document a general distributed-representation ingredient, not reuse of Hinton’s exact architecture or evidence of priority for modern word vectors."
+        }
+      ]
+    },
+    {
+      "id": "elman-1988-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "elman-1988-finding-structure-in-time"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The JMLR version cites Elman 1990 alongside Hinton 1986 when describing learned distributed representations for symbolic data as an ingredient combined with its probabilistic sequence model. This edge is limited to representation learning. It explicitly excludes Elman’s recurrent context mechanism: Bengio’s evaluated models use static per-word lookup rows and fixed-window feed-forward prediction, and recurrence remains a possible or future extension rather than an inherited component.",
+      "claimIds": [
+        "elman-1990-emergent-lexical-classes",
+        "elman-1990-contextual-token-representations",
+        "bengio-2003-distributed-representation-precursors",
+        "bengio-2003-recurrent-future-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Elman representation citation, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Second paragraph"
+          },
+          "support": "The target names Elman 1990 only in its discussion of learned distributed representations for symbolic data; the passage does not attribute the target’s architecture to recurrent state."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Elman 1990 reference, printed p. 1153",
+            "section": "References",
+            "pageStart": 1153,
+            "pageEnd": 1153,
+            "paragraph": "Elman 1990 entry"
+          },
+          "support": "The target bibliography resolves the citation to Finding Structure in Time."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 2000 conference version’s analogous passage cites Hinton but not Elman; the documented Elman connection is specific to the expanded 2003 JMLR version."
+        },
+        {
+          "status": "resolved",
+          "note": "The target’s static word-feature table and Elman’s context-dependent hidden states are distinct mechanisms; this edge does not carry recurrence."
+        }
+      ]
+    },
+    {
       "id": "bengio-bengio-1999-to-bengio-2000",
       "from": {
         "kind": "work",
@@ -8525,6 +9933,62 @@
       "successCriterion": "The learner can reconstruct the exact-pair, first-word-POS, two-POS, and all-pairs components and the frequency-conditioned weights, identify which data estimate each quantity, and state why neither the 23% report nor publication order proves a universal or priority claim."
     },
     {
+      "id": "beginner-hinton-1986-learned-representations",
+      "mode": "beginner",
+      "objective": "Trace how neutral person and relation symbols become learned six-unit patterns, then explain how similarities among those patterns can support family-relation completion while keeping the result separate from word meaning and language modeling.",
+      "workIds": [
+        "hinton-1986-learning-distributed-representations"
+      ],
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization"
+      ],
+      "claimIds": [
+        "hinton-1986-network-chosen-representations",
+        "hinton-1986-domain-regularity-geometry",
+        "hinton-1986-family-tree-architecture",
+        "hinton-1986-held-out-family-generalization",
+        "hinton-1986-word-meaning-boundary",
+        "hinton-1986-generalization-theory-limit"
+      ],
+      "prerequisites": [
+        "One-hot symbols",
+        "Hidden-unit activations",
+        "Training facts versus withheld facts"
+      ],
+      "successCriterion": "The learner can map a local symbol through the learned code, explain why analogous positions in two family graphs can become nearby, report the 4/4 and 3/4 two-run result, and state why the experiment is neither a language model nor broad semantic transfer."
+    },
+    {
+      "id": "expert-hinton-1986-family-tree-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the role-specific five-layer family-tree network and its summed squared-error, all-cases gradient, and momentum update; then audit the 100/4 split, qualitative feature readings, two-run outcomes, and explicit architecture and biological-plausibility boundaries without importing recurrence, a modern embedding table, or a language-model likelihood.",
+      "workIds": [
+        "hinton-1986-learning-distributed-representations"
+      ],
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization"
+      ],
+      "claimIds": [
+        "hinton-1986-network-chosen-representations",
+        "hinton-1986-domain-regularity-geometry",
+        "hinton-1986-family-tree-architecture",
+        "hinton-1986-family-feature-structure",
+        "hinton-1986-held-out-family-generalization",
+        "hinton-1986-word-meaning-boundary",
+        "hinton-1986-generalization-theory-limit",
+        "hinton-1986-squared-error-batch-training",
+        "hinton-1986-implementation-boundaries"
+      ],
+      "prerequisites": [
+        "Feed-forward neural networks",
+        "Sigmoid activations and backpropagation",
+        "Representation geometry",
+        "Held-out evaluation"
+      ],
+      "successCriterion": "The learner can enumerate the 24/12 input groups, two six-unit code groups, 12-unit central layer, six-unit penultimate layer, and 24 outputs; distinguish the summed squared-error, batch-gradient, and momentum procedure from conditional sequence likelihood; separate qualitative unit interpretations from measured evidence; and preserve the two-initialization, arbitrary-design, biological-plausibility, and task-scope caveats."
+    },
+    {
       "id": "beginner-katz-1987-backoff",
       "mode": "beginner",
       "objective": "Explain how discounting saves probability for unseen phrases, why lower-order patterns divide that reserve instead of replacing every higher-order estimate, and how zero-estimate backoff differs from interpolation.",
@@ -8586,6 +10050,68 @@
         "Perplexity"
       ],
       "successCriterion": "The learner can distinguish n₁/N, β̃, and α; reconstruct the seen and unseen branches of equations (13)–(23); state what k does; and report the comparison with its corpus, sample-size, and attribution limits."
+    },
+    {
+      "id": "beginner-elman-1988-predictive-memory",
+      "mode": "beginner",
+      "objective": "Compare a fixed recent-word window with a carried hidden state, observe how the same current word can lead to different states after different histories, and explain how next-word prediction organizes hidden activity without supplied category labels.",
+      "workIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "simple-recurrent-context-memory",
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "claimIds": [
+        "elman-1990-simple-recurrent-context",
+        "elman-1990-task-dependent-memory",
+        "elman-1990-next-word-prediction-setup",
+        "elman-1990-emergent-lexical-classes",
+        "elman-1990-contextual-token-representations",
+        "elman-1990-novel-word-context-test",
+        "elman-1990-memory-boundary"
+      ],
+      "prerequisites": [
+        "One-hot word inputs",
+        "Hidden layers",
+        "Next-item prediction"
+      ],
+      "successCriterion": "The learner can trace one recurrent step, explain why identical word types can have different token states, connect prediction pressure to the toy lexical clusters, and state why generated sentences and decaying state do not establish normalized or long-context language modeling."
+    },
+    {
+      "id": "expert-elman-1988-recurrent-state-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the hidden-state copy in modern recurrence notation, distinguish fixed unit-weight copy links from learned paths and local error updates, and audit the lexical setup, unnormalized successor-vector metrics, context-averaging caveat, and bounded-memory claims.",
+      "workIds": [
+        "elman-1988-finding-structure-in-time"
+      ],
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "simple-recurrent-context-memory",
+        "next-item-prediction-training",
+        "emergent-contextual-lexical-structure"
+      ],
+      "claimIds": [
+        "elman-1990-jordan-attribution",
+        "elman-1990-simple-recurrent-context",
+        "elman-1990-task-dependent-memory",
+        "elman-1990-next-word-prediction-setup",
+        "elman-1990-successor-likelihood-fit",
+        "elman-1990-emergent-lexical-classes",
+        "elman-1990-contextual-token-representations",
+        "elman-1990-clustering-artifact-check",
+        "elman-1990-novel-word-context-test",
+        "elman-1990-memory-boundary"
+      ],
+      "prerequisites": [
+        "Recurrent state equations",
+        "Backpropagation and temporal credit assignment",
+        "RMS error and cosine similarity",
+        "Hierarchical clustering"
+      ],
+      "successCriterion": "The learner can distinguish h(t−1) copying from learned context-to-hidden weights, explain why training is not full backpropagation through time, preserve all three incompatible corpus totals, reproduce the 0.88 versus 1.0 comparator and 0.053/0.916 fit statistics, and explain why outputs are not probabilities."
     },
     {
       "id": "beginner-kneser-ney-1995-context-diversity",
@@ -8766,18 +10292,20 @@
     {
       "id": "beginner-bengio-2003-shared-representations",
       "mode": "beginner",
-      "objective": "Begin with the cited tabular product-of-conditionals model, then manipulate a word substitution and trace how its language adaptation reuses one conditional prediction function across time and learned word features across input positions, distinguishing smooth reuse from count-model backoff and unlimited context.",
+      "objective": "Relate Bengio’s static learned word rows to the older principle of learned distributed symbol representations while distinguishing Hinton’s role-specific family codes and Elman’s context-dependent recurrent states, then trace how the cited tabular product-of-conditionals model is adapted to words.",
       "workIds": [
         "bengio-2000-neural-probabilistic-language-model"
       ],
       "ideaIds": [
         "sparse-language-model-estimation",
         "neural-joint-distribution-factorization",
+        "learned-distributed-symbol-representations",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling"
       ],
       "claimIds": [
         "bengio-2003-ngram-generalization-limit",
+        "bengio-2003-distributed-representation-precursors",
         "bengio-2003-joint-distribution-adaptation",
         "bengio-2003-joint-word-feature-learning",
         "bengio-2003-smooth-feature-generalization",
@@ -8789,24 +10317,26 @@
         "N-gram counts and backoff",
         "Vectors as coordinates"
       ],
-      "successCriterion": "The learner can state how the cited fixed-vector joint estimator changes for variable-length word sequences, explain why one conditional prediction function is reused across time and learned word features are shared across input positions and contexts, predict how replacing a word with a nearby vector can change the output smoothly, identify the n−1-word window, and name the one-vector-per-word polysemy limit."
+      "successCriterion": "The learner can distinguish Hinton’s task-specific family codes, Elman’s context-dependent recurrent states, and Bengio’s static shared word rows; state why the Elman citation does not transfer recurrence into the evaluated model; explain how the cited joint estimator changes for variable-length word sequences; and identify the n−1-word window and one-vector-per-word polysemy limit."
     },
     {
       "id": "expert-bengio-2003-model-and-evidence",
       "mode": "expert",
-      "objective": "Map the cited neural joint-distribution factorization onto the language model’s time-shared predictor, then reconstruct the lookup, hidden/direct paths, softmax, and penalized-likelihood objective; quantify the vocabulary-scaling bottleneck; and audit the Brown and Associated Press results with their mixture, ablation, denominator, optimization, and uncertainty boundaries.",
+      "objective": "Audit the Hinton and Elman citation scope and distinguish their role-specific or recurrent representations from Bengio’s static lookup rows, then map the cited neural joint-distribution factorization onto the time-shared predictor and reconstruct the architecture, objective, scaling cost, and bounded empirical evidence.",
       "workIds": [
         "bengio-2000-neural-probabilistic-language-model"
       ],
       "ideaIds": [
         "conditional-stochastic-language-source",
         "neural-joint-distribution-factorization",
+        "learned-distributed-symbol-representations",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling",
         "full-vocabulary-softmax-normalization",
         "neural-ngram-model-mixtures"
       ],
       "claimIds": [
+        "bengio-2003-distributed-representation-precursors",
         "bengio-2003-joint-distribution-adaptation",
         "bengio-2003-fixed-window-factorization",
         "bengio-2003-feedforward-softmax-architecture",
@@ -8829,7 +10359,7 @@
         "Stochastic gradient optimization",
         "Perplexity and relative change"
       ],
-      "successCriterion": "The learner can identify the shift from fixed vectors and position-specific conditionals to variable-length sequences and one conditional prediction function reused across time, distinguish that from word-feature sharing across input positions, map C, x, H, U, W, and y through equation (1), explain why normalization costs scale with |V|, reproduce the controlled context and hidden-unit comparisons, distinguish bare from mixed models, compute the 19.2% and 6.8% baseline-relative reductions, and state why the direct-path and recurrence conclusions are bounded."
+      "successCriterion": "The learner can distinguish Hinton’s role-specific codes, Elman’s context-dependent recurrent states, and Bengio’s static word-feature rows; explain why only the distributed-representation principle crosses both precursor edges; map C, x, H, U, W, and y through equation (1); quantify normalization and mixture results; and state why the direct-path and recurrence conclusions are bounded."
     }
   ]
 }

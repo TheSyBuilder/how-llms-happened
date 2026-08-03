@@ -10,6 +10,12 @@ const [corpus, schema] = await Promise.all(
     new URL("../schemas/corpus.schema.json", import.meta.url),
   ].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
 );
+const [corpusFormat, historicalScope] = await Promise.all(
+  [
+    new URL("../docs/corpus-format.md", import.meta.url),
+    new URL("../docs/historical-scope.md", import.meta.url),
+  ].map((url) => readFile(url, "utf8")),
+);
 
 function copyCorpus() {
   return JSON.parse(JSON.stringify(corpus));
@@ -651,6 +657,452 @@ test("retains modified Kneser–Ney as a separately versioned later extension", 
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the guarded Hinton 1986 distributed-representation branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "hinton-1986-learning-distributed-representations",
+  );
+  const presentation = work?.chronology.events.find(
+    (item) => item.id === "hinton-1986-conference-presentation",
+  );
+  const publication = work?.chronology.events.find(
+    (item) => item.id === "hinton-1986-proceedings-publication",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "hinton-1986-proceedings-version",
+  );
+  const repositoryRecord = corpus.sources.find(
+    (item) => item.id === "hinton-1986-escholarship-record",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "hinton-1986-author-full-text",
+  );
+  const heldout = corpus.claims.find(
+    (item) => item.id === "hinton-1986-held-out-family-generalization",
+  );
+  const wordBoundary = corpus.claims.find(
+    (item) => item.id === "hinton-1986-word-meaning-boundary",
+  );
+  const theoryBoundary = corpus.claims.find(
+    (item) => item.id === "hinton-1986-generalization-theory-limit",
+  );
+  const training = corpus.claims.find(
+    (item) => item.id === "hinton-1986-squared-error-batch-training",
+  );
+  const implementationBoundaries = corpus.claims.find(
+    (item) => item.id === "hinton-1986-implementation-boundaries",
+  );
+  const representationIdea = corpus.ideas.find(
+    (item) => item.id === "learned-distributed-symbol-representations",
+  );
+  const expertObjective = corpus.learningObjectives.find(
+    (item) => item.id === "expert-hinton-1986-family-tree-evidence",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "hinton-1986-to-bengio-2000",
+  );
+  const directElmanEdge = corpus.relationships.find(
+    (item) =>
+      item.from.id === "hinton-1986-learning-distributed-representations" &&
+      item.to.id === "elman-1988-finding-structure-in-time",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(corpus.asOf, "2026-08-03");
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "hinton-1986-conference-presentation",
+  );
+  assert.equal(presentation?.kind, "conference-presentation");
+  assert.equal(presentation?.label.includes("Scheduled"), true);
+  assert.equal(presentation?.date.value, "1986-08-15");
+  assert.equal(publication?.kind, "proceedings-publication");
+  assert.equal(publication?.date.value, "1986");
+  assert.equal(version?.kind, "proceedings");
+  assert.deepEqual(version?.bibliography.pages, ["1-12"]);
+  assert.ok(
+    version?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "isbn" && identifier.value === "0-89859-864-8",
+      ),
+  );
+  assert.equal(repositoryRecord?.accessNote.includes("pp. 1–12"), false);
+  assert.equal(fullText?.authority, "author");
+  assert.equal(
+    fullText?.url,
+    "https://www.cs.toronto.edu/~hinton/absps/families.pdf",
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 12,
+  });
+  assert.ok(heldout?.statement.includes("4 of 4"));
+  assert.ok(heldout?.statement.includes("3 of 4"));
+  assert.deepEqual(
+    heldout?.evidence.map((evidence) => ({
+      pageStart: evidence.locator.pageStart,
+      pageEnd: evidence.locator.pageEnd,
+      section: evidence.locator.section,
+    })),
+    [
+      {
+        pageStart: 6,
+        pageEnd: 6,
+        section: "3. A Network that Learns Distributed Representations",
+      },
+      {
+        pageStart: 9,
+        pageEnd: 9,
+        section: "3.3 Generalization",
+      },
+    ],
+  );
+  assert.ok(heldout?.limitations.some((item) => item.includes("two runs")));
+  assert.ok(wordBoundary?.statement.includes("bank"));
+  assert.equal(
+    theoryBoundary?.evidence[0].locator.section,
+    "3.3 Generalization",
+  );
+  assert.equal(training?.statement.includes("summed squared-error"), true);
+  assert.equal(training?.statement.includes("all cases"), true);
+  assert.equal(training?.statement.includes("momentum term"), true);
+  assert.deepEqual(
+    training?.evidence.map((evidence) => evidence.locator.equation),
+    ["3", "8–9"],
+  );
+  assert.equal(
+    implementationBoundaries?.statement.includes("somewhat arbitrary"),
+    true,
+  );
+  assert.equal(
+    implementationBoundaries?.statement.includes("biologically implausible"),
+    true,
+  );
+  assert.deepEqual(
+    implementationBoundaries?.evidence.map(
+      (evidence) => evidence.locator.pageStart,
+    ),
+    [6, 11],
+  );
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("feed-forward, not recurrent"),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some((item) => item.includes("somewhat arbitrary")),
+  );
+  for (const claimId of [
+    "hinton-1986-squared-error-batch-training",
+    "hinton-1986-implementation-boundaries",
+  ]) {
+    assert.ok(representationIdea?.claimIds.includes(claimId));
+    assert.ok(expertObjective?.claimIds.includes(claimId));
+  }
+  assert.ok(expertObjective?.successCriterion.includes("batch-gradient"));
+  assert.ok(expertObjective?.successCriterion.includes("momentum"));
+  assert.ok(expertObjective?.successCriterion.includes("arbitrary-design"));
+  assert.ok(
+    expertObjective?.successCriterion.includes("biological-plausibility"),
+  );
+  assert.deepEqual(relationship?.from, { kind: "work", id: work?.id });
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: "bengio-2000-neural-probabilistic-language-model",
+  });
+  assert.equal(relationship?.connectionType, "combines");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(relationship?.rationale.includes("representation-learning principle"));
+  assert.deepEqual(
+    new Set(
+      relationship?.sourceEvidence.map((evidence) => evidence.sourceId),
+    ),
+    new Set([
+      "bengio-2000-neurips-full-text",
+      "bengio-2003-jmlr-full-text",
+    ]),
+  );
+  const neuripsEvidence = relationship?.sourceEvidence.filter(
+    (evidence) => evidence.sourceId === "bengio-2000-neurips-full-text",
+  );
+  assert.equal(neuripsEvidence?.length, 2);
+  assert.ok(
+    neuripsEvidence?.every(
+      (evidence) =>
+        evidence.locator.pageStart === undefined &&
+        evidence.locator.pageEnd === undefined,
+    ),
+  );
+  assert.equal(directElmanEdge, undefined);
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains the versioned and quantitatively bounded Elman 1988/1990 branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "elman-1988-finding-structure-in-time",
+  );
+  const reportEvent = work?.chronology.events.find(
+    (item) => item.id === "elman-1988-crl-report-publication",
+  );
+  const journalEvent = work?.chronology.events.find(
+    (item) => item.id === "elman-1990-cognitive-science-publication",
+  );
+  const report = work?.versions.find(
+    (item) => item.id === "elman-1988-crl-report-version",
+  );
+  const journal = work?.versions.find(
+    (item) => item.id === "elman-1990-cognitive-science-journal-version",
+  );
+  const reportAbstract = corpus.sources.find(
+    (item) => item.id === "elman-1988-crl-report-abstract",
+  );
+  const authorRecord = corpus.sources.find(
+    (item) => item.id === "elman-1990-author-publications-record",
+  );
+  const crossrefRecord = corpus.sources.find(
+    (item) => item.id === "elman-1990-crossref-record",
+  );
+  const scienceDirectRecord = corpus.sources.find(
+    (item) => item.id === "elman-1990-sciencedirect-record",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "elman-1990-ucsd-full-text",
+  );
+  const recurrence = corpus.claims.find(
+    (item) => item.id === "elman-1990-simple-recurrent-context",
+  );
+  const setup = corpus.claims.find(
+    (item) => item.id === "elman-1990-next-word-prediction-setup",
+  );
+  const taskMemory = corpus.claims.find(
+    (item) => item.id === "elman-1990-task-dependent-memory",
+  );
+  const contextualTokens = corpus.claims.find(
+    (item) => item.id === "elman-1990-contextual-token-representations",
+  );
+  const clusteringCheck = corpus.claims.find(
+    (item) => item.id === "elman-1990-clustering-artifact-check",
+  );
+  const memoryBoundary = corpus.claims.find(
+    (item) => item.id === "elman-1990-memory-boundary",
+  );
+  const fit = corpus.claims.find(
+    (item) => item.id === "elman-1990-successor-likelihood-fit",
+  );
+  const targetClaim = corpus.claims.find(
+    (item) => item.id === "bengio-2003-distributed-representation-precursors",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "elman-1988-to-bengio-2000",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.artifactType, "journal-article");
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.versions.length, 2);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "elman-1988-crl-report-publication",
+  );
+  assert.equal(reportEvent?.kind, "technical-report");
+  assert.equal(reportEvent?.date.value, "1988-04");
+  assert.deepEqual(reportEvent?.sourceIds, ["elman-1988-crl-report-abstract"]);
+  assert.deepEqual(
+    reportEvent?.dateEvidence,
+    [
+      {
+        sourceId: "elman-1988-crl-report-abstract",
+        precision: "month",
+        locator:
+          "CRL Newsletter 2(4), printed p. 3, Technical Report 8801/April entry",
+      },
+    ],
+  );
+  assert.equal(journalEvent?.kind, "journal-publication");
+  assert.equal(journalEvent?.date.value, "1990-03");
+  assert.equal(report?.kind, "technical-report");
+  assert.ok(report?.notes.includes("unavailable and superseded"));
+  assert.equal(
+    work?.canonicalVersionId,
+    "elman-1990-cognitive-science-journal-version",
+  );
+  assert.equal(journal?.kind, "journal");
+  assert.deepEqual(journal?.bibliography.pages, ["179-211"]);
+  assert.deepEqual(
+    journal?.bibliography.identifiers.filter(
+      (identifier) => identifier.type === "doi",
+    ),
+    [
+      {
+        type: "doi",
+        value: "10.1207/s15516709cog1402_1",
+        label: "Current article DOI",
+      },
+      {
+        type: "doi",
+        value: "10.1016/0364-0213(90)90002-E",
+        label: "Legacy Elsevier DOI",
+      },
+    ],
+  );
+  assert.ok(journal?.notes.includes("ScienceDirect legacy publisher record"));
+  assert.equal(
+    authorRecord?.accessNote.includes("calls CRL Technical Report 8801, April"),
+    false,
+  );
+  assert.ok(authorRecord?.accessNote.includes("does not supply the report’s April 1988 date"));
+  assert.equal(crossrefRecord?.accessNote.includes("10.1016/"), false);
+  assert.ok(
+    crossrefRecord?.accessNote.includes(
+      "does not supply the legacy Elsevier DOI",
+    ),
+  );
+  assert.equal(scienceDirectRecord?.sourceClass, "publisher-record");
+  assert.equal(scienceDirectRecord?.authority, "publisher");
+  assert.equal(
+    scienceDirectRecord?.url,
+    "https://www.sciencedirect.com/science/article/pii/036402139090002E",
+  );
+  assert.deepEqual(scienceDirectRecord?.relatedWorkIds, [work?.id]);
+  assert.deepEqual(scienceDirectRecord?.versionIds, [journal?.id]);
+  assert.ok(work?.sourceIds.includes(scienceDirectRecord?.id));
+  assert.ok(work?.preferredSourceIds.includes(scienceDirectRecord?.id));
+  assert.ok(journal?.sourceIds.includes(scienceDirectRecord?.id));
+  assert.ok(scienceDirectRecord?.accessNote.includes("April–June 1990"));
+  assert.ok(
+    scienceDirectRecord?.accessNote.includes("10.1016/0364-0213(90)90002-E"),
+  );
+  assert.equal(reportAbstract?.sourceClass, "primary-snippet");
+  assert.deepEqual(reportAbstract?.supports, ["metadata"]);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 179,
+    pageEnd: 211,
+  });
+  assert.ok(recurrence?.statement.includes("fixed connections of weight 1.0"));
+  assert.ok(
+    recurrence?.limitations.some((item) =>
+      item.includes("full backpropagation through time"),
+    ),
+  );
+  for (const sourceCount of ["27,534", "27,354", "27,454"]) {
+    assert.ok(setup?.limitations.some((item) => item.includes(sourceCount)));
+  }
+  assert.ok(
+    setup?.statement.includes("150 hidden units plus 150 context units"),
+  );
+  assert.ok(
+    work?.limitations.some((item) =>
+      item.includes("150 hidden units plus 150 context units"),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some((item) => item.includes("practically bounded")),
+  );
+  assert.ok(historicalScope.includes("its memory is practically bounded"));
+  assert.equal(historicalScope.includes("its memory is explicitly bounded"), false);
+  assert.ok(
+    corpusFormat.includes(
+      "ScienceDirect legacy publisher record supplies the April–June issue coverage and legacy Elsevier DOI",
+    ),
+  );
+  assert.equal(
+    corpusFormat.includes("Crossref’s legacy Elsevier DOI alias"),
+    false,
+  );
+  assert.equal(taskMemory?.evidence[1].locator.section, "Conclusions");
+  assert.deepEqual(
+    contextualTokens?.evidence.map((evidence) => evidence.locator),
+    [
+      {
+        label: "Context-dependent hidden representations, printed pp. 198–199",
+        section: "Discovering Lexical Classes From Word Order",
+        pageStart: 198,
+        pageEnd: 199,
+      },
+      {
+        label: "Similar but nonidentical contextual tokens, printed pp. 205–206",
+        section: "Types, Tokens, and Structured Representations",
+        pageStart: 205,
+        pageEnd: 206,
+        figure: "9",
+      },
+    ],
+  );
+  assert.deepEqual(
+    clusteringCheck?.evidence.map((evidence) => evidence.locator),
+    [
+      {
+        label: "Averaging-artifact warning, printed p. 199",
+        section: "Discovering Lexical Classes From Word Order",
+        pageStart: 199,
+        pageEnd: 199,
+        paragraph: "Footnote 6",
+      },
+      {
+        label: "Completed all-token clustering check, printed p. 205",
+        section: "Types, Tokens, and Structured Representations",
+        pageStart: 205,
+        pageEnd: 205,
+      },
+    ],
+  );
+  assert.deepEqual(
+    memoryBoundary?.evidence.map((evidence) => evidence.locator.section),
+    ["Types, Tokens, and Structured Representations", "Conclusions"],
+  );
+  assert.ok(fit?.statement.includes("0.88"));
+  assert.ok(fit?.statement.includes("1.0"));
+  assert.ok(fit?.statement.includes("0.053"));
+  assert.ok(fit?.statement.includes("0.916"));
+  assert.ok(
+    fit?.limitations.some((item) =>
+      item.includes("not a normalized next-word probability distribution"),
+    ),
+  );
+  assert.deepEqual(targetClaim?.evidence[0].locator, {
+    label: "Distributed-symbol representation precursors, printed p. 1140",
+    section: "1.2 Relation to Previous Work",
+    pageStart: 1140,
+    pageEnd: 1140,
+    paragraph: "Second paragraph",
+  });
+  assert.equal(
+    targetClaim?.evidence.every(
+      (evidence) => evidence.sourceId === "bengio-2003-jmlr-full-text",
+    ),
+    true,
+  );
+  assert.equal(relationship?.connectionType, "combines");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.ok(
+    relationship?.rationale.includes(
+      "explicitly excludes Elman’s recurrent context mechanism",
+    ),
+  );
+  assert.ok(
+    relationship?.sourceEvidence.every(
+      (evidence) => evidence.sourceId === "bengio-2003-jmlr-full-text",
+    ),
+  );
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("retains the guarded NIPS 1999, IDIAP, and IEEE neural joint-distribution family", () => {
   const work = corpus.works.find(
     (item) => item.id === "bengio-bengio-1999-neural-joint-distributions",
@@ -864,6 +1316,12 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   const jointAdaptation = corpus.claims.find(
     (item) => item.id === "bengio-2003-joint-distribution-adaptation",
   );
+  const representationPrecursors = corpus.claims.find(
+    (item) => item.id === "bengio-2003-distributed-representation-precursors",
+  );
+  const remainingPrecursorUncertainty = work?.uncertainties.find((item) =>
+    item.note.includes("representation precursors are now audited"),
+  );
   const promotedClaims = corpus.claims.filter(
     (item) => item.workId === work?.id,
   );
@@ -873,11 +1331,10 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   const precursorRelationship = corpus.relationships.find(
     (item) => item.id === "bengio-bengio-1999-to-bengio-2000",
   );
-  const modes = new Set(
-    corpus.learningObjectives
-      .filter((objective) => objective.workIds.includes(work?.id))
-      .map((objective) => objective.mode),
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
   );
+  const modes = new Set(objectives.map((objective) => objective.mode));
 
   assert.equal(work?.artifactType, "journal-article");
   assert.equal(work?.inclusion.status, "core");
@@ -930,7 +1387,45 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   assert.ok(
     work?.ideaIds.includes("neural-joint-distribution-factorization"),
   );
+  assert.ok(
+    work?.ideaIds.includes("learned-distributed-symbol-representations"),
+  );
   assert.ok(jointAdaptation?.statement.includes("variable-length word sequences"));
+  assert.ok(representationPrecursors?.statement.includes("Hinton 1986"));
+  assert.ok(representationPrecursors?.statement.includes("Elman 1990"));
+  assert.equal(
+    remainingPrecursorUncertainty?.resolutionCondition.includes(
+      "Miikkulainen and Dyer 1991",
+    ),
+    true,
+  );
+  assert.equal(
+    remainingPrecursorUncertainty?.resolutionCondition.includes(
+      "Xu and Rudnicky 2000",
+    ),
+    true,
+  );
+  assert.equal(
+    remainingPrecursorUncertainty?.resolutionCondition.includes("Hinton"),
+    false,
+  );
+  assert.equal(
+    remainingPrecursorUncertainty?.resolutionCondition.includes("Elman"),
+    false,
+  );
+  for (const objective of objectives) {
+    assert.ok(
+      objective.ideaIds.includes("learned-distributed-symbol-representations"),
+    );
+    assert.ok(
+      objective.claimIds.includes(
+        "bengio-2003-distributed-representation-precursors",
+      ),
+    );
+    assert.ok(objective.successCriterion.includes("Hinton"));
+    assert.ok(objective.successCriterion.includes("Elman"));
+    assert.ok(objective.successCriterion.includes("Bengio"));
+  }
   for (const claim of promotedClaims) {
     assert.ok(
       claim.evidence.every(
