@@ -711,7 +711,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-03");
+  assert.equal(corpus.asOf, "2026-08-04");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -1279,6 +1279,259 @@ test("retains the guarded NIPS 1999, IDIAP, and IEEE neural joint-distribution f
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains Miikkulainen and Dyer as a version-aware neural NLP branch", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "miikkulainen-dyer-1991-modular-pdp-language-processing",
+  );
+  const event = work?.chronology.events.find(
+    (item) => item.id === "miikkulainen-dyer-1991-journal-publication",
+  );
+  const journal = work?.versions.find(
+    (item) => item.id === "miikkulainen-dyer-1991-journal-version",
+  );
+  const manuscript = work?.versions.find(
+    (item) => item.id === "miikkulainen-dyer-1991-author-manuscript-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "miikkulainen-dyer-1991-author-manuscript",
+  );
+  const sequential = corpus.claims.find(
+    (item) =>
+      item.id === "miikkulainen-dyer-1991-sequential-case-role-evaluation",
+  );
+  const storyResults = corpus.claims.find(
+    (item) => item.id === "miikkulainen-dyer-1991-incomplete-story-results",
+  );
+  const storyScope = corpus.claims.find(
+    (item) =>
+      item.id === "miikkulainen-dyer-1991-scripted-story-evaluation-scope",
+  );
+  const probabilityBoundary = corpus.claims.find(
+    (item) => item.id === "miikkulainen-dyer-1991-probability-model-boundary",
+  );
+  const elmanRelationship = corpus.relationships.find(
+    (item) => item.id === "elman-1988-to-miikkulainen-dyer-1991",
+  );
+  const bengioRelationship = corpus.relationships.find(
+    (item) => item.id === "miikkulainen-dyer-1991-to-bengio-2000",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.chronology.orderingEventId, event?.id);
+  assert.equal(event?.date.value, "1991-07");
+  assert.equal(event?.date.precision, "month");
+  assert.equal(work?.canonicalVersionId, journal?.id);
+  assert.equal(manuscript?.kind, "preprint");
+  assert.deepEqual(manuscript?.bibliography.pages, ["1-46"]);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 46,
+  });
+  assert.equal(work?.preferredSourceIds.includes(fullText?.id), false);
+  assert.deepEqual(
+    journal?.bibliography.identifiers
+      .filter((identifier) => identifier.type === "doi")
+      .map((identifier) => identifier.value),
+    [
+      "10.1207/s15516709cog1503_2",
+      "10.1016/0364-0213(91)80002-M",
+    ],
+  );
+  for (const ideaId of [
+    "next-item-prediction-training",
+    "jointly-learned-word-representations",
+    "feedforward-neural-language-modeling",
+  ]) {
+    assert.equal(work?.ideaIds.includes(ideaId), false);
+  }
+  for (const claim of claims) {
+    assert.equal(
+      claim.evidence.every(
+        (evidence) =>
+          evidence.sourceId === fullText?.id &&
+          evidence.locator.pageStart >= 1 &&
+          evidence.locator.pageEnd <= 46,
+      ),
+      true,
+      `${claim.id} must retain manuscript-only locators within pp. 1–46`,
+    );
+  }
+  assert.ok(sequential?.statement.includes("97% correct output words"));
+  assert.ok(sequential?.statement.includes("95% correct cloned-synonym words"));
+  assert.ok(sequential?.statement.includes("93% of output values within 0.15"));
+  assert.ok(sequential?.statement.includes("average error 0.045"));
+  assert.equal(
+    sequential?.evidence[0].locator.section,
+    "7.3 Case-role assignment from sequential input",
+  );
+  for (const row of [
+    "sentence parser (99/99% words, 99/99% cloned instances, 99/98% values within 0.15, 0.017/0.019 error)",
+    "story parser (99/96, 99/97, 96/93, 0.023/0.041)",
+    "story generator (99/99, 99/97, 97/97, 0.021/0.027)",
+    "sentence generator (99/99, 99/97, 96/95, 0.037/0.044)",
+  ]) {
+    assert.ok(storyResults?.statement.includes(row));
+  }
+  assert.equal(storyResults?.evidence[0].locator.section, "10.7 Paraphrasing");
+  assert.ok(
+    storyScope?.evidence.some(
+      (evidence) => evidence.locator.section === "11.4 Implementing control with networks",
+    ),
+  );
+  assert.equal(
+    probabilityBoundary?.evidence[0].locator.section,
+    "12.4 Parallel distributed inference",
+  );
+  assert.ok(
+    probabilityBoundary?.limitations.some((item) =>
+      item.includes("no normalized next-word"),
+    ),
+  );
+  assert.ok(
+    work?.uncertainties.some((item) => item.note.includes("1,439 training")),
+  );
+  assert.equal(elmanRelationship?.connectionType, "builds-on");
+  assert.equal(elmanRelationship?.evidenceClass, "documented-influence");
+  assert.equal(elmanRelationship?.confidence, "high");
+  assert.equal(elmanRelationship?.causalLanguage, "qualified");
+  assert.equal(bengioRelationship?.connectionType, "addresses");
+  assert.equal(bengioRelationship?.evidenceClass, "documented-influence");
+  assert.equal(bengioRelationship?.confidence, "high");
+  assert.equal(bengioRelationship?.causalLanguage, "qualified");
+  assert.ok(bengioRelationship?.rationale.includes("does not transfer FGREP"));
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Xu and Rudnicky as an independent direct-softmax bigram branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "xu-rudnicky-2000-neural-bigram-language-model",
+  );
+  const event = work?.chronology.events.find(
+    (item) => item.id === "xu-rudnicky-2000-icslp-presentation",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "xu-rudnicky-2000-isca-full-text",
+  );
+  const bigram = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-bigram-probability-objective",
+  );
+  const architecture = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-direct-softmax-architecture",
+  );
+  const likelihood = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-likelihood-and-early-stopping",
+  );
+  const training = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-batch-training-and-sparse-updates",
+  );
+  const scope = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-communicator-evaluation-scope",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-table-one-results",
+  );
+  const cost = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-training-cost",
+  );
+  const analysis = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-early-stopping-analysis",
+  );
+  const futureBoundary = corpus.claims.find(
+    (item) => item.id === "xu-rudnicky-2000-future-architecture-boundary",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "xu-rudnicky-2000-to-bengio-2000",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(event?.date.value, "2000-10");
+  assert.equal(event?.date.precision, "month");
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 4,
+  });
+  for (const ideaId of [
+    "jointly-learned-word-representations",
+    "feedforward-neural-language-modeling",
+    "simple-recurrent-context-memory",
+  ]) {
+    assert.equal(work?.ideaIds.includes(ideaId), false);
+  }
+  for (const claim of claims) {
+    for (const evidence of claim.evidence) {
+      assert.equal(evidence.sourceId, fullText?.id);
+      assert.equal(evidence.locator.pageStart, undefined);
+      assert.equal(evidence.locator.pageEnd, undefined);
+      assert.equal(
+        ["section", "equation", "table", "figure", "paragraph"].some(
+          (key) => evidence.locator[key],
+        ),
+        true,
+        `${claim.id} must retain a structural locator`,
+      );
+    }
+  }
+  assert.equal(bigram?.evidence[0].locator.section, "2. Basic of language modeling");
+  assert.equal(
+    architecture?.evidence[0].locator.section,
+    "3.1 Input and output encoding; 3.3 Activation function; 3.4 Network structure",
+  );
+  assert.equal(
+    likelihood?.evidence[0].locator.section,
+    "3.2 Error function; 3.6 Training method",
+  );
+  assert.equal(
+    training?.evidence[0].locator.section,
+    "3.5 An issue on computation cost; 3.6 Training method",
+  );
+  assert.equal(scope?.evidence[0].locator.section, "4. Experiment result");
+  assert.equal(results?.evidence[0].locator.section, "4. Experiment result");
+  assert.ok(architecture?.statement.includes("V(V+1)"));
+  assert.ok(architecture?.statement.includes("no hidden units"));
+  assert.ok(scope?.statement.includes("2,500 vocabulary items"));
+  assert.ok(scope?.statement.includes("1,200 classes"));
+  assert.ok(scope?.statement.includes("exclude within-class word probabilities"));
+  assert.ok(results?.statement.includes("9.84/11.89/12.20/10.26"));
+  assert.ok(results?.statement.includes("9.50/11.76/11.99/not reported"));
+  assert.ok(results?.statement.includes("9.58/11.19/11.17/9.68"));
+  assert.ok(results?.statement.includes("9.82/11.24/11.16/9.58"));
+  assert.ok(cost?.statement.includes("one minute"));
+  assert.ok(cost?.statement.includes("thousands of epochs"));
+  assert.ok(cost?.statement.includes("under 30 seconds"));
+  assert.ok(analysis?.statement.includes("12.17/14.63/19.24"));
+  assert.ok(analysis?.statement.includes("19.24"));
+  assert.ok(
+    analysis?.statement.includes("softmax network's interpolation form unknown"),
+  );
+  assert.ok(futureBoundary?.statement.includes("future work"));
+  assert.ok(
+    work?.uncertainties.some((item) =>
+      item.note.includes("large-count discussion refers to equation (5.3)"),
+    ),
+  );
+  assert.equal(relationship?.connectionType, "conceptual-parallel");
+  assert.equal(relationship?.evidenceClass, "editorial-synthesis");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "prohibited");
+  assert.ok(relationship?.rationale.includes("No influence or priority"));
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
 test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family", () => {
   const work = corpus.works.find(
     (item) => item.id === "bengio-2000-neural-probabilistic-language-model",
@@ -1319,8 +1572,8 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   const representationPrecursors = corpus.claims.find(
     (item) => item.id === "bengio-2003-distributed-representation-precursors",
   );
-  const remainingPrecursorUncertainty = work?.uncertainties.find((item) =>
-    item.note.includes("representation precursors are now audited"),
+  const auditedPrecursorResolution = work?.uncertainties.find((item) =>
+    item.note.includes("Miikkulainen and Dyer 1991"),
   );
   const promotedClaims = corpus.claims.filter(
     (item) => item.workId === work?.id,
@@ -1330,6 +1583,12 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   );
   const precursorRelationship = corpus.relationships.find(
     (item) => item.id === "bengio-bengio-1999-to-bengio-2000",
+  );
+  const miikkulainenRelationship = corpus.relationships.find(
+    (item) => item.id === "miikkulainen-dyer-1991-to-bengio-2000",
+  );
+  const xuRelationship = corpus.relationships.find(
+    (item) => item.id === "xu-rudnicky-2000-to-bengio-2000",
   );
   const objectives = corpus.learningObjectives.filter((objective) =>
     objective.workIds.includes(work?.id),
@@ -1393,26 +1652,9 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   assert.ok(jointAdaptation?.statement.includes("variable-length word sequences"));
   assert.ok(representationPrecursors?.statement.includes("Hinton 1986"));
   assert.ok(representationPrecursors?.statement.includes("Elman 1990"));
-  assert.equal(
-    remainingPrecursorUncertainty?.resolutionCondition.includes(
-      "Miikkulainen and Dyer 1991",
-    ),
-    true,
-  );
-  assert.equal(
-    remainingPrecursorUncertainty?.resolutionCondition.includes(
-      "Xu and Rudnicky 2000",
-    ),
-    true,
-  );
-  assert.equal(
-    remainingPrecursorUncertainty?.resolutionCondition.includes("Hinton"),
-    false,
-  );
-  assert.equal(
-    remainingPrecursorUncertainty?.resolutionCondition.includes("Elman"),
-    false,
-  );
+  assert.equal(auditedPrecursorResolution?.status, "resolved");
+  assert.equal(auditedPrecursorResolution?.resolutionCondition, undefined);
+  assert.ok(auditedPrecursorResolution?.note.includes("Xu and Rudnicky 2000"));
   for (const objective of objectives) {
     assert.ok(
       objective.ideaIds.includes("learned-distributed-symbol-representations"),
@@ -1456,6 +1698,19 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   });
   assert.equal(precursorRelationship?.connectionType, "builds-on");
   assert.equal(precursorRelationship?.evidenceClass, "documented-influence");
+  assert.deepEqual(miikkulainenRelationship?.to, {
+    kind: "work",
+    id: work?.id,
+  });
+  assert.equal(miikkulainenRelationship?.connectionType, "addresses");
+  assert.equal(miikkulainenRelationship?.causalLanguage, "qualified");
+  assert.deepEqual(xuRelationship?.to, {
+    kind: "work",
+    id: work?.id,
+  });
+  assert.equal(xuRelationship?.connectionType, "conceptual-parallel");
+  assert.equal(xuRelationship?.evidenceClass, "editorial-synthesis");
+  assert.equal(xuRelationship?.causalLanguage, "prohibited");
   for (const comparatorId of [
     "katz-1987-sparse-data",
     "kneser-ney-1995-improved-backing-off",

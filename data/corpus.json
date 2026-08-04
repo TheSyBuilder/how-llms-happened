@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-03",
+  "asOf": "2026-08-04",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1716,6 +1716,187 @@
       ]
     },
     {
+      "id": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "title": "Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+      "authors": [
+        "Risto Miikkulainen",
+        "Michael G. Dyer"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "R. Miikkulainen and M. G. Dyer, “Natural Language Processing With Modular PDP Networks and Distributed Lexicon,” Cognitive Science 15(3), 343–399 (July 1991), DOI 10.1207/s15516709cog1503_2.",
+      "chronology": {
+        "orderingEventId": "miikkulainen-dyer-1991-journal-publication",
+        "events": [
+          {
+            "id": "miikkulainen-dyer-1991-journal-publication",
+            "kind": "journal-publication",
+            "label": "Cognitive Science journal publication",
+            "date": {
+              "value": "1991-07",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "miikkulainen-dyer-1991-wiley-record",
+                "precision": "month",
+                "locator": "Publisher record, first published July 1991"
+              },
+              {
+                "sourceId": "miikkulainen-dyer-1991-crossref-record",
+                "precision": "month",
+                "locator": "Crossref publisher deposit, issued July 1991"
+              }
+            ],
+            "versionId": "miikkulainen-dyer-1991-journal-version",
+            "sourceIds": [
+              "miikkulainen-dyer-1991-wiley-record",
+              "miikkulainen-dyer-1991-crossref-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "miikkulainen-dyer-1991-author-manuscript-version",
+          "title": "Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+          "authors": [
+            "Risto Miikkulainen",
+            "Michael G. Dyer"
+          ],
+          "kind": "preprint",
+          "label": "Author-hosted prepublication manuscript",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Miikkulainen and M. G. Dyer, “Natural Language Processing With Modular PDP Networks and Distributed Lexicon,” 46-page author manuscript marked “To appear in Cognitive Science, 15(3):343–399, 1991.”",
+            "venue": "Author-hosted prepublication manuscript",
+            "pages": [
+              "1-46"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "miikkulainen-dyer-1991-author-record",
+            "miikkulainen-dyer-1991-author-manuscript"
+          ],
+          "notes": "The manuscript has the same title and authors as the journal article and identifies the intended Cognitive Science volume, issue, and pp. 343–399. It uses its own visible pp. 1–46 and a prepublication header; claims located in this copy are not assigned the journal article’s printed page numbers."
+        },
+        {
+          "id": "miikkulainen-dyer-1991-journal-version",
+          "title": "Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+          "authors": [
+            "Risto Miikkulainen",
+            "Michael G. Dyer"
+          ],
+          "kind": "journal",
+          "label": "Canonical Cognitive Science journal article",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Miikkulainen and M. G. Dyer, “Natural Language Processing With Modular PDP Networks and Distributed Lexicon,” Cognitive Science 15(3), 343–399 (July 1991).",
+            "venue": "Cognitive Science",
+            "volume": "15",
+            "issues": [
+              "3"
+            ],
+            "pages": [
+              "343-399"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1207/s15516709cog1503_2",
+                "label": "Current article DOI"
+              },
+              {
+                "type": "doi",
+                "value": "10.1016/0364-0213(91)80002-M",
+                "label": "Legacy Elsevier DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0364-0213",
+                "label": "Print ISSN"
+              },
+              {
+                "type": "issn",
+                "value": "1551-6709",
+                "label": "Electronic ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "miikkulainen-dyer-1991-wiley-record",
+            "miikkulainen-dyer-1991-crossref-record",
+            "miikkulainen-dyer-1991-sciencedirect-record",
+            "miikkulainen-dyer-1991-author-record"
+          ],
+          "notes": "Wiley and Crossref support July 1991 and the current DOI. The ScienceDirect legacy record associates the same article with Cognitive Science 15(3), July–September 1991, and DOI 10.1016/0364-0213(91)80002-M; both DOI identifiers remain attached to this single journal version."
+        }
+      ],
+      "canonicalVersionId": "miikkulainen-dyer-1991-journal-version",
+      "preferredSourceIds": [
+        "miikkulainen-dyer-1991-wiley-record",
+        "miikkulainen-dyer-1991-crossref-record",
+        "miikkulainen-dyer-1991-sciencedirect-record",
+        "miikkulainen-dyer-1991-author-record"
+      ],
+      "sourceIds": [
+        "miikkulainen-dyer-1991-wiley-record",
+        "miikkulainen-dyer-1991-crossref-record",
+        "miikkulainen-dyer-1991-sciencedirect-record",
+        "miikkulainen-dyer-1991-author-record",
+        "miikkulainen-dyer-1991-author-manuscript"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The work supplies an inspected neural natural-language-processing system in which error-driven learning updates a global distributed word lexicon shared by recurrent modules for sentence-role and scripted-story tasks. Bengio et al. cite it as an earlier neural language-modeling example while explicitly contrasting its word-role objective with their normalized word-sequence distribution. The branch preserves that historical connection without relabeling FGREP or DISPAR as a probabilistic language model."
+      },
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization",
+        "simple-recurrent-context-memory",
+        "task-learned-global-word-lexicon",
+        "modular-recurrent-neural-language-processing"
+      ],
+      "significance": {
+        "beginner": "Several small recurrent networks learn meaning-like patterns for words in one shared lexicon, then pass those patterns between sentence and story tasks. The system learns expectations and scripted completions, but it does not assign a normalized probability to each possible next word or sentence.",
+        "expert": "FGREP extends backpropagated error into globally stored input/output word representations, while DISPAR chains four separately supervised recurrent FGREP modules around a shared lexicon. The audited manuscript reports synthetic case-role and script-paraphrase metrics and explicitly frames its probabilistic behavior as weighted-average output patterns rather than an explicit sequence distribution."
+      },
+      "limitations": [
+        "The claim-located reading copy is an author-hosted 46-page prepublication manuscript with internal pp. 1–46, not the publisher’s pp. 343–399 journal layout; technical locators and manuscript-specific wording are not transferred to unseen journal pages.",
+        "FGREP and DISPAR learn case-role mappings, paraphrases, and script-conditioned expectation patterns. They do not optimize word-sequence likelihood, normalize a next-word distribution, or report perplexity.",
+        "The experiments use generated sentence templates and nine stereotyped restaurant, shopping, and travel story templates rather than a natural text corpus.",
+        "The four DISPAR modules are trained separately with compatible intermediate targets; during training, imperfect upstream outputs are replaced by correct patterns from the current lexicon rather than propagated end to end.",
+        "An external supervisor supplies fixed role and script slots, module-level targets, sequence segmentation, and execution control. The paper treats automatically discovering intermediate targets and neural control as future work.",
+        "The internal representation uses a fixed number of assemblies, cannot naturally represent an unbounded number of fillers, and is optimal only for the task that developed it.",
+        "The strong incomplete-story completion behavior depends on low variation and deliberately stereotyped scripts; the authors report poor handling of exceptions and little extrapolation beyond training regularities.",
+        "The reported percentages have no confidence intervals, significance tests, repeated-seed analysis, or comparison with a normalized statistical language model.",
+        "The publisher record and author-hosted manuscript expose no verified work-level open license; the manuscript is linked for inspection and is not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The author manuscript and journal article are grouped as one work because the manuscript has the same title and authors and names the exact intended journal volume, issue, pages, and year; their layouts remain separate versions."
+        },
+        {
+          "status": "open",
+          "note": "The exact publication day within July 1991 has not been established.",
+          "resolutionCondition": "A publisher publication-history record or contemporary announcement with a specific day would be required for day-level ordering."
+        },
+        {
+          "status": "open",
+          "note": "The author-hosted manuscript was inspected in full, but a complete claim-by-claim comparison with the publisher’s journal layout was not available.",
+          "resolutionCondition": "Access to the complete published article would be required to transfer manuscript claims to exact journal pages or identify substantive revisions."
+        },
+        {
+          "status": "open",
+          "note": "The baseline case-role split reports 1,439 training examples and 38 reserved examples while also stating 1,475 total examples; the arithmetic differs by two.",
+          "resolutionCondition": "Original data files, generator output, or an author correction would be required to identify which count is incorrect."
+        }
+      ]
+    },
+    {
       "id": "kneser-ney-1995-improved-backing-off",
       "title": "Improved Backing-Off for M-Gram Language Modeling",
       "authors": [
@@ -2390,6 +2571,157 @@
       ]
     },
     {
+      "id": "xu-rudnicky-2000-neural-bigram-language-model",
+      "title": "Can Artificial Neural Networks Learn Language Models?",
+      "authors": [
+        "Wei Xu",
+        "Alex Rudnicky"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "W. Xu and A. Rudnicky, “Can Artificial Neural Networks Learn Language Models?,” 6th International Conference on Spoken Language Processing (ICSLP 2000), vol. 1, 202–205 (2000), DOI 10.21437/ICSLP.2000-50.",
+      "chronology": {
+        "orderingEventId": "xu-rudnicky-2000-icslp-presentation",
+        "events": [
+          {
+            "id": "xu-rudnicky-2000-icslp-presentation",
+            "kind": "conference-presentation",
+            "label": "ICSLP 2000 conference paper",
+            "date": {
+              "value": "2000-10",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "icslp-2000-isca-index",
+                "precision": "month",
+                "locator": "Official ISCA conference index, Beijing, 16–20 October 2000"
+              },
+              {
+                "sourceId": "xu-rudnicky-2000-isca-full-text",
+                "precision": "month",
+                "locator": "Paper banner, Beijing, China, October 16–20, 2000"
+              }
+            ],
+            "versionId": "xu-rudnicky-2000-icslp-version",
+            "sourceIds": [
+              "icslp-2000-isca-index",
+              "xu-rudnicky-2000-isca-record",
+              "xu-rudnicky-2000-isca-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "xu-rudnicky-2000-icslp-version",
+          "title": "Can Artificial Neural Networks Learn Language Models?",
+          "authors": [
+            "Wei Xu",
+            "Alex Rudnicky"
+          ],
+          "kind": "proceedings",
+          "label": "ICSLP 2000 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "W. Xu and A. Rudnicky, “Can Artificial Neural Networks Learn Language Models?,” in 6th International Conference on Spoken Language Processing (ICSLP 2000), vol. 1, pp. 202–205, 2000.",
+            "venue": "6th International Conference on Spoken Language Processing (ICSLP 2000)",
+            "volume": "1",
+            "pages": [
+              "202-205"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.21437/ICSLP.2000-50",
+                "label": "Proceedings paper DOI"
+              },
+              {
+                "type": "issn",
+                "value": "2958-1796",
+                "label": "ISCA Archive ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "icslp-2000-isca-index",
+            "xu-rudnicky-2000-isca-record",
+            "xu-rudnicky-2000-isca-full-text"
+          ],
+          "notes": "The official archive supplies vol. 1, pp. 202–205, DOI, and the October 16–20 conference span. The exact presentation day is not identified, so chronology remains at month precision."
+        }
+      ],
+      "canonicalVersionId": "xu-rudnicky-2000-icslp-version",
+      "preferredSourceIds": [
+        "icslp-2000-isca-index",
+        "xu-rudnicky-2000-isca-record",
+        "xu-rudnicky-2000-isca-full-text"
+      ],
+      "sourceIds": [
+        "icslp-2000-isca-index",
+        "xu-rudnicky-2000-isca-record",
+        "xu-rudnicky-2000-isca-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper evaluates a normalized neural next-word distribution against Katz, Jelinek–Mercer, and Kneser–Ney baselines on a spoken-dialog domain, making it an explicit probabilistic language-model branch. Bengio et al. describe the proposal as independent and identify its no-hidden-unit, single-input-word boundary. The record therefore preserves both the direct softmax-bigram contribution and the sharp separation from later learned word representations and multiword predictors with an optional hidden path."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "sparse-language-model-estimation",
+        "full-vocabulary-softmax-normalization",
+        "one-hot-neural-bigram-language-modeling",
+        "early-stopped-neural-bigram-smoothing"
+      ],
+      "significance": {
+        "beginner": "A network receives the current word and produces a probability for every possible next word. Held-out early stopping is intended to limit overfitting before the table converges to unsmoothed empirical bigram frequencies, but the experiment never learns word features or uses more than one previous word.",
+        "expert": "A one-hot V-input/V-output affine softmax with V(V+1) parameters is trained by batch backpropagation on negative log likelihood from zero initialization and selected by held-out perplexity. The class-based Communicator experiment narrowly edges the listed Kneser–Ney row, while the paper’s linear analysis shows that its simple early-stopping interpolation is inadequate and leaves the full softmax model’s implicit smoothing form unknown."
+      },
+      "limitations": [
+        "The implemented model has no hidden units and receives one input word, so it captures only unigram and bigram statistics and learns no distributed word representation.",
+        "The Communicator domain has an approximately 2,500-word vocabulary represented by about 1,200 language-model classes, including 20 multiword classes; reported perplexities exclude within-class probability.",
+        "Table 1 contains one train/holdout/test split from one spoken-dialog domain, with no confidence intervals, significance tests, repeated seeds, speech-recognition error rate, or out-of-domain evaluation.",
+        "The neural test perplexity of 11.16 differs from the listed Kneser–Ney value of 11.17 by 0.01, and the no-OOV values differ by 0.10; these rows do not establish broad superiority over count models.",
+        "The Jelinek–Mercer row omits a no-OOV value, and the paper does not report split sizes, class-frequency details, OOV counts, or enough preprocessing information for reproduction.",
+        "The authors’ simplified linear early-stopping derivation performs poorly at 19.24 test perplexity. They infer that the experimental softmax network smooths frequent and infrequent events differently but state that its exact interpolation form is unknown.",
+        "Training takes about one minute per epoch for thousands of epochs on a Pentium III 500 MHz machine, compared with less than half a minute to obtain the paper’s Katz or Jelinek–Mercer model.",
+        "Hidden units, additional history, recurrent connections, another domain, and long-distance dependencies are future work rather than properties of the evaluated system.",
+        "The official archive provides public reading access but no verified paper-level open-content license; the PDF is linked and not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact paper presentation day within ICSLP’s October 16–20, 2000 span has not been established.",
+          "resolutionCondition": "An authoritative session schedule mapping paper M1-13 to a dated session would be required for day-level ordering."
+        },
+        {
+          "status": "resolved",
+          "note": "The paper’s implemented network is a normalized direct bigram estimator: hidden units, multiple-word context, learned word features, and recurrent connections are explicitly absent or deferred."
+        },
+        {
+          "status": "open",
+          "note": "The official PDF does not display stable printed folios even though the proceedings record gives pp. 202–205.",
+          "resolutionCondition": "A scan retaining the printed proceedings folios would be required before evidence locators use page numbers rather than sections, equations, figures, and tables."
+        },
+        {
+          "status": "open",
+          "note": "The prose around equation (5.1) misdescribes Count(i) as the count of word j, while the Appendix and derivation use the input-word count i; the interpolation equation is also printed as (25) elsewhere.",
+          "resolutionCondition": "An author correction or erratum would be required to resolve the notation and cross-reference errors."
+        },
+        {
+          "status": "open",
+          "note": "The large-count discussion refers to equation (5.3), even though Figure 1(b) is labeled as the equation-derived curve and the surrounding comparison points to equation (5.2).",
+          "resolutionCondition": "An author correction or erratum would be required to resolve the equation cross-reference."
+        },
+        {
+          "status": "open",
+          "note": "Editorial placement immediately before Bengio does not establish within-2000 priority or development order between the independently described projects.",
+          "resolutionCondition": "Dated submissions, development records, or contemporary programs would be required for finer chronology, without by themselves establishing influence."
+        }
+      ]
+    },
+    {
       "id": "bengio-2000-neural-probabilistic-language-model",
       "title": "A Neural Probabilistic Language Model",
       "authors": [
@@ -2608,9 +2940,8 @@
           "resolutionCondition": "An authoritative conference program or session schedule identifying this paper’s presentation would be required for day-level ordering."
         },
         {
-          "status": "open",
-          "note": "The paper’s cited Hinton 1986 and Elman 1990 representation precursors are now audited; the separately cited neural-language-model precursors remain outside the promoted corpus.",
-          "resolutionCondition": "Audit Miikkulainen and Dyer 1991 and Xu and Rudnicky 2000 before adding paper-specific lineage edges for those neural-language-model antecedents."
+          "status": "resolved",
+          "note": "The related Hinton 1986, Elman 1990, and Miikkulainen and Dyer 1991 antecedents and the Xu and Rudnicky 2000 independent parallel are audited as distinct branches. Their edges preserve the target paper’s separate representation, role-learning, and direct-bigram boundaries rather than collapsing them into one architecture."
         },
         {
           "status": "open",
@@ -2651,6 +2982,7 @@
         "shannon-1948-context-entropy",
         "jelinek-1975-language-model-interface",
         "jelinek-1975-state-context",
+        "xu-rudnicky-2000-bigram-probability-objective",
         "bengio-2003-fixed-window-factorization"
       ],
       "uncertainties": []
@@ -2772,6 +3104,10 @@
         "chen-goodman-1998-interpolated-form",
         "chen-goodman-1998-three-discount-form",
         "chen-goodman-1998-evaluation-scope",
+        "xu-rudnicky-2000-likelihood-and-early-stopping",
+        "xu-rudnicky-2000-communicator-evaluation-scope",
+        "xu-rudnicky-2000-table-one-results",
+        "xu-rudnicky-2000-early-stopping-analysis",
         "bengio-2003-ngram-generalization-limit",
         "bengio-2003-joint-word-feature-learning"
       ],
@@ -3059,6 +3395,8 @@
       "kind": "mechanism",
       "description": "One score per vocabulary item is exponentiated and normalized into a next-word distribution, coupling every training example to the full output vocabulary.",
       "claimIds": [
+        "xu-rudnicky-2000-direct-softmax-architecture",
+        "xu-rudnicky-2000-likelihood-and-early-stopping",
         "bengio-2003-feedforward-softmax-architecture",
         "bengio-2003-penalized-likelihood-training",
         "bengio-2003-scaling-tradeoff",
@@ -3096,12 +3434,14 @@
         "elman-1990-emergent-lexical-classes",
         "elman-1990-contextual-token-representations",
         "elman-1990-novel-word-context-test",
+        "miikkulainen-dyer-1991-global-lexicon-learning",
+        "miikkulainen-dyer-1991-task-shaped-representation-similarity",
         "bengio-2003-distributed-representation-precursors"
       ],
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "This shared idea records a broad representation principle. It does not equate Hinton’s role-specific family codes, Elman’s context-dependent hidden states, and Bengio’s static jointly learned word lookup rows."
+          "note": "This shared idea records a broad representation principle. It does not equate Hinton’s role-specific family codes, Elman’s context-dependent hidden states, Miikkulainen and Dyer’s task-learned global word-type patterns, and Bengio’s static jointly learned word lookup rows."
         }
       ]
     },
@@ -3115,12 +3455,19 @@
         "hinton-1986-family-tree-architecture",
         "hinton-1986-family-feature-structure",
         "hinton-1986-held-out-family-generalization",
-        "hinton-1986-generalization-theory-limit"
+        "hinton-1986-generalization-theory-limit",
+        "miikkulainen-dyer-1991-task-shaped-representation-similarity",
+        "miikkulainen-dyer-1991-frequency-weighted-expectations",
+        "miikkulainen-dyer-1991-novelty-and-exception-boundary"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "The Hinton evidence is restricted to two small isomorphic family graphs and four withheld facts; it is not broad semantic or cross-domain transfer evidence."
+        },
+        {
+          "status": "resolved",
+          "note": "The Miikkulainen–Dyer evidence is restricted to supervised case-role and stereotyped script tasks; its similarity and cloning results do not establish portable word semantics or open-domain generalization."
         }
       ]
     },
@@ -3134,12 +3481,92 @@
         "elman-1990-simple-recurrent-context",
         "elman-1990-task-dependent-memory",
         "elman-1990-contextual-token-representations",
-        "elman-1990-memory-boundary"
+        "elman-1990-memory-boundary",
+        "miikkulainen-dyer-1991-recurrent-fgrep-memory"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "The copied hidden-to-context links are fixed at 1.0; this idea must not be rendered as though every recurrent connection is learned or the paper trained with full backpropagation through time."
+        },
+        {
+          "status": "resolved",
+          "note": "Miikkulainen and Dyer explicitly reuse Elman-style copied context, but recurrent FGREP predicts a stationary case-role target rather than the next word."
+        }
+      ]
+    },
+    {
+      "id": "task-learned-global-word-lexicon",
+      "name": "Task-learned global distributed word lexicon",
+      "kind": "mechanism",
+      "description": "Backpropagated task error can update one stored distributed pattern per word and reuse that shared pattern as input, output, and inter-module communication across several supervised language-processing tasks.",
+      "claimIds": [
+        "miikkulainen-dyer-1991-global-lexicon-learning",
+        "miikkulainen-dyer-1991-task-shaped-representation-similarity",
+        "miikkulainen-dyer-1991-dispar-modular-training",
+        "miikkulainen-dyer-1991-representation-and-assembly-limits"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The stored word pattern is global within DISPAR, but its geometry is learned for the supervised tasks and is not a context-dependent token representation or a word vector trained by language-model likelihood."
+        }
+      ]
+    },
+    {
+      "id": "modular-recurrent-neural-language-processing",
+      "name": "Modular recurrent neural language processing",
+      "kind": "mechanism",
+      "description": "Several recurrent networks can specialize in sentence parsing, story parsing, story generation, and sentence generation while communicating through a compatible learned lexicon and explicit case-role or script structures.",
+      "claimIds": [
+        "miikkulainen-dyer-1991-modular-neural-nlp-scope",
+        "miikkulainen-dyer-1991-recurrent-fgrep-memory",
+        "miikkulainen-dyer-1991-sequential-case-role-evaluation",
+        "miikkulainen-dyer-1991-dispar-modular-training",
+        "miikkulainen-dyer-1991-scripted-story-evaluation-scope",
+        "miikkulainen-dyer-1991-incomplete-story-results",
+        "miikkulainen-dyer-1991-probability-model-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The modules are separately supervised with compatible targets and correct intermediate lexical patterns during training; the corpus does not describe DISPAR as an end-to-end learned pipeline."
+        }
+      ]
+    },
+    {
+      "id": "one-hot-neural-bigram-language-modeling",
+      "name": "One-hot neural bigram language modeling",
+      "kind": "mechanism",
+      "description": "A one-hot current-word input can feed a full-vocabulary affine softmax directly, making the network a normalized bigram estimator with no hidden representation and no context beyond one word.",
+      "claimIds": [
+        "xu-rudnicky-2000-bigram-probability-objective",
+        "xu-rudnicky-2000-direct-softmax-architecture",
+        "xu-rudnicky-2000-likelihood-and-early-stopping",
+        "xu-rudnicky-2000-batch-training-and-sparse-updates",
+        "xu-rudnicky-2000-training-cost",
+        "xu-rudnicky-2000-future-architecture-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The evaluated system contains no hidden units or learned word vectors; calling it neural records its optimization and softmax parameterization, not distributed representation learning."
+        }
+      ]
+    },
+    {
+      "id": "early-stopped-neural-bigram-smoothing",
+      "name": "Early stopping as implicit neural bigram smoothing",
+      "kind": "mechanism",
+      "description": "Selecting a direct bigram network before full training convergence can regularize sparse word-pair estimates; an exact count-dependent interpolation is derived only for a separate linear squared-error surrogate, while the actual softmax network's smoothing form remains unknown.",
+      "claimIds": [
+        "xu-rudnicky-2000-likelihood-and-early-stopping",
+        "xu-rudnicky-2000-early-stopping-analysis"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The corpus does not transfer equations (5.1)–(5.3) from the linear, no-bias, squared-error analysis to the implemented softmax likelihood model."
         }
       ]
     },
@@ -4043,6 +4470,104 @@
       "accessNote": "University-hosted scan retaining printed pp. 179–211, figures, tables, footnotes, and references. No verified open redistribution license accompanies the scan; it is used for inspection and exact locators and is not copied into this repository."
     },
     {
+      "id": "miikkulainen-dyer-1991-wiley-record",
+      "relatedWorkIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "title": "Wiley record for Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog1503_2",
+      "accessDate": "2026-08-04",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "miikkulainen-dyer-1991-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The current publisher record identifies the article, Cognitive Science 15(3), pp. 343–399, first publication in July 1991, and DOI 10.1207/s15516709cog1503_2."
+    },
+    {
+      "id": "miikkulainen-dyer-1991-crossref-record",
+      "relatedWorkIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "title": "Crossref publisher deposit for Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+      "url": "https://api.crossref.org/works/10.1207%2Fs15516709cog1503_2",
+      "accessDate": "2026-08-04",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "miikkulainen-dyer-1991-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The structured publisher deposit confirms the title, authors, July 1991 issue date, Cognitive Science volume 15, issue 3, pp. 343–399, current DOI, and journal identifiers."
+    },
+    {
+      "id": "miikkulainen-dyer-1991-sciencedirect-record",
+      "relatedWorkIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "title": "ScienceDirect record for Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+      "url": "https://www.sciencedirect.com/science/article/pii/036402139180002M",
+      "accessDate": "2026-08-04",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "miikkulainen-dyer-1991-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher record gives Cognitive Science volume 15, issue 3, July–September 1991, pp. 343–399, and DOI 10.1016/0364-0213(91)80002-M. The issue coverage does not establish an exact publication day."
+    },
+    {
+      "id": "miikkulainen-dyer-1991-author-record",
+      "relatedWorkIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "title": "Author-maintained publication record for the modular PDP language-processing paper",
+      "url": "https://nn.cs.utexas.edu/?miikkulainen%3Acogscij91=",
+      "accessDate": "2026-08-04",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "miikkulainen-dyer-1991-author-manuscript-version",
+        "miikkulainen-dyer-1991-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author-maintained publication page supplies the title, authors, Cognitive Science 15:343–399 (1991), abstract, and linked manuscript. It does not describe the linked copy as the publisher's journal layout."
+    },
+    {
+      "id": "miikkulainen-dyer-1991-author-manuscript",
+      "relatedWorkIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "title": "Author-hosted manuscript of Natural Language Processing With Modular PDP Networks and Distributed Lexicon",
+      "url": "https://nn.cs.utexas.edu/downloads/papers/miikkulainen.natural-language.pdf",
+      "accessDate": "2026-08-04",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "miikkulainen-dyer-1991-author-manuscript-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 46
+      },
+      "accessNote": "The author-hosted 46-page manuscript was rendered and inspected in full. It retains visible internal pp. 1–46 and is marked as forthcoming in Cognitive Science 15(3):343–399 (1991), so claim locators use the manuscript's own pagination rather than unseen journal folios. No verified open-content license accompanies the file; it is linked and not redistributed."
+    },
+    {
       "id": "kneser-ney-1995-ieee-record",
       "relatedWorkIds": [
         "kneser-ney-1995-improved-backing-off"
@@ -4403,6 +4928,67 @@
         "metadata"
       ],
       "accessNote": "The authors’ institutional record classifies the item as a 2000 journal paper, gives the two authors and IDIAP-RR 00-01 note, and links the repository manuscript. The manuscript is represented separately as the technical-report version."
+    },
+    {
+      "id": "icslp-2000-isca-index",
+      "relatedWorkIds": [
+        "xu-rudnicky-2000-neural-bigram-language-model"
+      ],
+      "title": "Official ISCA index for ICSLP 2000",
+      "url": "https://www.isca-archive.org/icslp_2000/",
+      "accessDate": "2026-08-04",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "xu-rudnicky-2000-icslp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official conference index identifies Beijing, China, and the 16–20 October 2000 conference span. It supports month-level container chronology, not a paper-specific presentation day."
+    },
+    {
+      "id": "xu-rudnicky-2000-isca-record",
+      "relatedWorkIds": [
+        "xu-rudnicky-2000-neural-bigram-language-model"
+      ],
+      "title": "Official ISCA record for Can Artificial Neural Networks Learn Language Models?",
+      "url": "https://www.isca-archive.org/icslp_2000/xu00b_icslp.html",
+      "accessDate": "2026-08-04",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "xu-rudnicky-2000-icslp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official proceedings record supplies the title, authors, abstract, year, venue, volume 1, pp. 202–205, DOI 10.21437/ICSLP.2000-50, ISSN 2958-1796, and the full-text link."
+    },
+    {
+      "id": "xu-rudnicky-2000-isca-full-text",
+      "relatedWorkIds": [
+        "xu-rudnicky-2000-neural-bigram-language-model"
+      ],
+      "title": "Official ISCA full text of Can Artificial Neural Networks Learn Language Models?",
+      "url": "https://www.isca-archive.org/icslp_2000/xu00b_icslp.pdf",
+      "accessDate": "2026-08-04",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "xu-rudnicky-2000-icslp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 4
+      },
+      "accessNote": "The official four-leaf proceedings PDF was rendered and inspected in full. It prints the Beijing conference span of 16–20 October 2000 but exposes no stable visible folios; structured claim evidence therefore uses sections, equations, tables, figures, or paragraphs rather than pageStart/pageEnd. The official record's pp. 202–205 remain bibliography metadata. No verified paper-level open-content license was found and the PDF is not redistributed."
     },
     {
       "id": "bengio-2000-neurips-record",
@@ -7136,6 +7722,362 @@
       "checkedDate": "2026-08-03"
     },
     {
+      "id": "miikkulainen-dyer-1991-modular-neural-nlp-scope",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "The inspected manuscript proposes a connectionist natural-language-processing system built from hierarchically organized recurrent PDP modules that communicate through a central, globally available distributed lexicon while learning sentence-role and script-paraphrase tasks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "System scope and modular organization, manuscript pp. 1–3",
+            "section": "Abstract; 1 Introduction; 2 Methods for forming distributed representations",
+            "pageStart": 1,
+            "pageEnd": 3
+          },
+          "support": "Defines the global distributed lexicon, modular hierarchy, sentence case-role task, and scripted-story paraphrase task."
+        }
+      ],
+      "limitations": [
+        "The paper evaluates supervised neural language-processing mappings, not a normalized statistical language model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-global-lexicon-learning",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "task-learned-global-word-lexicon"
+      ],
+      "statement": "FGREP stores one distributed pattern per item in an external lexicon, reuses the same pattern in input and output assemblies, and learns those patterns by extending backpropagated task error into the input layer rather than holding the word codes fixed.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "FGREP representation storage and learning, manuscript pp. 4–6",
+            "section": "3 FGREP: Forming Global Representations with Extended back-Propagation",
+            "pageStart": 4,
+            "pageEnd": 6,
+            "figure": "1",
+            "equation": "1–3"
+          },
+          "support": "Describes the external lexicon, shared input/output patterns, and the error term used to update input representations."
+        }
+      ],
+      "limitations": [
+        "The learned pattern is a task-shaped type representation; it is not a contextual token state or a vector trained by word-sequence likelihood."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-task-shaped-representation-similarity",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization",
+        "task-learned-global-word-lexicon"
+      ],
+      "statement": "Because the word patterns are updated through the same task networks, items used similarly can develop similar distributed content components, allowing a new item to be cloned from a known item while retaining a separate identity component.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Task-shaped representation similarity, manuscript pp. 5–6",
+            "section": "3.1 Basic FGREP architecture; 3.2 Extending backpropagation to the representations; 3.3 Reactive training environment",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "Explains why similar processing properties shape similar distributed word patterns."
+        },
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "ID-plus-content cloning experiment, manuscript pp. 18–19",
+            "section": "6.2 Composing instances from ID and Content; 6.3 Performance with cloned synonyms",
+            "pageStart": 18,
+            "pageEnd": 19
+          },
+          "support": "Evaluates distinct identity components combined with shared content to clone a new item from a known one."
+        }
+      ],
+      "limitations": [
+        "The demonstrated similarity and cloning behavior is confined to engineered case-role data and supervised targets."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-recurrent-fgrep-memory",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "simple-recurrent-context-memory",
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "Recurrent FGREP is based on Elman's Simple Recurrent Network: the preceding hidden activation is copied into a context layer and combined with the current word, while the sequential case-role task keeps the complete stationary role representation as the target throughout the sentence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Recurrent FGREP architecture and target, manuscript pp. 22–23",
+            "section": "7.2 Recurrent FGREP module; 7.3 Case-role assignment from sequential input",
+            "pageStart": 22,
+            "pageEnd": 23,
+            "figure": "11"
+          },
+          "support": "Explicitly attributes the recurrent basis to Elman's architecture and describes the copied context and stationary target."
+        }
+      ],
+      "limitations": [
+        "The recurrence supports a supervised case-role mapping; it is not trained to predict the next word."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-sequential-case-role-evaluation",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "The 75-hidden-unit sequential case-role experiment reports 97% correct output words, 95% correct cloned-synonym words, 93% of output values within 0.15 of their targets, and average error 0.045 after its staged learning-rate schedule.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Sequential case-role setup and results, manuscript pp. 22–23",
+            "section": "7.3 Case-role assignment from sequential input",
+            "pageStart": 22,
+            "pageEnd": 23
+          },
+          "support": "Reports the architecture, training schedule, word/cloning criteria, component threshold, and average error."
+        }
+      ],
+      "limitations": [
+        "The percentages use task-specific output decoding or an activation-distance threshold; they are not probabilities, sentence accuracy, likelihood, or perplexity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-frequency-weighted-expectations",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "When a sentence prefix leaves a case role unresolved, training the full stationary target after every input word makes the corresponding output pattern approximate an average of possible event-sequence targets weighted by their observed frequencies.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Frequency-weighted role expectations, manuscript p. 23",
+            "section": "7.4 Sequential expectations",
+            "pageStart": 23,
+            "pageEnd": 23,
+            "figure": "11"
+          },
+          "support": "Explains unresolved outputs as frequency-weighted averages over compatible target patterns."
+        }
+      ],
+      "limitations": [
+        "An averaged activation pattern is not a normalized distribution over next words, parses, or complete sequences."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-dispar-modular-training",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "task-learned-global-word-lexicon",
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "DISPAR connects four recurrent FGREP modules for sentence parsing, story parsing, story generation, and sentence generation through compatible lexical targets; the modules are trained separately, and correct current-lexicon patterns replace imperfect upstream outputs during training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "DISPAR module interfaces and training, manuscript pp. 25–29",
+            "section": "10.1–10.5",
+            "pageStart": 25,
+            "pageEnd": 29,
+            "figure": "12–13"
+          },
+          "support": "Defines the four modules, their shared lexical interface, compatible targets, and substitution of correct intermediate patterns during training."
+        }
+      ],
+      "limitations": [
+        "This is modular teacher forcing with externally defined interfaces, not end-to-end training through actual upstream errors."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-scripted-story-evaluation-scope",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "The DISPAR study uses 86 word prototypes, nine generated story templates covering restaurant, shopping, and travel scripts, and 96 constructed test stories; roles, script structure, module decomposition, and control are supplied by the experimental design.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Script templates, lexicon, and test construction, manuscript pp. 25–29",
+            "section": "10.1–10.5",
+            "pageStart": 25,
+            "pageEnd": 29,
+            "figure": "12–13"
+          },
+          "support": "Lists the three script domains, three tracks per domain, 86 prototypes, and complete/incomplete story evaluation design."
+        },
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Externally supplied system control, manuscript p. 34",
+            "section": "11.4 Implementing control with networks",
+            "pageStart": 34,
+            "pageEnd": 34
+          },
+          "support": "States that the reported simulations use an external supervisor and presents network control as future work."
+        }
+      ],
+      "limitations": [
+        "The data are synthetic and deliberately stereotyped; there is no natural-text corpus, open-domain parser, or learned discovery of slots and scripts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-incomplete-story-results",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "Table 4 reports complete/incomplete metrics for sentence parser (99/99% words, 99/99% cloned instances, 99/98% values within 0.15, 0.017/0.019 error), story parser (99/96, 99/97, 96/93, 0.023/0.041), story generator (99/99, 99/97, 97/97, 0.021/0.027), and sentence generator (99/99, 99/97, 96/95, 0.037/0.044).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Complete and incomplete story results, manuscript p. 30",
+            "section": "10.7 Paraphrasing",
+            "pageStart": 30,
+            "pageEnd": 30,
+            "table": "4"
+          },
+          "support": "Provides all four module rows and both complete- and incomplete-story columns."
+        }
+      ],
+      "limitations": [
+        "The reported completion behavior is measured inside nine low-variation script templates and does not establish open-ended story understanding."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-representation-and-assembly-limits",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "task-learned-global-word-lexicon"
+      ],
+      "statement": "The authors caution that learned representations are interpretable through the network and task that developed them rather than as portable semantic codes, and that fixed role assemblies cannot naturally represent an arbitrary number of fillers.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Representation interpretation and fixed-assembly limits, manuscript p. 24",
+            "section": "8 Limitations of FGREP",
+            "pageStart": 24,
+            "pageEnd": 24
+          },
+          "support": "States the task dependence and limited portability of representations and the bounded-filler problem of fixed assemblies."
+        }
+      ],
+      "limitations": [
+        "The study does not demonstrate reusable lexical semantics or variable-cardinality binding."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-novelty-and-exception-boundary",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "similarity-based-distributed-generalization"
+      ],
+      "statement": "DISPAR can overwrite an exceptional bad-food fancy-restaurant input with its learned good-food regularity, and the authors characterize the system as better at interpolation among learned regularities than at extrapolation to genuinely novel role bindings.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Exception and extrapolation boundary, manuscript p. 36",
+            "section": "12.2 Dealing with exceptions and novel situations",
+            "pageStart": 36,
+            "pageEnd": 36
+          },
+          "support": "Uses the restaurant exception to show a learned expectation overriding novel evidence and contrasts interpolation with extrapolation."
+        }
+      ],
+      "limitations": [
+        "Robust completion inside a script can be a failure on valid exceptions rather than evidence of general language understanding."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "miikkulainen-dyer-1991-probability-model-boundary",
+      "workId": "miikkulainen-dyer-1991-modular-pdp-language-processing",
+      "ideaIds": [
+        "modular-recurrent-neural-language-processing"
+      ],
+      "statement": "When contrasting its inference with formal conditional probabilities, the manuscript says DISPAR produces a frequency-weighted average activation answer rather than a particular answer paired with its probability.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Probabilistic-inference boundary, manuscript pp. 37–38",
+            "section": "12.4 Parallel distributed inference",
+            "pageStart": 37,
+            "pageEnd": 38
+          },
+          "support": "Contrasts conditional-probability answers with the network's weighted-average activation response."
+        }
+      ],
+      "limitations": [
+        "The authors' probabilistic-inference discussion must not be rendered as evidence of a normalized probabilistic language model. A complete manuscript audit found no normalized next-word distribution, sequence likelihood, cross-entropy, or perplexity objective."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
       "id": "kneser-ney-1995-standard-backoff-bias",
       "workId": "kneser-ney-1995-improved-backing-off",
       "ideaIds": [
@@ -8360,6 +9302,255 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-01"
+    },
+    {
+      "id": "xu-rudnicky-2000-bigram-probability-objective",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "one-hot-neural-bigram-language-modeling"
+      ],
+      "statement": "The paper defines a normalized word-sequence language model and implements the bigram case, in which each next-word distribution is conditioned only on the immediately preceding word.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Sequence probability and bigram restriction",
+            "section": "2. Basic of language modeling",
+            "equation": "2.1–2.4"
+          },
+          "support": "Factorizes a sentence into conditional next-word probabilities and restricts the implemented model to one preceding word."
+        }
+      ],
+      "limitations": [
+        "The evaluated history is one word; it contains no longer fixed window or recurrent state."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-direct-softmax-architecture",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization",
+        "one-hot-neural-bigram-language-modeling"
+      ],
+      "statement": "The evaluated network has V one-hot inputs for the current word, V outputs interpreted as next-word probabilities, no hidden units, and a fully connected affine softmax with V(V+1) weights including biases.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "One-hot encoding, direct architecture, and softmax",
+            "section": "3.1 Input and output encoding; 3.3 Activation function; 3.4 Network structure",
+            "equation": "3.2"
+          },
+          "support": "Defines the V-way one-hot input/output coding, normalized exponential output, absent hidden layer, and parameter count."
+        }
+      ],
+      "limitations": [
+        "The direct word-to-word parameterization learns no shared word representation and cannot transfer through lexical feature similarity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-likelihood-and-early-stopping",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "full-vocabulary-softmax-normalization",
+        "one-hot-neural-bigram-language-modeling",
+        "early-stopped-neural-bigram-smoothing"
+      ],
+      "statement": "Training minimizes negative log likelihood, which the paper identifies with log perplexity; full convergence recovers the unsmoothed empirical bigram conditional, so the experimental model is selected at minimum held-out perplexity instead of being trained to convergence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Likelihood objective, convergence boundary, and held-out stopping",
+            "section": "3.2 Error function; 3.6 Training method",
+            "equation": "3.1"
+          },
+          "support": "Defines the loss, states the converged unsmoothed-bigram equivalence, and gives held-out perplexity as the stopping rule."
+        }
+      ],
+      "limitations": [
+        "Early stopping is the implemented regularizer; the paper does not derive the exact smoothing distribution of the trained softmax network."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-batch-training-and-sparse-updates",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "one-hot-neural-bigram-language-modeling"
+      ],
+      "statement": "The network is initialized at zero, giving uniform softmax outputs, and trained by batch backpropagation with a small constant learning rate; because the input is one-hot, the authors propose updating only weights connected to nonzero inputs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Sparse update and batch training protocol",
+            "section": "3.5 An issue on computation cost; 3.6 Training method",
+            "equation": "3.3"
+          },
+          "support": "Derives the input-gated weight update and specifies initialization, batch epochs, learning rate, and stopping protocol."
+        }
+      ],
+      "limitations": [
+        "The paper reports no controlled measurement of the sparse update's speedup."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-communicator-evaluation-scope",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "sparse-language-model-estimation"
+      ],
+      "statement": "The experiment uses Communicator telephone air-travel data with about 2,500 vocabulary items represented by about 1,200 classes, including roughly 20 multiword classes; its reported class-level perplexities exclude within-class word probabilities.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Communicator corpus and class-level metric",
+            "section": "4. Experiment result",
+            "paragraph": "Opening paragraph"
+          },
+          "support": "Gives the domain, approximate vocabulary and class counts, multiword-class convention, and exclusion of within-class probability."
+        }
+      ],
+      "limitations": [
+        "The paper omits token counts and split sizes, and its class-level perplexity is not directly comparable with ordinary full-word perplexity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-table-one-results",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "sparse-language-model-estimation"
+      ],
+      "statement": "Table 1 reports train/holdout/test/no-OOV perplexities of 9.84/11.89/12.20/10.26 for Katz, 9.50/11.76/11.99/not reported for Jelinek–Mercer, 9.58/11.19/11.17/9.68 for Kneser–Ney, and 9.82/11.24/11.16/9.58 for the neural network.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Complete perplexity comparison",
+            "section": "4. Experiment result",
+            "table": "1"
+          },
+          "support": "Provides all reported cells for the four estimators, including the blank Jelinek–Mercer no-OOV cell."
+        }
+      ],
+      "limitations": [
+        "The neural test value is only 0.01 below the listed Kneser–Ney value; no significance test, confidence interval, repeated run, or recognition result is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-training-cost",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "one-hot-neural-bigram-language-modeling"
+      ],
+      "statement": "The authors report roughly one minute per neural epoch on a Pentium III 500 MHz machine and thousands of epochs to train, versus under 30 seconds to obtain the paper's Katz or Jelinek–Mercer model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Reported training-cost comparison",
+            "section": "5. Discussion",
+            "paragraph": "Computational-cost paragraph"
+          },
+          "support": "Reports the per-epoch machine time, epoch count scale, and count-model construction time."
+        }
+      ],
+      "limitations": [
+        "No matched implementation details, total neural time, or Kneser–Ney construction time are supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-early-stopping-analysis",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "early-stopped-neural-bigram-smoothing"
+      ],
+      "statement": "For a separate no-hidden, no-bias linear network trained by batch squared error at small learning rate, equations (5.1)–(5.3) derive a count-dependent interpolation between bigram frequencies and the initialization; that surrogate reports 12.17/14.63/19.24 train/validation/test perplexity, and the authors explicitly leave the actual softmax network's interpolation form unknown.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Linear surrogate derivation and result",
+            "section": "5. Discussion; Appendix",
+            "equation": "5.1–5.3",
+            "figure": "1"
+          },
+          "support": "States the altered assumptions, derives the exponential count-dependent weight, reports the surrogate perplexities, and distinguishes the unknown softmax behavior."
+        }
+      ],
+      "limitations": [
+        "The exact interpolation result changes the activation, loss, bias, and initialization assumptions and cannot be transferred to the implemented likelihood-trained softmax model."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The prose near equation (5.1) describes Count(i) as the count of word j, while the Appendix and derivation use the count of input word i."
+        },
+        {
+          "status": "open",
+          "note": "The large-count discussion cites equation (5.3), although the surrounding comparison and Figure 1(b) indicate the equation-derived curve associated with (5.2)."
+        }
+      ],
+      "checkedDate": "2026-08-04"
+    },
+    {
+      "id": "xu-rudnicky-2000-future-architecture-boundary",
+      "workId": "xu-rudnicky-2000-neural-bigram-language-model",
+      "ideaIds": [
+        "one-hot-neural-bigram-language-modeling"
+      ],
+      "statement": "Hidden units, more than one input word, recurrent connections, tests in another domain, and modeling long-distance dependencies are proposed as future work rather than evaluated properties of the reported model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Unevaluated architecture extensions",
+            "section": "6. Conclusions and Future Work"
+          },
+          "support": "Lists hidden layers, longer input, recurrence, new domains, and long-distance modeling as future directions."
+        }
+      ],
+      "limitations": [
+        "The paper is not evidence for learned embeddings, multiword hidden networks, or recurrent neural language modeling."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-04"
     },
     {
       "id": "bengio-2003-ngram-generalization-limit",
@@ -9631,6 +10822,159 @@
           "note": "The relationship is scoped to explicitly reported mixed models; the paper does not derive its neural architecture from Jelinek–Mercer interpolation."
         }
       ]
+    },
+    {
+      "id": "elman-1988-to-miikkulainen-dyer-1991",
+      "from": {
+        "kind": "work",
+        "id": "elman-1988-finding-structure-in-time"
+      },
+      "to": {
+        "kind": "work",
+        "id": "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Miikkulainen and Dyer explicitly say recurrent FGREP is based on Elman's Simple Recurrent Network and use its copied previous-hidden-state context to process word sequences. The edge carries only that recurrent context mechanism: FGREP replaces Elman's next-item target with a stationary supervised case-role target and adds a learned global lexicon and modular story system not attributed to Elman.",
+      "claimIds": [
+        "elman-1990-simple-recurrent-context",
+        "miikkulainen-dyer-1991-recurrent-fgrep-memory"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "miikkulainen-dyer-1991-author-manuscript",
+          "locator": {
+            "label": "Explicit Elman architecture attribution, manuscript p. 22",
+            "section": "7.2 Recurrent FGREP module",
+            "pageStart": 22,
+            "pageEnd": 22
+          },
+          "support": "The later work says recurrent FGREP is based on Elman's Simple Recurrent Network and describes copying the prior hidden activation into context."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge does not carry Elman's next-word objective, lexical clustering experiment, or unnormalized successor outputs into FGREP."
+        }
+      ]
+    },
+    {
+      "id": "miikkulainen-dyer-1991-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Both Bengio versions cite Miikkulainen and Dyer as earlier neural language work, then explicitly contrast its word-role focus with their own large-scale statistical distribution over word sequences. This documented addresses edge records the later work treating that probabilistic and scale boundary; it does not transfer FGREP recurrence, its global lexicon mechanism, case-role targets, DISPAR, or another explicit probability model into Bengio's architecture.",
+      "claimIds": [
+        "miikkulainen-dyer-1991-global-lexicon-learning",
+        "miikkulainen-dyer-1991-probability-model-boundary",
+        "bengio-2003-prior-neural-language-models"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Earlier neural language-model citation and scale contrast",
+            "section": "1.2 Relation to Previous Work",
+            "paragraph": "Second paragraph and reference [8]"
+          },
+          "support": "The conference version cites Miikkulainen and Dyer, describes the prior focus on word roles, and frames its own work as large-scale statistical word-sequence modeling."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Miikkulainen–Dyer antecedent and contrast, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Second paragraph"
+          },
+          "support": "The expanded target repeats the citation and explicitly distinguishes its statistical sequence-distribution objective from learning word roles."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Miikkulainen and Dyer reference, printed p. 1154",
+            "section": "References",
+            "pageStart": 1154,
+            "pageEnd": 1154,
+            "paragraph": "Miikkulainen and Dyer 1991 entry"
+          },
+          "support": "The target bibliography's shortened title variant is resolved by authors, venue, volume, pages, and year."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The bibliography's shortened title uniquely resolves to the audited work; the edge records a cited antecedent and contrast, not architectural inheritance."
+        }
+      ]
+    },
+    {
+      "id": "xu-rudnicky-2000-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "xu-rudnicky-2000-neural-bigram-language-model"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "conceptual-parallel",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "high",
+      "rationale": "The JMLR article calls Xu and Rudnicky an independent proposal and bounds it to one input word and no hidden units. The shared ground is a normalized neural next-word distribution; Xu and Rudnicky implement a direct softmax bigram without learned features, whereas Bengio learns shared word vectors through a multiword predictor with an optional hidden path. No influence or priority direction is asserted.",
+      "claimIds": [
+        "xu-rudnicky-2000-bigram-probability-objective",
+        "xu-rudnicky-2000-direct-softmax-architecture",
+        "xu-rudnicky-2000-future-architecture-boundary",
+        "bengio-2003-prior-neural-language-models"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Independent-proposal characterization, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Second paragraph"
+          },
+          "support": "Calls Xu and Rudnicky independent and distinguishes their no-hidden, one-input-word model from the target architecture."
+        },
+        {
+          "sourceId": "xu-rudnicky-2000-isca-full-text",
+          "locator": {
+            "label": "Direct softmax bigram scope",
+            "section": "3.1–3.4",
+            "equation": "3.1–3.2"
+          },
+          "support": "The source confirms the one-hot current-word input, direct V-way softmax, and absent hidden layer."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact within-2000 development, submission, and presentation order of the independently described projects is not established.",
+          "resolutionCondition": "Dated submissions, author records, or contemporary programs would be required for finer chronology; none would by itself establish influence."
+        },
+        {
+          "status": "resolved",
+          "note": "Bengio's 2000 conference version does not cite Xu and Rudnicky, the expanded 2003 version labels the proposal independent, and Xu and Rudnicky's bibliography contains no Bengio entry."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -10114,6 +11458,72 @@
       "successCriterion": "The learner can distinguish h(t−1) copying from learned context-to-hidden weights, explain why training is not full backpropagation through time, preserve all three incompatible corpus totals, reproduce the 0.88 versus 1.0 comparator and 0.053/0.916 fit statistics, and explain why outputs are not probabilities."
     },
     {
+      "id": "beginner-miikkulainen-dyer-1991-shared-lexicon",
+      "mode": "beginner",
+      "objective": "Trace how similarly used words acquire related patterns in one shared lexicon, follow a sentence through recurrent role parsing and scripted-story completion, and explain why a plausible missing role is an averaged activation rather than a next-word probability.",
+      "workIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization",
+        "simple-recurrent-context-memory",
+        "task-learned-global-word-lexicon",
+        "modular-recurrent-neural-language-processing"
+      ],
+      "claimIds": [
+        "miikkulainen-dyer-1991-global-lexicon-learning",
+        "miikkulainen-dyer-1991-task-shaped-representation-similarity",
+        "miikkulainen-dyer-1991-recurrent-fgrep-memory",
+        "miikkulainen-dyer-1991-frequency-weighted-expectations",
+        "miikkulainen-dyer-1991-dispar-modular-training",
+        "miikkulainen-dyer-1991-incomplete-story-results",
+        "miikkulainen-dyer-1991-probability-model-boundary"
+      ],
+      "prerequisites": [
+        "Vectors as distributed patterns",
+        "Supervised input and target pairs",
+        "Recurrent hidden state"
+      ],
+      "successCriterion": "The learner can distinguish a task-learned global word type pattern from a contextual hidden state, follow the four separately supervised DISPAR modules, and state why weighted role expectations, percentage-within-threshold metrics, and scripted completion are not language-model probabilities."
+    },
+    {
+      "id": "expert-miikkulainen-dyer-1991-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct FGREP's input-representation updates and recurrent stationary targets, audit the sequential and complete/incomplete DISPAR results, and identify teacher forcing, external supervision, fixed-slot, non-normalization, synthetic-data, and novelty boundaries.",
+      "workIds": [
+        "miikkulainen-dyer-1991-modular-pdp-language-processing"
+      ],
+      "ideaIds": [
+        "learned-distributed-symbol-representations",
+        "similarity-based-distributed-generalization",
+        "simple-recurrent-context-memory",
+        "task-learned-global-word-lexicon",
+        "modular-recurrent-neural-language-processing"
+      ],
+      "claimIds": [
+        "miikkulainen-dyer-1991-modular-neural-nlp-scope",
+        "miikkulainen-dyer-1991-global-lexicon-learning",
+        "miikkulainen-dyer-1991-task-shaped-representation-similarity",
+        "miikkulainen-dyer-1991-recurrent-fgrep-memory",
+        "miikkulainen-dyer-1991-sequential-case-role-evaluation",
+        "miikkulainen-dyer-1991-frequency-weighted-expectations",
+        "miikkulainen-dyer-1991-dispar-modular-training",
+        "miikkulainen-dyer-1991-scripted-story-evaluation-scope",
+        "miikkulainen-dyer-1991-incomplete-story-results",
+        "miikkulainen-dyer-1991-representation-and-assembly-limits",
+        "miikkulainen-dyer-1991-novelty-and-exception-boundary",
+        "miikkulainen-dyer-1991-probability-model-boundary"
+      ],
+      "prerequisites": [
+        "Backpropagation and learned input representations",
+        "Simple recurrent networks",
+        "Case-role and script representations",
+        "Teacher forcing and modular supervision"
+      ],
+      "successCriterion": "The learner can explain the shared-lexicon gradient path, reproduce the sequential and Table 4 metrics with their decoding criteria, separate correct-pattern modular training from end-to-end learning, and show why the system defines neither normalized next-word likelihood nor perplexity."
+    },
+    {
       "id": "beginner-kneser-ney-1995-context-diversity",
       "mode": "beginner",
       "objective": "Compare raw word frequency with the number of different contexts a word completes, explain why context diversity can be the better fallback signal after an unseen phrase, and keep probability-mass discounting separate from the rule that distributes that mass.",
@@ -10288,6 +11698,66 @@
         "Cross-validation and paired tests"
       ],
       "successCriterion": "The learner can derive the product and log-likelihood objectives, verify the triangular no-future connectivity and normalization argument, state the conditions behind O(n²H), reproduce the pruning decision rule, and report the four-dataset result without transferring conference-table values or omitting the Audiology and training-variability cautions."
+    },
+    {
+      "id": "beginner-xu-rudnicky-2000-direct-bigram",
+      "mode": "beginner",
+      "objective": "Trace how one active current-word input produces a probability distribution over possible next words, explain how stopping before full convergence can regularize the word-pair table, and state why the travel-domain class perplexity is not ordinary full-word perplexity.",
+      "workIds": [
+        "xu-rudnicky-2000-neural-bigram-language-model"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "sparse-language-model-estimation",
+        "one-hot-neural-bigram-language-modeling",
+        "early-stopped-neural-bigram-smoothing"
+      ],
+      "claimIds": [
+        "xu-rudnicky-2000-bigram-probability-objective",
+        "xu-rudnicky-2000-direct-softmax-architecture",
+        "xu-rudnicky-2000-likelihood-and-early-stopping",
+        "xu-rudnicky-2000-communicator-evaluation-scope",
+        "xu-rudnicky-2000-table-one-results",
+        "xu-rudnicky-2000-future-architecture-boundary"
+      ],
+      "prerequisites": [
+        "Bigram counts",
+        "One-hot categorical encoding",
+        "Probability distributions and held-out data"
+      ],
+      "successCriterion": "The learner can distinguish this one-word, no-hidden-unit model from a representation-learning neural language model and interpret the reported 11.16 class perplexity without claiming a broad state-of-the-art result."
+    },
+    {
+      "id": "expert-xu-rudnicky-2000-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the V(V+1) direct softmax bigram, negative-log-likelihood objective, batch early-stopping protocol, sparse update, exact Table 1 comparison, and compute report; then separate the linear squared-error interpolation derivation from the unproved smoothing interpretation of the actual softmax model.",
+      "workIds": [
+        "xu-rudnicky-2000-neural-bigram-language-model"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "full-vocabulary-softmax-normalization",
+        "one-hot-neural-bigram-language-modeling",
+        "early-stopped-neural-bigram-smoothing"
+      ],
+      "claimIds": [
+        "xu-rudnicky-2000-bigram-probability-objective",
+        "xu-rudnicky-2000-direct-softmax-architecture",
+        "xu-rudnicky-2000-likelihood-and-early-stopping",
+        "xu-rudnicky-2000-batch-training-and-sparse-updates",
+        "xu-rudnicky-2000-communicator-evaluation-scope",
+        "xu-rudnicky-2000-table-one-results",
+        "xu-rudnicky-2000-training-cost",
+        "xu-rudnicky-2000-early-stopping-analysis",
+        "xu-rudnicky-2000-future-architecture-boundary"
+      ],
+      "prerequisites": [
+        "Categorical softmax likelihood",
+        "Perplexity and class-based language models",
+        "Batch gradient descent and early stopping",
+        "Linear interpolation and count smoothing"
+      ],
+      "successCriterion": "The learner can derive the direct softmax parameter count and the surrogate's exponential count-dependent interpolation, report every Table 1 cell and cost caveat, explain why 19.24 is not evidence for the actual network's smoothing form, and enumerate the evaluation omissions."
     },
     {
       "id": "beginner-bengio-2003-shared-representations",
