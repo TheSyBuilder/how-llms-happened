@@ -711,7 +711,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-04");
+  assert.equal(corpus.asOf, "2026-08-06");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -1626,8 +1626,12 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
   assert.deepEqual(nips?.bibliography.pages, ["932-938"]);
   assert.deepEqual(jmlr?.bibliography.pages, ["1137-1155"]);
   assert.ok(jmlr?.notes.includes("submission in April 2002"));
-  assert.equal(nipsFullText?.pagination, undefined);
-  assert.equal(nipsFullText?.supports.includes("claim-location"), false);
+  assert.deepEqual(nipsFullText?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 7,
+  });
+  assert.equal(nipsFullText?.supports.includes("claim-location"), true);
   assert.deepEqual(jmlrFullText?.pagination, {
     scheme: "printed",
     pageStart: 1137,
@@ -1669,11 +1673,14 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
     assert.ok(objective.successCriterion.includes("Bengio"));
   }
   for (const claim of promotedClaims) {
+    const sourceId = claim.id.startsWith("bengio-2000-conference-")
+      ? "bengio-2000-neurips-full-text"
+      : "bengio-2003-jmlr-full-text";
     assert.ok(
       claim.evidence.every(
-        (evidence) => evidence.sourceId === "bengio-2003-jmlr-full-text",
+        (evidence) => evidence.sourceId === sourceId,
       ),
-      `${claim.id} must retain a JMLR-only evidence scope`,
+      `${claim.id} must retain its version-specific evidence scope`,
     );
   }
   assert.deepEqual(relationship?.from, {
@@ -1721,6 +1728,456 @@ test("retains the guarded NIPS 2000 and JMLR 2003 neural language-model family",
         (item) => item.from.id === comparatorId && item.to.id === work?.id,
       ),
       false,
+    );
+  }
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Schmidhuber 1993 as a separate neural-compression antecedent", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "schmidhuber-1993-neural-redundancy-text-compression",
+  );
+  const source = corpus.sources.find(
+    (item) => item.id === "schmidhuber-1993-author-full-text",
+  );
+  const authorRecord = corpus.sources.find(
+    (item) => item.id === "schmidhuber-1993-author-record",
+  );
+  const result = corpus.claims.find(
+    (item) => item.id === "schmidhuber-1993-merkur-results",
+  );
+  const collaboration = corpus.claims.find(
+    (item) => item.id === "schmidhuber-1993-heil-collaboration",
+  );
+  const boundary = corpus.claims.find(
+    (item) => item.id === "schmidhuber-1993-online-recurrent-boundary",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "schmidhuber-1993-to-schmidhuber-heil-1994",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.title, "“Neural” Redundancy Reduction for Text Compression");
+  assert.deepEqual(work?.authors, ["Jürgen Schmidhuber"]);
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.chronology.events[0].date.value, "1993");
+  assert.equal(work?.chronology.events[0].date.precision, "year");
+  assert.equal(work?.versions.length, 1);
+  assert.deepEqual(work?.versions[0].bibliography.pages, ["849-853"]);
+  assert.equal(
+    source?.url,
+    "https://sferics.idsia.ch/pub/juergen/ascona.ps.gz",
+  );
+  assert.equal(
+    authorRecord?.url,
+    "https://people.idsia.ch/~juergen/onlinepub.html",
+  );
+  assert.ok(work?.preferredSourceIds.includes(authorRecord?.id));
+  assert.deepEqual(source?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 6,
+  });
+  assert.equal(claims.length, 5);
+  for (const claim of claims) {
+    assert.equal(claim.evidence.length > 0, true);
+    for (const evidence of claim.evidence) {
+      assert.equal(evidence.sourceId, source?.id);
+      assert.equal(evidence.locator.pageStart, undefined);
+      assert.equal(evidence.locator.pageEnd, undefined);
+      assert.ok(evidence.locator.section);
+    }
+  }
+  for (const value of ["1.41", "1.98", "2.25", "2.68"]) {
+    assert.ok(result?.statement.includes(value));
+  }
+  assert.ok(collaboration?.statement.includes("Stefan Heil"));
+  assert.ok(boundary?.statement.includes("two orders of magnitude"));
+  assert.deepEqual(relationship?.from, { kind: "work", id: work?.id });
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: "schmidhuber-heil-1994-sequential-neural-text-compression",
+  });
+  assert.equal(relationship?.connectionType, "extends");
+  assert.equal(relationship?.evidenceClass, "editorial-synthesis");
+  assert.equal(relationship?.causalLanguage, "prohibited");
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Schmidhuber and Heil as a dual-sourced version-aware compression branch", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id ===
+      "schmidhuber-heil-1994-sequential-neural-text-compression",
+  );
+  const conference = work?.chronology.events.find(
+    (item) => item.id === "schmidhuber-heil-1994-nips-conference",
+  );
+  const nips = work?.versions.find(
+    (item) => item.id === "schmidhuber-heil-1994-nips-version",
+  );
+  const preprint = work?.versions.find(
+    (item) => item.id === "schmidhuber-heil-1994-author-preprint-version",
+  );
+  const journal = work?.versions.find(
+    (item) => item.id === "schmidhuber-heil-1996-journal-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "schmidhuber-heil-1994-author-preprint",
+  );
+  const conferenceText = corpus.sources.find(
+    (item) => item.id === "schmidhuber-heil-1994-neurips-full-text",
+  );
+  const predictor = corpus.claims.find(
+    (item) => item.id === "schmidhuber-heil-1994-character-probability-predictor",
+  );
+  const residualMethod = corpus.claims.find(
+    (item) => item.id === "schmidhuber-heil-1994-deterministic-residual-method",
+  );
+  const sameSource = corpus.claims.find(
+    (item) => item.id === "schmidhuber-heil-1994-same-source-results",
+  );
+  const crossSource = corpus.claims.find(
+    (item) => item.id === "schmidhuber-heil-1994-cross-source-results",
+  );
+  const modelBoundary = corpus.claims.find(
+    (item) => item.id === "schmidhuber-heil-1994-frozen-model-boundary",
+  );
+  const recurrenceBoundary = corpus.claims.find(
+    (item) => item.id === "schmidhuber-heil-1994-online-recurrent-boundary",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "schmidhuber-heil-1994-to-bengio-2000",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+  const beginnerObjective = corpus.learningObjectives.find(
+    (objective) =>
+      objective.id === "beginner-schmidhuber-heil-1994-predict-and-code",
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.chronology.orderingEventId, conference?.id);
+  assert.equal(conference?.date.value, "1994");
+  assert.equal(conference?.date.precision, "year");
+  assert.equal(work?.versions.length, 3);
+  assert.equal(
+    nips?.title,
+    "Predictive Coding with Neural Nets: Application to Text Compression",
+  );
+  assert.deepEqual(nips?.bibliography.pages, ["1047-1054"]);
+  assert.deepEqual(nips?.bibliography.editors, [
+    "Gerald Tesauro",
+    "David S. Touretzky",
+    "Todd K. Leen",
+  ]);
+  assert.ok(nips?.notes.includes("Method 3"));
+  assert.ok(nips?.notes.includes("variances"));
+  assert.equal(preprint?.kind, "preprint");
+  assert.deepEqual(preprint?.bibliography.pages, ["1-9"]);
+  assert.ok(
+    preprint?.notes.includes(
+      "not treated as a verified public-release event",
+    ),
+  );
+  assert.equal(work?.canonicalVersionId, journal?.id);
+  assert.equal(
+    journal?.bibliography.identifiers[0].value,
+    "10.1109/72.478398",
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 9,
+  });
+  assert.deepEqual(conferenceText?.pagination, {
+    scheme: "printed",
+    pageStart: 1047,
+    pageEnd: 1054,
+  });
+  assert.ok(conferenceText?.accessNote.includes("1048–1054"));
+  assert.equal(claims.length, 12);
+  for (const claim of claims) {
+    const preprintEvidence = claim.evidence.filter(
+      (evidence) => evidence.sourceId === fullText?.id,
+    );
+    assert.ok(preprintEvidence.length > 0, `${claim.id} needs preprint evidence`);
+    for (const evidence of preprintEvidence) {
+      assert.ok(evidence.locator.pageStart >= 1);
+      assert.ok(evidence.locator.pageEnd <= 9);
+      assert.doesNotMatch(
+        evidence.locator.section,
+        /The Approach|The Architecture|Simulation Results|Online Methods|The Objective Function/,
+      );
+    }
+    for (const evidence of claim.evidence.filter(
+      (item) => item.sourceId === conferenceText?.id,
+    )) {
+      assert.ok(evidence.locator.pageStart >= 1048);
+      assert.ok(evidence.locator.pageEnd <= 1053);
+    }
+  }
+  for (const claimId of [
+    "schmidhuber-heil-1994-character-probability-predictor",
+    "schmidhuber-heil-1994-squared-error-normalization",
+    "schmidhuber-heil-1994-lossless-predictive-coding",
+    "schmidhuber-heil-1994-frozen-model-boundary",
+    "schmidhuber-heil-1994-network-capacity-rationale",
+    "schmidhuber-heil-1994-experimental-scope",
+    "schmidhuber-heil-1994-same-source-results",
+    "schmidhuber-heil-1994-cross-source-results",
+    "schmidhuber-heil-1994-training-runtime-cost",
+    "schmidhuber-heil-1994-online-recurrent-boundary",
+  ]) {
+    const claim = corpus.claims.find((item) => item.id === claimId);
+    assert.ok(
+      claim?.evidence.some((evidence) => evidence.sourceId === conferenceText?.id),
+      `${claimId} must retain conference-version evidence`,
+    );
+  }
+  for (const claimId of [
+    "schmidhuber-heil-1994-deterministic-residual-method",
+    "schmidhuber-heil-1994-hidden-unit-human-comparison",
+  ]) {
+    const claim = corpus.claims.find((item) => item.id === claimId);
+    assert.equal(
+      claim?.evidence.some((evidence) => evidence.sourceId === conferenceText?.id),
+      false,
+      `${claimId} must remain longer-manuscript-only`,
+    );
+  }
+  assert.ok(
+    predictor?.evidence.some(
+      (evidence) =>
+        evidence.sourceId === fullText?.id &&
+        evidence.locator.section === "IV. Simulations" &&
+        evidence.locator.pageStart === 6 &&
+        evidence.locator.pageEnd === 6,
+    ),
+  );
+  assert.ok(residualMethod?.statement.includes("does not use the full"));
+  assert.ok(residualMethod?.statement.includes("UNIX pack"));
+  for (const value of [
+    "1.74/.0002",
+    "1.99/.0014",
+    "2.20/.0014",
+    "2.29/.0033",
+    "2.70/.0158",
+    "2.72/.0234",
+  ]) {
+    assert.ok(sameSource?.statement.includes(value));
+  }
+  for (const value of [
+    "1.67/.0003",
+    "1.71/.0036",
+    "1.99/.0013",
+    "2.03/.0099",
+    "2.25/.0077",
+    "2.20/.0112",
+  ]) {
+    assert.ok(crossSource?.statement.includes(value));
+  }
+  assert.ok(modelBoundary?.statement.includes("trained weights"));
+  assert.ok(modelBoundary?.statement.includes("compressed length"));
+  assert.ok(recurrenceBoundary?.statement.includes("possible extensions"));
+  assert.ok(
+    beginnerObjective?.claimIds.includes(
+      "schmidhuber-heil-1994-same-source-results",
+    ),
+  );
+  assert.equal(relationship?.connectionType, "conceptual-parallel");
+  assert.equal(relationship?.evidenceClass, "editorial-synthesis");
+  assert.equal(relationship?.causalLanguage, "prohibited");
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: "bengio-2000-neural-probabilistic-language-model",
+  });
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Schwenk and Gauvain as a bounded LVCSR extension branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "schwenk-gauvain-2002-connectionist-lvcsr",
+  );
+  const event = work?.chronology.events.find(
+    (item) => item.id === "schwenk-gauvain-2002-icassp-conference",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "schwenk-gauvain-2002-icassp-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "schwenk-gauvain-2002-author-full-text",
+  );
+  const crossref = corpus.sources.find(
+    (item) => item.id === "schwenk-gauvain-2002-crossref-record",
+  );
+  const motivation = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-unseen-ngram-motivation",
+  );
+  const extension = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-bengio-extension-scope",
+  );
+  const projection = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-projection-softmax-architecture",
+  );
+  const complexity = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-full-output-complexity",
+  );
+  const hybrid = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-shortlist-hybrid-normalization",
+  );
+  const cache = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-caching-optimized-evaluation",
+  );
+  const shortlist = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-shortlist-results",
+  );
+  const perplexity = corpus.claims.find(
+    (item) =>
+      item.id === "schwenk-gauvain-2002-connectionist-perplexity-results",
+  );
+  const recognition = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-broadcast-word-error-results",
+  );
+  const evidenceBoundary = corpus.claims.find(
+    (item) => item.id === "schwenk-gauvain-2002-evidence-long-context-boundary",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "bengio-2000-to-schwenk-gauvain-2002",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(event?.date.value, "2002-05");
+  assert.equal(event?.date.precision, "month");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(work?.canonicalVersionId, version?.id);
+  assert.deepEqual(version?.bibliography.pages, ["I-765-I-768"]);
+  assert.equal(
+    version?.bibliography.identifiers[0].value,
+    "10.1109/ICASSP.2002.5743830",
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 4,
+  });
+  assert.ok(crossref?.accessNote.includes("full given names"));
+  assert.equal(claims.length, 12);
+  const visibleSections = new Set([
+    "1. Introduction",
+    "2. Architecture of the Approach",
+    "2.1. Complexity Analysis",
+    "3. Results on HUB5",
+    "3.1. Importance of the Shortlist",
+    "3.2. Decoding Experiments",
+    "4. Discussion and Future Work",
+    "5. Acknowledgments",
+    "6. References",
+    "3. Results on HUB5; 3.1. Importance of the Shortlist",
+  ]);
+  for (const claim of claims) {
+    for (const evidence of claim.evidence) {
+      assert.equal(evidence.sourceId, fullText?.id);
+      assert.equal(evidence.locator.pageStart, undefined);
+      assert.equal(evidence.locator.pageEnd, undefined);
+      assert.equal(
+        ["section", "equation", "table", "paragraph"].some(
+          (key) => evidence.locator[key],
+        ),
+        true,
+        `${claim.id} must retain a structural locator`,
+      );
+      assert.ok(
+        visibleSections.has(evidence.locator.section),
+        `${claim.id} must use an exact visible section heading`,
+      );
+    }
+  }
+  assert.ok(motivation?.ideaIds.includes("sparse-language-model-estimation"));
+  assert.equal(hybrid?.ideaIds.includes("sparse-language-model-estimation"), false);
+  assert.ok(projection?.statement.includes("jointly learns the word vectors"));
+  assert.ok(extension?.limitations.join(" ").includes("Morgan Kaufmann"));
+  assert.ok(extension?.limitations.join(" ").includes("no pages"));
+  assert.ok(complexity?.statement.includes("13 million"));
+  assert.ok(complexity?.statement.includes("N=64,000"));
+  assert.ok(cache?.statement.includes("full-output thought experiment"));
+  assert.ok(cache?.statement.includes("2,000-word-shortlist decoder"));
+  assert.ok(cache?.statement.includes("12,100"));
+  assert.ok(cache?.statement.includes("2.17 million"));
+  for (const value of [
+    "141.6/77.1%",
+    "138.5/80.1%",
+    "134.7/82.3%",
+    "134.5/83.2%",
+  ]) {
+    assert.ok(shortlist?.statement.includes(value));
+  }
+  for (const value of [
+    "215.3 to 196.2",
+    "152.1 to 141.7",
+    "143.8 to 134.5",
+    "138.8 to 132.4",
+  ]) {
+    assert.ok(perplexity?.statement.includes(value));
+  }
+  assert.ok(recognition?.statement.includes("46.3% to 45.8%"));
+  assert.ok(recognition?.statement.includes("42.8% to 42.5%"));
+  for (const value of ["119.1/76.8", "113.8/73.7", "118.5/76.4", "113.3/73.4"]) {
+    assert.ok(recognition?.statement.includes(value));
+  }
+  assert.ok(evidenceBoundary?.statement.includes("about 47%"));
+  const limitations = work?.limitations.join(" ") ?? "";
+  for (const value of [
+    "minus sign",
+    "n=2",
+    "265 hours",
+    "46.6%",
+    "0.5 percentage points",
+    "0.3 percentage points",
+    "4.9%",
+    "4.6%",
+  ]) {
+    assert.ok(limitations.includes(value), `missing Schwenk boundary: ${value}`);
+  }
+  assert.equal(relationship?.connectionType, "extends");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.deepEqual(relationship?.from, {
+    kind: "work",
+    id: "bengio-2000-neural-probabilistic-language-model",
+  });
+  assert.equal(
+    relationship?.claimIds.some((claimId) => claimId.startsWith("bengio-2003-")),
+    false,
+  );
+  for (const claimId of [
+    "bengio-2000-conference-architecture-scaling",
+    "bengio-2000-conference-shortlist-proposal",
+    "bengio-2000-conference-recognition-lookup-proposal",
+  ]) {
+    assert.ok(relationship?.claimIds.includes(claimId));
+    const claim = corpus.claims.find((item) => item.id === claimId);
+    assert.ok(
+      claim?.evidence.every(
+        (evidence) => evidence.sourceId === "bengio-2000-neurips-full-text",
+      ),
     );
   }
   assert.deepEqual(modes, new Set(["beginner", "expert"]));

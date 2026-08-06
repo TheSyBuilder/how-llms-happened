@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-04",
+  "asOf": "2026-08-06",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -1897,6 +1897,352 @@
       ]
     },
     {
+      "id": "schmidhuber-1993-neural-redundancy-text-compression",
+      "title": "“Neural” Redundancy Reduction for Text Compression",
+      "authors": [
+        "Jürgen Schmidhuber"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "J. Schmidhuber, “\"Neural\" Redundancy Reduction for Text Compression,” Neural Network World 3(6), 849–853 (1993).",
+      "chronology": {
+        "orderingEventId": "schmidhuber-1993-nnw-publication",
+        "events": [
+          {
+            "id": "schmidhuber-1993-nnw-publication",
+            "kind": "journal-publication",
+            "label": "Neural Network World publication",
+            "date": {
+              "value": "1993",
+              "precision": "year",
+              "calendar": "gregorian",
+              "note": "The author-hosted copy prints volume 3, issue 6, and 1993; no month or day was established."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schmidhuber-1993-author-record",
+                "precision": "year",
+                "locator": "Author publication entry 26, Neural Network World 3(6):849–853, 1993"
+              },
+              {
+                "sourceId": "schmidhuber-1993-author-full-text",
+                "precision": "year",
+                "locator": "Opening publication line, Neural Network World 3(6):849–853, 1993"
+              }
+            ],
+            "versionId": "schmidhuber-1993-nnw-version",
+            "sourceIds": [
+              "schmidhuber-1993-author-record",
+              "schmidhuber-1993-author-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "schmidhuber-1993-nnw-version",
+          "title": "“Neural” Redundancy Reduction for Text Compression",
+          "authors": [
+            "Jürgen Schmidhuber"
+          ],
+          "kind": "journal",
+          "label": "Neural Network World article",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Schmidhuber, “\"Neural\" Redundancy Reduction for Text Compression,” Neural Network World 3(6), 849–853 (1993).",
+            "venue": "Neural Network World",
+            "volume": "3",
+            "issues": [
+              "6"
+            ],
+            "pages": [
+              "849-853"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "schmidhuber-1993-author-record",
+            "schmidhuber-1993-author-full-text"
+          ],
+          "notes": "The author-hosted PostScript copy prints the journal citation at its opening but does not preserve stable visible journal folios, so technical evidence uses section, equation, table, and paragraph anchors rather than transferring the 849–853 bibliography range to individual claims."
+        }
+      ],
+      "canonicalVersionId": "schmidhuber-1993-nnw-version",
+      "preferredSourceIds": [
+        "schmidhuber-1993-author-record",
+        "schmidhuber-1993-author-full-text"
+      ],
+      "sourceIds": [
+        "schmidhuber-1993-author-record",
+        "schmidhuber-1993-author-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "This work establishes a 1993 node in the atlas’s neural text-compression line. It couples a fixed-window neural next-character estimator to arithmetic coding, reports a held-out newspaper experiment, and explicitly credits collaboration with Stefan Heil. The later two-author family retains the core mechanism while expanding the codec comparison, test design, and evidence, so the 1993 article is modeled as a separate antecedent rather than silently absorbed as a version."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding"
+      ],
+      "significance": {
+        "beginner": "Before the better-known two-author treatments, this paper already used the previous five characters to predict the next one and let arithmetic coding spend fewer bits on likely characters. It is a separate earlier article, not merely a hidden date attached to the later work.",
+        "expert": "The article trains an nk-input/k-output feed-forward predictor on one-hot character targets by squared error, sum-normalizes its outputs for arithmetic coding, and reports a 2.68 compression ratio on ten held-out Merkur articles. It frames online learning and recurrent predictors as promising extensions, while its current implementation remains offline and roughly two orders of magnitude slower than conventional methods."
+      },
+      "limitations": [
+        "The inspected artifact is an author-hosted six-leaf PostScript copy with structural anchors rather than stable visible journal folios; no separate publisher full text or DOI was located.",
+        "The experiment uses only arithmetic coding with the neural predictor and reports one average compression ratio per method; it gives no variance, confidence interval, significance test, code, learned weights, or public article identities.",
+        "The 40 training and 10 test articles come from Münchner Merkur, each stated as 10,000–20,000 characters, but preprocessing, random initialization, training duration, and model-selection details are not supplied.",
+        "The network activation, nonnegativity behavior, clipping, zero-probability handling, and finite-precision codec agreement are not specified.",
+        "Initial online improvements are qualitative, recurrent predictors are future work, and the reported current offline implementation is about two orders of magnitude slower than conventional methods.",
+        "The author-hosted copy exposes no verified open-content license and is linked for inspection rather than redistributed."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact publication month or day within Neural Network World 3(6) has not been established.",
+          "resolutionCondition": "A publisher issue-history record or contemporary dated notice would be required for finer chronology."
+        },
+        {
+          "status": "resolved",
+          "note": "This article remains separate from the 1994–1996 two-author family because no source calls it a version and it differs in title, authorship, venue, codec coverage, test set, results, and reported slowdown, despite strong mechanism continuity and its explicit Heil collaboration."
+        }
+      ]
+    },
+    {
+      "id": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "title": "Sequential Neural Text Compression",
+      "authors": [
+        "Jürgen Schmidhuber",
+        "Stefan Heil"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "J. Schmidhuber and S. Heil, “Sequential Neural Text Compression,” IEEE Transactions on Neural Networks 7(1), 142–146 (1996), DOI 10.1109/72.478398.",
+      "chronology": {
+        "orderingEventId": "schmidhuber-heil-1994-nips-conference",
+        "events": [
+          {
+            "id": "schmidhuber-heil-1994-nips-conference",
+            "kind": "conference-presentation",
+            "label": "NIPS 1994 conference treatment",
+            "date": {
+              "value": "1994",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schmidhuber-heil-1994-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS proceedings record, NIPS 1994"
+              }
+            ],
+            "versionId": "schmidhuber-heil-1994-nips-version",
+            "sourceIds": [
+              "schmidhuber-heil-1994-neurips-record",
+              "schmidhuber-heil-1994-neurips-metadata",
+              "schmidhuber-heil-1994-neurips-full-text"
+            ]
+          },
+          {
+            "id": "schmidhuber-heil-1995-nips-proceedings",
+            "kind": "proceedings-publication",
+            "label": "Advances in Neural Information Processing Systems 7 publication",
+            "date": {
+              "value": "1995",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schmidhuber-heil-1994-author-nips-record",
+                "precision": "year",
+                "locator": "Author bibliography, MIT Press proceedings citation dated 1995"
+              }
+            ],
+            "versionId": "schmidhuber-heil-1994-nips-version",
+            "sourceIds": [
+              "schmidhuber-heil-1994-author-nips-record"
+            ]
+          },
+          {
+            "id": "schmidhuber-heil-1996-journal-publication",
+            "kind": "journal-publication",
+            "label": "IEEE Transactions on Neural Networks publication",
+            "date": {
+              "value": "1996",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schmidhuber-heil-1996-crossref-record",
+                "precision": "year",
+                "locator": "Crossref publisher deposit, issued 1996"
+              }
+            ],
+            "versionId": "schmidhuber-heil-1996-journal-version",
+            "sourceIds": [
+              "schmidhuber-heil-1996-crossref-record",
+              "schmidhuber-heil-1996-author-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "schmidhuber-heil-1994-nips-version",
+          "title": "Predictive Coding with Neural Nets: Application to Text Compression",
+          "authors": [
+            "Jürgen Schmidhuber",
+            "Stefan Heil"
+          ],
+          "kind": "proceedings",
+          "label": "NIPS 1994 conference treatment",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Schmidhuber and S. Heil, “Predictive Coding with Neural Nets: Application to Text Compression,” in G. Tesauro, D. S. Touretzky, and T. K. Leen, eds., Advances in Neural Information Processing Systems 7, 1047–1054 (MIT Press, Cambridge, MA, 1995), presented at NIPS 1994.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "Advances in Neural Information Processing Systems",
+            "editors": [
+              "Gerald Tesauro",
+              "David S. Touretzky",
+              "Todd K. Leen"
+            ],
+            "publisher": "MIT Press",
+            "volume": "7",
+            "pages": [
+              "1047-1054"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "schmidhuber-heil-1994-neurips-record",
+            "schmidhuber-heil-1994-neurips-metadata",
+            "schmidhuber-heil-1994-neurips-full-text",
+            "schmidhuber-heil-1994-author-nips-record"
+          ],
+          "notes": "The official record assigns the paper to NIPS 1994 and the proceedings PDF retains pp. 1047–1054; the author bibliography dates the MIT Press volume to 1995. This differently titled conference treatment contains the same fixed-window predictor, objective, coding normalization, frozen-model boundary, Huffman and arithmetic codecs, training setup, and shared result rows as the longer manuscript. It omits that manuscript’s Method 3, variances, 20-article same-source test count, three-day training time, and hidden-unit and human-prediction fragments."
+        },
+        {
+          "id": "schmidhuber-heil-1994-author-preprint-version",
+          "title": "Sequential Neural Text Compression",
+          "authors": [
+            "Jürgen Schmidhuber",
+            "Stefan Heil"
+          ],
+          "kind": "preprint",
+          "label": "Author-hosted prepublication manuscript dated 19 May 1994",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Schmidhuber and S. Heil, “Sequential Neural Text Compression,” nine-page author preprint dated 19 May 1994 and identifying the final IEEE Transactions on Neural Networks article.",
+            "venue": "Author-hosted prepublication manuscript",
+            "pages": [
+              "1-9"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "schmidhuber-heil-1996-author-record",
+            "schmidhuber-heil-1994-author-preprint"
+          ],
+          "notes": "The manuscript labels itself a preprint, carries an internal 19 May 1994 date, and identifies the 1996 IEEE final version. The internal date is not treated as a verified public-release event, and its visible pp. 1–9 are kept distinct from the journal’s pp. 142–146."
+        },
+        {
+          "id": "schmidhuber-heil-1996-journal-version",
+          "title": "Sequential Neural Text Compression",
+          "authors": [
+            "Jürgen Schmidhuber",
+            "Stefan Heil"
+          ],
+          "kind": "journal",
+          "label": "Canonical IEEE Transactions on Neural Networks article",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Schmidhuber and S. Heil, “Sequential Neural Text Compression,” IEEE Transactions on Neural Networks 7(1), 142–146 (1996).",
+            "venue": "IEEE Transactions on Neural Networks",
+            "volume": "7",
+            "issues": [
+              "1"
+            ],
+            "pages": [
+              "142-146"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/72.478398"
+              }
+            ]
+          },
+          "sourceIds": [
+            "schmidhuber-heil-1996-crossref-record",
+            "schmidhuber-heil-1996-author-record"
+          ],
+          "notes": "Crossref supplies the canonical IEEE citation and DOI. Technical claims are located in the author preprint rather than transferred to the inaccessible version-of-record layout; the author page binds that manuscript to this final article."
+        }
+      ],
+      "canonicalVersionId": "schmidhuber-heil-1996-journal-version",
+      "preferredSourceIds": [
+        "schmidhuber-heil-1996-crossref-record",
+        "schmidhuber-heil-1996-author-record"
+      ],
+      "sourceIds": [
+        "schmidhuber-heil-1994-neurips-record",
+        "schmidhuber-heil-1994-neurips-metadata",
+        "schmidhuber-heil-1994-neurips-full-text",
+        "schmidhuber-heil-1994-author-nips-record",
+        "schmidhuber-heil-1996-crossref-record",
+        "schmidhuber-heil-1996-author-record",
+        "schmidhuber-heil-1994-author-preprint"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The work gives a concrete fixed-window neural next-character predictor whose estimated probabilities drive synchronized lossless coding, then reports same-newspaper and cross-newspaper compression tests. Bengio et al. later cite it as related character-based neural probability modeling, making it a documented adjacent branch while its squared-error training, post-hoc sum normalization, and coding objective remain distinct from word-level softmax likelihood models."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding",
+        "neural-misprediction-residual-coding"
+      ],
+      "significance": {
+        "beginner": "A network looks at the previous five characters, estimates what character comes next, and lets a lossless coder spend shorter codes on more likely characters. Because encoder and decoder run the same frozen predictor, the original text can be recovered exactly.",
+        "expert": "The audited manuscript trains an 80-way fixed-window feed-forward predictor by squared error, sum-normalizes its outputs only during coding, and couples the resulting conditional estimates to Huffman or arithmetic coding. Separate Merkur and Frankenpost tests expose compression gains, transfer degradation, excluded model cost, and severe runtime limits."
+      },
+      "limitations": [
+        "The evaluated network sees only five preceding characters; recurrent networks and longer effective histories are proposed rather than tested.",
+        "Squared-error outputs are divided by their sum during coding rather than trained as a softmax likelihood. The activation, nonnegativity guarantee, clipping, and zero-probability handling are not specified.",
+        "The 430-hidden-unit network is trained once on unidentified, unreleased newspaper articles and assumed to be preinstalled at both endpoints; its learned weights and training corpus are excluded from each compressed file’s size.",
+        "The same-source test uses 20 disjoint Münchner Merkur articles and the transfer test uses 10 Frankenpost articles, without article identities, public splits, confidence intervals, significance tests, seeds, code, or learned weights.",
+        "The reported compression ratios are original length divided by compressed length; the paper does not report standard benchmark bits per character or a modern reproducible codec comparison.",
+        "The current offline implementation is reported as roughly 1,000 times slower than contemporary standard compressors, and no end-to-end optimized runtime is supplied.",
+        "The IEEE version-of-record text was not accessible for claim comparison. Technical evidence uses the author-hosted preprint’s own pagination and is not transferred to journal pp. 142–146.",
+        "The inspected sources expose no verified work-level open-content license; linked reading copies are not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The conference treatment, author preprint, and journal record are grouped as one work because the preprint explicitly identifies the final IEEE article and the conference paper shares authors, mechanism, training setup, and core experiments; version-specific wording and results remain separated."
+        },
+        {
+          "status": "open",
+          "note": "The author preprint is internally dated 19 May 1994, but its public release date has not been established.",
+          "resolutionCondition": "A dated archive snapshot, repository accession, or contemporary public citation would be required to use that date as a publication event."
+        },
+        {
+          "status": "resolved",
+          "note": "The complete 1993 single-author article was compared with this family and is modeled as a separate antecedent: it credits collaboration with Stefan Heil and shares the predictor, objective, normalization, arithmetic codec, and Merkur setup, but differs in title, authorship, venue, test set, results, coding variants, and runtime."
+        },
+        {
+          "status": "open",
+          "note": "The exact IEEE publication month or day has not been established from the inspected publisher deposit.",
+          "resolutionCondition": "An authoritative IEEE issue-history record would be required for finer chronology."
+        }
+      ]
+    },
+    {
       "id": "kneser-ney-1995-improved-backing-off",
       "title": "Improved Backing-Off for M-Gram Language Modeling",
       "authors": [
@@ -2907,9 +3253,11 @@
         "sparse-language-model-estimation",
         "neural-joint-distribution-factorization",
         "learned-distributed-symbol-representations",
+        "neural-character-probability-modeling",
         "jointly-learned-word-representations",
         "feedforward-neural-language-modeling",
         "full-vocabulary-softmax-normalization",
+        "shortlist-hybrid-neural-language-modeling",
         "neural-ngram-model-mixtures"
       ],
       "significance": {
@@ -2949,6 +3297,138 @@
           "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDFs as open content."
         }
       ]
+    },
+    {
+      "id": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "title": "Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition",
+      "authors": [
+        "H. Schwenk",
+        "J.-L. Gauvain"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "H. Schwenk and J.-L. Gauvain, “Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition,” ICASSP 2002, vol. 1, I-765–I-768 (May 2002), DOI 10.1109/ICASSP.2002.5743830.",
+      "chronology": {
+        "orderingEventId": "schwenk-gauvain-2002-icassp-conference",
+        "events": [
+          {
+            "id": "schwenk-gauvain-2002-icassp-conference",
+            "kind": "conference-presentation",
+            "label": "ICASSP 2002 conference paper",
+            "date": {
+              "value": "2002-05",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The conference ran 13–17 May; no inspected session schedule establishes this paper’s presentation day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schwenk-gauvain-2002-crossref-record",
+                "precision": "month",
+                "locator": "Crossref event metadata, ICASSP 2002 held in May 2002"
+              }
+            ],
+            "versionId": "schwenk-gauvain-2002-icassp-version",
+            "sourceIds": [
+              "schwenk-gauvain-2002-crossref-record",
+              "schwenk-gauvain-2002-vocapia-index",
+              "schwenk-gauvain-2002-author-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "schwenk-gauvain-2002-icassp-version",
+          "title": "Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition",
+          "authors": [
+            "H. Schwenk",
+            "J.-L. Gauvain"
+          ],
+          "kind": "proceedings",
+          "label": "ICASSP 2002 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "H. Schwenk and J.-L. Gauvain, “Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition,” Proceedings of ICASSP 2002, vol. 1, I-765–I-768, Orlando, Florida, May 2002.",
+            "venue": "2002 IEEE International Conference on Acoustics, Speech, and Signal Processing",
+            "publisher": "IEEE",
+            "volume": "1",
+            "pages": [
+              "I-765-I-768"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1109/ICASSP.2002.5743830"
+              }
+            ]
+          },
+          "sourceIds": [
+            "schwenk-gauvain-2002-crossref-record",
+            "schwenk-gauvain-2002-vocapia-index",
+            "schwenk-gauvain-2002-author-full-text"
+          ],
+          "notes": "Crossref supplies the DOI, venue, event span, and prefixed proceedings pages. The author-hosted four-leaf PDF has no visible folios, so its evidence uses sections, equations, tables, and paragraphs rather than importing the bibliography’s I-765–I-768 page labels."
+        }
+      ],
+      "canonicalVersionId": "schwenk-gauvain-2002-icassp-version",
+      "preferredSourceIds": [
+        "schwenk-gauvain-2002-crossref-record",
+        "schwenk-gauvain-2002-author-full-text"
+      ],
+      "sourceIds": [
+        "schwenk-gauvain-2002-crossref-record",
+        "schwenk-gauvain-2002-vocapia-index",
+        "schwenk-gauvain-2002-author-full-text"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper explicitly extends the Bengio approach cited in its reference [1] into a 64,000-word continuous-speech recognizer, estimates the full-output bottleneck, and evaluates a 2,000-word neural shortlist with reuse of sequential same-context decoder requests. It is promoted as an operational speech-recognition branch rather than a new core architecture because the cited NeurIPS paper already proposed shortlist mass allocation, precomputed frequent-context lookup, and the application direction; that precomputed lookup is related to, but not identical with, the evaluated decoder reuse."
+      },
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization",
+        "shortlist-hybrid-neural-language-modeling",
+        "context-cached-neural-language-model-decoding"
+      ],
+      "significance": {
+        "beginner": "A neural next-word model is placed inside a speech recognizer, but it scores only a frequent-word shortlist and lets the existing backoff model handle everything else. Repeated requests for the same context reuse one cached prediction, turning an otherwise impractical calculation into a decoder experiment.",
+        "expert": "The paper jointly learns shared word projections and a tanh-softmax predictor, quantifies the hypothetical 64k full-output cost, preserves backoff shortlist mass in a normalized hybrid, and reuses shortlist outputs across sequential same-context requests during HUB5 decoding. Perplexity gains survive broadcast-news interpolation, while WER changes remain small and explicitly inconclusive."
+      },
+      "limitations": [
+        "The selected system normalizes neural probabilities over a static 2,000-word shortlist rather than the full 64,000-word recognition vocabulary; the backoff model supplies all remaining-word probabilities and the shortlist’s total probability mass.",
+        "The displayed cross-entropy equation omits the conventional minus sign even though the prose says the error is minimized and training minimizes perplexity.",
+        "The parameter paragraph prints n=2 even though the paper repeatedly calls the models 3-grams and explicitly defines their history as the two previous words; the context length is clear, but the symbol n is overloaded or used inconsistently.",
+        "Switchboard1 contributes 248 hours and CallHome English 17 hours, totaling 265 hours, while the paper describes the acoustic data as about 280 hours.",
+        "Only 46.6% of requested decoder probabilities use the network, so the reported recognition experiment is a hybrid coverage result rather than full neural replacement of the language model.",
+        "The WER changes are 0.5 percentage points without acoustic adaptation and 0.3 percentage points with adaptation, with no confidence intervals, significance tests, repeated runs, or end-to-end runtime.",
+        "The paper’s 4.9% perplexity-reduction entry for 138.8 to 132.4 differs from the roughly 4.6% reduction calculated from the displayed values.",
+        "Reference [1] omits Pascal Vincent, supplies no pages, and prints Morgan Kaufmann although the authoritative volume publisher is MIT Press; its distinctive title, volume 13, year, and retained authors nevertheless resolve it to the existing three-author NeurIPS conference version.",
+        "The author-hosted PDF exposes no visible folios or verified paper-level open-content license; it is linked for inspection and not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact presentation day within the 13–17 May 2002 ICASSP span has not been established.",
+          "resolutionCondition": "An authoritative dated session schedule mapping this paper to a session would be required for day-level ordering."
+        },
+        {
+          "status": "resolved",
+          "note": "Only the inspected ICASSP paper is grouped in this work. Later 2003, 2004, and 2007 papers change data, context length, smoothing, or decoding setup and are follow-up works rather than versions."
+        },
+        {
+          "status": "open",
+          "note": "A later Schwenk synthesis cites a 2001 LIMSI technical report titled “Language modeling in the continuous domain” that may document an earlier stage, but that later source is outside this promoted work and the report is not grouped or used for priority language.",
+          "resolutionCondition": "Add and audit the later citing source, then locate and compare the complete technical report before adding a version or making a development-order claim."
+        },
+        {
+          "status": "open",
+          "note": "The decoder paragraph’s probability-request count is phrased as applying to each sentence and appears difficult to reconcile with the three-hour, 4,317-sentence evaluation set.",
+          "resolutionCondition": "Decoder logs, code, or an author correction would be required to determine the intended aggregation."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -2983,9 +3463,70 @@
         "jelinek-1975-language-model-interface",
         "jelinek-1975-state-context",
         "xu-rudnicky-2000-bigram-probability-objective",
-        "bengio-2003-fixed-window-factorization"
+        "bengio-2003-fixed-window-factorization",
+        "schmidhuber-1993-character-probability-predictor",
+        "schmidhuber-heil-1994-character-probability-predictor"
       ],
       "uncertainties": []
+    },
+    {
+      "id": "neural-character-probability-modeling",
+      "name": "Neural next-character probability modeling",
+      "kind": "mechanism",
+      "description": "A neural predictor maps a fixed character context to estimates of the next-character distribution, allowing contexts absent from a literal lookup table to share parameters.",
+      "claimIds": [
+        "schmidhuber-1993-character-probability-predictor",
+        "schmidhuber-1993-heil-collaboration",
+        "schmidhuber-1993-online-recurrent-boundary",
+        "schmidhuber-heil-1994-character-probability-predictor",
+        "schmidhuber-heil-1994-squared-error-normalization",
+        "schmidhuber-heil-1994-network-capacity-rationale",
+        "schmidhuber-heil-1994-hidden-unit-human-comparison",
+        "schmidhuber-heil-1994-online-recurrent-boundary",
+        "bengio-2003-character-compression-relationship"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This mechanism is character-level and uses squared-error training plus sum normalization; it is not labeled as the word-vector softmax architecture used by Bengio et al."
+        }
+      ]
+    },
+    {
+      "id": "probability-driven-lossless-text-coding",
+      "name": "Probability-driven lossless text coding",
+      "kind": "mechanism",
+      "description": "Encoder and decoder run the same sequential probability predictor so Huffman or arithmetic coding can assign shorter descriptions to more likely next characters while preserving exact recovery.",
+      "claimIds": [
+        "schmidhuber-1993-arithmetic-lossless-coding",
+        "schmidhuber-1993-merkur-results",
+        "schmidhuber-1993-heil-collaboration",
+        "schmidhuber-1993-online-recurrent-boundary",
+        "schmidhuber-heil-1994-lossless-predictive-coding",
+        "schmidhuber-heil-1994-frozen-model-boundary",
+        "schmidhuber-heil-1994-experimental-scope",
+        "schmidhuber-heil-1994-same-source-results",
+        "schmidhuber-heil-1994-cross-source-results",
+        "schmidhuber-heil-1994-training-runtime-cost"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "neural-misprediction-residual-coding",
+      "name": "Neural misprediction-residual coding",
+      "kind": "mechanism",
+      "description": "A neural predictor selects one deterministic next character, while only mistakes and the lengths of correct runs are retained before a conventional lossless coder is applied.",
+      "claimIds": [
+        "schmidhuber-heil-1994-deterministic-residual-method",
+        "schmidhuber-heil-1994-same-source-results",
+        "schmidhuber-heil-1994-cross-source-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This longer-manuscript-only method is kept separate from Huffman and arithmetic probability coding because it records deterministic prediction errors and explicitly does not use all conditional-probability information."
+        }
+      ]
     },
     {
       "id": "entropy-as-sequence-uncertainty",
@@ -3109,7 +3650,8 @@
         "xu-rudnicky-2000-table-one-results",
         "xu-rudnicky-2000-early-stopping-analysis",
         "bengio-2003-ngram-generalization-limit",
-        "bengio-2003-joint-word-feature-learning"
+        "bengio-2003-joint-word-feature-learning",
+        "schwenk-gauvain-2002-unseen-ngram-motivation"
       ],
       "uncertainties": []
     },
@@ -3357,10 +3899,12 @@
       "kind": "mechanism",
       "description": "A shared lookup table maps each word type to a continuous vector, and those vectors are optimized together with the probability model rather than supplied as fixed external features.",
       "claimIds": [
+        "bengio-2000-conference-architecture-scaling",
         "bengio-2003-joint-word-feature-learning",
         "bengio-2003-smooth-feature-generalization",
         "bengio-2003-feedforward-softmax-architecture",
-        "bengio-2003-polysemy-limit"
+        "bengio-2003-polysemy-limit",
+        "schwenk-gauvain-2002-projection-softmax-architecture"
       ],
       "uncertainties": [
         {
@@ -3375,6 +3919,7 @@
       "kind": "mechanism",
       "description": "A feed-forward network predicts the next word from a fixed window of shared word vectors, optionally combining a nonlinear hidden path with a direct input-to-output path.",
       "claimIds": [
+        "bengio-2000-conference-architecture-scaling",
         "bengio-2003-prior-neural-language-models",
         "bengio-2003-fixed-window-factorization",
         "bengio-2003-feedforward-softmax-architecture",
@@ -3385,7 +3930,13 @@
         "bengio-2003-context-ablation",
         "bengio-2003-hidden-unit-ablation",
         "bengio-2003-direct-path-inconclusive",
-        "bengio-2003-recurrent-future-boundary"
+        "bengio-2003-recurrent-future-boundary",
+        "schwenk-gauvain-2002-bengio-extension-scope",
+        "schwenk-gauvain-2002-projection-softmax-architecture",
+        "schwenk-gauvain-2002-cross-entropy-sign-boundary",
+        "schwenk-gauvain-2002-unseen-ngram-motivation",
+        "schwenk-gauvain-2002-hub5-evaluation-scope",
+        "schwenk-gauvain-2002-evidence-long-context-boundary"
       ],
       "uncertainties": []
     },
@@ -3397,10 +3948,46 @@
       "claimIds": [
         "xu-rudnicky-2000-direct-softmax-architecture",
         "xu-rudnicky-2000-likelihood-and-early-stopping",
+        "bengio-2000-conference-architecture-scaling",
+        "bengio-2000-conference-recognition-lookup-proposal",
         "bengio-2003-feedforward-softmax-architecture",
         "bengio-2003-penalized-likelihood-training",
         "bengio-2003-scaling-tradeoff",
-        "bengio-2003-parameter-parallel-mitigation"
+        "bengio-2003-parameter-parallel-mitigation",
+        "schwenk-gauvain-2002-projection-softmax-architecture",
+        "schwenk-gauvain-2002-full-output-complexity"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "shortlist-hybrid-neural-language-modeling",
+      "name": "Shortlist hybrid neural language modeling",
+      "kind": "mechanism",
+      "description": "A neural distribution is normalized over a frequent-word shortlist and scaled by the backoff model’s total shortlist mass, while the backoff model retains the remaining vocabulary probability.",
+      "claimIds": [
+        "bengio-2000-conference-shortlist-proposal",
+        "schwenk-gauvain-2002-shortlist-hybrid-normalization",
+        "schwenk-gauvain-2002-shortlist-results",
+        "schwenk-gauvain-2002-connectionist-perplexity-results",
+        "schwenk-gauvain-2002-broadcast-word-error-results",
+        "schwenk-gauvain-2002-evidence-long-context-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The selected system is not a fixed linear mixture across the full vocabulary: it preserves a history-dependent shortlist mass taken from the backoff model."
+        }
+      ]
+    },
+    {
+      "id": "context-cached-neural-language-model-decoding",
+      "name": "Context-cached neural language-model decoding",
+      "kind": "mechanism",
+      "description": "When a decoder sequentially requests many word probabilities for the same history, the outputs already produced by one neural forward pass can be reused across those requests.",
+      "claimIds": [
+        "schwenk-gauvain-2002-full-output-complexity",
+        "schwenk-gauvain-2002-caching-optimized-evaluation",
+        "schwenk-gauvain-2002-evidence-long-context-boundary"
       ],
       "uncertainties": []
     },
@@ -4568,6 +5155,191 @@
       "accessNote": "The author-hosted 46-page manuscript was rendered and inspected in full. It retains visible internal pp. 1–46 and is marked as forthcoming in Cognitive Science 15(3):343–399 (1991), so claim locators use the manuscript's own pagination rather than unseen journal folios. No verified open-content license accompanies the file; it is linked and not redistributed."
     },
     {
+      "id": "schmidhuber-1993-author-record",
+      "relatedWorkIds": [
+        "schmidhuber-1993-neural-redundancy-text-compression"
+      ],
+      "title": "Author publication record for “Neural” Redundancy Reduction for Text Compression",
+      "url": "https://people.idsia.ch/~juergen/onlinepub.html",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "schmidhuber-1993-nnw-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Entry 26 on the author-maintained publication list gives the sole author, title, Neural Network World volume 3 issue 6, pp. 849–853, year 1993, and the author-hosted PostScript link."
+    },
+    {
+      "id": "schmidhuber-1993-author-full-text",
+      "relatedWorkIds": [
+        "schmidhuber-1993-neural-redundancy-text-compression"
+      ],
+      "title": "Author-hosted full text of “Neural” Redundancy Reduction for Text Compression",
+      "url": "https://sferics.idsia.ch/pub/juergen/ascona.ps.gz",
+      "accessDate": "2026-08-06",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "schmidhuber-1993-nnw-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 6
+      },
+      "accessNote": "The author-hosted six-leaf PostScript copy was inspected in full. Its opening line prints Neural Network World 3(6):849–853 (1993), while technical claims use its visible section, equation, table, and paragraph structure because stable journal folios are not preserved. No verified open-content license accompanies the file, which is linked and not redistributed."
+    },
+    {
+      "id": "schmidhuber-heil-1994-neurips-record",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Official NeurIPS record for Predictive Coding with Neural Nets",
+      "url": "https://proceedings.neurips.cc/paper/1994/hash/5705e1164a8394aace6018e27d20d237-Abstract.html",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "schmidhuber-heil-1994-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official proceedings page identifies the conference title, both authors, abstract, and NIPS 1994 record and links the published PDF and metadata."
+    },
+    {
+      "id": "schmidhuber-heil-1994-neurips-metadata",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Official NeurIPS metadata for Predictive Coding with Neural Nets",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/1994/file/5705e1164a8394aace6018e27d20d237-Metadata.json",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "schmidhuber-heil-1994-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official metadata file gives the exact conference-paper title, authors, abstract, and proceedings pages 1047–1054."
+    },
+    {
+      "id": "schmidhuber-heil-1994-neurips-full-text",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Official NeurIPS full text of Predictive Coding with Neural Nets",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/1994/file/5705e1164a8394aace6018e27d20d237-Paper.pdf",
+      "accessDate": "2026-08-06",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "schmidhuber-heil-1994-nips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1047,
+        "pageEnd": 1054
+      },
+      "accessNote": "The official eight-page proceedings PDF was rendered and inspected in full. Leaves 2–8 visibly print pp. 1048–1054; the opening folio 1047 follows from the official metadata and sequence rather than a visible page number. The paper supplies the conference treatment’s mechanism, two coding methods, tables, and bibliography; no verified open-content license was found and the file is not redistributed."
+    },
+    {
+      "id": "schmidhuber-heil-1994-author-nips-record",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Author bibliography for the NIPS text-compression paper",
+      "url": "https://people.idsia.ch/~juergen/nipscompress/",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "schmidhuber-heil-1994-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author-maintained page gives the NIPS volume, pp. 1047–1054, MIT Press 1995 citation and links the proceedings text."
+    },
+    {
+      "id": "schmidhuber-heil-1996-crossref-record",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Crossref publisher deposit for Sequential Neural Text Compression",
+      "url": "https://api.crossref.org/works/10.1109%2F72.478398",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "schmidhuber-heil-1996-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The IEEE-deposited record supplies the exact title, two authors, IEEE Transactions on Neural Networks volume 7 issue 1, pp. 142–146, DOI, and year-level 1996 issue date."
+    },
+    {
+      "id": "schmidhuber-heil-1996-author-record",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Author-maintained record for Sequential Neural Text Compression",
+      "url": "https://people.idsia.ch/~juergen/textcompression/article.html",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "schmidhuber-heil-1994-author-preprint-version",
+        "schmidhuber-heil-1996-journal-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author-maintained article page identifies the 1996 IEEE citation and DOI and links the dated preprint and navigable article text, binding the prepublication manuscript to the journal work."
+    },
+    {
+      "id": "schmidhuber-heil-1994-author-preprint",
+      "relatedWorkIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "title": "Author-hosted preprint of Sequential Neural Text Compression",
+      "url": "https://people.idsia.ch/~juergen/ieeetnn1996.pdf",
+      "accessDate": "2026-08-06",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "schmidhuber-heil-1994-author-preprint-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The nine-page author preprint was rendered and inspected in full. It is internally dated 19 May 1994, identifies the final 1996 IEEE article, and retains visible pp. 1–9; claims use those manuscript pages rather than journal folios. No verified open-content license accompanies the file and it is not redistributed."
+    },
+    {
       "id": "kneser-ney-1995-ieee-record",
       "relatedWorkIds": [
         "kneser-ney-1995-improved-backing-off"
@@ -5041,8 +5813,14 @@
       ],
       "supports": [
         "full-text",
+        "claim-location",
         "reference-list"
       ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 7
+      },
       "accessNote": "The official seven-page proceedings PDF was inspected in full. It has no visible printed folios, so it is not used for page-located claims; the official metadata separately establishes pp. 932–938. It is publicly readable but not described as openly licensed and is not redistributed."
     },
     {
@@ -5105,6 +5883,67 @@
         "pageEnd": 1155
       },
       "accessNote": "The official 19-page article was inspected in full, including equations, both result tables, limitations, references, and the printed submission/publication line. The PDF carries author copyright and no verified open license; it is used for evidence and not redistributed."
+    },
+    {
+      "id": "schwenk-gauvain-2002-crossref-record",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "Crossref publisher deposit for the Schwenk–Gauvain ICASSP paper",
+      "url": "https://api.crossref.org/works/10.1109%2FICASSP.2002.5743830",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "schwenk-gauvain-2002-icassp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The IEEE-deposited record confirms the title, authors’ full given names, DOI, IEEE publisher, prefixed pages I-765–I-768, Orlando location, and 13–17 May 2002 conference span. The span does not establish this paper’s presentation day."
+    },
+    {
+      "id": "schwenk-gauvain-2002-vocapia-index",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "Vocapia author-group publication index for the 2002 ICASSP paper",
+      "url": "https://www.vocapia.com/publisXlimsi2.html",
+      "accessDate": "2026-08-06",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "schwenk-gauvain-2002-icassp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author-group publication index lists the paper under 2002 and links the four-leaf reading copy."
+    },
+    {
+      "id": "schwenk-gauvain-2002-author-full-text",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "Author-hosted full text of Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition",
+      "url": "https://www.vocapia.com/publim/ica02hs.pdf",
+      "accessDate": "2026-08-06",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "schwenk-gauvain-2002-icassp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 4
+      },
+      "accessNote": "The author-hosted four-leaf proceedings copy was rendered and inspected in full. It exposes no stable visible folios, so evidence uses sections, equations, tables, and paragraph anchors rather than pageStart/pageEnd; the Crossref record separately supplies I-765–I-768. No verified open-content license accompanies the file and it is not redistributed."
     }
   ],
   "claims": [
@@ -8078,6 +8917,581 @@
       "checkedDate": "2026-08-04"
     },
     {
+      "id": "schmidhuber-1993-character-probability-predictor",
+      "workId": "schmidhuber-1993-neural-redundancy-text-compression",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "neural-character-probability-modeling"
+      ],
+      "statement": "A feed-forward network receives one-hot encodings of the preceding n characters through nk inputs, emits k next-character values, and is trained by backpropagation on one-hot squared error; the article identifies the population minimizer with the conditional next-character probabilities and divides each output by their sum for coding.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-1993-author-full-text",
+          "locator": {
+            "label": "Character predictor, objective, and normalization",
+            "section": "2. Text Compression with a Neural Predictor",
+            "equation": "1–3"
+          },
+          "support": "Defines the one-hot nk-input/k-output predictor, squared-error training, conditional-probability interpretation, and sum normalization."
+        }
+      ],
+      "limitations": [
+        "This is fixed-window character modeling, not word-level softmax likelihood training; the activation, nonnegativity, clipping, and zero-denominator behavior are unspecified."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-1993-arithmetic-lossless-coding",
+      "workId": "schmidhuber-1993-neural-redundancy-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "The offline method trains its predictor on a separate file set, feeds normalized next-character estimates to arithmetic coding, and decodes sequentially with a copy of the same predictor so earlier reconstructed characters determine each next distribution and the original file is recovered exactly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-1993-author-full-text",
+          "locator": {
+            "label": "Offline arithmetic encoder and sequential decoder",
+            "section": "2. Text Compression with a Neural Predictor",
+            "paragraph": "Offline variant, arithmetic-coding, and uncompress paragraphs"
+          },
+          "support": "Separates training files from unknown inputs and explains synchronized probability-driven arithmetic coding and exact sequential decoding."
+        }
+      ],
+      "limitations": [
+        "Exact decoding assumes sender and receiver use identical predictor parameters and numerical behavior; the paper does not specify a portable bitstream or finite-precision agreement protocol."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-1993-merkur-results",
+      "workId": "schmidhuber-1993-neural-redundancy-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "The predictor is trained on 40 Münchner Merkur articles of 10,000–20,000 characters using an 80-character alphabet and n=5, then tested on 10 excluded Merkur articles of the same stated size; Table 1 reports compression ratios 1.41 for pack, 1.98 for compress, 2.25 for gzip -9, and 2.68 for the neural arithmetic method.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-1993-author-full-text",
+          "locator": {
+            "label": "Merkur setup and compression results",
+            "section": "3. Initial Simulations",
+            "table": "1"
+          },
+          "support": "Supplies the train/test article counts and sizes, k=80, n=5, all four displayed ratios, and the held-out same-newspaper condition."
+        }
+      ],
+      "limitations": [
+        "The article reports no variance, significance test, confidence interval, article identity, learned weights, or public data split, and the neural ratio excludes no explicitly quantified model-storage cost."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-1993-heil-collaboration",
+      "workId": "schmidhuber-1993-neural-redundancy-text-compression",
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "In the experimental section, the sole-authored article says the application to German newspaper articles was carried out in collaboration with Stefan Heil, then identifies Heil as a TUM student.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-1993-author-full-text",
+          "locator": {
+            "label": "Explicit Heil collaboration statement",
+            "section": "3. Initial Simulations",
+            "paragraph": "Opening experiment-description paragraph"
+          },
+          "support": "Names Stefan Heil and directly attributes collaboration on the reported newspaper application."
+        }
+      ],
+      "limitations": [
+        "The statement documents collaboration on the application but does not alter the article’s sole-authored bibliography or by itself prove which individual originated each mechanism."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-1993-online-recurrent-boundary",
+      "workId": "schmidhuber-1993-neural-redundancy-text-compression",
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "The article reports only a qualitative significant improvement from initial online experiments, proposes larger windows and recurrent predictors for future research, and says the current offline implementation is about two orders of magnitude slower than conventional methods.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-1993-author-full-text",
+          "locator": {
+            "label": "Online, recurrent, and runtime boundaries",
+            "section": "3. Initial Simulations; 4. Limitations. The Promise of On-Line Methods",
+            "paragraph": "Closing simulation paragraph and online/runtime/future-work paragraphs"
+          },
+          "support": "Places recurrence in future work, describes online gains without numbers, and reports the current offline slowdown."
+        }
+      ],
+      "limitations": [
+        "No numerical online result, recurrent experiment, standardized throughput, or end-to-end implementation comparison is supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-character-probability-predictor",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "neural-character-probability-modeling"
+      ],
+      "statement": "For each text position after the initial context, a strictly layered feed-forward network receives one-hot encodings of the preceding n characters and predicts one value for each possible next character; the main experiment uses n=5, an 80-character alphabet, hence 400 inputs under the stated nk construction, 430 hidden units, and 80 outputs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Character-window predictor construction, preprint pp. 2–3",
+            "section": "II. Basic Approach; III.A. The Predictor Network P",
+            "pageStart": 2,
+            "pageEnd": 3
+          },
+          "support": "Defines the one-hot n-character context, one output per alphabet symbol, and strictly layered feed-forward form."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Main experimental dimensions, preprint p. 6",
+            "section": "IV. Simulations",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "Supplies n=5, k=80, and 430 hidden units; the stated nk-by-k construction yields 400 inputs and 80 outputs."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference predictor construction and dimensions, printed pp. 1048–1052",
+            "section": "2 A Predictor of Conditional Probabilities; 4 Simulations",
+            "pageStart": 1048,
+            "pageEnd": 1052
+          },
+          "support": "Independently supplies the same nk-input/k-output predictor, k=80, n=5, and 430-hidden-unit setup."
+        }
+      ],
+      "limitations": [
+        "The evaluated predictor is character-level and fixed-window; it is not a word-vector model, a recurrent network, or evidence of long-range memory."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-squared-error-normalization",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "neural-character-probability-modeling"
+      ],
+      "statement": "The network is trained by backpropagation to minimize one-hot squared error, whose population minimizer is derived as the conditional next-character expectation; only during coding are the raw outputs divided by their sum to form the probabilities used by the coder.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Training objective, conditional expectation, and coding normalization, preprint pp. 3–4",
+            "section": "III.A. The Predictor Network P",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "Defines the squared-error loss, derives its expected minimizer, and specifies division by the output sum before coding."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference objective and coding normalization, printed pp. 1048–1049",
+            "section": "2 A Predictor of Conditional Probabilities",
+            "pageStart": 1048,
+            "pageEnd": 1049,
+            "equation": "2–5"
+          },
+          "support": "The conference treatment gives the same squared-error objective, conditional-expectation argument, and output-sum normalization while stating that normalization is not used during training."
+        }
+      ],
+      "limitations": [
+        "This is not softmax maximum-likelihood or cross-entropy training, and the paper does not specify an activation, clipping rule, numerical precision, or handling for negative or zero normalized values."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-lossless-predictive-coding",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "Encoder and decoder advance through the same preceding-character context and use the same neural probability estimates to drive per-symbol Huffman or arithmetic coding, allowing the encoded stream to reconstruct the original characters exactly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Sequential prediction and the Huffman and arithmetic codecs, preprint pp. 2–5",
+            "section": "II. Basic Approach; III.B. Method 1; III.C. Method 2",
+            "pageStart": 2,
+            "pageEnd": 5
+          },
+          "support": "Explains synchronized sequential prediction and how both coding methods consume the estimated next-character probabilities."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference Huffman, arithmetic, and exact-decoding procedures, printed pp. 1049–1050",
+            "section": "3 How to Use the Predictor for Compression; 3.1 Huffman Coding; 3.2 Arithmetic Coding; 3.3 How to ‘Uncompress’ Data",
+            "pageStart": 1049,
+            "pageEnd": 1050
+          },
+          "support": "Explains the same synchronized probability-driven Huffman and arithmetic encoders and exact sequential decoders."
+        }
+      ],
+      "limitations": [
+        "Exact recovery assumes the encoder and decoder already share identical model parameters and numerical behavior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-frozen-model-boundary",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "The principal experiments train on a separate corpus, freeze the network during each compressed test file, and treat the trained weights as part of the compression algorithm rather than charging their storage or the external training corpus to the compressed length.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Offline training boundary and excluded network code, preprint pp. 2 and 5",
+            "section": "II. Basic Approach; IV. Simulations",
+            "pageStart": 2,
+            "pageEnd": 5
+          },
+          "support": "Separates offline training from frozen test-time coding and states that the network is treated as the fixed program shared by sender and receiver."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference frozen-model accounting, printed p. 1048",
+            "section": "1 Introduction",
+            "pageStart": 1048,
+            "pageEnd": 1048
+          },
+          "support": "States that training occurs on separate files, weights are frozen and installed at sender and receiver, and their storage is outside the unknown-file measurement."
+        }
+      ],
+      "limitations": [
+        "The reported ratios are not self-contained compression rates because model storage and the benefit of external training text are outside the per-file bitstream."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-network-capacity-rationale",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "neural-character-probability-modeling"
+      ],
+      "statement": "The paper contrasts a literal table requiring k^(n+1) entries with a layered network whose connection count can grow roughly quadratically in n under its hidden-size assumption, and argues that shared weights may interpolate across unseen contexts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Lookup-table comparison and shared-weight rationale, preprint pp. 2–3",
+            "section": "II. Basic Approach; III.A. The Predictor Network P",
+            "pageStart": 2,
+            "pageEnd": 3
+          },
+          "support": "Gives the table and network growth comparison and motivates neural interpolation across character contexts."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference lookup-table comparison, printed pp. 1050–1051",
+            "section": "Why Not Use a Look-Up Table Instead of a Network?",
+            "pageStart": 1050,
+            "pageEnd": 1051
+          },
+          "support": "Repeats the k^(n+1) table, roughly n² network-growth argument, and unseen-context generalization rationale."
+        }
+      ],
+      "limitations": [
+        "The unseen-context generalization argument is a capacity rationale, not a separately measured generalization experiment, and its quadratic statement depends on how hidden size scales with context length."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-experimental-scope",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "The main network is trained for 25 sweeps at learning rate 0.2 on 40 Münchner Merkur articles of 10,000–20,000 characters each, then evaluated on 20 disjoint Merkur articles of the same stated size and 10 Frankenpost articles without retraining.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Training corpus, held-out tests, and transfer setup, preprint pp. 5–6",
+            "section": "IV. Simulations",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "Specifies the two newspaper sources, article counts and stated Merkur lengths, training sweeps, learning rate, and no-retraining transfer condition."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference training and transfer setup, printed pp. 1051–1052",
+            "section": "4 Simulations",
+            "pageStart": 1051,
+            "pageEnd": 1052
+          },
+          "support": "Confirms the 40-article Merkur training corpus, k=80, 430 hidden units, learning rate 0.2, 25 sweeps, and no-retraining transfer to 10 Frankenpost articles; it does not state the longer manuscript’s 20-article same-source count."
+        }
+      ],
+      "limitations": [
+        "Frankenpost article lengths, article identities, preprocessing, random initialization, and public data files are not reported. The preprint says 20–40 sweeps were acceptable on ‘a separate test set’ immediately before introducing the 20-article test set, so whether model selection reused the reported test set is ambiguous."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-deterministic-residual-method",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "neural-misprediction-residual-coding"
+      ],
+      "statement": "The longer manuscript’s Method 3 takes the alphabet symbol whose one-hot vector is closest to the raw neural output, records only mispredicted characters together with run lengths and escape handling, and then applies UNIX pack; unlike Methods 1 and 2, it does not use the full conditional-probability estimates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Deterministic prediction-residual codec, preprint pp. 4–5",
+            "section": "III.D. Method 3; III.E. Comparison of Methods 1, 2, 3",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "Defines nearest-one-hot prediction, run-length and escape records for errors, final pack compression, and the explicit boundary that Method 3 discards most probability information."
+        }
+      ],
+      "limitations": [
+        "Method 3 appears only in the longer manuscript, not the NIPS treatment, and the paper supplies no bitstream format, code, or ablation separating predictor quality from the residual representation and final pack stage."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-same-source-results",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding",
+        "neural-misprediction-residual-coding"
+      ],
+      "statement": "On 20 held-out Münchner Merkur articles, Table 1 reports compression-ratio/variance pairs of 1.74/.0002 for pack, 1.99/.0014 for compress, 2.20/.0014 for Method 3, 2.29/.0033 for gzip -9, 2.70/.0158 for neural Huffman, and 2.72/.0234 for neural arithmetic coding.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Same-newspaper compression table, preprint p. 9",
+            "section": "IV. Simulations",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "table": "1"
+          },
+          "support": "Provides all six displayed mean compression ratios and variances for the Merkur test articles."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference same-newspaper means, printed p. 1052",
+            "section": "4 Simulations",
+            "pageStart": 1052,
+            "pageEnd": 1052,
+            "table": "1"
+          },
+          "support": "Confirms the five shared mean rows for pack, compress, gzip -9, neural Huffman, and neural arithmetic coding; Method 3, variances, and the 20-article count occur only in the longer manuscript."
+        }
+      ],
+      "limitations": [
+        "Compression ratio is original length divided by compressed length; no confidence interval, hypothesis test, modern benchmark, or model-size charge is supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-cross-source-results",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding",
+        "neural-misprediction-residual-coding"
+      ],
+      "statement": "On 10 Frankenpost articles without retraining, Table 2 reports compression-ratio/variance pairs of 1.67/.0003 for pack, 1.71/.0036 for compress, 1.99/.0013 for Method 3, 2.03/.0099 for gzip -9, 2.25/.0077 for neural Huffman, and 2.20/.0112 for neural arithmetic coding.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Cross-newspaper compression table, preprint p. 9",
+            "section": "IV. Simulations",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "table": "2"
+          },
+          "support": "Provides all six displayed mean compression ratios and variances for the no-retraining Frankenpost test."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference cross-newspaper means, printed p. 1052",
+            "section": "4 Simulations",
+            "pageStart": 1052,
+            "pageEnd": 1052,
+            "table": "2"
+          },
+          "support": "Confirms the five shared mean rows and no-retraining 10-article Frankenpost condition; Method 3 and variances occur only in the longer manuscript."
+        }
+      ],
+      "limitations": [
+        "The cross-source condition changes newspaper but does not establish broad domain robustness; neural arithmetic coding is not the strongest neural method in this table."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-hidden-unit-human-comparison",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "neural-character-probability-modeling"
+      ],
+      "statement": "The discussion reports that a network without hidden units did not exceed compression ratio 2.0, a 300-hidden-unit network behaved similarly to the 430-unit model, and top-choice next-character accuracy was 49% for the five-character network versus 52%, 59%, and 63% for humans given five, ten, and fifteen preceding characters.",
+      "directness": "direct",
+      "confidence": "medium",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Hidden-unit and human prediction comparisons, preprint p. 6",
+            "section": "IV. Simulations",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "Reports the no-hidden and 300-hidden comparisons and the network and human top-choice percentages at the stated context lengths."
+        }
+      ],
+      "limitations": [
+        "The hidden-size comparisons omit full metrics and variability, while the human protocol, participants, text allocation, and trial count are insufficiently described."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-training-runtime-cost",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "probability-driven-lossless-text-coding"
+      ],
+      "statement": "Training the reported network for 25 sweeps took about three days on an HP 700, and the current unoptimized offline implementation was reported as roughly 1,000 times slower than standard compression programs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Training time and prediction-speed boundary, preprint pp. 5–7",
+            "section": "IV. Simulations; V. Discussion",
+            "pageStart": 5,
+            "pageEnd": 7
+          },
+          "support": "Reports the hardware, sweep count, approximate three-day training time, and roughly 1,000-fold prediction slowdown."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference prediction-speed boundary, printed pp. 1051 and 1053",
+            "section": "4 Simulations; 5.2 Limitations",
+            "pageStart": 1051,
+            "pageEnd": 1053
+          },
+          "support": "Confirms an approximately three-orders-of-magnitude slowdown but does not report the longer manuscript’s three-day training time."
+        }
+      ],
+      "limitations": [
+        "The implementation is described as unoptimized, no standardized throughput is reported, and hardware comparisons are historically specific."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schmidhuber-heil-1994-online-recurrent-boundary",
+      "workId": "schmidhuber-heil-1994-sequential-neural-text-compression",
+      "ideaIds": [
+        "neural-character-probability-modeling"
+      ],
+      "statement": "The paper describes online weight updates and recurrent networks as possible extensions, but reports only qualitative initial online improvement and evaluates the fixed-window feed-forward network in its tabulated experiments.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Online variants and recurrent future-work boundary, preprint pp. 6–7",
+            "section": "IV. Simulations; V. Discussion",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "Separates the evaluated frozen feed-forward setup from online adaptation and recurrent proposals and supplies no table for those extensions."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-neurips-full-text",
+          "locator": {
+            "label": "Conference online and longer-context boundary, printed pp. 1052–1053",
+            "section": "4 Simulations; 5 Discussion / Outlook; 5.1 On-Line Methods; 5.3 Ongoing Research",
+            "pageStart": 1052,
+            "pageEnd": 1053
+          },
+          "support": "Treats recurrence and stronger online methods as expected or ongoing directions rather than tabulated experiments; the qualitative initial online improvement is longer-manuscript-only."
+        }
+      ],
+      "limitations": [
+        "No numerical online result or recurrent experiment is reported, so neither mechanism should be presented as an evaluated property of this work."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
       "id": "kneser-ney-1995-standard-backoff-bias",
       "workId": "kneser-ney-1995-improved-backing-off",
       "ideaIds": [
@@ -9225,6 +10639,95 @@
       "checkedDate": "2026-08-01"
     },
     {
+      "id": "bengio-2000-conference-architecture-scaling",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "The NeurIPS version’s direct architecture learns a shared word-feature matrix jointly with a fixed-window neural probability model whose softmax scores every vocabulary word; it identifies the nearly linear dependence on vocabulary size as the central inference cost.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Conference direct architecture and output-cost boundary",
+            "section": "2 The Proposed Model: two Architectures; 3 Speeding-up and other Tricks",
+            "paragraph": "Direct-architecture definition and opening Short list paragraph"
+          },
+          "support": "Defines the shared learned feature table, direct fixed-window softmax, joint likelihood training, and vocabulary-scaled output cost."
+        }
+      ],
+      "limitations": [
+        "This claim is version-specific to the 2000 conference paper and does not transfer the 2003 JMLR article’s four-author architecture details, Associated Press experiment, or parallel implementation backward into the 2002 relationship."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "bengio-2000-conference-shortlist-proposal",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "shortlist-hybrid-neural-language-modeling"
+      ],
+      "statement": "The NeurIPS version proposes a context-dependent shortlist chosen from a smoothed trigram: the neural model normalizes relative probability inside that shortlist, multiplies it by the trigram’s total shortlist mass, and leaves words outside the shortlist to the trigram.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Conference shortlist probability proposal",
+            "section": "3 Speeding-up and other Tricks",
+            "paragraph": "Short list subsection"
+          },
+          "support": "Defines the context-dependent shortlist and the neural-within-shortlist/trigram-mass probability partition."
+        }
+      ],
+      "limitations": [
+        "The conference proposal uses a dynamic context-dependent shortlist; Schwenk and Gauvain later compare dynamic and static shortlists and select a static 2,000-word set for decoding."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "bengio-2000-conference-recognition-lookup-proposal",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "For recognition, the NeurIPS version proposes precomputing neural outputs for frequent input contexts in a hash table and notes that speech recognition may need only relative probabilities among acoustically ambiguous words; its conclusion leaves downstream speech-recognition usefulness for future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Conference precomputed recognition lookup",
+            "section": "3 Speeding-up and other Tricks",
+            "paragraph": "Table look-up for recognition paragraph"
+          },
+          "support": "Proposes a stored hash table for frequent contexts and reduced computation over acoustically ambiguous candidates."
+        },
+        {
+          "sourceId": "bengio-2000-neurips-full-text",
+          "locator": {
+            "label": "Conference downstream-evaluation boundary",
+            "section": "5 Conclusions and Proposed Extensions",
+            "paragraph": "Final paragraph"
+          },
+          "support": "Places usefulness for speech recognition among applications that future research should establish."
+        }
+      ],
+      "limitations": [
+        "This is a precomputed multi-context lookup proposal, not Schwenk and Gauvain’s evaluated reuse of already available outputs across sequential same-context decoder requests, and the NeurIPS paper reports no speech-recognition experiment."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
       "id": "bengio-2003-distributed-representation-precursors",
       "workId": "bengio-2000-neural-probabilistic-language-model",
       "ideaIds": [
@@ -9662,6 +11165,46 @@
       "checkedDate": "2026-07-31"
     },
     {
+      "id": "bengio-2003-character-compression-relationship",
+      "workId": "bengio-2000-neural-probabilistic-language-model",
+      "ideaIds": [
+        "neural-character-probability-modeling"
+      ],
+      "statement": "The JMLR related-work section describes the word-level neural language model as related to earlier character-based text compression that used a neural network to predict the next-character probability, citing Schmidhuber’s 1996 entry.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Character-based neural compression relationship, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Opening paragraph"
+          },
+          "support": "Calls neural next-character compression a related prior proposal and cites Schmidhuber 1996."
+        },
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Sequential Neural Text Compression reference, printed p. 1155",
+            "section": "References",
+            "pageStart": 1155,
+            "pageEnd": 1155,
+            "paragraph": "Schmidhuber 1996 entry"
+          },
+          "support": "The title, journal, volume, pages, and year resolve the shortened single-author entry to the audited two-author journal work."
+        }
+      ],
+      "limitations": [
+        "The target paper says the approaches are related but does not say that its word-vector architecture inherited the compression paper’s squared-error objective, character input, sum normalization, or coding methods.",
+        "The JMLR bibliography omits Stefan Heil even though the resolved IEEE article and DOI record name both authors."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
       "id": "bengio-2003-fixed-window-factorization",
       "workId": "bengio-2000-neural-probabilistic-language-model",
       "ideaIds": [
@@ -10075,6 +11618,361 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-07-31"
+    },
+    {
+      "id": "schwenk-gauvain-2002-unseen-ngram-motivation",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "The paper motivates continuous-space estimation by noting that many 64,000-word-vocabulary bigrams and trigrams remain unseen and that a speech decoder requests even syntactically or semantically implausible n-grams; it expects a smooth function over learned word projections to generalize beyond discrete backoff tables.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Unseen-n-gram and continuous-space motivation",
+            "section": "1. Introduction",
+            "paragraph": "Opening four paragraphs"
+          },
+          "support": "Identifies unobserved training and decoder n-grams, the limits of discrete word-index generalization, and the proposed smooth learned projection."
+        }
+      ],
+      "limitations": [
+        "This is the paper’s motivation and expected mechanism; its decoder statistics later show many likely-unseen requests, but the study does not isolate representation smoothness from shortlist and backoff effects."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-bengio-extension-scope",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "Schwenk and Gauvain explicitly say they extend the continuous-space language-model approach cited as reference [1] to large-vocabulary continuous speech recognition, and acknowledge Bengio’s role in the referenced algorithm and his comments during Schwenk’s visits.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Declared extension",
+            "section": "1. Introduction",
+            "paragraph": "Final paragraph"
+          },
+          "support": "Names the Bengio approach and states that the paper extends it to large-vocabulary continuous speech recognition."
+        },
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Bengio algorithm acknowledgment",
+            "section": "5. Acknowledgments",
+            "paragraph": "Acknowledgments paragraph"
+          },
+          "support": "Connects Yoshua Bengio to the referenced algorithm and records his comments during Schwenk’s visits."
+        },
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Printed source-reference anomaly",
+            "section": "6. References",
+            "paragraph": "Reference [1]"
+          },
+          "support": "Prints the Bengio–Ducharme title, NeurIPS volume 13, and 2001 year while omitting Pascal Vincent and pages and naming Morgan Kaufmann rather than the authoritative MIT Press publisher."
+        }
+      ],
+      "limitations": [
+        "Reference [1] omits Pascal Vincent, supplies no pages, and prints Morgan Kaufmann rather than MIT Press; its distinctive title, volume 13, 2001 proceedings year, and retained authors resolve it to the existing three-author conference version."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-projection-softmax-architecture",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "Each of the previous n−1 one-hot word indices selects a row from one shared N×P projection matrix; the concatenated projections feed a fully connected tanh hidden layer, linear output scores are normalized as a next-word distribution by softmax, and backpropagation through the projection layer jointly learns the word vectors for probability estimation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Projection, hidden, and output architecture",
+            "section": "2. Architecture of the Approach",
+            "equation": "Architecture, softmax, and projection-gradient paragraphs"
+          },
+          "support": "Defines the shared projection matrix, concatenated context representation, tanh hidden layer, normalized output, and gradient path that learns the projection jointly."
+        }
+      ],
+      "limitations": [
+        "The selected recognition system later restricts the neural output to a 2,000-word shortlist rather than evaluating this architecture over all 64,000 outputs at decode time."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-cross-entropy-sign-boundary",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "The prose calls the one-hot training error cross-entropy and says network training minimizes perplexity by backpropagation, while the displayed sum d_i log p_i lacks the minus sign conventionally required for a minimized negative log-likelihood.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Training criterion and sign inconsistency",
+            "section": "2. Architecture of the Approach",
+            "equation": "Cross-entropy equation"
+          },
+          "support": "Labels the criterion cross-entropy, prints the positive log expression, and describes backpropagation and perplexity minimization."
+        }
+      ],
+      "limitations": [
+        "The intended negative-log-likelihood interpretation follows the surrounding prose; the printed equation itself remains inconsistent and is not silently corrected."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-full-output-complexity",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization",
+        "context-cached-neural-language-model-decoding"
+      ],
+      "statement": "The paper estimates a full-distribution cost of ((n−1)PH)+H+(HN)+N operations; with n=3, N=64,000, P=50, and H=200, it reports about 13 million floating-point operations even when only one word probability is requested because every output participates in normalization.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Full-output cost and numerical example",
+            "section": "2.1. Complexity Analysis",
+            "equation": "Operation-count expression"
+          },
+          "support": "Supplies the operation formula, parameter example, approximately 13-million-operation estimate, and all-output normalization explanation."
+        }
+      ],
+      "limitations": [
+        "The parameter paragraph elsewhere prints n=2, but the paper repeatedly calls the models 3-grams and explicitly defines a two-word history; the cost example uses the architecture convention n=3."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-shortlist-hybrid-normalization",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "shortlist-hybrid-neural-language-modeling"
+      ],
+      "statement": "For words in a shortlist S, the neural softmax over S is multiplied by the backoff model’s total probability mass for S under the current history; words outside S retain their backoff probabilities, so the two regions sum to one.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Static and dynamic shortlist probability definition",
+            "section": "2. Architecture of the Approach",
+            "equation": "Shortlist hybrid probability equations"
+          },
+          "support": "Defines neural normalization within the shortlist, its history-dependent backoff mass, and unchanged backoff probabilities outside it."
+        }
+      ],
+      "limitations": [
+        "This is a hybrid partition of vocabulary probability, not a full-vocabulary neural softmax or a fixed linear interpolation coefficient."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-caching-optimized-evaluation",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "context-cached-neural-language-model-decoding"
+      ],
+      "statement": "The paper’s full-output thought experiment says consuming all 64,000 scores after one forward pass would amortize to about 200 operations per probability, while the evaluated 2,000-word-shortlist decoder reuses already available outputs for sequential requests with the same history; with optimized matrix routines it reports up to 800 MFLOP/s and about 12,100 complete forward passes among 2.17 million neural-handled requests.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Caching, BLAS throughput, and amortized cost",
+            "section": "2.1. Complexity Analysis",
+            "paragraph": "Caching and optimized-matrix paragraphs"
+          },
+          "support": "Separates the hypothetical all-64,000-output amortization from same-context reuse and reports optimized throughput."
+        },
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Decoder cache statistics",
+            "section": "3.2. Decoding Experiments",
+            "paragraph": "Connectionist request and cache paragraph"
+          },
+          "support": "Reports approximately 2.17 million handled requests, 12.1 thousand complete calculations, and sequential same-context reuse in the 2,000-word-shortlist decoder."
+        }
+      ],
+      "limitations": [
+        "The 64,000-output/200-operation figure is hypothetical and must not be attributed to the evaluated 2,000-word shortlist. The source’s wording about how request counts aggregate over sentences is ambiguous, and no end-to-end decoder runtime is supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-hub5-evaluation-scope",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "feedforward-neural-language-modeling"
+      ],
+      "statement": "The HUB5 setup uses 2.9 million Switchboard1 transcript words from 248 hours, 218,000 CallHome English words from 17 hours, a 64,000-word vocabulary with 0.5% OOV and 263 compounds, and the 35,000-word Eval98 set of 4,317 sentences and about three hours.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "HUB5 corpora, lexicon, and evaluation set",
+            "section": "3. Results on HUB5",
+            "paragraph": "Data and vocabulary paragraphs"
+          },
+          "support": "Specifies the transcript counts and hours, Eval98 size, recognition vocabulary, OOV rate, and compound count."
+        }
+      ],
+      "limitations": [
+        "The listed 248 and 17 hours sum to 265, while the prose describes about 280 hours of acoustic training data; the discrepancy is preserved.",
+        "Preprocessing, split construction, recognizer tuning, and stochastic-run variation are not supplied in enough detail for reproduction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-shortlist-results",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "shortlist-hybrid-neural-language-modeling"
+      ],
+      "statement": "Table 2 reports dynamic-shortlist perplexity/coverage pairs of 141.6/77.1% for 600 words, 138.5/80.1% for 1,000, and 134.7/82.3% for 2,000, versus 134.5/83.2% for the static 2,000-word shortlist selected for later experiments.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Dynamic and static shortlist comparison",
+            "section": "3.1. Importance of the Shortlist",
+            "table": "2"
+          },
+          "support": "Provides all four displayed shortlist sizes, perplexities, and corpus-coverage percentages and identifies the static 2,000-word choice."
+        }
+      ],
+      "limitations": [
+        "The table reports one evaluation condition without uncertainty or a downstream-recognition comparison between dynamic and static shortlists."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-connectionist-perplexity-results",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "shortlist-hybrid-neural-language-modeling"
+      ],
+      "statement": "Across the four transcript-training configurations in Tables 1 and 3, backoff-to-connectionist perplexity changes are 215.3 to 196.2 for CallHome, 152.1 to 141.7 for Switchboard, 143.8 to 134.5 for combined transcripts, and 138.8 to 132.4 for separately trained and interpolated models.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Backoff and connectionist transcript perplexities",
+            "section": "3. Results on HUB5; 3.1. Importance of the Shortlist",
+            "table": "1 and 3"
+          },
+          "support": "Supplies the four backoff baselines and matching connectionist shortlist-model perplexities."
+        }
+      ],
+      "limitations": [
+        "The displayed 138.8-to-132.4 pair is a roughly 4.6% baseline-relative reduction, not the table’s printed 4.9%; no confidence interval, significance test, or repeated run is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-broadcast-word-error-results",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "shortlist-hybrid-neural-language-modeling"
+      ],
+      "statement": "After interpolation with the broadcast-news model, Table 4 reports perplexity/decompounded-perplexity changes of 119.1/76.8 to 113.8/73.7 and 118.5/76.4 to 113.3/73.4; Table 5 reports WER changes of 46.3% to 45.8% without acoustic adaptation and 42.8% to 42.5% with adaptation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Broadcast-news interpolation perplexities",
+            "section": "3.2. Decoding Experiments",
+            "table": "4"
+          },
+          "support": "Provides both backoff and connectionist perplexity and decompounded-perplexity pairs after broadcast-news interpolation."
+        },
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Recognition word-error rates",
+            "section": "3.2. Decoding Experiments",
+            "table": "5"
+          },
+          "support": "Provides the backoff and connectionist WER values with and without acoustic adaptation."
+        }
+      ],
+      "limitations": [
+        "The absolute WER changes are 0.5 and 0.3 percentage points, with no confidence intervals, significance tests, repeated runs, or stronger contemporary neural baseline."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "schwenk-gauvain-2002-evidence-long-context-boundary",
+      "workId": "schwenk-gauvain-2002-connectionist-lvcsr",
+      "ideaIds": [
+        "feedforward-neural-language-modeling",
+        "shortlist-hybrid-neural-language-modeling",
+        "context-cached-neural-language-model-decoding"
+      ],
+      "statement": "The discussion says the speech-recognition experiments do not support strong conclusions, notes that the connectionist model was used for only about 47% of requested probabilities, and leaves longer-span context as future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Coverage and evidential boundary",
+            "section": "4. Discussion and Future Work",
+            "paragraph": "Conclusion paragraph"
+          },
+          "support": "Bounds the recognition result, states approximately 47% neural use, and proposes longer-span modeling as future work."
+        }
+      ],
+      "limitations": [
+        "The paper does not demonstrate a full-vocabulary neural decoder or a context longer than the reported trigram setup."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-06"
     }
   ],
   "relationships": [
@@ -10975,6 +12873,172 @@
           "note": "Bengio's 2000 conference version does not cite Xu and Rudnicky, the expanded 2003 version labels the proposal independent, and Xu and Rudnicky's bibliography contains no Bengio entry."
         }
       ]
+    },
+    {
+      "id": "schmidhuber-1993-to-schmidhuber-heil-1994",
+      "from": {
+        "kind": "work",
+        "id": "schmidhuber-1993-neural-redundancy-text-compression"
+      },
+      "to": {
+        "kind": "work",
+        "id": "schmidhuber-heil-1994-sequential-neural-text-compression"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "high",
+      "rationale": "The 1993 article already contains the one-hot fixed-window predictor, squared-error conditional-probability argument, sum normalization, arithmetic coding, and Merkur experiment, and it explicitly credits Stefan Heil’s collaboration on the application. The later two-author family retains those elements while adding Huffman coding, a deterministic residual method in the longer manuscript, larger and cross-newspaper tests, variance rows, and further diagnostic evidence. The edge records directly comparable mechanism continuity without claiming that either later source cites the 1993 article or that the two artifacts are versions of one work.",
+      "claimIds": [
+        "schmidhuber-1993-character-probability-predictor",
+        "schmidhuber-1993-arithmetic-lossless-coding",
+        "schmidhuber-1993-merkur-results",
+        "schmidhuber-1993-heil-collaboration",
+        "schmidhuber-heil-1994-character-probability-predictor",
+        "schmidhuber-heil-1994-squared-error-normalization",
+        "schmidhuber-heil-1994-lossless-predictive-coding",
+        "schmidhuber-heil-1994-experimental-scope"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "schmidhuber-1993-author-full-text",
+          "locator": {
+            "label": "Antecedent mechanism, experiment, and Heil collaboration",
+            "section": "2. Text Compression with a Neural Predictor; 3. Initial Simulations; 4. Limitations. The Promise of On-Line Methods",
+            "equation": "1–3",
+            "table": "1"
+          },
+          "support": "Supplies the earlier mechanism and results and directly names Heil’s collaboration on the application."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Later-family mechanism and expanded evidence, preprint pp. 2–9",
+            "section": "II. Basic Approach; III. Off-Line Methods; IV. Simulations; V. Discussion",
+            "pageStart": 2,
+            "pageEnd": 9,
+            "table": "1–2"
+          },
+          "support": "Supplies the repeated predictor and arithmetic mechanism plus the additional codecs, expanded tests, variances, and diagnostics."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Separate-work treatment preserves the sole-authored 1993 bibliography and the later family’s distinct title, authorship, venue, codec set, test design, results, and runtime while retaining the directly evidenced continuity."
+        }
+      ]
+    },
+    {
+      "id": "schmidhuber-heil-1994-to-bengio-2000",
+      "from": {
+        "kind": "work",
+        "id": "schmidhuber-heil-1994-sequential-neural-text-compression"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "connectionType": "conceptual-parallel",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "high",
+      "rationale": "Bengio et al. explicitly describe the earlier work as related character-based neural prediction for text compression. Both works estimate a conditional symbol distribution with a feed-forward network, but the earlier branch uses one-hot characters, squared error, post-hoc sum normalization, and lossless coding, while Bengio et al. learn word vectors through a likelihood-trained word softmax. The edge records the acknowledged conceptual overlap without asserting architectural inheritance or development causality.",
+      "claimIds": [
+        "schmidhuber-heil-1994-character-probability-predictor",
+        "schmidhuber-heil-1994-squared-error-normalization",
+        "schmidhuber-heil-1994-lossless-predictive-coding",
+        "bengio-2003-character-compression-relationship"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bengio-2003-jmlr-full-text",
+          "locator": {
+            "label": "Related character-compression work, printed p. 1140",
+            "section": "1.2 Relation to Previous Work",
+            "pageStart": 1140,
+            "pageEnd": 1140,
+            "paragraph": "Opening paragraph"
+          },
+          "support": "The later article identifies neural next-character compression as related prior work."
+        },
+        {
+          "sourceId": "schmidhuber-heil-1994-author-preprint",
+          "locator": {
+            "label": "Character predictor, objective, and codecs, preprint pp. 2–5",
+            "section": "II. Basic Approach; III.A. The Predictor Network P; III.B. Method 1; III.C. Method 2",
+            "pageStart": 2,
+            "pageEnd": 5
+          },
+          "support": "The earlier manuscript establishes the character input, squared-error objective, sum-normalized estimates, and lossless coding scope used to bound the parallel."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The JMLR bibliography omits Stefan Heil, but its title, IEEE venue, volume, pages, year, and DOI-linked record resolve it to the audited two-author work."
+        },
+        {
+          "status": "open",
+          "note": "The inspected sources establish Bengio et al.’s later recognition of related work, not whether the earlier predictor shaped the target architecture.",
+          "resolutionCondition": "Contemporary development records or an author account would be required before classifying paper-specific causal influence."
+        }
+      ]
+    },
+    {
+      "id": "bengio-2000-to-schwenk-gauvain-2002",
+      "from": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "to": {
+        "kind": "work",
+        "id": "schwenk-gauvain-2002-connectionist-lvcsr"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Schwenk and Gauvain say they extend the Bengio approach cited in reference [1] to large-vocabulary continuous speech recognition and acknowledge Bengio’s role in the referenced algorithm and his comments during Schwenk’s visits. Their contribution operationalizes that projection-based model in a 64,000-word decoder through a selected static 2,000-word hybrid shortlist, sequential same-context output reuse, and HUB5 evaluation. The cited NeurIPS paper already proposes shortlist mass allocation and a precomputed frequent-context hash table and leaves speech-recognition usefulness for future work; its stored multi-context lookup is therefore preserved as a related but different proposal rather than reassigned as Schwenk’s evaluated cache behavior.",
+      "claimIds": [
+        "bengio-2000-conference-architecture-scaling",
+        "bengio-2000-conference-shortlist-proposal",
+        "bengio-2000-conference-recognition-lookup-proposal",
+        "schwenk-gauvain-2002-bengio-extension-scope",
+        "schwenk-gauvain-2002-projection-softmax-architecture",
+        "schwenk-gauvain-2002-shortlist-hybrid-normalization",
+        "schwenk-gauvain-2002-caching-optimized-evaluation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Declared extension of the Bengio approach",
+            "section": "1. Introduction",
+            "paragraph": "Final paragraph"
+          },
+          "support": "The target explicitly says it extends the cited continuous-space language model to large-vocabulary continuous speech recognition."
+        },
+        {
+          "sourceId": "schwenk-gauvain-2002-author-full-text",
+          "locator": {
+            "label": "Bengio algorithm acknowledgment",
+            "section": "5. Acknowledgments",
+            "paragraph": "Acknowledgments paragraph"
+          },
+          "support": "The target connects Yoshua Bengio to the referenced algorithm and records his comments during Schwenk’s visits."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Reference [1] omits Pascal Vincent and pages and prints Morgan Kaufmann instead of MIT Press, but its distinctive title, volume 13, 2001 proceedings year, and retained authors resolve it to the existing three-author NeurIPS version."
+        },
+        {
+          "status": "resolved",
+          "note": "The 2003 JMLR article’s references to Schwenk and Gauvain are treated as later corroborating cross-references, not evidence that the earlier Bengio conference model depends on the 2002 application."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -11830,6 +13894,182 @@
         "Perplexity and relative change"
       ],
       "successCriterion": "The learner can distinguish Hinton’s role-specific codes, Elman’s context-dependent recurrent states, and Bengio’s static word-feature rows; explain why only the distributed-representation principle crosses both precursor edges; map C, x, H, U, W, and y through equation (1); quantify normalization and mixture results; and state why the direct-path and recurrence conclusions are bounded."
+    },
+    {
+      "id": "beginner-schmidhuber-1993-predict-and-compress",
+      "mode": "beginner",
+      "objective": "Trace how an earlier neural predictor turns five preceding characters into probabilities for lossless arithmetic coding, then compare its held-out result and future-work boundaries with the later two-author branch.",
+      "workIds": [
+        "schmidhuber-1993-neural-redundancy-text-compression"
+      ],
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding"
+      ],
+      "claimIds": [
+        "schmidhuber-1993-character-probability-predictor",
+        "schmidhuber-1993-arithmetic-lossless-coding",
+        "schmidhuber-1993-merkur-results",
+        "schmidhuber-1993-heil-collaboration",
+        "schmidhuber-1993-online-recurrent-boundary"
+      ],
+      "prerequisites": [
+        "Conditional probability",
+        "One-hot character encoding",
+        "Lossless coding"
+      ],
+      "successCriterion": "The learner can explain synchronized neural arithmetic coding, report the 2.68 held-out ratio and its limits, identify Heil’s documented collaboration without changing authorship, and keep online and recurrent claims outside the evaluated system."
+    },
+    {
+      "id": "expert-schmidhuber-1993-model-and-lineage",
+      "mode": "expert",
+      "objective": "Reconstruct equations 1–3, audit the Merkur split and all Table 1 ratios, and distinguish direct mechanism continuity from unsupported version or causal claims when relating the 1993 article to the 1994–1996 family.",
+      "workIds": [
+        "schmidhuber-1993-neural-redundancy-text-compression"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding"
+      ],
+      "claimIds": [
+        "schmidhuber-1993-character-probability-predictor",
+        "schmidhuber-1993-arithmetic-lossless-coding",
+        "schmidhuber-1993-merkur-results",
+        "schmidhuber-1993-heil-collaboration",
+        "schmidhuber-1993-online-recurrent-boundary"
+      ],
+      "prerequisites": [
+        "Conditional expectation and squared error",
+        "Arithmetic coding",
+        "Version and influence evidence"
+      ],
+      "successCriterion": "The learner can derive the one-hot squared-error interpretation and sum normalization, reproduce 1.41/1.98/2.25/2.68, enumerate the missing reproducibility evidence, and justify separate-work antecedent treatment without claiming a direct citation."
+    },
+    {
+      "id": "beginner-schmidhuber-heil-1994-predict-and-code",
+      "mode": "beginner",
+      "objective": "Follow one character from a five-character context through a neural probability estimate into a shorter lossless code, then explain why both sides must share the frozen predictor and why the reported compressed size leaves the model outside the file.",
+      "workIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding"
+      ],
+      "claimIds": [
+        "schmidhuber-heil-1994-character-probability-predictor",
+        "schmidhuber-heil-1994-squared-error-normalization",
+        "schmidhuber-heil-1994-lossless-predictive-coding",
+        "schmidhuber-heil-1994-frozen-model-boundary",
+        "schmidhuber-heil-1994-same-source-results",
+        "schmidhuber-heil-1994-cross-source-results"
+      ],
+      "prerequisites": [
+        "Conditional probability",
+        "One-hot character encoding",
+        "Lossless coding as reversible compression"
+      ],
+      "successCriterion": "The learner can trace a context through prediction and coding, distinguish squared-error training from coding-time normalization, explain exact decoding, compare same-source with no-retraining transfer, and state why excluding the shared network changes the interpretation of compression ratio."
+    },
+    {
+      "id": "expert-schmidhuber-heil-1994-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the one-hot fixed-window predictor, squared-error conditional-expectation argument, sum normalization, and synchronized codecs; then audit both result tables, external-model accounting, ablation fragments, runtime, and the unevaluated online and recurrent extensions.",
+      "workIds": [
+        "schmidhuber-heil-1994-sequential-neural-text-compression"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "neural-character-probability-modeling",
+        "probability-driven-lossless-text-coding",
+        "neural-misprediction-residual-coding"
+      ],
+      "claimIds": [
+        "schmidhuber-heil-1994-character-probability-predictor",
+        "schmidhuber-heil-1994-squared-error-normalization",
+        "schmidhuber-heil-1994-lossless-predictive-coding",
+        "schmidhuber-heil-1994-frozen-model-boundary",
+        "schmidhuber-heil-1994-network-capacity-rationale",
+        "schmidhuber-heil-1994-experimental-scope",
+        "schmidhuber-heil-1994-deterministic-residual-method",
+        "schmidhuber-heil-1994-same-source-results",
+        "schmidhuber-heil-1994-cross-source-results",
+        "schmidhuber-heil-1994-hidden-unit-human-comparison",
+        "schmidhuber-heil-1994-training-runtime-cost",
+        "schmidhuber-heil-1994-online-recurrent-boundary"
+      ],
+      "prerequisites": [
+        "Conditional expectation and squared error",
+        "Feed-forward networks and backpropagation",
+        "Huffman and arithmetic coding",
+        "Compression ratios and variance"
+      ],
+      "successCriterion": "The learner can derive why one-hot squared-error targets estimate conditional expectations, distinguish sum normalization from softmax likelihood, reproduce every value in Tables 1 and 2, identify the model-cost and corpus boundaries, and keep online adaptation and recurrence outside the evaluated system."
+    },
+    {
+      "id": "beginner-schwenk-gauvain-2002-hybrid-decoder",
+      "mode": "beginner",
+      "objective": "Explain why a speech decoder can use a neural model for frequent shortlist words while preserving the backoff model’s probability for the rest, and show how caching one prediction for repeated histories changes the practical cost without making the whole decoder neural.",
+      "workIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "ideaIds": [
+        "shortlist-hybrid-neural-language-modeling",
+        "context-cached-neural-language-model-decoding"
+      ],
+      "claimIds": [
+        "schwenk-gauvain-2002-shortlist-hybrid-normalization",
+        "schwenk-gauvain-2002-caching-optimized-evaluation",
+        "schwenk-gauvain-2002-shortlist-results",
+        "schwenk-gauvain-2002-broadcast-word-error-results",
+        "schwenk-gauvain-2002-evidence-long-context-boundary"
+      ],
+      "prerequisites": [
+        "Next-word probabilities",
+        "Backoff language models",
+        "Caching repeated calculations",
+        "Perplexity and word error rate"
+      ],
+      "successCriterion": "The learner can partition shortlist and remaining-word probability, explain why the result stays normalized, distinguish sequential same-context output reuse from a cheaper model or a precomputed multi-context table, report the 2,000-word shortlist and small WER changes, and state the approximately 47% neural-coverage boundary."
+    },
+    {
+      "id": "expert-schwenk-gauvain-2002-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the jointly learned projection, tanh, and softmax architecture, audit the cross-entropy sign and n-notation inconsistencies, derive full-output cost and shortlist normalization, separate the hypothetical 64,000-output amortization from evaluated same-context shortlist reuse, and trace the perplexity, coverage, and WER evidence through the HUB5 decoder.",
+      "workIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "ideaIds": [
+        "sparse-language-model-estimation",
+        "jointly-learned-word-representations",
+        "feedforward-neural-language-modeling",
+        "full-vocabulary-softmax-normalization",
+        "shortlist-hybrid-neural-language-modeling",
+        "context-cached-neural-language-model-decoding"
+      ],
+      "claimIds": [
+        "schwenk-gauvain-2002-unseen-ngram-motivation",
+        "schwenk-gauvain-2002-bengio-extension-scope",
+        "schwenk-gauvain-2002-projection-softmax-architecture",
+        "schwenk-gauvain-2002-cross-entropy-sign-boundary",
+        "schwenk-gauvain-2002-full-output-complexity",
+        "schwenk-gauvain-2002-shortlist-hybrid-normalization",
+        "schwenk-gauvain-2002-caching-optimized-evaluation",
+        "schwenk-gauvain-2002-hub5-evaluation-scope",
+        "schwenk-gauvain-2002-shortlist-results",
+        "schwenk-gauvain-2002-connectionist-perplexity-results",
+        "schwenk-gauvain-2002-broadcast-word-error-results",
+        "schwenk-gauvain-2002-evidence-long-context-boundary"
+      ],
+      "prerequisites": [
+        "Feed-forward neural language models",
+        "Softmax cross-entropy and perplexity",
+        "Backoff normalization",
+        "Speech-recognition decoding",
+        "Relative and absolute metric changes"
+      ],
+      "successCriterion": "The learner can map N, P, H, and n through the architecture and operation formula, prove the shortlist hybrid sums to one, preserve the equation and count discrepancies, reproduce every Table 2 pair, the four Tables 1/3 headline perplexity pairs, all four Table 4 perplexity/decompounded values, and both Table 5 WER pairs, distinguish 0.5 percentage points from relative change, and explain why the evidence does not establish full neural replacement or long-context modeling."
     }
   ]
 }
