@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-06",
+  "asOf": "2026-08-07",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -3378,7 +3378,11 @@
       "sourceIds": [
         "schwenk-gauvain-2002-crossref-record",
         "schwenk-gauvain-2002-vocapia-index",
-        "schwenk-gauvain-2002-author-full-text"
+        "schwenk-gauvain-2002-author-full-text",
+        "schwenk-2001-author-bibliography-2003",
+        "schwenk-2001-author-bibliography-2006",
+        "schwenk-2007-sciencedirect-record",
+        "schwenk-2007-continuous-space-reading-copy"
       ],
       "inclusion": {
         "status": "branch",
@@ -3420,8 +3424,8 @@
         },
         {
           "status": "open",
-          "note": "A later Schwenk synthesis cites a 2001 LIMSI technical report titled “Language modeling in the continuous domain” that may document an earlier stage, but that later source is outside this promoted work and the report is not grouped or used for priority language.",
-          "resolutionCondition": "Add and audit the later citing source, then locate and compare the complete technical report before adding a version or making a development-order claim."
+          "note": "Two archived versions of Schwenk’s own bibliography and his 2007 synthesis establish LIMSI Technical Report 2001-20, “Language Modeling in the Continuous Domain,” in December 2001, but the records disagree on authorship: the September 2003 author page and 2007 self-citation list H. Schwenk alone, while the December 2006 author page lists Holger Schwenk and Jean-Luc Gauvain. Both linked report copies are dead and no complete report was located, so these records are retained only as version-boundary evidence and do not change this work’s version family, May 2002 chronology, technical claims, relationship, or priority language.",
+          "resolutionCondition": "Locate the complete report and compare it claim by claim with the ICASSP paper, or obtain an explicit author or institutional record that resolves authorship and version identity; complete technical evidence is still required before transferring claims or chronology."
         },
         {
           "status": "open",
@@ -5944,6 +5948,80 @@
         "pageEnd": 4
       },
       "accessNote": "The author-hosted four-leaf proceedings copy was rendered and inspected in full. It exposes no stable visible folios, so evidence uses sections, equations, tables, and paragraph anchors rather than pageStart/pageEnd; the Crossref record separately supplies I-765–I-768. No verified open-content license accompanies the file and it is not redistributed."
+    },
+    {
+      "id": "schwenk-2001-author-bibliography-2003",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "Archived 2003 Schwenk bibliography entry for LIMSI Technical Report 2001-20",
+      "url": "https://web.archive.org/web/20030905141226id_/http://www.limsi.fr/Individu/schwenk/Research/papers_type.html",
+      "accessDate": "2026-08-07",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The 5 September 2003 archive of the author-maintained technical-report list identifies H. Schwenk alone, “Language Modeling in the Continuous Domain,” Technical Report 2001-20, LIMSI-CNRS, and 21 December 2001. Its linked PostScript file is dead and has no successful archive capture. This later bibliography establishes a report boundary, not a 2001 chronology event or technical claim for the promoted work."
+    },
+    {
+      "id": "schwenk-2001-author-bibliography-2006",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "Archived 2006 Schwenk bibliography entry for LIMSI Technical Report 2001-20",
+      "url": "https://web.archive.org/web/20061206120923id_/http://www.limsi.fr/Individu/schwenk/English/Research/papers.html",
+      "accessDate": "2026-08-07",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The 6 December 2006 archive of the author-maintained English bibliography lists Holger Schwenk and Jean-Luc Gauvain, the same report title and number, LIMSI-CNRS in Orsay, and December 2001. Its obsolete PDF link has no archived report. The coauthor entry conflicts with the earlier author page and the 2007 self-citation, so it cannot establish version identity or transferable claims."
+    },
+    {
+      "id": "schwenk-2007-sciencedirect-record",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "ScienceDirect record for Schwenk’s Continuous Space Language Models synthesis",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0885230806000325",
+      "accessDate": "2026-08-07",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The publisher record identifies Holger Schwenk’s synthesis in Computer Speech & Language 21(3), July 2007, pp. 492–518, DOI 10.1016/j.csl.2006.09.003. It is a later work related to the ICASSP branch, not a version of the promoted 2002 paper."
+    },
+    {
+      "id": "schwenk-2007-continuous-space-reading-copy",
+      "relatedWorkIds": [
+        "schwenk-gauvain-2002-connectionist-lvcsr"
+      ],
+      "title": "Searchable reading copy of Schwenk’s 2007 continuous-space synthesis",
+      "url": "https://studylib.net/doc/18409070/continuous-space-language-models",
+      "accessDate": "2026-08-07",
+      "sourceClass": "primary-full-text",
+      "authority": "third-party-host",
+      "versionIds": [],
+      "supports": [
+        "full-text",
+        "reference-list",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 492,
+        "pageEnd": 518
+      },
+      "accessNote": "The complete searchable journal copy was inspected for retrospective context only. Printed p. 493 jointly describes Schwenk (2001) and Schwenk and Gauvain (2002) as the first neural-language-model application to LVCSR with HUB5 word-error reductions; printed p. 517 cites the report to H. Schwenk alone. This author retrospective is not independent priority proof, does not bind the report to the 2002 version family, and does not expose report-specific mechanisms or results. The copy has no verified open-content license and is not redistributed."
     }
   ],
   "claims": [

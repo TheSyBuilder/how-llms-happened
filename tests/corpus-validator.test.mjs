@@ -711,7 +711,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-06");
+  assert.equal(corpus.asOf, "2026-08-07");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -2021,6 +2021,18 @@ test("retains Schwenk and Gauvain as a bounded LVCSR extension branch", () => {
   const crossref = corpus.sources.find(
     (item) => item.id === "schwenk-gauvain-2002-crossref-record",
   );
+  const reportBoundaryIds = [
+    "schwenk-2001-author-bibliography-2003",
+    "schwenk-2001-author-bibliography-2006",
+    "schwenk-2007-sciencedirect-record",
+    "schwenk-2007-continuous-space-reading-copy",
+  ];
+  const reportBoundaries = reportBoundaryIds.map((sourceId) =>
+    corpus.sources.find((item) => item.id === sourceId),
+  );
+  const reportUncertainty = work?.uncertainties.find((uncertainty) =>
+    uncertainty.note.includes("Technical Report 2001-20"),
+  );
   const motivation = corpus.claims.find(
     (item) => item.id === "schwenk-gauvain-2002-unseen-ngram-motivation",
   );
@@ -2063,6 +2075,10 @@ test("retains Schwenk and Gauvain as a bounded LVCSR extension branch", () => {
   );
 
   assert.equal(work?.inclusion.status, "branch");
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "schwenk-gauvain-2002-icassp-conference",
+  );
   assert.equal(event?.date.value, "2002-05");
   assert.equal(event?.date.precision, "month");
   assert.equal(work?.versions.length, 1);
@@ -2078,6 +2094,34 @@ test("retains Schwenk and Gauvain as a bounded LVCSR extension branch", () => {
     pageEnd: 4,
   });
   assert.ok(crossref?.accessNote.includes("full given names"));
+  assert.deepEqual(
+    reportBoundaries.map((source) => source?.versionIds),
+    reportBoundaryIds.map(() => []),
+  );
+  for (const [index, source] of reportBoundaries.entries()) {
+    assert.ok(source, `${reportBoundaryIds[index]} must remain recorded`);
+    assert.ok(source.supports.includes("version-boundary"));
+    assert.ok(work?.sourceIds.includes(source.id));
+    assert.equal(work?.preferredSourceIds.includes(source.id), false);
+    assert.equal(version?.sourceIds.includes(source.id), false);
+  }
+  assert.ok(reportBoundaries[0]?.accessNote.includes("21 December 2001"));
+  assert.ok(reportBoundaries[0]?.accessNote.includes("H. Schwenk alone"));
+  assert.ok(
+    reportBoundaries[1]?.accessNote.includes(
+      "Holger Schwenk and Jean-Luc Gauvain",
+    ),
+  );
+  assert.ok(reportBoundaries[1]?.accessNote.includes("conflicts"));
+  assert.equal(reportBoundaries[3]?.sourceClass, "primary-full-text");
+  assert.equal(reportBoundaries[3]?.authority, "third-party-host");
+  assert.ok(reportBoundaries[3]?.accessNote.includes("Printed p. 493"));
+  assert.ok(reportBoundaries[3]?.accessNote.includes("printed p. 517"));
+  assert.ok(reportBoundaries[3]?.accessNote.includes("not independent priority"));
+  assert.equal(reportUncertainty?.status, "open");
+  assert.ok(reportUncertainty?.note.includes("disagree on authorship"));
+  assert.ok(reportUncertainty?.note.includes("no complete report was located"));
+  assert.ok(reportUncertainty?.note.includes("version-boundary evidence"));
   assert.equal(claims.length, 12);
   const visibleSections = new Set([
     "1. Introduction",
@@ -2108,6 +2152,25 @@ test("retains Schwenk and Gauvain as a bounded LVCSR extension branch", () => {
         `${claim.id} must use an exact visible section heading`,
       );
     }
+  }
+  const promotedSourceIds = new Set([
+    ...claims.flatMap((claim) =>
+      claim.evidence.map((evidence) => evidence.sourceId),
+    ),
+    ...corpus.relationships.flatMap((item) =>
+      item.sourceEvidence.map((evidence) => evidence.sourceId),
+    ),
+    ...work.chronology.events.flatMap((item) => [
+      ...item.sourceIds,
+      ...item.dateEvidence.map((evidence) => evidence.sourceId),
+    ]),
+  ]);
+  for (const sourceId of reportBoundaryIds) {
+    assert.equal(
+      promotedSourceIds.has(sourceId),
+      false,
+      `${sourceId} must not support promoted claims, relationships, or chronology`,
+    );
   }
   assert.ok(motivation?.ideaIds.includes("sparse-language-model-estimation"));
   assert.equal(hybrid?.ideaIds.includes("sparse-language-model-estimation"), false);
