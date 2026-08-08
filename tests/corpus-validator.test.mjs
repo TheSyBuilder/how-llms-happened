@@ -711,7 +711,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-07");
+  assert.equal(corpus.asOf, "2026-08-08");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -2243,6 +2243,199 @@ test("retains Schwenk and Gauvain as a bounded LVCSR extension branch", () => {
       ),
     );
   }
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Mikolov 2010 as a bounded recurrent word-LM convergence milestone", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "mikolov-2010-recurrent-neural-language-model",
+  );
+  const event = work?.chronology.events.find(
+    (item) => item.id === "mikolov-2010-interspeech-conference",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "mikolov-2010-interspeech-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "mikolov-2010-isca-full-text",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const architecture = claims.find(
+    (item) => item.id === "mikolov-2010-elman-recurrent-architecture",
+  );
+  const temporalBoundary = claims.find(
+    (item) => item.id === "mikolov-2010-truncated-bptt-boundary",
+  );
+  const tableOne = claims.find(
+    (item) => item.id === "mikolov-2010-wsj-scaling-results",
+  );
+  const tableTwo = claims.find(
+    (item) => item.id === "mikolov-2010-wsj-ensemble-results",
+  );
+  const tableThree = claims.find(
+    (item) => item.id === "mikolov-2010-wsj-cross-data-results",
+  );
+  const tableFour = claims.find(
+    (item) => item.id === "mikolov-2010-rt05-evaluation-results",
+  );
+  const elmanRelationship = corpus.relationships.find(
+    (item) => item.id === "elman-1988-to-mikolov-2010",
+  );
+  const bengioRelationship = corpus.relationships.find(
+    (item) => item.id === "bengio-2000-to-mikolov-2010",
+  );
+  const schwenkRelationship = corpus.relationships.find(
+    (item) =>
+      item.from.id === "schwenk-gauvain-2002-connectionist-lvcsr" &&
+      item.to.id === work?.id,
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.chronology.orderingEventId, event?.id);
+  assert.equal(event?.date.value, "2010-09");
+  assert.equal(event?.date.precision, "month");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(work?.canonicalVersionId, version?.id);
+  assert.deepEqual(version?.bibliography.pages, ["1045-1048"]);
+  assert.ok(
+    version?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.21437/Interspeech.2010-343",
+    ),
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 1045,
+    pageEnd: 1048,
+  });
+  assert.ok(fullText?.accessNote.includes("16.3"));
+  assert.ok(fullText?.accessNote.includes("footnote 4"));
+  assert.equal(claims.length, 13);
+  const visibleSections = new Set([
+    "2. Model description",
+    "2.1. Optimization",
+    "3. WSJ experiments",
+    "4. NIST RT05 experiments",
+    "5. Conclusion and future work",
+    "7. References",
+  ]);
+  const expectedClaimSections = new Map([
+    ["mikolov-2010-fixed-window-motivation", ["2. Model description", "7. References"]],
+    ["mikolov-2010-elman-recurrent-architecture", ["2. Model description", "7. References"]],
+    ["mikolov-2010-training-objective", ["2. Model description"]],
+    ["mikolov-2010-truncated-bptt-boundary", ["2. Model description"]],
+    ["mikolov-2010-dynamic-adaptation", ["2. Model description", "3. WSJ experiments"]],
+    ["mikolov-2010-rare-word-probability", ["2.1. Optimization"]],
+    ["mikolov-2010-training-cost-comparison", ["2.1. Optimization"]],
+    ["mikolov-2010-wsj-evaluation-scope", ["3. WSJ experiments"]],
+    ["mikolov-2010-wsj-scaling-results", ["3. WSJ experiments"]],
+    ["mikolov-2010-wsj-ensemble-results", ["3. WSJ experiments", "3. WSJ experiments"]],
+    ["mikolov-2010-wsj-cross-data-results", ["3. WSJ experiments"]],
+    ["mikolov-2010-rt05-evaluation-results", ["4. NIST RT05 experiments"]],
+    ["mikolov-2010-long-context-and-evidence-boundary", ["5. Conclusion and future work"]],
+  ]);
+  for (const claim of claims) {
+    assert.ok(claim.evidence.length > 0);
+    for (const evidence of claim.evidence) {
+      assert.equal(evidence.sourceId, fullText?.id);
+      assert.ok(evidence.locator.pageStart >= 1045);
+      assert.ok(evidence.locator.pageEnd <= 1048);
+      assert.ok(
+        visibleSections.has(evidence.locator.section),
+        `${claim.id} must use an exact visible section heading`,
+      );
+    }
+    assert.deepEqual(
+      claim.evidence.map((evidence) => evidence.locator.section),
+      expectedClaimSections.get(claim.id),
+    );
+  }
+  assert.ok(architecture?.statement.includes("simple recurrent architecture"));
+  assert.ok(architecture?.statement.includes("Elman"));
+  assert.ok(temporalBoundary?.statement.includes("temporal depth of one"));
+  for (const value of [
+    "336/16.4%",
+    "271/15.4%",
+    "287/15.1%",
+    "225/14.0%",
+    "221/13.5%",
+    "156/11.7%",
+  ]) {
+    assert.ok(tableOne?.statement.includes(value));
+  }
+  for (const value of [
+    "229/13.2",
+    "186/12.6",
+    "202/12.8",
+    "173/12.2",
+    "173/12.3",
+    "155/11.7",
+    "176/12.0",
+    "156/11.9",
+    "171/12.5",
+    "152/12.1",
+    "151/11.6",
+    "143/11.3",
+    "128/11.3",
+    "121/11.1",
+  ]) {
+    assert.ok(tableTwo?.statement.includes(value));
+  }
+  assert.ok(tableTwo?.limitations.join(" ").includes("221-to-112"));
+  assert.ok(tableTwo?.limitations.join(" ").includes("49.3%"));
+  for (const value of [
+    "12.9%/18.4%",
+    "12.2%/17.2%",
+    "11.5%/16.9%",
+    "16.7%",
+    "11.0%/15.5%",
+    "10.7%/16.3%",
+  ]) {
+    assert.ok(tableThree?.statement.includes(value));
+  }
+  assert.ok(tableThree?.limitations.join(" ").includes("not 16.34"));
+  assert.ok(tableThree?.limitations.join(" ").includes("nonconsecutive"));
+  assert.ok(tableThree?.limitations.join(" ").includes("probably"));
+  for (const value of ["24.5%", "24.1%", "25.7%", "22.9%", "22.8%"]) {
+    assert.ok(tableFour?.statement.includes(value));
+  }
+  assert.equal(elmanRelationship?.connectionType, "builds-on");
+  assert.equal(elmanRelationship?.evidenceClass, "documented-influence");
+  assert.equal(elmanRelationship?.causalLanguage, "qualified");
+  assert.deepEqual(elmanRelationship?.from, {
+    kind: "work",
+    id: "elman-1988-finding-structure-in-time",
+  });
+  assert.equal(bengioRelationship?.connectionType, "addresses");
+  assert.equal(bengioRelationship?.evidenceClass, "documented-influence");
+  assert.equal(bengioRelationship?.causalLanguage, "qualified");
+  assert.deepEqual(bengioRelationship?.from, {
+    kind: "work",
+    id: "bengio-2000-neural-probabilistic-language-model",
+  });
+  assert.ok(
+    [...elmanRelationship.sourceEvidence, ...bengioRelationship.sourceEvidence]
+      .every((evidence) => evidence.sourceId === fullText?.id),
+  );
+  assert.deepEqual(
+    elmanRelationship?.sourceEvidence.map(
+      (evidence) => evidence.locator.section,
+    ),
+    ["2. Model description; 7. References"],
+  );
+  assert.deepEqual(
+    bengioRelationship?.sourceEvidence.map(
+      (evidence) => evidence.locator.section,
+    ),
+    ["2. Model description; 7. References"],
+  );
+  assert.equal(schwenkRelationship, undefined);
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-07",
+  "asOf": "2026-08-08",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -3433,6 +3433,162 @@
           "resolutionCondition": "Decoder logs, code, or an author correction would be required to determine the intended aggregation."
         }
       ]
+    },
+    {
+      "id": "mikolov-2010-recurrent-neural-language-model",
+      "title": "Recurrent neural network based language model",
+      "authors": [
+        "Tomáš Mikolov",
+        "Martin Karafiát",
+        "Lukáš Burget",
+        "Jan Černocký",
+        "Sanjeev Khudanpur"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "T. Mikolov, M. Karafiát, L. Burget, J. Černocký, and S. Khudanpur, “Recurrent neural network based language model,” Interspeech 2010, 1045–1048 (September 2010), DOI 10.21437/Interspeech.2010-343.",
+      "chronology": {
+        "orderingEventId": "mikolov-2010-interspeech-conference",
+        "events": [
+          {
+            "id": "mikolov-2010-interspeech-conference",
+            "kind": "conference-presentation",
+            "label": "Interspeech 2010 conference paper",
+            "date": {
+              "value": "2010-09",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The conference ran 26–30 September in Makuhari, Chiba, Japan; no inspected program establishes this paper’s presentation day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "mikolov-2010-isca-conference-record",
+                "precision": "month",
+                "locator": "Official ISCA Archive conference index, Makuhari, Japan, 26–30 September 2010"
+              },
+              {
+                "sourceId": "mikolov-2010-isca-full-text",
+                "precision": "month",
+                "locator": "Printed proceedings footer, Makuhari, Chiba, Japan, 26–30 September 2010"
+              }
+            ],
+            "versionId": "mikolov-2010-interspeech-version",
+            "sourceIds": [
+              "mikolov-2010-isca-record",
+              "mikolov-2010-isca-conference-record",
+              "mikolov-2010-isca-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "mikolov-2010-interspeech-version",
+          "title": "Recurrent neural network based language model",
+          "authors": [
+            "Tomáš Mikolov",
+            "Martin Karafiát",
+            "Lukáš Burget",
+            "Jan Černocký",
+            "Sanjeev Khudanpur"
+          ],
+          "kind": "proceedings",
+          "label": "Interspeech 2010 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. Mikolov, M. Karafiát, L. Burget, J. Černocký, and S. Khudanpur, “Recurrent neural network based language model,” in Interspeech 2010, Makuhari, Japan, pp. 1045–1048, September 2010.",
+            "venue": "Interspeech 2010",
+            "publisher": "International Speech Communication Association",
+            "pages": [
+              "1045-1048"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.21437/Interspeech.2010-343",
+                "label": "Proceedings paper DOI"
+              },
+              {
+                "type": "issn",
+                "value": "2958-1796",
+                "label": "ISCA Archive ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "mikolov-2010-isca-record",
+            "mikolov-2010-isca-conference-record",
+            "mikolov-2010-isca-full-text"
+          ],
+          "notes": "The official archive supplies the DOI, pp. 1045–1048, and the September 26–30 conference span. The full text retains the printed proceedings folios, so claim locators use those pages."
+        }
+      ],
+      "canonicalVersionId": "mikolov-2010-interspeech-version",
+      "preferredSourceIds": [
+        "mikolov-2010-isca-record",
+        "mikolov-2010-isca-full-text"
+      ],
+      "sourceIds": [
+        "mikolov-2010-isca-record",
+        "mikolov-2010-isca-conference-record",
+        "mikolov-2010-isca-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The paper explicitly combines the simple recurrent architecture it attributes to Elman with the normalized neural word-prediction problem it contrasts with Bengio’s fixed-window model, then evaluates that combination at speech-recognition scale. It is promoted as a convergence milestone for practical recurrent word language modeling and online adaptation, with its contribution bounded to that documented combination and evaluation."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "feedforward-neural-language-modeling",
+        "simple-recurrent-context-memory",
+        "next-item-prediction-training",
+        "full-vocabulary-softmax-normalization",
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "significance": {
+        "beginner": "Instead of showing the network a hard window of recent words, the model carries a changing state from one word to the next and turns that state into a probability distribution for the following word. The repeated state can carry information beyond a fixed window, but the paper itself says this simple recurrent model still fails to capture truly long context reliably.",
+        "expert": "A one-hot word vector and the preceding sigmoid state are concatenated into an Elman-style recurrence, followed by a vocabulary softmax and cross-entropy training. The experiments use one-step truncated temporal credit assignment, rare-word bucketing, linear interpolation with modified Kneser–Ney models, RNN ensembles, and optional test-time SGD adaptation across WSJ and RT05 rescoring conditions."
+      },
+      "limitations": [
+        "The evaluated training uses a temporal depth of one: error is propagated only from the current time step, and the authors explicitly call this non-optimal.",
+        "The conclusion says the simple recurrent model did not capture truly long context; a cache remained complementary even to dynamically adapted models.",
+        "Words below a frequency threshold are merged into one rare token, and its probability is divided uniformly among the rare word types rather than learned separately for each one.",
+        "The larger recurrent models can require several weeks of training, and the WSJ recurrent models use at most 6.4 million words while some count-model comparisons use 37 million; the paper does not supply controlled hardware-normalized throughput.",
+        "The strongest WSJ results depend on ensembles, interpolation with modified Kneser–Ney models, dynamic test-time updates, or combinations of those components rather than a single static recurrent model.",
+        "The paper’s almost-50% perplexity statement aligns with the separately described 221-to-112 static/dynamic mixture, not the displayed Table 2 recurrent-ensemble rows of 221 to 128 without the count model or 221 to 121 with it.",
+        "Table 3’s 37-million-word static mixture improves the 17.2 evaluation WER baseline to 15.5, about 9.9% relatively rather than the surrounding text’s approximately 12%; the dynamic development result reaches about 12.3%, while dynamic evaluation reaches about 5.2%, and the paper tentatively attributes the dynamic-versus-static reversal to nonconsecutive sentence order.",
+        "The Table 3 dynamic evaluation entry is 16.3 with a superscript footnote marker, not 16.34; the footnote says the evaluation sentences are not consecutive and offers that fact as a probable explanation for the worse dynamic-than-static result.",
+        "No confidence intervals, statistical tests, repeated seeds, or end-to-end latency measurements are reported, so the paper’s use of ‘significantly’ does not establish statistical significance.",
+        "Reference [3] omits Christian Jauvin from the Bengio JMLR article, but title, journal, volume, pages, and year resolve it to the existing four-author canonical version; reference [4] is a 2005 Schwenk–Gauvain paper, not the corpus’s 2002 ICASSP work.",
+        "The official archive provides public reading access but no verified paper-level open-content license; the PDF is linked and not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact presentation day within the 26–30 September 2010 conference span has not been established.",
+          "resolutionCondition": "An authoritative dated session schedule mapping this paper to a session would be required for day-level ordering."
+        },
+        {
+          "status": "resolved",
+          "note": "Equation (1) prints a plus sign between the current-word and prior-state terms, while the surrounding prose says the vectors are concatenated; the corpus follows the explicit prose and dimensional definitions rather than treating the operation as elementwise addition."
+        },
+        {
+          "status": "resolved",
+          "note": "The paper calls its system ‘a new’ recurrent language model but does not claim to invent recurrent networks, next-word prediction, or neural language modeling; no priority claim is assigned."
+        },
+        {
+          "status": "open",
+          "note": "The off-table perplexity 112 is described as mixing static and dynamic recurrent models with a larger test-time learning rate, while the nearby summary calls it a mixture of three dynamic recurrent models; the exact component weights and run composition are not supplied.",
+          "resolutionCondition": "Code, experiment logs, or an author clarification would be required to reconstruct the 112 configuration exactly."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for the official full text.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDF as open content."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -3469,7 +3625,9 @@
         "xu-rudnicky-2000-bigram-probability-objective",
         "bengio-2003-fixed-window-factorization",
         "schmidhuber-1993-character-probability-predictor",
-        "schmidhuber-heil-1994-character-probability-predictor"
+        "schmidhuber-heil-1994-character-probability-predictor",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective"
       ],
       "uncertainties": []
     },
@@ -3940,7 +4098,8 @@
         "schwenk-gauvain-2002-cross-entropy-sign-boundary",
         "schwenk-gauvain-2002-unseen-ngram-motivation",
         "schwenk-gauvain-2002-hub5-evaluation-scope",
-        "schwenk-gauvain-2002-evidence-long-context-boundary"
+        "schwenk-gauvain-2002-evidence-long-context-boundary",
+        "mikolov-2010-fixed-window-motivation"
       ],
       "uncertainties": []
     },
@@ -3959,9 +4118,17 @@
         "bengio-2003-scaling-tradeoff",
         "bengio-2003-parameter-parallel-mitigation",
         "schwenk-gauvain-2002-projection-softmax-architecture",
-        "schwenk-gauvain-2002-full-output-complexity"
+        "schwenk-gauvain-2002-full-output-complexity",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective",
+        "mikolov-2010-rare-word-probability"
       ],
-      "uncertainties": []
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Mikolov et al. normalize retained word types plus one rare-word bucket, then divide that bucket’s probability uniformly among the merged rare types; this is not one separately learned output for every original rare type."
+        }
+      ]
     },
     {
       "id": "shortlist-hybrid-neural-language-modeling",
@@ -4001,12 +4168,17 @@
       "kind": "mechanism",
       "description": "A neural next-word distribution can be linearly mixed with an interpolated n-gram distribution so their different generalization behavior contributes to one normalized predictor.",
       "claimIds": [
-        "bengio-2003-neural-trigram-mixture"
+        "bengio-2003-neural-trigram-mixture",
+        "mikolov-2010-wsj-evaluation-scope",
+        "mikolov-2010-wsj-scaling-results",
+        "mikolov-2010-wsj-ensemble-results",
+        "mikolov-2010-wsj-cross-data-results",
+        "mikolov-2010-rt05-evaluation-results"
       ],
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "The recorded evidence concerns the paper’s fixed equal-weight neural/interpolated-trigram mixtures, not a general claim that mixtures always improve either component."
+          "note": "The evidence is paper-specific: Bengio et al. use fixed equal-weight neural/interpolated-trigram mixtures, while Mikolov et al. use reported RNN/backoff weights of 0.75/0.25 and additional RNN ensembles. Neither result implies that mixtures always improve either component."
         }
       ]
     },
@@ -4073,7 +4245,10 @@
         "elman-1990-task-dependent-memory",
         "elman-1990-contextual-token-representations",
         "elman-1990-memory-boundary",
-        "miikkulainen-dyer-1991-recurrent-fgrep-memory"
+        "miikkulainen-dyer-1991-recurrent-fgrep-memory",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-truncated-bptt-boundary",
+        "mikolov-2010-long-context-and-evidence-boundary"
       ],
       "uncertainties": [
         {
@@ -4170,12 +4345,62 @@
         "elman-1990-next-word-prediction-setup",
         "elman-1990-successor-likelihood-fit",
         "elman-1990-emergent-lexical-classes",
-        "elman-1990-novel-word-context-test"
+        "elman-1990-novel-word-context-test",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "For Elman’s lexical experiment this objective uses unnormalized output activations on generated sentences; it is not a softmax language-model likelihood or perplexity objective."
+        },
+        {
+          "status": "resolved",
+          "note": "Mikolov et al. instantiate the next-word objective as a normalized vocabulary distribution trained with cross-entropy, but propagate only the current-step error in the main experiments."
+        }
+      ]
+    },
+    {
+      "id": "recurrent-neural-word-language-modeling",
+      "name": "Recurrent neural word language modeling",
+      "kind": "mechanism",
+      "description": "A recurrent hidden state combines the current word with the previous state to parameterize a normalized next-word distribution, allowing history to enter through repeated state updates rather than an explicit fixed window.",
+      "claimIds": [
+        "mikolov-2010-fixed-window-motivation",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective",
+        "mikolov-2010-truncated-bptt-boundary",
+        "mikolov-2010-training-cost-comparison",
+        "mikolov-2010-wsj-evaluation-scope",
+        "mikolov-2010-wsj-scaling-results",
+        "mikolov-2010-wsj-ensemble-results",
+        "mikolov-2010-wsj-cross-data-results",
+        "mikolov-2010-rt05-evaluation-results",
+        "mikolov-2010-long-context-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Recurrence removes an explicit finite input window but does not guarantee usable long-range memory; the target paper explicitly reports that its simple model did not capture truly long context."
+        }
+      ]
+    },
+    {
+      "id": "online-neural-language-model-adaptation",
+      "name": "Online neural language-model adaptation",
+      "kind": "mechanism",
+      "description": "A trained neural language model can continue stochastic-gradient updates while processing an ordered test sequence, adapting its parameters to recent text in a cache-like continuous space.",
+      "claimIds": [
+        "mikolov-2010-dynamic-adaptation",
+        "mikolov-2010-wsj-ensemble-results",
+        "mikolov-2010-wsj-cross-data-results",
+        "mikolov-2010-rt05-evaluation-results",
+        "mikolov-2010-long-context-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The method assumes locally coherent test order; the paper’s WSJ evaluation sentences are not consecutive, and its dynamic model is worse than the static model on that split."
         }
       ]
     },
@@ -6022,6 +6247,67 @@
         "pageEnd": 518
       },
       "accessNote": "The complete searchable journal copy was inspected for retrospective context only. Printed p. 493 jointly describes Schwenk (2001) and Schwenk and Gauvain (2002) as the first neural-language-model application to LVCSR with HUB5 word-error reductions; printed p. 517 cites the report to H. Schwenk alone. This author retrospective is not independent priority proof, does not bind the report to the 2002 version family, and does not expose report-specific mechanisms or results. The copy has no verified open-content license and is not redistributed."
+    },
+    {
+      "id": "mikolov-2010-isca-record",
+      "relatedWorkIds": [
+        "mikolov-2010-recurrent-neural-language-model"
+      ],
+      "title": "ISCA Archive record for Recurrent neural network based language model",
+      "url": "https://www.isca-archive.org/interspeech_2010/mikolov10_interspeech.html",
+      "accessDate": "2026-08-08",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "mikolov-2010-interspeech-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official paper record supplies the title, five authors, abstract, pp. 1045–1048, DOI 10.21437/Interspeech.2010-343, and ISCA Archive ISSN 2958-1796."
+    },
+    {
+      "id": "mikolov-2010-isca-conference-record",
+      "relatedWorkIds": [
+        "mikolov-2010-recurrent-neural-language-model"
+      ],
+      "title": "ISCA Archive index for Interspeech 2010",
+      "url": "https://www.isca-archive.org/interspeech_2010/",
+      "accessDate": "2026-08-08",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "mikolov-2010-interspeech-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official conference index identifies Interspeech 2010 in Makuhari, Chiba, Japan, from 26 to 30 September 2010. It establishes month-level chronology but not the paper’s presentation day."
+    },
+    {
+      "id": "mikolov-2010-isca-full-text",
+      "relatedWorkIds": [
+        "mikolov-2010-recurrent-neural-language-model"
+      ],
+      "title": "Official full text of Recurrent neural network based language model",
+      "url": "https://www.isca-archive.org/interspeech_2010/mikolov10_interspeech.pdf",
+      "accessDate": "2026-08-08",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "mikolov-2010-interspeech-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1045,
+        "pageEnd": 1048
+      },
+      "accessNote": "The official four-page proceedings PDF was rendered and inspected in full. Claim locators use printed pp. 1045–1048. Visual inspection confirms that Table 3’s dynamic evaluation value is 16.3 followed by superscript footnote 4, not 16.34. No verified paper-level open-content license accompanies the file and it is not redistributed."
     }
   ],
   "claims": [
@@ -12051,6 +12337,442 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-06"
+    },
+    {
+      "id": "mikolov-2010-fixed-window-motivation",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "feedforward-neural-language-modeling",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "Mikolov et al. identify Bengio et al.’s feed-forward neural language model as an important predecessor and call its typically five-to-ten-word fixed input window a major deficiency; their recurrent proposal is motivated by carrying temporal information without an explicit history length.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Bengio predecessor and fixed-window limitation, printed p. 1045",
+            "section": "2. Model description",
+            "pageStart": 1045,
+            "pageEnd": 1045,
+            "paragraph": "Opening two paragraphs"
+          },
+          "support": "Names the Bengio model, describes its fixed input window, and states the recurrent model’s intended arbitrary-length temporal scope."
+        },
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Bengio reference [3], printed p. 1048",
+            "section": "7. References",
+            "pageStart": 1048,
+            "pageEnd": 1048,
+            "paragraph": "Reference 3"
+          },
+          "support": "The distinctive title, JMLR volume, pages, and year resolve the cited predecessor to the existing Bengio work."
+        }
+      ],
+      "limitations": [
+        "Reference [3] omits Christian Jauvin, but its remaining bibliography unambiguously identifies the JMLR article.",
+        "The motivation does not establish that the recurrent model retains useful information over arbitrary distances; the conclusion states that truly long context was not captured."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-elman-recurrent-architecture",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "simple-recurrent-context-memory",
+        "next-item-prediction-training",
+        "full-vocabulary-softmax-normalization",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "The model explicitly uses the simple recurrent architecture associated with Elman: a one-hot current-word vector is concatenated with the previous sigmoid state, the hidden state is updated from that combined input, and a softmax produces a normalized distribution for the next word.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Elman architecture and forward equations, printed pp. 1045–1046",
+            "section": "2. Model description",
+            "pageStart": 1045,
+            "pageEnd": 1046,
+            "equation": "1–5"
+          },
+          "support": "Names the simple recurrent or Elman network and defines the concatenated input, sigmoid hidden update, and normalized next-word output."
+        },
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Elman reference [7], printed p. 1048",
+            "section": "7. References",
+            "pageStart": 1048,
+            "pageEnd": 1048,
+            "paragraph": "Reference 7"
+          },
+          "support": "The reference list identifies Elman’s Finding Structure in Time as the named architectural source."
+        }
+      ],
+      "limitations": [
+        "Equation (1) prints a plus sign, but the prose and dimensions describe concatenation rather than elementwise addition.",
+        "The edge to Elman is restricted to recurrent context-state architecture; it does not transfer Elman’s generated corpus, unnormalized outputs, or lexical-clustering claims."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-training-objective",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "next-item-prediction-training",
+        "full-vocabulary-softmax-normalization",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "The model minimizes next-word cross-entropy by stochastic gradient descent, starts from small random weights and an approximately 0.1 initial state, reduces its learning rate when validation log-likelihood stops improving, and typically trains for 10 to 20 epochs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Initialization, softmax, loss, and learning schedule, printed p. 1046",
+            "section": "2. Model description",
+            "pageStart": 1046,
+            "pageEnd": 1046,
+            "equation": "3–6"
+          },
+          "support": "Defines the normalized output and cross-entropy error and supplies the weight, state, stochastic-gradient, validation, and epoch details."
+        }
+      ],
+      "limitations": [
+        "The paper supplies no random seed, repeated-run variability, optimizer code, or complete numerical-reproducibility recipe."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-truncated-bptt-boundary",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "simple-recurrent-context-memory",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "Although the forward state is recurrent, the main experiments propagate error only from the current time step, equivalent to a temporal depth of one; the authors call this non-optimal and leave deeper backpropagation through time as future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "One-step temporal credit assignment, printed p. 1046",
+            "section": "2. Model description",
+            "pageStart": 1046,
+            "pageEnd": 1046,
+            "paragraph": "Training paragraph following equation (6)"
+          },
+          "support": "States that only the current-step error is propagated, identifies the temporal depth as one, calls the choice non-optimal, and proposes BPTT."
+        }
+      ],
+      "limitations": [
+        "A recurrent forward state must not be mistaken for full temporal credit assignment during training."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-dynamic-adaptation",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "online-neural-language-model-adaptation"
+      ],
+      "statement": "The dynamic variant continues one-pass stochastic-gradient learning on the test sequence, normally with learning rate 0.1, so recent observations adapt a continuous-space model in a cache-like way; the paper warns about recognition-hypothesis errors and tentatively attributes one worse dynamic-than-static result to nonconsecutive sentence order.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Dynamic-model procedure and cache analogy, printed p. 1046",
+            "section": "2. Model description",
+            "pageStart": 1046,
+            "pageEnd": 1046,
+            "paragraph": "Dynamic-model paragraph"
+          },
+          "support": "Defines one-pass test-time learning, gives the usual learning rate, compares it with cache adaptation, and notes recognition-error risk."
+        },
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Nonconsecutive-test-order warning, printed p. 1047",
+            "section": "3. WSJ experiments",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "table": "3, footnote 4"
+          },
+          "support": "Says the evaluation sentences are not consecutive and offers that fact as the probable explanation for dynamic adaptation being worse than the static model there."
+        }
+      ],
+      "limitations": [
+        "The procedure updates on test text and therefore depends on the evaluation protocol and sequence order; it is not a static-model comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-rare-word-probability",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "Words below a selected frequency threshold are replaced by one rare token during training; at evaluation, the rare-token probability is divided uniformly by the number of merged rare word types.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Rare-word bucket and probability allocation, printed pp. 1046–1047",
+            "section": "2.1. Optimization",
+            "pageStart": 1046,
+            "pageEnd": 1047,
+            "equation": "7"
+          },
+          "support": "Defines threshold-based rare-token replacement and uniform division by the rare-type count."
+        }
+      ],
+      "limitations": [
+        "The method does not learn different conditional probabilities among word types merged into the rare bucket."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-training-cost-comparison",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "For a Brown-corpus configuration with about 800,000 words, 100 hidden units, and rare-word threshold five, the paper reports about six hours for its basic implementation and quotes 113 days for Bengio’s basic implementation or 26 hours with importance sampling on a similar task; it also says its largest models can train for several weeks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Reported Brown timing comparison, printed p. 1047",
+            "section": "2.1. Optimization",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "paragraph": "Training-time comparison paragraph"
+          },
+          "support": "Provides the Brown configuration, six-hour recurrent timing, quoted Bengio timings, BLAS-only optimization note, and several-week upper range."
+        }
+      ],
+      "limitations": [
+        "The comparison is quoted across different implementations and does not control processor count, hardware, code, stopping rule, or software optimization; it is descriptive rather than a reproducible speed benchmark."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-wsj-evaluation-scope",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "The WSJ study rescores 100-best lists for WSJ92/93, with oracle development/evaluation WER of 6.1%/9.5%; up to 37 million New York Times Gigaword words are available, but recurrent training is capped at 6.4 million words with 230,000 held out, and combined systems use 0.75 recurrent and 0.25 modified Kneser–Ney probability weights.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "WSJ data, oracle, and interpolation setup, printed p. 1047",
+            "section": "3. WSJ experiments",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "paragraph": "WSJ setup and model-notation paragraphs"
+          },
+          "support": "Supplies the 100-best protocol, oracle values, data sizes, holdout size, recurrent-data cap, interpolation weights, and KN5/model-label definitions."
+        }
+      ],
+      "limitations": [
+        "The recurrent and count models do not always use equal amounts of training text, so cross-row conclusions must preserve the data column.",
+        "The paper does not supply confidence intervals, significance tests, or repeated rescoring runs."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-wsj-scaling-results",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "Table 1 reports perplexity/WER pairs for KN5 versus KN5+RNN of 336/16.4% versus 271/15.4% on 200,000 words, 287/15.1% versus 225/14.0% on 1 million words, and 221/13.5% versus 156/11.7% on 6.4 million words.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "WSJ data-scaling results, printed p. 1047",
+            "section": "3. WSJ experiments",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "table": "1"
+          },
+          "support": "Provides all three data sizes and the six displayed perplexity/WER pairs."
+        }
+      ],
+      "limitations": [
+        "Each combined row is a 0.75/0.25 recurrent/count mixture, not the recurrent model alone, and recurrent hidden size and rare-word threshold change at the largest data size."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-wsj-ensemble-results",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "statement": "Table 2 reports baseline KN5 at 221 perplexity/13.5% WER; RNN 60/20 at 229/13.2 and 186/12.6 with KN5; 90/10 at 202/12.8 and 173/12.2; 250/5 at 173/12.3 and 155/11.7; 250/2 at 176/12.0 and 156/11.9; 400/10 at 171/12.5 and 152/12.1; a three-RNN static ensemble at 151/11.6 and 143/11.3; and its dynamic counterpart at 128/11.3 and 121/11.1.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "WSJ architecture, ensemble, and dynamic results, printed p. 1047",
+            "section": "3. WSJ experiments",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "table": "2"
+          },
+          "support": "Provides the baseline, five single-RNN rows, two three-RNN ensemble rows, and their count-model mixtures."
+        },
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Off-table perplexity 112 and headline reductions, printed p. 1047",
+            "section": "3. WSJ experiments",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "paragraph": "Paragraph following Table 2"
+          },
+          "support": "Reports perplexity 112 from a static/dynamic mixture with larger adaptation rate and summarizes the perplexity and WER changes."
+        }
+      ],
+      "limitations": [
+        "The displayed dynamic recurrent ensemble changes 221 to 128 without KN5, a 42.1% baseline-relative reduction; its KN5 mixture changes 221 to 121, a 45.2% reduction. The paper’s almost-50% statement matches the separately described 221-to-112 result, about 49.3%.",
+        "The best displayed WER changes 13.5% to 11.1%, about 17.8% relatively, and combines three dynamic recurrent models with the count model.",
+        "The prose does not fully specify the component weights or exact run composition of the off-table 112 system."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-wsj-cross-data-results",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "statement": "Table 3 reports development/evaluation WER of 12.9%/18.4% for lattice 1-best, 12.2%/17.2% for a 37-million-word KN5 baseline, 11.5%/16.9% for a 37-million-word discriminative LM, evaluation 16.7% for a 70-million-word joint LM, 11.0%/15.5% for the static three-RNN+KN5 mixture, and 10.7%/16.3% for its dynamic counterpart.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "WSJ cross-data WER comparison and footnote, printed p. 1047",
+            "section": "3. WSJ experiments",
+            "pageStart": 1047,
+            "pageEnd": 1047,
+            "table": "3, including footnote 4"
+          },
+          "support": "Provides every displayed data-size and development/evaluation WER entry and explains the dynamic evaluation anomaly."
+        }
+      ],
+      "limitations": [
+        "The three recurrent models use only 6.4 million training words while the mixed KN5 component uses 37 million; the row is not a 37-million-word recurrent training result.",
+        "The static mixture’s relative changes from the KN5 baseline are about 9.8% on development and 9.9% on evaluation, not uniformly approximately 12%; the dynamic changes are about 12.3% and 5.2% respectively.",
+        "The dynamic evaluation value is 16.3 followed by superscript footnote 4, not 16.34; the paper says nonconsecutive evaluation sentences are probably why the dynamic row is worse than the 15.5% static row."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-rt05-evaluation-results",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "statement": "For RT05, Table 4 reports WER 24.5% for the RT05 LM, 24.1% for the RT09 baseline, and 25.7% for in-domain KN5; RNN 500/10 gives 24.2% static and 24.1% dynamic, or 23.3%/23.2% with RT09; RNN 800/10 gives 24.3%/23.8%, or 23.4%/23.1% with RT09; RNN 1000/5 gives 24.2%/23.7%, or 23.4%/22.9% with RT09; and the three-RNN+RT09 ensemble gives 23.3%/22.8%.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "RT05 data and WER results, printed pp. 1047–1048",
+            "section": "4. NIST RT05 experiments",
+            "pageStart": 1047,
+            "pageEnd": 1048,
+            "table": "4"
+          },
+          "support": "Supplies the AMI/RT05 setup and every displayed static, dynamic, RT09-mixture, and ensemble WER value."
+        }
+      ],
+      "limitations": [
+        "The acoustic model uses about 115 hours, the large backoff model uses more than 1.3 billion words, and the recurrent models use about 5.4 million in-domain words; the systems therefore combine very different data sources and scales.",
+        "The best 24.1%-to-22.8% change is about 5.4% relative and comes from a three-model recurrent ensemble interpolated with RT09, not one recurrent model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "mikolov-2010-long-context-and-evidence-boundary",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "ideaIds": [
+        "simple-recurrent-context-memory",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "statement": "The conclusion says the simple recurrent model did not capture truly long context, reports that a cache remained complementary even to a dynamically adapted model, and treats deeper backpropagation through time as promising future work rather than part of the main evidence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Long-context, cache, and BPTT boundary, printed p. 1048",
+            "section": "5. Conclusion and future work",
+            "pageStart": 1048,
+            "pageEnd": 1048,
+            "paragraph": "Conclusion paragraphs"
+          },
+          "support": "Directly limits the achieved context span, retains cache complementarity, and separates the toy BPTT result from the main model."
+        }
+      ],
+      "limitations": [
+        "No confidence intervals, statistical tests, repeated seeds, controlled throughput, or end-to-end latency are reported.",
+        "The paper’s language of significant improvement is preserved as ordinary prose and not interpreted as a statistical-significance claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-08"
     }
   ],
   "relationships": [
@@ -13117,6 +13839,100 @@
           "note": "The 2003 JMLR article’s references to Schwenk and Gauvain are treated as later corroborating cross-references, not evidence that the earlier Bengio conference model depends on the 2002 application."
         }
       ]
+    },
+    {
+      "id": "elman-1988-to-mikolov-2010",
+      "from": {
+        "kind": "work",
+        "id": "elman-1988-finding-structure-in-time"
+      },
+      "to": {
+        "kind": "work",
+        "id": "mikolov-2010-recurrent-neural-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Mikolov et al. explicitly call their topology a simple recurrent or Elman network and identify Finding Structure in Time as reference [7]. The edge is restricted to the copied prior hidden state and its iterative context dependence; the target changes the domain to normalized word probabilities at speech-recognition scale and does not inherit Elman’s generated corpus, unnormalized output fit, lexical clustering, or local-training interpretation.",
+      "claimIds": [
+        "elman-1990-simple-recurrent-context",
+        "elman-1990-memory-boundary",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-truncated-bptt-boundary",
+        "mikolov-2010-long-context-and-evidence-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Named Elman architecture and citation, printed pp. 1045–1048",
+            "section": "2. Model description; 7. References",
+            "pageStart": 1045,
+            "pageEnd": 1048,
+            "equation": "1–3",
+            "paragraph": "Reference 7"
+          },
+          "support": "The target names the simple recurrent or Elman architecture, defines the current-word/previous-state recurrence, and cites Elman’s paper."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target paper’s bibliography omits Elman’s publication year, but title, journal, volume, and pages identify the audited work."
+        },
+        {
+          "status": "resolved",
+          "note": "The edge records architectural inheritance only; it does not assign Elman priority for every recurrent network, next-word objective, or neural language model."
+        }
+      ]
+    },
+    {
+      "id": "bengio-2000-to-mikolov-2010",
+      "from": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "to": {
+        "kind": "work",
+        "id": "mikolov-2010-recurrent-neural-language-model"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Mikolov et al. identify Bengio et al.’s neural language model as the feed-forward predecessor and explicitly frame its fixed five-to-ten-word input window as the deficiency addressed by recurrent state. The target retains normalized next-word probability estimation while replacing an explicit history window with Elman-style recurrence. This edge does not attribute recurrence, test-time adaptation, the exact optimizer, RNN/count interpolation, or priority for neural language modeling to Bengio.",
+      "claimIds": [
+        "bengio-2003-fixed-window-factorization",
+        "bengio-2003-feedforward-softmax-architecture",
+        "bengio-2003-recurrent-future-boundary",
+        "mikolov-2010-fixed-window-motivation",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "mikolov-2010-isca-full-text",
+          "locator": {
+            "label": "Bengio predecessor, fixed-window limitation, and citation, printed pp. 1045–1048",
+            "section": "2. Model description; 7. References",
+            "pageStart": 1045,
+            "pageEnd": 1048,
+            "paragraph": "Opening two paragraphs and reference 3"
+          },
+          "support": "The target names the Bengio model, identifies its fixed input window as the limitation being addressed, and cites the JMLR article."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Mikolov reference [3] omits Christian Jauvin, but the exact title, JMLR volume 3, pp. 1137–1155, and year 2003 resolve it to the existing four-author canonical version."
+        },
+        {
+          "status": "resolved",
+          "note": "Mikolov reference [4] is Schwenk and Gauvain’s 2005 HLT/EMNLP paper, not the corpus’s 2002 ICASSP work; no documented 2002-to-2010 relationship is created."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -14148,6 +14964,74 @@
         "Relative and absolute metric changes"
       ],
       "successCriterion": "The learner can map N, P, H, and n through the architecture and operation formula, prove the shortlist hybrid sums to one, preserve the equation and count discrepancies, reproduce every Table 2 pair, the four Tables 1/3 headline perplexity pairs, all four Table 4 perplexity/decompounded values, and both Table 5 WER pairs, distinguish 0.5 percentage points from relative change, and explain why the evidence does not establish full neural replacement or long-context modeling."
+    },
+    {
+      "id": "beginner-mikolov-2010-recurrent-word-prediction",
+      "mode": "beginner",
+      "objective": "Trace how the current word and the previous hidden state become a probability distribution for the next word, contrast that loop with a hard fixed context window, and separate what one recurrent model contributes from ensembles, count-model mixtures, and online adaptation.",
+      "workIds": [
+        "mikolov-2010-recurrent-neural-language-model"
+      ],
+      "ideaIds": [
+        "simple-recurrent-context-memory",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "claimIds": [
+        "mikolov-2010-fixed-window-motivation",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-dynamic-adaptation",
+        "mikolov-2010-wsj-scaling-results",
+        "mikolov-2010-wsj-ensemble-results",
+        "mikolov-2010-long-context-and-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Next-word probabilities",
+        "A hidden state as a running summary",
+        "Perplexity and word error rate"
+      ],
+      "successCriterion": "The learner can draw the current-word/previous-state loop, explain why recurrence removes an explicit window without guaranteeing long memory, identify which headline results add a count model, ensemble, or test-time updates, and state the paper’s own long-context limit."
+    },
+    {
+      "id": "expert-mikolov-2010-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct equations 1–7, one-step temporal credit assignment, rare-word allocation, dynamic test-time SGD, and the documented Elman/Bengio lineage; then audit Tables 1–4, the off-table perplexity 112, data-scale mismatches, mixture components, and relative-improvement arithmetic.",
+      "workIds": [
+        "mikolov-2010-recurrent-neural-language-model"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "feedforward-neural-language-modeling",
+        "simple-recurrent-context-memory",
+        "next-item-prediction-training",
+        "full-vocabulary-softmax-normalization",
+        "neural-ngram-model-mixtures",
+        "recurrent-neural-word-language-modeling",
+        "online-neural-language-model-adaptation"
+      ],
+      "claimIds": [
+        "mikolov-2010-fixed-window-motivation",
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective",
+        "mikolov-2010-truncated-bptt-boundary",
+        "mikolov-2010-dynamic-adaptation",
+        "mikolov-2010-rare-word-probability",
+        "mikolov-2010-training-cost-comparison",
+        "mikolov-2010-wsj-evaluation-scope",
+        "mikolov-2010-wsj-scaling-results",
+        "mikolov-2010-wsj-ensemble-results",
+        "mikolov-2010-wsj-cross-data-results",
+        "mikolov-2010-rt05-evaluation-results",
+        "mikolov-2010-long-context-and-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Recurrent neural networks",
+        "Softmax cross-entropy and stochastic gradient descent",
+        "Truncated backpropagation through time",
+        "Language-model interpolation and ensembles",
+        "Perplexity, word error rate, and relative change"
+      ],
+      "successCriterion": "The learner can map w(t), s(t−1), x(t), s(t), and y(t) through equations 1–6, derive equation 7’s rare-token split, distinguish forward recurrence from depth-one credit assignment, reproduce every Table 1–4 value, calculate 221→128/121/112 and 13.5→11.1 correctly, read 16.3 plus footnote 4 rather than 16.34, and justify both documented lineage edges without creating a Schwenk 2002 edge or priority claim."
     }
   ]
 }
