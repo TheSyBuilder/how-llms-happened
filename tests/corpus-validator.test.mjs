@@ -711,7 +711,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-08");
+  assert.equal(corpus.asOf, "2026-08-09");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -2436,6 +2436,420 @@ test("retains Mikolov 2010 as a bounded recurrent word-LM convergence milestone"
     ["2. Model description; 7. References"],
   );
   assert.equal(schwenkRelationship, undefined);
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains the original, revised, and journal LSTM versions without transferring later gates", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1995-long-short-term-memory",
+  );
+  const originalVersion = work?.versions.find(
+    (item) => item.id === "hochreiter-schmidhuber-1995-fki-report-version",
+  );
+  const revisedVersion = work?.versions.find(
+    (item) => item.id === "hochreiter-schmidhuber-1996-fki-revised-version",
+  );
+  const journalVersion = work?.versions.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1997-neural-computation-version",
+  );
+  const originalEvent = work?.chronology.events.find(
+    (item) => item.id === "hochreiter-schmidhuber-1995-fki-report",
+  );
+  const revisionEvent = work?.chronology.events.find(
+    (item) => item.id === "hochreiter-schmidhuber-1996-report-revision",
+  );
+  const journalEvent = work?.chronology.events.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1997-journal-publication",
+  );
+  const originalText = corpus.sources.find(
+    (item) => item.id === "hochreiter-schmidhuber-1995-author-original-scan",
+  );
+  const revisedText = corpus.sources.find(
+    (item) => item.id === "hochreiter-schmidhuber-1995-jku-report-full-text",
+  );
+  const journalText = corpus.sources.find(
+    (item) => item.id === "hochreiter-schmidhuber-1997-jku-journal-full-text",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const longLag = claims.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
+  );
+  const cellBoundary = claims.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+  );
+  const gradient = claims.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1997-vanishing-exploding-error",
+  );
+  const localRule = claims.find(
+    (item) =>
+      item.id ===
+      "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
+  );
+  const elmanRelationship = corpus.relationships.find(
+    (item) => item.id === "elman-1988-to-hochreiter-schmidhuber-1995",
+  );
+  const sundermeyerRelationship = corpus.relationships.find(
+    (item) =>
+      item.id === "hochreiter-schmidhuber-1995-to-sundermeyer-2012",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.versions.length, 3);
+  assert.equal(work?.canonicalVersionId, journalVersion?.id);
+  assert.equal(work?.chronology.orderingEventId, originalEvent?.id);
+  assert.equal(originalEvent?.date.value, "1995-08-21");
+  assert.equal(originalEvent?.versionId, originalVersion?.id);
+  assert.equal(originalVersion?.title, "Long Short Term Memory");
+  assert.equal(revisionEvent?.date.value, "1996-12");
+  assert.equal(revisionEvent?.date.precision, "month");
+  assert.equal(revisionEvent?.versionId, revisedVersion?.id);
+  assert.equal(revisedVersion?.title, "Long Short-Term Memory");
+  assert.equal(journalEvent?.date.value, "1997-11-15");
+  assert.ok(
+    journalEvent?.dateEvidence.some(
+      (evidence) =>
+        evidence.sourceId === "hochreiter-schmidhuber-1997-pubmed-record" &&
+        evidence.precision === "day",
+    ),
+  );
+  assert.ok(
+    journalEvent?.dateEvidence.some(
+      (evidence) =>
+        evidence.sourceId === "hochreiter-schmidhuber-1997-crossref-record" &&
+        evidence.precision === "month" &&
+        evidence.locator.includes("conflicts at day precision"),
+    ),
+  );
+  assert.deepEqual(originalText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 8,
+  });
+  assert.deepEqual(revisedText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 32,
+  });
+  assert.deepEqual(journalText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 32,
+  });
+  assert.ok(originalText?.accessNote.includes("12-leaf"));
+  assert.ok(originalText?.accessNote.includes("rights notice"));
+  assert.ok(revisedText?.accessNote.includes("version 3.0"));
+  assert.ok(revisedText?.accessNote.includes("does not display"));
+  assert.equal(claims.length, 6);
+  for (const claim of claims) {
+    assert.ok(claim.evidence.length > 0);
+    assert.equal(
+      claim.evidence.some((evidence) => evidence.sourceId === originalText?.id),
+      false,
+    );
+    for (const evidence of claim.evidence) {
+      assert.ok([revisedText?.id, journalText?.id].includes(evidence.sourceId));
+      assert.ok(evidence.locator.pageStart >= 1);
+      assert.ok(evidence.locator.pageEnd <= 32);
+    }
+  }
+  assert.deepEqual(
+    gradient?.evidence.map((evidence) => evidence.locator.section),
+    [
+      "3 CONSTANT ERROR BACKPROP",
+      "1 INTRODUCTION; 2 CONSTANT ERROR BACKPROP",
+    ],
+  );
+  assert.equal(
+    localRule?.evidence[1].locator.section,
+    "3 LONG SHORT-TERM MEMORY",
+  );
+  assert.deepEqual(
+    localRule?.evidence[1].locator,
+    {
+      label: "Report version of the local learning rule",
+      section: "3 LONG SHORT-TERM MEMORY",
+      pageStart: 6,
+      pageEnd: 8,
+      paragraph: "Truncation rules and local update discussion",
+    },
+  );
+  for (const value of [
+    "minimal lag of 1,001",
+    "20 trials for each reported",
+    "49,000 for p=1,000",
+    "49,000 for p=500",
+    "75,000 for p=200",
+    "135,000 for p=100",
+    "203,000 for p=50",
+  ]) {
+    assert.ok(longLag?.statement.includes(value));
+  }
+  assert.equal(longLag?.evidence[0].locator.table, "3");
+  assert.deepEqual(
+    longLag?.evidence[0].locator,
+    {
+      label: "Thousand-step synthetic results",
+      section:
+        "5 EXPERIMENTS; 5.2 Experiment 2: Local, Distributed, Real-Valued Representations",
+      pageStart: 14,
+      pageEnd: 15,
+      table: "3",
+    },
+  );
+  assert.ok(cellBoundary?.statement.includes("no learned forget gate"));
+  assert.ok(cellBoundary?.statement.includes("cell-state-to-gate"));
+  assert.ok(
+    cellBoundary?.evidence.some((evidence) =>
+      evidence.support.includes(
+        "predominantly positive or predominantly negative",
+      ),
+    ),
+  );
+  const boundaryLocations = cellBoundary?.evidence.map((evidence) => ({
+    section: evidence.locator.section,
+    pageStart: evidence.locator.pageStart,
+    pageEnd: evidence.locator.pageEnd,
+  }));
+  assert.ok(
+    boundaryLocations?.some(
+      (location) =>
+        location.section === "4 LONG SHORT-TERM MEMORY" &&
+        location.pageStart === 6 &&
+        location.pageEnd === 7,
+    ),
+  );
+  assert.ok(
+    boundaryLocations?.some(
+      (location) =>
+        location.section === "4 LONG SHORT-TERM MEMORY" &&
+        location.pageStart === 9 &&
+        location.pageEnd === 9,
+    ),
+  );
+  assert.ok(
+    boundaryLocations?.some(
+      (location) =>
+        location.section === "6 DISCUSSION" &&
+        location.pageStart === 22 &&
+        location.pageEnd === 23,
+    ),
+  );
+  assert.equal(elmanRelationship?.connectionType, "addresses");
+  assert.equal(elmanRelationship?.evidenceClass, "documented-influence");
+  assert.equal(elmanRelationship?.causalLanguage, "qualified");
+  assert.equal(sundermeyerRelationship?.connectionType, "builds-on");
+  assert.equal(
+    sundermeyerRelationship?.evidenceClass,
+    "documented-influence",
+  );
+  assert.equal(sundermeyerRelationship?.causalLanguage, "qualified");
+  assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Sundermeyer 2012 as a composite-cell language-model convergence", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "sundermeyer-2012-lstm-language-model",
+  );
+  const event = work?.chronology.events.find(
+    (item) => item.id === "sundermeyer-2012-interspeech-conference",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "sundermeyer-2012-interspeech-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "sundermeyer-2012-isca-full-text",
+  );
+  const rwthRecord = corpus.sources.find(
+    (item) => item.id === "sundermeyer-2012-rwth-record",
+  );
+  const treebankRecord = corpus.sources.find(
+    (item) => item.id === "sundermeyer-2012-ldc-treebank-record",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === work?.id);
+  const variant = claims.find(
+    (item) => item.id === "sundermeyer-2012-lstm-antecedent-and-variant",
+  );
+  const mechanism = claims.find(
+    (item) => item.id === "sundermeyer-2012-memory-cell-mechanism",
+  );
+  const inputNormalization = claims.find(
+    (item) => item.id === "sundermeyer-2012-input-normalization",
+  );
+  const perplexity = claims.find(
+    (item) => item.id === "sundermeyer-2012-rnn-lstm-perplexity",
+  );
+  const projection = claims.find(
+    (item) => item.id === "sundermeyer-2012-projection-results",
+  );
+  const longContext = claims.find(
+    (item) => item.id === "sundermeyer-2012-long-context-results",
+  );
+  const clustering = claims.find(
+    (item) => item.id === "sundermeyer-2012-output-clustering-results",
+  );
+  const frenchSetup = claims.find(
+    (item) => item.id === "sundermeyer-2012-french-asr-setup",
+  );
+  const frenchResults = claims.find(
+    (item) => item.id === "sundermeyer-2012-french-wer-results",
+  );
+  const evidenceBoundary = claims.find(
+    (item) =>
+      item.id === "sundermeyer-2012-evidence-reproducibility-boundary",
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.id === work?.id,
+  );
+  const gatedIdea = corpus.ideas.find(
+    (item) => item.id === "gated-recurrent-memory-access",
+  );
+  const modes = new Set(
+    corpus.learningObjectives
+      .filter((objective) => objective.workIds.includes(work?.id))
+      .map((objective) => objective.mode),
+  );
+  const expertObjective = corpus.learningObjectives.find(
+    (objective) => objective.id === "expert-sundermeyer-2012-model-and-evidence",
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(work?.canonicalVersionId, version?.id);
+  assert.equal(event?.date.value, "2012-09");
+  assert.equal(event?.date.precision, "month");
+  assert.ok(event?.date.note.includes("9–13 September"));
+  assert.deepEqual(version?.bibliography.pages, ["194-197"]);
+  assert.ok(
+    version?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.21437/Interspeech.2012-65",
+    ),
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 194,
+    pageEnd: 197,
+  });
+  assert.ok(rwthRecord?.accessNote.includes("does not display"));
+  assert.equal(treebankRecord?.url, "https://catalog.ldc.upenn.edu/LDC99T42");
+  assert.ok(treebankRecord?.accessNote.includes("LDC user agreement"));
+  assert.ok(work?.sourceIds.includes(treebankRecord?.id));
+  assert.equal(claims.length, 15);
+  const visibleSections = new Set([
+    "1. Introduction",
+    "1. Introduction; 2. LSTM neural networks",
+    "2. LSTM neural networks",
+    "3. Neural network language models",
+    "3. Neural network language models; 4. Experimental results",
+    "4. Experimental results",
+    "5. Conclusions",
+    "7. References",
+  ]);
+  for (const claim of claims) {
+    assert.ok(claim.evidence.length > 0);
+    for (const evidence of claim.evidence) {
+      assert.equal(evidence.sourceId, fullText?.id);
+      assert.ok(evidence.locator.pageStart >= 194);
+      assert.ok(evidence.locator.pageEnd <= 197);
+      assert.ok(
+        visibleSections.has(evidence.locator.section),
+        `${claim.id} must use exact printed section headings`,
+      );
+      assert.equal("equation" in evidence.locator, false);
+    }
+  }
+  assert.ok(variant?.statement.includes("Hochreiter and Schmidhuber 1997"));
+  assert.ok(variant?.statement.includes("references 12 and 13"));
+  assert.ok(variant?.statement.includes("neither"));
+  assert.ok(variant?.statement.includes("one-to-one"));
+  assert.equal(mechanism?.evidence[0].locator.figure, "1");
+  assert.ok(
+    mechanism?.limitations.some((item) =>
+      item.includes("explicitly omits the extensive LSTM equations"),
+    ),
+  );
+  assert.deepEqual(inputNormalization?.ideaIds, [
+    "recurrent-neural-word-language-modeling",
+  ]);
+  assert.ok(
+    inputNormalization?.statement.includes("already lie between zero and one"),
+  );
+  assert.equal(
+    inputNormalization?.statement.includes("restricting nonzero"),
+    false,
+  );
+  assert.equal(perplexity?.evidence[0].locator.figure, "3(a)");
+  assert.ok(perplexity?.statement.includes("about eight percent"));
+  assert.ok(perplexity?.statement.includes("7.6 million"));
+  assert.ok(perplexity?.statement.includes("3.0 million"));
+  assert.ok(perplexity?.statement.includes("7.1-million-parameter"));
+  assert.equal(projection?.evidence[0].locator.figure, "3(b)");
+  assert.equal(longContext?.evidence[0].locator.figure, "3(c)");
+  assert.ok(longContext?.statement.includes("one to two sentences"));
+  assert.ok(longContext?.statement.includes("eventually worsen"));
+  assert.equal(clustering?.evidence[0].locator.figure, "3(d)");
+  assert.ok(
+    clustering?.limitations.some((item) => item.includes("twenty times")),
+  );
+  assert.ok(frenchSetup?.statement.includes("1,000-best"));
+  assert.ok(frenchSetup?.statement.includes("27 million"));
+  assert.ok(frenchSetup?.statement.includes("more than four billion"));
+  assert.equal(frenchSetup?.evidence[0].locator.pageEnd, 196);
+  assert.ok(
+    frenchSetup?.limitations.some((item) =>
+      item.includes("complete acoustic-system specification"),
+    ),
+  );
+  for (const value of ["19.7%", "17.6%", "19.2%", "17.3%", "0.5", "0.3"])
+    assert.ok(frenchResults?.statement.includes(value));
+  assert.equal(frenchResults?.evidence[0].locator.table, "2");
+  assert.ok(
+    evidenceBoundary?.statement.includes("without numeric point tables"),
+  );
+  assert.ok(evidenceBoundary?.statement.includes("repeated-run summaries"));
+  assert.ok(evidenceBoundary?.statement.includes("development or test split"));
+  assert.deepEqual(
+    incoming.map((relationship) => relationship.id).sort(),
+    [
+      "hochreiter-schmidhuber-1995-to-sundermeyer-2012",
+      "mikolov-2010-to-sundermeyer-2012",
+    ],
+  );
+  for (const relationship of incoming) {
+    assert.equal(relationship.connectionType, "builds-on");
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.every(
+        (evidence) => evidence.sourceId === fullText?.id,
+      ),
+    );
+  }
+  assert.ok(
+    gatedIdea?.description.includes(
+      "later variants add a learned control over state retention",
+    ),
+  );
+  assert.ok(
+    expertObjective?.successCriterion.includes("modern reconstruction"),
+  );
+  assert.equal(
+    expertObjective?.successCriterion.includes("equations 1–5"),
+    false,
+  );
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 

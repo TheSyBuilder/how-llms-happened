@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-08",
+  "asOf": "2026-08-09",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -2384,6 +2384,303 @@
       ]
     },
     {
+      "id": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "title": "Long Short-Term Memory",
+      "authors": [
+        "Sepp Hochreiter",
+        "Jürgen Schmidhuber"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "S. Hochreiter and J. Schmidhuber, “Long Short-Term Memory,” Neural Computation 9(8), 1735–1780 (15 November 1997), DOI 10.1162/neco.1997.9.8.1735; preceded by Technical Report FKI-207-95 (21 August 1995).",
+      "chronology": {
+        "orderingEventId": "hochreiter-schmidhuber-1995-fki-report",
+        "events": [
+          {
+            "id": "hochreiter-schmidhuber-1995-fki-report",
+            "kind": "technical-report",
+            "label": "Technical Report FKI-207-95",
+            "date": {
+              "value": "1995-08-21",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hochreiter-schmidhuber-1995-author-original-scan",
+                "precision": "day",
+                "locator": "Original technical-report inner title, 21 August 1995"
+              }
+            ],
+            "versionId": "hochreiter-schmidhuber-1995-fki-report-version",
+            "sourceIds": [
+              "hochreiter-schmidhuber-1995-author-original-scan"
+            ]
+          },
+          {
+            "id": "hochreiter-schmidhuber-1995-manuscript-received",
+            "kind": "manuscript-received",
+            "label": "Journal manuscript received",
+            "date": {
+              "value": "1995-08-28",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hochreiter-schmidhuber-1997-mit-record",
+                "precision": "day",
+                "locator": "MIT Press article history, received 28 August 1995"
+              }
+            ],
+            "versionId": "hochreiter-schmidhuber-1997-neural-computation-version",
+            "sourceIds": [
+              "hochreiter-schmidhuber-1997-mit-record"
+            ]
+          },
+          {
+            "id": "hochreiter-schmidhuber-1996-report-revision",
+            "kind": "manuscript-revised",
+            "label": "FKI-207-95 version 3.0 revision",
+            "date": {
+              "value": "1996-12",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hochreiter-schmidhuber-1995-jku-report-full-text",
+                "precision": "month",
+                "locator": "Technical-report cover, version 3.0, revised December 1996"
+              }
+            ],
+            "versionId": "hochreiter-schmidhuber-1996-fki-revised-version",
+            "sourceIds": [
+              "hochreiter-schmidhuber-1995-jku-report-full-text"
+            ]
+          },
+          {
+            "id": "hochreiter-schmidhuber-1997-manuscript-accepted",
+            "kind": "manuscript-accepted",
+            "label": "Journal manuscript accepted",
+            "date": {
+              "value": "1997-02-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hochreiter-schmidhuber-1997-mit-record",
+                "precision": "day",
+                "locator": "MIT Press article history, accepted 24 February 1997"
+              }
+            ],
+            "versionId": "hochreiter-schmidhuber-1997-neural-computation-version",
+            "sourceIds": [
+              "hochreiter-schmidhuber-1997-mit-record"
+            ]
+          },
+          {
+            "id": "hochreiter-schmidhuber-1997-journal-publication",
+            "kind": "journal-publication",
+            "label": "Neural Computation publication",
+            "date": {
+              "value": "1997-11-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hochreiter-schmidhuber-1997-mit-record",
+                "precision": "day",
+                "locator": "MIT Press article record, 15 November 1997"
+              },
+              {
+                "sourceId": "hochreiter-schmidhuber-1997-crossref-record",
+                "precision": "month",
+                "locator": "Crossref published-print deposit, 1 November 1997; used only as November corroboration because it conflicts at day precision"
+              },
+              {
+                "sourceId": "hochreiter-schmidhuber-1997-pubmed-record",
+                "precision": "day",
+                "locator": "Official PubMed XML JournalIssue PubDate, 15 November 1997"
+              }
+            ],
+            "versionId": "hochreiter-schmidhuber-1997-neural-computation-version",
+            "sourceIds": [
+              "hochreiter-schmidhuber-1997-mit-record",
+              "hochreiter-schmidhuber-1997-crossref-record",
+              "hochreiter-schmidhuber-1997-pubmed-record",
+              "hochreiter-schmidhuber-1995-jku-bibliography",
+              "hochreiter-schmidhuber-1997-jku-journal-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "hochreiter-schmidhuber-1995-fki-report-version",
+          "title": "Long Short Term Memory",
+          "authors": [
+            "Sepp Hochreiter",
+            "Jürgen Schmidhuber"
+          ],
+          "kind": "technical-report",
+          "label": "Original FKI-207-95 technical report",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Hochreiter and J. Schmidhuber, “Long Short Term Memory,” Technical Report FKI-207-95, Fakultät für Informatik, Technische Universität München, 21 August 1995.",
+            "venue": "Fakultät für Informatik technical reports",
+            "publisher": "Technische Universität München",
+            "publicationPlaces": [
+              "Munich, Germany"
+            ],
+            "identifiers": [
+              {
+                "type": "report-number",
+                "value": "FKI-207-95",
+                "label": "Technical report number"
+              },
+              {
+                "type": "issn",
+                "value": "0941-6358",
+                "label": "Forschungsberichte Künstliche Intelligenz ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "hochreiter-schmidhuber-1995-author-original-scan"
+          ],
+          "notes": "The author-hosted original scan identifies Forschungsberichte Künstliche Intelligenz, Institut für Informatik (H2), Technische Universität München, and 21 August 1995. Its title is unhyphenated. The 12 PDF leaves contain covers and a rights notice around visible content pages 1–8; technical claims use the later complete revised report and journal text."
+        },
+        {
+          "id": "hochreiter-schmidhuber-1996-fki-revised-version",
+          "title": "Long Short-Term Memory",
+          "authors": [
+            "Sepp Hochreiter",
+            "Jürgen Schmidhuber"
+          ],
+          "kind": "technical-report",
+          "label": "FKI-207-95 version 3.0 revised report",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Hochreiter and J. Schmidhuber, “Long Short-Term Memory,” Technical Report FKI-207-95, version 3.0, revised December 1996.",
+            "venue": "Fakultät für Informatik technical reports",
+            "publisher": "Technische Universität München",
+            "publicationPlaces": [
+              "Munich, Germany"
+            ],
+            "identifiers": [
+              {
+                "type": "report-number",
+                "value": "FKI-207-95",
+                "label": "Technical report number"
+              }
+            ]
+          },
+          "sourceIds": [
+            "hochreiter-schmidhuber-1995-jku-bibliography",
+            "hochreiter-schmidhuber-1995-jku-report-full-text"
+          ],
+          "notes": "The cover identifies version 3.0 revised December 1996 and uses the hyphenated title. The JKU copy is a complete 32-page author-layout report. Its internal pages are stable for evidence but do not correspond to the journal’s pp. 1735–1780; section numbering also differs from the journal version."
+        },
+        {
+          "id": "hochreiter-schmidhuber-1997-neural-computation-version",
+          "title": "Long Short-Term Memory",
+          "authors": [
+            "Sepp Hochreiter",
+            "Jürgen Schmidhuber"
+          ],
+          "kind": "journal",
+          "label": "Canonical Neural Computation article",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Hochreiter and J. Schmidhuber, “Long Short-Term Memory,” Neural Computation, vol. 9, no. 8, pp. 1735–1780, 15 November 1997.",
+            "venue": "Neural Computation",
+            "publisher": "MIT Press",
+            "volume": "9",
+            "issues": [
+              "8"
+            ],
+            "pages": [
+              "1735-1780"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1162/neco.1997.9.8.1735",
+                "label": "Journal article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0899-7667",
+                "label": "Print ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "hochreiter-schmidhuber-1997-mit-record",
+            "hochreiter-schmidhuber-1997-crossref-record",
+            "hochreiter-schmidhuber-1997-pubmed-record",
+            "hochreiter-schmidhuber-1995-jku-bibliography",
+            "hochreiter-schmidhuber-1997-jku-journal-full-text"
+          ],
+          "notes": "MIT Press supplies the canonical title, authors, issue, journal pagination, article history, publication date, DOI, and a displayed © 1997 Massachusetts Institute of Technology notice. The institutionally hosted reading copy is a complete 32-page author-layout PDF; its stable internal pages support claim location but never map to journal pp. 1735–1780."
+        }
+      ],
+      "canonicalVersionId": "hochreiter-schmidhuber-1997-neural-computation-version",
+      "preferredSourceIds": [
+        "hochreiter-schmidhuber-1997-mit-record",
+        "hochreiter-schmidhuber-1997-crossref-record",
+        "hochreiter-schmidhuber-1997-pubmed-record"
+      ],
+      "sourceIds": [
+        "hochreiter-schmidhuber-1997-mit-record",
+        "hochreiter-schmidhuber-1997-crossref-record",
+        "hochreiter-schmidhuber-1997-pubmed-record",
+        "hochreiter-schmidhuber-1995-jku-bibliography",
+        "hochreiter-schmidhuber-1997-jku-journal-full-text",
+        "hochreiter-schmidhuber-1995-jku-report-full-text",
+        "hochreiter-schmidhuber-1995-author-original-scan"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The report versions and journal article isolate exponentially unstable or decaying temporal error flow, construct a unit-weight recurrent state path, and regulate storage and access with learned multiplicative gates. This supplies the recurrent-memory branch later applied to word language modeling, while its evidence remains bounded to artificial long-lag tasks and its cell predates the learned forget gate and cell-state-to-gate connections used in later systems."
+      },
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "significance": {
+        "beginner": "A memory cell keeps one internal value on a fixed recurrent loop, while learned input and output gates decide when new information may enter and when stored information may affect the network. This makes long-delayed learning signals easier to preserve, but it does not make every long-memory problem easy.",
+        "expert": "The architecture creates a constant error carousel through a unit-weight self-connection, learns multiplicative input and output gates, and uses a spatially and temporally local truncated-gradient algorithm. Its synthetic experiments include minimal lags above 1,000 steps, while the discussion preserves delayed-XOR, parity, capacity, counting, and parameter-overhead boundaries."
+      },
+      "limitations": [
+        "All reported experiments use generated artificial sequences; speech processing, time-series prediction, and music are future applications rather than evaluated evidence.",
+        "The efficient algorithm deliberately truncates error flow when it leaves memory cells or gate units. The paper says strongly delayed XOR-like tasks may require a full gradient, while also reporting that its few non-truncated trials did not materially differ.",
+        "Table 3’s thousand-step results concern a two-class trigger-and-distractor task with error only at sequence ends, not natural language, continuous discourse, or real-world memory.",
+        "Each memory-cell block adds input and output gate units. The discussion bounds dense-network weight overhead and notes capacity, precise counting, parity, and internal-state-drift problems.",
+        "The original cell has input and output gates but no learned forget gate or cell-state-to-gate feedback links; those later modifications must not be projected backward into this work.",
+        "The inspected report versions and journal text provide no code or code link, learned parameters, data generator package, hardware-normalized timing, or modern replication protocol.",
+        "The MIT record displays © 1997 Massachusetts Institute of Technology, and the original report’s series notice asks that reports not be copied. The linked reading copies are not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 21 August 1995 original report, December 1996 version 3.0 revision, and 15 November 1997 journal article remain distinct versions and chronology events; the work is ordered by the original report without backdating either later version."
+        },
+        {
+          "status": "resolved",
+          "note": "The original architecture exposes input and output gates only. Learned forget gates and cell-state-to-gate connections belong to later publications and enter the corpus only through the bounded 2012 variant claim."
+        },
+        {
+          "status": "open",
+          "note": "No verified open-content license was located for any of the three inspected full texts.",
+          "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required before classifying or redistributing any version as open content."
+        }
+      ]
+    },
+    {
       "id": "chen-goodman-1998-empirical-smoothing",
       "title": "An Empirical Study of Smoothing Techniques for Language Modeling",
       "authors": [
@@ -3589,6 +3886,155 @@
           "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDF as open content."
         }
       ]
+    },
+    {
+      "id": "sundermeyer-2012-lstm-language-model",
+      "title": "LSTM Neural Networks for Language Modeling",
+      "authors": [
+        "Martin Sundermeyer",
+        "Ralf Schlüter",
+        "Hermann Ney"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "M. Sundermeyer, R. Schlüter, and H. Ney, “LSTM Neural Networks for Language Modeling,” Interspeech 2012, 194–197 (September 2012), DOI 10.21437/Interspeech.2012-65.",
+      "chronology": {
+        "orderingEventId": "sundermeyer-2012-interspeech-conference",
+        "events": [
+          {
+            "id": "sundermeyer-2012-interspeech-conference",
+            "kind": "conference-presentation",
+            "label": "Interspeech 2012 conference paper",
+            "date": {
+              "value": "2012-09",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The conference ran 9–13 September in Portland, Oregon; no inspected authoritative schedule establishes the presentation day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sundermeyer-2012-isca-conference-record",
+                "precision": "month",
+                "locator": "Official ISCA Archive conference index, Portland, Oregon, 9–13 September 2012"
+              }
+            ],
+            "versionId": "sundermeyer-2012-interspeech-version",
+            "sourceIds": [
+              "sundermeyer-2012-isca-record",
+              "sundermeyer-2012-isca-conference-record",
+              "sundermeyer-2012-isca-full-text",
+              "sundermeyer-2012-rwth-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "sundermeyer-2012-interspeech-version",
+          "title": "LSTM Neural Networks for Language Modeling",
+          "authors": [
+            "Martin Sundermeyer",
+            "Ralf Schlüter",
+            "Hermann Ney"
+          ],
+          "kind": "proceedings",
+          "label": "Interspeech 2012 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "M. Sundermeyer, R. Schlüter, and H. Ney, “LSTM Neural Networks for Language Modeling,” in Interspeech 2012, Portland, Oregon, pp. 194–197, September 2012.",
+            "venue": "Interspeech 2012",
+            "publisher": "International Speech Communication Association",
+            "pages": [
+              "194-197"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.21437/Interspeech.2012-65",
+                "label": "Proceedings paper DOI"
+              },
+              {
+                "type": "issn",
+                "value": "2958-1796",
+                "label": "ISCA Archive ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sundermeyer-2012-isca-record",
+            "sundermeyer-2012-isca-conference-record",
+            "sundermeyer-2012-isca-full-text",
+            "sundermeyer-2012-rwth-record",
+            "sundermeyer-2012-ldc-treebank-record"
+          ],
+          "notes": "The official archive and institutional record identify one four-page proceedings version. The PDF retains printed folios 194–197; leaf 1 maps to 194, leaf 2 to 195, leaf 3 to 196, and leaf 4 to 197. The separate LDC catalog record documents the Treebank-3 dataset and its license rather than the paper's publication metadata."
+        }
+      ],
+      "canonicalVersionId": "sundermeyer-2012-interspeech-version",
+      "preferredSourceIds": [
+        "sundermeyer-2012-isca-record",
+        "sundermeyer-2012-isca-full-text"
+      ],
+      "sourceIds": [
+        "sundermeyer-2012-isca-record",
+        "sundermeyer-2012-isca-conference-record",
+        "sundermeyer-2012-isca-full-text",
+        "sundermeyer-2012-rwth-record",
+        "sundermeyer-2012-ldc-treebank-record"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The paper applies a gated recurrent memory cell to word language modeling, evaluates it against a sigmoid recurrent model, studies projection and output-factorization choices, and carries the model into large-vocabulary speech rescoring. It joins the recurrent-language-model and gated-memory branches while preserving the short paper’s limited experimental detail."
+      },
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "feedforward-neural-language-modeling",
+        "jointly-learned-word-representations",
+        "full-vocabulary-softmax-normalization",
+        "neural-ngram-model-mixtures",
+        "next-item-prediction-training",
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "class-factored-neural-output"
+      ],
+      "significance": {
+        "beginner": "A recurrent language model replaces a fragile changing state with gated memory: separate controls regulate writing, retaining, and exposing stored information. On the paper’s word-prediction tests this model lowers perplexity, and when mixed with a much larger count model it lowers the two reported speech-recognition error rates by 0.5 and 0.3 percentage points.",
+        "expert": "The system combines an LSTM cell with a forget gate and cell-state-to-gate connections, a vocabulary softmax trained by cross-entropy, optional input projections, and class-factored output normalization. Penn Treebank comparisons, long-context concatenations, output clustering, and French 1000-best rescoring expose both gains and reproducibility boundaries."
+      },
+      "limitations": [
+        "The fixed-window versus full-history contrast is conceptual: the experiments do not establish usable unlimited context, and the paper’s average sentence length of 21 words is not a maximum context bound.",
+        "The evaluated cell is composite. It retains the constant-error, input-gate, and output-gate core from the cited 1997 article while adding a forget gate and cell-state-to-gate connections. The paper collectively assigns two modifications to references 12 and 13 but does not map either mechanism one-to-one to a reference or use the term peephole.",
+        "Penn Treebank results are plotted rather than tabulated, so most exact perplexity points, context-length curves, and clustering values cannot be recovered reliably from the paper; the text also does not identify whether Figure 3 reports development or test perplexity.",
+        "The reported roughly eight-percent perplexity advantage compares LSTM and sigmoid recurrent models in this paper; it is not a numerical reproduction of Mikolov et al. 2010.",
+        "Longer concatenated context eventually worsens perplexity, and the prose and graph do not fully agree about the sigmoid-projection curve.",
+        "Class factoring displays a large speed increase and a small perplexity loss, but the paper gives no numeric graph table, hardware specification, wall-clock duration, or end-to-end latency.",
+        "The French experiment reports only interpolation with a much larger Kneser–Ney model, not an LSTM-only result or a French sigmoid-recurrent comparison.",
+        "No confidence intervals, statistical tests, repeated seeds, error bars, optimizer settings, learning rate, initialization, batch size, temporal-unrolling depth, epoch count, stopping rule, code, or complete preprocessing recipe are supplied.",
+        "Treebank-3 is distributed as LDC99T42 under an LDC user agreement; public access to the paper is not a license to redistribute that dataset.",
+        "The official archive provides public reading access but no verified paper-level open-content license; the PDF is linked and not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact presentation day within the 9–13 September 2012 conference span has not been established.",
+          "resolutionCondition": "An authoritative dated session schedule mapping this paper to a session would be required for day-level ordering."
+        },
+        {
+          "status": "resolved",
+          "note": "The four archive leaves map directly to printed proceedings pages 194–197, so all technical locators use the visible printed folios."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for the official full text.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDF as open content."
+        },
+        {
+          "status": "open",
+          "note": "No persistent corpus identifier or license record was located for the exact Quaero evaluation split described by the paper.",
+          "resolutionCondition": "A durable official corpus record that maps the 2011 Quaero broadcast-conversational and podcast evaluation split to its distribution terms would resolve this gap."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -3627,7 +4073,9 @@
         "schmidhuber-1993-character-probability-predictor",
         "schmidhuber-heil-1994-character-probability-predictor",
         "mikolov-2010-elman-recurrent-architecture",
-        "mikolov-2010-training-objective"
+        "mikolov-2010-training-objective",
+        "sundermeyer-2012-full-history-motivation",
+        "sundermeyer-2012-language-model-objective"
       ],
       "uncertainties": []
     },
@@ -4066,7 +4514,9 @@
         "bengio-2003-smooth-feature-generalization",
         "bengio-2003-feedforward-softmax-architecture",
         "bengio-2003-polysemy-limit",
-        "schwenk-gauvain-2002-projection-softmax-architecture"
+        "schwenk-gauvain-2002-projection-softmax-architecture",
+        "sundermeyer-2012-projection-and-class-factorization",
+        "sundermeyer-2012-projection-results"
       ],
       "uncertainties": [
         {
@@ -4099,7 +4549,8 @@
         "schwenk-gauvain-2002-unseen-ngram-motivation",
         "schwenk-gauvain-2002-hub5-evaluation-scope",
         "schwenk-gauvain-2002-evidence-long-context-boundary",
-        "mikolov-2010-fixed-window-motivation"
+        "mikolov-2010-fixed-window-motivation",
+        "sundermeyer-2012-full-history-motivation"
       ],
       "uncertainties": []
     },
@@ -4121,12 +4572,32 @@
         "schwenk-gauvain-2002-full-output-complexity",
         "mikolov-2010-elman-recurrent-architecture",
         "mikolov-2010-training-objective",
-        "mikolov-2010-rare-word-probability"
+        "mikolov-2010-rare-word-probability",
+        "sundermeyer-2012-language-model-objective",
+        "sundermeyer-2012-projection-and-class-factorization",
+        "sundermeyer-2012-output-clustering-results"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "Mikolov et al. normalize retained word types plus one rare-word bucket, then divide that bucket’s probability uniformly among the merged rare types; this is not one separately learned output for every original rare type."
+        }
+      ]
+    },
+    {
+      "id": "class-factored-neural-output",
+      "name": "Class-factored neural output normalization",
+      "kind": "mechanism",
+      "description": "A word probability is decomposed into the probability of its assigned class and its probability within that class, reducing the number of output scores evaluated for each history.",
+      "claimIds": [
+        "sundermeyer-2012-projection-and-class-factorization",
+        "sundermeyer-2012-output-clustering-results",
+        "sundermeyer-2012-conclusion-scope"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 2012 paper evaluates fixed word classes and discusses the square-root class-count heuristic; this idea does not imply a learned hierarchy or a modern approximate-softmax method."
         }
       ]
     },
@@ -4173,12 +4644,15 @@
         "mikolov-2010-wsj-scaling-results",
         "mikolov-2010-wsj-ensemble-results",
         "mikolov-2010-wsj-cross-data-results",
-        "mikolov-2010-rt05-evaluation-results"
+        "mikolov-2010-rt05-evaluation-results",
+        "sundermeyer-2012-french-asr-setup",
+        "sundermeyer-2012-french-wer-results",
+        "sundermeyer-2012-conclusion-scope"
       ],
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "The evidence is paper-specific: Bengio et al. use fixed equal-weight neural/interpolated-trigram mixtures, while Mikolov et al. use reported RNN/backoff weights of 0.75/0.25 and additional RNN ensembles. Neither result implies that mixtures always improve either component."
+          "note": "The evidence is paper-specific: Bengio et al. use fixed equal-weight neural/interpolated-trigram mixtures; Mikolov et al. report RNN/backoff weights of 0.75/0.25 plus RNN ensembles; and Sundermeyer et al. separately tune a Kneser–Ney/LSTM interpolation whose components use more than four billion versus 27 million training words. None of these results implies that mixtures always improve either component."
         }
       ]
     },
@@ -4258,6 +4732,58 @@
         {
           "status": "resolved",
           "note": "Miikkulainen and Dyer explicitly reuse Elman-style copied context, but recurrent FGREP predicts a stationary case-role target rather than the next word."
+        }
+      ]
+    },
+    {
+      "id": "constant-error-recurrent-memory",
+      "name": "Constant-error recurrent memory",
+      "kind": "mechanism",
+      "description": "A recurrent cell preserves internal state and backward error along a fixed unit-weight self-connection, creating a path that avoids exponential decay or growth while that path remains active.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-vanishing-exploding-error",
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
+        "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism",
+        "sundermeyer-2012-rnn-lstm-perplexity",
+        "sundermeyer-2012-long-context-results",
+        "sundermeyer-2012-evidence-reproducibility-boundary",
+        "sundermeyer-2012-conclusion-scope"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "A protected error path is a local architectural property, not a guarantee that training will learn arbitrary long-range dependencies; both promoted works retain explicit task and evidence limits."
+        }
+      ]
+    },
+    {
+      "id": "gated-recurrent-memory-access",
+      "name": "Gated recurrent memory access",
+      "kind": "mechanism",
+      "description": "Learned multiplicative controls regulate whether candidate information enters recurrent state and whether stored state affects cell output; later variants add a learned control over state retention.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
+        "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism",
+        "sundermeyer-2012-rnn-lstm-perplexity",
+        "sundermeyer-2012-projection-results",
+        "sundermeyer-2012-long-context-results",
+        "sundermeyer-2012-output-clustering-results",
+        "sundermeyer-2012-french-wer-results",
+        "sundermeyer-2012-evidence-reproducibility-boundary",
+        "sundermeyer-2012-conclusion-scope"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 1995/1997 version has input and output gates only; the 2012 implementation also uses a later forget gate and cell-state-to-gate connections, which are not attributed backward."
         }
       ]
     },
@@ -4347,7 +4873,8 @@
         "elman-1990-emergent-lexical-classes",
         "elman-1990-novel-word-context-test",
         "mikolov-2010-elman-recurrent-architecture",
-        "mikolov-2010-training-objective"
+        "mikolov-2010-training-objective",
+        "sundermeyer-2012-language-model-objective"
       ],
       "uncertainties": [
         {
@@ -4376,7 +4903,21 @@
         "mikolov-2010-wsj-ensemble-results",
         "mikolov-2010-wsj-cross-data-results",
         "mikolov-2010-rt05-evaluation-results",
-        "mikolov-2010-long-context-and-evidence-boundary"
+        "mikolov-2010-long-context-and-evidence-boundary",
+        "sundermeyer-2012-full-history-motivation",
+        "sundermeyer-2012-memory-cell-mechanism",
+        "sundermeyer-2012-language-model-objective",
+        "sundermeyer-2012-input-normalization",
+        "sundermeyer-2012-projection-and-class-factorization",
+        "sundermeyer-2012-corpus-splits",
+        "sundermeyer-2012-rnn-lstm-perplexity",
+        "sundermeyer-2012-projection-results",
+        "sundermeyer-2012-long-context-results",
+        "sundermeyer-2012-output-clustering-results",
+        "sundermeyer-2012-french-asr-setup",
+        "sundermeyer-2012-french-wer-results",
+        "sundermeyer-2012-evidence-reproducibility-boundary",
+        "sundermeyer-2012-conclusion-scope"
       ],
       "uncertainties": [
         {
@@ -6249,6 +6790,154 @@
       "accessNote": "The complete searchable journal copy was inspected for retrospective context only. Printed p. 493 jointly describes Schwenk (2001) and Schwenk and Gauvain (2002) as the first neural-language-model application to LVCSR with HUB5 word-error reductions; printed p. 517 cites the report to H. Schwenk alone. This author retrospective is not independent priority proof, does not bind the report to the 2002 version family, and does not expose report-specific mechanisms or results. The copy has no verified open-content license and is not redistributed."
     },
     {
+      "id": "hochreiter-schmidhuber-1997-mit-record",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "MIT Press record for Long Short-Term Memory",
+      "url": "https://direct.mit.edu/neco/article/9/8/1735/6109/Long-Short-Term-Memory",
+      "accessDate": "2026-08-09",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "hochreiter-schmidhuber-1997-neural-computation-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher record supplies the canonical title, authors, Neural Computation volume 9 issue 8, pp. 1735–1780, DOI 10.1162/neco.1997.9.8.1735, manuscript history, 15 November 1997 publication date, and MIT copyright statement."
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-crossref-record",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "Crossref DOI record for Long Short-Term Memory",
+      "url": "https://api.crossref.org/works/10.1162%2Fneco.1997.9.8.1735",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "hochreiter-schmidhuber-1997-neural-computation-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The DOI deposit independently binds the title, two authors, journal, volume, issue, pages, publisher, and DOI. Its published-print field is 1 November 1997, while the MIT Press article page displays 15 November 1997; the corpus uses the publisher page’s day and treats Crossref as month-level corroboration."
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-author-original-scan",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "Author-hosted scan of the original FKI-207-95 report",
+      "url": "https://people.idsia.ch/~juergen/FKI-207-95ocr.pdf",
+      "accessDate": "2026-08-09",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "hochreiter-schmidhuber-1995-fki-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 8
+      },
+      "accessNote": "The 12-leaf scan was rendered and inspected in full: leaf 1 is the cover, leaf 2 the bilingual series and rights notice, leaves 3–10 carry visible printed pages 1–8, and leaves 11–12 are trailing covers. The inner title gives 21 August 1995, the cover uses the unhyphenated title, and the series notice supplies ISSN 0941-6358 and an all-rights/anti-copy notice. Technical claims rely on the later complete V3 and journal texts."
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-pubmed-record",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "PubMed XML record for Long Short-Term Memory",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=9377276&retmode=xml",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "hochreiter-schmidhuber-1997-neural-computation-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official NLM/PubMed XML for PMID 9377276 gives the JournalIssue date as 15 November 1997, pages 1735–1780, and the matching DOI. It independently corroborates the MIT Press day against Crossref’s conflicting 1 November nominal date."
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-jku-bibliography",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "JKU machine-learning bibliography for older publications",
+      "url": "https://www.jku.at/institut-fuer-machine-learning/forschung/publikationen/older/",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "hochreiter-schmidhuber-1996-fki-revised-version",
+        "hochreiter-schmidhuber-1997-neural-computation-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The institutional bibliography lists the FKI-207-95 technical report and the later Neural Computation article as distinct records and links the complete reading copies."
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "JKU-hosted complete text of the Neural Computation article",
+      "url": "https://ml.jku.at/publications/older/2604.pdf",
+      "accessDate": "2026-08-09",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-host",
+      "versionIds": [
+        "hochreiter-schmidhuber-1997-neural-computation-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 32
+      },
+      "accessNote": "The institutionally hosted 32-page author-layout text was rendered and inspected in full. Its stable internal pages 1–32 support evidence location but do not map to the published journal folios 1735–1780. No verified open-content license accompanies the file and it is not redistributed."
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-jku-report-full-text",
+      "relatedWorkIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "title": "JKU-hosted full text of Technical Report FKI-207-95",
+      "url": "https://ml.jku.at/publications/older/3504.pdf",
+      "accessDate": "2026-08-09",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-host",
+      "versionIds": [
+        "hochreiter-schmidhuber-1996-fki-revised-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list",
+        "metadata"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 32
+      },
+      "accessNote": "The complete 32-page report text was rendered and inspected in full. Its cover identifies version 3.0 revised December 1996; it does not display the original report’s 21 August 1995 date or rights notice. Stable internal pages 1–32 support claim location, and section numbering differs from the journal version. No verified open-content license accompanies the file and it is not redistributed."
+    },
+    {
       "id": "mikolov-2010-isca-record",
       "relatedWorkIds": [
         "mikolov-2010-recurrent-neural-language-model"
@@ -6308,6 +6997,103 @@
         "pageEnd": 1048
       },
       "accessNote": "The official four-page proceedings PDF was rendered and inspected in full. Claim locators use printed pp. 1045–1048. Visual inspection confirms that Table 3’s dynamic evaluation value is 16.3 followed by superscript footnote 4, not 16.34. No verified paper-level open-content license accompanies the file and it is not redistributed."
+    },
+    {
+      "id": "sundermeyer-2012-isca-record",
+      "relatedWorkIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "ISCA Archive record for LSTM Neural Networks for Language Modeling",
+      "url": "https://www.isca-archive.org/interspeech_2012/sundermeyer12_interspeech.html",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sundermeyer-2012-interspeech-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official paper record supplies the title, three authors, abstract, pp. 194–197, DOI 10.21437/Interspeech.2012-65, and ISCA Archive ISSN 2958-1796."
+    },
+    {
+      "id": "sundermeyer-2012-isca-conference-record",
+      "relatedWorkIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "ISCA Archive index for Interspeech 2012",
+      "url": "https://www.isca-archive.org/interspeech_2012/",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sundermeyer-2012-interspeech-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official conference index identifies Interspeech 2012 in Portland, Oregon, from 9 to 13 September 2012. It establishes month-level chronology but not the paper’s presentation day."
+    },
+    {
+      "id": "sundermeyer-2012-isca-full-text",
+      "relatedWorkIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "Official full text of LSTM Neural Networks for Language Modeling",
+      "url": "https://www.isca-archive.org/interspeech_2012/sundermeyer12_interspeech.pdf",
+      "accessDate": "2026-08-09",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "sundermeyer-2012-interspeech-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 194,
+        "pageEnd": 197
+      },
+      "accessNote": "The official four-leaf proceedings PDF was rendered and inspected in full. Visible folios map leaf 1 to printed p. 194, leaf 2 to p. 195, leaf 3 to p. 196, and leaf 4 to p. 197; claim locators use those printed pages. No verified paper-level open-content license accompanies the file and it is not redistributed."
+    },
+    {
+      "id": "sundermeyer-2012-rwth-record",
+      "relatedWorkIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "RWTH Aachen publication record for LSTM Neural Networks for Language Modeling",
+      "url": "https://publications.rwth-aachen.de/record/207126",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sundermeyer-2012-interspeech-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The institutional repository corroborates the title, authors, event, year, publication type, affiliation, and linked full text; its public record does not display the proceedings pages or DOI."
+    },
+    {
+      "id": "sundermeyer-2012-ldc-treebank-record",
+      "relatedWorkIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "Linguistic Data Consortium catalog record for Treebank-3",
+      "url": "https://catalog.ldc.upenn.edu/LDC99T42",
+      "accessDate": "2026-08-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sundermeyer-2012-interspeech-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official LDC catalog identifies Treebank-3 as LDC99T42, describes its Wall Street Journal material, and links an LDC user agreement. It documents dataset provenance and rights only; it does not identify which paper split appears in Figure 3."
     }
   ],
   "claims": [
@@ -12773,6 +13559,706 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-08"
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-vanishing-exploding-error",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "ideaIds": [
+        "constant-error-recurrent-memory"
+      ],
+      "statement": "For recurrent networks trained by Backpropagation Through Time or Real-Time Recurrent Learning, the paper analyzes products of temporal derivatives that can grow or decay exponentially, making distant credit assignment unstable or ineffective.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Long-lag error analysis",
+            "section": "3 CONSTANT ERROR BACKPROP",
+            "pageStart": 3,
+            "pageEnd": 5,
+            "equation": "4–6, 8–11"
+          },
+          "support": "Defines temporal error propagation and shows how repeated factors above or below unit magnitude cause growth or decay."
+        },
+        {
+          "sourceId": "hochreiter-schmidhuber-1995-jku-report-full-text",
+          "locator": {
+            "label": "Technical-report long-lag error analysis",
+            "section": "1 INTRODUCTION; 2 CONSTANT ERROR BACKPROP",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "equation": "4–6, 8–11"
+          },
+          "support": "The report version contains the same derivative-product analysis and long-lag training problem."
+        }
+      ],
+      "limitations": [
+        "The analysis identifies a recurrent-gradient pathology; it does not claim that every recurrent architecture, optimizer, or task exhibits identical behavior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-constant-error-carousel",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "ideaIds": [
+        "constant-error-recurrent-memory"
+      ],
+      "statement": "A memory cell uses a linear self-connection of fixed weight 1.0 so its internal state and error can circulate without exponential scaling along that local recurrent path, which the paper calls a constant error carousel.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Constant-error construction",
+            "section": "3 CONSTANT ERROR BACKPROP; 4 LONG SHORT-TERM MEMORY",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "figure": "1",
+            "equation": "12–14"
+          },
+          "support": "Defines the unit-weight linear recurrence, names the constant error carousel, and embeds it in the memory-cell architecture."
+        }
+      ],
+      "limitations": [
+        "The constant derivative applies to the protected internal path; other network paths and gate derivatives can still attenuate or amplify gradients."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-input-output-gates",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "ideaIds": [
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "Multiplicative input and output gates learn when external signals may alter a memory cell and when its state may influence other units: the input gate protects the constant-error carousel from irrelevant inputs, while the output gate protects other units from currently irrelevant memory contents.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Input and output gate mechanism",
+            "section": "4 LONG SHORT-TERM MEMORY",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "figure": "1",
+            "paragraph": "Input gate and output gate definitions"
+          },
+          "support": "Defines the two multiplicative gates and explains their protection of memory-cell state and error flow."
+        }
+      ],
+      "limitations": [
+        "The original architecture has no learned forget gate and no cell-state-to-gate feedback connections."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "The efficient learning algorithm preserves recurrent error flow within memory cells but truncates backpropagation once error would leave memory cells or gate units, yielding updates the paper describes as local in space and time.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Truncated local learning rule",
+            "section": "4 LONG SHORT-TERM MEMORY",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "figure": "2",
+            "paragraph": "Error-flow truncation and computational-complexity discussion"
+          },
+          "support": "Specifies which outgoing error paths are cut and argues that the resulting updates remain local."
+        },
+        {
+          "sourceId": "hochreiter-schmidhuber-1995-jku-report-full-text",
+          "locator": {
+            "label": "Report version of the local learning rule",
+            "section": "3 LONG SHORT-TERM MEMORY",
+            "pageStart": 6,
+            "pageEnd": 8,
+            "paragraph": "Truncation rules and local update discussion"
+          },
+          "support": "Gives the same local truncation rules and operational update procedure in the report version."
+        }
+      ],
+      "limitations": [
+        "The truncation sacrifices exact full-gradient credit assignment and is specifically identified as a possible obstacle for strongly delayed XOR-like dependencies."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "On the artificial two-class Task 2c, q=1,000 corresponds to a minimal lag of 1,001 steps. Across 20 trials for each reported (p,q) pair at that lag, Table 3 gives mean presentations to success of 49,000 for p=1,000, 49,000 for p=500, 75,000 for p=200, 135,000 for p=100, and 203,000 for p=50.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Thousand-step synthetic results",
+            "section": "5 EXPERIMENTS; 5.2 Experiment 2: Local, Distributed, Real-Valued Representations",
+            "pageStart": 14,
+            "pageEnd": 15,
+            "table": "3"
+          },
+          "support": "Reports the q and p settings, states that 20 trials were run for every pair, and gives mean presentation counts to success for the long-lag trigger-and-distractor task."
+        }
+      ],
+      "limitations": [
+        "The evidence comes from generated trigger-and-distractor sequences with classification error only at sequence ends; it does not establish natural-language memory over a thousand tokens.",
+        "The comparison says BPTT and RTRL have no chance under the chosen setup but supplies no matched modern implementation, confidence interval, or hardware-normalized runtime."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "The evaluated architecture has a constant-error cell with input and output gates but no learned forget gate or cell-state-to-gate feedback links, and its discussion retains difficult delayed-XOR, parity, exact-counting, capacity, state-drift, full-gradient-cost, and per-block parameter-overhead boundaries.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Original input/output-gated cell",
+            "section": "4 LONG SHORT-TERM MEMORY",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "figure": "1"
+          },
+          "support": "The displayed architecture and equations contain input and output gates but no learned forget gate or cell-state-to-gate feedback connection."
+        },
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Internal-state drift boundary",
+            "section": "4 LONG SHORT-TERM MEMORY",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "paragraph": "State drift from predominantly one-signed cell inputs and proposed remedies"
+          },
+          "support": "Explains that predominantly positive or predominantly negative cell inputs can drive internal state away from zero and shrink h′; proposed remedies are choosing h and initially biasing the input gate toward zero."
+        },
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Task, gradient, capacity, and overhead boundaries",
+            "section": "6 DISCUSSION",
+            "pageStart": 22,
+            "pageEnd": 23,
+            "paragraph": "Limitations and complexity discussion"
+          },
+          "support": "Enumerates delayed-XOR, parity, counting, state, exact-gradient, capacity, and dense-weight-overhead boundaries."
+        }
+      ],
+      "limitations": [
+        "The absence of later gate variants is inferred from the complete displayed architecture and equations. Sundermeyer et al. separately describe a later forget gate and cell-state-to-gate connections while citing two later works collectively, without mapping either mechanism one-to-one to a reference.",
+        "All evaluated tasks are synthetic; speech, time-series, and music applications are proposed rather than tested."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-full-history-motivation",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "feedforward-neural-language-modeling",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "The paper contrasts fixed-order n-gram and feed-forward models with the chain-rule dependence of each word on its complete prefix, then presents recurrent state as a way to carry history without an explicit fixed input window.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Fixed-history and recurrent motivation, printed p. 194",
+            "section": "1. Introduction",
+            "pageStart": 194,
+            "pageEnd": 194,
+            "paragraph": "Opening three paragraphs"
+          },
+          "support": "States the full-prefix factorization, describes fixed-history restrictions, and frames recurrent hidden state as the conceptual alternative."
+        }
+      ],
+      "limitations": [
+        "Removing an explicit window does not establish that a trained state preserves useful information across arbitrary distances."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-lstm-antecedent-and-variant",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "The paper attributes the LSTM architecture to Hochreiter and Schmidhuber 1997 and says that two modifications come from references 12 and 13. Its prose and Figure 1 show a forget gate and cell-state-to-gate connections, but the paper neither maps each mechanism one-to-one to a reference nor calls the connections peepholes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "LSTM attribution and later cell modifications, printed pp. 194–195",
+            "section": "1. Introduction; 2. LSTM neural networks",
+            "pageStart": 194,
+            "pageEnd": 195,
+            "paragraph": "LSTM history and cell-variant paragraphs"
+          },
+          "support": "Names the 1997 LSTM source, says that two modifications come from references 12 and 13, and displays a forget gate plus cell-state-to-gate connections without assigning either mechanism to one reference."
+        },
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Architectural references, printed p. 197",
+            "section": "7. References",
+            "pageStart": 197,
+            "pageEnd": 197,
+            "paragraph": "References 11–13"
+          },
+          "support": "Bibliographically identifies the 1997 article and the two later works listed as references 12 and 13."
+        }
+      ],
+      "limitations": [
+        "The concrete 2012 cell must not be attributed unchanged to the 1995/1997 work because Figure 1 and the prose contain a later forget gate and cell-state-to-gate connections.",
+        "Reference 12 is bibliographically incomplete in the target paper, and the target does not provide a one-to-one mechanism-to-reference mapping; primary-source attribution remains a separate audit step."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-memory-cell-mechanism",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "At each step, the cell combines a gated candidate update with the previous cell state scaled by a forget gate, then exposes a transformed state through an output gate; gate activations are logistic values between zero and one, and additional links connect cell state to the gates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Composite LSTM cell, printed p. 195",
+            "section": "2. LSTM neural networks",
+            "pageStart": 195,
+            "pageEnd": 195,
+            "figure": "1"
+          },
+          "support": "Defines the candidate, input, forget, state, output-gate, cell-state-to-gate, and exposed-output calculations."
+        }
+      ],
+      "limitations": [
+        "Section 2 explicitly omits the extensive LSTM equations; a compact modern vector equation would be a reconstruction rather than text printed in this paper, so the corpus follows the prose and Figure 1."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-language-model-objective",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "next-item-prediction-training",
+        "full-vocabulary-softmax-normalization",
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "The language model maps a 1-of-K word input through recurrent state to a softmax next-word distribution and trains by cross-entropy, which the paper equates with maximizing the training-text likelihood.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Word input, softmax, and objective, printed p. 195",
+            "section": "3. Neural network language models",
+            "pageStart": 195,
+            "pageEnd": 195,
+            "paragraph": "Softmax and cross-entropy objective"
+          },
+          "support": "Defines the word indicator input, normalized output probabilities, cross-entropy objective, and likelihood interpretation."
+        }
+      ],
+      "limitations": [
+        "The paper omits optimizer, learning rate, initialization, batching, temporal-unrolling depth, epoch count, and stopping details."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-input-normalization",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "The one-hot inputs already lie between zero and one. After an attempted normalization slowed convergence, the authors say it seemed sufficient for every input dimension to share that range, while full whitening was impractical at the vocabulary dimension.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Input-normalization observation, printed p. 195",
+            "section": "3. Neural network language models",
+            "pageStart": 195,
+            "pageEnd": 195,
+            "paragraph": "Input normalization paragraph"
+          },
+          "support": "Reports the convergence observation, sufficient input interval, and dimensional obstacle to whitening."
+        }
+      ],
+      "limitations": [
+        "No convergence curve, normalization formula, matched training budget, or repeated-run analysis is supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-projection-and-class-factorization",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "jointly-learned-word-representations",
+        "full-vocabulary-softmax-normalization",
+        "recurrent-neural-word-language-modeling",
+        "class-factored-neural-output"
+      ],
+      "statement": "The model can insert a learned linear or sigmoid projection between the word indicator and recurrent LSTM layer, and it can replace full-vocabulary output normalization with p(word|class,history) times p(class|history) over a fixed word-class partition.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Projection layer and output factorization, printed pp. 195–196",
+            "section": "3. Neural network language models; 4. Experimental results",
+            "pageStart": 195,
+            "pageEnd": 196,
+            "paragraph": "Projection and class-factored output descriptions"
+          },
+          "support": "Defines the optional learned projection and decomposes each word probability into class and within-class terms."
+        }
+      ],
+      "limitations": [
+        "The paper does not specify the word-to-class assignment algorithm, class-frequency criterion, or projection initialization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-corpus-splits",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling"
+      ],
+      "statement": "Table 1 lists Penn Treebank splits of 930,000 training words, 74,000 development words, and 82,000 test words with a 10,000-word vocabulary, and French splits of 27 million training, 46,000 development-1, 36,000 development-2, and 35,000 test words with a 170,000-word vocabulary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Corpus statistics, printed p. 196",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 196,
+            "table": "1"
+          },
+          "support": "Provides the training, development, test, and vocabulary counts for both evaluation corpora."
+        }
+      ],
+      "limitations": [
+        "Penn Treebank has no development-2 split in the table; French development-1 tunes neural models and development-2 tunes language-model scaling."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-rnn-lstm-perplexity",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "On Penn Treebank, the authors summarize LSTM perplexity as about eight percent lower than the sigmoid recurrent baseline; a 150-cell LSTM has 7.6 million parameters versus 3.0 million for a 150-unit sigmoid model, while a 350-unit, 7.1-million-parameter sigmoid model gives no material improvement.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Sigmoid-RNN and LSTM comparison, printed pp. 196–197",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 197,
+            "figure": "3(a)",
+            "paragraph": "Baseline-size and perplexity comparison paragraphs"
+          },
+          "support": "Reports the parameter counts, lack of benefit from widening the sigmoid model, similar training-time order, and the paper’s approximately eight-percent perplexity summary."
+        }
+      ],
+      "limitations": [
+        "Most perplexity points appear only in graphs, so the corpus preserves the authors’ approximate summary rather than extracting unreported exact values.",
+        "The comparison does not control architecture parameterization beyond the two cited size matches and reports no confidence interval or repeated seed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-projection-results",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "jointly-learned-word-representations",
+        "recurrent-neural-word-language-modeling",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "With ordinary sentence boundaries on Penn Treebank, the plain LSTM configuration gives the lowest reported perplexity among the tested input paths; neither the linear nor sigmoid projection produces a lower perplexity in that condition.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Projection comparison, printed pp. 196–197",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 197,
+            "figure": "3(b)",
+            "paragraph": "Projection-layer comparison"
+          },
+          "support": "Compares no-projection, linear-projection, and sigmoid-projection LSTM configurations under the ordinary-sentence condition."
+        }
+      ],
+      "limitations": [
+        "Exact plotted perplexities are not tabulated, and the paper gives no repeated-run variability or matched optimization details."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-long-context-results",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "When consecutive Penn Treebank sentences are concatenated, increasing context from one to two sentences gives only a small plain-LSTM gain, longer spans eventually worsen perplexity, and the linear-projection LSTM gives the strongest reported long-context behavior among the tested configurations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Concatenated-sentence context experiment, printed pp. 196–197",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 197,
+            "figure": "3(c)",
+            "paragraph": "Sentence-concatenation discussion"
+          },
+          "support": "Describes the small one-to-two-sentence change, degradation at longer spans, and relative long-context behavior of the projection choices."
+        }
+      ],
+      "limitations": [
+        "The figure supplies no numeric table, and the prose and graph do not fully agree about the sigmoid-projection curve.",
+        "Sentence concatenation tests retained state across a constructed sequence; it does not demonstrate robust arbitrary-distance memory."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-output-clustering-results",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization",
+        "recurrent-neural-word-language-modeling",
+        "gated-recurrent-memory-access",
+        "class-factored-neural-output"
+      ],
+      "statement": "Class-factored outputs move Penn Treebank perplexity moderately relative to full-vocabulary normalization while greatly increasing the reported training speed; the theoretical balanced-cost heuristic uses roughly the square root of the vocabulary size in classes, while unequal class sizes shift the practical choice.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Output-clustering speed and quality tradeoff, printed pp. 196–197",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 197,
+            "figure": "3(d)",
+            "paragraph": "Class-count complexity and results discussion"
+          },
+          "support": "Plots perplexity and relative speed across class counts and explains the balanced square-root heuristic and unequal-class qualification."
+        }
+      ],
+      "limitations": [
+        "The graph suggests a speed increase on the order of twenty times at favorable class counts, but no numeric table, hardware, wall-clock duration, or latency measure is reported, so the corpus does not treat that visual estimate as an exact result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-french-asr-setup",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "neural-ngram-model-mixtures"
+      ],
+      "statement": "The French experiment rescored 1,000-best hypotheses from the 2011 Quaero broadcast-conversational and podcast evaluation, using a 300-cell LSTM trained on 27 million in-domain words and interpolation with a Kneser–Ney model trained on more than four billion words.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "French speech-recognition setup, printed p. 196",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 196,
+            "paragraph": "French corpus and speech-recognition setup"
+          },
+          "support": "Identifies the task, 1000-best rescoring, LSTM size and training scale, count-model scale, and interpolation setup."
+        }
+      ],
+      "limitations": [
+        "The paper does not report an LSTM-only French result, a French sigmoid-recurrent baseline, interpolation weights, a complete acoustic-system specification, or complete preprocessing and out-of-vocabulary handling. It does identify cross-adaptation, multilayer-perceptron features, and discriminative training."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-french-wer-results",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "gated-recurrent-memory-access",
+        "neural-ngram-model-mixtures"
+      ],
+      "statement": "Table 2 reports Kneser–Ney word-error rates of 19.7% on development-2 and 17.6% on test, changing to 19.2% and 17.3% after LSTM interpolation: absolute decreases of 0.5 and 0.3 percentage points, about 2.54% and 1.70% relative to the respective baselines.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "French recognition results, printed p. 196",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 196,
+            "table": "2"
+          },
+          "support": "Provides the two Kneser–Ney baselines and the two corresponding interpolated word-error rates."
+        }
+      ],
+      "limitations": [
+        "The relative reductions are arithmetic derived from the displayed values; the paper supplies no confidence intervals, significance tests, or repeated recognition runs.",
+        "Because only the mixture is evaluated, the result cannot isolate the LSTM distribution’s independent recognition contribution."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-evidence-reproducibility-boundary",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "statement": "The principal Penn Treebank comparisons appear in graphs without numeric point tables, error bars, confidence intervals, significance tests, seeds, or repeated-run summaries; the text never identifies whether Figure 3 uses the development or test split, and it omits enough training and implementation settings to prevent exact reconstruction from the article alone.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Displayed evidence and omitted protocol, printed pp. 195–197",
+            "section": "3. Neural network language models; 4. Experimental results",
+            "pageStart": 195,
+            "pageEnd": 197,
+            "figure": "3(a–d)",
+            "table": "1–2"
+          },
+          "support": "The complete method and result sections expose graph-only neural comparisons and do not supply uncertainty measures or a complete training recipe."
+        }
+      ],
+      "limitations": [
+        "Absence is established only for the inspected four-page proceedings version; supplementary artifacts or private experiment records were not assumed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "sundermeyer-2012-conclusion-scope",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "class-factored-neural-output",
+        "neural-ngram-model-mixtures"
+      ],
+      "statement": "The conclusion bounds the contribution to an approximately eight-percent Penn Treebank perplexity improvement over the tested sigmoid recurrent model, a class-factorization speed tradeoff with small quality loss, and French recognition changes of 0.5 and 0.3 percentage points after count-model interpolation, while leaving recognition-system differences for later investigation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Conclusion and future scope, printed p. 197",
+            "section": "5. Conclusions",
+            "pageStart": 197,
+            "pageEnd": 197,
+            "paragraph": "Complete conclusion"
+          },
+          "support": "Summarizes the perplexity, output-clustering, and recognition findings and explicitly leaves recognition-system differences open."
+        },
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "French recognition values, printed p. 196",
+            "section": "4. Experimental results",
+            "pageStart": 196,
+            "pageEnd": 196,
+            "table": "2"
+          },
+          "support": "Reports 19.7% and 17.6% count-model word-error rates and 19.2% and 17.3% interpolated rates, yielding the neutral 0.5- and 0.3-point changes."
+        }
+      ],
+      "limitations": [
+        "The approximate perplexity statement refers to this paper’s sigmoid baseline, not a reproduced Mikolov 2010 result, and the speech result is an interpolation result rather than a standalone LSTM score."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-09"
     }
   ],
   "relationships": [
@@ -13933,6 +15419,149 @@
           "note": "Mikolov reference [4] is Schwenk and Gauvain’s 2005 HLT/EMNLP paper, not the corpus’s 2002 ICASSP work; no documented 2002-to-2010 relationship is created."
         }
       ]
+    },
+    {
+      "id": "elman-1988-to-hochreiter-schmidhuber-1995",
+      "from": {
+        "kind": "work",
+        "id": "elman-1988-finding-structure-in-time"
+      },
+      "to": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Hochreiter and Schmidhuber cite Elman’s Finding Structure in Time among gradient-trained recurrent approaches and place such approaches within their analysis of decaying or growing temporal error. Their constant-error cell addresses that narrow recurrent temporal-credit problem. The edge does not transfer Elman’s generated lexical task, copied-context topology, token representations, or local-training procedure into the gated cell.",
+      "claimIds": [
+        "elman-1990-simple-recurrent-context",
+        "elman-1990-memory-boundary",
+        "hochreiter-schmidhuber-1997-vanishing-exploding-error",
+        "hochreiter-schmidhuber-1997-constant-error-carousel"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "hochreiter-schmidhuber-1997-jku-journal-full-text",
+          "locator": {
+            "label": "Elman recurrent-network citation",
+            "section": "2 PREVIOUS WORK",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "paragraph": "Gradient-descent variants and Elman 1988 inline citation"
+          },
+          "support": "The target names Elman’s gradient-descent recurrent variant, cites Elman 1988 inline, and groups that approach with the long-lag error problem analyzed in the paper."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is restricted to the documented recurrent temporal-credit problem; it does not assign the constant-error or gated mechanism to Elman."
+        }
+      ]
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-to-sundermeyer-2012",
+      "from": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sundermeyer-2012-lstm-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sundermeyer et al. explicitly cite Hochreiter and Schmidhuber for the LSTM architecture and retain its constant-error state path plus input and output gating in a word language model. The concrete 2012 cell is composite: Figure 1 and the prose add a forget gate and cell-state-to-gate connections, while the target collectively assigns two modifications to its 1999 and 2002 references without mapping either mechanism one-to-one. This edge excludes both later modifications and does not describe an unchanged implementation.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "LSTM core attribution and citation, printed pp. 194–197",
+            "section": "1. Introduction; 2. LSTM neural networks; 7. References",
+            "pageStart": 194,
+            "pageEnd": 197,
+            "paragraph": "Architecture history and reference 11"
+          },
+          "support": "The target attributes the recurrent-memory architecture to Hochreiter and Schmidhuber, displays its input/output-gated state core, and cites the 1997 article."
+        },
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Later cell modifications, printed pp. 194–197",
+            "section": "2. LSTM neural networks; 7. References",
+            "pageStart": 194,
+            "pageEnd": 197,
+            "paragraph": "Two-modification statement, displayed cell, and references 12–13"
+          },
+          "support": "The target says two modifications come from references 12 and 13 and displays a forget gate plus cell-state-to-gate connections, but does not map either mechanism one-to-one; both additions are therefore excluded from this edge."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "mikolov-2010-to-sundermeyer-2012",
+      "from": {
+        "kind": "work",
+        "id": "mikolov-2010-recurrent-neural-language-model"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sundermeyer-2012-lstm-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sundermeyer et al. cite Mikolov et al. 2010 while framing a word-level recurrent language-model architecture and compare gated LSTM recurrence with the standard sigmoid recurrent model class. The edge is limited to the word-level recurrent-language-model problem and single recurrent-state topology; it does not transfer Mikolov’s data, rare-word treatment, online adaptation, one-step training depth, results, or implementation, and it does not claim numerical reproduction.",
+      "claimIds": [
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-truncated-bptt-boundary",
+        "mikolov-2010-long-context-and-evidence-boundary",
+        "sundermeyer-2012-full-history-motivation",
+        "sundermeyer-2012-rnn-lstm-perplexity",
+        "sundermeyer-2012-evidence-reproducibility-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Recurrent language-model predecessor and citation, printed pp. 194–197",
+            "section": "1. Introduction; 7. References",
+            "pageStart": 194,
+            "pageEnd": 197,
+            "paragraph": "Recurrent-language-model discussion and reference 6"
+          },
+          "support": "The target cites Mikolov et al. 2010 in its discussion of recurrent neural language modeling and identifies the paper in its bibliography."
+        },
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Target sigmoid-RNN comparator, printed pp. 195–197",
+            "section": "3. Neural network language models; 4. Experimental results",
+            "pageStart": 195,
+            "pageEnd": 197,
+            "figure": "3(a)"
+          },
+          "support": "The target defines and compares the standard sigmoid recurrent model class while keeping its numeric baseline separate from Mikolov’s published tables."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The closely matching baseline is associated in the target bibliography with the separate 2011 rnnlm toolkit; the edge therefore records the directly cited 2010 architectural lineage without treating the target numbers as a reproduction."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -15032,6 +16661,131 @@
         "Perplexity, word error rate, and relative change"
       ],
       "successCriterion": "The learner can map w(t), s(t−1), x(t), s(t), and y(t) through equations 1–6, derive equation 7’s rare-token split, distinguish forward recurrence from depth-one credit assignment, reproduce every Table 1–4 value, calculate 221→128/121/112 and 13.5→11.1 correctly, read 16.3 plus footnote 4 rather than 16.34, and justify both documented lineage edges without creating a Schwenk 2002 edge or priority claim."
+    },
+    {
+      "id": "beginner-hochreiter-schmidhuber-1995-gated-memory",
+      "mode": "beginner",
+      "objective": "Explain how a fixed recurrent state path and separate input and output gates can preserve a learning signal across a delay, while keeping the synthetic-task evidence and difficult-memory boundaries visible.",
+      "workIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary"
+      ],
+      "prerequisites": [
+        "A recurrent loop as memory",
+        "Multiplication as a gate",
+        "Training error flowing backward"
+      ],
+      "successCriterion": "The learner can trace information and error around the cell, distinguish writing from exposing state, report the 1,001-step synthetic setting accurately, and explain why the experiment does not establish unlimited natural-language memory."
+    },
+    {
+      "id": "expert-hochreiter-schmidhuber-1995-mechanism-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the temporal derivative problem, constant-error carousel, multiplicative gates, and local truncated-gradient rule; then audit Table 3 and the delayed-XOR, capacity, counting, parity, overhead, and later-gate boundaries.",
+      "workIds": [
+        "hochreiter-schmidhuber-1995-long-short-term-memory"
+      ],
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access"
+      ],
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-vanishing-exploding-error",
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
+        "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary"
+      ],
+      "prerequisites": [
+        "Recurrent-network derivatives",
+        "Backpropagation through time",
+        "Multiplicative gates",
+        "Experimental controls and trial counts"
+      ],
+      "successCriterion": "The learner can derive why repeated temporal Jacobian factors grow or decay, identify the protected unit-weight path, state exactly where gradients are truncated, reproduce every promoted Table 3 row, and avoid assigning the later forget gate or cell-state-to-gate links to the original cell."
+    },
+    {
+      "id": "beginner-sundermeyer-2012-gated-language-memory",
+      "mode": "beginner",
+      "objective": "Compare a simple recurrent language model with gated memory, observe what changes when sentences are joined or the output is grouped into classes, and separate perplexity gains from the smaller speech-recognition mixture gains.",
+      "workIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "class-factored-neural-output",
+        "neural-ngram-model-mixtures"
+      ],
+      "claimIds": [
+        "sundermeyer-2012-memory-cell-mechanism",
+        "sundermeyer-2012-rnn-lstm-perplexity",
+        "sundermeyer-2012-long-context-results",
+        "sundermeyer-2012-output-clustering-results",
+        "sundermeyer-2012-french-wer-results",
+        "sundermeyer-2012-conclusion-scope"
+      ],
+      "prerequisites": [
+        "Next-word probability",
+        "A recurrent state as memory",
+        "Perplexity and word error rate"
+      ],
+      "successCriterion": "The learner can describe the write, retain, and output controls, explain why longer available context can still hurt, distinguish class-factor speed from quality, and report the 0.5- and 0.3-point interpolated WER changes without calling them standalone LSTM results."
+    },
+    {
+      "id": "expert-sundermeyer-2012-model-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the composite LSTM, softmax cross-entropy, optional projection, and class-factored output; then audit corpus splits, parameter matches, graph-only perplexity and context evidence, clustering tradeoffs, and French 1000-best interpolation.",
+      "workIds": [
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "ideaIds": [
+        "conditional-stochastic-language-source",
+        "feedforward-neural-language-modeling",
+        "jointly-learned-word-representations",
+        "full-vocabulary-softmax-normalization",
+        "neural-ngram-model-mixtures",
+        "next-item-prediction-training",
+        "recurrent-neural-word-language-modeling",
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "class-factored-neural-output"
+      ],
+      "claimIds": [
+        "sundermeyer-2012-full-history-motivation",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism",
+        "sundermeyer-2012-language-model-objective",
+        "sundermeyer-2012-input-normalization",
+        "sundermeyer-2012-projection-and-class-factorization",
+        "sundermeyer-2012-corpus-splits",
+        "sundermeyer-2012-rnn-lstm-perplexity",
+        "sundermeyer-2012-projection-results",
+        "sundermeyer-2012-long-context-results",
+        "sundermeyer-2012-output-clustering-results",
+        "sundermeyer-2012-french-asr-setup",
+        "sundermeyer-2012-french-wer-results",
+        "sundermeyer-2012-evidence-reproducibility-boundary",
+        "sundermeyer-2012-conclusion-scope"
+      ],
+      "prerequisites": [
+        "Recurrent neural networks and gated cells",
+        "Softmax cross-entropy and maximum likelihood",
+        "Class-factored output distributions",
+        "Perplexity, WER, and relative change",
+        "Reproducibility and evidence auditing"
+      ],
+      "successCriterion": "The learner can build a clearly labeled modern reconstruction of the 1997 core and the target’s later forget and cell-state-to-gate changes from Figure 1 and the prose, derive the class factorization, reproduce both corpus rows and both WER rows, preserve graph-only uncertainty, distinguish the target baseline from Mikolov’s numeric tables, and list the omitted training and runtime details."
     }
   ]
 }
