@@ -711,7 +711,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-09");
+  assert.equal(corpus.asOf, "2026-08-10");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -2657,6 +2657,329 @@ test("retains the original, revised, and journal LSTM versions without transferr
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains the version-bound forget-gate bridge and journal results", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "gers-schmidhuber-cummins-1999-learning-to-forget",
+  );
+  const reportVersion = work?.versions.find(
+    (item) =>
+      item.id === "gers-schmidhuber-cummins-1999-idsia-report-version",
+  );
+  const proceedingsVersion = work?.versions.find(
+    (item) => item.id === "gers-schmidhuber-cummins-1999-icann-version",
+  );
+  const journalVersion = work?.versions.find(
+    (item) =>
+      item.id ===
+      "gers-schmidhuber-cummins-2000-neural-computation-version",
+  );
+  const reportEvent = work?.chronology.events.find(
+    (item) => item.id === "gers-schmidhuber-cummins-1999-idsia-report",
+  );
+  const journalEvent = work?.chronology.events.find(
+    (item) =>
+      item.id === "gers-schmidhuber-cummins-2000-journal-publication",
+  );
+  const proceedingsText = corpus.sources.find(
+    (item) => item.id === "gers-1999-icann-full-text",
+  );
+  const journalText = corpus.sources.find(
+    (item) => item.id === "gers-2000-author-journal-full-text",
+  );
+  const mechanism = corpus.claims.find(
+    (item) => item.id === "gers-2000-forget-gate-mechanism",
+  );
+  const cergResults = corpus.claims.find(
+    (item) => item.id === "gers-2000-cerg-results",
+  );
+  const cntoResults = corpus.claims.find(
+    (item) => item.id === "gers-2000-cnto-results",
+  );
+  const objectives = corpus.learningObjectives
+    .filter((objective) => objective.workIds.includes(work?.id))
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "gers-schmidhuber-cummins-1999-idsia-report",
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [
+      [
+        "gers-schmidhuber-cummins-1999-idsia-report-version",
+        "technical-report",
+      ],
+      ["gers-schmidhuber-cummins-1999-icann-version", "proceedings"],
+      [
+        "gers-schmidhuber-cummins-2000-neural-computation-version",
+        "journal",
+      ],
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, journalVersion?.id);
+  assert.equal(reportEvent?.date.value, "1999-01-26");
+  assert.equal(reportEvent?.versionId, reportVersion?.id);
+  assert.equal(journalEvent?.date.value, "2000-10-01");
+  assert.equal(journalEvent?.versionId, journalVersion?.id);
+  assert.deepEqual(proceedingsVersion?.bibliography.pages, ["850-855"]);
+  assert.ok(
+    proceedingsVersion?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.1049/cp:19991218",
+    ),
+  );
+  assert.deepEqual(journalVersion?.bibliography.pages, ["2451-2471"]);
+  assert.ok(
+    journalVersion?.bibliography.identifiers.some(
+      (identifier) =>
+        identifier.type === "doi" &&
+        identifier.value === "10.1162/089976600300015015",
+    ),
+  );
+  assert.deepEqual(proceedingsText?.pagination, {
+    scheme: "printed",
+    pageStart: 850,
+    pageEnd: 855,
+  });
+  assert.deepEqual(journalText?.pagination, {
+    scheme: "printed",
+    pageStart: 1,
+    pageEnd: 19,
+  });
+  assert.deepEqual(mechanism?.evidence[0].locator, {
+    label: "Adaptive forget-gate recurrence",
+    section:
+      "3 Solution: Forget Gates; 3.1 Forward Pass of Extended LSTM with Forget Gates",
+    pageStart: 5,
+    pageEnd: 5,
+    equation: "6–7",
+    figure: "1",
+  });
+  assert.deepEqual(cergResults?.evidence[0].locator, {
+    label: "Continual embedded-Reber results",
+    section: "4.3 CERG Results",
+    pageStart: 12,
+    pageEnd: 12,
+    table: "2",
+  });
+  for (const value of [
+    "74%",
+    "7,441",
+    "18%",
+    "18,889",
+    "29%",
+    "62%",
+    "14,087",
+    "6%",
+  ]) {
+    assert.ok(cergResults?.statement.includes(value));
+  }
+  assert.deepEqual(cntoResults?.evidence[0].locator, {
+    label: "Continual noisy temporal-order results",
+    section: "4.5 Continual Noisy Temporal Order Problem",
+    pageStart: 15,
+    pageEnd: 16,
+    table: "3",
+  });
+  for (const value of [
+    "4.6",
+    "24%",
+    "18,077",
+    "12.2",
+    "37%",
+    "22,654",
+    "11.8",
+    "1,000",
+  ]) {
+    assert.ok(cntoResults?.statement.includes(value));
+  }
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-gers-1999-adaptive-forgetting",
+      "expert-gers-1999-mechanism-versions-and-evidence",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.mode),
+    ["beginner", "expert"],
+  );
+  assert.ok(objectives[1]?.successCriterion.includes("Table 2 and Table 3"));
+  assert.ok(objectives[1]?.successCriterion.includes("424-weight"));
+});
+
+test("retains the peephole timing evidence without promoting the deleted DOI", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "gers-schraudolph-schmidhuber-2002-precise-timing",
+  );
+  const version = work?.versions.find(
+    (item) => item.id === "gers-schraudolph-schmidhuber-2002-jmlr-version",
+  );
+  const event = work?.chronology.events.find(
+    (item) =>
+      item.id === "gers-schraudolph-schmidhuber-2002-journal-publication",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "gers-2002-jmlr-full-text",
+  );
+  const deletedDoi = corpus.sources.find(
+    (item) => item.id === "gers-2002-crossref-deleted-doi",
+  );
+  const mechanism = corpus.claims.find(
+    (item) => item.id === "gers-2002-peephole-mechanism",
+  );
+  const timedSpikes = corpus.claims.find(
+    (item) => item.id === "gers-2002-gts-results-and-ablation",
+  );
+  const periodicGeneration = corpus.claims.find(
+    (item) => item.id === "gers-2002-pfg-results",
+  );
+  const objectives = corpus.learningObjectives
+    .filter((objective) => objective.workIds.includes(work?.id))
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(work?.canonicalVersionId, version?.id);
+  assert.equal(event?.date.value, "2002-08");
+  assert.equal(event?.date.precision, "month");
+  assert.equal(event?.versionId, version?.id);
+  assert.deepEqual(version?.bibliography.pages, ["115-143"]);
+  assert.equal(
+    version?.bibliography.identifiers.some(
+      (identifier) => identifier.type === "doi",
+    ),
+    false,
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 115,
+    pageEnd: 143,
+  });
+  assert.ok(work?.sourceIds.includes(deletedDoi?.id));
+  assert.equal(version?.sourceIds.includes(deletedDoi?.id), false);
+  assert.deepEqual(deletedDoi?.versionIds, []);
+  assert.deepEqual(deletedDoi?.supports, ["metadata", "version-boundary"]);
+  assert.ok(deletedDoi?.title.includes("10.1162/153244303768966139"));
+  assert.ok(
+    deletedDoi?.accessNote.includes("being displayed as active metadata"),
+  );
+  assert.deepEqual(mechanism?.evidence[0].locator, {
+    label: "Peephole equations and update order",
+    section:
+      "3. Extending LSTM with Peephole Connections; 3.1 Modified Forward Pass for Peephole LSTM",
+    pageStart: 122,
+    pageEnd: 122,
+    equation: "19–21",
+    paragraph: "Ordered forward-pass description",
+  });
+  assert.deepEqual(timedSpikes?.evidence[0].locator, {
+    label: "Generated timed spikes and forget-gate ablation",
+    section: "4.3 Generating Timed Spikes (GTS)",
+    pageStart: 128,
+    pageEnd: 132,
+    figure: "7",
+  });
+  for (const value of [
+    "100%, 100%, 80%, 100%, and 100%",
+    "50% for delays {0,1}",
+    "30% for {0,1,2}",
+    "training from scratch without that gate never succeeds",
+  ]) {
+    assert.ok(timedSpikes?.statement.includes(value));
+  }
+  assert.deepEqual(periodicGeneration?.evidence[0].locator, {
+    label: "Periodic-function generation results",
+    section: "4.4 Periodic Function Generation (PFG)",
+    pageStart: 131,
+    pageEnd: 134,
+    table: "3",
+  });
+  for (const value of [
+    "90/100",
+    "0/60",
+    "0/100",
+    "0/50",
+    "0/80",
+    "0/20",
+  ]) {
+    assert.ok(periodicGeneration?.statement.includes(value));
+  }
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-gers-2002-peephole-timing",
+      "expert-gers-2002-peephole-mechanism-and-evidence",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.mode),
+    ["beginner", "expert"],
+  );
+  assert.ok(objectives[1]?.successCriterion.includes("Figure 7"));
+  assert.ok(objectives[1]?.successCriterion.includes("deleted Crossref DOI"));
+});
+
+test("retains four documented recurrent-memory lineage edges", () => {
+  const expectedEdges = [
+    {
+      id: "hochreiter-schmidhuber-1995-to-gers-1999",
+      from: "hochreiter-schmidhuber-1995-long-short-term-memory",
+      to: "gers-schmidhuber-cummins-1999-learning-to-forget",
+      connectionType: "extends",
+      sourceIds: ["gers-2000-author-journal-full-text"],
+    },
+    {
+      id: "gers-1999-to-gers-2002",
+      from: "gers-schmidhuber-cummins-1999-learning-to-forget",
+      to: "gers-schraudolph-schmidhuber-2002-precise-timing",
+      connectionType: "extends",
+      sourceIds: ["gers-2002-jmlr-full-text"],
+    },
+    {
+      id: "gers-1999-to-sundermeyer-2012",
+      from: "gers-schmidhuber-cummins-1999-learning-to-forget",
+      to: "sundermeyer-2012-lstm-language-model",
+      connectionType: "builds-on",
+      sourceIds: [
+        "sundermeyer-2012-isca-full-text",
+        "gers-1999-icann-full-text",
+      ],
+    },
+    {
+      id: "gers-2002-to-sundermeyer-2012",
+      from: "gers-schraudolph-schmidhuber-2002-precise-timing",
+      to: "sundermeyer-2012-lstm-language-model",
+      connectionType: "builds-on",
+      sourceIds: [
+        "sundermeyer-2012-isca-full-text",
+        "gers-2002-jmlr-full-text",
+      ],
+    },
+  ];
+
+  for (const expected of expectedEdges) {
+    const relationship = corpus.relationships.find(
+      (item) => item.id === expected.id,
+    );
+
+    assert.deepEqual(relationship?.from, { kind: "work", id: expected.from });
+    assert.deepEqual(relationship?.to, { kind: "work", id: expected.to });
+    assert.equal(relationship?.connectionType, expected.connectionType);
+    assert.equal(relationship?.evidenceClass, "documented-influence");
+    assert.equal(relationship?.confidence, "high");
+    assert.equal(relationship?.causalLanguage, "qualified");
+    assert.deepEqual(
+      relationship?.sourceEvidence.map((evidence) => evidence.sourceId),
+      expected.sourceIds,
+    );
+  }
+});
+
 test("retains Sundermeyer 2012 as a composite-cell language-model convergence", () => {
   const work = corpus.works.find(
     (item) => item.id === "sundermeyer-2012-lstm-language-model",
@@ -2669,6 +2992,12 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
   );
   const fullText = corpus.sources.find(
     (item) => item.id === "sundermeyer-2012-isca-full-text",
+  );
+  const forgetText = corpus.sources.find(
+    (item) => item.id === "gers-1999-icann-full-text",
+  );
+  const peepholeText = corpus.sources.find(
+    (item) => item.id === "gers-2002-jmlr-full-text",
   );
   const rwthRecord = corpus.sources.find(
     (item) => item.id === "sundermeyer-2012-rwth-record",
@@ -2759,6 +3088,13 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
   ]);
   for (const claim of claims) {
     assert.ok(claim.evidence.length > 0);
+    if (claim.id === variant?.id) {
+      assert.deepEqual(
+        claim.evidence.map((evidence) => evidence.sourceId),
+        [fullText?.id, fullText?.id, forgetText?.id, peepholeText?.id],
+      );
+      continue;
+    }
     for (const evidence of claim.evidence) {
       assert.equal(evidence.sourceId, fullText?.id);
       assert.ok(evidence.locator.pageStart >= 194);
@@ -2772,8 +3108,41 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
   }
   assert.ok(variant?.statement.includes("Hochreiter and Schmidhuber 1997"));
   assert.ok(variant?.statement.includes("references 12 and 13"));
-  assert.ok(variant?.statement.includes("neither"));
-  assert.ok(variant?.statement.includes("one-to-one"));
+  assert.ok(
+    variant?.statement.includes(
+      "reference 12 to the adaptive forget gate and reference 13 to weighted cell-state-to-gate peephole connections",
+    ),
+  );
+  assert.equal(variant?.directness, "editorial-inference");
+  assert.deepEqual(variant?.ideaIds, [
+    "constant-error-recurrent-memory",
+    "gated-recurrent-memory-access",
+    "adaptive-recurrent-state-retention",
+    "cell-state-to-gate-feedback",
+  ]);
+  assert.deepEqual(variant?.evidence[2].locator, {
+    label: "Reference 12 title page and forget-gate mechanism",
+    section: "3 Solution: Forget Gates",
+    pageStart: 850,
+    pageEnd: 852,
+    equation: "6–7",
+  });
+  assert.deepEqual(variant?.evidence[3].locator, {
+    label: "Reference 13 title page and peephole mechanism",
+    section:
+      "3. Extending LSTM with Peephole Connections; 3.1 Modified Forward Pass for Peephole LSTM",
+    pageStart: 115,
+    pageEnd: 123,
+    equation: "19–21",
+  });
+  assert.ok(
+    variant?.limitations.some((item) =>
+      item.includes("one-to-one correspondence is an editorial inference"),
+    ),
+  );
+  assert.deepEqual(variant?.uncertainties.map((item) => item.status), [
+    "resolved",
+  ]);
   assert.equal(mechanism?.evidence[0].locator.figure, "1");
   assert.ok(
     mechanism?.limitations.some((item) =>
@@ -2823,6 +3192,8 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
   assert.deepEqual(
     incoming.map((relationship) => relationship.id).sort(),
     [
+      "gers-1999-to-sundermeyer-2012",
+      "gers-2002-to-sundermeyer-2012",
       "hochreiter-schmidhuber-1995-to-sundermeyer-2012",
       "mikolov-2010-to-sundermeyer-2012",
     ],
@@ -2833,18 +3204,27 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
     assert.equal(relationship.confidence, "high");
     assert.equal(relationship.causalLanguage, "qualified");
     assert.ok(
-      relationship.sourceEvidence.every(
+      relationship.sourceEvidence.some(
         (evidence) => evidence.sourceId === fullText?.id,
+      ),
+    );
+    assert.ok(
+      relationship.sourceEvidence.every((evidence) =>
+        [fullText?.id, forgetText?.id, peepholeText?.id].includes(
+          evidence.sourceId,
+        ),
       ),
     );
   }
   assert.ok(
     gatedIdea?.description.includes(
-      "later variants add a learned control over state retention",
+      "distinct gate and feedback mechanisms remain separately traceable",
     ),
   );
   assert.ok(
-    expertObjective?.successCriterion.includes("modern reconstruction"),
+    expertObjective?.successCriterion.includes(
+      "map reference 12 only to adaptive forgetting and reference 13 only to cell-state-to-gate peepholes",
+    ),
   );
   assert.equal(
     expertObjective?.successCriterion.includes("equations 1–5"),

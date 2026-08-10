@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-09",
+  "asOf": "2026-08-10",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -2671,7 +2671,7 @@
         },
         {
           "status": "resolved",
-          "note": "The original architecture exposes input and output gates only. Learned forget gates and cell-state-to-gate connections belong to later publications and enter the corpus only through the bounded 2012 variant claim."
+          "note": "The original architecture exposes input and output gates only. The separately promoted 1999/2000 forget-gate work and 2002 peephole work establish the later mechanisms without projecting them backward."
         },
         {
           "status": "open",
@@ -2923,6 +2923,316 @@
           "status": "open",
           "note": "Neither the Harvard repository terms nor the publicly reachable journal reading copy establishes an unrestricted work-level reuse license.",
           "resolutionCondition": "A rights-holder statement or explicit license for the report and journal version would be required before either full text could be redistributed."
+        }
+      ]
+    },
+    {
+      "id": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "title": "Learning to Forget: Continual Prediction with LSTM",
+      "authors": [
+        "Felix A. Gers",
+        "Jürgen Schmidhuber",
+        "Fred Cummins"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "F. A. Gers, J. Schmidhuber, and F. Cummins, “Learning to Forget: Continual Prediction with LSTM,” Neural Computation 12(10), 2451–2471 (1 October 2000), DOI 10.1162/089976600300015015; preceded by Technical Report IDSIA-01-99 and an ICANN’99 proceedings version.",
+      "chronology": {
+        "orderingEventId": "gers-schmidhuber-cummins-1999-idsia-report",
+        "events": [
+          {
+            "id": "gers-schmidhuber-cummins-1999-idsia-report",
+            "kind": "technical-report",
+            "label": "Technical Report IDSIA-01-99 issue",
+            "date": {
+              "value": "1999-01-26",
+              "precision": "day",
+              "calendar": "gregorian",
+              "note": "The institutional record gives 26 January 1999 and the report title page says January; the author bibliography says February and surviving files contain later builds, so those build dates are preserved separately in the version notes."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gers-1999-aris-report-record",
+                "precision": "day",
+                "locator": "ARIS institutional record, issued 26 January 1999"
+              }
+            ],
+            "versionId": "gers-schmidhuber-cummins-1999-idsia-report-version",
+            "sourceIds": [
+              "gers-1999-aris-report-record",
+              "gers-1999-author-report-full-text",
+              "gers-schmidhuber-online-bibliography"
+            ]
+          },
+          {
+            "id": "gers-schmidhuber-cummins-1999-manuscript-received",
+            "kind": "manuscript-received",
+            "label": "Journal manuscript received",
+            "date": {
+              "value": "1999-03-03",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gers-2000-mit-record",
+                "precision": "day",
+                "locator": "MIT Press article history, received 3 March 1999"
+              }
+            ],
+            "versionId": "gers-schmidhuber-cummins-2000-neural-computation-version",
+            "sourceIds": [
+              "gers-2000-mit-record"
+            ]
+          },
+          {
+            "id": "gers-schmidhuber-cummins-1999-icann-proceedings",
+            "kind": "proceedings-publication",
+            "label": "ICANN’99 proceedings publication",
+            "date": {
+              "value": "1999",
+              "precision": "year",
+              "calendar": "gregorian",
+              "note": "The printed paper establishes the 1999 proceedings year but not its release date or this paper’s presentation day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gers-1999-icann-full-text",
+                "precision": "year",
+                "locator": "Printed title page, Proceedings ICANN’99, Edinburgh, volume 2, 1999"
+              }
+            ],
+            "versionId": "gers-schmidhuber-cummins-1999-icann-version",
+            "sourceIds": [
+              "gers-1999-icann-full-text",
+              "gers-1999-icann-crossref-record",
+              "gers-1999-bht-bibliography"
+            ]
+          },
+          {
+            "id": "gers-schmidhuber-cummins-1999-manuscript-accepted",
+            "kind": "manuscript-accepted",
+            "label": "Journal manuscript accepted",
+            "date": {
+              "value": "1999-11-07",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gers-2000-mit-record",
+                "precision": "day",
+                "locator": "MIT Press article history, accepted 7 November 1999"
+              }
+            ],
+            "versionId": "gers-schmidhuber-cummins-2000-neural-computation-version",
+            "sourceIds": [
+              "gers-2000-mit-record"
+            ]
+          },
+          {
+            "id": "gers-schmidhuber-cummins-2000-journal-publication",
+            "kind": "journal-publication",
+            "label": "Neural Computation publication",
+            "date": {
+              "value": "2000-10-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gers-2000-mit-record",
+                "precision": "day",
+                "locator": "MIT Press article record, 1 October 2000"
+              },
+              {
+                "sourceId": "gers-2000-crossref-record",
+                "precision": "day",
+                "locator": "Crossref published-print deposit, 1 October 2000"
+              }
+            ],
+            "versionId": "gers-schmidhuber-cummins-2000-neural-computation-version",
+            "sourceIds": [
+              "gers-2000-mit-record",
+              "gers-2000-crossref-record",
+              "gers-2000-author-journal-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "gers-schmidhuber-cummins-1999-idsia-report-version",
+          "title": "Learning to Forget: Continual Prediction with LSTM",
+          "authors": [
+            "Felix A. Gers",
+            "Jürgen Schmidhuber",
+            "Fred Cummins"
+          ],
+          "kind": "technical-report",
+          "label": "Technical Report IDSIA-01-99",
+          "language": "en",
+          "bibliography": {
+            "citation": "F. A. Gers, J. Schmidhuber, and F. Cummins, “Learning to Forget: Continual Prediction with LSTM,” Technical Report IDSIA-01-99, IDSIA, January 1999.",
+            "venue": "IDSIA technical reports",
+            "publisher": "Istituto Dalle Molle di Studi sull’Intelligenza Artificiale",
+            "publicationPlaces": [
+              "Lugano, Switzerland"
+            ],
+            "identifiers": [
+              {
+                "type": "report-number",
+                "value": "IDSIA-01-99",
+                "label": "Technical report number"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gers-1999-aris-report-record",
+            "gers-1999-author-report-full-text",
+            "gers-schmidhuber-online-bibliography"
+          ],
+          "notes": "The institutional record dates the report to 26 January 1999; its title page says January, while the author bibliography says February. The inspected author-hosted PostScript is a 19-page 24 February build. The current institutional payload is a later March build and corrects the forget-weight eligibility term that the February build prints differently. Technical claims and quantitative results therefore use the separately bound journal text unless a report-specific difference is stated."
+        },
+        {
+          "id": "gers-schmidhuber-cummins-1999-icann-version",
+          "title": "Learning to Forget: Continual Prediction with LSTM",
+          "authors": [
+            "Felix A. Gers",
+            "Jürgen Schmidhuber",
+            "Fred Cummins"
+          ],
+          "kind": "proceedings",
+          "label": "ICANN’99 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "F. A. Gers, J. Schmidhuber, and F. Cummins, “Learning to Forget: Continual Prediction with LSTM,” in Proceedings of the 9th International Conference on Artificial Neural Networks, vol. 2, Edinburgh, pp. 850–855, 1999.",
+            "venue": "9th International Conference on Artificial Neural Networks (ICANN’99)",
+            "publisher": "Institution of Electrical Engineers",
+            "publicationPlaces": [
+              "London, United Kingdom"
+            ],
+            "volume": "2",
+            "pages": [
+              "850-855"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1049/cp:19991218",
+                "label": "Proceedings paper DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gers-1999-icann-full-text",
+            "gers-1999-icann-crossref-record",
+            "gers-1999-bht-bibliography",
+            "gers-schmidhuber-online-bibliography"
+          ],
+          "notes": "The author-hosted file has an oral-presentation cover plus the six printed proceedings pages 850–855. It is a condensed CERG-only account: it preserves the forget-gate mechanism and four perfect-solution rates but omits the journal’s state-decay row, good/rest columns, and CNTO experiment. Crossref lists only Felix Gers; the full title page and author bibliographies establish all three authors."
+        },
+        {
+          "id": "gers-schmidhuber-cummins-2000-neural-computation-version",
+          "title": "Learning to Forget: Continual Prediction with LSTM",
+          "authors": [
+            "Felix A. Gers",
+            "Jürgen Schmidhuber",
+            "Fred Cummins"
+          ],
+          "kind": "journal",
+          "label": "Canonical Neural Computation article",
+          "language": "en",
+          "bibliography": {
+            "citation": "F. A. Gers, J. Schmidhuber, and F. Cummins, “Learning to Forget: Continual Prediction with LSTM,” Neural Computation, vol. 12, no. 10, pp. 2451–2471, 1 October 2000.",
+            "venue": "Neural Computation",
+            "publisher": "MIT Press",
+            "volume": "12",
+            "issues": [
+              "10"
+            ],
+            "pages": [
+              "2451-2471"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1162/089976600300015015",
+                "label": "Journal article DOI"
+              },
+              {
+                "type": "issn",
+                "value": "0899-7667",
+                "label": "Print ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gers-2000-mit-record",
+            "gers-2000-crossref-record",
+            "gers-2000-author-journal-full-text",
+            "gers-schmidhuber-online-bibliography"
+          ],
+          "notes": "The publisher record supplies journal metadata and article history. The inspected author-hosted reading copy has one acceptance cover followed by stable internal pages 1–19; those internal pages support technical locators but do not map to the published folios 2451–2471."
+        }
+      ],
+      "canonicalVersionId": "gers-schmidhuber-cummins-2000-neural-computation-version",
+      "preferredSourceIds": [
+        "gers-2000-mit-record",
+        "gers-2000-crossref-record"
+      ],
+      "sourceIds": [
+        "gers-1999-aris-report-record",
+        "gers-1999-author-report-full-text",
+        "gers-1999-icann-full-text",
+        "gers-1999-icann-crossref-record",
+        "gers-1999-bht-bibliography",
+        "gers-2000-mit-record",
+        "gers-2000-crossref-record",
+        "gers-2000-author-journal-full-text",
+        "gers-schmidhuber-online-bibliography"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "This work isolates a failure of the original constant-error cell on unsegmented continual streams and adds an adaptive forget gate that learns when to retain, decay, or reset state. It is the documented bridge from the 1995/1997 input/output-gated cell to later composite LSTM variants, while its evidence remains synthetic and version-specific."
+      },
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention"
+      ],
+      "significance": {
+        "beginner": "The original memory cell could keep adding small values until its state became unusable unless someone reset it at known boundaries. A learned forget gate lets the cell keep useful state, fade it, or clear it from the data itself.",
+        "expert": "A block-shared sigmoid gate replaces the CEC’s fixed unit self-weight in the state recurrence, and its eligibility trace is reset when the gate closes. Continual embedded-Reber and noisy temporal-order experiments test learned segmentation and reset, with exact protocol, success-rate, and version boundaries preserved."
+      },
+      "limitations": [
+        "All evaluated problems are generated sequence tasks; the paper does not test language modeling, natural speech, or a real-world continual stream.",
+        "The topology is not optimized, and the main continual experiments use 100 independently initialized networks without confidence intervals, formal significance tests, or a modern replication package.",
+        "The state-decay comparison reports one selected fixed decay value and does not provide a broad matched hyperparameter search.",
+        "The continual direct baselines are omitted where the authors say those methods already fail easier component tasks; the paper therefore does not provide a complete matched baseline table for every continual condition.",
+        "The ICANN paper covers only the continual embedded-Reber experiment. The technical report and journal add the continual noisy temporal-order task, and their Table 3 mean training counts differ materially; results are never transferred silently across versions.",
+        "The author-hosted February report build prints a different forget-weight derivative term from the later institutional build and journal equation. Promoted mechanism and learning-rule claims use the audited journal version.",
+        "The paper’s ‘forgetting’ resets recurrent activation state; it is not evidence about catastrophic forgetting of learned parameters.",
+        "Public reading copies and records provide no verified paper-level open-content license, so this repository links rather than redistributes the full texts."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The official report record, title page, author bibliography, and surviving file builds disagree at month or build-date precision. The ordering event uses the institutional issue date, 26 January 1999, while the version notes preserve the February and March build evidence without treating either build timestamp as a new historical contribution."
+        },
+        {
+          "status": "resolved",
+          "note": "Sundermeyer 2012 and Crossref list only Felix Gers for the ICANN paper, but its full title page and two author bibliographies establish Gers, Schmidhuber, and Cummins; DOI, title, venue, volume, and pages uniquely resolve the incomplete citation."
+        },
+        {
+          "status": "open",
+          "note": "The exact presentation day and proceedings-release date for the ICANN version have not been established.",
+          "resolutionCondition": "An authoritative dated program or proceedings publication record would be required for finer chronology."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for the inspected full texts.",
+          "resolutionCondition": "A rights-holder statement or explicitly licensed repository copy would be required before classifying or redistributing any version as open content."
         }
       ]
     },
@@ -3732,6 +4042,141 @@
       ]
     },
     {
+      "id": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "title": "Learning Precise Timing with LSTM Recurrent Networks",
+      "authors": [
+        "Felix A. Gers",
+        "Nicol N. Schraudolph",
+        "Jürgen Schmidhuber"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "F. A. Gers, N. N. Schraudolph, and J. Schmidhuber, “Learning Precise Timing with LSTM Recurrent Networks,” Journal of Machine Learning Research 3, 115–143 (August 2002).",
+      "chronology": {
+        "orderingEventId": "gers-schraudolph-schmidhuber-2002-journal-publication",
+        "events": [
+          {
+            "id": "gers-schraudolph-schmidhuber-2002-journal-publication",
+            "kind": "journal-publication",
+            "label": "JMLR publication",
+            "date": {
+              "value": "2002-08",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gers-2002-jmlr-record",
+                "precision": "month",
+                "locator": "Official JMLR record, volume 3 (August), pp. 115–143, 2002"
+              },
+              {
+                "sourceId": "gers-2002-jmlr-full-text",
+                "precision": "month",
+                "locator": "Printed p. 115, Published 8/02"
+              }
+            ],
+            "versionId": "gers-schraudolph-schmidhuber-2002-jmlr-version",
+            "sourceIds": [
+              "gers-2002-jmlr-record",
+              "gers-2002-jmlr-full-text",
+              "gers-schmidhuber-online-bibliography"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "gers-schraudolph-schmidhuber-2002-jmlr-version",
+          "title": "Learning Precise Timing with LSTM Recurrent Networks",
+          "authors": [
+            "Felix A. Gers",
+            "Nicol N. Schraudolph",
+            "Jürgen Schmidhuber"
+          ],
+          "kind": "journal",
+          "label": "JMLR article",
+          "language": "en",
+          "bibliography": {
+            "citation": "F. A. Gers, N. N. Schraudolph, and J. Schmidhuber, “Learning Precise Timing with LSTM Recurrent Networks,” Journal of Machine Learning Research, vol. 3, pp. 115–143, August 2002.",
+            "venue": "Journal of Machine Learning Research",
+            "publisher": "JMLR",
+            "volume": "3",
+            "pages": [
+              "115-143"
+            ],
+            "identifiers": [
+              {
+                "type": "catalog-id",
+                "value": "gers02a",
+                "label": "JMLR article identifier"
+              },
+              {
+                "type": "issn",
+                "value": "1532-4435",
+                "label": "Journal ISSN"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gers-2002-jmlr-record",
+            "gers-2002-jmlr-full-text",
+            "gers-schmidhuber-online-bibliography"
+          ],
+          "notes": "The official record and complete 29-page PDF identify one JMLR version with printed folios 115–143. Printed p. 115 says Submitted 5/01, Revised 3/02, and Published 8/02; only publication controls ordering because the schema does not relabel the paper’s ‘Submitted’ notation as a received date. The legacy DOI 10.1162/153244303768966139 currently resolves to a deleted-record tombstone and is not an active identifier for this version."
+        }
+      ],
+      "canonicalVersionId": "gers-schraudolph-schmidhuber-2002-jmlr-version",
+      "preferredSourceIds": [
+        "gers-2002-jmlr-record"
+      ],
+      "sourceIds": [
+        "gers-2002-jmlr-record",
+        "gers-2002-jmlr-full-text",
+        "gers-2002-crossref-deleted-doi",
+        "gers-schmidhuber-online-bibliography"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper explicitly builds on forget-gated LSTM and adds learned cell-state-to-gate peephole connections so gates can inspect a protected timer. It separates retention control from state visibility and provides timing-task experiments and ablations that make the later composite LSTM used for language modeling historically traceable."
+      },
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "significance": {
+        "beginner": "A closed output gate can hide a cell’s internal timer from the other gates. Peephole connections let the gates inspect that protected state directly, while the separate forget gate still decides when the timer should be cleared.",
+        "expert": "Input and forget peepholes read the previous cell state, while the output peephole reads the newly updated state, fixing the gate-update order. The paper adds three weights per cell under its one-cell setup and tests precise timing through missing-symbol, spike-generation, and no-input waveform tasks."
+      },
+      "limitations": [
+        "The experiments use bespoke synthetic timing tasks, one memory block with one cell, ten independently initialized networks, thresholded success criteria, roughly tuned momentum, and early stopping; no natural-language task is evaluated.",
+        "The paper’s tables compare its forget-gated LSTM with and without peepholes but do not include an ordinary recurrent-network control, despite broader claims about traditional recurrent networks.",
+        "The authors report no clear statistical advantage for peepholes on the missing-symbol task overall; stronger evidence is specific to generated spikes and nonlinear periodic functions.",
+        "The learning procedure truncates gate errors and does not propagate gate error backward through peepholes into the constant-error carousel, so gating is not fully recurrent.",
+        "The evaluated cell shares gates across a block, omits the common output-state squashing function, and uses customized truncated RTRL/backpropagation; it is not identical to every later ‘standard LSTM’ shorthand.",
+        "The paper identifies capacity, modularization, nontrivial stack or queue behavior, noisy temporal triggers, and zero-state initialization as unresolved boundaries.",
+        "The legacy Crossref DOI record is deleted and carries incorrect year, volume, journal, and ISSN metadata; it is retained only as version-boundary evidence and must not be displayed as an active DOI.",
+        "The paper is publicly readable and retains author copyright, but no article-specific open-content license was verified."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The active JMLR record and printed PDF, not the deleted Crossref DOI deposit, establish the title, authors, volume, pages, and August 2002 publication date."
+        },
+        {
+          "status": "resolved",
+          "note": "The paper explicitly calls its added state-to-gate links peephole connections and explicitly builds on the forget-gated 2000 work; the two mechanisms remain separate idea records."
+        },
+        {
+          "status": "open",
+          "note": "No article-specific open-content license was found for this 2002 paper.",
+          "resolutionCondition": "A rights-holder or journal statement tied to this article would be required before classifying or redistributing it as open content."
+        }
+      ]
+    },
+    {
       "id": "mikolov-2010-recurrent-neural-language-model",
       "title": "Recurrent neural network based language model",
       "authors": [
@@ -3979,7 +4424,9 @@
         "sundermeyer-2012-isca-conference-record",
         "sundermeyer-2012-isca-full-text",
         "sundermeyer-2012-rwth-record",
-        "sundermeyer-2012-ldc-treebank-record"
+        "sundermeyer-2012-ldc-treebank-record",
+        "gers-1999-icann-full-text",
+        "gers-2002-jmlr-full-text"
       ],
       "inclusion": {
         "status": "core",
@@ -3996,15 +4443,17 @@
         "recurrent-neural-word-language-modeling",
         "constant-error-recurrent-memory",
         "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback",
         "class-factored-neural-output"
       ],
       "significance": {
-        "beginner": "A recurrent language model replaces a fragile changing state with gated memory: separate controls regulate writing, retaining, and exposing stored information. On the paper’s word-prediction tests this model lowers perplexity, and when mixed with a much larger count model it lowers the two reported speech-recognition error rates by 0.5 and 0.3 percentage points.",
-        "expert": "The system combines an LSTM cell with a forget gate and cell-state-to-gate connections, a vocabulary softmax trained by cross-entropy, optional input projections, and class-factored output normalization. Penn Treebank comparisons, long-context concatenations, output clustering, and French 1000-best rescoring expose both gains and reproducibility boundaries."
+        "beginner": "A recurrent language model uses distinct controls for writing, retaining, exposing, and inspecting stored state. On the paper’s word-prediction tests this composite cell lowers perplexity, and when mixed with a much larger count model it lowers the two reported speech-recognition error rates by 0.5 and 0.3 percentage points.",
+        "expert": "The system combines the original constant-error and input/output-gated core with the 1999/2000 forget gate and 2002 cell-state-to-gate connections, plus a vocabulary softmax, optional input projections, and class-factored output normalization. Penn Treebank comparisons, long-context concatenations, output clustering, and French 1000-best rescoring expose both gains and reproducibility boundaries."
       },
       "limitations": [
         "The fixed-window versus full-history contrast is conceptual: the experiments do not establish usable unlimited context, and the paper’s average sentence length of 21 words is not a maximum context bound.",
-        "The evaluated cell is composite. It retains the constant-error, input-gate, and output-gate core from the cited 1997 article while adding a forget gate and cell-state-to-gate connections. The paper collectively assigns two modifications to references 12 and 13 but does not map either mechanism one-to-one to a reference or use the term peephole.",
+        "The evaluated cell is composite. It retains the constant-error, input-gate, and output-gate core from the cited 1997 article while adding a forget gate and cell-state-to-gate connections. The target collectively assigns those modifications to references 12 and 13; a cross-source audit maps the forget gate to the 1999 paper and the weighted state-to-gate ‘peepholes’ to the 2002 paper. Sundermeyer et al. do not use the term peephole, reproduce the earlier equations, or prove implementation identity.",
         "Penn Treebank results are plotted rather than tabulated, so most exact perplexity points, context-length curves, and clustering values cannot be recovered reliably from the paper; the text also does not identify whether Figure 3 reports development or test perplexity.",
         "The reported roughly eight-percent perplexity advantage compares LSTM and sigmoid recurrent models in this paper; it is not a numerical reproduction of Mikolov et al. 2010.",
         "Longer concatenated context eventually worsens perplexity, and the prose and graph do not fully agree about the sigmoid-projection curve.",
@@ -4023,6 +4472,10 @@
         {
           "status": "resolved",
           "note": "The four archive leaves map directly to printed proceedings pages 194–197, so all technical locators use the visible printed folios."
+        },
+        {
+          "status": "resolved",
+          "note": "Primary-text comparison resolves reference 12 to the adaptive forget gate and reference 13 to weighted cell-state-to-gate peephole connections. The target’s abbreviated reference 12 omits two authors, and the correspondence does not imply that its compact implementation reproduces every earlier equation or update-order detail."
         },
         {
           "status": "open",
@@ -4746,6 +5199,9 @@
         "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
         "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
         "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "gers-2000-continual-state-drift-problem",
+        "gers-2000-forget-gate-mechanism",
+        "gers-2002-peephole-motivation",
         "sundermeyer-2012-lstm-antecedent-and-variant",
         "sundermeyer-2012-memory-cell-mechanism",
         "sundermeyer-2012-rnn-lstm-perplexity",
@@ -4764,12 +5220,16 @@
       "id": "gated-recurrent-memory-access",
       "name": "Gated recurrent memory access",
       "kind": "mechanism",
-      "description": "Learned multiplicative controls regulate whether candidate information enters recurrent state and whether stored state affects cell output; later variants add a learned control over state retention.",
+      "description": "Learned multiplicative controls regulate whether candidate information enters recurrent state, whether prior state is retained, and whether stored state affects cell output; the distinct gate and feedback mechanisms remain separately traceable.",
       "claimIds": [
         "hochreiter-schmidhuber-1997-input-output-gates",
         "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
         "hochreiter-schmidhuber-1997-long-lag-experimental-scope",
         "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "gers-2000-forget-gate-mechanism",
+        "gers-2000-forget-gate-learning-and-complexity",
+        "gers-2002-forget-gate-antecedent",
+        "gers-2002-peephole-mechanism",
         "sundermeyer-2012-lstm-antecedent-and-variant",
         "sundermeyer-2012-memory-cell-mechanism",
         "sundermeyer-2012-rnn-lstm-perplexity",
@@ -4783,7 +5243,63 @@
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "The 1995/1997 version has input and output gates only; the 2012 implementation also uses a later forget gate and cell-state-to-gate connections, which are not attributed backward."
+          "note": "The 1995/1997 version has input and output gates only. The 1999/2000 work adds learned retention, and the 2002 work adds cell-state-to-gate feedback; neither mechanism is attributed backward."
+        }
+      ]
+    },
+    {
+      "id": "adaptive-recurrent-state-retention",
+      "name": "Adaptive recurrent state retention",
+      "kind": "mechanism",
+      "description": "A learned sigmoid gate multiplies the previous recurrent cell state, allowing data-dependent retention, gradual decay, or reset instead of a permanently fixed self-weight or an externally supplied boundary reset.",
+      "claimIds": [
+        "gers-2000-continual-state-drift-problem",
+        "gers-2000-forget-gate-mechanism",
+        "gers-2000-forget-gate-learning-and-complexity",
+        "gers-2000-cerg-protocol",
+        "gers-2000-cerg-results",
+        "gers-2000-cerg-self-reset-analysis",
+        "gers-2000-noncontinual-memory-control",
+        "gers-2000-cnto-results",
+        "gers-2000-evidence-boundary",
+        "gers-2002-forget-gate-antecedent",
+        "gers-2002-gts-results-and-ablation",
+        "gers-2002-pfg-results",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 1999 report, ICANN paper, and 2000 journal article are grouped as versions of one work, but their exact equations, experiment coverage, weight counts, lag descriptions, and training means are not assumed interchangeable."
+        },
+        {
+          "status": "resolved",
+          "note": "This mechanism controls activation-state retention; it is not parameter-level protection against catastrophic forgetting."
+        }
+      ]
+    },
+    {
+      "id": "cell-state-to-gate-feedback",
+      "name": "Cell-state-to-gate feedback",
+      "kind": "mechanism",
+      "description": "Learned peephole connections expose protected cell state directly to its gates, so input and forget decisions can inspect prior state and output decisions can inspect newly updated state even when ordinary cell output is closed.",
+      "claimIds": [
+        "gers-2002-peephole-motivation",
+        "gers-2002-peephole-mechanism",
+        "gers-2002-peephole-learning-boundary",
+        "gers-2002-msd-results",
+        "gers-2002-gts-results-and-ablation",
+        "gers-2002-pfg-results",
+        "gers-2002-evidence-boundary",
+        "gers-2002-lstm-limitations",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The 2002 equations use prior state for input and forget gates and newly updated state for the output gate. Sundermeyer 2012 displays state-to-gate links but does not reproduce that update order, so implementation identity is not inferred."
         }
       ]
     },
@@ -6997,6 +7513,251 @@
         "pageEnd": 1048
       },
       "accessNote": "The official four-page proceedings PDF was rendered and inspected in full. Claim locators use printed pp. 1045–1048. Visual inspection confirms that Table 3’s dynamic evaluation value is 16.3 followed by superscript footnote 4, not 16.34. No verified paper-level open-content license accompanies the file and it is not redistributed."
+    },
+    {
+      "id": "gers-1999-aris-report-record",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "ARIS institutional record for Technical Report IDSIA-01-99",
+      "url": "https://aris.supsi.ch/handle/123456789/18532",
+      "accessDate": "2026-08-10",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "gers-schmidhuber-cummins-1999-idsia-report-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The institutional record supplies the three authors, report number IDSIA-01-99, and issued date 26 January 1999. Its current downloadable payload is a later March TeX build than the separately inspected author-hosted February PostScript; the work notes preserve that build boundary."
+    },
+    {
+      "id": "gers-1999-author-report-full-text",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "Author-hosted PostScript of Technical Report IDSIA-01-99",
+      "url": "https://sferics.idsia.ch/pub/juergen/FgGates-TechRep.ps.gz",
+      "accessDate": "2026-08-10",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "gers-schmidhuber-cummins-1999-idsia-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The complete 19-page PostScript report was inspected as a 24 February 1999 build. Its title page says January 1999. Its forget-weight derivative and several experimental values differ from the later institutional build or journal, so it is not used as silent evidence for journal-specific claims. No explicit reuse license accompanies the file."
+    },
+    {
+      "id": "gers-1999-icann-full-text",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget",
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "Author-hosted full text of the ICANN’99 Learning to Forget paper",
+      "url": "https://sferics.idsia.ch/pub/juergen/icann99.ps.gz",
+      "accessDate": "2026-08-10",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "gers-schmidhuber-cummins-1999-icann-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 850,
+        "pageEnd": 855
+      },
+      "accessNote": "The file contains an oral-presentation cover plus the six printed proceedings pages 850–855. The full title page names Gers, Schmidhuber, and Cummins, while section 3 directly defines the adaptive forget gate. It was inspected for the exact version cited incompletely as Sundermeyer reference 12. No explicit reuse license accompanies the file."
+    },
+    {
+      "id": "gers-1999-icann-crossref-record",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "Crossref DOI record for the ICANN’99 Learning to Forget paper",
+      "url": "https://api.crossref.org/works/10.1049%2Fcp%3A19991218",
+      "accessDate": "2026-08-10",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "gers-schmidhuber-cummins-1999-icann-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The DOI deposit binds the title, ICANN’99 venue, volume 2, pp. 850–855, year, and DOI. It lists only F. A. Gers; the complete paper and author bibliographies correct that incomplete author deposit."
+    },
+    {
+      "id": "gers-1999-bht-bibliography",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "Felix Gers institutional bibliography",
+      "url": "https://prof.bht-berlin.de/gers/publikationen",
+      "accessDate": "2026-08-10",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "gers-schmidhuber-cummins-1999-icann-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author’s institutional bibliography identifies the ICANN paper with Gers, Schmidhuber, and Cummins and corroborates its venue, year, volume, and pages, resolving the abbreviated one-author deposits."
+    },
+    {
+      "id": "gers-2000-mit-record",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "MIT Press record for Learning to Forget",
+      "url": "https://direct.mit.edu/neco/article/12/10/2451/6415/Learning-to-Forget-Continual-Prediction-with-LSTM",
+      "accessDate": "2026-08-10",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "gers-schmidhuber-cummins-2000-neural-computation-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher record supplies the three authors, Neural Computation volume 12 issue 10, pp. 2451–2471, DOI, received and accepted dates, and 1 October 2000 publication date."
+    },
+    {
+      "id": "gers-2000-crossref-record",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "Crossref DOI record for Learning to Forget",
+      "url": "https://api.crossref.org/works/10.1162%2F089976600300015015",
+      "accessDate": "2026-08-10",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "gers-schmidhuber-cummins-2000-neural-computation-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The DOI deposit independently binds the title, all three authors, journal, volume, issue, pages, publisher, DOI, and 1 October 2000 print date."
+    },
+    {
+      "id": "gers-2000-author-journal-full-text",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "title": "Author-hosted complete text of the Neural Computation Learning to Forget article",
+      "url": "https://sferics.idsia.ch/pub/juergen/FgGates-NC.pdf",
+      "accessDate": "2026-08-10",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "gers-schmidhuber-cummins-2000-neural-computation-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 19
+      },
+      "accessNote": "The complete author-layout article was rendered and inspected in full. Its 20 PDF leaves comprise an acceptance cover followed by stable internal pages 1–19; those internal pages support claim location but do not map to journal folios 2451–2471. No verified open-content license accompanies the file."
+    },
+    {
+      "id": "gers-2002-jmlr-record",
+      "relatedWorkIds": [
+        "gers-schraudolph-schmidhuber-2002-precise-timing"
+      ],
+      "title": "JMLR record for Learning Precise Timing with LSTM Recurrent Networks",
+      "url": "https://www.jmlr.org/papers/v3/gers02a.html",
+      "accessDate": "2026-08-10",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "gers-schraudolph-schmidhuber-2002-jmlr-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official article record supplies the title, three authors, volume 3, August 2002 issue label, pp. 115–143, abstract, and PDF/PS links. It does not display an active DOI."
+    },
+    {
+      "id": "gers-2002-jmlr-full-text",
+      "relatedWorkIds": [
+        "gers-schraudolph-schmidhuber-2002-precise-timing",
+        "sundermeyer-2012-lstm-language-model"
+      ],
+      "title": "Official JMLR full text of Learning Precise Timing with LSTM Recurrent Networks",
+      "url": "https://www.jmlr.org/papers/volume3/gers02a/gers02a.pdf",
+      "accessDate": "2026-08-10",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "gers-schraudolph-schmidhuber-2002-jmlr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 115,
+        "pageEnd": 143
+      },
+      "accessNote": "The official 29-page PDF was rendered and inspected in full. Printed folios 115–143 supply stable locators for equations, tables, figures, limitations, chronology, and references. Printed p. 115 retains author copyright; no article-specific open-content license was verified."
+    },
+    {
+      "id": "gers-2002-crossref-deleted-doi",
+      "relatedWorkIds": [
+        "gers-schraudolph-schmidhuber-2002-precise-timing"
+      ],
+      "title": "Crossref deleted-record tombstone for legacy DOI 10.1162/153244303768966139",
+      "url": "https://api.crossref.org/works/10.1162%2F153244303768966139",
+      "accessDate": "2026-08-10",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The current record is explicitly a deleted-DOI listing and carries a literal DOI title, 2000 issue date, volume 1, and unrelated ISSN. It is retained only to prevent those fields or the DOI from being displayed as active metadata for the JMLR article."
+    },
+    {
+      "id": "gers-schmidhuber-online-bibliography",
+      "relatedWorkIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget",
+        "gers-schraudolph-schmidhuber-2002-precise-timing"
+      ],
+      "title": "Jürgen Schmidhuber online publication bibliography",
+      "url": "https://people.idsia.ch/~juergen/onlinepub.html",
+      "accessDate": "2026-08-10",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "gers-schmidhuber-cummins-1999-idsia-report-version",
+        "gers-schmidhuber-cummins-1999-icann-version",
+        "gers-schmidhuber-cummins-2000-neural-computation-version",
+        "gers-schraudolph-schmidhuber-2002-jmlr-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author bibliography separately lists the IDSIA report, ICANN paper, Neural Computation article, and JMLR precise-timing paper with links. It supports grouping the same-titled forget-gate records as versions while leaving the 2002 peephole article as a separate work; the report entry says February 1999, which is preserved as a metadata discrepancy rather than replacing the institutional issue date."
     },
     {
       "id": "sundermeyer-2012-isca-record",
@@ -13774,11 +14535,529 @@
         }
       ],
       "limitations": [
-        "The absence of later gate variants is inferred from the complete displayed architecture and equations. Sundermeyer et al. separately describe a later forget gate and cell-state-to-gate connections while citing two later works collectively, without mapping either mechanism one-to-one to a reference.",
+        "The absence of later gate variants is inferred from the complete displayed architecture and equations. The separately promoted 1999/2000 and 2002 works directly establish the forget gate and cell-state-to-gate feedback additions.",
         "All evaluated tasks are synthetic; speech, time-series, and music applications are proposed rather than tested."
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "gers-2000-continual-state-drift-problem",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "On unsegmented continual streams, repeated cell-input additions can make the original LSTM state grow without bound; saturation of the output squashing function then drives its derivative toward zero and can make the cell cease functioning, while a fixed decay sacrifices arbitrary-delay retention and an external reset requires known boundaries.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Continual-state failure and fixed-reset alternatives",
+            "section": "2 Standard LSTM; 2.1 Limits of standard LSTM",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "paragraph": "State-growth, saturation, state-decay, and teacher-reset discussion"
+          },
+          "support": "Explains why state accumulates on continual streams, how output saturation blocks useful error, and why fixed decay or teacher-supplied resets are incomplete remedies."
+        }
+      ],
+      "limitations": [
+        "This is an architectural failure analysis demonstrated on the paper’s synthetic continual tasks, not a measurement of drift in natural-language models."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-forget-gate-mechanism",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "One sigmoid forget gate per memory block replaces the cells’ fixed self-weight of one: the prior state is multiplied by the shared gate activation before the input-gated candidate is added, so activation near one retains state, activation near zero resets it, and intermediate values cause gradual decay.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Adaptive forget-gate recurrence",
+            "section": "3 Solution: Forget Gates; 3.1 Forward Pass of Extended LSTM with Forget Gates",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "equation": "6–7",
+            "figure": "1"
+          },
+          "support": "Defines the block-shared sigmoid gate and the state recurrence that multiplies prior state by its activation."
+        }
+      ],
+      "limitations": [
+        "The recurrence is stated in the paper’s block-shared scalar notation and should not be silently replaced by a later vectorized implementation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-forget-gate-learning-and-complexity",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "Positive forget-gate bias initializes the extension near standard LSTM; its truncated eligibility trace carries the previous trace through the current gate and adds a term proportional to the previous state, and gate closure resets both state and that trace. The authors retain constant time per weight per step and sequence-length-independent storage, while adding gate weights.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Forget-gate initialization, learning rule, reset, and complexity",
+            "section": "3 Solution: Forget Gates; 3.1 Forward Pass of Extended LSTM with Forget Gates; 3.2 Backward Pass of Extended LSTM with Forget Gates; 3.3 Complexity",
+            "pageStart": 5,
+            "pageEnd": 8,
+            "equation": "11, 17, 20",
+            "paragraph": "Initialization, eligibility reset, and section 3.3 complexity"
+          },
+          "support": "Specifies positive gate bias, the exact journal eligibility recurrence and shared-gate update, the reset behavior, and asymptotic time and storage costs."
+        }
+      ],
+      "limitations": [
+        "The author-hosted February technical-report build prints a different term in the corresponding derivative; this claim is deliberately bound to the journal equations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-cerg-protocol",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "The continual embedded-Reber experiment concatenates strings without boundary markers or external state resets, uses seven input and seven output units plus four two-cell memory blocks and 424 adjustable weights, trains 100 independently initialized networks for at most 30,000 streams, and calls a solution perfect only after ten 100,000-symbol test streams are predicted correctly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "CERG construction, network, training, and success criterion",
+            "section": "4 Experiments",
+            "pageStart": 9,
+            "pageEnd": 12,
+            "table": "2"
+          },
+          "support": "Defines the concatenated grammar stream, topology, weight count, run count, training cap, and ten-stream perfect-solution test."
+        }
+      ],
+      "limitations": [
+        "The technical report and ICANN paper say 375 adjustable weights and a different minimum grammar lag; those values are not merged into this journal-bound protocol claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-cerg-results",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "In Table 2, standard LSTM with external reset yields 74% perfect solutions at a mean 7,441 training streams; without reset, standard LSTM and fixed state decay yield 0% perfect; learned forget gates yield 18% perfect at 18,889 streams plus 29% good solutions; and adding sequential learning-rate decay yields 62% perfect at 14,087 streams plus 6% good solutions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Continual embedded-Reber results",
+            "section": "4.3 CERG Results",
+            "pageStart": 12,
+            "pageEnd": 12,
+            "table": "2"
+          },
+          "support": "Reports the perfect, good, and remaining-solution rates and mean training streams for all five displayed conditions."
+        }
+      ],
+      "limitations": [
+        "The table reports percentages over 100 runs but no confidence intervals or formal significance analysis, and the fixed-decay row represents a selected setting rather than a broad sweep."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-cerg-self-reset-analysis",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "In an inspected successful network, one memory block stores the grammar’s P/T branch distinction across a string, its forget gate drops near zero at learned string boundaries, and other blocks reset on shorter timescales; the figures contrast this learned self-reset with the roughly linear state growth and eventual failure of standard LSTM.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "State drift and learned reset traces",
+            "section": "4.4 Analysis of the CERG Results",
+            "pageStart": 13,
+            "pageEnd": 14,
+            "figure": "4–6"
+          },
+          "support": "Shows standard state drift and interprets the successful network’s long- and short-timescale cell states and forget-gate resets."
+        }
+      ],
+      "limitations": [
+        "The mechanistic trace is an analysis of selected learned networks, not a distributional summary across all 100 runs."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-noncontinual-memory-control",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "On the noncontinual noisy temporal-order task, a forget bias of 5 makes the extension behave like standard LSTM and learn at similar speed, while bias 1 takes about three times longer but still reaches the task criterion; the authors report no tested case with standard-LSTM success and forget-gated-extension failure.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Noncontinual noisy temporal-order control",
+            "section": "4.5 Continual Noisy Temporal Order Problem",
+            "pageStart": 15,
+            "pageEnd": 15,
+            "paragraph": "NTO control before the CNTO construction"
+          },
+          "support": "Reports the high- and moderate-bias behavior, approximate slowdown, and tested-task compatibility claim."
+        }
+      ],
+      "limitations": [
+        "The no-regression observation is limited to the authors’ tested synthetic tasks and is not a general guarantee that adaptive forgetting is harmless."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-cnto-results",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "On continual noisy temporal order, standard LSTM yields 0% perfect solutions and a mean partial run of 4.6 sequences; forget-gated LSTM yields 24% perfect at a mean 18,077 training streams and mean partial run 12.2; adding learning-rate decay yields 37% perfect at 22,654 streams and mean partial run 11.8. Perfect requires 1,000 successive correct sequences in each of ten test streams.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Continual noisy temporal-order results",
+            "section": "4.5 Continual Noisy Temporal Order Problem",
+            "pageStart": 15,
+            "pageEnd": 16,
+            "table": "3"
+          },
+          "support": "Reports all perfect and partial success values, training means, the 100,000-stream cap, and the ten-stream success criterion."
+        }
+      ],
+      "limitations": [
+        "The technical report has the same 24% and 37% perfect rates but much larger mean training counts; this claim uses the journal Table 3 only."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2000-evidence-boundary",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "The evidence supports learned state reset on two synthetic continual sequence families under the paper’s topology and training rules; real-world continual prediction, hierarchical decomposition, boundary cues, and broader applications remain proposals rather than evaluated results.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Scope and proposed extensions",
+            "section": "5 Conclusion",
+            "pageStart": 17,
+            "pageEnd": 17,
+            "paragraph": "Summary, harder variants, and future applications"
+          },
+          "support": "Summarizes the two benchmark families and frames harder boundary cues, decomposition, and applications as future work."
+        }
+      ],
+      "limitations": [
+        "The paper supplies no code, learned parameters, confidence intervals, significance tests, optimized topology study, or natural-language experiment."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-forget-gate-antecedent",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention"
+      ],
+      "statement": "The paper explicitly builds on LSTM with the forget gate from Gers, Schmidhuber, and Cummins 2000; its baseline state update already multiplies prior state by that gate, while the 2002 architectural addition is direct cell-state access for the gates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Forget-gated baseline and cited antecedent",
+            "section": "2. Traditional LSTM",
+            "pageStart": 117,
+            "pageEnd": 120,
+            "equation": "3–4",
+            "paragraph": "Opening lineage statement and baseline architecture"
+          },
+          "support": "Names the forget-gated 2000 work as the adopted baseline and defines its retention/reset recurrence before introducing peepholes."
+        }
+      ],
+      "limitations": [
+        "The edge preserves the paper’s own attribution and does not assign the forget gate to the original 1997 cell."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-peephole-motivation",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "Ordinary gates can observe external and recurrent inputs and exposed cell outputs, but a closed output gate drives cell output near zero and hides the protected internal state; direct state-to-gate connections let gating decisions inspect that hidden timer.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Why gates need direct state access",
+            "section": "3. Extending LSTM with Peephole Connections",
+            "pageStart": 121,
+            "pageEnd": 122,
+            "figure": "2"
+          },
+          "support": "Contrasts cell output with protected state and explains why a closed output gate prevents the traditional gates from observing timing state."
+        }
+      ],
+      "limitations": [
+        "The motivation concerns visibility of protected state to gates; it is distinct from whether the forget gate retains or resets that state."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-peephole-mechanism",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "Weighted peepholes from every cell state in a block feed the shared input, forget, and output gates. Input and forget gates inspect the previous state, but the output gate inspects the newly updated state, requiring the update order input gate, forget gate, cell input and state, then output gate and cell output.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Peephole equations and update order",
+            "section": "3. Extending LSTM with Peephole Connections; 3.1 Modified Forward Pass for Peephole LSTM",
+            "pageStart": 122,
+            "pageEnd": 122,
+            "equation": "19–21",
+            "paragraph": "Ordered forward-pass description"
+          },
+          "support": "Defines all three state-to-gate weighted sums and explicitly distinguishes previous-state from current-state access and the resulting update order."
+        }
+      ],
+      "limitations": [
+        "Gates are shared across cells within a block, and every block state can feed each gate; this exact topology should not be flattened into an unspecified modern LSTM."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-peephole-learning-boundary",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "The added peephole learning rules use truncated recurrent partials for input and forget links and an output-gate delta for the current-state link; the authors add three weights per cell and retain local, sequence-length-independent computation, but do not propagate gate errors backward through peepholes into the constant-error carousel.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Peephole learning equations and truncation boundary",
+            "section": "3.2 Update Rules for Peephole Connections",
+            "pageStart": 123,
+            "pageEnd": 123,
+            "equation": "22–26",
+            "paragraph": "Complexity and error-propagation discussion"
+          },
+          "support": "Provides the five update equations, three-weights-per-cell count, locality claim, and explicit gate-error truncation."
+        }
+      ],
+      "limitations": [
+        "The constant asymptotic cost does not mean zero overhead, and the truncated procedure is not full backpropagation through every peephole path."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-msd-results",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "For noncontinual missing-symbol discrimination with delays {0,1}, success at F=10, 20, 30, 40, and 50 is respectively 100/100, 100/100, 100/80, 20/70, and 0/10 percent for forget-gated LSTM without/with peepholes. On the two displayed continual F=10 rows, success is 10/20 percent for delays {0,1} and 20/60 percent for {0,1,2}; the authors conclude there is no clear statistical advantage overall on this task.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Missing-symbol discrimination results",
+            "section": "4.2 Measuring Spike Delays (MSD)",
+            "pageStart": 126,
+            "pageEnd": 129,
+            "table": "1"
+          },
+          "support": "Reports success and training summaries for noncontinual and continual conditions and states the paper’s cautious overall interpretation."
+        }
+      ],
+      "limitations": [
+        "The result pattern does not support a universal claim that peepholes outperform the forget-gated baseline, and the abstract’s spacing wording is not silently reconciled with the experimental recurrence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-gts-results-and-ablation",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "In the reported ten-run generated-timed-spike experiments, no network without peepholes reaches criterion. With peepholes and zero delay, success at F=10, 20, 30, 40, and 50 is 100%, 100%, 80%, 100%, and 100%; at F=10 it is 50% for delays {0,1} and 30% for {0,1,2}. One trained F=50 solution can relearn after its forget gate is fixed open, but training from scratch without that gate never succeeds.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Generated timed spikes and forget-gate ablation",
+            "section": "4.3 Generating Timed Spikes (GTS)",
+            "pageStart": 128,
+            "pageEnd": 132,
+            "figure": "7"
+          },
+          "support": "Reports all seven success rates, the failure without peepholes, and the distinction between post-training gate removal and training without a forget gate from scratch."
+        }
+      ],
+      "limitations": [
+        "The successful post-training ablation uses a learned negative self-recurrence reset and does not show that the forget gate was unnecessary for discovering the solution."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-pfg-results",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "In the reported ten-run periodic-generation experiments without external input, forget-gated LSTM without/with peepholes succeeds on cosine period 10 in 90/100 percent of runs and on period 25 in 0/60; for triangle periods 10 and 25 the rates are 0/100 and 0/50; for rectangle periods 10 and 25 they are 0/80 and 0/20. In the no-forget trials, no network produces more than two successive periods.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Periodic-function generation results",
+            "section": "4.4 Periodic Function Generation (PFG)",
+            "pageStart": 131,
+            "pageEnd": 134,
+            "table": "3"
+          },
+          "support": "Reports all six baseline/peephole success-rate pairs, training and RMSE summaries, and the no-forget-gate failure boundary."
+        }
+      ],
+      "limitations": [
+        "The networks have no external input or teacher forcing, use ten runs and thresholded success, and the paper’s stricter cosine experiment shows that lower error can require much longer training."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-evidence-boundary",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "The experiments use one memory block with one cell, 14 ordinary weights plus three peepholes, ten independently initialized networks, hand-set success thresholds, roughly tuned momentum, and synthetic timing streams; the result tables provide no ordinary recurrent-network control and no natural-language or real-world benchmark.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Shared network and evaluation protocol",
+            "section": "4.1 Network Topology and Experimental Parameters",
+            "pageStart": 123,
+            "pageEnd": 125,
+            "paragraph": "Topology, weights, initialization, training limits, and success definitions"
+          },
+          "support": "Specifies the one-cell network, 17 weights, ten runs, momentum selection, thresholds, training caps, and synthetic task families."
+        }
+      ],
+      "limitations": [
+        "The architectural result is historically important, but these experiments are not direct evidence about language-model quality, scaling, or linguistic competence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
+    },
+    {
+      "id": "gers-2002-lstm-limitations",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "ideaIds": [
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "The authors bound their result by finite memory-block capacity, unresolved modularization, failure to learn a nontrivial multi-symbol stack or queue, truncated gate-error recurrence that can struggle with extended noisy triggers, and zero-state initialization far from a stable phase-specific trajectory.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Capacity, algorithmic, gating, and initialization limits",
+            "section": "5.1 Network initialization; 5.2 Limitations of LSTM; 5.3 Conclusion",
+            "pageStart": 135,
+            "pageEnd": 139,
+            "paragraph": "Initial-state, memory-capacity, solution-complexity, and extended-trigger discussion"
+          },
+          "support": "Enumerates the paper’s unresolved capacity, modularity, data-structure, gate-recurrence, trigger, and initialization boundaries."
+        }
+      ],
+      "limitations": [
+        "These are the authors’ stated boundaries and proposals, not later empirical tests of modular, stacked, or language-scale LSTM systems."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-10"
     },
     {
       "id": "sundermeyer-2012-full-history-motivation",
@@ -13815,10 +15094,12 @@
       "workId": "sundermeyer-2012-lstm-language-model",
       "ideaIds": [
         "constant-error-recurrent-memory",
-        "gated-recurrent-memory-access"
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
       ],
-      "statement": "The paper attributes the LSTM architecture to Hochreiter and Schmidhuber 1997 and says that two modifications come from references 12 and 13. Its prose and Figure 1 show a forget gate and cell-state-to-gate connections, but the paper neither maps each mechanism one-to-one to a reference nor calls the connections peepholes.",
-      "directness": "direct",
+      "statement": "The paper attributes the LSTM core to Hochreiter and Schmidhuber 1997 and collectively assigns two modifications to references 12 and 13. Cross-source primary comparison resolves reference 12 to the adaptive forget gate and reference 13 to weighted cell-state-to-gate peephole connections, while the target itself neither says ‘peephole’ nor reproduces the earlier equations or update order.",
+      "directness": "editorial-inference",
       "confidence": "high",
       "evidence": [
         {
@@ -13842,14 +15123,42 @@
             "paragraph": "References 11–13"
           },
           "support": "Bibliographically identifies the 1997 article and the two later works listed as references 12 and 13."
+        },
+        {
+          "sourceId": "gers-1999-icann-full-text",
+          "locator": {
+            "label": "Reference 12 title page and forget-gate mechanism",
+            "section": "3 Solution: Forget Gates",
+            "pageStart": 850,
+            "pageEnd": 852,
+            "equation": "6–7"
+          },
+          "support": "The exact ICANN title, venue, year, and pages identify Sundermeyer reference 12, while the full title page restores all three authors and section 3 defines the adaptive forget gate."
+        },
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Reference 13 title page and peephole mechanism",
+            "section": "3. Extending LSTM with Peephole Connections; 3.1 Modified Forward Pass for Peephole LSTM",
+            "pageStart": 115,
+            "pageEnd": 123,
+            "equation": "19–21"
+          },
+          "support": "The exact title, authors, journal, pages, and year identify Sundermeyer reference 13, and the paper names and defines weighted peephole connections from cell state to all three gates."
         }
       ],
       "limitations": [
         "The concrete 2012 cell must not be attributed unchanged to the 1995/1997 work because Figure 1 and the prose contain a later forget gate and cell-state-to-gate connections.",
-        "Reference 12 is bibliographically incomplete in the target paper, and the target does not provide a one-to-one mechanism-to-reference mapping; primary-source attribution remains a separate audit step."
+        "Reference 12 is bibliographically incomplete in the target paper and in Crossref, but the full ICANN title page and author bibliographies resolve it to Gers, Schmidhuber, and Cummins.",
+        "The one-to-one correspondence is an editorial inference from the cited primary texts. It does not establish that Sundermeyer’s compact Figure 1 implements every 1999 or 2002 learning rule, shared-gate convention, or update-order detail."
       ],
-      "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The collective references can be mapped at mechanism level because the complete 1999 source explicitly adds the forget gate and the complete 2002 source explicitly builds on that gate while adding named peephole connections."
+        }
+      ],
+      "checkedDate": "2026-08-10"
     },
     {
       "id": "sundermeyer-2012-memory-cell-mechanism",
@@ -13857,7 +15166,9 @@
       "ideaIds": [
         "recurrent-neural-word-language-modeling",
         "constant-error-recurrent-memory",
-        "gated-recurrent-memory-access"
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
       ],
       "statement": "At each step, the cell combines a gated candidate update with the previous cell state scaled by a forget gate, then exposes a transformed state through an output gate; gate activations are logistic values between zero and one, and additional links connect cell state to the gates.",
       "directness": "direct",
@@ -15462,6 +16773,80 @@
       ]
     },
     {
+      "id": "hochreiter-schmidhuber-1995-to-gers-1999",
+      "from": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "to": {
+        "kind": "work",
+        "id": "gers-schmidhuber-cummins-1999-learning-to-forget"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Gers, Schmidhuber, and Cummins explicitly take the Hochreiter–Schmidhuber constant-error cell with input and output gates as their baseline, identify its state-growth failure on continual unsegmented streams, and preserve that cell while replacing the fixed self-weight with a learned forget gate. The edge is restricted to this documented architectural extension and does not transfer later peepholes or natural-language evidence.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "gers-2000-continual-state-drift-problem",
+        "gers-2000-forget-gate-mechanism"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "gers-2000-author-journal-full-text",
+          "locator": {
+            "label": "Adopted LSTM baseline and forget-gate extension",
+            "section": "1 Introduction; 2 Standard LSTM; 2.1 Limits of standard LSTM; 3 Solution: Forget Gates",
+            "pageStart": 1,
+            "pageEnd": 5,
+            "figure": "1"
+          },
+          "support": "The target cites Hochreiter and Schmidhuber 1997, reviews its constant-error and input/output-gated cell, identifies the continual-state problem, and defines the added forget gate."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "gers-1999-to-gers-2002",
+      "from": {
+        "kind": "work",
+        "id": "gers-schmidhuber-cummins-1999-learning-to-forget"
+      },
+      "to": {
+        "kind": "work",
+        "id": "gers-schraudolph-schmidhuber-2002-precise-timing"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The 2002 paper says it builds on LSTM with forget gates from Gers, Schmidhuber, and Cummins 2000, retains the adaptive state-retention recurrence, and adds weighted peephole connections so the gates can inspect protected cell state. The edge separates retention control from the new state-visibility mechanism and does not imply that their experimental protocols are shared.",
+      "claimIds": [
+        "gers-2000-forget-gate-mechanism",
+        "gers-2000-evidence-boundary",
+        "gers-2002-forget-gate-antecedent",
+        "gers-2002-peephole-motivation",
+        "gers-2002-peephole-mechanism"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Forget-gated antecedent and peephole addition",
+            "section": "2. Traditional LSTM; 3. Extending LSTM with Peephole Connections; 3.1 Modified Forward Pass for Peephole LSTM",
+            "pageStart": 117,
+            "pageEnd": 123,
+            "equation": "3–4, 19–21"
+          },
+          "support": "The target explicitly names the 2000 forget-gate work as its baseline, retains that state recurrence, and then introduces the separate peephole equations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
       "id": "hochreiter-schmidhuber-1995-to-sundermeyer-2012",
       "from": {
         "kind": "work",
@@ -15474,7 +16859,7 @@
       "connectionType": "builds-on",
       "evidenceClass": "documented-influence",
       "confidence": "high",
-      "rationale": "Sundermeyer et al. explicitly cite Hochreiter and Schmidhuber for the LSTM architecture and retain its constant-error state path plus input and output gating in a word language model. The concrete 2012 cell is composite: Figure 1 and the prose add a forget gate and cell-state-to-gate connections, while the target collectively assigns two modifications to its 1999 and 2002 references without mapping either mechanism one-to-one. This edge excludes both later modifications and does not describe an unchanged implementation.",
+      "rationale": "Sundermeyer et al. explicitly cite Hochreiter and Schmidhuber for the LSTM architecture and retain its constant-error state path plus input and output gating in a word language model. The concrete 2012 cell is composite: its forget gate and cell-state-to-gate links are represented by separate, directly evidenced edges from the 1999 and 2002 works. This edge excludes both later modifications and does not describe an unchanged implementation.",
       "claimIds": [
         "hochreiter-schmidhuber-1997-constant-error-carousel",
         "hochreiter-schmidhuber-1997-input-output-gates",
@@ -15503,11 +16888,115 @@
             "pageEnd": 197,
             "paragraph": "Two-modification statement, displayed cell, and references 12–13"
           },
-          "support": "The target says two modifications come from references 12 and 13 and displays a forget gate plus cell-state-to-gate connections, but does not map either mechanism one-to-one; both additions are therefore excluded from this edge."
+          "support": "The target says two modifications come from references 12 and 13 and displays a forget gate plus cell-state-to-gate connections; both additions are excluded from this original-core edge and represented separately."
         }
       ],
       "causalLanguage": "qualified",
       "uncertainties": []
+    },
+    {
+      "id": "gers-1999-to-sundermeyer-2012",
+      "from": {
+        "kind": "work",
+        "id": "gers-schmidhuber-cummins-1999-learning-to-forget"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sundermeyer-2012-lstm-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sundermeyer et al. cite the ICANN’99 Learning to Forget paper as reference 12 while describing a composite LSTM cell with a forget gate. The exact cited paper defines that gate, so this edge is scoped to adaptive state retention and reset. It does not transfer the earlier synthetic results, block-shared learning rule, weight count, or journal-only experiments into the 2012 language model.",
+      "claimIds": [
+        "gers-2000-forget-gate-mechanism",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Forget gate, collective modification statement, and reference 12",
+            "section": "2. LSTM neural networks; 7. References",
+            "pageStart": 195,
+            "pageEnd": 197,
+            "figure": "1"
+          },
+          "support": "The target displays and describes a forget gate, says its two modifications come from references 12 and 13, and identifies reference 12 by the exact ICANN title, year, and pages."
+        },
+        {
+          "sourceId": "gers-1999-icann-full-text",
+          "locator": {
+            "label": "Exact referenced forget-gate source",
+            "section": "3 Solution: Forget Gates",
+            "pageStart": 850,
+            "pageEnd": 852,
+            "equation": "6–7"
+          },
+          "support": "The cited source’s complete title page resolves the abbreviated bibliography, and section 3 directly defines the adaptive forget-gate recurrence."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target does not map its two mechanisms one-to-one, but comparison with the complete cited sources resolves reference 12 to forgetting because reference 13 explicitly treats forget-gated LSTM as its baseline and adds peepholes."
+        }
+      ]
+    },
+    {
+      "id": "gers-2002-to-sundermeyer-2012",
+      "from": {
+        "kind": "work",
+        "id": "gers-schraudolph-schmidhuber-2002-precise-timing"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sundermeyer-2012-lstm-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sundermeyer et al. cite Learning Precise Timing with LSTM Recurrent Networks as reference 13 while displaying weighted cell-state-to-gate links. The cited paper names and defines those links as peepholes, so this edge is scoped to direct state visibility for gating. Sundermeyer does not reproduce the 2002 update order, learning equations, shared-block topology, or timing experiments, and implementation identity is not claimed.",
+      "claimIds": [
+        "gers-2002-peephole-motivation",
+        "gers-2002-peephole-mechanism",
+        "gers-2002-evidence-boundary",
+        "sundermeyer-2012-lstm-antecedent-and-variant",
+        "sundermeyer-2012-memory-cell-mechanism"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sundermeyer-2012-isca-full-text",
+          "locator": {
+            "label": "Cell-state-to-gate links, collective modification statement, and reference 13",
+            "section": "2. LSTM neural networks; 7. References",
+            "pageStart": 195,
+            "pageEnd": 197,
+            "figure": "1"
+          },
+          "support": "The target displays state-to-input, state-to-forget, and state-to-output gate links and identifies the complete 2002 paper as reference 13."
+        },
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Exact referenced peephole source",
+            "section": "3. Extending LSTM with Peephole Connections; 3.1 Modified Forward Pass for Peephole LSTM",
+            "pageStart": 121,
+            "pageEnd": 123,
+            "equation": "19–21"
+          },
+          "support": "The cited source explicitly names and defines weighted peephole connections from protected cell state to all three gates."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The mechanism-level correspondence is established, but the target’s abbreviated treatment does not establish equality with the 2002 learning algorithm or gate-update timing."
+        }
+      ]
     },
     {
       "id": "mikolov-2010-to-sundermeyer-2012",
@@ -16714,6 +18203,123 @@
       "successCriterion": "The learner can derive why repeated temporal Jacobian factors grow or decay, identify the protected unit-weight path, state exactly where gradients are truncated, reproduce every promoted Table 3 row, and avoid assigning the later forget gate or cell-state-to-gate links to the original cell."
     },
     {
+      "id": "beginner-gers-1999-adaptive-forgetting",
+      "mode": "beginner",
+      "objective": "See why an original LSTM cell can drift on a boundary-free stream, manipulate the retain/reset effect of a forget gate, and connect learned resets to the two synthetic continual experiments without treating forgetting as loss of learned parameters.",
+      "workIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention"
+      ],
+      "claimIds": [
+        "gers-2000-continual-state-drift-problem",
+        "gers-2000-forget-gate-mechanism",
+        "gers-2000-cerg-results",
+        "gers-2000-cerg-self-reset-analysis",
+        "gers-2000-noncontinual-memory-control",
+        "gers-2000-cnto-results",
+        "gers-2000-evidence-boundary"
+      ],
+      "prerequisites": [
+        "A recurrent value carried through time",
+        "Multiplication by values between zero and one",
+        "The difference between hidden state and learned weights"
+      ],
+      "successCriterion": "The learner can explain how repeated additions cause state drift, predict what gate values near zero, between zero and one, and near one do, report the external-reset and learned-reset CERG comparison, and state why the result is not evidence about catastrophic parameter forgetting or natural language."
+    },
+    {
+      "id": "expert-gers-1999-mechanism-versions-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the journal forget-gate recurrence and eligibility trace, audit CERG and CNTO protocols and results, and keep the report, ICANN, and journal equation, topology, lag, and result differences version-bound.",
+      "workIds": [
+        "gers-schmidhuber-cummins-1999-learning-to-forget"
+      ],
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention"
+      ],
+      "claimIds": [
+        "gers-2000-continual-state-drift-problem",
+        "gers-2000-forget-gate-mechanism",
+        "gers-2000-forget-gate-learning-and-complexity",
+        "gers-2000-cerg-protocol",
+        "gers-2000-cerg-results",
+        "gers-2000-cerg-self-reset-analysis",
+        "gers-2000-noncontinual-memory-control",
+        "gers-2000-cnto-results",
+        "gers-2000-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Constant-error recurrent state",
+        "Truncated recurrent gradient updates",
+        "Sigmoid gates and eligibility traces",
+        "Experimental controls and version provenance"
+      ],
+      "successCriterion": "The learner can derive journal equations 6–7, 17, and 20; explain why gate closure resets both state and eligibility; reproduce every promoted Table 2 and Table 3 value; distinguish the 424-weight journal protocol from the earlier 375-weight accounts; and explain why the February report derivative and report/journal CNTO means cannot be merged."
+    },
+    {
+      "id": "beginner-gers-2002-peephole-timing",
+      "mode": "beginner",
+      "objective": "Explain why a closed output gate hides a cell’s timer, how a peephole lets gates inspect protected state, and why peepholes and the forget gate solve different parts of the timing problem.",
+      "workIds": [
+        "gers-schraudolph-schmidhuber-2002-precise-timing"
+      ],
+      "ideaIds": [
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "claimIds": [
+        "gers-2002-forget-gate-antecedent",
+        "gers-2002-peephole-motivation",
+        "gers-2002-peephole-mechanism",
+        "gers-2002-gts-results-and-ablation",
+        "gers-2002-pfg-results",
+        "gers-2002-evidence-boundary"
+      ],
+      "prerequisites": [
+        "A gated recurrent memory cell",
+        "The difference between internal state and exposed output",
+        "A timer represented by a changing value"
+      ],
+      "successCriterion": "The learner can explain why closing output can hide state, identify the three direct state-to-gate links, distinguish inspecting a timer from resetting it, and report where the timing experiments support peepholes without generalizing beyond synthetic one-cell tasks."
+    },
+    {
+      "id": "expert-gers-2002-peephole-mechanism-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the asymmetric state timing in equations 19–26, audit the truncated learning rule and all promoted MSD, GTS, and PFG results, and preserve the paper’s topology, ablation, identifier, and empirical limits.",
+      "workIds": [
+        "gers-schraudolph-schmidhuber-2002-precise-timing"
+      ],
+      "ideaIds": [
+        "constant-error-recurrent-memory",
+        "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "claimIds": [
+        "gers-2002-forget-gate-antecedent",
+        "gers-2002-peephole-motivation",
+        "gers-2002-peephole-mechanism",
+        "gers-2002-peephole-learning-boundary",
+        "gers-2002-msd-results",
+        "gers-2002-gts-results-and-ablation",
+        "gers-2002-pfg-results",
+        "gers-2002-evidence-boundary",
+        "gers-2002-lstm-limitations"
+      ],
+      "prerequisites": [
+        "Forget-gated LSTM equations",
+        "Truncated RTRL and gate deltas",
+        "Recurrent update ordering",
+        "Ablation and thresholded success analysis"
+      ],
+      "successCriterion": "The learner can derive why input and forget gates read s(t−1) while output reads s(t), reproduce equations 19–26 and the resulting update order, audit every promoted Table 1, Figure 7, and Table 3 success rate, distinguish post-training gate removal from training without a gate, and reject the deleted Crossref DOI as active metadata."
+    },
+    {
       "id": "beginner-sundermeyer-2012-gated-language-memory",
       "mode": "beginner",
       "objective": "Compare a simple recurrent language model with gated memory, observe what changes when sentences are joined or the output is grouped into classes, and separate perplexity gains from the smaller speech-recognition mixture gains.",
@@ -16724,6 +18330,8 @@
         "recurrent-neural-word-language-modeling",
         "constant-error-recurrent-memory",
         "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback",
         "class-factored-neural-output",
         "neural-ngram-model-mixtures"
       ],
@@ -16740,7 +18348,7 @@
         "A recurrent state as memory",
         "Perplexity and word error rate"
       ],
-      "successCriterion": "The learner can describe the write, retain, and output controls, explain why longer available context can still hurt, distinguish class-factor speed from quality, and report the 0.5- and 0.3-point interpolated WER changes without calling them standalone LSTM results."
+      "successCriterion": "The learner can describe writing, retaining, exposing, and inspecting state as distinct controls, trace the forget-gate and peephole branches into the composite cell, explain why longer available context can still hurt, and report the 0.5- and 0.3-point interpolated WER changes without calling them standalone LSTM results."
     },
     {
       "id": "expert-sundermeyer-2012-model-and-evidence",
@@ -16759,6 +18367,8 @@
         "recurrent-neural-word-language-modeling",
         "constant-error-recurrent-memory",
         "gated-recurrent-memory-access",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback",
         "class-factored-neural-output"
       ],
       "claimIds": [
@@ -16785,7 +18395,7 @@
         "Perplexity, WER, and relative change",
         "Reproducibility and evidence auditing"
       ],
-      "successCriterion": "The learner can build a clearly labeled modern reconstruction of the 1997 core and the target’s later forget and cell-state-to-gate changes from Figure 1 and the prose, derive the class factorization, reproduce both corpus rows and both WER rows, preserve graph-only uncertainty, distinguish the target baseline from Mikolov’s numeric tables, and list the omitted training and runtime details."
+      "successCriterion": "The learner can reconstruct the 1997 core, map reference 12 only to adaptive forgetting and reference 13 only to cell-state-to-gate peepholes, avoid importing the 2002 update order into the target, derive the class factorization, reproduce both corpus and WER rows, preserve graph-only uncertainty, and list the omitted training and runtime details."
     }
   ]
 }
