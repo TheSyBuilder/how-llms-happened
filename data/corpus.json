@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/corpus.schema.json",
-  "schemaVersion": "0.6.0",
+  "schemaVersion": "0.7.0",
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-10",
+  "asOf": "2026-08-12",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -4488,6 +4488,625 @@
           "resolutionCondition": "A durable official corpus record that maps the 2011 Quaero broadcast-conversational and podcast evaluation split to its distribution terms would resolve this gap."
         }
       ]
+    },
+    {
+      "id": "cho-2014-rnn-encoder-decoder",
+      "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+      "authors": [
+        "Kyunghyun Cho",
+        "Bart van Merriënboer",
+        "Caglar Gulcehre",
+        "Dzmitry Bahdanau",
+        "Fethi Bougares",
+        "Holger Schwenk",
+        "Yoshua Bengio"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "K. Cho, B. van Merriënboer, C. Gulcehre, D. Bahdanau, F. Bougares, H. Schwenk, and Y. Bengio, “Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation,” EMNLP 2014, 1724–1734 (October 2014), DOI 10.3115/v1/D14-1179.",
+      "chronology": {
+        "orderingEventId": "cho-2014-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "cho-2014-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2014-06-03",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cho-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 3 June 2014 at 17:47:08 UTC"
+              }
+            ],
+            "versionId": "cho-2014-arxiv-v1-version",
+            "sourceIds": [
+              "cho-2014-arxiv-record",
+              "cho-2014-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "cho-2014-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2014-07-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cho-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 24 July 2014 at 20:07:13 UTC"
+              }
+            ],
+            "versionId": "cho-2014-arxiv-v2-version",
+            "sourceIds": [
+              "cho-2014-arxiv-record",
+              "cho-2014-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "cho-2014-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2014-09-03",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cho-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 3 September 2014 at 00:25:02 UTC"
+              }
+            ],
+            "versionId": "cho-2014-arxiv-v3-version",
+            "sourceIds": [
+              "cho-2014-arxiv-record",
+              "cho-2014-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "cho-2014-emnlp-conference",
+            "kind": "conference-presentation",
+            "label": "EMNLP 2014 proceedings paper",
+            "date": {
+              "value": "2014-10",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "EMNLP ran 25–29 October in Doha; no inspected authoritative schedule establishes this paper’s presentation day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cho-2014-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology proceedings record, October 2014"
+              },
+              {
+                "sourceId": "cho-2014-acl-full-text",
+                "precision": "month",
+                "locator": "Printed proceedings footer, 25–29 October 2014"
+              }
+            ],
+            "versionId": "cho-2014-emnlp-version",
+            "sourceIds": [
+              "cho-2014-acl-record",
+              "cho-2014-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "cho-2014-arxiv-v1-version",
+          "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+          "authors": [
+            "Kyunghyun Cho",
+            "Bart van Merriënboer",
+            "Caglar Gulcehre",
+            "Fethi Bougares",
+            "Holger Schwenk",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Cho, B. van Merriënboer, C. Gulcehre, F. Bougares, H. Schwenk, and Y. Bengio, “Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation,” arXiv:1406.1078v1, 3 June 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1406.1078v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cho-2014-arxiv-record",
+            "cho-2014-arxiv-v1-full-text"
+          ],
+          "notes": "The six-author 14-leaf first preprint contains supplementary architecture material, the older componentwise reset placement, 100-dimensional source embeddings, an average-source embedding in the output, and materially earlier experiment rows. Its numerical and architectural details remain version-bound."
+        },
+        {
+          "id": "cho-2014-arxiv-v2-version",
+          "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+          "authors": [
+            "Kyunghyun Cho",
+            "Bart van Merriënboer",
+            "Caglar Gulcehre",
+            "Fethi Bougares",
+            "Holger Schwenk",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Cho, B. van Merriënboer, C. Gulcehre, F. Bougares, H. Schwenk, and Y. Bengio, “Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation,” arXiv:1406.1078v2, 24 July 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1406.1078v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cho-2014-arxiv-record",
+            "cho-2014-arxiv-v2-full-text"
+          ],
+          "notes": "The second public revision retains the original six authors while materially revising the experiments and supplement. Its exact claims and locators are not transferred into the later seven-author proceedings version."
+        },
+        {
+          "id": "cho-2014-arxiv-v3-version",
+          "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+          "authors": [
+            "Kyunghyun Cho",
+            "Bart van Merriënboer",
+            "Caglar Gulcehre",
+            "Dzmitry Bahdanau",
+            "Fethi Bougares",
+            "Holger Schwenk",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Cho et al., “Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation,” arXiv:1406.1078v3, 3 September 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1406.1078v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cho-2014-arxiv-record",
+            "cho-2014-arxiv-v3-full-text"
+          ],
+          "notes": "The third revision adds Dzmitry Bahdanau as the fourth author and changes the main reset-gate candidate equation to apply the reset vector inside the recurrent matrix product. The canonical proceedings paper retains those seven authors and the revised main equation."
+        },
+        {
+          "id": "cho-2014-emnlp-version",
+          "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
+          "authors": [
+            "Kyunghyun Cho",
+            "Bart van Merriënboer",
+            "Caglar Gulcehre",
+            "Dzmitry Bahdanau",
+            "Fethi Bougares",
+            "Holger Schwenk",
+            "Yoshua Bengio"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical EMNLP 2014 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Cho et al., “Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation,” in Proceedings of EMNLP 2014, Doha, Qatar, pp. 1724–1734, October 2014.",
+            "venue": "Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing",
+            "editors": [
+              "Alessandro Moschitti",
+              "Bo Pang",
+              "Walter Daelemans"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Doha, Qatar"
+            ],
+            "pages": [
+              "1724-1734"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.3115/v1/D14-1179",
+                "label": "Proceedings paper DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cho-2014-acl-record",
+            "cho-2014-acl-full-text",
+            "cho-2014-acl-attachment",
+            "cho-2014-acl-rights-policy"
+          ],
+          "notes": "The ACL Anthology record and publisher-hosted PDF establish the final eleven-page proceedings version and printed pp. 1724–1734. Canonical technical and quantitative claims use those folios; the June arXiv table remains separate."
+        }
+      ],
+      "canonicalVersionId": "cho-2014-emnlp-version",
+      "preferredSourceIds": [
+        "cho-2014-acl-record",
+        "cho-2014-acl-full-text"
+      ],
+      "sourceIds": [
+        "cho-2014-arxiv-record",
+        "cho-2014-arxiv-v1-full-text",
+        "cho-2014-arxiv-v2-full-text",
+        "cho-2014-arxiv-v3-full-text",
+        "cho-2014-acl-record",
+        "cho-2014-acl-full-text",
+        "cho-2014-acl-attachment",
+        "cho-2014-acl-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The work defines a jointly trained variable-length encoder–decoder conditional model, contributes reset/update gated recurrence, and evaluates neural phrase-pair probabilities inside a large phrase-based translation system. It is a core branch toward sequence transduction and later attention while its actual evidence remains phrase-table scoring rather than end-to-end sentence translation."
+      },
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence",
+        "neural-phrase-pair-scoring"
+      ],
+      "significance": {
+        "beginner": "One recurrent network compresses a variable-length phrase into one vector and a second unfolds a target phrase one word at a time. Reset and update controls let each unit decide what prior state to ignore or carry, while the experiment keeps this neural score inside an existing phrase-based translator.",
+        "expert": "The model maximizes conditional sequence log-likelihood through a fixed-vector encoder and autoregressive softmax decoder. Equations 5–8 define the reset/update gated unit; the WMT’14 evaluation uses 1,000-unit encoders and decoders, rank-100 word projections, a maxout output path, 15,000-word vocabularies, and phrase-table feature integration rather than direct sentence-level decoding."
+      },
+      "limitations": [
+        "The encoder exposes the source only through one fixed-length vector; the paper does not offer a per-output mechanism for revisiting individual source positions.",
+        "The quantitative evaluation scores phrase pairs already present in a conventional phrase table. Replacing the table and generating full translations with the neural model are future work, not evaluated results.",
+        "The 15,000-word vocabularies cover about 93% of the selected data and collapse every other word into one unknown token, so an individual out-of-vocabulary word receives the aggregate unknown probability.",
+        "The strongest test row combines the encoder–decoder feature with a separate continuous-space language model; it does not isolate a standalone neural translation system.",
+        "The ungated tanh observation is described as preliminary and has no controlled protocol, table, repeated seeds, or uncertainty analysis.",
+        "The phrase and word plots are qualitative two-dimensional projections; they supply no cluster metric or held-out representation test.",
+        "The June preprint and canonical proceedings paper report different baseline and result tables. Values remain attached to their source version.",
+        "No confidence intervals, statistical tests, repeated-seed results, released model, or complete end-to-end runtime are reported.",
+        "ACL’s current policy classifies pre-2016 Anthology materials under CC BY-NC-SA 3.0 while excluding third-party material. The repository links the paper and does not infer rights for WMT data or copy its figures."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact presentation day within the 25–29 October 2014 conference span has not been established.",
+          "resolutionCondition": "An authoritative session schedule mapping the paper to a dated session would be required for day-level conference chronology."
+        },
+        {
+          "status": "resolved",
+          "note": "The same title, seven authors, arXiv record comment, and final proceedings identity justify one versioned work; the June result table remains explicitly bound to version 1."
+        },
+        {
+          "status": "resolved",
+          "note": "The paper’s novelty wording is not converted into an unqualified priority claim. The audit records the mechanism and public chronology without asserting sole invention relative to every contemporary encoder–decoder or gated recurrent design."
+        },
+        {
+          "status": "resolved",
+          "note": "The ACL Anthology copyright FAQ classifies pre-2016 ACL materials under CC BY-NC-SA 3.0 while excluding third-party content; this does not license the underlying WMT corpora."
+        }
+      ]
+    },
+    {
+      "id": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "title": "Sequence to Sequence Learning with Neural Networks",
+      "authors": [
+        "Ilya Sutskever",
+        "Oriol Vinyals",
+        "Quoc V. Le"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "I. Sutskever, O. Vinyals, and Q. V. Le, “Sequence to Sequence Learning with Neural Networks,” Advances in Neural Information Processing Systems 27, 3104–3112 (2014).",
+      "chronology": {
+        "orderingEventId": "sutskever-2014-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "sutskever-2014-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2014-09-10",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sutskever-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 10 September 2014 at 19:55:35 UTC"
+              }
+            ],
+            "versionId": "sutskever-2014-arxiv-v1-version",
+            "sourceIds": [
+              "sutskever-2014-arxiv-record",
+              "sutskever-2014-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "sutskever-2014-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2014-10-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sutskever-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 29 October 2014 at 12:13:17 UTC"
+              }
+            ],
+            "versionId": "sutskever-2014-arxiv-v2-version",
+            "sourceIds": [
+              "sutskever-2014-arxiv-record",
+              "sutskever-2014-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "sutskever-2014-nips-oral",
+            "kind": "conference-presentation",
+            "label": "NIPS 2014 oral presentation",
+            "date": {
+              "value": "2014-12-09",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sutskever-2014-neurips-schedule",
+                "precision": "day",
+                "locator": "Official NIPS 2014 schedule, Oral Session 4, 9 December 2014, 5:00–5:20 PM"
+              }
+            ],
+            "versionId": "sutskever-2014-nips-version",
+            "sourceIds": [
+              "sutskever-2014-neurips-record",
+              "sutskever-2014-neurips-metadata",
+              "sutskever-2014-neurips-full-text",
+              "sutskever-2014-neurips-schedule"
+            ]
+          },
+          {
+            "id": "sutskever-2014-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2014-12-14",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sutskever-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 14 December 2014 at 20:59:51 UTC"
+              }
+            ],
+            "versionId": "sutskever-2014-arxiv-v3-version",
+            "sourceIds": [
+              "sutskever-2014-arxiv-record",
+              "sutskever-2014-arxiv-v3-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "sutskever-2014-arxiv-v1-version",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "authors": [
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "I. Sutskever, O. Vinyals, and Q. V. Le, “Sequence to Sequence Learning with Neural Networks,” arXiv:1409.3215v1, 10 September 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.3215v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sutskever-2014-arxiv-record",
+            "sutskever-2014-arxiv-v1-full-text"
+          ],
+          "notes": "The ten-leaf first preprint explicitly describes the work as developed in parallel to Cho et al. and the fixed-vector strategy as independently taken. It reports 380 million parameters; its earlier evaluation-comparison wording remains version-bound."
+        },
+        {
+          "id": "sutskever-2014-arxiv-v2-version",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "authors": [
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "I. Sutskever, O. Vinyals, and Q. V. Le, “Sequence to Sequence Learning with Neural Networks,” arXiv:1409.3215v2, 29 October 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.3215v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sutskever-2014-arxiv-record",
+            "sutskever-2014-arxiv-v2-full-text"
+          ],
+          "notes": "The nine-leaf second revision corrects the comparison by evaluating the WMT output under the same tokenized BLEU procedure and obtains 37.0. It removes the explicit parallel-development wording and remains distinct from the later 384-million-parameter v3."
+        },
+        {
+          "id": "sutskever-2014-arxiv-v3-version",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "authors": [
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "I. Sutskever, O. Vinyals, and Q. V. Le, “Sequence to Sequence Learning with Neural Networks,” arXiv:1409.3215v3, 14 December 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.3215v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sutskever-2014-arxiv-record",
+            "sutskever-2014-arxiv-v3-full-text"
+          ],
+          "notes": "The post-conference third revision says 384 million parameters and describes an 8,000-dimensional state. Those details are not transferred into the canonical proceedings PDF, which says 380 million parameters."
+        },
+        {
+          "id": "sutskever-2014-nips-version",
+          "title": "Sequence to Sequence Learning with Neural Networks",
+          "authors": [
+            "Ilya Sutskever",
+            "Oriol Vinyals",
+            "Quoc V. Le"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NIPS 2014 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "I. Sutskever, O. Vinyals, and Q. V. Le, “Sequence to Sequence Learning with Neural Networks,” in Advances in Neural Information Processing Systems 27, pp. 3104–3112, 2014.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "Advances in Neural Information Processing Systems",
+            "editors": [
+              "Zoubin Ghahramani",
+              "Max Welling",
+              "Corinna Cortes",
+              "Neil D. Lawrence",
+              "Kilian Q. Weinberger"
+            ],
+            "publisher": "Curran Associates, Inc.",
+            "volume": "27",
+            "pages": [
+              "3104-3112"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "sutskever-2014-neurips-record",
+            "sutskever-2014-neurips-metadata",
+            "sutskever-2014-neurips-full-text",
+            "sutskever-2014-neurips-schedule",
+            "sutskever-2014-neurips-rights-policy"
+          ],
+          "notes": "The official record identifies the NIPS 2014 paper, metadata supplies volume 27 and pp. 3104–3112, and the schedule places its oral on 9 December. The nine-leaf PDF uses internal pp. 1–9 rather than the volume folios; claim locators use those visible article pages."
+        }
+      ],
+      "canonicalVersionId": "sutskever-2014-nips-version",
+      "preferredSourceIds": [
+        "sutskever-2014-neurips-record",
+        "sutskever-2014-neurips-metadata",
+        "sutskever-2014-neurips-full-text"
+      ],
+      "sourceIds": [
+        "sutskever-2014-arxiv-record",
+        "sutskever-2014-arxiv-v1-full-text",
+        "sutskever-2014-arxiv-v2-full-text",
+        "sutskever-2014-arxiv-v3-full-text",
+        "sutskever-2014-neurips-record",
+        "sutskever-2014-neurips-metadata",
+        "sutskever-2014-neurips-full-text",
+        "sutskever-2014-neurips-schedule",
+        "sutskever-2014-neurips-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The paper demonstrates large-scale fixed-vector sequence transduction with separate deep LSTM encoder and decoder networks, direct autoregressive translation, beam search, and source-order reversal. It is retained alongside Cho et al. as a concurrent branch because the architectures and public evidence overlap but their evaluated roles and recurrent units differ."
+      },
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "deep-lstm-sequence-transduction",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "significance": {
+        "beginner": "A deep LSTM reads a whole source sentence into one vector, then a second LSTM writes a translation word by word until an end token. Reversing only the source sentence moves several corresponding early words closer in the training computation and makes the optimization easier.",
+        "expert": "Equation 1 factorizes a target sequence under a softmax LSTM language model initialized by the encoder’s final state. The evaluated system uses separate four-layer, 1,000-cell encoders and decoders, limited vocabularies, gradient clipping, length-bucketed minibatches, multi-GPU training, left-to-right beam search, reversed sources, and five-model ensembles on WMT’14 English–French."
+      },
+      "limitations": [
+        "The source is represented by one fixed-dimensional final state. The model has no mechanism for consulting different source positions during individual target predictions.",
+        "The 34.81 direct-translation result uses an ensemble of five reversed-source LSTMs and beam size 12; it is not a single-model or unreversed result.",
+        "Source and target vocabularies are limited to 160,000 and 80,000 words, with every other type mapped to one unknown token; the reported BLEU score is penalized by uncovered reference words.",
+        "The long-sentence conclusion comes from one sorted/binned figure and examples under the reversed-source ensemble. It does not establish unbounded memory or remove the fixed-vector bottleneck.",
+        "The PCA plots use a small selected set of phrases and provide qualitative structure without a representation metric or held-out invariance test.",
+        "Beam search is approximate, and the paper specifies no length normalization; beam-size comparisons do not establish globally optimal sequence decoding.",
+        "The strongest reranking row combines the neural score with an existing phrase-based system’s 1,000-best list, while the strongest direct row depends on ensembling.",
+        "The proceedings paper supplies no confidence intervals, statistical tests, repeated aggregate variance, released model, or complete preprocessing implementation.",
+        "The official proceedings and arXiv version 3 disagree on 380 versus 384 million parameters and the latter alone prints an 8,000-dimensional state description; these details remain version-bound.",
+        "The official pages provide public reading access but no verified paper-level open-content license; the PDFs are linked and not redistributed by this repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The official schedule establishes a 9 December 2014 oral presentation, while the public arXiv version appeared on 10 September and remains the ordering event."
+        },
+        {
+          "status": "resolved",
+          "note": "Version 1 explicitly describes the work as parallel to Cho et al. and calls the fixed-vector strategy independently taken; later versions omit that wording. The relationship is therefore represented as a noncausal conceptual parallel, not a priority or derivation claim."
+        },
+        {
+          "status": "resolved",
+          "note": "The target uses the LSTM formulation from Graves while citing Hochreiter and Schmidhuber for the architecture. The lineage edge does not import the original 1995/1997 equations or claim implementation identity."
+        },
+        {
+          "status": "resolved",
+          "note": "Reference 30 names Sundermeyer, Schlüter, and Ney’s LSTM language-model paper but prints 2010 rather than its verified 2012 Interspeech date. Title and authors resolve it to the existing corpus work; the erroneous year is not propagated."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for the canonical proceedings full text.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDF as open content."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -5478,6 +6097,132 @@
         {
           "status": "resolved",
           "note": "The plotted type averages can reflect category-dependent preceding contexts; the paper’s described token-level check is not displayed and supplies no quantitative cluster metric."
+        }
+      ]
+    },
+    {
+      "id": "fixed-vector-neural-sequence-transduction",
+      "name": "Fixed-vector neural sequence transduction",
+      "kind": "mechanism",
+      "description": "A recurrent encoder maps a variable-length source sequence into one fixed-dimensional final representation, and a separate recurrent decoder uses that representation to produce a possibly different-length target sequence.",
+      "claimIds": [
+        "cho-2014-fixed-vector-architecture",
+        "cho-2014-fixed-vector-evidence-boundary",
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-long-sentence-boundary",
+        "sutskever-2014-cho-concurrency"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Fixed refers to the representation’s dimensionality, not to padded or fixed input length. Both audited decoders condition on one global source summary rather than revisiting individual encoder positions."
+        },
+        {
+          "status": "resolved",
+          "note": "The architecture is a plausible information bottleneck, but Cho does not test sentence-length degradation and Sutskever reports strong results under source reversal. The later attention audit must supply any empirical bottleneck claim."
+        }
+      ]
+    },
+    {
+      "id": "source-conditioned-autoregressive-decoding",
+      "name": "Source-conditioned autoregressive decoding",
+      "kind": "formalism",
+      "description": "A conditional target-sequence probability is factorized into normalized next-symbol distributions that depend on the source representation and the previously generated target prefix, with an end symbol defining variable output length.",
+      "claimIds": [
+        "cho-2014-conditional-objective",
+        "cho-2014-generation-and-scoring",
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-beam-and-rescoring",
+        "sutskever-2014-rescoring-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The training factorization and approximate search procedure are distinct: a normalized conditional model does not make left-to-right beam search an exact solution to maximum-probability decoding."
+        }
+      ]
+    },
+    {
+      "id": "reset-update-gated-recurrence",
+      "name": "Reset–update gated recurrence",
+      "kind": "mechanism",
+      "description": "A recurrent hidden unit uses a reset gate inside its candidate-state computation and an update gate to mix the preceding state with that candidate, allowing different units to adapt their effective timescales.",
+      "claimIds": [
+        "cho-2014-reset-update-gates",
+        "cho-2014-ungated-evidence-boundary",
+        "cho-2014-reset-equation-version-boundary",
+        "cho-2014-architecture-condition",
+        "cho-2014-training-condition"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper calls this a new hidden unit rather than ‘GRU’; the atlas does not backdate later terminology or claim sole priority. Its convention weights old state by z and candidate state by 1−z."
+        },
+        {
+          "status": "resolved",
+          "note": "The main v3/proceedings equation applies the reset vector before the recurrent matrix multiplication; v1 and the official attachment retain an older componentwise placement and are kept version-bound."
+        }
+      ]
+    },
+    {
+      "id": "neural-phrase-pair-scoring",
+      "name": "Neural phrase-pair scoring",
+      "kind": "mechanism",
+      "description": "A conditional neural sequence score for each source–target phrase pair is added as a feature to a conventional log-linear phrase-based translation system rather than replacing its decoder or phrase table.",
+      "claimIds": [
+        "cho-2014-phrase-table-integration",
+        "cho-2014-data-and-vocabulary",
+        "cho-2014-architecture-condition",
+        "cho-2014-training-condition",
+        "cho-2014-bleu-results",
+        "cho-2014-unknown-word-boundary",
+        "cho-2014-qualitative-evidence"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Generated phrase samples demonstrate that the conditional model can emit candidates, but full phrase-table replacement and direct sentence translation remain future work in this paper."
+        }
+      ]
+    },
+    {
+      "id": "deep-lstm-sequence-transduction",
+      "name": "Deep LSTM sequence transduction",
+      "kind": "mechanism",
+      "description": "Separate multilayer LSTM networks encode a source sentence and autoregressively decode a target sentence, allowing the recurrent language-model decoder to be conditioned on an encoded source at large translation scale.",
+      "claimIds": [
+        "sutskever-2014-deep-two-lstm-architecture",
+        "sutskever-2014-data-and-vocabulary",
+        "sutskever-2014-training-and-scale",
+        "sutskever-2014-beam-and-rescoring",
+        "sutskever-2014-direct-results",
+        "sutskever-2014-rescoring-results",
+        "sutskever-2014-representation-evidence",
+        "sutskever-2014-version-parameter-boundary",
+        "sutskever-2014-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The proceedings target says it uses Graves’s LSTM formulation. The atlas records documented LSTM and recurrent-language-model ancestry without treating the target as an implementation of every earlier equation."
+        }
+      ]
+    },
+    {
+      "id": "source-sequence-reversal-for-shorter-dependencies",
+      "name": "Source-sequence reversal for shorter dependencies",
+      "kind": "mechanism",
+      "description": "Reversing source-token order while retaining ordinary target order creates several short source-to-target computational paths, reducing the minimum lag without changing average aligned-token distance.",
+      "claimIds": [
+        "sutskever-2014-reversal-intervention",
+        "sutskever-2014-reversal-explanation-boundary",
+        "sutskever-2014-long-sentence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The measured reversal intervention and the authors’ incomplete causal explanation remain separate. Reversal is not bidirectionality, attention, or backward target generation."
         }
       ]
     }
@@ -7855,6 +8600,356 @@
         "metadata"
       ],
       "accessNote": "The official LDC catalog identifies Treebank-3 as LDC99T42, describes its Wall Street Journal material, and links an LDC user agreement. It documents dataset provenance and rights only; it does not identify which paper split appears in Figure 3."
+    },
+    {
+      "id": "cho-2014-arxiv-record",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "arXiv record for Learning Phrase Representations using RNN Encoder–Decoder",
+      "url": "https://arxiv.org/abs/1406.1078",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cho-2014-arxiv-v1-version",
+        "cho-2014-arxiv-v2-version",
+        "cho-2014-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official submission history dates versions 1–3 to 3 June, 24 July, and 3 September 2014. The record supplies the title, current seven-author abstract metadata, categories, version links, and arXiv non-exclusive-distribution license; version-specific author and content differences were checked in the archived PDFs."
+    },
+    {
+      "id": "cho-2014-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "Official arXiv version 1 of Learning Phrase Representations using RNN Encoder–Decoder",
+      "url": "https://arxiv.org/pdf/1406.1078v1",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cho-2014-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 14
+      },
+      "accessNote": "The complete six-author first revision was rendered and compared with the later public versions. Stable section, equation, table, and paragraph anchors are used instead of translating its leaf positions into the canonical proceedings folios."
+    },
+    {
+      "id": "cho-2014-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "Official arXiv version 2 of Learning Phrase Representations using RNN Encoder–Decoder",
+      "url": "https://arxiv.org/pdf/1406.1078v2",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cho-2014-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text"
+      ],
+      "accessNote": "The complete six-author second revision was rendered for the version audit. It materially revises experiments and supplemental architecture but supplies no promoted claim locators."
+    },
+    {
+      "id": "cho-2014-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "Official arXiv version 3 of Learning Phrase Representations using RNN Encoder–Decoder",
+      "url": "https://arxiv.org/pdf/1406.1078v3",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cho-2014-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text"
+      ],
+      "accessNote": "The complete seven-author third revision was rendered and compared with the proceedings text. It adds Dzmitry Bahdanau and contains the revised main reset-gate equation; promoted archival claims use the later printed proceedings pages."
+    },
+    {
+      "id": "cho-2014-acl-record",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "ACL Anthology record for Learning Phrase Representations using RNN Encoder–Decoder",
+      "url": "https://aclanthology.org/D14-1179/",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "cho-2014-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the seven ordered authors, editors, proceedings title, October 2014, Doha, publisher, pp. 1724–1734, Anthology ID, DOI 10.3115/v1/D14-1179, and links to the paper and attachment."
+    },
+    {
+      "id": "cho-2014-acl-full-text",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "Official ACL full text of Learning Phrase Representations using RNN Encoder–Decoder",
+      "url": "https://aclanthology.org/D14-1179.pdf",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "cho-2014-emnlp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1724,
+        "pageEnd": 1734
+      },
+      "accessNote": "The complete eleven-page proceedings PDF was rendered and inspected. It retains printed pp. 1724–1734, which control canonical technical and quantitative claim locators."
+    },
+    {
+      "id": "cho-2014-acl-attachment",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "Official ACL architecture and representation attachment",
+      "url": "https://aclanthology.org/attachments/D14-1179.Attachment.pdf",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "cho-2014-emnlp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 4
+      },
+      "accessNote": "The four-leaf official attachment gives decoder pathways and enlarged plots. It retains an older componentwise reset placement and says 500-dimensional source embeddings while the main paper says rank 100 is equivalent to 100-dimensional embeddings; those internal discrepancies are preserved rather than silently reconciled."
+    },
+    {
+      "id": "cho-2014-acl-rights-policy",
+      "relatedWorkIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "title": "ACL Anthology copyright and licensing policy",
+      "url": "https://aclanthology.org/faq/copyright/",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "cho-2014-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Anthology policy states that ACL materials published before 2016 are licensed CC BY-NC-SA 3.0 while excluding third-party material. The repository links the paper and does not redistribute figures or datasets."
+    },
+    {
+      "id": "sutskever-2014-arxiv-record",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "arXiv record for Sequence to Sequence Learning with Neural Networks",
+      "url": "https://arxiv.org/abs/1409.3215",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sutskever-2014-arxiv-v1-version",
+        "sutskever-2014-arxiv-v2-version",
+        "sutskever-2014-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the title, three authors, categories, version links, arXiv non-exclusive-distribution license, and submission dates for versions 1–3 on 10 September, 29 October, and 14 December 2014."
+    },
+    {
+      "id": "sutskever-2014-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official arXiv version 1 of Sequence to Sequence Learning with Neural Networks",
+      "url": "https://arxiv.org/pdf/1409.3215v1",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sutskever-2014-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete first revision was rendered and inspected. Its introduction and model section explicitly say the approach was developed in parallel to, and independently taken by, Cho et al.; this wording is not transferred into later versions."
+    },
+    {
+      "id": "sutskever-2014-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official arXiv version 2 of Sequence to Sequence Learning with Neural Networks",
+      "url": "https://arxiv.org/pdf/1409.3215v2",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sutskever-2014-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text"
+      ],
+      "accessNote": "The complete second revision was rendered and compared with versions 1 and 3. It corrects the WMT comparison using a consistently evaluated 37.0 result and removes the explicit parallel-development wording."
+    },
+    {
+      "id": "sutskever-2014-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official arXiv version 3 of Sequence to Sequence Learning with Neural Networks",
+      "url": "https://arxiv.org/pdf/1409.3215v3",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sutskever-2014-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The complete post-conference revision was rendered and inspected. It says 384 million parameters and an 8,000-dimensional state, unlike the proceedings PDF’s 380 million; evidence for that discrepancy remains bound to this version."
+    },
+    {
+      "id": "sutskever-2014-neurips-record",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official NeurIPS record for Sequence to Sequence Learning with Neural Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2014/hash/5a18e133cbf9f257297f410bb7eca942-Abstract.html",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sutskever-2014-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official proceedings record supplies the title, authors, abstract, volume context, and links to metadata, reviews, and the published PDF. No proceedings DOI is displayed."
+    },
+    {
+      "id": "sutskever-2014-neurips-metadata",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official NeurIPS metadata for Sequence to Sequence Learning with Neural Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2014/file/5a18e133cbf9f257297f410bb7eca942-Metadata.json",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sutskever-2014-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official JSON supplies volume 27 and pp. 3104–3112. Its embedded full-text field reflects v3-like 384-million/8,000-state wording, so it is not used for proceedings technical claims; the official PDF controls those."
+    },
+    {
+      "id": "sutskever-2014-neurips-full-text",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official NeurIPS full text of Sequence to Sequence Learning with Neural Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2014/file/5a18e133cbf9f257297f410bb7eca942-Paper.pdf",
+      "accessDate": "2026-08-12",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "sutskever-2014-nips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The complete nine-page proceedings PDF was rendered and inspected. It has visible article pp. 1–9 rather than the volume’s 3104–3112 folios, and it says 380 million parameters; canonical claim locators follow this PDF."
+    },
+    {
+      "id": "sutskever-2014-neurips-schedule",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "Official NIPS 2014 conference schedule",
+      "url": "https://neurips.cc/archive/2014/Schedule.html",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sutskever-2014-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The archived official schedule places the paper in Oral Session 4 on Tuesday, 9 December 2014, from 5:00 to 5:20 PM at the Montreal conference."
+    },
+    {
+      "id": "sutskever-2014-neurips-rights-policy",
+      "relatedWorkIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "title": "NeurIPS copyright policy",
+      "url": "https://neurips.cc/FAQ/Copyright",
+      "accessDate": "2026-08-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sutskever-2014-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official FAQ says authors retain copyright and grant NeurIPS a perpetual non-exclusive publication license. No Creative Commons license is stated for this proceedings paper, which is linked and not redistributed."
     }
   ],
   "claims": [
@@ -15570,6 +16665,866 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-09"
+    },
+    {
+      "id": "cho-2014-fixed-vector-architecture",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction"
+      ],
+      "statement": "The encoder reads a variable-length source sequence through an end symbol and turns its final hidden state into one fixed-dimensional summary c; a separate recurrent decoder conditions on c and its preceding target symbols to produce a possibly different-length target sequence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Fixed-vector encoder and recurrent decoder, printed p. 1725",
+            "section": "2.2 RNN Encoder–Decoder",
+            "pageStart": 1725,
+            "pageEnd": 1725,
+            "figure": "1"
+          },
+          "support": "Defines the source summary c after EOS and conditions decoder state and output on c."
+        }
+      ],
+      "limitations": [
+        "Fixed describes c’s dimensionality rather than a limit on source or target token count; the decoder does not revisit individual encoder states."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-conditional-objective",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The two recurrent components are differentiable and jointly trained to maximize the mean conditional log-likelihood N⁻¹Σₙ log pθ(yₙ|xₙ), while decoder softmax factors assign normalized probabilities to successive target symbols conditioned on c and the target prefix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Decoder conditionals and training criterion, printed pp. 1725–1726",
+            "section": "2.2 RNN Encoder–Decoder",
+            "pageStart": 1725,
+            "pageEnd": 1726,
+            "equation": "4"
+          },
+          "support": "Defines the normalized next-symbol conditional and the joint conditional log-likelihood objective."
+        }
+      ],
+      "limitations": [
+        "The paper does not give a separate uncertainty analysis for likelihood training or isolate the representation learned by the objective."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-generation-and-scoring",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "After training, the conditional model can either generate a target sequence given a source or assign pθ(y|x) to an existing source–target pair; the reported translation experiment uses the latter score on phrase-table entries.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Two model uses and evaluated scoring path, printed pp. 1726–1727",
+            "section": "2.2 RNN Encoder–Decoder; 3.1 Scoring Phrase Pairs with RNN Encoder–Decoder",
+            "pageStart": 1726,
+            "pageEnd": 1727,
+            "paragraph": "Post-training use and phrase-pair proposal"
+          },
+          "support": "Separates target generation from pair scoring and identifies scoring as the evaluated SMT integration."
+        }
+      ],
+      "limitations": [
+        "The ability to sample target phrases is not an evaluated direct sentence-translation system."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-reset-update-gates",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "reset-update-gated-recurrence"
+      ],
+      "statement": "For each hidden coordinate, learned sigmoid reset and update gates control the candidate’s use of previous state and the mixture hₜ = zₜ⊙hₜ₋₁ + (1−zₜ)⊙h̃ₜ, with the archival candidate h̃ₜ = φ(Wxₜ + U(rₜ⊙hₜ₋₁)).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Reset and update gate equations, printed p. 1726",
+            "section": "2.3 Hidden Unit that Adaptively Remembers and Forgets",
+            "pageStart": 1726,
+            "pageEnd": 1726,
+            "figure": "2",
+            "equation": "5–8"
+          },
+          "support": "Defines both gates, the old-state/candidate mixture convention, and reset placement inside the recurrent matrix product."
+        }
+      ],
+      "limitations": [
+        "The source does not use the later name GRU, and the convention weights old state by z rather than silently adopting another notation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-ungated-evidence-boundary",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "reset-update-gated-recurrence"
+      ],
+      "statement": "The authors say their hidden unit was motivated by LSTM and report that preliminary experiments with an ordinary tanh unit produced no meaningful result, but provide no task setup, metric, table, controlled gate ablation, or repeated-run evidence for that comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "LSTM motivation and preliminary ungated observation, printed p. 1726",
+            "section": "2.3 Hidden Unit that Adaptively Remembers and Forgets",
+            "pageStart": 1726,
+            "pageEnd": 1726,
+            "paragraph": "Opening and closing paragraphs"
+          },
+          "support": "States both the LSTM motivation and the unquantified preliminary tanh observation."
+        }
+      ],
+      "limitations": [
+        "The absence of a controlled comparison prevents attributing the reported translation gain specifically to either gate."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-reset-equation-version-boundary",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "reset-update-gated-recurrence"
+      ],
+      "statement": "The archival main paper applies the reset vector to the previous state before the recurrent matrix U in Eq. 8, while the official attachment retains an older componentwise rⱼ[Uhₜ₋₁]ⱼ expression; the corpus follows the main archival equation and preserves the attachment discrepancy.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Archival candidate-state equation, printed p. 1726",
+            "section": "2.3 Hidden Unit that Adaptively Remembers and Forgets",
+            "pageStart": 1726,
+            "pageEnd": 1726,
+            "equation": "8"
+          },
+          "support": "Prints U applied to the reset-modulated previous-state vector."
+        },
+        {
+          "sourceId": "cho-2014-acl-attachment",
+          "locator": {
+            "label": "Older attachment reset placement",
+            "section": "A.1 Encoder",
+            "equation": "Encoder candidate-state equation"
+          },
+          "support": "Prints the reset coordinate outside the recurrent matrix output, exposing the inconsistency."
+        }
+      ],
+      "limitations": [
+        "The paper does not explain whether the attachment formula reflects the evaluated code or a stale typesetting state."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact equation used by the reported training run cannot be recovered from the inspected artifacts alone.",
+          "resolutionCondition": "Contemporaneous code, experiment logs, or an author clarification would be required."
+        }
+      ],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-phrase-table-integration",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "Training samples unique phrase pairs without their normalized corpus frequencies, then adds the learned conditional phrase score as one feature in the existing phrase table and log-linear tuning procedure; repeated neural generation to replace the table is described as expensive future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Unique-pair training and phrase-table feature integration, printed p. 1727",
+            "section": "3.1 Scoring Phrase Pairs with RNN Encoder–Decoder",
+            "pageStart": 1727,
+            "pageEnd": 1727,
+            "paragraph": "Complete section"
+          },
+          "support": "Defines the omitted frequency weighting, score insertion, and untested full-table replacement."
+        }
+      ],
+      "limitations": [
+        "The existing translation probability already carries frequency information, so the complete SMT system is not frequency-free."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-data-and-vocabulary",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "For WMT’14 English–French, data selection retains 418 million of more than 2 billion French words for language modeling and 348 million of 850 million words for encoder–decoder training; newstest2012/2013 support selection and MERT tuning, newstest2014 is the one-reference test, and both neural vocabularies contain 15,000 words covering about 93%.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Selected corpora, splits, and vocabulary, printed p. 1728",
+            "section": "4.1 Data and Baseline System",
+            "pageStart": 1728,
+            "pageEnd": 1728,
+            "paragraph": "Data-selection and vocabulary paragraphs"
+          },
+          "support": "Reports the selected word totals, split roles, single-reference scope, vocabulary sizes, and approximate coverage."
+        }
+      ],
+      "limitations": [
+        "The paper reports heterogeneous corpus word totals in French after tokenization and does not license those datasets for redistribution."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-architecture-condition",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "reset-update-gated-recurrence",
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "The reported encoder and decoder each use 1,000 gated hidden units; the main paper describes rank-100 input/output factorizations as 100-dimensional word embeddings, a tanh candidate, and a decoder output network with 500 maxout units pooling pairs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Evaluated encoder–decoder dimensions, printed pp. 1728–1729",
+            "section": "4.1.1 RNN Encoder–Decoder",
+            "pageStart": 1728,
+            "pageEnd": 1729,
+            "paragraph": "Architecture paragraph"
+          },
+          "support": "Supplies the hidden, factorization, candidate, and maxout dimensions printed in the main paper."
+        },
+        {
+          "sourceId": "cho-2014-acl-attachment",
+          "locator": {
+            "label": "Attachment embedding discrepancy",
+            "section": "A.1 Encoder",
+            "paragraph": "Opening embedding dimension"
+          },
+          "support": "The attachment instead says 500-dimensional source embeddings, which is preserved as an internal discrepancy."
+        }
+      ],
+      "limitations": [
+        "The main paper and attachment disagree about source embedding dimensionality, so the corpus does not silently equate their architecture descriptions."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The evaluated source embedding dimension is inconsistent across the official main paper and attachment.",
+          "resolutionCondition": "Contemporaneous code, logs, or author clarification would be required."
+        }
+      ],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-training-condition",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "reset-update-gated-recurrence",
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "Weights are initialized from zero-mean Gaussian draws with standard deviation 0.01 except for recurrent matrices initialized from left singular vectors; Adadelta with ε=10⁻⁶ and ρ=0.95 updates minibatches of 64 random phrase pairs, and the model trains for approximately three days.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Initialization and optimizer, printed p. 1729",
+            "section": "4.1.1 RNN Encoder–Decoder",
+            "pageStart": 1729,
+            "pageEnd": 1729,
+            "paragraph": "Training paragraphs"
+          },
+          "support": "Reports the initialization, optimizer hyperparameters, minibatch size, and approximate duration."
+        }
+      ],
+      "limitations": [
+        "Hardware, epoch count, convergence criterion, phrase-table pair count, random seeds, and repeated-run variation are not reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-bleu-results",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "On the canonical one-reference WMT’14 split, Table 1 reports development/test BLEU of 30.64/33.30 for the baseline, 31.20/33.87 with the encoder–decoder phrase score, 31.48/34.64 with the separate continuous-space language model plus that score, and 31.50/34.54 after also adding an unknown-word penalty.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Complete canonical BLEU table, printed pp. 1729–1730",
+            "section": "4.2 Quantitative Analysis",
+            "pageStart": 1729,
+            "pageEnd": 1730,
+            "table": "1"
+          },
+          "support": "Supplies all four development and test rows and states that the word penalty does not improve test performance."
+        }
+      ],
+      "limitations": [
+        "The isolated encoder–decoder score changes test BLEU by 0.57 points; the best test row also contains a separate target language model, and no confidence interval or significance test is supplied.",
+        "The June v1 preprint reports a materially different table and is not substituted for this canonical result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-unknown-word-boundary",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "Every word outside either 15,000-word shortlist is replaced by one UNK token, so the neural model’s UNK probability aggregates all excluded word types and overestimates the probability assigned to any particular excluded word; the reported system counteracts this with a tuned word-count penalty rather than a modeled open vocabulary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Unknown-token aggregation and word penalty, printed p. 1730",
+            "section": "4.2 Quantitative Analysis",
+            "pageStart": 1730,
+            "pageEnd": 1730,
+            "paragraph": "Footnote 3"
+          },
+          "support": "Derives the aggregate UNK probability, identifies overestimation, and describes the penalty."
+        }
+      ],
+      "limitations": [
+        "The penalty does not identify or generate the excluded lexical item, and its test row is 0.10 BLEU below the same system without the penalty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-qualitative-evidence",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "neural-phrase-pair-scoring"
+      ],
+      "statement": "For selected long source phrases the paper displays top-scored table entries and the five highest-scoring outcomes among 50 generated samples, then visualizes learned word vectors and 1,000-dimensional phrase summaries with Barnes–Hut t-SNE; these are qualitative examples without human evaluation, cluster metrics, or a held-out representation benchmark.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Phrase examples and representation plots, printed pp. 1730–1732",
+            "section": "4.3 Qualitative Analysis; 4.4 Word and Phrase Representations",
+            "pageStart": 1730,
+            "pageEnd": 1732,
+            "figure": "4–5",
+            "table": "2–3"
+          },
+          "support": "Supplies the sample-selection procedure, 50-sample/top-five display, phrase dimensionality, projection method, and qualitative interpretations."
+        }
+      ],
+      "limitations": [
+        "The main Figure 5 caption says 5,000 random phrase points, while a separate attachment plot says 1,000; neither supplies a quantitative representation test."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "cho-2014-fixed-vector-evidence-boundary",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction"
+      ],
+      "statement": "The evaluated examples are phrase-table entries and the paper reports no length-stratified experiment, so its fixed-dimensional source summary is an architectural constraint but not evidence that translation quality degrades with sentence length or that a particular information bottleneck caused an observed failure.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Experimental scope and future sentence-level use, printed pp. 1727–1733",
+            "section": "3.1 Scoring Phrase Pairs with RNN Encoder–Decoder; 4 Experiments; 5 Conclusion",
+            "pageStart": 1727,
+            "pageEnd": 1733,
+            "paragraph": "Phrase-table evaluation and future-work boundaries"
+          },
+          "support": "The complete experiment remains phrase-pair scoring and contains no result partitioned by source length."
+        }
+      ],
+      "limitations": [
+        "A later paper may directly test the constraint; that evidence must not be projected backward into this work."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-fixed-vector-factorization",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "One LSTM’s final hidden state v represents the whole variable-length source, initializes a second LSTM language model, and conditions the factorization p(y₁,…,yT′|x₁,…,xT)=∏ₜp(yₜ|v,y₁,…,yₜ₋₁); a target end symbol defines distributions over different output lengths.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Fixed-vector conditional sequence model, article pp. 2–3",
+            "section": "1 Introduction; 2 The model",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "figure": "1",
+            "equation": "1"
+          },
+          "support": "Defines v, the autoregressive target factorization, softmax distributions, and EOS termination."
+        }
+      ],
+      "limitations": [
+        "The text calls v the last hidden state and does not specify a modern framework’s separate hidden/cell-state tuple."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-deep-two-lstm-architecture",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "The evaluated model uses distinct encoder and decoder LSTMs with four recurrent layers and 1,000 cells per layer; the decoder is a source-conditioned recurrent language model, and the authors report that deeper models outperform shallow ones with nearly ten-percent perplexity reduction per added layer.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Separate deep LSTMs and depth observation, article pp. 2–5",
+            "section": "1 Introduction; 2 The model; 3.4 Training details",
+            "pageStart": 2,
+            "pageEnd": 5,
+            "paragraph": "Architecture and training-dimension paragraphs"
+          },
+          "support": "Identifies the conditioned language-model role, separate networks, four layers, 1,000 cells, and reported depth trend."
+        }
+      ],
+      "limitations": [
+        "The depth statement has no complete controlled ablation table, matched-parameter comparison, uncertainty measure, or repeated-seed analysis."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-data-and-vocabulary",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "The WMT’14 English–French run uses 12 million selected sentence pairs containing 304 million English and 348 million French words, with the 160,000 most frequent source words and 80,000 most frequent target words retained and every other word replaced by one UNK token.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Training data and fixed vocabularies, article p. 4",
+            "section": "3.1 Dataset details",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "paragraph": "Complete section"
+          },
+          "support": "Reports the sentence and word totals, vocabulary sizes, and UNK mapping."
+        }
+      ],
+      "limitations": [
+        "There is no subword, copy, retrieval, or open-vocabulary mechanism, and an uncovered reference word directly penalizes BLEU."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-training-and-scale",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "The proceedings configuration uses 1,000-dimensional embeddings, an 80,000-way softmax, 380 million parameters including 64 million recurrent weights, plain SGD at 0.7 followed by half-epoch halvings after epoch five, 7.5 total epochs, batches of 128, gradient-norm clipping at five, length-grouped minibatches, and eight-GPU model/softmax parallelism reaching about 6,300 bilingual words per second over roughly ten days.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Training recipe and implementation scale, article p. 5",
+            "section": "3.4 Training details; 3.5 Parallelization",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "paragraph": "Complete sections"
+          },
+          "support": "Supplies the model dimensions, optimizer schedule, batching, clipping, throughput, hardware partition, and duration."
+        }
+      ],
+      "limitations": [
+        "The throughput is configuration- and hardware-specific, and the paper releases no contemporaneous code or hardware-normalized benchmark."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-beam-and-rescoring",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "Approximate left-to-right beam search expands each live prefix by every target-vocabulary word, keeps the B highest model-log-probability continuations, and moves EOS completions aside; separately, 1,000-best rescoring averages each phrase-based hypothesis score evenly with its LSTM log probability.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Direct decoding and hybrid rescoring, article p. 4",
+            "section": "3.2 Decoding and Rescoring",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "equation": "2"
+          },
+          "support": "Defines the approximate beam procedure and the distinct equal-weight rescoring path."
+        }
+      ],
+      "limitations": [
+        "Equation 2 states a maximum-probability objective, but finite beam search does not guarantee its exact solution and no length normalization is specified.",
+        "The 1,000-best path is hybrid rescoring, not direct neural generation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-reversal-intervention",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "statement": "Reversing source words while retaining ordinary target order lowers test perplexity from 5.8 to 4.7 and raises the prose-reported decoded BLEU from 25.9 to 30.6; Table 1’s named beam-12 single-model rows instead print 26.17 forward and 30.59 reversed.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Reversal intervention and corresponding direct rows, article pp. 4 and 6",
+            "section": "3.3 Reversing the Source Sentences; 3.6 Experimental Results",
+            "pageStart": 4,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "Reports the perplexity and prose BLEU changes and displays the slightly different named direct-decoding values."
+        }
+      ],
+      "limitations": [
+        "The paper does not reconcile 25.9 with Table 1’s 26.17; both source values are preserved rather than averaged or silently corrected."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The configuration or rounding difference behind the 25.9 prose value and 26.17 table row is not explained.",
+          "resolutionCondition": "Experiment logs or author clarification would be required."
+        }
+      ],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-reversal-explanation-boundary",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "statement": "The paper explicitly calls its explanation incomplete: reversal leaves average aligned-word distance unchanged but makes several early source–target pairs close, reducing minimum time lag and plausibly easing gradient communication; it does not experimentally isolate that proposed causal pathway.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Qualified minimum-lag account, article pp. 4–5",
+            "section": "3.3 Reversing the Source Sentences",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "paragraph": "Explanation and memory-utilization paragraphs"
+          },
+          "support": "States the incomplete explanation, unchanged average distance, reduced minimum lag, and tentative gradient account."
+        }
+      ],
+      "limitations": [
+        "The measured intervention supports reversal’s utility in this setup, not proof that minimum lag alone causes every gain."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-direct-results",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "Table 1 reports cased tokenized test BLEU of 28.45 for Bahdanau et al., 33.30 for the phrase baseline, 26.17 for one forward LSTM at beam 12, 30.59 for one reversed LSTM at beam 12, 33.00 for five reversed LSTMs at beam 1, 33.27 for two at beam 12, 34.50 for five at beam 2, and 34.81 for five at beam 12.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Complete direct-decoding comparison, article pp. 5–6",
+            "section": "3.6 Experimental Results",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "Supplies the evaluation procedure and all eight direct-comparison rows."
+        }
+      ],
+      "limitations": [
+        "The 34.81 headline depends on five models, reversed sources, and beam 12; it is not a single-model or unreversed result.",
+        "The paper provides no confidence intervals, significance tests, or aggregate repeated-seed variance."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-rescoring-results",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "Table 2 reports test BLEU of 33.30 for the phrase baseline, 34.54 for Cho et al.’s SMT combination, 37.0 for the consistently re-evaluated comparison system, 35.61 and 35.85 after 1,000-best rescoring with one forward or reversed LSTM, 36.5 after rescoring with five reversed LSTMs, and approximately 45 for the list oracle.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Complete SMT-combination and rescoring comparison, article p. 6",
+            "section": "3.6 Experimental Results",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "2"
+          },
+          "support": "Supplies all seven rows and distinguishes the 1,000-best oracle from achievable rescoring."
+        }
+      ],
+      "limitations": [
+        "The 36.5 result is 3.2 BLEU points above the selected 33.30 baseline but 0.5 below the consistently evaluated 37.0 system, and it remains constrained to hypotheses supplied by the phrase-based baseline.",
+        "Cho’s 34.54 is a hybrid phrase-based result and is not comparable to the target’s direct Table 1 row as an isolated model score."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-long-sentence-boundary",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "statement": "For the reversed-source ensemble on this WMT test, Figure 3 reports no BLEU degradation below 35 words and only minor degradation in the longest displayed bin, but supplies no confidence intervals, numeric bin table, unreversed matched curve, or evidence for unbounded fixed-vector memory.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Length-stratified curve and examples, article pp. 6–7",
+            "section": "3.7 Performance on long sentences",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "figure": "3",
+            "table": "3"
+          },
+          "support": "Displays the sorted length curve, captioned threshold, and selected long translations."
+        }
+      ],
+      "limitations": [
+        "The evidence is specific to this data, preprocessing, reversal, model ensemble, and BLEU implementation; it does not show that every fixed-vector encoder handles arbitrary length."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-representation-evidence",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "A two-dimensional PCA plot of a small selected phrase set is interpreted as sensitive to word order and fairly insensitive to active/passive alternation, but the paper provides no quantitative semantic metric, held-out invariance test, or systematic sampling protocol for this representation claim.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Qualitative phrase-state projection, article pp. 6–7",
+            "section": "3.8 Model Analysis",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "figure": "2"
+          },
+          "support": "Shows the selected PCA examples and supplies the paper’s qualitative interpretation."
+        }
+      ],
+      "limitations": [
+        "Visual proximity in this hand-selected projection is not a general evaluation of sentence meaning."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-version-parameter-boundary",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "The canonical proceedings PDF and arXiv versions 1–2 report 380 million parameters, while post-conference arXiv v3 reports 384 million and adds an 8,000-dimensional-state characterization; the official metadata JSON embeds v3-like text despite linking the 380-million proceedings PDF.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Canonical parameter count, article pp. 2 and 5",
+            "section": "1 Introduction; 3.4 Training details",
+            "pageStart": 2,
+            "pageEnd": 5,
+            "paragraph": "Headline and detailed parameter counts"
+          },
+          "support": "The proceedings PDF prints 380 million parameters and 64 million recurrent connections."
+        },
+        {
+          "sourceId": "sutskever-2014-arxiv-v3-full-text",
+          "locator": {
+            "label": "Post-conference v3 parameter wording, article pp. 2 and 5",
+            "section": "1 Introduction; 3.4 Training details",
+            "pageStart": 2,
+            "pageEnd": 5,
+            "paragraph": "Headline and detailed parameter counts"
+          },
+          "support": "Version 3 prints 384 million parameters and describes an 8,000-dimensional state."
+        }
+      ],
+      "limitations": [
+        "No inspected source explains the four-million-parameter difference; version-specific wording is not merged."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The architectural or counting change behind 380 versus 384 million is not documented.",
+          "resolutionCondition": "Versioned code, experiment logs, or author clarification would be required."
+        }
+      ],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-cho-concurrency",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction"
+      ],
+      "statement": "ArXiv version 1 calls the approach very similar to Cho et al., explicitly says this model was developed in parallel to theirs, and later says the fixed-vector two-RNN strategy was independently taken by Cho; the canonical proceedings revision retains the citation but omits the parallel-development wording.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 parallel-development statements",
+            "section": "1 Introduction; 2 The model",
+            "paragraph": "Related-work paragraph and fixed-vector strategy paragraph"
+          },
+          "support": "Contains the explicit parallel and independent-development qualifications tied to Cho et al."
+        },
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Later related-work wording, article pp. 2–3",
+            "section": "1 Introduction; 2 The model",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "paragraph": "Cho comparisons"
+          },
+          "support": "Retains Cho as a very similar/already taken approach while omitting the earlier explicit parallel-development phrase."
+        }
+      ],
+      "limitations": [
+        "Public posting order establishes version chronology but not conception, submission, private circulation, sole priority, or causal dependence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "sutskever-2014-evidence-boundary",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "deep-lstm-sequence-transduction"
+      ],
+      "statement": "The strongest direct result depends on source reversal, five-model ensembling, a limited vocabulary, and approximate beam search, while the strongest rescoring result also depends on a phrase-based candidate list; no confidence intervals, significance tests, released model, complete preprocessing implementation, or matched component ablations are supplied.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Complete evaluated system and reporting boundary, article pp. 3–8",
+            "section": "2 The model; 3 Experiments; 5 Conclusion",
+            "pageStart": 3,
+            "pageEnd": 8,
+            "table": "1–3"
+          },
+          "support": "The full method and results specify the dependent components and omit the listed uncertainty and implementation artifacts."
+        }
+      ],
+      "limitations": [
+        "The absence statement is limited to the inspected public versions and official records; private logs and later implementations are not assumed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-12"
     }
   ],
   "relationships": [
@@ -17051,6 +19006,208 @@
           "note": "The closely matching baseline is associated in the target bibliography with the separate 2011 rnnlm toolkit; the edge therefore records the directly cited 2010 architectural lineage without treating the target numbers as a reproduction."
         }
       ]
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-to-cho-2014",
+      "from": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "to": {
+        "kind": "work",
+        "id": "cho-2014-rnn-encoder-decoder"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Cho et al. explicitly cite Hochreiter and Schmidhuber’s LSTM and name it as the design reference for their reset–update hidden unit. The connection carries the scoped idea of multiplicatively controlled recurrent memory, not the LSTM cell state, constant-error path, input/output-gate equations, experimental results, or a sole-priority claim for gating.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "cho-2014-reset-update-gates",
+        "cho-2014-ungated-evidence-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "LSTM motivation and complete citation, printed pp. 1725–1726 and 1734",
+            "section": "2.1 Preliminary: Recurrent Neural Networks; 2.3 Hidden Unit that Adaptively Remembers and Forgets; References",
+            "pageStart": 1725,
+            "pageEnd": 1734
+          },
+          "support": "The target identifies LSTM as a recurrent unit, names it as the design reference for the new hidden unit, and resolves the citation to the 1997 Neural Computation article."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target’s reset and update gates do not reproduce the source’s input and output gates; the edge records explicit motivation rather than equation identity."
+        }
+      ]
+    },
+    {
+      "id": "bengio-2000-to-cho-2014",
+      "from": {
+        "kind": "work",
+        "id": "bengio-2000-neural-probabilistic-language-model"
+      },
+      "to": {
+        "kind": "work",
+        "id": "cho-2014-rnn-encoder-decoder"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "medium",
+      "rationale": "Cho et al. cite Bengio et al. 2003 both as a neural language-model precedent and as evidence that continuous-space language models learn meaningful word embeddings. Their encoder–decoder combines learned representations with a normalized conditional sequence probability, but it does not inherit Bengio’s fixed input window, feed-forward topology, corpora, perplexity results, or neural–trigram mixtures.",
+      "claimIds": [
+        "bengio-2003-joint-word-feature-learning",
+        "bengio-2003-feedforward-softmax-architecture",
+        "cho-2014-conditional-objective",
+        "cho-2014-qualitative-evidence"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "cho-2014-acl-full-text",
+          "locator": {
+            "label": "Neural-language-model and embedding citations, printed pp. 1724, 1732–1733",
+            "section": "1 Introduction; 4.4 Word and Phrase Representations; References",
+            "pageStart": 1724,
+            "pageEnd": 1733
+          },
+          "support": "The target names Bengio et al. 2003 in its language-modeling background and continuous-representation analysis, then gives the complete JMLR reference."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The citations establish intellectual background, not a claim that the recurrent encoder–decoder architecture is derived from Bengio’s feed-forward model."
+        }
+      ]
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-to-sutskever-2014",
+      "from": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sutskever-vinyals-le-2014-sequence-to-sequence"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sutskever, Vinyals, and Le explicitly present their system as an application of LSTM, cite Hochreiter and Schmidhuber 1997, and use LSTM’s long-lag capability to motivate the sequence task. The paper separately says it uses Graves’s formulation, so the edge does not assert identity with every equation or training rule in the original article.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-deep-two-lstm-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "LSTM motivation, model specification, and reference 16, article pp. 2–3 and 9",
+            "section": "1 Introduction; 2 The model; References",
+            "pageStart": 2,
+            "pageEnd": 9
+          },
+          "support": "The target explicitly applies LSTM to sequence transduction, cites the 1997 LSTM article, and states that the implemented recurrence follows Graves’s formulation."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target does not print its complete gate equations; architectural ancestry is documented, while exact equation identity is not."
+        }
+      ]
+    },
+    {
+      "id": "mikolov-2010-to-sutskever-2014",
+      "from": {
+        "kind": "work",
+        "id": "mikolov-2010-recurrent-neural-language-model"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sutskever-vinyals-le-2014-sequence-to-sequence"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The target calls its second LSTM essentially a recurrent neural-network language model conditioned on the input sequence and cites Mikolov et al. 2010 among the recurrent-language-model references. The edge is limited to that normalized autoregressive decoder role; it excludes Mikolov’s simple sigmoid recurrence, online adaptation, one-step temporal gradient, corpora, recognition task, and results.",
+      "claimIds": [
+        "mikolov-2010-elman-recurrent-architecture",
+        "mikolov-2010-training-objective",
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-deep-two-lstm-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Conditioned recurrent-language-model role and reference 23, article pp. 2 and 9",
+            "section": "1 Introduction; References",
+            "pageStart": 2,
+            "pageEnd": 9
+          },
+          "support": "The target identifies the decoder as a conditioned recurrent neural-network language model, cites reference 23 in that sentence, and resolves it to Mikolov et al. 2010."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The citation supports the decoder’s recurrent-language-model role, not reuse of Mikolov’s particular recurrent unit or training protocol."
+        }
+      ]
+    },
+    {
+      "id": "cho-2014-to-sutskever-2014",
+      "from": {
+        "kind": "work",
+        "id": "cho-2014-rnn-encoder-decoder"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sutskever-vinyals-le-2014-sequence-to-sequence"
+      },
+      "connectionType": "conceptual-parallel",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "high",
+      "rationale": "The directed edge records public chronology: Cho version 1 appeared on 3 June 2014 and Sutskever version 1 on 10 September 2014. Sutskever version 1 nevertheless says its model was developed in parallel and that Cho independently took the same fixed-vector two-recurrent-network strategy. The direction therefore does not encode causation, sole priority, conception order, submission order, or private circulation.",
+      "claimIds": [
+        "cho-2014-fixed-vector-architecture",
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-cho-concurrency"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sutskever-2014-arxiv-v1-full-text",
+          "locator": {
+            "label": "Parallel-development and independent-strategy statements",
+            "section": "1 Introduction; 2 The model",
+            "paragraph": "Cho comparison in the related-work paragraph and fixed-vector strategy paragraph"
+          },
+          "support": "Version 1 explicitly describes the approaches as parallel and the shared strategy as independently taken."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Later Sutskever revisions retain the similarity/citation but remove the explicit parallel-development and independent-strategy wording; the concurrency evidence remains version-bound to version 1."
+        },
+        {
+          "status": "open",
+          "note": "Public posting dates do not establish when either team conceived, submitted, or privately circulated the work.",
+          "resolutionCondition": "Dated primary records from the research or submission process would be needed to make a stronger chronological statement."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -18396,6 +20553,131 @@
         "Reproducibility and evidence auditing"
       ],
       "successCriterion": "The learner can reconstruct the 1997 core, map reference 12 only to adaptive forgetting and reference 13 only to cell-state-to-gate peepholes, avoid importing the 2002 update order into the target, derive the class factorization, reproduce both corpus and WER rows, preserve graph-only uncertainty, and list the omitted training and runtime details."
+    },
+    {
+      "id": "beginner-cho-2014-encode-score-and-gate",
+      "mode": "beginner",
+      "objective": "Follow how one recurrent network compresses a source phrase, another scores or generates a target phrase, and reset and update gates control remembered context—while keeping phrase-table rescoring distinct from end-to-end sentence translation.",
+      "workIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence",
+        "neural-phrase-pair-scoring"
+      ],
+      "claimIds": [
+        "cho-2014-fixed-vector-architecture",
+        "cho-2014-generation-and-scoring",
+        "cho-2014-reset-update-gates",
+        "cho-2014-phrase-table-integration",
+        "cho-2014-bleu-results",
+        "cho-2014-fixed-vector-evidence-boundary"
+      ],
+      "prerequisites": [
+        "A sequence read one item at a time",
+        "A vector as a compressed summary",
+        "Probabilities and weighted feature scores"
+      ],
+      "successCriterion": "The learner can trace source phrase to summary vector to target probability, predict the qualitative effect of opening each gate, explain that z weights the old state in this paper, and state why the reported BLEU gains belong to an added phrase-table feature rather than a standalone neural sentence translator."
+    },
+    {
+      "id": "expert-cho-2014-versions-objective-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the conditional sequence objective and reset–update recurrence, audit phrase-pair sampling, architecture, optimization, vocabulary, and every Table 1 result, and keep authorship and reset-equation revisions version-bound.",
+      "workIds": [
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence",
+        "neural-phrase-pair-scoring"
+      ],
+      "claimIds": [
+        "cho-2014-conditional-objective",
+        "cho-2014-fixed-vector-architecture",
+        "cho-2014-reset-update-gates",
+        "cho-2014-reset-equation-version-boundary",
+        "cho-2014-data-and-vocabulary",
+        "cho-2014-architecture-condition",
+        "cho-2014-training-condition",
+        "cho-2014-bleu-results",
+        "cho-2014-unknown-word-boundary",
+        "cho-2014-qualitative-evidence"
+      ],
+      "prerequisites": [
+        "Conditional maximum likelihood and autoregressive factorization",
+        "Recurrent state updates and sigmoid gates",
+        "Phrase-based statistical machine translation",
+        "Versioned scholarly records and experimental controls"
+      ],
+      "successCriterion": "The learner can derive equations 3–8 using the paper’s z convention, distinguish the v1/v2 reset placement and six-author metadata from v3/proceedings, reproduce 30.64/33.30, 31.20/33.87, 31.48/34.64, and 31.50/34.54, and label phrase samples and t-SNE plots as qualitative evidence."
+    },
+    {
+      "id": "beginner-sutskever-2014-reverse-then-translate",
+      "mode": "beginner",
+      "objective": "See how two deep LSTMs turn a source sentence into a fixed summary and then a translation, manipulate the source-order reversal idea, and separate direct neural translation from rescoring an existing system’s candidates.",
+      "workIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "deep-lstm-sequence-transduction",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "claimIds": [
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-deep-two-lstm-architecture",
+        "sutskever-2014-reversal-intervention",
+        "sutskever-2014-reversal-explanation-boundary",
+        "sutskever-2014-direct-results",
+        "sutskever-2014-rescoring-results"
+      ],
+      "prerequisites": [
+        "A recurrent model that predicts the next word",
+        "A source sentence and its translation",
+        "The distinction between generating and reranking candidates"
+      ],
+      "successCriterion": "The learner can explain why reversing only the source creates shorter early paths, state that the causal explanation remained incomplete, identify 34.81 as five-model direct translation and 36.5 as phrase-based 1000-best rescoring, and avoid attributing either score to one unreversed model."
+    },
+    {
+      "id": "expert-sutskever-2014-factorization-scale-and-results",
+      "mode": "expert",
+      "objective": "Reconstruct the EOS-terminated conditional factorization, four-layer separate encoder and decoder, beam and rescoring procedures, reversal intervention, optimization and scale, and every promoted direct and 1000-best result while preserving proceedings/arXiv differences.",
+      "workIds": [
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "deep-lstm-sequence-transduction",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "claimIds": [
+        "sutskever-2014-fixed-vector-factorization",
+        "sutskever-2014-deep-two-lstm-architecture",
+        "sutskever-2014-data-and-vocabulary",
+        "sutskever-2014-training-and-scale",
+        "sutskever-2014-beam-and-rescoring",
+        "sutskever-2014-reversal-intervention",
+        "sutskever-2014-reversal-explanation-boundary",
+        "sutskever-2014-direct-results",
+        "sutskever-2014-rescoring-results",
+        "sutskever-2014-long-sentence-boundary",
+        "sutskever-2014-version-parameter-boundary",
+        "sutskever-2014-cho-concurrency",
+        "sutskever-2014-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Conditional sequence likelihood and softmax",
+        "Deep LSTM recurrence and truncated minibatch training",
+        "Beam search, log-linear rescoring, perplexity, and BLEU",
+        "Ablation and version-provenance auditing"
+      ],
+      "successCriterion": "The learner can derive equation 1 with EOS, reproduce all eight Table 1 and seven Table 2 rows, distinguish the prose reversal comparison from the rounded table values, explain beam and ensemble conditions, preserve 380M proceedings versus 384M arXiv-v3 wording, and treat the Cho relationship as documented concurrency rather than causation."
     }
   ]
 }

@@ -35,9 +35,31 @@ test("accepts the checked-in corpus", () => {
 
 test("binds the corpus to the current schema contract", () => {
   const candidate = copyCorpus();
-  candidate.schemaVersion = "0.5.0";
+  candidate.schemaVersion = "0.6.0";
 
-  assertRejected(candidate, "must equal \"0.6.0\"");
+  assertRejected(candidate, "must equal \"0.7.0\"");
+});
+
+test("accepts arXiv identifiers and rejects unknown identifier types", () => {
+  const arxivIdentifier = corpus.works
+    .flatMap((work) => work.versions)
+    .flatMap((version) => version.bibliography.identifiers)
+    .find((identifier) => identifier.type === "arxiv");
+  const candidate = copyCorpus();
+  const version = candidate.works
+    .flatMap((work) => work.versions)
+    .find((item) =>
+      item.bibliography.identifiers.some(
+        (identifier) => identifier.type === "arxiv",
+      ),
+    );
+  const identifier = version.bibliography.identifiers.find(
+    (item) => item.type === "arxiv",
+  );
+
+  assert.equal(arxivIdentifier?.value, "1406.1078v1");
+  identifier.type = "preprint-id";
+  assertRejected(candidate, "must be one of");
 });
 
 test("retains the sourced 1975 statistical-decoder bridge", () => {
@@ -711,7 +733,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-10");
+  assert.equal(corpus.asOf, "2026-08-12");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -3231,6 +3253,286 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
     false,
   );
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
+});
+
+test("retains Cho 2014 as a versioned phrase-scoring encoder-decoder branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "cho-2014-rnn-encoder-decoder",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const results = claims.find((claim) => claim.id === "cho-2014-bleu-results");
+  const equationBoundary = claims.find(
+    (claim) => claim.id === "cho-2014-reset-equation-version-boundary",
+  );
+  const fixedVectorBoundary = claims.find(
+    (claim) => claim.id === "cho-2014-fixed-vector-evidence-boundary",
+  );
+  const fullText = corpus.sources.find(
+    (source) => source.id === "cho-2014-acl-full-text",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "cho-2014-emnlp-version");
+  assert.equal(work?.versions.length, 4);
+  assert.deepEqual(work?.authors, [
+    "Kyunghyun Cho",
+    "Bart van Merriënboer",
+    "Caglar Gulcehre",
+    "Dzmitry Bahdanau",
+    "Fethi Bougares",
+    "Holger Schwenk",
+    "Yoshua Bengio",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.date.value,
+      event.date.precision,
+    ]),
+    [
+      ["cho-2014-arxiv-v1-posted", "2014-06-03", "day"],
+      ["cho-2014-arxiv-v2-posted", "2014-07-24", "day"],
+      ["cho-2014-arxiv-v3-posted", "2014-09-03", "day"],
+      ["cho-2014-emnlp-conference", "2014-10", "month"],
+    ],
+  );
+  assert.equal(work?.chronology.orderingEventId, "cho-2014-arxiv-v1-posted");
+  assert.ok(
+    work?.chronology.events[3].date.note.includes("25–29 October"),
+  );
+  assert.equal(versions.get("cho-2014-arxiv-v1-version")?.authors.length, 6);
+  assert.equal(versions.get("cho-2014-arxiv-v2-version")?.authors.length, 6);
+  assert.equal(versions.get("cho-2014-arxiv-v3-version")?.authors.length, 7);
+  assert.deepEqual(
+    versions.get("cho-2014-emnlp-version")?.authors,
+    work?.authors,
+  );
+  assert.deepEqual(
+    versions.get("cho-2014-emnlp-version")?.bibliography.pages,
+    ["1724-1734"],
+  );
+  assert.ok(
+    versions
+      .get("cho-2014-emnlp-version")
+      ?.bibliography.identifiers.some(
+        (identifier) =>
+          identifier.type === "doi" &&
+          identifier.value === "10.3115/v1/D14-1179",
+      ),
+  );
+  for (const version of work?.versions ?? []) {
+    for (const sourceId of version.sourceIds) {
+      const source = corpus.sources.find((item) => item.id === sourceId);
+      assert.ok(source?.relatedWorkIds.includes(work.id));
+      assert.ok(source?.versionIds.includes(version.id));
+    }
+  }
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "printed",
+    pageStart: 1724,
+    pageEnd: 1734,
+  });
+  assert.equal(claims.length, 14);
+  for (const value of [
+    "30.64/33.30",
+    "31.20/33.87",
+    "31.48/34.64",
+    "31.50/34.54",
+  ]) {
+    assert.ok(results?.statement.includes(value));
+  }
+  assert.ok(results?.statement.indexOf("34.64") < results?.statement.indexOf("34.54"));
+  assert.ok(equationBoundary?.statement.includes("before the recurrent matrix U"));
+  assert.ok(equationBoundary?.statement.includes("official attachment"));
+  assert.ok(fixedVectorBoundary?.statement.includes("architectural constraint"));
+  assert.ok(fixedVectorBoundary?.statement.includes("not evidence"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-cho-2014-encode-score-and-gate",
+      "expert-cho-2014-versions-objective-and-evidence",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.mode),
+    ["beginner", "expert"],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("phrase-table feature"));
+  assert.ok(objectives[1]?.successCriterion.includes("six-author metadata"));
+});
+
+test("retains Sutskever 2014 with separate direct, rescoring, and version evidence", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "sutskever-vinyals-le-2014-sequence-to-sequence",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const direct = claims.find(
+    (claim) => claim.id === "sutskever-2014-direct-results",
+  );
+  const rescoring = claims.find(
+    (claim) => claim.id === "sutskever-2014-rescoring-results",
+  );
+  const reversal = claims.find(
+    (claim) => claim.id === "sutskever-2014-reversal-intervention",
+  );
+  const reversalBoundary = claims.find(
+    (claim) => claim.id === "sutskever-2014-reversal-explanation-boundary",
+  );
+  const parameterBoundary = claims.find(
+    (claim) => claim.id === "sutskever-2014-version-parameter-boundary",
+  );
+  const fullText = corpus.sources.find(
+    (source) => source.id === "sutskever-2014-neurips-full-text",
+  );
+  const metadata = corpus.sources.find(
+    (source) => source.id === "sutskever-2014-neurips-metadata",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "sutskever-2014-nips-version");
+  assert.equal(work?.versions.length, 4);
+  assert.deepEqual(work?.authors, [
+    "Ilya Sutskever",
+    "Oriol Vinyals",
+    "Quoc V. Le",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["sutskever-2014-arxiv-v1-posted", "2014-09-10"],
+      ["sutskever-2014-arxiv-v2-posted", "2014-10-29"],
+      ["sutskever-2014-nips-oral", "2014-12-09"],
+      ["sutskever-2014-arxiv-v3-posted", "2014-12-14"],
+    ],
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "sutskever-2014-arxiv-v1-posted",
+  );
+  assert.deepEqual(
+    versions.get("sutskever-2014-nips-version")?.bibliography.pages,
+    ["3104-3112"],
+  );
+  assert.ok(
+    versions
+      .get("sutskever-2014-nips-version")
+      ?.notes.includes("internal pp. 1–9"),
+  );
+  assert.ok(
+    versions
+      .get("sutskever-2014-arxiv-v3-version")
+      ?.notes.includes("384 million"),
+  );
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 9,
+  });
+  assert.equal(metadata?.supports.includes("claim-location"), false);
+  assert.equal(claims.length, 14);
+  for (const value of [
+    "28.45",
+    "33.30",
+    "26.17",
+    "30.59",
+    "33.00",
+    "33.27",
+    "34.50",
+    "34.81",
+  ]) {
+    assert.ok(direct?.statement.includes(value));
+  }
+  assert.ok(direct?.statement.includes("five at beam 12"));
+  for (const value of [
+    "33.30",
+    "34.54",
+    "37.0",
+    "35.61",
+    "35.85",
+    "36.5",
+    "approximately 45",
+  ]) {
+    assert.ok(rescoring?.statement.includes(value));
+  }
+  assert.ok(rescoring?.statement.includes("1,000-best rescoring"));
+  for (const value of ["5.8", "4.7", "25.9", "30.6", "26.17", "30.59"])
+    assert.ok(reversal?.statement.includes(value));
+  assert.ok(reversalBoundary?.statement.includes("explanation incomplete"));
+  assert.ok(reversalBoundary?.statement.includes("does not experimentally isolate"));
+  assert.ok(parameterBoundary?.statement.includes("380 million"));
+  assert.ok(parameterBoundary?.statement.includes("384 million"));
+  assert.ok(parameterBoundary?.statement.includes("8,000-dimensional"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-sutskever-2014-reverse-then-translate",
+      "expert-sutskever-2014-factorization-scale-and-results",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("five-model direct"));
+  assert.ok(objectives[0]?.successCriterion.includes("1000-best rescoring"));
+  assert.ok(objectives[1]?.successCriterion.includes("380M proceedings"));
+  assert.ok(objectives[1]?.successCriterion.includes("seven Table 2 rows"));
+});
+
+test("keeps the 2014 encoder-decoder branches concurrent and noncausal", () => {
+  const cho = corpus.works.find(
+    (work) => work.id === "cho-2014-rnn-encoder-decoder",
+  );
+  const sutskever = corpus.works.find(
+    (work) => work.id === "sutskever-vinyals-le-2014-sequence-to-sequence",
+  );
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "cho-2014-to-sutskever-2014",
+  );
+  const concurrency = corpus.claims.find(
+    (claim) => claim.id === "sutskever-2014-cho-concurrency",
+  );
+  const relationshipIds = new Set(
+    corpus.relationships.map((item) => item.id),
+  );
+
+  assert.equal(
+    cho?.chronology.events.find(
+      (event) => event.id === cho.chronology.orderingEventId,
+    )?.date.value,
+    "2014-06-03",
+  );
+  assert.equal(
+    sutskever?.chronology.events.find(
+      (event) => event.id === sutskever.chronology.orderingEventId,
+    )?.date.value,
+    "2014-09-10",
+  );
+  assert.deepEqual(relationship?.from, { kind: "work", id: cho?.id });
+  assert.deepEqual(relationship?.to, { kind: "work", id: sutskever?.id });
+  assert.equal(relationship?.connectionType, "conceptual-parallel");
+  assert.equal(relationship?.evidenceClass, "editorial-synthesis");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "prohibited");
+  assert.deepEqual(
+    relationship?.sourceEvidence.map((evidence) => evidence.sourceId),
+    ["sutskever-2014-arxiv-v1-full-text"],
+  );
+  assert.ok(relationship?.rationale.includes("public chronology"));
+  assert.ok(relationship?.rationale.includes("does not encode causation"));
+  assert.ok(concurrency?.statement.includes("developed in parallel"));
+  assert.ok(concurrency?.statement.includes("independently taken"));
+  assert.ok(concurrency?.statement.includes("canonical proceedings revision"));
+  assert.ok(relationshipIds.has("hochreiter-schmidhuber-1995-to-cho-2014"));
+  assert.ok(relationshipIds.has("bengio-2000-to-cho-2014"));
+  assert.ok(relationshipIds.has("hochreiter-schmidhuber-1995-to-sutskever-2014"));
+  assert.ok(relationshipIds.has("mikolov-2010-to-sutskever-2014"));
+  assert.equal(relationshipIds.has("mikolov-2010-to-cho-2014"), false);
+  assert.equal(relationshipIds.has("sundermeyer-2012-to-cho-2014"), false);
 });
 
 test("rejects an unbound primary-work source without a version-boundary role", () => {

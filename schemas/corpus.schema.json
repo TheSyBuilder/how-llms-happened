@@ -25,7 +25,7 @@
       "minLength": 1
     },
     "schemaVersion": {
-      "const": "0.6.0"
+      "const": "0.7.0"
     },
     "corpusId": {
       "$ref": "#/$defs/id"
@@ -238,7 +238,8 @@
             "isbn",
             "issn",
             "report-number",
-            "catalog-id"
+            "catalog-id",
+            "arxiv"
           ]
         },
         "value": {
