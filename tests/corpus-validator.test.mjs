@@ -733,7 +733,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-12");
+  assert.equal(corpus.asOf, "2026-08-13");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -3363,6 +3363,225 @@ test("retains Cho 2014 as a versioned phrase-scoring encoder-decoder branch", ()
   );
   assert.ok(objectives[0]?.successCriterion.includes("phrase-table feature"));
   assert.ok(objectives[1]?.successCriterion.includes("six-author metadata"));
+});
+
+test("retains Bahdanau 2014/2015 as a versioned attention branch", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "bahdanau-cho-bengio-2014-neural-machine-translation",
+  );
+  const versions = new Map(
+    work?.versions.map((version) => [version.id, version]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const results = claims.find(
+    (claim) => claim.id === "bahdanau-2014-bleu-results",
+  );
+  const length = claims.find(
+    (claim) => claim.id === "bahdanau-2014-length-results",
+  );
+  const alignment = claims.find(
+    (claim) =>
+      claim.id === "bahdanau-2014-soft-alignment-interpretation-boundary",
+  );
+  const differentiableAlignment = claims.find(
+    (claim) => claim.id === "bahdanau-2014-differentiable-soft-alignment",
+  );
+  const equationBoundary = claims.find(
+    (claim) => claim.id === "bahdanau-2014-equation-version-boundary",
+  );
+  const aggregate = corpus.sources.find(
+    (source) => source.id === "bahdanau-2014-arxiv-record",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "bahdanau-2014-arxiv-v7-version");
+  assert.equal(work?.versions.length, 7);
+  assert.deepEqual(work?.authors, [
+    "Dzmitry Bahdanau",
+    "Kyunghyun Cho",
+    "Yoshua Bengio",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["bahdanau-2014-arxiv-v1-posted", "2014-09-01"],
+      ["bahdanau-2014-arxiv-v2-posted", "2014-09-04"],
+      ["bahdanau-2014-arxiv-v3-posted", "2014-10-07"],
+      ["bahdanau-2014-arxiv-v4-posted", "2014-12-19"],
+      ["bahdanau-2014-arxiv-v5-posted", "2015-03-22"],
+      ["bahdanau-2014-arxiv-v6-posted", "2015-04-24"],
+      ["bahdanau-2015-iclr-oral", "2015-05-09"],
+      ["bahdanau-2014-arxiv-v7-posted", "2016-05-19"],
+    ],
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "bahdanau-2014-arxiv-v1-posted",
+  );
+  assert.deepEqual(work?.ideaIds, [
+    "fixed-vector-neural-sequence-transduction",
+    "source-conditioned-autoregressive-decoding",
+    "reset-update-gated-recurrence",
+    "decoder-conditioned-soft-attention",
+    "bidirectional-source-annotations",
+    "fixed-vector-source-summary-bottleneck",
+  ]);
+  assert.equal(aggregate?.versionIds.length, 7);
+  assert.equal(aggregate?.supports.includes("version-boundary"), false);
+  for (const version of work?.versions ?? []) {
+    for (const sourceId of version.sourceIds) {
+      const source = corpus.sources.find((item) => item.id === sourceId);
+      assert.ok(source?.relatedWorkIds.includes(work.id));
+      assert.ok(source?.versionIds.includes(version.id));
+    }
+  }
+  assert.ok(
+    versions
+      .get("bahdanau-2014-arxiv-v5-version")
+      ?.notes.includes("missing matrix"),
+  );
+  assert.ok(
+    versions
+      .get("bahdanau-2014-arxiv-v6-version")
+      ?.notes.includes("post-output-state"),
+  );
+  assert.ok(
+    versions
+      .get("bahdanau-2014-arxiv-v7-version")
+      ?.notes.includes("not treated as a globally corrected"),
+  );
+  assert.equal(claims.length, 18);
+  for (const value of [
+    "13.93/24.19",
+    "21.50/31.44",
+    "17.82/26.71",
+    "26.75/34.16",
+    "28.45/36.15",
+    "33.30/35.63",
+  ]) {
+    assert.ok(results?.statement.includes(value));
+  }
+  assert.ok(results?.limitations.some((item) => item.includes("418M-word")));
+  assert.ok(length?.limitations.some((item) => item.includes("per-bin counts")));
+  assert.ok(length?.limitations.some((item) => item.includes("multi-component")));
+  assert.equal(
+    differentiableAlignment?.statement,
+    "Because the source weights are differentiable, translation-loss gradients jointly train the alignment scorer with the encoder and decoder.",
+  );
+  assert.equal(
+    alignment?.statement,
+    "The authors interpret αᵢⱼ as a probability or importance that target yᵢ aligns to source xⱼ and show mostly monotonic and reordering examples.",
+  );
+  assert.ok(alignment?.limitations.some((item) => item.includes("gold labels")));
+  assert.equal(equationBoundary?.evidence.length, 3);
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-bahdanau-2014-follow-the-focus",
+      "expert-bahdanau-2014-attention-objective-and-evidence",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.mode),
+    ["beginner", "expert"],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("qualitative"));
+  assert.ok(objectives[1]?.successCriterion.includes("v5/v6/v7"));
+});
+
+test("documents the scoped Cho to Bahdanau extension", () => {
+  const relationship = corpus.relationships.find(
+    (item) => item.id === "cho-2014-to-bahdanau-2014",
+  );
+  const claimWorkIds = new Set(
+    relationship?.claimIds.map(
+      (claimId) => corpus.claims.find((claim) => claim.id === claimId)?.workId,
+    ),
+  );
+
+  assert.deepEqual(relationship?.from, {
+    kind: "work",
+    id: "cho-2014-rnn-encoder-decoder",
+  });
+  assert.deepEqual(relationship?.to, {
+    kind: "work",
+    id: "bahdanau-cho-bengio-2014-neural-machine-translation",
+  });
+  assert.equal(relationship?.connectionType, "extends");
+  assert.equal(relationship?.evidenceClass, "documented-influence");
+  assert.equal(relationship?.confidence, "high");
+  assert.equal(relationship?.causalLanguage, "qualified");
+  assert.deepEqual(
+    claimWorkIds,
+    new Set([
+      "cho-2014-rnn-encoder-decoder",
+      "bahdanau-cho-bengio-2014-neural-machine-translation",
+    ]),
+  );
+  assert.deepEqual(
+    relationship?.sourceEvidence.map((item) => item.locator.pageStart),
+    [2, 4, 12],
+  );
+  assert.ok(relationship?.rationale.includes("fixed-context comparator"));
+  assert.ok(
+    relationship?.rationale.includes("opposite z mixture convention"),
+  );
+  assert.ok(
+    relationship?.rationale.includes("terminal forward encoder state"),
+  );
+  assert.ok(relationship?.rationale.includes("sole attention priority"));
+});
+
+test("keeps reciprocal Bahdanau and Sutskever citations from overriding chronology", () => {
+  const bahdanau = corpus.works.find(
+    (work) =>
+      work.id === "bahdanau-cho-bengio-2014-neural-machine-translation",
+  );
+  const sutskever = corpus.works.find(
+    (work) => work.id === "sutskever-vinyals-le-2014-sequence-to-sequence",
+  );
+  const crossCitation = corpus.claims.find(
+    (claim) => claim.id === "bahdanau-2014-sutskever-cross-citation-boundary",
+  );
+  const sutskeverV1 = corpus.sources.find(
+    (source) => source.id === "sutskever-2014-arxiv-v1-full-text",
+  );
+  const pairEdges = corpus.relationships.filter((relationship) => {
+    const ids = new Set([relationship.from.id, relationship.to.id]);
+    return ids.has(bahdanau?.id) && ids.has(sutskever?.id);
+  });
+
+  assert.equal(
+    bahdanau?.chronology.events.find(
+      (event) => event.id === bahdanau.chronology.orderingEventId,
+    )?.date.value,
+    "2014-09-01",
+  );
+  assert.equal(
+    sutskever?.chronology.events.find(
+      (event) => event.id === sutskever.chronology.orderingEventId,
+    )?.date.value,
+    "2014-09-10",
+  );
+  assert.deepEqual(
+    crossCitation?.evidence.map((item) => item.sourceId),
+    [
+      "bahdanau-2014-arxiv-v1-full-text",
+      "sutskever-2014-arxiv-v1-full-text",
+    ],
+  );
+  assert.ok(sutskeverV1?.relatedWorkIds.includes(bahdanau?.id));
+  assert.equal(pairEdges.length, 0);
+  for (const term of [
+    "conception order",
+    "submission order",
+    "private-circulation",
+  ])
+    assert.ok(crossCitation?.limitations[0].includes(term));
 });
 
 test("retains Sutskever 2014 with separate direct, rescoring, and version evidence", () => {

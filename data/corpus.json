@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-12",
+  "asOf": "2026-08-13",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -4809,6 +4809,471 @@
       ]
     },
     {
+      "id": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+      "authors": [
+        "Dzmitry Bahdanau",
+        "Kyunghyun Cho",
+        "Yoshua Bengio"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” 3rd International Conference on Learning Representations (ICLR 2015), San Diego, CA, 7–9 May 2015, arXiv:1409.0473.",
+      "chronology": {
+        "orderingEventId": "bahdanau-2014-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "bahdanau-2014-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2014-09-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 1 September 2014 at 16:33:02 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v1-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "bahdanau-2014-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2014-09-04",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 4 September 2014 at 18:32:00 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v2-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "bahdanau-2014-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2014-10-07",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 7 October 2014 at 18:10:39 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v3-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "bahdanau-2014-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "ICLR-submission arXiv revision posted",
+            "date": {
+              "value": "2014-12-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 19 December 2014 at 21:39:11 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v4-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "bahdanau-2014-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "Accepted-paper arXiv revision posted",
+            "date": {
+              "value": "2015-03-22",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 22 March 2015 at 17:08:39 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v5-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "bahdanau-2014-arxiv-v6-posted",
+            "kind": "manuscript-revised",
+            "label": "Conference-time arXiv revision posted",
+            "date": {
+              "value": "2015-04-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 6 posted 24 April 2015 at 13:25:33 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v6-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v6-full-text"
+            ]
+          },
+          {
+            "id": "bahdanau-2015-iclr-oral",
+            "kind": "conference-presentation",
+            "label": "ICLR 2015 oral presentation",
+            "date": {
+              "value": "2015-05-09",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2015-iclr-program",
+                "precision": "day",
+                "locator": "Official ICLR 2015 program, Saturday 9 May oral session, 09:40–10:00; conference poster board 13"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v6-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-v6-full-text",
+              "bahdanau-2015-iclr-program"
+            ]
+          },
+          {
+            "id": "bahdanau-2014-arxiv-v7-posted",
+            "kind": "manuscript-revised",
+            "label": "Post-conference arXiv revision posted",
+            "date": {
+              "value": "2016-05-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bahdanau-2014-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 7 posted 19 May 2016 at 21:53:22 UTC"
+              }
+            ],
+            "versionId": "bahdanau-2014-arxiv-v7-version",
+            "sourceIds": [
+              "bahdanau-2014-arxiv-record",
+              "bahdanau-2014-arxiv-v7-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "bahdanau-2014-arxiv-v1-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” arXiv:1409.0473v1, 1 September 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v1-full-text"
+          ],
+          "notes": "The first 15-page preprint already defines the decoder-conditioned context and bidirectional annotations, reports the stable Table 1 results, and cites the Sutskever manuscript anonymously as under review. Its public date orders the work without resolving private development chronology."
+        },
+        {
+          "id": "bahdanau-2014-arxiv-v2-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” arXiv:1409.0473v2, 4 September 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v2-full-text"
+          ],
+          "notes": "The second 15-page revision changes accents and presentation in the qualitative examples without changing the central mechanism or reported Table 1 values."
+        },
+        {
+          "id": "bahdanau-2014-arxiv-v3-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” arXiv:1409.0473v3, 7 October 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v3-full-text"
+          ],
+          "notes": "The third revision de-anonymizes the Sutskever citation and adds a Forcada reference; the title, authors, mechanism, and main quantitative results remain unchanged."
+        },
+        {
+          "id": "bahdanau-2014-arxiv-v4-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” arXiv:1409.0473v4, 19 December 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v4-full-text"
+          ],
+          "notes": "The fourth revision adopts the ICLR template and under-review header, renames the main fixed-context comparator RNNencdec, corrects an encoder reset input, and adds context terms to detailed decoder gates."
+        },
+        {
+          "id": "bahdanau-2014-arxiv-v5-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "proceedings",
+          "label": "arXiv version 5 with ICLR 2015 published-paper header",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” ICLR 2015, arXiv:1409.0473v5, 22 March 2015.",
+            "venue": "3rd International Conference on Learning Representations (ICLR 2015)",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v5",
+                "label": "arXiv version 5 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v5-full-text"
+          ],
+          "notes": "The first revision marked published at ICLR 2015 is the accepted-paper snapshot. It corrects a parallel-corpus component from 780M to 272.5M words while preserving the stated 850M total and all Table 1 results; its detailed decoder appendix contains mixed target indices and a missing matrix."
+        },
+        {
+          "id": "bahdanau-2014-arxiv-v6-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "proceedings",
+          "label": "arXiv version 6 with ICLR 2015 published-paper header",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” ICLR 2015, arXiv:1409.0473v6, 24 April 2015.",
+            "venue": "3rd International Conference on Learning Representations (ICLR 2015)",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v6",
+                "label": "arXiv version 6 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v6-full-text",
+            "bahdanau-2015-iclr-program"
+          ],
+          "notes": "The conference-time revision mostly expresses a post-output-state indexing convention consistent with the official presentation, but its displayed output conditional and surrounding prose are not fully consistent. Stable mechanism and result claims use the main equations and named conditions."
+        },
+        {
+          "id": "bahdanau-2014-arxiv-v7-version",
+          "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+          "authors": [
+            "Dzmitry Bahdanau",
+            "Kyunghyun Cho",
+            "Yoshua Bengio"
+          ],
+          "kind": "proceedings",
+          "label": "arXiv version 7 with ICLR 2015 published-paper header",
+          "language": "en",
+          "bibliography": {
+            "citation": "D. Bahdanau, K. Cho, and Y. Bengio, “Neural Machine Translation by Jointly Learning to Align and Translate,” ICLR 2015, arXiv:1409.0473v7, 19 May 2016.",
+            "venue": "3rd International Conference on Learning Representations (ICLR 2015)",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1409.0473v7",
+                "label": "arXiv version 7 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bahdanau-2014-arxiv-record",
+            "bahdanau-2014-arxiv-v7-full-text"
+          ],
+          "notes": "The latest official arXiv revision is canonical because the aggregate record resolves to it. It restores several yᵢ₋₁ indices and a missing W in the appendix, but a separate sᵢ versus sᵢ₋₁ output inconsistency remains; it is not treated as a globally corrected decoder specification."
+        }
+      ],
+      "canonicalVersionId": "bahdanau-2014-arxiv-v7-version",
+      "preferredSourceIds": [
+        "bahdanau-2014-arxiv-record",
+        "bahdanau-2014-arxiv-v7-full-text"
+      ],
+      "sourceIds": [
+        "bahdanau-2014-arxiv-record",
+        "bahdanau-2014-arxiv-v1-full-text",
+        "bahdanau-2014-arxiv-v2-full-text",
+        "bahdanau-2014-arxiv-v3-full-text",
+        "bahdanau-2014-arxiv-v4-full-text",
+        "bahdanau-2014-arxiv-v5-full-text",
+        "bahdanau-2014-arxiv-v6-full-text",
+        "bahdanau-2014-arxiv-v7-full-text",
+        "bahdanau-2015-iclr-program",
+        "sutskever-2014-arxiv-v1-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The work replaces one source summary shared by every target prediction with a decoder-conditioned soft weighting over position-wise bidirectional annotations. It connects the fixed-vector encoder–decoder branch to later attention-based sequence modeling while providing a scoped WMT’14 comparison and unusually interpretable, though only qualitative, alignment visualizations."
+      },
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence",
+        "decoder-conditioned-soft-attention",
+        "bidirectional-source-annotations",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "significance": {
+        "beginner": "Instead of forcing every translated word to rely on the same whole-sentence summary, the decoder forms a fresh view of the source at each step. It scores all source positions, turns those scores into weights, and blends bidirectional annotations so the visible focus can move as the translation unfolds.",
+        "expert": "A bidirectional encoder yields hⱼ; a learned feedforward alignment score eᵢⱼ = vₐᵀ tanh(Wₐsᵢ₋₁ + Uₐhⱼ) is normalized across source positions, and cᵢ = Σⱼαᵢⱼhⱼ conditions the autoregressive decoder. The paper trains this differentiable path jointly under translation likelihood and compares RNNsearch with a fixed-context RNNencdec family on WMT’14 English–French."
+      },
+      "limitations": [
+        "The fixed-vector bottleneck is presented as a conjecture. The experiment changes attention, bidirectionality, and model capacity together and supplies no component-only or parameter-matched ablation.",
+        "Only WMT’14 English-to-French is evaluated, so the paper does not establish generalization across language directions, tasks, or streaming settings.",
+        "The full-test neural results trail the Moses baseline; the strongest comparison with Moses occurs only on a filtered no-unknown subset and after substantially longer training.",
+        "Moses uses an additional 418M-word monolingual corpus, while the neural models use the selected parallel data, so the system comparison is not data-matched.",
+        "No multiple seeds, confidence intervals, hypothesis tests, or parameter-matched attention-only and bidirectionality-only ablations are reported.",
+        "Figure 2 omits numeric length-bin values, bin construction, sample counts, and uncertainty; its curves support a descriptive result rather than a reconstructible statistical analysis.",
+        "The four attention matrices in Figure 3 are conditioned qualitative examples. The paper reports no gold alignment metric, human alignment assessment, or causal intervention on the weights.",
+        "Global source scoring performs one alignment evaluation for every source–target position pair, and the authors identify this TₓTᵧ cost as a possible limit outside typical translation lengths.",
+        "Separate 30,000-word vocabularies map all other tokens to one unknown symbol; rare and unknown word handling remains an explicit future challenge.",
+        "The seven public revisions contain material decoder-indexing and missing-matrix inconsistencies. The atlas does not silently synthesize a detailed gate equation across versions.",
+        "The paper omits a random seed, beam width, length normalization, exact BLEU command, length-bin construction, and ordinary-run checkpoint rule, so the reported table is not exactly reproducible from the paper alone.",
+        "The arXiv record grants repository distribution rights rather than a permissive content license; the atlas links the paper and redraws concepts instead of assuming reuse rights for its figures."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Version 7 is the latest official arXiv revision and canonical technical record, while version 6 is the closest public snapshot before the ICLR presentation. Canonical status does not imply that every appendix indexing inconsistency was corrected."
+        },
+        {
+          "status": "resolved",
+          "note": "Bahdanau version 1 publicly preceded Sutskever version 1 by nine days but already cited an anonymized Sutskever manuscript, and Sutskever version 1 reciprocally cited Bahdanau. This establishes prepublication cross-awareness, not conception, submission, private-circulation, or influence order."
+        },
+        {
+          "status": "resolved",
+          "note": "The current OpenReview page is a later bibliographic import for a conference that used CMT; the official ICLR archive and arXiv versions establish venue and public version history without treating that page as the original review record."
+        },
+        {
+          "status": "open",
+          "note": "No paper-level permissive reuse license was verified for the article or its figures.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be needed before classifying or redistributing the paper content as open."
+        }
+      ]
+    },
+    {
       "id": "sutskever-vinyals-le-2014-sequence-to-sequence",
       "title": "Sequence to Sequence Learning with Neural Networks",
       "authors": [
@@ -6110,7 +6575,10 @@
         "cho-2014-fixed-vector-evidence-boundary",
         "sutskever-2014-fixed-vector-factorization",
         "sutskever-2014-long-sentence-boundary",
-        "sutskever-2014-cho-concurrency"
+        "sutskever-2014-cho-concurrency",
+        "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+        "bahdanau-2014-cho-framework-extension",
+        "bahdanau-2014-sutskever-cross-citation-boundary"
       ],
       "uncertainties": [
         {
@@ -6119,7 +6587,7 @@
         },
         {
           "status": "resolved",
-          "note": "The architecture is a plausible information bottleneck, but Cho does not test sentence-length degradation and Sutskever reports strong results under source reversal. The later attention audit must supply any empirical bottleneck claim."
+          "note": "The architecture is a plausible information bottleneck, not a universal failure condition. Bahdanau supplies a scoped matched-family comparison and descriptive length curves, but attention, bidirectionality, and capacity change together; Sutskever’s source-reversal result remains an explicit counter-boundary."
         }
       ]
     },
@@ -6133,7 +6601,13 @@
         "cho-2014-generation-and-scoring",
         "sutskever-2014-fixed-vector-factorization",
         "sutskever-2014-beam-and-rescoring",
-        "sutskever-2014-rescoring-results"
+        "sutskever-2014-rescoring-results",
+        "bahdanau-2014-conditional-objective",
+        "bahdanau-2014-equation-version-boundary",
+        "bahdanau-2014-data-and-vocabulary",
+        "bahdanau-2014-beam-search-boundary",
+        "bahdanau-2014-bleu-results",
+        "bahdanau-2014-unknown-word-boundary"
       ],
       "uncertainties": [
         {
@@ -6152,16 +6626,89 @@
         "cho-2014-ungated-evidence-boundary",
         "cho-2014-reset-equation-version-boundary",
         "cho-2014-architecture-condition",
-        "cho-2014-training-condition"
+        "cho-2014-training-condition",
+        "bahdanau-2014-cho-framework-extension",
+        "bahdanau-2014-equation-version-boundary",
+        "bahdanau-2014-architecture-condition",
+        "bahdanau-2014-training-condition"
       ],
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "The paper calls this a new hidden unit rather than ‘GRU’; the atlas does not backdate later terminology or claim sole priority. Its convention weights old state by z and candidate state by 1−z."
+          "note": "The paper calls this a new hidden unit rather than ‘GRU’; the atlas does not backdate later terminology or claim sole priority. Gate labels are version- and paper-specific: Cho’s canonical equation weights old state by z and candidate by 1−z, while Bahdanau’s appendix weights old state by 1−z and candidate by z."
         },
         {
           "status": "resolved",
           "note": "The main v3/proceedings equation applies the reset vector before the recurrent matrix multiplication; v1 and the official attachment retain an older componentwise placement and are kept version-bound."
+        }
+      ]
+    },
+    {
+      "id": "decoder-conditioned-soft-attention",
+      "name": "Decoder-conditioned soft attention",
+      "kind": "mechanism",
+      "description": "At each target step, a learned feedforward score compares the preceding decoder state with every source annotation; a source-position softmax produces differentiable weights whose weighted sum is a step-specific context vector.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "bahdanau-2014-global-attention-cost",
+        "bahdanau-2014-bleu-results",
+        "bahdanau-2014-length-results",
+        "bahdanau-2014-soft-alignment-interpretation-boundary",
+        "bahdanau-2014-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper calls the component a feedforward alignment model and attention mechanism; the atlas describes the additive score composition without backdating later “additive attention” taxonomy as the paper’s own label."
+        },
+        {
+          "status": "resolved",
+          "note": "Soft weights are trainable internal quantities over every source position, not a supervised word-alignment posterior or a guaranteed causal explanation."
+        }
+      ]
+    },
+    {
+      "id": "bidirectional-source-annotations",
+      "name": "Bidirectional source annotations",
+      "kind": "mechanism",
+      "description": "A forward recurrent network and a backward recurrent network are concatenated at each source position, so every position-wise annotation summarizes both preceding and following source context.",
+      "claimIds": [
+        "bahdanau-2014-bidirectional-annotations",
+        "bahdanau-2014-architecture-condition",
+        "bahdanau-2014-length-results",
+        "bahdanau-2014-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The encoder requires the complete source sequence before both directional annotations are available; the paper does not claim streaming translation."
+        },
+        {
+          "status": "resolved",
+          "note": "The claim that each annotation concentrates around its own word follows the authors’ recency intuition rather than a measured locality ablation."
+        }
+      ]
+    },
+    {
+      "id": "fixed-vector-source-summary-bottleneck",
+      "name": "Fixed-vector source-summary bottleneck",
+      "kind": "problem",
+      "description": "Using one fixed-dimensional source summary for every target step may make it difficult for a sequence model to retain and retrieve all information needed for long inputs.",
+      "claimIds": [
+        "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+        "bahdanau-2014-cho-framework-extension",
+        "bahdanau-2014-length-results",
+        "bahdanau-2014-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This is the paper’s conjectured diagnosis, not a universal theorem or an isolated causal result; the reported comparison changes attention, encoder directionality, and capacity together."
+        },
+        {
+          "status": "resolved",
+          "note": "Each attention context cᵢ remains fixed-dimensional. The change is from one global summary reused at every target step to a fresh weighted retrieval over position-wise annotations."
         }
       ]
     },
@@ -8788,9 +9335,227 @@
       "accessNote": "The official record supplies the title, three authors, categories, version links, arXiv non-exclusive-distribution license, and submission dates for versions 1–3 on 10 September, 29 October, and 14 December 2014."
     },
     {
+      "id": "bahdanau-2014-arxiv-record",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv record for Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/abs/1409.0473",
+      "accessDate": "2026-08-13",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v1-version",
+        "bahdanau-2014-arxiv-v2-version",
+        "bahdanau-2014-arxiv-v3-version",
+        "bahdanau-2014-arxiv-v4-version",
+        "bahdanau-2014-arxiv-v5-version",
+        "bahdanau-2014-arxiv-v6-version",
+        "bahdanau-2014-arxiv-v7-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The record supplies the title, three-author order, identifier, acceptance comment, and exact timestamps for seven revisions. The arXiv license is non-exclusive distribution permission rather than a general open-content license."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 1 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v1",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete first revision was rendered and inspected for the original mechanism, stable results, and anonymized under-review Sutskever reference."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 2 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v2",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete second revision was rendered and compared with version 1; changes are confined to accents and layout in the qualitative examples."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 3 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v3",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete third revision was rendered and compared; it de-anonymizes the Sutskever citation and adds Forcada while retaining the mechanism and results."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 4 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v4",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete ICLR-submission revision was rendered and compared for template, comparator naming, and detailed recurrent-equation changes."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 5 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v5",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete first accepted-paper revision was rendered and inspected. Stable conference evidence uses its visible article pp. 1–15, while detailed decoder inconsistencies remain version-bound."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v6-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 6 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v6",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v6-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete conference-time revision was rendered and inspected for its post-output-state indexing changes and remaining displayed-conditional inconsistency."
+    },
+    {
+      "id": "bahdanau-2014-arxiv-v7-full-text",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official arXiv version 7 of Neural Machine Translation by Jointly Learning to Align and Translate",
+      "url": "https://arxiv.org/pdf/1409.0473v7",
+      "accessDate": "2026-08-13",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v7-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete latest revision was rendered and inspected. It restores some indices and a missing matrix but retains a distinct state-index mismatch."
+    },
+    {
+      "id": "bahdanau-2015-iclr-program",
+      "relatedWorkIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "title": "Official ICLR 2015 archive and program",
+      "url": "https://iclr.cc/archive/www/2015.html",
+      "accessDate": "2026-08-13",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bahdanau-2014-arxiv-v6-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official archive dates ICLR 2015 to 7–9 May in San Diego and places the paper in the 9 May oral program at 09:40–10:00 and at poster board 13. The conference-time arXiv revision is used as the closest public technical snapshot."
+    },
+    {
       "id": "sutskever-2014-arxiv-v1-full-text",
       "relatedWorkIds": [
-        "sutskever-vinyals-le-2014-sequence-to-sequence"
+        "sutskever-vinyals-le-2014-sequence-to-sequence",
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
       ],
       "title": "Official arXiv version 1 of Sequence to Sequence Learning with Neural Networks",
       "url": "https://arxiv.org/pdf/1409.3215v1",
@@ -17094,6 +17859,627 @@
       "checkedDate": "2026-08-12"
     },
     {
+      "id": "bahdanau-2014-conditional-objective",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The model fits a conditional probability of a target sequence given a source sentence by factorizing it into normalized next-token probabilities conditioned on the observed or generated target prefix and source-derived context.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Conditional sequence probability and decoder factorization, article pp. 2–3",
+            "section": "2 Neural Machine Translation; 3.1 Decoder: General description",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "equation": "2 and 4"
+          },
+          "support": "Defines p(y|x) as a product of next-token conditionals and carries that factorization into the attention-based decoder."
+        }
+      ],
+      "limitations": [
+        "The paper does not print a standalone summed loss equation; conditional maximum-likelihood wording follows its probability factorization and training discussion.",
+        "The source does not use the later phrase teacher forcing; during likelihood training the factorization conditions on the observed target prefix."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "statement": "The authors conjecture that requiring one fixed-length vector to carry all source information may be a bottleneck for basic encoder–decoder models, especially on sentences longer than those seen during training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Fixed-length-vector conjecture, article pp. 1–2 and 9",
+            "section": "Abstract; 1 Introduction; 7 Conclusion",
+            "pageStart": 1,
+            "pageEnd": 9
+          },
+          "support": "The abstract and introduction describe the bottleneck as a conjecture, and the conclusion repeats that the conventional encoder–decoder may have difficulty compressing long sentences."
+        }
+      ],
+      "limitations": [
+        "The wording is a hypothesis rather than proof that compression alone caused the baseline errors.",
+        "The prior family described does not include every possible encoder–decoder architecture."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-cho-framework-extension",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "reset-update-gated-recurrence",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "statement": "The paper explicitly builds on the RNN encoder–decoder framework associated with Cho and Sutskever, attributes its reset and update gated design to Cho while printing the opposite z mixture convention, and states that fixing every cᵢ to the terminal forward encoder state h⃗Tₓ yields Cho’s fixed-context encoder–decoder.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Named encoder–decoder framework, article p. 2",
+            "section": "2.1 RNN Encoder–Decoder",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "paragraph": "Opening paragraph"
+          },
+          "support": "The target names the Cho and Sutskever framework as the architecture upon which it builds."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Gated unit and fixed-context equivalence, article pp. 12–14",
+            "section": "Appendix A.1.1; Appendix A.2.2",
+            "pageStart": 12,
+            "pageEnd": 14
+          },
+          "support": "The appendix attributes the gated unit to Cho, prints z on the candidate rather than the old state, and states that setting cᵢ to the terminal forward encoder state h⃗Tₓ produces the Cho encoder–decoder."
+        }
+      ],
+      "limitations": [
+        "This documented extension does not transfer Cho’s phrase-table experiment, establish sole attention priority, or show that every fixed-vector model fails."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-soft-attention-context",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention"
+      ],
+      "statement": "At target step i, the decoder forms cᵢ = Σⱼαᵢⱼhⱼ, normalizes αᵢⱼ by a source-position softmax over eᵢⱼ = a(sᵢ₋₁,hⱼ), and implements a as vₐᵀtanh(Wₐsᵢ₋₁ + Uₐhⱼ).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Step-specific weighted context and alignment softmax, article pp. 3–4",
+            "section": "3.1 Decoder: General description",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "equation": "5–6"
+          },
+          "support": "Equations 5–6 define the weighted sum, normalized source-position weights, and dependence on the prior decoder state and each annotation."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Implemented feedforward alignment score, article p. 12",
+            "section": "Appendix A.1.2 Alignment Model",
+            "pageStart": 12,
+            "pageEnd": 12
+          },
+          "support": "The appendix prints the one-hidden-layer tanh score and notes that Uₐhⱼ can be precomputed across target steps."
+        }
+      ],
+      "limitations": [
+        "The paper calls a a feedforward alignment model; “additive” describes the score composition rather than quoting its terminology.",
+        "Every cᵢ is still fixed-dimensional; attention removes reliance on one global c shared by all target steps."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-differentiable-soft-alignment",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention"
+      ],
+      "statement": "Because the source weights are differentiable, translation-loss gradients jointly train the alignment scorer with the encoder and decoder.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Differentiable alignment training, article p. 4",
+            "section": "3.1 Decoder: General description",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The paper says the soft alignment permits gradient-based joint training through the cost function."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "End-to-end learning summary, article p. 9",
+            "section": "7 Conclusion",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "The conclusion states that the system learns to align and translate jointly."
+        }
+      ],
+      "limitations": [
+        "Joint training from translation likelihood is not supervised word-alignment training and does not make α a validated alignment posterior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-bidirectional-annotations",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "bidirectional-source-annotations"
+      ],
+      "statement": "The encoder runs one recurrent network left-to-right and another right-to-left, then concatenates their states at each source position so hⱼ represents context on both sides of xⱼ.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Bidirectional encoder and annotation concatenation, article p. 4",
+            "section": "3.2 Encoder: Bidirectional RNN for Annotating Sequences",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "Defines the two directional recurrences and concatenated source-position annotations."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Detailed bidirectional recurrence, article p. 13",
+            "section": "Appendix A.2.1 Encoder",
+            "pageStart": 13,
+            "pageEnd": 13,
+            "equation": "7"
+          },
+          "support": "Appendix equation 7 prints the forward and backward state construction."
+        }
+      ],
+      "limitations": [
+        "Both directions require the whole source, so the architecture is not a streaming encoder.",
+        "Local focus around xⱼ is an author intuition based on recurrent recency, not an isolated locality measurement."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-global-attention-cost",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention"
+      ],
+      "statement": "The mechanism is soft and global: every cᵢ sums all source annotations, requiring TₓTᵧ alignment evaluations across a source–target pair.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "All-position weighted sum and computation boundary, article pp. 3 and 8",
+            "section": "3.1 Decoder: General description; 6.1 Computational Cost",
+            "pageStart": 3,
+            "pageEnd": 8,
+            "equation": "5–6"
+          },
+          "support": "Equations 5–6 normalize over all source positions, and the limitations section explicitly identifies TₓTᵧ scoring."
+        }
+      ],
+      "limitations": [
+        "The authors report the cost as tolerable for typical 15–40-word translation pairs but potentially limiting for other tasks.",
+        "Peaked weights may emphasize a few positions, but the computation is not hard subset selection."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-equation-version-boundary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence"
+      ],
+      "statement": "The stable main-text convention computes sᵢ from sᵢ₋₁, yᵢ₋₁, and cᵢ before predicting yᵢ, but the detailed appendices vary: version 5 mixes target indices and omits a matrix, version 6 mostly uses a post-output-state convention while retaining a conditional mismatch, and version 7 repairs some terms while leaving an sᵢ/sᵢ₋₁ inconsistency.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Main decoder convention and mixed version-5 appendix, article pp. 3 and 12–14",
+            "section": "3.1; Appendix A.1.1; Appendix A.2.2",
+            "pageStart": 3,
+            "pageEnd": 14,
+            "equation": "4"
+          },
+          "support": "Equation 4 supplies the safe high-level order, while the detailed gates mix yᵢ and yᵢ₋₁ and one candidate expression omits W."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v6-full-text",
+          "locator": {
+            "label": "Version-6 post-output indexing and remaining mismatch, article pp. 12–14",
+            "section": "Appendix A.1.1; Appendix A.2.2",
+            "pageStart": 12,
+            "pageEnd": 14
+          },
+          "support": "The recurrence largely changes to yᵢ and the readout to sᵢ₋₁, but the displayed conditional still names sᵢ."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Version-7 partial corrections and remaining mismatch, article pp. 12–14",
+            "section": "Appendix A.1.1; Appendix A.2.2",
+            "pageStart": 12,
+            "pageEnd": 14
+          },
+          "support": "The revision restores yᵢ₋₁ terms and W E yᵢ₋₁ while retaining output prose/readout on sᵢ₋₁ beside a conditional on sᵢ."
+        }
+      ],
+      "limitations": [
+        "The atlas does not combine these expressions into an unprinted gate-level decoder equation or label version 7 globally corrected."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-data-and-vocabulary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The WMT’14 English-to-French study selects 348M words from an 850M-word parallel pool, uses news-test-2012 plus news-test-2013 for development and 3,003 unseen news-test-2014 sentences for testing, and maps tokens outside separate 30,000-word source and target shortlists to [UNK].",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Parallel data selection, evaluation sets, and vocabularies, article pp. 4–5",
+            "section": "4 Experiment Settings; 4.1 Dataset",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "Lists Europarl, News Commentary, UN and crawled components, the selected 348M-word corpus, development and test sets, and 30,000-word shortlists."
+        }
+      ],
+      "limitations": [
+        "The 272.5M crawled-corpus component is the accepted version’s correction; versions 1–4 print 780M while still claiming an 850M total.",
+        "The experiment covers one language direction and one test set."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-architecture-condition",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "reset-update-gated-recurrence",
+        "bidirectional-source-annotations"
+      ],
+      "statement": "RNNencdec uses 1,000-unit encoder and decoder recurrent networks; RNNsearch uses two 1,000-unit encoder directions plus a 1,000-unit decoder, with 620-dimensional embeddings, a 500-unit maxout layer, and a 1,000-unit alignment hidden layer.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Model dimensions and gated architecture, article pp. 5 and 14",
+            "section": "4.2 Models; Appendix A.2.3 Model Details",
+            "pageStart": 5,
+            "pageEnd": 14
+          },
+          "support": "The experiment section and architecture appendix enumerate the recurrent, embedding, maxout, and alignment dimensions."
+        }
+      ],
+      "limitations": [
+        "The fixed-context and search models are not parameter-matched; the comparison changes bidirectionality, the alignment network, and total capacity together.",
+        "The paper calls the recurrent component a gated hidden unit rather than GRU."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-training-condition",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "reset-update-gated-recurrence"
+      ],
+      "statement": "Training uses minibatch SGD with Adadelta (ρ = .95, ε = 10⁻⁶), batch size 80, gradient-norm clipping at 1, and sentence-pair caps of 30 or 50 words; Table 2 reports 109, 108, 113, 111, and 252 hours for RNNenc-30, RNNenc-50, RNNsearch-30, RNNsearch-50, and the longer-trained RNNsearch-50* run, with RNNenc denoting the main text’s RNNencdec comparator.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Optimization and length-cap conditions, article p. 5",
+            "section": "4.2 Models",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "Specifies minibatch Adadelta training, approximate five-day runs, and separate 30- and 50-word training sets."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Exact update, epoch, and runtime rows, article pp. 14–15",
+            "section": "Appendix B Training Procedure",
+            "pageStart": 14,
+            "pageEnd": 15,
+            "table": "2"
+          },
+          "support": "Table 2 reports 8.46/6.00/4.71/2.88/6.67 × 10⁵ updates, 6.4/4.5/3.6/2.2/5.0 epochs, and 109/108/113/111/252 hours; Appendix B gives Adadelta, clipping, and batching details."
+        }
+      ],
+      "limitations": [
+        "The starred model trained for more than twice the wall time of the ordinary search-50 run and is not an equal-compute comparison.",
+        "Table 2 warns that negative log-likelihood values across length-capped rows are not directly comparable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-beam-search-boundary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Translation uses beam search to approximate the highest conditional-probability target sequence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Approximate conditional decoding, article p. 5",
+            "section": "4.2 Models",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The model section states that beam search approximately finds the most likely translation."
+        }
+      ],
+      "limitations": [
+        "No arXiv revision reports beam width, length normalization, minimum length, or stopping details, so none is attached to Table 1."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-bleu-results",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "On WMT’14 English-to-French, Table 1 reports BLEU All/No UNK of 13.93/24.19 for RNNencdec-30, 21.50/31.44 for RNNsearch-30, 17.82/26.71 for RNNencdec-50, 26.75/34.16 for RNNsearch-50, 28.45/36.15 for the longer-trained RNNsearch-50*, and 33.30/35.63 for Moses.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Complete BLEU table and evaluation conditions, article p. 7",
+            "section": "5.1 Quantitative Results",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "1"
+          },
+          "support": "Table 1 supplies all six rows and defines the All and No UNK columns."
+        }
+      ],
+      "limitations": [
+        "No UNK filters to sentences with no unknown token in either source or reference and forbids neural decoders from producing [UNK]; its subset size is not reported.",
+        "On the full set, the longer-trained search-50* remains 4.85 BLEU below Moses. It exceeds Moses by 0.52 only on the filtered No UNK subset.",
+        "The neural systems use parallel data only, whereas Moses also uses a 418M-word monolingual corpus.",
+        "The paper reports no seed variance, confidence intervals, or significance test; numerical gains are not labeled statistically significant by the atlas."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-length-results",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "bidirectional-source-annotations",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "statement": "Figure 2 and the authors’ analysis report that the fixed-context curves deteriorate sharply with sentence length while the RNNsearch curves are more robust, with RNNsearch-50 showing no visible deterioration for sentences of 50 or more words in the plotted analysis.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "BLEU-by-length curves and author interpretation, article pp. 5–6",
+            "section": "5.1 Quantitative Results",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "figure": "2"
+          },
+          "support": "Figure 2 plots the full test set by sentence length and the following prose characterizes the contrasting curve behavior."
+        }
+      ],
+      "limitations": [
+        "The figure provides no bin definition, per-bin counts, exact points, uncertainty, or explicit source-versus-target length definition.",
+        "The result is descriptive and multi-component: attention, bidirectionality, capacity, and the 30/50-word training caps vary.",
+        "It does not establish that all fixed-vector models fail on long sequences; the adjacent Sutskever branch reports a strong source-reversal intervention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-soft-alignment-interpretation-boundary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention"
+      ],
+      "statement": "The authors interpret αᵢⱼ as a probability or importance that target yᵢ aligns to source xⱼ and show mostly monotonic and reordering examples.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Alignment-weight interpretation, article p. 4",
+            "section": "3.1 Decoder: General description",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The mechanism section describes α as an alignment probability or importance and cᵢ as an expected annotation."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Four qualitative alignment matrices, article pp. 6–7",
+            "section": "5.2.1 Alignment",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "figure": "3"
+          },
+          "support": "Figure 3 and its discussion show one arbitrary example plus three randomly selected examples after No UNK and 10–20-word filtering, with qualitative monotonic and reordering interpretations."
+        }
+      ],
+      "limitations": [
+        "The four conditioned examples are not an alignment benchmark or representative sample of all test behavior.",
+        "No alignment-error rate, gold labels, blinded human rating, or causal intervention establishes that the weights are faithful explanations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-unknown-word-boundary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Unknown and rare words remain an explicit unresolved problem: both vocabularies are capped at 30,000 types, and the conclusion identifies rare-word handling as future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Shortlist and unknown-token setup, article p. 5",
+            "section": "4.1 Dataset",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The data section maps all out-of-shortlist tokens to [UNK]."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Rare-word limitation, article p. 9",
+            "section": "7 Conclusion",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "The conclusion names unknown and rare words as a future challenge."
+        }
+      ],
+      "limitations": [
+        "The large gap between All and No UNK BLEU is associated with this evaluation setup but does not isolate a single causal source of error."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-sutskever-cross-citation-boundary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction"
+      ],
+      "statement": "Bahdanau version 1, posted 1 September 2014, names Sutskever’s encoder–decoder in the body while listing its reference as anonymized and under review; Sutskever version 1, posted 10 September, reciprocally cites Bahdanau and discusses it as an attention variant.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v1-full-text",
+          "locator": {
+            "label": "Sutskever manuscript in first-post body and references, article pp. 1–2 and 12",
+            "section": "1 Introduction; 2.1 RNN Encoder–Decoder; References",
+            "pageStart": 1,
+            "pageEnd": 12
+          },
+          "support": "Bahdanau version 1 names the Sutskever framework in the text and lists the work anonymously as under review."
+        },
+        {
+          "sourceId": "sutskever-2014-arxiv-v1-full-text",
+          "locator": {
+            "label": "Reciprocal Bahdanau citation in Sutskever version 1",
+            "section": "1 Introduction; Related work; References"
+          },
+          "support": "Sutskever version 1 cites arXiv:1409.0473, characterizes it as an attention-based variant, and discusses its reported result."
+        }
+      ],
+      "limitations": [
+        "Public posting order and reciprocal citations do not establish conception order, submission order, private-circulation order, or a stable causal direction; no Sutskever↔Bahdanau relationship is asserted."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
+      "id": "bahdanau-2014-evidence-boundary",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "bidirectional-source-annotations",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "statement": "The paper supplies one English-to-French test set, aggregate BLEU rows, a descriptive length figure, selected translation examples, and four attention matrices, but no component-only ablation, parameter matching, repeated seeds, uncertainty estimates, significance test, or quantitative alignment evaluation.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v5-full-text",
+          "locator": {
+            "label": "Experiment, results, qualitative analyses, and limitations, article pp. 4–9",
+            "section": "4 Experiment Settings; 5 Results; 6 Related Work; 7 Conclusion",
+            "pageStart": 4,
+            "pageEnd": 9,
+            "figure": "2–3",
+            "table": "1"
+          },
+          "support": "The full experimental section exposes the reported controls and evidence types; the absent controls are an editorial audit of that complete presentation."
+        }
+      ],
+      "limitations": [
+        "This boundary does not negate the observed table differences; it limits causal and generalization claims.",
+        "The paper does not expose the data-selection output or complete decoding configuration needed to reconstruct Table 1 exactly."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-13"
+    },
+    {
       "id": "sutskever-2014-fixed-vector-factorization",
       "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
       "ideaIds": [
@@ -19167,6 +20553,68 @@
       ]
     },
     {
+      "id": "cho-2014-to-bahdanau-2014",
+      "from": {
+        "kind": "work",
+        "id": "cho-2014-rnn-encoder-decoder"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Bahdanau, Cho, and Bengio explicitly place their architecture on the encoder–decoder framework, attribute their reset and update gated design to Cho while printing the opposite z mixture convention, evaluate the Cho fixed-context comparator under the same data and training setup, and state that fixing each target-step context to the terminal forward encoder state h⃗Tₓ recovers that model. The extension replaces one global source summary with decoder-conditioned weighted retrieval over bidirectional annotations without transferring Cho’s phrase-table experiment or asserting sole attention priority.",
+      "claimIds": [
+        "cho-2014-fixed-vector-architecture",
+        "cho-2014-reset-update-gates",
+        "bahdanau-2014-cho-framework-extension",
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-fixed-vector-bottleneck-hypothesis"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Named framework “upon which” the target builds, article p. 2",
+            "section": "2.1 RNN Encoder–Decoder",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "paragraph": "Opening paragraph"
+          },
+          "support": "The target explicitly names Cho’s RNN Encoder–Decoder as part of the framework on which the align-and-translate architecture builds."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Cho comparator and controlled training family, article pp. 4–5",
+            "section": "4 Experiment Settings; 4.2 Models",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The experiment identifies the fixed-context Cho RNNencdec comparator and trains it beside RNNsearch on the same data and length-cap conditions."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Cho gated unit and fixed-context equivalence, article pp. 12–14",
+            "section": "Appendix A.1.1; Appendix A.2.2",
+            "pageStart": 12,
+            "pageEnd": 14
+          },
+          "support": "The appendix names the Cho gated unit, prints the reversed z mixture convention, and says that fixing cᵢ to the terminal forward encoder state h⃗Tₓ makes the target model Cho’s RNN Encoder–Decoder."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge records the target’s explicit framework and mechanism statements. It does not transfer Cho’s phrase-table results, establish sole priority, or universalize the target’s fixed-vector diagnosis."
+        }
+      ]
+    },
+    {
       "id": "cho-2014-to-sutskever-2014",
       "from": {
         "kind": "work",
@@ -20614,6 +22062,80 @@
         "Versioned scholarly records and experimental controls"
       ],
       "successCriterion": "The learner can derive equations 3–8 using the paper’s z convention, distinguish the v1/v2 reset placement and six-author metadata from v3/proceedings, reproduce 30.64/33.30, 31.20/33.87, 31.48/34.64, and 31.50/34.54, and label phrase samples and t-SNE plots as qualitative evidence."
+    },
+    {
+      "id": "beginner-bahdanau-2014-follow-the-focus",
+      "mode": "beginner",
+      "objective": "Trace how a decoder replaces one whole-sentence summary with a fresh weighted view of bidirectional source annotations at each target word, and use the length comparison to explain what changes without treating attention weights as proven word alignments or every fixed-vector model as a failure.",
+      "workIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence",
+        "decoder-conditioned-soft-attention",
+        "bidirectional-source-annotations",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "claimIds": [
+        "bahdanau-2014-conditional-objective",
+        "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+        "bahdanau-2014-cho-framework-extension",
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-bidirectional-annotations",
+        "bahdanau-2014-length-results",
+        "bahdanau-2014-soft-alignment-interpretation-boundary"
+      ],
+      "prerequisites": [
+        "A sequence decoder that predicts one word at a time",
+        "A weighted average and a probability distribution",
+        "A source sentence and its translation"
+      ],
+      "successCriterion": "The learner can form and interpret one cᵢ from source weights and annotations, explain why the weights change with sᵢ₋₁, distinguish per-step retrieval from one global c, scope the WMT’14 length curve, and label Figure 3 as qualitative rather than a gold alignment benchmark."
+    },
+    {
+      "id": "expert-bahdanau-2014-attention-objective-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the conditional factorization, bidirectional annotations, alignment-energy softmax, context-weighted gated decoder, and matched RNNencdec/RNNsearch experiment; audit version-specific equations, BLEU and length evidence, unknown-word filtering, baseline resources, and cross-citation chronology.",
+      "workIds": [
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "reset-update-gated-recurrence",
+        "decoder-conditioned-soft-attention",
+        "bidirectional-source-annotations",
+        "fixed-vector-source-summary-bottleneck"
+      ],
+      "claimIds": [
+        "bahdanau-2014-conditional-objective",
+        "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+        "bahdanau-2014-cho-framework-extension",
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "bahdanau-2014-bidirectional-annotations",
+        "bahdanau-2014-global-attention-cost",
+        "bahdanau-2014-equation-version-boundary",
+        "bahdanau-2014-data-and-vocabulary",
+        "bahdanau-2014-architecture-condition",
+        "bahdanau-2014-training-condition",
+        "bahdanau-2014-beam-search-boundary",
+        "bahdanau-2014-bleu-results",
+        "bahdanau-2014-length-results",
+        "bahdanau-2014-soft-alignment-interpretation-boundary",
+        "bahdanau-2014-unknown-word-boundary",
+        "bahdanau-2014-sutskever-cross-citation-boundary",
+        "bahdanau-2014-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Conditional sequence likelihood and autoregressive decoding",
+        "Recurrent networks, gating, and bidirectional encoders",
+        "Softmax-weighted sums and gradient-based learning",
+        "BLEU, ablation design, and versioned scholarly evidence"
+      ],
+      "successCriterion": "The learner can derive equations 4–7 and the alignment energy, show how fixing cᵢ to the terminal forward encoder state recovers the Cho-style encoder–decoder while preserving the reversed z label convention, reproduce all six Table 1 rows and All/No UNK conditions, preserve 28.45 full versus 36.15 filtered BLEU and Moses’s extra 418M monolingual words, identify the v5/v6/v7 indexing boundary, and explain why the 1/10 September cross-citations do not establish influence order."
     },
     {
       "id": "beginner-sutskever-2014-reverse-then-translate",
