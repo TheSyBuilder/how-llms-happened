@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/corpus.schema.json",
-  "schemaVersion": "0.7.0",
+  "schemaVersion": "0.8.0",
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-13",
+  "asOf": "2026-08-20",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -4490,6 +4490,342 @@
       ]
     },
     {
+      "id": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "title": "Generating Sequences With Recurrent Neural Networks",
+      "authors": [
+        "Alex Graves"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "A. Graves, “Generating Sequences With Recurrent Neural Networks,” arXiv:1308.0850v5 (5 June 2014; first posted 4 August 2013).",
+      "chronology": {
+        "orderingEventId": "graves-2013-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "graves-2013-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2013-08-04",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "graves-2013-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 4 August 2013 at 21:04:36 UTC"
+              }
+            ],
+            "versionId": "graves-2013-arxiv-v1-version",
+            "sourceIds": [
+              "graves-2013-arxiv-record",
+              "graves-2013-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "graves-2013-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2013-08-11",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "graves-2013-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 11 August 2013 at 21:20:24 UTC"
+              }
+            ],
+            "versionId": "graves-2013-arxiv-v2-version",
+            "sourceIds": [
+              "graves-2013-arxiv-record",
+              "graves-2013-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "graves-2013-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2014-02-21",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "graves-2013-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 21 February 2014 at 17:51:54 UTC"
+              }
+            ],
+            "versionId": "graves-2013-arxiv-v3-version",
+            "sourceIds": [
+              "graves-2013-arxiv-record",
+              "graves-2013-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "graves-2013-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2014-04-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "graves-2013-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 2 April 2014 at 16:22:09 UTC"
+              }
+            ],
+            "versionId": "graves-2013-arxiv-v4-version",
+            "sourceIds": [
+              "graves-2013-arxiv-record",
+              "graves-2013-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "graves-2013-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 5 posted",
+            "date": {
+              "value": "2014-06-05",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "graves-2013-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 5 June 2014 at 16:04:02 UTC"
+              }
+            ],
+            "versionId": "graves-2013-arxiv-v5-version",
+            "sourceIds": [
+              "graves-2013-arxiv-record",
+              "graves-2013-arxiv-v5-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "graves-2013-arxiv-v1-version",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Graves, “Generating Sequences With Recurrent Neural Networks,” arXiv:1308.0850v1, 4 August 2013.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1308.0850v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "graves-2013-arxiv-record",
+            "graves-2013-arxiv-v1-full-text"
+          ],
+          "notes": "The first public 43-page revision already contains the character and handwriting predictors, the text-conditioned Gaussian-mixture window, positive cumulative location increments, conditional training, sampling, and priming. Later equation corrections must not be projected backward into this text."
+        },
+        {
+          "id": "graves-2013-arxiv-v2-version",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Graves, “Generating Sequences With Recurrent Neural Networks,” arXiv:1308.0850v2, 11 August 2013.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1308.0850v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "graves-2013-arxiv-record",
+            "graves-2013-arxiv-v2-full-text"
+          ],
+          "notes": "The second revision expands why handwriting-to-text alignment is unknown and variable, including the roughly 25-to-1 average coordinate-to-character length ratio, while retaining the original window construction."
+        },
+        {
+          "id": "graves-2013-arxiv-v3-version",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Graves, “Generating Sequences With Recurrent Neural Networks,” arXiv:1308.0850v3, 21 February 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1308.0850v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "graves-2013-arxiv-record",
+            "graves-2013-arxiv-v3-full-text"
+          ],
+          "notes": "The third revision corrects the prose example for a diagonal cell-state-to-gate weight from Wsi to Wci and corrects the sign and grouping in the bivariate Gaussian exponent."
+        },
+        {
+          "id": "graves-2013-arxiv-v4-version",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Graves, “Generating Sequences With Recurrent Neural Networks,” arXiv:1308.0850v4, 2 April 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1308.0850v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "graves-2013-arxiv-record",
+            "graves-2013-arxiv-v4-full-text"
+          ],
+          "notes": "The fourth revision substantially corrects the window-gradient expressions in equations 56–60, but its epsilon definition still lacks the alpha factor added in version 5."
+        },
+        {
+          "id": "graves-2013-arxiv-v5-version",
+          "title": "Generating Sequences With Recurrent Neural Networks",
+          "authors": [
+            "Alex Graves"
+          ],
+          "kind": "preprint",
+          "label": "Canonical arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Graves, “Generating Sequences With Recurrent Neural Networks,” arXiv:1308.0850v5, 5 June 2014.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1308.0850v5",
+                "label": "arXiv version 5 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1308.0850",
+                "label": "arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "graves-2013-arxiv-record",
+            "graves-2013-arxiv-v5-full-text",
+            "graves-2013-author-record",
+            "graves-2013-iam-ondb-record",
+            "graves-2013-treebank-record",
+            "graves-2013-enwik8-record"
+          ],
+          "notes": "The canonical 43-page revision adds missing recurrent routes in Figure 12 and completes the alpha factor in the window-gradient derivation. Technical locators use its visible article pages 1–43."
+        }
+      ],
+      "canonicalVersionId": "graves-2013-arxiv-v5-version",
+      "preferredSourceIds": [
+        "graves-2013-arxiv-record",
+        "graves-2013-arxiv-v5-full-text"
+      ],
+      "sourceIds": [
+        "graves-2013-arxiv-record",
+        "graves-2013-arxiv-v1-full-text",
+        "graves-2013-arxiv-v2-full-text",
+        "graves-2013-arxiv-v3-full-text",
+        "graves-2013-arxiv-v4-full-text",
+        "graves-2013-arxiv-v5-full-text",
+        "graves-2013-author-record",
+        "graves-2013-iam-ondb-record",
+        "graves-2013-treebank-record",
+        "graves-2013-enwik8-record"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The preprint unifies character-level recurrent generation, mixture-density handwriting prediction, and text-conditioned handwriting synthesis. Its differentiable Gaussian-mixture window supplies a documented monotonic alignment precursor that Bahdanau, Cho, and Bengio later compare directly with their non-monotonic source weighting, while its evidence and terminology remain bounded to the target text."
+      },
+      "ideaIds": [
+        "next-item-prediction-training",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback",
+        "character-level-recurrent-sequence-generation",
+        "mixture-density-handwriting-generation",
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "significance": {
+        "beginner": "A recurrent model predicts text or pen motion one step at a time, then a moving soft window lets typed characters guide generated handwriting without a supplied character-to-pen alignment. The window can glide only forward, which is useful for writing order but restrictive for tasks that must revisit or reorder source positions.",
+        "expert": "The paper combines stacked peephole LSTMs, normalized categorical or mixture-density next-step likelihoods, and an unnormalized sum of Gaussian window weights over a character sequence. Exponentiated positive location increments impose monotonicity; conditional negative log-likelihood trains the coupled network, and revision-specific corrections bound the gradient equations."
+      },
+      "limitations": [
+        "The work is an arXiv preprint; no inspected record establishes a peer-reviewed conference or journal publication for this title.",
+        "The text results mix static and online-adapted evaluation, and the Hutter comparison notes that PAQ-8 includes executable code and is not directly equivalent.",
+        "The supplied text samples are qualitative; the paper explicitly says the model loses coherence beyond short phrases and that dynamic adaptation can contaminate later samples with recent topics.",
+        "The handwriting experiments use the official IAM-OnDB test partition as additional training data and reserve only the smaller validation partition for early stopping, leaving no independent test set for the reported log losses.",
+        "The 31.3-nat log-loss improvement compares adaptive weight noise with the otherwise matched unregularized conditional network and comes with no significant sum-squared-error change; it measures regularization rather than the window. The separate 44% sum-squared-error reduction compares the conditional networks with the best prediction-only network and is not a window-only ablation.",
+        "The author says presentation-based blind taste tests suggested that at least some unbiased samples could not be distinguished from real handwriting, but supplies no participant count, protocol, uncertainty estimate, or released judgments. Only Figure 18's primed samples are explicitly selected for legibility; the other displayed figures remain qualitative without a stated selection protocol.",
+        "The window is an unnormalized positive weighting function rather than a probability distribution, and its cumulative positive location increments require left-to-right monotonic traversal.",
+        "Biased sampling is a temperature-like heuristic that narrows mixture components; it is not a maximum-a-posteriori decoder.",
+        "The paper calls the device a window or convolutional mechanism, not attention. Later terminology is used only when describing later sources that explicitly compare it.",
+        "The arXiv non-exclusive distribution license permits arXiv hosting but does not establish an open-content reuse license; this repository links rather than redistributes the PDFs or datasets."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "All five arXiv revisions were compared. The first posting already contains the monotonic soft window; later versions clarify prose and correct equations rather than introducing the mechanism."
+        },
+        {
+          "status": "resolved",
+          "note": "Bahdanau, Cho, and Bengio explicitly describe Graves’s Gaussian window and its monotonic-location restriction, but do not say their method was derived from it. The relationship therefore records a documented comparison and prohibits a causal claim."
+        },
+        {
+          "status": "open",
+          "note": "No independent test-set result, released training code, random-seed report, or reproducible protocol was located for the handwriting experiments.",
+          "resolutionCondition": "Contemporaneous code, logs, held-out evaluation, or an author-supplied protocol would be needed to reconstruct and independently test the reported systems."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for the paper PDF or IAM-OnDB data.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before redistribution."
+        }
+      ]
+    },
+    {
       "id": "cho-2014-rnn-encoder-decoder",
       "title": "Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation",
       "authors": [
@@ -5232,6 +5568,7 @@
         "source-conditioned-autoregressive-decoding",
         "reset-update-gated-recurrence",
         "decoder-conditioned-soft-attention",
+        "monotonic-gaussian-mixture-sequence-window",
         "bidirectional-source-annotations",
         "fixed-vector-source-summary-bottleneck"
       ],
@@ -5530,6 +5867,8 @@
       "ideaIds": [
         "fixed-vector-neural-sequence-transduction",
         "source-conditioned-autoregressive-decoding",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback",
         "deep-lstm-sequence-transduction",
         "source-sequence-reversal-for-shorter-dependencies"
       ],
@@ -6350,7 +6689,9 @@
         "gers-2002-gts-results-and-ablation",
         "gers-2002-pfg-results",
         "sundermeyer-2012-lstm-antecedent-and-variant",
-        "sundermeyer-2012-memory-cell-mechanism"
+        "sundermeyer-2012-memory-cell-mechanism",
+        "graves-2013-lstm-formulation",
+        "sutskever-2014-graves-lstm-formulation"
       ],
       "uncertainties": [
         {
@@ -6378,7 +6719,9 @@
         "gers-2002-evidence-boundary",
         "gers-2002-lstm-limitations",
         "sundermeyer-2012-lstm-antecedent-and-variant",
-        "sundermeyer-2012-memory-cell-mechanism"
+        "sundermeyer-2012-memory-cell-mechanism",
+        "graves-2013-lstm-formulation",
+        "sutskever-2014-graves-lstm-formulation"
       ],
       "uncertainties": [
         {
@@ -6474,7 +6817,9 @@
         "elman-1990-novel-word-context-test",
         "mikolov-2010-elman-recurrent-architecture",
         "mikolov-2010-training-objective",
-        "sundermeyer-2012-language-model-objective"
+        "sundermeyer-2012-language-model-objective",
+        "graves-2013-recurrent-sequence-generation-objective",
+        "graves-2013-text-prediction-objective"
       ],
       "uncertainties": [
         {
@@ -6566,6 +6911,72 @@
       ]
     },
     {
+      "id": "character-level-recurrent-sequence-generation",
+      "name": "Character-level recurrent sequence generation",
+      "kind": "mechanism",
+      "description": "A recurrent model assigns a normalized probability to each next symbol from the preceding sequence and can feed sampled symbols back as inputs to generate variable-length character streams.",
+      "claimIds": [
+        "graves-2013-recurrent-sequence-generation-objective",
+        "graves-2013-deep-recurrent-architecture",
+        "graves-2013-text-prediction-objective",
+        "graves-2013-text-data-and-results",
+        "graves-2013-text-sampling-boundary",
+        "graves-2013-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper evaluates both character and word prediction on Penn Treebank, but this idea names the character-level generative path; it does not imply coherent long-form generation."
+        }
+      ]
+    },
+    {
+      "id": "mixture-density-handwriting-generation",
+      "name": "Mixture-density handwriting generation",
+      "kind": "mechanism",
+      "description": "A recurrent network parameterizes a normalized mixture of correlated bivariate Gaussians for the next pen displacement together with a Bernoulli pen-lift probability, supporting likelihood training and stochastic trajectory generation.",
+      "claimIds": [
+        "graves-2013-deep-recurrent-architecture",
+        "graves-2013-handwriting-mixture-density-output",
+        "graves-2013-handwriting-data-and-preprocessing",
+        "graves-2013-unconditional-handwriting-results",
+        "graves-2013-conditional-handwriting-objective",
+        "graves-2013-conditional-handwriting-results",
+        "graves-2013-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The continuous density models the next pen offset and lift event; it does not transcribe characters, provide a calibrated legibility score, or isolate visual quality from sampling choices."
+        }
+      ]
+    },
+    {
+      "id": "monotonic-gaussian-mixture-sequence-window",
+      "name": "Monotonic Gaussian-mixture sequence window",
+      "kind": "mechanism",
+      "description": "A recurrent state emits positive amplitudes and widths plus cumulative positive location increments for Gaussian windows over an input sequence, yielding a differentiable soft read whose centers can move only forward.",
+      "claimIds": [
+        "graves-2013-monotonic-window-mechanism",
+        "graves-2013-conditional-handwriting-objective",
+        "graves-2013-conditional-handwriting-results",
+        "graves-2013-window-terminology-boundary",
+        "graves-2013-evidence-reproducibility-boundary",
+        "graves-2013-window-equation-version-boundary",
+        "bahdanau-2014-graves-monotonic-window-comparison"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The weights are positive but unnormalized, and the paper describes them as a window, window weight, or convolutional mechanism rather than attention."
+        },
+        {
+          "status": "resolved",
+          "note": "Bahdanau, Cho, and Bengio later compare this monotonic construction directly with weights over every source annotation; that comparison supports a lineage edge without proving derivation or sole priority."
+        }
+      ]
+    },
+    {
       "id": "fixed-vector-neural-sequence-transduction",
       "name": "Fixed-vector neural sequence transduction",
       "kind": "mechanism",
@@ -6650,6 +7061,7 @@
       "description": "At each target step, a learned feedforward score compares the preceding decoder state with every source annotation; a source-position softmax produces differentiable weights whose weighted sum is a step-specific context vector.",
       "claimIds": [
         "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-graves-monotonic-window-comparison",
         "bahdanau-2014-differentiable-soft-alignment",
         "bahdanau-2014-global-attention-cost",
         "bahdanau-2014-bleu-results",
@@ -9147,6 +9559,225 @@
         "metadata"
       ],
       "accessNote": "The official LDC catalog identifies Treebank-3 as LDC99T42, describes its Wall Street Journal material, and links an LDC user agreement. It documents dataset provenance and rights only; it does not identify which paper split appears in Figure 3."
+    },
+    {
+      "id": "graves-2013-arxiv-record",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "arXiv record for Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/abs/1308.0850",
+      "accessDate": "2026-08-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v1-version",
+        "graves-2013-arxiv-v2-version",
+        "graves-2013-arxiv-v3-version",
+        "graves-2013-arxiv-v4-version",
+        "graves-2013-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the title, sole author, abstract, subject categories, DOI, non-exclusive-distribution license, and exact timestamps for all five public revisions. It lists no conference or journal venue."
+    },
+    {
+      "id": "graves-2013-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Official arXiv version 1 of Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/pdf/1308.0850v1",
+      "accessDate": "2026-08-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 43
+      },
+      "accessNote": "The complete first revision was extracted and compared with versions 2–5. It already contains the text and handwriting generators and the monotonic Gaussian-mixture window; later corrected equations are not projected backward."
+    },
+    {
+      "id": "graves-2013-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Official arXiv version 2 of Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/pdf/1308.0850v2",
+      "accessDate": "2026-08-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 43
+      },
+      "accessNote": "The complete second revision was compared with adjacent revisions. It expands the synthesis alignment motivation and variable coordinate-to-character ratio while retaining the original mechanism."
+    },
+    {
+      "id": "graves-2013-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Official arXiv version 3 of Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/pdf/1308.0850v3",
+      "accessDate": "2026-08-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 43
+      },
+      "accessNote": "The complete third revision was compared with versions 2 and 4. It corrects an LSTM gate-weight label and the bivariate-Gaussian exponent but predates the final window-gradient corrections."
+    },
+    {
+      "id": "graves-2013-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Official arXiv version 4 of Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/pdf/1308.0850v4",
+      "accessDate": "2026-08-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 43
+      },
+      "accessNote": "The complete fourth revision was compared with versions 3 and 5. It revises equations 56–60 but still lacks the alpha factor that appears in the final epsilon definition."
+    },
+    {
+      "id": "graves-2013-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Official arXiv version 5 of Generating Sequences With Recurrent Neural Networks",
+      "url": "https://arxiv.org/pdf/1308.0850v5",
+      "accessDate": "2026-08-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 43
+      },
+      "accessNote": "The canonical 43-page revision was extracted, rendered in full, and visually inspected. Visible article pages map directly to viewer pages 1–43; claims use those page numbers together with section, equation, table, or figure anchors."
+    },
+    {
+      "id": "graves-2013-author-record",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Alex Graves publication page",
+      "url": "https://www.cs.toronto.edu/~graves/",
+      "accessDate": "2026-08-20",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "graves-2013-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The author’s publication page lists the paper, slides, and a handwriting-synthesis demonstration, but no conference or journal venue. It is used only to corroborate public project metadata."
+    },
+    {
+      "id": "graves-2013-iam-ondb-record",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Official IAM On-Line Handwriting Database record",
+      "url": "https://fki.tic.heia-fr.ch/databases/download-the-iam-on-line-handwriting-database",
+      "accessDate": "2026-08-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official dataset page identifies IAM-OnDB and its access conditions: registration is requested and use is limited to non-commercial research. Automated TLS verification on the access date encountered an expired site certificate, although the institutional page remained indexed. The record supports dataset identity and rights context, not the paper’s split or result claims."
+    },
+    {
+      "id": "graves-2013-treebank-record",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Linguistic Data Consortium catalog record for Treebank-3",
+      "url": "https://catalog.ldc.upenn.edu/LDC99T42",
+      "accessDate": "2026-08-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "graves-2013-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official LDC record identifies Treebank-3 as LDC99T42, describes its Wall Street Journal material, and links the user agreement. It documents dataset provenance and rights rather than the paper’s split or model results."
+    },
+    {
+      "id": "graves-2013-enwik8-record",
+      "relatedWorkIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "title": "Large Text Compression Benchmark data record",
+      "url": "https://www.mattmahoney.net/dc/textdata.html",
+      "accessDate": "2026-08-20",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "graves-2013-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The benchmark maintainer’s data page identifies enwik8 as the first 100,000,000 bytes of the specified Wikipedia XML dump and publishes integrity information. It supports dataset identity only; the corpus does not redistribute the data or infer a reuse license."
     },
     {
       "id": "cho-2014-arxiv-record",
@@ -17432,6 +18063,675 @@
       "checkedDate": "2026-08-09"
     },
     {
+      "id": "graves-2013-recurrent-sequence-generation-objective",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "next-item-prediction-training",
+        "character-level-recurrent-sequence-generation"
+      ],
+      "statement": "The recurrent network consumes one sequence element at each step, parameterizes the distribution of the next element, and minimizes sequence negative log likelihood through backpropagation through time; generation feeds a sampled output back as the next input.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Autoregressive recurrence and loss, article pp. 3–4",
+            "section": "2 Prediction Network",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "equation": "1–6"
+          },
+          "support": "Defines the next-step conditional distribution, sequence negative log likelihood, and full temporal differentiation."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Iterative sampled-output feedback, article p. 1",
+            "section": "1 Introduction",
+            "pageStart": 1,
+            "pageEnd": 1,
+            "paragraph": "Opening sequence-generation description"
+          },
+          "support": "States that generation iteratively samples the output distribution and feeds the sample back as the next input."
+        }
+      ],
+      "limitations": [
+        "The general factorization does not itself determine whether the output is categorical, continuous, coherent at long range, or conditioned on a separate sequence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-lstm-formulation",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "The experiments use an LSTM cell with input, forget, and output gates plus diagonal cell-state-to-gate connections; the paper explicitly identifies this as the version from Gers, Schraudolph, and Schmidhuber 2002 and trains it with full backpropagation through time and derivative clipping.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "LSTM equations and implementation statement, article p. 5",
+            "section": "2.1 Long Short-Term Memory",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "equation": "7–11"
+          },
+          "support": "Prints forget-gated peephole equations, names reference 7 as the version used, and describes full temporal gradients and clipping."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Reference 7, article p. 41",
+            "section": "References",
+            "pageStart": 41,
+            "pageEnd": 41,
+            "paragraph": "Reference 7"
+          },
+          "support": "Resolves the cited formulation to Gers, Schraudolph, and Schmidhuber, Learning Precise Timing with LSTM Recurrent Networks, 2002."
+        }
+      ],
+      "limitations": [
+        "The compact target equations do not establish identity with every update-order, initialization, or training detail in the 2002 source."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-deep-recurrent-architecture",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "character-level-recurrent-sequence-generation",
+        "mixture-density-handwriting-generation"
+      ],
+      "statement": "The base architecture stacks recurrent hidden layers and provides learned routes from the input to every hidden layer, between adjacent hidden layers, recurrently within each hidden layer, and from every hidden layer to the output, shortening paths across recurrent depths without a direct input-to-output connection.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Stacked recurrent predictor, article pp. 3–4",
+            "section": "2 Prediction Network",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "figure": "1",
+            "equation": "1–3"
+          },
+          "support": "Shows and defines input-to-hidden, adjacent hidden-to-hidden, within-layer recurrent, and hidden-to-output routes; it does not show a direct input-to-output connection."
+        }
+      ],
+      "limitations": [
+        "The architectural description spans tasks, but the evaluated depth, width, output family, and parameter count differ between text and handwriting experiments."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-text-prediction-objective",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "next-item-prediction-training",
+        "character-level-recurrent-sequence-generation"
+      ],
+      "statement": "For discrete text, a one-hot input and vocabulary softmax define the next-symbol distribution, and minimizing cross-entropy is equivalent to maximizing the probability assigned to the observed sequence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "One-hot text softmax and cross-entropy, article p. 6",
+            "section": "3 Text Prediction",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "equation": "12–14"
+          },
+          "support": "Defines the discrete input encoding, normalized output probabilities, and sequence loss."
+        }
+      ],
+      "limitations": [
+        "The same equations cover word or character symbols, but their vocabularies, parameter counts, and reported units differ."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-text-data-and-results",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "character-level-recurrent-sequence-generation"
+      ],
+      "statement": "On the stated Penn Treebank split, the strongest reported character condition reaches 1.24 bits per character and word-level perplexity 122, while the strongest word condition reaches 1.23 bits per character and perplexity 117; on enwik8 the seven-layer byte-level model reports 1.42 training and 1.67 static-validation BPC, with one modeled symbol per byte, and 1.33 after online adaptation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Penn Treebank setup and complete result matrix, article pp. 7–8",
+            "section": "3.1 Penn Treebank Experiments",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "1"
+          },
+          "support": "Reports split sizes, 49 character classes, 10,000 words, model sizes, static and dynamic evaluation, and all ten result rows."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "enwik8 setup and result table, article pp. 8–10",
+            "section": "3.2 Wikipedia Experiments",
+            "pageStart": 8,
+            "pageEnd": 10,
+            "table": "2"
+          },
+          "support": "Defines the 96M/4M-byte split, 205-symbol alphabet, seven-by-700 LSTM, 21.3M parameters, and the three reported bits-per-character values."
+        }
+      ],
+      "limitations": [
+        "The paper calls the character-versus-word parameter comparison somewhat unfair, dynamic evaluation changes weights during the ordered validation stream, and the PAQ-8 figure includes executable code and is not directly comparable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-text-sampling-boundary",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "character-level-recurrent-sequence-generation"
+      ],
+      "statement": "The long enwik8 sample demonstrates local syntax, markup, and topic continuation, but the paper says it does not make sense beyond short phrases and shows that online adaptation can carry recent subject matter into unrelated generated text.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Sample interpretation and adaptation contamination, article pp. 10–11",
+            "section": "3.2 Wikipedia Experiments",
+            "pageStart": 10,
+            "pageEnd": 11,
+            "paragraph": "Discussion surrounding the generated sample"
+          },
+          "support": "Explicitly limits semantic coherence and attributes recurring missile vocabulary to the article preceding the sampling point."
+        }
+      ],
+      "limitations": [
+        "The four-page sample is qualitative and does not measure long-range coherence, factuality, or sample diversity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-handwriting-mixture-density-output",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "mixture-density-handwriting-generation"
+      ],
+      "statement": "For online handwriting, the network parameterizes a normalized 20-component mixture of correlated bivariate Gaussians over the next x–y pen displacement and a Bernoulli end-of-stroke probability, then trains their joint negative log likelihood.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Handwriting mixture-density output, article pp. 19–21",
+            "section": "4.1 Mixture Density Outputs",
+            "pageStart": 19,
+            "pageEnd": 21,
+            "equation": "15–37"
+          },
+          "support": "Defines mixture weights, means, standard deviations, correlations, pen-lift probability, normalized density, and likelihood."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Twenty-component experimental configuration, article p. 23",
+            "section": "4.2 Experiments",
+            "pageStart": 23,
+            "pageEnd": 23,
+            "paragraph": "Network input, output, and mixture configuration"
+          },
+          "support": "States that the handwriting prediction experiment uses 20 mixture components, yielding 120 mixture parameters plus the end-of-stroke output."
+        }
+      ],
+      "limitations": [
+        "The Bernoulli variable marks pen-lift events, not the end of a generated character string or a transcription label."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-handwriting-data-and-preprocessing",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "mixture-density-handwriting-generation"
+      ],
+      "statement": "The handwriting experiments use IAM-OnDB pen coordinates and lift events, interpolate missing coordinate readings, remove steps longer than a threshold, and convert positions to offsets; the paper combines the 5,364-line training set, 3,859-line test set, and 1,518-line larger validation set for training and retains only the 1,438-line smaller validation set for early stopping.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "IAM-OnDB representation and split use, article p. 18",
+            "section": "4 Handwriting Prediction",
+            "pageStart": 18,
+            "pageEnd": 18,
+            "paragraph": "Dataset and preprocessing paragraphs"
+          },
+          "support": "Describes the pen representation, preprocessing, writer count, official partitions, line/form counts, and the paper’s recombination of splits."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Coordinate-offset representation, article p. 23",
+            "section": "4.2 Experiments",
+            "pageStart": 23,
+            "pageEnd": 23,
+            "paragraph": "Experimental input representation"
+          },
+          "support": "States that each data point uses the x and y offset from the previous point plus the binary end-of-stroke feature."
+        }
+      ],
+      "limitations": [
+        "Because the official test and larger validation partitions enter training, the reported handwriting losses are not independent test results; the official dataset page does not validate the paper’s custom split."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-unconditional-handwriting-results",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "mixture-density-handwriting-generation"
+      ],
+      "statement": "On the retained 1,438-line validation set, the one-layer unregularized predictor reports log loss −1025.7 and SSE 0.40, the three-layer unregularized predictor −1041.0 and 0.41, and the three-layer adaptive-weight-noise predictor −1057.7 and 0.41.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Unconditional handwriting results, article p. 24",
+            "section": "4.2 Experiments",
+            "pageStart": 24,
+            "pageEnd": 24,
+            "table": "3"
+          },
+          "support": "Reports all three model, regularization, log-loss, and sum-squared-error rows."
+        }
+      ],
+      "limitations": [
+        "The negative loss values are reported on a reused validation partition rather than an untouched test set; the loss improvement does not coincide with lower SSE."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-monotonic-window-mechanism",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "statement": "At each pen step, the lowest recurrent layer emits positive amplitudes, widths, and location increments for ten Gaussian windows over one-hot character vectors; summing the resulting unnormalized weights produces a soft character vector, while κₜ = κₜ₋₁ + exp(κ̂ₜ) forces every window center to move forward.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Window definition and positive cumulative location, article pp. 26–27",
+            "section": "5.1 Synthesis Network",
+            "pageStart": 26,
+            "pageEnd": 27,
+            "equation": "46–51"
+          },
+          "support": "Defines the Gaussian-mixture weights, soft character vector, exponential transforms, and cumulative positive location updates."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Observed left-to-right window progression, article p. 28",
+            "section": "5.1 Synthesis Network",
+            "pageStart": 28,
+            "pageEnd": 28,
+            "figure": "13"
+          },
+          "support": "Visualizes overlapping window weights moving through the character sequence and spreading near character boundaries."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Ten-component window configuration, article p. 31",
+            "section": "5.2 Experiments",
+            "pageStart": 31,
+            "pageEnd": 31,
+            "paragraph": "Synthesis-network architecture"
+          },
+          "support": "States that the synthesis experiment uses a mixture of 10 Gaussian functions for the window parameters."
+        }
+      ],
+      "limitations": [
+        "The weights are not normalized probabilities, κ₀ is not specified in the inspected text, and the positive-increment constraint prevents backward or arbitrary source traversal."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The prose immediately after equation 51 refers to a previous c term, but the equation and surrounding definition clearly accumulate κ from κₜ₋₁; the corpus follows the printed equation and flags no separate character recurrence."
+        }
+      ],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-conditional-handwriting-objective",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "mixture-density-handwriting-generation",
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "statement": "The text-conditioned system routes each current soft character vector to the upper recurrent layers and, one step later, back to the lowest layer to avoid a same-step cycle, then minimizes handwriting negative log likelihood conditioned on the complete character string.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Conditioned recurrent routes and likelihood, article pp. 27–29",
+            "section": "5 Handwriting Synthesis; 5.1 Synthesis Network",
+            "pageStart": 27,
+            "pageEnd": 29,
+            "figure": "12",
+            "equation": "52–55"
+          },
+          "support": "Shows the timing of window inputs to each hidden layer and defines the conditional sequence probability and loss."
+        }
+      ],
+      "limitations": [
+        "The delayed first-layer route is a graph-timing choice, not evidence that every upper-layer input or generated pen step aligns to one character."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-conditional-handwriting-results",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "mixture-density-handwriting-generation",
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "statement": "The three-layer conditional predictor reports validation log loss −1096.9 without regularization and −1128.2 with adaptive weight noise, both at SSE 0.23; the paper describes a 31.3-nat log-loss gain from weight noise and a 44% SSE reduction relative to its best unconditional predictor.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Conditional handwriting results, article p. 31",
+            "section": "5.2 Experiments",
+            "pageStart": 31,
+            "pageEnd": 31,
+            "table": "4"
+          },
+          "support": "Reports both conditional rows and states the log-loss and SSE comparisons."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Generation errors and proposed explanations, article p. 32",
+            "section": "5.3 Unbiased Sampling",
+            "pageStart": 32,
+            "pageEnd": 32,
+            "paragraph": "Discussion after the blind taste-test statement"
+          },
+          "support": "Reports missing, confused, and garbled letters, especially on uncommon text, and presents alignment and implicit language-model explanations as suggestions."
+        }
+      ],
+      "limitations": [
+        "The comparison uses the same non-independent validation partition, supplies no uncertainty estimates, and does not isolate conditional text, the window, and other architecture choices in a controlled ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-window-terminology-boundary",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "statement": "The paper names the component a window layer, soft window, window weight, or convolutional mechanism and never uses the word attention; the corpus therefore preserves the source terminology and reserves attention language for later papers that explicitly make the comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Window terminology, article pp. 24–27",
+            "section": "5 Handwriting Synthesis; 5.1 Synthesis Network",
+            "pageStart": 24,
+            "pageEnd": 27,
+            "paragraph": "Window-layer construction"
+          },
+          "support": "Uses window layer, soft window, and window weight for the differentiable sequence-conditioning construction."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Convolutional-mechanism terminology, article p. 34",
+            "section": "6 Conclusions and Future Work",
+            "pageStart": 34,
+            "pageEnd": 34,
+            "paragraph": "Opening conclusion"
+          },
+          "support": "Calls the sequence-conditioning construction a novel convolutional mechanism."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Complete-article terminology audit, article pp. 1–43",
+            "section": "Complete article",
+            "pageStart": 1,
+            "pageEnd": 43,
+            "paragraph": "Full-text lexical audit"
+          },
+          "support": "The complete inspected article contains no occurrence of the word attention."
+        }
+      ],
+      "limitations": [
+        "Absence of a later term in this text does not by itself settle historical priority; the claim only prevents backdating vocabulary."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-evidence-reproducibility-boundary",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "character-level-recurrent-sequence-generation",
+        "mixture-density-handwriting-generation",
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "statement": "The paper supplies objectives, architectures, dataset counts, and headline tables but no released training code, independent handwriting test result, repeated seeds, confidence intervals, or protocol, participant count, and judgments for its presentation-based blind taste tests; only Figure 18's primed samples are explicitly selected for legibility.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Recombined handwriting splits, article p. 18",
+            "section": "4 Handwriting Prediction",
+            "pageStart": 18,
+            "pageEnd": 18,
+            "paragraph": "Dataset split paragraph"
+          },
+          "support": "States that training uses the official training, test, and larger validation partitions and reserves only the smaller validation set."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Presentation-based blind taste-test statement, article p. 32",
+            "section": "5.3 Unbiased Sampling",
+            "pageStart": 32,
+            "pageEnd": 32,
+            "paragraph": "Blind taste-test statement"
+          },
+          "support": "Says blind taste tests carried out by the author during presentations suggest that at least some unbiased samples cannot be distinguished from real handwriting; no protocol, participant count, or judgments are reported."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Primed-sample selection note, article p. 37",
+            "section": "5.5 Primed Sampling",
+            "pageStart": 37,
+            "pageEnd": 37,
+            "figure": "18"
+          },
+          "support": "The Figure 18 caption states that its primed samples were selected for legibility; the paper does not make this statement about every displayed handwriting figure."
+        }
+      ],
+      "limitations": [
+        "The boundary records omissions visible in the inspected paper and author page; it does not prove that no private implementation or additional experiment ever existed."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact blind-taste-test participant count, sampling, presentation procedure, questions, and judgments are unavailable.",
+          "resolutionCondition": "A dated protocol, judgment set, or author clarification would be required."
+        }
+      ],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "graves-2013-window-equation-version-boundary",
+      "workId": "graves-2013-generating-sequences-recurrent-neural-networks",
+      "ideaIds": [
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "statement": "The monotonic window exists in version 1, but the printed derivation changes across revisions: version 3 still has the earlier equations 56–60, version 4 corrects their component indexing and Gaussian factors, and version 5 adds αₜᵏ inside εₜᵏ and removes the duplicate external factor from the next equation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v1-full-text",
+          "locator": {
+            "label": "Window present in the first public revision",
+            "section": "5.1 Synthesis Network",
+            "equation": "46–51"
+          },
+          "support": "Shows that the Gaussian-mixture window and cumulative positive location are present in version 1."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v3-full-text",
+          "locator": {
+            "label": "Pre-correction window derivatives",
+            "section": "5.1 Synthesis Network",
+            "equation": "56–60"
+          },
+          "support": "Preserves the derivative form that version 4 revises."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v4-full-text",
+          "locator": {
+            "label": "Intermediate corrected derivatives",
+            "section": "5.1 Synthesis Network",
+            "equation": "56–60"
+          },
+          "support": "Adds component-specific indexing and Gaussian factors but predates the final alpha placement."
+        },
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Canonical window derivatives, article p. 29",
+            "section": "5.1 Synthesis Network",
+            "pageStart": 29,
+            "pageEnd": 29,
+            "equation": "56–60"
+          },
+          "support": "Prints the final epsilon definition and corresponding derivative expressions."
+        }
+      ],
+      "limitations": [
+        "Later corrections are used for reconstruction but are not treated as part of the first-posted formula."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "bahdanau-2014-graves-monotonic-window-comparison",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "ideaIds": [
+        "monotonic-gaussian-mixture-sequence-window",
+        "decoder-conditioned-soft-attention"
+      ],
+      "statement": "From its first public revision onward, the paper calls Graves’s handwriting alignment a similar approach, describes its predicted Gaussian-window locations, widths, and mixture coefficients, and identifies monotonically increasing locations as a severe limitation for translation that may require source reordering.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v1-full-text",
+          "locator": {
+            "label": "Graves comparison in the first public revision, article p. 9",
+            "section": "6.1 Learning to align",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "paragraph": "Graves 2013 comparison paragraph"
+          },
+          "support": "Calls the approaches similar, summarizes the Gaussian window parameters, and contrasts monotonic traversal with translation reordering."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Retained Graves comparison in the canonical revision, article p. 8",
+            "section": "6.1 Learning to align",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "paragraph": "Graves 2013 comparison paragraph"
+          },
+          "support": "Retains the same technical comparison in the latest revision."
+        }
+      ],
+      "limitations": [
+        "The target does not say its source-weighting mechanism was derived from Graves, and handwriting’s ordered character-to-pen path differs materially from translation reordering."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
+      "id": "sutskever-2014-graves-lstm-formulation",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "ideaIds": [
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback"
+      ],
+      "statement": "The sequence-to-sequence paper explicitly says its system uses the LSTM formulation from Graves 2013, while its broader architectural ancestry remains separately attributed to Hochreiter and Schmidhuber.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Implemented LSTM formulation and reference 10, article pp. 3 and 9",
+            "section": "2 The model; References",
+            "pageStart": 3,
+            "pageEnd": 9,
+            "paragraph": "Model specification and reference 10"
+          },
+          "support": "States that the model uses the LSTM formulation from Graves and resolves reference 10 to Generating Sequences With Recurrent Neural Networks."
+        }
+      ],
+      "limitations": [
+        "The target does not print complete gate equations, and the citation does not transfer Graves’s soft window, datasets, output mixtures, sampling heuristics, or experimental results."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-20"
+    },
+    {
       "id": "cho-2014-fixed-vector-architecture",
       "workId": "cho-2014-rnn-encoder-decoder",
       "ideaIds": [
@@ -20553,6 +21853,139 @@
       ]
     },
     {
+      "id": "gers-2002-to-graves-2013",
+      "from": {
+        "kind": "work",
+        "id": "gers-schraudolph-schmidhuber-2002-precise-timing"
+      },
+      "to": {
+        "kind": "work",
+        "id": "graves-2013-generating-sequences-recurrent-neural-networks"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Graves explicitly says the experiments use the LSTM version from Gers, Schraudolph, and Schmidhuber 2002, and prints a forget-gated cell with diagonal cell-state-to-gate connections. The edge is limited to that composite recurrent-cell formulation and full temporal training; it does not transfer the earlier synthetic timing tasks or claim equation-for-equation implementation identity.",
+      "claimIds": [
+        "gers-2002-forget-gate-antecedent",
+        "gers-2002-peephole-mechanism",
+        "graves-2013-lstm-formulation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "graves-2013-arxiv-v5-full-text",
+          "locator": {
+            "label": "Named LSTM formulation and resolved reference, article pp. 5 and 41",
+            "section": "2.1 Long Short-Term Memory; References",
+            "pageStart": 5,
+            "pageEnd": 41,
+            "equation": "7–11",
+            "paragraph": "Implementation statement and reference 7"
+          },
+          "support": "The target identifies reference 7 as the LSTM version used and resolves it to the 2002 Gers, Schraudolph, and Schmidhuber paper."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The citation and printed gates establish documented formulation reuse, while unprinted update and training details remain outside the edge."
+        }
+      ]
+    },
+    {
+      "id": "graves-2013-to-bahdanau-2014",
+      "from": {
+        "kind": "work",
+        "id": "graves-2013-generating-sequences-recurrent-neural-networks"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Bahdanau, Cho, and Bengio directly compare their learned source weighting with Graves’s Gaussian-mixture alignment window and identify its monotonically increasing location as too restrictive for translation reordering. The edge records that documented technical comparison and functional contrast; it does not claim motivation, derivation, inspiration, sole priority, or task equivalence.",
+      "claimIds": [
+        "graves-2013-monotonic-window-mechanism",
+        "graves-2013-window-terminology-boundary",
+        "bahdanau-2014-graves-monotonic-window-comparison",
+        "bahdanau-2014-soft-attention-context"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bahdanau-2014-arxiv-v1-full-text",
+          "locator": {
+            "label": "Direct Graves comparison in the first revision, article p. 9",
+            "section": "6.1 Learning to align",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "paragraph": "Graves 2013 comparison paragraph"
+          },
+          "support": "Calls Graves’s method similar, describes its Gaussian window parameters, and identifies monotonic location as a severe restriction for translation."
+        },
+        {
+          "sourceId": "bahdanau-2014-arxiv-v7-full-text",
+          "locator": {
+            "label": "Comparison retained in the canonical revision, article p. 8",
+            "section": "6.1 Learning to align",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "paragraph": "Graves 2013 comparison paragraph"
+          },
+          "support": "Retains the same contrast in the latest public revision."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Direct comparison is documented from Bahdanau version 1, but the target does not state that its method was derived from or inspired by Graves."
+        }
+      ]
+    },
+    {
+      "id": "graves-2013-to-sutskever-2014",
+      "from": {
+        "kind": "work",
+        "id": "graves-2013-generating-sequences-recurrent-neural-networks"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sutskever-vinyals-le-2014-sequence-to-sequence"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sutskever, Vinyals, and Le explicitly say they use Graves’s LSTM formulation. The edge is confined to the implemented recurrent cell: it does not transfer Graves’s handwriting window, mixture-density output, text or handwriting experiments, or sampling methods, and it remains distinct from the target’s architectural citation to Hochreiter and Schmidhuber.",
+      "claimIds": [
+        "graves-2013-lstm-formulation",
+        "sutskever-2014-graves-lstm-formulation",
+        "sutskever-2014-deep-two-lstm-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sutskever-2014-neurips-full-text",
+          "locator": {
+            "label": "Named Graves formulation and reference 10, article pp. 3 and 9",
+            "section": "2 The model; References",
+            "pageStart": 3,
+            "pageEnd": 9,
+            "paragraph": "Model specification and reference 10"
+          },
+          "support": "The target states that it uses the LSTM formulation from Graves and resolves the citation to the audited preprint."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target does not print complete LSTM equations, so the citation supports formulation reuse but not identity for every gate, state update, or training detail."
+        }
+      ]
+    },
+    {
       "id": "cho-2014-to-bahdanau-2014",
       "from": {
         "kind": "work",
@@ -22001,6 +23434,74 @@
         "Reproducibility and evidence auditing"
       ],
       "successCriterion": "The learner can reconstruct the 1997 core, map reference 12 only to adaptive forgetting and reference 13 only to cell-state-to-gate peepholes, avoid importing the 2002 update order into the target, derive the class factorization, reproduce both corpus and WER rows, preserve graph-only uncertainty, and list the omitted training and runtime details."
+    },
+    {
+      "id": "beginner-graves-2013-follow-the-writing-window",
+      "mode": "beginner",
+      "objective": "Follow how next-step prediction can generate text or pen motion, then trace a soft window as typed characters guide handwriting while keeping its left-to-right constraint and evidence limits visible.",
+      "workIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "ideaIds": [
+        "character-level-recurrent-sequence-generation",
+        "mixture-density-handwriting-generation",
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "claimIds": [
+        "graves-2013-recurrent-sequence-generation-objective",
+        "graves-2013-text-sampling-boundary",
+        "graves-2013-handwriting-mixture-density-output",
+        "graves-2013-monotonic-window-mechanism",
+        "graves-2013-conditional-handwriting-results",
+        "graves-2013-window-terminology-boundary",
+        "graves-2013-evidence-reproducibility-boundary"
+      ],
+      "prerequisites": [
+        "A sequence generated one item at a time",
+        "A weighted blend of nearby positions",
+        "Probability as a choice among possible next steps"
+      ],
+      "successCriterion": "The learner can distinguish character probabilities from pen-motion densities, move a conceptual Gaussian window through a character string, explain why positive location increments forbid looking backward, and label long text samples, presentation-based blind taste tests, and Figure 18's selected primed samples as qualitative rather than controlled evidence."
+    },
+    {
+      "id": "expert-graves-2013-window-density-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the peephole LSTM, categorical and mixture-density likelihoods, monotonic Gaussian-mixture window, conditional handwriting graph, and reported tables while auditing revision-specific equations, dataset reuse, sampling heuristics, and later lineage claims.",
+      "workIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks"
+      ],
+      "ideaIds": [
+        "next-item-prediction-training",
+        "adaptive-recurrent-state-retention",
+        "cell-state-to-gate-feedback",
+        "character-level-recurrent-sequence-generation",
+        "mixture-density-handwriting-generation",
+        "monotonic-gaussian-mixture-sequence-window"
+      ],
+      "claimIds": [
+        "graves-2013-recurrent-sequence-generation-objective",
+        "graves-2013-lstm-formulation",
+        "graves-2013-deep-recurrent-architecture",
+        "graves-2013-text-prediction-objective",
+        "graves-2013-text-data-and-results",
+        "graves-2013-text-sampling-boundary",
+        "graves-2013-handwriting-mixture-density-output",
+        "graves-2013-handwriting-data-and-preprocessing",
+        "graves-2013-unconditional-handwriting-results",
+        "graves-2013-monotonic-window-mechanism",
+        "graves-2013-conditional-handwriting-objective",
+        "graves-2013-conditional-handwriting-results",
+        "graves-2013-window-terminology-boundary",
+        "graves-2013-evidence-reproducibility-boundary",
+        "graves-2013-window-equation-version-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive maximum likelihood and backpropagation through time",
+        "LSTM gates and cell-state feedback",
+        "Mixture density networks and bivariate Gaussians",
+        "Conditional sequence models and evidence auditing"
+      ],
+      "successCriterion": "The learner can derive equations 1–14, 15–37, and 46–55; explain why the window weights are unnormalized and monotonic; reproduce Tables 1–4 with their evaluation conditions; distinguish the v3, v4, and v5 derivative forms; and state why the reused test partition, informal blind taste tests, and later attention vocabulary constrain interpretation."
     },
     {
       "id": "beginner-cho-2014-encode-score-and-gate",

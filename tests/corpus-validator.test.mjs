@@ -35,30 +35,41 @@ test("accepts the checked-in corpus", () => {
 
 test("binds the corpus to the current schema contract", () => {
   const candidate = copyCorpus();
-  candidate.schemaVersion = "0.6.0";
+  candidate.schemaVersion = "0.7.0";
 
-  assertRejected(candidate, "must equal \"0.7.0\"");
+  assertRejected(candidate, "must equal \"0.8.0\"");
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
+  const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
+  const versionId = "graves-2013-arxiv-v1-version";
   const arxivIdentifier = corpus.works
-    .flatMap((work) => work.versions)
-    .flatMap((version) => version.bibliography.identifiers)
-    .find((identifier) => identifier.type === "arxiv");
+    .find((work) => work.id === workId)
+    ?.versions.find((version) => version.id === versionId)
+    ?.bibliography.identifiers.find(
+      (identifier) => identifier.type === "arxiv",
+    );
   const candidate = copyCorpus();
   const version = candidate.works
-    .flatMap((work) => work.versions)
-    .find((item) =>
-      item.bibliography.identifiers.some(
-        (identifier) => identifier.type === "arxiv",
-      ),
-    );
+    .find((work) => work.id === workId)
+    .versions.find((item) => item.id === versionId);
   const identifier = version.bibliography.identifiers.find(
     (item) => item.type === "arxiv",
   );
 
-  assert.equal(arxivIdentifier?.value, "1406.1078v1");
+  assert.equal(arxivIdentifier?.value, "1308.0850v1");
   identifier.type = "preprint-id";
+  assertRejected(candidate, "must be one of");
+});
+
+test("accepts preprints and rejects unsupported work artifact types", () => {
+  const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
+  const work = corpus.works.find((item) => item.id === workId);
+  const candidate = copyCorpus();
+  const candidateWork = candidate.works.find((item) => item.id === workId);
+
+  assert.equal(work?.artifactType, "preprint");
+  candidateWork.artifactType = "working-paper";
   assertRejected(candidate, "must be one of");
 });
 
@@ -733,7 +744,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-13");
+  assert.equal(corpus.asOf, "2026-08-20");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -3255,6 +3266,449 @@ test("retains Sundermeyer 2012 as a composite-cell language-model convergence", 
   assert.deepEqual(modes, new Set(["beginner", "expert"]));
 });
 
+test("retains Graves 2013 as a versioned monotonic-window generation branch", () => {
+  const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(
+    work?.versions.map((version) => [version.id, version]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const claimsById = new Map(claims.map((claim) => [claim.id, claim]));
+  const arxivRecord = corpus.sources.find(
+    (source) => source.id === "graves-2013-arxiv-record",
+  );
+  const canonicalText = corpus.sources.find(
+    (source) => source.id === "graves-2013-arxiv-v5-full-text",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const relationships = new Map(
+    corpus.relationships
+      .filter((relationship) =>
+        [
+          "gers-2002-to-graves-2013",
+          "graves-2013-to-bahdanau-2014",
+          "graves-2013-to-sutskever-2014",
+        ].includes(relationship.id),
+      )
+      .map((relationship) => [relationship.id, relationship]),
+  );
+  const equationBoundary = claimsById.get(
+    "graves-2013-window-equation-version-boundary",
+  );
+  const windowMechanism = claimsById.get(
+    "graves-2013-monotonic-window-mechanism",
+  );
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.inclusion.confidence, "high");
+  assert.equal(
+    work?.canonicalVersionId,
+    "graves-2013-arxiv-v5-version",
+  );
+  assert.deepEqual(work?.authors, ["Alex Graves"]);
+  assert.equal(work?.versions.length, 5);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "graves-2013-arxiv-v1-posted",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+      event.date.precision,
+      event.versionId,
+    ]),
+    [
+      [
+        "graves-2013-arxiv-v1-posted",
+        "preprint",
+        "2013-08-04",
+        "day",
+        "graves-2013-arxiv-v1-version",
+      ],
+      [
+        "graves-2013-arxiv-v2-posted",
+        "manuscript-revised",
+        "2013-08-11",
+        "day",
+        "graves-2013-arxiv-v2-version",
+      ],
+      [
+        "graves-2013-arxiv-v3-posted",
+        "manuscript-revised",
+        "2014-02-21",
+        "day",
+        "graves-2013-arxiv-v3-version",
+      ],
+      [
+        "graves-2013-arxiv-v4-posted",
+        "manuscript-revised",
+        "2014-04-02",
+        "day",
+        "graves-2013-arxiv-v4-version",
+      ],
+      [
+        "graves-2013-arxiv-v5-posted",
+        "manuscript-revised",
+        "2014-06-05",
+        "day",
+        "graves-2013-arxiv-v5-version",
+      ],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [
+      version.id,
+      version.kind,
+      version.bibliography.identifiers.find(
+        (identifier) => identifier.type === "arxiv",
+      )?.value,
+    ]),
+    [
+      ["graves-2013-arxiv-v1-version", "preprint", "1308.0850v1"],
+      ["graves-2013-arxiv-v2-version", "preprint", "1308.0850v2"],
+      ["graves-2013-arxiv-v3-version", "preprint", "1308.0850v3"],
+      ["graves-2013-arxiv-v4-version", "preprint", "1308.0850v4"],
+      ["graves-2013-arxiv-v5-version", "preprint", "1308.0850v5"],
+    ],
+  );
+  assert.ok(
+    versions
+      .get("graves-2013-arxiv-v1-version")
+      ?.notes.includes("already contains"),
+  );
+  assert.ok(
+    versions
+      .get("graves-2013-arxiv-v3-version")
+      ?.notes.includes("bivariate Gaussian exponent"),
+  );
+  assert.ok(
+    versions
+      .get("graves-2013-arxiv-v3-version")
+      ?.notes.includes("prose example"),
+  );
+  assert.ok(
+    versions
+      .get("graves-2013-arxiv-v3-version")
+      ?.notes.includes("from Wsi to Wci"),
+  );
+  assert.ok(
+    versions
+      .get("graves-2013-arxiv-v4-version")
+      ?.notes.includes("still lacks the alpha factor"),
+  );
+  assert.ok(
+    versions
+      .get("graves-2013-arxiv-v5-version")
+      ?.notes.includes("completes the alpha factor"),
+  );
+  assert.deepEqual(
+    arxivRecord?.versionIds,
+    work?.versions.map((version) => version.id),
+  );
+  assert.deepEqual(arxivRecord?.supports, ["metadata"]);
+  assert.deepEqual(canonicalText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 43,
+  });
+
+  assert.deepEqual(work?.ideaIds, [
+    "next-item-prediction-training",
+    "adaptive-recurrent-state-retention",
+    "cell-state-to-gate-feedback",
+    "character-level-recurrent-sequence-generation",
+    "mixture-density-handwriting-generation",
+    "monotonic-gaussian-mixture-sequence-window",
+  ]);
+  assert.deepEqual(
+    claims.map((claim) => claim.id),
+    [
+      "graves-2013-recurrent-sequence-generation-objective",
+      "graves-2013-lstm-formulation",
+      "graves-2013-deep-recurrent-architecture",
+      "graves-2013-text-prediction-objective",
+      "graves-2013-text-data-and-results",
+      "graves-2013-text-sampling-boundary",
+      "graves-2013-handwriting-mixture-density-output",
+      "graves-2013-handwriting-data-and-preprocessing",
+      "graves-2013-unconditional-handwriting-results",
+      "graves-2013-monotonic-window-mechanism",
+      "graves-2013-conditional-handwriting-objective",
+      "graves-2013-conditional-handwriting-results",
+      "graves-2013-window-terminology-boundary",
+      "graves-2013-evidence-reproducibility-boundary",
+      "graves-2013-window-equation-version-boundary",
+    ],
+  );
+  for (const value of ["1.24", "122", "1.23", "117", "1.33"]) {
+    assert.ok(
+      claimsById.get("graves-2013-text-data-and-results")?.statement.includes(
+        value,
+      ),
+    );
+  }
+  assert.ok(
+    claimsById
+      .get("graves-2013-text-data-and-results")
+      ?.statement.includes("seven-layer byte-level model"),
+  );
+  assert.ok(
+    claimsById
+      .get("graves-2013-text-data-and-results")
+      ?.evidence.some(
+        (item) => item.locator.section === "3.1 Penn Treebank Experiments",
+      ),
+  );
+  assert.deepEqual(
+    claimsById
+      .get("graves-2013-recurrent-sequence-generation-objective")
+      ?.evidence.map((item) => [
+        item.locator.section,
+        item.locator.pageStart,
+        item.locator.pageEnd,
+      ]),
+    [
+      ["2 Prediction Network", 3, 4],
+      ["1 Introduction", 1, 1],
+    ],
+  );
+  const architecture = claimsById.get(
+    "graves-2013-deep-recurrent-architecture",
+  );
+  for (const route of [
+    "input to every hidden layer",
+    "between adjacent hidden layers",
+    "recurrently within each hidden layer",
+    "from every hidden layer to the output",
+  ]) {
+    assert.ok(architecture?.statement.includes(route));
+  }
+  assert.ok(architecture?.statement.includes("without a direct input-to-output"));
+  assert.equal(
+    architecture?.evidence[0]?.locator.section,
+    "2 Prediction Network",
+  );
+
+  const handwritingData = claimsById.get(
+    "graves-2013-handwriting-data-and-preprocessing",
+  );
+  for (const value of [
+    "5,364-line training set",
+    "3,859-line test set",
+    "1,518-line larger validation set",
+    "1,438-line smaller validation set",
+  ]) {
+    assert.ok(
+      handwritingData?.statement.includes(value),
+    );
+  }
+  assert.ok(handwritingData?.statement.includes("interpolate missing coordinate readings"));
+  assert.ok(handwritingData?.statement.includes("remove steps longer than a threshold"));
+  assert.ok(
+    handwritingData?.evidence.some(
+      (item) =>
+        item.locator.section === "4.2 Experiments" &&
+        item.locator.pageStart === 23 &&
+        item.support.includes("offset from the previous point"),
+    ),
+  );
+  assert.ok(
+    claimsById
+      .get("graves-2013-handwriting-mixture-density-output")
+      ?.statement.includes("20-component mixture"),
+  );
+  assert.ok(
+    claimsById
+      .get("graves-2013-handwriting-mixture-density-output")
+      ?.evidence.some(
+        (item) =>
+          item.locator.section === "4.2 Experiments" &&
+          item.locator.pageStart === 23 &&
+          item.support.includes("20 mixture components"),
+      ),
+  );
+  for (const value of ["−1096.9", "−1128.2", "31.3-nat", "44%"])
+    assert.ok(
+      claimsById
+        .get("graves-2013-conditional-handwriting-results")
+        ?.statement.includes(value),
+    );
+  assert.ok(windowMechanism?.statement.includes("ten Gaussian windows"));
+  assert.ok(windowMechanism?.statement.includes("κₜ = κₜ₋₁ + exp(κ̂ₜ)"));
+  assert.ok(
+    windowMechanism?.evidence.some(
+      (item) =>
+        item.locator.section === "5.2 Experiments" &&
+        item.locator.pageStart === 31 &&
+        item.support.includes("10 Gaussian functions"),
+    ),
+  );
+  assert.ok(
+    windowMechanism?.limitations.some((item) =>
+      item.includes("prevents backward or arbitrary source traversal"),
+    ),
+  );
+  assert.ok(
+    claimsById
+      .get("graves-2013-window-terminology-boundary")
+      ?.statement.includes("never uses the word attention"),
+  );
+  assert.deepEqual(
+    claimsById
+      .get("graves-2013-window-terminology-boundary")
+      ?.evidence.map((item) => [
+        item.locator.section,
+        item.locator.pageStart,
+        item.locator.pageEnd,
+      ]),
+    [
+      ["5 Handwriting Synthesis; 5.1 Synthesis Network", 24, 27],
+      ["6 Conclusions and Future Work", 34, 34],
+      ["Complete article", 1, 43],
+    ],
+  );
+  assert.ok(
+    claimsById
+      .get("graves-2013-evidence-reproducibility-boundary")
+      ?.statement.includes("no released training code"),
+  );
+  const evidenceBoundary = claimsById.get(
+    "graves-2013-evidence-reproducibility-boundary",
+  );
+  assert.ok(evidenceBoundary?.statement.includes("blind taste tests"));
+  assert.ok(evidenceBoundary?.statement.includes("only Figure 18's primed samples"));
+  assert.deepEqual(
+    evidenceBoundary?.evidence.slice(1).map((item) => [
+      item.locator.section,
+      item.locator.pageStart,
+      item.locator.figure ?? null,
+    ]),
+    [
+      ["5.3 Unbiased Sampling", 32, null],
+      ["5.5 Primed Sampling", 37, "18"],
+    ],
+  );
+  assert.ok(
+    work?.limitations.some(
+      (item) =>
+        item.includes("31.3-nat") &&
+        item.includes("measures regularization rather than the window") &&
+        item.includes("separate 44%"),
+    ),
+  );
+
+  assert.equal(
+    equationBoundary?.statement,
+    "The monotonic window exists in version 1, but the printed derivation changes across revisions: version 3 still has the earlier equations 56–60, version 4 corrects their component indexing and Gaussian factors, and version 5 adds αₜᵏ inside εₜᵏ and removes the duplicate external factor from the next equation.",
+  );
+  assert.deepEqual(
+    equationBoundary?.evidence.map((evidence) => [
+      evidence.sourceId,
+      evidence.locator.equation,
+      evidence.locator.pageStart ?? null,
+    ]),
+    [
+      ["graves-2013-arxiv-v1-full-text", "46–51", null],
+      ["graves-2013-arxiv-v3-full-text", "56–60", null],
+      ["graves-2013-arxiv-v4-full-text", "56–60", null],
+      ["graves-2013-arxiv-v5-full-text", "56–60", 29],
+    ],
+  );
+  assert.ok(
+    equationBoundary?.limitations.includes(
+      "Later corrections are used for reconstruction but are not treated as part of the first-posted formula.",
+    ),
+  );
+
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-graves-2013-follow-the-writing-window", "beginner"],
+      ["expert-graves-2013-window-density-and-evidence", "expert"],
+    ],
+  );
+  assert.ok(
+    objectives[0]?.successCriterion.includes(
+      "positive location increments forbid looking backward",
+    ),
+  );
+  assert.ok(
+    objectives[0]?.successCriterion.includes(
+      "qualitative rather than controlled",
+    ),
+  );
+  assert.ok(objectives[1]?.successCriterion.includes("equations 1–14"));
+  assert.ok(objectives[1]?.successCriterion.includes("v3, v4, and v5"));
+  assert.ok(objectives[1]?.successCriterion.includes("reused test partition"));
+
+  const gersEdge = relationships.get("gers-2002-to-graves-2013");
+  const bahdanauEdge = relationships.get("graves-2013-to-bahdanau-2014");
+  const sutskeverEdge = relationships.get("graves-2013-to-sutskever-2014");
+  assert.equal(relationships.size, 3);
+  for (const relationship of relationships.values()) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+  }
+  assert.deepEqual(gersEdge?.from, {
+    kind: "work",
+    id: "gers-schraudolph-schmidhuber-2002-precise-timing",
+  });
+  assert.deepEqual(gersEdge?.to, { kind: "work", id: workId });
+  assert.equal(gersEdge?.connectionType, "builds-on");
+  assert.equal(gersEdge?.causalLanguage, "qualified");
+  assert.deepEqual(
+    gersEdge?.sourceEvidence.map((evidence) => evidence.sourceId),
+    ["graves-2013-arxiv-v5-full-text"],
+  );
+  assert.ok(gersEdge?.rationale.includes("composite recurrent-cell formulation"));
+  assert.ok(gersEdge?.rationale.includes("does not transfer"));
+
+  assert.deepEqual(bahdanauEdge?.from, { kind: "work", id: workId });
+  assert.deepEqual(bahdanauEdge?.to, {
+    kind: "work",
+    id: "bahdanau-cho-bengio-2014-neural-machine-translation",
+  });
+  assert.equal(bahdanauEdge?.connectionType, "addresses");
+  assert.equal(bahdanauEdge?.causalLanguage, "prohibited");
+  assert.deepEqual(
+    bahdanauEdge?.sourceEvidence.map((evidence) => evidence.sourceId),
+    [
+      "bahdanau-2014-arxiv-v1-full-text",
+      "bahdanau-2014-arxiv-v7-full-text",
+    ],
+  );
+  assert.ok(bahdanauEdge?.rationale.includes("technical comparison"));
+  assert.ok(bahdanauEdge?.rationale.includes("functional contrast"));
+  assert.ok(
+    bahdanauEdge?.rationale.includes(
+      "does not claim motivation, derivation, inspiration",
+    ),
+  );
+
+  assert.deepEqual(sutskeverEdge?.from, { kind: "work", id: workId });
+  assert.deepEqual(sutskeverEdge?.to, {
+    kind: "work",
+    id: "sutskever-vinyals-le-2014-sequence-to-sequence",
+  });
+  assert.equal(sutskeverEdge?.connectionType, "builds-on");
+  assert.equal(sutskeverEdge?.causalLanguage, "qualified");
+  assert.deepEqual(
+    sutskeverEdge?.sourceEvidence.map((evidence) => evidence.sourceId),
+    ["sutskever-2014-neurips-full-text"],
+  );
+  assert.ok(sutskeverEdge?.rationale.includes("implemented recurrent cell"));
+  assert.ok(
+    sutskeverEdge?.rationale.includes(
+      "does not transfer Graves’s handwriting window",
+    ),
+  );
+});
+
 test("retains Cho 2014 as a versioned phrase-scoring encoder-decoder branch", () => {
   const work = corpus.works.find(
     (item) => item.id === "cho-2014-rnn-encoder-decoder",
@@ -3427,6 +3881,7 @@ test("retains Bahdanau 2014/2015 as a versioned attention branch", () => {
     "source-conditioned-autoregressive-decoding",
     "reset-update-gated-recurrence",
     "decoder-conditioned-soft-attention",
+    "monotonic-gaussian-mixture-sequence-window",
     "bidirectional-source-annotations",
     "fixed-vector-source-summary-bottleneck",
   ]);
@@ -3454,7 +3909,7 @@ test("retains Bahdanau 2014/2015 as a versioned attention branch", () => {
       .get("bahdanau-2014-arxiv-v7-version")
       ?.notes.includes("not treated as a globally corrected"),
   );
-  assert.equal(claims.length, 18);
+  assert.equal(claims.length, 19);
   for (const value of [
     "13.93/24.19",
     "21.50/31.44",
@@ -3656,7 +4111,7 @@ test("retains Sutskever 2014 with separate direct, rescoring, and version eviden
     pageEnd: 9,
   });
   assert.equal(metadata?.supports.includes("claim-location"), false);
-  assert.equal(claims.length, 14);
+  assert.equal(claims.length, 15);
   for (const value of [
     "28.45",
     "33.30",
