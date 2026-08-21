@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-20",
+  "asOf": "2026-08-21",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -5911,6 +5911,572 @@
           "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before classifying or redistributing the PDF as open content."
         }
       ]
+    },
+    {
+      "id": "vaswani-2017-attention-is-all-you-need",
+      "title": "Attention Is All You Need",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Łukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "A. Vaswani et al., “Attention Is All You Need,” Advances in Neural Information Processing Systems 30, 5998–6008 (2017; arXiv v1 posted 12 June 2017).",
+      "chronology": {
+        "orderingEventId": "vaswani-2017-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "vaswani-2017-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2017-06-12",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 12 June 2017 at 17:57:34 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v1-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2017-06-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 19 June 2017 at 16:49:45 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v2-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2017-06-20",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 20 June 2017 at 05:20:02 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v3-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2017-06-30",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 30 June 2017 at 17:29:30 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v4-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 5 posted",
+            "date": {
+              "value": "2017-12-06",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 6 December 2017 at 03:30:32 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v5-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-nips-proceedings",
+            "kind": "proceedings-publication",
+            "label": "NIPS 2017 proceedings paper",
+            "date": {
+              "value": "2017",
+              "precision": "year",
+              "calendar": "gregorian",
+              "note": "The authoritative proceedings establish the 2017 venue but the inspected records do not identify a paper-specific presentation day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-neurips-record",
+                "precision": "year",
+                "locator": "Official NIPS 2017 proceedings record"
+              },
+              {
+                "sourceId": "vaswani-2017-neurips-metadata",
+                "precision": "year",
+                "locator": "Official metadata, proceedings container and pages"
+              }
+            ],
+            "versionId": "vaswani-2017-nips-version",
+            "sourceIds": [
+              "vaswani-2017-neurips-record",
+              "vaswani-2017-neurips-metadata",
+              "vaswani-2017-neurips-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-arxiv-v6-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 6 posted",
+            "date": {
+              "value": "2023-07-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 6 posted 24 July 2023 at 00:48:54 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v6-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v6-full-text"
+            ]
+          },
+          {
+            "id": "vaswani-2017-arxiv-v7-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 7 posted",
+            "date": {
+              "value": "2023-08-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "vaswani-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 7 posted 2 August 2023 at 00:41:18 UTC"
+              }
+            ],
+            "versionId": "vaswani-2017-arxiv-v7-version",
+            "sourceIds": [
+              "vaswani-2017-arxiv-record",
+              "vaswani-2017-arxiv-v7-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "vaswani-2017-arxiv-v1-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v1, 12 June 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v1-full-text"
+          ],
+          "notes": "The first 15-page posting already contains the encoder and decoder self-attention architecture, scaled dot-product rule, sinusoidal positions, translation and parsing experiments, and visualizations. Its displayed multi-head equation omits the final output projection, and Table 3 prints dff = 1024 for the base row while the prose says 2048."
+        },
+        {
+          "id": "vaswani-2017-arxiv-v2-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v2, 19 June 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v2-full-text"
+          ],
+          "notes": "The 16-page second revision adds the final Wᴼ projection, a variance argument for scaling, learned-position row E, code links, and an unnumbered parameter-attention appendix. Its English–French evidence is internally inconsistent: 41.2 BLEU and 4.5 days in the abstract, 41.17 in Section 6.1 with extra setup details, and 41.0 in Table 2."
+        },
+        {
+          "id": "vaswani-2017-arxiv-v3-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v3, 20 June 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v3-full-text"
+          ],
+          "notes": "The third revision restores 41.0 BLEU and 3.5 days in the abstract but retains 41.17 in Section 6.1 and 41.0 in Table 2; it keeps the extra sixteenth-page appendix."
+        },
+        {
+          "id": "vaswani-2017-arxiv-v4-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v4, 30 June 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v4-full-text"
+          ],
+          "notes": "The fourth revision reconciles the English–French abstract, body, and table at 41.0 BLEU and removes the extra appendix. It retains the arXiv-only parsing section, attention visualizations, and attention-dropout paragraph."
+        },
+        {
+          "id": "vaswani-2017-arxiv-v5-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v5, 6 December 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v5",
+                "label": "arXiv version 5 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v5-full-text"
+          ],
+          "notes": "The fifth revision adds the author-contribution note and end-to-end memory-network background, removes the attention-dropout prose, and changes the English–French abstract and Table 2 to 41.8 BLEU while Section 6.1 still says 41.0. Parsing and visualizations remain in this 15-page arXiv text."
+        },
+        {
+          "id": "vaswani-2017-arxiv-v6-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 6",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v6, 24 July 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v6",
+                "label": "arXiv version 6 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v6-full-text"
+          ],
+          "notes": "The 2023 sixth revision adds a Google permission notice limited to reproducing tables and figures in journalistic or scholarly works and strikes through the printed email addresses. Its technical text retains version 5's 41.8-versus-41.0 inconsistency."
+        },
+        {
+          "id": "vaswani-2017-arxiv-v7-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 7",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” arXiv:1706.03762v7, 2 August 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1706.03762v7",
+                "label": "arXiv version 7 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1706.03762",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "vaswani-2017-arxiv-record",
+            "vaswani-2017-arxiv-v7-full-text"
+          ],
+          "notes": "The latest revision restores ordinary email formatting while retaining the limited reproduction notice and version 5's technical and numerical text. It is not substituted for the shorter canonical proceedings paper."
+        },
+        {
+          "id": "vaswani-2017-nips-version",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Łukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NIPS 2017 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Vaswani et al., “Attention Is All You Need,” in Advances in Neural Information Processing Systems 30, pp. 5998–6008, 2017.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "Advances in Neural Information Processing Systems",
+            "editors": [
+              "Isabelle Guyon",
+              "Ulrike von Luxburg",
+              "Samy Bengio",
+              "Hanna Wallach",
+              "Rob Fergus",
+              "S. V. N. Vishwanathan",
+              "Roman Garnett"
+            ],
+            "publisher": "Curran Associates, Inc.",
+            "volume": "30",
+            "pages": [
+              "5998-6008"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "vaswani-2017-neurips-record",
+            "vaswani-2017-neurips-metadata",
+            "vaswani-2017-neurips-full-text",
+            "vaswani-2017-neurips-rights-policy"
+          ],
+          "notes": "The official 11-page PDF is canonical. It consistently reports 28.4 English–German and 41.0 English–French BLEU and omits the arXiv parsing section, parameter-attention appendix, and attention-visualization appendix. Technical locators use its visible article pp. 1–11, not volume folios 5998–6008."
+        }
+      ],
+      "canonicalVersionId": "vaswani-2017-nips-version",
+      "preferredSourceIds": [
+        "vaswani-2017-neurips-record",
+        "vaswani-2017-neurips-metadata",
+        "vaswani-2017-neurips-full-text"
+      ],
+      "sourceIds": [
+        "vaswani-2017-arxiv-record",
+        "vaswani-2017-arxiv-v1-full-text",
+        "vaswani-2017-arxiv-v2-full-text",
+        "vaswani-2017-arxiv-v3-full-text",
+        "vaswani-2017-arxiv-v4-full-text",
+        "vaswani-2017-arxiv-v5-full-text",
+        "vaswani-2017-arxiv-v6-full-text",
+        "vaswani-2017-arxiv-v7-full-text",
+        "vaswani-2017-neurips-record",
+        "vaswani-2017-neurips-metadata",
+        "vaswani-2017-neurips-full-text",
+        "vaswani-2017-neurips-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The work makes self-attention the principal sequence-mixing operation in both halves of an autoregressive encoder–decoder, combines it with scaled dot products, multiple learned projection heads, explicit position signals, and position-wise computation, and reports a parallelizable training path with strong translation results. It is an architectural convergence point rather than an origin claim for attention, self-attention, encoder–decoders, or autoregressive generation."
+      },
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "full-vocabulary-softmax-normalization",
+        "self-attention-sequence-mixing",
+        "scaled-dot-product-attention",
+        "multi-head-attention",
+        "position-encoding-without-recurrence",
+        "attention-path-length-and-parallelism"
+      ],
+      "significance": {
+        "beginner": "Every token can build a fresh weighted view of other permitted positions instead of waiting for a recurrent state to travel step by step. Several heads make different projected views in parallel, position signals preserve order, and a causal mask keeps the decoder from seeing future target tokens.",
+        "expert": "Six-layer encoder and decoder stacks combine residual connections followed by layer normalization, multi-head scaled dot-product self- and cross-attention, position-wise ReLU networks, sinusoidal input positions, tied embeddings/output weights, masked autoregressive decoding, Adam warmup, label smoothing, and byte-pair or word-piece vocabularies."
+      },
+      "limitations": [
+        "The architecture removes sequence-aligned recurrence and nontrivial-width convolution from its sequence-mixing layers, not all non-attention computation: it retains embeddings, position-wise feed-forward layers, residual paths, layer normalization, and a softmax output.",
+        "Training-time token representations can be computed in parallel within a layer, but ordinary target generation remains autoregressive and therefore sequential across output positions.",
+        "Full self-attention has quadratic O(n²d) layer cost. The proposed restricted alternative for long inputs is future work rather than an evaluated remedy in this paper.",
+        "Table 1 is an asymptotic operation and path-length analysis, not empirical evidence that shorter paths alone improve learning on long dependencies; the paper reports no length-stratified translation test.",
+        "Table 2 compares systems with different data, model families, hardware, training recipes, and ensemble conditions. Its training costs are estimates from time, GPU count, and assumed sustained FLOP rates rather than matched wall-clock measurements.",
+        "The strongest translation rows use checkpoint averaging, development-tuned beam search and length penalty, and different English–German versus English–French setups. They do not isolate a single architectural component.",
+        "Table 3 reports one English–German development condition without seeds, confidence intervals, or significance tests. Several rows change dimensions or parameter counts, and the 0.9-BLEU single-head gap does not establish a universal advantage for any number of heads.",
+        "The attention visualizations are selected qualitative examples. They provide no gold syntax or coreference evaluation, representativeness protocol, human assessment, or causal test that attention weights are faithful explanations.",
+        "The constituency-parsing experiment and visualization appendix occur in the arXiv family but are absent from the canonical proceedings PDF; their claims and locators cannot be transferred into that version.",
+        "The arXiv revisions disagree on English–French BLEU and training time: version 2 has three different values or conditions, version 3 retains a body/table mismatch, and versions 5–7 print 41.8 in the abstract and table but 41.0 in Section 6.1.",
+        "The NeurIPS landing-page metadata has a stale abstract with 165 million parameters and 27.5/41.1 BLEU, while the linked canonical PDF reports 28.4/41.0; technical claims follow the PDF.",
+        "The paper links Tensor2Tensor code but identifies no immutable commit, released checkpoints, random seeds, or fully pinned data and preprocessing artifact for exact reconstruction.",
+        "NeurIPS says authors retain copyright and grant the venue a non-exclusive publication license. ArXiv versions 6–7 add narrower permission to reproduce tables and figures with attribution for journalistic or scholarly works; the atlas links the sources and does not infer a general open-content license."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "All seven arXiv revisions and the separate proceedings PDF were compared. The core architecture is already present in version 1, the output projection and several clarifications arrive in version 2, and later changes chiefly affect evidence, appendices, attribution, and rights text."
+        },
+        {
+          "status": "resolved",
+          "note": "The work directly names recurrent encoder–decoders, Bahdanau-style additive attention, convolutional sequence models, earlier self-attention applications, and memory networks. Those references bound its novelty but do not make every cited work a documented causal predecessor."
+        },
+        {
+          "status": "open",
+          "note": "Versions 5–7 do not explain whether 41.8 and 41.0 refer to different English–French runs, scoring procedures, or an uncorrected text edit.",
+          "resolutionCondition": "Versioned experiment logs, an exact code/checkpoint mapping, or an author correction would be required to reconcile the two values."
+        },
+        {
+          "status": "open",
+          "note": "No inspected primary record ties the released Tensor2Tensor repository to an immutable revision and every reported result condition.",
+          "resolutionCondition": "A contemporaneous commit, environment lock, data manifest, checkpoints, and evaluation commands would be required for exact reconstruction."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -6451,7 +7017,8 @@
         "mikolov-2010-rare-word-probability",
         "sundermeyer-2012-language-model-objective",
         "sundermeyer-2012-projection-and-class-factorization",
-        "sundermeyer-2012-output-clustering-results"
+        "sundermeyer-2012-output-clustering-results",
+        "vaswani-2017-embedding-and-output-normalization"
       ],
       "uncertainties": [
         {
@@ -7018,7 +7585,13 @@
         "bahdanau-2014-data-and-vocabulary",
         "bahdanau-2014-beam-search-boundary",
         "bahdanau-2014-bleu-results",
-        "bahdanau-2014-unknown-word-boundary"
+        "bahdanau-2014-unknown-word-boundary",
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-data-and-tokenization",
+        "vaswani-2017-translation-results",
+        "vaswani-2017-arxiv-parsing-results",
+        "vaswani-2017-version-result-boundary"
       ],
       "uncertainties": [
         {
@@ -7182,6 +7755,101 @@
         {
           "status": "resolved",
           "note": "The measured reversal intervention and the authors’ incomplete causal explanation remain separate. Reversal is not bidirectionality, attention, or backward target generation."
+        }
+      ]
+    },
+    {
+      "id": "self-attention-sequence-mixing",
+      "name": "Self-attention sequence mixing",
+      "kind": "mechanism",
+      "description": "Each sequence position forms a content-dependent weighted combination of representations from other permitted positions in the same sequence, allowing global position-to-position communication without a sequence-aligned recurrent update or nontrivial-width convolution.",
+      "claimIds": [
+        "vaswani-2017-predecessor-and-scope-boundary",
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-positionwise-computation",
+        "vaswani-2017-complexity-and-path-analysis",
+        "vaswani-2017-attention-visualization-boundary",
+        "vaswani-2017-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The work cites earlier self- or intra-attention applications and attention-only entailment models. This idea names the Transformer’s sequence-mixing role without claiming that the paper originated self-attention."
+        },
+        {
+          "status": "resolved",
+          "note": "The decoder mask prevents access to later target positions during prediction; it does not make complete autoregressive generation parallel across output steps."
+        }
+      ]
+    },
+    {
+      "id": "scaled-dot-product-attention",
+      "name": "Scaled dot-product attention",
+      "kind": "mechanism",
+      "description": "Query–key dot products are divided by the square root of key dimension before a softmax weights the values, limiting score scale while retaining a matrix-multiplication implementation.",
+      "claimIds": [
+        "vaswani-2017-scaled-dot-product-attention",
+        "vaswani-2017-model-variation-results",
+        "vaswani-2017-version-mechanism-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The variance calculation motivates the scale under an independence/unit-variance assumption. The paper does not isolate the scaling factor in a dedicated reported ablation."
+        }
+      ]
+    },
+    {
+      "id": "multi-head-attention",
+      "name": "Multi-head attention",
+      "kind": "mechanism",
+      "description": "Several learned query, key, and value projections run attention in parallel; their outputs are concatenated and projected again so one layer can form multiple lower-dimensional retrieval views.",
+      "claimIds": [
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-model-variation-results",
+        "vaswani-2017-attention-visualization-boundary",
+        "vaswani-2017-version-mechanism-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The single-head development result and selected visualizations support a bounded empirical description; they do not prove that heads always specialize, remain independent, or yield faithful explanations."
+        }
+      ]
+    },
+    {
+      "id": "position-encoding-without-recurrence",
+      "name": "Position encoding without recurrence",
+      "kind": "mechanism",
+      "description": "Position-dependent vectors are added to token embeddings so an architecture without recurrent or nontrivial-width convolutional sequence order can distinguish and relate token positions.",
+      "claimIds": [
+        "vaswani-2017-positional-encoding",
+        "vaswani-2017-model-variation-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Sinusoidal and learned positions have nearly equal in-distribution development scores in the reported row; the hypothesized advantage for extrapolating beyond training lengths is not tested."
+        }
+      ]
+    },
+    {
+      "id": "attention-path-length-and-parallelism",
+      "name": "Attention path length and within-layer parallelism",
+      "kind": "formalism",
+      "description": "Layer families are compared by asymptotic work, the minimum sequential operations within a layer, and the longest computational path between positions, exposing a tradeoff between global quadratic attention and recurrent or convolutional paths.",
+      "claimIds": [
+        "vaswani-2017-predecessor-and-scope-boundary",
+        "vaswani-2017-complexity-and-path-analysis",
+        "vaswani-2017-training-regime",
+        "vaswani-2017-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Table 1 is an analytic comparison. It does not by itself establish hardware speed, memory use, learned dependency quality, or faster autoregressive decoding."
         }
       ]
     }
@@ -10346,6 +11014,284 @@
         "metadata"
       ],
       "accessNote": "The official FAQ says authors retain copyright and grant NeurIPS a perpetual non-exclusive publication license. No Creative Commons license is stated for this proceedings paper, which is linked and not redistributed."
+    },
+    {
+      "id": "vaswani-2017-arxiv-record",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "arXiv record for Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "accessDate": "2026-08-21",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v1-version",
+        "vaswani-2017-arxiv-v2-version",
+        "vaswani-2017-arxiv-v3-version",
+        "vaswani-2017-arxiv-v4-version",
+        "vaswani-2017-arxiv-v5-version",
+        "vaswani-2017-arxiv-v6-version",
+        "vaswani-2017-arxiv-v7-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the stable identifier, latest metadata, non-exclusive arXiv distribution license, and exact UTC submission-history timestamps for versions 1–7. Version-specific page counts and technical text follow the corresponding PDFs rather than the aggregate HTML."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v1",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-page first posting was rendered and compared with later versions. It already contains the main architecture and experiments but omits Wᴼ from the displayed multi-head equation and conflicts between prose dff = 2048 and the Table 3 base row's 1024."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v2",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 16
+      },
+      "accessNote": "The complete 16-page second revision adds Wᴼ, the scaling rationale, learned-position row, and a page-16 parameter-attention appendix. Its abstract, Section 6.1, and Table 2 disagree on the English–French score and training condition."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v3",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 16
+      },
+      "accessNote": "The complete 16-page third revision restores 41.0 BLEU and 3.5 days in the abstract but retains 41.17 in Section 6.1, 41.0 in Table 2, and the page-16 parameter-attention appendix."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v4",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-page fourth revision reconciles the English–French result at 41.0 and removes the page-16 experiment while retaining the numbered parsing section and post-reference visualization pages."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 5 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v5",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete fifth arXiv revision adds contribution and memory-network context and removes the rendered attention-dropout paragraph. Its abstract and Table 2 report 41.8 English–French BLEU while Section 6.1 reports 41.0."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v6-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 6 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v6",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v6-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-page 2023 revision preserves version 5's technical text, adds a narrow Google notice for attributed table and figure reproduction in journalistic or scholarly works, and strikes the printed email addresses."
+    },
+    {
+      "id": "vaswani-2017-arxiv-v7-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Attention Is All You Need, arXiv version 7 full text",
+      "url": "https://arxiv.org/pdf/1706.03762v7",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "vaswani-2017-arxiv-v7-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete latest revision restores ordinary email rendering while retaining the narrow reproduction notice and version 5's technical text. Parsing claims use pp. 9–10 and qualitative visualizations use pp. 13–15 of this edition."
+    },
+    {
+      "id": "vaswani-2017-neurips-record",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Official NeurIPS record for Attention Is All You Need",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+      "accessDate": "2026-08-21",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "vaswani-2017-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official proceedings record identifies the paper, authors, 2017 volume, and linked PDF. Its page-level abstract is stale—165 million parameters and 27.5/41.1 BLEU—and is not used for technical claims that conflict with the linked canonical PDF."
+    },
+    {
+      "id": "vaswani-2017-neurips-metadata",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Official NeurIPS metadata for Attention Is All You Need",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Metadata.json",
+      "accessDate": "2026-08-21",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "vaswani-2017-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official JSON supplies the proceedings container and page_first/page_last values 5998–6008. Its top-level abstract repeats the stale landing-page numbers, while its embedded full-text field and linked PDF report 28.4/41.0; the PDF controls technical claims."
+    },
+    {
+      "id": "vaswani-2017-neurips-full-text",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "Official NeurIPS full text of Attention Is All You Need",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf",
+      "accessDate": "2026-08-21",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "vaswani-2017-nips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete 11-page proceedings PDF was rendered and inspected. It consistently reports 28.4 English–German and 41.0 English–French BLEU and omits the arXiv parsing, attention-visualization, and parameter-attention appendices; canonical locators use visible article pp. 1–11."
+    },
+    {
+      "id": "vaswani-2017-neurips-rights-policy",
+      "relatedWorkIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "title": "NeurIPS copyright policy",
+      "url": "https://neurips.cc/FAQ/Copyright",
+      "accessDate": "2026-08-21",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "vaswani-2017-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official FAQ says authors retain copyright and grant NeurIPS a perpetual non-exclusive publication license. No Creative Commons license is stated for this proceedings paper; the atlas links it and uses original prose and graphics."
     }
   ],
   "claims": [
@@ -20211,6 +21157,675 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-12"
+    },
+    {
+      "id": "vaswani-2017-predecessor-and-scope-boundary",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its own background names convolutional transducers, earlier intra-attention applications, and end-to-end memory networks, so the atlas treats it as an architectural convergence point rather than an origin claim for attention, self-attention, parallel transduction, or autoregressive generation.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Contribution framing and directly cited antecedents, article pp. 1–2",
+            "section": "1 Introduction; 2 Background",
+            "pageStart": 1,
+            "pageEnd": 2
+          },
+          "support": "The introduction and background state the scoped architecture claim and identify recurrent, convolutional, intra-attention, and memory-network antecedents."
+        }
+      ],
+      "limitations": [
+        "This claim preserves the paper's scope and qualifier without adopting a priority conclusion; direct references and mechanism continuity do not by themselves establish conception order or sole causation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-encoder-decoder-architecture",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "self-attention-sequence-mixing"
+      ],
+      "statement": "The Transformer retains a source-conditioned encoder–decoder factorization: a six-layer encoder maps the source to positionwise representations, and a six-layer autoregressive decoder consumes earlier outputs and attends to the encoder. Encoder layers contain multi-head self-attention and a position-wise feed-forward sublayer; decoder layers add encoder–decoder attention. Every sublayer uses a residual connection followed by layer normalization, with dmodel = 512 in the base model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Overall factorization and six-layer stacks, article pp. 2–3",
+            "section": "3 Model Architecture; 3.1 Encoder and Decoder Stacks",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "figure": "1"
+          },
+          "support": "The architecture description specifies autoregressive encoder–decoder generation, stack depth, sublayer routes, residual-plus-post-normalization form, and base width."
+        }
+      ],
+      "limitations": [
+        "The architecture removes sequence-aligned recurrent and nontrivial-width convolutional mixing, not embeddings, feed-forward computation, residual paths, normalization, or autoregressive output generation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-scaled-dot-product-attention",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "scaled-dot-product-attention"
+      ],
+      "statement": "Scaled dot-product attention computes softmax(QKᵀ/√dk)V. The paper hypothesizes that unscaled dot products at large dk drive softmax toward small-gradient regions because a dot product of independent unit-variance components has variance dk; division by √dk counteracts that magnitude growth.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Scaled attention rule and variance rationale, article p. 4",
+            "section": "3.2.1 Scaled Dot-Product Attention",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "equation": "1 and footnote 4"
+          },
+          "support": "Equation 1 gives the operation and the surrounding text and footnote state the variance-and-saturation hypothesis."
+        }
+      ],
+      "limitations": [
+        "Table 3 varies dk while retaining scaling; the paper does not report an otherwise matched scale-versus-no-scale intervention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-multi-head-attention",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "multi-head-attention"
+      ],
+      "statement": "Multi-head attention applies h learned query, key, and value projections, runs attention on each projected representation in parallel, concatenates the head outputs, and applies Wᴼ. The base model uses h = 8 with dk = dv = 64, keeping aggregate head cost similar to one full-width head.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Multi-head projection, concatenation, and base dimensions, article pp. 4–5",
+            "section": "3.2.2 Multi-Head Attention",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "figure": "2"
+          },
+          "support": "The displayed definition includes per-head Q/K/V projections, concatenation, Wᴼ, and the eight-head base configuration."
+        }
+      ],
+      "limitations": [
+        "The paper motivates heads as projected representation subspaces; the selected visualizations do not establish that individual heads have stable, exclusive, or causally necessary linguistic roles."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-attention-routes-and-causal-mask",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "self-attention-sequence-mixing",
+        "multi-head-attention"
+      ],
+      "statement": "The architecture has three attention routes: encoder–decoder attention uses decoder queries with encoder keys and values; encoder self-attention draws all three from the previous encoder layer; and decoder self-attention draws them from the decoder while masking illegal future connections by setting their pre-softmax values to −∞. Offset output embeddings and the mask restrict prediction i to outputs before i.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Cross-attention, encoder self-attention, and masked decoder self-attention, article pp. 3 and 5",
+            "section": "3.1 Encoder and Decoder Stacks; 3.2.3 Applications of Attention in our Model",
+            "pageStart": 3,
+            "pageEnd": 5
+          },
+          "support": "The decoder description and three-route list specify the source of Q/K/V and the causal masking operation."
+        }
+      ],
+      "limitations": [
+        "Parallel masked training does not remove the dependency on already generated target symbols during ordinary inference."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-positionwise-computation",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "self-attention-sequence-mixing"
+      ],
+      "statement": "Every encoder and decoder layer also contains a position-wise network FFN(x) = max(0, xW₁ + b₁)W₂ + b₂, applied independently with shared parameters across positions but different parameters across layers. Its base dimensions are dmodel = 512 and dff = 2048, so the model is not literally composed only of attention operations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Position-wise two-layer ReLU network, article p. 5",
+            "section": "3.3 Position-wise Feed-Forward Networks",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "equation": "2"
+          },
+          "support": "Equation 2 and its prose define the per-position computation, parameter sharing across positions, and 512-to-2048-to-512 dimensions."
+        }
+      ],
+      "limitations": [
+        "The paper's title and attention-centered contribution should not be read as removal of feed-forward computation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-embedding-and-output-normalization",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "Learned source and target embeddings map tokens to dmodel-dimensional vectors, and a linear transform plus full softmax maps each decoder output to next-token probabilities. One matrix is shared by both embedding layers and the pre-softmax transform, and embedding-layer weights are multiplied by √dmodel.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Embedding, tied output, and softmax path, article p. 5",
+            "section": "3.4 Embeddings and Softmax",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The section states the learned embeddings, next-token softmax, three-way weight sharing, and embedding scaling."
+        }
+      ],
+      "limitations": [
+        "The English–French data subsection does not independently state whether its 32,000-wordpiece vocabulary is shared, and arXiv version 2 reports a special no-source/target-sharing setup that later revisions remove."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-positional-encoding",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "position-encoding-without-recurrence"
+      ],
+      "statement": "Because the model has neither recurrence nor convolutional sequence mixing, it adds position encodings to bottom-layer embeddings. Even and odd channels use sine and cosine at geometrically spaced wavelengths from 2π to 10000·2π. The authors hypothesize relative-offset and length-extrapolation benefits; Table 3 row E instead provides only one learned-position comparison, with identical 4.92 perplexity and 25.7 versus 25.8 development BLEU.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Sinusoidal positions, stated hypotheses, and learned-position comparison, article pp. 5–6 and 9",
+            "section": "3.5 Positional Encoding; 6.2 Model Variations",
+            "pageStart": 5,
+            "pageEnd": 9,
+            "table": "3, row E"
+          },
+          "support": "The position formulas and rationale appear in Section 3.5; row E reports the single learned-position result."
+        }
+      ],
+      "limitations": [
+        "The paper does not test extrapolation beyond training lengths, and one 0.1-BLEU difference without repeated runs does not establish statistical equivalence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-complexity-and-path-analysis",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "Table 1 assigns full self-attention O(n²d) layer complexity, O(1) sequential operations, and O(1) maximum path length; recurrence O(nd²), O(n), and O(n); convolution O(knd²), O(1), and O(logₖ n); and restricted self-attention O(rnd), O(1), and O(n/r). The paper separately notes O(n/k) depth for contiguous and O(logₖ n) for dilated convolutional stacks, and proposes restricted attention for long inputs as future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Layer complexity, sequential operations, and dependency paths, article pp. 6–7",
+            "section": "4 Why Self-Attention",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "table": "1"
+          },
+          "support": "Table 1 prints all four asymptotic rows, and the surrounding discussion distinguishes contiguous and dilated convolution paths and leaves restricted attention unevaluated."
+        }
+      ],
+      "limitations": [
+        "These are asymptotic architecture comparisons, not matched timing measurements or empirical evidence that constant path length alone improves long-dependency learning."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-data-and-tokenization",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Training uses about 4.5 million WMT 2014 English–German sentence pairs with byte-pair encoding and a shared source–target vocabulary of about 37,000 tokens, plus 36 million English–French sentences with a 32,000-wordpiece vocabulary. Length-grouped batches contain approximately 25,000 source tokens and 25,000 target tokens.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Translation data, subword vocabularies, and token batches, article p. 7",
+            "section": "5.1 Training Data and Batching",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The data subsection supplies the corpus sizes, tokenization families, vocabulary sizes, batching rule, and approximate source and target token counts."
+        }
+      ],
+      "limitations": [
+        "The paper does not enumerate exact corpus components, filtering commands, checksums, BPE or wordpiece training parameters, or whether the token count is global or per GPU; English–French sharing is not stated in this subsection."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-training-regime",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "Training runs on one machine with eight P100 GPUs. Base steps take about 0.4 seconds for 100,000 steps or 12 hours; big-model steps take about 1.0 second for 300,000 steps or 3.5 days. Adam uses β₁ = 0.9, β₂ = 0.98, ε = 10⁻⁹ and learning rate dmodel⁻⁰·⁵·min(step⁻⁰·⁵, step·warmup⁻¹·⁵) with 4,000 warmup steps. Base residual dropout and label smoothing are both 0.1; the big row uses dropout 0.3, while the English–French big run uses 0.1.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Hardware, schedule, optimizer, and regularization, article pp. 7–9",
+            "section": "5.2 Hardware and Schedule; 5.3 Optimizer; 5.4 Regularization; 6.1 Machine Translation",
+            "pageStart": 7,
+            "pageEnd": 9,
+            "equation": "3"
+          },
+          "support": "The training sections give the hardware, step times and counts, Adam schedule, dropout, and label smoothing; Section 6.1 gives the English–French dropout exception."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v4-full-text",
+          "locator": {
+            "label": "Three rendered regularization definitions, article pp. 7–8",
+            "section": "5.4 Regularization",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "Version 4 renders residual dropout, attention dropout, and label smoothing."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v7-full-text",
+          "locator": {
+            "label": "Two rendered definitions and later attention-dropout reference, article pp. 7 and 9",
+            "section": "5.4 Regularization; 6.3 English Constituency Parsing",
+            "pageStart": 7,
+            "pageEnd": 9
+          },
+          "support": "The latest revision still announces three regularizers but renders only residual dropout and label smoothing, while parsing says attention dropout was tuned."
+        }
+      ],
+      "limitations": [
+        "The public text omits seeds, precision, exact hardware variant and topology, framework and library versions, gradient accumulation, and a pinned implementation configuration.",
+        "The proceedings and arXiv versions 5–7 announce three regularization types but render only residual dropout and label smoothing. Versions 1–4 retain an attention-dropout definition, and versions 5–7 still refer to tuning attention dropout in the parsing section."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-translation-results",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "On newstest2014, canonical Table 2 reports ByteNet 23.75 English–German BLEU; Deep-Att + PosUnk 39.2 English–French; GNMT + RL 24.6/39.92; ConvS2S 25.16/40.46; MoE 26.03/40.56; Deep-Att + PosUnk ensemble 40.4 English–French; GNMT + RL ensemble 26.30/41.16; ConvS2S ensemble 26.36/41.29; Transformer base 27.3/38.1; and Transformer big 28.4/41.0. Listed task-specific FLOP estimates are 1.0×10²⁰ for Deep-Att English–French; 2.3×10¹⁹/1.4×10²⁰ GNMT; 9.6×10¹⁸/1.5×10²⁰ ConvS2S; 2.0×10¹⁹/1.2×10²⁰ MoE; 8.0×10²⁰ Deep-Att ensemble English–French; 1.8×10²⁰/1.1×10²¹ GNMT ensemble; and 7.7×10¹⁹/1.2×10²¹ ConvS2S ensemble. Transformer rows use merged cost cells of 3.3×10¹⁸ base and 2.3×10¹⁹ big.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Complete newstest2014 comparison and decoding conditions, article p. 8",
+            "section": "6.1 Machine Translation",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Table 2 prints every BLEU and cost entry; Section 6.1 states checkpoint averaging, beam 4, length penalty 0.6, input-plus-50 maximum output, early termination, and development-set tuning."
+        }
+      ],
+      "limitations": [
+        "The 28.4 score exceeds the strongest listed English–German ensemble, 26.36, by 2.04 BLEU. The 41.0 English–French score exceeds the strongest listed single model, 40.56, by 0.44 but is below the listed 41.16 and 41.29 ensembles.",
+        "Base averages the last five ten-minute checkpoints and big averages the last twenty; beam size 4 and length penalty 0.6 were selected on development data.",
+        "Baselines differ in data, model, hardware, recipe, and ensemble status. Costs are throughput-based estimates, some cells are absent, and each Transformer cost cell spans both language columns, leaving its exact task scope ambiguous."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-model-variation-results",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "scaled-dot-product-attention",
+        "multi-head-attention",
+        "position-encoding-without-recurrence"
+      ],
+      "statement": "On English–German newstest2013 with beam decoding and no checkpoint averaging, canonical Table 3 reports: base N = 6, dmodel = 512, dff = 2048, h = 8, dk = dv = 64, dropout 0.1, label smoothing 0.1, and 100K steps at 4.92 PPL/25.8 BLEU/65M parameters; head variants h = 1, 4, 16, 32 with dk = dv = 512, 128, 32, 16 at 5.29/24.9, 5.00/25.5, 4.91/25.8, and 5.01/25.4; dk = 16 and 32 at 5.16/25.1/58M and 5.01/25.4/60M, with dv = 64 inherited; N = 2, 4, 8 at 6.11/23.7/36M, 5.19/25.3/50M, and 4.88/25.5/80M; dmodel = 256 with dk = dv = 32 and dmodel = 1024 with dk = dv = 128 at 5.75/24.5/28M and 4.66/26.0/168M; dff = 1024 and 4096 at 5.12/25.4/53M and 4.75/26.2/90M; dropout 0 and 0.2 at 5.77/24.6 and 4.95/25.5; label smoothing 0 and 0.2 at 4.67/25.3 and 5.47/25.7; learned positions at 4.92/25.7; and big N = 6, dmodel = 1024, dff = 4096, h = 16, dk = dv = 64, dropout 0.3, label smoothing 0.1, and 300K steps at 4.33/26.4/213M.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Complete development-set model variations, article pp. 8–9",
+            "section": "6.2 Model Variations",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "3"
+          },
+          "support": "Table 3 prints the base and all A–E and big rows; the prose fixes the newstest2013, per-wordpiece PPL, beam, and no-averaging condition."
+        }
+      ],
+      "limitations": [
+        "Blank cells inherit base settings or omit parameter counts. Most rows are single-factor variants, not a factorial study, and there are no seeds, repeated runs, intervals, or significance tests.",
+        "One head is 0.9 BLEU below the best listed head-count settings, but this table does not establish a universal optimum; eight layers score below the six-layer base, and learned versus sinusoidal positions differ by only one unreplicated point.",
+        "The big row's 26.4 is a newstest2013 development result and must not be confused with the separate 28.4 newstest2014 test result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-arxiv-parsing-results",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The arXiv-only parsing experiment uses a four-layer dmodel = 1024 Transformer, about 40,000 WSJ sentences or about 17 million semi-supervised sentences, and 16,000- or 32,000-token vocabularies. Only a small number of Section 22 experiments selected attention and residual dropout, learning rates, and beam size; all other parameters inherited from the English–German base model. Inference uses beam 21, length penalty 0.3, and input-plus-300 maximum output length. On WSJ Section 23, Table 4 reports these F1 rows: Vinyals and Kaiser et al. WSJ-only discriminative 88.3; Petrov et al. WSJ-only discriminative 90.4; Zhu et al. WSJ-only discriminative 90.4; Dyer et al. WSJ-only discriminative 91.7; Transformer WSJ-only discriminative 91.3; Zhu et al. semi-supervised 91.3; Huang and Harper semi-supervised 91.3; McClosky et al. semi-supervised 92.1; Vinyals and Kaiser et al. semi-supervised 92.1; Transformer semi-supervised 92.7; Luong et al. multi-task 93.0; and Dyer et al. generative 93.3.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-arxiv-v7-full-text",
+          "locator": {
+            "label": "Latest arXiv parsing setup and complete WSJ Section 23 comparison, article pp. 9–10",
+            "section": "6.3 English Constituency Parsing",
+            "pageStart": 9,
+            "pageEnd": 10,
+            "table": "4"
+          },
+          "support": "Section 6.3 states the two training regimes, vocabularies, tuning and decoding settings; Table 4 prints all twelve comparison rows."
+        }
+      ],
+      "limitations": [
+        "This section and table do not occur in the canonical proceedings PDF.",
+        "Versions 5–7 add the 93.0 Luong row but retain prose saying only the 93.3 recurrent grammar is higher, so that prose is no longer literally consistent with the displayed table.",
+        "Final dropout values, training steps, batch size, checkpoint policy, parse linearization, exact data construction, and evaluation command are not reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-attention-visualization-boundary",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention"
+      ],
+      "statement": "The arXiv appendix presents selected layer-five encoder attention maps: Figure 3 links “making” with the distant phrase “more difficult”; Figure 4 cautiously describes heads as apparently participating in anaphora for “its”; and Figure 5 says two heads appear related to sentence structure. These are qualitative observations, not measured syntax, coreference, faithfulness, or causal evidence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-arxiv-v7-full-text",
+          "locator": {
+            "label": "Selected qualitative attention maps, article pp. 13–15",
+            "section": "Attention Visualizations",
+            "pageStart": 13,
+            "pageEnd": 15,
+            "figure": "3–5"
+          },
+          "support": "The captions and displayed examples use appear/apparently language and provide no sampling protocol, quantitative benchmark, intervention, or human evaluation."
+        }
+      ],
+      "limitations": [
+        "The visualization appendix is absent from the canonical proceedings PDF, even though its Section 4 refers to examples in an appendix.",
+        "Selected sharp weights can illustrate a hypothesis but do not establish representative behavior or that a head's weights faithfully explain the model's prediction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-version-mechanism-boundary",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "scaled-dot-product-attention",
+        "multi-head-attention"
+      ],
+      "statement": "ArXiv version 1 omits Wᴼ from the displayed multi-head equation and prints base dff = 1024 in Table 3 despite 2048 in Section 3.3. Version 2 adds Wᴼ, the dot-product variance rationale, learned-position row E, and the corrected 2048 cell. Versions 2–3 also append a parameter-attention experiment: base 4.92/25.8/65M/12h, AOP1 4.92/25.5/65M/16h, and AOP2 4.86/25.9/65M/16h; AOP2 is hₚ = 16 in Table 5 but hₚ = 8 in prose. Version 4 and the proceedings remove that appendix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-arxiv-v1-full-text",
+          "locator": {
+            "label": "Initial multi-head display and dff conflict, article pp. 4–5 and 9",
+            "section": "3.2.2 Multi-Head Attention; 3.3 Position-wise Feed-Forward Networks; 6.2 Model Variations",
+            "pageStart": 4,
+            "pageEnd": 9,
+            "table": "3"
+          },
+          "support": "Version 1 visibly lacks Wᴼ and contains the 2048-prose versus 1024-table conflict."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v2-full-text",
+          "locator": {
+            "label": "Corrected mechanism and parameter-attention appendix, article pp. 4–5, 9, and 16",
+            "section": "3.2 Scaled and Multi-Head Attention; 6.2 Model Variations; Two Feed-Forward Layers = Attention over Parameters",
+            "pageStart": 4,
+            "pageEnd": 16,
+            "table": "3 and 5"
+          },
+          "support": "Version 2 adds the corrected equations and row and prints the three parameter-attention results plus the prose/table head-count mismatch."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v3-full-text",
+          "locator": {
+            "label": "Retained parameter-attention appendix, article p. 16",
+            "section": "Two Feed-Forward Layers = Attention over Parameters",
+            "pageStart": 16,
+            "pageEnd": 16,
+            "table": "5"
+          },
+          "support": "Version 3 retains the same page-16 experiment and prose/table head-count mismatch."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v4-full-text",
+          "locator": {
+            "label": "Fifteen-page revision without the parameter-attention appendix",
+            "section": "Complete article",
+            "pageStart": 1,
+            "pageEnd": 15
+          },
+          "support": "Version 4 retains the corrected main mechanism but no longer contains the page-16 experiment."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Complete proceedings text without the parameter-attention appendix, article pp. 1–11",
+            "section": "Complete article",
+            "pageStart": 1,
+            "pageEnd": 11
+          },
+          "support": "The canonical proceedings PDF retains the corrected main mechanism and omits the arXiv version 2–3 experiment."
+        }
+      ],
+      "limitations": [
+        "The appendix results are single points on one development condition; their removal is a version boundary, not evidence that the experiment was retracted or invalidated."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-version-result-boundary",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "English–French evidence changes across the arXiv branch. Version 1 prints 41.0 BLEU and 3.5 days consistently. Version 2 prints 41.2/4.5 days in the abstract, 41.17 in Section 6.1 with dff = 8192 and unshared source/target embeddings, 41.0 in Table 2, and 3.5 days in the generic schedule. Version 3 restores 41.0/3.5 in the abstract but retains 41.17 in Section 6.1. Version 4 reconciles 41.0. Versions 5–7 print 41.8 in the abstract and Table 2 but 41.0 in Section 6.1. The canonical proceedings text consistently prints 41.0 and 3.5 days.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 abstract, schedule, and English–French result",
+            "section": "Abstract; 5.2 Hardware and Schedule; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 1 consistently prints 41.0 and 3.5 days."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 conflicting abstract, schedule, body, and table values",
+            "section": "Abstract; 5.2 Hardware and Schedule; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 2 contains the 41.2, 41.17, and 41.0 values and the 4.5-versus-3.5-day conflict."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 abstract correction with body mismatch retained",
+            "section": "Abstract; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 3 prints 41.0 in the abstract and table but 41.17 in Section 6.1."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v4-full-text",
+          "locator": {
+            "label": "Version-4 reconciled English–French reporting",
+            "section": "Abstract; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 4 prints 41.0 consistently across abstract, body, and table."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v5-full-text",
+          "locator": {
+            "label": "Version-5 41.8 table and 41.0 body mismatch",
+            "section": "Abstract; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 5 prints 41.8 in the abstract and Table 2 but 41.0 in Section 6.1."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v6-full-text",
+          "locator": {
+            "label": "Version-6 41.8 table and 41.0 body mismatch",
+            "section": "Abstract; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 6 retains version 5's 41.8 abstract/table and 41.0 body mismatch."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v7-full-text",
+          "locator": {
+            "label": "Latest arXiv 41.8 table and 41.0 body mismatch",
+            "section": "Abstract; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "The latest revision retains version 5's technical and numeric mismatch."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Canonical 41.0 and 3.5-day result, article pp. 1, 7–8",
+            "section": "Abstract; 5.2 Hardware and Schedule; 6.1 Machine Translation",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "The proceedings abstract, schedule, table, and results prose consistently report 41.0 and 3.5 days."
+        }
+      ],
+      "limitations": [
+        "No inspected primary source explains the 41.0-to-41.8 table change; the atlas does not reconcile it or substitute the latest arXiv number for the proceedings result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "vaswani-2017-evidence-reproducibility-boundary",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "The public paper reports no random seeds, replicate counts, uncertainty intervals, significance tests, exact BLEU command, fully specified corpus construction, subword-training commands, pinned Tensor2Tensor revision, released checkpoints or immutable checkpoint identifiers, or complete software and hardware configuration. Table 2 imports unmatched baselines and estimates FLOPs from elapsed time, GPU count, and assumed throughput; Table 3 and parsing are single-point experiments; and the attention maps are selected examples.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Complete canonical method, results, and reporting boundary, article pp. 2–9",
+            "section": "3 Model Architecture; 4 Why Self-Attention; 5 Training; 6 Results; 7 Conclusion",
+            "pageStart": 2,
+            "pageEnd": 9,
+            "table": "1–3"
+          },
+          "support": "The inspected method and results specify the promoted components and outcomes while omitting the listed uncertainty, evaluation, data, and immutable-artifact details."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v7-full-text",
+          "locator": {
+            "label": "ArXiv-only parsing and selected-map reporting boundary, article pp. 9–15",
+            "section": "6.3 English Constituency Parsing; Attention Visualizations",
+            "pageStart": 9,
+            "pageEnd": 15,
+            "table": "4"
+          },
+          "support": "The latest arXiv text adds parsing conditions and selected maps but no repeatability, uncertainty, sampling, or causal-explanation protocol."
+        }
+      ],
+      "limitations": [
+        "Absence statements are limited to the inspected public paper versions and official records; private logs or unreleased artifacts are not assumed.",
+        "The code link identifies a public project but not an immutable experiment commit or complete reconstruction recipe."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-21"
     }
   ],
   "relationships": [
@@ -23701,6 +25316,85 @@
         "Ablation and version-provenance auditing"
       ],
       "successCriterion": "The learner can derive equation 1 with EOS, reproduce all eight Table 1 and seven Table 2 rows, distinguish the prose reversal comparison from the rounded table values, explain beam and ensemble conditions, preserve 380M proceedings versus 384M arXiv-v3 wording, and treat the Cho relationship as documented concurrency rather than causation."
+    },
+    {
+      "id": "beginner-vaswani-2017-follow-attention-routes",
+      "mode": "beginner",
+      "objective": "Trace one source and partial target through encoder self-attention, decoder masked self-attention, and encoder–decoder attention; compare several projected heads; add position signals; and distinguish parallel training within a layer from still-sequential target generation.",
+      "workIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "self-attention-sequence-mixing",
+        "scaled-dot-product-attention",
+        "multi-head-attention",
+        "position-encoding-without-recurrence",
+        "attention-path-length-and-parallelism"
+      ],
+      "claimIds": [
+        "vaswani-2017-predecessor-and-scope-boundary",
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-scaled-dot-product-attention",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-positionwise-computation",
+        "vaswani-2017-positional-encoding",
+        "vaswani-2017-complexity-and-path-analysis",
+        "vaswani-2017-translation-results",
+        "vaswani-2017-attention-visualization-boundary"
+      ],
+      "prerequisites": [
+        "A weighted average and a probability distribution",
+        "A source sentence and a partly generated translation",
+        "Vectors as learned token representations",
+        "The difference between training and generation"
+      ],
+      "successCriterion": "The learner can identify the query, keys, and values for all three routes; explain why future decoder positions are hidden; show why positions are added; contrast one head with several projected heads; state that feed-forward and output layers remain; and keep selected attention maps separate from proof of linguistic reasoning."
+    },
+    {
+      "id": "expert-vaswani-2017-mechanism-results-and-versions",
+      "mode": "expert",
+      "objective": "Reconstruct the complete Transformer computation, optimization and decoding regimes; audit Tables 1–4 and every promoted comparison; and preserve the mechanism, pagination, result, and rights boundaries across seven arXiv revisions and the canonical proceedings paper.",
+      "workIds": [
+        "vaswani-2017-attention-is-all-you-need"
+      ],
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "full-vocabulary-softmax-normalization",
+        "self-attention-sequence-mixing",
+        "scaled-dot-product-attention",
+        "multi-head-attention",
+        "position-encoding-without-recurrence",
+        "attention-path-length-and-parallelism"
+      ],
+      "claimIds": [
+        "vaswani-2017-predecessor-and-scope-boundary",
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-scaled-dot-product-attention",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-positionwise-computation",
+        "vaswani-2017-embedding-and-output-normalization",
+        "vaswani-2017-positional-encoding",
+        "vaswani-2017-complexity-and-path-analysis",
+        "vaswani-2017-data-and-tokenization",
+        "vaswani-2017-training-regime",
+        "vaswani-2017-translation-results",
+        "vaswani-2017-model-variation-results",
+        "vaswani-2017-arxiv-parsing-results",
+        "vaswani-2017-attention-visualization-boundary",
+        "vaswani-2017-version-mechanism-boundary",
+        "vaswani-2017-version-result-boundary",
+        "vaswani-2017-evidence-reproducibility-boundary"
+      ],
+      "prerequisites": [
+        "Conditional maximum likelihood and causal masking",
+        "Matrix projection, dot products, softmax, residual paths, and normalization",
+        "Subword tokenization, Adam schedules, beam search, BLEU, perplexity, and F1",
+        "Asymptotic analysis, ablation design, and versioned scholarly evidence"
+      ],
+      "successCriterion": "The learner can derive equations 1–3 and all attention routes; reproduce every Table 1–4 row with evaluation conditions; distinguish 26.4 development from 28.4 test BLEU; keep proceedings 41.0 separate from the inconsistent arXiv 41.8; locate parsing, visualizations, and parameter-attention evidence only in their versions; and explain why the paper is a convergence node rather than an atlas priority claim."
     }
   ]
 }

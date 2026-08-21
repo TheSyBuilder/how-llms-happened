@@ -744,7 +744,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-20");
+  assert.equal(corpus.asOf, "2026-08-21");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -4155,6 +4155,274 @@ test("retains Sutskever 2014 with separate direct, rescoring, and version eviden
   assert.ok(objectives[0]?.successCriterion.includes("1000-best rescoring"));
   assert.ok(objectives[1]?.successCriterion.includes("380M proceedings"));
   assert.ok(objectives[1]?.successCriterion.includes("seven Table 2 rows"));
+});
+
+test("retains the Transformer as a canonical proceedings node with revision boundaries", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "vaswani-2017-attention-is-all-you-need",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const complexity = claims.find(
+    (claim) => claim.id === "vaswani-2017-complexity-and-path-analysis",
+  );
+  const data = claims.find(
+    (claim) => claim.id === "vaswani-2017-data-and-tokenization",
+  );
+  const training = claims.find(
+    (claim) => claim.id === "vaswani-2017-training-regime",
+  );
+  const translation = claims.find(
+    (claim) => claim.id === "vaswani-2017-translation-results",
+  );
+  const variations = claims.find(
+    (claim) => claim.id === "vaswani-2017-model-variation-results",
+  );
+  const versionResults = claims.find(
+    (claim) => claim.id === "vaswani-2017-version-result-boundary",
+  );
+  const parsing = claims.find(
+    (claim) => claim.id === "vaswani-2017-arxiv-parsing-results",
+  );
+  const versionMechanism = claims.find(
+    (claim) => claim.id === "vaswani-2017-version-mechanism-boundary",
+  );
+  const reproducibility = claims.find(
+    (claim) => claim.id === "vaswani-2017-evidence-reproducibility-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const outgoingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" && relationship.from.id === work?.id,
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "vaswani-2017-nips-version");
+  assert.equal(work?.versions.length, 8);
+  assert.deepEqual(work?.authors, [
+    "Ashish Vaswani",
+    "Noam Shazeer",
+    "Niki Parmar",
+    "Jakob Uszkoreit",
+    "Llion Jones",
+    "Aidan N. Gomez",
+    "Łukasz Kaiser",
+    "Illia Polosukhin",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["vaswani-2017-arxiv-v1-posted", "2017-06-12"],
+      ["vaswani-2017-arxiv-v2-posted", "2017-06-19"],
+      ["vaswani-2017-arxiv-v3-posted", "2017-06-20"],
+      ["vaswani-2017-arxiv-v4-posted", "2017-06-30"],
+      ["vaswani-2017-arxiv-v5-posted", "2017-12-06"],
+      ["vaswani-2017-nips-proceedings", "2017"],
+      ["vaswani-2017-arxiv-v6-posted", "2023-07-24"],
+      ["vaswani-2017-arxiv-v7-posted", "2023-08-02"],
+    ],
+  );
+  assert.equal(
+    work?.chronology.events.find(
+      (event) => event.id === "vaswani-2017-arxiv-v5-posted",
+    )?.label,
+    "arXiv version 5 posted",
+  );
+  assert.deepEqual(
+    versions.get("vaswani-2017-nips-version")?.bibliography.pages,
+    ["5998-6008"],
+  );
+  assert.deepEqual(sources.get("vaswani-2017-neurips-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 11,
+  });
+  assert.deepEqual(sources.get("vaswani-2017-arxiv-v2-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 16,
+  });
+  assert.equal(sources.size, 12);
+  assert.equal(claims.length, 18);
+  for (const value of [
+    "full self-attention O(n²d) layer complexity, O(1) sequential operations, and O(1) maximum path length",
+    "recurrence O(nd²), O(n), and O(n)",
+    "convolution O(knd²), O(1), and O(logₖ n)",
+    "restricted self-attention O(rnd), O(1), and O(n/r)",
+    "O(n/k) depth for contiguous",
+    "O(logₖ n) for dilated",
+  ])
+    assert.ok(complexity?.statement.includes(value));
+  for (const value of [
+    "4.5 million",
+    "37,000",
+    "36 million",
+    "32,000",
+    "25,000 source",
+    "25,000 target",
+  ])
+    assert.ok(data?.statement.includes(value));
+  for (const value of [
+    "eight P100",
+    "0.4 seconds",
+    "100,000 steps or 12 hours",
+    "1.0 second",
+    "300,000 steps or 3.5 days",
+    "β₁ = 0.9",
+    "β₂ = 0.98",
+    "ε = 10⁻⁹",
+    "dmodel⁻⁰·⁵·min(step⁻⁰·⁵, step·warmup⁻¹·⁵)",
+    "4,000 warmup",
+    "both 0.1",
+    "dropout 0.3",
+    "English–French big run uses 0.1",
+  ])
+    assert.ok(training?.statement.includes(value));
+  assert.ok(
+    training?.limitations
+      .join(" ")
+      .includes("Versions 1–4 retain an attention-dropout definition"),
+  );
+  assert.ok(
+    training?.limitations
+      .join(" ")
+      .includes("versions 5–7 still refer to tuning attention dropout"),
+  );
+  for (const value of [
+    "On newstest2014",
+    "ByteNet 23.75",
+    "Deep-Att + PosUnk 39.2",
+    "GNMT + RL 24.6/39.92",
+    "ConvS2S 25.16/40.46",
+    "MoE 26.03/40.56",
+    "Deep-Att + PosUnk ensemble 40.4",
+    "GNMT + RL ensemble 26.30/41.16",
+    "ConvS2S ensemble 26.36/41.29",
+    "Transformer base 27.3/38.1",
+    "Transformer big 28.4/41.0",
+    "1.0×10²⁰",
+    "2.3×10¹⁹/1.4×10²⁰",
+    "9.6×10¹⁸/1.5×10²⁰",
+    "2.0×10¹⁹/1.2×10²⁰",
+    "8.0×10²⁰",
+    "1.8×10²⁰/1.1×10²¹",
+    "7.7×10¹⁹/1.2×10²¹",
+    "3.3×10¹⁸ base",
+    "2.3×10¹⁹ big",
+  ])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of [
+    "last five ten-minute checkpoints",
+    "last twenty",
+    "beam size 4",
+    "length penalty 0.6",
+  ])
+    assert.ok(translation?.limitations.join(" ").includes(value));
+  for (const value of [
+    "input-plus-50 maximum output",
+    "early termination",
+    "development-set tuning",
+  ])
+    assert.ok(translation?.evidence[0].support.includes(value));
+  for (const value of [
+    "newstest2013 with beam decoding and no checkpoint averaging",
+    "base N = 6, dmodel = 512, dff = 2048, h = 8, dk = dv = 64, dropout 0.1, label smoothing 0.1, and 100K steps at 4.92 PPL/25.8 BLEU/65M",
+    "h = 1, 4, 16, 32 with dk = dv = 512, 128, 32, 16 at 5.29/24.9, 5.00/25.5, 4.91/25.8, and 5.01/25.4",
+    "dk = 16 and 32 at 5.16/25.1/58M and 5.01/25.4/60M, with dv = 64 inherited",
+    "N = 2, 4, 8 at 6.11/23.7/36M, 5.19/25.3/50M, and 4.88/25.5/80M",
+    "dmodel = 256 with dk = dv = 32 and dmodel = 1024 with dk = dv = 128 at 5.75/24.5/28M and 4.66/26.0/168M",
+    "dff = 1024 and 4096 at 5.12/25.4/53M and 4.75/26.2/90M",
+    "dropout 0 and 0.2 at 5.77/24.6 and 4.95/25.5",
+    "label smoothing 0 and 0.2 at 4.67/25.3 and 5.47/25.7",
+    "learned positions at 4.92/25.7",
+    "big N = 6, dmodel = 1024, dff = 4096, h = 16, dk = dv = 64, dropout 0.3, label smoothing 0.1, and 300K steps at 4.33/26.4/213M",
+  ])
+    assert.ok(variations?.statement.includes(value));
+  assert.ok(variations?.evidence[0].support.includes("per-wordpiece PPL"));
+  assert.ok(variations?.limitations.join(" ").includes("26.4 is a newstest2013 development result"));
+  assert.ok(variations?.limitations.join(" ").includes("28.4 newstest2014 test result"));
+  for (const value of [
+    "four-layer dmodel = 1024",
+    "40,000 WSJ",
+    "17 million",
+    "16,000- or 32,000-token",
+    "Only a small number of Section 22 experiments selected attention and residual dropout, learning rates, and beam size",
+    "all other parameters inherited from the English–German base model",
+    "beam 21",
+    "length penalty 0.3",
+    "input-plus-300",
+    "On WSJ Section 23",
+    "F1 rows",
+    "Vinyals and Kaiser et al. WSJ-only discriminative 88.3",
+    "Petrov et al. WSJ-only discriminative 90.4",
+    "Zhu et al. WSJ-only discriminative 90.4",
+    "Dyer et al. WSJ-only discriminative 91.7",
+    "Transformer WSJ-only discriminative 91.3",
+    "Zhu et al. semi-supervised 91.3",
+    "Huang and Harper semi-supervised 91.3",
+    "McClosky et al. semi-supervised 92.1",
+    "Vinyals and Kaiser et al. semi-supervised 92.1",
+    "Transformer semi-supervised 92.7",
+    "Luong et al. multi-task 93.0",
+    "Dyer et al. generative 93.3",
+  ])
+    assert.ok(parsing?.statement.includes(value));
+  assert.deepEqual(
+    parsing?.evidence.map((evidence) => evidence.sourceId),
+    ["vaswani-2017-arxiv-v7-full-text"],
+  );
+  assert.ok(parsing?.limitations.join(" ").includes("do not occur in the canonical proceedings PDF"));
+  assert.ok(parsing?.limitations.join(" ").includes("Versions 5–7 add the 93.0 Luong row"));
+  for (const value of [
+    "omits Wᴼ",
+    "base dff = 1024 in Table 3 despite 2048",
+    "base 4.92/25.8/65M/12h",
+    "AOP1 4.92/25.5/65M/16h",
+    "AOP2 4.86/25.9/65M/16h",
+    "AOP2 is hₚ = 16 in Table 5 but hₚ = 8 in prose",
+    "Version 4 and the proceedings remove that appendix",
+  ])
+    assert.ok(versionMechanism?.statement.includes(value));
+  for (const value of [
+    "Version 1 prints 41.0 BLEU and 3.5 days consistently",
+    "Version 2 prints 41.2/4.5 days in the abstract",
+    "41.17 in Section 6.1 with dff = 8192 and unshared source/target embeddings",
+    "41.0 in Table 2",
+    "3.5 days in the generic schedule",
+    "Version 3 restores 41.0/3.5 in the abstract but retains 41.17",
+    "Version 4 reconciles 41.0",
+    "Versions 5–7 print 41.8 in the abstract and Table 2 but 41.0 in Section 6.1",
+    "canonical proceedings text consistently prints 41.0 and 3.5 days",
+  ])
+    assert.ok(versionResults?.statement.includes(value));
+  assert.ok(
+    reproducibility?.statement.includes(
+      "released checkpoints or immutable checkpoint identifiers",
+    ),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-vaswani-2017-follow-attention-routes",
+      "expert-vaswani-2017-mechanism-results-and-versions",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("future decoder positions"));
+  assert.ok(objectives[1]?.successCriterion.includes("proceedings 41.0"));
+  assert.equal(incomingRelationships.length, 0);
+  assert.equal(outgoingRelationships.length, 0);
 });
 
 test("keeps the 2014 encoder-decoder branches concurrent and noncausal", () => {
