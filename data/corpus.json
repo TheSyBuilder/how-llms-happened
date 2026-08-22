@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-21",
+  "asOf": "2026-08-22",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -5913,6 +5913,830 @@
       ]
     },
     {
+      "id": "sukhbaatar-2015-end-to-end-memory-networks",
+      "title": "End-To-End Memory Networks",
+      "authors": [
+        "Sainbayar Sukhbaatar",
+        "Arthur Szlam",
+        "Jason Weston",
+        "Rob Fergus"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “End-To-End Memory Networks,” Advances in Neural Information Processing Systems 28, pp. 2440–2448, 2015 (arXiv v1 posted 31 March 2015 as “Weakly Supervised Memory Networks”).",
+      "chronology": {
+        "orderingEventId": "sukhbaatar-2015-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "sukhbaatar-2015-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted under the title Weakly Supervised Memory Networks",
+            "date": {
+              "value": "2015-03-31",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sukhbaatar-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 31 March 2015 at 03:05:37 UTC"
+              }
+            ],
+            "versionId": "sukhbaatar-2015-arxiv-v1-version",
+            "sourceIds": [
+              "sukhbaatar-2015-arxiv-record",
+              "sukhbaatar-2015-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "sukhbaatar-2015-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2015-04-03",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sukhbaatar-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 3 April 2015 at 02:23:20 UTC"
+              }
+            ],
+            "versionId": "sukhbaatar-2015-arxiv-v2-version",
+            "sourceIds": [
+              "sukhbaatar-2015-arxiv-record",
+              "sukhbaatar-2015-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "sukhbaatar-2015-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2015-04-12",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sukhbaatar-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 12 April 2015 at 04:19:33 UTC"
+              }
+            ],
+            "versionId": "sukhbaatar-2015-arxiv-v3-version",
+            "sourceIds": [
+              "sukhbaatar-2015-arxiv-record",
+              "sukhbaatar-2015-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "sukhbaatar-2015-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "Retitled and expanded arXiv version 4 posted",
+            "date": {
+              "value": "2015-06-08",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sukhbaatar-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 8 June 2015 at 21:42:20 UTC"
+              }
+            ],
+            "versionId": "sukhbaatar-2015-arxiv-v4-version",
+            "sourceIds": [
+              "sukhbaatar-2015-arxiv-record",
+              "sukhbaatar-2015-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "sukhbaatar-2015-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "Proceedings-aligned arXiv version 5 posted",
+            "date": {
+              "value": "2015-11-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sukhbaatar-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 24 November 2015 at 19:41:57 UTC"
+              }
+            ],
+            "versionId": "sukhbaatar-2015-arxiv-v5-version",
+            "sourceIds": [
+              "sukhbaatar-2015-arxiv-record",
+              "sukhbaatar-2015-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "sukhbaatar-2015-nips-proceedings",
+            "kind": "proceedings-publication",
+            "label": "NIPS 2015 proceedings publication",
+            "date": {
+              "value": "2015",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sukhbaatar-2015-neurips-record",
+                "precision": "year",
+                "locator": "Official proceedings record, Advances in Neural Information Processing Systems 28 (NIPS 2015)"
+              }
+            ],
+            "versionId": "sukhbaatar-2015-nips-version",
+            "sourceIds": [
+              "sukhbaatar-2015-neurips-record",
+              "sukhbaatar-2015-neurips-metadata",
+              "sukhbaatar-2015-neurips-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "sukhbaatar-2015-arxiv-v1-version",
+          "title": "Weakly Supervised Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “Weakly Supervised Memory Networks,” arXiv:1503.08895v1, 31 March 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1503.08895v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sukhbaatar-2015-arxiv-record",
+            "sukhbaatar-2015-arxiv-v1-full-text"
+          ],
+          "notes": "The first nine-page manuscript uses the earlier title and treats the bAbI question-answering setting only. Its historical title and experiment boundary are not overwritten by the aggregate arXiv record’s current metadata."
+        },
+        {
+          "id": "sukhbaatar-2015-arxiv-v2-version",
+          "title": "Weakly Supervised Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “Weakly Supervised Memory Networks,” arXiv:1503.08895v2, 3 April 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1503.08895v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sukhbaatar-2015-arxiv-record",
+            "sukhbaatar-2015-arxiv-v2-full-text"
+          ],
+          "notes": "The second nine-page revision retains the earlier title and QA-only scope while revising clarification, citation, and table presentation."
+        },
+        {
+          "id": "sukhbaatar-2015-arxiv-v3-version",
+          "title": "Weakly Supervised Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “Weakly Supervised Memory Networks,” arXiv:1503.08895v3, 12 April 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1503.08895v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sukhbaatar-2015-arxiv-record",
+            "sukhbaatar-2015-arxiv-v3-full-text"
+          ],
+          "notes": "The third nine-page revision keeps the earlier title and chiefly corrects the bAbI task labels from coherence to coreference."
+        },
+        {
+          "id": "sukhbaatar-2015-arxiv-v4-version",
+          "title": "End-To-End Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “End-To-End Memory Networks,” arXiv:1503.08895v4, 8 June 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1503.08895v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sukhbaatar-2015-arxiv-record",
+            "sukhbaatar-2015-arxiv-v4-full-text"
+          ],
+          "notes": "This major eleven-page revision adopts the canonical title, generalizes the model presentation, revises the QA evidence, and adds the Penn Treebank and Text8 language-model experiments."
+        },
+        {
+          "id": "sukhbaatar-2015-arxiv-v5-version",
+          "title": "End-To-End Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “End-To-End Memory Networks,” arXiv:1503.08895v5, 24 November 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1503.08895v5",
+                "label": "arXiv version 5 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1503.08895",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sukhbaatar-2015-arxiv-record",
+            "sukhbaatar-2015-arxiv-v5-full-text",
+            "sukhbaatar-2015-official-implementation"
+          ],
+          "notes": "The proceedings-aligned eleven-page revision changes the abstract’s language-model comparison from slightly better to comparable, adds validation and code details, and revises the existing appendices to match the official supplement, including its nonlinear 10k column."
+        },
+        {
+          "id": "sukhbaatar-2015-nips-version",
+          "title": "End-To-End Memory Networks",
+          "authors": [
+            "Sainbayar Sukhbaatar",
+            "Arthur Szlam",
+            "Jason Weston",
+            "Rob Fergus"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NIPS 2015 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Sukhbaatar, A. Szlam, J. Weston, and R. Fergus, “End-To-End Memory Networks,” in Advances in Neural Information Processing Systems 28, pp. 2440–2448, 2015.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "Advances in Neural Information Processing Systems",
+            "editors": [
+              "Corinna Cortes",
+              "Neil D. Lawrence",
+              "Daniel D. Lee",
+              "Masashi Sugiyama",
+              "Roman Garnett"
+            ],
+            "publisher": "Curran Associates, Inc.",
+            "volume": "28",
+            "pages": [
+              "2440-2448"
+            ],
+            "identifiers": [
+              {
+                "type": "catalog-id",
+                "value": "1446",
+                "label": "NeurIPS source ID"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sukhbaatar-2015-neurips-record",
+            "sukhbaatar-2015-neurips-metadata",
+            "sukhbaatar-2015-neurips-full-text",
+            "sukhbaatar-2015-neurips-supplement",
+            "sukhbaatar-2015-neurips-reviews",
+            "sukhbaatar-2015-official-implementation",
+            "sukhbaatar-2015-neurips-rights-policy"
+          ],
+          "notes": "The official nine-page main paper uses visible article pp. 1–9 while the volume assigns pp. 2440–2448. Its two-page official supplement is incorporated into arXiv version 5; canonical main-text claims use article pagination."
+        }
+      ],
+      "canonicalVersionId": "sukhbaatar-2015-nips-version",
+      "preferredSourceIds": [
+        "sukhbaatar-2015-neurips-record",
+        "sukhbaatar-2015-neurips-metadata",
+        "sukhbaatar-2015-neurips-full-text"
+      ],
+      "sourceIds": [
+        "sukhbaatar-2015-arxiv-record",
+        "sukhbaatar-2015-arxiv-v1-full-text",
+        "sukhbaatar-2015-arxiv-v2-full-text",
+        "sukhbaatar-2015-arxiv-v3-full-text",
+        "sukhbaatar-2015-arxiv-v4-full-text",
+        "sukhbaatar-2015-arxiv-v5-full-text",
+        "sukhbaatar-2015-neurips-record",
+        "sukhbaatar-2015-neurips-metadata",
+        "sukhbaatar-2015-neurips-full-text",
+        "sukhbaatar-2015-neurips-supplement",
+        "sukhbaatar-2015-neurips-reviews",
+        "sukhbaatar-2015-official-implementation",
+        "sukhbaatar-2015-neurips-rights-policy"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The work makes repeated content-addressed reads from an explicit memory differentiable from answer or next-token supervision, applies those reads to question answering and language modeling, and is named in the Transformer’s final background as a recurrent-attention precedent outside sequence-aligned recurrence. It is a memory-and-attention branch, not an origin claim for self-attention or large-scale language models."
+      },
+      "ideaIds": [
+        "differentiable-external-memory-read",
+        "multi-hop-memory-retrieval",
+        "memory-position-and-time-encoding",
+        "memory-read-language-model"
+      ],
+      "significance": {
+        "beginner": "The story context does not have to be compressed into one hidden state or matched to one fact. The model embeds the question as one query vector, softly weighs stored items, blends what it retrieves, updates the query, and can look again before answering; because every choice remains soft, the final answer error can teach the retrieval steps.",
+        "expert": "MemN2N computes pᵢ = softmax(uᵀmᵢ), o = Σᵢpᵢcᵢ, and repeated state updates before a cross-entropy output. Adjacent or layer-wise tying, position and temporal encodings, and end-to-end gradients turn explicit memory access into a recurrent computation, with bounded QA and word-LM evidence rather than demonstrated recurrence-free or large-memory scaling."
+      },
+      "limitations": [
+        "The first three revisions use the title Weakly Supervised Memory Networks and contain only the bAbI question-answering treatment; language-model claims begin in the retitled fourth revision.",
+        "Removing supporting-fact labels does not make training unsupervised: answers and next-token targets still provide cross-entropy supervision.",
+        "The bAbI benchmark contains synthetic language and a 50-sentence memory cap; the model still fails several tasks and does not match the strongly supervised Memory Network baseline.",
+        "The language-model study uses finite memories up to 200 words, selects Penn Treebank results across ten initializations, and reports only one Text8 training run.",
+        "The strongest language-model rows use different hidden widths and parameter counts from the cited baselines; no confidence intervals or significance tests are reported.",
+        "More hops improve the aggregate comparison and best listed settings, but individual task and perplexity rows are not monotonic with every added hop.",
+        "Table 1 reports 12.4% for the highlighted 1k joint PE+LS+RN system while the surrounding prose says 12.6%; the atlas preserves the table value and the conflict.",
+        "The supplement’s nonlinear task-17 result is printed as 18,6 and remains above the paper’s 5% failure threshold even though the accompanying footnote says added nonlinearity solves tasks 17 and 19.",
+        "The final paper says ten QA runs were selected by lowest training error while 10% of training data was held out to choose architectures and hyperparameters; it does not fully specify how those two selection stages interact.",
+        "The authors explicitly warn that smooth lookups may not scale to larger memories, so the phrase possibly large external memory is architectural framing rather than demonstrated scalability.",
+        "The architecture is recurrent attention over an external memory, not Transformer-style self-attention, parallel sequence mixing, multi-head attention, or evidence that Transformer positional encoding came from this work.",
+        "Public arXiv and NeurIPS access does not establish a permissive paper-level reuse license; diagrams should be redrawn rather than copied without a qualifying permission."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "One arXiv identifier groups the title and scope change: the immutable first three PDFs say Weakly Supervised Memory Networks, while versions 4–5 and the proceedings paper say End-To-End Memory Networks."
+        },
+        {
+          "status": "resolved",
+          "note": "The official nine-page paper and two-page supplement correspond to the eleven-page arXiv version 5 body and appendices, apart from publication layout and appendix-versus-supplement cross-references."
+        },
+        {
+          "status": "open",
+          "note": "No explicit open-content license was found for the canonical proceedings paper.",
+          "resolutionCondition": "A rights-holder statement or licensed repository copy would be required before treating the paper’s prose or figures as openly reusable."
+        }
+      ]
+    },
+    {
+      "id": "luong-pham-manning-2015-effective-attention-nmt",
+      "title": "Effective Approaches to Attention-based Neural Machine Translation",
+      "authors": [
+        "Minh-Thang Luong",
+        "Hieu Pham",
+        "Christopher D. Manning"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” Proceedings of EMNLP 2015, pp. 1412–1421, September 2015 (arXiv v1 posted 17 August 2015).",
+      "chronology": {
+        "orderingEventId": "luong-2015-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "luong-2015-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2015-08-17",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "luong-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 17 August 2015 at 13:43:19 UTC"
+              }
+            ],
+            "versionId": "luong-2015-arxiv-v1-version",
+            "sourceIds": [
+              "luong-2015-arxiv-record",
+              "luong-2015-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "luong-2015-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2015-08-18",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "luong-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 18 August 2015 at 10:27:26 UTC"
+              }
+            ],
+            "versionId": "luong-2015-arxiv-v2-version",
+            "sourceIds": [
+              "luong-2015-arxiv-record",
+              "luong-2015-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "luong-2015-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2015-08-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "luong-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 19 August 2015 at 08:14:59 UTC"
+              }
+            ],
+            "versionId": "luong-2015-arxiv-v3-version",
+            "sourceIds": [
+              "luong-2015-arxiv-record",
+              "luong-2015-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "luong-2015-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2015-08-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "luong-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 29 August 2015 at 09:03:04 UTC"
+              }
+            ],
+            "versionId": "luong-2015-arxiv-v4-version",
+            "sourceIds": [
+              "luong-2015-arxiv-record",
+              "luong-2015-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "luong-2015-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 5 posted",
+            "date": {
+              "value": "2015-09-20",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "luong-2015-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 20 September 2015 at 08:25:52 UTC"
+              }
+            ],
+            "versionId": "luong-2015-arxiv-v5-version",
+            "sourceIds": [
+              "luong-2015-arxiv-record",
+              "luong-2015-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "luong-2015-emnlp-proceedings",
+            "kind": "proceedings-publication",
+            "label": "EMNLP 2015 proceedings publication",
+            "date": {
+              "value": "2015-09",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "luong-2015-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology metadata, September 2015"
+              }
+            ],
+            "versionId": "luong-2015-emnlp-version",
+            "sourceIds": [
+              "luong-2015-acl-record",
+              "luong-2015-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "luong-2015-arxiv-v1-version",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” arXiv:1508.04025v1, 17 August 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1508.04025v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "luong-2015-arxiv-record",
+            "luong-2015-arxiv-v1-full-text"
+          ],
+          "notes": "The first eleven-page manuscript gives the central global/local mechanism and results while making an alignment-evaluation priority claim removed the next day. The atlas does not repeat that unreconciled priority language."
+        },
+        {
+          "id": "luong-2015-arxiv-v2-version",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” arXiv:1508.04025v2, 18 August 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1508.04025v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "luong-2015-arxiv-record",
+            "luong-2015-arxiv-v2-full-text"
+          ],
+          "notes": "Version 2 removes the alignment-evaluation priority claim and clarifies local-window boundary handling, learned alignment-position parameters, and gradient flow."
+        },
+        {
+          "id": "luong-2015-arxiv-v3-version",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” arXiv:1508.04025v3, 19 August 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1508.04025v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "luong-2015-arxiv-record",
+            "luong-2015-arxiv-v3-full-text"
+          ],
+          "notes": "Version 3 narrows the five-BLEU abstract wording to local attention, centers the headline on the WMT’15 ensemble, expands examples, and documents a one-step alignment-offset distinction between location- and content-based scores."
+        },
+        {
+          "id": "luong-2015-arxiv-v4-version",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” arXiv:1508.04025v4, 29 August 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1508.04025v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "luong-2015-arxiv-record",
+            "luong-2015-arxiv-v4-full-text"
+          ],
+          "notes": "Version 4 specifies that input feeding concatenates the attentional vector to the next input and expands the alignment and example discussion while removing the remaining priority wording."
+        },
+        {
+          "id": "luong-2015-arxiv-v5-version",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” arXiv:1508.04025v5, 20 September 2015.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1508.04025v5",
+                "label": "arXiv version 5 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1508.04025",
+                "label": "arXiv-issued DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "luong-2015-arxiv-record",
+            "luong-2015-arxiv-v5-full-text"
+          ],
+          "notes": "The current eleven-page revision corrects the concat score, qualifies local-p as differentiable almost everywhere with a truncated Gaussian, adds dropout p = 0.2 and D = 10, and includes an alignment appendix absent from the proceedings PDF."
+        },
+        {
+          "id": "luong-2015-emnlp-version",
+          "title": "Effective Approaches to Attention-based Neural Machine Translation",
+          "authors": [
+            "Minh-Thang Luong",
+            "Hieu Pham",
+            "Christopher D. Manning"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical EMNLP 2015 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "M.-T. Luong, H. Pham, and C. D. Manning, “Effective Approaches to Attention-based Neural Machine Translation,” in Proceedings of EMNLP 2015, Lisbon, Portugal, pp. 1412–1421, September 2015.",
+            "venue": "Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing",
+            "editors": [
+              "Lluís Màrquez",
+              "Chris Callison-Burch",
+              "Jian Su"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Lisbon, Portugal"
+            ],
+            "pages": [
+              "1412-1421"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/D15-1166",
+                "label": "Proceedings paper DOI"
+              },
+              {
+                "type": "catalog-id",
+                "value": "D15-1166",
+                "label": "ACL Anthology identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "luong-2015-acl-record",
+            "luong-2015-acl-full-text",
+            "luong-2015-acl-rights-policy"
+          ],
+          "notes": "The ten-page official article retains printed pp. 1412–1421 and names Minh-Thang Luong even though the Anthology metadata shortens the first name to Thang. Its malformed concat-score display, equation numbering, unqualified local differentiability wording, and omitted p = 0.2/D = 10 details remain canonical-version boundaries rather than being silently corrected from arXiv v5."
+        }
+      ],
+      "canonicalVersionId": "luong-2015-emnlp-version",
+      "preferredSourceIds": [
+        "luong-2015-acl-record",
+        "luong-2015-acl-full-text"
+      ],
+      "sourceIds": [
+        "luong-2015-arxiv-record",
+        "luong-2015-arxiv-v1-full-text",
+        "luong-2015-arxiv-v2-full-text",
+        "luong-2015-arxiv-v3-full-text",
+        "luong-2015-arxiv-v4-full-text",
+        "luong-2015-arxiv-v5-full-text",
+        "luong-2015-acl-record",
+        "luong-2015-acl-full-text",
+        "luong-2015-acl-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The paper systematically compares global and local cross-attention, dot, bilinear, additive, and location scores, and input feeding in a common large-scale translation system. It supplies the unscaled dot-attention bridge and practical local-window branch later contrasted with the Transformer, while remaining an explicitly recurrent encoder–decoder rather than self-attention."
+      },
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "significance": {
+        "beginner": "The decoder can inspect every source position, inspect only a small predicted neighborhood, or remember its previous focus by feeding the last attentional summary into the next step. Comparing those choices reveals what attention changes without treating one heatmap or ensemble score as proof of a universal mechanism.",
+        "expert": "Luong et al. factor the decoder through h̃ₜ = tanh(Wc[cₜ;hₜ]), compare location, dot, bilinear general, and additive concat scores, introduce differentiable local-m/local-p windows and attentional input feeding, and audit them on WMT English↔German. The unscaled multiplicative score is technically adjacent to later scaled dot-product attention, but the Transformer’s dot-product paragraph does not cite Luong."
+      },
+      "limitations": [
+        "The model remains a four-layer recurrent LSTM encoder–decoder, so training and generation retain sequence-aligned recurrence even when attention consults source states.",
+        "The five-BLEU headline compares a reverse-plus-dropout baseline at 14.0 with a local-p/general/input-feeding system at 19.0; it is not a clean local-window-only ablation, whose marginal step after global input feeding is 0.9 BLEU.",
+        "The 25.9 WMT’15 result is NIST BLEU from a heterogeneous eight-model ensemble plus unknown-word replacement, not one attention architecture or one model.",
+        "The German-to-English system reaches 24.9 BLEU after unknown replacement but remains below the cited 29.2 phrase-based and 27.6 NMT systems.",
+        "Only selected score-and-window combinations were run; two local-m dot runs exceed perplexity 7 and report no BLEU, while concat results are limited to perplexity.",
+        "The length analysis gives plotted buckets without counts, exact points, uncertainty, or a component-matched causal control.",
+        "Alignment error rate uses forced reference decoding and one selected source link per target, while the Berkeley comparator uses one-to-many links and an additional one million WMT sentence pairs.",
+        "The official proceedings equation for the concat score is malformed or underspecified; the corrected vₐᵀtanh(Wₐ[hₜ;h̄ₛ]) form, dropout p = 0.2, and D = 10 occur only in arXiv version 5.",
+        "The official paper calls local attention differentiable, whereas arXiv version 5 narrows the claim to differentiable almost everywhere and describes the Gaussian as truncated.",
+        "The paper reports single training trajectories without seed lists, uncertainty intervals, or significance-test details; code and models are linked without immutable revision or checkpoint identifiers in the paper.",
+        "Transformer cites the paper as part of recurrent encoder–decoder progress, but its scaled-dot-product section does not cite Luong; technical continuity does not establish direct adoption or invention of dot-product attention.",
+        "ACL licenses pre-2016 Anthology material under CC BY-NC-SA 3.0 while excluding third-party content; arXiv’s non-exclusive distribution license is not a general permission to reuse its assets."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper PDF and all arXiv versions name Minh-Thang Luong, while ACL metadata normalizes the first author to Thang Luong; the canonical work follows the authored full text and records the metadata difference."
+        },
+        {
+          "status": "resolved",
+          "note": "The official ten-page proceedings paper and the eleven-page arXiv version 5 are separate evidence versions. Their September records overlap at the available precision, so the atlas does not infer their within-month public order; version-5 corrections and Appendix A do not transfer into the proceedings text."
+        }
+      ]
+    },
+    {
       "id": "vaswani-2017-attention-is-all-you-need",
       "title": "Attention Is All You Need",
       "authors": [
@@ -7556,7 +8380,10 @@
         "sutskever-2014-cho-concurrency",
         "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
         "bahdanau-2014-cho-framework-extension",
-        "bahdanau-2014-sutskever-cross-citation-boundary"
+        "bahdanau-2014-sutskever-cross-citation-boundary",
+        "luong-2015-conditional-nmt-architecture",
+        "luong-2015-sutskever-architecture-and-reversal",
+        "luong-2015-training-regime"
       ],
       "uncertainties": [
         {
@@ -7586,6 +8413,10 @@
         "bahdanau-2014-beam-search-boundary",
         "bahdanau-2014-bleu-results",
         "bahdanau-2014-unknown-word-boundary",
+        "luong-2015-conditional-nmt-architecture",
+        "luong-2015-global-attention",
+        "luong-2015-local-attention",
+        "luong-2015-data-and-evaluation",
         "vaswani-2017-encoder-decoder-architecture",
         "vaswani-2017-attention-routes-and-causal-mask",
         "vaswani-2017-data-and-tokenization",
@@ -7640,7 +8471,14 @@
         "bahdanau-2014-bleu-results",
         "bahdanau-2014-length-results",
         "bahdanau-2014-soft-alignment-interpretation-boundary",
-        "bahdanau-2014-evidence-boundary"
+        "bahdanau-2014-evidence-boundary",
+        "luong-2015-global-attention",
+        "luong-2015-attention-score-family",
+        "luong-2015-local-attention",
+        "luong-2015-input-feeding",
+        "luong-2015-bahdanau-extension",
+        "luong-2015-wmt15-ensemble-result",
+        "luong-2015-alignment-evaluation"
       ],
       "uncertainties": [
         {
@@ -7749,12 +8587,157 @@
       "claimIds": [
         "sutskever-2014-reversal-intervention",
         "sutskever-2014-reversal-explanation-boundary",
-        "sutskever-2014-long-sentence-boundary"
+        "sutskever-2014-long-sentence-boundary",
+        "luong-2015-sutskever-architecture-and-reversal",
+        "luong-2015-english-german-results"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "The measured reversal intervention and the authors’ incomplete causal explanation remain separate. Reversal is not bidirectionality, attention, or backward target generation."
+        }
+      ]
+    },
+    {
+      "id": "differentiable-external-memory-read",
+      "name": "Differentiable external-memory read",
+      "kind": "mechanism",
+      "description": "A query scores separately stored memory keys, a softmax turns those scores into a distribution over slots, and the weighted sum of corresponding values remains differentiable from the final task loss.",
+      "claimIds": [
+        "sukhbaatar-2015-soft-memory-read",
+        "sukhbaatar-2015-end-to-end-objective",
+        "sukhbaatar-2015-memory-network-supervision-boundary",
+        "sukhbaatar-2015-bahdanau-extension",
+        "sukhbaatar-2015-qa-results",
+        "sukhbaatar-2015-evidence-and-scaling-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The query, input-memory vectors, and output-memory vectors are structurally comparable to query, key, and value roles, but the source calls the mechanism recurrent attention over external memory rather than Transformer self-attention."
+        }
+      ]
+    },
+    {
+      "id": "multi-hop-memory-retrieval",
+      "name": "Multi-hop memory retrieval",
+      "kind": "mechanism",
+      "description": "A retrieved value updates an internal query or state before another soft read, allowing a fixed number of retrieval-and-update steps before the externally visible prediction.",
+      "claimIds": [
+        "sukhbaatar-2015-multi-hop-update",
+        "sukhbaatar-2015-weight-tying",
+        "sukhbaatar-2015-bahdanau-extension",
+        "sukhbaatar-2015-qa-setup",
+        "sukhbaatar-2015-qa-results",
+        "sukhbaatar-2015-nonlinear-supplement-results",
+        "sukhbaatar-2015-language-model-adaptation",
+        "sukhbaatar-2015-language-model-results",
+        "sukhbaatar-2015-hop-trend-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The reported aggregate trend favors multiple reads, but adding a hop does not improve every task or perplexity row monotonically."
+        }
+      ]
+    },
+    {
+      "id": "memory-position-and-time-encoding",
+      "name": "Memory position and time encoding",
+      "kind": "mechanism",
+      "description": "Within-sentence position coefficients and learned memory-age embeddings preserve word order and relative story time that an unordered bag of stored symbols would otherwise discard.",
+      "claimIds": [
+        "sukhbaatar-2015-position-and-temporal-encoding",
+        "sukhbaatar-2015-qa-setup",
+        "sukhbaatar-2015-qa-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This paper’s position encoding is attached to explicit memory records and is not evidence for inheritance of the Transformer’s sinusoidal sequence-position representation."
+        }
+      ]
+    },
+    {
+      "id": "memory-read-language-model",
+      "name": "Memory-read neural language model",
+      "kind": "mechanism",
+      "description": "Recent words occupy explicit memory slots, and repeated content-addressed reads update a recurrent state before a vocabulary softmax predicts the next word.",
+      "claimIds": [
+        "sukhbaatar-2015-language-model-adaptation",
+        "sukhbaatar-2015-language-model-results",
+        "sukhbaatar-2015-hop-trend-boundary",
+        "sukhbaatar-2015-version-identity-and-scope-boundary",
+        "sukhbaatar-2015-evidence-and-scaling-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The language-model application first appears in arXiv version 4; it is not transferred into the QA-only first three revisions."
+        }
+      ]
+    },
+    {
+      "id": "multiplicative-cross-attention",
+      "name": "Multiplicative cross-attention scoring",
+      "kind": "mechanism",
+      "description": "A decoder state scores encoder states with an unparameterized dot product or a learned bilinear form before softmax normalization and a source-side weighted sum.",
+      "claimIds": [
+        "luong-2015-global-attention",
+        "luong-2015-attention-score-family",
+        "luong-2015-bahdanau-extension",
+        "luong-2015-english-german-results",
+        "luong-2015-german-english-results",
+        "luong-2015-attention-architecture-results",
+        "luong-2015-version-boundary",
+        "luong-2015-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Luong’s score is unscaled and evaluated inside recurrent encoder–decoder attention. Technical continuity with scaled batched QKᵀ does not establish that the Transformer authors adopted the mechanism from this paper."
+        }
+      ]
+    },
+    {
+      "id": "local-windowed-cross-attention",
+      "name": "Local windowed cross-attention",
+      "kind": "mechanism",
+      "description": "The decoder restricts source attention to a fixed-width neighborhood around a monotonic or learned position, trading a full-source scan for a differentiable local view.",
+      "claimIds": [
+        "luong-2015-local-attention",
+        "luong-2015-bahdanau-extension",
+        "luong-2015-english-german-results",
+        "luong-2015-attention-architecture-results",
+        "luong-2015-long-sentence-boundary",
+        "luong-2015-alignment-evaluation",
+        "luong-2015-version-boundary",
+        "luong-2015-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The five-BLEU headline includes score choice and input feeding; the isolated transition from the reported global-plus-feed row to local-p/general-plus-feed is 0.9 BLEU."
+        }
+      ]
+    },
+    {
+      "id": "attentional-input-feeding",
+      "name": "Attentional input feeding",
+      "kind": "mechanism",
+      "description": "The previous attentional output is concatenated with the next decoder input so subsequent recurrent states can condition on earlier source-attention decisions.",
+      "claimIds": [
+        "luong-2015-input-feeding",
+        "luong-2015-english-german-results",
+        "luong-2015-german-english-results",
+        "luong-2015-attention-architecture-results",
+        "luong-2015-version-boundary",
+        "luong-2015-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper presents input feeding as an alignment-history or coverage-like aid, not as a measured guarantee that every source position is translated exactly once."
         }
       ]
     },
@@ -11014,6 +11997,501 @@
         "metadata"
       ],
       "accessNote": "The official FAQ says authors retain copyright and grant NeurIPS a perpetual non-exclusive publication license. No Creative Commons license is stated for this proceedings paper, which is linked and not redistributed."
+    },
+    {
+      "id": "sukhbaatar-2015-arxiv-record",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "arXiv record for End-To-End Memory Networks",
+      "url": "https://arxiv.org/abs/1503.08895",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v1-version",
+        "sukhbaatar-2015-arxiv-v2-version",
+        "sukhbaatar-2015-arxiv-v3-version",
+        "sukhbaatar-2015-arxiv-v4-version",
+        "sukhbaatar-2015-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies arXiv:1503.08895, the current title and authors, subject categories, arXiv-issued DOI, non-exclusive repository license, and exact timestamps for five revisions. Immutable PDFs rather than the current title control historical version identity."
+    },
+    {
+      "id": "sukhbaatar-2015-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Weakly Supervised Memory Networks arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1503.08895v1",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The immutable nine-page first manuscript was inspected with its source bundle. It prints Weakly Supervised Memory Networks and contains the QA treatment but no Penn Treebank or Text8 language-model section."
+    },
+    {
+      "id": "sukhbaatar-2015-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Weakly Supervised Memory Networks arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1503.08895v2",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The immutable nine-page second manuscript retains the earlier title and QA-only scope while revising clarifications, citations, and presentation."
+    },
+    {
+      "id": "sukhbaatar-2015-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Weakly Supervised Memory Networks arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1503.08895v3",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The immutable nine-page third manuscript retains the earlier title and corrects the bAbI task labels from coherence to coreference."
+    },
+    {
+      "id": "sukhbaatar-2015-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "End-To-End Memory Networks arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/1503.08895v4",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The retitled eleven-page fourth manuscript adds the general recurrent-memory framing, revised QA evidence, and language-model experiments. Its abstract calls the LM results slightly better than RNN/LSTM comparators."
+    },
+    {
+      "id": "sukhbaatar-2015-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "End-To-End Memory Networks arXiv version 5 full text with appendices",
+      "url": "https://arxiv.org/pdf/1503.08895v5",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The proceedings-aligned eleven-page revision contains the nine-page main paper plus the two-page supplementary results as Appendices A and B. It supplies the nonlinear 10k table and the final cautious language-model wording."
+    },
+    {
+      "id": "sukhbaatar-2015-neurips-record",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Official NeurIPS record for End-To-End Memory Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2015/hash/8fb21ee7a2207526da55a679f0332de2-Abstract.html",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the paper title, ordered authors, NIPS 2015 volume identity, abstract, and links to the main paper, metadata, reviews, and supplement. The page’s lowercase rendering of Arthur Szlam is not transferred over the authored PDF."
+    },
+    {
+      "id": "sukhbaatar-2015-neurips-metadata",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Official NeurIPS metadata for End-To-End Memory Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2015/file/8fb21ee7a2207526da55a679f0332de2-Metadata.json",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher metadata supplies volume pages 2440–2448, source ID 1446, the hash-bound full text, and the proceedings record without a paper DOI."
+    },
+    {
+      "id": "sukhbaatar-2015-neurips-full-text",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Official NeurIPS full text of End-To-End Memory Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2015/file/8fb21ee7a2207526da55a679f0332de2-Paper.pdf",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The complete nine-page proceedings PDF was rendered and inspected. It uses visible article pp. 1–9 rather than volume pp. 2440–2448; the two supplementary pages remain a separate official artifact and appear as arXiv-v5 appendices."
+    },
+    {
+      "id": "sukhbaatar-2015-neurips-supplement",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Official NeurIPS supplement for End-To-End Memory Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2015/file/8fb21ee7a2207526da55a679f0332de2-Supplemental.zip",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 2
+      },
+      "accessNote": "The publisher ZIP contains the complete two-page supp.pdf. Its results and attention-visualization sections correspond to arXiv version 5 Appendices A and B, with publication-layout and appendix-versus-supplement cross-reference differences."
+    },
+    {
+      "id": "sukhbaatar-2015-neurips-reviews",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Official NeurIPS reviews and author response for End-To-End Memory Networks",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2015/file/8fb21ee7a2207526da55a679f0332de2-Reviews.html",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official review archive confirms that the publication record includes reviewer comments and an author response. It is retained for provenance and is not used to override the published paper’s experiment-selection wording."
+    },
+    {
+      "id": "sukhbaatar-2015-official-implementation",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "Paper-linked official MemNN implementation archive",
+      "url": "https://github.com/facebookarchive/MemNN",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "sukhbaatar-2015-arxiv-v5-version",
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The code URL linked by the final paper redirects to this archived, read-only Facebook repository. It contains separate MATLAB bAbI and Torch language-model implementations under a BSD license plus a patent-grant file, but no immutable experiment commit or released checkpoint is identified by the paper."
+    },
+    {
+      "id": "sukhbaatar-2015-neurips-rights-policy",
+      "relatedWorkIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "title": "NeurIPS copyright policy",
+      "url": "https://neurips.cc/FAQ/Copyright",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sukhbaatar-2015-nips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official FAQ says authors retain copyright and grant NeurIPS a perpetual non-exclusive publication license. No paper-level Creative Commons license was verified; the atlas links the paper and redraws concepts."
+    },
+    {
+      "id": "luong-2015-arxiv-record",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "arXiv record for Effective Approaches to Attention-based Neural Machine Translation",
+      "url": "https://arxiv.org/abs/1508.04025",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "luong-2015-arxiv-v1-version",
+        "luong-2015-arxiv-v2-version",
+        "luong-2015-arxiv-v3-version",
+        "luong-2015-arxiv-v4-version",
+        "luong-2015-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, authors, arXiv identifier and DOI, non-exclusive repository license, five exact revision timestamps, and the version-5 note that it is an EMNLP camera-ready treatment with more training detail."
+    },
+    {
+      "id": "luong-2015-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "Effective Approaches to Attention-based Neural Machine Translation arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1508.04025v1",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "luong-2015-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete eleven-page first revision was compared with later versions. Its short-lived alignment-evaluation priority claim is recorded only as a version boundary and is not promoted as fact."
+    },
+    {
+      "id": "luong-2015-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "Effective Approaches to Attention-based Neural Machine Translation arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1508.04025v2",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "luong-2015-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete second revision removes the priority claim and clarifies local-window boundary handling, learned alignment positions, and differentiability."
+    },
+    {
+      "id": "luong-2015-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "Effective Approaches to Attention-based Neural Machine Translation arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1508.04025v3",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "luong-2015-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete third revision narrows the five-BLEU claim to local attention, expands qualitative material, and adds the alignment-time-offset caveat."
+    },
+    {
+      "id": "luong-2015-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "Effective Approaches to Attention-based Neural Machine Translation arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/1508.04025v4",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "luong-2015-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete fourth revision specifies input-feeding concatenation and reorganizes the example and alignment material while removing the remaining priority wording."
+    },
+    {
+      "id": "luong-2015-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "Effective Approaches to Attention-based Neural Machine Translation arXiv version 5 full text",
+      "url": "https://arxiv.org/pdf/1508.04025v5",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "luong-2015-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete current revision corrects the concat-score equation, qualifies local-p differentiability, adds p = 0.2 and D = 10, and contains Appendix A/Figure 7. These details do not migrate into the official proceedings version."
+    },
+    {
+      "id": "luong-2015-acl-record",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "ACL Anthology record for Effective Approaches to Attention-based Neural Machine Translation",
+      "url": "https://aclanthology.org/D15-1166/",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "luong-2015-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies Anthology ID D15-1166, DOI 10.18653/v1/D15-1166, editors, proceedings title, September 2015, Lisbon, publisher, and pp. 1412–1421. It shortens the first author to Thang Luong; the authored PDF says Minh-Thang Luong."
+    },
+    {
+      "id": "luong-2015-acl-full-text",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "Official ACL full text of Effective Approaches to Attention-based Neural Machine Translation",
+      "url": "https://aclanthology.org/D15-1166.pdf",
+      "accessDate": "2026-08-22",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "luong-2015-emnlp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1412,
+        "pageEnd": 1421
+      },
+      "accessNote": "The complete ten-page proceedings PDF was rendered and inspected. Its printed pp. 1412–1421 control canonical claims and expose the equation and hyperparameter differences from arXiv version 5."
+    },
+    {
+      "id": "luong-2015-acl-rights-policy",
+      "relatedWorkIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "title": "ACL Anthology copyright and licensing policy",
+      "url": "https://aclanthology.org/faq/copyright/",
+      "accessDate": "2026-08-22",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "luong-2015-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Anthology policy states that pre-2016 ACL material is CC BY-NC-SA 3.0 while excluding third-party content. The atlas uses paraphrase and original diagrams rather than silently copying figures or data assets."
     },
     {
       "id": "vaswani-2017-arxiv-record",
@@ -21159,32 +22637,1185 @@
       "checkedDate": "2026-08-12"
     },
     {
+      "id": "sukhbaatar-2015-soft-memory-read",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "differentiable-external-memory-read"
+      ],
+      "statement": "The question bag q is embedded as the initial query u = Bq. That query scores each input-memory vector mᵢ by an inner product; a softmax across memory slots gives pᵢ = softmax(uᵀmᵢ), and the readout o = Σᵢpᵢcᵢ is a weighted sum of the corresponding output-memory vectors.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Content-addressed soft memory read, article p. 2",
+            "section": "2.1 Single Layer",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "equation": "1–2"
+          },
+          "support": "Equations 1 and 2 define the softmax distribution over input memories and the weighted output-memory sum."
+        }
+      ],
+      "limitations": [
+        "The softmax normalizes across the stored memory slots for one query; the paper does not use the later projected multi-head Q/K/V formulation.",
+        "Input vectors mᵢ and output vectors cᵢ may use different learned embeddings and tying constraints."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-end-to-end-objective",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "differentiable-external-memory-read"
+      ],
+      "statement": "The smooth read lets error gradients pass through memory access; a single-hop answer distribution is softmax(W(o + u)), and A, B, C, and W are learned jointly with cross-entropy and stochastic gradient descent from the target answer rather than labeled intermediate reads.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Differentiability, output distribution, and training objective, article p. 2",
+            "section": "2.1 Single Layer",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "equation": "3"
+          },
+          "support": "The text links the smooth weighted read to backpropagation and defines the final softmax and cross-entropy training."
+        }
+      ],
+      "limitations": [
+        "End-to-end means supervision at the externally visible answer or next-token output; it does not mean unsupervised learning.",
+        "The QA comparison removes supporting-fact labels but still observes each answer during training."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-multi-hop-update",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "K memory layers are stacked so the state entering the next hop is uᵏ⁺¹ = uᵏ + oᵏ, and the top state is passed to the answer softmax only after the fixed sequence of internal reads.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Repeated memory-state update and top prediction, article pp. 2–3",
+            "section": "2.2 Multiple Layers",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "equation": "4"
+          },
+          "support": "Equation 4 and the surrounding bullets define state-plus-readout updates and final prediction after K hops."
+        }
+      ],
+      "limitations": [
+        "The number of hops is fixed for each reported model rather than dynamically chosen for each example.",
+        "Hops execute sequentially before an output and therefore do not establish recurrence-free parallel sequence processing."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-weight-tying",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "Adjacent tying sets Aᵏ⁺¹ = Cᵏ, Wᵀ = Cᴷ, and B = A¹; layer-wise or RNN-like tying shares A and C across hops and replaces the residual update with the learned map uᵏ⁺¹ = Huᵏ + oᵏ.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Adjacent and layer-wise weight-tying definitions, article p. 3",
+            "section": "2.2 Multiple Layers",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "The two enumerated regimes give every promoted equality and the learned H update."
+        }
+      ],
+      "limitations": [
+        "The two regimes are not interchangeable: the language-model experiments use layer-wise tying, while the default QA setup uses adjacent tying."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-memory-network-supervision-boundary",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "differentiable-external-memory-read"
+      ],
+      "statement": "Relative to the cited Memory Network implementation, MemN2N replaces hard maximum selections with continuous softmax weighting and trains without the dataset’s supporting-fact labels, while retaining answer supervision and reporting the strongly supervised system as the better QA comparator.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Memory Network comparison and supervision boundary, article pp. 1, 3–5",
+            "section": "1 Introduction; 2.2 Multiple Layers; 4 Synthetic Question and Answering Experiments",
+            "pageStart": 1,
+            "pageEnd": 5
+          },
+          "support": "The introduction and architecture compare layer supervision and hard selection, while the QA setup defines which labels each system receives."
+        }
+      ],
+      "limitations": [
+        "This is a target-side comparison with an unpromoted predecessor; it does not grant MemN2N sole priority for differentiable memory or neural attention.",
+        "The strongly supervised Memory Network uses additional modeling components as well as supporting-fact labels, so the table is not an architecture-only ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-bahdanau-extension",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "differentiable-external-memory-read",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "The authors call MemN2N a version of RNNsearch with multiple computational hops per output symbol and describe their memory read as analogous to Bahdanau attention, while contrasting explicit many-sentence memory, repeated reads, and a simpler inner-product scorer with the translation model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "RNNsearch extension statement, article p. 1",
+            "section": "1 Introduction",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The introduction explicitly frames the model as RNNsearch with multiple hops per output symbol."
+        },
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Mechanism-level Bahdanau comparison, article pp. 3–4",
+            "section": "3 Related Work",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "paragraph": "Bahdanau et al. comparison"
+          },
+          "support": "The related-work paragraph states the analogy and then distinguishes memory span, hop count, and score architecture."
+        }
+      ],
+      "limitations": [
+        "The edge carries differentiable soft retrieval and the explicit multi-hop extension statement, not the Bahdanau bidirectional encoder, gated decoder, translation evidence, or later Transformer mechanisms."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-position-and-temporal-encoding",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "memory-position-and-time-encoding"
+      ],
+      "statement": "Position encoding weights word embeddings with lₖⱼ = (1 − j/J) − (k/d)(1 − 2j/J); learned T_A(i) and T_C(i) vectors encode reverse-indexed memory age, and training may inject 10% empty memories to regularize that temporal index.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Position, temporal, and random-noise encodings, article pp. 4–5",
+            "section": "4.1 Model Details",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The model-details subsections define the coefficient, learned temporal matrices, reverse ordering, and dummy-memory noise."
+        }
+      ],
+      "limitations": [
+        "The word-position coefficients and memory-age embeddings solve different ordering problems and should not be collapsed into one generic positional encoding.",
+        "Similarity of terminology does not document influence on Transformer sinusoidal or learned sequence positions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-qa-setup",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "memory-position-and-time-encoding",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "The canonical QA study uses bAbI version 1.1 with 20 synthetic tasks and either 1,000 or 10,000 training problems per task; the default model has K = 3 adjacent-tied hops, holds out 10% of training for validation, and keeps only the 50 most recent sentences.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "QA data, default architecture, validation, and memory cap, article pp. 4–5",
+            "section": "4 Synthetic Question and Answering Experiments; 4.1 Model Details; 4.2 Training Details",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The three consecutive sections state the dataset version and scale, task count, default hops and tying, validation fraction, and 50-sentence buffer."
+        }
+      ],
+      "limitations": [
+        "The benchmark uses a vocabulary of 177 and generated task language; its reasoning labels and finite context do not represent open-domain question answering.",
+        "Ten random initializations are run on unstable tasks and the final paper says the lowest training-error run is selected."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The final paper uses a 10% validation split for architecture and hyperparameter choices but says unstable-task restarts are selected by lowest training error; it does not fully specify how those two selection stages interact.",
+          "resolutionCondition": "A dated training script or author clarification tied to the reported table would be needed to reconstruct the complete selection protocol."
+        }
+      ],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-qa-results",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "differentiable-external-memory-read",
+        "multi-hop-memory-retrieval",
+        "memory-position-and-time-encoding"
+      ],
+      "statement": "On the 1k bAbI setting, Table 1 reports mean error and failed tasks (>5% error) of 6.7/4 for strongly supervised MemNN, 51.3/20 for LSTM, 40.2/18 for MemNN-WSH, 25.1/15 for MemN2N BoW, 20.3/13 for PE, 16.3/12 for PE+LS, 13.9/11 for PE+LS+RN, 25.8/17, 15.6/11, and 13.3/11 for joint one-, two-, and three-hop PE+LS, 12.4/11 for joint PE+LS+RN, and 15.2/10 for joint layer-wise PE+LS.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "QA aggregate error and failure rows, article p. 6",
+            "section": "4.4 Results",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "The two aggregate rows supply the complete promoted 1k means and failed-task counts for every table column."
+        }
+      ],
+      "limitations": [
+        "The strongly supervised comparator receives supporting-fact labels and uses additional components, so its gap is not a clean soft-versus-hard attention comparison.",
+        "The prose calls the highlighted 12.4 table value 12.6; the statement retains the table entry and does not silently reconcile the conflict.",
+        "Task-level rows reveal large residual failures, especially positional reasoning and path finding, despite the aggregate improvements."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Table 1 prints 12.4% for joint PE+LS+RN, but the adjacent prose says 12.6%.",
+          "resolutionCondition": "An author correction or underlying evaluation output would be required to choose one as the intended value."
+        }
+      ],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-nonlinear-supplement-results",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "ArXiv version 5 Appendix A and the official supplement report a d = 100 model with ReLU after each hop at 4.2% mean error and three failed 10k bAbI tasks; task 19 falls to 2.3%, while task 17 is printed 18,6 and remains above the 5% failure threshold when read as 18.6. The final supplement’s 10k mean-error/failed-task pairs are 3.2/2, 36.4/16, 39.2/17, 15.4/9, 9.4/6, 7.2/4, 6.6/4, 4.2/3, 24.5/16, 10.9/7, 7.9/6, 7.5/6, and 11.0/6 in displayed column order.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-arxiv-v5-full-text",
+          "locator": {
+            "label": "Final 10k QA results, article p. 10",
+            "section": "Appendix A Results on 10k QA dataset",
+            "pageStart": 10,
+            "pageEnd": 10,
+            "table": "3"
+          },
+          "support": "ArXiv version 5 Table 3 supplies the complete final 10k rows, including the nonlinear column, 4.2 mean, three failures, and task 17/19 entries."
+        },
+        {
+          "sourceId": "sukhbaatar-2015-neurips-supplement",
+          "locator": {
+            "label": "Official supplemental 10k QA results, supplement p. 1",
+            "section": "1 Results on 10k QA dataset",
+            "pageStart": 1,
+            "pageEnd": 1,
+            "table": "1"
+          },
+          "support": "The standalone official supplement independently supplies the same final results under its own table number and pagination."
+        }
+      ],
+      "limitations": [
+        "The comma in 18,6 is normalized only as a decimal mark because 18.6 is consistent with the reported mean; it is not treated as 1.86.",
+        "The nearby footnote says nonlinearity solves tasks 17 and 19, but task 17 still fails the stated >5% threshold."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Reading 18,6 as 18.6 matches the column’s printed 4.2% aggregate; a 1.86 reading would not. The atlas retains the remaining footnote-versus-threshold conflict."
+        }
+      ],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-language-model-adaptation",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "memory-read-language-model",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "For next-word prediction, each of the previous N words occupies one memory slot, the query is fixed to 0.1, a vocabulary softmax is trained with cross-entropy through the hops, ReLU is applied to half the units at each layer, and layer-wise weight tying makes recurrence run over memory reads rather than text positions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Word-level memory and next-word objective, article pp. 6–7",
+            "section": "5 Language Modeling Experiments",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "The section maps words to slots, fixes q, defines the output and loss, adds ReLU, and explains layer-wise recurrence."
+        }
+      ],
+      "limitations": [
+        "The recurrence over hops is still sequential and the memory contains a finite word window; the model does not demonstrate unbounded history.",
+        "The language-model mechanism is absent from arXiv versions 1–3."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-language-model-results",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "memory-read-language-model",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "Table 2 reports Penn Treebank test perplexity 129/115/115 for RNN/LSTM/SCRN and a best listed MemN2N validation/test result of 118/111 with 150 hidden units, seven hops, and memory 200; Text8 reports 184/154/161 for those baselines and a best MemN2N validation/test result of 118/147 with 500 hidden units, seven hops, and memory 100.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Penn Treebank and Text8 perplexity table, article p. 7",
+            "section": "5.2 Results",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "2"
+          },
+          "support": "The table supplies the baseline and best listed model conditions and test perplexities."
+        },
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Dataset and run-selection conditions, article pp. 7–8",
+            "section": "5 Language Modeling Experiments; 5.1 Training Details",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "The prose gives the corpus splits, ten Penn Treebank restarts, single Text8 run, and parameter-count comparison."
+        }
+      ],
+      "limitations": [
+        "Penn Treebank selects the smallest-validation-cost result from ten random initializations, while Text8 reports one run because of time constraints.",
+        "Baseline hidden widths differ, and the authors estimate MemN2N at about 1.5 times the parameters of an equal-width RNN while LSTM has about four times; no uncertainty intervals are supplied.",
+        "The abstract’s final comparable wording is safer than describing the small unmatched gaps as a general superiority result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-hop-trend-boundary",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "multi-hop-memory-retrieval",
+        "memory-read-language-model"
+      ],
+      "statement": "The paper reports that more hops improve aggregate QA and language-model performance, but its displayed rows are not uniformly monotonic: Penn Treebank test perplexity is 121 at two hops and 122 at three, and Text8 is 154 at five hops and 155 at six before the best seven-hop row.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Hop-count claims and displayed counterexamples, article pp. 6–8",
+            "section": "4.4 Results; 5.2 Results",
+            "pageStart": 6,
+            "pageEnd": 8,
+            "table": "1–2"
+          },
+          "support": "The authors state the trend, while the complete hop-count rows bound it with the cited nonmonotonic values."
+        }
+      ],
+      "limitations": [
+        "The evidence supports an aggregate trend and stronger best higher-hop settings, not a causal law that each additional hop helps every task or run."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-version-identity-and-scope-boundary",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "memory-read-language-model"
+      ],
+      "statement": "ArXiv versions 1–3 are nine-page QA-only manuscripts titled “Weakly Supervised Memory Networks”; version 4 retitles the work, expands it to eleven pages, adds language modeling, and already contains Appendices A and B; version 5 aligns the body with the proceedings, changes “slightly better” LM wording to “comparable,” and revises those appendices to match the official supplement, including the nonlinear 10k column.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-arxiv-v1-full-text",
+          "locator": {
+            "label": "Historical title and QA-only first treatment, article pp. 1–9",
+            "section": "Title; complete manuscript",
+            "pageStart": 1,
+            "pageEnd": 9
+          },
+          "support": "The immutable first revision prints the earlier title and ends after the QA treatment."
+        },
+        {
+          "sourceId": "sukhbaatar-2015-arxiv-v4-full-text",
+          "locator": {
+            "label": "Retitled expansion with language modeling, article pp. 1–11",
+            "section": "Title; 5 Language Modeling Experiments; Appendices",
+            "pageStart": 1,
+            "pageEnd": 11
+          },
+          "support": "Version 4 supplies the new title, general presentation, LM study, expanded length, and the earlier forms of Appendices A and B."
+        },
+        {
+          "sourceId": "sukhbaatar-2015-arxiv-v5-full-text",
+          "locator": {
+            "label": "Proceedings-aligned wording and revised appendices, article pp. 1–11",
+            "section": "Abstract; Appendices A–B",
+            "pageStart": 1,
+            "pageEnd": 11
+          },
+          "support": "Version 5 contains the cautious abstract wording and revises the existing appendices to match the official supplement, adding the nonlinear 10k result."
+        }
+      ],
+      "limitations": [
+        "The aggregate arXiv page displays the latest title for the whole record; it is not evidence that the first three immutable PDFs used that title.",
+        "Language-model results cannot support the first three versions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "sukhbaatar-2015-evidence-and-scaling-boundary",
+      "workId": "sukhbaatar-2015-end-to-end-memory-networks",
+      "ideaIds": [
+        "differentiable-external-memory-read",
+        "memory-read-language-model"
+      ],
+      "statement": "The evidence covers synthetic QA with a 50-sentence buffer and two finite-memory word-language-model benchmarks; it supplies no large-memory scaling study, matched parameter ablation, confidence interval, or significance test, and the authors explicitly warn that smooth lookup may not scale when larger memory is required.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "Complete experiment scope and stated scaling limit, article pp. 4–8",
+            "section": "4 Synthetic Question and Answering Experiments; 5 Language Modeling Experiments; 6 Conclusions and Future Work",
+            "pageStart": 4,
+            "pageEnd": 8,
+            "table": "1–2"
+          },
+          "support": "The experimental sections expose the tested memory sizes and reporting controls, and the conclusion states the smooth-lookup scaling concern."
+        }
+      ],
+      "limitations": [
+        "This boundary does not negate the reported task and perplexity rows; it limits claims about realism, generalization, parameter efficiency, and scalable memory.",
+        "The linked implementation is archived and tied to older MATLAB or Torch tooling rather than an immutable experiment environment or released checkpoint."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-conditional-nmt-architecture",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The baseline is a four-layer LSTM encoder–decoder: the encoder reads the source into hidden states, the decoder predicts each target word autoregressively, and an attentional vector gives each decoder step a context from source states so prediction no longer depends solely on one fixed final source summary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Baseline and attentional encoder–decoder, printed pp. 1413–1414",
+            "section": "2 Neural Machine Translation; 3 Attention-based Models",
+            "pageStart": 1413,
+            "pageEnd": 1414,
+            "equation": "1–6"
+          },
+          "support": "The paper defines the stacked recurrent baseline, conditional decoder objective, attentional vector, and target softmax."
+        }
+      ],
+      "limitations": [
+        "Attention changes access to encoder states but does not remove recurrence from the encoder or decoder.",
+        "The primary attention comparison layers source reversal and later dropout onto the base system, so downstream score differences are not comparisons with the original fixed-vector system in isolation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-global-attention",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention"
+      ],
+      "statement": "Global attention normalizes alignment scores between decoder state h_t and every source state h̄_s, forms c_t as their probability-weighted average, and combines c_t with h_t through h̃_t = tanh(W_c[c_t;h_t]) before the target softmax.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Global alignment, context, and output path, printed pp. 1414–1415",
+            "section": "3 Attention-based Models; 3.1 Global Attention",
+            "pageStart": 1414,
+            "pageEnd": 1415,
+            "equation": "5–9"
+          },
+          "support": "The equations define the target distribution, full-source softmax, weighted context, and attentional state."
+        }
+      ],
+      "limitations": [
+        "The query is one recurrent decoder state and the keys and values are recurrent encoder states; this is cross-attention, not self-attention.",
+        "A normalized alignment heatmap is a learned model quantity, not a guarantee of human explanation or word-level correspondence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-attention-score-family",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention"
+      ],
+      "statement": "The paper compares location-only scoring with content scores based on an unscaled dot product h_t^T h̄_s, a learned bilinear ‘general’ form h_t^T W_a h̄_s, and an additive ‘concat’ network; the complete concat formula v_a^T tanh(W_a[h_t;h̄_s]) appears only in arXiv version 5.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Location, dot, general, and proceedings concat displays, printed pp. 1414–1415",
+            "section": "3.1 Global Attention",
+            "pageStart": 1414,
+            "pageEnd": 1415,
+            "equation": "8–9"
+          },
+          "support": "The official article enumerates the score families but leaves the displayed concat row malformed or underspecified."
+        },
+        {
+          "sourceId": "luong-2015-arxiv-v5-full-text",
+          "locator": {
+            "label": "Corrected concat score, article p. 3",
+            "section": "3.1 Global Attention",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "paragraph": "Unnumbered score-family display"
+          },
+          "support": "ArXiv version 5 supplies the output vector and tanh around the concatenated states in an unnumbered display; its equation 8 is the separate location-only scorer."
+        }
+      ],
+      "limitations": [
+        "The score comparison does not establish priority for dot products, additive attention, or later query/key/value terminology.",
+        "The Transformer’s scaled-dot-product paragraph does not cite this paper, so the mathematical resemblance supports comparison rather than documented adoption."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The atlas preserves the proceedings display as a version anomaly and uses arXiv v5 only when presenting the corrected concat equation."
+        }
+      ],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-local-attention",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "decoder-conditioned-soft-attention",
+        "local-windowed-cross-attention"
+      ],
+      "statement": "Local attention restricts normalization to a fixed 2D+1 source window: local-m centers it monotonically at p_t = t, while local-p predicts p_t = S·sigmoid(v_p^T tanh(W_p h_t)) and multiplies content alignment by a Gaussian with σ = D/2.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Local window, local-m, local-p, and Gaussian weighting, printed pp. 1415–1416",
+            "section": "3.2 Local Attention",
+            "pageStart": 1415,
+            "pageEnd": 1416,
+            "equation": "10–11"
+          },
+          "support": "The section defines both centers, the fixed neighborhood, and the Gaussian multiplier."
+        },
+        {
+          "sourceId": "luong-2015-arxiv-v5-full-text",
+          "locator": {
+            "label": "ArXiv-version-5 local-p qualification, article p. 4",
+            "section": "3.2 Local Attention",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "equation": "9–10"
+          },
+          "support": "Version 5 narrows the differentiability claim to almost everywhere and calls the Gaussian truncated."
+        }
+      ],
+      "limitations": [
+        "D = 10 is disclosed only in arXiv version 5, not the canonical proceedings text.",
+        "Local-p is differentiable almost everywhere rather than everywhere, and a finite window can omit relevant source positions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-input-feeding",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "attentional-input-feeding"
+      ],
+      "statement": "Input feeding concatenates the previous attentional vector h̃_{t−1} with the next target embedding before the lowest decoder LSTM layer, giving later decoder states direct access to the preceding alignment-conditioned summary and an implicit coverage history.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Input-feeding architecture and coverage motivation, printed p. 1416",
+            "section": "3.3 Input-feeding Approach",
+            "pageStart": 1416,
+            "pageEnd": 1416,
+            "figure": "4"
+          },
+          "support": "The text and figure route each attentional vector into the next recurrent step and describe the intended alignment-history effect."
+        },
+        {
+          "sourceId": "luong-2015-arxiv-v4-full-text",
+          "locator": {
+            "label": "Explicit concatenation and doubled first-layer input, article p. 5",
+            "section": "3.3 Input-feeding Approach",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "Version 4 makes the concatenation operation and 2n-dimensional first-layer input explicit."
+        }
+      ],
+      "limitations": [
+        "The paper motivates this as coverage-like behavior but does not measure coverage directly or prove that repetition and omission are prevented.",
+        "The mechanism adds recurrent dependence between alignments and is not parallel attention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-bahdanau-extension",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention"
+      ],
+      "statement": "Luong et al. explicitly relate their global family to Bahdanau-style soft alignment, compare multiple score functions, and add differentiable local variants intended to trade full-source coverage against hard-attention efficiency.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Bahdanau comparison and global/local generalization, printed pp. 1414–1416",
+            "section": "3 Attention-based Models; 3.1 Global Attention; 3.2 Local Attention",
+            "pageStart": 1414,
+            "pageEnd": 1416
+          },
+          "support": "The paper names Bahdanau’s mechanism, states how global attention simplifies it, and positions local attention between soft and hard alignment."
+        }
+      ],
+      "limitations": [
+        "The extension retains a recurrent encoder–decoder and does not imply inheritance of every Bahdanau component or later Transformer mechanisms.",
+        "Local attention is also explicitly inspired by Xu et al.; this claim does not assign sole lineage through Bahdanau."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-sutskever-architecture-and-reversal",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "statement": "The experimental system follows Sutskever et al.’s stacked LSTM encoder–decoder recipe; after an unreversed base row, the attention comparison systems retain source-sequence reversal as an established baseline intervention.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Sutskever architecture and source reversal, printed pp. 1413, 1416–1417",
+            "section": "2 Neural Machine Translation; 4 Experiments",
+            "pageStart": 1413,
+            "pageEnd": 1417
+          },
+          "support": "The architecture section cites the earlier stacked LSTM system, while Table 1 separates the unreversed base row from the reversed baseline retained by the attention comparisons."
+        }
+      ],
+      "limitations": [
+        "Attention is layered onto this recipe; the relationship does not make Sutskever et al. the source of attention.",
+        "The later experiments do not re-ablate source reversal for every attention variant."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-data-and-evaluation",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The main study trains on 4.5 million WMT English–German sentence pairs, filters pairs longer than 50 words, limits each vocabulary to 50,000 words, tunes on newstest2013, and reports case-sensitive tokenized BLEU for WMT’14 tables while using NIST BLEU for the WMT’15 comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Data, filtering, vocabularies, test sets, and metric scripts, printed pp. 1416–1417",
+            "section": "4 Experiments; 4.1 Training Details",
+            "pageStart": 1416,
+            "pageEnd": 1417
+          },
+          "support": "The setup names corpus sizes, length and vocabulary limits, dev/test sets, and the two BLEU calculation regimes."
+        }
+      ],
+      "limitations": [
+        "Tokenized multi-bleu and NIST mteval scores are not interchangeable, so results from Tables 1 and 2 should not be directly differenced.",
+        "Sentence filtering and fixed vocabularies narrow the length and rare-word regime represented by the reported scores."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-training-regime",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction"
+      ],
+      "statement": "Models use four 1,000-unit LSTM layers with 1,000-dimensional embeddings, batch size 128, SGD with initial learning rate 1, gradient-norm clipping at 5, and uniform initialization in [−0.1, 0.1]; arXiv version 5 additionally specifies dropout probability 0.2 and local half-window D = 10.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Model size and optimization schedule, printed pp. 1416–1417",
+            "section": "4.1 Training Details",
+            "pageStart": 1416,
+            "pageEnd": 1417
+          },
+          "support": "The official article provides the architecture, initialization, batch, clipping, learning-rate, and epoch schedule."
+        },
+        {
+          "sourceId": "luong-2015-arxiv-v5-full-text",
+          "locator": {
+            "label": "Added dropout and local-window hyperparameters, article pp. 5–6",
+            "section": "4 Experiments; 4.1 Training Details",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The last revision supplies p = 0.2 and D = 10, which the proceedings omits."
+        }
+      ],
+      "limitations": [
+        "The paper does not publish seed lists, checkpoints, or uncertainty across retraining runs.",
+        "The v5-only hyperparameters must not be attributed to the proceedings text without a version label."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-english-german-results",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding",
+        "source-sequence-reversal-for-shorter-dependencies"
+      ],
+      "statement": "On newstest2014 English→German, Table 1 moves from 11.3 BLEU for the base system to 12.6 with source reversal, 14.0 with dropout, 16.8 with global-location attention, 18.1 with input feeding, and 19.0 for local-p/general/input feeding; unknown replacement raises that model to 20.9 and an eight-model ensemble to 23.0.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "English-to-German component ladder, printed p. 1417",
+            "section": "4.2 English-German Results",
+            "pageStart": 1417,
+            "pageEnd": 1417,
+            "table": "1"
+          },
+          "support": "The table supplies perplexity and tokenized BLEU at every promoted step."
+        }
+      ],
+      "limitations": [
+        "The advertised five-BLEU gain is 14.0 to 19.0 across attention, score, local window, and input-feeding changes—not a clean local-attention ablation.",
+        "The marginal displayed step from global-location plus input feeding at 18.1 to local-p/general plus input feeding at 19.0 is 0.9 BLEU and changes both scope and score function.",
+        "The 23.0 endpoint is a heterogeneous eight-model ensemble with unknown replacement."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-wmt15-ensemble-result",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention"
+      ],
+      "statement": "On newstest2015, Table 2 reports 25.9 NIST BLEU for a heterogeneous eight-model English→German ensemble with unknown-word replacement, compared with 24.9 for the listed Montreal NMT plus 5-gram system.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "WMT’15 NIST BLEU comparison, printed p. 1418",
+            "section": "4.2 English-German Results",
+            "pageStart": 1418,
+            "pageEnd": 1418,
+            "table": "2"
+          },
+          "support": "The table and adjacent prose identify the metric, ensemble, unknown replacement, score, and comparator."
+        }
+      ],
+      "limitations": [
+        "The 25.9 score is neither a single model nor a homogeneous architecture ablation.",
+        "It uses NIST BLEU and cannot be directly compared with the tokenized BLEU sequence in Table 1."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-german-english-results",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "multiplicative-cross-attention",
+        "attentional-input-feeding"
+      ],
+      "statement": "For German→English, Table 3 reports 16.9 BLEU for the reversed baseline, 19.1 with global-location attention, 20.1 with input feeding, 22.8 for global-dot with dropout and input feeding, and 24.9 after unknown replacement—below the cited 29.2 phrase-based and 27.6 MILA systems.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "German-to-English results and non-SOTA boundary, printed p. 1418",
+            "section": "4.3 German-English Results",
+            "pageStart": 1418,
+            "pageEnd": 1418,
+            "table": "3"
+          },
+          "support": "The table gives each system score and both stronger comparators; the prose says the result is not state of the art."
+        }
+      ],
+      "limitations": [
+        "The 24.9 endpoint includes unknown-word replacement and should not be presented as the neural architecture alone.",
+        "The paper explicitly rejects a state-of-the-art claim in this direction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-attention-architecture-results",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding"
+      ],
+      "statement": "Table 4’s selected English→German sweep finds global-dot at 18.6 BLEU before and 20.5 after unknown replacement, local-m/general at 18.6/20.4, and local-p/general at 19.0/20.9; global/location is 18.1/19.3, two local-m/dot runs exceed perplexity 7 and receive no BLEU, and concat rows report perplexity only.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Global/local score sweep, printed p. 1419",
+            "section": "5.3 Choices of Attentional Architectures",
+            "pageStart": 1419,
+            "pageEnd": 1419,
+            "table": "4"
+          },
+          "support": "The table reports the tested location, dot, general, and concat combinations and identifies missing BLEU rows."
+        }
+      ],
+      "limitations": [
+        "Limited resources prevented a complete factorial comparison, so untested cells and failed local-m/dot runs block broad score-function rankings.",
+        "Unknown replacement changes the reported endpoint and is not an attention component."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-long-sentence-boundary",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "local-windowed-cross-attention"
+      ],
+      "statement": "Figure 6 is presented as evidence that attention models avoid the baseline’s degradation on longer sentences and that the best local model leads each displayed length bucket, but the paper supplies no bucket counts, exact plotted values, uncertainty intervals, or component-matched causal control.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Length-bucket plot and interpretation, printed pp. 1418–1419",
+            "section": "4.2 English-German Results; 5 Analysis",
+            "pageStart": 1418,
+            "pageEnd": 1419,
+            "figure": "6"
+          },
+          "support": "The plot and prose support the qualitative trend while exposing the absent numerical and uncertainty detail."
+        }
+      ],
+      "limitations": [
+        "The figure supports a descriptive trend in this filtered test set, not a universal robustness claim for long sequences.",
+        "The best model changes attention scope, score function, input feeding, and decoding cleanup relative to the base."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-alignment-evaluation",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "local-windowed-cross-attention"
+      ],
+      "statement": "On 508 RWTH Europarl sentence pairs under forced reference decoding and one selected source link per target, Table 6 reports alignment error rates 0.39 for global-location, 0.34 for local-m/general, 0.36 for local-p/general, and 0.34 for the ensemble, versus 0.32 for Berkeley alignment trained with an extra one million WMT pairs and allowing one-to-many links.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Alignment extraction protocol and AER table, printed pp. 1419–1420",
+            "section": "5.4 Alignment Quality",
+            "pageStart": 1419,
+            "pageEnd": 1420,
+            "table": "6"
+          },
+          "support": "The section defines forced decoding and link extraction, gives all scores, and states the Berkeley data and link-format differences."
+        }
+      ],
+      "limitations": [
+        "The Berkeley comparison is not controlled for training data or one-to-many link extraction.",
+        "The authors note poor correlation between alignment and translation scores, so lower AER is not interchangeable with better BLEU or explanation quality."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-version-boundary",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding"
+      ],
+      "statement": "The ten-page EMNLP proceedings article retains an incomplete concat display and omits dropout p = 0.2 and D = 10; the separate eleven-page arXiv version 5 corrects concat to v_a^T tanh(W_a[h_t;h̄_s]), qualifies local-p as differentiable almost everywhere, adds those hyperparameters, and appends Figure 7.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Canonical equation, local, training, and ten-page scope, printed pp. 1412–1421",
+            "section": "Complete proceedings article",
+            "pageStart": 1412,
+            "pageEnd": 1421
+          },
+          "support": "The official article establishes its exact display, omitted details, page extent, and lack of the visual appendix."
+        },
+        {
+          "sourceId": "luong-2015-arxiv-v5-full-text",
+          "locator": {
+            "label": "ArXiv-version-5 corrections and appendix, article pp. 3–11",
+            "section": "3 Attention-based Models; 4 Experiments; Appendix A",
+            "pageStart": 3,
+            "pageEnd": 11
+          },
+          "support": "Version 5 contains the corrected score, qualified local mechanism, added hyperparameters, and Figure 7."
+        }
+      ],
+      "limitations": [
+        "Later arXiv corrections cannot be silently projected backward onto the official proceedings version.",
+        "Equation numbers diverge after the corrected score; atlas locators therefore specify both version and page."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
+      "id": "luong-2015-evidence-boundary",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "ideaIds": [
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding"
+      ],
+      "statement": "The experiments establish competitive recurrent attention systems on one WMT language pair in both directions, but they do not provide a full factorial ablation, matched parameter controls, repeated-run variance, statistical significance, immutable checkpoints, or evidence for recurrence-free, self-attentive, or universally interpretable models.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Experimental setup, results, and analysis scope, printed pp. 1416–1420",
+            "section": "4 Experiments; 5 Analysis",
+            "pageStart": 1416,
+            "pageEnd": 1420,
+            "table": "1–6"
+          },
+          "support": "The full experiment record shows the evaluated language pair, selected comparison cells, ensemble and decoding additions, and unreported controls."
+        }
+      ],
+      "limitations": [
+        "This boundary does not negate the table values; it limits causal, generalization, and interpretability claims.",
+        "Selected translation examples and heatmaps are diagnostic illustrations rather than aggregate evidence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-22"
+    },
+    {
       "id": "vaswani-2017-predecessor-and-scope-boundary",
       "workId": "vaswani-2017-attention-is-all-you-need",
       "ideaIds": [
         "self-attention-sequence-mixing",
         "attention-path-length-and-parallelism"
       ],
-      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its own background names convolutional transducers, earlier intra-attention applications, and end-to-end memory networks, so the atlas treats it as an architectural convergence point rather than an origin claim for attention, self-attention, parallel transduction, or autoregressive generation.",
+      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures; its background cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence. The scaled-dot-product paragraph does not cite Luong, and the memory-network passage contrasts that recurrent mechanism with the Transformer’s entirely self-attentional design. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
       "directness": "editorial-inference",
       "confidence": "high",
       "evidence": [
         {
           "sourceId": "vaswani-2017-neurips-full-text",
           "locator": {
-            "label": "Contribution framing and directly cited antecedents, article pp. 1–2",
+            "label": "Contribution framing and cited recurrent-attention antecedents, article pp. 1–2",
             "section": "1 Introduction; 2 Background",
             "pageStart": 1,
             "pageEnd": 2
           },
-          "support": "The introduction and background state the scoped architecture claim and identify recurrent, convolutional, intra-attention, and memory-network antecedents."
+          "support": "The introduction cites Luong et al. as reference 21 within grouped recurrent-model and encoder–decoder progress; the background cites End-To-End Memory Networks as reference 28, calls them recurrent attention, and then distinguishes the Transformer as using self-attention throughout."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Scaled dot-product comparison and citation boundary, article p. 4",
+            "section": "3.2.1 Scaled Dot-Product Attention",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The paragraph compares dot-product and additive attention, cites Bahdanau et al. for additive attention, and does not cite Luong et al.; the similarity to Luong’s unscaled dot score is therefore a technical comparison, not documented adoption."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 memory-network reference boundary, article pp. 1–15",
+            "section": "Complete manuscript and references",
+            "pageStart": 1,
+            "pageEnd": 15
+          },
+          "support": "A full-text and reference-list audit finds no Sukhbaatar et al. citation in arXiv version 1."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 memory-network reference boundary, article pp. 1–16",
+            "section": "Complete manuscript and references",
+            "pageStart": 1,
+            "pageEnd": 16
+          },
+          "support": "A full-text and reference-list audit finds no Sukhbaatar et al. citation in arXiv version 2."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 memory-network reference boundary, article pp. 1–16",
+            "section": "Complete manuscript and references",
+            "pageStart": 1,
+            "pageEnd": 16
+          },
+          "support": "A full-text and reference-list audit finds no Sukhbaatar et al. citation in arXiv version 3."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v4-full-text",
+          "locator": {
+            "label": "Pre-revision memory-network reference boundary, article pp. 1–15",
+            "section": "Complete manuscript and references",
+            "pageStart": 1,
+            "pageEnd": 15
+          },
+          "support": "A full-text and reference-list audit finds no Sukhbaatar et al. citation in arXiv version 4, the last revision before that reference appears."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v5-full-text",
+          "locator": {
+            "label": "Memory-network reference introduced in arXiv version 5, article p. 2 and references",
+            "section": "2 Background; References",
+            "pageStart": 2,
+            "pageEnd": 15
+          },
+          "support": "ArXiv version 5 adds the End-To-End Memory Networks background sentence and reference."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v6-full-text",
+          "locator": {
+            "label": "Memory-network reference retained in arXiv version 6, article p. 2 and references",
+            "section": "2 Background; References",
+            "pageStart": 2,
+            "pageEnd": 15
+          },
+          "support": "ArXiv version 6 retains the End-To-End Memory Networks background sentence and reference added in version 5."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v7-full-text",
+          "locator": {
+            "label": "Memory-network reference retained in arXiv version 7, article p. 2 and references",
+            "section": "2 Background; References",
+            "pageStart": 2,
+            "pageEnd": 15
+          },
+          "support": "ArXiv version 7 retains the End-To-End Memory Networks background sentence and reference added in version 5."
         }
       ],
       "limitations": [
-        "This claim preserves the paper's scope and qualifier without adopting a priority conclusion; direct references and mechanism continuity do not by themselves establish conception order or sole causation."
+        "This claim preserves the paper's scope and qualifier without adopting a priority conclusion; direct references and mechanism continuity do not by themselves establish conception order or sole causation.",
+        "The Luong citation is contextual rather than attached to the scaled-dot-product description, and the End-To-End Memory Networks citation is contextual and contrastive rather than evidence that it introduced Transformer self-attention, positional encoding, query/key/value projections, residual paths, or multi-head attention.",
+        "The End-To-End Memory Networks citation is absent from Transformer arXiv versions 1–4 and first appears in version 5, so it cannot be projected backward into the earlier manuscripts."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-21"
+      "checkedDate": "2026-08-22"
     },
     {
       "id": "vaswani-2017-encoder-decoder-architecture",
@@ -23704,6 +26335,130 @@
           "resolutionCondition": "Dated primary records from the research or submission process would be needed to make a stronger chronological statement."
         }
       ]
+    },
+    {
+      "id": "bahdanau-2014-to-sukhbaatar-2015",
+      "from": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sukhbaatar-2015-end-to-end-memory-networks"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sukhbaatar et al. explicitly describe their model as RNNsearch with multiple computational hops per output symbol and compare its soft memory read with Bahdanau attention. The target moves the differentiable weighted retrieval into explicit input/output memory vectors, which are key/value-like without using the later Transformer formulation, and repeats it before one answer; the edge does not transfer the translation encoder, gated decoder, positional scheme, or any Transformer mechanism.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "sukhbaatar-2015-soft-memory-read",
+        "sukhbaatar-2015-multi-hop-update",
+        "sukhbaatar-2015-bahdanau-extension"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sukhbaatar-2015-neurips-full-text",
+          "locator": {
+            "label": "RNNsearch extension and attention comparison, article pp. 1, 3–4",
+            "section": "1 Introduction; 3 Related Work",
+            "pageStart": 1,
+            "pageEnd": 4
+          },
+          "support": "The target names the earlier model, calls MemN2N a multiple-hop extension per output, and states the mechanism-level attention analogy and differences."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship supports a documented soft-attention and multi-hop extension, not a claim that MemN2N is self-attention or the origin of query/key/value notation."
+        }
+      ]
+    },
+    {
+      "id": "bahdanau-2014-to-luong-2015",
+      "from": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "luong-pham-manning-2015-effective-attention-nmt"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Luong et al. explicitly compare their global mechanism with Bahdanau soft alignment, simplify the score path into several tested forms, and add local windows and input feeding within a recurrent encoder–decoder. The edge records that documented generalization while preserving Xu et al. as a separate inspiration for the local branch and without extending the evidence to later Transformer components.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "luong-2015-global-attention",
+        "luong-2015-attention-score-family",
+        "luong-2015-local-attention",
+        "luong-2015-bahdanau-extension"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Bahdanau comparison across global and local attention, printed pp. 1414–1416",
+            "section": "3 Attention-based Models; 3.1 Global Attention; 3.2 Local Attention",
+            "pageStart": 1414,
+            "pageEnd": 1416
+          },
+          "support": "The target cites and describes Bahdanau’s mechanism, then states how its global and local families differ."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This relationship carries documented recurrent cross-attention continuity; it does not establish direct adoption of Luong dot scoring by the Transformer."
+        }
+      ]
+    },
+    {
+      "id": "sutskever-2014-to-luong-2015",
+      "from": {
+        "kind": "work",
+        "id": "sutskever-vinyals-le-2014-sequence-to-sequence"
+      },
+      "to": {
+        "kind": "work",
+        "id": "luong-pham-manning-2015-effective-attention-nmt"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Luong et al. cite and retain Sutskever et al.’s stacked LSTM encoder–decoder recipe and source-sequence reversal as the experimental substrate on which their attention comparisons are built. The edge covers that architecture and intervention only; it does not attribute attention, local windows, or input feeding to Sutskever et al.",
+      "claimIds": [
+        "sutskever-2014-deep-two-lstm-architecture",
+        "sutskever-2014-reversal-intervention",
+        "luong-2015-conditional-nmt-architecture",
+        "luong-2015-sutskever-architecture-and-reversal",
+        "luong-2015-english-german-results"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "luong-2015-acl-full-text",
+          "locator": {
+            "label": "Stacked LSTM baseline and retained source reversal, printed pp. 1413, 1416–1417",
+            "section": "2 Neural Machine Translation; 4 Experiments; 4.1 Training Details",
+            "pageStart": 1413,
+            "pageEnd": 1417
+          },
+          "support": "The target cites the prior architecture in its model definition, separates an unreversed base row from source reversal, and retains reversal in the attention comparison systems."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The experiment retains reversal but does not repeat every reversal ablation across attention variants."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -25316,6 +28071,135 @@
         "Ablation and version-provenance auditing"
       ],
       "successCriterion": "The learner can derive equation 1 with EOS, reproduce all eight Table 1 and seven Table 2 rows, distinguish the prose reversal comparison from the rounded table values, explain beam and ensemble conditions, preserve 380M proceedings versus 384M arXiv-v3 wording, and treat the Cho relationship as documented concurrency rather than causation."
+    },
+    {
+      "id": "beginner-sukhbaatar-2015-soft-memory-hops",
+      "mode": "beginner",
+      "objective": "Use a small story memory to see how graded relevance weights let answer error teach retrieval without supporting-fact labels, then follow how one retrieved fact updates the query for a second hop.",
+      "workIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "ideaIds": [
+        "differentiable-external-memory-read",
+        "multi-hop-memory-retrieval",
+        "memory-position-and-time-encoding"
+      ],
+      "claimIds": [
+        "sukhbaatar-2015-soft-memory-read",
+        "sukhbaatar-2015-end-to-end-objective",
+        "sukhbaatar-2015-multi-hop-update",
+        "sukhbaatar-2015-memory-network-supervision-boundary",
+        "sukhbaatar-2015-position-and-temporal-encoding",
+        "sukhbaatar-2015-evidence-and-scaling-boundary"
+      ],
+      "prerequisites": [
+        "Weighted averages",
+        "A question and a list of candidate facts",
+        "Training error as feedback"
+      ],
+      "successCriterion": "The learner can explain soft retrieval, trace two sequential hops, distinguish external memory from a compressed recurrent state, and name the finite-memory and synthetic-task limits."
+    },
+    {
+      "id": "expert-sukhbaatar-2015-mechanism-and-evidence",
+      "mode": "expert",
+      "objective": "Derive the memory-read and hop equations, compare adjacent and layer-wise tying, audit the QA and language-model rows under their run-selection and version boundaries, and separate structural query/key/value analogy from Transformer self-attention lineage.",
+      "workIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks"
+      ],
+      "ideaIds": [
+        "differentiable-external-memory-read",
+        "multi-hop-memory-retrieval",
+        "memory-position-and-time-encoding",
+        "memory-read-language-model"
+      ],
+      "claimIds": [
+        "sukhbaatar-2015-soft-memory-read",
+        "sukhbaatar-2015-end-to-end-objective",
+        "sukhbaatar-2015-multi-hop-update",
+        "sukhbaatar-2015-weight-tying",
+        "sukhbaatar-2015-qa-results",
+        "sukhbaatar-2015-nonlinear-supplement-results",
+        "sukhbaatar-2015-language-model-adaptation",
+        "sukhbaatar-2015-language-model-results",
+        "sukhbaatar-2015-hop-trend-boundary",
+        "sukhbaatar-2015-version-identity-and-scope-boundary",
+        "sukhbaatar-2015-evidence-and-scaling-boundary"
+      ],
+      "prerequisites": [
+        "Softmax and cross-entropy",
+        "Matrix embeddings and tensor shapes",
+        "Recurrent neural networks",
+        "Perplexity and controlled comparisons"
+      ],
+      "successCriterion": "The learner can reconstruct equations 1–4, state the two tying regimes, preserve the 12.4/12.6 and 18.6 anomalies, identify nonmonotonic hop rows, and explain why recurrent external-memory attention is not Transformer self-attention."
+    },
+    {
+      "id": "beginner-luong-2015-global-local-and-history",
+      "mode": "beginner",
+      "objective": "Compare a decoder that reads no source positions, every source position, or one predicted neighborhood, then see how feeding the last attentional summary forward changes the next alignment decision.",
+      "workIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding"
+      ],
+      "claimIds": [
+        "luong-2015-conditional-nmt-architecture",
+        "luong-2015-global-attention",
+        "luong-2015-local-attention",
+        "luong-2015-input-feeding",
+        "luong-2015-english-german-results",
+        "luong-2015-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Weighted averages",
+        "Translation as next-word prediction",
+        "A sequence of encoder and decoder states"
+      ],
+      "successCriterion": "The learner can distinguish global from local attention, describe input feeding as alignment history, and explain why a five-BLEU ladder and attention heatmap do not isolate one universally explanatory component."
+    },
+    {
+      "id": "expert-luong-2015-scores-windows-and-evidence",
+      "mode": "expert",
+      "objective": "Derive the global and local alignment equations, compare location, dot, general, and corrected concat scores, reconstruct the component and architecture tables with metric controls, and audit the alignment and version-specific evidence.",
+      "workIds": [
+        "luong-pham-manning-2015-effective-attention-nmt"
+      ],
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "local-windowed-cross-attention",
+        "attentional-input-feeding"
+      ],
+      "claimIds": [
+        "luong-2015-global-attention",
+        "luong-2015-attention-score-family",
+        "luong-2015-local-attention",
+        "luong-2015-input-feeding",
+        "luong-2015-data-and-evaluation",
+        "luong-2015-training-regime",
+        "luong-2015-english-german-results",
+        "luong-2015-wmt15-ensemble-result",
+        "luong-2015-german-english-results",
+        "luong-2015-attention-architecture-results",
+        "luong-2015-long-sentence-boundary",
+        "luong-2015-alignment-evaluation",
+        "luong-2015-version-boundary",
+        "luong-2015-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Recurrent encoder–decoder models",
+        "Softmax alignment and matrix shapes",
+        "BLEU, perplexity, and alignment error rate",
+        "Ablation and version-provenance analysis"
+      ],
+      "successCriterion": "The learner can derive the score and window forms, distinguish 14.0→19.0 from the 0.9 marginal step, identify 25.9 as an ensemble NIST score, preserve the v5-only corrections, and compare unscaled dot scoring with later scaled attention without claiming documented adoption."
     },
     {
       "id": "beginner-vaswani-2017-follow-attention-routes",
