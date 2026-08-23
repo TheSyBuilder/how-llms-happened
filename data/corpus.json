@@ -7499,6 +7499,207 @@
       ]
     },
     {
+      "id": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "title": "Neural Machine Translation in Linear Time",
+      "authors": [
+        "Nal Kalchbrenner",
+        "Lasse Espeholt",
+        "Karen Simonyan",
+        "Aäron van den Oord",
+        "Alex Graves",
+        "Koray Kavukcuoglu"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "N. Kalchbrenner et al., “Neural Machine Translation in Linear Time,” arXiv:1610.10099v2 (15 March 2017; first posted 31 October 2016).",
+      "chronology": {
+        "orderingEventId": "kalchbrenner-2016-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "kalchbrenner-2016-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2016-10-31",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "kalchbrenner-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 31 October 2016 at 19:56:39 UTC"
+              }
+            ],
+            "versionId": "kalchbrenner-2016-arxiv-v1-version",
+            "sourceIds": [
+              "kalchbrenner-2016-arxiv-record",
+              "kalchbrenner-2016-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "kalchbrenner-2016-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2017-03-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "kalchbrenner-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 15 March 2017 at 18:09:51 UTC"
+              }
+            ],
+            "versionId": "kalchbrenner-2016-arxiv-v2-version",
+            "sourceIds": [
+              "kalchbrenner-2016-arxiv-record",
+              "kalchbrenner-2016-arxiv-v2-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "kalchbrenner-2016-arxiv-v1-version",
+          "title": "Neural Machine Translation in Linear Time",
+          "authors": [
+            "Nal Kalchbrenner",
+            "Lasse Espeholt",
+            "Karen Simonyan",
+            "Aäron van den Oord",
+            "Alex Graves",
+            "Koray Kavukcuoglu"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "N. Kalchbrenner, L. Espeholt, K. Simonyan, A. van den Oord, A. Graves, and K. Kavukcuoglu, “Neural Machine Translation in Linear Time,” arXiv:1610.10099v1, 31 October 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1610.10099v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "kalchbrenner-2016-arxiv-record",
+            "kalchbrenner-2016-arxiv-v1-full-text",
+            "kalchbrenner-2016-google-research-record"
+          ],
+          "notes": "The first 11-page posting uses source-width dynamic unfolding whose current aligned encoder column is zero beyond the source, while earlier source and target context remains available. It describes Sub-Batch Normalization, character n-gram input bags for translation, and shallower wider experiment configurations. Its Hutter table reports 1.33 under a bits-per-byte caption while nearby prose says bits per character, and it reports 18.9/21.7 BLEU rather than the revised manuscript’s values."
+        },
+        {
+          "id": "kalchbrenner-2016-arxiv-v2-version",
+          "title": "Neural Machine Translation in Linear Time",
+          "authors": [
+            "Nal Kalchbrenner",
+            "Lasse Espeholt",
+            "Karen Simonyan",
+            "Aäron van den Oord",
+            "Alex Graves",
+            "Koray Kavukcuoglu"
+          ],
+          "kind": "preprint",
+          "label": "Canonical arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "N. Kalchbrenner, L. Espeholt, K. Simonyan, A. van den Oord, A. Graves, and K. Kavukcuoglu, “Neural Machine Translation in Linear Time,” arXiv:1610.10099v2, 15 March 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1610.10099v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1610.10099",
+                "label": "arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "kalchbrenner-2016-arxiv-record",
+            "kalchbrenner-2016-arxiv-v2-full-text"
+          ],
+          "notes": "The canonical nine-page revision estimates an encoder width at 1.2 times the English source length, uses layer normalization, doubles both translation stacks to 30 blocks, and reports 1.31 in a Hutter table labeled bits per byte plus 23.75/26.26 BLEU in its translation tables. Nearby prose calls the Hutter metric bits per character, and the introduction instead prints 22.85/25.53 BLEU with incompatible 0.380/0.389 bits-per-character values, so none of these differences is silently repaired."
+        }
+      ],
+      "canonicalVersionId": "kalchbrenner-2016-arxiv-v2-version",
+      "preferredSourceIds": [
+        "kalchbrenner-2016-arxiv-record",
+        "kalchbrenner-2016-arxiv-v2-full-text"
+      ],
+      "sourceIds": [
+        "kalchbrenner-2016-arxiv-record",
+        "kalchbrenner-2016-arxiv-v1-full-text",
+        "kalchbrenner-2016-arxiv-v2-full-text",
+        "kalchbrenner-2016-google-research-record",
+        "vaswani-2017-neurips-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "ByteNet replaces sequence-aligned recurrent translation computation and explicit attentional pooling with stacked masked and unmasked dilated convolutions, a resolution-preserving source representation, and variable-length dynamic unfolding. The Transformer directly cites it as a parallel convolutional predecessor with logarithmic distant-position paths, making it essential convergence context without establishing adoption of ByteNet’s equations or training recipe."
+      },
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "full-vocabulary-softmax-normalization",
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding",
+        "attention-path-length-and-parallelism"
+      ],
+      "significance": {
+        "beginner": "Instead of squeezing a source into one vector or forming an attention-weighted source pool at every target step, ByteNet keeps a column-wise source representation and stacks a convolutional decoder above it. Masking hides future target characters, dilation lets information cross long spans in fewer layers, and unfolding continues until an end symbol.",
+        "expert": "The canonical revision factorizes p(t|s) autoregressively; stacks a masked, dilated CNN decoder over an unmasked dilated CNN encoder; estimates an extended source representation at 1.2|s| for English–German; uses residual ReLU or multiplicative blocks with layer normalization; and reports analytic c|S|+c|T| work with c≈log d and short convolutional paths."
+      },
+      "limitations": [
+        "The work is represented as an arXiv preprint family. The arXiv and Google Research records identify no peer-reviewed conference or journal publication for this title.",
+        "Position-wise decoder computation can run in parallel during training, but ordinary target generation remains autoregressive and sequential across output positions.",
+        "For a fixed receptive field, the stated convolutional work is linear in sequence length. If the dependency field must scale with sequence length, c≈log n makes the corresponding work O(n log n). Table 1 is an architectural analysis, not matched wall-clock, throughput, memory, or accelerator evidence.",
+        "Version 2’s dynamic-unfolding experiment fixes the English–German representation bound to 1.2|s|. It reports no sensitivity study for that bound or evidence that the same ratio transfers to other language directions.",
+        "The translation comparisons mix phrase, word, word-piece, BPE, and character systems with different data, architectures, decoding methods, and ensemble conditions. They are not a controlled isolation of convolution, dilation, or unfolding.",
+        "Canonical version 2 is internally inconsistent: the introduction reports 22.85/25.53 BLEU with 0.380/0.389 bits per character, while Tables 2 and 4 report 23.75/26.26 with 0.521/0.532. The source supplies no reconciliation.",
+        "The Hutter table caption says bits per byte while the result prose says bits per character; the atlas retains the source’s terminology rather than asserting that the units were independently reconciled.",
+        "Version 2 still reports a 315-character language-model receptive field after changing the number of repeated dilation cycles. That value is retained as a reported result, not presented as independently re-derived from the schedule.",
+        "The first and second revisions describe materially different architecture sizes, normalization, input features, optimization, decoding, and results. Their changes do not form controlled ablations and values must not migrate across versions.",
+        "The gradient-magnitude heatmaps are selected sensitivity visualizations, not supervised word alignments, an attention mechanism, a causal attribution method, or a quantitative alignment evaluation.",
+        "The paper reports no random seeds, repeated-run dispersion, confidence intervals, significance tests, immutable code or checkpoint, complete data manifest, exact BLEU implementation, or measured training and decoding speed.",
+        "The Transformer cites ByteNet’s convolutional parallelism, logarithmic distant-position path, and 23.75 BLEU result as comparison context; it does not state that Transformer components derive from ByteNet’s mask, dilation schedule, dynamic unfolding, model dimensions, or experiments.",
+        "ArXiv’s non-exclusive distribution license authorizes arXiv to distribute the submission; it does not grant third parties a general content-reuse or repository-redistribution license. The atlas links the paper and redraws any future explanation."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Both immutable arXiv revisions were compared. The first posting contains the core convolutional sequence model, while the second materially revises unfolding, normalization, architecture, training, decoding, and results."
+        },
+        {
+          "status": "resolved",
+          "note": "The authored PDFs print Aäron van den Oord and Alex Graves. The Google Research page expands Alex to Alexander; the authored version controls the work and version author lists."
+        },
+        {
+          "status": "open",
+          "note": "Version 2 does not explain whether its introductory and tabular BLEU and bits-per-character pairs refer to different checkpoints, scoring procedures, or stale edits.",
+          "resolutionCondition": "Version-bound experiment logs, an author correction, or a released checkpoint and scoring protocol would be needed to reconcile the values."
+        },
+        {
+          "status": "open",
+          "note": "No inspected primary record supplies an official implementation tied to either revision or an immutable experiment artifact.",
+          "resolutionCondition": "Author-linked code, data manifests, checkpoints, and evaluation commands tied to a specific revision would be required for exact reconstruction."
+        }
+      ]
+    },
+    {
       "id": "vaswani-2017-attention-is-all-you-need",
       "title": "Attention Is All You Need",
       "authors": [
@@ -8042,6 +8243,7 @@
         "The NeurIPS landing-page metadata has a stale abstract with 165 million parameters and 27.5/41.1 BLEU, while the linked canonical PDF reports 28.4/41.0; technical claims follow the PDF.",
         "The paper links Tensor2Tensor code but identifies no immutable commit, released checkpoints, random seeds, or fully pinned data and preprocessing artifact for exact reconstruction.",
         "The paper’s Cheng and Parikh citations establish recurrent intra-attention and attention-only textual-entailment context, respectively; they do not establish direct adoption of either predecessor’s equations, architecture, training recipe, or results.",
+        "The paper directly cites ByteNet for parallel convolutional position computation, logarithmic distant-position paths, and the 23.75 BLEU comparison row; those references do not document adoption of ByteNet’s mask, dilation schedule, stacking, dynamic unfolding, training, or results.",
         "NeurIPS says authors retain copyright and grant the venue a non-exclusive publication license. ArXiv versions 6–7 add narrower permission to reproduce tables and figures with attribution for journalistic or scholarly works; the atlas links the sources and does not infer a general open-content license."
       ],
       "uncertainties": [
@@ -8112,7 +8314,7 @@
       "id": "neural-character-probability-modeling",
       "name": "Neural next-character probability modeling",
       "kind": "mechanism",
-      "description": "A neural predictor maps a fixed character context to estimates of the next-character distribution, allowing contexts absent from a literal lookup table to share parameters.",
+      "description": "A neural predictor maps a bounded character context to estimates of the next-character distribution, allowing contexts absent from a literal lookup table to share parameters.",
       "claimIds": [
         "schmidhuber-1993-character-probability-predictor",
         "schmidhuber-1993-heil-collaboration",
@@ -8122,12 +8324,16 @@
         "schmidhuber-heil-1994-network-capacity-rationale",
         "schmidhuber-heil-1994-hidden-unit-human-comparison",
         "schmidhuber-heil-1994-online-recurrent-boundary",
-        "bengio-2003-character-compression-relationship"
+        "bengio-2003-character-compression-relationship",
+        "kalchbrenner-2016-character-language-model-setup",
+        "kalchbrenner-2016-character-language-model-results",
+        "kalchbrenner-2016-canonical-result-inconsistency",
+        "kalchbrenner-2016-version-result-boundary"
       ],
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "This mechanism is character-level and uses squared-error training plus sum normalization; it is not labeled as the word-vector softmax architecture used by Bengio et al."
+          "note": "The early Schmidhuber implementations use squared-error training plus sum normalization, whereas ByteNet uses an autoregressive softmax decoder. This shared character-level idea does not imply an identical objective or architecture."
         }
       ]
     },
@@ -8587,7 +8793,7 @@
       "id": "full-vocabulary-softmax-normalization",
       "name": "Full-vocabulary neural normalization",
       "kind": "mechanism",
-      "description": "One score per vocabulary item is exponentiated and normalized into a next-word distribution, coupling every training example to the full output vocabulary.",
+      "description": "One score per vocabulary item is exponentiated and normalized into a next-symbol distribution, coupling every training example to the full output vocabulary.",
       "claimIds": [
         "xu-rudnicky-2000-direct-softmax-architecture",
         "xu-rudnicky-2000-likelihood-and-early-stopping",
@@ -8605,7 +8811,8 @@
         "sundermeyer-2012-language-model-objective",
         "sundermeyer-2012-projection-and-class-factorization",
         "sundermeyer-2012-output-clustering-results",
-        "vaswani-2017-embedding-and-output-normalization"
+        "vaswani-2017-embedding-and-output-normalization",
+        "kalchbrenner-2016-conditional-translation-objective"
       ],
       "uncertainties": [
         {
@@ -9150,7 +9357,9 @@
         "bahdanau-2014-sutskever-cross-citation-boundary",
         "luong-2015-conditional-nmt-architecture",
         "luong-2015-sutskever-architecture-and-reversal",
-        "luong-2015-training-regime"
+        "luong-2015-training-regime",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-rnn-encoder-decoder-generalization"
       ],
       "uncertainties": [
         {
@@ -9189,7 +9398,16 @@
         "vaswani-2017-data-and-tokenization",
         "vaswani-2017-translation-results",
         "vaswani-2017-arxiv-parsing-results",
-        "vaswani-2017-version-result-boundary"
+        "vaswani-2017-version-result-boundary",
+        "kalchbrenner-2016-conditional-translation-objective",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-dynamic-unfolding",
+        "kalchbrenner-2016-rnn-encoder-decoder-generalization",
+        "kalchbrenner-2016-translation-setup",
+        "kalchbrenner-2016-decoding-regime",
+        "kalchbrenner-2016-translation-results",
+        "kalchbrenner-2016-canonical-result-inconsistency",
+        "kalchbrenner-2016-version-mechanism-boundary"
       ],
       "uncertainties": [
         {
@@ -9612,6 +9830,76 @@
       ]
     },
     {
+      "id": "masked-convolutional-autoregressive-decoding",
+      "name": "Masked convolutional autoregressive decoding",
+      "kind": "mechanism",
+      "description": "A one-dimensional decoder convolution hides future target positions so every output distribution depends only on the permitted prefix, while all training positions can be evaluated together.",
+      "claimIds": [
+        "kalchbrenner-2016-masked-dilated-convolutions",
+        "kalchbrenner-2016-character-language-model-setup",
+        "kalchbrenner-2016-decoding-regime",
+        "kalchbrenner-2016-version-mechanism-boundary",
+        "kalchbrenner-2016-convolutional-antecedent-boundary",
+        "kalchbrenner-2016-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The mask permits position-wise parallel computation during training; autoregressive target generation still advances one output position at a time."
+        }
+      ]
+    },
+    {
+      "id": "dilated-convolutional-sequence-transduction",
+      "name": "Dilated convolutional sequence transduction",
+      "kind": "mechanism",
+      "description": "Repeated one-dimensional convolutions use increasing dilation to widen a fixed-depth receptive field and shorten distant signal paths while preserving convolutional computation across sequence positions.",
+      "claimIds": [
+        "kalchbrenner-2016-masked-dilated-convolutions",
+        "kalchbrenner-2016-residual-normalization",
+        "kalchbrenner-2016-complexity-and-path-analysis",
+        "kalchbrenner-2016-character-language-model-setup",
+        "kalchbrenner-2016-character-language-model-results",
+        "kalchbrenner-2016-translation-setup",
+        "kalchbrenner-2016-translation-results",
+        "kalchbrenner-2016-canonical-result-inconsistency",
+        "kalchbrenner-2016-convolutional-antecedent-boundary",
+        "kalchbrenner-2016-version-mechanism-boundary",
+        "kalchbrenner-2016-version-result-boundary",
+        "kalchbrenner-2016-transformer-citation-boundary",
+        "kalchbrenner-2016-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "ByteNet directly credits earlier masking, dilation, residual, normalization, WaveNet, and Video Pixel Network mechanisms; this idea records their transduction combination without assigning ByteNet sole priority for those components."
+        }
+      ]
+    },
+    {
+      "id": "resolution-preserving-dynamic-unfolding",
+      "name": "Resolution-preserving dynamic unfolding",
+      "kind": "mechanism",
+      "description": "A decoder is stacked position-wise over an encoder representation whose width scales with the source, then unfolds until an end symbol so unequal source and target lengths do not require one fixed source vector.",
+      "claimIds": [
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-dynamic-unfolding",
+        "kalchbrenner-2016-complexity-and-path-analysis",
+        "kalchbrenner-2016-rnn-encoder-decoder-generalization",
+        "kalchbrenner-2016-translation-setup",
+        "kalchbrenner-2016-decoding-regime",
+        "kalchbrenner-2016-gradient-alignment-visualization-boundary",
+        "kalchbrenner-2016-version-mechanism-boundary",
+        "kalchbrenner-2016-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Version 1 aligns the representation width with the source and zero-pads the current aligned encoder column beyond it; version 2 instead estimates an extended representation width. The shared idea does not erase that material implementation change."
+        }
+      ]
+    },
+    {
       "id": "self-attention-sequence-mixing",
       "name": "Self-attention sequence mixing",
       "kind": "mechanism",
@@ -9702,7 +9990,10 @@
         "vaswani-2017-training-regime",
         "vaswani-2017-evidence-reproducibility-boundary",
         "parikh-2016-complexity-and-parallelism",
-        "parikh-2016-evidence-boundary"
+        "parikh-2016-evidence-boundary",
+        "kalchbrenner-2016-complexity-and-path-analysis",
+        "kalchbrenner-2016-transformer-citation-boundary",
+        "kalchbrenner-2016-evidence-reproducibility-boundary"
       ],
       "uncertainties": [
         {
@@ -13797,6 +14088,93 @@
       "accessNote": "The authors’ institutional publication page confirms the full author names, title, abstract, and 2016 publication identity. It does not supply an official implementation or checkpoint."
     },
     {
+      "id": "kalchbrenner-2016-arxiv-record",
+      "relatedWorkIds": [
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
+      ],
+      "title": "arXiv record for Neural Machine Translation in Linear Time",
+      "url": "https://arxiv.org/abs/1610.10099",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kalchbrenner-2016-arxiv-v1-version",
+        "kalchbrenner-2016-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, author list, arXiv identifier and DOI, nine-page latest extent, non-exclusive distribution license, and exact UTC posting times for both revisions. Version-specific text and extents follow the immutable PDFs."
+    },
+    {
+      "id": "kalchbrenner-2016-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
+      ],
+      "title": "Neural Machine Translation in Linear Time, arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1610.10099v1",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kalchbrenner-2016-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete 11-page first revision was rendered and compared with version 2. Its visible pp. 1–11 control locators; it uses source-width unfolding with a zero current encoder column beyond the source, Sub-Batch Normalization, translation-input character n-gram bags, and the earlier model configurations and results."
+    },
+    {
+      "id": "kalchbrenner-2016-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
+      ],
+      "title": "Neural Machine Translation in Linear Time, arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1610.10099v2",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kalchbrenner-2016-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The complete canonical revision has nine unfoliated PDF leaves, so evidence uses structural anchors rather than numeric page locators. It introduces the estimated 1.2|s| encoder width, layer normalization, deeper experiments, improved tables, and unresolved introductory-versus-tabular result conflicts."
+    },
+    {
+      "id": "kalchbrenner-2016-google-research-record",
+      "relatedWorkIds": [
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
+      ],
+      "title": "Google Research publication record for Neural Machine Translation in Linear Time",
+      "url": "https://research.google/pubs/neural-machine-translation-in-linear-time/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "kalchbrenner-2016-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The authors’ institutional page classifies the work as Arxiv (2016), confirms the title and author identity, and retains an abstract matching the first revision’s approach-level translation wording. It supplies no proceedings venue, implementation, or checkpoint."
+    },
+    {
       "id": "vaswani-2017-arxiv-record",
       "relatedWorkIds": [
         "vaswani-2017-attention-is-all-you-need"
@@ -14034,7 +14412,8 @@
     {
       "id": "vaswani-2017-neurips-full-text",
       "relatedWorkIds": [
-        "vaswani-2017-attention-is-all-you-need"
+        "vaswani-2017-attention-is-all-you-need",
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
       ],
       "title": "Official NeurIPS full text of Attention Is All You Need",
       "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf",
@@ -26098,13 +26477,602 @@
       "checkedDate": "2026-08-23"
     },
     {
+      "id": "kalchbrenner-2016-conditional-translation-objective",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "For source string s and target string t = t₀,…,t_N, ByteNet models p(t|s) = ∏_(i=0)^N p(t_i|t_<i,s); its decoder is autoregressive, characters are the reported tokens, a final softmax supplies each conditional distribution, and an end-of-sequence symbol terminates variable-length generation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Conditional translation factorization and character tokens",
+            "section": "2 Neural Translation Model",
+            "equation": "1"
+          },
+          "support": "Equation 1 and the surrounding prose define the character-level conditional factorization and target-prefix dependence."
+        },
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Final decoder softmax",
+            "section": "3.6 Residual Blocks"
+          },
+          "support": "The decoder output stack ends with a softmax over character scores."
+        },
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "EOS-driven variable-length unfolding",
+            "section": "3.2 Dynamic Unfolding",
+            "figure": "2"
+          },
+          "support": "The dynamic-unfolding section states that decoding continues until an EOS symbol and may run beyond the estimated representation width."
+        }
+      ],
+      "limitations": [
+        "The open-vocabulary statement is implemented over a finite observed character vocabulary; it does not imply arbitrary byte coverage, Unicode normalization, or a word-level open vocabulary."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-resolution-preserving-stacking",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "ByteNet places the decoder directly above a position-wise encoder representation whose width scales with the source rather than compressing the source into one fixed vector or pooling over it; within the represented width, each decoder position receives the corresponding encoder column, while the encoder and decoder retain separate unmasked and masked convolutional roles.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Position-wise encoder–decoder connection",
+            "section": "2.1 Desiderata; 3 ByteNet; 3.1 Encoder-Decoder Stacking",
+            "figure": "1"
+          },
+          "support": "The paper defines resolution preservation, contrasts fixed-vector and attentional pooling, and stacks the decoder over the encoder representation."
+        }
+      ],
+      "limitations": [
+        "Resolution preservation describes representation width and connectivity, not proof that every source detail is retained or that attention pooling necessarily loses information."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-dynamic-unfolding",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "Canonical version 2 estimates a representation width |t̂| = a|s| + b, sets a = 1.20 and b = 0 for English-to-German, constructs an encoder representation of width |t̂|, and unfolds the decoder until EOS. Generation may continue beyond that estimate, where the current decoder position receives no aligned encoder column but earlier contextual representations remain available.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Estimated-width dynamic unfolding",
+            "section": "3.2 Dynamic Unfolding",
+            "equation": "2",
+            "figure": "2; 5"
+          },
+          "support": "The revision defines the linear estimated representation width, reports the English–German coefficients, and describes EOS-driven decoding beyond the estimate."
+        }
+      ],
+      "limitations": [
+        "The source gives no component study of dynamic unfolding and no sensitivity analysis for a, b, or the beyond-bound behavior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-masked-dilated-convolutions",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "The encoder uses unmasked one-dimensional convolutions and the decoder uses masked convolutions whose width-k operation excludes future target tokens; both use dilation rates 1, 2, 4, 8, and 16 in repeated cycles, so reach expands rapidly within each cycle and then adds further span after the schedule resets.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Causal mask and repeated dilation",
+            "section": "3 ByteNet; 3.4 Masked One-dimensional Convolutions; 3.5 Dilation",
+            "figure": "1"
+          },
+          "support": "The sections define the distinct encoder/decoder masks, two mask implementations, and the repeated doubling schedule through r = 16."
+        }
+      ],
+      "limitations": [
+        "Exponential receptive-field growth is an architectural reachability statement; it does not show that every dependency in that field is learned, used, or equally easy to optimize."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-residual-normalization",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "Canonical version 2 wraps convolutional layers in residual blocks, using ReLU blocks for translation and multiplicative-unit blocks for character prediction, and applies layer normalization before each activation to avoid computing activation statistics over future target tokens.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Residual block variants and layer normalization",
+            "section": "3.6 Residual Blocks",
+            "figure": "3"
+          },
+          "support": "The section diagrams both residual variants, assigns them to the two tasks, and explains the normalization placement."
+        }
+      ],
+      "limitations": [
+        "The paper does not report a matched residual-block, multiplicative-unit, or normalization ablation for either task."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-complexity-and-path-analysis",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "In Table 1’s notation, ByteNet has time c|S| + c|T|, a resolution-preserving source, and source/target path lengths c and c, where the introduction says c≈log d for desired dependency field d; encoder computation and decoder training are parallel across positions, but autoregressive decoder generation is not.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Analytic work, resolution, and path comparison",
+            "section": "1 Introduction; 4.2 Comparison of Properties",
+            "table": "1"
+          },
+          "support": "The introduction qualifies c and training parallelism, while Table 1 prints the model-family formulas and path columns."
+        }
+      ],
+      "limitations": [
+        "The table compares abstract architectures rather than matched implementations and supplies no measured latency, throughput, memory, or hardware utilization.",
+        "The fixed c notation assumes a chosen dependency field; covering longer fields can require greater depth."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-rnn-encoder-decoder-generalization",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "fixed-vector-neural-sequence-transduction",
+        "source-conditioned-autoregressive-decoding",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "The paper constructs recurrent ByteNet variants and describes the fixed-vector RNN encoder–decoder cited to Sutskever et al. and Cho et al. as the case where every source-to-target connection except s₀→t₀ is severed; it therefore calls the recurrent family, and modulo weight sharing the convolutional ByteNet, a generalization of that framework.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Explicit RNN encoder–decoder generalization",
+            "section": "4.1 Recurrent ByteNets",
+            "figure": "4"
+          },
+          "support": "The target names both earlier encoder–decoder papers, diagrams two recurrent variants, and states the severed-connection comparison."
+        }
+      ],
+      "limitations": [
+        "Generalization is an architectural containment argument; it does not mean ByteNet inherits the earlier LSTM or GRU equations, source reversal, phrase-table use, training settings, or results."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-character-language-model-setup",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "The canonical character-prediction run uses the 100-million-byte Hutter Prize Wikipedia split at 90M/5M/5M and a 205-character vocabulary; its decoder has 30 residual blocks in six 1/2/4/8/16 dilation cycles, kernel 3, receptive field 315, width 512, multiplicative blocks, Adam at 0.0003 with 0.0001 weight decay, 0.1 final-ReLU dropout, and 500-character samples whose first 100 characters are minimum context for predicting the last 400.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Canonical Hutter setup",
+            "section": "5 Character Prediction"
+          },
+          "support": "The section reports the split, vocabulary, architecture, optimizer, regularization, sampling window, and prediction span."
+        }
+      ],
+      "limitations": [
+        "The paper reports one configuration without seeds, repeated runs, a development-selection protocol, or a compute budget.",
+        "The reported 315-character receptive field is internally difficult to reconcile with the changed version-2 dilation schedule; the atlas preserves it as the paper’s value rather than silently substituting a recalculation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-character-language-model-results",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "Hutter Table 3 reports 1.67 Stacked LSTM, 1.58 GF-LSTM, 1.47 Grid-LSTM, 1.46 layer-normalized LSTM, 1.44 MI-LSTM, 1.40 Recurrent Memory Array Structures, 1.40 HM-LSTM, 1.38 Layer Norm HyperLSTM, 1.34 Large Layer Norm HyperLSTM, 1.32 Recurrent Highway Networks, and 1.31 ByteNet Decoder; the table caption labels these values bits per byte while the nearby prose calls the ByteNet value bits per character.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Complete character-prediction comparison",
+            "section": "5 Character Prediction",
+            "table": "3"
+          },
+          "support": "Table 3 supplies all comparator labels and test values and the prose repeats ByteNet’s 1.31 result."
+        }
+      ],
+      "limitations": [
+        "The table combines results from separately published systems rather than matched reruns, and no uncertainty or statistical comparison is given.",
+        "Its caption says bits per byte while the prose says bits per character."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-translation-setup",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "The canonical translation study uses raw character sequences without explicit word or morpheme segmentation, NewsTest 2013 for validation, NewsTest 2014 and 2015 for testing, 323 German and 296 English characters, 30 residual blocks in each encoder and decoder, width 800, kernel 3 on both sides, ReLU blocks, Adam at 0.0003, padding to a multiple of 50, and 20% additional source padding for dynamic unfolding.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Canonical character-to-character translation setup",
+            "section": "6 Character-Level Machine Translation",
+            "equation": "2"
+          },
+          "support": "The section reports the evaluation splits, representation, vocabularies, stacks, widths, kernels, optimizer, and padding."
+        }
+      ],
+      "limitations": [
+        "The paper does not identify the complete training-corpus composition, filtering, text normalization, batching capacity, number of updates, hardware, wall-clock time, or checkpoint-selection rule."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-decoding-regime",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "masked-convolutional-autoregressive-decoding",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "During training, canonical version 2 maps padded source–target length pairs to buckets. At inference, beam-12 search ranks candidates by total likelihood, accepts only EOS-terminated candidates, and applies neither length normalization nor a source-coverage score.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Beam decoding without length or coverage normalization",
+            "section": "6 Character-Level Machine Translation"
+          },
+          "support": "The translation section states the bucket, beam, scoring, EOS, length-normalization, and coverage choices."
+        }
+      ],
+      "limitations": [
+        "The source reports no beam-size sensitivity, exact stopping cap, decoding speed, or comparison with its version-1 target-interval search."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-translation-results",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "Canonical Table 2 reports WMT NewsTest 2014/2015 BLEU of 20.7/24.0 phrase MT, 11.3/— RNN Enc-Dec, 14.0/— reversed RNN Enc-Dec, 20.6/— Zhou attention, 20.9/— Luong attention, 24.61/— word-piece GNMT, 19.98/21.72 BPE-to-BPE attention, 21.33/23.45 BPE-to-character attention, 22.62/— character GNMT, and 23.75/26.26 character ByteNet; Table 4 pairs ByteNet with 0.521/0.532 bits per character.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Complete WMT comparison and ByteNet likelihood row",
+            "section": "6 Character-Level Machine Translation",
+            "table": "2; 4"
+          },
+          "support": "Tables 2 and 4 print every comparator, input/output granularity, BLEU value, and the ByteNet bits-per-character pair."
+        }
+      ],
+      "limitations": [
+        "The comparison changes tokenization, data, architecture, training, decoding, and sometimes ensemble conditions; it is not an architectural ablation.",
+        "The paper reports no repeated-run uncertainty, confidence interval, or significance test for either ByteNet row."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-canonical-result-inconsistency",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "source-conditioned-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "Within arXiv version 2, the introduction prints 22.85/25.53 WMT 2014/2015 BLEU with 0.380/0.389 bits per character, whereas Tables 2 and 4 print 23.75/26.26 with 0.521/0.532; the abstract and conclusion claim state of the art without resolving which values or runs the two pairs describe.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Conflicting canonical result pairs",
+            "section": "1 Introduction; 6 Character-Level Machine Translation; 7 Conclusion",
+            "table": "2; 4"
+          },
+          "support": "The immutable revision contains both pairs and no explanatory qualifier connecting them."
+        }
+      ],
+      "limitations": [
+        "The contradiction does not justify selecting one pair as corrected; both remain source-bound, while direct citations identify which pair later papers reproduce."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The source does not say whether the introductory and tabular values come from different checkpoints, scoring conventions, or editing states.",
+          "resolutionCondition": "An author correction, versioned experiment logs, or an official checkpoint-to-score mapping would be required."
+        }
+      ],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-gradient-alignment-visualization-boundary",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "Figure 6 visualizes the magnitude of generated-output gradients with respect to source and prior-target character inputs, sums them into words, and normalizes each output column; the authors say the selected structure mirrors expected alignment, but report no gold links, alignment metric, sample-selection protocol, human study, or causal intervention.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Gradient-sensitivity heatmap and interpretation boundary",
+            "section": "6 Character-Level Machine Translation",
+            "figure": "6"
+          },
+          "support": "The section defines the gradient aggregation and normalization and gives the authors’ bounded qualitative interpretation."
+        }
+      ],
+      "limitations": [
+        "Gradient magnitude is not the model’s pooling mechanism and is not guaranteed to be a faithful explanation of a prediction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-convolutional-antecedent-boundary",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "ByteNet explicitly attributes masked decoder convolutions to PixelRNN, dilated receptive fields to earlier vision work, its repeated dilation schedule to WaveNet and Video Pixel Networks, residual blocks to He et al., and canonical layer normalization to Ba et al.; ByteNet’s contribution is their sequence-transduction arrangement with stacking and unfolding, not an atlas priority claim for each component.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Named convolution, dilation, residual, and normalization antecedents",
+            "section": "3.4 Masked One-dimensional Convolutions; 3.5 Dilation; 3.6 Residual Blocks"
+          },
+          "support": "The mechanism sections attach explicit citations to each component and separately define ByteNet’s combination."
+        }
+      ],
+      "limitations": [
+        "Those cited works are preserved as antecedent evidence but are not automatically promoted as full corpus nodes or converted into causal edges without separate audits."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-version-mechanism-boundary",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "statement": "Version 1 gives the encoder representation the source width, supplies a zero current-position encoder column after that width while retaining earlier context, uses Sub-Batch Normalization, and explicitly adds bags of character 1–5-grams to translation inputs; version 2 estimates |t̂| = 1.2|s| for English–German, builds that extended encoder width, uses layer normalization, and no longer reports Sub-Batch Normalization or character n-gram bags in the canonical architecture.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "First-revision unfolding, normalization, and inputs",
+            "section": "3.1 Dynamic Unfolding; 3.4 Sub-Batch Normalization; 3.5 Bag of Character n-Grams",
+            "pageStart": 3,
+            "pageEnd": 5
+          },
+          "support": "Version 1 defines source-width zero-padding, Sub-Batch Normalization, and summed character n-gram embeddings."
+        },
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Canonical unfolding, normalization, and input representation",
+            "section": "3.2 Dynamic Unfolding; 3.3 Input Embedding Tensor; 3.6 Residual Blocks",
+            "equation": "2"
+          },
+          "support": "Version 2 defines the extended bound and layer normalization and its canonical input description omits the earlier Sub-Batch and n-gram mechanisms."
+        }
+      ],
+      "limitations": [
+        "Absence in version 2 is recorded as an omission from that text, not proof that every underlying experiment implementation removed every unmentioned feature."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-version-result-boundary",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "dilated-convolutional-sequence-transduction"
+      ],
+      "statement": "Version 1 reports 1.33 from a 25-block width-892 decoder—the table caption says bits per byte while prose says bits per character—and 18.9/21.7 BLEU from 15-block width-892 source/target stacks using Sub-Batch Normalization, translation-input character n-grams, and target-interval search; version 2 reports 1.31 under the same unit ambiguity from a 30-block width-512 decoder and tabulates 23.75/26.26 from 30-block width-800 stacks with layer normalization and beam 12, so the result changes are not controlled single-component ablations.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "First-revision experiment configurations and results",
+            "section": "5 Character Prediction; 6 Character-Level Machine Translation",
+            "pageStart": 7,
+            "pageEnd": 9,
+            "table": "2; 3"
+          },
+          "support": "Version 1 supplies the earlier language-model and translation architectures, optimization and decoding conditions, and result rows."
+        },
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Canonical experiment configurations and results",
+            "section": "5 Character Prediction; 6 Character-Level Machine Translation",
+            "table": "2–4"
+          },
+          "support": "Version 2 supplies the deeper narrower configurations, revised optimization and decoding, and later result rows."
+        }
+      ],
+      "limitations": [
+        "No author explanation or matched rerun isolates which architectural, optimization, data-processing, decoding, or checkpoint change accounts for the reported improvements."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-transformer-citation-boundary",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "dilated-convolutional-sequence-transduction",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "The canonical Transformer paper groups ByteNet with convolutional efforts to reduce sequential computation, says its hidden representations are computed in parallel across positions and its distant-position operation count grows logarithmically, uses ByteNet for the O(logₖ n) dilated-convolution path comparison, and reproduces ByteNet 23.75 BLEU in Table 2; it does not state that Transformer adopts ByteNet’s mask, dilation schedule, stacking, dynamic unfolding, or experiment recipe.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Direct ByteNet background and dilated-path comparison",
+            "section": "2 Background; 4 Why Self-Attention",
+            "pageStart": 2,
+            "pageEnd": 7
+          },
+          "support": "The target explicitly names ByteNet, characterizes parallel convolutional computation and logarithmic distant-position paths, and attaches reference 15 to the dilated-convolution comparison."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "ByteNet result reproduced by Transformer",
+            "section": "6.1 Machine Translation",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "The target’s comparison table prints ByteNet 23.75 English–German BLEU without a training-cost entry."
+        }
+      ],
+      "limitations": [
+        "Direct citation and contrast document relevance, not conception order, component adoption, derivation, or sole causal influence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "kalchbrenner-2016-evidence-reproducibility-boundary",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "ideaIds": [
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "Across the two revisions, the paper supplies equations, architecture diagrams, selected settings, comparison tables, sample translations, and one gradient-sensitivity figure, but no official immutable code, checkpoints, seeds, repeated-run uncertainty, complete training-data manifest, exact evaluation command, component-matched ablation, measured runtime, or quantitative alignment benchmark.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "Complete first-revision evidence scope",
+            "section": "Complete manuscript",
+            "pageStart": 1,
+            "pageEnd": 11
+          },
+          "support": "The complete first revision establishes the reported mechanisms and experiment scope and contains no linked official implementation or the missing reconstruction artifacts."
+        },
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Complete canonical evidence scope",
+            "section": "Complete manuscript"
+          },
+          "support": "The complete canonical revision establishes the revised evidence and unresolved omissions without supplying reconstruction artifacts."
+        }
+      ],
+      "limitations": [
+        "This boundary limits reproducibility, speed, attribution, and component-effect conclusions without negating the values printed in the paper."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
       "id": "vaswani-2017-predecessor-and-scope-boundary",
       "workId": "vaswani-2017-attention-is-all-you-need",
       "ideaIds": [
         "self-attention-sequence-mixing",
         "attention-path-length-and-parallelism"
       ],
-      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures and identifies Parikh et al. among the few attention cases not coupled to recurrence; its background includes Cheng in the prior self-/intra-attention task citation sequence whose first listed context is reading comprehension, includes Parikh in the same sequence alongside textual entailment, and cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence. The scaled-dot-product paragraph does not cite Luong, and none of these contextual citations states that the Transformer adopts Cheng’s recurrent memory tape or Parikh’s attend–compare–aggregate factorization. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
+      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures and identifies Parikh et al. among the few attention cases not coupled to recurrence; its background includes Cheng in the prior self-/intra-attention task citation sequence whose first listed context is reading comprehension, includes Parikh in the same sequence alongside textual entailment, cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence, and separately groups ByteNet with convolutional efforts that compute hidden positions in parallel while requiring a logarithmically growing operation path between distant positions. The scaled-dot-product paragraph does not cite Luong, and none of these contextual or contrastive citations states that the Transformer adopts Cheng’s recurrent memory tape, Parikh’s attend–compare–aggregate factorization, or ByteNet’s mask, dilation schedule, stacking, or dynamic unfolding. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
       "directness": "editorial-inference",
       "confidence": "high",
       "evidence": [
@@ -26117,6 +27085,17 @@
             "pageEnd": 2
           },
           "support": "The introduction cites Luong within grouped recurrent progress and names Parikh as a rare attention-without-recurrence case; the background defines self-/intra-attention, presents a task-and-reference sequence that includes Cheng and Parikh alongside reading-comprehension and textual-entailment contexts, cites End-To-End Memory Networks as recurrent attention, and distinguishes the Transformer as self-attentional throughout."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Direct ByteNet convolution and path comparison, article pp. 2 and 6–8",
+            "section": "2 Background; 4 Why Self-Attention; 6.1 Machine Translation",
+            "pageStart": 2,
+            "pageEnd": 8,
+            "table": "1–2"
+          },
+          "support": "The background names ByteNet as a parallel convolutional predecessor with logarithmic distant-position operations, Section 4 attaches ByteNet reference 15 to O(logₖ n) dilated paths, and Table 2 reproduces its 23.75 BLEU row."
         },
         {
           "sourceId": "vaswani-2017-neurips-full-text",
@@ -26201,7 +27180,7 @@
       ],
       "limitations": [
         "This claim preserves the paper's scope and qualifier without adopting a priority conclusion; direct references and mechanism continuity do not by themselves establish conception order or sole causation.",
-        "The Luong citation is contextual rather than attached to scaled dot-product attention; the Cheng and Parikh citations establish prior task contexts rather than direct adoption of a recurrent memory tape, attend–compare–aggregate factorization, relative-distance bias, or their results; and the End-To-End Memory Networks citation is contextual and contrastive rather than evidence for Transformer positional encoding, projections, residual paths, or multi-head attention.",
+        "The Luong citation is contextual rather than attached to scaled dot-product attention; the Cheng and Parikh citations establish prior task contexts rather than direct adoption of a recurrent memory tape, attend–compare–aggregate factorization, relative-distance bias, or their results; the End-To-End Memory Networks citation is contextual and contrastive rather than evidence for Transformer positional encoding, projections, residual paths, or multi-head attention; and the ByteNet references establish convolutional comparison context rather than adoption of its sequence model or experiments.",
         "The End-To-End Memory Networks citation is absent from Transformer arXiv versions 1–4 and first appears in version 5, so it cannot be projected backward into the earlier manuscripts."
       ],
       "uncertainties": [],
@@ -29055,6 +30034,114 @@
           "note": "The source supports concept attribution but not direct reuse of Cheng’s recurrent equations or implementation."
         }
       ]
+    },
+    {
+      "id": "cho-2014-to-kalchbrenner-2016",
+      "from": {
+        "kind": "work",
+        "id": "cho-2014-rnn-encoder-decoder"
+      },
+      "to": {
+        "kind": "work",
+        "id": "kalchbrenner-2016-neural-machine-translation-linear-time"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ByteNet explicitly names Cho’s fixed-vector RNN encoder–decoder and describes its own position-wise stacked family as a generalization in which source-to-target connections are retained across positions. The edge covers the conditional encoder–decoder framing and variable-length autoregressive target only; it does not transfer Cho’s GRU equations, phrase-table experiment, training, or results.",
+      "claimIds": [
+        "cho-2014-fixed-vector-architecture",
+        "cho-2014-conditional-objective",
+        "kalchbrenner-2016-conditional-translation-objective",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-rnn-encoder-decoder-generalization"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Explicit Cho encoder–decoder generalization",
+            "section": "4.1 Recurrent ByteNets",
+            "figure": "4"
+          },
+          "support": "The target cites Cho and defines the earlier fixed-vector connection pattern as a severed special case of its family."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "sutskever-2014-to-kalchbrenner-2016",
+      "from": {
+        "kind": "work",
+        "id": "sutskever-vinyals-le-2014-sequence-to-sequence"
+      },
+      "to": {
+        "kind": "work",
+        "id": "kalchbrenner-2016-neural-machine-translation-linear-time"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ByteNet explicitly names Sutskever, Vinyals, and Le’s fixed-vector RNN encoder–decoder and describes its stacked recurrent family, and modulo weight sharing its convolutional instance, as a generalization that preserves connections across source positions. The relationship excludes LSTM-cell identity, source reversal, deep-recurrent training, beam settings, ensembling, and results.",
+      "claimIds": [
+        "sutskever-2014-fixed-vector-factorization",
+        "kalchbrenner-2016-conditional-translation-objective",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-rnn-encoder-decoder-generalization"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Explicit Sutskever encoder–decoder generalization",
+            "section": "4.1 Recurrent ByteNets",
+            "figure": "4"
+          },
+          "support": "The target cites Sutskever and defines the fixed-vector architecture’s source-to-target connection pattern as a special case."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "bahdanau-2014-to-kalchbrenner-2016",
+      "from": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "kalchbrenner-2016-neural-machine-translation-linear-time"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ByteNet cites Bahdanau-style attentional pooling among resolution-preserving recurrent translation models, characterizes that model family’s source–target interaction as quadratic, and offers a resolution-preserving convolutional alternative with analytic linear sequence-length work. The edge records a direct target-side problem framing and contrast, not adoption of Bahdanau’s scorer, bidirectional annotations, attention weights, or evidence.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-complexity-and-path-analysis"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "kalchbrenner-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Attentional-pooling contrast and model-family table",
+            "section": "1 Introduction; 3.1 Encoder-Decoder Stacking; 4.2 Comparison of Properties",
+            "table": "1"
+          },
+          "support": "The target names Bahdanau attention, contrasts pooling with its stacked representation, and prints the attention family’s quadratic time and ByteNet’s linear formula."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is limited to the documented computational and representation contrast; ByteNet does not use attentional pooling."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -30927,6 +32014,81 @@
         "Ablation, parameter matching, and version-provenance auditing"
       ],
       "successCriterion": "The learner can reconstruct equations 1–7, preserve O(ℓd² + ℓ²d) and its ℓ < d condition, reproduce the 382K/86.3 and 582K/86.8 rows, locate the denominator and loss-sign anomalies, and contrast this factorization with Transformer attention without claiming adoption."
+    },
+    {
+      "id": "beginner-kalchbrenner-2016-follow-dilated-convolution",
+      "mode": "beginner",
+      "objective": "Follow one source character through an aligned encoder column and one target prefix through masked dilated decoder layers; change the dilation and output length to see receptive-field growth and dynamic unfolding while separating parallel training from sequential generation.",
+      "workIds": [
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
+      ],
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding"
+      ],
+      "claimIds": [
+        "kalchbrenner-2016-conditional-translation-objective",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-dynamic-unfolding",
+        "kalchbrenner-2016-masked-dilated-convolutions",
+        "kalchbrenner-2016-complexity-and-path-analysis",
+        "kalchbrenner-2016-gradient-alignment-visualization-boundary",
+        "kalchbrenner-2016-evidence-reproducibility-boundary"
+      ],
+      "prerequisites": [
+        "A source string, target prefix, and end symbol",
+        "A one-dimensional convolutional window",
+        "The difference between training and generation",
+        "A receptive field as the inputs that can affect one output"
+      ],
+      "successCriterion": "The learner can explain the causal mask, trace a repeated 1/2/4/8/16 dilation cycle, distinguish a source-scaled full-resolution representation from one fixed vector, describe EOS-driven unfolding, and state why a gradient heatmap is not attention or a gold alignment."
+    },
+    {
+      "id": "expert-kalchbrenner-2016-architecture-complexity-and-versions",
+      "mode": "expert",
+      "objective": "Derive the conditional factorization, stacking, dynamic-unfolding bound, masked and dilated receptive fields, and Table 1 path analysis; reconstruct both canonical experiment tables and audit every mechanism, result, unit, and evidence change between arXiv versions 1 and 2.",
+      "workIds": [
+        "kalchbrenner-2016-neural-machine-translation-linear-time"
+      ],
+      "ideaIds": [
+        "neural-character-probability-modeling",
+        "full-vocabulary-softmax-normalization",
+        "source-conditioned-autoregressive-decoding",
+        "masked-convolutional-autoregressive-decoding",
+        "dilated-convolutional-sequence-transduction",
+        "resolution-preserving-dynamic-unfolding",
+        "attention-path-length-and-parallelism"
+      ],
+      "claimIds": [
+        "kalchbrenner-2016-conditional-translation-objective",
+        "kalchbrenner-2016-resolution-preserving-stacking",
+        "kalchbrenner-2016-dynamic-unfolding",
+        "kalchbrenner-2016-masked-dilated-convolutions",
+        "kalchbrenner-2016-residual-normalization",
+        "kalchbrenner-2016-complexity-and-path-analysis",
+        "kalchbrenner-2016-rnn-encoder-decoder-generalization",
+        "kalchbrenner-2016-character-language-model-setup",
+        "kalchbrenner-2016-character-language-model-results",
+        "kalchbrenner-2016-translation-setup",
+        "kalchbrenner-2016-decoding-regime",
+        "kalchbrenner-2016-translation-results",
+        "kalchbrenner-2016-canonical-result-inconsistency",
+        "kalchbrenner-2016-gradient-alignment-visualization-boundary",
+        "kalchbrenner-2016-convolutional-antecedent-boundary",
+        "kalchbrenner-2016-version-mechanism-boundary",
+        "kalchbrenner-2016-version-result-boundary",
+        "kalchbrenner-2016-transformer-citation-boundary",
+        "kalchbrenner-2016-evidence-reproducibility-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive conditional likelihood and softmax normalization",
+        "One-dimensional convolution, causal masking, dilation, residual paths, and layer normalization",
+        "Beam search, bits per character or byte, BLEU, and matched-comparison design",
+        "Asymptotic work, computational path length, and versioned scholarly evidence"
+      ],
+      "successCriterion": "The learner can reproduce equation 1 and |t̂| = 1.2|s|, derive c|S|+c|T| and logarithmic dilated paths, reconstruct 1.31 and 23.75/26.26 with their conditions, preserve the 22.85/25.53 contradiction, and keep Transformer citation context separate from a documented adoption edge."
     },
     {
       "id": "beginner-vaswani-2017-follow-attention-routes",

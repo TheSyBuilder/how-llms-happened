@@ -4688,7 +4688,10 @@ test("retains Luong attention with versioned formulas and controlled result endp
     "1 Introduction; 2 Background",
   );
   assert.equal(
-    transformerBoundary?.evidence[1]?.locator.section,
+    transformerBoundary?.evidence.find(
+      (item) =>
+        item.locator.section === "3.2.1 Scaled Dot-Product Attention",
+    )?.locator.section,
     "3.2.1 Scaled Dot-Product Attention",
   );
 });
@@ -5026,14 +5029,198 @@ test("retains Parikh 2016 as a versioned recurrence-free decomposable-attention 
   assert.equal(transformerEdges.length, 0);
 });
 
-test("retains the four-node Transformer convergence gate without incoming edges", () => {
+test("retains ByteNet as a versioned convolutional transduction branch", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "kalchbrenner-2016-neural-machine-translation-linear-time",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const masked = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-masked-dilated-convolutions",
+  );
+  const complexity = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-complexity-and-path-analysis",
+  );
+  const lmSetup = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-character-language-model-setup",
+  );
+  const translation = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-translation-results",
+  );
+  const inconsistency = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-canonical-result-inconsistency",
+  );
+  const versionMechanism = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-version-mechanism-boundary",
+  );
+  const versionResults = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-version-result-boundary",
+  );
+  const transformerBoundary = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-transformer-citation-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.canonicalVersionId,
+    "kalchbrenner-2016-arxiv-v2-version",
+  );
+  assert.equal(work?.versions.length, 2);
+  assert.deepEqual(work?.authors, [
+    "Nal Kalchbrenner",
+    "Lasse Espeholt",
+    "Karen Simonyan",
+    "Aäron van den Oord",
+    "Alex Graves",
+    "Koray Kavukcuoglu",
+  ]);
   assert.deepEqual(
-    corpus.works.slice(-5).map((work) => work.id),
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["kalchbrenner-2016-arxiv-v1-posted", "2016-10-31"],
+      ["kalchbrenner-2016-arxiv-v2-posted", "2017-03-15"],
+    ],
+  );
+  assert.equal(
+    versions.get("kalchbrenner-2016-arxiv-v1-version")?.bibliography.venue,
+    "arXiv",
+  );
+  assert.deepEqual(
+    sources.get("kalchbrenner-2016-arxiv-v1-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 11 },
+  );
+  assert.deepEqual(
+    sources.get("kalchbrenner-2016-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 9 },
+  );
+  assert.equal(sources.size, 5);
+  assert.equal(
+    work?.preferredSourceIds.includes("vaswani-2017-neurips-full-text"),
+    false,
+  );
+  assert.deepEqual(sources.get("vaswani-2017-neurips-full-text")?.versionIds, [
+    "vaswani-2017-nips-version",
+  ]);
+  assert.equal(claims.length, 19);
+  for (const value of ["1, 2, 4, 8, and 16", "schedule resets"])
+    assert.ok(masked?.statement.includes(value));
+  for (const value of [
+    "c|S| + c|T|",
+    "c≈log d",
+    "autoregressive decoder generation",
+  ])
+    assert.ok(complexity?.statement.includes(value));
+  for (const value of [
+    "30 residual blocks",
+    "receptive field 315",
+    "500-character",
+  ])
+    assert.ok(lmSetup?.statement.includes(value));
+  assert.ok(
+    claims
+      .find(
+        (claim) =>
+          claim.id === "kalchbrenner-2016-character-language-model-results",
+      )
+      ?.statement.includes("bits per byte while the nearby prose"),
+  );
+  for (const value of ["23.75/26.26", "0.521/0.532"])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of ["22.85/25.53", "0.380/0.389", "23.75/26.26"])
+    assert.ok(inconsistency?.statement.includes(value));
+  assert.equal(inconsistency?.uncertainties[0]?.status, "open");
+  for (const value of [
+    "Sub-Batch Normalization",
+    "1.2|s|",
+    "layer normalization",
+  ])
+    assert.ok(versionMechanism?.statement.includes(value));
+  for (const value of ["1.33", "18.9/21.7", "1.31", "23.75/26.26"])
+    assert.ok(versionResults?.statement.includes(value));
+  for (const value of ["O(logₖ n)", "23.75 BLEU", "does not state"])
+    assert.ok(transformerBoundary?.statement.includes(value));
+  assert.ok(
+    transformerBoundary?.evidence.every(
+      (item) => item.sourceId === "vaswani-2017-neurips-full-text",
+    ),
+  );
+  for (const claimId of [
+    "kalchbrenner-2016-version-mechanism-boundary",
+    "kalchbrenner-2016-version-result-boundary",
+  ]) {
+    assert.deepEqual(
+      claims
+        .find((claim) => claim.id === claimId)
+        ?.evidence.map((item) => item.sourceId),
+      [
+        "kalchbrenner-2016-arxiv-v1-full-text",
+        "kalchbrenner-2016-arxiv-v2-full-text",
+      ],
+    );
+  }
+  assert.ok(
+    work?.limitations.join(" ").includes("generation remains autoregressive"),
+  );
+  assert.ok(work?.limitations.join(" ").includes("315-character"));
+  assert.ok(work?.limitations.join(" ").includes("internally inconsistent"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-kalchbrenner-2016-follow-dilated-convolution",
+      "expert-kalchbrenner-2016-architecture-complexity-and-versions",
+    ],
+  );
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+    ]),
+    [
+      ["cho-2014-to-kalchbrenner-2016", "extends"],
+      ["sutskever-2014-to-kalchbrenner-2016", "extends"],
+      ["bahdanau-2014-to-kalchbrenner-2016", "addresses"],
+    ],
+  );
+  for (const relationship of incomingRelationships) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+  }
+  assert.equal(incomingRelationships[0]?.causalLanguage, "qualified");
+  assert.equal(incomingRelationships[1]?.causalLanguage, "qualified");
+  assert.equal(incomingRelationships[2]?.causalLanguage, "prohibited");
+  assert.equal(transformerEdges.length, 0);
+});
+
+test("retains the five-node Transformer convergence gate without incoming edges", () => {
+  assert.deepEqual(
+    corpus.works.slice(-6).map((work) => work.id),
     [
       "sukhbaatar-2015-end-to-end-memory-networks",
       "luong-pham-manning-2015-effective-attention-nmt",
       "cheng-dong-lapata-2016-lstmn-machine-reading",
       "parikh-2016-decomposable-attention-nli",
+      "kalchbrenner-2016-neural-machine-translation-linear-time",
       "vaswani-2017-attention-is-all-you-need",
     ],
   );
@@ -5042,6 +5229,7 @@ test("retains the four-node Transformer convergence gate without incoming edges"
     "luong-pham-manning-2015-effective-attention-nmt",
     "cheng-dong-lapata-2016-lstmn-machine-reading",
     "parikh-2016-decomposable-attention-nli",
+    "kalchbrenner-2016-neural-machine-translation-linear-time",
   ]) {
     assert.ok(corpus.works.some((work) => work.id === workId));
   }
@@ -5053,7 +5241,7 @@ test("retains the four-node Transformer convergence gate without incoming edges"
     ),
     false,
   );
-  assert.ok(historicalScope.includes("Four of the six required predecessor nodes"));
+  assert.ok(historicalScope.includes("Five of the six required predecessor nodes"));
   assert.ok(historicalScope.includes("ByteNet"));
   assert.ok(historicalScope.includes("ConvS2S"));
   assert.equal(
@@ -5170,8 +5358,9 @@ test("retains the Transformer as a canonical proceedings node with revision boun
     "includes Cheng in the prior self-/intra-attention task citation sequence",
     "includes Parikh in the same sequence alongside textual entailment",
     "cites End-To-End Memory Networks as recurrent attention",
+    "groups ByteNet with convolutional efforts",
     "scaled-dot-product paragraph does not cite Luong",
-    "none of these contextual citations states that the Transformer adopts",
+    "none of these contextual or contrastive citations states that the Transformer adopts",
     "contextual and contrastive",
   ])
     assert.ok(
@@ -5182,6 +5371,7 @@ test("retains the Transformer as a canonical proceedings node with revision boun
   assert.deepEqual(
     predecessorBoundary?.evidence.map((item) => item.sourceId),
     [
+      "vaswani-2017-neurips-full-text",
       "vaswani-2017-neurips-full-text",
       "vaswani-2017-neurips-full-text",
       "vaswani-2017-arxiv-v1-full-text",
