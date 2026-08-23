@@ -5212,15 +5212,224 @@ test("retains ByteNet as a versioned convolutional transduction branch", () => {
   assert.equal(transformerEdges.length, 0);
 });
 
-test("retains the five-node Transformer convergence gate without incoming edges", () => {
+test("retains ConvS2S as a versioned convolutional attention branch", () => {
+  const workId =
+    "gehring-2017-convolutional-sequence-to-sequence-learning";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(
+    work?.versions.map((version) => [version.id, version]),
+  );
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(workId))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "gehring-2017-version-result-boundary",
+  );
+  const translation = claims.find(
+    (claim) => claim.id === "gehring-2017-translation-results",
+  );
+  const ensembles = claims.find(
+    (claim) => claim.id === "gehring-2017-ensemble-results",
+  );
+  const attention = claims.find(
+    (claim) => claim.id === "gehring-2017-layerwise-multi-step-attention",
+  );
+  const data = claims.find(
+    (claim) => claim.id === "gehring-2017-data-and-tokenization",
+  );
+  const speed = claims.find(
+    (claim) => claim.id === "gehring-2017-generation-speed-boundary",
+  );
+  const transformerBoundary = claims.find(
+    (claim) => claim.id === "gehring-2017-transformer-citation-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === workId,
+  );
+  const transformerEdge = corpus.relationships.find(
+    (relationship) => relationship.id === "gehring-2017-to-vaswani-2017",
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "gehring-2017-icml-version");
+  assert.deepEqual(work?.authors, [
+    "Jonas Gehring",
+    "Michael Auli",
+    "David Grangier",
+    "Denis Yarats",
+    "Yann N. Dauphin",
+  ]);
   assert.deepEqual(
-    corpus.works.slice(-6).map((work) => work.id),
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["gehring-2017-arxiv-v1-posted", "2017-05-08"],
+      ["gehring-2017-arxiv-v2-posted", "2017-05-12"],
+      ["gehring-2017-icml-proceedings", "2017-07-17"],
+      ["gehring-2017-arxiv-v3-posted", "2017-07-25"],
+    ],
+  );
+  const proceedingsEvent = work?.chronology.events.find(
+    (event) => event.id === "gehring-2017-icml-proceedings",
+  );
+  assert.equal(proceedingsEvent?.date.precision, "day");
+  assert.equal(
+    proceedingsEvent?.dateEvidence[0]?.sourceId,
+    "gehring-2017-pmlr-volume-record",
+  );
+  assert.equal(work?.versions.length, 4);
+  assert.deepEqual(
+    versions.get("gehring-2017-icml-version")?.bibliography.pages,
+    ["1243-1252"],
+  );
+  assert.deepEqual(sources.get("gehring-2017-pmlr-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 10,
+  });
+  assert.deepEqual(
+    sources.get("gehring-2017-pmlr-supplement")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 4 },
+  );
+  assert.deepEqual(sources.get("gehring-2017-arxiv-v2-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 15,
+  });
+  assert.equal(sources.size, 13);
+  assert.equal(
+    sources.get("gehring-2017-pmlr-volume-record")?.url,
+    "https://proceedings.mlr.press/v70/",
+  );
+  assert.equal(claims.length, 20);
+  for (const value of [
+    "dᵢˡ = W_dˡhᵢˡ + b_dˡ + gᵢ",
+    "cᵢˡ = Σⱼaᵢⱼˡ(zⱼᵘ + eⱼ)",
+    "fixed stack of source-attention hops",
+  ])
+    assert.ok(attention?.statement.includes(value));
+  for (const value of ["29.45", "30.02", "25.16", "40.51"])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of ["26.43", "41.44", "41.62", "English–French"])
+    assert.ok(ensembles?.statement.includes(value));
+  for (const value of [
+    "English–Romanian uses a joint source–target 40K BPE vocabulary",
+    "English–German uses 40K BPE types",
+    "English–French uses separate 40K-BPE source and target vocabularies",
+  ])
+    assert.ok(data?.statement.includes(value));
+  assert.ok(speed?.statement.includes("6,003-sentence English–French"));
+  assert.ok(speed?.statement.includes("newstest2012 and newstest2013"));
+  for (const value of [
+    "v1 reports 29.88 Romanian and 40.46 French with no ensembles",
+    "v2 adds 26.36 German and 41.29 French ensembles",
+    "v3 and PMLR update Romanian/French single results to 30.02/40.51",
+    "published prose resolves v3’s ambiguous dataset wording",
+  ])
+    assert.ok(versionBoundary?.statement.includes(value));
+  for (const value of [
+    "linear arbitrary-position path",
+    "names learned positional embeddings as an alternative",
+    "v2-era 25.16/40.46 single and 26.36/41.29 ensemble",
+    "Transformer v2 and the canonical proceedings paper later test",
+    "not adoption of ConvS2S’s convolution, GLU, or layerwise-hop architecture",
+  ])
+    assert.ok(transformerBoundary?.statement.includes(value));
+  assert.deepEqual(
+    transformerBoundary?.evidence.map((item) => item.sourceId),
+    [
+      "vaswani-2017-arxiv-v1-full-text",
+      "vaswani-2017-arxiv-v2-full-text",
+      "vaswani-2017-neurips-full-text",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-gehring-2017-follow-convolution-and-attention-hops",
+      "expert-gehring-2017-mechanism-results-and-versions",
+    ],
+  );
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.causalLanguage,
+    ]),
+    [
+      [
+        "bahdanau-2014-to-gehring-2017",
+        "extends",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "luong-2015-to-gehring-2017",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "sukhbaatar-2015-to-gehring-2017",
+        "conceptual-parallel",
+        "editorial-synthesis",
+        "prohibited",
+      ],
+    ],
+  );
+  assert.deepEqual(transformerEdge?.from, { kind: "work", id: workId });
+  assert.deepEqual(transformerEdge?.to, {
+    kind: "work",
+    id: "vaswani-2017-attention-is-all-you-need",
+  });
+  assert.equal(transformerEdge?.connectionType, "builds-on");
+  assert.equal(transformerEdge?.evidenceClass, "documented-influence");
+  assert.equal(transformerEdge?.causalLanguage, "qualified");
+  assert.ok(transformerEdge?.rationale.includes("excludes causal claims"));
+  assert.ok(
+    transformerEdge?.claimIds.includes(
+      "vaswani-2017-attention-routes-and-causal-mask",
+    ),
+  );
+  assert.equal(
+    transformerEdge?.claimIds.includes(
+      "gehring-2017-layerwise-multi-step-attention",
+    ),
+    false,
+  );
+  assert.deepEqual(
+    transformerEdge?.sourceEvidence.map((item) => item.sourceId),
+    [
+      "vaswani-2017-arxiv-v1-full-text",
+      "vaswani-2017-arxiv-v2-full-text",
+      "vaswani-2017-neurips-full-text",
+    ],
+  );
+  assert.ok(
+    work?.limitations.join(" ").includes("beam decoding remains left-to-right"),
+  );
+  assert.ok(work?.limitations.join(" ").includes("25 prior target words"));
+  assert.ok(work?.limitations.join(" ").includes("different GPU generations"));
+});
+
+test("retains the complete six-node Transformer convergence gate", () => {
+  assert.deepEqual(
+    corpus.works.slice(-7).map((work) => work.id),
     [
       "sukhbaatar-2015-end-to-end-memory-networks",
       "luong-pham-manning-2015-effective-attention-nmt",
       "cheng-dong-lapata-2016-lstmn-machine-reading",
       "parikh-2016-decomposable-attention-nli",
       "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "gehring-2017-convolutional-sequence-to-sequence-learning",
       "vaswani-2017-attention-is-all-you-need",
     ],
   );
@@ -5230,20 +5439,31 @@ test("retains the five-node Transformer convergence gate without incoming edges"
     "cheng-dong-lapata-2016-lstmn-machine-reading",
     "parikh-2016-decomposable-attention-nli",
     "kalchbrenner-2016-neural-machine-translation-linear-time",
+    "gehring-2017-convolutional-sequence-to-sequence-learning",
   ]) {
     assert.ok(corpus.works.some((work) => work.id === workId));
   }
-  assert.equal(
-    corpus.relationships.some(
+  assert.deepEqual(
+    corpus.relationships
+      .filter(
       (relationship) =>
         relationship.to.kind === "work" &&
         relationship.to.id === "vaswani-2017-attention-is-all-you-need",
-    ),
-    false,
+      )
+      .map((relationship) => relationship.id),
+    ["gehring-2017-to-vaswani-2017"],
   );
-  assert.ok(historicalScope.includes("Five of the six required predecessor nodes"));
+  assert.ok(historicalScope.includes("All six required predecessor nodes"));
   assert.ok(historicalScope.includes("ByteNet"));
   assert.ok(historicalScope.includes("ConvS2S"));
+  assert.ok(
+    historicalScope.includes("learned positional-embedding alternative"),
+  );
+  assert.ok(
+    historicalScope.includes(
+      "does not make ConvS2S the cause of core self-attention",
+    ),
+  );
   assert.equal(
     historicalScope.includes("Cheng and Parikh still require full treatment"),
     false,
@@ -5359,6 +5579,8 @@ test("retains the Transformer as a canonical proceedings node with revision boun
     "includes Parikh in the same sequence alongside textual entailment",
     "cites End-To-End Memory Networks as recurrent attention",
     "groups ByteNet with convolutional efforts",
+    "directly contrasts ConvS2S",
+    "tests its cited learned positional-embedding alternative",
     "scaled-dot-product paragraph does not cite Luong",
     "none of these contextual or contrastive citations states that the Transformer adopts",
     "contextual and contrastive",
@@ -5381,6 +5603,7 @@ test("retains the Transformer as a canonical proceedings node with revision boun
       "vaswani-2017-arxiv-v5-full-text",
       "vaswani-2017-arxiv-v6-full-text",
       "vaswani-2017-arxiv-v7-full-text",
+      "vaswani-2017-neurips-full-text",
     ],
   );
   assert.ok(
@@ -5558,7 +5781,25 @@ test("retains the Transformer as a canonical proceedings node with revision boun
   );
   assert.ok(objectives[0]?.successCriterion.includes("future decoder positions"));
   assert.ok(objectives[1]?.successCriterion.includes("proceedings 41.0"));
-  assert.equal(incomingRelationships.length, 0);
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.causalLanguage,
+    ]),
+    [
+      [
+        "gehring-2017-to-vaswani-2017",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+    ],
+  );
+  assert.ok(
+    incomingRelationships[0]?.rationale.includes("excludes causal claims"),
+  );
   assert.equal(outgoingRelationships.length, 0);
 });
 

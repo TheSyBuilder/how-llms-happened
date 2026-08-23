@@ -7700,6 +7700,329 @@
       ]
     },
     {
+      "id": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "title": "Convolutional Sequence to Sequence Learning",
+      "authors": [
+        "Jonas Gehring",
+        "Michael Auli",
+        "David Grangier",
+        "Denis Yarats",
+        "Yann N. Dauphin"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "J. Gehring et al., “Convolutional Sequence to Sequence Learning,” ICML, PMLR 70:1243–1252 (2017; arXiv v1 posted 8 May 2017).",
+      "chronology": {
+        "orderingEventId": "gehring-2017-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "gehring-2017-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2017-05-08",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gehring-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 8 May 2017 at 23:25:30 UTC"
+              }
+            ],
+            "versionId": "gehring-2017-arxiv-v1-version",
+            "sourceIds": [
+              "gehring-2017-arxiv-record",
+              "gehring-2017-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "gehring-2017-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2017-05-12",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gehring-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 12 May 2017 at 16:14:26 UTC"
+              }
+            ],
+            "versionId": "gehring-2017-arxiv-v2-version",
+            "sourceIds": [
+              "gehring-2017-arxiv-record",
+              "gehring-2017-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "gehring-2017-icml-proceedings",
+            "kind": "proceedings-publication",
+            "label": "ICML 2017 proceedings paper",
+            "date": {
+              "value": "2017-07-17",
+              "precision": "day",
+              "calendar": "gregorian",
+              "note": "The official volume record dates PMLR 70 to 17 July 2017. This is a proceedings-volume publication date, not evidence of the paper’s presentation day; the conference ran 6–11 August."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gehring-2017-pmlr-volume-record",
+                "precision": "day",
+                "locator": "PMLR volume 70 header: Published 17 July 2017"
+              }
+            ],
+            "versionId": "gehring-2017-icml-version",
+            "sourceIds": [
+              "gehring-2017-pmlr-volume-record",
+              "gehring-2017-pmlr-record",
+              "gehring-2017-pmlr-full-text"
+            ]
+          },
+          {
+            "id": "gehring-2017-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2017-07-25",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "gehring-2017-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 25 July 2017 at 01:40:57 UTC"
+              }
+            ],
+            "versionId": "gehring-2017-arxiv-v3-version",
+            "sourceIds": [
+              "gehring-2017-arxiv-record",
+              "gehring-2017-arxiv-v3-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "gehring-2017-arxiv-v1-version",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "authors": [
+            "Jonas Gehring",
+            "Michael Auli",
+            "David Grangier",
+            "Denis Yarats",
+            "Yann N. Dauphin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Gehring, M. Auli, D. Grangier, D. Yarats, and Y. N. Dauphin, “Convolutional Sequence to Sequence Learning,” arXiv:1705.03122v1, 8 May 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1705.03122v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gehring-2017-arxiv-record",
+            "gehring-2017-arxiv-v1-full-text"
+          ],
+          "notes": "The first 15-page posting contains the complete convolutional encoder–decoder, learned positions, gated residual blocks, per-decoder-layer attention, translation and summarization studies, and the depth and kernel analyses. Its single-model table reports 29.88 English–Romanian, 25.16 English–German, and 40.46 English–French BLEU; it has no ensemble table."
+        },
+        {
+          "id": "gehring-2017-arxiv-v2-version",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "authors": [
+            "Jonas Gehring",
+            "Michael Auli",
+            "David Grangier",
+            "Denis Yarats",
+            "Yann N. Dauphin"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Gehring, M. Auli, D. Grangier, D. Yarats, and Y. N. Dauphin, “Convolutional Sequence to Sequence Learning,” arXiv:1705.03122v2, 12 May 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1705.03122v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gehring-2017-arxiv-record",
+            "gehring-2017-arxiv-v2-full-text"
+          ],
+          "notes": "The second 15-page posting keeps the architecture and single-model values, adds comparisons with the sparsely gated mixture model, and adds eight-model ensemble results of 26.36 English–German and 41.29 English–French BLEU. These are the ConvS2S values later reproduced by Transformer Table 2."
+        },
+        {
+          "id": "gehring-2017-arxiv-v3-version",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "authors": [
+            "Jonas Gehring",
+            "Michael Auli",
+            "David Grangier",
+            "Denis Yarats",
+            "Yann N. Dauphin"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Gehring, M. Auli, D. Grangier, D. Yarats, and Y. N. Dauphin, “Convolutional Sequence to Sequence Learning,” arXiv:1705.03122v3, 25 July 2017.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1705.03122v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1705.03122",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gehring-2017-arxiv-record",
+            "gehring-2017-arxiv-v3-full-text"
+          ],
+          "notes": "The latest arXiv revision updates English–Romanian to 30.02 and English–French to 40.51, updates the eight-model ensembles to 26.43 and 41.44, and adds a 41.62 ten-model English–French row. Its nearby word “former” points grammatically to English–German, but the table places 41.62 under English–French and the published PMLR prose explicitly resolves the row to English–French."
+        },
+        {
+          "id": "gehring-2017-icml-version",
+          "title": "Convolutional Sequence to Sequence Learning",
+          "authors": [
+            "Jonas Gehring",
+            "Michael Auli",
+            "David Grangier",
+            "Denis Yarats",
+            "Yann N. Dauphin"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ICML 2017 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Gehring, M. Auli, D. Grangier, D. Yarats, and Y. N. Dauphin, “Convolutional Sequence to Sequence Learning,” in Proceedings of the 34th International Conference on Machine Learning, PMLR 70, pp. 1243–1252, 2017.",
+            "venue": "Proceedings of the 34th International Conference on Machine Learning",
+            "series": "Proceedings of Machine Learning Research",
+            "editors": [
+              "Doina Precup",
+              "Yee Whye Teh"
+            ],
+            "publisher": "PMLR",
+            "volume": "70",
+            "pages": [
+              "1243-1252"
+            ],
+            "publicationPlaces": [
+              "Sydney, Australia"
+            ],
+            "identifiers": [
+              {
+                "type": "catalog-id",
+                "value": "pmlr-v70-gehring17a",
+                "label": "PMLR article identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "gehring-2017-pmlr-volume-record",
+            "gehring-2017-pmlr-record",
+            "gehring-2017-pmlr-full-text",
+            "gehring-2017-pmlr-supplement",
+            "gehring-2017-pmlr-rights-policy",
+            "gehring-2017-fairseq-lua-record"
+          ],
+          "notes": "The canonical ten-page PMLR article uses the updated result rows also found in version 3 and explicitly identifies 41.62 as a ten-model English–French ensemble. Its four-page supplement separately supplies initialization derivations and one selected eight-layer attention example. Evidence locators use PDF leaves 1–10 rather than translating them into volume folios 1243–1252."
+        }
+      ],
+      "canonicalVersionId": "gehring-2017-icml-version",
+      "preferredSourceIds": [
+        "gehring-2017-pmlr-volume-record",
+        "gehring-2017-pmlr-record",
+        "gehring-2017-pmlr-full-text",
+        "gehring-2017-pmlr-supplement"
+      ],
+      "sourceIds": [
+        "gehring-2017-arxiv-record",
+        "gehring-2017-arxiv-v1-full-text",
+        "gehring-2017-arxiv-v2-full-text",
+        "gehring-2017-arxiv-v3-full-text",
+        "gehring-2017-pmlr-volume-record",
+        "gehring-2017-pmlr-record",
+        "gehring-2017-pmlr-full-text",
+        "gehring-2017-pmlr-supplement",
+        "gehring-2017-pmlr-rights-policy",
+        "gehring-2017-fairseq-lua-record",
+        "vaswani-2017-arxiv-v1-full-text",
+        "vaswani-2017-arxiv-v2-full-text",
+        "vaswani-2017-neurips-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The work is the immediate fully convolutional encoder–decoder predecessor that the Transformer explicitly contrasts on path length and computation, benchmarks in translation, cites for learned positional embeddings, and includes among the encoder–decoder attention mechanisms it mimics. ConvS2S is essential convergence evidence while remaining distinct from Transformer self-attention."
+      },
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "full-vocabulary-softmax-normalization",
+        "contiguous-convolutional-sequence-transduction",
+        "learned-absolute-sequence-position-embeddings",
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "layerwise-multi-step-cross-attention",
+        "multi-hop-memory-retrieval",
+        "attention-path-length-and-parallelism"
+      ],
+      "significance": {
+        "beginner": "The encoder and decoder replace recurrent state chains with stacked sliding windows. Every target layer gets its own source-attention read, learned position tags preserve order, and training can process positions together even though translation is still generated one token at a time.",
+        "expert": "Contiguous stride-one convolutions with GLUs and scaled residual paths yield receptive field 1 + L(k − 1); causal cropping protects the autoregressive decoder; each decoder layer applies a dot-product cross-attention hop over top encoder states plus source embeddings; and tailored initialization and variance scaling stabilize deep stacks."
+      },
+      "limitations": [
+        "“Fully convolutional” describes the encoder and decoder state computation, not non-autoregressive generation: training-time positions parallelize, while beam decoding remains left-to-right.",
+        "For fixed kernel width, the path between increasingly distant positions grows linearly with sequence length. ConvS2S does not inherit ByteNet’s dilated logarithmic path, and the large English–French decoder can use only 25 prior target words.",
+        "The translation comparisons mix word, BPE, and word-piece systems, data filtering, BLEU conventions, model sizes, decoding, and ensemble conditions. English–Romanian uses detokenized BLEU while the other translation tasks use tokenized BLEU.",
+        "The paper’s broad state-of-the-art framing is not universal: it reports a 26.03 sparse-mixture English–German single run above ConvS2S’s best single run of 25.39 and argues that the mixture resembles an ensemble.",
+        "The speed table spans different GPU generations, CPU core counts, beam widths, and BLEU levels; the paper itself says CPU rows are not directly comparable, so the reported ratios are not a matched hardware benchmark.",
+        "Position, attention-layer, depth, and kernel studies use a separate 160K-target-vocabulary English–German setup with vocabulary selection and BLEU before unknown replacement; their absolute scores do not transfer to Table 1.",
+        "The paper reports no isolated ablation for GLUs, residual paths, variance scaling, initialization, or the zⱼᵘ + eⱼ attention value construction.",
+        "The supplement interprets attention layers from one selected English–German example rather than a representative sample, gold alignment task, or quantitative structural evaluation.",
+        "The reported results average three initialization seeds, but the paper gives no dispersion, confidence interval, significance test, exact random seeds, dropout probabilities, tuned German length exponent, word-count batch cap, or precise ensemble-combination rule.",
+        "The paper links source code and pretrained models, but does not pin the experiment commit, checkpoint identities, complete data manifest, or exact evaluation commands needed to reconstruct every table.",
+        "ArXiv versions change reported results without changing the core equations. Version 3’s ambiguous “former” wording is resolved only by its table and the explicit published English–French sentence.",
+        "Transformer citations establish direct comparison, a familiar encoder–decoder attention route, and a learned-position alternative; they do not establish that ConvS2S’s convolutions, GLUs, or layerwise attention caused the core self-attention architecture.",
+        "The article footer establishes author copyright. PMLR’s current publication agreement describes CC BY 4.0 publication, but the inspected record does not archive the 2017 agreement text; figure reuse should therefore verify the applicable grant at use time."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "All three immutable arXiv revisions, the canonical PMLR article, and its separate supplement were compared; mechanism text is stable while reported translation rows change."
+        },
+        {
+          "status": "open",
+          "note": "The published paper and surviving fairseq-lua record do not identify an immutable code commit and checkpoint set for every reported configuration.",
+          "resolutionCondition": "A paper-era commit manifest, checkpoint hashes, data preprocessing record, and evaluation commands would be required for exact reconstruction."
+        }
+      ]
+    },
+    {
       "id": "vaswani-2017-attention-is-all-you-need",
       "title": "Attention Is All You Need",
       "authors": [
@@ -8244,7 +8567,8 @@
         "The paper links Tensor2Tensor code but identifies no immutable commit, released checkpoints, random seeds, or fully pinned data and preprocessing artifact for exact reconstruction.",
         "The paper’s Cheng and Parikh citations establish recurrent intra-attention and attention-only textual-entailment context, respectively; they do not establish direct adoption of either predecessor’s equations, architecture, training recipe, or results.",
         "The paper directly cites ByteNet for parallel convolutional position computation, logarithmic distant-position paths, and the 23.75 BLEU comparison row; those references do not document adoption of ByteNet’s mask, dilation schedule, stacking, dynamic unfolding, training, or results.",
-        "NeurIPS says authors retain copyright and grant the venue a non-exclusive publication license. ArXiv versions 6–7 add narrower permission to reproduce tables and figures with attribution for journalistic or scholarly works; the atlas links the sources and does not infer a general open-content license."
+        "NeurIPS says authors retain copyright and grant the venue a non-exclusive publication license. ArXiv versions 6–7 add narrower permission to reproduce tables and figures with attribution for journalistic or scholarly works; the atlas links the sources and does not infer a general open-content license.",
+        "The paper directly cites ConvS2S for a learned-position alternative and includes it among familiar encoder–decoder attention mechanisms, while separately contrasting its linear convolutional path and benchmarking v2-era results. This supports one scoped build-on edge but not a claim that ConvS2S caused core self-attention or that its GLUs, contiguous convolutions, or layerwise hops were adopted."
       ],
       "uncertainties": [
         {
@@ -8812,7 +9136,8 @@
         "sundermeyer-2012-projection-and-class-factorization",
         "sundermeyer-2012-output-clustering-results",
         "vaswani-2017-embedding-and-output-normalization",
-        "kalchbrenner-2016-conditional-translation-objective"
+        "kalchbrenner-2016-conditional-translation-objective",
+        "gehring-2017-conditional-translation-objective"
       ],
       "uncertainties": [
         {
@@ -9407,7 +9732,11 @@
         "kalchbrenner-2016-decoding-regime",
         "kalchbrenner-2016-translation-results",
         "kalchbrenner-2016-canonical-result-inconsistency",
-        "kalchbrenner-2016-version-mechanism-boundary"
+        "kalchbrenner-2016-version-mechanism-boundary",
+        "gehring-2017-conditional-translation-objective",
+        "gehring-2017-causal-decoder-and-parallelism",
+        "gehring-2017-training-and-decoding",
+        "gehring-2017-data-and-tokenization"
       ],
       "uncertainties": [
         {
@@ -9465,7 +9794,9 @@
         "luong-2015-wmt15-ensemble-result",
         "luong-2015-alignment-evaluation",
         "cheng-2016-two-sequence-attention-fusion",
-        "cheng-2016-antecedent-mechanism-boundary"
+        "cheng-2016-antecedent-mechanism-boundary",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary"
       ],
       "uncertainties": [
         {
@@ -9619,7 +9950,10 @@
         "sukhbaatar-2015-nonlinear-supplement-results",
         "sukhbaatar-2015-language-model-adaptation",
         "sukhbaatar-2015-language-model-results",
-        "sukhbaatar-2015-hop-trend-boundary"
+        "sukhbaatar-2015-hop-trend-boundary",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary",
+        "gehring-2017-attention-layer-ablation"
       ],
       "uncertainties": [
         {
@@ -9677,7 +10011,9 @@
         "luong-2015-german-english-results",
         "luong-2015-attention-architecture-results",
         "luong-2015-version-boundary",
-        "luong-2015-evidence-boundary"
+        "luong-2015-evidence-boundary",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary"
       ],
       "uncertainties": [
         {
@@ -9900,6 +10236,68 @@
       ]
     },
     {
+      "id": "contiguous-convolutional-sequence-transduction",
+      "name": "Contiguous convolutional sequence transduction",
+      "kind": "mechanism",
+      "description": "Stacked fixed-width, stride-one convolutions replace sequence-aligned recurrent state updates in both encoder and causal decoder, growing the receptive field by k − 1 positions per layer while preserving training-time parallelism across positions.",
+      "claimIds": [
+        "gehring-2017-gated-convolutional-blocks",
+        "gehring-2017-causal-decoder-and-parallelism",
+        "gehring-2017-depth-and-kernel-results",
+        "gehring-2017-normalization-and-initialization",
+        "gehring-2017-translation-results",
+        "gehring-2017-ensemble-results",
+        "gehring-2017-summarization-results",
+        "gehring-2017-version-result-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "ConvS2S uses contiguous kernels rather than ByteNet-style dilation; its long-distance path remains linear in sequence length for fixed kernel width."
+        }
+      ]
+    },
+    {
+      "id": "learned-absolute-sequence-position-embeddings",
+      "name": "Learned absolute sequence-position embeddings",
+      "kind": "mechanism",
+      "description": "A learned vector indexed by absolute source or target position is added to each token embedding so nonrecurrent sequence computation can distinguish order and position.",
+      "claimIds": [
+        "gehring-2017-learned-position-embeddings",
+        "gehring-2017-position-ablation",
+        "gehring-2017-transformer-citation-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "ConvS2S uses learned absolute positions but does not claim their invention; Transformer later tests this cited alternative while retaining sinusoidal positions as its canonical default."
+        }
+      ]
+    },
+    {
+      "id": "layerwise-multi-step-cross-attention",
+      "name": "Layerwise multi-step cross-attention",
+      "kind": "mechanism",
+      "description": "Each decoder layer makes its own normalized source read, and the resulting conditional summary enters later decoder-layer computation so successive layers can refine the source evidence before prediction.",
+      "claimIds": [
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary",
+        "gehring-2017-attention-layer-ablation",
+        "gehring-2017-attention-visualization-boundary",
+        "gehring-2017-normalization-and-initialization",
+        "gehring-2017-translation-results",
+        "gehring-2017-ensemble-results",
+        "gehring-2017-summarization-results",
+        "gehring-2017-version-result-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper calls these multiple attention hops, but they are encoder–decoder reads distributed across convolutional decoder layers, not Transformer-style self-attention."
+        }
+      ]
+    },
+    {
       "id": "self-attention-sequence-mixing",
       "name": "Self-attention sequence mixing",
       "kind": "mechanism",
@@ -9993,7 +10391,12 @@
         "parikh-2016-evidence-boundary",
         "kalchbrenner-2016-complexity-and-path-analysis",
         "kalchbrenner-2016-transformer-citation-boundary",
-        "kalchbrenner-2016-evidence-reproducibility-boundary"
+        "kalchbrenner-2016-evidence-reproducibility-boundary",
+        "gehring-2017-gated-convolutional-blocks",
+        "gehring-2017-causal-decoder-and-parallelism",
+        "gehring-2017-generation-speed-boundary",
+        "gehring-2017-transformer-citation-boundary",
+        "gehring-2017-reproducibility-and-rights-boundary"
       ],
       "uncertainties": [
         {
@@ -14175,6 +14578,223 @@
       "accessNote": "The authors’ institutional page classifies the work as Arxiv (2016), confirms the title and author identity, and retains an abstract matching the first revision’s approach-level translation wording. It supplies no proceedings venue, implementation, or checkpoint."
     },
     {
+      "id": "gehring-2017-arxiv-record",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "arXiv record for Convolutional Sequence to Sequence Learning",
+      "url": "https://arxiv.org/abs/1705.03122",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "gehring-2017-arxiv-v1-version",
+        "gehring-2017-arxiv-v2-version",
+        "gehring-2017-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, authors, arXiv identifier and DOI, latest extent, and exact UTC history for all three revisions. Immutable PDFs control revision-specific text and results."
+    },
+    {
+      "id": "gehring-2017-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "Convolutional Sequence to Sequence Learning, arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1705.03122v1",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "gehring-2017-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-leaf first posting was extracted and compared. It contains the stable mechanism and single-model results but no ensemble table; evidence uses PDF-leaf and structural locators."
+    },
+    {
+      "id": "gehring-2017-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "Convolutional Sequence to Sequence Learning, arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1705.03122v2",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "gehring-2017-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-leaf second posting was extracted and compared. It adds mixture-model comparisons and the first ensemble table while retaining version-1 single-model values; evidence uses PDF-leaf and structural locators."
+    },
+    {
+      "id": "gehring-2017-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "Convolutional Sequence to Sequence Learning, arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1705.03122v3",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "gehring-2017-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-leaf latest posting was extracted and compared. It updates four reported rows and adds the 41.62 ten-model row; its ambiguous “former” wording is bounded by the table and canonical PMLR prose."
+    },
+    {
+      "id": "gehring-2017-pmlr-volume-record",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "PMLR volume 70 record",
+      "url": "https://proceedings.mlr.press/v70/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "gehring-2017-icml-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official volume record states that PMLR 70 was published on 17 July 2017 and that ICML ran 6–11 August. The volume date supports the proceedings-publication event but is not treated as a paper-specific presentation day."
+    },
+    {
+      "id": "gehring-2017-pmlr-record",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "PMLR record for Convolutional Sequence to Sequence Learning",
+      "url": "https://proceedings.mlr.press/v70/gehring17a.html",
+      "accessDate": "2026-08-23",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "gehring-2017-icml-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies canonical authorship, ICML and PMLR container metadata, volume 70, pp. 1243–1252, editors, conference span, main paper, and supplement links."
+    },
+    {
+      "id": "gehring-2017-pmlr-full-text",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "Official PMLR full text of Convolutional Sequence to Sequence Learning",
+      "url": "https://proceedings.mlr.press/v70/gehring17a/gehring17a.pdf",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "gehring-2017-icml-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete ten-leaf canonical article was rendered and inspected. It uses the updated result rows also found in version 3 and explicitly resolves the ten-model row to English–French; locators use PDF leaves rather than volume folios."
+    },
+    {
+      "id": "gehring-2017-pmlr-supplement",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "Official supplement to Convolutional Sequence to Sequence Learning",
+      "url": "https://proceedings.mlr.press/v70/gehring17a/gehring17a-supp.pdf",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "gehring-2017-icml-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 4
+      },
+      "accessNote": "The complete four-leaf supplement was rendered and inspected. It contains weight-initialization derivations and one selected eight-layer attention example, separate from the ten-leaf article."
+    },
+    {
+      "id": "gehring-2017-pmlr-rights-policy",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "PMLR publication agreement",
+      "url": "https://proceedings.mlr.press/pmlr-license-agreement.html",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "gehring-2017-icml-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The current official agreement says authors retain copyright and PMLR publications are licensed under CC BY 4.0. The inspected page does not archive the agreement text in force in 2017, while the article footer states author copyright, so historical figure-reuse rights are not inferred beyond the available record."
+    },
+    {
+      "id": "gehring-2017-fairseq-lua-record",
+      "relatedWorkIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "title": "Official fairseq-lua ConvS2S implementation record",
+      "url": "https://github.com/facebookresearch/fairseq-lua",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "gehring-2017-icml-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The archived Facebook Research repository identifies itself as the Torch implementation of ConvS2S, documents fconv training and released English–French, English–German, and English–Romanian models, and applies BSD 3-Clause terms plus a separate patent grant. The paper does not pin the experiment commit or checkpoint set."
+    },
+    {
       "id": "vaswani-2017-arxiv-record",
       "relatedWorkIds": [
         "vaswani-2017-attention-is-all-you-need"
@@ -14201,7 +14821,8 @@
     {
       "id": "vaswani-2017-arxiv-v1-full-text",
       "relatedWorkIds": [
-        "vaswani-2017-attention-is-all-you-need"
+        "vaswani-2017-attention-is-all-you-need",
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
       ],
       "title": "Attention Is All You Need, arXiv version 1 full text",
       "url": "https://arxiv.org/pdf/1706.03762v1",
@@ -14226,7 +14847,8 @@
     {
       "id": "vaswani-2017-arxiv-v2-full-text",
       "relatedWorkIds": [
-        "vaswani-2017-attention-is-all-you-need"
+        "vaswani-2017-attention-is-all-you-need",
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
       ],
       "title": "Attention Is All You Need, arXiv version 2 full text",
       "url": "https://arxiv.org/pdf/1706.03762v2",
@@ -14413,7 +15035,8 @@
       "id": "vaswani-2017-neurips-full-text",
       "relatedWorkIds": [
         "vaswani-2017-attention-is-all-you-need",
-        "kalchbrenner-2016-neural-machine-translation-linear-time"
+        "kalchbrenner-2016-neural-machine-translation-linear-time",
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
       ],
       "title": "Official NeurIPS full text of Attention Is All You Need",
       "url": "https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf",
@@ -27066,13 +27689,599 @@
       "checkedDate": "2026-08-23"
     },
     {
+      "id": "gehring-2017-conditional-translation-objective",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "full-vocabulary-softmax-normalization"
+      ],
+      "statement": "The decoder factorizes p(y|x) left to right: its top hidden state is projected to vocabulary logits and normalized with a full softmax so p(yᵢ₊₁ | y₁,…,yᵢ,x) is trained by token-level likelihood.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Autoregressive decoder output, PDF leaf 3",
+            "section": "3.2 Convolutional Block Structure"
+          },
+          "support": "The decoder definition prints the conditional next-token distribution and final linear projection followed by softmax."
+        }
+      ],
+      "limitations": [
+        "The objective is inherited conditional maximum likelihood rather than a new non-autoregressive formulation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-learned-position-embeddings",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "Source and target token embeddings are each summed with a learned absolute-position embedding before entering their convolutional stacks; the target position signal is also included in the decoder-layer attention query summary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Learned source and target positions, PDF leaves 2–3",
+            "section": "3.1 Position Embeddings; 3.3 Multi-step Attention",
+            "equation": "1"
+          },
+          "support": "The paper defines learned absolute position vectors added to word embeddings and includes gᵢ in each attention query summary."
+        }
+      ],
+      "limitations": [
+        "The paper uses learned positions but does not claim to invent positional embeddings."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-gated-convolutional-blocks",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "A width-k stride-one convolution maps each k×d window to 2d channels, a gated linear unit applies A ⊙ σ(B), and a residual path adds the block input. Stacking L undilated layers gives receptive field 1 + L(k − 1), so reaching an n-token window requires linearly many layers for fixed k.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Contiguous convolution, GLU, residual path, and context growth, PDF leaves 1–3",
+            "section": "1 Introduction; 3.2 Convolutional Block Structure"
+          },
+          "support": "The introduction gives O(n/k) stacked operations and Section 3.2 defines the window projection, GLU, and residual block."
+        }
+      ],
+      "limitations": [
+        "The exact receptive-field expression follows directly from the stated undilated stack; the paper itself writes the coarser O(n/k) comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-causal-decoder-and-parallelism",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "contiguous-convolutional-sequence-transduction",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "Encoder convolutions preserve sequence length with symmetric padding. Decoder convolutions pad by k − 1 and discard the final k outputs so no state uses future target tokens. All target positions can therefore be computed together under teacher forcing, but generation still advances autoregressively one token at a time.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Encoder padding, causal decoder cropping, and parallel computation, PDF leaves 1 and 3",
+            "section": "1 Introduction; 3.2 Convolutional Block Structure"
+          },
+          "support": "The source distinguishes parallel sequence computation from the decoder padding-and-removal rule that protects the conditional factorization."
+        }
+      ],
+      "limitations": [
+        "Parallel hidden-position computation during training does not imply parallel beam decoding."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-layerwise-multi-step-attention",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "layerwise-multi-step-cross-attention",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "Every decoder layer l forms dᵢˡ = W_dˡhᵢˡ + b_dˡ + gᵢ, normalizes dot products dᵢˡ·zⱼᵘ across source positions, and reads cᵢˡ = Σⱼaᵢⱼˡ(zⱼᵘ + eⱼ). Adding cᵢˡ to that decoder layer lets later layers condition on earlier attention outputs, yielding a fixed stack of source-attention hops.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Per-decoder-layer dot-product attention, PDF leaf 3",
+            "section": "3.3 Multi-step Attention",
+            "equation": "1–2"
+          },
+          "support": "Equations 1–2 define the query summary, source-position softmax, values that add the original source embedding, and layerwise conditional input."
+        }
+      ],
+      "limitations": [
+        "These are encoder–decoder attention hops across convolutional layers, not self-attention among positions inside one sequence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-attention-antecedent-boundary",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "layerwise-multi-step-cross-attention",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "The paper places its mechanism after recurrent soft-attention translators, describes the separate attention in each decoder layer as an extension beyond the usual single decoder attention, and explicitly compares the repeated layerwise reads with multiple memory-network hops. It also says the zⱼᵘ + eⱼ value resembles key–value memory. These citations bound the continuity without making multi-step cross-attention identical to external-memory retrieval or self-attention.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Attention and memory antecedents, PDF leaves 1 and 3",
+            "section": "1 Introduction; 3.3 Multi-step Attention"
+          },
+          "support": "The article names Bahdanau and Luong attention, Sukhbaatar multiple hops, and key–value memory while explaining the target’s distinct layerwise mechanism."
+        }
+      ],
+      "limitations": [
+        "A cited analogy or extension does not transfer the predecessor’s task, topology, equations, training recipe, or empirical results."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-normalization-and-initialization",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "layerwise-multi-step-cross-attention"
+      ],
+      "statement": "Residual sums are scaled by √0.5, attention outputs are variance-scaled under a uniform-attention approximation, and encoder gradients are divided by the number of decoder attention modules. Embeddings use N(0,0.1); ordinary and GLU-bound weights use width-aware initializations, adjusted for dropout keep probability.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Variance control and initialization, PDF leaf 4",
+            "section": "3.4 Normalization Strategy; 3.5 Initialization"
+          },
+          "support": "The article states the three scaling rules and the embedding, ordinary-layer, and GLU initialization variances."
+        },
+        {
+          "sourceId": "gehring-2017-pmlr-supplement",
+          "locator": {
+            "label": "Initialization derivations, supplement leaves 1–2",
+            "section": "A Weight Initialization"
+          },
+          "support": "The supplement derives the GLU variance and dropout adjustment used by the main article."
+        }
+      ],
+      "limitations": [
+        "The paper does not isolate these stabilization choices in controlled ablations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-data-and-tokenization",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Translation uses 2.8M English–Romanian pairs after removing sentences over 175 words, 4.5M English–German pairs, and 35.5M filtered English–French pairs. English–Romanian uses a joint source–target 40K BPE vocabulary; English–German uses 40K BPE types; English–French uses separate 40K-BPE source and target vocabularies. The summarization experiment uses 3.8M Gigaword pairs and a 30K vocabulary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Translation and summarization corpora, PDF leaf 4",
+            "section": "4.1 Datasets"
+          },
+          "support": "The paper reports corpus sizes, filtering, test sets, tokenization families, vocabulary sizes, and the summarization split."
+        }
+      ],
+      "limitations": [
+        "BPE, word, and word-piece comparison rows do not share identical vocabulary definitions or preprocessing."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-training-and-decoding",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Models are trained by token likelihood with Nesterov accelerated gradient, momentum 0.99, gradient-norm cap 0.1, initial learning rate 0.25 and tenfold plateau decay, token-normalized gradients, weight normalization, and dropout. Reported translation values average three initial seeds; decoding uses beam 5, with tuned length normalization only for English–German and attention-based unknown replacement for word models.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Optimization and inference settings, PDF leaf 5",
+            "section": "4.2 Model Parameters and Optimization; 4.3 Evaluation"
+          },
+          "support": "The source states the optimizer, schedule, gradient handling, regularization, repeated-run policy, beam, length treatment, and unknown replacement."
+        }
+      ],
+      "limitations": [
+        "Several reproducibility-critical hyperparameters and the exact BLEU commands remain unspecified."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-translation-results",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "layerwise-multi-step-cross-attention"
+      ],
+      "statement": "Canonical Table 1 reports ConvS2S single-model BLEU of 29.45 with an 80K-word system and 30.02 with 40K BPE on English–Romanian, 25.16 with 40K BPE on English–German, and 40.51 with 40K BPE on English–French.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Canonical single-model translation results, PDF leaf 6",
+            "section": "5.1 Recurrent vs. Convolutional Models",
+            "table": "1"
+          },
+          "support": "Table 1 prints the four canonical ConvS2S rows with vocabulary and BLEU conditions."
+        }
+      ],
+      "limitations": [
+        "The table is not a component-isolating or uniformly tokenized comparison and does not support an unqualified universal state-of-the-art claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-ensemble-results",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "layerwise-multi-step-cross-attention"
+      ],
+      "statement": "Canonical Table 2 reports eight-model ConvS2S ensembles at 26.43 English–German and 41.44 English–French BLEU, plus a ten-model English–French ensemble at 41.62.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Canonical ensemble results and dataset resolution, PDF leaf 6",
+            "section": "5.2 Ensemble Results",
+            "table": "2"
+          },
+          "support": "The table prints all three values and the published prose explicitly assigns the ten-model row to English–French."
+        }
+      ],
+      "limitations": [
+        "Ensembles combine separately trained models; their gains do not isolate an architectural component."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-generation-speed-boundary",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "On a 6,003-sentence English–French development set formed by concatenating newstest2012 and newstest2013, greedy ConvS2S decoding takes 327 s on K40, 221 s on M40, 142 s on GTX 1080 Ti, and 142 s on a 48-core CPU; beam 5 takes 587, 406, 256, and 482 s. The displayed GNMT rows use different K80, 88-core CPU, or TPU hardware and 31.20 BLEU, so the paper’s speed ratios are cross-system rather than same-hardware matched reruns.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Generation speed table and comparability warning, PDF leaves 6–7",
+            "section": "5.3 Generation Speed",
+            "table": "3"
+          },
+          "support": "Table 3 reports times, hardware, beams, and BLEU; the surrounding prose identifies the CPU core mismatch and batching method."
+        }
+      ],
+      "limitations": [
+        "The table does not establish training speed, accelerator-normalized throughput, equal-quality latency, memory cost, or energy efficiency."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-position-ablation",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "In the separate 160K-vocabulary English–German setup, the position baseline is 6.64 perplexity and 21.7 BLEU; removing source positions gives 6.69/21.3, removing target positions 6.63/21.5, and removing both 6.68/21.2.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Source and target position ablation, PDF leaf 7",
+            "section": "5.4 Position Embeddings",
+            "table": "4"
+          },
+          "support": "Table 4 prints the four perplexity and BLEU rows and identifies the separate evaluation setup."
+        }
+      ],
+      "limitations": [
+        "The small, mixed changes are from one setup without repeated-run dispersion and do not prove positions are unnecessary in other lengths, datasets, or architectures."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-attention-layer-ablation",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "layerwise-multi-step-cross-attention",
+        "multi-hop-memory-retrieval"
+      ],
+      "statement": "Using attention in all five decoder layers yields 6.65 perplexity and 21.63 BLEU, while attention only in the top layer yields 7.66 and 20.24. The all-layer model processes 3,624 target words/s versus 3,772 with one attention module—about 4% total slowdown, described in the canonical paper as roughly 1% overhead per added module.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Attention placement and throughput ablation, PDF leaf 7",
+            "section": "5.5 Multi-step Attention",
+            "table": "5"
+          },
+          "support": "Table 5 prints the attention-layer subsets and metrics; the prose reports 3,624 versus 3,772 target words/s and characterizes per-module overhead."
+        }
+      ],
+      "limitations": [
+        "The comparison changes the number and placement of attention modules together and reports no variance across seeds."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-depth-and-kernel-results",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction"
+      ],
+      "statement": "In the displayed English–German ablations, 13 encoder layers with width 3 reach 21.63 BLEU versus 20.61 at 5 layers, while wider kernels do not consistently compensate for lower depth. The best decoder cell shown is 21.71 BLEU at 5 layers and width 3; additional depth or width is not monotonically better.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Depth and kernel-width analysis, PDF leaf 8",
+            "section": "5.6 Kernel size and Depth",
+            "table": "7–8",
+            "figure": "2"
+          },
+          "support": "The displayed tables report the encoder and decoder depth-by-width cells and Figure 2 gives the broader selected depth trend."
+        }
+      ],
+      "limitations": [
+        "The study searches coupled model choices in a separate setup and is not a universal optimum for depth or kernel width."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-summarization-results",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "layerwise-multi-step-cross-attention"
+      ],
+      "statement": "A six-layer encoder and decoder trained overnight on one GPU by ordinary likelihood reports ROUGE-1/2/L of 30.44/10.84/26.90 on DUC and 35.88/17.48/33.29 on Gigaword. It exceeds the likelihood-only recurrent baseline but not every minimum-risk or task-specific comparator.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Summarization setup and results, PDF leaf 8",
+            "section": "5.7 Summarization",
+            "table": "6"
+          },
+          "support": "The source reports architecture, training duration, ROUGE convention, comparator families, and both ConvS2S rows."
+        }
+      ],
+      "limitations": [
+        "This experiment tests transfer to one short-headline setting; it does not establish long-document summarization or dominance over task-specialized training objectives."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-attention-visualization-boundary",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "layerwise-multi-step-cross-attention"
+      ],
+      "statement": "The supplement visualizes eight decoder-layer attention maps for one English–German example and tentatively interprets different layers as near-linear, diffuse, noun-focused, or reordering-focused. It supplies no sampled corpus, gold structure, aggregate statistic, or causal intervention.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-supplement",
+          "locator": {
+            "label": "Selected eight-layer attention example, supplement leaves 2–4",
+            "section": "C Attention Visualization"
+          },
+          "support": "The supplement identifies one example, prints eight maps, and uses tentative qualitative interpretations for selected layers."
+        }
+      ],
+      "limitations": [
+        "Selected attention weights are not proof of linguistic roles, word alignment quality, explanation fidelity, or general behavior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-version-result-boundary",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "layerwise-multi-step-cross-attention"
+      ],
+      "statement": "The architecture and equations remain stable across arXiv revisions, but results drift: v1 reports 29.88 Romanian and 40.46 French with no ensembles; v2 adds 26.36 German and 41.29 French ensembles; v3 and PMLR update Romanian/French single results to 30.02/40.51, ensembles to 26.43/41.44, and add 41.62 for ten-model French. The published prose resolves v3’s ambiguous dataset wording.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 mechanism and result audit, PDF leaves 1–15",
+            "section": "Complete manuscript; Tables 1–2"
+          },
+          "support": "Version 1 establishes the stable mechanism, first single-model values, and absent ensemble table."
+        },
+        {
+          "sourceId": "gehring-2017-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 mechanism and result audit, PDF leaves 1–15",
+            "section": "Complete manuscript; Tables 1–2"
+          },
+          "support": "Version 2 retains the mechanism and singles while adding the ensemble rows later copied by Transformer Table 2."
+        },
+        {
+          "sourceId": "gehring-2017-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 mechanism and result audit, PDF leaves 1–15",
+            "section": "Complete manuscript; Tables 1–2"
+          },
+          "support": "Version 3 supplies the updated values, new ten-model row, and ambiguous nearby wording."
+        },
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Canonical updated rows and explicit ten-model dataset, PDF leaf 6",
+            "section": "5.1 Recurrent vs. Convolutional Models; 5.2 Ensemble Results",
+            "table": "1–2"
+          },
+          "support": "The published article matches the updated table and explicitly says the ten-model ensemble is English–French."
+        }
+      ],
+      "limitations": [
+        "Values must remain bound to their revision; later updates are not silently projected into Transformer’s earlier comparator table."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-transformer-citation-boundary",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "learned-absolute-sequence-position-embeddings",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "Transformer v1 follows ConvS2S v2 and cites it as a parallel convolutional predecessor with a linear arbitrary-position path, includes it among encoder–decoder attention mechanisms its cross-attention mimics, names learned positional embeddings as an alternative, and benchmarks its v2-era 25.16/40.46 single and 26.36/41.29 ensemble BLEU rows. Transformer v2 and the canonical proceedings paper later test that learned-position alternative in Table 3 row E. This establishes scoped awareness and technique continuity, not adoption of ConvS2S’s convolution, GLU, or layerwise-hop architecture as the source of Transformer self-attention.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "vaswani-2017-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 ConvS2S path, cross-attention, position-alternative, and benchmark citations, article pp. 2, 5–6, and 8",
+            "section": "2 Background; 3.2.3 Applications of Attention; 3.5 Positional Encoding; 6.1",
+            "pageStart": 2,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Transformer version 1 directly names ConvS2S in the comparison, cross-attention, learned-position-alternative, and benchmark roles, but does not contain the later row-E test."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 learned-position experiment, article pp. 5–6 and 9",
+            "section": "3.5 Positional Encoding; 6.2 Model Variations",
+            "pageStart": 5,
+            "pageEnd": 9,
+            "table": "3, row E"
+          },
+          "support": "Transformer version 2 adds the row-E comparison between learned and sinusoidal position representations."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Canonical ConvS2S path, attention, learned-position test, and comparator evidence, article pp. 2, 5–6, and 8–9",
+            "section": "2 Background; 3.2.3 Applications of Attention; 3.5 Positional Encoding; 6.1–6.2",
+            "pageStart": 2,
+            "pageEnd": 9,
+            "table": "2–3"
+          },
+          "support": "The canonical target cites ConvS2S in each scoped role, tests learned positions in row E, and reproduces its earlier result values rather than the later updated PMLR rows."
+        }
+      ],
+      "limitations": [
+        "Citation and chronology establish awareness and the named technique links; they do not establish conception order, sole inspiration, or causation for core self-attention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "gehring-2017-reproducibility-and-rights-boundary",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "ideaIds": [
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "The paper averages three initial seeds and links source code and pretrained translation models, but reports no dispersion and identifies no immutable experiment commits or checkpoint hashes. The article footer states author copyright; reuse rights beyond linking and original explanation require separate verification.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Repeated-run, code-link, and reporting scope, PDF leaves 1 and 5–8",
+            "section": "Article footer; 4.2–5.7"
+          },
+          "support": "The source prints the code URL, three-run policy, experiment tables, omitted dispersion, and author-copyright footer."
+        }
+      ],
+      "limitations": [
+        "Missing immutable provenance limits exact reconstruction without negating the reported experiments.",
+        "Future figure reuse should verify which publication agreement governed this 2017 article instead of relying on the current policy alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
       "id": "vaswani-2017-predecessor-and-scope-boundary",
       "workId": "vaswani-2017-attention-is-all-you-need",
       "ideaIds": [
         "self-attention-sequence-mixing",
         "attention-path-length-and-parallelism"
       ],
-      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures and identifies Parikh et al. among the few attention cases not coupled to recurrence; its background includes Cheng in the prior self-/intra-attention task citation sequence whose first listed context is reading comprehension, includes Parikh in the same sequence alongside textual entailment, cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence, and separately groups ByteNet with convolutional efforts that compute hidden positions in parallel while requiring a logarithmically growing operation path between distant positions. The scaled-dot-product paragraph does not cite Luong, and none of these contextual or contrastive citations states that the Transformer adopts Cheng’s recurrent memory tape, Parikh’s attend–compare–aggregate factorization, or ByteNet’s mask, dilation schedule, stacking, or dynamic unfolding. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
+      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures and identifies Parikh et al. among the few attention cases not coupled to recurrence; its background includes Cheng in the prior self-/intra-attention task citation sequence whose first listed context is reading comprehension, includes Parikh in the same sequence alongside textual entailment, cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence, and separately groups ByteNet with convolutional efforts that compute hidden positions in parallel while requiring a logarithmically growing operation path between distant positions. The scaled-dot-product paragraph does not cite Luong, and none of these contextual or contrastive citations states that the Transformer adopts Cheng’s recurrent memory tape, Parikh’s attend–compare–aggregate factorization, or ByteNet’s mask, dilation schedule, stacking, or dynamic unfolding. The same background directly contrasts ConvS2S as a parallel convolutional predecessor with a linear arbitrary-position path; Section 3.2.3 includes it among encoder–decoder attention mechanisms the Transformer cross-attention route mimics, and Section 3.5 tests its cited learned positional-embedding alternative while retaining sinusoidal positions as the canonical default. Those scoped citations support one qualified build-on relationship, not adoption of ConvS2S’s convolution, GLUs, or layerwise hops as the cause of core self-attention. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
       "directness": "editorial-inference",
       "confidence": "high",
       "evidence": [
@@ -27176,12 +28385,24 @@
             "pageEnd": 15
           },
           "support": "ArXiv version 7 retains the End-To-End Memory Networks background sentence and reference added in version 5."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Direct ConvS2S path, cross-attention, learned-position, and benchmark roles, article pp. 2, 5–6, and 8–9",
+            "section": "2 Background; 3.2.3 Applications of Attention; 3.5 Positional Encoding; 6.1–6.2",
+            "pageStart": 2,
+            "pageEnd": 9,
+            "table": "2–3"
+          },
+          "support": "The paper distinguishes ConvS2S’s linear convolutional path, includes it in the cross-attention mechanism references, tests its learned positional-embedding alternative, and reproduces its earlier comparator values."
         }
       ],
       "limitations": [
         "This claim preserves the paper's scope and qualifier without adopting a priority conclusion; direct references and mechanism continuity do not by themselves establish conception order or sole causation.",
         "The Luong citation is contextual rather than attached to scaled dot-product attention; the Cheng and Parikh citations establish prior task contexts rather than direct adoption of a recurrent memory tape, attend–compare–aggregate factorization, relative-distance bias, or their results; the End-To-End Memory Networks citation is contextual and contrastive rather than evidence for Transformer positional encoding, projections, residual paths, or multi-head attention; and the ByteNet references establish convolutional comparison context rather than adoption of its sequence model or experiments.",
-        "The End-To-End Memory Networks citation is absent from Transformer arXiv versions 1–4 and first appears in version 5, so it cannot be projected backward into the earlier manuscripts."
+        "The End-To-End Memory Networks citation is absent from Transformer arXiv versions 1–4 and first appears in version 5, so it cannot be projected backward into the earlier manuscripts.",
+        "The ConvS2S relationship is limited to the target’s familiar encoder–decoder attention route and learned-position ablation; its path and BLEU citations are comparisons, and no source statement attributes the core self-attention design to ConvS2S."
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-23"
@@ -30142,6 +31363,174 @@
           "note": "The relationship is limited to the documented computational and representation contrast; ByteNet does not use attentional pooling."
         }
       ]
+    },
+    {
+      "id": "bahdanau-2014-to-gehring-2017",
+      "from": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "gehring-2017-convolutional-sequence-to-sequence-learning"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ConvS2S explicitly starts from soft-attention encoder–decoder translation and extends the usual target-step source read to a separate module in every convolutional decoder layer. The relationship carries decoder-conditioned weighted source context only; it does not transfer Bahdanau’s bidirectional recurrent annotations, additive scorer, decoder gates, alignment interpretation, or results.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Recurrent soft-attention starting point and layerwise extension, PDF leaves 1 and 3",
+            "section": "1 Introduction; 3.3 Multi-step Attention"
+          },
+          "support": "The target cites Bahdanau’s attention family and explains its own separate decoder-layer modules and distinct equations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "luong-2015-to-gehring-2017",
+      "from": {
+        "kind": "work",
+        "id": "luong-pham-manning-2015-effective-attention-nmt"
+      },
+      "to": {
+        "kind": "work",
+        "id": "gehring-2017-convolutional-sequence-to-sequence-learning"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ConvS2S directly places Luong among the recurrent attention systems it replaces on the state-computation path and retains multiplicative decoder-to-encoder scoring inside each new convolutional decoder layer. The relationship is limited to recurrent cross-attention continuity and unscaled multiplicative scoring, not equation identity, local windows, input feeding, recurrence, training, or results.",
+      "claimIds": [
+        "luong-2015-global-attention",
+        "luong-2015-attention-score-family",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Luong attention context and target dot-product scorer, PDF leaves 1 and 3",
+            "section": "1 Introduction; 3.3 Multi-step Attention",
+            "equation": "1–2"
+          },
+          "support": "The target cites Luong attention and defines its own unscaled dot-product source-position softmax in every decoder layer."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "sukhbaatar-2015-to-gehring-2017",
+      "from": {
+        "kind": "work",
+        "id": "sukhbaatar-2015-end-to-end-memory-networks"
+      },
+      "to": {
+        "kind": "work",
+        "id": "gehring-2017-convolutional-sequence-to-sequence-learning"
+      },
+      "connectionType": "conceptual-parallel",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "high",
+      "rationale": "ConvS2S explicitly says its successive per-layer attention reads resemble multiple memory-network hops. The edge records that cited interpretation while prohibiting a claim that the external-memory update equations, QA topology, position/time encoding, or language-model experiments were adopted by ConvS2S.",
+      "claimIds": [
+        "sukhbaatar-2015-multi-hop-update",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "gehring-2017-pmlr-full-text",
+          "locator": {
+            "label": "Explicit multiple-hop analogy, PDF leaf 3",
+            "section": "3.3 Multi-step Attention"
+          },
+          "support": "The target cites Sukhbaatar when interpreting its decoder-layer reads as multiple attention hops."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The direct citation supports the analogy, not an implementation or causal inheritance claim; conceptual-parallel preserves that boundary."
+        }
+      ]
+    },
+    {
+      "id": "gehring-2017-to-vaswani-2017",
+      "from": {
+        "kind": "work",
+        "id": "gehring-2017-convolutional-sequence-to-sequence-learning"
+      },
+      "to": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Transformer version 1 explicitly includes ConvS2S among the encoder–decoder attention mechanisms its cross-attention mimics and cites it for learned positional embeddings as an alternative; version 2 and the canonical proceedings paper later test that alternative in row E. The target also contrasts ConvS2S’s linear path and benchmarks its v2-era results. The edge is therefore limited to familiar cross-attention structure and the evaluated position technique; it excludes causal claims for core self-attention, scaled heads, feed-forward blocks, sinusoidal default positions, ConvS2S convolutions, GLUs, or layerwise hops.",
+      "claimIds": [
+        "gehring-2017-learned-position-embeddings",
+        "gehring-2017-transformer-citation-boundary",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-predecessor-and-scope-boundary",
+        "vaswani-2017-positional-encoding"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "vaswani-2017-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 ConvS2S cross-attention, path, learned-position alternative, and benchmark citations, article pp. 2, 5–6, and 8",
+            "section": "2 Background; 3.2.3 Applications of Attention; 3.5 Positional Encoding; 6.1",
+            "pageStart": 2,
+            "pageEnd": 8,
+            "table": "2"
+          },
+          "support": "Version 1 directly names ConvS2S in the scoped comparison, cross-attention, position-alternative, and benchmark roles without a row-E ablation."
+        },
+        {
+          "sourceId": "vaswani-2017-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 learned-position experiment, article pp. 5–6 and 9",
+            "section": "3.5 Positional Encoding; 6.2 Model Variations",
+            "pageStart": 5,
+            "pageEnd": 9,
+            "table": "3, row E"
+          },
+          "support": "Version 2 adds the row-E comparison that evaluates the cited learned-position alternative."
+        },
+        {
+          "sourceId": "vaswani-2017-neurips-full-text",
+          "locator": {
+            "label": "Canonical ConvS2S cross-attention, path, learned-position test, and benchmark citations, article pp. 2, 5–6, and 8–9",
+            "section": "2 Background; 3.2.3 Applications of Attention; 3.5 Positional Encoding; 6.1–6.2",
+            "pageStart": 2,
+            "pageEnd": 9,
+            "table": "2–3"
+          },
+          "support": "The canonical target directly names ConvS2S in the scoped mechanism, comparison, ablation, and benchmark roles and includes the row-E learned-position test."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Transformer v1 cites ConvS2S v2, establishing awareness before publication while leaving the origins of its core self-attention design unstated."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -32089,6 +33478,82 @@
         "Asymptotic work, computational path length, and versioned scholarly evidence"
       ],
       "successCriterion": "The learner can reproduce equation 1 and |t̂| = 1.2|s|, derive c|S|+c|T| and logarithmic dilated paths, reconstruct 1.31 and 23.75/26.26 with their conditions, preserve the 22.85/25.53 contradiction, and keep Transformer citation context separate from a documented adoption edge."
+    },
+    {
+      "id": "beginner-gehring-2017-follow-convolution-and-attention-hops",
+      "mode": "beginner",
+      "objective": "Slide a convolutional window through source and target positions, stack layers to grow its view, then follow one target position through repeated source-attention reads while separating parallel training from left-to-right generation.",
+      "workIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "ideaIds": [
+        "contiguous-convolutional-sequence-transduction",
+        "learned-absolute-sequence-position-embeddings",
+        "layerwise-multi-step-cross-attention"
+      ],
+      "claimIds": [
+        "gehring-2017-learned-position-embeddings",
+        "gehring-2017-gated-convolutional-blocks",
+        "gehring-2017-causal-decoder-and-parallelism",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-position-ablation",
+        "gehring-2017-attention-layer-ablation"
+      ],
+      "prerequisites": [
+        "A sliding one-dimensional window",
+        "A source sentence and partially generated translation",
+        "A softmax-weighted average",
+        "The difference between training and generation"
+      ],
+      "successCriterion": "The learner can derive receptive-field growth, explain causal decoder cropping and learned positions, trace all decoder-layer source reads, and state why fully convolutional training still produces autoregressively."
+    },
+    {
+      "id": "expert-gehring-2017-mechanism-results-and-versions",
+      "mode": "expert",
+      "objective": "Reconstruct the GLU residual stacks, layerwise attention equations, scaling and initialization; audit every major result and ablation; and preserve arXiv metric drift, benchmark comparability, code provenance, and the narrow Transformer relationship.",
+      "workIds": [
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "full-vocabulary-softmax-normalization",
+        "contiguous-convolutional-sequence-transduction",
+        "learned-absolute-sequence-position-embeddings",
+        "decoder-conditioned-soft-attention",
+        "multiplicative-cross-attention",
+        "layerwise-multi-step-cross-attention",
+        "multi-hop-memory-retrieval",
+        "attention-path-length-and-parallelism"
+      ],
+      "claimIds": [
+        "gehring-2017-conditional-translation-objective",
+        "gehring-2017-learned-position-embeddings",
+        "gehring-2017-gated-convolutional-blocks",
+        "gehring-2017-causal-decoder-and-parallelism",
+        "gehring-2017-layerwise-multi-step-attention",
+        "gehring-2017-attention-antecedent-boundary",
+        "gehring-2017-normalization-and-initialization",
+        "gehring-2017-data-and-tokenization",
+        "gehring-2017-training-and-decoding",
+        "gehring-2017-translation-results",
+        "gehring-2017-ensemble-results",
+        "gehring-2017-generation-speed-boundary",
+        "gehring-2017-position-ablation",
+        "gehring-2017-attention-layer-ablation",
+        "gehring-2017-depth-and-kernel-results",
+        "gehring-2017-summarization-results",
+        "gehring-2017-attention-visualization-boundary",
+        "gehring-2017-version-result-boundary",
+        "gehring-2017-transformer-citation-boundary",
+        "gehring-2017-reproducibility-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Conditional likelihood, softmax, and beam search",
+        "One-dimensional convolution, receptive fields, GLUs, and residual paths",
+        "Dot-product cross-attention and multi-hop retrieval",
+        "BLEU, ROUGE, perplexity, ablations, and versioned evidence"
+      ],
+      "successCriterion": "The learner can reproduce equations 1–2 and 1 + L(k − 1), reconstruct the canonical result rows and their conditions, distinguish v2 comparator values from later PMLR updates, and defend the Transformer edge without claiming core self-attention causation."
     },
     {
       "id": "beginner-vaswani-2017-follow-attention-routes",
