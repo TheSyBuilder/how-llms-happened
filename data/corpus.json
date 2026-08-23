@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-22",
+  "asOf": "2026-08-23",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -6737,6 +6737,768 @@
       ]
     },
     {
+      "id": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "title": "Long Short-Term Memory-Networks for Machine Reading",
+      "authors": [
+        "Jianpeng Cheng",
+        "Li Dong",
+        "Mirella Lapata"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” Proceedings of EMNLP 2016, pp. 551–561, November 2016 (arXiv v1 posted 25 January 2016).",
+      "chronology": {
+        "orderingEventId": "cheng-2016-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "cheng-2016-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2016-01-25",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 25 January 2016 at 19:25:48 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v1-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2016-01-26",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 26 January 2016 at 20:48:02 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v2-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2016-02-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 1 February 2016 at 14:29:04 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v3-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2016-03-17",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 17 March 2016 at 13:28:16 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v4-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 5 posted",
+            "date": {
+              "value": "2016-04-07",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 7 April 2016 at 09:53:49 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v5-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-arxiv-v6-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 6 posted",
+            "date": {
+              "value": "2016-06-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 6 posted 1 June 2016 at 12:27:42 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v6-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v6-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-arxiv-v7-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 7 posted",
+            "date": {
+              "value": "2016-09-20",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 7 posted 20 September 2016 at 21:20:09 UTC"
+              }
+            ],
+            "versionId": "cheng-2016-arxiv-v7-version",
+            "sourceIds": [
+              "cheng-2016-arxiv-record",
+              "cheng-2016-arxiv-v7-full-text"
+            ]
+          },
+          {
+            "id": "cheng-2016-emnlp-proceedings",
+            "kind": "proceedings-publication",
+            "label": "EMNLP 2016 proceedings publication",
+            "date": {
+              "value": "2016-11",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "cheng-2016-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology metadata, November 2016"
+              }
+            ],
+            "versionId": "cheng-2016-emnlp-version",
+            "sourceIds": [
+              "cheng-2016-acl-record",
+              "cheng-2016-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "cheng-2016-arxiv-v1-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v1, 25 January 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v1-full-text"
+          ],
+          "notes": "The first ten-page public manuscript contains the recurrent memory-tape mechanism and all three task families; later result revisions are not projected backward onto it."
+        },
+        {
+          "id": "cheng-2016-arxiv-v2-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v2, 26 January 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v2-full-text"
+          ],
+          "notes": "This ten-page revision is preserved as a distinct evidence version. Claims tied to later tables use their own immutable full texts rather than the aggregate record."
+        },
+        {
+          "id": "cheng-2016-arxiv-v3-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v3, 1 February 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v3-full-text",
+            "cheng-2016-paper-linked-code"
+          ],
+          "notes": "This ten-page revision reports a deep-fusion average row of 92.3 training and 89.1 test accuracy on SNLI, a result replaced in the following revision."
+        },
+        {
+          "id": "cheng-2016-arxiv-v4-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v4, 17 March 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v4-full-text"
+          ],
+          "notes": "This eleven-page revision separates ordinary deep fusion at 88.5/86.3 from a 92.1/89.0 improved variant that adds end-of-sentence summaries, concatenation and absolute-difference features, and length masking."
+        },
+        {
+          "id": "cheng-2016-arxiv-v5-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v5, 7 April 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v5",
+                "label": "arXiv version 5 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v5-full-text"
+          ],
+          "notes": "This eleven-page revision retains the improved deep-fusion row while updating a sentiment comparator; it remains separate from the later camera-ready result family."
+        },
+        {
+          "id": "cheng-2016-arxiv-v6-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 6",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v6, 1 June 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v6",
+                "label": "arXiv version 6 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v6-full-text"
+          ],
+          "notes": "This eleven-page revision removes the improved deep-fusion variant, expands the SNLI dimension sweep through a 450-dimensional 86.3 test row, and revises the two LSTMN sentiment rows without explaining either change."
+        },
+        {
+          "id": "cheng-2016-arxiv-v7-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 7",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” arXiv:1601.06733v7, 20 September 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1601.06733v7",
+                "label": "arXiv version 7 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1601.06733",
+                "label": "ArXiv-issued DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-arxiv-record",
+            "cheng-2016-arxiv-v7-full-text",
+            "cheng-2016-paper-linked-code"
+          ],
+          "notes": "The final eleven-page arXiv revision retains the version-6 result family and closely tracks the proceedings treatment; its article pagination remains distinct from the official printed folios."
+        },
+        {
+          "id": "cheng-2016-emnlp-version",
+          "title": "Long Short-Term Memory-Networks for Machine Reading",
+          "authors": [
+            "Jianpeng Cheng",
+            "Li Dong",
+            "Mirella Lapata"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical EMNLP 2016 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Cheng, L. Dong, and M. Lapata, “Long Short-Term Memory-Networks for Machine Reading,” in Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing, Austin, Texas, pp. 551–561, November 2016.",
+            "venue": "Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing",
+            "editors": [
+              "Jian Su",
+              "Kevin Duh",
+              "Xavier Carreras"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Austin, Texas"
+            ],
+            "pages": [
+              "551-561"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/D16-1053",
+                "label": "Proceedings paper DOI"
+              },
+              {
+                "type": "catalog-id",
+                "value": "D16-1053",
+                "label": "ACL Anthology identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "cheng-2016-acl-record",
+            "cheng-2016-acl-full-text",
+            "cheng-2016-paper-linked-code",
+            "cheng-2016-acl-rights-policy"
+          ],
+          "notes": "The official eleven-page article uses printed pp. 551–561, retains the version-6/7 result family, and links the author repository recorded separately with its current access status. Canonical claims use the proceedings folios; revision-only claims use article pagination."
+        }
+      ],
+      "canonicalVersionId": "cheng-2016-emnlp-version",
+      "preferredSourceIds": [
+        "cheng-2016-acl-record",
+        "cheng-2016-acl-full-text"
+      ],
+      "sourceIds": [
+        "cheng-2016-arxiv-record",
+        "cheng-2016-arxiv-v1-full-text",
+        "cheng-2016-arxiv-v2-full-text",
+        "cheng-2016-arxiv-v3-full-text",
+        "cheng-2016-arxiv-v4-full-text",
+        "cheng-2016-arxiv-v5-full-text",
+        "cheng-2016-arxiv-v6-full-text",
+        "cheng-2016-arxiv-v7-full-text",
+        "cheng-2016-acl-record",
+        "cheng-2016-acl-full-text",
+        "cheng-2016-paper-linked-code",
+        "cheng-2016-acl-rights-policy"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "The paper places a differentiable attention read over a growing tape of prior recurrent states inside each LSTM update, then combines that intra-sequence read with cross-sequence attention through shallow and gated deep fusion. It supplies a recurrent intra-attention branch explicitly cited in the Transformer background, without equating its sequential memory update with recurrence-free Transformer self-attention."
+      },
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "decoder-conditioned-soft-attention",
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "significance": {
+        "beginner": "Instead of asking one LSTM state to summarize everything read so far, the reader keeps a tape of earlier hidden and memory vectors. Each new word softly chooses which earlier entries matter before the recurrent gates write the next state; for sentence pairs, another attention stream can consult the other sentence.",
+        "expert": "LSTMN scores prior hidden states with the current input and preceding adaptive summary, uses the resulting distribution to read aligned hidden and cell tapes, and substitutes those summaries into the gated recurrent update. Shallow fusion composes intra-attentive encoder and decoder modules with cross-attention; deep fusion recurrently stores the source summary through an additional gate."
+      },
+      "limitations": [
+        "Every token update remains sequential and conditions on earlier adaptive recurrent state; the architecture is not a recurrence-free all-position sequence mixer.",
+        "The work concentrates on attentive reads from the tape and leaves attention-controlled writes to future investigation.",
+        "The tape is said to grow until an upper memory-span bound, but the bound and eviction or truncation rule are not specified; table phrases such as memory size 300 refer to vector dimensionality rather than a documented slot cap.",
+        "Despite its machine-reading framing, the paper evaluates language modeling, sentiment, and natural language inference rather than a question-answering or reading-comprehension benchmark.",
+        "Its induced token relations receive only task-level supervision, remain soft and undirected, and are illustrated with selected examples rather than evaluated against structural annotations.",
+        "The language-model, sentiment, and inference studies use three bounded datasets and selected comparator families; they provide no repeated-run variance, confidence intervals, or statistical tests.",
+        "The strongest canonical SNLI system has a reported count of 3.4 million parameters, substantially more than several listed recurrent comparators, which the authors caution limits direct comparison.",
+        "ArXiv result tables change materially: version 3 reports 92.3/89.1 for deep fusion, versions 4–5 report an improved 92.1/89.0 variant, and versions 6–7 plus the proceedings omit that variant without explaining its removal.",
+        "The two LSTMN sentiment rows change from 49.3/87.3 and 49.8/87.9 through version 5 to 47.6/86.3 and 47.9/87.0 in versions 6–7 and the proceedings without an explanation.",
+        "The paper-linked SNLI-attention repository returned HTTP 404 when checked on 23 August 2026; its recorded URL therefore supplies no currently accessible immutable code revision or checkpoint.",
+        "Transformer includes Cheng in the grouped prior self-/intra-attention task citation whose first listed context is reading comprehension; that context does not establish adoption of the recurrent memory tape, its gated fusion equations, or its empirical results.",
+        "ACL states that 2016-and-later Anthology material is CC BY 4.0 while excluding third-party content; any atlas diagrams should still be redrawn and attributed."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No inspected primary source explains why the improved SNLI row or the earlier sentiment rows disappear or change in later revisions.",
+          "resolutionCondition": "A dated author correction, review record, or version note would be needed to characterize the reason rather than only the observed textual boundary."
+        },
+        {
+          "status": "open",
+          "note": "The article names a public implementation, but the linked repository currently returns 404 and no immutable archive was verified.",
+          "resolutionCondition": "An author-controlled replacement, repository restoration, or content-addressed archive would be needed to add implementation provenance."
+        }
+      ]
+    },
+    {
+      "id": "parikh-2016-decomposable-attention-nli",
+      "title": "A Decomposable Attention Model for Natural Language Inference",
+      "authors": [
+        "Ankur P. Parikh",
+        "Oscar Täckström",
+        "Dipanjan Das",
+        "Jakob Uszkoreit"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "A. P. Parikh, O. Täckström, D. Das, and J. Uszkoreit, “A Decomposable Attention Model for Natural Language Inference,” Proceedings of EMNLP 2016, pp. 2249–2255, November 2016 (arXiv v1 posted 6 June 2016).",
+      "chronology": {
+        "orderingEventId": "parikh-2016-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "parikh-2016-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2016-06-06",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "parikh-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 6 June 2016 at 20:30:57 UTC"
+              }
+            ],
+            "versionId": "parikh-2016-arxiv-v1-version",
+            "sourceIds": [
+              "parikh-2016-arxiv-record",
+              "parikh-2016-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "parikh-2016-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2016-09-25",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "parikh-2016-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 25 September 2016 at 23:52:45 UTC"
+              }
+            ],
+            "versionId": "parikh-2016-arxiv-v2-version",
+            "sourceIds": [
+              "parikh-2016-arxiv-record",
+              "parikh-2016-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "parikh-2016-emnlp-proceedings",
+            "kind": "proceedings-publication",
+            "label": "EMNLP 2016 proceedings publication",
+            "date": {
+              "value": "2016-11",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "parikh-2016-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology metadata, November 2016"
+              }
+            ],
+            "versionId": "parikh-2016-emnlp-version",
+            "sourceIds": [
+              "parikh-2016-acl-record",
+              "parikh-2016-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "parikh-2016-arxiv-v1-version",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. P. Parikh, O. Täckström, D. Das, and J. Uszkoreit, “A Decomposable Attention Model for Natural Language Inference,” arXiv:1606.01933v1, 6 June 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1606.01933v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "parikh-2016-arxiv-record",
+            "parikh-2016-arxiv-v1-full-text"
+          ],
+          "notes": "The first five-page manuscript contains the attend–compare–aggregate mechanism and results but prints equation 7 with d_(i−j) repeated in the denominator rather than summing d_(i−k); later versions correct that term and add detailed training and error-analysis material."
+        },
+        {
+          "id": "parikh-2016-arxiv-v2-version",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. P. Parikh, O. Täckström, D. Das, and J. Uszkoreit, “A Decomposable Attention Model for Natural Language Inference,” arXiv:1606.01933v2, 25 September 2016.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1606.01933v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1606.01933",
+                "label": "ArXiv-issued DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "parikh-2016-arxiv-record",
+            "parikh-2016-arxiv-v2-full-text"
+          ],
+          "notes": "The seven-leaf revision corrects equation 7’s distance-bias denominator, supplies detailed preprocessing and optimization settings, and adds qualitative example analysis. It retains the class-level analysis already present in version 1 and the printed cross-entropy expression without a conventional leading minus sign."
+        },
+        {
+          "id": "parikh-2016-emnlp-version",
+          "title": "A Decomposable Attention Model for Natural Language Inference",
+          "authors": [
+            "Ankur P. Parikh",
+            "Oscar Täckström",
+            "Dipanjan Das",
+            "Jakob Uszkoreit"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical EMNLP 2016 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. P. Parikh, O. Täckström, D. Das, and J. Uszkoreit, “A Decomposable Attention Model for Natural Language Inference,” in Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing, Austin, Texas, pp. 2249–2255, November 2016.",
+            "venue": "Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing",
+            "editors": [
+              "Jian Su",
+              "Kevin Duh",
+              "Xavier Carreras"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Austin, Texas"
+            ],
+            "pages": [
+              "2249-2255"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/D16-1244",
+                "label": "Proceedings paper DOI"
+              },
+              {
+                "type": "catalog-id",
+                "value": "D16-1244",
+                "label": "ACL Anthology identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "parikh-2016-acl-record",
+            "parikh-2016-acl-full-text",
+            "parikh-2016-acl-rights-policy",
+            "parikh-2016-google-research-record"
+          ],
+          "notes": "The official seven-page article uses printed pp. 2249–2255 and matches arXiv version 2’s corrected intra-attention denominator. Its PDF prints Ankur P. Parikh while the Anthology metadata shortens the given name to Ankur; the authored full text controls the canonical author list."
+        }
+      ],
+      "canonicalVersionId": "parikh-2016-emnlp-version",
+      "preferredSourceIds": [
+        "parikh-2016-acl-record",
+        "parikh-2016-acl-full-text"
+      ],
+      "sourceIds": [
+        "parikh-2016-arxiv-record",
+        "parikh-2016-arxiv-v1-full-text",
+        "parikh-2016-arxiv-v2-full-text",
+        "parikh-2016-acl-record",
+        "parikh-2016-acl-full-text",
+        "parikh-2016-acl-rights-policy",
+        "parikh-2016-google-research-record"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The paper factors cross-sentence soft alignment into independent attend, compare, and aggregate computations, producing an attention-only textual-entailment system whose core avoids recurrent and convolutional encoders. Its optional feed-forward intra-sentence attention adds only bucketed relative-distance bias. The Transformer cites this recurrence-free attention case in its background, but the citation does not establish direct mechanism adoption."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention",
+        "attention-path-length-and-parallelism"
+      ],
+      "significance": {
+        "beginner": "The model aligns each word or local phrase in one sentence with a soft blend from the other, compares every aligned pair separately, then sums those local judgments before classifying the sentence pair. The optional same-sentence pass adds a small notion of distance without requiring recurrent reading order.",
+        "expert": "Shared feed-forward F projections turn every cross-sentence pair into a dot score, bidirectional softmaxes form aligned phrases, shared G networks compare each pair, and H classifies the sums. The optional F_intra self-alignment concatenates a distance-biased same-sentence mixture; total work is O(ℓd² + ℓ²d), parallel over positions, and O(ℓd²) only under the paper’s ℓ < d assumption."
+      },
+      "limitations": [
+        "The vanilla model intentionally uses no word-order information; the optional variant supplies only learned relative-distance buckets and still fails selected sequence-sensitive cases.",
+        "The O(ℓd²) simplification depends on the paper’s ℓ < d assumption, illustrated by SNLI lengths below 80 and cited LSTM hidden dimensions of at least 300; the paper reports no measured latency or hardware speedup.",
+        "The printed multi-class cross-entropy expression lacks the conventional leading minus sign in both arXiv revisions and the proceedings article, while the text calls it a loss without specifying whether the displayed quantity is maximized or minimized.",
+        "ArXiv version 1 prints d_(i−j) in every denominator term of equation 7; version 2 and the proceedings correct the summation term to d_(i−k).",
+        "The 86.8 test accuracy is one half percentage point above the listed 86.3 systems, with no repeated-run variance, confidence interval, or significance test.",
+        "The nearly one-order parameter comparison applies to the 382K vanilla model versus the 3.4M Cheng comparator; the 582K intra-attention system is about 5.8 times smaller, excluding embeddings.",
+        "Training uses ten asynchronous update threads, selects the best development checkpoint across 50 million steps, and provides no seeds, immutable code, checkpoints, or run-level uncertainty.",
+        "Table 3 contains selected examples rather than an aggregate error taxonomy; all compared systems miss highlighted antonym, numerical, and sequence-sensitive cases.",
+        "Transformer cites the work as an attention-only textual-entailment case; that context does not establish adoption of its attend–compare–aggregate factorization, distance bias, SNLI training recipe, or results.",
+        "ACL states that 2016-and-later Anthology material is CC BY 4.0 while excluding third-party content; any atlas diagrams should still be redrawn and attributed."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The authored proceedings PDF and both arXiv versions print Ankur P. Parikh; the ACL record shortens the name to Ankur Parikh. The work and canonical version follow the full text."
+        },
+        {
+          "status": "open",
+          "note": "No inspected primary source explains whether the missing minus sign in the displayed cross-entropy expression is typographical or reflects an implicit maximization convention.",
+          "resolutionCondition": "An author correction or implementation tied to an immutable revision would be needed to resolve the intended optimization sign."
+        }
+      ]
+    },
+    {
       "id": "vaswani-2017-attention-is-all-you-need",
       "title": "Attention Is All You Need",
       "authors": [
@@ -7279,6 +8041,7 @@
         "The arXiv revisions disagree on English–French BLEU and training time: version 2 has three different values or conditions, version 3 retains a body/table mismatch, and versions 5–7 print 41.8 in the abstract and table but 41.0 in Section 6.1.",
         "The NeurIPS landing-page metadata has a stale abstract with 165 million parameters and 27.5/41.1 BLEU, while the linked canonical PDF reports 28.4/41.0; technical claims follow the PDF.",
         "The paper links Tensor2Tensor code but identifies no immutable commit, released checkpoints, random seeds, or fully pinned data and preprocessing artifact for exact reconstruction.",
+        "The paper’s Cheng and Parikh citations establish recurrent intra-attention and attention-only textual-entailment context, respectively; they do not establish direct adoption of either predecessor’s equations, architecture, training recipe, or results.",
         "NeurIPS says authors retain copyright and grant the venue a non-exclusive publication license. ArXiv versions 6–7 add narrower permission to reproduce tables and figures with attribution for journalistic or scholarly works; the atlas links the sources and does not infer a general open-content license."
       ],
       "uncertainties": [
@@ -8052,7 +8815,11 @@
         "sundermeyer-2012-output-clustering-results",
         "sundermeyer-2012-french-wer-results",
         "sundermeyer-2012-evidence-reproducibility-boundary",
-        "sundermeyer-2012-conclusion-scope"
+        "sundermeyer-2012-conclusion-scope",
+        "cheng-2016-lstmn-memory-tape",
+        "cheng-2016-intra-attention-update",
+        "cheng-2016-antecedent-mechanism-boundary",
+        "cheng-2016-equation-version-boundary"
       ],
       "uncertainties": [
         {
@@ -8478,7 +9245,9 @@
         "luong-2015-input-feeding",
         "luong-2015-bahdanau-extension",
         "luong-2015-wmt15-ensemble-result",
-        "luong-2015-alignment-evaluation"
+        "luong-2015-alignment-evaluation",
+        "cheng-2016-two-sequence-attention-fusion",
+        "cheng-2016-antecedent-mechanism-boundary"
       ],
       "uncertainties": [
         {
@@ -8742,6 +9511,107 @@
       ]
     },
     {
+      "id": "recurrent-intra-attention-memory-tape",
+      "name": "Recurrent intra-attention memory tape",
+      "kind": "mechanism",
+      "description": "At each recurrent step, the current input and prior adaptive state score earlier hidden states; one soft distribution reads aligned summaries from hidden and memory tapes, and those summaries feed the next gated state update.",
+      "claimIds": [
+        "cheng-2016-lstmn-memory-tape",
+        "cheng-2016-intra-attention-update",
+        "cheng-2016-stacked-intra-attention",
+        "cheng-2016-antecedent-mechanism-boundary",
+        "cheng-2016-language-model-setup",
+        "cheng-2016-language-model-results",
+        "cheng-2016-sentiment-setup",
+        "cheng-2016-sentiment-results",
+        "cheng-2016-nli-setup",
+        "cheng-2016-visualization-boundary",
+        "cheng-2016-version-result-boundary",
+        "cheng-2016-equation-version-boundary",
+        "cheng-2016-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The source calls this intra-attention inside a left-to-right recurrent model. The atlas keeps it distinct from recurrence-free all-position self-attention."
+        }
+      ]
+    },
+    {
+      "id": "gated-inter-intra-attention-fusion",
+      "name": "Gated inter–intra attention fusion",
+      "kind": "mechanism",
+      "description": "A two-sequence model combines attention over the target’s earlier states with attention over an encoded source; shallow fusion keeps those modules separate, while deep fusion gates the source summary into recurrent target memory.",
+      "claimIds": [
+        "cheng-2016-two-sequence-attention-fusion",
+        "cheng-2016-antecedent-mechanism-boundary",
+        "cheng-2016-nli-setup",
+        "cheng-2016-nli-results",
+        "cheng-2016-version-result-boundary",
+        "cheng-2016-equation-version-boundary",
+        "cheng-2016-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "decomposable-cross-sentence-attention",
+      "name": "Decomposable cross-sentence attention",
+      "kind": "mechanism",
+      "description": "Shared feed-forward projections score every element pair across two sequences; a softmax in each direction creates a separately aligned phrase for every element without a recurrent or convolutional encoder in the core model.",
+      "claimIds": [
+        "parikh-2016-attend-soft-alignment",
+        "parikh-2016-bahdanau-attention-adaptation",
+        "parikh-2016-complexity-and-parallelism",
+        "parikh-2016-data-and-representation",
+        "parikh-2016-training-regime",
+        "parikh-2016-snli-results",
+        "parikh-2016-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "attend-compare-aggregate-factorization",
+      "name": "Attend–compare–aggregate factorization",
+      "kind": "mechanism",
+      "description": "Soft alignment decomposes a sentence-pair decision into independent aligned-subphrase comparisons; summing the resulting comparison vectors yields a fixed-size input for the final classifier.",
+      "claimIds": [
+        "parikh-2016-attend-soft-alignment",
+        "parikh-2016-compare-and-aggregate",
+        "parikh-2016-vanilla-word-order-boundary",
+        "parikh-2016-objective-and-printed-sign-boundary",
+        "parikh-2016-complexity-and-parallelism",
+        "parikh-2016-data-and-representation",
+        "parikh-2016-training-regime",
+        "parikh-2016-snli-results",
+        "parikh-2016-classwise-development-results",
+        "parikh-2016-intra-attention-ablation-boundary",
+        "parikh-2016-error-analysis",
+        "parikh-2016-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "distance-biased-feedforward-intra-attention",
+      "name": "Distance-biased feed-forward intra-attention",
+      "kind": "mechanism",
+      "description": "Feed-forward projections score all pairs within one sentence, learned relative-distance buckets bias the softmax, and each word is concatenated with its self-aligned phrase while position-wise computation remains parallel.",
+      "claimIds": [
+        "parikh-2016-distance-biased-intra-attention",
+        "parikh-2016-cheng-intra-attention-adaptation",
+        "parikh-2016-snli-results",
+        "parikh-2016-classwise-development-results",
+        "parikh-2016-intra-attention-ablation-boundary",
+        "parikh-2016-version-boundary",
+        "parikh-2016-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target names Cheng’s intra-sentence-attention concept but replaces Cheng’s sequential gated tape with all-pairs feed-forward self-alignment and a relative-distance bias; the lineage edge is therefore concept-level, not equation identity."
+        }
+      ]
+    },
+    {
       "id": "self-attention-sequence-mixing",
       "name": "Self-attention sequence mixing",
       "kind": "mechanism",
@@ -8753,7 +9623,10 @@
         "vaswani-2017-positionwise-computation",
         "vaswani-2017-complexity-and-path-analysis",
         "vaswani-2017-attention-visualization-boundary",
-        "vaswani-2017-evidence-reproducibility-boundary"
+        "vaswani-2017-evidence-reproducibility-boundary",
+        "parikh-2016-distance-biased-intra-attention",
+        "parikh-2016-cheng-intra-attention-adaptation",
+        "parikh-2016-version-boundary"
       ],
       "uncertainties": [
         {
@@ -8827,7 +9700,9 @@
         "vaswani-2017-predecessor-and-scope-boundary",
         "vaswani-2017-complexity-and-path-analysis",
         "vaswani-2017-training-regime",
-        "vaswani-2017-evidence-reproducibility-boundary"
+        "vaswani-2017-evidence-reproducibility-boundary",
+        "parikh-2016-complexity-and-parallelism",
+        "parikh-2016-evidence-boundary"
       ],
       "uncertainties": [
         {
@@ -12492,6 +13367,434 @@
         "metadata"
       ],
       "accessNote": "The Anthology policy states that pre-2016 ACL material is CC BY-NC-SA 3.0 while excluding third-party content. The atlas uses paraphrase and original diagrams rather than silently copying figures or data assets."
+    },
+    {
+      "id": "cheng-2016-arxiv-record",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "arXiv record for Long Short-Term Memory-Networks for Machine Reading",
+      "url": "https://arxiv.org/abs/1601.06733",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v1-version",
+        "cheng-2016-arxiv-v2-version",
+        "cheng-2016-arxiv-v3-version",
+        "cheng-2016-arxiv-v4-version",
+        "cheng-2016-arxiv-v5-version",
+        "cheng-2016-arxiv-v6-version",
+        "cheng-2016-arxiv-v7-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, authors, identifier and DOI, non-exclusive repository license, and seven exact revision timestamps from 25 January through 20 September 2016. Each revision’s claims remain bound to its immutable full text."
+    },
+    {
+      "id": "cheng-2016-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v1",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete first manuscript establishes the original public mechanism and evidence scope. The 10-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v2",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete second revision is preserved independently from the aggregate current record. The 10-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v3",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete third revision supplies the short-lived 92.3/89.1 deep-fusion result. The 10-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v4",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete fourth revision supplies the separately labeled 92.1/89.0 improved deep-fusion variant. The 11-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 5 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v5",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete fifth revision retains the improved variant and updates a sentiment comparator. The 11-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-arxiv-v6-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 6 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v6",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v6-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete sixth revision removes the improved variant, expands the dimension sweep, and changes two sentiment rows. The 11-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-arxiv-v7-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Long Short-Term Memory-Networks for Machine Reading arXiv version 7 full text",
+      "url": "https://arxiv.org/pdf/1601.06733v7",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "cheng-2016-arxiv-v7-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete final arXiv revision retains the camera-ready result family while using article pagination. The 11-page PDF was downloaded, text-extracted, and compared with the other six revisions."
+    },
+    {
+      "id": "cheng-2016-acl-record",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "ACL Anthology record for Long Short-Term Memory-Networks for Machine Reading",
+      "url": "https://aclanthology.org/D16-1053/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "cheng-2016-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies Anthology ID D16-1053, DOI 10.18653/v1/D16-1053, the proceedings title and editors, November 2016, Austin, publisher, and pp. 551–561."
+    },
+    {
+      "id": "cheng-2016-acl-full-text",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Official ACL full text of Long Short-Term Memory-Networks for Machine Reading",
+      "url": "https://aclanthology.org/D16-1053.pdf",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "cheng-2016-emnlp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 551,
+        "pageEnd": 561
+      },
+      "accessNote": "The complete eleven-page proceedings PDF was rendered and inspected. Printed pp. 551–561 control canonical mechanism, setup, result, citation, and limitation claims."
+    },
+    {
+      "id": "cheng-2016-paper-linked-code",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "Paper-linked SNLI-attention implementation repository",
+      "url": "https://github.com/cheng6076/SNLI-attention",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "cheng-2016-arxiv-v3-version",
+        "cheng-2016-arxiv-v7-version",
+        "cheng-2016-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "ArXiv versions 3 and 7 and the canonical article print this author repository URL; versions 1–2 and 4–6 do not. It returned HTTP 404 on 23 August 2026, so no repository content, immutable experiment commit, license, or checkpoint was available to inspect. The source records implementation provenance, version appearance, and access status only; it does not support technical claims."
+    },
+    {
+      "id": "cheng-2016-acl-rights-policy",
+      "relatedWorkIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "title": "ACL Anthology copyright and licensing policy",
+      "url": "https://aclanthology.org/faq/copyright/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "cheng-2016-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Anthology policy states that 2016-and-later material is CC BY 4.0 while excluding third-party content. The atlas uses paraphrase and original diagrams rather than copying source figures or data assets."
+    },
+    {
+      "id": "parikh-2016-arxiv-record",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "arXiv record for A Decomposable Attention Model for Natural Language Inference",
+      "url": "https://arxiv.org/abs/1606.01933",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "parikh-2016-arxiv-v1-version",
+        "parikh-2016-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, full author list, identifier and DOI, non-exclusive repository license, exact revision timestamps, and the current seven-leaf scope. The five-leaf version-1 boundary comes from its immutable full text."
+    },
+    {
+      "id": "parikh-2016-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "A Decomposable Attention Model for Natural Language Inference arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1606.01933v1",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "parikh-2016-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 5
+      },
+      "accessNote": "The complete five-leaf first revision was rendered and compared with version 2 and the proceedings. Its EMNLP style suppresses visible folios, so claim evidence uses structural anchors rather than numeric page locators. It prints the uncorrected equation-7 denominator, SPINN-NP label, and preliminary-status note for Cheng."
+    },
+    {
+      "id": "parikh-2016-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "A Decomposable Attention Model for Natural Language Inference arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1606.01933v2",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "parikh-2016-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 7
+      },
+      "accessNote": "The complete seven-leaf revision was rendered and compared with version 1 and the official article. Its EMNLP style suppresses visible folios, so claim evidence uses structural anchors rather than numeric page locators. It corrects equation 7 and adds detailed preprocessing, training, and qualitative error analysis."
+    },
+    {
+      "id": "parikh-2016-acl-record",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "ACL Anthology record for A Decomposable Attention Model for Natural Language Inference",
+      "url": "https://aclanthology.org/D16-1244/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "parikh-2016-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies Anthology ID D16-1244, DOI 10.18653/v1/D16-1244, proceedings metadata, November 2016, Austin, and pp. 2249–2255. It shortens Ankur P. Parikh to Ankur Parikh; the authored PDF controls the canonical name."
+    },
+    {
+      "id": "parikh-2016-acl-full-text",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "Official ACL full text of A Decomposable Attention Model for Natural Language Inference",
+      "url": "https://aclanthology.org/D16-1244.pdf",
+      "accessDate": "2026-08-23",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "parikh-2016-emnlp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 2249,
+        "pageEnd": 2255
+      },
+      "accessNote": "The complete seven-page proceedings PDF was rendered and inspected. Printed pp. 2249–2255 control canonical mechanism, complexity, training, result, and limitation claims."
+    },
+    {
+      "id": "parikh-2016-acl-rights-policy",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "ACL Anthology copyright and licensing policy",
+      "url": "https://aclanthology.org/faq/copyright/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "parikh-2016-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Anthology policy states that 2016-and-later material is CC BY 4.0 while excluding third-party content. The atlas uses paraphrase and original diagrams rather than copying source figures or data assets."
+    },
+    {
+      "id": "parikh-2016-google-research-record",
+      "relatedWorkIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "title": "Google Research publication record for A Decomposable Attention Model for Natural Language Inference",
+      "url": "https://research.google/pubs/a-decomposable-attention-model-for-natural-language-inference/",
+      "accessDate": "2026-08-23",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "parikh-2016-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The authors’ institutional publication page confirms the full author names, title, abstract, and 2016 publication identity. It does not supply an official implementation or checkpoint."
     },
     {
       "id": "vaswani-2017-arxiv-record",
@@ -23708,25 +25011,1112 @@
       "checkedDate": "2026-08-22"
     },
     {
+      "id": "cheng-2016-lstmn-memory-tape",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "LSTMN replaces one recursively compressed cell summary with hidden and memory tapes H_(t−1) and C_(t−1), assigns each processed token one hidden vector and one memory vector, and grows the tape until an unspecified upper bound; the study concentrates on attentive reads rather than writes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Memory-tape definition and read-only scope, printed pp. 553–554",
+            "section": "3 The Machine Reader; 3.2 Long Short-Term Memory-Network",
+            "pageStart": 553,
+            "pageEnd": 554
+          },
+          "support": "The canonical model section defines the paired tapes, one slot per token, bounded growth, and the read/write scope."
+        }
+      ],
+      "limitations": [
+        "The tape is internal to a left-to-right recurrent update rather than an independently addressed persistent store.",
+        "Attention-controlled rewriting of earlier slots is proposed only as future work."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-intra-attention-update",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "At step t, the model scores each prior hidden state with a_i^t = vᵀtanh(W_hh_i + W_xx_t + W_h̃h̃_(t−1)), normalizes across prior positions, uses the same weights to read h̃_t and c̃_t from the hidden and memory tapes, and computes c_t = f_t ⊙ c̃_t + i_t ⊙ ĉ_t before h_t = o_t ⊙ tanh(c_t).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Intra-attention scores, tape reads, and gated state update, printed p. 554",
+            "section": "3.2 Long Short-Term Memory-Network",
+            "pageStart": 554,
+            "pageEnd": 554,
+            "equation": "4–9"
+          },
+          "support": "Equations 4–9 define the attention distribution, paired tape summaries, gates, and non-Markov recurrent update."
+        }
+      ],
+      "limitations": [
+        "Only earlier positions are available at a step, so computing the sequence remains order-dependent and sequential.",
+        "The paper interprets soft weights as induced relations but does not validate them as gold linguistic structures."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-stacked-intra-attention",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "A stacked LSTMN feeds the lower layer’s current output into the next layer and lets each upper layer attend over its own earlier hidden tape; the paper compares this layered computation with stacked LSTMs and multi-hop memory networks without making the two mechanisms identical.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Upper-layer attention and multi-hop analogy, printed pp. 554–555",
+            "section": "3.2 Long Short-Term Memory-Network",
+            "pageStart": 554,
+            "pageEnd": 555,
+            "equation": "10"
+          },
+          "support": "Equation 10 and the surrounding text define layer-specific attention and explicitly frame multi-hop memory as a resemblance."
+        }
+      ],
+      "limitations": [
+        "The paper does not isolate the effect of stacking attention reads from the added depth and parameters."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-two-sequence-attention-fusion",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "decoder-conditioned-soft-attention",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "For two sequences, shallow fusion uses intra-attentive LSTMNs as encoder and decoder while adding source-side cross-attention; deep fusion additionally computes a source summary α̃_t, gates it with r_t, and stores r_t ⊙ α̃_t alongside the target’s intra-tape summary and new input in c_t = r_t ⊙ α̃_t + f_t ⊙ c̃_t + i_t ⊙ ĉ_t.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Shallow and deep inter–intra fusion, printed p. 555",
+            "section": "4 Modeling Two Sequences with LSTMN",
+            "pageStart": 555,
+            "pageEnd": 555,
+            "equation": "11–16",
+            "figure": "3"
+          },
+          "support": "The section prose and Figure 3a describe shallow fusion; equations 11–16 and Figure 3b define deep fusion’s source attention, transfer gate, and recurrent storage term."
+        }
+      ],
+      "limitations": [
+        "The paper’s two-sequence experiment is SNLI classification, not an autoregressive translation evaluation.",
+        "Shallow and deep fusion change multiple computation paths, so their result difference is not a single-gate ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-antecedent-mechanism-boundary",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "decoder-conditioned-soft-attention",
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "The paper explicitly frames LSTMN as an extension of LSTM, says Memory Networks’ addressing is closely related to soft attention while citing End-To-End Memory Networks, and later compares stacked LSTMN layers with multi-hop memory computation. Its shallow/deep two-sequence fusion uses Bahdanau-style cross-attention, while placing the memory read inside recurrent state updates rather than reproducing an external-memory hop or translation decoder unchanged.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "LSTM extension and gated-architecture context, printed pp. 551–553",
+            "section": "Abstract; 1 Introduction; 2 Related Work; 3.1 Long Short-Term Memory",
+            "pageStart": 551,
+            "pageEnd": 553
+          },
+          "support": "The target names LSTM and its gated memory core, then distinguishes its own internal recurrent memory network."
+        },
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Memory-network and Bahdanau attention boundaries, printed pp. 552–555",
+            "section": "2 Related Work; 3.2 Long Short-Term Memory-Network; 4 Modeling Two Sequences",
+            "pageStart": 552,
+            "pageEnd": 555
+          },
+          "support": "The target cites soft memory addressing, the multi-hop analogy, and Bahdanau-like inter-attention while specifying its different recurrent placement."
+        }
+      ],
+      "limitations": [
+        "Hochreiter and Schmidhuber’s original cell has input and output gates but no learned forget gate; Cheng’s forget gate must not be attributed backward.",
+        "The Sukhbaatar relationship is limited to differentiable memory addressing and a layered/multi-hop analogy, not identical memory topology.",
+        "The Bahdanau relationship is limited to the named cross-sequence attention combined with Cheng’s intra-attentive recurrence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-language-model-setup",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "The Penn Treebank language-model study trains on sections 0–20 (about 1M words), validates on 21–22 (80K), tests on 23–24 (90K), uses a 10K vocabulary and average sentence length 21, and trains 150-dimensional embeddings with 300-dimensional hidden/memory units using minibatch SGD, initial learning rate 0.65, 0.85 decay, gradient clipping at 5, and batch size 40.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Penn Treebank split, scale, metric, and optimization, printed p. 556",
+            "section": "5.1 Language Modeling",
+            "pageStart": 556,
+            "pageEnd": 556
+          },
+          "support": "The experiment section reports the corpus partitions, vocabulary, mean length, dimensions, optimizer, schedule, clipping, and batch size."
+        }
+      ],
+      "limitations": [
+        "The paper gives no seeds, run count, or checkpoint-selection rule for these rows."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-language-model-results",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "Penn Treebank test perplexities in Table 1 are 141 for KN5, 129 for RNN, 115 for one-layer LSTM, 108 for one-layer LSTMN, 115 for three-layer sLSTM, 107 for gLSTM, 109 for dLSTM, and 102 for three-layer LSTMN, with memory size 300 for all neural rows.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Complete Penn Treebank perplexity table, printed p. 556",
+            "section": "5.1 Language Modeling",
+            "pageStart": 556,
+            "pageEnd": 556,
+            "table": "1"
+          },
+          "support": "Table 1 supplies all eight named rows, depths, perplexities, and the shared memory-size note."
+        }
+      ],
+      "limitations": [
+        "The source describes margins as significant but reports no statistical test, repeated-run dispersion, or parameter counts for the table.",
+        "Some comparator results are quoted from prior work rather than rerun under one common implementation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-sentiment-setup",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "The sentiment study uses the 11,855-sentence Stanford Sentiment Treebank with fine-grained splits 8,544/1,101/2,210 and binary splits 6,920/872/1,821, initializes 300-dimensional GloVe vectors, uses memory size 168, and trains with Adam, learning rate 2×10⁻³, regularization 10⁻⁴, batch size 5, and classifier dropout 0.5.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Sentiment data, representation, and optimization, printed pp. 557–558",
+            "section": "5.2 Sentiment Analysis",
+            "pageStart": 557,
+            "pageEnd": 558
+          },
+          "support": "The section reports dataset sizes, both split families, memory, embeddings, and training hyperparameters."
+        }
+      ],
+      "limitations": [
+        "The model-selection rule and number of training runs are not reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-sentiment-results",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "The canonical sentiment Table 2 reports fine-grained/binary accuracy of 43.2/82.4 RAE, 45.7/85.4 RNTN, 49.8/86.6 DRNN, 48.5/86.8 DCNN, 48.0/88.1 CNN-MC, 51.2/88.6 T-CNN, 48.7/87.8 PV, 51.0/88.0 CT-LSTM, 46.4/84.9 LSTM, 46.0/86.3 two-layer LSTM, 47.6/86.3 LSTMN, and 47.9/87.0 two-layer LSTMN.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Complete canonical sentiment accuracy table, printed p. 557",
+            "section": "5.2 Sentiment Analysis",
+            "pageStart": 557,
+            "pageEnd": 557,
+            "table": "2"
+          },
+          "support": "Table 2 supplies all twelve comparator and LSTMN rows under fine-grained and binary test accuracy."
+        }
+      ],
+      "limitations": [
+        "Rows combine reported results from architectures with different supervision, structure, dimensions, and parameter counts.",
+        "These LSTMN values differ from arXiv versions 1–5 and cannot be transferred to those revisions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-nli-setup",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "After removing unknown-label SNLI pairs, the inference study uses 549,367 training, 9,842 development, and 9,824 test pairs, a 36,809-word vocabulary, average length 22, lowercasing and tokenization. Two LSTMNs encode the premise and hypothesis: the base comparator averages each hidden tape for classification, while shallow and deep fusion apply their stated two-sequence mechanisms. Training uses 300-dimensional GloVe, Adam, learning rate 10⁻³, batch 16 or 32, and dropout selected from 0.1–0.4.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "SNLI data, architecture, and training conditions, printed pp. 558–559",
+            "section": "5.3 Natural Language Inference",
+            "pageStart": 558,
+            "pageEnd": 559
+          },
+          "support": "The section establishes data counts, preprocessing, pooled-tape classifier, embeddings, optimizer, batch, dropout search, and evaluated dimensions."
+        }
+      ],
+      "limitations": [
+        "The paper does not state the selected dropout value for each result or report run-level uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-nli-results",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "Canonical SNLI test accuracy and reported parameter rows are 59.8 for BOW; 77.6/221K LSTM-100; 83.5/252K LSTM-att-100; 86.1/1.9M mLSTM-300; 81.5/260K LSTMN-100; shallow/deep fusion 84.3/280K and 84.5/330K at 100 dimensions, 85.2/1.4M and 85.7/1.7M at 300, and 86.0/2.8M and 86.3/3.4M at 450.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Complete canonical SNLI accuracy and parameter table, printed p. 559",
+            "section": "5.3 Natural Language Inference",
+            "pageStart": 559,
+            "pageEnd": 559,
+            "table": "3"
+          },
+          "support": "Table 3 supplies every baseline and LSTMN dimension/fusion row with test accuracy and parameter count."
+        }
+      ],
+      "limitations": [
+        "Deep fusion exceeds shallow fusion by 0.2, 0.5, and 0.3 points across the three dimensions while also using more parameters; this is not a parameter-matched gate ablation.",
+        "The authors explicitly caution that the largest system has substantially more parameters than related models."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-visualization-boundary",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape"
+      ],
+      "statement": "Figures 4 and 5 visualize selected language-model and sentiment attention examples; their arcs are undirected, arrows identify the word whose attention is being computed rather than a relation direction, and the paper supplies no gold-structure accuracy or attention-faithfulness evaluation.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Selected intra-attention examples and arc semantics, printed pp. 557–558",
+            "section": "5.1 Language Modeling; 5.2 Sentiment Analysis",
+            "pageStart": 557,
+            "pageEnd": 558,
+            "figure": "4–5"
+          },
+          "support": "The captions and discussion specify the selected-example scope and distinguish focus arrows from undirected relations."
+        }
+      ],
+      "limitations": [
+        "The examples cannot establish a general linguistic parser or faithful causal explanation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-version-result-boundary",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "ArXiv versions 1–2 report SNLI train/test rows of 85.3/82.8 for LSTMN, 86.8/84.6 for shallow fusion, 87.1/84.5 for deep fusion, and 86.3/84.9 for mLSTMN-shallow. Version 3 instead reports one deep-fusion average row at 92.3/89.1; versions 4–5 separate ordinary 88.5/86.3 deep fusion from a 92.1/89.0 improved variant; versions 6–7 and the proceedings omit that variant and report the 450-dimensional deep-fusion maximum of 86.3, while their two sentiment rows also change from the 49.3/87.3 and 49.8/87.9 values retained through version 5 to 47.6/86.3 and 47.9/87.0.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 SNLI result family, article pp. 7–8",
+            "section": "5.3 Natural Language Inference",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "Version 1 supplies the original four LSTMN and fusion train/test rows."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 retained SNLI result family, article pp. 7–8",
+            "section": "5.3 Natural Language Inference",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "Version 2 retains the original four LSTMN and fusion train/test rows."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 SNLI result family, article pp. 7–8",
+            "section": "5.3 Natural Language Inference",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "Version 3 supplies the 92.3/89.1 deep-fusion average row."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v4-full-text",
+          "locator": {
+            "label": "Version-4 ordinary and improved deep-fusion rows, article pp. 8–9",
+            "section": "5.3 Natural Language Inference",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "3"
+          },
+          "support": "Version 4 replaces the earlier average with separate 88.5/86.3 and 92.1/89.0 rows and explains the improved feature set."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v5-full-text",
+          "locator": {
+            "label": "Version-5 sentiment and SNLI rows, article pp. 7–9",
+            "section": "5.2 Sentiment Analysis; 5.3 Natural Language Inference",
+            "pageStart": 7,
+            "pageEnd": 9,
+            "table": "2–3"
+          },
+          "support": "Version 5 retains the earlier LSTMN sentiment values and the improved SNLI variant."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v6-full-text",
+          "locator": {
+            "label": "Version-6 revised sentiment and dimension-sweep rows, article pp. 7–9",
+            "section": "5.2 Sentiment Analysis; 5.3 Natural Language Inference",
+            "pageStart": 7,
+            "pageEnd": 9,
+            "table": "2–3"
+          },
+          "support": "Version 6 changes the sentiment rows, removes the improved SNLI variant, and supplies the expanded dimension sweep."
+        },
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Canonical revised result family, printed pp. 557–559",
+            "section": "5.2 Sentiment Analysis; 5.3 Natural Language Inference",
+            "pageStart": 557,
+            "pageEnd": 559,
+            "table": "2–3"
+          },
+          "support": "The proceedings retains the version-6/7 result family and provides the canonical table values."
+        }
+      ],
+      "limitations": [
+        "No inspected primary source explains the later result omissions or sentiment changes, so the atlas records a textual boundary rather than inferring an error or retraction.",
+        "Results must be cited against the exact revision in which they appear."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The reason for the result changes is undocumented in the inspected records.",
+          "resolutionCondition": "A dated author correction, review, or revision note would be needed to explain the changes."
+        }
+      ],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-equation-version-boundary",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "ArXiv versions 1–3 print an undefined s_t where the LSTM gate input is later x_t; versions 1–5 use c̃_(t−1) in deep-fusion equation 15 while version 6 onward use the internally aligned c̃_t; and versions 1–6 describe passing the lower layer’s attention summary upward while version 7 and the proceedings pass h_t^k and add equation 10.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "Early LSTM, stacking, and deep-fusion equations, article pp. 3–5",
+            "section": "3 The Machine Reader; 4 Modeling Two Sequences",
+            "pageStart": 3,
+            "pageEnd": 5
+          },
+          "support": "Version 1 establishes the initial s_t display, attention-summary stacking description, and c̃_(t−1) deep-fusion term."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v4-full-text",
+          "locator": {
+            "label": "Revised base input with retained early fusion term, article pp. 3–5",
+            "section": "3 The Machine Reader; 4 Modeling Two Sequences",
+            "pageStart": 3,
+            "pageEnd": 5
+          },
+          "support": "Version 4 changes the base gate input to x_t while retaining the earlier stacking prose and c̃_(t−1) fusion term."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v6-full-text",
+          "locator": {
+            "label": "Version-6 deep-fusion update, article pp. 4–5",
+            "section": "3.2 Long Short-Term Memory-Network; 4 Modeling Two Sequences",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "Version 6 changes the fusion term to c̃_t while retaining the attention-summary stacking description."
+        },
+        {
+          "sourceId": "cheng-2016-arxiv-v7-full-text",
+          "locator": {
+            "label": "Final arXiv stacking equation and fusion update, article pp. 4–5",
+            "section": "3.2 Long Short-Term Memory-Network; 4 Modeling Two Sequences",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "Version 7 adds equation 10 with lower-layer h_t^k and retains c̃_t in deep fusion."
+        },
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Canonical stacking and deep-fusion equations, printed pp. 554–555",
+            "section": "3.2 Long Short-Term Memory-Network; 4 Modeling Two Sequences",
+            "pageStart": 554,
+            "pageEnd": 555,
+            "equation": "10, 15"
+          },
+          "support": "The proceedings matches the final arXiv mechanism at these boundaries."
+        }
+      ],
+      "limitations": [
+        "The sources do not state whether these changes are notation repairs or implementation changes, so the atlas does not infer either.",
+        "The stable 102 three-layer language-model row does not resolve which stacking description produced each revision’s experiment."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "cheng-2016-evidence-boundary",
+      "workId": "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "ideaIds": [
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "statement": "The paper’s evidence covers Penn Treebank language modeling, Stanford Sentiment Treebank classification, and SNLI inference with aggregate metrics and selected attention plots, but provides no repeated seeds, uncertainty estimates, statistical tests, full component-by-component parameter controls, structural gold evaluation, immutable experiment commit, or checkpoint.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Complete experiment and analysis scope, printed pp. 556–559",
+            "section": "5 Experiments",
+            "pageStart": 556,
+            "pageEnd": 559,
+            "table": "1–3",
+            "figure": "4–5"
+          },
+          "support": "The canonical experiment record establishes the three datasets, reported metrics and plots, comparator conditions, and omitted controls."
+        }
+      ],
+      "limitations": [
+        "This boundary limits causal, generalization, interpretability, and reproducibility conclusions without negating the reported table values.",
+        "The paper prints a repository URL, but a URL alone does not identify the code revision used for any reported run."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-attend-soft-alignment",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "The Attend stage applies one shared ReLU feed-forward network F to each input representation, scores every cross-sentence pair as e_ij = F(ā_i)ᵀF(b̄_j), and normalizes the same matrix in both directions so β_i is a soft phrase from b aligned to ā_i and α_j is a soft phrase from a aligned to b̄_j.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Pair scores and bidirectional soft alignment, printed pp. 2250–2251",
+            "section": "3.1 Attend",
+            "pageStart": 2250,
+            "pageEnd": 2251,
+            "equation": "1–2"
+          },
+          "support": "Equations 1–2 define the decomposed pair scorer and independent directional normalizations."
+        }
+      ],
+      "limitations": [
+        "The score matrix still contains every cross-sentence pair even though the nonlinear projection F is evaluated only once per input element.",
+        "Soft alignment weights are latent task-trained quantities, not supervised word alignments or guaranteed explanations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-compare-and-aggregate",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "The Compare stage independently computes v_(1,i) = G([ā_i,β_i]) and v_(2,j) = G([b̄_j,α_j]) with shared feed-forward G; Aggregate sums each set, concatenates the two sums, and applies feed-forward H plus a linear layer to obtain class scores.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Independent comparison and summed classification, printed p. 2251",
+            "section": "3.2 Compare; 3.3 Aggregate",
+            "pageStart": 2251,
+            "pageEnd": 2251,
+            "equation": "3–5"
+          },
+          "support": "Equations 3–5 specify G, the two sums, H, and the final class score."
+        }
+      ],
+      "limitations": [
+        "Summation discards the order and identity of individual comparison vectors after their local computations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-vanilla-word-order-boundary",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "The vanilla input representation sets ā = a and b̄ = b, so the model uses word embeddings without sentence-order information; the paper presents this as a deliberate task-specific simplification rather than a general language-understanding claim.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Order-free vanilla representation, printed pp. 2249–2250",
+            "section": "1 Introduction; 3 Approach; Input representation",
+            "pageStart": 2249,
+            "pageEnd": 2250
+          },
+          "support": "The abstract, introduction, and approach section explicitly state that the vanilla computation does not use word order."
+        }
+      ],
+      "limitations": [
+        "Any order sensitivity in the optional model comes from relative-distance bias, not from the vanilla attend–compare–aggregate core."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-objective-and-printed-sign-boundary",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "After equation 5, the paper calls its objective multi-class cross-entropy loss but prints L = (1/N)Σ_(n,c)y_c^(n) log softmax(ŷ^(n))_c without the conventional leading minus sign in both arXiv revisions and the proceedings; none of those texts states whether this quantity is maximized or negated in implementation.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 printed objective in the Aggregate section",
+            "section": "3.3 Aggregate",
+            "paragraph": "Unnumbered loss display immediately following equation 5"
+          },
+          "support": "ArXiv version 1 prints the positive log-likelihood expression while calling it cross-entropy loss."
+        },
+        {
+          "sourceId": "parikh-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 printed objective in the Aggregate section",
+            "section": "3.3 Aggregate",
+            "paragraph": "Unnumbered loss display immediately following equation 5"
+          },
+          "support": "The revised manuscript retains the same sign."
+        },
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Canonical printed objective, printed p. 2251",
+            "section": "3.3 Aggregate",
+            "pageStart": 2251,
+            "pageEnd": 2251
+          },
+          "support": "The proceedings retains the same display and does not specify the optimization direction."
+        }
+      ],
+      "limitations": [
+        "The display alone does not establish an implementation failure; the atlas records only the unresolved sign convention."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The intended minimize/maximize convention is not stated.",
+          "resolutionCondition": "An author correction or immutable official implementation would be needed to resolve the printed sign."
+        }
+      ],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-distance-biased-intra-attention",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "statement": "The optional intra-sentence stage scores every same-sentence pair with f_ij = F_intra(a_i)ᵀF_intra(a_j), adds a learned relative-distance bias d_(i−j), normalizes over all positions to obtain a′_i, buckets every distance above 10 together, and concatenates [a_i,a′_i] before cross-sentence attention.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Corrected optional intra-sentence attention, printed p. 2251",
+            "section": "3.4 Intra-Sentence Attention (Optional)",
+            "pageStart": 2251,
+            "pageEnd": 2251,
+            "equation": "6–7"
+          },
+          "support": "Equations 6–7 and the prose define all-token feed-forward self-alignment, distance bias and bucketing, and concatenation."
+        }
+      ],
+      "limitations": [
+        "The exact signed bucket mapping is not specified beyond grouping distances greater than 10.",
+        "This all-token feed-forward computation differs from Cheng’s left-to-right gated memory tape despite the named conceptual attribution."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-complexity-and-parallelism",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "For sentence length ℓ and embedding dimension d, with every hidden dimension assumed equal to d, the paper derives total work O(ℓd² + ℓ²d); under its explicit ℓ < d assumption, motivated by SNLI lengths below 80 and cited LSTM hidden dimensions at least 300, it simplifies this to O(ℓd²) while noting that its position computations can run in parallel.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Asymptotic work, length assumption, and parallelism, printed pp. 2251–2252",
+            "section": "4 Computational Complexity",
+            "pageStart": 2251,
+            "pageEnd": 2252
+          },
+          "support": "The section derives each term, states the ℓ < d condition and dataset/model dimensions, and contrasts length-wise parallel computation with LSTMs."
+        }
+      ],
+      "limitations": [
+        "The simplification is conditional on ℓ < d, not a universal linear-in-length bound.",
+        "No measured latency, throughput, accelerator utilization, memory footprint, or hardware speedup is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-bahdanau-attention-adaptation",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention"
+      ],
+      "statement": "The paper explicitly calls its cross-sentence Attend stage a variant of Bahdanau neural attention, while replacing decoder-conditioned additive scoring with shared feed-forward projections, dot products, and bidirectional sentence-pair normalizations.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Bahdanau attribution and target-specific score factorization, printed pp. 2250–2251",
+            "section": "1 Introduction; 2 Related Work; 3.1 Attend",
+            "pageStart": 2250,
+            "pageEnd": 2251
+          },
+          "support": "The target names the earlier attention mechanism and then defines its distinct feed-forward pair scorer and two directional alignments."
+        }
+      ],
+      "limitations": [
+        "The edge covers differentiable soft cross-sequence alignment only; it does not transfer translation decoding, bidirectional recurrent annotations, or Bahdanau’s energy equation.",
+        "The source’s broad priority wording about earlier attention is not adopted by the atlas."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-cheng-intra-attention-adaptation",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "statement": "The paper explicitly says its optional input representation applies intra-sentence attention as proposed by Cheng, but its equations replace Cheng’s sequential LSTMN memory addressing with parallel all-token feed-forward self-alignment and a learned relative-distance bias.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Named Cheng concept and distinct target equations, printed pp. 2250–2251",
+            "section": "1 Introduction; 3.4 Intra-Sentence Attention (Optional)",
+            "pageStart": 2250,
+            "pageEnd": 2251
+          },
+          "support": "The target attributes the intra-sentence concept to Cheng and defines its own F_intra dot scores, distance bias, and concatenated representation."
+        }
+      ],
+      "limitations": [
+        "The relationship is concept-level and does not imply equation, recurrent architecture, memory-tape, or empirical-result inheritance."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-data-and-representation",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "After removing SNLI examples labeled with no gold class, the study uses 549,367 training, 9,842 development, and 9,824 test pairs; it takes tokenized non-binary-parse sentences, prepends NULL, masks batch padding, semi-sorts by length, fixes unit-normalized 300-dimensional GloVe vectors projected to 200 dimensions, hashes out-of-vocabulary words into 100 N(0,1) embeddings, and initializes other weights from N(0,0.01).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "SNLI splits, preprocessing, embeddings, and initialization, printed p. 2252",
+            "section": "5.1 Implementation Details",
+            "pageStart": 2252,
+            "pageEnd": 2252
+          },
+          "support": "The canonical implementation section reports every stated count and representation choice."
+        }
+      ],
+      "limitations": [
+        "The paper does not evaluate an alternative dataset or out-of-domain transfer."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-training-regime",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "Training uses one machine with ten asynchronous gradient-update threads, Adagrad with accumulator 0.1, two 200-unit ReLU layers, dropout 0.2 outside the final linear layer, batch size 4, learning rate 0.05 for vanilla and 0.025 for intra-attention, 50 million batch steps, and checkpoint selection by development performance.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Optimization and model-selection regime, printed pp. 2252–2253",
+            "section": "5.1 Implementation Details",
+            "pageStart": 2252,
+            "pageEnd": 2253
+          },
+          "support": "The section and footnote report the execution, optimizer, network, batch, dropout, learning-rate, duration, and selection choices."
+        }
+      ],
+      "limitations": [
+        "The source reports no seeds, number of hyperparameter trials, run-to-run dispersion, exact hardware, or immutable checkpoint.",
+        "A footnote says batches 16 or 32 also work and are more stable but provides no corresponding measurements."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-snli-results",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "statement": "SNLI Table 1 train/test accuracy and non-embedding parameter counts are 99.7/78.2/— lexical, 83.9/80.6/3.0M LSTM, 98.8/81.4/15.0M GRU, 83.3/82.1/3.5M tree CNN, 89.2/83.2/3.7M SPINN-PI, 85.3/83.5/252K LSTM-att, 92.0/86.1/1.9M mLSTM, 88.5/86.3/3.4M LSTMN, 89.5/86.3/382K vanilla, and 90.5/86.8/582K intra-attention.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Complete SNLI train/test and parameter table, printed p. 2252",
+            "section": "5.2 Results",
+            "pageStart": 2252,
+            "pageEnd": 2252,
+            "table": "1"
+          },
+          "support": "Table 1 supplies all ten rows and states that parameter counts exclude embeddings."
+        }
+      ],
+      "limitations": [
+        "The paper’s nearly-one-order wording applies to the 382K vanilla model versus the 3.4M LSTMN comparator; the 582K intra variant is about 5.8 times smaller.",
+        "The table combines systems with different encoders, training, pretraining, and parameterization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-classwise-development-results",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "statement": "On SNLI development neutral/entailment/contradiction accuracy, Table 2 reports 80.6/88.2/85.5 for Bowman et al., 81.6/91.6/87.4 for Wang and Jiang, 83.6/91.3/85.8 for vanilla decomposable attention, and 83.7/92.1/86.7 with intra-sentence attention.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Complete classwise development table, printed p. 2252",
+            "section": "5.2 Results",
+            "pageStart": 2252,
+            "pageEnd": 2252,
+            "table": "2"
+          },
+          "support": "Table 2 supplies all four method rows and the neutral, entailment, and contradiction columns."
+        }
+      ],
+      "limitations": [
+        "These are development-set diagnostics, not held-out test results."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-intra-attention-ablation-boundary",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "statement": "Adding the optional intra-sentence stage changes test accuracy from 86.3 to 86.8 while increasing non-embedding parameters from 382K to 582K, about 52%, so the table does not isolate whether the gain comes from self-alignment, distance bias, added nonlinear capacity, or their combination.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Vanilla versus intra-attention result and parameter rows, printed pp. 2252–2253",
+            "section": "5.2 Results",
+            "pageStart": 2252,
+            "pageEnd": 2253,
+            "table": "1"
+          },
+          "support": "Table 1 and the discussion give both accuracies and counts but no component- or parameter-matched variants."
+        }
+      ],
+      "limitations": [
+        "No repeated-run variance, interval, or significance test is provided for the half-point difference."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-error-analysis",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "attend-compare-aggregate-factorization"
+      ],
+      "statement": "Table 3 discusses nine selected wins and losses: both decomposable variants miss examples centered on close/open, number inference, and reversed event roles, and the paper identifies missing sequence information in one case; the examples are qualitative selections rather than an aggregate error-rate study.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Selected qualitative wins and losses, printed p. 2253",
+            "section": "5.2 Results",
+            "pageStart": 2253,
+            "pageEnd": 2253,
+            "table": "3"
+          },
+          "support": "Table 3 and its discussion enumerate the examples and the authors’ bounded interpretations."
+        }
+      ],
+      "limitations": [
+        "Selected cases cannot measure the prevalence of the described failure modes or establish attention faithfulness."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-version-boundary",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "statement": "ArXiv version 1 has five PDF leaves and prints equation 7 with d_(i−j) repeated inside every denominator term, labels a comparator SPINN-NP, and calls Cheng’s result preliminary; version 2 expands to seven PDF leaves, corrects the denominator to d_(i−k), changes the label to SPINN-PI, removes that caveat, and adds detailed training and qualitative example analysis, while the proceedings follows the corrected technical body.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 distance-bias denominator",
+            "section": "3.4 Intra-Sentence Attention (Optional)",
+            "equation": "7"
+          },
+          "support": "The immutable first revision prints d_(i−j) in every denominator term of equation 7."
+        },
+        {
+          "sourceId": "parikh-2016-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 comparator label and Cheng caveat",
+            "section": "5 Experiments",
+            "table": "1",
+            "paragraph": "Table 1 row labels and caption"
+          },
+          "support": "Table 1 labels the comparator SPINN-NP and its caption calls the Cheng result potentially preliminary; the source pagination records the five-leaf extent."
+        },
+        {
+          "sourceId": "parikh-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 corrected distance-bias denominator",
+            "section": "3.4 Intra-Sentence Attention (Optional)",
+            "equation": "7"
+          },
+          "support": "The revised manuscript changes the summation term to d_(i−k)."
+        },
+        {
+          "sourceId": "parikh-2016-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 comparator, implementation, and qualitative additions",
+            "section": "5.1 Implementation Details; 5.2 Results",
+            "table": "1; 3",
+            "paragraph": "Table 1 row and caption; Table 3 discussion"
+          },
+          "support": "The revised text labels the comparator SPINN-PI without the earlier Cheng caveat, adds detailed implementation and training conditions, and adds Table 3 with qualitative discussion; the source pagination records the seven-leaf extent."
+        },
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Canonical corrected mechanism, implementation, and qualitative analysis, printed pp. 2251–2254",
+            "section": "3.4 Intra-Sentence Attention (Optional); 5.1 Implementation Details; 5.2 Results",
+            "pageStart": 2251,
+            "pageEnd": 2254,
+            "equation": "7",
+            "table": "1 and 3"
+          },
+          "support": "The official article retains the corrected equation, SPINN-PI label, detailed implementation, and qualitative Table 3 treatment with printed folios."
+        }
+      ],
+      "limitations": [
+        "The corrected denominator must not be silently projected backward onto arXiv version 1.",
+        "Tables 1–2 retain the same numerical results across the inspected revisions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
+      "id": "parikh-2016-evidence-boundary",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention",
+        "attention-path-length-and-parallelism"
+      ],
+      "statement": "The study evaluates one SNLI task with aggregate accuracy, parameter counts, classwise development results, and nine qualitative examples, but reports no component-removal study, parameter-matched intra-attention control, repeated seeds, uncertainty estimate, significance test, measured runtime, out-of-domain evaluation, attention-alignment benchmark, immutable code, or checkpoint.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Complete experiment, complexity, and analysis scope, printed pp. 2251–2253",
+            "section": "4 Computational Complexity; 5 Experiments",
+            "pageStart": 2251,
+            "pageEnd": 2253,
+            "table": "1–3"
+          },
+          "support": "The canonical record establishes what was measured, what was only asymptotically analyzed, and the limits of the reported comparisons."
+        }
+      ],
+      "limitations": [
+        "This boundary limits causal, speed, generalization, and interpretability conclusions without negating the reported accuracy rows."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-23"
+    },
+    {
       "id": "vaswani-2017-predecessor-and-scope-boundary",
       "workId": "vaswani-2017-attention-is-all-you-need",
       "ideaIds": [
         "self-attention-sequence-mixing",
         "attention-path-length-and-parallelism"
       ],
-      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures; its background cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence. The scaled-dot-product paragraph does not cite Luong, and the memory-network passage contrasts that recurrent mechanism with the Transformer’s entirely self-attentional design. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
+      "statement": "The paper frames the Transformer as a sequence-transduction model relying entirely on self-attention for input and output representations without sequence-aligned recurrence or convolution. Its introduction cites Luong et al. only within a group of efforts advancing recurrent language models and encoder–decoder architectures and identifies Parikh et al. among the few attention cases not coupled to recurrence; its background includes Cheng in the prior self-/intra-attention task citation sequence whose first listed context is reading comprehension, includes Parikh in the same sequence alongside textual entailment, and cites End-To-End Memory Networks as recurrent attention outside sequence-aligned recurrence. The scaled-dot-product paragraph does not cite Luong, and none of these contextual citations states that the Transformer adopts Cheng’s recurrent memory tape or Parikh’s attend–compare–aggregate factorization. The atlas therefore treats the paper as an architectural convergence point rather than an origin claim for attention, self-attention, dot products, parallel transduction, or autoregressive generation.",
       "directness": "editorial-inference",
       "confidence": "high",
       "evidence": [
         {
           "sourceId": "vaswani-2017-neurips-full-text",
           "locator": {
-            "label": "Contribution framing and cited recurrent-attention antecedents, article pp. 1–2",
+            "label": "Contribution framing and Cheng, Parikh, Luong, and memory-network context, article pp. 1–2",
             "section": "1 Introduction; 2 Background",
             "pageStart": 1,
             "pageEnd": 2
           },
-          "support": "The introduction cites Luong et al. as reference 21 within grouped recurrent-model and encoder–decoder progress; the background cites End-To-End Memory Networks as reference 28, calls them recurrent attention, and then distinguishes the Transformer as using self-attention throughout."
+          "support": "The introduction cites Luong within grouped recurrent progress and names Parikh as a rare attention-without-recurrence case; the background defines self-/intra-attention, presents a task-and-reference sequence that includes Cheng and Parikh alongside reading-comprehension and textual-entailment contexts, cites End-To-End Memory Networks as recurrent attention, and distinguishes the Transformer as self-attentional throughout."
         },
         {
           "sourceId": "vaswani-2017-neurips-full-text",
@@ -23811,11 +26201,11 @@
       ],
       "limitations": [
         "This claim preserves the paper's scope and qualifier without adopting a priority conclusion; direct references and mechanism continuity do not by themselves establish conception order or sole causation.",
-        "The Luong citation is contextual rather than attached to the scaled-dot-product description, and the End-To-End Memory Networks citation is contextual and contrastive rather than evidence that it introduced Transformer self-attention, positional encoding, query/key/value projections, residual paths, or multi-head attention.",
+        "The Luong citation is contextual rather than attached to scaled dot-product attention; the Cheng and Parikh citations establish prior task contexts rather than direct adoption of a recurrent memory tape, attend–compare–aggregate factorization, relative-distance bias, or their results; and the End-To-End Memory Networks citation is contextual and contrastive rather than evidence for Transformer positional encoding, projections, residual paths, or multi-head attention.",
         "The End-To-End Memory Networks citation is absent from Transformer arXiv versions 1–4 and first appears in version 5, so it cannot be projected backward into the earlier manuscripts."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-22"
+      "checkedDate": "2026-08-23"
     },
     {
       "id": "vaswani-2017-encoder-decoder-architecture",
@@ -26459,6 +28849,212 @@
           "note": "The experiment retains reversal but does not repeat every reversal ablation across attention variants."
         }
       ]
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-to-cheng-2016",
+      "from": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "to": {
+        "kind": "work",
+        "id": "cheng-dong-lapata-2016-lstmn-machine-reading"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Cheng, Dong, and Lapata explicitly describe their reader as an extension of LSTM and retain an additive cell plus input and output gating while replacing one prior-cell input with an attention-weighted memory-tape read. The relationship is limited to that named recurrent substrate and does not attribute Cheng’s forget gate, tape, or attention equations to the earlier architecture.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-constant-error-carousel",
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+        "cheng-2016-lstmn-memory-tape",
+        "cheng-2016-intra-attention-update",
+        "cheng-2016-antecedent-mechanism-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Named LSTM extension and retained gated cell, printed pp. 551, 553–554",
+            "section": "Abstract; 1 Introduction; 2 Related Work; 3.1 Long Short-Term Memory; 3.2 Long Short-Term Memory-Network",
+            "pageStart": 551,
+            "pageEnd": 554
+          },
+          "support": "The target explicitly calls itself an LSTM extension, cites Hochreiter and Schmidhuber, prints the retained gated formulation, and then defines the attention-tape change."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The source relationship covers the original input/output-gated recurrent memory core. The learned forget gate used by Cheng belongs to later LSTM development and is not attributed backward."
+        }
+      ]
+    },
+    {
+      "id": "sukhbaatar-2015-to-cheng-2016",
+      "from": {
+        "kind": "work",
+        "id": "sukhbaatar-2015-end-to-end-memory-networks"
+      },
+      "to": {
+        "kind": "work",
+        "id": "cheng-dong-lapata-2016-lstmn-machine-reading"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Cheng et al. place differentiable memory addressing inside an LSTM update, cite Sukhbaatar et al. for end-to-end soft memory access, and compare stacked LSTMN layers with multi-hop memory computation. The relationship covers soft reads and the bounded layered analogy, not identical external-memory topology, question-answering results, temporal encoding, or later query/key/value terminology.",
+      "claimIds": [
+        "sukhbaatar-2015-soft-memory-read",
+        "sukhbaatar-2015-multi-hop-update",
+        "cheng-2016-stacked-intra-attention",
+        "cheng-2016-antecedent-mechanism-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Soft memory addressing and multi-hop comparison, printed pp. 552–555",
+            "section": "2 Related Work; 3.2 Long Short-Term Memory-Network",
+            "pageStart": 552,
+            "pageEnd": 555
+          },
+          "support": "The target names Sukhbaatar’s soft addressing and says stacked layers resemble multi-hop memory while locating its own memory inside recurrence."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The more general phrase replacing the LSTM cell with a memory network cites Weston et al.; this edge does not absorb that separate attribution."
+        },
+        {
+          "status": "resolved",
+          "note": "Cheng’s reference entry omits Arthur Szlam and prints Sukhbaatar’s proceedings pages as 2431–2439; the authoritative source record supplies Sukhbaatar, Szlam, Weston, and Fergus and pp. 2440–2448. The title and year resolve the cited work, but the target bibliography does not override canonical authorship or pagination."
+        }
+      ]
+    },
+    {
+      "id": "bahdanau-2014-to-cheng-2016",
+      "from": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "cheng-dong-lapata-2016-lstmn-machine-reading"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Cheng et al. explicitly combine their recurrent same-sequence memory read with Bahdanau-like cross-sequence attention in shallow and deep fusion. The relationship records the target’s named inter-attention component and differentiable weighted source summary without transferring bidirectional translation annotations, translation evidence, or any claim about intra-attention priority.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "cheng-2016-two-sequence-attention-fusion",
+        "cheng-2016-antecedent-mechanism-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "cheng-2016-acl-full-text",
+          "locator": {
+            "label": "Bahdanau-like inter-attention combined with LSTMN, printed pp. 552–555",
+            "section": "2 Related Work; 4 Modeling Two Sequences with LSTMN",
+            "pageStart": 552,
+            "pageEnd": 555
+          },
+          "support": "The target cites the earlier source–decoder alignment and explicitly defines its shallow and gated deep combinations with intra-attentive recurrence."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is limited to cross-sequence soft attention as used by the target."
+        }
+      ]
+    },
+    {
+      "id": "bahdanau-2014-to-parikh-2016",
+      "from": {
+        "kind": "work",
+        "id": "bahdanau-cho-bengio-2014-neural-machine-translation"
+      },
+      "to": {
+        "kind": "work",
+        "id": "parikh-2016-decomposable-attention-nli"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Parikh et al. explicitly call their cross-sentence soft alignment a variant of Bahdanau neural attention, then factor the score through shared feed-forward projections, normalize it in both sentence directions, compare aligned subphrases independently, and sum them for classification. The relationship does not transfer recurrent translation architecture, decoder conditioning, or task evidence.",
+      "claimIds": [
+        "bahdanau-2014-soft-attention-context",
+        "bahdanau-2014-differentiable-soft-alignment",
+        "parikh-2016-attend-soft-alignment",
+        "parikh-2016-bahdanau-attention-adaptation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Named neural-attention variant and target factorization, printed pp. 2250–2251",
+            "section": "1 Introduction; 2 Related Work; 3.1 Attend",
+            "pageStart": 2250,
+            "pageEnd": 2251
+          },
+          "support": "The target attributes its attention basis to Bahdanau and prints the distinct feed-forward bidirectional alignment equations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge carries documented soft-alignment continuity only; the atlas does not adopt the target’s broad historical priority wording."
+        }
+      ]
+    },
+    {
+      "id": "cheng-2016-to-parikh-2016",
+      "from": {
+        "kind": "work",
+        "id": "cheng-dong-lapata-2016-lstmn-machine-reading"
+      },
+      "to": {
+        "kind": "work",
+        "id": "parikh-2016-decomposable-attention-nli"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Parikh et al. explicitly attribute the optional intra-sentence-attention concept to Cheng et al., then implement it as all-token feed-forward self-alignment with learned relative-distance bias rather than as a sequential LSTMN tape. The relationship is therefore limited to the named concept and excludes equation identity, recurrent-memory inheritance, and result transfer.",
+      "claimIds": [
+        "cheng-2016-intra-attention-update",
+        "cheng-2016-visualization-boundary",
+        "parikh-2016-distance-biased-intra-attention",
+        "parikh-2016-cheng-intra-attention-adaptation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "parikh-2016-acl-full-text",
+          "locator": {
+            "label": "Explicit Cheng attribution and distinct feed-forward mechanism, printed pp. 2250–2251",
+            "section": "1 Introduction; 3.4 Intra-Sentence Attention (Optional)",
+            "pageStart": 2250,
+            "pageEnd": 2251
+          },
+          "support": "The target names Cheng for intra-sentence attention and defines its own F_intra scores, distance bias, and concatenated representation."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The source supports concept attribution but not direct reuse of Cheng’s recurrent equations or implementation."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -28200,6 +30796,137 @@
         "Ablation and version-provenance analysis"
       ],
       "successCriterion": "The learner can derive the score and window forms, distinguish 14.0→19.0 from the 0.9 marginal step, identify 25.9 as an ensemble NIST score, preserve the v5-only corrections, and compare unscaled dot scoring with later scaled attention without claiming documented adoption."
+    },
+    {
+      "id": "beginner-cheng-2016-follow-recurrent-intra-attention",
+      "mode": "beginner",
+      "objective": "Follow one new word as it scores earlier hidden states, reads the matching hidden and memory tapes, and changes the next gated state; then compare a separate source attention stream with the deep-fusion gate.",
+      "workIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "claimIds": [
+        "cheng-2016-lstmn-memory-tape",
+        "cheng-2016-intra-attention-update",
+        "cheng-2016-two-sequence-attention-fusion",
+        "cheng-2016-visualization-boundary",
+        "cheng-2016-evidence-boundary"
+      ],
+      "prerequisites": [
+        "A left-to-right recurrent state",
+        "Softmax-weighted averages",
+        "Input, forget, and output gates",
+        "Two sentences whose representations must be compared"
+      ],
+      "successCriterion": "The learner can distinguish scored prior hidden entries from their paired memory entries, trace the attended update, explain shallow versus deep fusion, and state why this causal recurrent mechanism is not parallel Transformer self-attention."
+    },
+    {
+      "id": "expert-cheng-2016-equations-results-and-versions",
+      "mode": "expert",
+      "objective": "Derive the recurrent tape and fusion equations, reconstruct all three canonical result tables under their setup constraints, and preserve the material equation, result, citation, and reproducibility boundaries across seven arXiv revisions and the proceedings.",
+      "workIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading"
+      ],
+      "ideaIds": [
+        "gated-recurrent-memory-access",
+        "decoder-conditioned-soft-attention",
+        "recurrent-intra-attention-memory-tape",
+        "gated-inter-intra-attention-fusion"
+      ],
+      "claimIds": [
+        "cheng-2016-lstmn-memory-tape",
+        "cheng-2016-intra-attention-update",
+        "cheng-2016-stacked-intra-attention",
+        "cheng-2016-two-sequence-attention-fusion",
+        "cheng-2016-antecedent-mechanism-boundary",
+        "cheng-2016-language-model-setup",
+        "cheng-2016-language-model-results",
+        "cheng-2016-sentiment-setup",
+        "cheng-2016-sentiment-results",
+        "cheng-2016-nli-setup",
+        "cheng-2016-nli-results",
+        "cheng-2016-visualization-boundary",
+        "cheng-2016-version-result-boundary",
+        "cheng-2016-equation-version-boundary",
+        "cheng-2016-evidence-boundary"
+      ],
+      "prerequisites": [
+        "LSTM gate equations and recurrent computational depth",
+        "Additive attention and soft memory addressing",
+        "Perplexity, classification accuracy, ablation, and parameter controls",
+        "Versioned scholarly evidence and locator-specific citation"
+      ],
+      "successCriterion": "The learner can derive equations 4–16, reproduce Table 1’s 102 perplexity and canonical Tables 2–3, separate 86.3 from the later-omitted revision-only 89.x rows, identify the three equation boundaries, and keep recurrent intra-attention distinct from Transformer sequence mixing."
+    },
+    {
+      "id": "beginner-parikh-2016-attend-compare-aggregate",
+      "mode": "beginner",
+      "objective": "Trace a premise and hypothesis through soft alignment, separate local comparisons, summed evidence, and classification; then switch on same-sentence attention to see what limited distance information changes.",
+      "workIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "ideaIds": [
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention"
+      ],
+      "claimIds": [
+        "parikh-2016-attend-soft-alignment",
+        "parikh-2016-compare-and-aggregate",
+        "parikh-2016-vanilla-word-order-boundary",
+        "parikh-2016-distance-biased-intra-attention",
+        "parikh-2016-error-analysis"
+      ],
+      "prerequisites": [
+        "Dot products and softmax-weighted averages",
+        "A premise, hypothesis, and three-way inference label",
+        "Feed-forward networks and vector summation"
+      ],
+      "successCriterion": "The learner can distinguish the two alignment directions, explain Attend–Compare–Aggregate, show why vanilla is order-insensitive, and name a sequence-sensitive failure that distance-biased intra-attention does not eliminate."
+    },
+    {
+      "id": "expert-parikh-2016-mechanism-complexity-and-versions",
+      "mode": "expert",
+      "objective": "Derive equations 1–7 and both normalization directions, audit the conditional complexity argument and SNLI evidence, and preserve the version-1 denominator, printed objective-sign, parameter-control, and reproducibility boundaries.",
+      "workIds": [
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "decomposable-cross-sentence-attention",
+        "attend-compare-aggregate-factorization",
+        "distance-biased-feedforward-intra-attention",
+        "attention-path-length-and-parallelism"
+      ],
+      "claimIds": [
+        "parikh-2016-attend-soft-alignment",
+        "parikh-2016-compare-and-aggregate",
+        "parikh-2016-vanilla-word-order-boundary",
+        "parikh-2016-objective-and-printed-sign-boundary",
+        "parikh-2016-distance-biased-intra-attention",
+        "parikh-2016-complexity-and-parallelism",
+        "parikh-2016-bahdanau-attention-adaptation",
+        "parikh-2016-cheng-intra-attention-adaptation",
+        "parikh-2016-data-and-representation",
+        "parikh-2016-training-regime",
+        "parikh-2016-snli-results",
+        "parikh-2016-classwise-development-results",
+        "parikh-2016-intra-attention-ablation-boundary",
+        "parikh-2016-error-analysis",
+        "parikh-2016-version-boundary",
+        "parikh-2016-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Matrix projections, dot products, and directional softmax",
+        "Cross-entropy conventions and feed-forward classification",
+        "Asymptotic analysis under explicit dimension assumptions",
+        "Ablation, parameter matching, and version-provenance auditing"
+      ],
+      "successCriterion": "The learner can reconstruct equations 1–7, preserve O(ℓd² + ℓ²d) and its ℓ < d condition, reproduce the 382K/86.3 and 582K/86.8 rows, locate the denominator and loss-sign anomalies, and contrast this factorization with Transformer attention without claiming adoption."
     },
     {
       "id": "beginner-vaswani-2017-follow-attention-routes",

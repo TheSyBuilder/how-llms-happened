@@ -10,8 +10,9 @@ const [corpus, schema] = await Promise.all(
     new URL("../schemas/corpus.schema.json", import.meta.url),
   ].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
 );
-const [corpusFormat, historicalScope] = await Promise.all(
+const [readme, corpusFormat, historicalScope] = await Promise.all(
   [
+    new URL("../README.md", import.meta.url),
     new URL("../docs/corpus-format.md", import.meta.url),
     new URL("../docs/historical-scope.md", import.meta.url),
   ].map((url) => readFile(url, "utf8")),
@@ -38,6 +39,22 @@ test("binds the corpus to the current schema contract", () => {
   candidate.schemaVersion = "0.7.0";
 
   assertRejected(candidate, "must equal \"0.8.0\"");
+});
+
+test("keeps the documented corpus totals synchronized", () => {
+  const versions = corpus.works.reduce(
+    (total, work) => total + work.versions.length,
+    0,
+  );
+  const summary = `${corpus.works.length} works, ${versions} versions, ${corpus.ideas.length} ideas, ${corpus.sources.length} sources, ${corpus.claims.length} claims, ${corpus.relationships.length} relationships, and ${corpus.learningObjectives.length} learning objectives`;
+
+  assert.ok(corpusFormat.includes(`As of ${corpus.asOf}`));
+  assert.ok(corpusFormat.includes(summary));
+  assert.ok(
+    readme.includes(
+      `${summary.replace(" learning objectives", " beginner/expert learning objectives")}.`,
+    ),
+  );
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
@@ -744,7 +761,7 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-22");
+  assert.equal(corpus.asOf, "2026-08-23");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -4676,6 +4693,375 @@ test("retains Luong attention with versioned formulas and controlled result endp
   );
 });
 
+test("retains Cheng 2016 as a versioned recurrent intra-attention machine-reading branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "cheng-dong-lapata-2016-lstmn-machine-reading",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const memoryTape = claims.find(
+    (claim) => claim.id === "cheng-2016-lstmn-memory-tape",
+  );
+  const update = claims.find(
+    (claim) => claim.id === "cheng-2016-intra-attention-update",
+  );
+  const fusion = claims.find(
+    (claim) => claim.id === "cheng-2016-two-sequence-attention-fusion",
+  );
+  const languageModel = claims.find(
+    (claim) => claim.id === "cheng-2016-language-model-results",
+  );
+  const sentiment = claims.find(
+    (claim) => claim.id === "cheng-2016-sentiment-results",
+  );
+  const nli = claims.find(
+    (claim) => claim.id === "cheng-2016-nli-results",
+  );
+  const resultBoundary = claims.find(
+    (claim) => claim.id === "cheng-2016-version-result-boundary",
+  );
+  const equationBoundary = claims.find(
+    (claim) => claim.id === "cheng-2016-equation-version-boundary",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "cheng-2016-evidence-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.canonicalVersionId, "cheng-2016-emnlp-version");
+  assert.equal(work?.versions.length, 8);
+  assert.deepEqual(work?.authors, [
+    "Jianpeng Cheng",
+    "Li Dong",
+    "Mirella Lapata",
+  ]);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "cheng-2016-arxiv-v1-posted",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.date.value,
+      event.date.precision,
+    ]),
+    [
+      ["cheng-2016-arxiv-v1-posted", "2016-01-25", "day"],
+      ["cheng-2016-arxiv-v2-posted", "2016-01-26", "day"],
+      ["cheng-2016-arxiv-v3-posted", "2016-02-01", "day"],
+      ["cheng-2016-arxiv-v4-posted", "2016-03-17", "day"],
+      ["cheng-2016-arxiv-v5-posted", "2016-04-07", "day"],
+      ["cheng-2016-arxiv-v6-posted", "2016-06-01", "day"],
+      ["cheng-2016-arxiv-v7-posted", "2016-09-20", "day"],
+      ["cheng-2016-emnlp-proceedings", "2016-11", "month"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("cheng-2016-emnlp-version")?.bibliography.pages,
+    ["551-561"],
+  );
+  assert.deepEqual(sources.get("cheng-2016-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 551,
+    pageEnd: 561,
+  });
+  assert.deepEqual(sources.get("cheng-2016-arxiv-v3-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 10,
+  });
+  assert.equal(sources.size, 12);
+  assert.equal(claims.length, 15);
+  for (const value of ["H_(t−1)", "C_(t−1)", "unspecified upper bound"])
+    assert.ok(memoryTape?.statement.includes(value));
+  for (const value of ["a_i^t", "W_h̃", "c_t = f_t ⊙ c̃_t", "h_t = o_t"])
+    assert.ok(update?.statement.includes(value));
+  for (const value of ["shallow fusion", "deep fusion", "r_t ⊙ α̃_t", "equations 11–16"])
+    assert.ok(
+      `${fusion?.statement} ${fusion?.evidence[0]?.support}`.includes(value),
+    );
+  for (const value of ["141", "129", "115", "108", "107", "109", "102"])
+    assert.ok(languageModel?.statement.includes(value));
+  for (const value of ["47.6/86.3", "47.9/87.0", "51.2/88.6"])
+    assert.ok(sentiment?.statement.includes(value));
+  for (const value of ["86.1/1.9M", "86.0/2.8M", "86.3/3.4M"])
+    assert.ok(nli?.statement.includes(value));
+  for (const value of [
+    "85.3/82.8",
+    "86.8/84.6",
+    "87.1/84.5",
+    "86.3/84.9",
+    "92.3",
+    "89.1",
+    "92.1",
+    "89.0",
+    "47.6/86.3",
+  ])
+    assert.ok(resultBoundary?.statement.includes(value));
+  for (const value of ["s_t", "c̃_(t−1)", "c̃_t", "equation 10"])
+    assert.ok(equationBoundary?.statement.includes(value));
+  assert.ok(evidenceBoundary?.statement.includes("no repeated seeds"));
+  assert.ok(work?.limitations.join(" ").includes("rather than a question-answering"));
+  assert.ok(sources.get("cheng-2016-paper-linked-code")?.accessNote.includes("HTTP 404"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-cheng-2016-follow-recurrent-intra-attention",
+      "expert-cheng-2016-equations-results-and-versions",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("not parallel Transformer"));
+  assert.ok(objectives[1]?.successCriterion.includes("later-omitted revision-only 89.x"));
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+    ]),
+    [
+      ["hochreiter-schmidhuber-1995-to-cheng-2016", "extends"],
+      ["sukhbaatar-2015-to-cheng-2016", "combines"],
+      ["bahdanau-2014-to-cheng-2016", "combines"],
+    ],
+  );
+  for (const relationship of incomingRelationships) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.every(
+        (item) => item.sourceId === "cheng-2016-acl-full-text",
+      ),
+    );
+  }
+  assert.equal(transformerEdges.length, 0);
+});
+
+test("retains Parikh 2016 as a versioned recurrence-free decomposable-attention branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "parikh-2016-decomposable-attention-nli",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const attend = claims.find(
+    (claim) => claim.id === "parikh-2016-attend-soft-alignment",
+  );
+  const compare = claims.find(
+    (claim) => claim.id === "parikh-2016-compare-and-aggregate",
+  );
+  const intra = claims.find(
+    (claim) => claim.id === "parikh-2016-distance-biased-intra-attention",
+  );
+  const objectiveBoundary = claims.find(
+    (claim) => claim.id === "parikh-2016-objective-and-printed-sign-boundary",
+  );
+  const complexity = claims.find(
+    (claim) => claim.id === "parikh-2016-complexity-and-parallelism",
+  );
+  const results = claims.find(
+    (claim) => claim.id === "parikh-2016-snli-results",
+  );
+  const classwise = claims.find(
+    (claim) => claim.id === "parikh-2016-classwise-development-results",
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "parikh-2016-version-boundary",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "parikh-2016-evidence-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "parikh-2016-emnlp-version");
+  assert.equal(work?.versions.length, 3);
+  assert.deepEqual(work?.authors, [
+    "Ankur P. Parikh",
+    "Oscar Täckström",
+    "Dipanjan Das",
+    "Jakob Uszkoreit",
+  ]);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "parikh-2016-arxiv-v1-posted",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.date.value,
+      event.date.precision,
+    ]),
+    [
+      ["parikh-2016-arxiv-v1-posted", "2016-06-06", "day"],
+      ["parikh-2016-arxiv-v2-posted", "2016-09-25", "day"],
+      ["parikh-2016-emnlp-proceedings", "2016-11", "month"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("parikh-2016-emnlp-version")?.bibliography.pages,
+    ["2249-2255"],
+  );
+  assert.deepEqual(sources.get("parikh-2016-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 2249,
+    pageEnd: 2255,
+  });
+  assert.deepEqual(sources.get("parikh-2016-arxiv-v1-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 5,
+  });
+  assert.deepEqual(sources.get("parikh-2016-arxiv-v2-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 7,
+  });
+  for (const claim of claims) {
+    for (const evidence of claim.evidence) {
+      if (
+        [
+          "parikh-2016-arxiv-v1-full-text",
+          "parikh-2016-arxiv-v2-full-text",
+        ].includes(evidence.sourceId)
+      ) {
+        assert.doesNotMatch(evidence.locator.section ?? "", /^Complete\b/);
+      }
+    }
+  }
+  assert.equal(sources.size, 7);
+  assert.equal(claims.length, 16);
+  for (const value of ["F(ā_i)ᵀF(b̄_j)", "β_i", "α_j"])
+    assert.ok(attend?.statement.includes(value));
+  for (const value of ["v_(1,i)", "v_(2,j)", "Aggregate sums"])
+    assert.ok(compare?.statement.includes(value));
+  for (const value of ["F_intra", "d_(i−j)", "above 10", "[a_i,a′_i]"])
+    assert.ok(intra?.statement.includes(value));
+  assert.ok(objectiveBoundary?.statement.includes("without the conventional leading minus"));
+  assert.ok(objectiveBoundary?.uncertainties[0]?.status === "open");
+  assert.ok(
+    objectiveBoundary?.evidence
+      .filter((item) => item.sourceId.includes("arxiv"))
+      .every(
+        (item) =>
+          item.locator.paragraph ===
+          "Unnumbered loss display immediately following equation 5",
+      ),
+  );
+  for (const value of ["O(ℓd² + ℓ²d)", "ℓ < d", "below 80", "at least 300"])
+    assert.ok(complexity?.statement.includes(value));
+  for (const value of ["88.5/86.3/3.4M", "89.5/86.3/382K", "90.5/86.8/582K"])
+    assert.ok(results?.statement.includes(value));
+  for (const value of ["83.6/91.3/85.8", "83.7/92.1/86.7"])
+    assert.ok(classwise?.statement.includes(value));
+  for (const value of ["d_(i−j)", "d_(i−k)", "SPINN-NP", "SPINN-PI"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  assert.ok(evidenceBoundary?.statement.includes("no component-removal study"));
+  assert.ok(work?.limitations.join(" ").includes("about 5.8 times smaller"));
+  assert.ok(work?.limitations.join(" ").includes("no measured latency"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-parikh-2016-attend-compare-aggregate",
+      "expert-parikh-2016-mechanism-complexity-and-versions",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("order-insensitive"));
+  assert.ok(objectives[1]?.successCriterion.includes("382K/86.3"));
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+    ]),
+    [
+      ["bahdanau-2014-to-parikh-2016", "extends"],
+      ["cheng-2016-to-parikh-2016", "builds-on"],
+    ],
+  );
+  for (const relationship of incomingRelationships) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.every(
+        (item) => item.sourceId === "parikh-2016-acl-full-text",
+      ),
+    );
+  }
+  assert.equal(transformerEdges.length, 0);
+});
+
+test("retains the four-node Transformer convergence gate without incoming edges", () => {
+  assert.deepEqual(
+    corpus.works.slice(-5).map((work) => work.id),
+    [
+      "sukhbaatar-2015-end-to-end-memory-networks",
+      "luong-pham-manning-2015-effective-attention-nmt",
+      "cheng-dong-lapata-2016-lstmn-machine-reading",
+      "parikh-2016-decomposable-attention-nli",
+      "vaswani-2017-attention-is-all-you-need",
+    ],
+  );
+  for (const workId of [
+    "sukhbaatar-2015-end-to-end-memory-networks",
+    "luong-pham-manning-2015-effective-attention-nmt",
+    "cheng-dong-lapata-2016-lstmn-machine-reading",
+    "parikh-2016-decomposable-attention-nli",
+  ]) {
+    assert.ok(corpus.works.some((work) => work.id === workId));
+  }
+  assert.equal(
+    corpus.relationships.some(
+      (relationship) =>
+        relationship.to.kind === "work" &&
+        relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+    ),
+    false,
+  );
+  assert.ok(historicalScope.includes("Four of the six required predecessor nodes"));
+  assert.ok(historicalScope.includes("ByteNet"));
+  assert.ok(historicalScope.includes("ConvS2S"));
+  assert.equal(
+    historicalScope.includes("Cheng and Parikh still require full treatment"),
+    false,
+  );
+});
+
 test("retains the Transformer as a canonical proceedings node with revision boundaries", () => {
   const work = corpus.works.find(
     (item) => item.id === "vaswani-2017-attention-is-all-you-need",
@@ -4780,8 +5166,12 @@ test("retains the Transformer as a canonical proceedings node with revision boun
   assert.equal(claims.length, 18);
   for (const value of [
     "cites Luong et al. only within a group of efforts advancing recurrent",
+    "identifies Parikh et al. among the few attention cases not coupled to recurrence",
+    "includes Cheng in the prior self-/intra-attention task citation sequence",
+    "includes Parikh in the same sequence alongside textual entailment",
     "cites End-To-End Memory Networks as recurrent attention",
     "scaled-dot-product paragraph does not cite Luong",
+    "none of these contextual citations states that the Transformer adopts",
     "contextual and contrastive",
   ])
     assert.ok(
