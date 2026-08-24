@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-23",
+  "asOf": "2026-08-24",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -8590,6 +8590,723 @@
           "resolutionCondition": "A contemporaneous commit, environment lock, data manifest, checkpoints, and evaluation commands would be required for exact reconstruction."
         }
       ]
+    },
+    {
+      "id": "peters-2017-deep-contextualized-word-representations",
+      "title": "Deep Contextualized Word Representations",
+      "authors": [
+        "Matthew E. Peters",
+        "Mark Neumann",
+        "Mohit Iyyer",
+        "Matt Gardner",
+        "Christopher Clark",
+        "Kenton Lee",
+        "Luke Zettlemoyer"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "M. E. Peters et al., “Deep Contextualized Word Representations,” NAACL-HLT, pp. 2227–2237 (2018; first posted to OpenReview 27 October 2017).",
+      "chronology": {
+        "orderingEventId": "peters-2017-openreview-posted",
+        "events": [
+          {
+            "id": "peters-2017-openreview-posted",
+            "kind": "preprint",
+            "label": "Anonymous OpenReview manuscript posted",
+            "date": {
+              "value": "2017-10-27",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "peters-2018-arxiv-record",
+                "precision": "day",
+                "locator": "Author comment: Originally posted to OpenReview 27 Oct 2017"
+              }
+            ],
+            "versionId": "peters-2017-openreview-version",
+            "sourceIds": [
+              "peters-2017-openreview-record",
+              "peters-2017-openreview-full-text",
+              "peters-2018-arxiv-record"
+            ]
+          },
+          {
+            "id": "peters-2018-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2018-02-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "peters-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 15 February 2018 at 00:05:11 UTC"
+              }
+            ],
+            "versionId": "peters-2018-arxiv-v1-version",
+            "sourceIds": [
+              "peters-2018-arxiv-record",
+              "peters-2018-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "peters-2018-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "Camera-ready arXiv version 2 posted",
+            "date": {
+              "value": "2018-03-22",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "peters-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 22 March 2018 at 21:59:40 UTC"
+              }
+            ],
+            "versionId": "peters-2018-arxiv-v2-version",
+            "sourceIds": [
+              "peters-2018-arxiv-record",
+              "peters-2018-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "peters-2018-naacl-proceedings",
+            "kind": "proceedings-publication",
+            "label": "NAACL-HLT 2018 proceedings paper",
+            "date": {
+              "value": "2018-06",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The ACL record supplies month precision; this is not an inferred presentation date."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "peters-2018-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology bibliographic record: June 2018"
+              }
+            ],
+            "versionId": "peters-2018-naacl-version",
+            "sourceIds": [
+              "peters-2018-acl-record",
+              "peters-2018-naacl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "peters-2017-openreview-version",
+          "title": "Deep Contextualized Word Representations",
+          "authors": [
+            "Anonymous"
+          ],
+          "kind": "preprint",
+          "label": "Anonymous OpenReview submission",
+          "language": "en",
+          "bibliography": {
+            "citation": "Anonymous, “Deep Contextualized Word Representations,” OpenReview submission, 27 October 2017.",
+            "venue": "OpenReview",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "peters-2017-openreview-record",
+            "peters-2017-openreview-full-text"
+          ],
+          "notes": "The earliest verified public artifact is an anonymous 17-leaf ICLR-format submission. It reports lower SQuAD overall and layer-weighting values than the arXiv family. Neither the PDF format nor the challenge-protected forum establishes ICLR acceptance or publication."
+        },
+        {
+          "id": "peters-2018-arxiv-v1-version",
+          "title": "Deep contextualized word representations",
+          "authors": [
+            "Matthew E. Peters",
+            "Mark Neumann",
+            "Mohit Iyyer",
+            "Matt Gardner",
+            "Christopher Clark",
+            "Kenton Lee",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "M. E. Peters et al., “Deep contextualized word representations,” arXiv:1802.05365v1, 15 February 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1802.05365v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "peters-2018-arxiv-record",
+            "peters-2018-arxiv-v1-full-text",
+            "peters-2018-bilm-tf-record"
+          ],
+          "notes": "The first authored arXiv revision reports the canonical overall SQuAD score but retains intermediate SQuAD layer-mixture and POS-probe values. It includes a supplement and uses arXiv's non-exclusive distribution license."
+        },
+        {
+          "id": "peters-2018-arxiv-v2-version",
+          "title": "Deep contextualized word representations",
+          "authors": [
+            "Matthew E. Peters",
+            "Mark Neumann",
+            "Mohit Iyyer",
+            "Matt Gardner",
+            "Christopher Clark",
+            "Kenton Lee",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "Camera-ready arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "M. E. Peters et al., “Deep contextualized word representations,” arXiv:1802.05365v2, 22 March 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1802.05365v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1802.05365",
+                "label": "arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "peters-2018-arxiv-record",
+            "peters-2018-arxiv-v2-full-text",
+            "peters-2018-bilm-tf-record"
+          ],
+          "notes": "The arXiv record labels this revision the NAACL camera-ready. Its main-text layer-mixture and POS values align with the proceedings, and its supplement supplies optional target-domain LM adaptation and implementation details omitted from the proceedings main text."
+        },
+        {
+          "id": "peters-2018-naacl-version",
+          "title": "Deep Contextualized Word Representations",
+          "authors": [
+            "Matthew E. Peters",
+            "Mark Neumann",
+            "Mohit Iyyer",
+            "Matt Gardner",
+            "Christopher Clark",
+            "Kenton Lee",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NAACL-HLT 2018 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "M. E. Peters et al., “Deep Contextualized Word Representations,” in Proceedings of NAACL-HLT 2018, Volume 1 (Long Papers), pp. 2227–2237, June 2018.",
+            "venue": "Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long Papers)",
+            "series": "NAACL-HLT",
+            "editors": [
+              "Marilyn Walker",
+              "Heng Ji",
+              "Amanda Stent"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "New Orleans, Louisiana"
+            ],
+            "pages": [
+              "2227-2237"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/N18-1202",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "peters-2018-acl-record",
+            "peters-2018-naacl-full-text",
+            "peters-2018-naacl-supplement",
+            "peters-2018-bilm-tf-record",
+            "acl-2016-plus-rights-policy"
+          ],
+          "notes": "The official proceedings article is canonical and uses printed pp. 2227–2237. It adds Sections 5.6–5.7 and a published Table 7 but omits the arXiv supplement; the official four-leaf attachment remains a separate companion source."
+        }
+      ],
+      "canonicalVersionId": "peters-2018-naacl-version",
+      "preferredSourceIds": [
+        "peters-2018-acl-record",
+        "peters-2018-naacl-full-text"
+      ],
+      "sourceIds": [
+        "peters-2017-openreview-record",
+        "peters-2017-openreview-full-text",
+        "peters-2018-arxiv-record",
+        "peters-2018-arxiv-v1-full-text",
+        "peters-2018-arxiv-v2-full-text",
+        "peters-2018-acl-record",
+        "peters-2018-naacl-full-text",
+        "peters-2018-naacl-supplement",
+        "peters-2018-bilm-tf-record",
+        "acl-2016-plus-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "ELMo makes every token occurrence a task-conditioned mixture of the input layer and all internal layers of a pretrained bidirectional LSTM language model, then transfers those frozen features across six supervised tasks. It is a central recurrent, feature-based bridge from static word embeddings and language-model pretraining to later contextual pretrained encoders without being a Transformer, masked language model, or causal generator."
+      },
+      "ideaIds": [
+        "bidirectional-language-model-pretraining",
+        "deep-contextual-token-representations",
+        "task-specific-layer-mixture",
+        "feature-based-language-model-transfer",
+        "character-aware-contextual-token-representation",
+        "target-domain-language-model-adaptation"
+      ],
+      "significance": {
+        "beginner": "A word no longer receives one fixed dictionary vector. Two language models read the sentence in opposite directions, and a downstream task learns how much to use the character-aware input layer and each contextual LSTM layer while the pretrained language model stays frozen.",
+        "expert": "ELMo jointly optimizes separate forward and backward autoregressive log-likelihoods with shared token and softmax parameters, concatenates direction-specific states at every layer, and learns a softmax-normalized task mixture with a learned scale. Its recurrent feature-extraction route, optional unlabeled domain adaptation, layer and placement ablations, and version-specific results form a distinct precursor to later Transformer fine-tuning."
+      },
+      "limitations": [
+        "The bidirectional representation consumes both left and right context. It is not a causal next-token representation and would leak future input in an ordinary left-to-right generator.",
+        "The supervised stage freezes the pretrained biLM and learns feature mixtures around task-specific architectures; optional unlabeled target-domain LM adaptation occurs first and is not end-to-end supervised fine-tuning.",
+        "The six headline rows use heterogeneous 2017-era task architectures, datasets, and metrics. Most are single estimates, no unified compute control is reported, and only a subset includes repeated-run dispersion.",
+        "The abstract's ‘up to 20%’ wording conflicts with Table 1's printed 24.9% SQuAD and 21% NER relative-error reductions; exact rows are preserved instead of harmonizing the prose.",
+        "WSD and POS probes support task-specific layer differences under their evaluators, not a universal or causal claim that one layer is syntax and another is semantics.",
+        "Pretraining uses English news text. The paper does not evaluate multilingual transfer, fairness, calibration, robustness, or broad domain shift.",
+        "The OpenReview, arXiv v1, arXiv v2, and proceedings texts contain materially different result rows and supplements; values are never moved across versions without explicit evidence.",
+        "ArXiv's non-exclusive distribution license is not a general content-reuse license. ACL's CC BY 4.0 policy excludes third-party content, and future figures should be redrawn rather than copied blindly.",
+        "The official code repository is mutable and the paper does not pin a complete experiment commit, checkpoint set, random seeds, or deterministic reproduction package."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv author comment and inspected anonymous PDF establish the 27 October 2017 OpenReview artifact, so the work ID and ordering year follow that earliest bound public version rather than the 2018 proceedings date."
+        },
+        {
+          "status": "resolved",
+          "note": "No verified primary record establishes ICLR acceptance or publication. The OpenReview artifact is represented only as an anonymous submission."
+        },
+        {
+          "status": "open",
+          "note": "No immutable experiment release binds the paper's task rows, pretrained checkpoint, code, preprocessing, and environment into one reproduction package.",
+          "resolutionCondition": "A version-pinned author artifact with checkpoints, manifests, seeds, and evaluation commands would be required for exact reconstruction."
+        }
+      ]
+    },
+    {
+      "id": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "title": "Universal Language Model Fine-tuning for Text Classification",
+      "authors": [
+        "Jeremy Howard",
+        "Sebastian Ruder"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "J. Howard and S. Ruder, “Universal Language Model Fine-tuning for Text Classification,” ACL, pp. 328–339 (2018; FitLaM arXiv v1 posted 18 January 2018).",
+      "chronology": {
+        "orderingEventId": "howard-ruder-2018-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "howard-ruder-2018-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 (FitLaM) posted",
+            "date": {
+              "value": "2018-01-18",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "howard-ruder-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 18 January 2018 at 17:54:52 UTC"
+              }
+            ],
+            "versionId": "howard-ruder-2018-arxiv-v1-version",
+            "sourceIds": [
+              "howard-ruder-2018-arxiv-record",
+              "howard-ruder-2018-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "howard-ruder-2018-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 ULMFiT rewrite posted",
+            "date": {
+              "value": "2018-05-14",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "howard-ruder-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 14 May 2018 at 13:57:04 UTC"
+              }
+            ],
+            "versionId": "howard-ruder-2018-arxiv-v2-version",
+            "sourceIds": [
+              "howard-ruder-2018-arxiv-record",
+              "howard-ruder-2018-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "howard-ruder-2018-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2018-05-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "howard-ruder-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 15 May 2018 at 22:02:11 UTC"
+              }
+            ],
+            "versionId": "howard-ruder-2018-arxiv-v3-version",
+            "sourceIds": [
+              "howard-ruder-2018-arxiv-record",
+              "howard-ruder-2018-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "howard-ruder-2018-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2018-05-17",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "howard-ruder-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 17 May 2018 at 17:46:49 UTC"
+              }
+            ],
+            "versionId": "howard-ruder-2018-arxiv-v4-version",
+            "sourceIds": [
+              "howard-ruder-2018-arxiv-record",
+              "howard-ruder-2018-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "howard-ruder-2018-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "Corrected arXiv version 5 posted",
+            "date": {
+              "value": "2018-05-23",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "howard-ruder-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 23 May 2018 at 09:23:47 UTC"
+              }
+            ],
+            "versionId": "howard-ruder-2018-arxiv-v5-version",
+            "sourceIds": [
+              "howard-ruder-2018-arxiv-record",
+              "howard-ruder-2018-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "howard-ruder-2018-acl-proceedings",
+            "kind": "proceedings-publication",
+            "label": "ACL 2018 proceedings paper",
+            "date": {
+              "value": "2018-07",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The ACL record supplies month precision; the scheduled poster date is not used as a publication date."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "howard-ruder-2018-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology bibliographic record: July 2018"
+              }
+            ],
+            "versionId": "howard-ruder-2018-acl-version",
+            "sourceIds": [
+              "howard-ruder-2018-acl-record",
+              "howard-ruder-2018-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "howard-ruder-2018-arxiv-v1-version",
+          "title": "Fine-tuned Language Models for Text Classification",
+          "authors": [
+            "Jeremy Howard",
+            "Sebastian Ruder"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1 (FitLaM)",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Howard and S. Ruder, “Fine-tuned Language Models for Text Classification,” arXiv:1801.06146v1, 18 January 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1801.06146v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "howard-ruder-2018-arxiv-record",
+            "howard-ruder-2018-arxiv-v1-full-text"
+          ],
+          "notes": "The nine-leaf FitLaM paper evaluates five datasets and uses a cosine/reverse-warmup fine-tuning recipe, a different layer-rate ratio, and different dataset counts. It is a material predecessor version, not merely an earlier copy of the ULMFiT article."
+        },
+        {
+          "id": "howard-ruder-2018-arxiv-v2-version",
+          "title": "Universal Language Model Fine-tuning for Text Classification",
+          "authors": [
+            "Jeremy Howard",
+            "Sebastian Ruder"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2 (ULMFiT rewrite)",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Howard and S. Ruder, “Universal Language Model Fine-tuning for Text Classification,” arXiv:1801.06146v2, 14 May 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1801.06146v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "howard-ruder-2018-arxiv-record",
+            "howard-ruder-2018-arxiv-v2-full-text",
+            "howard-ruder-2018-fastai-code-snapshot"
+          ],
+          "notes": "The twelve-leaf rewrite introduces the ULMFiT name and expanded method, adds a sixth dataset and low-shot and ablation studies, and contains the Table 7, related-work, and Equation 3 forms later corrected."
+        },
+        {
+          "id": "howard-ruder-2018-arxiv-v3-version",
+          "title": "Universal Language Model Fine-tuning for Text Classification",
+          "authors": [
+            "Jeremy Howard",
+            "Sebastian Ruder"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Howard and S. Ruder, “Universal Language Model Fine-tuning for Text Classification,” arXiv:1801.06146v3, 15 May 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1801.06146v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "howard-ruder-2018-arxiv-record",
+            "howard-ruder-2018-arxiv-v3-full-text",
+            "howard-ruder-2018-fastai-code-snapshot"
+          ],
+          "notes": "This revision corrects the IMDb Full + discr validation error in Table 7 from 4.57 to 5.57 while retaining the later-corrected related-work sentence and STLR denominator."
+        },
+        {
+          "id": "howard-ruder-2018-arxiv-v4-version",
+          "title": "Universal Language Model Fine-tuning for Text Classification",
+          "authors": [
+            "Jeremy Howard",
+            "Sebastian Ruder"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Howard and S. Ruder, “Universal Language Model Fine-tuning for Text Classification,” arXiv:1801.06146v4, 17 May 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1801.06146v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "howard-ruder-2018-arxiv-record",
+            "howard-ruder-2018-arxiv-v4-full-text",
+            "howard-ruder-2018-fastai-code-snapshot"
+          ],
+          "notes": "This revision corrects the related-work direction to general-to-task-specific transfer of early layers while retaining the later-corrected STLR denominator."
+        },
+        {
+          "id": "howard-ruder-2018-arxiv-v5-version",
+          "title": "Universal Language Model Fine-tuning for Text Classification",
+          "authors": [
+            "Jeremy Howard",
+            "Sebastian Ruder"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Howard and S. Ruder, “Universal Language Model Fine-tuning for Text Classification,” arXiv:1801.06146v5, 23 May 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1801.06146v5",
+                "label": "arXiv version 5 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1801.06146",
+                "label": "arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "howard-ruder-2018-arxiv-record",
+            "howard-ruder-2018-arxiv-v5-full-text",
+            "howard-ruder-2018-fastai-code-snapshot"
+          ],
+          "notes": "This revision corrects Equation 3's descending denominator to cut·(1/cut_frac−1). Its corrected method details remain version-specific even though the ACL article is canonical bibliography."
+        },
+        {
+          "id": "howard-ruder-2018-acl-version",
+          "title": "Universal Language Model Fine-tuning for Text Classification",
+          "authors": [
+            "Jeremy Howard",
+            "Sebastian Ruder"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ACL 2018 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Howard and S. Ruder, “Universal Language Model Fine-tuning for Text Classification,” in Proceedings of ACL 2018, Volume 1 (Long Papers), pp. 328–339, July 2018.",
+            "venue": "Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+            "series": "ACL",
+            "editors": [
+              "Iryna Gurevych",
+              "Yusuke Miyao"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Melbourne, Australia"
+            ],
+            "pages": [
+              "328-339"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/P18-1031",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "howard-ruder-2018-acl-record",
+            "howard-ruder-2018-acl-full-text",
+            "howard-ruder-2018-fastai-code-snapshot",
+            "acl-2016-plus-rights-policy"
+          ],
+          "notes": "The official proceedings article is canonical and uses printed pp. 328–339. It preserves version 2's 4.57 Table 7 value, reversed transfer-learning sentence, and incorrect Equation 3 denominator; the corrected v3–v5 forms remain explicitly bound to those later arXiv revisions."
+        }
+      ],
+      "canonicalVersionId": "howard-ruder-2018-acl-version",
+      "preferredSourceIds": [
+        "howard-ruder-2018-acl-record",
+        "howard-ruder-2018-acl-full-text"
+      ],
+      "sourceIds": [
+        "howard-ruder-2018-arxiv-record",
+        "howard-ruder-2018-arxiv-v1-full-text",
+        "howard-ruder-2018-arxiv-v2-full-text",
+        "howard-ruder-2018-arxiv-v3-full-text",
+        "howard-ruder-2018-arxiv-v4-full-text",
+        "howard-ruder-2018-arxiv-v5-full-text",
+        "howard-ruder-2018-acl-record",
+        "howard-ruder-2018-acl-full-text",
+        "howard-ruder-2018-fastai-code-snapshot",
+        "acl-2016-plus-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "ULMFiT turns a general-domain autoregressive language model into a reusable text classifier through target-domain LM adaptation, discriminative layerwise learning rates, a slanted triangular schedule, gradual unfreezing, and long-document pooling. It is an essential whole-model fine-tuning branch between recurrent language-model transfer and later pretrained Transformer encoders, despite evaluating only English text classification."
+      },
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "three-stage-language-model-transfer",
+        "target-domain-language-model-adaptation",
+        "discriminative-layerwise-fine-tuning",
+        "slanted-triangular-learning-rates",
+        "gradual-layer-unfreezing",
+        "concat-pooled-recurrent-document-classification",
+        "bpt3c-long-document-classification"
+      ],
+      "significance": {
+        "beginner": "The same model first learns general language, then reads unlabeled text from the target domain, and only then learns labels. Lower layers update more cautiously and layers are unfrozen from the classifier downward so the model can adapt without discarding all pretrained behavior at once.",
+        "expert": "ULMFiT adapts a three-layer AWD-LSTM on WikiText-103 and target text, then applies layerwise rates divided by 2.6, corrected slanted-triangular scheduling, gradual unfreezing, concat pooling, and BPT3C. Its test ensemble, unidirectional validation ablations, low-shot data accounting, and v2–v5 corrections must remain separate."
+      },
+      "limitations": [
+        "The empirical scope is six English sentiment, topic, and question-classification datasets. The paper does not test sequence labeling, entailment, question answering, multilingual transfer, generation, or every NLP task.",
+        "Main test rows use separately trained forward and backward classifiers whose predictions are averaged; Section 5 validation ablations use unidirectional language models. This is not one bidirectional recurrent encoder.",
+        "No seeds, repeated-run dispersion, confidence intervals, or significance tests are reported beyond the explicit statement that the TREC improvement is not statistically significant on its 500-example test set.",
+        "The 100-label comparisons also use target-domain unlabeled text in the semi-supervised setting: 50,000 IMDb or 100,000 AG examples. Figure 3 supplies curves rather than exact points, error bars, or raw data.",
+        "Table 5 changes dropout and classifier training duration, Table 6 adds STLR only after discriminative rates, and Table 7 is neither factorial nor parameter matched. These rows do not isolate every mechanism independently.",
+        "Figure 4 uses rising validation error as a proxy for catastrophic forgetting; it does not directly measure retained pretrained knowledge or prove that the proposed methods prevent forgetting.",
+        "Hyperparameters are tuned on IMDb, epoch counts vary by task, and the paper lacks an immutable experiment release, checkpoint hashes, complete data manifest, and exact reproduction environment.",
+        "Version 1 is a materially different FitLaM paper. Versions 3–5 correct Table 7, transfer-learning wording, and the STLR denominator, while the canonical ACL article preserves all three older forms.",
+        "The abstract's 18–24% claim applies literally to only three of six printed main result rows. The atlas uses exact dataset rows and does not promote the paper's universal-task wording beyond its evaluated scope.",
+        "ArXiv's distribution license is not a general reuse license. ACL's CC BY 4.0 policy excludes third-party content, and the Apache-2.0 code license is not assumed to cover pretrained weights."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The January 2018 FitLaM manuscript is the earliest bound public artifact and controls timeline order, while the July 2018 ACL article controls canonical bibliography."
+        },
+        {
+          "status": "resolved",
+          "note": "The corrected version-5 STLR denominator and version-3 Table 7 value are preserved without silently rewriting the canonical ACL text."
+        },
+        {
+          "status": "open",
+          "note": "The paper's code and model links do not identify one immutable experiment release, and the exposed pretrained-file directory supplies neither weight licenses nor checksums.",
+          "resolutionCondition": "An author-pinned release with checkpoints, hashes, licenses, data manifests, and evaluation commands would be required for exact reconstruction and reuse claims."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -9552,7 +10269,8 @@
         "sundermeyer-2012-french-asr-setup",
         "sundermeyer-2012-french-wer-results",
         "sundermeyer-2012-evidence-reproducibility-boundary",
-        "sundermeyer-2012-conclusion-scope"
+        "sundermeyer-2012-conclusion-scope",
+        "howard-ruder-2018-awd-lstm-and-pretraining"
       ],
       "uncertainties": [
         {
@@ -10404,6 +11122,158 @@
           "note": "Table 1 is an analytic comparison. It does not by itself establish hardware speed, memory use, learned dependency quality, or faster autoregressive decoding."
         }
       ]
+    },
+    {
+      "id": "bidirectional-language-model-pretraining",
+      "name": "Bidirectional language-model pretraining",
+      "kind": "objective",
+      "description": "Separate forward and backward autoregressive language models are trained together, allowing transferred token features to incorporate both earlier and later sentence context without treating the two directions as one normalized joint likelihood.",
+      "claimIds": [
+        "peters-2017-bidirectional-lm-objectives",
+        "peters-2017-architecture-and-pretraining"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "deep-contextual-token-representations",
+      "name": "Deep contextual token representations",
+      "kind": "mechanism",
+      "description": "Each token occurrence is represented by the context-independent input layer and every internal layer of a pretrained sequence model, so its transferred vector can vary with sentence context and expose several abstraction levels.",
+      "claimIds": [
+        "peters-2017-version-boundary",
+        "peters-2017-contextual-representation-family",
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-six-task-results",
+        "peters-2017-lexical-probe-results",
+        "peters-2017-contextual-layer-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "task-specific-layer-mixture",
+      "name": "Task-specific pretrained-layer mixture",
+      "kind": "mechanism",
+      "description": "A downstream task learns normalized scalar weights over pretrained layers plus a task scale, choosing a different mixture of transferred representations without changing the pretrained network.",
+      "claimIds": [
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-frozen-feature-transfer",
+        "peters-2017-layer-mixture-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "feature-based-language-model-transfer",
+      "name": "Feature-based language-model transfer",
+      "kind": "mechanism",
+      "description": "A pretrained language model remains frozen while its token-level states are supplied as learned features to a separately supervised task architecture.",
+      "claimIds": [
+        "peters-2017-frozen-feature-transfer",
+        "peters-2017-six-task-results",
+        "peters-2017-feature-placement-ablation",
+        "peters-2017-sample-efficiency",
+        "peters-2017-domain-adaptation",
+        "peters-2017-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "character-aware-contextual-token-representation",
+      "name": "Character-aware contextual token representation",
+      "kind": "mechanism",
+      "description": "A character-composed, context-independent token vector feeds recurrent contextual layers, combining subword-form information with sentence-conditioned representations.",
+      "claimIds": [
+        "peters-2017-contextual-representation-family",
+        "peters-2017-architecture-and-pretraining",
+        "peters-2017-contextual-layer-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "target-domain-language-model-adaptation",
+      "name": "Target-domain language-model adaptation",
+      "kind": "mechanism",
+      "description": "A generally pretrained language model receives an additional unlabeled language-modeling stage on text from the target task or domain before supervised transfer.",
+      "claimIds": [
+        "peters-2017-domain-adaptation",
+        "howard-ruder-2018-three-stage-transfer",
+        "howard-ruder-2018-low-shot-results",
+        "howard-ruder-2018-lm-fine-tuning-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "three-stage-language-model-transfer",
+      "name": "Three-stage language-model transfer",
+      "kind": "mechanism",
+      "description": "A general-domain language model is pretrained, adapted with the target task's unlabeled text, and then converted into a supervised classifier through parameter transfer and controlled fine-tuning.",
+      "claimIds": [
+        "howard-ruder-2018-version-boundary",
+        "howard-ruder-2018-three-stage-transfer",
+        "howard-ruder-2018-awd-lstm-and-pretraining",
+        "howard-ruder-2018-forward-backward-ensemble",
+        "howard-ruder-2018-main-results",
+        "howard-ruder-2018-low-shot-results",
+        "howard-ruder-2018-pretraining-and-architecture-ablations",
+        "howard-ruder-2018-elmo-contrast",
+        "howard-ruder-2018-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "discriminative-layerwise-fine-tuning",
+      "name": "Discriminative layerwise fine-tuning",
+      "kind": "mechanism",
+      "description": "Different network layers receive different learning rates during transfer, usually shrinking the rate toward lower layers so generic representations update more cautiously than task-near layers.",
+      "claimIds": [
+        "howard-ruder-2018-discriminative-fine-tuning",
+        "howard-ruder-2018-lm-fine-tuning-ablation",
+        "howard-ruder-2018-classifier-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "slanted-triangular-learning-rates",
+      "name": "Slanted triangular learning rates",
+      "kind": "mechanism",
+      "description": "A short linear learning-rate rise is followed by a longer linear decay, with a ratio controlling the peak relative to the endpoints.",
+      "claimIds": [
+        "howard-ruder-2018-version-boundary",
+        "howard-ruder-2018-corrected-stlr",
+        "howard-ruder-2018-lm-fine-tuning-ablation",
+        "howard-ruder-2018-classifier-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "gradual-layer-unfreezing",
+      "name": "Gradual layer unfreezing",
+      "kind": "mechanism",
+      "description": "Transferred layers are unfrozen cumulatively from the task output downward rather than exposing the entire pretrained stack to classifier gradients immediately.",
+      "claimIds": [
+        "howard-ruder-2018-gradual-unfreezing",
+        "howard-ruder-2018-classifier-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "concat-pooled-recurrent-document-classification",
+      "name": "Concat-pooled recurrent document classification",
+      "kind": "mechanism",
+      "description": "A recurrent document encoder concatenates its final state with temporal maximum and mean pools, exposing endpoint and distributed evidence to the classifier.",
+      "claimIds": [
+        "howard-ruder-2018-concat-pooling-and-bpt3c"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "bpt3c-long-document-classification",
+      "name": "BPT3C long-document classification",
+      "kind": "mechanism",
+      "description": "Long documents are split into fixed-length recurrent batches whose states are carried forward and collected for pooling, while classifier gradients traverse only the batches that contributed to the pooled representation.",
+      "claimIds": [
+        "howard-ruder-2018-concat-pooling-and-bpt3c"
+      ],
+      "uncertainties": []
     }
   ],
   "sources": [
@@ -15075,6 +15945,439 @@
         "metadata"
       ],
       "accessNote": "The official FAQ says authors retain copyright and grant NeurIPS a perpetual non-exclusive publication license. No Creative Commons license is stated for this proceedings paper; the atlas links it and uses original prose and graphics."
+    },
+    {
+      "id": "peters-2017-openreview-record",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "OpenReview forum for Deep Contextualized Word Representations",
+      "url": "https://openreview.net/forum?id=S1p31z-Ab",
+      "accessDate": "2026-08-24",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "peters-2017-openreview-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The forum was protected by an automated-access challenge during this audit. The official PDF remained retrievable through OpenReview's references endpoint, while the arXiv author comment independently states that the manuscript was first posted to OpenReview on 27 October 2017. No ICLR acceptance or publication status is inferred."
+    },
+    {
+      "id": "peters-2017-openreview-full-text",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "OpenReview submission PDF of Deep Contextualized Word Representations",
+      "url": "https://openreview.net/references/pdf?id=S1p31z-Ab",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-host",
+      "versionIds": [
+        "peters-2017-openreview-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 17
+      },
+      "accessNote": "The complete anonymous 17-leaf ICLR-format submission was downloaded, rendered, and compared with both arXiv revisions and the NAACL article. Structural locators are used because the PDF does not preserve proceedings folios. Its format is not evidence of ICLR acceptance."
+    },
+    {
+      "id": "peters-2018-arxiv-record",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "arXiv record for Deep Contextualized Word Representations",
+      "url": "https://arxiv.org/abs/1802.05365",
+      "accessDate": "2026-08-24",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "peters-2018-arxiv-v1-version",
+        "peters-2018-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, authors, arXiv identifier and DOI, non-exclusive distribution license, exact UTC timestamps for both revisions, the v2 camera-ready note, and the author comment that the work was originally posted to OpenReview on 27 October 2017."
+    },
+    {
+      "id": "peters-2018-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "arXiv version 1 full text of Deep Contextualized Word Representations",
+      "url": "https://arxiv.org/pdf/1802.05365v1",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "peters-2018-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-leaf first arXiv revision was downloaded, rendered, and compared at source and PDF level. Its SQuAD layer-weighting and POS probe values differ from both the OpenReview manuscript and version 2."
+    },
+    {
+      "id": "peters-2018-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "arXiv version 2 full text of Deep Contextualized Word Representations",
+      "url": "https://arxiv.org/pdf/1802.05365v2",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "peters-2018-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-leaf camera-ready arXiv revision was downloaded, rendered, and compared with version 1 and the NAACL article. It includes a supplement omitted from the proceedings main text; the proceedings article adds Sections 5.6–5.7 and a different Table 7."
+    },
+    {
+      "id": "peters-2018-acl-record",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "ACL Anthology record for Deep Contextualized Word Representations",
+      "url": "https://aclanthology.org/N18-1202/",
+      "accessDate": "2026-08-24",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "peters-2018-naacl-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the canonical author order, NAACL-HLT 2018 container, June 2018 publication month, New Orleans location, editors, pp. 2227–2237, DOI, main PDF, and supplemental attachment."
+    },
+    {
+      "id": "peters-2018-naacl-full-text",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "Official NAACL full text of Deep Contextualized Word Representations",
+      "url": "https://aclanthology.org/N18-1202.pdf",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "peters-2018-naacl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 2227,
+        "pageEnd": 2237
+      },
+      "accessNote": "The complete canonical article was rendered and inspected using printed pp. 2227–2237. It adds Sections 5.6–5.7 and a published Table 7 while omitting the arXiv supplement; it is therefore not treated as byte-equivalent to arXiv v2."
+    },
+    {
+      "id": "peters-2018-naacl-supplement",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "Official NAACL supplemental material for Deep Contextualized Word Representations",
+      "url": "https://aclanthology.org/attachments/N18-1202.Notes.pdf",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "peters-2018-naacl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 4
+      },
+      "accessNote": "The complete four-leaf official attachment was rendered and inspected. It supplies task-specific implementation and optional target-domain language-model adaptation details that are not in the canonical main article."
+    },
+    {
+      "id": "peters-2018-bilm-tf-record",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "title": "Official bilm-tf implementation record",
+      "url": "https://github.com/allenai/bilm-tf",
+      "accessDate": "2026-08-24",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "peters-2018-arxiv-v1-version",
+        "peters-2018-arxiv-v2-version",
+        "peters-2018-naacl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The Allen Institute repository identifies itself as the TensorFlow implementation for the paper and is licensed Apache-2.0. The paper does not pin a complete experiment manifest or checkpoint set, so repository details are not moved into paper claims."
+    },
+    {
+      "id": "howard-ruder-2018-arxiv-record",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "arXiv record for Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://arxiv.org/abs/1801.06146",
+      "accessDate": "2026-08-24",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v1-version",
+        "howard-ruder-2018-arxiv-v2-version",
+        "howard-ruder-2018-arxiv-v3-version",
+        "howard-ruder-2018-arxiv-v4-version",
+        "howard-ruder-2018-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the title, authors, arXiv identifier and DOI, non-exclusive distribution license, five exact UTC submission timestamps, and the version-5 note that Equation 3's denominator was fixed."
+    },
+    {
+      "id": "howard-ruder-2018-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "arXiv version 1 full text of Fine-tuned Language Models for Text Classification",
+      "url": "https://arxiv.org/pdf/1801.06146v1",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The complete 9-leaf revision and its source bundle were inspected and compared. The nine-leaf FitLaM manuscript has a different title, five datasets, a cosine/reverse-warmup recipe, and materially different fine-tuning details."
+    },
+    {
+      "id": "howard-ruder-2018-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "arXiv v2 full text of Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://arxiv.org/pdf/1801.06146v2",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 12
+      },
+      "accessNote": "The complete 12-leaf revision and its source bundle were inspected and compared. The twelve-leaf ULMFiT rewrite adds the sixth dataset, low-shot experiments, Tables 4–7, STLR, and live code/model links; it contains the three forms later corrected in v3–v5."
+    },
+    {
+      "id": "howard-ruder-2018-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "arXiv v3 full text of Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://arxiv.org/pdf/1801.06146v3",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 12
+      },
+      "accessNote": "The complete 12-leaf revision and its source bundle were inspected and compared. This revision corrects IMDb Full + discr validation error in Table 7 from 4.57 to 5.57."
+    },
+    {
+      "id": "howard-ruder-2018-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "arXiv v4 full text of Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://arxiv.org/pdf/1801.06146v4",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 12
+      },
+      "accessNote": "The complete 12-leaf revision and its source bundle were inspected and compared. This revision corrects the related-work direction from task-specific-to-general and last-layer transfer to general-to-task-specific and first-layer transfer."
+    },
+    {
+      "id": "howard-ruder-2018-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "arXiv v5 full text of Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://arxiv.org/pdf/1801.06146v5",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 12
+      },
+      "accessNote": "The complete 12-leaf revision and its source bundle were inspected and compared. This latest revision corrects Equation 3's decay denominator to cut·(1/cut_frac−1). It is the preferred source for the STLR equation, while the ACL article remains canonical bibliography."
+    },
+    {
+      "id": "howard-ruder-2018-acl-record",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "ACL Anthology record for Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://aclanthology.org/P18-1031/",
+      "accessDate": "2026-08-24",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "howard-ruder-2018-acl-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the canonical title and author order, ACL 2018 Volume 1 container, July 2018 publication month, Melbourne location, editors, pp. 328–339, DOI, PDF, and poster attachment."
+    },
+    {
+      "id": "howard-ruder-2018-acl-full-text",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "Official ACL full text of Universal Language Model Fine-tuning for Text Classification",
+      "url": "https://aclanthology.org/P18-1031.pdf",
+      "accessDate": "2026-08-24",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "howard-ruder-2018-acl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 328,
+        "pageEnd": 339
+      },
+      "accessNote": "The complete canonical article was rendered and inspected using printed pp. 328–339. It preserves version 2's Table 7 value, related-work wording, and Equation 3 denominator; later arXiv corrections are not silently migrated into this text."
+    },
+    {
+      "id": "howard-ruder-2018-fastai-code-snapshot",
+      "relatedWorkIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "Near-release fastai ULMFiT implementation snapshot",
+      "url": "https://github.com/fastai/fastai/tree/250cd60691ea19a964f165ebaf33a5e452fb3847/courses/dl2/imdb_scripts",
+      "accessDate": "2026-08-24",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "howard-ruder-2018-arxiv-v2-version",
+        "howard-ruder-2018-arxiv-v3-version",
+        "howard-ruder-2018-arxiv-v4-version",
+        "howard-ruder-2018-arxiv-v5-version",
+        "howard-ruder-2018-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The author repository snapshot is pinned to 15 May 2018 and the repository is Apache-2.0, but no paper-specific release tag, immutable experiment manifest, checkpoint hashes, or model-weight license was located. The README and tree also disagree on one training-script filename, and later fixes prevent treating this snapshot as an exact table-reproduction package."
+    },
+    {
+      "id": "acl-2016-plus-rights-policy",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations",
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "title": "ACL Anthology copyright and licensing policy",
+      "url": "https://aclanthology.org/faq/copyright/",
+      "accessDate": "2026-08-24",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "peters-2018-naacl-version",
+        "howard-ruder-2018-acl-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status is not extended to datasets, pretrained weights, or other externally supplied content."
     }
   ],
   "claims": [
@@ -29047,6 +30350,914 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-21"
+    },
+    {
+      "id": "peters-2017-version-boundary",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "deep-contextual-token-representations"
+      ],
+      "statement": "The four inspected ELMo texts are materially distinct. The OpenReview manuscript reports SQuAD 85.3 overall, alternate-layer SQuAD 80.8/82.5/83.6/84.8, and biLM POS 97.0/95.8; arXiv v1 changes overall SQuAD to 85.8 and the alternate row to 80.8/83.1/84.4/85.3; arXiv v2 and the proceedings retain 85.8 but revise the alternate row to 80.8/84.7/85.0/85.2 and POS to 97.3/96.8. The proceedings additionally adds Sections 5.6–5.7 and its own Table 7 while omitting the arXiv supplement.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2017-openreview-full-text",
+          "locator": {
+            "label": "OpenReview overall, layer-weighting, and POS rows",
+            "section": "4 Evaluation; 5.1 Alternate layer weighting schemes; 5.3 What information is captured by the biLM's representations?",
+            "table": "1, 2, and 6"
+          },
+          "support": "Supplies the anonymous manuscript's result rows and structure."
+        },
+        {
+          "sourceId": "peters-2018-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 overall, layer-weighting, and POS rows",
+            "section": "4 Evaluation; 5.1 Alternate layer weighting schemes; 5.3 What information is captured by the biLM's representations?",
+            "table": "1, 2, and 6"
+          },
+          "support": "Supplies the intermediate arXiv values."
+        },
+        {
+          "sourceId": "peters-2018-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 overall, layer-weighting, POS, and supplement boundary",
+            "section": "4 Evaluation; 5.1; 5.3; Supplemental material",
+            "table": "1, 2, 6, and supplemental 7"
+          },
+          "support": "Supplies the camera-ready arXiv values and supplement."
+        },
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Canonical result rows and published-only additions, printed pp. 2231–2235",
+            "section": "4 Evaluation; 5 Analysis; 5.6–5.7",
+            "pageStart": 2231,
+            "pageEnd": 2235,
+            "table": "1, 2, 6, and 7"
+          },
+          "support": "Supplies the canonical values and added proceedings sections."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-bidirectional-lm-objectives",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "bidirectional-language-model-pretraining"
+      ],
+      "statement": "ELMo trains a forward language model that factors each token from its left context and a backward language model that factors it from its right context, jointly maximizing the sum of both token log-likelihoods. Token-representation parameters and output-softmax parameters are shared across directions, while the forward and backward LSTM parameters are separate.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Forward and backward factorizations, shared parameters, and joint objective, printed pp. 2229–2230",
+            "section": "3.1 Bidirectional language models",
+            "pageStart": 2229,
+            "pageEnd": 2230
+          },
+          "support": "Defines the two directional objectives and their shared and direction-specific parameter sets."
+        }
+      ],
+      "limitations": [
+        "This is two coupled directional autoregressive objectives, not one normalized bidirectional joint probability and not masked-language-model training."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-contextual-representation-family",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "deep-contextual-token-representations",
+        "character-aware-contextual-token-representation"
+      ],
+      "statement": "For token k, the representation family R_k contains the context-independent token layer and the concatenated forward/backward states at each of L recurrent layers. The token layer comes from a character-CNN representation, while every recurrent-layer vector varies with the token's sentence context.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Representation family R_k and character input, printed pp. 2229–2230",
+            "section": "3.1–3.2",
+            "pageStart": 2229,
+            "pageEnd": 2230
+          },
+          "support": "Defines R_k and distinguishes the token layer from bidirectional recurrent states."
+        }
+      ],
+      "limitations": [
+        "The character-CNN token layer itself is context independent; context enters through the forward and backward recurrent layers."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-task-specific-layer-mixture",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "deep-contextual-token-representations",
+        "task-specific-layer-mixture"
+      ],
+      "statement": "For each downstream task, ELMo_k is γ times a softmax-normalized scalar mixture over all h^LM_k,j layers. The learned γ rescales the vector; optional layer normalization is task specific, and an L2 penalty on the unnormalized mixture weights biases them toward a uniform average.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Task-specific ELMo mixture, printed p. 2230",
+            "section": "3.2 ELMo",
+            "pageStart": 2230,
+            "pageEnd": 2230,
+            "equation": "1"
+          },
+          "support": "Defines the scalar layer mixture, task scale, normalization option, and regularizer."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-frozen-feature-transfer",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "feature-based-language-model-transfer",
+        "task-specific-layer-mixture"
+      ],
+      "statement": "During supervised task training, the pretrained biLM weights remain frozen. A learned ELMo mixture is concatenated to task inputs and, for some task architectures, a second mixture is added at a task-RNN output; task labels train the task architecture and mixture parameters rather than the language model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Task-model integration and frozen biLM, printed p. 2230",
+            "section": "3.3 Using biLMs for supervised NLP tasks",
+            "pageStart": 2230,
+            "pageEnd": 2230
+          },
+          "support": "Defines input/output injection and states that the biLM weights are frozen."
+        },
+        {
+          "sourceId": "peters-2018-naacl-supplement",
+          "locator": {
+            "label": "Task-specific integration details",
+            "section": "Supplemental model and training details"
+          },
+          "support": "Provides per-task placement and training details around the frozen language model."
+        }
+      ],
+      "limitations": [
+        "This is feature extraction around task-specific models, not full end-to-end fine-tuning of one pretrained encoder."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-architecture-and-pretraining",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "bidirectional-language-model-pretraining",
+        "character-aware-contextual-token-representation"
+      ],
+      "statement": "The reported biLM has two bidirectional LSTM layers with 4,096 units and 512-dimensional projections per direction, a residual connection between recurrent layers, and a character-CNN token layer with 2,048 filters, two highway layers, and a 512-dimensional projection. Direction concatenation yields 1,024-dimensional recurrent vectors. It is trained for 10 epochs on the 1 Billion Word Benchmark and reports average forward/backward perplexity 39.7.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Architecture and pretraining corpus, printed p. 2230",
+            "section": "3.4 Pre-trained bidirectional language model architecture",
+            "pageStart": 2230,
+            "pageEnd": 2230
+          },
+          "support": "Reports the recurrent, projection, character-CNN, residual, data, epoch, dimension, and perplexity details."
+        }
+      ],
+      "limitations": [
+        "The 30.0 comparator is a larger forward-only CNN-BIG-LSTM, not a matched bidirectional ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-six-task-results",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "deep-contextual-token-representations",
+        "feature-based-language-model-transfer"
+      ],
+      "statement": "Against the authors' own baselines, adding ELMo reports SQuAD F1 81.1→85.8, SNLI accuracy 88.0→88.7±0.17, SRL F1 81.4→84.6, coreference average F1 67.2→70.4, NER F1 90.15→92.22±0.10, and SST-5 accuracy 51.4→54.7±0.5.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Six downstream result rows, printed p. 2231",
+            "section": "4 Evaluation",
+            "pageStart": 2231,
+            "pageEnd": 2231,
+            "table": "1"
+          },
+          "support": "Reports previous state of the art, the authors' baselines, ELMo results, and selected variation measures."
+        }
+      ],
+      "limitations": [
+        "Only NER and SST explicitly identify five-run mean±standard deviation in the table note; SNLI prose describes a five-seed average. The other rows report no uncertainty, and tasks use different architectures and metrics."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-layer-mixture-ablation",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "task-specific-layer-mixture"
+      ],
+      "statement": "On development data, baseline/last-only/all-layers λ=1/all-layers λ=.001 scores are 80.8/84.7/85.0/85.2 for SQuAD, 88.1/89.1/89.3/89.5 for SNLI, and 81.6/84.1/84.6/84.8 for SRL.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Layer-weighting ablation, printed p. 2232",
+            "section": "5.1 Alternate layer weighting schemes",
+            "pageStart": 2232,
+            "pageEnd": 2232,
+            "table": "2"
+          },
+          "support": "Reports last-layer and two all-layer mixture settings against baselines."
+        }
+      ],
+      "limitations": [
+        "The table reports no error bars or significance tests and the version-1 SQuAD row differs."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-feature-placement-ablation",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "feature-based-language-model-transfer"
+      ],
+      "statement": "For input-only/input-plus-output/output-only ELMo placement, development scores are 85.1/85.6/84.8 on SQuAD, 88.9/89.5/88.7 on SNLI, and 84.7/84.3/80.9 on SRL. Adding output ELMo is therefore not uniformly beneficial.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Input/output placement ablation, printed p. 2232",
+            "section": "5.2 Where to include ELMo?",
+            "pageStart": 2232,
+            "pageEnd": 2232,
+            "table": "3"
+          },
+          "support": "Reports placement results and shows that the best placement differs by task."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-lexical-probe-results",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "deep-contextual-token-representations"
+      ],
+      "statement": "Under the paper's fixed probes, biLM layer 1/layer 2 scores are 67.4/69.0 WSD F1 and 97.3/96.8 POS accuracy, compared with CoVe's 59.4/64.7 and 93.3/92.8 respectively.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "WSD and POS probes, printed p. 2233",
+            "section": "5.3 What information is captured by the biLM's representations?",
+            "pageStart": 2233,
+            "pageEnd": 2233,
+            "table": "5–6"
+          },
+          "support": "Reports fixed-representation layer probes and comparators."
+        }
+      ],
+      "limitations": [
+        "These evaluator-specific associations do not prove causal, exclusive, or universal layer specialization for syntax and semantics."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-sample-efficiency",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "feature-based-language-model-transfer"
+      ],
+      "statement": "For the paper's SRL setup, the baseline reaches its maximum development F1 after 486 epochs, while the ELMo model exceeds that value at epoch 10; with 1% of the labeled data, the ELMo curve is approximately equal to the baseline trained with 10%.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "SRL convergence and labeled-data curves, printed p. 2234",
+            "section": "5.4 Sample efficiency",
+            "pageStart": 2234,
+            "pageEnd": 2234,
+            "figure": "1"
+          },
+          "support": "Supplies the task-specific convergence and labeled-data comparisons."
+        }
+      ],
+      "limitations": [
+        "The figure provides no exact plotted scores or uncertainty, and the update comparison is specific to one SRL architecture and training setup."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-contextual-layer-ablation",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "deep-contextual-token-representations",
+        "character-aware-contextual-token-representation"
+      ],
+      "statement": "Published Table 7 reports GloVe/context-independent ELMo token layer/ELMo without GloVe/ELMo plus GloVe as 80.8/81.4/85.3/85.6 on SQuAD, 88.1/88.5/89.1/89.5 on SNLI, and 81.6/81.7/84.5/84.7 on SRL. In these three development settings, most of the reported gain comes from contextual recurrent layers, while GloVe remains marginally additive.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Context-independent and contextual representation ablation, printed p. 2235",
+            "section": "5.6 What information is in the contextual representations?",
+            "pageStart": 2235,
+            "pageEnd": 2235,
+            "table": "7"
+          },
+          "support": "Separates the token layer, contextual layers, and GloVe on three development sets."
+        }
+      ],
+      "limitations": [
+        "The conclusion is bounded to these three task settings; nearby prose repeats SNLI where the table clearly labels the third row SRL."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-domain-adaptation",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "target-domain-language-model-adaptation",
+        "feature-based-language-model-transfer"
+      ],
+      "statement": "The supplement optionally fine-tunes the language model for one epoch on unlabeled task-domain text before freezing it for supervised transfer. Reported perplexity falls from 72.1 to 16.8 on SNLI, 103.2 to 46.3 on NER, 99.1 to 43.5 on SQuAD contexts, 158.2 to 52.0 on SQuAD questions, and 131.5 to 78.6 on SST; SNLI development accuracy rises 88.9→89.5 while SST is approximately unchanged.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-supplement",
+          "locator": {
+            "label": "Optional task-domain LM adaptation and downstream effect",
+            "section": "A.1 Fine tuning biLM",
+            "table": "8"
+          },
+          "support": "Reports the unlabeled adaptation procedure, perplexities, and selected downstream changes."
+        }
+      ],
+      "limitations": [
+        "Labels are ignored during this adaptation and the language model is frozen afterward; this is not end-to-end supervised task fine-tuning. A post-adaptation CoNLL-2012 perplexity is not printed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "peters-2017-evidence-boundary",
+      "workId": "peters-2017-deep-contextualized-word-representations",
+      "ideaIds": [
+        "feature-based-language-model-transfer"
+      ],
+      "statement": "The headline comparison is a collection of task-specific leaderboard snapshots rather than a controlled cross-task experiment: task architectures, metrics, baselines, data, and reporting precision differ, and the printed relative-error column reaches 24.9% for SQuAD and 21% for NER despite the abstract's ‘up to 20%’ wording.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "Abstract and heterogeneous task table, printed pp. 2227 and 2231",
+            "section": "Abstract; 4 Evaluation",
+            "pageStart": 2227,
+            "pageEnd": 2231,
+            "table": "1"
+          },
+          "support": "Supports an audit of what the headline rows compare and the inconsistency between summary wording and printed values."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-version-boundary",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer",
+        "slanted-triangular-learning-rates"
+      ],
+      "statement": "ULMFiT's revisions are material. Version 1 is the nine-page, five-dataset FitLaM paper. Version 2 is the twelve-page ULMFiT rewrite. Version 3 corrects Table 7 IMDb Full + discr from 4.57 to 5.57; version 4 corrects a reversed transfer-learning sentence; version 5 corrects Equation 3's decay denominator to cut·(1/cut_frac−1). The canonical ACL article preserves all three version-2 forms.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v1-full-text",
+          "locator": {
+            "label": "FitLaM title, method, and five-dataset scope",
+            "section": "Title; 4 Fine-tuned Language Models (FitLaM); 5 Experiments"
+          },
+          "support": "Establishes the materially different first manuscript."
+        },
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v2-full-text",
+          "locator": {
+            "label": "ULMFiT rewrite and original Table 7, related-work sentence, and Equation 3",
+            "section": "2 Related Work; 3 Universal Language Model Fine-tuning; 5 Analysis",
+            "table": "7",
+            "equation": "3"
+          },
+          "support": "Supplies the forms later retained by the proceedings and corrected on arXiv."
+        },
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v3-full-text",
+          "locator": {
+            "label": "Corrected Table 7 value",
+            "section": "5 Analysis — Impact of classifier fine-tuning",
+            "table": "7"
+          },
+          "support": "Changes IMDb Full + discr from 4.57 to 5.57."
+        },
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v4-full-text",
+          "locator": {
+            "label": "Corrected transfer-learning direction",
+            "section": "2 Related Work"
+          },
+          "support": "Corrects general-to-task-specific direction and first-layer transfer wording."
+        },
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v5-full-text",
+          "locator": {
+            "label": "Corrected STLR denominator",
+            "section": "3.2 Target task LM fine-tuning — Slanted triangular learning rates",
+            "equation": "3"
+          },
+          "support": "Supplies the corrected descending denominator."
+        },
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Canonical uncorrected forms, printed pp. 329, 331, and 335",
+            "section": "2 Related Work; 3.2 Target task LM fine-tuning; 5 Analysis — Impact of classifier fine-tuning",
+            "pageStart": 329,
+            "pageEnd": 335,
+            "table": "7",
+            "equation": "3"
+          },
+          "support": "Shows that the proceedings article retains version 2's text, value, and formula."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-three-stage-transfer",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer",
+        "target-domain-language-model-adaptation"
+      ],
+      "statement": "ULMFiT has three stages: pretrain a general-domain language model, fine-tune that language model on unlabeled text from the target task, then transfer its parameters into a classifier and fine-tune the supervised target model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Three transfer stages, printed pp. 330–332",
+            "section": "3 Universal Language Model Fine-tuning",
+            "pageStart": 330,
+            "pageEnd": 332,
+            "figure": "1"
+          },
+          "support": "Defines and diagrams general pretraining, target-task LM adaptation, and classifier fine-tuning."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-awd-lstm-and-pretraining",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "three-stage-language-model-transfer"
+      ],
+      "statement": "The general model is a three-layer AWD-LSTM trained on WikiText-103's 28,595 articles and 103 million words, with 400-dimensional embeddings, 1,150 hidden activations per layer, BPTT length 70, extensive dropout, and Adam β1=.7 and β2=.99. The classifier adds two linear blocks with hidden size 50.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Pretraining data, architecture, and hyperparameters, printed pp. 330 and 333–336",
+            "section": "3.1 General-domain LM pretraining; 4 Experiments; 5 Analysis",
+            "pageStart": 330,
+            "pageEnd": 336
+          },
+          "support": "Reports WikiText-103 scale, AWD-LSTM dimensions, optimizer settings, sequence length, dropout, and classifier size."
+        }
+      ],
+      "limitations": [
+        "The article describes next-word prediction and a final softmax but does not print a complete language-model likelihood or classifier cross-entropy equation; J(θ) remains abstract."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-discriminative-fine-tuning",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "discriminative-layerwise-fine-tuning"
+      ],
+      "statement": "Discriminative fine-tuning applies a separate learning rate η^l to each layer's gradient update and sets each successively lower layer's rate to the rate above divided by 2.6.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Layer-specific gradient updates and rate ladder, printed p. 331",
+            "section": "3.2 Discriminative fine-tuning",
+            "pageStart": 331,
+            "pageEnd": 331,
+            "equation": "1–2"
+          },
+          "support": "Defines layerwise updates and the /2.6 heuristic."
+        }
+      ],
+      "limitations": [
+        "The factor 2.6 is a reported heuristic rather than a theorem or independently isolated optimum."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-corrected-stlr",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "slanted-triangular-learning-rates"
+      ],
+      "statement": "Corrected arXiv v5 defines cut=floor(T·cut_frac), rises linearly from ηmax/ratio to ηmax over cut steps, then decays linearly to ηmax/ratio using denominator cut·(1/cut_frac−1). Reported defaults are cut_frac=.1, ratio=32, and ηmax=.01. The ACL denominator cut·(ratio−1) does not complete that intended decay.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v5-full-text",
+          "locator": {
+            "label": "Corrected slanted-triangular schedule",
+            "section": "3.2 Target task LM fine-tuning — Slanted triangular learning rates",
+            "equation": "3"
+          },
+          "support": "Defines the corrected piecewise schedule and defaults."
+        },
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Proceedings Equation 3, printed p. 331",
+            "section": "3.2 Target task LM fine-tuning — Slanted triangular learning rates",
+            "pageStart": 331,
+            "pageEnd": 331,
+            "equation": "3"
+          },
+          "support": "Preserves the older denominator and makes the version boundary inspectable."
+        }
+      ],
+      "limitations": [
+        "Table 6 adds STLR only after discriminative fine-tuning, so the paper does not isolate STLR as a standalone factorial effect."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-gradual-unfreezing",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "gradual-layer-unfreezing"
+      ],
+      "statement": "Classifier fine-tuning first unfreezes the last language-model layer, then cumulatively unfreezes the next lower layer on each epoch until all layers are trainable, after which training continues to convergence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Gradual unfreezing procedure, printed p. 332",
+            "section": "3.3 Target task classifier fine-tuning",
+            "pageStart": 332,
+            "pageEnd": 332
+          },
+          "support": "Defines the last-to-first cumulative unfreezing schedule."
+        }
+      ],
+      "limitations": [
+        "The procedure is proposed to reduce catastrophic forgetting; the paper's validation curves are indirect evidence and do not prove prevention of forgetting."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-concat-pooling-and-bpt3c",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "concat-pooled-recurrent-document-classification",
+        "bpt3c-long-document-classification"
+      ],
+      "statement": "The classifier representation concatenates the final hidden state, a temporal maximum over hidden states, and their temporal mean. BPT3C splits long documents into fixed-length batches, carries recurrent state between them, accumulates hidden states for pooling, and propagates classifier gradients through only the contributing batches.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Concat pooling and BPT3C, printed p. 332",
+            "section": "3.3 Target task classifier fine-tuning",
+            "pageStart": 332,
+            "pageEnd": 332,
+            "equation": "4"
+          },
+          "support": "Defines h_c=[h_T,maxpool(H),meanpool(H)] and the long-document batching and gradient procedure."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-forward-backward-ensemble",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer"
+      ],
+      "statement": "The bidirectional test configuration trains forward and backward language-model classifiers independently and averages their predictions. On IMDb, the paper reports single-model error 5.30 and forward/backward ensemble error 4.58, summarizing the gain across tasks as roughly 0.5–0.7 percentage points.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Independent directional models and ensemble result, printed p. 336",
+            "section": "5 Analysis — Impact of bidirectionality",
+            "pageStart": 336,
+            "pageEnd": 336
+          },
+          "support": "Defines the two-model ensemble and reports its IMDb comparison."
+        }
+      ],
+      "limitations": [
+        "This is not one bidirectional LSTM representation; the main test ensemble also differs from the unidirectional Section 5 ablations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-main-results",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer"
+      ],
+      "statement": "Against the best printed prior row selected for each dataset, ULMFiT test error is 4.60 versus 5.90 on IMDb, 3.60 versus 3.90 on TREC-6, 5.01 versus 6.57 on AG, 0.80 versus 0.84 on DBpedia, 2.16 versus 2.64 on Yelp-bi, and 29.98 versus 30.58 on Yelp-full.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Six main test-error rows, printed p. 333",
+            "section": "4.2 Results",
+            "pageStart": 333,
+            "pageEnd": 333,
+            "table": "2–3"
+          },
+          "support": "Reports ULMFiT and comparator test errors across six datasets."
+        }
+      ],
+      "limitations": [
+        "The relative reductions are approximately 22.0%, 7.7%, 23.7%, 4.8%, 18.2%, and 2.0%; exactly three of six lie in the abstract's 18–24% interval. TREC's small improvement is explicitly described as not statistically significant on 500 test examples."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-low-shot-results",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer",
+        "target-domain-language-model-adaptation"
+      ],
+      "statement": "With 100 labels, supervised ULMFiT approximately matches scratch training with ten times as many labels on IMDb and twenty times on AG. When target-domain LM adaptation also uses 50,000 unlabeled IMDb examples or 100,000 unlabeled AG examples, the 100-label curves approximately match scratch training with 100 and 50 times as many labeled examples respectively.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Low-shot labeled and unlabeled data curves, printed p. 334",
+            "section": "5 Analysis — Low-shot learning",
+            "pageStart": 334,
+            "pageEnd": 334,
+            "figure": "3"
+          },
+          "support": "Supplies the approximate data-efficiency comparisons and unlabeled-data conditions."
+        }
+      ],
+      "limitations": [
+        "Figure 3 supplies curves rather than exact plotted values, raw data, or uncertainty; ‘100 examples alone’ would omit the unlabeled-data condition in the semi-supervised comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-pretraining-and-architecture-ablations",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer"
+      ],
+      "statement": "On unidirectional validation runs, without/with WikiText pretraining error is 5.63/5.00 on IMDb, 10.67/5.69 on TREC, and 5.52/5.38 on AG. Vanilla/AWD-LSTM error is 5.98/5.00, 7.41/5.69, and 5.76/5.38 respectively.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Pretraining and LM-architecture analyses, printed pp. 334–335",
+            "section": "5 Analysis — Impact of pretraining; Impact of LM quality",
+            "pageStart": 334,
+            "pageEnd": 335,
+            "table": "4–5"
+          },
+          "support": "Reports the validation-error rows for pretraining and architecture variants."
+        }
+      ],
+      "limitations": [
+        "The vanilla-LM comparison also removes dropout and trains its classifier for only five epochs while retaining classifier dropout, so Table 5 is not a clean language-model-quality intervention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-lm-fine-tuning-ablation",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "target-domain-language-model-adaptation",
+        "discriminative-layerwise-fine-tuning",
+        "slanted-triangular-learning-rates"
+      ],
+      "statement": "For IMDb/TREC/AG validation error, no LM fine-tuning reports 6.99/6.38/6.09; full LM fine-tuning 5.86/6.54/5.61; plus discriminative rates 5.55/6.36/5.47; and plus STLR 5.00/5.69/5.38.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Language-model fine-tuning analysis, printed p. 335",
+            "section": "5 Analysis — Impact of LM fine-tuning",
+            "pageStart": 335,
+            "pageEnd": 335,
+            "table": "6"
+          },
+          "support": "Reports cumulative LM-adaptation variants on three validation sets."
+        }
+      ],
+      "limitations": [
+        "The cumulative design does not isolate discriminative rates or STLR independently, and full fine-tuning alone is worse than no LM fine-tuning on TREC."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-classifier-ablation",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "gradual-layer-unfreezing",
+        "discriminative-layerwise-fine-tuning",
+        "slanted-triangular-learning-rates"
+      ],
+      "statement": "Corrected arXiv version 3 reports IMDb/TREC/AG validation error 5.57/6.21/5.62 for Full+discr and 5.00/5.69/5.38 for Full+discr+STLR. The ACL article instead prints 4.57 for the IMDb value in that row; on AG, Freez+cos at 5.29 is lower than full ULMFiT's 5.38.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v3-full-text",
+          "locator": {
+            "label": "Corrected classifier variants",
+            "section": "5 Analysis — Impact of classifier fine-tuning",
+            "table": "7"
+          },
+          "support": "Supplies the corrected 5.57 value and the complete validation table."
+        },
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Canonical classifier variants, printed p. 335",
+            "section": "5 Analysis — Impact of classifier fine-tuning",
+            "pageStart": 335,
+            "pageEnd": 335,
+            "table": "7"
+          },
+          "support": "Preserves the proceedings value and the AG Freez+cos row."
+        }
+      ],
+      "limitations": [
+        "The table is not a complete factorial or parameter-matched comparison, and no dispersion or significance is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-elmo-contrast",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer"
+      ],
+      "statement": "ULMFiT explicitly cites the ELMo manuscript among approaches that concatenate pretrained contextual features into task-specific models, characterizes those features as fixed during task training, and positions its own method as adapting the entire pretrained language model and then its classifier instead.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v1-full-text",
+          "locator": {
+            "label": "Anonymous ELMo-title citation and hypercolumn/fine-tuning contrast",
+            "section": "1 Introduction; 2 Related Work"
+          },
+          "support": "Documents awareness of the ELMo manuscript in the January 2018 ULMFiT-family version."
+        },
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "ELMo citation, fixed-feature contrast, and full-model fine-tuning, printed pp. 328–332",
+            "section": "1 Introduction; 2 Related Work; 3 Universal Language Model Fine-tuning",
+            "pageStart": 328,
+            "pageEnd": 332
+          },
+          "support": "The canonical target cites Peters et al. and states the scoped methodological contrast."
+        }
+      ],
+      "limitations": [
+        "The citation and contrast document manuscript awareness, not priority, exclusive derivation, or proof that ELMo caused ULMFiT."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "howard-ruder-2018-evidence-boundary",
+      "workId": "howard-ruder-2018-universal-language-model-fine-tuning",
+      "ideaIds": [
+        "three-stage-language-model-transfer"
+      ],
+      "statement": "The paper's broad universality and forgetting language exceeds its experiments: it evaluates only six English classification datasets, reports no run-to-run dispersion, tunes hyperparameters on IMDb, and uses validation-error curves rather than a direct retained-knowledge measure for catastrophic forgetting.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Task scope, experimental protocol, and forgetting proxy, printed pp. 328–336",
+            "section": "Abstract; 1 Introduction; 4 Experiments; 5 Analysis",
+            "pageStart": 328,
+            "pageEnd": 336,
+            "figure": "4"
+          },
+          "support": "Supports an editorial audit of the evaluated scope, reporting omissions, tuning procedure, and forgetting proxy."
+        }
+      ],
+      "limitations": [],
+      "uncertainties": [],
+      "checkedDate": "2026-08-24"
     }
   ],
   "relationships": [
@@ -31531,6 +33742,93 @@
           "note": "Transformer v1 cites ConvS2S v2, establishing awareness before publication while leaving the origins of its core self-attention design unstated."
         }
       ]
+    },
+    {
+      "id": "hochreiter-schmidhuber-1995-to-peters-2017",
+      "from": {
+        "kind": "work",
+        "id": "hochreiter-schmidhuber-1995-long-short-term-memory"
+      },
+      "to": {
+        "kind": "work",
+        "id": "peters-2017-deep-contextualized-word-representations"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ELMo cites Hochreiter and Schmidhuber for LSTM recurrence and builds its contextual representation stack from two bidirectional LSTM layers. The edge is limited to the recurrent memory architecture named by the target; it does not project ELMo's character input, bidirectional objective, layer mixture, pretrained features, task results, or later LSTM variants back into the 1995/1997 work.",
+      "claimIds": [
+        "hochreiter-schmidhuber-1997-input-output-gates",
+        "peters-2017-architecture-and-pretraining",
+        "peters-2017-bidirectional-lm-objectives"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "peters-2018-naacl-full-text",
+          "locator": {
+            "label": "LSTM antecedent citation and stacked biLSTM architecture, printed pp. 2228–2230",
+            "section": "2 Related work; 3.1; 3.4",
+            "pageStart": 2228,
+            "pageEnd": 2230
+          },
+          "support": "The target cites Hochreiter and Schmidhuber and identifies its recurrent layers as LSTMs."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge concerns the named LSTM substrate only. ELMo's implementation uses a later projected, residual, bidirectional stack rather than claiming equation-level identity with the original cell."
+        }
+      ]
+    },
+    {
+      "id": "peters-2017-to-howard-ruder-2018",
+      "from": {
+        "kind": "work",
+        "id": "peters-2017-deep-contextualized-word-representations"
+      },
+      "to": {
+        "kind": "work",
+        "id": "howard-ruder-2018-universal-language-model-fine-tuning"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Both methods can first adapt a language model on unlabeled target-task text. The ULMFiT family cites ELMo and contrasts ELMo's frozen contextual features during supervised task training with controlled supervised fine-tuning of the transferred language-model and classifier stack. The edge records that later paper's stated problem framing, not priority, exclusive derivation, causation, or an assertion that one method supersedes the other for every task.",
+      "claimIds": [
+        "peters-2017-frozen-feature-transfer",
+        "peters-2017-domain-adaptation",
+        "howard-ruder-2018-three-stage-transfer",
+        "howard-ruder-2018-elmo-contrast"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "howard-ruder-2018-arxiv-v1-full-text",
+          "locator": {
+            "label": "Earliest anonymous ELMo citation and hypercolumn/fine-tuning contrast",
+            "section": "1 Introduction; 2 Related Work"
+          },
+          "support": "The target's first public version cites the ELMo title anonymously among concatenated contextual-feature approaches and contrasts that route with model fine-tuning."
+        },
+        {
+          "sourceId": "howard-ruder-2018-acl-full-text",
+          "locator": {
+            "label": "Canonical ELMo citation and full-model contrast, printed pp. 328–332",
+            "section": "1 Introduction; 2 Related Work; 3 Universal Language Model Fine-tuning",
+            "pageStart": 328,
+            "pageEnd": 332
+          },
+          "support": "The canonical target names Peters et al. and defines the scoped transfer contrast."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The October 2017 OpenReview artifact establishes public ordering before ULMFiT v1, but public order and citation document awareness rather than conception date, causal derivation, or priority."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -33633,6 +35931,143 @@
         "Asymptotic analysis, ablation design, and versioned scholarly evidence"
       ],
       "successCriterion": "The learner can derive equations 1–3 and all attention routes; reproduce every Table 1–4 row with evaluation conditions; distinguish 26.4 development from 28.4 test BLEU; keep proceedings 41.0 separate from the inconsistent arXiv 41.8; locate parsing, visualizations, and parameter-attention evidence only in their versions; and explain why the paper is a convergence node rather than an atlas priority claim."
+    },
+    {
+      "id": "beginner-peters-2017-context-and-layer-mixture",
+      "mode": "beginner",
+      "objective": "Compare the same word in two sentences, follow two directional readers, and adjust a downstream task's mixture of the character input and two contextual layers while keeping the pretrained language model visibly frozen.",
+      "workIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "ideaIds": [
+        "bidirectional-language-model-pretraining",
+        "deep-contextual-token-representations",
+        "task-specific-layer-mixture",
+        "feature-based-language-model-transfer"
+      ],
+      "claimIds": [
+        "peters-2017-bidirectional-lm-objectives",
+        "peters-2017-contextual-representation-family",
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-frozen-feature-transfer",
+        "peters-2017-feature-placement-ablation"
+      ],
+      "prerequisites": [
+        "A word can have different meanings in different sentences",
+        "A probability distribution over a next word",
+        "A weighted average",
+        "The distinction between pretraining and supervised task learning"
+      ],
+      "successCriterion": "The learner can explain why one token occurrence changes with context, distinguish the two directional objectives from causal generation, choose task-specific layer weights, and state which parameters remain frozen."
+    },
+    {
+      "id": "expert-peters-2017-objective-mixtures-and-evidence",
+      "mode": "expert",
+      "objective": "Derive the paired autoregressive objectives and ELMo mixture, trace dimensions and feature placement, and audit layer, probe, sample-efficiency, domain-adaptation, and six-task claims across four non-equivalent versions.",
+      "workIds": [
+        "peters-2017-deep-contextualized-word-representations"
+      ],
+      "ideaIds": [
+        "bidirectional-language-model-pretraining",
+        "deep-contextual-token-representations",
+        "task-specific-layer-mixture",
+        "feature-based-language-model-transfer",
+        "character-aware-contextual-token-representation",
+        "target-domain-language-model-adaptation"
+      ],
+      "claimIds": [
+        "peters-2017-version-boundary",
+        "peters-2017-bidirectional-lm-objectives",
+        "peters-2017-contextual-representation-family",
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-frozen-feature-transfer",
+        "peters-2017-architecture-and-pretraining",
+        "peters-2017-six-task-results",
+        "peters-2017-layer-mixture-ablation",
+        "peters-2017-feature-placement-ablation",
+        "peters-2017-lexical-probe-results",
+        "peters-2017-sample-efficiency",
+        "peters-2017-contextual-layer-ablation",
+        "peters-2017-domain-adaptation",
+        "peters-2017-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive likelihood, bidirectional recurrence, LSTMs, softmax, and layer normalization",
+        "Feature extraction versus end-to-end fine-tuning",
+        "Perplexity, F1, accuracy, ablations, and run-to-run uncertainty",
+        "Versioned scholarly evidence and source-specific pagination"
+      ],
+      "successCriterion": "The learner can reconstruct the two likelihood factorizations and Equation 1, derive 512-per-direction to 1,024-dimensional states, reproduce promoted tables with their conditions, and prevent OpenReview, arXiv, supplement, and proceedings values from migrating across versions."
+    },
+    {
+      "id": "beginner-howard-ruder-2018-three-transfer-stages",
+      "mode": "beginner",
+      "objective": "Trace a model through general-language learning, unlabeled target-domain adaptation, and labeled classification; then contrast ELMo's frozen supervised feature transfer with ULMFiT's controlled whole-stack updates, control which layers unfreeze and how quickly each layer learns, and keep extra unlabeled data visible in low-shot comparisons.",
+      "workIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "ideaIds": [
+        "three-stage-language-model-transfer",
+        "target-domain-language-model-adaptation",
+        "discriminative-layerwise-fine-tuning",
+        "gradual-layer-unfreezing"
+      ],
+      "claimIds": [
+        "howard-ruder-2018-three-stage-transfer",
+        "howard-ruder-2018-discriminative-fine-tuning",
+        "howard-ruder-2018-gradual-unfreezing",
+        "howard-ruder-2018-low-shot-results",
+        "howard-ruder-2018-elmo-contrast"
+      ],
+      "prerequisites": [
+        "Unlabeled text and labeled examples",
+        "A language model and a classifier",
+        "Layers in a recurrent neural network",
+        "The difference between freezing and updating parameters"
+      ],
+      "successCriterion": "The learner can name the three stages, distinguish optional unlabeled adaptation shared with ELMo from the supervised frozen-feature versus whole-stack fine-tuning fork, explain why freezing too much and updating too aggressively pose different risks, and state the labeled and unlabeled data used in the 100-label comparison."
+    },
+    {
+      "id": "expert-howard-ruder-2018-schedules-results-and-versions",
+      "mode": "expert",
+      "objective": "Derive the corrected slanted-triangular schedule and /2.6 layer-rate ladder, trace concat pooling and BPT3C, and audit test ensembles, unidirectional ablations, low-shot accounting, five arXiv revisions, and the three post-v2 corrections that the canonical ACL article does not incorporate.",
+      "workIds": [
+        "howard-ruder-2018-universal-language-model-fine-tuning"
+      ],
+      "ideaIds": [
+        "recurrent-neural-word-language-modeling",
+        "three-stage-language-model-transfer",
+        "target-domain-language-model-adaptation",
+        "discriminative-layerwise-fine-tuning",
+        "slanted-triangular-learning-rates",
+        "gradual-layer-unfreezing",
+        "concat-pooled-recurrent-document-classification",
+        "bpt3c-long-document-classification"
+      ],
+      "claimIds": [
+        "howard-ruder-2018-version-boundary",
+        "howard-ruder-2018-three-stage-transfer",
+        "howard-ruder-2018-awd-lstm-and-pretraining",
+        "howard-ruder-2018-discriminative-fine-tuning",
+        "howard-ruder-2018-corrected-stlr",
+        "howard-ruder-2018-gradual-unfreezing",
+        "howard-ruder-2018-concat-pooling-and-bpt3c",
+        "howard-ruder-2018-forward-backward-ensemble",
+        "howard-ruder-2018-main-results",
+        "howard-ruder-2018-low-shot-results",
+        "howard-ruder-2018-pretraining-and-architecture-ablations",
+        "howard-ruder-2018-lm-fine-tuning-ablation",
+        "howard-ruder-2018-classifier-ablation",
+        "howard-ruder-2018-elmo-contrast",
+        "howard-ruder-2018-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive language modeling, LSTMs, BPTT, pooling, and softmax classification",
+        "Gradient descent, per-layer learning rates, and learning-rate schedules",
+        "Validation versus test error, ensembles, ablations, and relative error reduction",
+        "Versioned preprints, proceedings, and source-level comparison"
+      ],
+      "successCriterion": "The learner can compute STLR's start, peak, and end values; build the layerwise rate ladder; trace document-state and gradient flow; reproduce the promoted rows; and explain why v5's formula and v3's value cannot silently replace the canonical ACL text."
     }
   ]
 }

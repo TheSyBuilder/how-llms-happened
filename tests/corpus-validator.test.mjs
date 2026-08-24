@@ -761,7 +761,6 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-23");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -5421,26 +5420,24 @@ test("retains ConvS2S as a versioned convolutional attention branch", () => {
 });
 
 test("retains the complete six-node Transformer convergence gate", () => {
-  assert.deepEqual(
-    corpus.works.slice(-7).map((work) => work.id),
-    [
-      "sukhbaatar-2015-end-to-end-memory-networks",
-      "luong-pham-manning-2015-effective-attention-nmt",
-      "cheng-dong-lapata-2016-lstmn-machine-reading",
-      "parikh-2016-decomposable-attention-nli",
-      "kalchbrenner-2016-neural-machine-translation-linear-time",
-      "gehring-2017-convolutional-sequence-to-sequence-learning",
-      "vaswani-2017-attention-is-all-you-need",
-    ],
-  );
-  for (const workId of [
+  const predecessorWorkIds = [
     "sukhbaatar-2015-end-to-end-memory-networks",
     "luong-pham-manning-2015-effective-attention-nmt",
     "cheng-dong-lapata-2016-lstmn-machine-reading",
     "parikh-2016-decomposable-attention-nli",
     "kalchbrenner-2016-neural-machine-translation-linear-time",
     "gehring-2017-convolutional-sequence-to-sequence-learning",
-  ]) {
+  ];
+  const transformerWorkId = "vaswani-2017-attention-is-all-you-need";
+  const convergenceWorkIds = [...predecessorWorkIds, transformerWorkId];
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => convergenceWorkIds.includes(work.id))
+      .map((work) => work.id),
+    convergenceWorkIds,
+  );
+  for (const workId of predecessorWorkIds) {
     assert.ok(corpus.works.some((work) => work.id === workId));
   }
   assert.deepEqual(
@@ -5448,7 +5445,7 @@ test("retains the complete six-node Transformer convergence gate", () => {
       .filter(
       (relationship) =>
         relationship.to.kind === "work" &&
-        relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+        relationship.to.id === transformerWorkId,
       )
       .map((relationship) => relationship.id),
     ["gehring-2017-to-vaswani-2017"],
@@ -5801,6 +5798,289 @@ test("retains the Transformer as a canonical proceedings node with revision boun
     incomingRelationships[0]?.rationale.includes("excludes causal claims"),
   );
   assert.equal(outgoingRelationships.length, 0);
+});
+
+test("retains ELMo as a four-version frozen contextual-feature bridge", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "peters-2017-deep-contextualized-word-representations",
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(work?.id),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const objective = claims.find(
+    (claim) => claim.id === "peters-2017-bidirectional-lm-objectives",
+  );
+  const mixture = claims.find(
+    (claim) => claim.id === "peters-2017-task-specific-layer-mixture",
+  );
+  const results = claims.find(
+    (claim) => claim.id === "peters-2017-six-task-results",
+  );
+  const boundary = claims.find(
+    (claim) => claim.id === "peters-2017-version-boundary",
+  );
+  const domainAdaptation = claims.find(
+    (claim) => claim.id === "peters-2017-domain-adaptation",
+  );
+  const lstmEdge = corpus.relationships.find(
+    (relationship) =>
+      relationship.id === "hochreiter-schmidhuber-1995-to-peters-2017",
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "peters-2018-naacl-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["peters-2017-openreview-posted", "2017-10-27"],
+      ["peters-2018-arxiv-v1-posted", "2018-02-15"],
+      ["peters-2018-arxiv-v2-posted", "2018-03-22"],
+      ["peters-2018-naacl-proceedings", "2018-06"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.title]),
+    [
+      ["peters-2017-openreview-version", "Deep Contextualized Word Representations"],
+      ["peters-2018-arxiv-v1-version", "Deep contextualized word representations"],
+      ["peters-2018-arxiv-v2-version", "Deep contextualized word representations"],
+      ["peters-2018-naacl-version", "Deep Contextualized Word Representations"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.find((version) => version.id === work.canonicalVersionId)
+      ?.bibliography.pages,
+    ["2227-2237"],
+  );
+  assert.equal(sources.length, 10);
+  assert.equal(claims.length, 14);
+  assert.deepEqual(
+    new Set(objectives.map((item) => item.mode)),
+    new Set(["beginner", "expert"]),
+  );
+  assert.ok(objective?.statement.includes("forward language model"));
+  assert.ok(objective?.statement.includes("backward language model"));
+  assert.ok(objective?.limitations.join(" ").includes("not masked-language-model"));
+  assert.ok(mixture?.statement.includes("softmax-normalized scalar mixture"));
+  assert.ok(mixture?.statement.includes("L2 penalty"));
+  assert.ok(results?.statement.includes("SQuAD F1 81.1→85.8"));
+  assert.ok(results?.statement.includes("SST-5 accuracy 51.4→54.7±0.5"));
+  assert.deepEqual(
+    boundary?.evidence.map((item) => item.sourceId),
+    [
+      "peters-2017-openreview-full-text",
+      "peters-2018-arxiv-v1-full-text",
+      "peters-2018-arxiv-v2-full-text",
+      "peters-2018-naacl-full-text",
+    ],
+  );
+  assert.equal(
+    boundary?.evidence.find(
+      (item) => item.sourceId === "peters-2017-openreview-full-text",
+    )?.locator.table,
+    "1, 2, and 6",
+  );
+  assert.deepEqual(domainAdaptation?.evidence[0]?.locator, {
+    label: "Optional task-domain LM adaptation and downstream effect",
+    section: "A.1 Fine tuning biLM",
+    table: "8",
+  });
+  assert.equal(lstmEdge?.connectionType, "builds-on");
+  assert.equal(lstmEdge?.evidenceClass, "documented-influence");
+  assert.equal(lstmEdge?.causalLanguage, "qualified");
+});
+
+test("retains ULMFiT corrections without rewriting the canonical ACL article", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "howard-ruder-2018-universal-language-model-fine-tuning",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(work?.id),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const boundary = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-version-boundary",
+  );
+  const schedule = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-corrected-stlr",
+  );
+  const transfer = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-three-stage-transfer",
+  );
+  const lowShot = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-low-shot-results",
+  );
+  const mainResults = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-main-results",
+  );
+  const ensemble = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-forward-backward-ensemble",
+  );
+  const pretrainingAblations = claims.find(
+    (claim) =>
+      claim.id === "howard-ruder-2018-pretraining-and-architecture-ablations",
+  );
+  const lmFineTuningAblation = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-lm-fine-tuning-ablation",
+  );
+  const classifierAblation = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-classifier-ablation",
+  );
+  const beginnerObjective = objectives.find(
+    (objective) => objective.mode === "beginner",
+  );
+  const expertObjective = objectives.find(
+    (objective) => objective.mode === "expert",
+  );
+  const boundaryEvidence = new Map(
+    boundary?.evidence.map((item) => [item.sourceId, item]) ?? [],
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "howard-ruder-2018-acl-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => event.date.value),
+    [
+      "2018-01-18",
+      "2018-05-14",
+      "2018-05-15",
+      "2018-05-17",
+      "2018-05-23",
+      "2018-07",
+    ],
+  );
+  assert.equal(
+    versions.get("howard-ruder-2018-arxiv-v1-version")?.title,
+    "Fine-tuned Language Models for Text Classification",
+  );
+  assert.deepEqual(
+    versions.get("howard-ruder-2018-acl-version")?.bibliography.pages,
+    ["328-339"],
+  );
+  assert.ok(
+    versions
+      .get("howard-ruder-2018-acl-version")
+      ?.notes.includes("preserves version 2's 4.57"),
+  );
+  assert.equal(sources.length, 10);
+  assert.equal(claims.length, 15);
+  assert.deepEqual(
+    new Set(objectives.map((item) => item.mode)),
+    new Set(["beginner", "expert"]),
+  );
+  for (const value of [
+    "Version 1 is the nine-page",
+    "Version 3 corrects Table 7",
+    "version 4 corrects a reversed",
+    "version 5 corrects Equation 3",
+    "canonical ACL article preserves all three",
+  ])
+    assert.ok(boundary?.statement.includes(value));
+  assert.equal(
+    boundaryEvidence.get("howard-ruder-2018-arxiv-v1-full-text")?.locator
+      .section,
+    "Title; 4 Fine-tuned Language Models (FitLaM); 5 Experiments",
+  );
+  assert.equal(
+    boundaryEvidence.get("howard-ruder-2018-arxiv-v3-full-text")?.locator
+      .section,
+    "5 Analysis — Impact of classifier fine-tuning",
+  );
+  assert.equal(
+    boundaryEvidence.get("howard-ruder-2018-acl-full-text")?.locator.section,
+    "2 Related Work; 3.2 Target task LM fine-tuning; 5 Analysis — Impact of classifier fine-tuning",
+  );
+  assert.deepEqual(
+    schedule?.evidence.map((item) => item.sourceId),
+    [
+      "howard-ruder-2018-arxiv-v5-full-text",
+      "howard-ruder-2018-acl-full-text",
+    ],
+  );
+  assert.ok(schedule?.statement.includes("cut·(1/cut_frac−1)"));
+  assert.ok(schedule?.statement.includes("ACL denominator cut·(ratio−1)"));
+  assert.ok(transfer?.statement.includes("three stages"));
+  assert.ok(lowShot?.statement.includes("50,000 unlabeled IMDb"));
+  assert.ok(lowShot?.statement.includes("100,000 unlabeled AG"));
+  assert.equal(
+    lowShot?.evidence[0]?.locator.section,
+    "5 Analysis — Low-shot learning",
+  );
+  assert.equal(mainResults?.evidence[0]?.locator.section, "4.2 Results");
+  assert.equal(
+    ensemble?.evidence[0]?.locator.section,
+    "5 Analysis — Impact of bidirectionality",
+  );
+  assert.deepEqual(
+    {
+      section: pretrainingAblations?.evidence[0]?.locator.section,
+      pageStart: pretrainingAblations?.evidence[0]?.locator.pageStart,
+      pageEnd: pretrainingAblations?.evidence[0]?.locator.pageEnd,
+    },
+    {
+      section: "5 Analysis — Impact of pretraining; Impact of LM quality",
+      pageStart: 334,
+      pageEnd: 335,
+    },
+  );
+  assert.equal(
+    lmFineTuningAblation?.evidence[0]?.locator.section,
+    "5 Analysis — Impact of LM fine-tuning",
+  );
+  assert.equal(
+    classifierAblation?.evidence[0]?.locator.section,
+    "5 Analysis — Impact of classifier fine-tuning",
+  );
+  assert.ok(classifierAblation?.statement.startsWith("Corrected arXiv version 3"));
+  assert.ok(beginnerObjective?.objective.includes("contrast ELMo's frozen"));
+  assert.ok(beginnerObjective?.successCriterion.includes("shared with ELMo"));
+  assert.ok(expertObjective?.objective.includes("three post-v2 corrections"));
+});
+
+test("keeps the ELMo to ULMFiT transfer fork chronological and noncausal", () => {
+  const workIds = [
+    "vaswani-2017-attention-is-all-you-need",
+    "peters-2017-deep-contextualized-word-representations",
+    "howard-ruder-2018-universal-language-model-fine-tuning",
+  ];
+  const edge = corpus.relationships.find(
+    (relationship) => relationship.id === "peters-2017-to-howard-ruder-2018",
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => workIds.includes(work.id))
+      .map((work) => work.id),
+    workIds,
+  );
+  assert.deepEqual(edge?.from, {
+    kind: "work",
+    id: "peters-2017-deep-contextualized-word-representations",
+  });
+  assert.deepEqual(edge?.to, {
+    kind: "work",
+    id: "howard-ruder-2018-universal-language-model-fine-tuning",
+  });
+  assert.equal(edge?.connectionType, "addresses");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "prohibited");
+  assert.ok(edge?.claimIds.includes("peters-2017-frozen-feature-transfer"));
+  assert.ok(edge?.claimIds.includes("howard-ruder-2018-elmo-contrast"));
+  assert.ok(edge?.rationale.includes("Both methods can first adapt"));
+  assert.ok(edge?.rationale.includes("supervised fine-tuning"));
+  assert.ok(edge?.rationale.includes("not priority"));
+  assert.ok(edge?.rationale.includes("causation"));
 });
 
 test("keeps the 2014 encoder-decoder branches concurrent and noncausal", () => {
