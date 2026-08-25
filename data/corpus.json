@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-24",
+  "asOf": "2026-08-25",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -9307,6 +9307,397 @@
           "resolutionCondition": "An author-pinned release with checkpoints, hashes, licenses, data manifests, and evaluation commands would be required for exact reconstruction and reuse claims."
         }
       ]
+    },
+    {
+      "id": "radford-2018-improving-language-understanding-generative-pre-training",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "authors": [
+        "Alec Radford",
+        "Karthik Narasimhan",
+        "Tim Salimans",
+        "Ilya Sutskever"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "A. Radford, K. Narasimhan, T. Salimans, and I. Sutskever, “Improving Language Understanding by Generative Pre-Training,” OpenAI preprint, 11 June 2018.",
+      "chronology": {
+        "orderingEventId": "radford-2018-openai-release",
+        "events": [
+          {
+            "id": "radford-2018-openai-release",
+            "kind": "preprint",
+            "label": "OpenAI preprint and project page released",
+            "date": {
+              "value": "2018-06-11",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "radford-2018-openai-announcement",
+                "precision": "day",
+                "locator": "Official OpenAI project-page header: June 11, 2018"
+              }
+            ],
+            "versionId": "radford-2018-openai-preprint-version",
+            "sourceIds": [
+              "radford-2018-openai-announcement",
+              "radford-2018-openai-preprint-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "radford-2018-openai-preprint-version",
+          "title": "Improving Language Understanding by Generative Pre-Training",
+          "authors": [
+            "Alec Radford",
+            "Karthik Narasimhan",
+            "Tim Salimans",
+            "Ilya Sutskever"
+          ],
+          "kind": "preprint",
+          "label": "OpenAI preprint",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Radford, K. Narasimhan, T. Salimans, and I. Sutskever, “Improving Language Understanding by Generative Pre-Training,” OpenAI preprint, 11 June 2018.",
+            "venue": "OpenAI preprint",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "radford-2018-openai-preprint-full-text",
+            "radford-2018-openai-announcement",
+            "radford-2018-openai-code-release-snapshot",
+            "radford-2018-openai-code-record"
+          ],
+          "notes": "The official twelve-page PDF calls itself “Preprint. Work in progress.” but prints no date, report number, DOI, arXiv identifier, venue, or revision number. The official OpenAI project page supplies the 11 June 2018 release date. The paper does not call the model GPT or GPT-1. PDF creation metadata and later CDN storage headers are not promoted as publication or revision events."
+        }
+      ],
+      "canonicalVersionId": "radford-2018-openai-preprint-version",
+      "preferredSourceIds": [
+        "radford-2018-openai-preprint-full-text",
+        "radford-2018-openai-announcement"
+      ],
+      "sourceIds": [
+        "radford-2018-openai-preprint-full-text",
+        "radford-2018-openai-announcement",
+        "radford-2018-openai-code-release-snapshot",
+        "radford-2018-openai-code-record"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The work turns a causal Transformer language model trained on contiguous unlabeled books into one shared starting point for twelve supervised language-understanding benchmarks. Full-model fine-tuning, task-aware input serialization, and explicit comparisons with Transformer, ULMFiT, and ELMo make it a high-confidence bridge from contextual language-model transfer to general pretrained Transformer systems."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "generative-transformer-pretraining",
+        "discriminative-full-model-fine-tuning",
+        "task-aware-input-serialization",
+        "auxiliary-language-model-fine-tuning",
+        "zero-shot-generative-task-probes",
+        "byte-pair-subword-tokenization",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "significance": {
+        "beginner": "One Transformer first learns by predicting the next token in books. Each labeled task is then written as one token sequence, and the same pretrained network is updated with a small task output layer plus learned boundary and delimiter-token embeddings added.",
+        "expert": "A twelve-layer causal Transformer maximizes an autoregressive likelihood over BooksCorpus, then all pretrained parameters are optimized for each supervised task under a task serialization and, usually, a weighted auxiliary language-model objective. The paper reports results across twelve benchmark datasets, transfer-depth and architecture ablations, and bounded zero-shot likelihood probes."
+      },
+      "limitations": [
+        "The pretraining and evaluation scope is English: BooksCorpus and twelve classification, entailment, similarity, question-answering, and story-completion benchmarks. The paper does not establish multilingual transfer or open-ended generation quality.",
+        "The paper evaluates one twelve-layer Transformer scale and one single-layer LSTM comparison; it does not provide a parameter-matched scaling study or establish a general Transformer-versus-recurrence law.",
+        "Reported benchmark values are single-system point estimates without seeds, repeated-run dispersion, confidence intervals, or significance tests.",
+        "The paper reports a token perplexity of 18.4 “on this corpus” without identifying a held-out split, evaluation protocol, or uncertainty interval.",
+        "The introduction says the GLUE improvement is 5.5 points, while Table 4 prints 72.8 versus 68.9, a 3.9-point difference. The atlas preserves the table values and flags the conflict.",
+        "The system leads the strongest displayed comparator on nine of twelve promoted dataset metrics, but trails on RTE, SST-2, and MRPC; broad state-of-the-art language is not generalized beyond those rows.",
+        "Table 5 is not a factorial or parameter-matched ablation. Removing the auxiliary objective raises the unweighted average from 74.7 to 75.0 and has mixed per-task effects.",
+        "The zero-shot probes use four task-specific likelihood heuristics and normalized curves rather than one shared prompting method, exact tabular scores, raw predictions, or supervised-equivalent evaluation.",
+        "The official release-day repository implements ROCStories only. Its README reports nondeterministic GPU behavior and a median 85.8 over ten runs versus the paper's single-run 86.5; it is not evidence that all twelve paper results were reproduced.",
+        "The paper is labeled work in progress and exposes no archival identifier or revision trail. Repository commits and later CDN metadata are not silently treated as paper versions.",
+        "The repository's MIT license covers the code tree; it is not assumed to license BooksCorpus, benchmark datasets, pretrained parameters, or the paper text."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The official project-page date, 11 June 2018, controls chronology because the paper PDF itself is undated."
+        },
+        {
+          "status": "resolved",
+          "note": "“GPT” and “GPT-1” are later conventional labels absent from the inspected paper; the corpus uses the paper's title and a Radford-2018 identifier."
+        },
+        {
+          "status": "open",
+          "note": "No official paper-version history was found, so later PDF replacement or silent textual revision cannot be reconstructed from the current CDN object alone.",
+          "resolutionCondition": "An author-maintained revision log or independently timestamped official paper copies would be needed to establish paper-version chronology."
+        }
+      ]
+    },
+    {
+      "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "authors": [
+        "Jacob Devlin",
+        "Ming-Wei Chang",
+        "Kenton Lee",
+        "Kristina Toutanova"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding,” NAACL-HLT, pp. 4171–4186 (2019; arXiv v1 posted 11 October 2018).",
+      "chronology": {
+        "orderingEventId": "devlin-2018-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "devlin-2018-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2018-10-11",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "devlin-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 11 October 2018 at 00:50:01 UTC"
+              }
+            ],
+            "versionId": "devlin-2018-arxiv-v1-version",
+            "sourceIds": [
+              "devlin-2018-arxiv-record",
+              "devlin-2018-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "devlin-2019-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2019-05-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "devlin-2018-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 24 May 2019 at 20:37:26 UTC"
+              }
+            ],
+            "versionId": "devlin-2019-arxiv-v2-version",
+            "sourceIds": [
+              "devlin-2018-arxiv-record",
+              "devlin-2019-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "devlin-2019-naacl-proceedings",
+            "kind": "proceedings-publication",
+            "label": "NAACL-HLT 2019 proceedings paper",
+            "date": {
+              "value": "2019-06",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The ACL record supplies month precision; the conference span is not substituted for a paper-specific presentation or publication day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "devlin-2019-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology bibliographic record: June 2019"
+              }
+            ],
+            "versionId": "devlin-2019-naacl-version",
+            "sourceIds": [
+              "devlin-2019-acl-record",
+              "devlin-2019-naacl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "devlin-2018-arxiv-v1-version",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "authors": [
+            "Jacob Devlin",
+            "Ming-Wei Chang",
+            "Kenton Lee",
+            "Kristina Toutanova"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding,” arXiv:1810.04805v1, 11 October 2018.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1810.04805v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "devlin-2018-arxiv-record",
+            "devlin-2018-arxiv-v1-full-text"
+          ],
+          "notes": "The 14-leaf first posting contains the two-stage framework, encoder architecture, packed input, MLM and NSP objectives, main task results, pretraining-task and model-size ablations, and an earlier NER treatment. Its abstract reports GLUE 80.4 and a 5.6-point MultiNLI improvement even though the body reports 4.7 points; it has no SQuAD 2.0 section, 90%/10% sequence-length schedule, or masking-strategy ablation."
+        },
+        {
+          "id": "devlin-2019-arxiv-v2-version",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "authors": [
+            "Jacob Devlin",
+            "Ming-Wei Chang",
+            "Kenton Lee",
+            "Kristina Toutanova"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding,” arXiv:1810.04805v2, 24 May 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1810.04805v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1810.04805",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "devlin-2018-arxiv-record",
+            "devlin-2019-arxiv-v2-full-text",
+            "devlin-2018-bert-initial-code-snapshot"
+          ],
+          "notes": "The 16-leaf revision corrects the headline GLUE and MultiNLI comparisons, adds SQuAD 2.0, expands the feature-based NER comparison, adds the 90% length-128 and 10% length-512 schedule, moves training-step analysis to Appendix C, and adds the masking-strategy ablation. It is technically close to but not byte-identical with the proceedings paper and retains unnumbered-leaf structural locators."
+        },
+        {
+          "id": "devlin-2019-naacl-version",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "authors": [
+            "Jacob Devlin",
+            "Ming-Wei Chang",
+            "Kenton Lee",
+            "Kristina Toutanova"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NAACL-HLT 2019 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding,” in Proceedings of NAACL-HLT 2019, Volume 1 (Long and Short Papers), pp. 4171–4186, June 2019.",
+            "venue": "Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)",
+            "series": "NAACL-HLT",
+            "editors": [
+              "Jill Burstein",
+              "Christy Doran",
+              "Thamar Solorio"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Minneapolis, Minnesota"
+            ],
+            "pages": [
+              "4171-4186"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/N19-1423",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "devlin-2019-acl-record",
+            "devlin-2019-naacl-full-text",
+            "devlin-2018-bert-initial-code-snapshot",
+            "acl-2016-plus-rights-policy"
+          ],
+          "notes": "The official 16-page proceedings article is canonical and uses printed pp. 4171–4186. Its method and promoted result tables align with arXiv v2, while the proceedings bibliography, folios, DOI, award, and publication metadata remain version-specific."
+        }
+      ],
+      "canonicalVersionId": "devlin-2019-naacl-version",
+      "preferredSourceIds": [
+        "devlin-2019-acl-record",
+        "devlin-2019-naacl-full-text"
+      ],
+      "sourceIds": [
+        "devlin-2018-arxiv-record",
+        "devlin-2018-arxiv-v1-full-text",
+        "devlin-2019-arxiv-v2-full-text",
+        "devlin-2019-acl-record",
+        "devlin-2019-naacl-full-text",
+        "devlin-2018-bert-initial-code-snapshot",
+        "acl-2016-plus-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "BERT combines a Transformer encoder with masked-token and sentence-pair pretraining so every layer can condition on both input directions, then transfers the same pretrained parameters through small task heads and supervised full-model fine-tuning. Its architecture, objectives, packed input format, broad task evidence, and explicit contrasts with Transformer, GPT, and ELMo make it a central convergence point rather than an origin claim for self-attention, contextual representation, or language-model transfer."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings",
+        "deep-contextual-token-representations",
+        "feature-based-language-model-transfer",
+        "discriminative-full-model-fine-tuning",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention"
+      ],
+      "significance": {
+        "beginner": "BERT hides selected pieces of text, lets every remaining token exchange information in both directions, and learns to recover the hidden pieces while also judging whether two spans came next to each other. The resulting reader can be adapted to classification, tagging, and question answering by changing a small output head and updating the shared reader.",
+        "expert": "BERT pretrains a post-layer-normalized Transformer encoder with unrestricted multi-head self-attention, learned token/segment/absolute-position sums, 15%-selected masked-token cross entropy with an 80/10/10 replacement channel, and a balanced next-sentence classifier over [CLS]. BERTBase and BERTLarge are transferred by end-to-end supervised fine-tuning; versioned task tables and ablations bound claims about directionality, NSP, scale, masking, and feature extraction."
+      },
+      "limitations": [
+        "The masked-token objective predicts only selected input positions under bidirectional context. It is neither a left-to-right sequence likelihood nor evidence that the encoder alone is an autoregressive text generator.",
+        "The 80/10/10 replacement channel mitigates but does not remove the pretraining-to-fine-tuning mismatch created by [MASK], and only 15% of WordPiece positions contribute direct token targets in each sequence.",
+        "NSP uses a balanced actual-next versus random-corpus-sentence construction. The paper's task ablation supports effects under that construction and training recipe, not a universal requirement for every later encoder or sentence-pair task.",
+        "The headline task results span heterogeneous datasets, metrics, extra-data conditions, model selection, and ensembles. GLUE excludes WNLI from its displayed average, SQuAD v1.1 headline results use TriviaQA and seven systems, and comparator rows are not matched experiments.",
+        "The paper reports no confidence intervals or significance tests. Table 6 and Table 7 average five fine-tuning restarts without dispersion, BERTLarge GLUE uses development-selected restarts on small tasks, and many other rows do not report repeat counts.",
+        "The pretraining-task ablation changes objective, attention direction, target density, and fine-tuning mask together; it is not a compute-matched isolation of bidirectionality. Model-size rows also change layers, width, heads, parameters, and masked-token perplexity together.",
+        "The pretraining corpora are English BooksCorpus and English Wikipedia. The paper supplies no immutable corpus snapshots, document manifest, deduplication audit, corpus-rights analysis, multilingual evaluation, fairness audit, calibration study, or broad domain-robustness evaluation.",
+        "The appendix describes 1,000,000 steps, batch size 256, approximately 40 epochs over a 3.3-billion-word corpus, and a 90% length-128/10% length-512 schedule, while another calculation labels every batch as 128,000 words. WordPiece-token and word units and exact epoch accounting are not reconciled.",
+        "ArXiv v1, arXiv v2, and the proceedings article are not interchangeable. Headline values, GLUE rows, SQuAD 2.0, NER placement, training details, and appendix scope change across the family.",
+        "The pinned official implementation supplies Apache-2.0 code, checkpoints, and selected fine-tuning scripts, but it does not bind every reported table to immutable data snapshots, preprocessing manifests, seeds, checkpoint hashes, and a deterministic environment. Its initial README says most paper BERTLarge results do not fit 12–16 GB GPUs and labels one SQuADLarge recipe as slightly different from the paper.",
+        "ArXiv's non-exclusive distribution license is not a general reuse license. ACL's CC BY 4.0 policy applies to the proceedings article subject to third-party-material exclusions and is not extended to the arXiv manuscripts, datasets, code, or pretrained assets."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv submission history establishes 11 October 2018 as the earliest verified public artifact, so the work ID and ordering year follow version 1 rather than the 2019 proceedings date."
+        },
+        {
+          "status": "resolved",
+          "note": "Both arXiv revisions and the complete proceedings PDF were compared page-aware. Canonical technical and result claims use printed NAACL pp. 4171–4186; revision-specific differences remain bound to their own unnumbered PDFs."
+        },
+        {
+          "status": "open",
+          "note": "The paper's word, WordPiece-token, sequence-length, and epoch descriptions do not provide one fully reconciled pretraining-accounting calculation.",
+          "resolutionCondition": "Version-pinned training logs and preprocessing manifests would be required to reconcile the units and effective corpus passes."
+        },
+        {
+          "status": "open",
+          "note": "No inspected primary artifact binds every paper result to exact data snapshots, preprocessing, random seeds, code revision, checkpoints, and evaluation commands.",
+          "resolutionCondition": "A complete immutable author experiment release would be required for exact reconstruction."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -10983,7 +11374,12 @@
       "claimIds": [
         "gehring-2017-learned-position-embeddings",
         "gehring-2017-position-ablation",
-        "gehring-2017-transformer-citation-boundary"
+        "gehring-2017-transformer-citation-boundary",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-pretraining-data-and-optimization",
+        "radford-2018-transformer-antecedent-boundary",
+        "devlin-2018-packed-input-representation",
+        "devlin-2018-pretraining-optimization-and-length-schedule"
       ],
       "uncertainties": [
         {
@@ -11030,7 +11426,11 @@
         "vaswani-2017-evidence-reproducibility-boundary",
         "parikh-2016-distance-biased-intra-attention",
         "parikh-2016-cheng-intra-attention-adaptation",
-        "parikh-2016-version-boundary"
+        "parikh-2016-version-boundary",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-transformer-antecedent-boundary",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales"
       ],
       "uncertainties": [
         {
@@ -11070,7 +11470,11 @@
         "vaswani-2017-attention-routes-and-causal-mask",
         "vaswani-2017-model-variation-results",
         "vaswani-2017-attention-visualization-boundary",
-        "vaswani-2017-version-mechanism-boundary"
+        "vaswani-2017-version-mechanism-boundary",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-transformer-antecedent-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-model-size-ablation"
       ],
       "uncertainties": [
         {
@@ -11145,7 +11549,10 @@
         "peters-2017-task-specific-layer-mixture",
         "peters-2017-six-task-results",
         "peters-2017-lexical-probe-results",
-        "peters-2017-contextual-layer-ablation"
+        "peters-2017-contextual-layer-ablation",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation",
+        "devlin-2018-feature-based-ner-results"
       ],
       "uncertainties": []
     },
@@ -11172,7 +11579,9 @@
         "peters-2017-feature-placement-ablation",
         "peters-2017-sample-efficiency",
         "peters-2017-domain-adaptation",
-        "peters-2017-evidence-boundary"
+        "peters-2017-evidence-boundary",
+        "devlin-2018-feature-based-ner-results",
+        "devlin-2018-masking-strategy-ablation"
       ],
       "uncertainties": []
     },
@@ -11274,6 +11683,193 @@
         "howard-ruder-2018-concat-pooling-and-bpt3c"
       ],
       "uncertainties": []
+    },
+    {
+      "id": "decoder-only-transformer-language-modeling",
+      "name": "Decoder-only Transformer language modeling",
+      "kind": "mechanism",
+      "description": "A causally masked stack of Transformer decoder blocks maps prior-token embeddings and learned positions to a next-token distribution without a separate source encoder or encoder-decoder attention path.",
+      "claimIds": [
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-transformer-antecedent-boundary",
+        "radford-2018-ablation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "generative-transformer-pretraining",
+      "name": "Generative Transformer pretraining",
+      "kind": "objective",
+      "description": "A causal Transformer is initialized by maximizing next-token log likelihood over a large unlabeled corpus before its parameters are transferred to labeled target tasks.",
+      "claimIds": [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-pretraining-data-and-optimization",
+        "radford-2018-layer-transfer-analysis",
+        "radford-2018-zero-shot-probes",
+        "radford-2018-ablation-results",
+        "radford-2018-ulmfit-relationship",
+        "radford-2018-code-and-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "discriminative-full-model-fine-tuning",
+      "name": "Discriminative full-model fine-tuning",
+      "kind": "mechanism",
+      "description": "Pretrained language-model parameters and a small task output layer are jointly updated on labeled examples rather than keeping the pretrained network fixed as a feature extractor.",
+      "claimIds": [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-supervised-and-auxiliary-objectives",
+        "radford-2018-nli-results",
+        "radford-2018-question-answering-results",
+        "radford-2018-similarity-classification-results",
+        "radford-2018-layer-transfer-analysis",
+        "radford-2018-ulmfit-relationship",
+        "radford-2018-elmo-contrast",
+        "devlin-2018-full-parameter-task-adaptation",
+        "devlin-2018-glue-results",
+        "devlin-2018-squad-v1-results",
+        "devlin-2018-squad-v2-results",
+        "devlin-2018-swag-results",
+        "devlin-2018-feature-based-ner-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "task-aware-input-serialization",
+      "name": "Task-aware input serialization",
+      "kind": "mechanism",
+      "description": "Structured supervised inputs are converted into delimiter-marked token sequences that one pretrained causal model can process with minimal task-specific architectural change.",
+      "claimIds": [
+        "radford-2018-task-aware-input-transformations",
+        "radford-2018-nli-results",
+        "radford-2018-question-answering-results",
+        "radford-2018-similarity-classification-results",
+        "radford-2018-elmo-contrast"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "auxiliary-language-model-fine-tuning",
+      "name": "Auxiliary language-model fine-tuning objective",
+      "kind": "objective",
+      "description": "Supervised fine-tuning adds a weighted causal language-model likelihood on the target sequences to the task-label objective.",
+      "claimIds": [
+        "radford-2018-supervised-and-auxiliary-objectives",
+        "radford-2018-ablation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "zero-shot-generative-task-probes",
+      "name": "Zero-shot generative task probes",
+      "kind": "mechanism",
+      "description": "Task-specific likelihood rules probe whether an unfine-tuned generative language model can score acceptability, sentiment, candidate answers, or pronoun resolutions.",
+      "claimIds": [
+        "radford-2018-zero-shot-probes"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "These probes are heterogeneous heuristics with normalized learning curves, not a shared prompt interface or a claim of supervised-level performance."
+        }
+      ]
+    },
+    {
+      "id": "byte-pair-subword-tokenization",
+      "name": "Byte-pair subword tokenization",
+      "kind": "mechanism",
+      "description": "A byte-pair encoding process constructs token units through repeated merge operations, giving the language model a fixed subword inventory rather than a word-only vocabulary.",
+      "claimIds": [
+        "radford-2018-pretraining-data-and-optimization"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper specifies 40,000 BPE merges; this is not restated as an exact final vocabulary size."
+        }
+      ]
+    },
+    {
+      "id": "deep-bidirectional-transformer-pretraining",
+      "name": "Deep bidirectional Transformer pretraining",
+      "kind": "mechanism",
+      "description": "An encoder stack is pretrained with unrestricted self-attention so each token state at every layer may condition jointly on left and right input context; selected targets must be hidden or corrupted to prevent trivial self-copying.",
+      "claimIds": [
+        "devlin-2018-version-boundary",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-pretraining-task-ablation",
+        "devlin-2018-model-size-ablation",
+        "devlin-2018-training-step-ablation",
+        "devlin-2018-code-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The idea names BERT's within-layer bidirectional conditioning and does not reuse ELMo's bidirectional-language-model idea, whose two directions have separate autoregressive objectives and are concatenated only at transfer time."
+        }
+      ]
+    },
+    {
+      "id": "masked-language-model-pretraining",
+      "name": "Masked-language-model pretraining",
+      "kind": "objective",
+      "description": "Select a subset of input tokens, corrupt some of their visible identities, and train a bidirectional encoder to classify each selected token's original vocabulary identity from the surrounding sequence.",
+      "claimIds": [
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "devlin-2018-pretraining-corpus",
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "devlin-2018-pretraining-task-ablation",
+        "devlin-2018-training-step-ablation",
+        "devlin-2018-masking-strategy-ablation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Only selected positions receive masked-token targets; the objective is not a normalized left-to-right likelihood over every sequence token."
+        }
+      ]
+    },
+    {
+      "id": "next-sentence-prediction-pretraining",
+      "name": "Next-sentence-prediction pretraining",
+      "kind": "objective",
+      "description": "Given packed spans A and B, classify whether B actually follows A in the source corpus or was sampled randomly, using an aggregate sequence representation.",
+      "claimIds": [
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-pretraining-corpus",
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "devlin-2018-pretraining-task-ablation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The idea records the paper's balanced actual-next/random construction without generalizing its utility beyond the reported BERT recipe and tasks."
+        }
+      ]
+    },
+    {
+      "id": "packed-text-pair-self-attention",
+      "name": "Packed text-pair self-attention",
+      "kind": "mechanism",
+      "description": "Place one or two spans in a single token sequence with separator and segment-identity embeddings so unrestricted self-attention performs joint encoding and cross-span interaction in the same stack.",
+      "claimIds": [
+        "devlin-2018-packed-input-representation",
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-glue-results",
+        "devlin-2018-squad-v1-results",
+        "devlin-2018-squad-v2-results",
+        "devlin-2018-swag-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Packing jointly encodes a bounded pair; it does not imply that segment embeddings alone implement cross-attention or that arbitrary numbers of documents are represented."
+        }
+      ]
     }
   ],
   "sources": [
@@ -16360,24 +16956,239 @@
       "accessNote": "The author repository snapshot is pinned to 15 May 2018 and the repository is Apache-2.0, but no paper-specific release tag, immutable experiment manifest, checkpoint hashes, or model-weight license was located. The README and tree also disagree on one training-script filename, and later fixes prevent treating this snapshot as an exact table-reproduction package."
     },
     {
-      "id": "acl-2016-plus-rights-policy",
+      "id": "radford-2018-openai-preprint-full-text",
       "relatedWorkIds": [
-        "peters-2017-deep-contextualized-word-representations",
-        "howard-ruder-2018-universal-language-model-fine-tuning"
+        "radford-2018-improving-language-understanding-generative-pre-training"
       ],
-      "title": "ACL Anthology copyright and licensing policy",
-      "url": "https://aclanthology.org/faq/copyright/",
-      "accessDate": "2026-08-24",
-      "sourceClass": "official-record",
-      "authority": "publisher",
+      "title": "Improving Language Understanding by Generative Pre-Training",
+      "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+      "accessDate": "2026-08-25",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
       "versionIds": [
-        "peters-2018-naacl-version",
-        "howard-ruder-2018-acl-version"
+        "radford-2018-openai-preprint-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 12
+      },
+      "accessNote": "Official OpenAI-hosted twelve-leaf PDF, SHA-256 eb81a65e0856bd38e855e1f1de6ee12e7c3eb92ae05c8270d345a475beb631d0. The first leaf is unnumbered while subsequent leaves visibly print 2–12, so locators use implied article pp. 1–12. The footer says “Preprint. Work in progress.” The PDF prints no publication date or archival identifier and never uses GPT or GPT-1. Reference [62] misprints the Transformer proceedings range as 6000–6010; the canonical Transformer record retains 5998–6008."
+    },
+    {
+      "id": "radford-2018-openai-announcement",
+      "relatedWorkIds": [
+        "radford-2018-improving-language-understanding-generative-pre-training"
+      ],
+      "title": "Improving language understanding with unsupervised learning",
+      "url": "https://openai.com/index/language-unsupervised/",
+      "accessDate": "2026-08-25",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "radford-2018-openai-preprint-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "Official OpenAI project page dated 11 June 2018. It links the paper and code, describes one month of training on eight P600 GPUs, and bounds the zero-shot demonstrations by noting sentiment around 80% and question answering below a sliding-window baseline."
+    },
+    {
+      "id": "radford-2018-openai-code-release-snapshot",
+      "relatedWorkIds": [
+        "radford-2018-improving-language-understanding-generative-pre-training"
+      ],
+      "title": "finetune-transformer-lm release-day README snapshot",
+      "url": "https://github.com/openai/finetune-transformer-lm/tree/bd1cf7d678926041e6d19193cab7e5cd8ce2fce6",
+      "accessDate": "2026-08-25",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "radford-2018-openai-preprint-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "Official release-day repository snapshot. Its README limits the released training and evaluation path to ROCStories, warns that GPU operations are nondeterministic, and reports a median 85.8 over ten runs versus the paper's 86.5 single run. This code commit is not treated as a paper revision."
+    },
+    {
+      "id": "radford-2018-openai-code-record",
+      "relatedWorkIds": [
+        "radford-2018-improving-language-understanding-generative-pre-training"
+      ],
+      "title": "openai/finetune-transformer-lm",
+      "url": "https://github.com/openai/finetune-transformer-lm",
+      "accessDate": "2026-08-25",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "radford-2018-openai-preprint-version"
       ],
       "supports": [
         "metadata"
       ],
-      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status is not extended to datasets, pretrained weights, or other externally supplied content."
+      "accessNote": "Official implementation repository. GitHub marks it archived by the owner on 8 April 2026; the tree carries an MIT license. Archive status is current repository metadata, not evidence of the paper's 2018 state or a license for data, weights, or paper text."
+    },
+    {
+      "id": "devlin-2018-arxiv-record",
+      "relatedWorkIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "arXiv record for BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "url": "https://arxiv.org/abs/1810.04805",
+      "accessDate": "2026-08-25",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "devlin-2018-arxiv-v1-version",
+        "devlin-2019-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies the stable identifier, aggregate DOI, latest metadata, non-exclusive arXiv distribution license, and exact UTC posting times for versions 1 and 2. Version-specific scope, leaf counts, text, and results follow the corresponding immutable PDFs."
+    },
+    {
+      "id": "devlin-2018-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "BERT, arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1810.04805v1",
+      "accessDate": "2026-08-25",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "devlin-2018-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 14
+      },
+      "accessNote": "The complete 14-leaf first posting was rendered and inspected page-aware. Its leaves have no stable printed article folios, so promoted evidence uses section, figure, table, appendix, and paragraph anchors rather than PDF positions."
+    },
+    {
+      "id": "devlin-2019-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "BERT, arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1810.04805v2",
+      "accessDate": "2026-08-25",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "devlin-2019-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 16
+      },
+      "accessNote": "The complete 16-leaf second revision was rendered and compared with version 1 and the proceedings article. Its leaves have no stable printed article folios, so promoted evidence uses structural anchors only."
+    },
+    {
+      "id": "devlin-2019-acl-record",
+      "relatedWorkIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "ACL Anthology record for BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "url": "https://aclanthology.org/N19-1423/",
+      "accessDate": "2026-08-25",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "devlin-2019-naacl-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the canonical title and author order, NAACL-HLT 2019 Volume 1 container, June 2019 publication month, Minneapolis location, editors, publisher, pp. 4171–4186, DOI, official PDF, and Best Long Paper designation."
+    },
+    {
+      "id": "devlin-2019-naacl-full-text",
+      "relatedWorkIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "Official NAACL full text of BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "url": "https://aclanthology.org/N19-1423.pdf",
+      "accessDate": "2026-08-25",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "devlin-2019-naacl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 4171,
+        "pageEnd": 4186
+      },
+      "accessNote": "The complete canonical proceedings article was rendered and inspected page-aware using printed pp. 4171–4186. Its method and promoted tables align closely with arXiv v2, but its own folios, bibliography, and publication identity control canonical locators."
+    },
+    {
+      "id": "devlin-2018-bert-initial-code-snapshot",
+      "relatedWorkIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "Official initial BERT implementation snapshot",
+      "url": "https://github.com/google-research/bert/tree/fe354751d7de010f60d362ae8d9343849ec39456",
+      "accessDate": "2026-08-25",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "devlin-2019-arxiv-v2-version",
+        "devlin-2019-naacl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The Google Research repository is pinned to the initial BERT release commit fe354751d7de010f60d362ae8d9343849ec39456. That snapshot contains Apache-2.0 code, paper checkpoints, and scripts for selected fine-tuning experiments and says the models use the same license; it was tested with TensorFlow 1.11.0, warns that most paper BERTLarge results cannot be reproduced on 12–16 GB GPUs, and labels one BERTLarge SQuAD recipe as slightly different from the paper. The repository does not supply an immutable data manifest, seed list, checkpoint mapping, and deterministic environment for every paper table, and its code and asset terms are not transferred to the papers or datasets."
+    },
+    {
+      "id": "acl-2016-plus-rights-policy",
+      "relatedWorkIds": [
+        "peters-2017-deep-contextualized-word-representations",
+        "howard-ruder-2018-universal-language-model-fine-tuning",
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "title": "ACL Anthology copyright and licensing policy",
+      "url": "https://aclanthology.org/faq/copyright/",
+      "accessDate": "2026-08-25",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "peters-2018-naacl-version",
+        "howard-ruder-2018-acl-version",
+        "devlin-2019-naacl-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the three bound ACL or NAACL proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
     }
   ],
   "claims": [
@@ -31258,6 +32069,1179 @@
       "limitations": [],
       "uncertainties": [],
       "checkedDate": "2026-08-24"
+    },
+    {
+      "id": "radford-2018-two-stage-generative-transfer",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "generative-transformer-pretraining",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "The framework maximizes the causal language-model likelihood L1 over an unlabeled token corpus to initialize parameters Θ, then adapts those parameters to each labeled target dataset by maximizing a supervised likelihood L2. The target tasks need not come from the same domain as the unlabeled corpus.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Two-stage setup and causal pretraining likelihood, article pp. 2–3",
+            "section": "1 Introduction; 3 Framework; 3.1 Unsupervised pre-training",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "equation": "1"
+          },
+          "support": "The target-domain assumption, two stages, and conditional next-token objective are stated directly."
+        }
+      ],
+      "limitations": [
+        "Unlike ULMFiT, this procedure does not insert a separate unlabeled target-domain language-model adaptation stage between general pretraining and supervised fine-tuning."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-decoder-only-transformer-architecture",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "The language model is a twelve-layer decoder-only Transformer with masked multi-head self-attention, 768-dimensional states, twelve attention heads, and 3072-dimensional position-wise feed-forward inner states. Token and learned position embeddings form h0; the output softmax reuses the transposed token-embedding matrix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Transformer language-model equations and model dimensions, article pp. 3 and 5",
+            "section": "3.1 Unsupervised pre-training; 4.1 Setup — Model specifications",
+            "pageStart": 3,
+            "pageEnd": 5,
+            "equation": "2"
+          },
+          "support": "Equation 2 defines token and position embeddings, decoder blocks, and tied output projection; the setup supplies layer, state, head, and feed-forward dimensions."
+        }
+      ],
+      "limitations": [
+        "Decoder-only identifies the architecture used here; the paper does not retain the original Transformer's separate encoder or encoder-decoder attention path."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-supervised-and-auxiliary-objectives",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "auxiliary-language-model-fine-tuning"
+      ],
+      "statement": "For supervised fine-tuning, the final token activation feeds an added linear-softmax output layer and all transferred parameters are adapted by L2. The usual training objective is L3 = L2 + λL1 with λ = 0.5; most tasks use classifier dropout 0.1, learning rate 6.25×10⁻⁵, batch size 32, three epochs, linear decay, and warmup over 0.2% of training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Supervised likelihood, auxiliary language-model objective, and fine-tuning defaults, article pp. 3 and 5",
+            "section": "3.2 Supervised fine-tuning; 4.1 Setup — Fine-tuning details",
+            "pageStart": 3,
+            "pageEnd": 5,
+            "equation": "3–5"
+          },
+          "support": "Equations 3–5 define the classifier and combined objective; the setup states λ and the usual optimization defaults."
+        }
+      ],
+      "limitations": [
+        "The phrase “most tasks” leaves task-specific deviations unspecified in the main text, and the auxiliary objective's aggregate benefit is not supported uniformly by Table 5."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-task-aware-input-transformations",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "task-aware-input-serialization"
+      ],
+      "statement": "Task-aware transformations serialize classification inputs directly; entailment as premise, delimiter, hypothesis; similarity in both sentence orders with the two resulting representations added; and question answering or story completion as context, question, delimiter, and each candidate answer processed separately before a softmax across candidates. Every format adds randomly initialized start and end tokens.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Four input serializations, article pp. 3–4",
+            "section": "3.3 Task-specific input transformations",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "figure": "1"
+          },
+          "support": "The prose and Figure 1 define the delimiters, two similarity orders, per-candidate question-answering sequences, and start/end tokens."
+        }
+      ],
+      "limitations": [
+        "These hand-designed serializations reduce task-specific model changes but do not remove task-specific output labels, candidate construction, sequence-length constraints, or preprocessing choices."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-pretraining-data-and-optimization",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "generative-transformer-pretraining",
+        "byte-pair-subword-tokenization",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "Pretraining uses BooksCorpus, described as more than 7,000 unpublished books, for 100 epochs with batches of 64 randomly sampled contiguous 512-token sequences. The setup specifies 40,000 BPE merges, learned positions, Adam with maximum rate 2.5×10⁻⁴, 2,000-update linear warmup then cosine decay, N(0, 0.02) initialization, 0.1 residual/embedding/attention dropout, modified L2 weight 0.01, GELU, ftfy cleaning, and spaCy tokenization; it reports token perplexity 18.4 on the corpus.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "BooksCorpus and pretraining configuration, article pp. 4–5",
+            "section": "4.1 Setup — Unsupervised pre-training; Model specifications",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The setup gives the corpus description, perplexity, architecture-independent optimization settings, BPE merge count, position choice, regularization, activation, and text pipeline."
+        }
+      ],
+      "limitations": [
+        "The 18.4 perplexity statement does not name a held-out split or evaluation protocol.",
+        "The paper says 40,000 BPE merges, not that the final vocabulary contains exactly 40,000 tokens.",
+        "No immutable BooksCorpus snapshot, tokenizer vocabulary hash, checkpoint hash, random seed, or full software environment is supplied in the paper."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact BooksCorpus snapshot and evaluation split underlying the reported perplexity are not identified.",
+          "resolutionCondition": "A dated data manifest and held-out perplexity script from the authors would be required to bind this result exactly."
+        }
+      ],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-nli-results",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "task-aware-input-serialization"
+      ],
+      "statement": "Table 2 reports accuracy 82.1 on MNLI matched, 81.4 on MNLI mismatched, 89.9 on SNLI, 88.3 on SciTail, 88.1 on QNLI, and 56.0 on RTE. The strongest displayed comparator values are 80.6, 80.1, 89.3, 83.3, 82.3, and 61.7 respectively, so the model leads five columns but trails on RTE.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Natural-language-inference result matrix, article p. 6",
+            "section": "4.2 Supervised fine-tuning — Natural Language Inference",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "2"
+          },
+          "support": "The table prints all six model values and the comparison rows; the RTE prose explicitly identifies the 56.0 versus 61.7 shortfall."
+        }
+      ],
+      "limitations": [
+        "Some displayed comparator rows are ensembles and coverage differs by dataset; the table is not one uniform head-to-head baseline.",
+        "No repeated-run variability or significance tests are reported for these values."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-question-answering-results",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "task-aware-input-serialization"
+      ],
+      "statement": "Table 3 reports 86.5 on Story Cloze and 62.9, 57.4, and 59.0 on RACE middle, high, and overall. The strongest displayed comparison values are 77.6, 60.2, 50.3, and 53.3, giving differences of 8.9, 2.7, 7.1, and 5.7 points.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Story Cloze and RACE results, article p. 6",
+            "section": "4.2 Supervised fine-tuning — Question answering and commonsense reasoning",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "3"
+          },
+          "support": "The table prints the four model values and comparison rows; the prose highlights 8.9 on Story Cloze and 5.7 overall on RACE."
+        }
+      ],
+      "limitations": [
+        "The strongest RACE comparison is a nine-model ensemble, while Story Cloze uses a different comparator; the paper reports no repeated-run dispersion for its own values.",
+        "The result does not isolate whether pretraining, task serialization, context length, or fine-tuning choices cause the gains."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-similarity-classification-results",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "task-aware-input-serialization"
+      ],
+      "statement": "Table 4 reports CoLA 45.4 Matthews correlation, SST-2 91.3 accuracy, MRPC 82.3 F1, STS-B 82.0 Pearson correlation, QQP 70.3 F1, and GLUE 72.8. The strongest displayed comparison values are 35.0, 93.2, 86.0, 81.0, 66.1, and 68.9, so the model leads four columns and trails on SST-2 and MRPC.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Similarity, classification, and GLUE results, article p. 7",
+            "section": "4.2 Supervised fine-tuning — Semantic Similarity; Classification",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "4"
+          },
+          "support": "The table supplies each metric and value for the model and comparison systems."
+        }
+      ],
+      "limitations": [
+        "The introduction claims a 5.5-point GLUE improvement, but the table's 72.8 minus 68.9 is 3.9 points.",
+        "The strongest comparison value comes from a different row for several columns, so this is a column-wise bound rather than one consistent baseline."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "The paper internally conflicts on the GLUE difference: 5.5 points in the introduction versus 3.9 points from Table 4's printed values.",
+          "resolutionCondition": "An author correction or underlying leaderboard snapshot would be required to resolve which comparison the 5.5-point sentence intended."
+        }
+      ],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-layer-transfer-analysis",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "generative-transformer-pretraining",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "When increasing the number of pretrained layers transferred into supervised MultiNLI and RACE models, Figure 2 left shows improvement from transferring embeddings and further gains as Transformer layers are added; the text reports a benefit of up to 9% for full transfer on MultiNLI.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Transfer-depth analysis, article p. 7",
+            "section": "5 Analysis — Impact of number of layers transferred",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "figure": "2 left"
+          },
+          "support": "The prose states the embedding and additional-layer pattern and bounds the full-transfer MultiNLI gain at ‘up to 9%.’"
+        }
+      ],
+      "limitations": [
+        "Figure 2 provides plotted curves without exact raw values, error bars, or repeated runs.",
+        "The source does not specify whether ‘9%’ means percentage points or relative percent, so the atlas preserves the printed form rather than choosing an interpretation.",
+        "Adding transferred layers changes many parameters and computations at once, so the result does not identify what knowledge a particular layer contains or prove that every layer contributes independently."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-zero-shot-probes",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "zero-shot-generative-task-probes",
+        "generative-transformer-pretraining"
+      ],
+      "statement": "Without supervised fine-tuning, the paper probes CoLA by thresholding average token log probability, SST-2 by appending “very” and comparing “positive” with “negative,” RACE by choosing the answer with highest average token log probability given document and question, and DPRD by substituting each referent and scoring the remaining sequence. Figure 2 right reports normalized probe performance that generally rises during pretraining.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Four zero-shot heuristics and normalized training curves, article pp. 7–8",
+            "section": "5 Analysis — Zero-shot Behaviors",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "figure": "2 right"
+          },
+          "support": "The section defines each task-specific likelihood rule and describes the normalized curves as stable and increasing over pretraining."
+        }
+      ],
+      "limitations": [
+        "The four methods are task-specific heuristics rather than one shared prompting protocol.",
+        "Figure 2 normalizes each task between random guessing and a single-model state of the art; it does not provide exact comparable task scores or raw predictions.",
+        "DPRD is a probe outside the twelve supervised benchmark columns and should not be counted as a thirteenth supervised result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-ablation-results",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "generative-transformer-pretraining",
+        "auxiliary-language-model-fine-tuning"
+      ],
+      "statement": "Across the eight Table 5 tasks, the full Transformer with auxiliary language modeling averages 74.7. Removing pretraining averages 59.9 and lowers every displayed task; removing the auxiliary objective averages 75.0 with four higher and four lower task values; replacing the Transformer with a one-layer 2048-unit LSTM averages 69.1 and exceeds the full Transformer only on MRPC.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Pretraining, auxiliary-objective, and LSTM ablations, article p. 8",
+            "section": "5 Analysis — Ablation studies",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "5"
+          },
+          "support": "Table 5 supplies the four average rows and eight task columns; the prose notes the LSTM's sole MRPC win and the all-task harm from removing pretraining."
+        }
+      ],
+      "limitations": [
+        "The ablations are not factorial or parameter matched, and the one-layer LSTM changes depth and architecture together.",
+        "The paper calls 74.7 minus 59.9 a 14.8% decrease, but the table directly establishes a 14.8-point difference in its unweighted average, not a 14.8% relative reduction.",
+        "The auxiliary objective does not improve the unweighted average in this table and its task-level effects are mixed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-transformer-antecedent-boundary",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "The target paper explicitly selects the Transformer, describes its language model as a multi-layer Transformer decoder variant, says the twelve-layer model largely follows the original Transformer work, retains masked multi-head self-attention and position-wise feed-forward layers, and changes the positional choice from sinusoidal to learned embeddings.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Explicit Transformer selection, decoder adaptation, and positional change, article pp. 2–5",
+            "section": "1 Introduction; 3.1 Unsupervised pre-training; 4.1 Setup — Model specifications",
+            "pageStart": 2,
+            "pageEnd": 5
+          },
+          "support": "The target names Transformer [62], defines its decoder variant, and states both the inherited components and learned-position difference."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Vaswani et al. reference entry, article p. 11",
+            "section": "References",
+            "pageStart": 11,
+            "pageEnd": 11,
+            "paragraph": "Reference 62"
+          },
+          "support": "Reference [62] identifies Vaswani et al.'s Attention Is All You Need, though its proceedings page range is misprinted."
+        }
+      ],
+      "limitations": [
+        "The citation and target-side mechanism statements support a documented lineage edge, not a priority claim or assertion that every GPT component originates in the Transformer paper.",
+        "GPT uses only the causal decoder path and learned positions; it does not inherit the full encoder-decoder translation architecture.",
+        "The target reference prints pages 6000–6010, while the canonical proceedings metadata records 5998–6008. The atlas preserves the endpoint's authoritative bibliography."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-ulmfit-relationship",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "generative-transformer-pretraining",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "The target paper identifies Dai et al. and Howard–Ruder as the closest line of work: language-model pretraining followed by supervised fine-tuning for text classification. It contrasts their LSTM models and narrower task scope with its Transformer model and evaluations spanning entailment, paraphrase detection, question answering, and story completion.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Closest-work identification and scoped LSTM/coverage contrast, article pp. 1–2",
+            "section": "1 Introduction; 2 Related Work — Unsupervised pre-training",
+            "pageStart": 1,
+            "pageEnd": 2
+          },
+          "support": "The introduction cites Howard–Ruder among intricate transfer schemes, and related work names it in the closest pretrain-then-fine-tune line before stating the architecture and task-coverage contrast."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Howard and Ruder reference entry, article p. 9",
+            "section": "References",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "paragraph": "Reference 21"
+          },
+          "support": "Reference [21] identifies Universal Language Model Fine-tuning for Text Classification."
+        }
+      ],
+      "limitations": [
+        "The target citation and scoped contrast document a relationship; they do not establish sole derivation, priority, or universal superiority.",
+        "GPT does not inherit ULMFiT's distinct unlabeled target-domain language-model stage, discriminative layerwise learning rates, slanted-triangular schedule, gradual unfreezing, concat pooling, BPT3C, or forward/backward classifier ensemble."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-elmo-contrast",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "task-aware-input-serialization",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "The target groups Peters et al. with approaches that use hidden representations from a pretrained language or translation model as auxiliary features while training a supervised task model. It contrasts their substantial task-specific parameter additions with its own serialized inputs, an added linear output layer, delimiter embeddings, and otherwise minimal architectural change during full-model fine-tuning.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Feature-based transfer contrast and minimal task adaptation, article pp. 1–4",
+            "section": "1 Introduction; 2 Related Work — Unsupervised pre-training; 3.2 Supervised fine-tuning; 3.3 Task-specific input transformations",
+            "pageStart": 1,
+            "pageEnd": 4
+          },
+          "support": "The target cites Peters et al. among auxiliary-feature approaches, contrasts task-specific parameters, and defines its own output layer, delimiter embeddings, and input serializations."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Peters et al. reference entry, article p. 10",
+            "section": "References",
+            "pageStart": 10,
+            "pageEnd": 10,
+            "paragraph": "Reference 44"
+          },
+          "support": "Reference [44] identifies Deep Contextualized Word Representations."
+        }
+      ],
+      "limitations": [
+        "The target describes hidden representations used as auxiliary features but does not itself state that ELMo's pretrained biLM remains frozen; that endpoint fact is bound to the ELMo work's own evidence.",
+        "The contrast does not establish that one transfer family is uniformly better, or that task-aware serialization eliminates all task-specific choices."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "radford-2018-code-and-evidence-boundary",
+      "workId": "radford-2018-improving-language-understanding-generative-pre-training",
+      "ideaIds": [
+        "generative-transformer-pretraining"
+      ],
+      "statement": "The official PDF is a twelve-page artifact labeled “Preprint. Work in progress.” It prints no publication date, report number, DOI, arXiv identifier, or revision number, and Table 3 reports Story Cloze 86.5 as a point estimate without a seed, repeated-run dispersion, or an implementation-version binding in the paper.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Preprint status footer, article p. 1",
+            "section": "Title page footer",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The PDF explicitly labels itself “Preprint. Work in progress.” and supplies no date or archival identifier."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Story Cloze point estimate, article p. 6",
+            "section": "4.2 Supervised fine-tuning — Question answering and commonsense reasoning",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "3"
+          },
+          "support": "Table 3 prints 86.5; the paper supplies no seed, repeated-run dispersion, or code-version binding for that point estimate."
+        }
+      ],
+      "limitations": [
+        "The separately cataloged official release-day code source covers ROCStories only and therefore cannot establish reproduction of the other eleven supervised benchmark results or four zero-shot probes.",
+        "Repository commits and current archive status describe implementation history, not paper-version history.",
+        "The repository's root MIT file is not treated as a license for BooksCorpus, ROCStories, third-party benchmark data, or the paper text; the included model shards have no separate licensing statement."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The official sources do not expose an immutable experiment environment or checkpoints sufficient to reconstruct all twelve paper results.",
+          "resolutionCondition": "Author-pinned code, checkpoint hashes, data manifests, seeds, and evaluation commands for all tasks would be needed for exact reproduction."
+        }
+      ],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-version-boundary",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "ArXiv v1 and the later BERT texts carry materially different headline evidence: version 1 reports GLUE 80.4 with a 7.6-point gain and MultiNLI 86.7 with a 5.6-point gain, although its body says 4.7 points, while arXiv v2 and the canonical proceedings abstract report GLUE 80.5 with 7.7 points, MultiNLI 86.7 with 4.6 points, and add SQuAD 2.0 Test F1 83.1 with a 5.1-point gain.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2018-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 headline and body comparison",
+            "section": "Abstract; 4.1 GLUE"
+          },
+          "support": "Version 1 prints the 80.4, 7.6, 86.7, and 5.6 abstract values, while its GLUE discussion calls the MultiNLI improvement 4.7 points."
+        },
+        {
+          "sourceId": "devlin-2019-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 corrected and expanded headline",
+            "section": "Abstract; 4.1 GLUE; 4.3 SQuAD v2.0"
+          },
+          "support": "The second revision prints the corrected GLUE and MultiNLI comparisons and adds the SQuAD 2.0 headline and experiment."
+        },
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Canonical headline and corresponding results, printed pp. 4171 and 4176–4177",
+            "section": "Abstract; 4.1 GLUE; 4.3 SQuAD v2.0",
+            "pageStart": 4171,
+            "pageEnd": 4177,
+            "table": "1 and 3"
+          },
+          "support": "The proceedings article retains the corrected headline and supplies the canonical GLUE and SQuAD 2.0 rows."
+        }
+      ],
+      "limitations": [
+        "The version comparison establishes changed printed claims, not the cause of each change.",
+        "ArXiv v2 and the proceedings article are technically close but remain separate publication artifacts; canonical claims use proceedings folios rather than arXiv leaf positions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-predecessor-and-scope-boundary",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "self-attention-sequence-mixing"
+      ],
+      "statement": "The BERT paper identifies its model as a Transformer encoder based on Vaswani et al., treats OpenAI GPT as a left-to-right Transformer fine-tuning approach, and treats ELMo as a feature-based concatenation of separately trained directional language models. These target-side citations support scoped lineage relationships without assigning BERT priority for self-attention, contextual representation, or pretrained-parameter transfer.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Named predecessor roles and architectural contrasts, printed pp. 4171–4173 and 4183–4184",
+            "section": "Abstract; 1 Introduction; 2.1–2.2; 3 BERT; A.4 Comparison of BERT, ELMo, and OpenAI GPT",
+            "pageStart": 4171,
+            "pageEnd": 4184,
+            "figure": "1 and 3"
+          },
+          "support": "The target names all three predecessors, states the Transformer-encoder basis, and distinguishes GPT's directional fine-tuning route from ELMo's directional feature route."
+        }
+      ],
+      "limitations": [
+        "Citation and technical continuity do not establish sole causation, conception dates, or exclusive derivation.",
+        "The paper's own broad priority language is not promoted because this audit does not perform the required field-wide operational prior-art review."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-transformer-encoder-and-model-scales",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "deep-contextual-token-representations"
+      ],
+      "statement": "BERT uses a multi-layer Transformer encoder with bidirectional self-attention. BERTBase has L=12, H=768, A=12, a 4H feed-forward width, and 110 million parameters; BERTLarge has L=24, H=1024, A=16, a 4H feed-forward width, and 340 million parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Encoder basis, attention direction, dimensions, and parameter counts, printed p. 4173",
+            "section": "3 BERT; Model Architecture",
+            "pageStart": 4173,
+            "pageEnd": 4173,
+            "figure": "1"
+          },
+          "support": "The architecture paragraph defines L, H, A, the two reported scales, the 4H feed-forward setting, and the contrast with GPT's constrained attention."
+        }
+      ],
+      "limitations": [
+        "The paper says its implementation is almost identical to the original Transformer encoder but omits an exhaustive architecture specification, so unstated tensor2tensor defaults are not promoted.",
+        "Bidirectional describes permitted input attention, not autoregressive generation or a guarantee that every head uses both directions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-packed-input-representation",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "packed-text-pair-self-attention",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "BERT represents one span or two packed spans with a 30,000-token WordPiece vocabulary, prepends [CLS], separates spans with [SEP], assigns learned A/B segment embeddings, and sums token, segment, and learned absolute position embeddings at each input position.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Packed sequence and embedding construction, printed pp. 4174–4175",
+            "section": "3 BERT; Input/Output Representations",
+            "pageStart": 4174,
+            "pageEnd": 4175,
+            "figure": "1 and 2"
+          },
+          "support": "The input description and Figure 2 define the vocabulary, special tokens, A/B indicators, and three-way embedding sum."
+        }
+      ],
+      "limitations": [
+        "The paper uses sentence as an arbitrary contiguous text span, so NSP and segment IDs should not be described as operating only on linguistically delimited sentences.",
+        "The input design provides two segment identities and a maximum training length of 512; it is not evidence for arbitrary multi-document packing or longer contexts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-masked-language-model-objective",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "For masked-language-model pretraining, BERT selects 15% of WordPiece positions and applies a vocabulary softmax to the final hidden state at each selected position to predict its original token; unselected positions do not receive masked-token prediction targets.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Masked-token target definition, printed p. 4174 and Appendix p. 4182",
+            "section": "3.1 Pre-training BERT, Task #1: Masked LM; A.1 Illustration of the Pre-training Tasks",
+            "pageStart": 4174,
+            "pageEnd": 4182
+          },
+          "support": "The method selects 15% of WordPiece positions, predicts the originals from their final states, and contrasts this selected-token target with reconstructing the complete input."
+        }
+      ],
+      "limitations": [
+        "The objective is a conditional classification loss at selected positions, not a normalized joint or left-to-right probability for the complete sequence.",
+        "Because the selected position can use both surrounding directions after corruption, its hidden state is not directly usable as a causal next-token state."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-masking-replacement-procedure",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "masked-language-model-pretraining"
+      ],
+      "statement": "Among selected masked-language-model positions, the training generator replaces the token with [MASK] 80% of the time, a random vocabulary token 10% of the time, and the unchanged token 10% of the time; every selected position is still trained to predict the original token.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "80/10/10 corruption channel, printed p. 4174 and Appendix p. 4182",
+            "section": "3.1 Pre-training BERT, Task #1: Masked LM; A.1 Illustration of the Pre-training Tasks",
+            "pageStart": 4174,
+            "pageEnd": 4182
+          },
+          "support": "The main method and appendix enumerate all three replacement probabilities and keep the original token as the label."
+        }
+      ],
+      "limitations": [
+        "The 10% random branch affects 1.5% of all input positions because only 15% are selected.",
+        "The unchanged branch can expose the answer token at a selected position; the random choice of branch prevents the encoder from knowing which selected identities remain correct."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-next-sentence-prediction-objective",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "For next-sentence prediction, BERT samples span B as the actual continuation of span A for 50% of examples and as a random corpus span for 50%, then predicts IsNext versus NotNext from the final [CLS] vector C.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Balanced NSP sampling and classifier input, printed pp. 4174–4175 and 4182–4183",
+            "section": "3.1 Pre-training BERT, Task #2: Next Sentence Prediction; A.1; A.2",
+            "pageStart": 4174,
+            "pageEnd": 4183,
+            "figure": "1"
+          },
+          "support": "The target defines the two labels, the balanced sampling rule, and use of C for the binary prediction."
+        }
+      ],
+      "limitations": [
+        "A paper footnote reports 97%–98% NSP accuracy but also warns that C is not a meaningful sentence representation without fine-tuning; the accuracy is not promoted as a general semantic-similarity result.",
+        "The negative is random from the corpus rather than a hard or topic-matched negative."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-pretraining-corpus",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining"
+      ],
+      "statement": "BERT pretraining concatenates BooksCorpus, reported as 800 million words, with English Wikipedia, reported as 2.5 billion words; for Wikipedia it keeps text passages and ignores lists, tables, and headers so examples can be sampled from contiguous document text.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Pretraining corpora and Wikipedia filtering, printed p. 4175",
+            "section": "3.1 Pre-training BERT; Pre-training data",
+            "pageStart": 4175,
+            "pageEnd": 4175
+          },
+          "support": "The corpus paragraph names both sources, their reported sizes, and the Wikipedia content retained and omitted."
+        }
+      ],
+      "limitations": [
+        "The paper supplies no corpus snapshot identifiers, BooksCorpus file manifest, Wikipedia dump date, deduplication procedure, or document-level split manifest.",
+        "Reported word counts are corpus summaries and should not be treated as exact WordPiece-token counts or a rights statement."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact corpus instances and preprocessing outputs used for the reported checkpoint are not recoverable from the paper.",
+          "resolutionCondition": "Immutable source manifests, dump identifiers, hashes, and preprocessing commands would be required."
+        }
+      ],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-pretraining-optimization-and-length-schedule",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "statement": "The canonical appendix trains for 1,000,000 steps with 256 sequences per batch, uses length 128 for 90% of steps and length 512 for the remaining 10%, sums mean MLM and mean NSP losses, and reports Adam at 1e-4 with β1=0.9, β2=0.999, weight decay 0.01, 10,000 warmup steps, linear decay, dropout 0.1, and GELU; each model pretraining took four days on 16 TPU chips for Base or 64 for Large.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Pretraining recipe, loss, hardware, and length schedule, printed pp. 4182–4183",
+            "section": "A.2 Pre-training Procedure",
+            "pageStart": 4182,
+            "pageEnd": 4183
+          },
+          "support": "Appendix A.2 gives the step count, batch size, optimizer, loss, hardware, duration, and two-stage maximum-length schedule."
+        }
+      ],
+      "limitations": [
+        "The length-128 and length-512 schedule makes the nearby 256×512=128,000 tokens-per-batch expression inapplicable to 90% of steps if read literally.",
+        "The paper calls the corpus 3.3 billion words and the run approximately 40 epochs, but does not reconcile words with WordPiece tokens, packed spans, resampling, or the two sequence lengths."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "One exact effective-token and corpus-pass accounting cannot be reconstructed from the printed units.",
+          "resolutionCondition": "Version-pinned input-pipeline logs and corpus manifests would be required."
+        }
+      ],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-full-parameter-task-adaptation",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "deep-contextual-token-representations"
+      ],
+      "statement": "Each downstream task initializes a separate BERT model from the same pretrained parameters, adds a small task output layer, and fine-tunes all pretrained parameters with labeled data rather than freezing the encoder by default.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Two-stage transfer and end-to-end task adaptation, printed pp. 4173 and 4175",
+            "section": "3 BERT; 3.2 Fine-tuning BERT",
+            "pageStart": 4173,
+            "pageEnd": 4175,
+            "figure": "1"
+          },
+          "support": "The framework description says all parameters are fine-tuned, each task has a separate initialized copy, and task-specific inputs and output heads replace extensive custom architecture."
+        }
+      ],
+      "limitations": [
+        "The fine-tuned copies share initialization, not parameters or gradients across tasks; the paper reports single-task rather than multitask fine-tuning.",
+        "Task heads and loss functions still differ across classification, span prediction, and token labeling."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-glue-results",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "On the canonical GLUE test table, BERTLarge reports MNLI matched/mismatched 86.7/85.9, QQP F1 72.1, QNLI accuracy 92.7, SST-2 accuracy 94.9, CoLA Matthews correlation 60.5, STS-B Spearman correlation 86.5, MRPC F1 89.3, RTE accuracy 70.1, and an 82.1 mixed-metric average that excludes WNLI; the separate official GLUE score reported in prose is 80.5.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Canonical GLUE test row and evaluation conditions, printed pp. 4175–4176",
+            "section": "4.1 GLUE",
+            "pageStart": 4175,
+            "pageEnd": 4176,
+            "table": "1"
+          },
+          "support": "Table 1 supplies the per-task BERTLarge values and excluded-WNLI average; the surrounding prose separately identifies the official 80.5 leaderboard score."
+        }
+      ],
+      "limitations": [
+        "The displayed average combines different metrics and excludes WNLI, so it is not the official GLUE aggregate.",
+        "BERTLarge uses several restarts on small tasks and selects by development performance; the paper reports one evaluation-server submission for each BERT size but no uncertainty or significance test.",
+        "Comparator systems use different architectures and training conditions, and the table is not a controlled component ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-squad-v1-results",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "For SQuAD v1.1 in the canonical table, BERTLarge single-system plus TriviaQA reports Dev EM/F1 84.2/91.1 and Test EM/F1 85.1/91.8, while the seven-system ensemble plus TriviaQA reports 86.2/92.2 on Dev and 87.4/93.2 on Test.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "SQuAD v1.1 rows and ensemble condition, printed pp. 4176–4177",
+            "section": "4.2 SQuAD v1.1",
+            "pageStart": 4176,
+            "pageEnd": 4177,
+            "table": "2"
+          },
+          "support": "Table 2 reports the four single-system and ensemble values and its caption defines the ensemble as seven systems with different pretraining checkpoints and fine-tuning seeds."
+        }
+      ],
+      "limitations": [
+        "Both promoted headline rows use prior fine-tuning on TriviaQA before SQuAD, so they are not SQuAD-only training conditions.",
+        "The ensemble is not a single model, and leaderboard comparators may use other public data and do not form a matched experiment.",
+        "No confidence interval, repeated-run aggregate, or significance test accompanies these rows."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-squad-v2-results",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "For SQuAD v2.0, the canonical BERTLarge single system reports Dev EM/F1 78.7/81.9 and Test EM/F1 80.0/83.1 after two fine-tuning epochs with learning rate 5e-5 and batch size 48, without TriviaQA data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "SQuAD v2.0 row and no-TriviaQA condition, printed p. 4177",
+            "section": "4.3 SQuAD v2.0",
+            "pageStart": 4177,
+            "pageEnd": 4177,
+            "table": "3"
+          },
+          "support": "The section gives the fine-tuning settings, explicitly excludes TriviaQA, and Table 3 supplies all four scores."
+        }
+      ],
+      "limitations": [
+        "The no-answer threshold is tuned on development F1, and the paper reports no repeated runs, uncertainty, or significance test.",
+        "The v1 manuscript has no SQuAD v2.0 section or result; this claim belongs only to v2 and the canonical proceedings evidence family."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-swag-results",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "On SWAG, the canonical table reports BERTBase development accuracy 81.6 and BERTLarge development/test accuracy 86.6/86.3, compared with the imported OpenAI GPT test value 78.0; the table also reproduces human expert 85.0 and five-annotation 88.0 test values measured on 100 examples by the SWAG study.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "SWAG model and imported human rows, printed p. 4177",
+            "section": "4.4 SWAG",
+            "pageStart": 4177,
+            "pageEnd": 4177,
+            "table": "4"
+          },
+          "support": "Table 4 reports the BERT, GPT, and human values and identifies the 100-example human measurement."
+        }
+      ],
+      "limitations": [
+        "The GPT and human rows are imported comparisons rather than reruns under the BERT training setup.",
+        "The human conditions use only 100 examples, and the paper gives no uncertainty, significance test, or repeated BERT runs for the table."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-pretraining-task-ablation",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining"
+      ],
+      "statement": "In the canonical BERTBase pretraining-task ablation, the rows BERTBase, No NSP, LTR & No NSP, and LTR & No NSP plus a fine-tuning BiLSTM respectively report MNLI-m 84.4/83.9/82.1/82.1, QNLI 88.4/84.9/84.3/84.1, MRPC 86.7/86.5/77.5/75.7, SST-2 92.7/92.6/92.1/91.6, and SQuAD F1 88.5/87.9/77.8/84.9.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Pretraining-task ablation rows and conditions, printed pp. 4177–4178",
+            "section": "5.1 Effect of Pre-training Tasks",
+            "pageStart": 4177,
+            "pageEnd": 4178,
+            "table": "5"
+          },
+          "support": "Table 5 supplies the four five-metric rows, and the surrounding text defines No NSP, LTR masking, and the added BiLSTM condition."
+        }
+      ],
+      "limitations": [
+        "The LTR condition changes the pretraining objective, attention mask, number of directly predicted tokens, and the fine-tuning mask; it is not a compute-matched direction-only intervention.",
+        "Adding a randomly initialized BiLSTM changes the downstream architecture and does not reconstruct ELMo's separately pretrained forward/backward feature model.",
+        "The table reports development points without replicate counts, dispersion, significance tests, or training-compute totals."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-model-size-ablation",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "multi-head-attention"
+      ],
+      "statement": "Across the six canonical model-size rows, increasing configurations move monotonically from L/H/A=3/768/12 with masked-token perplexity 5.84 and MNLI/MRPC/SST-2 development accuracies 77.9/79.8/88.4 to 24/1024/16 with 3.23 and 86.6/87.8/93.7; the four intermediate rows are 6/768/3 at 5.24 and 80.6/82.2/90.7, 6/768/12 at 4.68 and 81.9/84.8/91.3, 12/768/12 at 3.99 and 84.4/86.7/92.9, and 12/1024/16 at 3.54 and 85.7/86.9/93.3.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Six model-size rows and restart condition, printed pp. 4178–4179",
+            "section": "5.2 Effect of Model Size",
+            "pageStart": 4178,
+            "pageEnd": 4179,
+            "table": "6"
+          },
+          "support": "Table 6 supplies every configuration, held-out-training masked-token perplexity, and three downstream averages; the section states five fine-tuning restarts."
+        }
+      ],
+      "limitations": [
+        "Layers, hidden width, attention heads, parameter count, and masked-token perplexity change together, so the table does not isolate one scaling variable or the effect of multi-head attention.",
+        "The downstream values average five fine-tuning restarts but report no dispersion, seeds, confidence intervals, or significance tests.",
+        "Perplexity is measured on held-out training data under a selected-token objective and is not directly comparable with ordinary autoregressive language-model perplexity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-feature-based-ner-results",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "feature-based-language-model-transfer",
+        "deep-contextual-token-representations",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "On CoNLL-2003 NER, canonical end-to-end fine-tuning reports BERTLarge Dev/Test F1 96.6/92.8 and BERTBase 96.4/92.4, while the strongest frozen BERTBase feature condition concatenates the last four hidden layers and reports Dev F1 96.1 before a randomly initialized two-layer 768-dimensional BiLSTM; no test score is printed for the frozen-feature rows.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Fine-tuned and frozen-feature NER comparison, printed pp. 4178–4179",
+            "section": "5.3 Feature-based Approach with BERT",
+            "pageStart": 4178,
+            "pageEnd": 4179,
+            "table": "7"
+          },
+          "support": "The section defines the frozen encoder and BiLSTM feature architecture; Table 7 supplies the fine-tuned and feature-based development rows and fine-tuned test rows."
+        }
+      ],
+      "limitations": [
+        "The frozen-feature route adds a task-specific BiLSTM and selects its representation on development data, so it is not an encoder-only comparison with the fine-tuned linear head.",
+        "The caption says available scores are averaged over five restarts but provides no dispersion or seeds; frozen-feature test results are absent.",
+        "A 0.3-point development gap does not establish equivalence or general superiority across tasks."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-training-step-ablation",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "Appendix C.1 states that BERTBase gains almost 1.0% additional MNLI development accuracy when its pretraining increases from 500,000 to 1,000,000 steps and that the masked-token curve converges slightly more slowly than the left-to-right curve while attaining higher absolute accuracy early in the plotted range.",
+      "directness": "direct",
+      "confidence": "medium",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Training-step prose and plotted MNLI curves, printed p. 4186",
+            "section": "C.1 Effect of Number of Training Steps",
+            "pageStart": 4186,
+            "pageEnd": 4186,
+            "figure": "5"
+          },
+          "support": "The appendix prints the 500k-to-1M comparison as ‘almost 1.0% additional accuracy’ and qualitatively compares the two curves."
+        }
+      ],
+      "limitations": [
+        "Figure 5 supplies no raw checkpoint values, error bars, repeat counts, or machine-readable points beyond the approximate prose comparison.",
+        "The source does not distinguish percentage points from relative percent, so the atlas preserves its printed ‘1.0%’ form.",
+        "The masked-token and left-to-right objectives predict different target densities, so equal steps do not mean equal target predictions or compute."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Exact curve values cannot be reconstructed from the figure.",
+          "resolutionCondition": "Underlying logs or author-supplied numeric data would be required."
+        }
+      ],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-masking-strategy-ablation",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "feature-based-language-model-transfer"
+      ],
+      "statement": "In the canonical masking ablation, [MASK]/same/random probabilities of 80/10/10 report MNLI fine-tuned, NER fine-tuned, and NER frozen-feature development values 84.2/95.4/94.9; 100/0/0 reports 84.3/94.9/94.0; 80/0/20 reports 84.1/95.2/94.6; 80/20/0 reports 84.4/95.2/94.7; 0/20/80 reports 83.7/94.8/94.6; and 0/0/100 reports 83.6/94.9/94.6.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Six corruption-channel rows, printed p. 4186",
+            "section": "C.2 Ablation for Different Masking Procedures",
+            "pageStart": 4186,
+            "pageEnd": 4186,
+            "table": "8"
+          },
+          "support": "Table 8 reports every masking-probability combination and the three development outcomes."
+        }
+      ],
+      "limitations": [
+        "The table evaluates development data only and does not report repeat counts, dispersion, confidence intervals, significance tests, or compute differences.",
+        "The frozen-feature NER condition concatenates the last four BERT layers and uses the Section 5.3 task model; it is not the same supervised route as fine-tuning.",
+        "The six rows test discrete replacement channels under one selected-token rate and do not establish an optimum outside those conditions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "devlin-2018-code-and-evidence-boundary",
+      "workId": "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "ArXiv v1 promises code and a pretrained model through the paper's project link, while arXiv v2 and the proceedings article print the official google-research/bert repository URL. None of the three paper texts identifies an immutable experiment commit, exact corpus snapshots, random seeds, checkpoint hashes, or a table-by-table reconstruction manifest.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "devlin-2018-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 promised project artifact and complete-method boundary",
+            "section": "1 Introduction; complete manuscript and references"
+          },
+          "support": "Version 1 says code and a pretrained model will be available through its project link but supplies none of the listed immutable reconstruction identifiers."
+        },
+        {
+          "sourceId": "devlin-2019-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 repository link and complete-method boundary",
+            "section": "1 Introduction; complete manuscript and references"
+          },
+          "support": "The second revision prints the Google Research repository URL but does not bind every result to immutable data, seed, checkpoint, and environment artifacts."
+        },
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Canonical repository link and evidence boundary, printed pp. 4171–4186",
+            "section": "1 Introduction; complete article and references",
+            "pageStart": 4171,
+            "pageEnd": 4186
+          },
+          "support": "The proceedings paper prints the repository URL while the complete article omits the listed table-level reconstruction identifiers."
+        }
+      ],
+      "limitations": [
+        "Absence claims are limited to the three inspected complete paper texts and do not mean that no private logs or later community reproductions exist.",
+        "The separate pinned code source records implementation and license context but is not substituted for paper evidence or used to alter the reported experimental conditions."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No complete immutable official experiment package was identified.",
+          "resolutionCondition": "An author-maintained release mapping data, preprocessing, seeds, code, checkpoints, and evaluation commands to each paper row would resolve the boundary."
+        }
+      ],
+      "checkedDate": "2026-08-25"
     }
   ],
   "relationships": [
@@ -33829,6 +35813,285 @@
           "note": "The October 2017 OpenReview artifact establishes public ordering before ULMFiT v1, but public order and citation document awareness rather than conception date, causal derivation, or priority."
         }
       ]
+    },
+    {
+      "id": "vaswani-2017-to-radford-2018",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The target explicitly chooses Transformer [62], calls its language model a multi-layer Transformer decoder variant, and says its model largely follows the original Transformer while retaining masked multi-head self-attention and position-wise computation and switching to learned positions. The edge records this scoped architectural inheritance, not priority for every component or transfer of the full encoder-decoder system.",
+      "claimIds": [
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-positionwise-computation",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-transformer-antecedent-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Target-side Transformer selection, decoder variant, inherited mechanisms, and positional change, article pp. 2–5",
+            "section": "1 Introduction; 3.1 Unsupervised pre-training; 4.1 Setup — Model specifications",
+            "pageStart": 2,
+            "pageEnd": 5
+          },
+          "support": "The target names Transformer [62], defines its decoder adaptation, and states which architectural mechanisms it retains and changes."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Target reference to Vaswani et al., article p. 11",
+            "section": "References",
+            "pageStart": 11,
+            "pageEnd": 11,
+            "paragraph": "Reference 62"
+          },
+          "support": "The target bibliography identifies Attention Is All You Need; its erroneous page range is not propagated into the endpoint record."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target reference's 6000–6010 page range is a bibliography error; the authoritative Transformer proceedings record supplies 5998–6008."
+        }
+      ]
+    },
+    {
+      "id": "peters-2017-to-radford-2018",
+      "from": {
+        "kind": "work",
+        "id": "peters-2017-deep-contextualized-word-representations"
+      },
+      "to": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The target cites Peters et al. among approaches that feed pretrained hidden representations into supervised task models, then contrasts their task-specific parameter additions with serialized inputs and minimal new parameters during full-model fine-tuning. The edge records an explicit problem-and-design contrast, not causal derivation or a claim that one transfer family dominates the other.",
+      "claimIds": [
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-frozen-feature-transfer",
+        "radford-2018-task-aware-input-transformations",
+        "radford-2018-elmo-contrast"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Target-side ELMo citation and feature-versus-fine-tuning contrast, article pp. 1–4",
+            "section": "1 Introduction; 2 Related Work — Unsupervised pre-training; 3.2 Supervised fine-tuning; 3.3 Task-specific input transformations",
+            "pageStart": 1,
+            "pageEnd": 4
+          },
+          "support": "The target places Peters et al. in the auxiliary-feature family and defines its own serialized, minimally extended full-model fine-tuning route."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Target reference to Peters et al., article p. 10",
+            "section": "References",
+            "pageStart": 10,
+            "pageEnd": 10,
+            "paragraph": "Reference 44"
+          },
+          "support": "The target bibliography identifies Deep Contextualized Word Representations."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target says hidden representations are used as auxiliary features but does not itself say ELMo's biLM is frozen; the endpoint's own claim supplies that mechanism fact."
+        }
+      ]
+    },
+    {
+      "id": "howard-ruder-2018-to-radford-2018",
+      "from": {
+        "kind": "work",
+        "id": "howard-ruder-2018-universal-language-model-fine-tuning"
+      },
+      "to": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The target identifies Howard–Ruder inside the closest pretrain-then-supervise line and carries that broad transfer pattern into a causal Transformer evaluated beyond text classification. The edge is limited to the cited two-stage commonality and target's stated architecture and task-scope contrast; it excludes ULMFiT-specific adaptation and optimization mechanisms.",
+      "claimIds": [
+        "howard-ruder-2018-three-stage-transfer",
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-ulmfit-relationship"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Target-side Howard–Ruder citation, closest-work placement, and scoped contrast, article pp. 1–2",
+            "section": "1 Introduction; 2 Related Work — Unsupervised pre-training",
+            "pageStart": 1,
+            "pageEnd": 2
+          },
+          "support": "The target cites Howard–Ruder, groups it with language-model pretraining followed by supervised fine-tuning, and contrasts LSTM range and text-classification scope with its Transformer and broader task set."
+        },
+        {
+          "sourceId": "radford-2018-openai-preprint-full-text",
+          "locator": {
+            "label": "Target reference to Howard and Ruder, article p. 9",
+            "section": "References",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "paragraph": "Reference 21"
+          },
+          "support": "The target bibliography identifies Universal Language Model Fine-tuning for Text Classification."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The documented relationship does not imply that GPT uses ULMFiT's target-domain LM stage, discriminative layer rates, schedule, unfreezing, classifier pooling, or bidirectional ensemble."
+        }
+      ]
+    },
+    {
+      "id": "vaswani-2017-to-devlin-2018",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BERT identifies its architecture as a multi-layer bidirectional Transformer encoder based on Vaswani et al.'s original implementation and retains the projected multi-head self-attention and position-aware encoder substrate. The edge is limited to that documented architecture continuity: BERT uses the encoder without a causal input mask and adds masked-token and next-sentence objectives, packed pairs, pretrained parameter transfer, new corpora, and downstream evidence that do not move backward into the Transformer paper.",
+      "claimIds": [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Target-side Transformer attribution and architecture continuity, printed p. 4173",
+            "section": "3 BERT; Model Architecture",
+            "pageStart": 4173,
+            "pageEnd": 4173,
+            "figure": "1"
+          },
+          "support": "The target calls BERT a multi-layer bidirectional Transformer encoder based on the original Vaswani implementation, cites that work, and defines its layer, hidden, and head dimensions."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge records the target's named encoder basis, not a claim that Vaswani et al. supplied BERT's pretraining objectives, corpora, transfer recipe, or results."
+        }
+      ]
+    },
+    {
+      "id": "radford-2018-to-devlin-2018",
+      "from": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "to": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BERT cites OpenAI GPT as a pretrained-parameter fine-tuning approach, sizes BERTBase for comparison, and says many design decisions were intentionally kept close to GPT so directionality and pretraining tasks could be compared. The edge is limited to Transformer parameter pretraining followed by supervised whole-model fine-tuning and the deliberately comparable stack; GPT's left-to-right objective, decoder mask, task input transformations, BooksCorpus-only recipe, auxiliary supervised loss, and results remain GPT-specific.",
+      "claimIds": [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-decoder-only-transformer-architecture",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Target-side GPT transfer, model-size, and attention-mask comparison, printed pp. 4171–4173 and 4183–4184",
+            "section": "Abstract; 1 Introduction; 2.2 Unsupervised Fine-tuning Approaches; 3 BERT; A.4 Comparison of BERT, ELMo, and OpenAI GPT",
+            "pageStart": 4171,
+            "pageEnd": 4184,
+            "figure": "1 and 3"
+          },
+          "support": "The target cites GPT's fine-tuning route, matches BERTBase's size for comparison, contrasts left-only with bidirectional attention, and states that many BERT design decisions were intentionally made close to GPT."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target directly documents the comparison and retained transfer pattern; the edge does not assign conception priority or treat BERT's objectives and results as GPT mechanisms."
+        }
+      ]
+    },
+    {
+      "id": "peters-2017-to-devlin-2018",
+      "from": {
+        "kind": "work",
+        "id": "peters-2017-deep-contextualized-word-representations"
+      },
+      "to": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BERT cites ELMo's contextual-feature results and explicitly contrasts ELMo's frozen downstream feature route and separately trained left-to-right/right-to-left language models with a jointly bidirectional Transformer whose parameters are supervisedly fine-tuned. The edge records the target's stated response to those representational and transfer constraints, not derivation, priority, causation, or general superiority; ELMo's character input, recurrent objectives, task-specific layer mixtures, domain adaptation, and results remain source-specific.",
+      "claimIds": [
+        "peters-2017-bidirectional-lm-objectives",
+        "peters-2017-contextual-representation-family",
+        "peters-2017-frozen-feature-transfer",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "devlin-2019-naacl-full-text",
+          "locator": {
+            "label": "Target-side ELMo objective, architecture, and transfer contrast, printed pp. 4171–4172 and 4183–4184",
+            "section": "Abstract; 1 Introduction; 2.1 Unsupervised Feature-based Approaches; A.4 Comparison of BERT, ELMo, and OpenAI GPT",
+            "pageStart": 4171,
+            "pageEnd": 4184,
+            "figure": "3"
+          },
+          "support": "The target cites ELMo, describes its concatenated directional language-model features, and contrasts that frozen feature route with BERT's jointly conditioned layers and fine-tuning route."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper documents awareness and contrast but does not establish that ELMo caused BERT's design; this `addresses` edge must remain noncausal."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -36068,6 +38331,162 @@
         "Versioned preprints, proceedings, and source-level comparison"
       ],
       "successCriterion": "The learner can compute STLR's start, peak, and end values; build the layerwise rate ladder; trace document-state and gradient flow; reproduce the promoted rows; and explain why v5's formula and v3's value cannot silently replace the canonical ACL text."
+    },
+    {
+      "id": "beginner-radford-2018-pretrain-serialize-finetune",
+      "mode": "beginner",
+      "objective": "Trace one Transformer from next-token learning on books through a task-specific sequence format to labeled fine-tuning, and distinguish changing the input format from building a separate architecture for every task.",
+      "workIds": [
+        "radford-2018-improving-language-understanding-generative-pre-training"
+      ],
+      "ideaIds": [
+        "generative-transformer-pretraining",
+        "discriminative-full-model-fine-tuning",
+        "task-aware-input-serialization",
+        "auxiliary-language-model-fine-tuning"
+      ],
+      "claimIds": [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-supervised-and-auxiliary-objectives",
+        "radford-2018-task-aware-input-transformations",
+        "radford-2018-nli-results",
+        "radford-2018-question-answering-results",
+        "radford-2018-similarity-classification-results",
+        "radford-2018-ulmfit-relationship",
+        "radford-2018-elmo-contrast"
+      ],
+      "prerequisites": [
+        "Tokens, next-token prediction, and labeled examples",
+        "A neural network layer and an output classifier",
+        "The difference between freezing and updating model parameters",
+        "Premise–hypothesis pairs and multiple-choice questions"
+      ],
+      "successCriterion": "The learner can describe the pretrain–serialize–fine-tune path, construct the entailment and multiple-choice formats, explain that the whole pretrained model is updated, and state why this differs from ELMo's frozen supervised feature transfer and ULMFiT's separate target-domain LM stage."
+    },
+    {
+      "id": "expert-radford-2018-objectives-transfer-and-evidence",
+      "mode": "expert",
+      "objective": "Reconstruct the causal and supervised objectives, architecture, task serializations, optimization regime, benchmark matrices, transfer-depth and ablation evidence, zero-shot scoring rules, and the exact evidentiary limits of the Transformer, ULMFiT, and ELMo relationships.",
+      "workIds": [
+        "radford-2018-improving-language-understanding-generative-pre-training"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "generative-transformer-pretraining",
+        "discriminative-full-model-fine-tuning",
+        "task-aware-input-serialization",
+        "auxiliary-language-model-fine-tuning",
+        "zero-shot-generative-task-probes",
+        "byte-pair-subword-tokenization",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings"
+      ],
+      "claimIds": [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-supervised-and-auxiliary-objectives",
+        "radford-2018-task-aware-input-transformations",
+        "radford-2018-pretraining-data-and-optimization",
+        "radford-2018-nli-results",
+        "radford-2018-question-answering-results",
+        "radford-2018-similarity-classification-results",
+        "radford-2018-layer-transfer-analysis",
+        "radford-2018-zero-shot-probes",
+        "radford-2018-ablation-results",
+        "radford-2018-transformer-antecedent-boundary",
+        "radford-2018-ulmfit-relationship",
+        "radford-2018-elmo-contrast",
+        "radford-2018-code-and-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive likelihood, softmax classification, and cross-entropy optimization",
+        "Causal self-attention, multi-head projections, position-wise feed-forward layers, and learned positions",
+        "Transfer learning, full-model fine-tuning, frozen feature extraction, and target-domain adaptation",
+        "Benchmark metrics, ablations, ensembles, uncertainty, and source-bound version chronology"
+      ],
+      "successCriterion": "The learner can derive L1–L3, trace tensor and parameter flow through every task format, reproduce the promoted Tables 2–4 matrices for twelve datasets—including split and aggregate columns—and the Table 5 comparisons, implement each bounded zero-shot likelihood rule, and justify each lineage edge without extending its causal or version evidence."
+    },
+    {
+      "id": "beginner-devlin-2018-mask-context-and-fine-tune",
+      "mode": "beginner",
+      "objective": "Use a short packed pair to see how hiding one token prevents self-copying, how both sides provide clues, how [CLS], [SEP], segment, and position signals organize the input, and how the same pretrained reader is adapted by replacing a small output head and updating its parameters.",
+      "workIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "claimIds": [
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-packed-input-representation",
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-full-parameter-task-adaptation",
+        "devlin-2018-pretraining-task-ablation"
+      ],
+      "prerequisites": [
+        "A token can use nearby words as context",
+        "A probability distribution over vocabulary choices",
+        "The distinction between unlabeled pretraining and labeled task learning",
+        "A trainable parameter and a classification label"
+      ],
+      "successCriterion": "The learner can explain why a selected token must be hidden or corrupted, distinguish MLM from left-to-right generation, identify the two spans and special tokens, describe the NSP label, and state that ordinary BERT task adaptation updates the pretrained encoder as well as the new head."
+    },
+    {
+      "id": "expert-devlin-2018-objectives-ablations-and-versions",
+      "mode": "expert",
+      "objective": "Formalize BERT's two pretraining losses and corruption channel, trace the encoder and packed-pair computation, audit full-model versus frozen-feature transfer, and reproduce the promoted result and ablation rows without moving claims across arXiv v1, arXiv v2, proceedings, rights, or code boundaries.",
+      "workIds": [
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings",
+        "deep-contextual-token-representations",
+        "feature-based-language-model-transfer",
+        "discriminative-full-model-fine-tuning",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention"
+      ],
+      "claimIds": [
+        "devlin-2018-version-boundary",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-packed-input-representation",
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-pretraining-corpus",
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "devlin-2018-full-parameter-task-adaptation",
+        "devlin-2018-glue-results",
+        "devlin-2018-squad-v1-results",
+        "devlin-2018-squad-v2-results",
+        "devlin-2018-swag-results",
+        "devlin-2018-pretraining-task-ablation",
+        "devlin-2018-model-size-ablation",
+        "devlin-2018-feature-based-ner-results",
+        "devlin-2018-training-step-ablation",
+        "devlin-2018-masking-strategy-ablation",
+        "devlin-2018-code-and-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Transformer encoder self-attention, attention masks, embeddings, residual blocks, and multi-head dimensions",
+        "Cross entropy, conditional likelihood, softmax classification, Adam, warmup, and weight decay",
+        "Full-model fine-tuning versus frozen contextual-feature extraction",
+        "Accuracy, F1, correlation, perplexity, development selection, ensembles, ablations, and uncertainty",
+        "Versioned scholarly evidence, structural PDF anchors, publication rights, and implementation provenance"
+      ],
+      "successCriterion": "The learner can write the selected-token and NSP losses, compute the effective 12%/1.5%/1.5% input replacement rates, trace BERTBase and BERTLarge dimensions, distinguish packed joint self-attention from independent encoding, reproduce Tables 1–8 under their conditions, identify the Table 5 and 6 confounds, and keep v1, v2, NAACL, ACL-rights, and code claims source-bound."
     }
   ]
 }

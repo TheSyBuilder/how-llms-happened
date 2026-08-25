@@ -5797,7 +5797,28 @@ test("retains the Transformer as a canonical proceedings node with revision boun
   assert.ok(
     incomingRelationships[0]?.rationale.includes("excludes causal claims"),
   );
-  assert.equal(outgoingRelationships.length, 0);
+  assert.deepEqual(
+    outgoingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.causalLanguage,
+    ]),
+    [
+      [
+        "vaswani-2017-to-radford-2018",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-devlin-2018",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+    ],
+  );
 });
 
 test("retains ELMo as a four-version frozen contextual-feature bridge", () => {
@@ -6081,6 +6102,387 @@ test("keeps the ELMo to ULMFiT transfer fork chronological and noncausal", () =>
   assert.ok(edge?.rationale.includes("supervised fine-tuning"));
   assert.ok(edge?.rationale.includes("not priority"));
   assert.ok(edge?.rationale.includes("causation"));
+});
+
+test("retains the GPT preprint as causal Transformer pretraining and full-model transfer", () => {
+  const workId =
+    "radford-2018-improving-language-understanding-generative-pre-training";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const fullText = sources.find(
+    (source) => source.id === "radford-2018-openai-preprint-full-text",
+  );
+  const transfer = claims.find(
+    (claim) => claim.id === "radford-2018-two-stage-generative-transfer",
+  );
+  const architecture = claims.find(
+    (claim) => claim.id === "radford-2018-decoder-only-transformer-architecture",
+  );
+  const ablation = claims.find(
+    (claim) => claim.id === "radford-2018-ablation-results",
+  );
+  const layerTransfer = claims.find(
+    (claim) => claim.id === "radford-2018-layer-transfer-analysis",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "radford-2018-code-and-evidence-boundary",
+  );
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.canonicalVersionId,
+    "radford-2018-openai-preprint-version",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [["radford-2018-openai-release", "preprint", "2018-06-11"]],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [
+      version.id,
+      version.kind,
+      version.bibliography.pages,
+      version.bibliography.identifiers,
+    ]),
+    [["radford-2018-openai-preprint-version", "preprint", [], []]],
+  );
+  assert.equal(sources.length, 4);
+  assert.equal(claims.length, 15);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 12,
+  });
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-radford-2018-pretrain-serialize-finetune",
+      "expert-radford-2018-objectives-transfer-and-evidence",
+    ],
+  );
+  assert.ok(transfer?.statement.includes("causal language-model likelihood L1"));
+  assert.ok(
+    transfer?.limitations.join(" ").includes("target-domain language-model"),
+  );
+  assert.ok(architecture?.statement.includes("twelve-layer decoder-only"));
+  assert.ok(ablation?.statement.includes("75.0 with four higher and four lower"));
+  assert.ok(layerTransfer?.statement.includes("up to 9%"));
+  assert.ok(
+    layerTransfer?.limitations
+      .join(" ")
+      .includes("percentage points or relative percent"),
+  );
+  assert.ok(
+    evidenceBoundary?.statement.includes("Preprint. Work in progress"),
+  );
+  assert.ok(
+    evidenceBoundary?.limitations.join(" ").includes("ROCStories only"),
+  );
+  assert.ok(
+    work?.significance.beginner.includes("boundary and delimiter-token embeddings"),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "expert")
+      ?.successCriterion.includes("split and aggregate columns"),
+  );
+});
+
+test("retains BERT version, objective, result, and implementation boundaries", () => {
+  const workId = "devlin-2018-bert-pre-training-deep-bidirectional-transformers";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "devlin-2018-version-boundary",
+  );
+  const maskedObjective = claims.find(
+    (claim) => claim.id === "devlin-2018-masked-language-model-objective",
+  );
+  const replacement = claims.find(
+    (claim) => claim.id === "devlin-2018-masking-replacement-procedure",
+  );
+  const nextSentence = claims.find(
+    (claim) => claim.id === "devlin-2018-next-sentence-prediction-objective",
+  );
+  const results = claims.find(
+    (claim) => claim.id === "devlin-2018-glue-results",
+  );
+  const squadV1 = claims.find(
+    (claim) => claim.id === "devlin-2018-squad-v1-results",
+  );
+  const squadV2 = claims.find(
+    (claim) => claim.id === "devlin-2018-squad-v2-results",
+  );
+  const ablation = claims.find(
+    (claim) => claim.id === "devlin-2018-pretraining-task-ablation",
+  );
+  const trainingStep = claims.find(
+    (claim) => claim.id === "devlin-2018-training-step-ablation",
+  );
+  const codeBoundary = claims.find(
+    (claim) => claim.id === "devlin-2018-code-and-evidence-boundary",
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "devlin-2019-naacl-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => event.date.value),
+    ["2018-10-11", "2019-05-24", "2019-06"],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [
+      ["devlin-2018-arxiv-v1-version", "preprint"],
+      ["devlin-2019-arxiv-v2-version", "preprint"],
+      ["devlin-2019-naacl-version", "proceedings"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("devlin-2019-naacl-version")?.bibliography.pages,
+    ["4171-4186"],
+  );
+  assert.deepEqual(
+    sourceMap.get("devlin-2018-arxiv-v1-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 14 },
+  );
+  assert.deepEqual(
+    sourceMap.get("devlin-2019-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 16 },
+  );
+  assert.deepEqual(
+    sourceMap.get("devlin-2019-naacl-full-text")?.pagination,
+    { scheme: "printed", pageStart: 4171, pageEnd: 4186 },
+  );
+  for (const claim of claims) {
+    for (const evidence of claim.evidence.filter((item) =>
+      [
+        "devlin-2018-arxiv-v1-full-text",
+        "devlin-2019-arxiv-v2-full-text",
+      ].includes(item.sourceId),
+    )) {
+      assert.equal("pageStart" in evidence.locator, false);
+      assert.equal("pageEnd" in evidence.locator, false);
+    }
+  }
+  assert.equal(sources.length, 7);
+  assert.equal(claims.length, 20);
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-devlin-2018-mask-context-and-fine-tune",
+      "expert-devlin-2018-objectives-ablations-and-versions",
+    ],
+  );
+  assert.ok(versionBoundary?.statement.includes("materially different"));
+  assert.ok(
+    versions
+      .get("devlin-2018-arxiv-v1-version")
+      ?.notes.includes("no SQuAD 2.0 section"),
+  );
+  assert.ok(
+    versions
+      .get("devlin-2019-arxiv-v2-version")
+      ?.notes.includes("technically close to but not byte-identical"),
+  );
+  assert.ok(maskedObjective?.statement.includes("15% of WordPiece positions"));
+  assert.ok(replacement?.statement.includes("[MASK] 80%"));
+  assert.ok(nextSentence?.statement.includes("50% of examples"));
+  assert.ok(results?.statement.includes("82.1 mixed-metric average"));
+  assert.ok(results?.statement.includes("official GLUE score reported in prose is 80.5"));
+  assert.ok(squadV1?.statement.includes("seven-system ensemble plus TriviaQA"));
+  assert.ok(squadV2?.statement.includes("without TriviaQA data"));
+  assert.ok(ablation?.limitations.join(" ").includes("not a compute-matched"));
+  assert.ok(trainingStep?.statement.includes("almost 1.0% additional"));
+  assert.ok(
+    trainingStep?.limitations
+      .join(" ")
+      .includes("percentage points from relative percent"),
+  );
+  assert.ok(codeBoundary?.statement.includes("exact corpus snapshots"));
+  assert.ok(
+    sourceMap
+      .get("acl-2016-plus-rights-policy")
+      ?.versionIds.includes("devlin-2019-naacl-version"),
+  );
+});
+
+test("keeps the contextual-transfer to Transformer-pretraining lineage scoped", () => {
+  const workIds = [
+    "vaswani-2017-attention-is-all-you-need",
+    "peters-2017-deep-contextualized-word-representations",
+    "howard-ruder-2018-universal-language-model-fine-tuning",
+    "radford-2018-improving-language-understanding-generative-pre-training",
+    "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+  ];
+  const expectedEdges = [
+    [
+      "vaswani-2017-to-radford-2018",
+      "builds-on",
+      "documented-influence",
+      "high",
+      "qualified",
+      "radford-2018-openai-preprint-full-text",
+    ],
+    [
+      "peters-2017-to-radford-2018",
+      "addresses",
+      "documented-influence",
+      "high",
+      "prohibited",
+      "radford-2018-openai-preprint-full-text",
+    ],
+    [
+      "howard-ruder-2018-to-radford-2018",
+      "extends",
+      "documented-influence",
+      "high",
+      "qualified",
+      "radford-2018-openai-preprint-full-text",
+    ],
+    [
+      "vaswani-2017-to-devlin-2018",
+      "builds-on",
+      "documented-influence",
+      "high",
+      "qualified",
+      "devlin-2019-naacl-full-text",
+    ],
+    [
+      "radford-2018-to-devlin-2018",
+      "builds-on",
+      "documented-influence",
+      "high",
+      "qualified",
+      "devlin-2019-naacl-full-text",
+    ],
+    [
+      "peters-2017-to-devlin-2018",
+      "addresses",
+      "documented-influence",
+      "high",
+      "prohibited",
+      "devlin-2019-naacl-full-text",
+    ],
+  ];
+  const edgeIds = new Set(expectedEdges.map(([id]) => id));
+  const expectedClaimIds = new Map([
+    [
+      "vaswani-2017-to-radford-2018",
+      [
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-positionwise-computation",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-transformer-antecedent-boundary",
+      ],
+    ],
+    [
+      "peters-2017-to-radford-2018",
+      [
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-frozen-feature-transfer",
+        "radford-2018-task-aware-input-transformations",
+        "radford-2018-elmo-contrast",
+      ],
+    ],
+    [
+      "howard-ruder-2018-to-radford-2018",
+      [
+        "howard-ruder-2018-three-stage-transfer",
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-ulmfit-relationship",
+      ],
+    ],
+    [
+      "vaswani-2017-to-devlin-2018",
+      [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+      ],
+    ],
+    [
+      "radford-2018-to-devlin-2018",
+      [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-decoder-only-transformer-architecture",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation",
+      ],
+    ],
+    [
+      "peters-2017-to-devlin-2018",
+      [
+        "peters-2017-bidirectional-lm-objectives",
+        "peters-2017-contextual-representation-family",
+        "peters-2017-frozen-feature-transfer",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation",
+      ],
+    ],
+  ]);
+  const edges = corpus.relationships.filter((relationship) =>
+    edgeIds.has(relationship.id),
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => workIds.includes(work.id))
+      .map((work) => work.id),
+    workIds,
+  );
+  assert.deepEqual(
+    edges.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.confidence,
+      relationship.causalLanguage,
+      ...new Set(
+        relationship.sourceEvidence.map((evidence) => evidence.sourceId),
+      ),
+    ]),
+    expectedEdges,
+  );
+  for (const relationship of edges) {
+    assert.deepEqual(
+      relationship.claimIds,
+      expectedClaimIds.get(relationship.id),
+    );
+    const endpointWorkIds = new Set(
+      relationship.claimIds.map(
+        (claimId) => corpus.claims.find((claim) => claim.id === claimId)?.workId,
+      ),
+    );
+    assert.ok(endpointWorkIds.has(relationship.from.id));
+    assert.ok(endpointWorkIds.has(relationship.to.id));
+  }
+  assert.ok(historicalScope.includes("Transformer pretraining fork"));
+  assert.ok(historicalScope.includes("target-documented comparison"));
+  assert.ok(historicalScope.includes("Every one of these edges includes target-side"));
 });
 
 test("keeps the 2014 encoder-decoder branches concurrent and noncausal", () => {
