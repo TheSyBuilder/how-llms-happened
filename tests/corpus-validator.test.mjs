@@ -5817,6 +5817,18 @@ test("retains the Transformer as a canonical proceedings node with revision boun
         "documented-influence",
         "qualified",
       ],
+      [
+        "vaswani-2017-to-dai-2019",
+        "extends",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-radford-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
     ],
   );
 });
@@ -6323,6 +6335,431 @@ test("retains BERT version, objective, result, and implementation boundaries", (
     sourceMap
       .get("acl-2016-plus-rights-policy")
       ?.versionIds.includes("devlin-2019-naacl-version"),
+  );
+});
+
+test("retains Transformer-XL authorship, locator, mechanism, and pedagogy boundaries", () => {
+  const workId =
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "dai-2019-version-boundary",
+  );
+  const recurrence = claims.find(
+    (claim) => claim.id === "dai-2019-segment-level-recurrence",
+  );
+  const relativeAttention = claims.find(
+    (claim) => claim.id === "dai-2019-relative-positional-attention",
+  );
+  const relativeShift = claims.find(
+    (claim) => claim.id === "dai-2019-relative-shift-computation",
+  );
+  const shortContextAblation = claims.find(
+    (claim) => claim.id === "dai-2019-short-context-recurrence-ablation",
+  );
+  const generatedText = claims.find(
+    (claim) => claim.id === "dai-2019-generated-text-boundary",
+  );
+  const codeBoundary = claims.find(
+    (claim) => claim.id === "dai-2019-code-and-evidence-boundary",
+  );
+  const expertObjective = objectives.find(
+    (objective) => objective.mode === "expert",
+  );
+  const canonicalAuthors = [
+    "Zihang Dai",
+    "Zhilin Yang",
+    "Yiming Yang",
+    "Jaime Carbonell",
+    "Quoc V. Le",
+    "Ruslan Salakhutdinov",
+  ];
+  const structuralSourceIds = new Set([
+    "dai-2019-arxiv-v1-full-text",
+    "dai-2019-arxiv-v2-full-text",
+    "dai-2019-arxiv-v3-full-text",
+    "dai-2019-acl-supplement",
+  ]);
+  const structuralEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter((evidence) =>
+      structuralSourceIds.has(evidence.sourceId),
+    ),
+  );
+  const printedEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "dai-2019-acl-full-text",
+    ),
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "dai-2019-acl-version");
+  assert.deepEqual(work?.authors, canonicalAuthors);
+  assert.deepEqual(
+    versions.get("dai-2019-arxiv-v1-version")?.authors,
+    [
+      "Zihang Dai",
+      "Zhilin Yang",
+      "Yiming Yang",
+      "William W. Cohen",
+      "Jaime Carbonell",
+      "Quoc V. Le",
+      "Ruslan Salakhutdinov",
+    ],
+  );
+  for (const versionId of [
+    "dai-2019-arxiv-v2-version",
+    "dai-2019-arxiv-v3-version",
+    "dai-2019-acl-version",
+  ]) {
+    assert.deepEqual(versions.get(versionId)?.authors, canonicalAuthors);
+  }
+  assert.ok(
+    versionBoundary?.statement.includes(
+      "v1 lists seven authors including William W. Cohen",
+    ),
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [
+      ["dai-2019-arxiv-v1-posted", "preprint", "2019-01-09"],
+      ["dai-2019-arxiv-v2-posted", "manuscript-revised", "2019-01-18"],
+      ["dai-2019-arxiv-v3-posted", "manuscript-revised", "2019-06-02"],
+      ["dai-2019-acl-proceedings", "proceedings-publication", "2019-07"],
+    ],
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-arxiv-v1-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-arxiv-v3-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 20 },
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-acl-supplement")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 9 },
+  );
+  assert.deepEqual(sourceMap.get("dai-2019-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 2978,
+    pageEnd: 2988,
+  });
+  assert.ok(structuralEvidence.length > 0);
+  for (const evidence of structuralEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "equation", "figure", "table"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  assert.ok(printedEvidence.length > 0);
+  for (const evidence of printedEvidence) {
+    assert.ok(evidence.locator.pageStart >= 2978);
+    assert.ok(evidence.locator.pageEnd <= 2988);
+  }
+  assert.ok(
+    recurrence?.statement.includes("detaches it from the gradient graph"),
+  );
+  assert.ok(relativeAttention?.statement.includes("four terms"));
+  assert.ok(relativeShift?.statement.includes("M+L unique relative-distance"));
+  assert.equal(
+    relativeShift?.evidence.find(
+      (evidence) => evidence.sourceId === "dai-2019-acl-supplement",
+    )?.locator.section,
+    "Appendix B Efficient Computation of the Attention with Relative Positional Embedding",
+  );
+  assert.ok(shortContextAblation?.statement.includes("400,000 training steps"));
+  assert.deepEqual(
+    generatedText?.evidence.map((evidence) => evidence.sourceId),
+    ["dai-2019-arxiv-v3-full-text", "dai-2019-acl-supplement"],
+  );
+  assert.ok(generatedText?.statement.includes("off-target"));
+  assert.ok(
+    sourceMap
+      .get("dai-2019-transformer-xl-code-snapshot")
+      ?.accessNote.includes("preliminary"),
+  );
+  assert.ok(codeBoundary?.statement.includes("checkpoint hashes"));
+  assert.ok(
+    expertObjective?.successCriterion.includes("not exactly reproducible"),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-dai-2019-carry-context-across-segments", "beginner"],
+      [
+        "expert-dai-2019-recurrence-relative-attention-and-evidence",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+});
+
+test("retains GPT-2 report, release, parameter-vocabulary, and pedagogy boundaries", () => {
+  const workId = "radford-2019-language-models-unsupervised-multitask-learners";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const reportSource = sourceMap.get("radford-2019-openai-report-full-text");
+  const releaseDayCode = sourceMap.get(
+    "radford-2019-gpt2-release-day-code-snapshot",
+  );
+  const correctedCheckpoints = sourceMap.get(
+    "radford-2019-gpt2-corrected-checkpoint-snapshot",
+  );
+  const fullModelRelease = sourceMap.get(
+    "radford-2019-gpt2-full-model-release",
+  );
+  const modelConfigurations = claims.find(
+    (claim) => claim.id === "radford-2019-model-configurations-and-training",
+  );
+  const transferResults = claims.find(
+    (claim) => claim.id === "radford-2019-lambada-cbt-and-winograd-results",
+  );
+  const overlapAnalysis = claims.find(
+    (claim) => claim.id === "radford-2019-overlap-analysis",
+  );
+  const byteBpe = claims.find(
+    (claim) => claim.id === "radford-2019-byte-level-bpe",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "radford-2019-code-data-and-evidence-boundary",
+  );
+  const reportLabels = ["117M", "345M", "762M", "1542M"];
+  const checkpointLabels = ["124M", "355M", "774M", "1558M"];
+  const checkpointVocabulary = [
+    correctedCheckpoints?.accessNote,
+    fullModelRelease?.accessNote,
+  ].join(" ");
+  const laterReleaseSourceIds = [
+    "radford-2019-gpt2-six-month-follow-up",
+    "radford-2019-gpt2-corrected-checkpoint-snapshot",
+    "radford-2019-gpt2-full-model-release",
+    "solaiman-2019-release-strategies-v2-full-text",
+  ];
+
+  assert.equal(work?.artifactType, "technical-report");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.canonicalVersionId,
+    "radford-2019-openai-report-version",
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [["radford-2019-openai-report-version", "technical-report"]],
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "radford-2019-openai-report-announced",
+  );
+  assert.ok(
+    work?.chronology.events.every(
+      (event) => event.versionId === "radford-2019-openai-report-version",
+    ),
+  );
+  assert.ok(
+    work?.versions[0]?.notes.includes(
+      "Later checkpoint releases and the separate Release Strategies report are not versions",
+    ),
+  );
+  assert.ok(releaseDayCode?.accessNote.includes("not a new report version"));
+  for (const sourceId of laterReleaseSourceIds) {
+    assert.deepEqual(sourceMap.get(sourceId)?.versionIds, []);
+    assert.equal(work?.versions[0]?.sourceIds.includes(sourceId), false);
+  }
+  assert.deepEqual(reportSource?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 24,
+  });
+  const reportEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "radford-2019-openai-report-full-text",
+    ),
+  );
+  assert.ok(reportEvidence.length > 0);
+  for (const evidence of reportEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "equation", "figure", "table"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  for (const label of reportLabels) {
+    assert.ok(modelConfigurations?.statement.includes(label));
+  }
+  for (const label of checkpointLabels) {
+    assert.equal(modelConfigurations?.statement.includes(label), false);
+    assert.ok(checkpointVocabulary.includes(label));
+  }
+  assert.ok(
+    work?.limitations.some(
+      (limitation) =>
+        reportLabels.every((label) => limitation.includes(label)) &&
+        checkpointLabels.every((label) => limitation.includes(label)),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some(
+      (limitation) =>
+        limitation.includes("non-English pages") &&
+        limitation.includes("subreddit blocklist") &&
+        limitation.includes("must not be backdated"),
+    ),
+  );
+  assert.ok(transferResults?.statement.includes("ten candidate words"));
+  assert.ok(transferResults?.statement.includes("sentence remainder"));
+  assert.ok(transferResults?.statement.includes("stop-word filter"));
+  assert.ok(transferResults?.statement.includes("70.70% under partial scoring"));
+  assert.ok(overlapAnalysis?.statement.includes("six language-model datasets"));
+  assert.ok(overlapAnalysis?.statement.includes("test-set 8-grams"));
+  assert.equal(byteBpe?.statement.includes("mapped reversibly"), false);
+  assert.equal(
+    evidenceBoundary?.evidence[0]?.locator.section,
+    "7 Conclusion, footnote 5; complete report",
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-radford-2019-scale-and-zero-shot-transfer", "beginner"],
+      [
+        "expert-radford-2019-webtext-objectives-results-and-releases",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+});
+
+test("keeps post-BERT Transformer-XL and GPT-2 lineage evidence-scoped", () => {
+  const bertId = "devlin-2018-bert-pre-training-deep-bidirectional-transformers";
+  const transformerId = "vaswani-2017-attention-is-all-you-need";
+  const gptId =
+    "radford-2018-improving-language-understanding-generative-pre-training";
+  const transformerXlId =
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context";
+  const gpt2Id = "radford-2019-language-models-unsupervised-multitask-learners";
+  const chronologicalWorkIds = [bertId, transformerXlId, gpt2Id];
+  const expectedEdges = [
+    [
+      "vaswani-2017-to-dai-2019",
+      transformerId,
+      transformerXlId,
+      "extends",
+      "dai-2019-acl-full-text",
+    ],
+    [
+      "radford-2018-to-radford-2019",
+      gptId,
+      gpt2Id,
+      "extends",
+      "radford-2019-openai-report-full-text",
+    ],
+    [
+      "vaswani-2017-to-radford-2019",
+      transformerId,
+      gpt2Id,
+      "builds-on",
+      "radford-2019-openai-report-full-text",
+    ],
+  ];
+  const edges = expectedEdges.map(([id]) =>
+    corpus.relationships.find((relationship) => relationship.id === id),
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => chronologicalWorkIds.includes(work.id))
+      .map((work) => work.id),
+    chronologicalWorkIds,
+  );
+  assert.deepEqual(
+    edges.map((relationship) => [
+      relationship.id,
+      relationship.from.id,
+      relationship.to.id,
+      relationship.connectionType,
+    ]),
+    expectedEdges.map(([id, fromId, toId, connectionType]) => [
+      id,
+      fromId,
+      toId,
+      connectionType,
+    ]),
+  );
+  for (const [index, relationship] of edges.entries()) {
+    assert.ok(relationship);
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.some(
+        (evidence) => evidence.sourceId === expectedEdges[index][4],
+      ),
+    );
+    assert.deepEqual(
+      new Set(
+        relationship.claimIds.map(
+          (claimId) =>
+            corpus.claims.find((claim) => claim.id === claimId)?.workId,
+        ),
+      ),
+      new Set([relationship.from.id, relationship.to.id]),
+    );
+    for (const evidence of relationship.sourceEvidence) {
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === evidence.sourceId)
+          ?.relatedWorkIds.includes(relationship.to.id),
+      );
+    }
+  }
+  assert.deepEqual(
+    corpus.relationships.filter(
+      (relationship) =>
+        relationship.from.id === transformerXlId &&
+        [bertId, gpt2Id].includes(relationship.to.id),
+    ),
+    [],
   );
 });
 

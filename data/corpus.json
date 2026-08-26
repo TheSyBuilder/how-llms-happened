@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-25",
+  "asOf": "2026-08-26",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -9698,6 +9698,477 @@
           "resolutionCondition": "A complete immutable author experiment release would be required for exact reconstruction."
         }
       ]
+    },
+    {
+      "id": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+      "authors": [
+        "Zihang Dai",
+        "Zhilin Yang",
+        "Yiming Yang",
+        "Jaime Carbonell",
+        "Quoc V. Le",
+        "Ruslan Salakhutdinov"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "Z. Dai, Z. Yang, Y. Yang, J. Carbonell, Q. V. Le, and R. Salakhutdinov, “Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context,” ACL, pp. 2978–2988 (2019; arXiv v1 posted 9 January 2019).",
+      "chronology": {
+        "orderingEventId": "dai-2019-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "dai-2019-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2019-01-09",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dai-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 9 January 2019 at 18:28:19 UTC"
+              }
+            ],
+            "versionId": "dai-2019-arxiv-v1-version",
+            "sourceIds": [
+              "dai-2019-arxiv-record",
+              "dai-2019-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "dai-2019-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2019-01-18",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dai-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 18 January 2019 at 18:38:00 UTC"
+              }
+            ],
+            "versionId": "dai-2019-arxiv-v2-version",
+            "sourceIds": [
+              "dai-2019-arxiv-record",
+              "dai-2019-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "dai-2019-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2019-06-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dai-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 2 June 2019 at 21:21:48 UTC"
+              }
+            ],
+            "versionId": "dai-2019-arxiv-v3-version",
+            "sourceIds": [
+              "dai-2019-arxiv-record",
+              "dai-2019-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "dai-2019-acl-proceedings",
+            "kind": "proceedings-publication",
+            "label": "ACL 2019 proceedings paper",
+            "date": {
+              "value": "2019-07",
+              "precision": "month",
+              "calendar": "gregorian",
+              "note": "The ACL record supplies month precision; the conference presentation date is not substituted for a paper-specific publication day."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dai-2019-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology bibliographic record: July 2019"
+              }
+            ],
+            "versionId": "dai-2019-acl-version",
+            "sourceIds": [
+              "dai-2019-acl-record",
+              "dai-2019-acl-full-text",
+              "dai-2019-acl-supplement"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "dai-2019-arxiv-v1-version",
+          "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+          "authors": [
+            "Zihang Dai",
+            "Zhilin Yang",
+            "Yiming Yang",
+            "William W. Cohen",
+            "Jaime Carbonell",
+            "Quoc V. Le",
+            "Ruslan Salakhutdinov"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Dai, Z. Yang, Y. Yang, W. W. Cohen, J. Carbonell, Q. V. Le, and R. Salakhutdinov, “Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context,” arXiv:1901.02860v1, 9 January 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1901.02860v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dai-2019-arxiv-record",
+            "dai-2019-arxiv-v1-full-text"
+          ],
+          "notes": "The 18-leaf initial posting has seven authors, including William W. Cohen. It contains the complete recurrence, relative-attention, benchmark, ablation, RECL, and timing account, but not the later generated-text section."
+        },
+        {
+          "id": "dai-2019-arxiv-v2-version",
+          "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+          "authors": [
+            "Zihang Dai",
+            "Zhilin Yang",
+            "Yiming Yang",
+            "Jaime Carbonell",
+            "Quoc V. Le",
+            "Ruslan Salakhutdinov"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Dai, Z. Yang, Y. Yang, J. Carbonell, Q. V. Le, and R. Salakhutdinov, “Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context,” arXiv:1901.02860v2, 18 January 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1901.02860v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dai-2019-arxiv-record",
+            "dai-2019-arxiv-v2-full-text"
+          ],
+          "notes": "The 18-leaf revision uses the six-author list retained thereafter. Relative to v1 it adds two pretraining references and corrects one appendix caption while preserving the audited mechanisms and quantitative results; no inspected primary source explains the authorship change."
+        },
+        {
+          "id": "dai-2019-arxiv-v3-version",
+          "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+          "authors": [
+            "Zihang Dai",
+            "Zhilin Yang",
+            "Yiming Yang",
+            "Jaime Carbonell",
+            "Quoc V. Le",
+            "Ruslan Salakhutdinov"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Dai, Z. Yang, Y. Yang, J. Carbonell, Q. V. Le, and R. Salakhutdinov, “Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context,” arXiv:1901.02860v3, 2 June 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1901.02860v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1901.02860",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dai-2019-arxiv-record",
+            "dai-2019-arxiv-v3-full-text",
+            "dai-2019-transformer-xl-code-snapshot"
+          ],
+          "notes": "The 20-leaf camera-ready-formatted revision adds generated-text protocol and samples, retypesets the main paper, and retains the audited mechanism and benchmark values. Its leaves have no canonical printed article folios."
+        },
+        {
+          "id": "dai-2019-acl-version",
+          "title": "Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+          "authors": [
+            "Zihang Dai",
+            "Zhilin Yang",
+            "Yiming Yang",
+            "Jaime Carbonell",
+            "Quoc V. Le",
+            "Ruslan Salakhutdinov"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ACL 2019 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Dai, Z. Yang, Y. Yang, J. Carbonell, Q. V. Le, and R. Salakhutdinov, “Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context,” in Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pp. 2978–2988, July 2019.",
+            "venue": "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+            "series": "ACL",
+            "editors": [
+              "Anna Korhonen",
+              "David Traum",
+              "Lluís Màrquez"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Florence, Italy"
+            ],
+            "pages": [
+              "2978-2988"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/P19-1285",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dai-2019-acl-record",
+            "dai-2019-acl-full-text",
+            "dai-2019-acl-supplement",
+            "dai-2019-transformer-xl-code-snapshot",
+            "acl-2016-plus-rights-policy"
+          ],
+          "notes": "The authoritative 11-page proceedings article uses printed pp. 2978–2988. Its official nine-leaf supplement supplies Appendices A–E; together they preserve the v3 technical content while remaining a separately recorded publication artifact."
+        }
+      ],
+      "canonicalVersionId": "dai-2019-acl-version",
+      "preferredSourceIds": [
+        "dai-2019-acl-record",
+        "dai-2019-acl-full-text",
+        "dai-2019-acl-supplement"
+      ],
+      "sourceIds": [
+        "dai-2019-arxiv-record",
+        "dai-2019-arxiv-v1-full-text",
+        "dai-2019-arxiv-v2-full-text",
+        "dai-2019-arxiv-v3-full-text",
+        "dai-2019-acl-record",
+        "dai-2019-acl-full-text",
+        "dai-2019-acl-supplement",
+        "dai-2019-transformer-xl-code-snapshot",
+        "acl-2016-plus-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Transformer-XL directly extends the Transformer language-model substrate with cross-segment hidden-state reuse and a relative-position attention score that makes reused states positionally coherent. Its architectural derivation, controlled recurrence and position ablations, thresholded effective-context analysis, benchmark results, and explicit Transformer ancestry make it the necessary memory branch before XLNet, without assigning it the mechanisms of gated recurrent cells or external-memory networks."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "fixed-segment-context-fragmentation",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention",
+        "relative-shift-computation",
+        "relative-effective-context-length"
+      ],
+      "significance": {
+        "beginner": "A Transformer usually reads a bounded window. Transformer-XL carries hidden representations from an earlier window into the next one, then describes positions by distance so an old token does not masquerade as a new token with the same absolute position number.",
+        "expert": "Transformer-XL stop-gradient caches the preceding segment's layerwise activations, lets current queries attend over concatenated cached and current keys/values, and replaces reused absolute positions with a four-term relative score using sinusoidal offsets, distinct content/position projections, and global biases. Its ablations separate recurrence, positional formulation, loss window, and memory budget; RECL and per-token evaluation timing remain metric- and baseline-specific."
+      },
+      "limitations": [
+        "The recurrent state is a finite cache of hidden activations, not an LSTM cell, a learned external memory, full backpropagation through prior segments, or unlimited context. Gradients stop at the cached segment boundary.",
+        "The stated O(NL) reachable path is an architectural upper bound across N layers and segment length L. It does not show that the model learns, preserves, or uses every dependency in that range.",
+        "The relative-position projection is made linear in sequence length through the relative-shift procedure, but dense attention still scores query-by-context pairs. This is not a linear-attention architecture.",
+        "Reported benchmark comparisons mix model size, data processing, training procedures, and comparator sources. The paper supplies no confidence intervals, significance tests, repeat counts, or complete table-level reconstruction package.",
+        "The Penn Treebank value 54.52 uses variational dropout and weight averaging and is scoped to results without two-step fine-tuning; the same table contains a lower 54.44 comparator that uses that additional procedure.",
+        "The One Billion Word sentence-shuffling ablation weakens cross-sentence order but does not remove every structured or long within-sentence dependency.",
+        "RECL is a model-group-relative, thresholded evaluation measure. The reported 80% and 450% comparisons use different model groups and denominators; neither is a literal memory capacity or average dependency length.",
+        "The evaluation-speed ratios compare one reported implementation with the Al-Rfou-style evaluator as per-token time on one unspecified GPU. They do not establish training speed or performance against modern cached implementations.",
+        "The generated-text evidence appears only in arXiv v3 and the ACL main-plus-supplement pair. Three top-40 samples, no human evaluation, and acknowledged hallucinations do not establish representative long-form quality.",
+        "The pinned repository contains TensorFlow and PyTorch implementations, dataset scripts, and selected training recipes, but it omits exact paper seeds, locked environments, dataset hashes, checkpoint hashes, RECL and timing programs, and a complete table reconstruction manifest.",
+        "The repository's Apache-2.0 license covers its code tree; it is not extended here to third-party datasets, cached vocabularies, downloaded checkpoints, or paper text. Each versioned arXiv record exposes CC BY-NC-SA 4.0 for its corresponding manuscript, while ACL's CC BY 4.0 policy applies only to the proceedings article subject to third-party-material exclusions."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv record establishes 9 January 2019 as the earliest verified public artifact. A repository README label suggesting a 2018 preprint is not used as publication chronology."
+        },
+        {
+          "status": "resolved",
+          "note": "Complete versioned PDFs and sources establish that v1 has seven authors and v2 onward has six; the work-level author list follows the canonical ACL paper without projecting it backward."
+        },
+        {
+          "status": "open",
+          "note": "No inspected primary source explains William W. Cohen's removal between arXiv v1 and v2.",
+          "resolutionCondition": "A version-bound author or repository record explaining the change would resolve the reason without altering the observed metadata."
+        },
+        {
+          "status": "open",
+          "note": "No immutable official experiment package binds every result to exact data, preprocessing, seed, environment, checkpoint, and evaluation command.",
+          "resolutionCondition": "A complete author-maintained reconstruction release would be required for exact reproduction."
+        }
+      ]
+    },
+    {
+      "id": "radford-2019-language-models-unsupervised-multitask-learners",
+      "title": "Language Models are Unsupervised Multitask Learners",
+      "authors": [
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Rewon Child",
+        "David Luan",
+        "Dario Amodei",
+        "Ilya Sutskever"
+      ],
+      "artifactType": "technical-report",
+      "displayCitation": "A. Radford, J. Wu, R. Child, D. Luan, D. Amodei, and I. Sutskever, “Language Models are Unsupervised Multitask Learners,” OpenAI technical report (2019; publicly announced 14 February 2019).",
+      "chronology": {
+        "orderingEventId": "radford-2019-openai-report-announced",
+        "events": [
+          {
+            "id": "radford-2019-openai-report-announced",
+            "kind": "technical-report",
+            "label": "OpenAI technical report publicly announced",
+            "date": {
+              "value": "2019-02-14",
+              "precision": "day",
+              "calendar": "gregorian",
+              "note": "The report itself is undated; the official project page supplies the public date."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "radford-2019-openai-announcement",
+                "precision": "day",
+                "locator": "OpenAI project page dated 14 February 2019 and linking the technical report"
+              }
+            ],
+            "versionId": "radford-2019-openai-report-version",
+            "sourceIds": [
+              "radford-2019-openai-report-full-text",
+              "radford-2019-openai-announcement"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "radford-2019-openai-report-version",
+          "title": "Language Models are Unsupervised Multitask Learners",
+          "authors": [
+            "Alec Radford",
+            "Jeffrey Wu",
+            "Rewon Child",
+            "David Luan",
+            "Dario Amodei",
+            "Ilya Sutskever"
+          ],
+          "kind": "technical-report",
+          "label": "OpenAI technical report",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Radford, J. Wu, R. Child, D. Luan, D. Amodei, and I. Sutskever, “Language Models are Unsupervised Multitask Learners,” OpenAI technical report, 2019.",
+            "venue": "OpenAI technical report",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "radford-2019-openai-report-full-text",
+            "radford-2019-openai-announcement",
+            "radford-2019-gpt2-release-day-code-snapshot"
+          ],
+          "notes": "The official 24-leaf report prints no date, report number, venue, DOI, arXiv identifier, revision label, folios, or reuse license. The dated OpenAI page establishes public availability; no official revision ledger was identified. Later checkpoint releases and the separate Release Strategies report are not versions of this artifact."
+        }
+      ],
+      "canonicalVersionId": "radford-2019-openai-report-version",
+      "preferredSourceIds": [
+        "radford-2019-openai-report-full-text",
+        "radford-2019-openai-announcement"
+      ],
+      "sourceIds": [
+        "radford-2019-openai-report-full-text",
+        "radford-2019-openai-announcement",
+        "radford-2019-gpt2-release-day-code-snapshot",
+        "radford-2019-gpt2-six-month-follow-up",
+        "radford-2019-gpt2-corrected-checkpoint-snapshot",
+        "radford-2019-gpt2-full-model-release",
+        "radford-2019-gpt2-modified-mit-license",
+        "solaiman-2019-release-strategies-v2-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "The report scales the GPT-style causal Transformer and evaluates whether task descriptions, examples, and textual formats can elicit multiple downstream behaviors without changing model parameters. Its byte-level subword pipeline, WebText construction, four-size analysis, prompt-dependent successes and failures, overlap audit, and direct continuity with GPT make it a central generative-transfer branch, while the evidence does not support origin claims for language modeling, Transformers, prompting, or scaling."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings",
+        "decoder-only-transformer-language-modeling",
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer",
+        "webtext-pretraining-corpus-construction",
+        "byte-level-byte-pair-tokenization",
+        "model-scale-zero-shot-transfer"
+      ],
+      "significance": {
+        "beginner": "GPT-2 asks whether one next-token model trained on broad web text can be steered into several tasks by writing the task as text, sometimes with examples, without retraining the model. Larger models often improve, but translation, question answering, and summarization expose how far the behavior remains from a reliable general-purpose system.",
+        "expert": "The report combines a 1,024-token pre-layer-normalized causal Transformer, 50,257-symbol byte-level BPE, a Reddit-link-selected 40 GB WebText corpus, and four report-era configurations up to 1,542 million stated parameters. Zero-shot denotes no task-specific parameter or architecture updates, while prompts, demonstrations, decoding rules, detokenizers, overlap, and source-specific parameter labels remain explicit experimental conditions."
+      },
+      "limitations": [
+        "The report's zero-shot label means no task-specific parameter or architecture updates. Translation and Natural Questions receive example pairs, and other tasks use special strings, candidate restrictions, scoring rules, filters, or decoding procedures; it is not consistently zero-demonstration evaluation.",
+        "The report labels its configurations 117M, 345M, 762M, and 1542M and reserves GPT-2 for the largest. Later official checkpoint documentation corrects the family to 124M, 355M, 774M, and 1558M. Both source-specific vocabularies are preserved rather than silently normalized.",
+        "The report and small-checkpoint inference code appeared together on 14 February under the contemporaneous 117M label. The medium checkpoint followed in May under 345M; August documentation corrected those public sizes to 124M and 355M while releasing 774M; November released the rounded 1.5B model under repository label 1558M. These model releases do not create technical-report revisions, and the companion Release Strategies and the Social Impacts of Language Models has its own arXiv history.",
+        "The report's displayed autoregressive objective uses product index i while its factors remain indexed by n. The intended left-to-right chain rule is clear from the surrounding prose, but the printed notation is not silently corrected in evidence descriptions.",
+        "WebText was built from outbound Reddit links with at least three karma, not Reddit comments themselves. Forty-five million eligible links were reduced to slightly over eight million documents and 40 GB after extraction, deduplication, heuristic cleaning, date filtering, and Wikipedia removal.",
+        "Full WebText, its URL manifest, exact extracted texts, deduplication rules, split, and rights manifest were not released. Link selection does not grant a license over third-party pages, and the May real-text artifact is not a reconstructible training corpus.",
+        "The report says non-English pages were deliberately filtered. A later August model card says a subreddit blocklist also excluded sexually explicit or otherwise offensive sources, but the list and operational rules were not released and that documentation must not be backdated into the February report.",
+        "Benchmark comparisons combine imported baselines, differing tokenization and detokenization, candidate restrictions, demonstrations, task hints, decoding strategies, contamination risk, and metrics. The report supplies no confidence intervals, significance tests, repeated-run dispersion, or complete prediction files.",
+        "Greater model size does not improve every printed metric monotonically: summarization weakens at the largest step and CBT common-noun accuracy falls slightly from the 762M to 1542M report configuration. Figures 1 and 4 are not compute-matched scaling laws.",
+        "The LAMBADA 63.24 accuracy uses a stop-word filter as an approximation to the requirement that the prediction end the sentence; CoQA 55 F1 includes WebText-overlapping documents; translation and Natural Questions remain far below the cited task systems; and the best-confidence Natural Questions slice must not replace 4.1% overall exact match.",
+        "The 8-gram Bloom-filter audit is normalization- and phrase-length-specific. Low measured overlap cannot rule out shorter, fuzzy, semantic, or paraphrastic memorization, and no released match list supports an independent reconstruction.",
+        "Open-ended samples include acknowledged repetition, topic drift, factual errors, memorized common passages, and explicit hand selection. The unicorn example is one selected output among ten, not representative evidence of human-level writing.",
+        "The official repository enables inference and sampling from eventually released checkpoints but omits WebText training code, optimizer and schedule details, per-model learning rates, update counts, training tokens, compute, seeds, benchmark evaluators, overlap filters, and a locked environment.",
+        "The release-day repository snapshot contains no license. A software license was added later and a January 2020 file is titled Modified MIT License; neither is extended here to the report, WebText, third-party excerpts, or a standalone weight license."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The official project page establishes 14 February 2019 as the public date; the undated PDF's ICML-template metadata is not treated as a publication claim."
+        },
+        {
+          "status": "resolved",
+          "note": "The report PDF and alternate official CDN path were byte-identical when checked, and no official report revision ledger was identified. Model and companion-report releases remain separate artifacts."
+        },
+        {
+          "status": "resolved",
+          "note": "The six-month page contains an internally inconsistent January/April timeline. The dated February page, repository commits, companion report, and the same six-month page's lead support February/May instead."
+        },
+        {
+          "status": "open",
+          "note": "No exact immutable WebText snapshot, training run, or table-level evaluation package was identified.",
+          "resolutionCondition": "A complete official release binding data, preprocessing, training code, seeds, checkpoints, prompts, evaluation programs, and predictions would be required for exact reconstruction."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -11379,7 +11850,8 @@
         "radford-2018-pretraining-data-and-optimization",
         "radford-2018-transformer-antecedent-boundary",
         "devlin-2018-packed-input-representation",
-        "devlin-2018-pretraining-optimization-and-length-schedule"
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "radford-2019-gpt-continuity-and-model-changes"
       ],
       "uncertainties": [
         {
@@ -11430,7 +11902,11 @@
         "radford-2018-decoder-only-transformer-architecture",
         "radford-2018-transformer-antecedent-boundary",
         "devlin-2018-predecessor-and-scope-boundary",
-        "devlin-2018-transformer-encoder-and-model-scales"
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "dai-2019-transformer-antecedent-and-scope-boundary",
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-relative-positional-attention",
+        "radford-2019-gpt-continuity-and-model-changes"
       ],
       "uncertainties": [
         {
@@ -11474,7 +11950,11 @@
         "radford-2018-decoder-only-transformer-architecture",
         "radford-2018-transformer-antecedent-boundary",
         "devlin-2018-transformer-encoder-and-model-scales",
-        "devlin-2018-model-size-ablation"
+        "devlin-2018-model-size-ablation",
+        "dai-2019-transformer-antecedent-and-scope-boundary",
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-relative-positional-attention",
+        "radford-2019-gpt-continuity-and-model-changes"
       ],
       "uncertainties": [
         {
@@ -11692,7 +12172,9 @@
       "claimIds": [
         "radford-2018-decoder-only-transformer-architecture",
         "radford-2018-transformer-antecedent-boundary",
-        "radford-2018-ablation-results"
+        "radford-2018-ablation-results",
+        "radford-2019-gpt-continuity-and-model-changes",
+        "radford-2019-autoregressive-objective"
       ],
       "uncertainties": []
     },
@@ -11868,6 +12350,208 @@
         {
           "status": "resolved",
           "note": "Packing jointly encodes a bounded pair; it does not imply that segment embeddings alone implement cross-attention or that arbitrary numbers of documents are represented."
+        }
+      ]
+    },
+    {
+      "id": "fixed-segment-context-fragmentation",
+      "name": "Fixed-segment context fragmentation",
+      "kind": "problem",
+      "description": "Training a language model on independent fixed-length segments blocks information at artificial boundaries, shortens the context available to early positions, and can force repeated computation when evaluation windows overlap.",
+      "claimIds": [
+        "dai-2019-fixed-segment-context-fragmentation",
+        "dai-2019-wikitext-recurrence-and-position-ablation",
+        "dai-2019-short-context-recurrence-ablation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The problem statement is scoped to the independently segmented Transformer-language-model baseline studied in the paper, not every possible Transformer training or inference implementation."
+        }
+      ]
+    },
+    {
+      "id": "segment-level-hidden-state-recurrence",
+      "name": "Segment-level hidden-state recurrence",
+      "kind": "mechanism",
+      "description": "A later text segment attends to a bounded cache of earlier layer activations so information can cross artificial segment boundaries without recomputing the entire prefix.",
+      "claimIds": [
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-detached-memory-and-receptive-path",
+        "dai-2019-wikitext-recurrence-and-position-ablation",
+        "dai-2019-short-context-recurrence-ablation",
+        "dai-2019-effective-context-definition-and-results",
+        "dai-2019-evaluation-speed-results",
+        "dai-2019-version-boundary",
+        "dai-2019-transformer-antecedent-and-scope-boundary",
+        "dai-2019-language-model-benchmark-results",
+        "dai-2019-generated-text-boundary",
+        "dai-2019-code-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Recurrence names cross-segment activation reuse; it does not imply a recurrent cell, learned external storage, or backpropagation through the full cached history."
+        }
+      ]
+    },
+    {
+      "id": "detached-recurrent-memory",
+      "name": "Detached recurrent memory",
+      "kind": "constraint",
+      "description": "Cached activations are treated as constant memory for the next segment: they supply keys and values, while gradients remain confined to the current segment's computation graph.",
+      "claimIds": [
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-detached-memory-and-receptive-path",
+        "dai-2019-wikitext-recurrence-and-position-ablation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "A longer forward receptive path does not create an equally long gradient path because the cache is stop-gradient."
+        }
+      ]
+    },
+    {
+      "id": "relative-positional-self-attention",
+      "name": "Relative-positional self-attention",
+      "kind": "mechanism",
+      "description": "Attention scores combine content similarity with query-to-key distance so cached states retain meaningful ordering even when absolute position numbers repeat across segments.",
+      "claimIds": [
+        "dai-2019-relative-positional-attention",
+        "dai-2019-relative-shift-computation",
+        "dai-2019-wikitext-recurrence-and-position-ablation",
+        "dai-2019-short-context-recurrence-ablation",
+        "dai-2019-transformer-antecedent-and-scope-boundary",
+        "dai-2019-language-model-benchmark-results",
+        "dai-2019-code-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper's relative vectors are fixed sinusoidal distance encodings combined with learned projections and biases, not a learned lookup table for relative positions."
+        }
+      ]
+    },
+    {
+      "id": "relative-shift-computation",
+      "name": "Relative-shift computation",
+      "kind": "mechanism",
+      "description": "Project the M+L unique relative-distance vectors once, multiply current queries by that shared projection matrix, then left-shift the resulting score rows into query-specific distance order.",
+      "claimIds": [
+        "dai-2019-relative-shift-computation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The procedure reduces the relative-position projection calculation; it does not remove the quadratic query-by-context score matrix of dense attention."
+        }
+      ]
+    },
+    {
+      "id": "relative-effective-context-length",
+      "name": "Relative effective context length",
+      "kind": "formalism",
+      "description": "Measure how far added context keeps improving a model relative to a shared short-context baseline, optionally emphasizing difficult positions, and stop when the next increment yields less than a chosen gain threshold.",
+      "claimIds": [
+        "dai-2019-effective-context-definition-and-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "RECL depends on model grouping, difficult-token fraction, context step, shared baseline, and threshold; it is not a literal memory span or a dataset's average dependency length."
+        }
+      ]
+    },
+    {
+      "id": "natural-language-task-conditioning",
+      "name": "Natural-language task conditioning",
+      "kind": "mechanism",
+      "description": "Represent a task, its input, and its desired output as text so an autoregressive language model can be steered by instructions, formatting, or demonstrations without changing its parameters.",
+      "claimIds": [
+        "radford-2019-natural-language-task-conditioning",
+        "radford-2019-lambada-cbt-and-winograd-results",
+        "radford-2019-coqa-and-summarization-results",
+        "radford-2019-translation-and-natural-questions-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The report's evaluations use heterogeneous task strings, examples, filters, candidate scoring, and decoding procedures rather than one standardized instruction interface."
+        }
+      ]
+    },
+    {
+      "id": "zero-shot-generative-task-transfer",
+      "name": "Zero-shot generative task transfer",
+      "kind": "mechanism",
+      "description": "Evaluate a pretrained causal language model on downstream tasks through textual conditioning and likelihood or generation rules without task-specific parameter updates.",
+      "claimIds": [
+        "radford-2019-natural-language-task-conditioning",
+        "radford-2019-language-model-benchmark-results",
+        "radford-2019-lambada-cbt-and-winograd-results",
+        "radford-2019-coqa-and-summarization-results",
+        "radford-2019-translation-and-natural-questions-results",
+        "radford-2019-scale-and-underfitting-analysis"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Zero-shot is source terminology for no task-specific training or model modification; it does not consistently mean no task demonstrations or no task-specific inference procedure."
+        }
+      ]
+    },
+    {
+      "id": "webtext-pretraining-corpus-construction",
+      "name": "WebText pretraining-corpus construction",
+      "kind": "mechanism",
+      "description": "Use community endorsement of outbound web links as a document-selection signal, then extract, filter, deduplicate, and clean linked pages for language-model pretraining.",
+      "claimIds": [
+        "radford-2019-webtext-construction",
+        "radford-2019-overlap-analysis",
+        "radford-2019-generation-and-memorization-boundary",
+        "radford-2019-code-data-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The corpus consists of linked page text rather than Reddit comments, and community link selection does not convey reuse rights over the linked documents."
+        }
+      ]
+    },
+    {
+      "id": "byte-level-byte-pair-tokenization",
+      "name": "Byte-level byte-pair tokenization",
+      "kind": "mechanism",
+      "description": "Begin with UTF-8 byte symbols and apply constrained byte-pair merges so one finite vocabulary can encode any Unicode string without an unknown-token fallback.",
+      "claimIds": [
+        "radford-2019-byte-level-bpe"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The base symbols encode bytes, while merged vocabulary items may span multiple bytes; calling every item a word or one raw byte would be inaccurate."
+        }
+      ]
+    },
+    {
+      "id": "model-scale-zero-shot-transfer",
+      "name": "Model scale and zero-shot transfer",
+      "kind": "finding",
+      "description": "Across four related configurations trained on the same corpus, larger causal language models often improve task-conditioned behavior before matching their own training distribution, while individual metrics can remain weak or nonmonotonic.",
+      "claimIds": [
+        "radford-2019-model-configurations-and-training",
+        "radford-2019-language-model-benchmark-results",
+        "radford-2019-lambada-cbt-and-winograd-results",
+        "radford-2019-coqa-and-summarization-results",
+        "radford-2019-translation-and-natural-questions-results",
+        "radford-2019-scale-and-underfitting-analysis",
+        "radford-2019-code-data-and-evidence-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The four-size comparison is not a compute-matched scaling law, and the reported task matrix contains nonmonotonic steps and weak absolute results."
         }
       ]
     }
@@ -17169,26 +17853,366 @@
       "accessNote": "The Google Research repository is pinned to the initial BERT release commit fe354751d7de010f60d362ae8d9343849ec39456. That snapshot contains Apache-2.0 code, paper checkpoints, and scripts for selected fine-tuning experiments and says the models use the same license; it was tested with TensorFlow 1.11.0, warns that most paper BERTLarge results cannot be reproduced on 12–16 GB GPUs, and labels one BERTLarge SQuAD recipe as slightly different from the paper. The repository does not supply an immutable data manifest, seed list, checkpoint mapping, and deterministic environment for every paper table, and its code and asset terms are not transferred to the papers or datasets."
     },
     {
+      "id": "dai-2019-arxiv-record",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "arXiv record for Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+      "url": "https://arxiv.org/abs/1901.02860",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dai-2019-arxiv-v1-version",
+        "dai-2019-arxiv-v2-version",
+        "dai-2019-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The aggregate record supplies exact UTC posting times for all three immutable revisions, current six-author metadata, and links to versioned PDFs and sources. Its versioned v1, v2, and v3 record views each expose CC BY-NC-SA 4.0 for the corresponding arXiv manuscript; that scope is not transferred to the ACL article, code, data, or checkpoints. The latest author list is not projected backward onto v1, whose own full text has seven authors."
+    },
+    {
+      "id": "dai-2019-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "Transformer-XL, arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1901.02860v1",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dai-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 18
+      },
+      "accessNote": "The complete 18-leaf initial posting was rendered and inspected page-aware. It has seven authors and no stable printed article folios, so evidence uses section, equation, figure, table, appendix, and paragraph anchors rather than PDF positions."
+    },
+    {
+      "id": "dai-2019-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "Transformer-XL, arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1901.02860v2",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dai-2019-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 18
+      },
+      "accessNote": "The complete 18-leaf second posting was compared with v1, v3, and the ACL pair. It begins the six-author lineage, adds two references, and corrects one appendix caption without changing the audited mechanism or quantitative results. Structural locators avoid unnumbered PDF leaf positions."
+    },
+    {
+      "id": "dai-2019-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "Transformer-XL, arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1901.02860v3",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dai-2019-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 20
+      },
+      "accessNote": "The complete 20-leaf camera-ready-formatted revision was rendered and compared with earlier revisions and the ACL artifacts. It adds generated-text material while retaining the audited mechanisms and results; structural anchors avoid unnumbered PDF leaf positions."
+    },
+    {
+      "id": "dai-2019-acl-record",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "ACL Anthology record for Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context",
+      "url": "https://aclanthology.org/P19-1285/",
+      "accessDate": "2026-08-26",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "dai-2019-acl-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the six-author canonical identity, ACL 2019 container, July publication month, Florence location, editors, publisher, pp. 2978–2988, DOI, main PDF, and supplementary archive. The authoritative PDF controls title capitalization."
+    },
+    {
+      "id": "dai-2019-acl-full-text",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "Official ACL full text of Transformer-XL",
+      "url": "https://aclanthology.org/P19-1285.pdf",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "dai-2019-acl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 2978,
+        "pageEnd": 2988
+      },
+      "accessNote": "The complete authoritative proceedings article was rendered and inspected page-aware using printed pp. 2978–2988. Appendices and generated samples are supplied separately by the official supplement."
+    },
+    {
+      "id": "dai-2019-acl-supplement",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "Official ACL supplementary archive for Transformer-XL",
+      "url": "https://aclanthology.org/attachments/P19-1285.Supplementary.zip",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "dai-2019-acl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 9
+      },
+      "accessNote": "The official ZIP contains one nine-leaf PDF with Appendices A–E, Tables 10–13, and Figures 3–7. Because those leaves have no stable printed folios, promoted evidence uses appendix, equation, table, figure, and paragraph anchors only."
+    },
+    {
+      "id": "dai-2019-transformer-xl-code-snapshot",
+      "relatedWorkIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "title": "Official Transformer-XL implementation snapshot",
+      "url": "https://github.com/kimiyoung/transformer-xl/tree/44781ed21dbaec88b280f74d9ae2877f52b492a5",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "dai-2019-arxiv-v3-version",
+        "dai-2019-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The author-linked repository is pinned to its final 10 April 2019 commit, which postdates arXiv v1 and v2 and therefore is not treated as their version-exact implementation state. It contains Apache-2.0 TensorFlow and PyTorch code, dataset scripts, selected large-model recipes, and checkpoint links. The TensorFlow instructions identify Python 2.7, TensorFlow 1.12.0, and TPU-trained large settings; the PyTorch instructions call comparable results preliminary, lack distributed training, and warn that large settings may not run locally. The snapshot has no exact PTB recipe or checkpoint, locked environment, immutable data manifest, paper seed mapping, checkpoint hashes, or programs for every analysis table. The code license is not transferred to downloaded datasets, cached artifacts, checkpoints, or paper text."
+    },
+    {
+      "id": "radford-2019-openai-report-full-text",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "Official full text of Language Models are Unsupervised Multitask Learners",
+      "url": "https://cdn.openai.com/better-language-models/language-models.pdf",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "radford-2019-openai-report-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 24
+      },
+      "accessNote": "The complete official report was rendered and inspected page-aware. It prints no folios, date, venue, report number, DOI, arXiv identifier, revision label, or reuse license, so evidence uses section, equation, table, figure, and paragraph anchors rather than PDF positions. Its SHA-256 was d9d852e2894556e73f53cb22b7c605a9643d6f0b19bf604b429ed6192fa24f4e when checked."
+    },
+    {
+      "id": "radford-2019-openai-announcement",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "OpenAI announcement and interim update for GPT-2",
+      "url": "https://openai.com/index/better-language-models/",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "radford-2019-openai-report-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The dated author page establishes public availability of the technical report on 14 February 2019 and now combines the original post with a clearly labeled May interim update. It is mutable and is used for chronology and release context, not as paginated technical-claim evidence."
+    },
+    {
+      "id": "radford-2019-gpt2-release-day-code-snapshot",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "Official GPT-2 release-day repository snapshot",
+      "url": "https://github.com/openai/gpt-2/tree/f46b1dd93ca3106dbf8204ad3d1d90dc7a8aaf62",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "radford-2019-openai-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "This immutable 14 February repository state contains inference and sampling code for only the smaller checkpoint, then labeled 117M, and says evaluation code may follow. It contains no license file, WebText training pipeline, benchmark evaluators, or larger checkpoint; the code release is not a new report version."
+    },
+    {
+      "id": "radford-2019-gpt2-six-month-follow-up",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "OpenAI GPT-2 six-month follow-up",
+      "url": "https://openai.com/index/gpt-2-6-month-follow-up/",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The dated 20 August 2019 page records release of the 774M checkpoint, model card, sharing agreement, and companion release report. One embedded timeline says January and April, conflicting with the page's own lead, the dated February announcement, repository commits, and companion report; those labels are not used."
+    },
+    {
+      "id": "radford-2019-gpt2-corrected-checkpoint-snapshot",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "Official GPT-2 corrected-checkpoint repository snapshot",
+      "url": "https://github.com/openai/gpt-2/tree/f35fa1d920e9d2d0690f66d03aa3f76b3c59230e",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "accessNote": "The immutable 20 August 2019 repository state releases the 774M checkpoint and says the report's original parameter counts were wrong. It uses corrected family labels 124M, 355M, and 774M at that release stage and includes a model card; these checkpoint labels do not revise the technical-report text."
+    },
+    {
+      "id": "radford-2019-gpt2-full-model-release",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "OpenAI full-model GPT-2 staged-release record",
+      "url": "https://openai.com/index/gpt-2-1-5b-release/",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The dated 5 November 2019 page records release of the rounded 1.5B family member and a detector. The checkpoint directory is labeled 1558M in official repository documentation; the model release is not a technical-report revision."
+    },
+    {
+      "id": "radford-2019-gpt2-modified-mit-license",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "Official GPT-2 Modified MIT License snapshot",
+      "url": "https://github.com/openai/gpt-2/blob/0f97760ebe1ccad5778a6d5957b2be9800e4efd8/LICENSE",
+      "accessDate": "2026-08-26",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "accessNote": "This January 2020 file postdates the report and release-day repository state and is titled Modified MIT License. Its software terms and request about generated content are not treated as a report license, a WebText license, a license for third-party excerpts, or a standalone checkpoint-rights manifest."
+    },
+    {
+      "id": "solaiman-2019-release-strategies-v2-full-text",
+      "relatedWorkIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "title": "Release Strategies and the Social Impacts of Language Models, arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1908.09203v2",
+      "accessDate": "2026-08-26",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 71
+      },
+      "accessNote": "The separately titled companion work's 71-leaf second arXiv revision documents the completed February, May, August, and November checkpoint-release sequence near its opening. The PDF does not carry one stable printed 1–71 folio sequence, so any future evidence must use structural locators rather than PDF leaf numbers. It is evidence about GPT-2 release history, not a version of Language Models are Unsupervised Multitask Learners."
+    },
+    {
       "id": "acl-2016-plus-rights-policy",
       "relatedWorkIds": [
         "peters-2017-deep-contextualized-word-representations",
         "howard-ruder-2018-universal-language-model-fine-tuning",
-        "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+        "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
       ],
       "title": "ACL Anthology copyright and licensing policy",
       "url": "https://aclanthology.org/faq/copyright/",
-      "accessDate": "2026-08-25",
+      "accessDate": "2026-08-26",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
         "peters-2018-naacl-version",
         "howard-ruder-2018-acl-version",
-        "devlin-2019-naacl-version"
+        "devlin-2019-naacl-version",
+        "dai-2019-acl-version"
       ],
       "supports": [
         "metadata"
       ],
-      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the three bound ACL or NAACL proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
+      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the four bound ACL or NAACL proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
     }
   ],
   "claims": [
@@ -33242,6 +34266,907 @@
         }
       ],
       "checkedDate": "2026-08-25"
+    },
+    {
+      "id": "dai-2019-version-boundary",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence"
+      ],
+      "statement": "Transformer-XL's arXiv family has three distinct revisions: v1 lists seven authors including William W. Cohen; v2 no longer lists Cohen, adds two pretraining references, and corrects an appendix caption; v3 retains six authors, adopts the camera-ready layout, and adds the generated-text section and samples while preserving the audited mechanism and benchmark values. The ACL main paper and official supplement carry the v3 technical content as a separate proceedings artifact.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Initial author list, technical content, references, and appendix caption",
+            "section": "Title page; 3 Model; 4 Experiments; References; Appendix D",
+            "figure": "6 caption"
+          },
+          "support": "Version 1 prints the seven-author list and the initial reference and appendix states alongside the complete mechanism and result account."
+        },
+        {
+          "sourceId": "dai-2019-arxiv-v2-full-text",
+          "locator": {
+            "label": "Second-revision author, reference, and caption state",
+            "section": "Title page; References; Appendix D",
+            "figure": "6 caption"
+          },
+          "support": "Version 2 prints the six-author list, added Dai–Le and Radford references, and corrected head-78 caption."
+        },
+        {
+          "sourceId": "dai-2019-arxiv-v3-full-text",
+          "locator": {
+            "label": "Camera-ready revision and added generation material",
+            "section": "Complete manuscript; 4.4 Generated Text; Appendix E",
+            "table": "11–13"
+          },
+          "support": "Version 3 retypesets the paper and adds the generation section and samples while retaining the inspected method and quantitative values."
+        },
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Canonical main article, printed pp. 2978–2988",
+            "section": "Complete proceedings article",
+            "pageStart": 2978,
+            "pageEnd": 2988
+          },
+          "support": "The canonical main paper supplies the proceedings identity and printed folios."
+        },
+        {
+          "sourceId": "dai-2019-acl-supplement",
+          "locator": {
+            "label": "Canonical supplementary appendices",
+            "section": "Appendices A–E"
+          },
+          "support": "The official supplement carries the appendices and generated samples paired with the ACL main paper."
+        }
+      ],
+      "limitations": [
+        "The observed metadata and content changes do not explain why the author list changed.",
+        "ArXiv v3 and the ACL main-plus-supplement pair are technically aligned but remain separately identified artifacts with different pagination."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No inspected primary source states the reason for William W. Cohen's removal.",
+          "resolutionCondition": "A version-bound statement from an author or repository maintainer would be required to explain the change."
+        }
+      ],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-transformer-antecedent-and-scope-boundary",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "segment-level-hidden-state-recurrence",
+        "relative-positional-self-attention"
+      ],
+      "statement": "Transformer-XL explicitly extends the Transformer architecture for language modeling: its baseline uses masked multi-head self-attention and position-wise computation, while its target changes cross-segment state access and positional scoring.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Transformer basis and scoped architectural changes, printed pp. 2978–2982",
+            "section": "1 Introduction; 3.1 Vanilla Transformer Language Models; 3.2 Segment-Level Recurrence with State Reuse; 3.3 Relative Positional Encodings",
+            "pageStart": 2978,
+            "pageEnd": 2982,
+            "figure": "1–2"
+          },
+          "support": "The target names the Transformer architecture, derives its language-model baseline from standard self-attention, cites Vaswani et al., and defines the added recurrence and positional score."
+        }
+      ],
+      "limitations": [
+        "The edge-worthy continuity is the attention-based Transformer substrate, not the original paper's full translation system; that scope is an editorial boundary rather than a direct quotation.",
+        "Transformer-XL's recurrence and relative-position score remain target mechanisms rather than claims about the source paper.",
+        "Relative-position research cited by the target requires separate antecedent audits before more direct edges are added."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-fixed-segment-context-fragmentation",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "fixed-segment-context-fragmentation"
+      ],
+      "statement": "In the paper's vanilla Transformer-language-model setup, independent contiguous training segments prevent cross-segment information flow, limit training dependencies to the segment length, deprive early positions of preceding context, and require overlapping-window recomputation during evaluation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Fixed-segment training and evaluation problems, printed pp. 2978–2980",
+            "section": "1 Introduction; 3.1 Vanilla Transformer Language Models",
+            "pageStart": 2978,
+            "pageEnd": 2980,
+            "figure": "1"
+          },
+          "support": "The paper defines context fragmentation in training and repeated computation in the sliding evaluation procedure."
+        }
+      ],
+      "limitations": [
+        "The statement describes the Al-Rfou-style segmented baseline formalized by the paper, not every Transformer implementation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-segment-level-recurrence",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory"
+      ],
+      "statement": "At layer n, Transformer-XL caches the preceding segment's layer-(n−1) hidden-state sequence, detaches it from the gradient graph, concatenates it with the current layer-(n−1) states, and uses current-segment queries with keys and values drawn from that extended sequence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Stop-gradient recurrent cache and extended attention, printed pp. 2980–2981",
+            "section": "3.2 Segment-Level Recurrence with State Reuse",
+            "pageStart": 2980,
+            "pageEnd": 2981,
+            "equation": "Segment recurrence and extended key/value equations",
+            "figure": "2"
+          },
+          "support": "The displayed computation and diagram specify the cached state, stop-gradient operator, concatenation, and current-query/extended-key-value flow."
+        }
+      ],
+      "limitations": [
+        "The cache stores a bounded sequence of activations, not trainable memory slots or the full token history.",
+        "The method does not backpropagate through cached prior segments."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-detached-memory-and-receptive-path",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory"
+      ],
+      "statement": "Cross-segment information shifts down one layer for each segment, giving the paper's maximum reachable dependency order O(NL) for N layers and segment length L. A cache of M states can cover multiple earlier segments, with M=L in training experiments and larger memory permitted at evaluation, while gradients remain inside the current segment.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Layer-shifted receptive path and memory-length scope, printed p. 2981",
+            "section": "3.2 Segment-Level Recurrence with State Reuse",
+            "pageStart": 2981,
+            "pageEnd": 2981,
+            "figure": "2"
+          },
+          "support": "The paper describes the layerwise cross-segment path, O(NL) reach, memory length M, training setting, and evaluation extension."
+        }
+      ],
+      "limitations": [
+        "Architectural reach is not evidence that any particular long dependency was learned or used.",
+        "The forward receptive path and gradient path have different lengths because the cache is detached."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-relative-positional-attention",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "relative-positional-self-attention"
+      ],
+      "statement": "Reusing absolute position indices across cached and current segments makes equal indices temporally ambiguous. Transformer-XL instead scores a query–key pair with four terms combining content–content affinity, content-dependent relative position, a global content bias u, and a global position bias v, using fixed sinusoidal relative-distance vectors with separate content and position projections.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Temporal-confusion diagnosis and four-term relative score, printed pp. 2981–2982",
+            "section": "3.3 Relative Positional Encodings",
+            "pageStart": 2981,
+            "pageEnd": 2982,
+            "equation": "Absolute-score decomposition and relative-score reparameterization"
+          },
+          "support": "The target contrasts repeated absolute positions with relative distances and identifies all four score components and their parameters."
+        }
+      ],
+      "limitations": [
+        "The relative distance vectors are sinusoidal rather than learned table entries.",
+        "The paper explicitly cites earlier relative-position attention work; this claim does not assign priority."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-relative-shift-computation",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "relative-positional-self-attention",
+        "relative-shift-computation"
+      ],
+      "statement": "The appendix projects the M+L unique relative-distance vectors once to form Q, computes current-query scores qQᵀ, and left-shifts those score rows into the required query-specific distance ordering, making this relative-position projection path linear rather than separately projecting every query–key pair.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-supplement",
+          "locator": {
+            "label": "Relative-position projection and left-shift procedure",
+            "section": "Appendix B Efficient Computation of the Attention with Relative Positional Embedding"
+          },
+          "support": "The appendix derives the shared projection matrix and row-shift arrangement."
+        }
+      ],
+      "limitations": [
+        "Only the relative-position projection is made linear in sequence length; full dense attention still forms query-by-context scores."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-language-model-benchmark-results",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence",
+        "relative-positional-self-attention"
+      ],
+      "statement": "The canonical paper reports 18.3 perplexity on WikiText-103 with 257M parameters and attention length 384 in training and 1,600 in evaluation; 0.99 bits per character on enwik8 and 1.08 on text8 with 277M parameters; 21.8 perplexity on One Billion Word with 0.8B parameters; and 54.52 perplexity on Penn Treebank with 24M parameters using variational dropout and weight averaging but not two-step fine-tuning.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Conditioned benchmark values, printed pp. 2983–2984",
+            "section": "4.1 Main Results",
+            "pageStart": 2983,
+            "pageEnd": 2984,
+            "table": "1–5"
+          },
+          "support": "The five tables print the model sizes, metrics, datasets, and reported values."
+        }
+      ],
+      "limitations": [
+        "Comparator rows come from heterogeneous training procedures and parameter counts rather than matched reruns.",
+        "Penn Treebank's 54.52 value is scoped to the no-two-step-fine-tuning comparison and includes the stated variational-dropout and weight-averaging recipe; the table includes a 54.44 comparator using two-step fine-tuning.",
+        "No repeat counts, intervals, or significance tests accompany the promoted values."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-wikitext-recurrence-and-position-ablation",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "fixed-segment-context-fragmentation",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention"
+      ],
+      "statement": "On WikiText-103, the 128M full-loss setting reports best perplexity 26.77 with recurrence and the proposed relative encoding, 27.94 with recurrence and Shaw encoding, and 29.02 without recurrence under the proposed encoding. The 151M model improves from 23.43 at its initial length to 23.09 at attention length 640; the same-memory supplement reports 26.77 with recurrence/backpropagation length 128 versus 27.98 without recurrence/backpropagation length 176.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "WikiText-103 recurrence, position, loss-window, and attention-length ablation, printed pp. 2984–2985",
+            "section": "4.2 Ablation Study",
+            "pageStart": 2984,
+            "pageEnd": 2985,
+            "table": "6"
+          },
+          "support": "Table 6 separates recurrence, position formulation, full versus half loss, and tested attention lengths."
+        },
+        {
+          "sourceId": "dai-2019-acl-supplement",
+          "locator": {
+            "label": "Same-memory recurrence comparison",
+            "section": "Appendix A Ablation Study with Memory Constraints",
+            "table": "10"
+          },
+          "support": "The supplementary table compares recurrence and no-recurrence settings under its stated memory constraint."
+        }
+      ],
+      "limitations": [
+        "The rows are reported points without variance or a complete execution package.",
+        "Changing recurrence, position encoding, loss span, attention span, and memory budget across rows prevents a single universal effect estimate."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-short-context-recurrence-ablation",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "fixed-segment-context-fragmentation",
+        "segment-level-hidden-state-recurrence",
+        "relative-positional-self-attention"
+      ],
+      "statement": "After 400,000 training steps on the sentence-shuffled One Billion Word setup, the 20-layer approximately 0.3B-parameter model reports 25.2 perplexity with recurrence and the proposed relative encoding, 25.7 with Shaw encoding, and 27.1 without recurrence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Sentence-shuffled One Billion Word ablation, printed p. 2985",
+            "section": "4.2 Ablation Study",
+            "pageStart": 2985,
+            "pageEnd": 2985,
+            "table": "7"
+          },
+          "support": "The table prints the three conditioned perplexities for the shuffled-sentence dataset."
+        }
+      ],
+      "limitations": [
+        "Sentence shuffling removes cross-sentence order but not every long or structured within-sentence dependency, so the result does not establish a dependency-free dataset.",
+        "The source reports single values without dispersion."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-effective-context-definition-and-results",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence",
+        "relative-effective-context-length"
+      ],
+      "statement": "Relative effective context length compares each model group's context-dependent loss reduction against a shared short-context baseline, optionally on the hardest fraction r of positions, and stops when the next context increment improves by less than 1%. Table 8 reports 151M Transformer-XL lengths 900/800/700 for r=0.1/0.5/1.0, versus QRNN 500/400/300 and LSTM 400/300/200; its separate 128M group reports 700/600/500 versus vanilla Transformer's 128/128/128.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "RECL overview and reported lengths, printed p. 2985",
+            "section": "4.3 Relative Effective Context Length",
+            "pageStart": 2985,
+            "pageEnd": 2985,
+            "table": "8"
+          },
+          "support": "The main paper states the thresholded interpretation and prints the two model groups and their context lengths."
+        },
+        {
+          "sourceId": "dai-2019-acl-supplement",
+          "locator": {
+            "label": "Formal RECL procedure and sensitivity plots",
+            "section": "Appendix C Details About RECL",
+            "figure": "3–4"
+          },
+          "support": "The appendix defines the shared baseline, difficult-position selection, relative improvement, and stopping rule."
+        }
+      ],
+      "limitations": [
+        "The paper's 80% comparison uses 900 versus QRNN 500, while its 450% comparison uses the separate 128M group, 700 versus 128.",
+        "RECL depends on r, model grouping, context increment, baseline, and threshold; it is not literal storage capacity or causal proof of learned dependencies."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-evaluation-speed-results",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence"
+      ],
+      "statement": "Measured as per-token evaluation time on one GPU, Table 9 reports the Al-Rfou-style vanilla evaluator as 363×, 773×, 1,409×, and 1,874× slower than Transformer-XL at attention lengths 800, 1,800, 2,800, and 3,800 respectively.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Per-token one-GPU evaluation comparison, printed pp. 2985–2986",
+            "section": "4.5 Evaluation Speed",
+            "pageStart": 2985,
+            "pageEnd": 2986,
+            "table": "9"
+          },
+          "support": "The section identifies the per-token, one-GPU denominator and Table 9 prints all four attention-length ratios."
+        }
+      ],
+      "limitations": [
+        "The GPU model, implementation parity, repeat count, and timing protocol are not reported.",
+        "The result is evaluation-only and does not generalize to training or modern cached baselines."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-generated-text-boundary",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence"
+      ],
+      "statement": "In arXiv v3 and the ACL pair, the generation evidence uses WikiText-103 test seeds of at most 512 tokens, top-40 renormalized sampling, and three generated examples—500, 500, and 1,000 tokens—stated to be presented in generation order without cherry-picking; the paper notes hallucinated facts and off-target content.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 generation summary, protocol, samples, and caveats",
+            "section": "4.4 Generated Text; Appendix E Generated Text",
+            "table": "11–13"
+          },
+          "support": "Version 3 contains the qualitative summary and the appendix's seed, sampling, sample-length, selection, and hallucination details."
+        },
+        {
+          "sourceId": "dai-2019-acl-supplement",
+          "locator": {
+            "label": "Three generated samples and visible errors",
+            "section": "Appendix E Generated Text",
+            "table": "11–13"
+          },
+          "support": "The supplement prints the three conditioned samples used by the main-text discussion."
+        }
+      ],
+      "limitations": [
+        "Three samples without human evaluation, a memorization audit, repeat runs, or text beyond 1,000 generated tokens do not establish representative long-form quality."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "dai-2019-code-and-evidence-boundary",
+      "workId": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence",
+        "relative-positional-self-attention"
+      ],
+      "statement": "The canonical paper links the official implementation, but the complete paper and supplement do not identify random seeds, repeat counts, confidence intervals, checkpoint hashes, dataset hashes, an exact timing environment, or a table-by-table reconstruction manifest.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Repository link and main-paper evidence boundary, printed pp. 2978–2988",
+            "section": "1 Introduction; 4 Experiments; complete article",
+            "pageStart": 2978,
+            "pageEnd": 2988
+          },
+          "support": "The article links the repository and gives experiment descriptions but omits the listed immutable and uncertainty artifacts."
+        },
+        {
+          "sourceId": "dai-2019-acl-supplement",
+          "locator": {
+            "label": "Complete supplementary evidence boundary",
+            "section": "Appendices A–E"
+          },
+          "support": "The supplement adds ablation, RECL, visualization, and sample detail without supplying the listed reconstruction artifacts."
+        }
+      ],
+      "limitations": [
+        "Absence is limited to the inspected complete paper artifacts and does not imply that private logs or later community reproductions do not exist.",
+        "The separate code source documents available implementation artifacts but is not substituted for paper evidence."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No complete immutable official experiment package was identified.",
+          "resolutionCondition": "An author-maintained release mapping data, preprocessing, seeds, code, checkpoints, and evaluations to every paper result would resolve the boundary."
+        }
+      ],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-autoregressive-objective",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling"
+      ],
+      "statement": "The intended training objective factorizes text left to right and maximizes the conditional likelihood of each next token given its preceding tokens. In the displayed Equation 1, the product is indexed by i while the factors remain written with n, a notation error preserved as an evidence caveat.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Autoregressive factorization and printed index mismatch",
+            "section": "2 Approach",
+            "equation": "1"
+          },
+          "support": "The prose defines next-symbol conditional likelihood and the displayed product visibly mixes dummy indices i and n."
+        }
+      ],
+      "limitations": [
+        "The claim records the intended chain-rule objective without silently rewriting the source equation.",
+        "The predicted units are byte-level BPE tokens rather than literal words."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-natural-language-task-conditioning",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer"
+      ],
+      "statement": "The report represents a task, its input, and its output as text and hypothesizes that sufficiently varied language-model training can induce task behavior from naturally occurring demonstrations. Its downstream evaluations leave parameters and architecture unchanged but may use task strings, examples, candidate rules, filters, or decoding procedures.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Task-formatted sequences, toy argument, hypothesis, and evaluation boundary",
+            "section": "2 Approach; 3 Experiments",
+            "table": "1"
+          },
+          "support": "The report formalizes task/input/output text sequences, labels the global-minimum argument a toy setting, and states that evaluation uses no parameter or architecture modification."
+        }
+      ],
+      "limitations": [
+        "The hypothesis is not a theorem about general multitask learning, and the report says implicit learning is slower than explicit supervision.",
+        "Zero-shot in this report means no task-specific model training, not consistently no examples or no task-specific inference procedure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-webtext-construction",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "webtext-pretraining-corpus-construction"
+      ],
+      "statement": "WebText was built from outbound Reddit links receiving at least three karma: 45 million eligible links were scraped, page text was extracted with Dragnet and Newspaper, links after December 2017 were excluded, Wikipedia documents were removed, and deduplication plus heuristic cleaning produced a preliminary corpus of slightly over eight million documents and 40 GB of text.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "WebText selection, extraction, filtering, and preliminary size",
+            "section": "2.1 Training Dataset"
+          },
+          "support": "The dataset section provides the community threshold, link and document counts, tools, cutoff, exclusion, cleaning, and size."
+        }
+      ],
+      "limitations": [
+        "Forty-five million is the eligible-link count, not the final document count.",
+        "The selection target is linked web pages rather than Reddit comments.",
+        "The full corpus, URL manifest, extraction outputs, split, and rights record were not released."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-byte-level-bpe",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "byte-level-byte-pair-tokenization"
+      ],
+      "statement": "The tokenizer uses UTF-8 bytes as a 256-symbol base and applies byte-pair merges while restricting merges across character categories except for spaces, yielding a 50,257-item vocabulary that can assign probability to any Unicode string without an unknown-token fallback.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Byte-level BPE construction and vocabulary",
+            "section": "2.2 Input Representation; 2.3 Model"
+          },
+          "support": "The report defines the byte base, invertibility goal, character-category restriction, and final vocabulary size."
+        }
+      ],
+      "limitations": [
+        "Vocabulary items can merge multiple bytes, so byte-level does not mean one raw byte per model token.",
+        "The report's claim of assigning probability to any Unicode string assumes the stated reversible UTF-8 representation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-gpt-continuity-and-model-changes",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings",
+        "decoder-only-transformer-language-modeling"
+      ],
+      "statement": "The target says its Transformer largely follows OpenAI GPT and that the smallest configuration is equivalent to that predecessor. It moves layer normalization to each sub-block input, adds a final layer normalization, scales residual-layer initialization by 1/√N, expands context from 512 to 1,024 tokens, and uses batch size 512 while retaining the causal decoder-style attention substrate.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "GPT continuity, architectural changes, and smallest-model equivalence",
+            "section": "2.3 Model; 3 Experiments",
+            "table": "2"
+          },
+          "support": "The target explicitly states the GPT basis, lists its changes, and equates the smallest configuration with the earlier GPT."
+        }
+      ],
+      "limitations": [
+        "The edge-worthy continuity does not move WebText, byte-level BPE, the four-size study, 1,024-token context, prompt evaluations, or release policy backward into GPT 2018.",
+        "The report does not restate every inherited implementation detail, so details not printed in the target are not promoted through this claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-model-configurations-and-training",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "The report trains four approximately log-uniform configurations on the same WebText corpus: 12 layers/768 hidden under label 117M, 24/1024 under 345M, 36/1280 under 762M, and 48/1600 under 1542M. Each learning rate was manually selected on a 5% held-out WebText sample, and all four remained underfit with held-out performance still improving alongside training performance.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Four configurations, held-out tuning, and underfitting account",
+            "section": "2.3 Model; 3 Experiments; 4 Generalization versus Memorization",
+            "table": "2",
+            "figure": "4"
+          },
+          "support": "Table 2 prints layer and hidden sizes under report-era labels; the experiment and generalization sections state the shared corpus, manual held-out tuning, and underfitting interpretation."
+        }
+      ],
+      "limitations": [
+        "The report-era parameter labels were later corrected for released checkpoints and are retained here only as source-specific table labels.",
+        "No per-model learning rates, optimizer schedule, update counts, training tokens, compute, or seeds are supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-language-model-benchmark-results",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "zero-shot-generative-task-transfer",
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "The 1542M report configuration records LAMBADA perplexity 8.63 and filtered accuracy 63.24, CBT common-noun 93.30 and named-entity 89.05 accuracy, WikiText-2 perplexity 18.34, Penn Treebank 35.76, enwik8 0.93 bits per byte, text8 0.98 bits per character, WikiText-103 perplexity 17.48, and One Billion Word 42.16. The text groups these as record results on seven of eight language-model datasets, with One Billion Word the exception.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Largest-configuration language-model matrix and dataset grouping",
+            "section": "3.1 Language Modeling",
+            "table": "3"
+          },
+          "support": "The table prints all metrics and values; the accompanying text states the seven-of-eight dataset grouping and 1BW exception."
+        }
+      ],
+      "limitations": [
+        "The seven-of-eight statement counts datasets, not the ten displayed metric columns.",
+        "LAMBADA 63.24 uses a stop-word filter as an approximation to the end-of-sentence constraint, and invertible test-set detokenizers improve some perplexities by 2.5–5 points.",
+        "Comparator values are imported from heterogeneous studies rather than matched reruns."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-lambada-cbt-and-winograd-results",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer",
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "For CBT, the report scores each of ten candidate words together with the sentence remainder, conditioned on the passage, and selects the highest-probability choice. Because The Jungle Book appears in WebText, CBT is evaluated on validation and reports 93.3 common-noun and 89.1 named-entity accuracy. LAMBADA reports 52.66% unconstrained accuracy and 63.24% after a stop-word filter used to approximate its end-of-sentence constraint, with perplexity about 8.6. Winograd reports 70.70% under partial scoring on 273 examples and is explicitly presented with caution.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "CBT contamination response, LAMBADA filter, and Winograd scope",
+            "section": "3.2 Children's Book Test; 3.3 LAMBADA; 3.4 Winograd Schema Challenge",
+            "table": "3",
+            "figure": "3"
+          },
+          "support": "The report states the CBT split choice, distinguishes raw and filtered LAMBADA accuracy, and gives the small Winograd sample and result."
+        }
+      ],
+      "limitations": [
+        "The filtered LAMBADA accuracy is not an unconstrained-generation result, and the prior system used a different candidate restriction.",
+        "Figure 3 plots both full-sentence and partial-continuation scoring; 70.70 applies to the partial curve, while the exact full-score endpoint is not tabulated.",
+        "The 273-example Winograd set is too small for a broad capability conclusion."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-coqa-and-summarization-results",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer",
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "On CoQA development, greedy decoding from document, conversation history, and an A: marker gives 55 F1 without the 127,000-plus task training pairs, while the report cites supervised BERT near 89 and notes shallow retrieval-like behavior. For summarization, appending TL;DR:, sampling 100 tokens with top-k k=2, and retaining three sentences yields ROUGE average 21.40 versus 20.98 for random three sentences and 32.75 for bottom-up summarization; removing the hint gives 15.03.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "CoQA conditioning and bounded F1; summarization prompt, decoding, and comparison",
+            "section": "3.5 Reading Comprehension; 3.6 Summarization",
+            "table": "4"
+          },
+          "support": "The two sections specify input formats, decoding rules, metrics, baselines, caveats, and prompt-removal result."
+        }
+      ],
+      "limitations": [
+        "Approximately 15% of CoQA news documents occur in WebText, so the overall F1 is not contamination-free.",
+        "The summarization result is close to the random-sentence baseline and far below the strongest displayed system; it mainly demonstrates prompt sensitivity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-translation-and-natural-questions-results",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer",
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "With English–French example pairs and greedy decoding, the report gives 5 BLEU for English→French and 11.5 for French→English on WMT14; it compares the 11.5 French→English result with 33.5 BLEU for the cited current-best unsupervised system. With example question–answer pairs, Natural Questions reaches 4.1% exact match overall and 63.1% for the most-confident 1%, while cited retrieval-plus-reader systems reach 30–50% overall.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Demonstration-conditioned translation and question answering",
+            "section": "3.7 Translation; 3.8 Question Answering",
+            "table": "5"
+          },
+          "support": "The report specifies the example formats, decoding, task datasets, overall values, confidence slice, and comparison ranges."
+        }
+      ],
+      "limitations": [
+        "These tasks receive demonstrations and therefore are not zero-example evaluations.",
+        "The 63.1% Natural Questions confidence slice covers only 1% of questions and cannot replace 4.1% overall exact match.",
+        "Non-English pages were deliberately filtered from WebText, and the report estimates only about 10 MB of French remained."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-scale-and-underfitting-analysis",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "zero-shot-generative-task-transfer",
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "Figures 1 and 4 associate greater model capacity with broad improvement on several task-conditioned behaviors and with WebText training and held-out performance improving together. The printed matrix is not universally monotonic: summarization weakens slightly at the largest step and CBT common-noun accuracy changes from 93.45 at 762M to 93.30 at 1542M.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Capacity trends, underfitting evidence, and nonmonotonic task rows",
+            "section": "1 Introduction; 3 Experiments; 3.2 Children's Book Test; 3.6 Summarization; 4 Generalization versus Memorization",
+            "table": "3–4",
+            "figure": "1 and 4"
+          },
+          "support": "The figures show capacity trends and train/held-out curves, while Tables 3 and 4 contain the stated nonmonotonic values."
+        }
+      ],
+      "limitations": [
+        "The four configurations do not form a compute-matched scaling law and leave training details incomplete.",
+        "The figures do not establish universal monotonic improvement or a causal decomposition of data, parameters, and optimization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-overlap-analysis",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "webtext-pretraining-corpus-construction"
+      ],
+      "statement": "Across the six language-model datasets in Table 6, a lowercased alphanumeric 8-gram Bloom-filter analysis reports that an average 3.2% of test-set 8-grams overlap WebText, versus 5.9% overlap with each benchmark's own training set. About 15% of CoQA news documents occur in WebText and score roughly three F1 higher, for an estimated 0.5–1.0 overall F1 gain; removing every LAMBADA example with detected overlap changes perplexity 8.6→8.7 and filtered accuracy 63.2→62.9.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "8-gram overlap method, dataset matrix, and CoQA/LAMBADA controls",
+            "section": "4 Generalization versus Memorization",
+            "table": "6"
+          },
+          "support": "The section defines the normalized 8-gram procedure and reports the averages and task-specific sensitivity analyses."
+        }
+      ],
+      "limitations": [
+        "The detector cannot rule out shorter, fuzzy, semantic, or paraphrastic memorization.",
+        "The Bloom filter, match list, and exact WebText snapshot were not released for independent reconstruction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-generation-and-memorization-boundary",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "webtext-pretraining-corpus-construction"
+      ],
+      "statement": "The report demonstrates greedy continuation of the Gettysburg Address after a prefix when that speech occurs roughly 40 times in WebText, with sampled text usually drifting after 100–200 tokens. Figure 5 reports more than 30% of top-k-40 samples with no detected training 8-gram overlap and a 2.6% median overlap for held-out WebText articles; one widely highlighted unicorn article is explicitly selected from ten samples.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Common-text recovery, overlap distribution, sample-selection boundary, and generated examples",
+            "section": "4 Generalization versus Memorization; 8.2 Memorization; Appendix A Samples",
+            "figure": "5",
+            "table": "7–17"
+          },
+          "support": "The report describes common-text recovery and drift, plots 8-gram overlap, labels random versus selected samples, and prints both successful and failed examples."
+        }
+      ],
+      "limitations": [
+        "No detected 8-gram overlap does not prove absence of memorization.",
+        "Selected or small sample sets do not establish representative human-level writing quality."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "radford-2019-code-data-and-evidence-boundary",
+      "workId": "radford-2019-language-models-unsupervised-multitask-learners",
+      "ideaIds": [
+        "webtext-pretraining-corpus-construction",
+        "model-scale-zero-shot-transfer"
+      ],
+      "statement": "The technical report points to preliminary code for downloading and using a small model, but the complete report does not supply full WebText, training code, optimizer or schedule details, per-model learning rates, update counts, training tokens, compute, seeds, checkpoint hashes, benchmark evaluators, overlap artifacts, prediction files, or repeated-run uncertainty.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Preliminary small-model code note and complete-report evidence boundary",
+            "section": "7 Conclusion, footnote 5; complete report"
+          },
+          "support": "The paper links preliminary small-model use code but omits the listed data, training, evaluation, artifact, and uncertainty details throughout the complete report."
+        }
+      ],
+      "limitations": [
+        "The official repository later enables inference and sampling for all four checkpoints; those later releases do not reconstruct the original training or benchmark pipeline.",
+        "Absence is limited to inspected official artifacts and does not imply that private logs or independent community implementations do not exist."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No complete immutable official training and evaluation package was identified.",
+          "resolutionCondition": "A release binding WebText, preprocessing, training code, seeds, checkpoints, task prompts, evaluators, predictions, and overlap artifacts would be required for exact reconstruction."
+        }
+      ],
+      "checkedDate": "2026-08-26"
     }
   ],
   "relationships": [
@@ -36092,6 +38017,131 @@
           "note": "The paper documents awareness and contrast but does not establish that ELMo caused BERT's design; this `addresses` edge must remain noncausal."
         }
       ]
+    },
+    {
+      "id": "vaswani-2017-to-dai-2019",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Transformer-XL explicitly adds segment recurrence to the Transformer architecture, derives its language-model baseline from standard masked self-attention, cites Vaswani et al., and adapts the sinusoidal position construction into relative-distance scoring. The edge retains masked multi-head self-attention and position-wise computation while keeping cached-state recurrence and the four-term relative score target-specific; it does not transfer the source-conditioned encoder–decoder task into Transformer-XL.",
+      "claimIds": [
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-positional-encoding",
+        "vaswani-2017-positionwise-computation",
+        "dai-2019-transformer-antecedent-and-scope-boundary",
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-relative-positional-attention"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "dai-2019-acl-full-text",
+          "locator": {
+            "label": "Target-side Transformer attribution, retained substrate, and architectural changes, printed pp. 2978–2982",
+            "section": "1 Introduction; 3.1 Vanilla Transformer Language Models; 3.2 Segment-Level Recurrence with State Reuse; 3.3 Relative Positional Encodings",
+            "pageStart": 2978,
+            "pageEnd": 2982,
+            "figure": "1–2"
+          },
+          "support": "The target names and cites the Transformer, formulates its masked self-attention baseline, and separates inherited computation from the added cache and relative score."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target explicitly documents the architectural basis; relative-position antecedents beyond Vaswani's sinusoidal construction require their own audits and are not assigned through this edge."
+        }
+      ]
+    },
+    {
+      "id": "radford-2018-to-radford-2019",
+      "from": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "to": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The target says its model largely follows OpenAI GPT and calls its smallest configuration equivalent to that predecessor, carrying forward the causal decoder-style Transformer language-model substrate. It changes normalization placement and initialization, expands context, switches to byte-level BPE and WebText, scales across four configurations, and evaluates task behavior without fine-tuning; those target-specific mechanisms, data, results, and release choices do not move backward into GPT 2018.",
+      "claimIds": [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-pretraining-data-and-optimization",
+        "radford-2018-zero-shot-probes",
+        "radford-2019-gpt-continuity-and-model-changes",
+        "radford-2019-byte-level-bpe",
+        "radford-2019-natural-language-task-conditioning"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Target-side GPT continuity, equivalence, and scoped changes",
+            "section": "2.3 Model; 3 Experiments",
+            "table": "2"
+          },
+          "support": "The target states that it largely follows GPT, enumerates changes, and identifies the smallest configuration as equivalent to the earlier model."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge records direct target-side continuity and not a claim that GPT 2018 contained GPT-2's corpus, tokenizer, scale, prompting results, or staged-release policy."
+        }
+      ]
+    },
+    {
+      "id": "vaswani-2017-to-radford-2019",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "The report explicitly describes the model as Transformer-based, cites Vaswani et al., and reaches that architecture through the GPT continuation. The edge records causal masked multi-head self-attention and position-wise computation as the nonrecurrent sequence substrate; it excludes the source encoder, encoder–decoder attention, translation objective, sinusoidal default positions, and every GPT-2-specific data, tokenizer, scale, task, and release choice.",
+      "claimIds": [
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-positionwise-computation",
+        "radford-2019-autoregressive-objective",
+        "radford-2019-gpt-continuity-and-model-changes"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "radford-2019-openai-report-full-text",
+          "locator": {
+            "label": "Target-side Transformer basis and GPT-mediated architecture continuity",
+            "section": "2 Approach; 2.3 Model; References"
+          },
+          "support": "The target calls its language model Transformer-based, cites Vaswani et al., and states that its concrete stack largely follows GPT with scoped changes."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The direct edge preserves the target's explicit citation while the GPT-to-GPT-2 edge records the closer implementation lineage; neither edge assigns Transformer mechanisms to GPT-2-specific evaluation or release policy."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -38487,6 +40537,154 @@
         "Versioned scholarly evidence, structural PDF anchors, publication rights, and implementation provenance"
       ],
       "successCriterion": "The learner can write the selected-token and NSP losses, compute the effective 12%/1.5%/1.5% input replacement rates, trace BERTBase and BERTLarge dimensions, distinguish packed joint self-attention from independent encoding, reproduce Tables 1–8 under their conditions, identify the Table 5 and 6 confounds, and keep v1, v2, NAACL, ACL-rights, and code claims source-bound."
+    },
+    {
+      "id": "beginner-dai-2019-carry-context-across-segments",
+      "mode": "beginner",
+      "objective": "Follow one hidden representation across a window boundary, see why repeated absolute positions become ambiguous, and use relative distance to understand how Transformer-XL reuses a bounded past without becoming an unlimited or LSTM-style memory.",
+      "workIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "ideaIds": [
+        "fixed-segment-context-fragmentation",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention",
+        "relative-effective-context-length"
+      ],
+      "claimIds": [
+        "dai-2019-fixed-segment-context-fragmentation",
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-detached-memory-and-receptive-path",
+        "dai-2019-relative-positional-attention",
+        "dai-2019-wikitext-recurrence-and-position-ablation",
+        "dai-2019-effective-context-definition-and-results"
+      ],
+      "prerequisites": [
+        "A Transformer reads tokens through self-attention inside a bounded window",
+        "A hidden representation differs from a model parameter",
+        "Absolute position and relative distance",
+        "Lower perplexity or bits per character indicates better prediction under a fixed evaluation setup"
+      ],
+      "successCriterion": "The learner can explain context fragmentation, trace current queries and cached keys/values, state where gradients stop, contrast cached activations with recurrent cells and external memory, explain why relative distance survives segment reuse, and interpret RECL as a thresholded comparison rather than literal memory capacity."
+    },
+    {
+      "id": "expert-dai-2019-recurrence-relative-attention-and-evidence",
+      "mode": "expert",
+      "objective": "Derive Transformer-XL's detached recurrence, layer-shifted receptive path, four-term relative score, and relative-shift implementation; then audit the benchmark, recurrence, position, loss-window, same-memory, RECL, timing, version, and reproducibility evidence under their exact conditions.",
+      "workIds": [
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "fixed-segment-context-fragmentation",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention",
+        "relative-shift-computation",
+        "relative-effective-context-length"
+      ],
+      "claimIds": [
+        "dai-2019-version-boundary",
+        "dai-2019-transformer-antecedent-and-scope-boundary",
+        "dai-2019-fixed-segment-context-fragmentation",
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-detached-memory-and-receptive-path",
+        "dai-2019-relative-positional-attention",
+        "dai-2019-relative-shift-computation",
+        "dai-2019-language-model-benchmark-results",
+        "dai-2019-wikitext-recurrence-and-position-ablation",
+        "dai-2019-short-context-recurrence-ablation",
+        "dai-2019-effective-context-definition-and-results",
+        "dai-2019-evaluation-speed-results",
+        "dai-2019-generated-text-boundary",
+        "dai-2019-code-and-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Causal multi-head self-attention, residual blocks, layer indexing, and stop-gradient computation",
+        "Absolute and sinusoidal position representations, bilinear scores, and tensor reshaping",
+        "Perplexity, bits per character, ablations, comparator controls, and thresholded metrics",
+        "Asymptotic projection versus dense-attention complexity",
+        "Versioned preprints, proceedings pagination, supplements, code provenance, and rights boundaries"
+      ],
+      "successCriterion": "The learner can write the current-query/extended-key-value equations, derive the O(NL) forward path without extending the gradient path, expand all four relative-score terms, implement the relative shift, reconstruct Tables 1–10 and RECL's stopping rule under their groups, identify the speed comparison's baseline and explain why its denominator is not exactly reproducible, and keep v1 authorship, v3 generation, ACL folios, code, and rights source-bound."
+    },
+    {
+      "id": "beginner-radford-2019-scale-and-zero-shot-transfer",
+      "mode": "beginner",
+      "objective": "Trace GPT-2 from next-token learning on selected web pages to task-shaped prompts and generated or scored answers without weight updates, while distinguishing no fine-tuning from no examples and comparing one strong, one weak, and one prompt-sensitive result.",
+      "workIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer",
+        "webtext-pretraining-corpus-construction",
+        "byte-level-byte-pair-tokenization",
+        "model-scale-zero-shot-transfer"
+      ],
+      "claimIds": [
+        "radford-2019-natural-language-task-conditioning",
+        "radford-2019-webtext-construction",
+        "radford-2019-byte-level-bpe",
+        "radford-2019-model-configurations-and-training",
+        "radford-2019-lambada-cbt-and-winograd-results",
+        "radford-2019-coqa-and-summarization-results",
+        "radford-2019-translation-and-natural-questions-results",
+        "radford-2019-overlap-analysis",
+        "radford-2019-generation-and-memorization-boundary"
+      ],
+      "prerequisites": [
+        "Next-token prediction and a trainable model parameter",
+        "A prompt can contain task words, an input, and examples",
+        "Accuracy, F1, BLEU, and perplexity describe different kinds of results",
+        "Training-data overlap can affect how an evaluation is interpreted"
+      ],
+      "successCriterion": "The learner can distinguish pretraining from explicit supervised multitask learning, explain that zero-shot here forbids task-specific updates but can include examples, identify report versus corrected checkpoint labels, state how WebText was selected, compare filtered and unfiltered or overall and confidence-slice results, and explain why overlap checks and selected samples do not prove generalization."
+    },
+    {
+      "id": "expert-radford-2019-webtext-objectives-results-and-releases",
+      "mode": "expert",
+      "objective": "Reconstruct the intended autoregressive objective, byte-level BPE pipeline, GPT-derived pre-layer-normalized stack, four report configurations, task-specific conditioning and scoring rules, overlap and memorization analyses, and release-artifact boundaries without moving claims across report, checkpoint, companion-report, data, code, or license scopes.",
+      "workIds": [
+        "radford-2019-language-models-unsupervised-multitask-learners"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "learned-absolute-sequence-position-embeddings",
+        "decoder-only-transformer-language-modeling",
+        "natural-language-task-conditioning",
+        "zero-shot-generative-task-transfer",
+        "webtext-pretraining-corpus-construction",
+        "byte-level-byte-pair-tokenization",
+        "model-scale-zero-shot-transfer"
+      ],
+      "claimIds": [
+        "radford-2019-autoregressive-objective",
+        "radford-2019-natural-language-task-conditioning",
+        "radford-2019-webtext-construction",
+        "radford-2019-byte-level-bpe",
+        "radford-2019-gpt-continuity-and-model-changes",
+        "radford-2019-model-configurations-and-training",
+        "radford-2019-language-model-benchmark-results",
+        "radford-2019-lambada-cbt-and-winograd-results",
+        "radford-2019-coqa-and-summarization-results",
+        "radford-2019-translation-and-natural-questions-results",
+        "radford-2019-scale-and-underfitting-analysis",
+        "radford-2019-overlap-analysis",
+        "radford-2019-generation-and-memorization-boundary",
+        "radford-2019-code-data-and-evidence-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive factorization, causal self-attention, residual initialization, pre-layer normalization, and learned positions",
+        "UTF-8 bytes, reversible mappings, BPE merges, and vocabulary accounting",
+        "Prompt demonstrations, likelihood scoring, greedy and top-k decoding, filters, and detokenization",
+        "Perplexity, bits per byte or character, accuracy, F1, ROUGE, BLEU, confidence slices, and contamination controls",
+        "Immutable code snapshots, model releases, companion works, software licenses, dataset rights, and source-bound terminology"
+      ],
+      "successCriterion": "The learner can repair Equation 1 while naming its printed index error, derive the byte-to-BPE and causal-stack computation, keep report configurations separate from corrected checkpoint labels, reconstruct the promoted task conditions and selected reported values, test the scale claim against nonmonotonic rows, audit 8-gram overlap and sample selection, defend the GPT and Transformer edges, and explain why released inference artifacts cannot reproduce WebText training or benchmark evaluation."
     }
   ]
 }
