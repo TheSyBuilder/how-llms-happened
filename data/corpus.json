@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-26",
+  "asOf": "2026-08-27",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -10169,6 +10169,428 @@
           "resolutionCondition": "A complete official release binding data, preprocessing, training code, seeds, checkpoints, prompts, evaluation programs, and predictions would be required for exact reconstruction."
         }
       ]
+    },
+    {
+      "id": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+      "authors": [
+        "Zhilin Yang",
+        "Zihang Dai",
+        "Yiming Yang",
+        "Jaime Carbonell",
+        "Ruslan Salakhutdinov",
+        "Quoc V. Le"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "Z. Yang, Z. Dai, Y. Yang, J. Carbonell, R. Salakhutdinov, and Q. V. Le, “XLNet: Generalized Autoregressive Pretraining for Language Understanding,” Advances in Neural Information Processing Systems 32, pp. 5753–5763 (2019; arXiv v1 posted 19 June 2019).",
+      "chronology": {
+        "orderingEventId": "yang-2019-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "yang-2019-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2019-06-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yang-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 19 June 2019 at 17:35:48 UTC"
+              }
+            ],
+            "versionId": "yang-2019-arxiv-v1-version",
+            "sourceIds": [
+              "yang-2019-arxiv-record",
+              "yang-2019-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "yang-2019-neurips-proceedings",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2019 proceedings paper",
+            "date": {
+              "value": "2019",
+              "precision": "year",
+              "calendar": "gregorian",
+              "note": "The official record supplies a publication year but no paper-specific release day; the conference dates are not substituted."
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yang-2019-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS volume 32 record: 2019"
+              }
+            ],
+            "versionId": "yang-2019-neurips-version",
+            "sourceIds": [
+              "yang-2019-neurips-record",
+              "yang-2019-neurips-metadata",
+              "yang-2019-neurips-full-text",
+              "yang-2019-neurips-supplement"
+            ]
+          },
+          {
+            "id": "yang-2020-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2020-01-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yang-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 2 January 2020 at 12:48:08 UTC"
+              }
+            ],
+            "versionId": "yang-2020-arxiv-v2-version",
+            "sourceIds": [
+              "yang-2019-arxiv-record",
+              "yang-2020-arxiv-v2-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "yang-2019-arxiv-v1-version",
+          "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+          "authors": [
+            "Zhilin Yang",
+            "Zihang Dai",
+            "Yiming Yang",
+            "Jaime Carbonell",
+            "Ruslan Salakhutdinov",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Yang et al., “XLNet: Generalized Autoregressive Pretraining for Language Understanding,” arXiv:1906.08237v1, 19 June 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1906.08237v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "yang-2019-arxiv-record",
+            "yang-2019-arxiv-v1-full-text",
+            "yang-2019-xlnet-initial-code-snapshot"
+          ],
+          "notes": "The 18-leaf first posting is CC BY 4.0 and marked as a preprint under review. It differs materially from the proceedings in corpus size, batch, duration, memory length, RACE length, formal inequalities, special-token prose, headline wording, and reported results."
+        },
+        {
+          "id": "yang-2019-neurips-version",
+          "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+          "authors": [
+            "Zhilin Yang",
+            "Zihang Dai",
+            "Yiming Yang",
+            "Jaime Carbonell",
+            "Ruslan Salakhutdinov",
+            "Quoc V. Le"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2019 proceedings paper",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Yang, Z. Dai, Y. Yang, J. Carbonell, R. Salakhutdinov, and Q. V. Le, “XLNet: Generalized Autoregressive Pretraining for Language Understanding,” in Advances in Neural Information Processing Systems 32, pp. 5753–5763, 2019.",
+            "venue": "Advances in Neural Information Processing Systems 32",
+            "series": "NeurIPS",
+            "pages": [
+              "5753-5763"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "yang-2019-neurips-record",
+            "yang-2019-neurips-metadata",
+            "yang-2019-neurips-full-text",
+            "yang-2019-neurips-supplement",
+            "yang-2019-xlnet-final-code-snapshot",
+            "yang-2019-xlnet-pinned-apache-license",
+            "yang-2019-neurips-rights-policy"
+          ],
+          "notes": "The canonical artifact is an 11-page article with a separate 7-page official supplement. NeurIPS metadata supplies book pages 5753–5763, while the article visibly numbers pages 1–11 and the separate supplement continues printed folios 12–18. The title page and current NeurIPS record use Ruslan Salakhutdinov; Metadata.json's structured author is Russ Salakhutdinov; official BibTeX and PDF metadata use Russ R. Salakhutdinov. The authored title page controls canonical spelling."
+        },
+        {
+          "id": "yang-2020-arxiv-v2-version",
+          "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
+          "authors": [
+            "Zhilin Yang",
+            "Zihang Dai",
+            "Yiming Yang",
+            "Jaime Carbonell",
+            "Ruslan Salakhutdinov",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "Z. Yang et al., “XLNet: Generalized Autoregressive Pretraining for Language Understanding,” arXiv:1906.08237v2, 2 January 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1906.08237v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1906.08237",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "yang-2019-arxiv-record",
+            "yang-2020-arxiv-v2-full-text"
+          ],
+          "notes": "The 18-leaf revision incorporates final-style text and appendices but is not identical to the canonical proceedings article: its Table 3 adds SQuAD 1.1 leaderboard rows that the proceedings explicitly says were unavailable."
+        }
+      ],
+      "canonicalVersionId": "yang-2019-neurips-version",
+      "preferredSourceIds": [
+        "yang-2019-neurips-record",
+        "yang-2019-neurips-full-text",
+        "yang-2019-neurips-supplement"
+      ],
+      "sourceIds": [
+        "yang-2019-arxiv-record",
+        "yang-2019-arxiv-v1-full-text",
+        "yang-2020-arxiv-v2-full-text",
+        "yang-2019-neurips-record",
+        "yang-2019-neurips-metadata",
+        "yang-2019-neurips-full-text",
+        "yang-2019-neurips-supplement",
+        "yang-2019-xlnet-initial-code-snapshot",
+        "yang-2019-xlnet-final-code-snapshot",
+        "yang-2019-xlnet-pinned-apache-license",
+        "yang-2019-neurips-rights-policy"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "XLNet is a convergence node: it trains over sampled factorization orders, uses target-aware query and content streams to avoid revealing a target token, and explicitly incorporates Transformer-XL recurrence and relative positions while addressing limitations the authors attribute to BERT-style masked pretraining. Its controlled comparisons and component ablations are historically important, but objective, backbone, data, compute, and optimization must remain separately attributed."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "packed-text-pair-self-attention",
+        "next-sentence-prediction-pretraining",
+        "discriminative-full-model-fine-tuning",
+        "permutation-language-model-pretraining",
+        "target-aware-two-stream-self-attention",
+        "partial-permutation-prediction",
+        "span-based-permutation-targets",
+        "relative-segment-attention"
+      ],
+      "significance": {
+        "beginner": "XLNet changes the order in which positions are predicted, not the written order of the sentence. Across sampled prediction orders, a word can use context from both sides; a query stream marks where to predict without exposing the answer, while Transformer-XL memory carries bounded prior context.",
+        "expert": "XLNet optimizes a sampled permutation-language-model objective with partial, span-based target selection; implements target-aware content and query attention; and inherits detached segment recurrence, relative positions, and relative segment scores. Its evidence must preserve the best-of-three BERT comparison, five-run ablations, version-specific recipes, and paper/code input-format conflict."
+      },
+      "limitations": [
+        "The input token sequence remains in natural order; only factorization and attention visibility are permuted. Describing shuffled input words would be incorrect.",
+        "Equation 3 is an expectation over factorization orders, while training samples orders and predicts only a partial set of positions; it does not enumerate every permutation or every target term.",
+        "Two-stream attention is a pretraining device for targets whose identities must be hidden. The downstream model uses the content stream; the query stream is not a universal two-copy inference architecture.",
+        "Transformer-XL memory is finite and detached. It extends reachable context but does not provide unlimited recall or backpropagation through all prior segments.",
+        "The controlled WikiBooks comparison uses a best-of-three BERT envelope and says hyperparameters are the same in the caption but almost identical in prose. It is not one matched run with uncertainty.",
+        "Table 6 gives medians over five runs without dispersion or significance tests. Several rows alter multiple components, and adding NSP improves RACE slightly while worsening the other printed columns; only a mixed result is supported.",
+        "The scaled system combines a permutation objective, Transformer-XL backbone, more and different data, larger batches, longer training, optimization changes, and task-specific procedures. Headline gains cannot be assigned to the objective alone.",
+        "v1, the NeurIPS article and supplement, and arXiv v2 are materially different artifacts. Later rows and corrections are not silently moved into the canonical proceedings version.",
+        "The canonical prose places CLS first, while the pinned implementation places it last and left-pads, agreeing with v1. The actual paper-run packing order remains unresolved.",
+        "The official code is Apache-2.0, but that license does not cover the paper, training corpora, or externally hosted checkpoints. The two README checkpoint links returned 404 when checked, and the released Base model was explicitly not the paper Base model.",
+        "Exact corpus snapshots, preprocessing outputs, seeds, full evaluation programs, immutable model hashes, and a complete rights manifest were not identified; most headline tables omit repeat counts and uncertainty."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv record contains exactly two revisions, and the separate NeurIPS main article plus supplement define the canonical artifact boundary."
+        },
+        {
+          "status": "open",
+          "note": "Canonical prose and pinned code conflict on CLS placement and padding.",
+          "resolutionCondition": "An official run manifest or author clarification binding the published experiments to one preprocessing path is needed."
+        },
+        {
+          "status": "open",
+          "note": "No complete immutable package binds every table to exact data, preprocessing, seeds, checkpoints, and evaluation commands.",
+          "resolutionCondition": "A paper-run reconstruction package with hashes and provenance would be required."
+        }
+      ]
+    },
+    {
+      "id": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+      "authors": [
+        "Yinhan Liu",
+        "Myle Ott",
+        "Naman Goyal",
+        "Jingfei Du",
+        "Mandar Joshi",
+        "Danqi Chen",
+        "Omer Levy",
+        "Mike Lewis",
+        "Luke Zettlemoyer",
+        "Veselin Stoyanov"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "Y. Liu et al., “RoBERTa: A Robustly Optimized BERT Pretraining Approach,” arXiv:1907.11692v1, 26 July 2019.",
+      "chronology": {
+        "orderingEventId": "liu-2019-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "liu-2019-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2019-07-26",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "liu-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, sole version posted 26 July 2019 at 17:48:29 UTC"
+              }
+            ],
+            "versionId": "liu-2019-arxiv-v1-version",
+            "sourceIds": [
+              "liu-2019-arxiv-record",
+              "liu-2019-arxiv-v1-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "liu-2019-arxiv-v1-version",
+          "title": "RoBERTa: A Robustly Optimized BERT Pretraining Approach",
+          "authors": [
+            "Yinhan Liu",
+            "Myle Ott",
+            "Naman Goyal",
+            "Jingfei Du",
+            "Mandar Joshi",
+            "Danqi Chen",
+            "Omer Levy",
+            "Mike Lewis",
+            "Luke Zettlemoyer",
+            "Veselin Stoyanov"
+          ],
+          "kind": "preprint",
+          "label": "Sole arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "Y. Liu et al., “RoBERTa: A Robustly Optimized BERT Pretraining Approach,” arXiv:1907.11692v1, 26 July 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1907.11692v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1907.11692",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "liu-2019-arxiv-record",
+            "liu-2019-arxiv-v1-full-text",
+            "liu-2019-fairseq-initial-roberta-snapshot",
+            "liu-2019-fairseq-initial-roberta-readme",
+            "liu-2019-fairseq-initial-rights"
+          ],
+          "notes": "The arXiv ledger contains exactly one submission. Its 13-leaf PDF has no stable printed folios, so claims use structural section, table, appendix, and footnote anchors. No official proceedings or journal version was identified in the inspected primary indexes; that is an audit result rather than proof of universal absence."
+        }
+      ],
+      "canonicalVersionId": "liu-2019-arxiv-v1-version",
+      "preferredSourceIds": [
+        "liu-2019-arxiv-record",
+        "liu-2019-arxiv-v1-full-text"
+      ],
+      "sourceIds": [
+        "liu-2019-arxiv-record",
+        "liu-2019-arxiv-v1-full-text",
+        "liu-2019-fairseq-initial-roberta-snapshot",
+        "liu-2019-fairseq-initial-roberta-readme",
+        "liu-2019-fairseq-initial-rights"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "RoBERTa is a central controlled-recipe study rather than a new encoder architecture or pretraining objective. It retains BERT's Transformer encoder, masked-token training, and full-model adaptation while testing masking refresh, sequence packing and NSP, batch scale, byte-level BPE, data, and duration; the resulting evidence changed how nominally comparable pretrained models were interpreted."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention",
+        "discriminative-full-model-fine-tuning",
+        "byte-level-byte-pair-tokenization",
+        "dynamic-masked-language-model-corruption",
+        "nsp-free-full-sentence-packing",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "significance": {
+        "beginner": "RoBERTa keeps the recognizable BERT reader but asks what happens when its training recipe is repaired and scaled: masks refresh, text is packed differently without next-sentence prediction, batches grow, and data and training increase. The lesson is that training choices can matter as much as a new architecture label.",
+        "expert": "RoBERTa separates several recipe contrasts—dynamic masking, input packing with or without NSP, compute-matched batch scaling, and byte-level BPE—before accumulating data and duration changes. Its tables require careful treatment of confounds, nonmonotonic rows, medians, historical ensembles, task-specific procedures, and artifact-license scope."
+      },
+      "limitations": [
+        "RoBERTa retains BERT's encoder and masked-language-model family; it is not a newly invented architecture or objective.",
+        "Dynamic masking is not uniformly better in Table 1: it improves SQuAD 2.0 F1 and SST-2 slightly but lowers MNLI-m slightly, with medians over five random initializations of unclear pretraining-versus-fine-tuning scope.",
+        "Table 2 changes both NSP and sequence construction. It does not isolate loss removal from packing, and the final FULL-SENTENCES choice crosses document boundaries and is not the numerically strongest DOC-SENTENCES row.",
+        "The compute-matched batch experiment is nonmonotonic: the 2K row is strongest on its reported metrics, while 8K is selected partly for parallelism.",
+        "The paper follows GPT-2's byte-level BPE for universal encoding despite slightly worse early results on some tasks; it does not establish an accuracy gain from that tokenizer.",
+        "The cumulative Table 4 rows change corpus quantity and diversity together, then extend training. Packing, NSP, tokenizer, length schedule, cleaning, batch, and processed examples also differ from the imported BERT row, so no single switch explains the total gain.",
+        "The stated 1,024-V100 one-day estimate applies to a 100K-step BooksCorpus plus Wikipedia run, not necessarily the full 500K-step, 160GB training run.",
+        "GLUE test results use 5–7-model ensembles and task-specific procedures, while development values are medians over five runs. SQuAD and RACE have different single-model and external-data conditions; results are not interchangeable.",
+        "The five corpora are English and lack a single immutable snapshot or umbrella rights manifest. Code and checkpoint licenses do not license BooksCorpus, Wikipedia, CC-News, OpenWebText pages, or Stories.",
+        "The initial fairseq code and checkpoints were released around the paper, but the paper and snapshot do not bind every table to exact corpora, filters, pretraining seeds, configs, checkpoints, evaluation commands, or hashes.",
+        "The paper uses arXiv's non-exclusive distribution license, not a general content-reuse license. The initial README applies BSD 3-Clause to fairseq software and pretrained models, while the separate patent grant defines its scope as fairseq software. A later MIT repository state is not backdated here."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv history contains exactly one version posted 26 July 2019; PDF creation metadata and README promises do not override the repository ledger."
+        },
+        {
+          "status": "open",
+          "note": "The paper does not state whether each five-initialization median uses independent pretraining runs or only downstream fine-tuning initializations.",
+          "resolutionCondition": "Run-level configurations or author clarification would be required."
+        },
+        {
+          "status": "open",
+          "note": "No complete official reconstruction package or immutable data manifest was identified.",
+          "resolutionCondition": "Exact data, preprocessing, training, model, evaluation, and seed provenance is needed."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -11906,7 +12328,9 @@
         "dai-2019-transformer-antecedent-and-scope-boundary",
         "dai-2019-segment-level-recurrence",
         "dai-2019-relative-positional-attention",
-        "radford-2019-gpt-continuity-and-model-changes"
+        "radford-2019-gpt-continuity-and-model-changes",
+        "yang-2019-target-aware-two-stream-attention",
+        "liu-2019-predecessor-and-scope-boundary"
       ],
       "uncertainties": [
         {
@@ -11954,7 +12378,9 @@
         "dai-2019-transformer-antecedent-and-scope-boundary",
         "dai-2019-segment-level-recurrence",
         "dai-2019-relative-positional-attention",
-        "radford-2019-gpt-continuity-and-model-changes"
+        "radford-2019-gpt-continuity-and-model-changes",
+        "yang-2019-target-aware-two-stream-attention",
+        "liu-2019-predecessor-and-scope-boundary"
       ],
       "uncertainties": [
         {
@@ -12213,7 +12639,16 @@
         "devlin-2018-squad-v1-results",
         "devlin-2018-squad-v2-results",
         "devlin-2018-swag-results",
-        "devlin-2018-feature-based-ner-results"
+        "devlin-2018-feature-based-ner-results",
+        "yang-2019-fair-bert-comparison",
+        "yang-2019-scaled-benchmark-results",
+        "yang-2019-code-and-release-boundary",
+        "yang-2019-evidence-reproducibility-boundary",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-glue-results",
+        "liu-2019-squad-results",
+        "liu-2019-race-results",
+        "liu-2019-release-and-reconstruction-boundary"
       ],
       "uncertainties": []
     },
@@ -12285,7 +12720,11 @@
         "devlin-2018-pretraining-task-ablation",
         "devlin-2018-model-size-ablation",
         "devlin-2018-training-step-ablation",
-        "devlin-2018-code-and-evidence-boundary"
+        "devlin-2018-code-and-evidence-boundary",
+        "yang-2019-permutation-language-model-objective",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-implementation-and-length-schedule",
+        "liu-2019-aggregate-roberta-recipe"
       ],
       "uncertainties": [
         {
@@ -12306,7 +12745,11 @@
         "devlin-2018-pretraining-optimization-and-length-schedule",
         "devlin-2018-pretraining-task-ablation",
         "devlin-2018-training-step-ablation",
-        "devlin-2018-masking-strategy-ablation"
+        "devlin-2018-masking-strategy-ablation",
+        "yang-2019-fair-bert-comparison",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-aggregate-roberta-recipe"
       ],
       "uncertainties": [
         {
@@ -12324,7 +12767,9 @@
         "devlin-2018-next-sentence-prediction-objective",
         "devlin-2018-pretraining-corpus",
         "devlin-2018-pretraining-optimization-and-length-schedule",
-        "devlin-2018-pretraining-task-ablation"
+        "devlin-2018-pretraining-task-ablation",
+        "yang-2019-component-ablation",
+        "liu-2019-input-format-and-nsp-ablation"
       ],
       "uncertainties": [
         {
@@ -12344,7 +12789,10 @@
         "devlin-2018-glue-results",
         "devlin-2018-squad-v1-results",
         "devlin-2018-squad-v2-results",
-        "devlin-2018-swag-results"
+        "devlin-2018-swag-results",
+        "yang-2019-relative-segment-encoding",
+        "yang-2019-input-format-conflict",
+        "liu-2019-input-format-and-nsp-ablation"
       ],
       "uncertainties": [
         {
@@ -12386,7 +12834,9 @@
         "dai-2019-transformer-antecedent-and-scope-boundary",
         "dai-2019-language-model-benchmark-results",
         "dai-2019-generated-text-boundary",
-        "dai-2019-code-and-evidence-boundary"
+        "dai-2019-code-and-evidence-boundary",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-component-ablation"
       ],
       "uncertainties": [
         {
@@ -12403,7 +12853,9 @@
       "claimIds": [
         "dai-2019-segment-level-recurrence",
         "dai-2019-detached-memory-and-receptive-path",
-        "dai-2019-wikitext-recurrence-and-position-ablation"
+        "dai-2019-wikitext-recurrence-and-position-ablation",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-code-and-release-boundary"
       ],
       "uncertainties": [
         {
@@ -12424,7 +12876,11 @@
         "dai-2019-short-context-recurrence-ablation",
         "dai-2019-transformer-antecedent-and-scope-boundary",
         "dai-2019-language-model-benchmark-results",
-        "dai-2019-code-and-evidence-boundary"
+        "dai-2019-code-and-evidence-boundary",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-pretraining-data-and-compute",
+        "yang-2019-component-ablation",
+        "yang-2019-attention-visualization-boundary"
       ],
       "uncertainties": [
         {
@@ -12525,7 +12981,9 @@
       "kind": "mechanism",
       "description": "Begin with UTF-8 byte symbols and apply constrained byte-pair merges so one finite vocabulary can encode any Unicode string without an unknown-token fallback.",
       "claimIds": [
-        "radford-2019-byte-level-bpe"
+        "radford-2019-byte-level-bpe",
+        "liu-2019-byte-level-bpe-choice",
+        "liu-2019-aggregate-roberta-recipe"
       ],
       "uncertainties": [
         {
@@ -12552,6 +13010,133 @@
         {
           "status": "resolved",
           "note": "The four-size comparison is not a compute-matched scaling law, and the reported task matrix contains nonmonotonic steps and weak absolute results."
+        }
+      ]
+    },
+    {
+      "id": "permutation-language-model-pretraining",
+      "name": "Permutation language-model pretraining",
+      "kind": "objective",
+      "description": "Maximize token likelihood under sampled factorization orders while leaving the observed token sequence in natural order, so positions can use left and right context across training orders without masked input symbols.",
+      "claimIds": [
+        "yang-2019-version-boundary",
+        "yang-2019-permutation-language-model-objective",
+        "yang-2019-partial-permutation-prediction",
+        "yang-2019-pretraining-data-and-compute",
+        "yang-2019-fair-bert-comparison",
+        "yang-2019-scaled-benchmark-results",
+        "yang-2019-component-ablation",
+        "yang-2019-evidence-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The permutation applies to factorization and attention visibility, not to the order of input tokens."
+        }
+      ]
+    },
+    {
+      "id": "target-aware-two-stream-self-attention",
+      "name": "Target-aware two-stream self-attention",
+      "kind": "mechanism",
+      "description": "Maintain content states that may encode their token and query states that identify a target position without exposing its content, using factorization-specific attention masks to prevent target leakage.",
+      "claimIds": [
+        "yang-2019-target-aware-two-stream-attention",
+        "yang-2019-attention-visualization-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "partial-permutation-prediction",
+      "name": "Partial permutation prediction",
+      "kind": "objective",
+      "description": "Sample a factorization order but predict only its final fraction of positions, reducing optimization cost while preserving varied contextual visibility.",
+      "claimIds": [
+        "yang-2019-partial-permutation-prediction",
+        "yang-2019-span-based-target-selection"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "span-based-permutation-targets",
+      "name": "Span-based permutation targets",
+      "kind": "mechanism",
+      "description": "Select contiguous runs of positions as prediction targets inside a wider permutation context, sampling each target span's length while other factorization positions supply context.",
+      "claimIds": [
+        "yang-2019-span-based-target-selection",
+        "yang-2019-pretraining-data-and-compute",
+        "yang-2019-component-ablation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "relative-segment-attention",
+      "name": "Relative segment attention",
+      "kind": "mechanism",
+      "description": "Encode whether two positions belong to the same or different input segment inside attention scores, replacing absolute segment identities with head-specific relative segment terms.",
+      "claimIds": [
+        "yang-2019-relative-segment-encoding"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "dynamic-masked-language-model-corruption",
+      "name": "Dynamic masked-language-model corruption",
+      "kind": "mechanism",
+      "description": "Regenerate masked-token corruption when an example is presented instead of storing one finite set of static masks, increasing corruption diversity during longer training.",
+      "claimIds": [
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-aggregate-roberta-recipe",
+        "liu-2019-data-and-duration-accumulation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "RoBERTa's controlled results are mixed and do not support a universal accuracy advantage over static masking."
+        }
+      ]
+    },
+    {
+      "id": "nsp-free-full-sentence-packing",
+      "name": "NSP-free full-sentence packing",
+      "kind": "mechanism",
+      "description": "Pack full sentences into training blocks of at most 512 tokens and optimize masked-token prediction without next-sentence prediction, optionally crossing document boundaries for regular batch shapes.",
+      "claimIds": [
+        "liu-2019-input-format-and-nsp-ablation",
+        "liu-2019-aggregate-roberta-recipe",
+        "liu-2019-data-and-duration-accumulation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "RoBERTa changes packing together with NSP removal, so the paper does not isolate the loss alone."
+        }
+      ]
+    },
+    {
+      "id": "masked-language-model-training-recipe-sensitivity",
+      "name": "Masked-language-model training recipe sensitivity",
+      "kind": "finding",
+      "description": "Model quality attributed to a pretraining family can depend materially on corruption refresh, packing, optimization, batch size, sequence schedule, corpus composition, and training duration.",
+      "claimIds": [
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-implementation-and-length-schedule",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-input-format-and-nsp-ablation",
+        "liu-2019-large-batch-ablation",
+        "liu-2019-byte-level-bpe-choice",
+        "liu-2019-pretraining-corpora",
+        "liu-2019-aggregate-roberta-recipe",
+        "liu-2019-data-and-duration-accumulation",
+        "liu-2019-glue-results",
+        "liu-2019-squad-results",
+        "liu-2019-race-results",
+        "liu-2019-release-and-reconstruction-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The cumulative RoBERTa recipe does not identify one change as the sole cause of the final gain."
         }
       ]
     }
@@ -18213,6 +18798,373 @@
         "metadata"
       ],
       "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the four bound ACL or NAACL proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
+    },
+    {
+      "id": "yang-2019-arxiv-record",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "arXiv record for XLNet",
+      "url": "https://arxiv.org/abs/1906.08237",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yang-2019-arxiv-v1-version",
+        "yang-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission history has exactly two revisions: v1 on 19 June 2019 and v2 on 2 January 2020. Both version pages expose CC BY 4.0; the aggregate DOI does not identify a particular revision."
+    },
+    {
+      "id": "yang-2019-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Immutable XLNet arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1906.08237v1",
+      "accessDate": "2026-08-27",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yang-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 18
+      },
+      "accessNote": "The 18-leaf first manuscript was rendered and inspected. It has no stable book folios, so evidence uses structural anchors rather than PDF positions."
+    },
+    {
+      "id": "yang-2020-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Immutable XLNet arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1906.08237v2",
+      "accessDate": "2026-08-27",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yang-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 18
+      },
+      "accessNote": "The 18-leaf revision was rendered and inspected. Its Table 3 is not identical to the canonical proceedings table; evidence does not silently move v2-only rows into NeurIPS."
+    },
+    {
+      "id": "yang-2019-neurips-record",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "NeurIPS record for XLNet",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/hash/dc6a7e655d7e5840e66733e9ee67cc69-Abstract.html",
+      "accessDate": "2026-08-27",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "Official volume-32 record and links for the article, metadata, BibTeX, and supplement. It supplies no paper-specific publication day."
+    },
+    {
+      "id": "yang-2019-neurips-metadata",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "NeurIPS metadata for XLNet",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/dc6a7e655d7e5840e66733e9ee67cc69-Metadata.json",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "Official metadata supplies bibliographic pages 5753–5763. Its structured author list uses Russ Salakhutdinov, while the paper title page and current NeurIPS record use Ruslan Salakhutdinov and the linked official BibTeX and PDF metadata use Russ R. Salakhutdinov. The authored title page controls canonical spelling."
+    },
+    {
+      "id": "yang-2019-neurips-full-text",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Official NeurIPS full text of XLNet",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/dc6a7e655d7e5840e66733e9ee67cc69-Paper.pdf",
+      "accessDate": "2026-08-27",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete article was rendered and inspected. It visibly numbers article pages 1–11; those article numbers, not PDF leaves or book folios, control claim locators."
+    },
+    {
+      "id": "yang-2019-neurips-supplement",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Official NeurIPS XLNet supplement",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/dc6a7e655d7e5840e66733e9ee67cc69-Supplemental.zip",
+      "accessDate": "2026-08-27",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 7
+      },
+      "accessNote": "The official seven-page supplement was extracted, rendered, and inspected. Its pages visibly continue printed article folios 12–18, but the separately distributed file retains a physical pdf-page envelope of 1–7; claims use stable appendix, table, and figure anchors rather than translating those spaces."
+    },
+    {
+      "id": "yang-2019-xlnet-initial-code-snapshot",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Initial official XLNet code snapshot",
+      "url": "https://github.com/zihangdai/xlnet/tree/93dfce744cb43058a603897c4313285bd827acbc",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yang-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Immutable repository snapshot from 19 June 2019 establishes the initial public implementation boundary. It is not treated as a manuscript revision.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "yang-2019-xlnet-final-code-snapshot",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Final official XLNet repository snapshot",
+      "url": "https://github.com/zihangdai/xlnet/tree/bbaa3a6fa0b3a2ee694e8cf66167434f9eca9660",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Pinned final repository commit dated 16 December 2019. It exposes detached memory and CLS-last preprocessing that conflicts with canonical paper prose. The README's Base and Large checkpoint URLs returned 404 when checked.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "yang-2019-xlnet-pinned-apache-license",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "Pinned XLNet Apache-2.0 software license",
+      "url": "https://github.com/zihangdai/xlnet/blob/bbaa3a6fa0b3a2ee694e8cf66167434f9eca9660/LICENSE",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Apache-2.0 applies to repository software; it is not extended to paper text, datasets, or externally hosted weights.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "yang-2019-neurips-rights-policy",
+      "relatedWorkIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "title": "NeurIPS copyright policy",
+      "url": "https://neurips.cc/FAQ/Copyright",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "yang-2019-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The publisher states that authors retain copyright and grant a non-exclusive publication license. No Creative Commons license for this proceedings article was identified."
+    },
+    {
+      "id": "liu-2019-arxiv-record",
+      "relatedWorkIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "title": "arXiv record for RoBERTa",
+      "url": "https://arxiv.org/abs/1907.11692",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "liu-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission history contains exactly one version posted 26 July 2019. The aggregate DOI is not a separate version, and arXiv's non-exclusive distribution license is not a general content-reuse license."
+    },
+    {
+      "id": "liu-2019-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "title": "Immutable RoBERTa arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1907.11692v1",
+      "accessDate": "2026-08-27",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "liu-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 13
+      },
+      "accessNote": "The complete 13-leaf preprint was rendered and inspected. It has no stable printed folios, so evidence uses section, table, appendix, and footnote anchors rather than PDF positions."
+    },
+    {
+      "id": "liu-2019-fairseq-initial-roberta-snapshot",
+      "relatedWorkIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "title": "Initial official fairseq RoBERTa commit",
+      "url": "https://github.com/facebookresearch/fairseq/commit/17fcc72a641e6994bea0b14356a611a0dd6cd1a1",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "liu-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Immutable 27 July 2019 commit adds the initial RoBERTa code and README. It postdates the arXiv posting by hours and is a release artifact, not another paper version.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "liu-2019-fairseq-initial-roberta-readme",
+      "relatedWorkIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "title": "Pinned initial fairseq RoBERTa README",
+      "url": "https://github.com/facebookresearch/fairseq/blob/17fcc72a641e6994bea0b14356a611a0dd6cd1a1/examples/roberta/README.md",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "liu-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The pinned README lists the original Base, Large, and Large-MNLI archives and results, while its pretraining section is explicitly incomplete. All three archive URLs returned HTTP 200 to HEAD requests; contents and hashes were not verified.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "liu-2019-fairseq-initial-rights",
+      "relatedWorkIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "title": "Pinned initial fairseq software and model rights",
+      "url": "https://github.com/facebookresearch/fairseq/blob/17fcc72a641e6994bea0b14356a611a0dd6cd1a1/README.md#license",
+      "accessDate": "2026-08-27",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "liu-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The initial root README applies BSD 3-Clause to fairseq software and pretrained models and links a separate patent grant whose definition of Software is fairseq software. Neither scope is extended to the paper or training datasets, and the repository's later MIT state is not backdated.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
     }
   ],
   "claims": [
@@ -35167,6 +36119,925 @@
         }
       ],
       "checkedDate": "2026-08-26"
+    },
+    {
+      "id": "yang-2019-version-boundary",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining"
+      ],
+      "statement": "XLNet has a materially different arXiv v1, a canonical 11-page NeurIPS article with separate supplement, and a later arXiv v2 that is not identical to the proceedings. Training scale, formal conditions, input-format prose, results, and appendices differ across those artifacts.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "First-posting method and training conditions",
+            "section": "2 Generalized Autoregressive Pretraining; 3 Experiments; Appendix A"
+          },
+          "support": "v1 reports its own objective text, 78 GB Common Crawl, batch 2,048, memory length 384, 2.5 days, and earlier result tables."
+        },
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Canonical proceedings method, training conditions, and results",
+            "section": "2 Generalized Autoregressive Pretraining; 3 Experiments",
+            "pageStart": 1,
+            "pageEnd": 11
+          },
+          "support": "The proceedings correct formal text and report 110 GB Common Crawl, batch 8,192, full 512-token sequences, about 5.5 days, controlled comparisons, and revised results."
+        },
+        {
+          "sourceId": "yang-2020-arxiv-v2-full-text",
+          "locator": {
+            "label": "Later v2-only additions",
+            "section": "3 Experiments; Table 3"
+          },
+          "support": "v2 adds SQuAD 1.1 leaderboard rows absent from the canonical article."
+        }
+      ],
+      "limitations": [
+        "No value is moved between versions without explicit source control."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-permutation-language-model-objective",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "XLNet maximizes expected log likelihood over sampled factorization orders. The token sequence and positional encodings remain in natural order; the permutation changes which positions are visible before each target, allowing both left and right context across sampled orders.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Permutation objective and natural-order clarification",
+            "section": "2.2 Objective: Permutation Language Modeling",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "equation": "3"
+          },
+          "support": "Equation 3 averages autoregressive factorizations, and the following remark explicitly says only factorization order is permuted, not the sequence order."
+        }
+      ],
+      "limitations": [
+        "Training samples factorization orders rather than enumerating all permutations.",
+        "Bidirectional context is obtained in expectation across orders, not by revealing future targets within one factorization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-target-aware-two-stream-attention",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "target-aware-two-stream-self-attention",
+        "self-attention-sequence-mixing",
+        "multi-head-attention"
+      ],
+      "statement": "Two-stream attention separates content states, which may encode their own token, from query states, which know the target position and allowed context but cannot attend to the target content. Factorization-specific masks prevent target leakage.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Target-aware content and query streams",
+            "section": "2.3 Architecture: Two-Stream Self-Attention for Target-Aware Representations",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "equation": "4",
+            "figure": "1"
+          },
+          "support": "The method defines content and query recurrences and illustrates their different attention visibility."
+        },
+        {
+          "sourceId": "yang-2019-neurips-supplement",
+          "locator": {
+            "label": "Two-stream implementation details",
+            "section": "A.1–A.2"
+          },
+          "support": "The supplement describes target mappings and the strict query-stream exclusion condition."
+        }
+      ],
+      "limitations": [
+        "The query stream is used for pretraining targets; downstream fine-tuning uses content representations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-partial-permutation-prediction",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "partial-permutation-prediction",
+        "permutation-language-model-pretraining"
+      ],
+      "statement": "For efficiency, XLNet predicts only the final positions in a sampled factorization, approximately a 1/K fraction, while earlier factorization positions serve as context.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Partial prediction objective",
+            "section": "2.3 Architecture: Two-Stream Self-Attention for Target-Aware Representations",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "equation": "5"
+          },
+          "support": "Equation 5 and its prose define the cut point and target fraction."
+        }
+      ],
+      "limitations": [
+        "This is a stochastic approximation to the full objective, not evaluation of every target under every factorization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-span-based-target-selection",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "span-based-permutation-targets",
+        "partial-permutation-prediction"
+      ],
+      "statement": "The canonical large-model recipe uses K=6 and selects target spans of length one through five inside a context of length KL, adding local continuity to partial permutation prediction.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Span-based target selection",
+            "section": "3.1 Pretraining and Implementation",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "The article defines span selection and the large-model K value."
+        },
+        {
+          "sourceId": "yang-2019-neurips-supplement",
+          "locator": {
+            "label": "Canonical pretraining hyperparameters",
+            "section": "A.4.1 Pretraining",
+            "table": "7"
+          },
+          "support": "The supplement tabulates K=6 and associated large-model settings."
+        }
+      ],
+      "limitations": [
+        "Span selection changes the target sampler; it is not a general span-representation objective."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-transformer-xl-integration",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention"
+      ],
+      "statement": "XLNet explicitly uses Transformer-XL as its backbone, incorporating segment recurrence and relative positional attention; the pinned implementation stops gradients through cached memory.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Transformer-XL recurrence and relative positions",
+            "section": "1 Introduction; 2.4 Incorporating Ideas from Transformer-XL",
+            "pageStart": 1,
+            "pageEnd": 5
+          },
+          "support": "The target names and integrates the predecessor mechanisms."
+        },
+        {
+          "sourceId": "yang-2019-xlnet-final-code-snapshot",
+          "locator": {
+            "label": "Detached cache implementation",
+            "section": "modeling.py, _cache_mem"
+          },
+          "support": "The pinned code applies stop_gradient to cached memory."
+        }
+      ],
+      "limitations": [
+        "This inheritance does not transfer Transformer-XL's language-model benchmark results or prove recurrence caused XLNet's downstream gains."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-relative-segment-encoding",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "relative-segment-attention",
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "XLNet attention distinguishes whether a key is in the same or a different segment through head-specific relative segment embeddings and biases. XLNet-Large omits next-sentence prediction.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Relative segment encoding and NSP boundary",
+            "section": "2.5 Modeling Multiple Segments",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The article defines the same/different segment score and states that XLNet-Large does not use NSP."
+        }
+      ],
+      "limitations": [
+        "Relative same/different segment encoding is not the same as BERT's absolute A/B segment embedding."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-input-format-conflict",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "packed-text-pair-self-attention"
+      ],
+      "statement": "The canonical paper prints CLS before the two segments, while the pinned official implementation places CLS last and left-pads, agreeing with arXiv v1. The preprocessing path for the published experiments is therefore unresolved.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Canonical special-token order",
+            "section": "2.5 Modeling Multiple Segments",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The canonical prose prints [CLS, A, SEP, B, SEP]."
+        },
+        {
+          "sourceId": "yang-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 special-token order",
+            "section": "2.5 Modeling Multiple Segments"
+          },
+          "support": "ArXiv version 1 prints [A, SEP, B, SEP, CLS], agreeing with the code's CLS-last placement rather than the canonical prose."
+        },
+        {
+          "sourceId": "yang-2019-xlnet-final-code-snapshot",
+          "locator": {
+            "label": "Pinned implementation token order and padding",
+            "section": "classifier_utils.py lines 94–109 and 117–122; data_utils.py lines 480–487"
+          },
+          "support": "Classifier preprocessing appends CLS and left-pads at its later padding branch; pretraining assembly also appends CLS."
+        }
+      ],
+      "limitations": [
+        "Do not claim one ordering governed the paper runs without an official run manifest."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Paper and code disagree on CLS placement.",
+          "resolutionCondition": "An official run binding or author clarification is required."
+        }
+      ],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-pretraining-data-and-compute",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "span-based-permutation-targets",
+        "relative-positional-self-attention"
+      ],
+      "statement": "The canonical recipe reports 32.89 billion SentencePiece tokens: Wikipedia 2.78B, BooksCorpus 1.09B, Giga5 4.75B, ClueWeb 2012-B 4.30B, and Common Crawl 19.97B. XLNet-Large trains 500K steps with batch 8,192 on 512 TPU v3 chips for about 5.5 days and remains underfit.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Canonical data and compute",
+            "section": "3.1 Pretraining and Implementation",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "The article reports the five corpora, token total, hardware, steps, batch, duration, and underfitting statement."
+        },
+        {
+          "sourceId": "yang-2019-neurips-supplement",
+          "locator": {
+            "label": "Canonical pretraining hyperparameter table",
+            "section": "A.4.1 Pretraining",
+            "table": "7"
+          },
+          "support": "Table 7 tabulates pretraining model and optimization settings; corpus sizes, hardware, duration, and the underfitting statement remain controlled by main-paper Section 3.1."
+        }
+      ],
+      "limitations": [
+        "Corpus rights, exact snapshots, filtering outputs, and a complete run manifest are not supplied.",
+        "The v1 recipe is materially smaller and must not be substituted for the canonical values."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-fair-bert-comparison",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "masked-language-model-pretraining",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "In the WikiBooks-controlled comparison, best-of-three BERT-Large versus XLNet-Large is SQuAD 1.1 EM/F1 86.7/92.8 versus 88.2/94.0, SQuAD 2.0 EM/F1 82.8/85.5 versus 85.1/87.8, RACE 75.1 versus 77.4, MNLI 87.3 versus 88.4, QNLI 93.0 versus 93.9, QQP 91.4 versus 91.8, RTE 74.0 versus 81.2, SST-2 94.0 versus 94.4, MRPC 88.7 versus 90.0, CoLA 63.7 versus 65.2, and STS-B 90.2 versus 91.1.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Controlled WikiBooks comparison",
+            "section": "3.2 Fair Comparison with BERT",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "1"
+          },
+          "support": "Table 1 prints the BERT best-of-three and XLNet-Large-WikiBooks rows; the caption says same hyperparameters while prose says almost identical."
+        }
+      ],
+      "limitations": [
+        "BERT is an oracle-like best-of-three envelope rather than one matched run.",
+        "No uncertainty or significance test is reported, and the caption/prose hyperparameter wording is not identical."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-scaled-benchmark-results",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "The scaled XLNet system reports strong historical results across QA, classification, and GLUE tables, but rows mix single models, ensembles, task-specific procedures, external data, imported comparators, and leaderboard snapshots.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Scaled downstream results and conditions",
+            "section": "3.3 Comparison with State-of-the-Art Results",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "2–5"
+          },
+          "support": "The article reports task-specific rows and qualifies the overall comparison as relatively fair."
+        }
+      ],
+      "limitations": [
+        "These tables are historical snapshots, not a uniform controlled experiment.",
+        "The canonical proceedings lacks the SQuAD 1.1 leaderboard rows later added to arXiv v2."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-component-ablation",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "span-based-permutation-targets",
+        "segment-level-hidden-state-recurrence",
+        "relative-positional-self-attention",
+        "next-sentence-prediction-pretraining"
+      ],
+      "statement": "Table 6 reports five-run median RACE, SQuAD 2.0 F1/EM, MNLI matched/mismatched, and SST-2 values: BERT 64.30, 76.30/73.66, 84.34/84.65, 92.78; denoising autoencoder plus Transformer-XL 65.03, 79.56/76.80, 84.88/84.45, 92.60; XLNet K=7 66.05, 81.33/78.46, 85.84/85.43, 92.66; K=6 66.66, 80.98/78.18, 85.63/85.12, 93.35; minus memory 65.55, 80.15/77.27, 85.32/85.05, 92.78; minus span prediction 65.95, 80.61/77.91, 85.49/85.02, 93.12; minus bidirectional data 66.34, 80.65/77.87, 85.31/84.99, 92.66; and plus NSP 66.76, 79.83/76.94, 85.32/85.09, 92.89. No row wins every column; adding NSP slightly raises RACE but lowers the other printed columns relative to K=6.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Component ablation medians",
+            "section": "3.4 Experimental Studies",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "6"
+          },
+          "support": "The table prints medians across five runs and the component rows."
+        }
+      ],
+      "limitations": [
+        "No dispersion or statistical test is supplied.",
+        "Some rows change more than one property, and the BERT RACE value is imported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-attention-visualization-boundary",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "target-aware-two-stream-self-attention",
+        "relative-positional-self-attention"
+      ],
+      "statement": "The supplement presents selected attention patterns and conjectures associations with relative attention, but these qualitative examples are not aggregate or causal evidence.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-supplement",
+          "locator": {
+            "label": "Selected attention visualizations",
+            "section": "A.6 Visualization",
+            "figure": "2–3"
+          },
+          "support": "The supplement labels the displayed patterns and frames their interpretation qualitatively."
+        }
+      ],
+      "limitations": [
+        "Selection procedure, frequency, and causal tests are absent."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-code-and-release-boundary",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "detached-recurrent-memory",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "Official code appeared with v1 and the final pinned repository supports inference and task pipelines, but its Apache-2.0 license covers software only. The README checkpoint links were unavailable when checked, and its released Base model was not the paper's Base configuration.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-xlnet-initial-code-snapshot",
+          "locator": {
+            "label": "Initial implementation boundary",
+            "section": "Repository commit metadata"
+          },
+          "support": "The immutable initial commit is dated 19 June 2019."
+        },
+        {
+          "sourceId": "yang-2019-xlnet-final-code-snapshot",
+          "locator": {
+            "label": "Final repository, checkpoint, and model boundary",
+            "section": "README and pinned source tree"
+          },
+          "support": "The README distinguishes the released Base model and links checkpoints that returned 404 when checked."
+        },
+        {
+          "sourceId": "yang-2019-xlnet-pinned-apache-license",
+          "locator": {
+            "label": "Software license scope",
+            "section": "LICENSE"
+          },
+          "support": "The repository carries Apache-2.0."
+        }
+      ],
+      "limitations": [
+        "No standalone immutable model license or weight hash was identified.",
+        "Software licensing does not cover third-party training data or paper text."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "yang-2019-evidence-reproducibility-boundary",
+      "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "The paper, supplement, and code document the central mechanisms and many hyperparameters, but do not bind every result to exact raw-data snapshots, filters, seeds, checkpoints, evaluation commands, or immutable prediction artifacts.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Published evidence envelope",
+            "section": "Complete article",
+            "pageStart": 1,
+            "pageEnd": 11
+          },
+          "support": "The article contains method and results but not a complete run-level provenance package."
+        },
+        {
+          "sourceId": "yang-2019-xlnet-final-code-snapshot",
+          "locator": {
+            "label": "Implementation envelope",
+            "section": "Complete pinned repository"
+          },
+          "support": "The repository omits a complete immutable paper-run manifest and accessible paper checkpoints."
+        }
+      ],
+      "limitations": [
+        "Most headline rows omit repeat counts, uncertainty, and significance tests."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-predecessor-and-scope-boundary",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "discriminative-full-model-fine-tuning",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "RoBERTa presents itself as a BERT replication and optimization study: it retains an L-layer Transformer encoder, masked-token pretraining, and BERT-style full-model task adaptation while changing the training procedure.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "BERT replication framing and retained model family",
+            "section": "1 Introduction; 2 Background; 4 Training Procedure Analysis; 5 RoBERTa"
+          },
+          "support": "The paper identifies BERT and Transformer antecedents, holds the architecture family recognizable, and attributes its contribution to training choices."
+        }
+      ],
+      "limitations": [
+        "This supports continuity, not a claim that RoBERTa introduced the Transformer encoder or masked-token prediction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-implementation-and-length-schedule",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "The fairseq reimplementation tunes learning rate and warmup by setting, reports Adam-epsilon sensitivity and greater large-batch stability with β₂=0.98, trains with mixed precision on 8×32GB V100 DGX-1 machines, uses sequences up to 512 tokens, and omits BERT's injected short sequences and 90% length-128 schedule.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Implementation, optimizer, hardware, and sequence schedule",
+            "section": "3.1 Implementation"
+          },
+          "support": "Section 3.1 states the fairseq implementation and these optimization and length choices."
+        }
+      ],
+      "limitations": [
+        "The paper does not bind every table row to a released configuration file or seed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-static-dynamic-masking-ablation",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "dynamic-masked-language-model-corruption",
+        "masked-language-model-pretraining",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "Static masking duplicates data ten times across forty epochs so each mask is reused four times, while dynamic masking regenerates corruption when an example is presented. Table 1 medians over five initializations are mixed: static/dynamic SQuAD 2.0 F1 78.3/78.7, MNLI-m 84.3/84.0, and SST-2 92.5/92.9.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Static and dynamic masking procedure and results",
+            "section": "4.1 Static vs. Dynamic Masking",
+            "table": "1"
+          },
+          "support": "The section defines both procedures and prints median results over five random initializations."
+        }
+      ],
+      "limitations": [
+        "Dynamic masking is not uniformly more accurate in the controlled table.",
+        "The paper does not clarify whether the five initializations include independent pretraining runs or only fine-tuning runs."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-input-format-and-nsp-ablation",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "nsp-free-full-sentence-packing",
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "Under BooksCorpus plus Wikipedia, one million steps, and batch 256, SQuAD 1.1/2.0 F1, MNLI, SST-2, and RACE are 90.4/78.7, 84.0, 92.9, 64.2 for segment-pair plus NSP; 88.7/76.2, 82.9, 92.1, 63.0 for sentence-pair plus NSP; 90.4/79.1, 84.7, 92.5, 64.8 for FULL-SENTENCES without NSP; and 90.6/79.7, 84.7, 92.7, 65.6 for DOC-SENTENCES without NSP. Document-sentences is strongest overall, but final RoBERTa chooses easier-to-batch FULL-SENTENCES, which may cross document boundaries.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Input-format and NSP comparison",
+            "section": "4.2 Model Input Format and Next Sentence Prediction",
+            "table": "2"
+          },
+          "support": "Table 2 prints segment-pair, sentence-pair, full-sentences, and document-sentences conditions under the shared training envelope."
+        }
+      ],
+      "limitations": [
+        "NSP removal and packing change together; the table does not isolate the loss alone.",
+        "The imported BERT row is not a new matched run."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-large-batch-ablation",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "With matched passes and stated computational cost, batch 256×1M gives perplexity 3.99, MNLI 84.7, SST-2 92.7; 2K×125K gives 3.68, 85.2, 92.9; and 8K×31K gives 3.77, 84.6, 92.8. The 2K row is strongest, so larger batches are not monotonically better.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Compute-matched batch comparison",
+            "section": "4.3 Training with Large Batches",
+            "table": "3"
+          },
+          "support": "Table 3 prints batch, steps, tuned learning rate, perplexity, MNLI, and SST-2."
+        }
+      ],
+      "limitations": [
+        "The final 8K choice is partly an engineering choice for parallelism, not an empirically monotonic optimum."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-byte-level-bpe-choice",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "byte-level-byte-pair-tokenization",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "RoBERTa explicitly follows Radford et al. 2019's byte-level BPE implementation, uses about 50K units without extra tokenization, and chooses it for universal encoding despite slightly worse early results on some tasks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Byte-level BPE inheritance and result boundary",
+            "section": "4.4 Text Encoding"
+          },
+          "support": "The target names Radford et al. 2019, describes the approximately 50K-unit byte encoding, and reports mixed early performance."
+        }
+      ],
+      "limitations": [
+        "The paper does not establish byte-level BPE as an accuracy improvement."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-pretraining-corpora",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "RoBERTa uses five English corpora totaling over 160GB: BooksCorpus plus English Wikipedia 16GB, CC-News 76GB from 63 million filtered articles, OpenWebText 38GB, and Stories 31GB.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Five-corpus inventory and sizes",
+            "section": "3.2 Data",
+            "paragraph": "Corpus list and footnotes 4–5"
+          },
+          "support": "The paper names each corpus, reports sizes, and describes the CC-News crawl window and article count."
+        }
+      ],
+      "limitations": [
+        "No umbrella license, exact immutable snapshots, complete filters, or redistributable corpus manifest is supplied.",
+        "Corpus size and composition change together in later comparisons."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-aggregate-roberta-recipe",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "dynamic-masked-language-model-corruption",
+        "nsp-free-full-sentence-packing",
+        "byte-level-byte-pair-tokenization",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "Final RoBERTa aggregates dynamic masking, FULL-SENTENCES packing without NSP, byte-level BPE, batch 8K, more data, and longer training. Base uses 12 layers, hidden size 768, feed-forward size 3,072, and 12 heads; Large uses 24, 1,024, 4,096, and 16. Both use dropout and attention dropout 0.1, Adam β₁=0.9, β₂=0.98, ε=10⁻⁶, weight decay 0.01, linear decay, and at most 500K steps; Large uses 30K warmup steps and peak learning rate 4×10⁻⁴.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Aggregate recipe and hyperparameters",
+            "section": "5 RoBERTa; Appendix B",
+            "table": "9"
+          },
+          "support": "The main text defines the accumulated recipe and Table 9 lists Base and Large architecture and optimizer settings."
+        }
+      ],
+      "limitations": [
+        "The paper's roughly one-day estimate on 1,024 V100 GPUs applies to 100K steps on BooksCorpus plus Wikipedia, not necessarily the full 500K-step 160GB run."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-data-and-duration-accumulation",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "masked-language-model-training-recipe-sensitivity",
+        "dynamic-masked-language-model-corruption",
+        "nsp-free-full-sentence-packing"
+      ],
+      "statement": "For RoBERTa-Large, Table 4 accumulates 16GB→160GB at 100K steps and then 100K→300K→500K steps: SQuAD 1.1/2.0 F1 rises 93.6/87.3→94.0/87.7→94.4/88.7→94.6/89.4, MNLI 89.0→89.3→90.0→90.2, and SST-2 95.3→95.6→96.1→96.4. The imported BERT-Large comparator uses 13GB, batch 256, and one million steps and reports SQuAD 90.9/81.8, MNLI 86.6, and SST-2 93.7.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Accumulated data and duration results",
+            "section": "5 RoBERTa",
+            "table": "4",
+            "paragraph": "Footnote 9"
+          },
+          "support": "The table prints corpus, batch, steps, and task values; footnote 9 says data size and diversity are conflated."
+        }
+      ],
+      "limitations": [
+        "The sequence is cumulative, not a factorial attribution study.",
+        "The imported BERT-Large row differs in packing, NSP, tokenizer, length schedule, batch, data, and processed examples."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-glue-results",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "RoBERTa reports single-task GLUE development medians over five runs and a historical test ensemble of 5–7 models as of 25 July 2019. Test values are MNLI 90.8/90.2, QNLI 98.9, QQP 90.2, RTE 88.2, SST-2 96.7, MRPC 92.3, CoLA 67.8, STS-B 92.2, WNLI 89.0, and average 88.5, with MNLI initialization for RTE, STS-B, and MRPC plus special QNLI and WNLI procedures.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "GLUE development and test conditions",
+            "section": "5.1 GLUE",
+            "table": "5"
+          },
+          "support": "The section separates development medians from leaderboard ensembles and describes task-specific transfer and reformulation."
+        }
+      ],
+      "limitations": [
+        "Test results are not ordinary single-model BERT-style fine-tuning and should not be compared as if conditions were uniform."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-squad-results",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "A single RoBERTa model without data augmentation reports SQuAD 1.1 dev 88.9 EM/94.6 F1 and SQuAD 2.0 dev 86.5/89.4 plus test 86.8/89.8.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Single-model SQuAD results",
+            "section": "5.2 SQuAD",
+            "table": "6"
+          },
+          "support": "Table 6 prints dev and test rows and marks comparator use of additional data."
+        }
+      ],
+      "limitations": [
+        "Comparator rows are imported and retain their external-data annotations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-race-results",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "discriminative-full-model-fine-tuning",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "statement": "As of 25 July 2019, a single RoBERTa model reports RACE test accuracy 83.2 overall, 86.5 middle, and 81.3 high.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Historical RACE result",
+            "section": "5.3 RACE",
+            "table": "7"
+          },
+          "support": "The table prints overall, middle-school, and high-school accuracy and snapshot timing."
+        }
+      ],
+      "limitations": [
+        "This is a historical single-model benchmark result without a confidence interval."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "liu-2019-release-and-reconstruction-boundary",
+      "workId": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+      "ideaIds": [
+        "masked-language-model-training-recipe-sensitivity",
+        "discriminative-full-model-fine-tuning"
+      ],
+      "statement": "Initial fairseq code and three model archives were released around the preprint, but the initial pretraining documentation was incomplete and neither artifact binds every result row to immutable data, preprocessing, seeds, configurations, checkpoints, evaluation commands, or prediction files.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Paper release statement and evidence envelope",
+            "section": "1 Introduction; 7 Conclusion",
+            "paragraph": "Footnote 1"
+          },
+          "support": "The paper links code and models but does not supply a complete run-level reconstruction package."
+        },
+        {
+          "sourceId": "liu-2019-fairseq-initial-roberta-snapshot",
+          "locator": {
+            "label": "Initial code release boundary",
+            "section": "Commit metadata and changed files"
+          },
+          "support": "The pinned commit adds the initial public RoBERTa implementation and README."
+        },
+        {
+          "sourceId": "liu-2019-fairseq-initial-roberta-readme",
+          "locator": {
+            "label": "Initial model and pretraining documentation boundary",
+            "section": "Pre-trained models; Pre-training RoBERTa"
+          },
+          "support": "The README lists original archives and explicitly labels pretraining instructions incomplete."
+        },
+        {
+          "sourceId": "liu-2019-fairseq-initial-rights",
+          "locator": {
+            "label": "Initial software, checkpoint, and patent scopes",
+            "section": "License"
+          },
+          "support": "The root README states that BSD 3-Clause covers source code and pretrained models, while the separate patent grant defines Software as fairseq software."
+        }
+      ],
+      "limitations": [
+        "Archive contents and cryptographic hashes were not verified.",
+        "The initial BSD grant covers source code and, per the README, pretrained models; the separate patent grant is software-scoped. Neither covers the paper or training data, and later MIT licensing is not backdated."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-27"
     }
   ],
   "relationships": [
@@ -38142,6 +40013,246 @@
           "note": "The direct edge preserves the target's explicit citation while the GPT-to-GPT-2 edge records the closer implementation lineage; neither edge assigns Transformer mechanisms to GPT-2-specific evaluation or release policy."
         }
       ]
+    },
+    {
+      "id": "dai-2019-to-yang-2019",
+      "from": {
+        "kind": "work",
+        "id": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      },
+      "to": {
+        "kind": "work",
+        "id": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "XLNet explicitly incorporates Transformer-XL's segment recurrence and relative positional attention as its backbone, then combines them with permutation prediction and target-aware two-stream attention. The edge does not transfer Transformer-XL's language-model results or assign XLNet's downstream gains to recurrence alone.",
+      "claimIds": [
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-relative-positional-attention",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-permutation-language-model-objective"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Target-side Transformer-XL integration",
+            "section": "1 Introduction; 2.4 Incorporating Ideas from Transformer-XL",
+            "pageStart": 1,
+            "pageEnd": 5
+          },
+          "support": "The target explicitly names and integrates recurrence and relative positions from Transformer-XL."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is limited to named mechanisms and does not transfer benchmark evidence or priority."
+        }
+      ]
+    },
+    {
+      "id": "devlin-2018-to-yang-2019",
+      "from": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "to": {
+        "kind": "work",
+        "id": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "XLNet frames permutation prediction as addressing masked-token conditional-independence and pretrain/fine-tune mismatch concerns, directly compares with BERT, and retains BERT-style full-model downstream adaptation. This records the target authors' scoped critique, not a claim that BERT cannot learn token dependencies or that XLNet universally supersedes it.",
+      "claimIds": [
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "devlin-2018-full-parameter-task-adaptation",
+        "yang-2019-permutation-language-model-objective",
+        "yang-2019-fair-bert-comparison"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Target-side BERT critique, continuity, and comparison",
+            "section": "1 Introduction; 2.1 Background; 2.6 Discussion; 3.1 Pretraining and Implementation; 3.2 Fair Comparison with BERT",
+            "pageStart": 1,
+            "pageEnd": 7,
+            "table": "1"
+          },
+          "support": "The target names BERT's masked objective and replacement mismatch, proposes its alternative, retains downstream fine-tuning, and reports a controlled comparison."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The rationale preserves BERT's 80/10/10 corruption and limits the critique to the target paper's claims."
+        }
+      ]
+    },
+    {
+      "id": "vaswani-2017-to-yang-2019",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "XLNet uses Transformer self-attention and reparameterizes it into content and query streams under factorization-specific masks. The direct edge is scoped to the attention and feed-forward substrate; it does not inherit encoder-decoder translation, cross-attention, fixed causal masking, sinusoidal positions, or translation results.",
+      "claimIds": [
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-positionwise-computation",
+        "yang-2019-target-aware-two-stream-attention"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "yang-2019-neurips-full-text",
+          "locator": {
+            "label": "Target-side Transformer attention reparameterization",
+            "section": "2.1 Background; 2.3 Architecture",
+            "pageStart": 2,
+            "pageEnd": 5,
+            "figure": "1"
+          },
+          "support": "The target defines its streams as Transformer self-attention states with permutation-specific visibility."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The direct edge remains mechanism-scoped despite the Transformer→Transformer-XL→XLNet path."
+        }
+      ]
+    },
+    {
+      "id": "devlin-2018-to-liu-2019",
+      "from": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "to": {
+        "kind": "work",
+        "id": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "RoBERTa explicitly reimplements BERT, retaining the encoder, masked-token objective, and full-model task adaptation while changing mask refresh, NSP and packing, tokenizer, optimizer, batch, sequence schedule, data, and duration. Its evidence challenges recipe-specific conclusions without supporting the universal claim that NSP is harmful.",
+      "claimIds": [
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "devlin-2018-full-parameter-task-adaptation",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-input-format-and-nsp-ablation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Target-side BERT replication and recipe changes",
+            "section": "1 Introduction; 2 Background; 4 Training Procedure Analysis; 5 RoBERTa",
+            "table": "1–4"
+          },
+          "support": "The target describes itself as a BERT replication, keeps the model family, and documents the changed training choices."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge distinguishes retained BERT machinery from RoBERTa-specific training and evidence."
+        }
+      ]
+    },
+    {
+      "id": "vaswani-2017-to-liu-2019",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "RoBERTa retains BERT's L-layer Transformer encoder while varying the training recipe. The edge covers encoder self-attention and feed-forward computation only; it does not transfer the original decoder, cross-attention, translation objective, sinusoidal positions, or translation evidence.",
+      "claimIds": [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-aggregate-roberta-recipe"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Target-side Transformer encoder continuity",
+            "section": "2.2 Architecture; 5 RoBERTa"
+          },
+          "support": "The target identifies the Transformer basis and retains BERT-Base and BERT-Large encoder dimensions."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is restricted to the encoder substrate retained through BERT."
+        }
+      ]
+    },
+    {
+      "id": "radford-2019-to-liu-2019",
+      "from": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "RoBERTa explicitly follows Radford et al. 2019's byte-level BPE implementation. The edge is deliberately limited to tokenization: it does not transfer GPT-2's decoder-only architecture, causal objective, WebText corpus, task conditioning, zero-shot results, scale evidence, or release policy; OpenWebText is an independently assembled corpus.",
+      "claimIds": [
+        "radford-2019-byte-level-bpe",
+        "liu-2019-byte-level-bpe-choice"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Target-side byte-level BPE inheritance",
+            "section": "4.4 Text Encoding"
+          },
+          "support": "The target explicitly says it follows Radford et al. 2019's byte-based BPE implementation."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge excludes architecture, objective, corpus identity, results, and release strategy."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -40685,6 +42796,156 @@
         "Immutable code snapshots, model releases, companion works, software licenses, dataset rights, and source-bound terminology"
       ],
       "successCriterion": "The learner can repair Equation 1 while naming its printed index error, derive the byte-to-BPE and causal-stack computation, keep report configurations separate from corrected checkpoint labels, reconstruct the promoted task conditions and selected reported values, test the scale claim against nonmonotonic rows, audit 8-gram overlap and sample selection, defend the GPT and Transformer edges, and explain why released inference artifacts cannot reproduce WebText training or benchmark evaluation."
+    },
+    {
+      "id": "beginner-yang-2019-permute-prediction-not-words",
+      "mode": "beginner",
+      "objective": "Trace one target across several factorization orders, see that the written sentence never moves, compare the content and query streams, and explain how sampled partial prediction plus bounded memory provides varied context without revealing the answer.",
+      "workIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "ideaIds": [
+        "permutation-language-model-pretraining",
+        "target-aware-two-stream-self-attention",
+        "partial-permutation-prediction",
+        "span-based-permutation-targets",
+        "segment-level-hidden-state-recurrence"
+      ],
+      "claimIds": [
+        "yang-2019-permutation-language-model-objective",
+        "yang-2019-target-aware-two-stream-attention",
+        "yang-2019-partial-permutation-prediction",
+        "yang-2019-span-based-target-selection",
+        "yang-2019-transformer-xl-integration"
+      ],
+      "prerequisites": [
+        "A language model predicts tokens from visible context",
+        "Self-attention can hide positions with a mask",
+        "A position can be identified without revealing its token",
+        "Finite cached states are not unlimited memory"
+      ],
+      "successCriterion": "The learner can distinguish token order from factorization order, content from query states, sampled partial prediction from all-permutation notation, and detached finite memory from unlimited recall."
+    },
+    {
+      "id": "expert-yang-2019-objective-streams-memory-and-evidence",
+      "mode": "expert",
+      "objective": "Derive the permutation and partial-prediction objectives, construct target-leakage-safe content and query masks, trace detached recurrence plus relative position and segment scores, and audit canonical comparisons, ablations, versions, code, checkpoints, data, and rights.",
+      "workIds": [
+        "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "segment-level-hidden-state-recurrence",
+        "detached-recurrent-memory",
+        "relative-positional-self-attention",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "packed-text-pair-self-attention",
+        "next-sentence-prediction-pretraining",
+        "discriminative-full-model-fine-tuning",
+        "permutation-language-model-pretraining",
+        "target-aware-two-stream-self-attention",
+        "partial-permutation-prediction",
+        "span-based-permutation-targets",
+        "relative-segment-attention"
+      ],
+      "claimIds": [
+        "yang-2019-version-boundary",
+        "yang-2019-permutation-language-model-objective",
+        "yang-2019-target-aware-two-stream-attention",
+        "yang-2019-partial-permutation-prediction",
+        "yang-2019-span-based-target-selection",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-relative-segment-encoding",
+        "yang-2019-input-format-conflict",
+        "yang-2019-pretraining-data-and-compute",
+        "yang-2019-fair-bert-comparison",
+        "yang-2019-scaled-benchmark-results",
+        "yang-2019-component-ablation",
+        "yang-2019-attention-visualization-boundary",
+        "yang-2019-code-and-release-boundary",
+        "yang-2019-evidence-reproducibility-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive factorization and expectations over sampled orders",
+        "Transformer attention masks, residual stacks, and target mappings",
+        "Transformer-XL detached recurrence and relative-position attention",
+        "Median, ablation, comparator, ensemble, and version-specific evidence",
+        "Immutable code snapshots, model artifacts, software licenses, and dataset rights"
+      ],
+      "successCriterion": "The learner can implement two-stream masks without target leakage, explain why recurrent content memory need not preserve a prior sampled permutation, reconstruct Tables 1 and 6 with their conditions, and keep v1, NeurIPS, v2, code, model, data, and rights evidence separate."
+    },
+    {
+      "id": "beginner-liu-2019-training-recipe-not-new-architecture",
+      "mode": "beginner",
+      "objective": "Compare repeated versus fresh masks, sentence-pair versus packed text, NSP versus MLM-only training, and smaller versus larger data and training while keeping the underlying BERT-style reader recognizable.",
+      "workIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "dynamic-masked-language-model-corruption",
+        "nsp-free-full-sentence-packing",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "claimIds": [
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-input-format-and-nsp-ablation",
+        "liu-2019-large-batch-ablation",
+        "liu-2019-data-and-duration-accumulation"
+      ],
+      "prerequisites": [
+        "BERT predicts selected masked tokens with an encoder",
+        "A training example can be packed and corrupted in different ways",
+        "A controlled comparison changes fewer things than an accumulated recipe",
+        "A larger number is not automatically a fair comparison"
+      ],
+      "successCriterion": "The learner can state what remains BERT-like, list the principal recipe changes, identify mixed masking and batch results, and explain why the final score gain cannot be assigned to one switch."
+    },
+    {
+      "id": "expert-liu-2019-ablations-scaling-and-evidence-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct RoBERTa's masking, packing and NSP, batch, tokenizer, data, duration, and task-result tables with their run conditions; distinguish controlled contrasts from accumulated changes; and audit BERT, Transformer, and GPT-2 lineage plus paper, code, model, data, and license scope.",
+      "workIds": [
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "next-sentence-prediction-pretraining",
+        "packed-text-pair-self-attention",
+        "discriminative-full-model-fine-tuning",
+        "byte-level-byte-pair-tokenization",
+        "dynamic-masked-language-model-corruption",
+        "nsp-free-full-sentence-packing",
+        "masked-language-model-training-recipe-sensitivity"
+      ],
+      "claimIds": [
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-implementation-and-length-schedule",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-input-format-and-nsp-ablation",
+        "liu-2019-large-batch-ablation",
+        "liu-2019-byte-level-bpe-choice",
+        "liu-2019-pretraining-corpora",
+        "liu-2019-aggregate-roberta-recipe",
+        "liu-2019-data-and-duration-accumulation",
+        "liu-2019-glue-results",
+        "liu-2019-squad-results",
+        "liu-2019-race-results",
+        "liu-2019-release-and-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "BERT's encoder, MLM corruption, NSP, length schedule, and full-model fine-tuning",
+        "Byte-level BPE and fixed-length sequence packing",
+        "Compute-matched comparisons, medians, ensembles, and task-specific evaluation",
+        "Corpus provenance, immutable releases, and license scope"
+      ],
+      "successCriterion": "The learner can identify the NSP/packing confound, nonmonotonic masking and batch evidence, data-size/diversity conflation, unmatched BERT comparison, historical leaderboard conditions, scoped GPT-2 tokenization edge, and incomplete reconstruction boundary."
     }
   ]
 }

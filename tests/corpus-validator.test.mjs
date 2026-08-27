@@ -5829,6 +5829,18 @@ test("retains the Transformer as a canonical proceedings node with revision boun
         "documented-influence",
         "qualified",
       ],
+      [
+        "vaswani-2017-to-yang-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-liu-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
     ],
   );
 });
@@ -6667,6 +6679,711 @@ test("retains GPT-2 report, release, parameter-vocabulary, and pedagogy boundari
       (objective) =>
         objective.workIds.length === 1 && objective.workIds[0] === workId,
     ),
+  );
+});
+
+test("retains XLNet version, locator, result, confound, and pedagogy boundaries", () => {
+  const workId =
+    "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding";
+  const work = corpus.works.find((item) => item.id === workId);
+  const spanIdea = corpus.ideas.find(
+    (idea) => idea.id === "span-based-permutation-targets",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "yang-2019-version-boundary",
+  );
+  const permutationObjective = claims.find(
+    (claim) => claim.id === "yang-2019-permutation-language-model-objective",
+  );
+  const twoStream = claims.find(
+    (claim) => claim.id === "yang-2019-target-aware-two-stream-attention",
+  );
+  const partialPrediction = claims.find(
+    (claim) => claim.id === "yang-2019-partial-permutation-prediction",
+  );
+  const spanSelection = claims.find(
+    (claim) => claim.id === "yang-2019-span-based-target-selection",
+  );
+  const inputConflict = claims.find(
+    (claim) => claim.id === "yang-2019-input-format-conflict",
+  );
+  const pretraining = claims.find(
+    (claim) => claim.id === "yang-2019-pretraining-data-and-compute",
+  );
+  const fairComparison = claims.find(
+    (claim) => claim.id === "yang-2019-fair-bert-comparison",
+  );
+  const componentAblation = claims.find(
+    (claim) => claim.id === "yang-2019-component-ablation",
+  );
+  const structuralSourceIds = new Set([
+    "yang-2019-arxiv-v1-full-text",
+    "yang-2020-arxiv-v2-full-text",
+    "yang-2019-neurips-supplement",
+  ]);
+  const structuralEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter((evidence) =>
+      structuralSourceIds.has(evidence.sourceId),
+    ),
+  );
+  const canonicalEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "yang-2019-neurips-full-text",
+    ),
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "yang-2019-neurips-version");
+  assert.deepEqual(work?.authors, [
+    "Zhilin Yang",
+    "Zihang Dai",
+    "Yiming Yang",
+    "Jaime Carbonell",
+    "Ruslan Salakhutdinov",
+    "Quoc V. Le",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [
+      ["yang-2019-arxiv-v1-posted", "preprint", "2019-06-19"],
+      ["yang-2019-neurips-proceedings", "proceedings-publication", "2019"],
+      ["yang-2020-arxiv-v2-posted", "manuscript-revised", "2020-01-02"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [
+      ["yang-2019-arxiv-v1-version", "preprint"],
+      ["yang-2019-neurips-version", "proceedings"],
+      ["yang-2020-arxiv-v2-version", "preprint"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("yang-2019-neurips-version")?.bibliography.pages,
+    ["5753-5763"],
+  );
+  assert.ok(
+    versions
+      .get("yang-2019-neurips-version")
+      ?.notes.includes(
+        "current NeurIPS record use Ruslan Salakhutdinov; Metadata.json's structured author is Russ Salakhutdinov; official BibTeX and PDF metadata use Russ R. Salakhutdinov",
+      ),
+  );
+  assert.deepEqual(
+    versions.get("yang-2019-arxiv-v1-version")?.sourceIds,
+    [
+      "yang-2019-arxiv-record",
+      "yang-2019-arxiv-v1-full-text",
+      "yang-2019-xlnet-initial-code-snapshot",
+    ],
+  );
+  assert.deepEqual(versions.get("yang-2019-neurips-version")?.sourceIds, [
+    "yang-2019-neurips-record",
+    "yang-2019-neurips-metadata",
+    "yang-2019-neurips-full-text",
+    "yang-2019-neurips-supplement",
+    "yang-2019-xlnet-final-code-snapshot",
+    "yang-2019-xlnet-pinned-apache-license",
+    "yang-2019-neurips-rights-policy",
+  ]);
+  assert.deepEqual(
+    versions.get("yang-2020-arxiv-v2-version")?.sourceIds,
+    ["yang-2019-arxiv-record", "yang-2020-arxiv-v2-full-text"],
+  );
+  assert.deepEqual(
+    sources.map((source) => [source.id, source.versionIds]),
+    [
+      [
+        "yang-2019-arxiv-record",
+        ["yang-2019-arxiv-v1-version", "yang-2020-arxiv-v2-version"],
+      ],
+      ["yang-2019-arxiv-v1-full-text", ["yang-2019-arxiv-v1-version"]],
+      ["yang-2020-arxiv-v2-full-text", ["yang-2020-arxiv-v2-version"]],
+      ["yang-2019-neurips-record", ["yang-2019-neurips-version"]],
+      ["yang-2019-neurips-metadata", ["yang-2019-neurips-version"]],
+      ["yang-2019-neurips-full-text", ["yang-2019-neurips-version"]],
+      ["yang-2019-neurips-supplement", ["yang-2019-neurips-version"]],
+      [
+        "yang-2019-xlnet-initial-code-snapshot",
+        ["yang-2019-arxiv-v1-version"],
+      ],
+      [
+        "yang-2019-xlnet-final-code-snapshot",
+        ["yang-2019-neurips-version"],
+      ],
+      [
+        "yang-2019-xlnet-pinned-apache-license",
+        ["yang-2019-neurips-version"],
+      ],
+      ["yang-2019-neurips-rights-policy", ["yang-2019-neurips-version"]],
+    ],
+  );
+  assert.equal(claims.length, 15);
+  assert.deepEqual(
+    sourceMap.get("yang-2019-arxiv-v1-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(
+    sourceMap.get("yang-2020-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(sourceMap.get("yang-2019-neurips-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 11,
+  });
+  assert.deepEqual(sourceMap.get("yang-2019-neurips-supplement")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 7,
+  });
+  assert.ok(
+    sourceMap
+      .get("yang-2019-neurips-supplement")
+      ?.accessNote.includes(
+        "visibly continue printed article folios 12–18",
+      ),
+  );
+  assert.ok(structuralEvidence.length > 0);
+  for (const evidence of structuralEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "equation", "figure", "table"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  assert.ok(canonicalEvidence.length > 0);
+  for (const evidence of canonicalEvidence) {
+    assert.ok(evidence.locator.pageStart >= 1);
+    assert.ok(evidence.locator.pageEnd <= 11);
+  }
+  assert.deepEqual(
+    versionBoundary?.evidence.map((evidence) => evidence.sourceId),
+    [
+      "yang-2019-arxiv-v1-full-text",
+      "yang-2019-neurips-full-text",
+      "yang-2020-arxiv-v2-full-text",
+    ],
+  );
+  assert.ok(
+    permutationObjective?.statement.includes(
+      "token sequence and positional encodings remain in natural order",
+    ),
+  );
+  assert.ok(twoStream?.statement.includes("cannot attend to the target content"));
+  assert.ok(partialPrediction?.statement.includes("approximately a 1/K fraction"));
+  assert.equal(
+    spanIdea?.description,
+    "Select contiguous runs of positions as prediction targets inside a wider permutation context, sampling each target span's length while other factorization positions supply context.",
+  );
+  assert.deepEqual(
+    spanSelection?.evidence.find(
+      (evidence) => evidence.sourceId === "yang-2019-neurips-supplement",
+    ),
+    {
+      sourceId: "yang-2019-neurips-supplement",
+      locator: {
+        label: "Canonical pretraining hyperparameters",
+        section: "A.4.1 Pretraining",
+        table: "7",
+      },
+      support: "The supplement tabulates K=6 and associated large-model settings.",
+    },
+  );
+  assert.ok(
+    inputConflict?.statement.includes("places CLS last and left-pads"),
+  );
+  assert.deepEqual(
+    inputConflict?.evidence.map((evidence) => evidence.sourceId),
+    [
+      "yang-2019-neurips-full-text",
+      "yang-2019-arxiv-v1-full-text",
+      "yang-2019-xlnet-final-code-snapshot",
+    ],
+  );
+  assert.equal(
+    inputConflict?.evidence.at(-1)?.locator.section,
+    "classifier_utils.py lines 94–109 and 117–122; data_utils.py lines 480–487",
+  );
+  assert.ok(pretraining?.statement.includes("32.89 billion SentencePiece tokens"));
+  assert.ok(pretraining?.statement.includes("batch 8,192 on 512 TPU v3 chips"));
+  assert.ok(pretraining?.statement.includes("about 5.5 days and remains underfit"));
+  assert.deepEqual(
+    pretraining?.evidence.find(
+      (evidence) => evidence.sourceId === "yang-2019-neurips-supplement",
+    ),
+    {
+      sourceId: "yang-2019-neurips-supplement",
+      locator: {
+        label: "Canonical pretraining hyperparameter table",
+        section: "A.4.1 Pretraining",
+        table: "7",
+      },
+      support:
+        "Table 7 tabulates pretraining model and optimization settings; corpus sizes, hardware, duration, and the underfitting statement remain controlled by main-paper Section 3.1.",
+    },
+  );
+  assert.ok(
+    fairComparison?.statement.includes(
+      "SQuAD 2.0 EM/F1 82.8/85.5 versus 85.1/87.8",
+    ),
+  );
+  assert.ok(fairComparison?.statement.includes("RACE 75.1 versus 77.4"));
+  assert.ok(
+    fairComparison?.limitations
+      .join(" ")
+      .includes("oracle-like best-of-three envelope"),
+  );
+  assert.ok(componentAblation?.statement.includes("No row wins every column"));
+  assert.ok(componentAblation?.statement.includes("adding NSP slightly raises RACE"));
+  assert.ok(
+    componentAblation?.statement.includes(
+      "minus memory 65.55, 80.15/77.27, 85.32/85.05, 92.78",
+    ),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-yang-2019-permute-prediction-not-words", "beginner"],
+      [
+        "expert-yang-2019-objective-streams-memory-and-evidence",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "beginner")
+      ?.successCriterion.includes("factorization order"),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "expert")
+      ?.successCriterion.includes("Tables 1 and 6"),
+  );
+});
+
+test("retains RoBERTa source, result, confound, and pedagogy boundaries", () => {
+  const workId =
+    "liu-2019-roberta-robustly-optimized-bert-pretraining-approach";
+  const work = corpus.works.find((item) => item.id === workId);
+  const packingIdea = corpus.ideas.find(
+    (idea) => idea.id === "nsp-free-full-sentence-packing",
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const scopeBoundary = claims.find(
+    (claim) => claim.id === "liu-2019-predecessor-and-scope-boundary",
+  );
+  const masking = claims.find(
+    (claim) => claim.id === "liu-2019-static-dynamic-masking-ablation",
+  );
+  const inputAndNsp = claims.find(
+    (claim) => claim.id === "liu-2019-input-format-and-nsp-ablation",
+  );
+  const batch = claims.find(
+    (claim) => claim.id === "liu-2019-large-batch-ablation",
+  );
+  const recipe = claims.find(
+    (claim) => claim.id === "liu-2019-aggregate-roberta-recipe",
+  );
+  const accumulation = claims.find(
+    (claim) => claim.id === "liu-2019-data-and-duration-accumulation",
+  );
+  const glue = claims.find((claim) => claim.id === "liu-2019-glue-results");
+  const squad = claims.find((claim) => claim.id === "liu-2019-squad-results");
+  const race = claims.find((claim) => claim.id === "liu-2019-race-results");
+  const releaseBoundary = claims.find(
+    (claim) => claim.id === "liu-2019-release-and-reconstruction-boundary",
+  );
+  const paperEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "liu-2019-arxiv-v1-full-text",
+    ),
+  );
+  const sourceIds = [
+    "liu-2019-arxiv-record",
+    "liu-2019-arxiv-v1-full-text",
+    "liu-2019-fairseq-initial-roberta-snapshot",
+    "liu-2019-fairseq-initial-roberta-readme",
+    "liu-2019-fairseq-initial-rights",
+  ];
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "liu-2019-arxiv-v1-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [["liu-2019-arxiv-v1-posted", "preprint", "2019-07-26"]],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [
+      version.id,
+      version.kind,
+      version.bibliography.pages,
+      version.bibliography.identifiers.map((identifier) => identifier.value),
+    ]),
+    [
+      [
+        "liu-2019-arxiv-v1-version",
+        "preprint",
+        [],
+        ["1907.11692v1", "10.48550/arXiv.1907.11692"],
+      ],
+    ],
+  );
+  assert.deepEqual(work?.versions[0]?.sourceIds, sourceIds);
+  assert.deepEqual(sources.map((source) => source.id), sourceIds);
+  for (const source of sources) {
+    assert.deepEqual(source.versionIds, ["liu-2019-arxiv-v1-version"]);
+  }
+  assert.ok(
+    sourceMap
+      .get("liu-2019-fairseq-initial-rights")
+      ?.accessNote.includes(
+        "separate patent grant whose definition of Software is fairseq software",
+      ),
+  );
+  assert.equal(claims.length, 13);
+  assert.deepEqual(sourceMap.get("liu-2019-arxiv-v1-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 13,
+  });
+  assert.ok(paperEvidence.length > 0);
+  for (const evidence of paperEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "table", "paragraph"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  assert.ok(scopeBoundary?.statement.includes("BERT replication and optimization study"));
+  assert.ok(masking?.statement.includes("SQuAD 2.0 F1 78.3/78.7"));
+  assert.ok(masking?.statement.includes("MNLI-m 84.3/84.0"));
+  assert.ok(
+    masking?.limitations.join(" ").includes("not uniformly more accurate"),
+  );
+  assert.ok(
+    inputAndNsp?.statement.includes("Document-sentences is strongest overall"),
+  );
+  assert.ok(
+    inputAndNsp?.statement.includes("90.6/79.7, 84.7, 92.7, 65.6"),
+  );
+  assert.ok(inputAndNsp?.statement.includes("may cross document boundaries"));
+  assert.ok(
+    inputAndNsp?.limitations.join(" ").includes("does not isolate the loss alone"),
+  );
+  assert.ok(batch?.statement.includes("2K×125K gives 3.68, 85.2, 92.9"));
+  assert.ok(batch?.statement.includes("larger batches are not monotonically better"));
+  assert.ok(
+    batch?.limitations.join(" ").includes("partly an engineering choice"),
+  );
+  assert.ok(recipe?.statement.includes("FULL-SENTENCES packing without NSP"));
+  assert.ok(recipe?.statement.includes("at most 500K steps"));
+  assert.ok(
+    accumulation?.statement.includes(
+      "93.6/87.3→94.0/87.7→94.4/88.7→94.6/89.4",
+    ),
+  );
+  assert.ok(
+    accumulation?.statement.includes(
+      "BERT-Large comparator uses 13GB, batch 256, and one million steps",
+    ),
+  );
+  assert.ok(
+    accumulation?.statement.includes(
+      "SQuAD 90.9/81.8, MNLI 86.6, and SST-2 93.7",
+    ),
+  );
+  assert.ok(
+    accumulation?.limitations.join(" ").includes("not a factorial attribution study"),
+  );
+  assert.ok(glue?.statement.includes("ensemble of 5–7 models"));
+  assert.ok(glue?.statement.includes("and average 88.5"));
+  assert.ok(squad?.statement.includes("88.9 EM/94.6 F1"));
+  assert.ok(squad?.statement.includes("86.8/89.8"));
+  assert.ok(race?.statement.includes("83.2 overall, 86.5 middle, and 81.3 high"));
+  assert.ok(releaseBoundary?.statement.includes("initial pretraining documentation was incomplete"));
+  assert.ok(
+    releaseBoundary?.evidence
+      .find((evidence) => evidence.sourceId === "liu-2019-fairseq-initial-rights")
+      ?.support.includes("separate patent grant defines Software as fairseq software"),
+  );
+  assert.ok(
+    releaseBoundary?.limitations
+      .join(" ")
+      .includes("separate patent grant is software-scoped"),
+  );
+  assert.ok(
+    packingIdea?.description.includes("training blocks of at most 512 tokens"),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      [
+        "beginner-liu-2019-training-recipe-not-new-architecture",
+        "beginner",
+      ],
+      [
+        "expert-liu-2019-ablations-scaling-and-evidence-boundaries",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "beginner")
+      ?.successCriterion.includes("cannot be assigned to one switch"),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "expert")
+      ?.successCriterion.includes("NSP/packing confound"),
+  );
+});
+
+test("keeps XLNet and RoBERTa convergence lineage evidence-scoped", () => {
+  const transformerId = "vaswani-2017-attention-is-all-you-need";
+  const bertId = "devlin-2018-bert-pre-training-deep-bidirectional-transformers";
+  const transformerXlId =
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context";
+  const gpt2Id = "radford-2019-language-models-unsupervised-multitask-learners";
+  const xlnetId =
+    "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding";
+  const robertaId =
+    "liu-2019-roberta-robustly-optimized-bert-pretraining-approach";
+  const chronologicalWorkIds = [
+    bertId,
+    transformerXlId,
+    gpt2Id,
+    xlnetId,
+    robertaId,
+  ];
+  const expectedEdges = [
+    {
+      id: "dai-2019-to-yang-2019",
+      fromId: transformerXlId,
+      toId: xlnetId,
+      connectionType: "extends",
+      claimIds: [
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-relative-positional-attention",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-permutation-language-model-objective",
+      ],
+      sourceId: "yang-2019-neurips-full-text",
+      locator: {
+        label: "Target-side Transformer-XL integration",
+        section: "1 Introduction; 2.4 Incorporating Ideas from Transformer-XL",
+        pageStart: 1,
+        pageEnd: 5,
+      },
+    },
+    {
+      id: "devlin-2018-to-yang-2019",
+      fromId: bertId,
+      toId: xlnetId,
+      connectionType: "addresses",
+      claimIds: [
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "devlin-2018-full-parameter-task-adaptation",
+        "yang-2019-permutation-language-model-objective",
+        "yang-2019-fair-bert-comparison",
+      ],
+      sourceId: "yang-2019-neurips-full-text",
+      locator: {
+        label: "Target-side BERT critique, continuity, and comparison",
+        section:
+          "1 Introduction; 2.1 Background; 2.6 Discussion; 3.1 Pretraining and Implementation; 3.2 Fair Comparison with BERT",
+        pageStart: 1,
+        pageEnd: 7,
+        table: "1",
+      },
+    },
+    {
+      id: "vaswani-2017-to-yang-2019",
+      fromId: transformerId,
+      toId: xlnetId,
+      connectionType: "builds-on",
+      claimIds: [
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-positionwise-computation",
+        "yang-2019-target-aware-two-stream-attention",
+      ],
+      sourceId: "yang-2019-neurips-full-text",
+      locator: {
+        label: "Target-side Transformer attention reparameterization",
+        section: "2.1 Background; 2.3 Architecture",
+        pageStart: 2,
+        pageEnd: 5,
+        figure: "1",
+      },
+    },
+    {
+      id: "devlin-2018-to-liu-2019",
+      fromId: bertId,
+      toId: robertaId,
+      connectionType: "extends",
+      claimIds: [
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "devlin-2018-full-parameter-task-adaptation",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-input-format-and-nsp-ablation",
+      ],
+      sourceId: "liu-2019-arxiv-v1-full-text",
+      locator: {
+        label: "Target-side BERT replication and recipe changes",
+        section:
+          "1 Introduction; 2 Background; 4 Training Procedure Analysis; 5 RoBERTa",
+        table: "1–4",
+      },
+    },
+    {
+      id: "vaswani-2017-to-liu-2019",
+      fromId: transformerId,
+      toId: robertaId,
+      connectionType: "builds-on",
+      claimIds: [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-aggregate-roberta-recipe",
+      ],
+      sourceId: "liu-2019-arxiv-v1-full-text",
+      locator: {
+        label: "Target-side Transformer encoder continuity",
+        section: "2.2 Architecture; 5 RoBERTa",
+      },
+    },
+    {
+      id: "radford-2019-to-liu-2019",
+      fromId: gpt2Id,
+      toId: robertaId,
+      connectionType: "builds-on",
+      claimIds: [
+        "radford-2019-byte-level-bpe",
+        "liu-2019-byte-level-bpe-choice",
+      ],
+      sourceId: "liu-2019-arxiv-v1-full-text",
+      locator: {
+        label: "Target-side byte-level BPE inheritance",
+        section: "4.4 Text Encoding",
+      },
+    },
+  ];
+  const targetIds = new Set([xlnetId, robertaId]);
+  const relationships = corpus.relationships.filter((relationship) =>
+    targetIds.has(relationship.to.id),
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => chronologicalWorkIds.includes(work.id))
+      .map((work) => work.id),
+    chronologicalWorkIds,
+  );
+  assert.deepEqual(
+    relationships.map((relationship) => [
+      relationship.id,
+      relationship.from.kind,
+      relationship.from.id,
+      relationship.to.kind,
+      relationship.to.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.confidence,
+      relationship.causalLanguage,
+    ]),
+    expectedEdges.map((edge) => [
+      edge.id,
+      "work",
+      edge.fromId,
+      "work",
+      edge.toId,
+      edge.connectionType,
+      "documented-influence",
+      "high",
+      "qualified",
+    ]),
+  );
+  for (const [index, relationship] of relationships.entries()) {
+    const expected = expectedEdges[index];
+    assert.deepEqual(relationship.claimIds, expected.claimIds);
+    assert.deepEqual(
+      relationship.sourceEvidence.map((evidence) => [
+        evidence.sourceId,
+        evidence.locator,
+      ]),
+      [[expected.sourceId, expected.locator]],
+    );
+    assert.deepEqual(
+      new Set(
+        relationship.claimIds.map(
+          (claimId) =>
+            corpus.claims.find((claim) => claim.id === claimId)?.workId,
+        ),
+      ),
+      new Set([relationship.from.id, relationship.to.id]),
+    );
+    assert.ok(
+      corpus.sources
+        .find((source) => source.id === expected.sourceId)
+        ?.relatedWorkIds.includes(relationship.to.id),
+    );
+  }
+  assert.deepEqual(
+    corpus.relationships.filter(
+      (relationship) =>
+        relationship.from.id === xlnetId && relationship.to.id === robertaId,
+    ),
+    [],
   );
 });
 
