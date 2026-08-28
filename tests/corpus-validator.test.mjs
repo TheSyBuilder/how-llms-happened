@@ -57,6 +57,106 @@ test("keeps the documented corpus totals synchronized", () => {
   );
 });
 
+test("preserves T5 paper, C4, and lineage boundaries", () => {
+  const workId =
+    "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer";
+  const work = corpus.works.find((item) => item.id === workId);
+  const jmlr = work?.versions.find(
+    (item) => item.id === "raffel-2020-jmlr-version",
+  );
+  const latest = work?.versions.find(
+    (item) => item.id === "raffel-2023-arxiv-v4-version",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "raffel-2020-jmlr-full-text",
+  );
+  const launchTasks = corpus.sources.find(
+    (item) => item.id === "raffel-2019-t5-launch-tasks",
+  );
+  const launchPreprocessors = corpus.sources.find(
+    (item) => item.id === "raffel-2019-t5-launch-preprocessors",
+  );
+  const launchUtils = corpus.sources.find(
+    (item) => item.id === "raffel-2019-t5-launch-utils",
+  );
+  const checksumSnapshot = corpus.sources.find(
+    (item) => item.id === "raffel-2022-c4-input-checksums",
+  );
+  const currentC4 = corpus.sources.find(
+    (item) => item.id === "raffel-2026-tfds-c4-catalog",
+  );
+  const relativePosition = corpus.claims.find(
+    (item) => item.id === "raffel-2020-relative-position-bias",
+  );
+  const paperSentinel = corpus.claims.find(
+    (item) => item.id === "raffel-2020-sentinel-denoising-objective",
+  );
+  const codeSentinel = corpus.claims.find(
+    (item) => item.id === "raffel-2019-span-preprocessor-boundary",
+  );
+  const corpusClaim = corpus.claims.find(
+    (item) =>
+      item.id === "raffel-2020-c4-construction-and-launch-provenance",
+  );
+  const conflicts = corpus.claims.find(
+    (item) => item.id === "raffel-2020-internal-table-conflicts",
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(work?.chronology.orderingEventId, "raffel-2019-arxiv-v1-posted");
+  assert.equal(work?.versions.length, 5);
+  assert.equal(work?.canonicalVersionId, "raffel-2020-jmlr-version");
+  assert.deepEqual(jmlr?.bibliography.pages, ["1-67"]);
+  assert.equal(canonicalText?.pagination.scheme, "printed");
+  assert.match(latest?.notes ?? "", /fewer than three sentences/);
+  assert.match(latest?.notes ?? "", /fewer than five words/);
+  assert.deepEqual(launchTasks?.versionIds, ["raffel-2019-arxiv-v1-version"]);
+  assert.match(launchTasks?.accessNote ?? "", /c4\/en:1\.0\.0/);
+  assert.doesNotMatch(launchPreprocessors?.accessNote ?? "", /EOS handling/);
+  assert.deepEqual(launchUtils?.versionIds, ["raffel-2019-arxiv-v1-version"]);
+  assert.match(launchUtils?.accessNote ?? "", /Task\.preprocess_tokens/);
+  assert.match(launchUtils?.accessNote ?? "", /appends EOS=1/);
+  assert.deepEqual(checksumSnapshot?.versionIds, []);
+  assert.ok(checksumSnapshot?.supports.includes("version-boundary"));
+  assert.match(checksumSnapshot?.url ?? "", /generation=1657619879665857/);
+  assert.match(checksumSnapshot?.accessNote ?? "", /12 July 2022/);
+  assert.deepEqual(currentC4?.versionIds, []);
+  assert.ok(currentC4?.supports.includes("version-boundary"));
+  assert.match(relativePosition?.statement ?? "", /self-attention logit/);
+  assert.match(paperSentinel?.statement ?? "", /paper prose additionally requires/);
+  assert.match(codeSentinel?.statement ?? "", /required by the paper text/);
+  assert.ok(
+    codeSentinel?.evidence.some(
+      (item) => item.sourceId === "raffel-2019-t5-launch-utils",
+    ),
+  );
+  assert.match(corpusClaim?.statement ?? "", /CC-MAIN-2019-18/);
+  assert.match(conflicts?.statement ?? "", /82\.62\/18\.30\/79\.40/);
+  assert.match(conflicts?.statement ?? "", /28\.57/);
+  assert.match(conflicts?.statement ?? "", /28\.09/);
+  assert.deepEqual(
+    incoming.map((item) => item.id).sort(),
+    ["devlin-2018-to-raffel-2019", "vaswani-2017-to-raffel-2019"],
+  );
+  assert.ok(
+    !incoming
+      .find((item) => item.id === "devlin-2018-to-raffel-2019")
+      ?.claimIds.includes("devlin-2018-full-parameter-task-adaptation"),
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("launch-time TFDS C4 1.0.0"));
+  assert.ok(corpusFormat.includes("T5 is represented by arXiv versions 1–4"));
+  assert.ok(historicalScope.includes("The T5 family was checked on 2026-08-28"));
+});
+
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
   const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
   const versionId = "graves-2013-arxiv-v1-version";
@@ -5837,6 +5937,12 @@ test("retains the Transformer as a canonical proceedings node with revision boun
       ],
       [
         "vaswani-2017-to-liu-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-raffel-2019",
         "builds-on",
         "documented-influence",
         "qualified",

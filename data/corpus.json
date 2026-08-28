@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-27",
+  "asOf": "2026-08-28",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -10591,6 +10591,466 @@
           "resolutionCondition": "Exact data, preprocessing, training, model, evaluation, and seed provenance is needed."
         }
       ]
+    },
+    {
+      "id": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "authors": [
+        "Colin Raffel",
+        "Noam Shazeer",
+        "Adam Roberts",
+        "Katherine Lee",
+        "Sharan Narang",
+        "Michael Matena",
+        "Yanqi Zhou",
+        "Wei Li",
+        "Peter J. Liu"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "C. Raffel et al., “Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,” Journal of Machine Learning Research 21(140), 1–67 (2020; arXiv v1 posted 23 October 2019).",
+      "chronology": {
+        "orderingEventId": "raffel-2019-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "raffel-2019-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2019-10-23",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 23 October 2019 at 17:37:36 UTC"
+              }
+            ],
+            "versionId": "raffel-2019-arxiv-v1-version",
+            "sourceIds": [
+              "raffel-2019-arxiv-record",
+              "raffel-2019-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "raffel-2019-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2019-10-24",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 24 October 2019 at 15:13:50 UTC"
+              }
+            ],
+            "versionId": "raffel-2019-arxiv-v2-version",
+            "sourceIds": [
+              "raffel-2019-arxiv-record",
+              "raffel-2019-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "raffel-2020-jmlr-received",
+            "kind": "manuscript-received",
+            "label": "JMLR manuscript received",
+            "date": {
+              "value": "2020-01",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2020-jmlr-full-text",
+                "precision": "month",
+                "locator": "JMLR article header: Submitted 1/20"
+              }
+            ],
+            "versionId": "raffel-2020-jmlr-version",
+            "sourceIds": [
+              "raffel-2020-jmlr-record",
+              "raffel-2020-jmlr-full-text"
+            ]
+          },
+          {
+            "id": "raffel-2020-jmlr-revised",
+            "kind": "manuscript-revised",
+            "label": "JMLR manuscript revised",
+            "date": {
+              "value": "2020-06",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2020-jmlr-full-text",
+                "precision": "month",
+                "locator": "JMLR article header: Revised 6/20"
+              }
+            ],
+            "versionId": "raffel-2020-jmlr-version",
+            "sourceIds": [
+              "raffel-2020-jmlr-record",
+              "raffel-2020-jmlr-full-text"
+            ]
+          },
+          {
+            "id": "raffel-2020-jmlr-published",
+            "kind": "journal-publication",
+            "label": "JMLR article published",
+            "date": {
+              "value": "2020-06",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2020-jmlr-full-text",
+                "precision": "month",
+                "locator": "JMLR article header: Published 6/20"
+              }
+            ],
+            "versionId": "raffel-2020-jmlr-version",
+            "sourceIds": [
+              "raffel-2020-jmlr-record",
+              "raffel-2020-jmlr-full-text"
+            ]
+          },
+          {
+            "id": "raffel-2020-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2020-07-28",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 28 July 2020 at 13:10:01 UTC"
+              }
+            ],
+            "versionId": "raffel-2020-arxiv-v3-version",
+            "sourceIds": [
+              "raffel-2019-arxiv-record",
+              "raffel-2020-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "raffel-2023-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2023-09-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "raffel-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 19 September 2023 at 15:14:48 UTC"
+              }
+            ],
+            "versionId": "raffel-2023-arxiv-v4-version",
+            "sourceIds": [
+              "raffel-2019-arxiv-record",
+              "raffel-2023-arxiv-v4-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "raffel-2019-arxiv-v1-version",
+          "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "authors": [
+            "Colin Raffel",
+            "Noam Shazeer",
+            "Adam Roberts",
+            "Katherine Lee",
+            "Sharan Narang",
+            "Michael Matena",
+            "Yanqi Zhou",
+            "Wei Li",
+            "Peter J. Liu"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "C. Raffel et al., “Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,” arXiv:1910.10683v1, 23 October 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1910.10683v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "raffel-2019-arxiv-record",
+            "raffel-2019-arxiv-v1-full-text",
+            "raffel-2019-t5-initial-code-snapshot",
+            "raffel-2019-t5-launch-tasks",
+            "raffel-2019-t5-launch-preprocessors",
+            "raffel-2019-t5-launch-utils",
+            "raffel-2019-t5-launch-readme",
+            "raffel-2019-t5-apache-license",
+            "raffel-2019-c4-initial-commit",
+            "raffel-2019-c4-launch-builder",
+            "raffel-2019-c4-launch-cleaning"
+          ],
+          "notes": "The 52-leaf first posting is the ordering artifact and appeared the same day as the initial public T5 repository. It contains the unified framework, controlled study, C4 description, final recipe, and benchmark tables. Launch code separately pins TFDS C4 1.0.0 and supplies more precise preprocessing mechanics."
+        },
+        {
+          "id": "raffel-2019-arxiv-v2-version",
+          "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "authors": [
+            "Colin Raffel",
+            "Noam Shazeer",
+            "Adam Roberts",
+            "Katherine Lee",
+            "Sharan Narang",
+            "Michael Matena",
+            "Yanqi Zhou",
+            "Wei Li",
+            "Peter J. Liu"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "C. Raffel et al., “Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,” arXiv:1910.10683v2, 24 October 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1910.10683v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "raffel-2019-arxiv-record",
+            "raffel-2019-arxiv-v2-full-text"
+          ],
+          "notes": "The 53-leaf next-day revision adds ReCoRD and BoolQ to the SuperGLUE question-answering list, repairs small wording errors, and changes acknowledgments and references. The audited source diff found no core method or result change."
+        },
+        {
+          "id": "raffel-2020-jmlr-version",
+          "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "authors": [
+            "Colin Raffel",
+            "Noam Shazeer",
+            "Adam Roberts",
+            "Katherine Lee",
+            "Sharan Narang",
+            "Michael Matena",
+            "Yanqi Zhou",
+            "Wei Li",
+            "Peter J. Liu"
+          ],
+          "kind": "journal",
+          "label": "Canonical JMLR article",
+          "language": "en",
+          "bibliography": {
+            "citation": "C. Raffel, N. Shazeer, A. Roberts, K. Lee, S. Narang, M. Matena, Y. Zhou, W. Li, and P. J. Liu, “Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,” Journal of Machine Learning Research, vol. 21, no. 140, pp. 1–67, 2020.",
+            "venue": "Journal of Machine Learning Research",
+            "volume": "21",
+            "issues": [
+              "140"
+            ],
+            "pages": [
+              "1-67"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "raffel-2020-jmlr-record",
+            "raffel-2020-jmlr-full-text"
+          ],
+          "notes": "The 67-page publisher article is canonical and supplies stable printed pages, submission/revision/publication months, and CC BY 4.0 notice. Its model, objective, result, and limitation text aligns with arXiv v3, while v4 later corrects C4-cleaning prose without changing the empirical study."
+        },
+        {
+          "id": "raffel-2020-arxiv-v3-version",
+          "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "authors": [
+            "Colin Raffel",
+            "Noam Shazeer",
+            "Adam Roberts",
+            "Katherine Lee",
+            "Sharan Narang",
+            "Michael Matena",
+            "Yanqi Zhou",
+            "Wei Li",
+            "Peter J. Liu"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "C. Raffel et al., “Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,” arXiv:1910.10683v3, 28 July 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1910.10683v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "raffel-2019-arxiv-record",
+            "raffel-2020-arxiv-v3-full-text"
+          ],
+          "notes": "The 67-leaf revision carries the journal text into arXiv. It retains the JMLR C4 threshold wording later corrected in version 4."
+        },
+        {
+          "id": "raffel-2023-arxiv-v4-version",
+          "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+          "authors": [
+            "Colin Raffel",
+            "Noam Shazeer",
+            "Adam Roberts",
+            "Katherine Lee",
+            "Sharan Narang",
+            "Michael Matena",
+            "Yanqi Zhou",
+            "Wei Li",
+            "Peter J. Liu"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "C. Raffel et al., “Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer,” arXiv:1910.10683v4, 19 September 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1910.10683v4",
+                "label": "arXiv version 4 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1910.10683",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "raffel-2019-arxiv-record",
+            "raffel-2023-arxiv-v4-full-text"
+          ],
+          "notes": "The latest 67-leaf revision corrects the C4 prose to fewer than three sentences and fewer than five words per retained line, adds citation-marker and policy-notice filtering, and changes an acknowledgment. The audited source diff found no architecture, objective, training, ablation, or result change."
+        }
+      ],
+      "canonicalVersionId": "raffel-2020-jmlr-version",
+      "preferredSourceIds": [
+        "raffel-2020-jmlr-record",
+        "raffel-2020-jmlr-full-text"
+      ],
+      "sourceIds": [
+        "raffel-2019-arxiv-record",
+        "raffel-2019-arxiv-v1-full-text",
+        "raffel-2019-arxiv-v2-full-text",
+        "raffel-2020-jmlr-record",
+        "raffel-2020-jmlr-full-text",
+        "raffel-2020-arxiv-v3-full-text",
+        "raffel-2023-arxiv-v4-full-text",
+        "raffel-2019-t5-initial-code-snapshot",
+        "raffel-2019-t5-launch-tasks",
+        "raffel-2019-t5-launch-preprocessors",
+        "raffel-2019-t5-launch-utils",
+        "raffel-2019-t5-launch-readme",
+        "raffel-2019-t5-apache-license",
+        "raffel-2019-c4-initial-commit",
+        "raffel-2019-c4-launch-builder",
+        "raffel-2019-c4-launch-cleaning",
+        "raffel-2022-c4-input-checksums",
+        "raffel-2019-c4-line-dedup-change",
+        "raffel-2020-c4-validation-change",
+        "raffel-2020-t5-c4-retarget",
+        "raffel-2026-tfds-c4-catalog",
+        "raffel-2026-t5-later-checkpoint-record",
+        "raffel-2026-common-crawl-terms",
+        "dodge-2021-c4-audit-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "T5 makes heterogeneous NLP tasks comparable through one text-to-text interface, then audits architectures, denoising objectives, corpus choices, transfer strategies, and scale inside that framework. Its encoder–decoder span-reconstruction recipe, launch C4 pipeline, original mixed supervised and unsupervised pretraining, and historically strong fine-tuned results form a central convergence node, while most fine distinctions among denoising variants remain modest."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "source-conditioned-autoregressive-decoding",
+        "unified-text-to-text-task-interface",
+        "scalar-bucketed-relative-position-bias",
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline",
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "significance": {
+        "beginner": "T5 rewrites many language tasks into the same simple shape: read text and write text. It compares how that shared reader-writer should learn from missing spans, filtered web pages, labeled tasks, and larger training budgets, so learners can separate the common interface from the recipe choices that made it work well.",
+        "expert": "T5 combines a pre-normalized encoder–decoder Transformer, head-specific bucketed relative-logit biases, sentinel-delimited span reconstruction, launch-time TFDS C4 1.0.0, mixed supervised and unsupervised pretraining, and task-specific fine-tuning. Its broad validation study and final historical results require version-aware C4 provenance, compute-versus-parameter controls, bundled-change cautions, and explicit paper/code/data/checkpoint rights boundaries."
+      },
+      "limitations": [
+        "The study usually varies one factor at a time and explicitly may miss interactions; the final T5 recipe bundles several choices that were not isolated factorially.",
+        "Only the baseline was trained ten times. Most variants were single runs whose significance convention borrows baseline variance rather than estimating per-variant uncertainty.",
+        "Tables 1–13 use validation data. Table 14 uses test data except SQuAD, whose largest model was evaluated on validation because the test server could not run it.",
+        "The full encoder–decoder architecture comparison is approximately compute-matched but not parameter-matched: its two stacks carry about twice the parameters of the decoder-only alternatives.",
+        "The original final checkpoints use supervised downstream examples during multi-task pretraining and then task-specific fine-tuning; they are neither zero-shot systems nor C4-only checkpoints.",
+        "The final one-trillion-token T5-Base comparison bundles objective, mixture, and adaptation changes, so its gain over baseline-1T cannot be assigned to span reconstruction alone.",
+        "The 18-of-24 state-of-the-art statement and comparator rows are frozen to 24 October 2019. Translation remains below the displayed prior bests, and later leaderboards are outside the claim.",
+        "No final-training FLOP total, exact TPU slice size, wall time, energy estimate, repeated-seed final score distribution, or complete run-level reconstruction package is reported.",
+        "JMLR and arXiv v3 reverse the implemented three-sentence and five-word C4 thresholds and omit two implemented filters; arXiv v4 corrects the prose without changing the model or results.",
+        "Table 10 duplicates one adapter aggregate row that conflicts with Appendix E, and Table 13's four-model-ensemble EnRo value conflicts with Appendix E. The primary sources do not resolve either number.",
+        "Launch T5 pins TFDS C4 1.0.0. Later C4 releases changed deduplication, filtering, and splits, so the current TFDS default and catalog sizes are not byte-identical proxies for the original training corpus.",
+        "No immutable prepared C4 1.0.0 output or final-output digest was identified. The launch release supplies a reconstruction pipeline; a separately pinned 2022 official manifest covers raw crawl inputs but is not launch evidence, while transitive dependencies and grouping behavior limit bitwise reproducibility.",
+        "C4 contains third-party web text with heterogeneous rights. Apache 2.0 covers the inspected T5 and TFDS code, not the incorporated web pages; the original external GCS checkpoints have no separately identified license manifest.",
+        "A later empirical C4 audit found benchmark-text matches and demographic effects from the blocklist. Exact matching does not by itself measure performance inflation, and the audit does not reconstruct the original checkpoint training bytes.",
+        "Later T5.1.1 checkpoints change activation, dropout, weight tying, training mixture, and shapes. Those properties are not back-projected onto the original T5 family."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv ledger establishes 23 October 2019 as the first public paper artifact, while JMLR 21(140):1–67 supplies the canonical 2020 publication and stable page locators."
+        },
+        {
+          "status": "resolved",
+          "note": "Source comparison confines arXiv v4's substantive text correction to C4-cleaning prose; canonical model, objective, training, and result claims remain anchored to JMLR."
+        },
+        {
+          "status": "open",
+          "note": "No inspected primary source resolves the duplicate adapter aggregates in Table 10 versus Appendix E or the 28.57 versus 28.09 EnRo ensemble values.",
+          "resolutionCondition": "Author errata or run-level result artifacts are required."
+        },
+        {
+          "status": "open",
+          "note": "No immutable prepared C4 1.0.0 payload, final-output digest, or complete dependency lock was identified.",
+          "resolutionCondition": "A versioned prepared-corpus manifest with hashes and fully pinned execution environment is required for byte-level reconstruction."
+        },
+        {
+          "status": "open",
+          "note": "The initial repository license does not unambiguously state that the external GCS checkpoint objects are within its scope.",
+          "resolutionCondition": "A checkpoint-specific license or authoritative Google clarification is required."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -11738,7 +12198,8 @@
         "gehring-2017-conditional-translation-objective",
         "gehring-2017-causal-decoder-and-parallelism",
         "gehring-2017-training-and-decoding",
-        "gehring-2017-data-and-tokenization"
+        "gehring-2017-data-and-tokenization",
+        "raffel-2020-encoder-decoder-architecture"
       ],
       "uncertainties": [
         {
@@ -12330,7 +12791,8 @@
         "dai-2019-relative-positional-attention",
         "radford-2019-gpt-continuity-and-model-changes",
         "yang-2019-target-aware-two-stream-attention",
-        "liu-2019-predecessor-and-scope-boundary"
+        "liu-2019-predecessor-and-scope-boundary",
+        "raffel-2020-encoder-decoder-architecture"
       ],
       "uncertainties": [
         {
@@ -12380,7 +12842,8 @@
         "dai-2019-relative-positional-attention",
         "radford-2019-gpt-continuity-and-model-changes",
         "yang-2019-target-aware-two-stream-attention",
-        "liu-2019-predecessor-and-scope-boundary"
+        "liu-2019-predecessor-and-scope-boundary",
+        "raffel-2020-encoder-decoder-architecture"
       ],
       "uncertainties": [
         {
@@ -13137,6 +13600,128 @@
         {
           "status": "resolved",
           "note": "The cumulative RoBERTa recipe does not identify one change as the sole cause of the final gain."
+        }
+      ]
+    },
+    {
+      "id": "unified-text-to-text-task-interface",
+      "name": "Unified text-to-text task interface",
+      "kind": "mechanism",
+      "description": "Represent heterogeneous language tasks as text inputs paired with text targets so one encoder–decoder, loss, vocabulary, and decoding interface can serve classification, regression-as-text, question answering, summarization, and translation.",
+      "claimIds": [
+        "raffel-2019-version-and-c4-correction-boundary",
+        "raffel-2020-unified-text-to-text-framework",
+        "raffel-2020-encoder-decoder-architecture",
+        "raffel-2020-architecture-comparison",
+        "raffel-2019-release-reconstruction-and-rights-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The interface unifies representation and training machinery; it does not make task metrics, data conditions, or inference procedures interchangeable."
+        }
+      ]
+    },
+    {
+      "id": "scalar-bucketed-relative-position-bias",
+      "name": "Scalar bucketed relative-position bias",
+      "kind": "mechanism",
+      "description": "Add a learned, head-specific scalar to each self-attention logit according to a logarithmically bucketed query–key offset, sharing those bias parameters across layers while collapsing sufficiently large distances into common buckets.",
+      "claimIds": [
+        "raffel-2020-encoder-decoder-architecture",
+        "raffel-2020-relative-position-bias"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "T5 does not ablate every architectural deviation from the original Transformer, so the paper does not isolate this bias as the cause of downstream gains."
+        }
+      ]
+    },
+    {
+      "id": "sentinel-delimited-span-reconstruction",
+      "name": "Sentinel-delimited span reconstruction",
+      "kind": "objective",
+      "description": "Replace each selected input span with an example-unique sentinel and train an autoregressive decoder to emit the removed spans in order, separated by matching sentinels, concentrating target computation on corrupted content; the paper additionally specifies a final unmatched sentinel, while launch code ends the constructed target with EOS instead.",
+      "claimIds": [
+        "raffel-2020-sentinel-denoising-objective",
+        "raffel-2019-span-preprocessor-boundary",
+        "raffel-2020-denoising-objective-comparisons",
+        "raffel-2020-span-corruption-selection",
+        "raffel-2020-final-recipe-and-model-family",
+        "raffel-2020-nonscaling-recipe-bundle"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper prose and Figure 2 require a final unmatched sentinel, while launch preprocessing produces one sentinel per missing span and then appends EOS; the corpus preserves this paper–code conflict."
+        }
+      ]
+    },
+    {
+      "id": "heuristically-filtered-web-corpus-pipeline",
+      "name": "Heuristically filtered web-corpus pipeline",
+      "kind": "mechanism",
+      "description": "Turn a fixed web crawl into language-model examples through extraction, language identification, page and line quality filters, term-based exclusions, URL handling, and duplicate-text removal, with the corpus identity depending on the pinned pipeline version as well as the raw crawl.",
+      "claimIds": [
+        "raffel-2019-version-and-c4-correction-boundary",
+        "raffel-2020-c4-construction-and-launch-provenance",
+        "raffel-2020-c4-filtering-comparison",
+        "raffel-2020-c4-repetition-boundary",
+        "raffel-2020-final-recipe-and-model-family",
+        "raffel-2019-release-reconstruction-and-rights-boundary",
+        "raffel-2021-c4-audit-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No immutable prepared C4 1.0.0 payload or final-output digest was identified.",
+          "resolutionCondition": "A versioned prepared-corpus manifest and fully pinned generation environment are required for byte-identical reconstruction."
+        }
+      ]
+    },
+    {
+      "id": "mixed-supervised-unsupervised-pretraining",
+      "name": "Mixed supervised and unsupervised pretraining",
+      "kind": "objective",
+      "description": "Pretrain one text-to-text model on a controlled mixture of unlabeled denoising examples and labeled downstream-task examples before performing task-specific fine-tuning.",
+      "claimIds": [
+        "raffel-2020-multitask-pretraining-comparison",
+        "raffel-2020-final-recipe-and-model-family",
+        "raffel-2020-historical-headline-results",
+        "raffel-2020-nonscaling-recipe-bundle"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The original final T5 checkpoints include supervised downstream data; later C4-only checkpoint families are separate artifacts."
+        }
+      ]
+    },
+    {
+      "id": "transfer-recipe-scale-composition",
+      "name": "Transfer recipe and scale composition",
+      "kind": "finding",
+      "description": "Transfer quality can reflect the joint contribution of architecture, objective, corpus quality and repetition, task mixing, fine-tuning, parameter count, training duration, batch size, and ensembling rather than one named technique.",
+      "claimIds": [
+        "raffel-2020-baseline-configuration-and-training",
+        "raffel-2020-architecture-comparison",
+        "raffel-2020-denoising-objective-comparisons",
+        "raffel-2020-span-corruption-selection",
+        "raffel-2020-c4-filtering-comparison",
+        "raffel-2020-c4-repetition-boundary",
+        "raffel-2020-multitask-pretraining-comparison",
+        "raffel-2020-scaling-comparison",
+        "raffel-2020-final-recipe-and-model-family",
+        "raffel-2020-historical-headline-results",
+        "raffel-2020-nonscaling-recipe-bundle",
+        "raffel-2020-evidence-design-boundary",
+        "raffel-2020-internal-table-conflicts"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "T5's controlled rows support scoped comparisons, while its final system changes several factors together and does not identify a single sufficient cause."
         }
       ]
     }
@@ -19165,6 +19750,530 @@
         "pageStart": 1,
         "pageEnd": 1
       }
+    },
+    {
+      "id": "raffel-2019-arxiv-record",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "arXiv record for Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "url": "https://arxiv.org/abs/1910.10683",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version",
+        "raffel-2019-arxiv-v2-version",
+        "raffel-2020-arxiv-v3-version",
+        "raffel-2023-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission history records v1 on 23 October 2019, v2 on 24 October 2019, v3 on 28 July 2020, and v4 on 19 September 2023. The aggregate arXiv DOI identifies the preprint family rather than the JMLR article."
+    },
+    {
+      "id": "raffel-2019-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Immutable T5 arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/1910.10683v1",
+      "accessDate": "2026-08-28",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 52
+      },
+      "accessNote": "The complete 52-leaf first posting was rendered and source-compared. It has no stable printed folios, so evidence uses structural anchors rather than PDF positions."
+    },
+    {
+      "id": "raffel-2019-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Immutable T5 arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/1910.10683v2",
+      "accessDate": "2026-08-28",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "raffel-2019-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 53
+      },
+      "accessNote": "The complete 53-leaf next-day revision was rendered and source-compared. Evidence uses section, figure, table, and appendix anchors rather than PDF positions."
+    },
+    {
+      "id": "raffel-2020-jmlr-record",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "JMLR record for Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+      "url": "https://www.jmlr.org/papers/v21/20-074.html",
+      "accessDate": "2026-08-28",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "raffel-2020-jmlr-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher record supplies the nine-author order, title, volume 21, article 140, pages 1–67, year 2020, and official paper and code links. It lists no journal DOI."
+    },
+    {
+      "id": "raffel-2020-jmlr-full-text",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Canonical JMLR T5 full text",
+      "url": "https://www.jmlr.org/papers/volume21/20-074/20-074.pdf",
+      "accessDate": "2026-08-28",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "raffel-2020-jmlr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 67
+      },
+      "accessNote": "The publisher PDF has stable printed pages 1–67, records submitted 1/20, revised 6/20, and published 6/20, and carries a CC BY 4.0 notice. It is canonical for model and result claims."
+    },
+    {
+      "id": "raffel-2020-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Immutable T5 arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/1910.10683v3",
+      "accessDate": "2026-08-28",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "raffel-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 67
+      },
+      "accessNote": "The complete 67-leaf arXiv rendering of the journal text was source-compared. Structural anchors are used because the arXiv object is not the stable publisher pagination source."
+    },
+    {
+      "id": "raffel-2023-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Immutable T5 arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/1910.10683v4",
+      "accessDate": "2026-08-28",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "raffel-2023-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 67
+      },
+      "accessNote": "The complete 67-leaf current revision was source-compared with arXiv v3 and JMLR. It corrects only C4-cleaning prose plus an acknowledgment; evidence uses structural anchors."
+    },
+    {
+      "id": "raffel-2019-t5-initial-code-snapshot",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Initial official T5 repository commit",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/commit/9fd7b14a769417be33bc6c850f9598764913c833",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The immutable initial commit is dated 23 October 2019 and has no parent. It establishes the launch code state and is an implementation artifact, not another paper revision."
+    },
+    {
+      "id": "raffel-2019-t5-launch-tasks",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned launch-time T5 task definitions",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/t5/data/tasks.py",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The launch task registry explicitly pins c4/en:1.0.0, tying the original release to the first TFDS C4 builder rather than later corpus versions."
+    },
+    {
+      "id": "raffel-2019-t5-launch-preprocessors",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned launch-time T5 span-corruption preprocessors",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/t5/data/preprocessors.py",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The immutable implementation defines random span masks, rounding and partition rules, descending extra-id sentinels, and input and target construction. EOS is appended separately by the launch Task utility."
+    },
+    {
+      "id": "raffel-2019-t5-launch-utils",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned launch-time T5 task utilities",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/t5/data/utils.py",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "In Task.preprocess_tokens, the immutable launch utility first verifies that token-preprocessor outputs contain no EOS, then trims each model feature and appends EOS=1. It does not add another sentinel."
+    },
+    {
+      "id": "raffel-2019-t5-launch-readme",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned launch-time T5 README",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/README.md",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The launch README lists Small, Base, Large, 3B, and 11B checkpoint directories, experiment configuration locations, and the TFDS-based C4 generation route. Directory aliases are not immutable checkpoint manifests."
+    },
+    {
+      "id": "raffel-2019-t5-apache-license",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned launch-time T5 Apache License 2.0",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/LICENSE",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Apache License 2.0 covers the repository's software. It is not extended to the JMLR paper, C4's third-party web text, benchmark data, or external GCS checkpoint objects without separate evidence."
+    },
+    {
+      "id": "raffel-2019-c4-initial-commit",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Initial official TFDS C4 release commit",
+      "url": "https://github.com/tensorflow/datasets/commit/15cd71bf127b3e72410a3f510c2b4cc9701beaf6",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The immutable 18 October 2019 commit is labeled Open-source the C4 dataset and establishes the launch builder state before the T5 preprint."
+    },
+    {
+      "id": "raffel-2019-c4-launch-builder",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned TFDS C4 1.0.0 builder",
+      "url": "https://github.com/tensorflow/datasets/blob/15cd71bf127b3e72410a3f510c2b4cc9701beaf6/tensorflow_datasets/text/c4.py",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The launch builder declares version 1.0.0, selects Common Crawl CC-MAIN-2019-18, creates a training split, and delegates filtering and deduplication to the pinned utilities."
+    },
+    {
+      "id": "raffel-2019-c4-launch-cleaning",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned TFDS C4 1.0.0 cleaning and deduplication utilities",
+      "url": "https://github.com/tensorflow/datasets/blob/15cd71bf127b3e72410a3f510c2b4cc9701beaf6/tensorflow_datasets/text/c4_utils.py",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "raffel-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The launch utilities implement five-word retained-line and three-sentence page thresholds, terminal-punctuation and language filters, blocked terms and boilerplate removal, URL handling, and NLTK-based sentence-window duplicate removal."
+    },
+    {
+      "id": "raffel-2022-c4-input-checksums",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Pinned TFDS C4 raw-input checksum manifest snapshot",
+      "url": "https://storage.googleapis.com/download/storage/v1/b/tfds-data/o/manual_checksums%2Fc4.txt?generation=1657619879665857&alt=media",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "This immutable GCS generation was last modified 12 July 2022 and checks Common Crawl input objects. It is not established as the launch-time manifest, is not a checksum for generated C4 examples, and does not establish a byte-identical prepared corpus."
+    },
+    {
+      "id": "raffel-2019-c4-line-dedup-change",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Official TFDS C4 1.1.0 line-deduplication change",
+      "url": "https://github.com/tensorflow/datasets/commit/42f5bf89efcfd2cd165c2511b22be49cb1a50856",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "accessNote": "The 18 November 2019 commit replaces sentence-window duplicate removal with line deduplication and bumps C4 to 1.1.0. It documents post-launch corpus drift and is not a paper revision or evidence about which bytes trained the original checkpoints."
+    },
+    {
+      "id": "raffel-2020-c4-validation-change",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Official TFDS C4 2.2.0 validation and filtering change",
+      "url": "https://github.com/tensorflow/datasets/commit/dc484fd90bc6092079a9e989cf0bfcde233d6002",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "accessNote": "The 22 January 2020 commit adds a validation split, a long-word filter, and further deduplication changes while bumping C4 to 2.2.0. It must not be backdated into the launch corpus."
+    },
+    {
+      "id": "raffel-2020-t5-c4-retarget",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Official T5 task retarget from C4 1.0.0 to 2.2.0",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/commit/a29be42dce1e420b26e1a85c80481f90b6420510",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "accessNote": "The 2 March 2020 commit changes task definitions from c4/en:1.0.0 to c4/en:2.2.0. It changes subsequent code defaults and does not establish that the October 2019 checkpoints were retrained."
+    },
+    {
+      "id": "raffel-2026-tfds-c4-catalog",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Current TensorFlow Datasets C4 catalog",
+      "url": "https://www.tensorflow.org/datasets/catalog/c4",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The current page documents a later manually generated TFDS C4 family and current sizes. Its documentation license and current counts do not license C4's web text or describe the launch-time 1.0.0 payload."
+    },
+    {
+      "id": "raffel-2026-t5-later-checkpoint-record",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Official T5 released-checkpoint distinctions",
+      "url": "https://github.com/google-research/text-to-text-transfer-transformer/blob/main/released_checkpoints.md",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "accessNote": "Current documentation separates original T5 from later experimental families such as T5.1.1, whose GEGLU activation, C4-only training, no pretraining dropout, untied output weights, and altered shapes are not properties of the paper's original checkpoints."
+    },
+    {
+      "id": "raffel-2026-common-crawl-terms",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Current Common Crawl Terms of Use",
+      "url": "https://commoncrawl.org/terms-of-use",
+      "accessDate": "2026-08-28",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The terms updated 7 March 2024 warn that crawled content can remain subject to origin-site rights. They support the current rights caution but are not treated as proof of the exact 2019 terms."
+    },
+    {
+      "id": "dodge-2021-c4-audit-full-text",
+      "relatedWorkIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "title": "Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus",
+      "url": "https://aclanthology.org/2021.emnlp-main.98.pdf",
+      "accessDate": "2026-08-28",
+      "sourceClass": "scholarly-history",
+      "authority": "publisher",
+      "versionIds": [],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1286,
+        "pageEnd": 1305
+      },
+      "accessNote": "The peer-reviewed EMNLP 2021 audit examines a released C4 instance, exact benchmark-text matches, source composition, and blocklist effects. It provides later empirical context and does not reconstruct the exact bytes used by the original T5 checkpoints."
     }
   ],
   "claims": [
@@ -37038,6 +38147,780 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-27"
+    },
+    {
+      "id": "raffel-2019-version-and-c4-correction-boundary",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "heuristically-filtered-web-corpus-pipeline"
+      ],
+      "statement": "The canonical JMLR article and arXiv version 3 align on the model, objective, experiments, and results; arXiv version 4 changes C4 prose to reject pages with fewer than three sentences and lines with fewer than five words, adds citation-marker and policy-notice filtering, and otherwise changes only an acknowledgment.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Canonical C4 prose before the later correction",
+            "section": "2.2 The Colossal Clean Crawled Corpus",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The journal text contains the threshold wording retained in arXiv version 3."
+        },
+        {
+          "sourceId": "raffel-2023-arxiv-v4-full-text",
+          "locator": {
+            "label": "Corrected C4 cleaning text and acknowledgment",
+            "section": "2.2 The Colossal Clean Crawled Corpus; Acknowledgments"
+          },
+          "support": "The current immutable revision contains the corrected thresholds and two additional filters; source comparison found no core-method or result change."
+        },
+        {
+          "sourceId": "raffel-2019-c4-launch-cleaning",
+          "locator": {
+            "label": "Launch implementation of the corrected thresholds and filters",
+            "section": "Constants; get_clean_page_fn; remove_duplicate_text"
+          },
+          "support": "The release-time code already uses five-word lines, a three-sentence page minimum, citation markers, and policy strings."
+        }
+      ],
+      "limitations": [
+        "The JMLR article remains canonical for stable printed locators; the later arXiv correction is source-bound to C4 construction details.",
+        "Source equality was assessed from the available PDF and source archives, not an author-supplied formal errata ledger."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-unified-text-to-text-framework",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "unified-text-to-text-task-interface"
+      ],
+      "statement": "T5 casts every studied task as text input mapped to text target, uses task-identifying prefixes, trains the shared encoder–decoder with teacher-forced token likelihood, emits label words for classification, and quantizes STS-B regression targets to 0.2 increments for text generation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Unified task representation and examples",
+            "section": "1 Introduction; 2.4 Applying T5 to Downstream Tasks",
+            "pageStart": 3,
+            "pageEnd": 9,
+            "figure": "1"
+          },
+          "support": "Defines the text-to-text framework, task prefixes, label targets, regression discretization, and shared maximum-likelihood training interface."
+        }
+      ],
+      "limitations": [
+        "A common input/output representation does not equalize task data, metrics, decoding constraints, or evaluation conditions.",
+        "The paper presents the work chiefly as a unifying empirical study, corpus release, and scaling exercise rather than an origin claim for all component methods."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-encoder-decoder-architecture",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "source-conditioned-autoregressive-decoding",
+        "unified-text-to-text-task-interface",
+        "scalar-bucketed-relative-position-bias"
+      ],
+      "statement": "Original T5 uses a Transformer encoder–decoder: encoder blocks apply self-attention then dense–ReLU–dense feed-forward computation, decoder blocks add encoder–decoder attention after causally masked self-attention, layer normalization precedes each subcomponent, residual paths and dropout follow it, and the output projection shares the input embedding matrix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "T5 encoder–decoder architecture",
+            "section": "2.1 Model",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "figure": "1"
+          },
+          "support": "Specifies the encoder and decoder block order, causal mask, cross-attention, pre-normalization, simplified scale-only layer norm, residuals, dropout, and tied output weights."
+        }
+      ],
+      "limitations": [
+        "The paper says these choices resemble the original Transformer but does not separately ablate every normalization, bias, or tying deviation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-relative-position-bias",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "scalar-bucketed-relative-position-bias"
+      ],
+      "statement": "T5 adds a learned scalar bias to each self-attention logit according to query–key offset, with head-specific values shared across layers; 32 logarithmically widening buckets distinguish offsets through 128 and collapse larger distances into the same terminal buckets.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Relative-position logit bias",
+            "section": "2.1 Model",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "Defines scalar logit biases, cross-layer sharing, head specificity, 32 buckets, logarithmic growth, and the 128-offset boundary."
+        }
+      ],
+      "limitations": [
+        "Offsets beyond the represented range are indistinguishable within their terminal bucket; this is not a claim of unlimited positional precision.",
+        "No dedicated ablation isolates the bias from the rest of T5's architectural deviations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-baseline-configuration-and-training",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "The controlled baseline has 12 encoder and 12 decoder blocks, model width 768, feed-forward width 3072, key/value width 64, 12 heads, dropout 0.1, and about 220 million parameters; it trains for 524,288 steps on 128 length-512 sequences per batch, about 65,536 tokens per batch and 34 billion tokens total, using a shared 32,000-piece SentencePiece vocabulary trained from a 10:1:1:1 English–German–French–Romanian mixture.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Baseline architecture, schedule, and vocabulary",
+            "section": "3.1.1 Model; 3.1.2 Training; 3.1.3 Vocabulary",
+            "pageStart": 11,
+            "pageEnd": 12
+          },
+          "support": "Lists dimensions, parameter estimate, dropout, steps, batch and token accounting, and the shared SentencePiece training mixture."
+        }
+      ],
+      "limitations": [
+        "The baseline is a comparison scaffold, not the final one-trillion-token T5 recipe.",
+        "The paper names AdaFactor, inverse-square-root scheduling, and TPU-v3 Mesh TensorFlow execution but does not provide a complete locked environment or final-training cost account."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-sentinel-denoising-objective",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "sentinel-delimited-span-reconstruction"
+      ],
+      "statement": "The baseline independently selects 15% of input tokens, collapses each consecutive selected run to an example-unique sentinel, and trains the decoder to concatenate the missing spans in order, delimited by their corresponding sentinels; the paper prose additionally requires a final sentinel to mark the end of the target sequence, as also shown in Figure 2.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Baseline denoising transformation",
+            "section": "3.1.4 Unsupervised Objective",
+            "pageStart": 12,
+            "pageEnd": 13,
+            "figure": "2"
+          },
+          "support": "Describes independent 15% selection, sentinel replacement of consecutive runs, ordered target spans, and explicitly specifies a final target-ending sentinel in both prose and Figure 2."
+        }
+      ],
+      "limitations": [
+        "Only removed spans contribute target tokens, reducing decoder length relative to reconstructing the entire input.",
+        "The paper does not specify all launch-code rounding, partition, sentinel-numbering, and EOS details."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2019-span-preprocessor-boundary",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "sentinel-delimited-span-reconstruction"
+      ],
+      "statement": "Launch code rounds the desired noise-token count and noise-span count, randomly partitions noise and non-noise tokens into nonempty spans, alternates non-noise and noise spans beginning with non-noise, assigns descending extra-id sentinels at span starts, and appends EOS through Task preprocessing; for its complement-mask target this yields one sentinel per missing span rather than the additional unmatched terminal sentinel required by the paper text.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2019-t5-launch-preprocessors",
+          "locator": {
+            "label": "Launch random-span mask and sentinel implementation",
+            "section": "random_spans_noise_mask; noise_span_to_unique_sentinel; nonnoise_span_to_unique_sentinel; denoise"
+          },
+          "support": "The pinned functions define rounding, random segmentation, alternating masks, descending sentinel IDs, and input and target transforms."
+        },
+        {
+          "sourceId": "raffel-2019-t5-launch-utils",
+          "locator": {
+            "label": "Launch EOS handling after token preprocessing",
+            "section": "Task.preprocess_tokens; _trim_and_append_eos"
+          },
+          "support": "The pinned Task utility verifies that model features contain no EOS after token preprocessing, then trims each feature and appends EOS=1 without adding a sentinel."
+        },
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Paper-specified terminal sentinel",
+            "section": "3.1.4 Unsupervised Objective",
+            "pageStart": 12,
+            "pageEnd": 13,
+            "figure": "2"
+          },
+          "support": "The paper prose requires a final sentinel to mark the target sequence's end, and Figure 2 displays it; launch code instead terminates the constructed target with EOS."
+        }
+      ],
+      "limitations": [
+        "This is an implementation-level reading of the immutable launch code, not a claim that every later T5 library preserves identical preprocessing.",
+        "EOS remains a distinct terminal token even when no extra unmatched sentinel is produced."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-architecture-comparison",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Within Table 2's approximate-compute comparison, encoder–decoder denoising is the strongest row on every displayed aggregate at 83.28 GLUE, 80.88 SQuAD, and 71.36 SuperGLUE, versus 74.70, 61.14, and 55.02 for decoder-only denoising; the full encoder–decoder carries about 2P parameters while the decoder-only alternative carries P.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Architecture comparison under stated compute model",
+            "section": "3.2.4 Comparing Different Architectures",
+            "pageStart": 19,
+            "pageEnd": 20,
+            "table": "2"
+          },
+          "support": "Prints the aggregate scores, P versus 2P parameter labels, and approximate M compute assignments."
+        }
+      ],
+      "limitations": [
+        "The evidence is not parameter-matched and does not establish universal encoder–decoder superiority outside the tested tasks, objectives, dimensions, and budget model.",
+        "A shared-parameter encoder–decoder is close at 82.81 GLUE, 80.63 SQuAD, and 70.73 SuperGLUE, so two completely separate stacks are not isolated as necessary."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-denoising-objective-comparisons",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "sentinel-delimited-span-reconstruction",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "BERT-style reconstruction scores 82.96 GLUE versus 80.69 for prefix language modeling and 73.17 for deshuffling, while the tested denoising variants remain broadly similar; dropping corrupted tokens raises GLUE to 84.44 largely through CoLA but lowers SuperGLUE to 68.67 versus the 71.36 baseline.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Unsupervised objective and denoising-variant comparisons",
+            "section": "3.3.1 Disparate High-Level Approaches; 3.3.2 Simplifying the BERT Objective",
+            "pageStart": 21,
+            "pageEnd": 22,
+            "table": "4–5"
+          },
+          "support": "Reports the objective-family and denoising-variant aggregate rows and discusses the CoLA-driven GLUE change."
+        }
+      ],
+      "limitations": [
+        "These are adaptations to one text-to-text framework, not exact replications of every source method.",
+        "Small aggregate differences and mixed task directions do not support a universal ranking among denoising variants."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-span-corruption-selection",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "sentinel-delimited-span-reconstruction",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Corruption rates of 10%, 15%, and 25% are close, while 50% lowers GLUE to 81.27 and SQuAD to 79.80; with 15% corruption, contiguous spans of mean length three score 83.49 GLUE, 81.84 SQuAD, and 72.53 SuperGLUE versus 83.28, 80.88, and 71.36 for independent selection, and the paper chooses mean three partly for shorter targets and slightly faster training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Corruption-rate and span-length comparisons",
+            "section": "3.3.3 Varying the Corruption Rate; 3.3.4 Corrupting Spans; 3.3.5 Discussion",
+            "pageStart": 23,
+            "pageEnd": 25,
+            "table": "6–7",
+            "figure": "5"
+          },
+          "support": "Prints the corruption-rate and mean-span rows and gives the final objective rationale."
+        }
+      ],
+      "limitations": [
+        "The mean-three quality gain is modest and mixed on translation; shorter target sequences and computational cost are material parts of the selection.",
+        "Fifteen percent is retained partly from historical precedent rather than a sharply identified optimum."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-c4-construction-and-launch-provenance",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "heuristically-filtered-web-corpus-pipeline"
+      ],
+      "statement": "C4 is built from April 2019 Common Crawl WET text and is described as roughly 750 GB after English identification and heuristic quality, term, boilerplate, URL, and duplicate-text filtering; launch T5 task definitions pin TFDS c4/en:1.0.0, whose builder names CC-MAIN-2019-18.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Paper C4 construction description",
+            "section": "2.2 The Colossal Clean Crawled Corpus",
+            "pageStart": 5,
+            "pageEnd": 7
+          },
+          "support": "Names the April 2019 Common Crawl source, approximate prepared size, English identification, filters, URL deduplication, and duplicate-text removal."
+        },
+        {
+          "sourceId": "raffel-2019-t5-launch-tasks",
+          "locator": {
+            "label": "Launch task-to-corpus pin",
+            "section": "C4Task dataset registration"
+          },
+          "support": "The release-time task definition requests c4/en:1.0.0."
+        },
+        {
+          "sourceId": "raffel-2019-c4-launch-builder",
+          "locator": {
+            "label": "Launch C4 builder version and crawl",
+            "section": "C4Config; C4._split_generators; CommonCrawl constants"
+          },
+          "support": "The pinned builder declares 1.0.0, selects CC-MAIN-2019-18, and exposes a training split."
+        },
+        {
+          "sourceId": "raffel-2019-c4-launch-cleaning",
+          "locator": {
+            "label": "Launch C4 filters and sentence-window deduplication",
+            "section": "get_clean_page_fn; remove_duplicate_text"
+          },
+          "support": "The utilities implement the concrete filter thresholds, language check, blocklist and boilerplate rules, and NLTK-based duplicate removal."
+        }
+      ],
+      "limitations": [
+        "No immutable prepared C4 1.0.0 payload or final-output digest was identified.",
+        "The pinned official checksum-manifest snapshot is a 2022 object covering raw crawl inputs, so it is retained as a later boundary rather than evidence for the launch corpus bytes.",
+        "Later TFDS C4 versions alter deduplication, filtering, and split construction; current catalog sizes do not describe the launch corpus.",
+        "The heuristic blocked-term filter is not a neutral or exhaustive quality definition."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Transitive NLTK, Punkt, langdetect, Beam, and grouping behavior are not fully pinned for bitwise reconstruction.",
+          "resolutionCondition": "A complete historical environment lock and prepared-output manifest are required."
+        }
+      ],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-c4-filtering-comparison",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "heuristically-filtered-web-corpus-pipeline",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Table 8's filtered 745 GB C4 row beats the 6.1 TB unfiltered row on every displayed aggregate, including 83.28 versus 81.46 GLUE, 80.88 versus 78.78 SQuAD, and 71.36 versus 68.04 SuperGLUE; smaller domain-focused subsets sometimes improve particular tasks, including Wikipedia plus TBC on SuperGLUE and RealNews-like data on ReCoRD.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Pretraining-corpus comparison",
+            "section": "3.4.1 Unlabeled Data Sets",
+            "pageStart": 26,
+            "pageEnd": 27,
+            "table": "8"
+          },
+          "support": "Prints corpus sizes, aggregate rows, and domain-subset task results."
+        }
+      ],
+      "limitations": [
+        "Filtered and unfiltered conditions differ greatly in unique data volume as well as filtering, so the row is not a same-size filter-only ablation.",
+        "Task-specific domain gains do not establish one universally best corpus distribution."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-c4-repetition-boundary",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "heuristically-filtered-web-corpus-pipeline",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Holding total pretraining at about 34 billion tokens while shrinking the unique C4 prefix correlates heavy repetition with worse transfer: 1,024 repeats lower GLUE, SQuAD, and SuperGLUE from 83.28, 80.88, and 71.36 to 79.55, 76.27, and 64.76, and 4,096 repeats lower them to 76.34, 70.92, and 59.29; lower training loss makes memorization a stated hypothesis rather than a directly measured mechanism.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Repeated-data transfer and training-loss evidence",
+            "section": "3.4.2 Pre-training Data Set Size",
+            "pageStart": 28,
+            "pageEnd": 29,
+            "table": "9",
+            "figure": "6"
+          },
+          "support": "Reports fixed-total-token repetition rows, transfer scores, training-loss curves, and the authors' qualified memorization interpretation."
+        }
+      ],
+      "limitations": [
+        "The experiment truncates C4 prefixes and changes unique-data diversity; it does not directly inspect memorized strings or prove that memorization causes every transfer change."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-multitask-pretraining-comparison",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Plain simultaneous multi-task training is weaker than unsupervised pretraining followed by fine-tuning under the tested mixtures, while mixed unsupervised and supervised multi-task pretraining followed by task-specific fine-tuning is comparable at 83.11 GLUE and 71.03 SuperGLUE versus 83.28 and 71.36 for the baseline; mixture proportions materially change the outcome.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Multi-task mixing and pretrain-then-fine-tune comparison",
+            "section": "3.5.2 Multi-Task Learning; 3.5.3 Combining Multi-Task Learning with Fine-Tuning",
+            "pageStart": 32,
+            "pageEnd": 34,
+            "table": "11–12"
+          },
+          "support": "Reports equal and example-proportional mixing rows plus mixed pretraining followed by task-specific fine-tuning."
+        }
+      ],
+      "limitations": [
+        "Comparable aggregates do not mean every task improves, and the supervised-only mixture behaves differently on translation.",
+        "The final recipe chooses a mixture and then changes scale, so final results are not a pure multi-task ablation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-scaling-comparison",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "At roughly four times baseline pretraining computation, a model doubled in size and trained twice as long reaches 86.18 GLUE, 84.18 SQuAD, and 77.18 SuperGLUE, while quadrupling model size for the baseline number of steps reaches 85.91, 83.86, and 78.04; larger models generally outperform only extending steps or batch size, but ensembling leads some generation and translation columns rather than SuperGLUE.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Approximate four-times-compute scaling comparison",
+            "section": "3.6 Scaling",
+            "pageStart": 34,
+            "pageEnd": 35,
+            "table": "13"
+          },
+          "support": "Prints model-size, training-step, batch-size, and ensemble strategies under the stated compute grouping."
+        }
+      ],
+      "limitations": [
+        "The rows are not a modern scaling-law fit and do not hold parameters, data exposure, optimization dynamics, and inference cost constant simultaneously.",
+        "The four-model ensemble's EnRo aggregate conflicts with Appendix E and is handled separately."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-final-recipe-and-model-family",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline",
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "The final original T5 family uses 15% contiguous-span corruption with mean span length three, one million pretraining steps with 2,048 length-512 sequences per batch for about one trillion tokens, an examples-proportional mixture of C4 denoising and supervised downstream tasks followed by task-specific fine-tuning, and five stated scales: Small about 60M, Base about 220M, Large about 770M, 3B about 2.8B, and 11B about 11B parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Final objective, scale, task mixture, and adaptation recipe",
+            "section": "3.7 Putting It All Together",
+            "pageStart": 36,
+            "pageEnd": 38,
+            "table": "14"
+          },
+          "support": "Specifies final corruption, steps, batch, approximate token total, five size labels and shapes, mixed pretraining, and fine-tuning."
+        }
+      ],
+      "limitations": [
+        "Original checkpoints include downstream supervised examples during pretraining and are not C4-only or zero-shot models.",
+        "The 3B label is rounded from approximately 2.8 billion parameters.",
+        "Later T5.1.1 and T5X recipes are separate artifacts and are not folded into this claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-historical-headline-results",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Against comparators frozen to 24 October 2019, T5-11B is reported as state of the art on 18 of 24 tasks, including 90.3 GLUE, 88.9 SuperGLUE, SQuAD 91.26 exact match and 96.22 F1, and CNN/Daily Mail 43.52/21.55/40.69 ROUGE-1/2/L; its WMT EnDe, EnFr, and EnRo scores of 32.1, 43.4, and 28.1 remain below the displayed prior bests of 33.8, 43.8, and 38.5.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Historically bounded final benchmark results",
+            "section": "3.7 Putting It All Together",
+            "pageStart": 38,
+            "pageEnd": 40,
+            "table": "14"
+          },
+          "support": "Reports the 18-of-24 summary, snapshot date, task values, comparator rows, and test-versus-validation condition."
+        }
+      ],
+      "limitations": [
+        "Every Table 14 value is a test result except SQuAD, which uses validation because the test server could not run the largest model.",
+        "The rows compare historically available systems with heterogeneous data, ensemble, and task conditions; they are not current leaderboard claims.",
+        "The authors caution that CNN/Daily Mail's substantial gain is mainly ROUGE-2 and that ROUGE may not track summary coherence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-nonscaling-recipe-bundle",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "sentinel-delimited-span-reconstruction",
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "With baseline-1T and T5-Base both trained on about one trillion tokens, T5-Base improves every displayed aggregate, including GLUE 84.80 to 85.97, SQuAD 83.01 to 85.44, SuperGLUE 73.90 to 75.64, and CNN/Daily Mail 19.62 to 20.90; the contrast bundles span corruption, multi-task mixing, and fine-tuning changes rather than isolating any one factor.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Scale-matched bundled-recipe comparison",
+            "section": "3.7 Putting It All Together",
+            "pageStart": 40,
+            "pageEnd": 41,
+            "table": "15"
+          },
+          "support": "Prints baseline, baseline-1T, and T5-Base aggregates and describes the non-scaling differences as a bundle."
+        }
+      ],
+      "limitations": [
+        "The row does not identify span corruption, supervised mixing, or adaptation as the sole or sufficient source of the gain."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-evidence-design-boundary",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "The controlled study usually changes one factor at a time and may miss interactions; only the baseline is trained ten times, most variants are single runs whose uncertainty is approximated with baseline standard deviation, and Tables 1–13 use validation data for model selection and comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Experimental design and variance convention",
+            "section": "3 Experiments; 3.1.5 Baseline Performance",
+            "pageStart": 10,
+            "pageEnd": 14,
+            "table": "1"
+          },
+          "support": "States the one-factor design and interaction caveat, baseline repeat count, assumed variance convention, validation usage, and checkpoint selection procedure."
+        }
+      ],
+      "limitations": [
+        "Borrowed baseline variance is not a per-variant confidence interval and does not capture different optimization variance across configurations.",
+        "Best-validation checkpoint selection and broad task aggregation can obscure task-specific instability."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2020-internal-table-conflicts",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "transfer-recipe-scale-composition"
+      ],
+      "statement": "Two result conflicts remain unresolved: main Table 10 duplicates the d=128 adapter aggregate row for d=2048 while Appendix E gives 82.62/18.30/79.40/68.61/25.64/36.92/26.93, and main Table 13 gives four-model-ensemble EnRo 28.57 while Appendix E gives 28.09.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Main adapter and scaling aggregates",
+            "section": "3.5.1 Fine-Tuning Methods; 3.6 Scaling",
+            "pageStart": 30,
+            "pageEnd": 35,
+            "table": "10 and 13"
+          },
+          "support": "The main tables display the duplicated adapter aggregates and the 28.57 ensemble EnRo value."
+        },
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Appendix all-task rows",
+            "section": "Appendix E. Scores on Every Task for All Experiments",
+            "pageStart": 56,
+            "pageEnd": 56,
+            "table": "16"
+          },
+          "support": "The expanded rows aggregate to the different d=2048 adapter values and print 28.09 for the four-model ensemble."
+        }
+      ],
+      "limitations": [
+        "The surrounding scaling prose is consistent with the main-table ensemble interpretation but does not resolve the numerical conflict.",
+        "Current arXiv version 4 preserves both conflicts."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The primary sources do not identify which conflicting rows are authoritative.",
+          "resolutionCondition": "Author errata or run-level result files are required."
+        }
+      ],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2019-release-reconstruction-and-rights-boundary",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "heuristically-filtered-web-corpus-pipeline"
+      ],
+      "statement": "The launch repository releases code, experiment configurations, and paths for five checkpoint families, while TFDS supplies a C4 reconstruction pipeline; JMLR licenses the article CC BY 4.0 and the repositories license their code Apache 2.0, but no inspected artifact supplies an immutable prepared C4 output, a blanket license for its third-party web text, a checkpoint-specific license manifest, or a complete deterministic experiment package.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Paper release statement and publication license",
+            "section": "Title page; 1 Introduction",
+            "pageStart": 1,
+            "pageEnd": 3
+          },
+          "support": "The article carries CC BY 4.0 and says data, code, pretrained models, and experiment configurations are released."
+        },
+        {
+          "sourceId": "raffel-2019-t5-launch-readme",
+          "locator": {
+            "label": "Launch code, configuration, data, and checkpoint index",
+            "section": "Released model checkpoints; Dataset; Reproducing experiments"
+          },
+          "support": "The README lists checkpoint-family directories and reconstruction resources without a complete immutable per-run manifest."
+        },
+        {
+          "sourceId": "raffel-2019-t5-apache-license",
+          "locator": {
+            "label": "T5 repository software terms",
+            "section": "Apache License, Version 2.0"
+          },
+          "support": "The repository contains Apache 2.0 software terms and no explicit extension to third-party data or external checkpoint objects."
+        },
+        {
+          "sourceId": "raffel-2019-t5-launch-tasks",
+          "locator": {
+            "label": "Launch corpus-version pin",
+            "section": "C4Task dataset registration"
+          },
+          "support": "The task code pins the launch corpus recipe but does not package its prepared output."
+        }
+      ],
+      "limitations": [
+        "The absence findings are limited to the inspected official paper, launch repositories, current checkpoint documentation, bucket metadata, and dataset records.",
+        "Current Common Crawl terms support a rights caution but are not backdated as the exact 2019 terms.",
+        "Model-object reuse rights remain unresolved rather than being assumed from proximity to an Apache-licensed repository."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No checkpoint-specific license or immutable prepared-corpus output manifest was identified.",
+          "resolutionCondition": "Authoritative Google terms and artifact manifests are required."
+        }
+      ],
+      "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "raffel-2021-c4-audit-boundary",
+      "workId": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+      "ideaIds": [
+        "heuristically-filtered-web-corpus-pipeline"
+      ],
+      "statement": "A later empirical audit of released C4 reports exact normalized matches for 53.6% of QNLI sentence inputs and 24.88% of TIFU-short targets, and estimates that the blocklist removes documents classified as African-American-English- and Hispanic-aligned at 42% and 32% versus 6.2% for White-aligned English; these findings document contamination and filter effects without measuring their causal effect on original T5 scores.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dodge-2021-c4-audit-full-text",
+          "locator": {
+            "label": "Exact benchmark-text matching audit",
+            "section": "4.1 Benchmark Contamination",
+            "pageStart": 1289,
+            "pageEnd": 1290,
+            "table": "2"
+          },
+          "support": "Reports exact normalized target and input match rates, including TIFU-short and the QNLI sentence component."
+        },
+        {
+          "sourceId": "dodge-2021-c4-audit-full-text",
+          "locator": {
+            "label": "Dialect-associated blocklist exclusion rates",
+            "section": "5.3 Whose English is included?",
+            "pageStart": 1291,
+            "pageEnd": 1291
+          },
+          "support": "Reports the 42%, 32%, 6.2%, and 7.2% document-removal estimates under the audit's dialect classifier."
+        }
+      ],
+      "limitations": [
+        "Exact normalized matches are conservative contamination indicators and do not by themselves prove memorization or score inflation.",
+        "Dialect categories are classifier outputs rather than verified author identities, and the audit examines a released C4 instance rather than reconstructing the exact original checkpoint training bytes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-28"
     }
   ],
   "relationships": [
@@ -40253,6 +42136,90 @@
           "note": "The edge excludes architecture, objective, corpus identity, results, and release strategy."
         }
       ]
+    },
+    {
+      "id": "vaswani-2017-to-raffel-2019",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "T5 explicitly says its encoder–decoder is closely based on the original Transformer and retains encoder self-attention, causal decoder self-attention, encoder–decoder attention, position-wise feed-forward computation, residual paths, and autoregressive target generation. The edge excludes the Transformer's translation-only framing, sinusoidal default positions, post-normalization, original benchmark rows, and every T5-specific objective, corpus, mixture, scale, and result.",
+      "claimIds": [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "raffel-2020-encoder-decoder-architecture",
+        "raffel-2020-relative-position-bias"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Target-side Transformer basis and scoped deviations",
+            "section": "2.1 Model",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The target describes its model as closely following the original Transformer, cites Vaswani et al., and then enumerates its normalization and relative-position deviations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is restricted to the named architectural substrate and does not assign T5's data, denoising, transfer, or scaling evidence to the Transformer paper."
+        }
+      ]
+    },
+    {
+      "id": "devlin-2018-to-raffel-2019",
+      "from": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "to": {
+        "kind": "work",
+        "id": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "T5 explicitly adapts BERT-style 15%-selected denoising inside a separate encoder–decoder text-to-text framework and uses BERTBase-sized stacks for its baseline. It replaces BERT's per-position masked-token classifier and 80/10/10 replacement channel with sentinel-delimited sequence reconstruction and omits next-sentence prediction; the edge does not recast T5 as an encoder-only masked language model or attribute T5's fine-tuning route to BERT.",
+      "claimIds": [
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "raffel-2020-baseline-configuration-and-training",
+        "raffel-2020-sentinel-denoising-objective",
+        "raffel-2020-denoising-objective-comparisons",
+        "raffel-2020-span-corruption-selection"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "raffel-2020-jmlr-full-text",
+          "locator": {
+            "label": "Target-side BERT objective precedent and T5 adaptation",
+            "section": "1 Introduction; 3.1.1 Model; 3.1.4 Unsupervised Objective; 3.3 Unsupervised Objectives",
+            "pageStart": 3,
+            "pageEnd": 25,
+            "table": "4–7"
+          },
+          "support": "The target cites BERT, labels its baseline and comparison objective BERT-style, retains the 15% precedent, and documents the encoder–decoder sentinel reconstruction changes."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship covers documented denoising and baseline-scale links, not BERT's encoder-only architecture, next-sentence objective, exact corruption channel, full-model adaptation, corpora, or benchmark evidence."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -42946,6 +44913,90 @@
         "Corpus provenance, immutable releases, and license scope"
       ],
       "successCriterion": "The learner can identify the NSP/packing confound, nonmonotonic masking and batch evidence, data-size/diversity conflation, unmatched BERT comparison, historical leaderboard conditions, scoped GPT-2 tokenization edge, and incomplete reconstruction boundary."
+    },
+    {
+      "id": "beginner-raffel-2019-one-interface-many-recipe-choices",
+      "mode": "beginner",
+      "objective": "Translate classification, question answering, summarization, and translation into one read-text/write-text interface, then follow how missing spans, filtered web data, labeled-task mixing, and scale change the learning recipe without treating them as one technique or one guaranteed source of improvement.",
+      "workIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline",
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "claimIds": [
+        "raffel-2020-unified-text-to-text-framework",
+        "raffel-2020-sentinel-denoising-objective",
+        "raffel-2020-span-corruption-selection",
+        "raffel-2020-c4-filtering-comparison",
+        "raffel-2020-c4-repetition-boundary",
+        "raffel-2020-multitask-pretraining-comparison",
+        "raffel-2020-scaling-comparison",
+        "raffel-2020-final-recipe-and-model-family",
+        "raffel-2020-historical-headline-results"
+      ],
+      "prerequisites": [
+        "A model can read one token sequence and generate another",
+        "Pretraining happens before task-specific fine-tuning",
+        "A controlled comparison changes fewer things than a final system recipe",
+        "A historical benchmark record is tied to its date and evaluation condition"
+      ],
+      "successCriterion": "The learner can encode three task types as text pairs, trace sentinels from input to target, explain why cleaner or less-repeated data may help without equating filtering with neutrality, distinguish mixed pretraining from zero-shot use, and name both a strong late-2019 result and a translation result that did not lead its comparator."
+    },
+    {
+      "id": "expert-raffel-2019-architecture-objectives-c4-scaling-and-provenance",
+      "mode": "expert",
+      "objective": "Reconstruct T5's pre-normalized encoder–decoder, relative-logit bias, paper and code span-corruption forms, baseline and final schedules, C4 1.0.0 pipeline, transfer and scaling comparisons, and historically bounded results while auditing version corrections, uncertainty, internal table conflicts, contamination, reproducibility, and rights scope.",
+      "workIds": [
+        "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "source-conditioned-autoregressive-decoding",
+        "unified-text-to-text-task-interface",
+        "scalar-bucketed-relative-position-bias",
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline",
+        "mixed-supervised-unsupervised-pretraining",
+        "transfer-recipe-scale-composition"
+      ],
+      "claimIds": [
+        "raffel-2019-version-and-c4-correction-boundary",
+        "raffel-2020-unified-text-to-text-framework",
+        "raffel-2020-encoder-decoder-architecture",
+        "raffel-2020-relative-position-bias",
+        "raffel-2020-baseline-configuration-and-training",
+        "raffel-2020-sentinel-denoising-objective",
+        "raffel-2019-span-preprocessor-boundary",
+        "raffel-2020-architecture-comparison",
+        "raffel-2020-denoising-objective-comparisons",
+        "raffel-2020-span-corruption-selection",
+        "raffel-2020-c4-construction-and-launch-provenance",
+        "raffel-2020-c4-filtering-comparison",
+        "raffel-2020-c4-repetition-boundary",
+        "raffel-2020-multitask-pretraining-comparison",
+        "raffel-2020-scaling-comparison",
+        "raffel-2020-final-recipe-and-model-family",
+        "raffel-2020-historical-headline-results",
+        "raffel-2020-nonscaling-recipe-bundle",
+        "raffel-2020-evidence-design-boundary",
+        "raffel-2020-internal-table-conflicts",
+        "raffel-2019-release-reconstruction-and-rights-boundary",
+        "raffel-2021-c4-audit-boundary"
+      ],
+      "prerequisites": [
+        "Encoder–decoder Transformers, causal target factorization, residual pre-normalization, and attention-logit scoring",
+        "Masked-token and sequence-denoising objectives, random segmentation, sentinels, and teacher forcing",
+        "Compute-matched versus parameter-matched comparisons, task aggregates, validation selection, and borrowed variance",
+        "Web-corpus extraction, language identification, deduplication, contamination checks, and heuristic-filter auditing",
+        "Immutable paper and code versions, prepared-data manifests, checkpoint artifacts, and license-scope analysis"
+      ],
+      "successCriterion": "The learner can derive the relative-bias and span-transform computations, reproduce the promoted aggregate comparisons under their controls, keep C4 1.0.0 separate from later defaults, explain why final T5 is supervised-mixed and fine-tuned, reconcile JMLR with the v4 C4 correction, flag both unresolved table conflicts, defend the Transformer and BERT edges, and separate article, code, corpus, checkpoint, and later-audit evidence."
     }
   ]
 }
