@@ -217,7 +217,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-1)?.id, workId);
+  assert.equal(corpus.works.at(-2)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -306,7 +306,10 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
   assert.match(limits?.statement ?? "", /10\^10 parameters/);
   assert.equal(artifacts?.directness, "editorial-inference");
   assert.match(artifacts?.statement ?? "", /no immutable official code/);
-  assert.deepEqual(relationships, []);
+  assert.deepEqual(
+    relationships.map((item) => item.id),
+    ["kaplan-2020-to-brown-2020"],
+  );
   assert.deepEqual(
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
@@ -314,6 +317,308 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
   assert.ok(readme.includes("Kaplan et al.’s scaling-law preprint"));
   assert.ok(corpusFormat.includes("Kaplan et al. 2020 is a sole-version"));
   assert.ok(historicalScope.includes("The Kaplan scaling-law preprint was checked on 2026-08-30"));
+});
+
+test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage", () => {
+  const workId = "brown-2020-language-models-few-shot-learners";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "brown-2020-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "brown-2020-neurips-supplement",
+  );
+  const modelFamily = corpus.claims.find(
+    (item) => item.id === "brown-2020-model-configurations-and-175b",
+  );
+  const versionChronology = corpus.claims.find(
+    (item) => item.id === "brown-2020-version-and-model-chronology",
+  );
+  const mixture = corpus.claims.find(
+    (item) => item.id === "brown-2020-training-corpus-and-mixture",
+  );
+  const protocol = corpus.claims.find(
+    (item) => item.id === "brown-2020-zero-one-few-shot-definitions",
+  );
+  const contamination = corpus.claims.find(
+    (item) => item.id === "brown-2020-contamination-filtering-failure",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "brown-2020-artifact-and-reproducibility-boundary",
+  );
+  const discrepancies = corpus.claims.find(
+    (item) => item.id === "brown-2020-internal-reporting-discrepancies",
+  );
+  const transformerBoundary = corpus.claims.find(
+    (item) => item.id === "brown-2020-transformer-lineage-boundary",
+  );
+  const evaluationBoundary = corpus.claims.find(
+    (item) => item.id === "brown-2020-evaluation-scoring-and-split-boundary",
+  );
+  const kaplanEdge = incoming.find(
+    (item) => item.id === "kaplan-2020-to-brown-2020",
+  );
+  const gpt2Edge = incoming.find(
+    (item) => item.id === "radford-2019-to-brown-2020",
+  );
+  const expectedVersionIds = [
+    "brown-2020-arxiv-v1-version",
+    "brown-2020-arxiv-v2-version",
+    "brown-2020-arxiv-v3-version",
+    "brown-2020-arxiv-v4-version",
+    "brown-2020-neurips-version",
+  ];
+
+  assert.equal(corpus.works.at(-1)?.id, workId);
+  assert.equal(corpus.works.at(-2)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-05-28", "2020-06-01", "2020-06-05", "2020-07-22", "2020"],
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.kind),
+    [
+      "preprint",
+      "manuscript-revised",
+      "manuscript-revised",
+      "manuscript-revised",
+      "proceedings-publication",
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "brown-2020-neurips-version");
+  assert.deepEqual(
+    work?.versions.find((item) => item.id === "brown-2020-neurips-version")
+      ?.bibliography.pages,
+    ["1877-1901"],
+  );
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 25,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 32,
+  });
+  assert.ok(!main?.accessNote.includes("locator pages 1877"));
+  assert.match(main?.accessNote ?? "", /not locator pages/);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "brown-2020-neurips-record",
+    "brown-2020-neurips-full-text",
+    "brown-2020-neurips-supplement",
+  ]);
+  for (const sourceId of work?.preferredSourceIds ?? [])
+    assert.deepEqual(
+      corpus.sources.find((item) => item.id === sourceId)?.versionIds,
+      ["brown-2020-neurips-version"],
+    );
+  for (const versionId of expectedVersionIds.slice(0, 3))
+    assert.deepEqual(
+      work?.versions
+        .find((item) => item.id === versionId)
+        ?.bibliography.identifiers.map((item) => item.type),
+      ["arxiv"],
+    );
+  assert.deepEqual(
+    work?.versions
+      .find((item) => item.id === "brown-2020-arxiv-v4-version")
+      ?.bibliography.identifiers.map((item) => item.type),
+    ["arxiv", "doi"],
+  );
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brown-2020-neurips-record")
+      ?.supports,
+    ["metadata"],
+  );
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brown-2020-arxiv-record")?.supports,
+    ["metadata"],
+  );
+  assert.deepEqual(supplement?.supports, ["full-text", "claim-location"]);
+
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds) {
+      assert.ok(expectedVersionIds.includes(versionId));
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+    }
+  }
+  for (const event of work?.chronology.events ?? []) {
+    for (const sourceId of event.sourceIds) {
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+    }
+  }
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brown-2020-model-card-september")
+      ?.versionIds,
+    [],
+  );
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brockman-2020-openai-api")
+      ?.supports,
+    ["version-boundary"],
+  );
+
+  assert.equal(work?.authors.length, 31);
+  assert.equal(claims.length, 27);
+  assert.deepEqual(
+    versionChronology?.evidence.slice(0, 4).map((item) => item.sourceId),
+    [
+      "brown-2020-arxiv-v1-full-text",
+      "brown-2020-arxiv-v2-full-text",
+      "brown-2020-arxiv-v3-full-text",
+      "brown-2020-arxiv-v4-full-text",
+    ],
+  );
+  for (const value of [
+    "125M/12/768/12×64/0.5M/6×10^-4",
+    "350M/24/1,024/16×64/0.5M/3×10^-4",
+    "760M/24/1,536/16×96/0.5M/2.5×10^-4",
+    "1.3B/24/2,048/24×128/1M/2×10^-4",
+    "2.7B/32/2,560/32×80/1M/1.6×10^-4",
+    "6.7B/32/4,096/32×128/2M/1.2×10^-4",
+    "13.0B/40/5,140/40×128/2M/1×10^-4",
+    "175.0B/96/12,288/96×128/3.2M/0.6×10^-4",
+    "300B tokens",
+    "2,048-token",
+  ])
+    assert.ok(modelFamily?.statement.includes(value));
+  for (const value of [
+    "410B/19B/12B/55B/3B",
+    "60%/22%/8%/8%/3%",
+    "0.44/2.9/1.9/0.43/3.4",
+    "101%",
+    "41 monthly shards",
+  ])
+    assert.ok(mixture?.statement.includes(value));
+  assert.match(protocol?.statement ?? "", /without updating model weights/);
+  assert.match(contamination?.statement ?? "", /bug/);
+  assert.match(contamination?.statement ?? "", /retraining was deemed infeasible/);
+  assert.match(artifacts?.statement ?? "", /485 generated-sample records/);
+  assert.match(artifacts?.statement ?? "", /no LICENSE/);
+  for (const value of ["5,140", "174,600M", "200B", "164 of 273", "8.64×10^19"])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.equal(
+    transformerBoundary?.evidence[0].locator.section,
+    "1 Introduction; 2.1 Model and Architectures; 7 Related Work",
+  );
+  assert.deepEqual(
+    evaluationBoundary?.evidence.map((item) => ({
+      section: item.locator.section,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      { section: "2.4 Evaluation", pageStart: 10, pageEnd: 10 },
+      {
+        section: "Appendix E Human Quality Assessment",
+        pageStart: 46,
+        pageEnd: 46,
+      },
+    ],
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    ["radford-2019-to-brown-2020", "kaplan-2020-to-brown-2020"],
+  );
+  assert.deepEqual(kaplanEdge?.claimIds, [
+    "kaplan-2020-compute-efficient-allocation",
+    "brown-2020-kaplan-scaling-guided-allocation",
+  ]);
+  assert.ok(!kaplanEdge?.claimIds.includes("brown-2020-kaplan-loss-trend-extension"));
+  assert.deepEqual(gpt2Edge?.claimIds, [
+    "radford-2019-gpt-continuity-and-model-changes",
+    "radford-2019-natural-language-task-conditioning",
+    "radford-2019-byte-level-bpe",
+    "brown-2020-gpt2-architecture-inheritance",
+    "brown-2020-gpt2-in-context-continuity",
+  ]);
+  assert.ok(!gpt2Edge?.claimIds.includes("brown-2020-transformer-lineage-boundary"));
+  for (const relationship of incoming)
+    for (const item of relationship.sourceEvidence)
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === item.sourceId)
+          ?.relatedWorkIds.includes(workId),
+      );
+  for (const item of claims)
+    for (const evidence of item.evidence)
+      assert.notEqual(
+        evidence.support,
+        "The cited primary-source passage, table, figure, or artifact directly bounds this statement.",
+      );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "model-scale-zero-shot-transfer")
+      ?.claimIds.some((claimId) => claimId.startsWith("brown-2020")),
+  );
+  assert.deepEqual(
+    corpus.ideas.find((item) => item.id === "scale-dependent-in-context-learning")
+      ?.claimIds,
+    [
+      "brown-2020-model-configurations-and-175b",
+      "brown-2020-headline-task-results",
+    ],
+  );
+  assert.ok(
+    corpus.ideas
+      .find((item) => item.id === "nonembedding-parameter-compute-accounting")
+      ?.claimIds.includes("brown-2020-kaplan-loss-trend-extension"),
+  );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "nonembedding-parameter-compute-accounting")
+      ?.claimIds.includes("brown-2020-model-configurations-and-175b"),
+  );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "alternating-dense-local-sparse-attention")
+      ?.claimIds.includes("brown-2020-context-tokenizer-and-packed-sequences"),
+  );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "compute-efficient-model-data-allocation")
+      ?.claimIds.includes("brown-2020-compute-and-energy-boundary"),
+  );
+  assert.deepEqual(
+    corpus.ideas.find((item) => item.id === "reported-compute-versus-measured-energy")
+      ?.claimIds,
+    ["brown-2020-compute-and-energy-boundary"],
+  );
+  assert.deepEqual(
+    corpus.claims.find((item) => item.id === "brown-2020-compute-and-energy-boundary")
+      ?.ideaIds,
+    ["reported-compute-versus-measured-energy"],
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Brown et al.’s GPT-3 family"));
+  assert.ok(corpusFormat.includes("Brown et al. 2020 is represented"));
+  assert.ok(historicalScope.includes("The GPT-3 family was checked on 2026-08-30"));
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {

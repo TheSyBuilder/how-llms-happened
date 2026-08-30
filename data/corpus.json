@@ -11207,6 +11207,544 @@
           "resolutionCondition": "Separate evidence across later model and data regimes must be represented as new nodes or challenges rather than back-projected into this work."
         }
       ]
+    },
+    {
+      "id": "brown-2020-language-models-few-shot-learners",
+      "title": "Language Models are Few-Shot Learners",
+      "authors": [
+        "Tom B. Brown",
+        "Benjamin Mann",
+        "Nick Ryder",
+        "Melanie Subbiah",
+        "Jared Kaplan",
+        "Prafulla Dhariwal",
+        "Arvind Neelakantan",
+        "Pranav Shyam",
+        "Girish Sastry",
+        "Amanda Askell",
+        "Sandhini Agarwal",
+        "Ariel Herbert-Voss",
+        "Gretchen Krueger",
+        "Tom Henighan",
+        "Rewon Child",
+        "Aditya Ramesh",
+        "Daniel M. Ziegler",
+        "Jeffrey Wu",
+        "Clemens Winter",
+        "Christopher Hesse",
+        "Mark Chen",
+        "Eric Sigler",
+        "Mateusz Litwin",
+        "Scott Gray",
+        "Benjamin Chess",
+        "Jack Clark",
+        "Christopher Berner",
+        "Sam McCandlish",
+        "Alec Radford",
+        "Ilya Sutskever",
+        "Dario Amodei"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "T. B. Brown et al., “Language Models are Few-Shot Learners,” in Advances in Neural Information Processing Systems 33, pp. 1877–1901, 2020.",
+      "chronology": {
+        "orderingEventId": "brown-2020-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "brown-2020-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2020-05-28",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "brown-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 28 May 2020 at 17:29:03 UTC"
+              }
+            ],
+            "versionId": "brown-2020-arxiv-v1-version",
+            "sourceIds": [
+              "brown-2020-arxiv-record",
+              "brown-2020-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "brown-2020-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2020-06-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "brown-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 1 June 2020 at 17:08:53 UTC"
+              }
+            ],
+            "versionId": "brown-2020-arxiv-v2-version",
+            "sourceIds": [
+              "brown-2020-arxiv-record",
+              "brown-2020-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "brown-2020-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2020-06-05",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "brown-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 5 June 2020 at 02:52:35 UTC"
+              }
+            ],
+            "versionId": "brown-2020-arxiv-v3-version",
+            "sourceIds": [
+              "brown-2020-arxiv-record",
+              "brown-2020-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "brown-2020-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2020-07-22",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "brown-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 22 July 2020 at 19:47:17 UTC"
+              }
+            ],
+            "versionId": "brown-2020-arxiv-v4-version",
+            "sourceIds": [
+              "brown-2020-arxiv-record",
+              "brown-2020-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "brown-2020-neurips-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2020 proceedings publication",
+            "date": {
+              "value": "2020",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "brown-2020-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS 2020 proceedings record and volume identity"
+              }
+            ],
+            "versionId": "brown-2020-neurips-version",
+            "sourceIds": [
+              "brown-2020-neurips-record",
+              "brown-2020-neurips-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "brown-2020-arxiv-v1-version",
+          "title": "Language Models are Few-Shot Learners",
+          "authors": [
+            "Tom B. Brown",
+            "Benjamin Mann",
+            "Nick Ryder",
+            "Melanie Subbiah",
+            "Jared Kaplan",
+            "Prafulla Dhariwal",
+            "Arvind Neelakantan",
+            "Pranav Shyam",
+            "Girish Sastry",
+            "Amanda Askell",
+            "Sandhini Agarwal",
+            "Ariel Herbert-Voss",
+            "Gretchen Krueger",
+            "Tom Henighan",
+            "Rewon Child",
+            "Aditya Ramesh",
+            "Daniel M. Ziegler",
+            "Jeffrey Wu",
+            "Clemens Winter",
+            "Christopher Hesse",
+            "Mark Chen",
+            "Eric Sigler",
+            "Mateusz Litwin",
+            "Scott Gray",
+            "Benjamin Chess",
+            "Jack Clark",
+            "Christopher Berner",
+            "Sam McCandlish",
+            "Alec Radford",
+            "Ilya Sutskever",
+            "Dario Amodei"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. B. Brown et al., “Language Models are Few-Shot Learners,” arXiv:2005.14165v1, 28 May 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.14165v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "brown-2020-arxiv-record",
+            "brown-2020-arxiv-v1-full-text",
+            "brown-2020-arxiv-license",
+            "brown-2020-arxiv-v1-source-package",
+            "brown-2020-openai-milestone",
+            "brown-2020-release-repo-initial"
+          ],
+          "notes": "The first public manuscript has 72 article-numbered pages. It precedes the multilingual clarifications, grammar caveat, prose corrections, added SuperGLUE citations, and corrected PF-day definition in later revisions."
+        },
+        {
+          "id": "brown-2020-arxiv-v2-version",
+          "title": "Language Models are Few-Shot Learners",
+          "authors": [
+            "Tom B. Brown",
+            "Benjamin Mann",
+            "Nick Ryder",
+            "Melanie Subbiah",
+            "Jared Kaplan",
+            "Prafulla Dhariwal",
+            "Arvind Neelakantan",
+            "Pranav Shyam",
+            "Girish Sastry",
+            "Amanda Askell",
+            "Sandhini Agarwal",
+            "Ariel Herbert-Voss",
+            "Gretchen Krueger",
+            "Tom Henighan",
+            "Rewon Child",
+            "Aditya Ramesh",
+            "Daniel M. Ziegler",
+            "Jeffrey Wu",
+            "Clemens Winter",
+            "Christopher Hesse",
+            "Mark Chen",
+            "Eric Sigler",
+            "Mateusz Litwin",
+            "Scott Gray",
+            "Benjamin Chess",
+            "Jack Clark",
+            "Christopher Berner",
+            "Sam McCandlish",
+            "Alec Radford",
+            "Ilya Sutskever",
+            "Dario Amodei"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. B. Brown et al., “Language Models are Few-Shot Learners,” arXiv:2005.14165v2, 1 June 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.14165v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "brown-2020-arxiv-record",
+            "brown-2020-arxiv-v2-full-text",
+            "brown-2020-arxiv-license",
+            "brown-2020-arxiv-v2-source-package",
+            "brown-2020-release-repo-language-stats"
+          ],
+          "notes": "This 74-page revision expands the multilingual and translation discussion, adds a grammar-task caveat, corrects novel-word counting language, and clarifies that task-format figures show ground-truth examples rather than model outputs."
+        },
+        {
+          "id": "brown-2020-arxiv-v3-version",
+          "title": "Language Models are Few-Shot Learners",
+          "authors": [
+            "Tom B. Brown",
+            "Benjamin Mann",
+            "Nick Ryder",
+            "Melanie Subbiah",
+            "Jared Kaplan",
+            "Prafulla Dhariwal",
+            "Arvind Neelakantan",
+            "Pranav Shyam",
+            "Girish Sastry",
+            "Amanda Askell",
+            "Sandhini Agarwal",
+            "Ariel Herbert-Voss",
+            "Gretchen Krueger",
+            "Tom Henighan",
+            "Rewon Child",
+            "Aditya Ramesh",
+            "Daniel M. Ziegler",
+            "Jeffrey Wu",
+            "Clemens Winter",
+            "Christopher Hesse",
+            "Mark Chen",
+            "Eric Sigler",
+            "Mateusz Litwin",
+            "Scott Gray",
+            "Benjamin Chess",
+            "Jack Clark",
+            "Christopher Berner",
+            "Sam McCandlish",
+            "Alec Radford",
+            "Ilya Sutskever",
+            "Dario Amodei"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. B. Brown et al., “Language Models are Few-Shot Learners,” arXiv:2005.14165v3, 5 June 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.14165v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "brown-2020-arxiv-record",
+            "brown-2020-arxiv-v3-full-text",
+            "brown-2020-arxiv-license",
+            "brown-2020-arxiv-v3-source-package"
+          ],
+          "notes": "This 74-page revision corrects prose and references and expands a bias-mitigation qualification. The audited architecture, data mixture, model-size table, and main results remain stable."
+        },
+        {
+          "id": "brown-2020-arxiv-v4-version",
+          "title": "Language Models are Few-Shot Learners",
+          "authors": [
+            "Tom B. Brown",
+            "Benjamin Mann",
+            "Nick Ryder",
+            "Melanie Subbiah",
+            "Jared Kaplan",
+            "Prafulla Dhariwal",
+            "Arvind Neelakantan",
+            "Pranav Shyam",
+            "Girish Sastry",
+            "Amanda Askell",
+            "Sandhini Agarwal",
+            "Ariel Herbert-Voss",
+            "Gretchen Krueger",
+            "Tom Henighan",
+            "Rewon Child",
+            "Aditya Ramesh",
+            "Daniel M. Ziegler",
+            "Jeffrey Wu",
+            "Clemens Winter",
+            "Christopher Hesse",
+            "Mark Chen",
+            "Eric Sigler",
+            "Mateusz Litwin",
+            "Scott Gray",
+            "Benjamin Chess",
+            "Jack Clark",
+            "Christopher Berner",
+            "Sam McCandlish",
+            "Alec Radford",
+            "Ilya Sutskever",
+            "Dario Amodei"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. B. Brown et al., “Language Models are Few-Shot Learners,” arXiv:2005.14165v4, 22 July 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.14165v4",
+                "label": "arXiv version 4 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2005.14165",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "brown-2020-arxiv-record",
+            "brown-2020-arxiv-v4-full-text",
+            "brown-2020-arxiv-license",
+            "brown-2020-arxiv-v4-source-package"
+          ],
+          "notes": "The latest 75-page preprint adds omitted SuperGLUE citations and corrects the PF-day definition from 2.88×10^7 to 8.64×10^19 FLOPs. It is the fullest article-level technical evidence envelope, but it is not the canonical proceedings identity."
+        },
+        {
+          "id": "brown-2020-neurips-version",
+          "title": "Language Models are Few-Shot Learners",
+          "authors": [
+            "Tom B. Brown",
+            "Benjamin Mann",
+            "Nick Ryder",
+            "Melanie Subbiah",
+            "Jared Kaplan",
+            "Prafulla Dhariwal",
+            "Arvind Neelakantan",
+            "Pranav Shyam",
+            "Girish Sastry",
+            "Amanda Askell",
+            "Sandhini Agarwal",
+            "Ariel Herbert-Voss",
+            "Gretchen Krueger",
+            "Tom Henighan",
+            "Rewon Child",
+            "Aditya Ramesh",
+            "Daniel M. Ziegler",
+            "Jeffrey Wu",
+            "Clemens Winter",
+            "Christopher Hesse",
+            "Mark Chen",
+            "Eric Sigler",
+            "Mateusz Litwin",
+            "Scott Gray",
+            "Benjamin Chess",
+            "Jack Clark",
+            "Christopher Berner",
+            "Sam McCandlish",
+            "Alec Radford",
+            "Ilya Sutskever",
+            "Dario Amodei"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2020 article",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. B. Brown et al., “Language Models are Few-Shot Learners,” in Advances in Neural Information Processing Systems 33, pp. 1877–1901, 2020.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Curran Associates, Inc.",
+            "volume": "33",
+            "pages": [
+              "1877-1901"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "brown-2020-neurips-record",
+            "brown-2020-neurips-full-text",
+            "brown-2020-neurips-supplement"
+          ],
+          "notes": "The canonical proceedings treatment is a 25-page article plus a separately distributed 32-page supplement. Their visible article pagination controls locators; volume pp. 1877–1901 are bibliographic only. The supplement retains the earlier PF-day conversion error, while arXiv v4 carries the correction."
+        }
+      ],
+      "canonicalVersionId": "brown-2020-neurips-version",
+      "preferredSourceIds": [
+        "brown-2020-neurips-record",
+        "brown-2020-neurips-full-text",
+        "brown-2020-neurips-supplement"
+      ],
+      "sourceIds": [
+        "brown-2020-arxiv-record",
+        "brown-2020-arxiv-v1-full-text",
+        "brown-2020-arxiv-v2-full-text",
+        "brown-2020-arxiv-v3-full-text",
+        "brown-2020-arxiv-v4-full-text",
+        "brown-2020-arxiv-license",
+        "brown-2020-arxiv-v1-source-package",
+        "brown-2020-arxiv-v2-source-package",
+        "brown-2020-arxiv-v3-source-package",
+        "brown-2020-arxiv-v4-source-package",
+        "brown-2020-neurips-record",
+        "brown-2020-neurips-full-text",
+        "brown-2020-neurips-supplement",
+        "brown-2020-openai-milestone",
+        "brown-2020-release-repo-initial",
+        "brown-2020-release-repo-language-stats",
+        "brown-2020-model-card-september",
+        "brockman-2020-openai-api"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Brown et al. connect GPT-2-style causal language modeling and Kaplan-era scaling guidance to a 175-billion-parameter family evaluated through explicit zero-, one-, and few-shot text conditioning. The work is retained for its in-context evaluation paradigm, scale study, heterogeneous evidence, and unusually explicit contamination and limitation analysis—not as proof that demonstrations always create new learning or that scale alone explains every result."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "webtext-pretraining-corpus-construction",
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling",
+        "compute-efficient-model-data-allocation",
+        "reported-compute-versus-measured-energy",
+        "alternating-dense-local-sparse-attention",
+        "quality-weighted-web-corpus-mixture",
+        "demonstration-conditioned-in-context-learning",
+        "scale-dependent-in-context-learning",
+        "benchmark-overlap-contamination-audit",
+        "conditional-generation-human-detection",
+        "prompt-conditioned-bias-probing"
+      ],
+      "significance": {
+        "beginner": "GPT-3 shows that examples can act like temporary instructions: put a few demonstrations in the prompt and the same frozen model may continue the pattern without retraining. The important lesson is conditional, not magical—more scale often widened the benefit of examples, but prompts, tasks, data overlap, and weak spots changed the result.",
+        "expert": "The study scales a GPT-2-derived causal decoder family from 125M to 175B trainable parameters, adds alternating dense/local sparse attention, samples 300B tokens per model from a quality-weighted five-source mixture, and evaluates zero/one/few-shot conditioning without gradient updates. Interpretation must preserve total versus non-embedding parameter accounts, uniform token budgets despite Kaplan-guided allocation, task-specific scoring and splits, contamination-filter failure, clean-subset limits, internal reporting differences, incomplete artifacts, and separate paper/API/model-card states."
+      },
+      "limitations": [
+        "Text demonstrations change activations rather than parameters; the paper does not establish whether each gain is new task learning, recognition of a pretrained behavior, or another form of conditional adaptation.",
+        "Aggregate scaling trends coexist with weak, nonmonotonic, and prompt-sensitive tasks. The comparisons are neither compute matched nor a controlled attribution of every downstream change to parameter count.",
+        "Every reported model trains on 300 billion sampled tokens. Kaplan-guided larger-model/fewer-token reasoning is a design rationale, not evidence that each row follows a separate token-optimal allocation.",
+        "Training-data provenance is incomplete: the exact 41 Common Crawl shards, classifier, Books1 and Books2 identities, Wikipedia dump, WebText2 reconciliation, prepared-corpus digest, and consolidated rights manifest are unavailable.",
+        "A benchmark-decontamination bug left overlap in long documents and books. Heuristic dirty/clean comparisons can contain false positives and distribution shifts and cannot prove absence of memorization.",
+        "The zero-, one-, and few-shot comparisons use task-specific prompts, K selection, scoring normalization, generation rules, and a mix of public test and development splits.",
+        "The human news-detection result is restricted to selected prompts, article lengths, sampling settings, participant recruitment, and exclusion rules; it is not a general detector-performance claim.",
+        "Gender, race, and religion analyses are explicitly preliminary, prompt dependent, and partly confounded by the sentiment tool; they do not establish that scale generally reduces social bias.",
+        "Several-thousand-PF-day and 0.4-kWh statements are estimates under paper-specific accounting and do not provide measured electricity, carbon, hardware lifecycle, or serving cost.",
+        "The official release snapshot lacks model weights, training or inference code, tokenizer files, the pretraining corpus, full filter implementation, run seeds, and a complete evaluation package; exact reconstruction is not established.",
+        "The sources retain visible reporting differences, including 175B versus 174.6B precision, a printed 13B width of 5,140, legacy 200B labels, a Winograd dirty-fraction mismatch, and the proceedings supplement's obsolete PF-day conversion.",
+        "ArXiv's license is a non-exclusive distribution grant, no express reusable license was identified in the inspected NeurIPS files, and the initial release repository has no LICENSE; public availability is not represented as general reuse permission."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The identities, snapshots, preparation, and rights for Books1, Books2, the English Wikipedia input, and the exact filtered Common Crawl payload remain unresolved.",
+          "resolutionCondition": "An immutable training-corpus manifest with source-level provenance and rights is required."
+        },
+        {
+          "status": "open",
+          "note": "The paper reports WebText2 as 19B available tokens while Kaplan et al. report 22.9B total tokens; no primary record reconciles the processing boundary.",
+          "resolutionCondition": "A versioned WebText2 preparation and split manifest is required."
+        },
+        {
+          "status": "resolved",
+          "note": "The September model card and hosted API describe later model or product states and remain unbound provenance records rather than paper revisions."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -13220,7 +13758,15 @@
         "radford-2018-ablation-results",
         "radford-2019-gpt-continuity-and-model-changes",
         "radford-2019-autoregressive-objective",
-        "kaplan-2020-autoregressive-transformer-experimental-family"
+        "kaplan-2020-autoregressive-transformer-experimental-family",
+        "brown-2020-gpt2-architecture-inheritance",
+        "brown-2020-transformer-lineage-boundary",
+        "brown-2020-model-configurations-and-175b",
+        "brown-2020-context-tokenizer-and-packed-sequences",
+        "brown-2020-optimizer-schedule-and-parallel-training",
+        "brown-2020-autoregressive-objective-and-task-limitations",
+        "brown-2020-calibration-interpretability-and-inference-boundary",
+        "brown-2020-internal-reporting-discrepancies"
       ],
       "uncertainties": []
     },
@@ -13588,7 +14134,10 @@
         "radford-2019-generation-and-memorization-boundary",
         "radford-2019-code-data-and-evidence-boundary",
         "kaplan-2020-webtext2-construction-tokenization-and-reserve",
-        "kaplan-2020-artifact-data-and-rights-boundary"
+        "kaplan-2020-artifact-data-and-rights-boundary",
+        "brown-2020-training-corpus-and-mixture",
+        "brown-2020-common-crawl-filtering-and-deduplication",
+        "brown-2020-artifact-and-reproducibility-boundary"
       ],
       "uncertainties": [
         {
@@ -13606,7 +14155,10 @@
         "radford-2019-byte-level-bpe",
         "liu-2019-byte-level-bpe-choice",
         "liu-2019-aggregate-roberta-recipe",
-        "kaplan-2020-webtext2-construction-tokenization-and-reserve"
+        "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+        "brown-2020-gpt2-architecture-inheritance",
+        "brown-2020-context-tokenizer-and-packed-sequences",
+        "brown-2020-artifact-and-reproducibility-boundary"
       ],
       "uncertainties": [
         {
@@ -13897,7 +14449,8 @@
         "kaplan-2020-model-data-compute-axis-fits",
         "kaplan-2020-critical-batch-adjustment",
         "kaplan-2020-compute-efficient-allocation",
-        "kaplan-2020-artifact-data-and-rights-boundary"
+        "kaplan-2020-artifact-data-and-rights-boundary",
+        "brown-2020-kaplan-loss-trend-extension"
       ],
       "uncertainties": [
         {
@@ -13921,7 +14474,8 @@
         "kaplan-2020-learning-curve-fit",
         "kaplan-2020-extrapolation-and-regime-boundary",
         "kaplan-2020-fit-normalization-discrepancies",
-        "kaplan-2020-statistical-and-optimization-limits"
+        "kaplan-2020-statistical-and-optimization-limits",
+        "brown-2020-kaplan-loss-trend-extension"
       ],
       "uncertainties": [
         {
@@ -13980,12 +14534,152 @@
         "kaplan-2020-early-stopping-efficiency-illustration",
         "kaplan-2020-extrapolation-and-regime-boundary",
         "kaplan-2020-fit-normalization-discrepancies",
-        "kaplan-2020-statistical-and-optimization-limits"
+        "kaplan-2020-statistical-and-optimization-limits",
+        "brown-2020-kaplan-scaling-guided-allocation"
       ],
       "uncertainties": [
         {
           "status": "resolved",
           "note": "The historical prescription minimizes estimated non-embedding training compute for loss; it excludes inference, hardware, energy, and lifecycle costs, and later compute-optimal revisions require separate evidence."
+        }
+      ]
+    },
+    {
+      "id": "alternating-dense-local-sparse-attention",
+      "name": "Alternating dense and local sparse attention",
+      "kind": "mechanism",
+      "description": "Alternate full attention with locally banded sparse attention across decoder layers so a scaled causal language-model stack does not use the same dense attention pattern at every layer.",
+      "claimIds": [
+        "brown-2020-gpt2-architecture-inheritance"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper names the alternating pattern and cites Sparse Transformer but does not release an executable layer-by-layer implementation or a controlled ablation isolating it."
+        }
+      ]
+    },
+    {
+      "id": "quality-weighted-web-corpus-mixture",
+      "name": "Quality-weighted web-corpus mixture",
+      "kind": "mechanism",
+      "description": "Filter, probabilistically resample, and deduplicate a large web crawl, then combine it with more heavily sampled curated web, books, and encyclopedia sources for language-model training.",
+      "claimIds": [
+        "brown-2020-training-corpus-and-mixture",
+        "brown-2020-common-crawl-filtering-and-deduplication",
+        "brown-2020-contamination-filtering-failure",
+        "brown-2020-artifact-and-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The disclosed method does not identify the exact crawl-shard list, classifier implementation, prepared-corpus digest, books corpora, or Wikipedia snapshot.",
+          "resolutionCondition": "Immutable corpus and preprocessing manifests are required for exact reconstruction and rights review."
+        }
+      ]
+    },
+    {
+      "id": "demonstration-conditioned-in-context-learning",
+      "name": "Demonstration-conditioned in-context learning",
+      "kind": "mechanism",
+      "description": "Specify a task at inference time through an instruction and zero, one, or several input-output demonstrations placed in the token context, without changing model parameters.",
+      "claimIds": [
+        "brown-2020-version-and-model-chronology",
+        "brown-2020-gpt2-in-context-continuity",
+        "brown-2020-zero-one-few-shot-definitions",
+        "brown-2020-evaluation-demonstration-selection",
+        "brown-2020-evaluation-scoring-and-split-boundary",
+        "brown-2020-headline-task-results",
+        "brown-2020-in-context-interpretation-boundary",
+        "brown-2020-autoregressive-objective-and-task-limitations",
+        "brown-2020-artifact-and-reproducibility-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Observed adaptation does not by itself identify whether a model learns a new task in context or recognizes and conditions a behavior represented during pretraining.",
+          "resolutionCondition": "Mechanistic and controlled data-intervention evidence is required to distinguish those explanations by task."
+        }
+      ]
+    },
+    {
+      "id": "scale-dependent-in-context-learning",
+      "name": "Scale-dependent in-context learning",
+      "kind": "finding",
+      "description": "Across a fixed family of autoregressive models, the gap between zero-, one-, and few-shot behavior often grows with scale, while individual tasks remain weak, nonmonotonic, prompt-sensitive, or split-dependent.",
+      "claimIds": [
+        "brown-2020-model-configurations-and-175b",
+        "brown-2020-headline-task-results"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The result is an aggregate pattern across the reported family, not a universal emergence threshold or a controlled attribution to parameter count alone."
+        }
+      ]
+    },
+    {
+      "id": "benchmark-overlap-contamination-audit",
+      "name": "Benchmark-overlap contamination audit",
+      "kind": "mechanism",
+      "description": "Search pretraining text for normalized benchmark n-grams, define dirty and clean evaluation subsets, and compare their scores while retaining false-positive, distribution-shift, and incomplete-filtering limits.",
+      "claimIds": [
+        "brown-2020-contamination-filtering-failure",
+        "brown-2020-posthoc-overlap-analysis",
+        "brown-2020-contamination-result-boundary",
+        "brown-2020-arithmetic-memorization-spot-check",
+        "brown-2020-internal-reporting-discrepancies"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Small clean/all score differences cannot prove absence of memorization, and the paper's bug, heuristic matches, and shifted subsets prevent a complete causal correction."
+        }
+      ]
+    },
+    {
+      "id": "conditional-generation-human-detection",
+      "name": "Conditional-generation human detection study",
+      "kind": "finding",
+      "description": "Measure whether readers can distinguish conditionally generated news continuations from matched human articles under a fixed sampling, article-length, recruitment, and exclusion procedure.",
+      "claimIds": [
+        "brown-2020-news-detection-study"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The measured error applies to the paper's news prompts, sampling settings, lengths, and participant pool, not arbitrary generated text or real-world detection systems."
+        }
+      ]
+    },
+    {
+      "id": "prompt-conditioned-bias-probing",
+      "name": "Prompt-conditioned representation bias probing",
+      "kind": "mechanism",
+      "description": "Probe generated continuations and word associations under demographic prompts to expose representation patterns while keeping prompt choice, sentiment tools, sample size, and normative interpretation explicit.",
+      "claimIds": [
+        "brown-2020-bias-analysis-boundary",
+        "brown-2020-internal-reporting-discrepancies"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "These probes are preliminary measurements under selected prompts and cannot establish a complete fairness profile or a monotonic relationship between scale and social bias."
+        }
+      ]
+    },
+    {
+      "id": "reported-compute-versus-measured-energy",
+      "name": "Reported compute versus measured energy",
+      "kind": "finding",
+      "description": "Keep estimated training FLOPs and PF-days separate from measured electricity, carbon, and lifecycle impact, and do not let a narrow inference-energy estimate substitute for the missing measurements.",
+      "claimIds": [
+        "brown-2020-compute-and-energy-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper supplies estimated compute and one order-of-magnitude inference example, not measured training energy, carbon emissions, or a lifecycle assessment."
         }
       ]
     }
@@ -15866,11 +16560,6 @@
         "metadata",
         "full-text"
       ],
-      "pagination": {
-        "scheme": "article",
-        "pageStart": 1,
-        "pageEnd": 1
-      },
       "pagination": {
         "scheme": "printed",
         "pageStart": 1,
@@ -20654,6 +21343,392 @@
         "pageEnd": 1
       },
       "accessNote": "The inspected 47-entry archive contains a figures directory, forty-two rendered PDF figure assets, main.tex, main.bbl, halpha.bst, and a style file. It contains no executable experiment code, WebText2 records or URL manifest, preprocessing pipeline, tokenizer files, raw result tables, fit notebook, per-run configurations, seeds, logs, checkpoints, or checkpoint manifest."
+    },
+    {
+      "id": "brown-2020-arxiv-record",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "arXiv record for Language Models are Few-Shot Learners",
+      "url": "https://arxiv.org/abs/2005.14165",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v1-version",
+        "brown-2020-arxiv-v2-version",
+        "brown-2020-arxiv-v3-version",
+        "brown-2020-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission ledger records v1 on 28 May, v2 on 1 June, v3 on 5 June, and v4 on 22 July 2020, with UTC timestamps. Its aggregate DOI identifies the preprint family rather than the NeurIPS article."
+    },
+    {
+      "id": "brown-2020-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v1 full text",
+      "url": "https://arxiv.org/pdf/2005.14165v1",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 72
+      },
+      "accessNote": "The complete 72-page PDF has SHA-256 f756a2d3e23c2770a3e8c4354965e98d37411c18aab91556df0c335675dec396. This ordering manuscript was extracted and compared with later source packages."
+    },
+    {
+      "id": "brown-2020-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v2 full text",
+      "url": "https://arxiv.org/pdf/2005.14165v2",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 74
+      },
+      "accessNote": "The complete 74-page PDF has SHA-256 af85becf2f256fe9a4acdbab656930a908fa7b6986180f4414e3f37ca804f319. The revision's expanded multilingual, grammar, and figure-boundary text was source-compared."
+    },
+    {
+      "id": "brown-2020-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v3 full text",
+      "url": "https://arxiv.org/pdf/2005.14165v3",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 74
+      },
+      "accessNote": "The complete 74-page PDF has SHA-256 5579d62eb17baa0385894a5b1a544a8eea0b91c5167702e766d05a933029801f. The revision's prose, citation, and bias-qualification changes were source-compared."
+    },
+    {
+      "id": "brown-2020-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v4 full text",
+      "url": "https://arxiv.org/pdf/2005.14165v4",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 75
+      },
+      "accessNote": "The complete 75-page PDF has SHA-256 97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83. The latest preprint was extracted and visually checked at the cited architecture, data, evaluation, result, contamination, limitation, compute, and appendix locators."
+    },
+    {
+      "id": "brown-2020-arxiv-license",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the GPT-3 record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v1-version",
+        "brown-2020-arxiv-v2-version",
+        "brown-2020-arxiv-v3-version",
+        "brown-2020-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The linked terms grant arXiv a perpetual non-exclusive right to distribute the article. They are not a general reuse license for the paper, repository, web text, datasets, code, or models."
+    },
+    {
+      "id": "brown-2020-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v1 source package",
+      "url": "https://arxiv.org/src/2005.14165v1",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 173 entries. It is the baseline for the v1-to-v2 comparison. It contains publication source and figures but no executable training or evaluation code, corpus payload, tokenizer, run manifest, seeds, logs, or checkpoints."
+    },
+    {
+      "id": "brown-2020-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v2 source package",
+      "url": "https://arxiv.org/src/2005.14165v2",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 173 entries. Included-section diffs expose the expanded multilingual treatment, grammar caveat, novel-word correction, and ground-truth figure clarification. It contains publication source and figures but no executable training or evaluation code, corpus payload, tokenizer, run manifest, seeds, logs, or checkpoints."
+    },
+    {
+      "id": "brown-2020-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v3 source package",
+      "url": "https://arxiv.org/src/2005.14165v3",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 174 entries. Its extra entry is an old bibliography artifact; included-section diffs expose prose, citation, and bias-qualification changes. It contains publication source and figures but no executable training or evaluation code, corpus payload, tokenizer, run manifest, seeds, logs, or checkpoints."
+    },
+    {
+      "id": "brown-2020-arxiv-v4-source-package",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 arXiv v4 source package",
+      "url": "https://arxiv.org/src/2005.14165v4",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "brown-2020-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 173 entries. Included-section diffs expose added SuperGLUE citations and the PF-day correction; main.tex itself remains unchanged across the four packages. It contains publication source and figures but no executable training or evaluation code, corpus payload, tokenizer, run manifest, seeds, logs, or checkpoints."
+    },
+    {
+      "id": "brown-2020-neurips-record",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "NeurIPS proceedings record for Language Models are Few-Shot Learners",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html",
+      "accessDate": "2026-08-30",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "brown-2020-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official volume index binds the title and displayed author identity to Advances in Neural Information Processing Systems 33 and links the main paper, supplement, reviews, and author feedback. It supplies no article DOI or exact proceedings-publication day."
+    },
+    {
+      "id": "brown-2020-neurips-full-text",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Canonical NeurIPS article for Language Models are Few-Shot Learners",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "brown-2020-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 25
+      },
+      "accessNote": "The complete 25-page canonical article has SHA-256 5fb1e3b8062688f5023ee63a9641d39c8c86922f2bca98535dcba084af7f719e. The suppressed first numeral and subsequent visible folios were visually verified; volume pp. 1877–1901 are not locator pages."
+    },
+    {
+      "id": "brown-2020-neurips-supplement",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Official NeurIPS supplement for Language Models are Few-Shot Learners",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Supplemental.pdf",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "brown-2020-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 32
+      },
+      "accessNote": "The complete separately distributed supplement has SHA-256 9f71d6f1953e1c7c0437cdf965058d36682fea2d29944830dce6829a37b4c70c. Visible pp. 1–32 were verified; the file retains the earlier erroneous PF-day definition."
+    },
+    {
+      "id": "brown-2020-openai-milestone",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "OpenAI publication record for Language Models are Few-Shot Learners",
+      "url": "https://openai.com/index/language-models-are-few-shot-learners/",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "brown-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The dated 28 May 2020 organization page documents the paper milestone and links the aggregate arXiv family. It is not another paper version, a model release, or an implementation package."
+    },
+    {
+      "id": "brown-2020-release-repo-initial",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable initial GPT-3 release-repository commit",
+      "url": "https://github.com/openai/gpt-3/commit/12766ba31aa6de490226e8517de75329e0d12dd4",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "brown-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-day tree contains 175b_samples.jsonl, eighteen synthetic task datasets, and overlap examples, but no LICENSE, model weights, tokenizer, training or inference code, pretraining corpus, classifier, or complete evaluation harness. The immutable JSONL contains 485 valid records."
+    },
+    {
+      "id": "brown-2020-release-repo-language-stats",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Immutable GPT-3 repository commit adding language statistics",
+      "url": "https://github.com/openai/gpt-3/commit/cf8c236919d8dae322be5535410853f20b0b4c7a",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "brown-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The 1 June snapshot adds approximate word-level language shares referenced by arXiv v2. It is supplemental documentation, not the training corpus or an exact per-token language manifest."
+    },
+    {
+      "id": "brown-2020-model-card-september",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "Commit-pinned September GPT-3 model card",
+      "url": "https://raw.githubusercontent.com/openai/gpt-3/d7a9bb505df6f630f9bab3b30c889e52f22eb9ea/model-card.md",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "version-boundary"
+      ],
+      "accessNote": "This later record distinguishes a paper-era May model whose dataset was created in November 2019 from a September retrain using data through August 2020. It also says 500 samples where the v1-bound initial JSONL contains 485 records. These details are retained only to prevent later documentation or hosted-model states from becoming paper revisions or promoted claim evidence."
+    },
+    {
+      "id": "brockman-2020-openai-api",
+      "relatedWorkIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "title": "OpenAI API announcement",
+      "url": "https://openai.com/index/openai-api/",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "version-boundary"
+      ],
+      "accessNote": "The 11 June 2020 private-beta service announcement describes controlled hosted access rather than an open model release. The product state is not a paper version and does not support promoted paper claims or lineage."
     }
   ],
   "claims": [
@@ -39841,6 +40916,1036 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-version-and-model-chronology",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "The paper family has four arXiv revisions plus a canonical NeurIPS article and separate supplement. Later revisions expand multilingual and bias qualifications, correct prose and citations, and in v4 fix one PF-day definition; the audited architecture, 300-billion-token schedule, model-size table, and main result matrix do not materially change. Exact public dates remain in the source-backed chronology record rather than being inferred from the manuscripts.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "First manuscript evidence envelope",
+            "section": "Complete manuscript",
+            "pageStart": 1,
+            "pageEnd": 72
+          },
+          "support": "The complete v1 PDF establishes the ordering manuscript's technical envelope for revision comparison."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v2-full-text",
+          "locator": {
+            "label": "Complete arXiv v2 revision",
+            "section": "Complete manuscript",
+            "pageStart": 1,
+            "pageEnd": 74
+          },
+          "support": "The complete v2 PDF supports the revision-specific multilingual qualification and citation changes in the family comparison."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v3-full-text",
+          "locator": {
+            "label": "Complete arXiv v3 revision",
+            "section": "Complete manuscript",
+            "pageStart": 1,
+            "pageEnd": 74
+          },
+          "support": "The complete v3 PDF supports the revision-specific bias qualification and prose corrections in the family comparison."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Latest manuscript and revision-specific correction",
+            "section": "Complete manuscript; Appendix D",
+            "pageStart": 1,
+            "pageEnd": 75,
+            "table": "D.1"
+          },
+          "support": "The complete v4 PDF exposes the latest revision and corrected PF-day definition while retaining the audited core tables."
+        },
+        {
+          "sourceId": "brown-2020-neurips-full-text",
+          "locator": {
+            "label": "Canonical proceedings treatment",
+            "section": "Complete article",
+            "pageStart": 1,
+            "pageEnd": 25
+          },
+          "support": "The official 25-page article establishes the canonical proceedings treatment and its locator envelope."
+        },
+        {
+          "sourceId": "brown-2020-neurips-supplement",
+          "locator": {
+            "label": "Separate proceedings supplement",
+            "section": "Complete supplement",
+            "pageStart": 1,
+            "pageEnd": 32
+          },
+          "support": "The official 32-page supplement establishes a separate appendix envelope and preserves a version-specific PF-day printing."
+        }
+      ],
+      "limitations": [
+        "The unbound September model card and hosted API are later model or product records, not manuscript revisions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-gpt2-architecture-inheritance",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "alternating-dense-local-sparse-attention"
+      ],
+      "statement": "GPT-3 uses the same model architecture as GPT-2, including modified initialization, pre-normalization, and reversible tokenization, except that its Transformer layers alternate dense and locally banded sparse attention patterns.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Explicit GPT-2 architecture inheritance and sparse-attention exception",
+            "section": "2.1 Model and Architectures",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "Section 2.1 explicitly names the retained GPT-2 components and the alternating sparse-attention exception."
+        }
+      ],
+      "limitations": [
+        "The inheritance does not transfer GPT-3's scale, 2,048-token context, data mixture, training schedule, or results backward to GPT-2."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-gpt2-in-context-continuity",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "Brown et al. describe both their pretraining approach and use of examples in context as continuations of GPT-2, while separating GPT-2's mixed use of the term zero-shot into explicit zero-, one-, and few-shot settings.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "GPT-2 transfer terminology and in-context precedent",
+            "section": "1 Introduction",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The introduction names GPT-2's task-transfer precedent and explains why demonstration counts require clearer labels."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Systematized evaluation settings",
+            "section": "2 Approach",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "Section 2 defines the zero-, one-, and few-shot settings used to systematize that precedent."
+        }
+      ],
+      "limitations": [
+        "The paper's terminology correction does not establish that every GPT-2 task used the same prompt or demonstration procedure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-transformer-lineage-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling"
+      ],
+      "statement": "GPT-3's causal decoder-only Transformer ancestry is mediated through the explicitly named GPT-2 architecture. The target does not adopt the original Transformer's encoder stack, encoder-decoder attention route, translation objective, or canonical encoder-decoder configuration.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Decoder-only GPT-2 substrate and architecture boundary",
+            "section": "1 Introduction; 2.1 Model and Architectures; 7 Related Work",
+            "pageStart": 3,
+            "pageEnd": 39
+          },
+          "support": "The target repeatedly names GPT-2 as its immediate architecture while describing a causal autoregressive model rather than an encoder-decoder system."
+        }
+      ],
+      "limitations": [
+        "This scoped architecture statement is not represented as a separate direct Transformer-to-GPT-3 influence edge."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-model-configurations-and-175b",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "scale-dependent-in-context-learning"
+      ],
+      "statement": "Table 2.1 reports each row as parameters/layers/model width/heads×head width/batch tokens/learning rate: Small 125M/12/768/12×64/0.5M/6×10^-4; Medium 350M/24/1,024/16×64/0.5M/3×10^-4; Large 760M/24/1,536/16×96/0.5M/2.5×10^-4; XL 1.3B/24/2,048/24×128/1M/2×10^-4; 2.7B/32/2,560/32×80/1M/1.6×10^-4; 6.7B/32/4,096/32×128/2M/1.2×10^-4; 13.0B/40/5,140/40×128/2M/1×10^-4; and GPT-3 175.0B/96/12,288/96×128/3.2M/0.6×10^-4. All train for 300B tokens with a 2,048-token context. Appendix D separately accounts for 174,600M parameters, 3.14×10^23 estimated FLOPs, and 3.64×10^3 PF-days.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Eight model configurations and common token budget",
+            "section": "2.1 Model and Architectures",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "2.1"
+          },
+          "support": "Table 2.1 supplies every configuration's parameters, depth, width, heads, batch, learning rate, common context, and 300B-token budget."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Largest-model parameter and compute account",
+            "section": "Appendix D Compute Usage",
+            "pageStart": 46,
+            "pageEnd": 46,
+            "table": "D.1"
+          },
+          "support": "Table D.1 supplies the largest row's more precise parameter and estimated-compute account."
+        }
+      ],
+      "limitations": [
+        "Table 2.1's rounded trainable-parameter labels and Figure 3.1's non-embedding parameter axis are not interchangeable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-context-tokenizer-and-packed-sequences",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization"
+      ],
+      "statement": "All models use a 2,048-token context and GPT-2's reversible tokenization. Training packs shorter documents into full windows, separates them with an end-of-text token, and applies no special cross-document attention mask.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Context and inherited tokenizer",
+            "section": "2.1 Model and Architectures",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "Section 2.1 binds the 2,048-token context and reversible tokenizer to the GPT-2-derived architecture."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Full-window packed-sequence procedure",
+            "section": "Appendix B Details of Model Training",
+            "pageStart": 43,
+            "pageEnd": 43
+          },
+          "support": "Appendix B states that full windows pack documents with end-of-text delimiters and no special inter-document mask."
+        }
+      ],
+      "limitations": [
+        "The target does not independently restate GPT-2's 50,257-entry vocabulary or release a tokenizer artifact."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-training-corpus-and-mixture",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "quality-weighted-web-corpus-mixture",
+        "webtext-pretraining-corpus-construction"
+      ],
+      "statement": "Each model receives 300B sampled tokens from filtered Common Crawl, WebText2, Books1, Books2, and English Wikipedia. Table 2.2 reports 410B/19B/12B/55B/3B available tokens, 60%/22%/8%/8%/3% weights, and 0.44/2.9/1.9/0.43/3.4 effective epochs; the weights total 101% through printed rounding. The filtered Common Crawl derives from 41 monthly shards spanning 2016–2019, approximately 45TB compressed plaintext, 570GB after filtering, and roughly 400B BPE tokens.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Five-source mixture, sampling weights, epochs, and Common Crawl scale",
+            "section": "2.2 Training Dataset",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "2.2"
+          },
+          "support": "Section 2.2 and Table 2.2 supply the five source sizes, rounded weights, effective epochs, crawl span, and filtered-corpus scale."
+        }
+      ],
+      "limitations": [
+        "Available corpus tokens are not per-model training-token counts, and the exact Books and Wikipedia inputs are unidentified."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-common-crawl-filtering-and-deduplication",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "quality-weighted-web-corpus-mixture",
+        "webtext-pretraining-corpus-construction"
+      ],
+      "statement": "Common Crawl is scored by a logistic-regression classifier using Spark tokenization and HashingTF, with WebText, Wikipedia, and web books as positive examples and raw Common Crawl as negative examples; documents are probabilistically retained with a Pareto α=9 rule. Spark MinHashLSH with ten hashes deduplicates within sources and removes WebText from Common Crawl, reducing dataset sizes by roughly 10% on average.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Quality classifier, probabilistic resampling, and fuzzy deduplication",
+            "section": "Appendix A Details of Common Crawl Filtering",
+            "pageStart": 43,
+            "pageEnd": 43
+          },
+          "support": "Appendix A specifies the classifier inputs, Pareto retention rule, MinHashLSH setup, WebText removal, and approximate reduction."
+        }
+      ],
+      "limitations": [
+        "No classifier weights, exact feature pipeline, shard manifest, or prepared-output digest is released."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-optimizer-schedule-and-parallel-training",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling"
+      ],
+      "statement": "Training uses Adam with β1=.9, β2=.95, ε=10^-8, global-gradient clipping at 1, and weight decay .1; learning rate warms up for 375M tokens and cosine-decays to 10% through 260B tokens, while batch size ramps from 32K to its full value during an initial 4–12B-token interval. Data are sampled without replacement until an epoch boundary. The larger runs use V100 GPUs on a high-bandwidth cluster with model parallelism across matrix dimensions and layers.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Cluster and model-parallel training",
+            "section": "2.3 Training Process",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "Section 2.3 identifies the V100 cluster and the within-matrix and across-layer model-parallel routes."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Optimizer, schedule, and batch ramp",
+            "section": "Appendix B Details of Model Training",
+            "pageStart": 43,
+            "pageEnd": 43
+          },
+          "support": "Appendix B supplies optimizer constants, clipping, decay, warmup, batch ramp, sampling without replacement, and weight decay."
+        }
+      ],
+      "limitations": [
+        "The paper does not provide a complete hardware topology, run manifest, seeds, or measured wall-clock and energy account."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-zero-one-few-shot-definitions",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "Zero-shot provides a natural-language task description without examples, one-shot adds one demonstration, and few-shot supplies K demonstrations—typically 10 to 100 within the context window—without updating model weights.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Four adaptation settings and no-update definitions",
+            "section": "2 Approach",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "figure": "2.1"
+          },
+          "support": "Section 2 and Figure 2.1 define each adaptation setting and state that the in-context settings do not update weights."
+        }
+      ],
+      "limitations": [
+        "The labels describe inference protocols, not the amount of related information in pretraining data."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-evaluation-demonstration-selection",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "For few-shot evaluation, demonstrations are randomly drawn from a task's training set for each evaluated example and separated by one or two newlines. LAMBADA and StoryCloze draw from development data and test on the test set, original Winograd draws from the same dataset, and K can be selected on development data when available.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Demonstration sampling, delimiters, and dataset exceptions",
+            "section": "2.4 Evaluation",
+            "pageStart": 10,
+            "pageEnd": 10
+          },
+          "support": "Section 2.4 specifies random demonstration draws, delimiters, development-set exceptions, and K selection."
+        }
+      ],
+      "limitations": [
+        "Random demonstration draws and development-selected K make the result conditional on the reported sampling and selection procedure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-evaluation-scoring-and-split-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "Multiple-choice tasks are generally scored by per-token likelihood; ARC, OpenBookQA, and RACE additionally divide by an unconditional answer probability chosen on development data. Free-form tasks use beam width 4 and length penalty .6, and results use public test sets when feasible but otherwise development sets. Two nearby passages use a 200B label without specifying a separate configuration; the relationship of those labels to the reported 175B row remains unresolved.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Task scoring, decoding, split choice, and legacy model label",
+            "section": "2.4 Evaluation",
+            "pageStart": 10,
+            "pageEnd": 10
+          },
+          "support": "Section 2.4 supplies likelihood normalization, beam settings, public-test/development split rules, and its unresolved 200B label."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Second legacy 200B model label",
+            "section": "Appendix E Human Quality Assessment",
+            "pageStart": 46,
+            "pageEnd": 46
+          },
+          "support": "Appendix E repeats the 200B GPT-3 label without defining a configuration distinct from Table 2.1's 175B row."
+        }
+      ],
+      "limitations": [
+        "Scores across tasks do not share one prompt, metric, split, or decoding procedure."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The primary source does not explain the two 200B labels or identify a separate model configuration.",
+          "resolutionCondition": "An author correction or run manifest is required."
+        }
+      ],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-headline-task-results",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "scale-dependent-in-context-learning"
+      ],
+      "statement": "Figure 1.2 shows steeper symbol-removal in-context learning curves for larger models, and Figure 1.3 reports that few-shot accuracy rises faster with model size than zero-shot accuracy across a heuristic aggregation of 42 accuracy-denominated benchmarks. For the 175B model, zero/one/few-shot results are 81.5/84.0/85.0 F1 on CoQA, 64.3/68.0/71.2 accuracy on closed-book TriviaQA, and 76.2/72.5/86.4 accuracy on LAMBADA. The LAMBADA one-shot reversal is prompt-format sensitive, and the task is separately flagged for training overlap.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Cross-scale in-context curves and heuristic 42-benchmark aggregate",
+            "section": "1 Introduction",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "figure": "1.2–1.3"
+          },
+          "support": "Figures 1.2–1.3 directly compare use of in-context information across model sizes and label the 42-task aggregate heuristic."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "LAMBADA setting-specific results and format qualification",
+            "section": "3.1 Language Modeling, Cloze, and Completion Tasks",
+            "pageStart": 12,
+            "pageEnd": 12,
+            "table": "3.2"
+          },
+          "support": "Table 3.2 supplies the three LAMBADA settings and the surrounding text supplies prompt-format and overlap qualifications."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Closed-book question-answering results",
+            "section": "3.2 Question Answering",
+            "pageStart": 13,
+            "pageEnd": 13,
+            "table": "3.3"
+          },
+          "support": "Table 3.3 supplies the closed-book TriviaQA results under the three demonstration settings."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "CoQA reading-comprehension results",
+            "section": "3.6 Reading Comprehension",
+            "pageStart": 18,
+            "pageEnd": 18,
+            "table": "3.7"
+          },
+          "support": "Section 3.6 and Table 3.7 supply the CoQA F1 results and their reading-comprehension setting."
+        }
+      ],
+      "limitations": [
+        "The 42-benchmark aggregation is explicitly heuristic and is not a rigorous common-metric benchmark.",
+        "The three tasks use different metrics and evaluation conditions and are not evidence of uniform improvement across the benchmark suite."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-news-detection-study",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "conditional-generation-human-detection"
+      ],
+      "statement": "Under the paper's conditional news-generation protocol, readers identify deliberately bad articles from a 160M no-context, higher-randomness control model at about 86% for roughly 200 words and 88% for roughly 500 words, while identifying 175B-model articles at about 52% in both conditions. The 25 short-article titles and subtitles are arbitrarily selected; generated outputs are programmatically formatted and selected by closest word count, and about 80 US participants are recruited per model condition. The result does not measure arbitrary GPT-3 text.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Short and long news-detection conditions",
+            "section": "3.9.4 News Article Generation",
+            "pageStart": 25,
+            "pageEnd": 27,
+            "table": "3.11–3.12"
+          },
+          "support": "Section 3.9.4 and Tables 3.11–3.12 distinguish the deliberately bad control model from 175B outputs and report both article lengths."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Participant recruitment, exclusions, and exact procedure",
+            "section": "Appendix E Human Quality Assessment",
+            "pageStart": 46,
+            "pageEnd": 48,
+            "table": "E.1"
+          },
+          "support": "Appendix E supplies recruitment, exclusions, arbitrary title selection, automatic output selection, and exact quiz procedure."
+        }
+      ],
+      "limitations": [
+        "The result depends on the fixed prompts, top-p sampling, article lengths, source domain, recruitment pool, and exclusion procedure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-kaplan-scaling-guided-allocation",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "Brown et al. say Figure 2.2's strategy of training much larger models on fewer tokens than typical practice is based on Kaplan et al.'s scaling-law analysis. This is a design rationale: Table 2.1 still assigns 300B training tokens to every one of the eight reported model sizes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Kaplan-based allocation rationale beside the common token budget",
+            "section": "2.1 Model and Architectures; 2.2 Training Dataset",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "figure": "2.2",
+            "table": "2.1"
+          },
+          "support": "Figure 2.2 explicitly attributes the larger-model/fewer-token rationale to Kaplan, while Table 2.1 shows 300B tokens for every row."
+        }
+      ],
+      "limitations": [
+        "The target does not test a separately optimized token budget for each model size or reproduce every Kaplan fit condition."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-kaplan-loss-trend-extension",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling",
+        "nonembedding-parameter-compute-accounting"
+      ],
+      "statement": "Figure 3.1 uses non-embedding parameter count and reports that language-model loss continues the Kaplan trend across the eight-size family and roughly two additional orders of magnitude in training compute, with only slight possible bending at the largest sizes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Stated scaling-law test",
+            "section": "1 Introduction; 2.1 Model and Architectures",
+            "pageStart": 4,
+            "pageEnd": 8
+          },
+          "support": "The introduction and Section 2.1 state that the study tests the named scaling trend beyond the earlier range."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Observed loss trend and qualification",
+            "section": "3 Results; 7 Related Work",
+            "pageStart": 10,
+            "pageEnd": 39,
+            "figure": "3.1"
+          },
+          "support": "Figure 3.1 plots loss against non-embedding parameters and training compute; Related Work qualifies the possible large-scale bending."
+        }
+      ],
+      "limitations": [
+        "The claim is node-local downstream evidence and is not part of the restricted Kaplan allocation relationship."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-contamination-filtering-failure",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "benchmark-overlap-contamination-audit",
+        "quality-weighted-web-corpus-mixture"
+      ],
+      "statement": "The planned benchmark-overlap removal was only partial because a bug caused long documents and books to bypass filtering; retraining was deemed infeasible, so the study instead reports post-hoc clean-subset analysis.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Training-time contamination-filter bug",
+            "section": "2.2 Training Dataset",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "Section 2.2 discloses that the attempted training-time removal was incomplete."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Post-hoc response and retraining boundary",
+            "section": "4 Measuring and Preventing Memorization of Benchmarks; Appendix C",
+            "pageStart": 31,
+            "pageEnd": 44
+          },
+          "support": "Section 4 and Appendix C identify the long-document bug, infeasible retraining, and post-hoc response."
+        }
+      ],
+      "limitations": [
+        "The post-hoc analysis cannot recreate the untrained counterfactual model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-posthoc-overlap-analysis",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "benchmark-overlap-contamination-audit"
+      ],
+      "statement": "The initial filter searches lowercase, punctuation-stripped 13-gram matches and removes each colliding 13-gram plus a 200-character window around it. The post-hoc analysis chooses N from the fifth-percentile example length, bounded between 8 and 13 for nonsynthetic tasks, scans exact Spark matches against the complete corpus, and marks an example dirty if any match is found.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Initial and post-hoc overlap definitions",
+            "section": "Appendix C Details of Test Set Contamination Studies",
+            "pageStart": 43,
+            "pageEnd": 45,
+            "table": "C.1"
+          },
+          "support": "Appendix C defines the initial 13-gram window removal and the variable-N exact-collision dirty/clean procedure summarized in Table C.1."
+        }
+      ],
+      "limitations": [
+        "Exact normalized n-gram overlap can flag generic phrases and miss paraphrases or shorter memorized spans."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-contamination-result-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "benchmark-overlap-contamination-audit"
+      ],
+      "statement": "Most reported clean/all score shifts are small, but that does not prove absence of memorization. PIQA prose reports 29% flagged with an approximately 3-point drop. Winograd prose reports 45% flagged and a 2.6% decrease, while Table C.1—run with a different demonstration seed—prints 164 of 273 examples dirty and 88.6 overall versus 86.2 clean. LAMBADA has substantial overlap but a clean score within 0.5% of the full score. Four Wikipedia language-model tasks, the one-billion-word benchmark, and Children's Book Test are omitted for extensive overlap, and clean subsets may shift the evaluation distribution.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "One-billion-word and Wikipedia language-model omissions",
+            "section": "3.1.1 Language Modeling",
+            "pageStart": 11,
+            "pageEnd": 11
+          },
+          "support": "Section 3.1.1 explicitly omits 1BW and four Wikipedia tasks for training-set containment."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Clean/all comparisons, omissions, and interpretation limits",
+            "section": "4 Measuring and Preventing Memorization of Benchmarks",
+            "pageStart": 31,
+            "pageEnd": 33
+          },
+          "support": "Section 4 reports PIQA, Winograd, LAMBADA, and CBT outcomes and warns that clean subsets may change distribution."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Exact dirty counts, clean/all scores, and different-seed caption",
+            "section": "Appendix C Details of Test Set Contamination Studies",
+            "pageStart": 45,
+            "pageEnd": 45,
+            "table": "C.1"
+          },
+          "support": "Table C.1 supplies exact Winograd dirty counts and clean/all scores and states that a different demonstration seed was used."
+        }
+      ],
+      "limitations": [
+        "The contamination detector has false positives and false negatives, and dirty/clean subsets need not be exchangeable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-arithmetic-memorization-spot-check",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "benchmark-overlap-contamination-audit"
+      ],
+      "statement": "For 2,000 three-digit additions and 2,000 subtractions, searches in two textual forms find 17 and 2 exact matches respectively. The check narrows one memorization hypothesis for those strings but does not establish a general arithmetic algorithm or exclude other encodings and overlaps.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Arithmetic overlap spot check",
+            "section": "3.9.1 Arithmetic",
+            "pageStart": 23,
+            "pageEnd": 23
+          },
+          "support": "Section 3.9.1 reports the two exact-string search forms and the 17 and 2 matching cases among 2,000 examples per task."
+        }
+      ],
+      "limitations": [
+        "The search covers only two string forms and is not an intervention on training data."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-in-context-interpretation-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "The paper leaves unresolved whether demonstrations cause de novo task learning inside the context or identify and adapt behaviors already learned during pretraining, and it allows that the explanation may differ by task.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Meta-learning interpretation caveat",
+            "section": "1 Introduction, footnote 1",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The introduction's footnote keeps new task learning and pretrained-pattern recognition both open."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Unresolved in-context mechanism",
+            "section": "5 Limitations",
+            "pageStart": 34,
+            "pageEnd": 34
+          },
+          "support": "Section 5 repeats that the operative in-context mechanism may vary by task and remains unresolved."
+        }
+      ],
+      "limitations": [
+        "Performance curves alone do not identify a learning mechanism."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-autoregressive-objective-and-task-limitations",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "Reported limitations include semantic repetition, loss of long-document coherence, contradictions, non sequiturs, weak selected commonsense and comparison tasks, no bidirectional or denoising objective, equal weighting of every predicted token, lack of multimodal or physical grounding, and poor pretraining sample efficiency.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Generation, objective, grounding, and task limitations",
+            "section": "5 Limitations",
+            "pageStart": 33,
+            "pageEnd": 34
+          },
+          "support": "Section 5 enumerates generation, objective, grounding, reasoning, and sample-efficiency limitations."
+        }
+      ],
+      "limitations": [
+        "The paper does not test every proposed alternative objective or grounding mechanism in the GPT-3 family."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-calibration-interpretability-and-inference-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling"
+      ],
+      "statement": "The paper describes interpretation as difficult, inference as expensive, and novel-input predictions as not necessarily well calibrated, noting greater benchmark variance than humans. It reports no expected-calibration error, Brier score, reliability diagram, or controlled calibration study.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Interpretability, inference-cost, and calibration qualification",
+            "section": "5 Limitations",
+            "pageStart": 34,
+            "pageEnd": 34
+          },
+          "support": "Section 5 qualitatively discusses interpretability, costly inference, prediction variance, and calibration without a quantitative calibration experiment."
+        }
+      ],
+      "limitations": [
+        "The calibration language is a qualitative boundary rather than a quantitative calibration result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-bias-analysis-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "prompt-conditioned-bias-probing"
+      ],
+      "statement": "The paper labels its gender, race, and religion probes preliminary. Under one occupation-prompt family, 83% of 388 occupations lean male; race and religion analyses use 800-sample co-occurrence or sentiment procedures with acknowledged SentiWordNet and interpretation confounds, and size effects are mixed rather than uniformly improving. In the Winogender method prose, the predicted option is described as the one with the lowest probability, an unresolved method/text anomaly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Preliminary representation-bias probes and caveats",
+            "section": "6.2 Fairness, Bias, and Representation",
+            "pageStart": 36,
+            "pageEnd": 39,
+            "table": "6.1–6.2",
+            "figure": "6.1"
+          },
+          "support": "Section 6.2 supplies the occupation, race, religion, and Winogender methods, results, caveats, and lower-probability wording."
+        }
+      ],
+      "limitations": [
+        "Selected prompts and lexical sentiment scores do not provide a complete fairness, harm, or deployment analysis."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The Winogender prose says the lower-probability option is selected and provides no correction or implementation that resolves whether this is the intended rule.",
+          "resolutionCondition": "Author clarification or the exact evaluation code is required."
+        }
+      ],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-compute-and-energy-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "reported-compute-versus-measured-energy"
+      ],
+      "statement": "The paper describes training as several thousand PF-days and Table D.1 estimates 3.14×10^23 FLOPs and 3.64×10^3 PF-days for the largest model. These are not measured electricity or carbon; the separate estimate that generating 100 pages costs about 0.4 kWh is an inference-time order-of-magnitude statement without a lifecycle account.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Energy discussion and inference estimate",
+            "section": "6.3 Energy Usage",
+            "pageStart": 39,
+            "pageEnd": 39
+          },
+          "support": "Section 6.3 distinguishes the training-compute discussion from the separate order-of-magnitude inference estimate."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Largest-model compute estimate",
+            "section": "Appendix D Compute Usage",
+            "pageStart": 46,
+            "pageEnd": 46,
+            "table": "D.1"
+          },
+          "support": "Table D.1 supplies estimated FLOPs and PF-days rather than measured electricity or lifecycle emissions."
+        }
+      ],
+      "limitations": [
+        "The paper omits measured power, utilization, datacenter overhead, hardware manufacture, and full serving workload."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-internal-reporting-discrepancies",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "benchmark-overlap-contamination-audit",
+        "prompt-conditioned-bias-probing"
+      ],
+      "statement": "The source family retains visible reporting differences: Table 2.1 prints the 13B width as 5,140 although 40 heads×128 equals 5,120; 175.0B is the rounded model label while Appendix D prints 174,600M; two evaluation passages say 200B without defining another configuration; Winograd prose says 45% flagged while Table C.1 marks 164 of 273 examples dirty and uses a different demonstration seed; Winogender prose says to select the lower-probability answer; and the NeurIPS supplement retains 2.88×10^7 FLOPs per PF-day where arXiv v4 corrects the definition to 8.64×10^19.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Model labels, legacy evaluation labels, Winograd overlap, and corrected PF-day definition",
+            "section": "2.1 Model and Architectures; 2.4 Evaluation; 4 Measuring and Preventing Memorization; 6.2 Fairness, Bias, and Representation; Appendices C–E",
+            "pageStart": 8,
+            "pageEnd": 46,
+            "table": "2.1, C.1, D.1"
+          },
+          "support": "The cited model, evaluation, contamination, bias, and compute sections print the retained width, label, dirty-count, seed, method, and PF-day differences."
+        },
+        {
+          "sourceId": "brown-2020-neurips-supplement",
+          "locator": {
+            "label": "Proceedings-supplement PF-day printing",
+            "section": "Appendix D Compute Usage",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "D.1"
+          },
+          "support": "Physical supplement page 7 retains the old PF-day definition that arXiv v4 corrects."
+        }
+      ],
+      "limitations": [
+        "The 175.0B/174,600M pair is compatible with rounding; the other differences lack an identified primary correction beyond the v4 PF-day change."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No author erratum was identified for the 5,140 width, 200B labels, or Winograd dirty-fraction mismatch.",
+          "resolutionCondition": "A primary correction or run-level artifact is required."
+        }
+      ],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "brown-2020-artifact-and-reproducibility-boundary",
+      "workId": "brown-2020-language-models-few-shot-learners",
+      "ideaIds": [
+        "quality-weighted-web-corpus-mixture",
+        "webtext-pretraining-corpus-construction",
+        "demonstration-conditioned-in-context-learning",
+        "byte-level-byte-pair-tokenization"
+      ],
+      "statement": "The publication-day repository supplies 485 generated-sample records, eighteen synthetic task datasets, and overlap examples, not model weights, tokenizer files, training or inference code, the pretraining corpus, complete filter code, seeds, or a table-level evaluation package. The tree has no LICENSE. ArXiv's non-exclusive distribution grant does not establish general reuse rights, and no express reusable license was identified in the inspected NeurIPS article or supplement.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "brown-2020-release-repo-initial",
+          "locator": {
+            "label": "Initial repository tree, README, and sample file",
+            "section": "Initial commit tree; README; 175b_samples.jsonl",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The immutable initial tree establishes the 485-record sample file, eighteen synthetic datasets, overlap examples, absent reconstruction assets, and absent LICENSE."
+        },
+        {
+          "sourceId": "brown-2020-arxiv-license",
+          "locator": {
+            "label": "Non-exclusive arXiv distribution terms",
+            "section": "License terms",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The arXiv terms grant repository distribution rather than general reuse rights for the paper or associated artifacts."
+        },
+        {
+          "sourceId": "brown-2020-neurips-full-text",
+          "locator": {
+            "label": "Canonical article evidence and rights envelope",
+            "section": "Complete article",
+            "pageStart": 1,
+            "pageEnd": 25
+          },
+          "support": "The complete canonical article contains the paper evidence but no express reusable-license notice or reconstruction package."
+        },
+        {
+          "sourceId": "brown-2020-neurips-supplement",
+          "locator": {
+            "label": "Supplement evidence and rights envelope",
+            "section": "Complete supplement",
+            "pageStart": 1,
+            "pageEnd": 32
+          },
+          "support": "The complete official supplement likewise contains technical appendices but no express reusable-license notice or reconstruction package."
+        }
+      ],
+      "limitations": [
+        "Artifact and license absence is limited to the inspected official records on 30 August 2026 and does not imply that private artifacts or independent implementations do not exist."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Exact paper-era reconstruction and general reuse rights are not established.",
+          "resolutionCondition": "A version-bound release of data manifests, code, tokenizer, seeds, model artifacts, evaluation records, and explicit rights would be required."
+        }
+      ],
+      "checkedDate": "2026-08-30"
     }
   ],
   "relationships": [
@@ -43140,6 +45245,87 @@
           "note": "The relationship covers documented denoising and baseline-scale links, not BERT's encoder-only architecture, next-sentence objective, exact corruption channel, full-model adaptation, corpora, or benchmark evidence."
         }
       ]
+    },
+    {
+      "id": "radford-2019-to-brown-2020",
+      "from": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "brown-2020-language-models-few-shot-learners"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Brown et al. explicitly retain GPT-2's model architecture, modified initialization, pre-normalization, reversible byte-level tokenization, and task-conditioning precedent, then systematize demonstration counts and change attention pattern, context, data, scale, training, and evaluation. The relationship is limited to those named continuities and excludes transfer of GPT-3-specific evidence backward.",
+      "claimIds": [
+        "radford-2019-gpt-continuity-and-model-changes",
+        "radford-2019-natural-language-task-conditioning",
+        "radford-2019-byte-level-bpe",
+        "brown-2020-gpt2-architecture-inheritance",
+        "brown-2020-gpt2-in-context-continuity"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side GPT-2 architecture and task-conditioning continuity",
+            "section": "1 Introduction; 2 Approach; 2.1 Model and Architectures",
+            "pageStart": 4,
+            "pageEnd": 8
+          },
+          "support": "The target names GPT-2's architecture, task-conditioning precedent, and retained components before stating its own scoped changes."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship excludes GPT-3's sparse-attention pattern, 2,048-token context, corpus mixture, parameter scale, schedule, results, and release policy."
+        }
+      ]
+    },
+    {
+      "id": "kaplan-2020-to-brown-2020",
+      "from": {
+        "kind": "work",
+        "id": "kaplan-2020-scaling-laws-neural-language-models"
+      },
+      "to": {
+        "kind": "work",
+        "id": "brown-2020-language-models-few-shot-learners"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Brown et al. explicitly attribute the larger-model/fewer-token allocation shown in Figure 2.2 to Kaplan et al.'s scaling analysis. This narrow relationship records design rationale only: every GPT-3-family row still trains on 300B tokens, and the edge does not transfer Kaplan's WebText2 fits, non-embedding parameter convention, exact optimum, or universality to the target.",
+      "claimIds": [
+        "kaplan-2020-compute-efficient-allocation",
+        "brown-2020-kaplan-scaling-guided-allocation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "brown-2020-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side Kaplan attribution and common 300B-token schedule",
+            "section": "2.1 Model and Architectures; 2.2 Training Dataset",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "figure": "2.2",
+            "table": "2.1"
+          },
+          "support": "The target attributes Figure 2.2's allocation rationale to Kaplan while Table 2.1 fixes every reported row at 300B tokens."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The target's separate loss-trend test remains node-local and is not used to broaden this allocation relationship."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -45956,7 +48142,7 @@
     {
       "id": "expert-kaplan-2020-fits-allocation-and-validity-boundaries",
       "mode": "expert",
-      "objective": "Reconstruct the non-embedding FLOP account, single-axis and joint loss surfaces, critical-batch transforms, post-transient learning curve, and compute-efficient allocation; then audit fit scopes, exclusions, theoretical-printing and normalization discrepancies, extrapolation, WebText2 provenance, artifact absence, and rights without asserting the deferred GPT-3 relationship.",
+      "objective": "Reconstruct the non-embedding FLOP account, single-axis and joint loss surfaces, critical-batch transforms, post-transient learning curve, and compute-efficient allocation; then audit fit scopes, exclusions, theoretical-printing and normalization discrepancies, extrapolation, WebText2 provenance, artifact absence, and rights while keeping the later GPT-3 allocation relationship separately evidenced.",
       "workIds": [
         "kaplan-2020-scaling-laws-neural-language-models"
       ],
@@ -45996,6 +48182,98 @@
         "Immutable source versions, data manifests, run artifacts, and license scope"
       ],
       "successCriterion": "The learner can reproduce, interpret, and state the conditions for Equations 1.1–1.8, 2.1–2.2, 4.1–4.4, and 5.1–5.6; derive their downstream allocation consequences; reproduce Tables 2, 3, 5, and 6 without mixing constants; distinguish C from C_min and B_crit from an arbitrary batch; distinguish the empirical .050 fit from the .054/.052 theoretical printings and explain both Table 5/Figure 13 normalization discrepancies; defend the 768-to-1.5B and WebText2 evidence envelope; and separate paper, corpus, code, run, checkpoint, and rights claims."
+    },
+    {
+      "id": "beginner-brown-2020-context-learning-without-weight-updates",
+      "mode": "beginner",
+      "objective": "Use one prompt across zero-, one-, and few-shot settings to see how examples can steer a frozen language model, then compare tasks and scales without treating in-context behavior as guaranteed learning or every benchmark gain as the same phenomenon.",
+      "workIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "scale-dependent-in-context-learning",
+        "benchmark-overlap-contamination-audit",
+        "conditional-generation-human-detection"
+      ],
+      "claimIds": [
+        "brown-2020-zero-one-few-shot-definitions",
+        "brown-2020-evaluation-demonstration-selection",
+        "brown-2020-headline-task-results",
+        "brown-2020-news-detection-study",
+        "brown-2020-contamination-filtering-failure",
+        "brown-2020-contamination-result-boundary",
+        "brown-2020-in-context-interpretation-boundary",
+        "brown-2020-autoregressive-objective-and-task-limitations"
+      ],
+      "prerequisites": [
+        "A language model predicts a next token from earlier tokens",
+        "A prompt can contain an instruction and worked examples",
+        "Changing a prompt is different from changing model weights",
+        "A benchmark score can depend on prompts, splits, scoring, and training-data overlap"
+      ],
+      "successCriterion": "The learner can distinguish zero-, one-, and few-shot protocols; explain what remains frozen; name one task that improves and one that remains weak or prompt-sensitive; and state why demonstrations, scale, contamination, and de novo learning are separate claims."
+    },
+    {
+      "id": "expert-brown-2020-architecture-data-scaling-evaluation-and-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct the GPT-2-derived architecture, eight-size schedule, weighted corpus, training and evaluation protocols, Kaplan-scoped allocation link, heterogeneous results, contamination audit, limitations, internal discrepancies, and release and rights envelope across the canonical proceedings and four arXiv revisions.",
+      "workIds": [
+        "brown-2020-language-models-few-shot-learners"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "webtext-pretraining-corpus-construction",
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling",
+        "compute-efficient-model-data-allocation",
+        "reported-compute-versus-measured-energy",
+        "alternating-dense-local-sparse-attention",
+        "quality-weighted-web-corpus-mixture",
+        "demonstration-conditioned-in-context-learning",
+        "scale-dependent-in-context-learning",
+        "benchmark-overlap-contamination-audit",
+        "conditional-generation-human-detection",
+        "prompt-conditioned-bias-probing"
+      ],
+      "claimIds": [
+        "brown-2020-version-and-model-chronology",
+        "brown-2020-gpt2-architecture-inheritance",
+        "brown-2020-gpt2-in-context-continuity",
+        "brown-2020-transformer-lineage-boundary",
+        "brown-2020-model-configurations-and-175b",
+        "brown-2020-context-tokenizer-and-packed-sequences",
+        "brown-2020-training-corpus-and-mixture",
+        "brown-2020-common-crawl-filtering-and-deduplication",
+        "brown-2020-optimizer-schedule-and-parallel-training",
+        "brown-2020-zero-one-few-shot-definitions",
+        "brown-2020-evaluation-demonstration-selection",
+        "brown-2020-evaluation-scoring-and-split-boundary",
+        "brown-2020-headline-task-results",
+        "brown-2020-news-detection-study",
+        "brown-2020-kaplan-scaling-guided-allocation",
+        "brown-2020-kaplan-loss-trend-extension",
+        "brown-2020-contamination-filtering-failure",
+        "brown-2020-posthoc-overlap-analysis",
+        "brown-2020-contamination-result-boundary",
+        "brown-2020-arithmetic-memorization-spot-check",
+        "brown-2020-in-context-interpretation-boundary",
+        "brown-2020-autoregressive-objective-and-task-limitations",
+        "brown-2020-calibration-interpretability-and-inference-boundary",
+        "brown-2020-bias-analysis-boundary",
+        "brown-2020-compute-and-energy-boundary",
+        "brown-2020-internal-reporting-discrepancies",
+        "brown-2020-artifact-and-reproducibility-boundary"
+      ],
+      "prerequisites": [
+        "Causal decoder-only Transformers, byte-level BPE, pre-normalization, and sparse attention",
+        "Autoregressive cross-entropy, parameter and FLOP accounting, and scaling-law scope",
+        "Prompt-conditioned likelihood scoring, decoding, benchmark splits, and uncertainty",
+        "Web-corpus filtering, weighted sampling, deduplication, and n-gram contamination audits",
+        "Version-bound evidence, immutable release artifacts, and license scope"
+      ],
+      "successCriterion": "The learner can reproduce Tables 2.1 and 2.2 and the key training settings; keep total parameters, non-embedding scale, and estimated FLOPs distinct; reconstruct the zero/one/few-shot and task-specific scoring rules; defend exactly the GPT-2 and Kaplan relationship scopes; audit headline, contamination, news, bias, compute, and limitation claims at their source locators; enumerate the retained reporting differences; and separate the paper family from later API and model-card states."
     }
   ]
 }
