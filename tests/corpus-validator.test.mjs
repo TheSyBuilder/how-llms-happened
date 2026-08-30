@@ -157,6 +157,165 @@ test("preserves T5 paper, C4, and lineage boundaries", () => {
   assert.ok(historicalScope.includes("The T5 family was checked on 2026-08-28"));
 });
 
+test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () => {
+  const workId = "kaplan-2020-scaling-laws-neural-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const fullText = corpus.sources.find(
+    (item) => item.id === "kaplan-2020-arxiv-v1-full-text",
+  );
+  const sourcePackage = corpus.sources.find(
+    (item) => item.id === "kaplan-2020-arxiv-v1-source-package",
+  );
+  const family = corpus.claims.find(
+    (item) =>
+      item.id === "kaplan-2020-autoregressive-transformer-experimental-family",
+  );
+  const webtext2 = corpus.claims.find(
+    (item) =>
+      item.id ===
+      "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+  );
+  const accounting = corpus.claims.find(
+    (item) =>
+      item.id === "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+  );
+  const jointFit = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-joint-model-data-overfitting-fit",
+  );
+  const criticalBatch = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-critical-batch-adjustment",
+  );
+  const axisFits = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-model-data-compute-axis-fits",
+  );
+  const allocation = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-compute-efficient-allocation",
+  );
+  const discrepancies = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-fit-normalization-discrepancies",
+  );
+  const limits = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-statistical-and-optimization-limits",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-artifact-data-and-rights-boundary",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) =>
+      (item.from.kind === "work" && item.from.id === workId) ||
+      (item.to.kind === "work" && item.to.id === workId),
+  );
+  const expectedSourceIds = [
+    "kaplan-2020-arxiv-record",
+    "kaplan-2020-arxiv-v1-full-text",
+    "kaplan-2020-arxiv-license",
+    "kaplan-2020-openai-publication",
+    "kaplan-2020-arxiv-v1-source-package",
+  ];
+
+  assert.equal(corpus.works.at(-1)?.id, workId);
+  assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
+  assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(work?.canonicalVersionId, "kaplan-2020-arxiv-v1-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.versions[0]?.sourceIds, expectedSourceIds);
+  for (const sourceId of expectedSourceIds)
+    assert.deepEqual(
+      corpus.sources.find((item) => item.id === sourceId)?.versionIds,
+      ["kaplan-2020-arxiv-v1-version"],
+    );
+  assert.deepEqual(work?.authors, [
+    "Jared Kaplan",
+    "Sam McCandlish",
+    "Tom Henighan",
+    "Tom B. Brown",
+    "Benjamin Chess",
+    "Rewon Child",
+    "Scott Gray",
+    "Alec Radford",
+    "Jeffrey Wu",
+    "Dario Amodei",
+  ]);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 30,
+  });
+  assert.match(sourcePackage?.accessNote ?? "", /47-entry archive/);
+  assert.match(sourcePackage?.accessNote ?? "", /no executable experiment code/);
+  assert.equal(claims.length, 16);
+  assert.match(family?.statement ?? "", /768 to 1\.5 billion/);
+  assert.match(family?.statement ?? "", /22 million to 23 billion/);
+  assert.match(family?.statement ?? "", /1,024-token/);
+  assert.match(family?.statement ?? "", /50,257-unit/);
+  for (const value of [
+    "20.3 million",
+    "96 GB",
+    "16.2 billion",
+    "22.9 billion",
+    "660-million-token",
+    "January–October 2018",
+  ])
+    assert.ok(webtext2?.statement.includes(value));
+  assert.match(accounting?.statement ?? "", /C≈6NBS/);
+  assert.match(accounting?.statement ?? "", /vocabulary and positional embeddings/);
+  assert.equal(jointFit?.evidence[0]?.locator.figure, "9");
+  assert.equal(jointFit?.evidence[0]?.locator.pageEnd, 12);
+  assert.deepEqual(
+    criticalBatch?.evidence.map((item) => item.locator.figure),
+    ["10", "18"],
+  );
+  assert.equal(criticalBatch?.evidence[1]?.locator.pageStart, 24);
+  assert.equal(criticalBatch?.evidence[1]?.locator.pageEnd, 24);
+  for (const value of [
+    "α_N=0.076",
+    "8.8×10^13",
+    "α_D=0.095",
+    "5.4×10^13",
+    "α_C=0.057",
+    "1.6×10^7 PF-days",
+    "α_C^min=0.050",
+    "3.1×10^8 PF-days",
+  ])
+    assert.ok(axisFits?.statement.includes(value));
+  assert.equal(axisFits?.evidence[0]?.locator.table, "5");
+  for (const value of ["0.73", "0.24", "0.03", "0.27"])
+    assert.ok(allocation?.statement.includes(value));
+  assert.equal(allocation?.evidence[0]?.locator.table, "6");
+  assert.match(allocation?.limitations.join(" ") ?? "", /Table 6, not Table 5/);
+  for (const value of [
+    "0.050",
+    "0.054",
+    "0.052",
+    "1.6×10^7",
+    "2.0×10^7",
+    "3.1×10^8",
+    "2.3×10^8",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.equal(discrepancies?.directness, "editorial-inference");
+  assert.match(discrepancies?.limitations.join(" ") ?? "", /different roles/);
+  assert.match(limits?.statement ?? "", /one-layer models/);
+  assert.match(limits?.statement ?? "", /0\.02 loss variation/);
+  assert.match(limits?.statement ?? "", /0\.05/);
+  assert.match(limits?.statement ?? "", /10\^10 parameters/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /no immutable official code/);
+  assert.deepEqual(relationships, []);
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Kaplan et al.’s scaling-law preprint"));
+  assert.ok(corpusFormat.includes("Kaplan et al. 2020 is a sole-version"));
+  assert.ok(historicalScope.includes("The Kaplan scaling-law preprint was checked on 2026-08-30"));
+});
+
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
   const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
   const versionId = "graves-2013-arxiv-v1-version";

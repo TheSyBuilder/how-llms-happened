@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-28",
+  "asOf": "2026-08-30",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -11051,6 +11051,162 @@
           "resolutionCondition": "A checkpoint-specific license or authoritative Google clarification is required."
         }
       ]
+    },
+    {
+      "id": "kaplan-2020-scaling-laws-neural-language-models",
+      "title": "Scaling Laws for Neural Language Models",
+      "authors": [
+        "Jared Kaplan",
+        "Sam McCandlish",
+        "Tom Henighan",
+        "Tom B. Brown",
+        "Benjamin Chess",
+        "Rewon Child",
+        "Scott Gray",
+        "Alec Radford",
+        "Jeffrey Wu",
+        "Dario Amodei"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "J. Kaplan et al., “Scaling Laws for Neural Language Models,” arXiv:2001.08361v1, 23 January 2020.",
+      "chronology": {
+        "orderingEventId": "kaplan-2020-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "kaplan-2020-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2020-01-23",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "kaplan-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, sole version posted 23 January 2020 at 03:59:20 UTC"
+              }
+            ],
+            "versionId": "kaplan-2020-arxiv-v1-version",
+            "sourceIds": [
+              "kaplan-2020-arxiv-record",
+              "kaplan-2020-arxiv-v1-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "kaplan-2020-arxiv-v1-version",
+          "title": "Scaling Laws for Neural Language Models",
+          "authors": [
+            "Jared Kaplan",
+            "Sam McCandlish",
+            "Tom Henighan",
+            "Tom B. Brown",
+            "Benjamin Chess",
+            "Rewon Child",
+            "Scott Gray",
+            "Alec Radford",
+            "Jeffrey Wu",
+            "Dario Amodei"
+          ],
+          "kind": "preprint",
+          "label": "Sole arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Kaplan et al., “Scaling Laws for Neural Language Models,” arXiv:2001.08361v1, 23 January 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2001.08361v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2001.08361",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "kaplan-2020-arxiv-record",
+            "kaplan-2020-arxiv-v1-full-text",
+            "kaplan-2020-arxiv-license",
+            "kaplan-2020-openai-publication",
+            "kaplan-2020-arxiv-v1-source-package"
+          ],
+          "notes": "The arXiv ledger contains one posting. The immutable PDF has thirty leaves and visible folios through 30, although the record's comments field says 19 pages; the main discussion ends on p. 19 and appendices continue through p. 30. No proceedings or journal version was established in the inspected primary records."
+        }
+      ],
+      "canonicalVersionId": "kaplan-2020-arxiv-v1-version",
+      "preferredSourceIds": [
+        "kaplan-2020-arxiv-record",
+        "kaplan-2020-arxiv-v1-full-text"
+      ],
+      "sourceIds": [
+        "kaplan-2020-arxiv-record",
+        "kaplan-2020-arxiv-v1-full-text",
+        "kaplan-2020-arxiv-license",
+        "kaplan-2020-openai-publication",
+        "kaplan-2020-arxiv-v1-source-package"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Kaplan et al. make model size, dataset size, and training compute separately inspectable design variables for autoregressive Transformer language models, fit their interaction across the reported experimental range, and derive a compute-allocation rule that later lineage audits can test. The node is retained as a scale-allocation bridge, not as a universal or current prescription."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "webtext-pretraining-corpus-construction",
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling",
+        "finite-data-overfitting-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "significance": {
+        "beginner": "The paper treats model size, training text, and computation as three separate dials, then measures what happens when one becomes the bottleneck. Its main lesson is historical and conditional: under these 2020 Transformer and WebText2 experiments, larger models trained for fewer steps looked more compute-efficient, but the fitted trend was not a timeless law.",
+        "expert": "The study fits autoregressive cross-entropy against non-embedding parameter count N, dataset tokens D, fixed-batch compute C, and batch-adjusted minimum compute C_min; models joint N–D and N–S_min surfaces; estimates critical-batch scaling; and derives N_opt, B_crit, S_min, and one-epoch D_opt allocations. Interpretation must preserve distinct fit constants, small-data and early-training failures, seed-scale estimates, omitted context compute, internal normalization discrepancies, extrapolation breakdown, artifact absence, and the WebText2/decoder-only scope."
+      },
+      "limitations": [
+        "The promoted laws describe autoregressive cross-entropy for primarily decoder-only Transformers trained on WebText2. They are not universal laws for every architecture, tokenizer, corpus, downstream metric, capability, or later training regime.",
+        "Smooth next-token-loss changes do not establish downstream task gains or qualitative capability changes; the paper explicitly leaves that relationship open.",
+        "N excludes vocabulary and positional embeddings, and C≈6NBS omits context-dependent attention terms. The paper warns that compute scaling may be confounded when context length is at least roughly twelve times model width.",
+        "The empirical C curves initially hold batch size fixed and are not truly optimal; C_min and S_min are counterfactual adjustments based on a measured critical-batch model rather than direct runs at every optimum.",
+        "The joint N–D fit is poor for the smallest roughly 20-million-token regime, where an epoch is only forty updates. Dropout remains fixed at 10%, and regularization and data augmentation were not optimized across scale.",
+        "One-layer models and the largest incompletely converged runs are excluded from selected power-law fits; the N–S_min form also breaks down during the early training transient.",
+        "Section 4 uses roughly 0.02 loss variation as an overfitting threshold, while Figure 22 reports run-to-run variation around 0.05. The paper does not supply a run manifest that reconciles those settings or a full repeated-seed uncertainty analysis.",
+        "The learning-rate rule is a heuristic that the paper says breaks down beyond 10^10 parameters; larger learning rates for deliberately short, compute-limited runs were not tested.",
+        "The Table 6 allocation is conditional on the fitted critical-batch and loss models, treats D_opt as one epoch, minimizes non-embedding training compute, and excludes inference cost, hardware constraints, energy, and lifecycle cost. The 0.03 serial-step exponent may be consistent with zero.",
+        "The paper's own extrapolated compute and data trends contradict one another several orders beyond the measured range; it says the laws must break down at or before that region and gives highly uncertain intersection values.",
+        "No immutable official code, run manifest, released WebText2 corpus, model checkpoint, exact training-data manifest, or complete rights manifest was established. ArXiv's non-exclusive distribution license covers repository distribution of the article, not general reuse of the paper, third-party web text, code, or model artifacts."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv history contains exactly one version posted 23 January 2020; the record's 19-page comment does not replace the immutable PDF's thirty-leaf evidence envelope."
+        },
+        {
+          "status": "open",
+          "note": "No released WebText2 payload, URL list, prepared-data digest, or item-level rights manifest was identified.",
+          "resolutionCondition": "An immutable official corpus manifest and authoritative rights documentation would be required for reconstruction and reuse claims."
+        },
+        {
+          "status": "open",
+          "note": "The paper prints 0.050 for the empirical optimized-compute exponent, about 0.054 in Equation 6.4, and about 0.052 in Equation B.7; the latter two theoretical approximations disagree. Table 5 prints fixed-batch and adjusted-compute normalizations of 1.6×10^7 and 3.1×10^8 PF-days, while Figure 13 prints 2.0×10^7 and 2.3×10^8.",
+          "resolutionCondition": "Author errata or run-level fitting artifacts are required to reconcile the theoretical approximation and normalization discrepancies."
+        },
+        {
+          "status": "open",
+          "note": "The primary record does not establish which scaling relations generalize beyond the paper's architecture, data, loss, tokenizer, and measured range.",
+          "resolutionCondition": "Separate evidence across later model and data regimes must be represented as new nodes or challenges rather than back-projected into this work."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -13063,7 +13219,8 @@
         "radford-2018-transformer-antecedent-boundary",
         "radford-2018-ablation-results",
         "radford-2019-gpt-continuity-and-model-changes",
-        "radford-2019-autoregressive-objective"
+        "radford-2019-autoregressive-objective",
+        "kaplan-2020-autoregressive-transformer-experimental-family"
       ],
       "uncertainties": []
     },
@@ -13429,7 +13586,9 @@
         "radford-2019-webtext-construction",
         "radford-2019-overlap-analysis",
         "radford-2019-generation-and-memorization-boundary",
-        "radford-2019-code-data-and-evidence-boundary"
+        "radford-2019-code-data-and-evidence-boundary",
+        "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+        "kaplan-2020-artifact-data-and-rights-boundary"
       ],
       "uncertainties": [
         {
@@ -13446,7 +13605,8 @@
       "claimIds": [
         "radford-2019-byte-level-bpe",
         "liu-2019-byte-level-bpe-choice",
-        "liu-2019-aggregate-roberta-recipe"
+        "liu-2019-aggregate-roberta-recipe",
+        "kaplan-2020-webtext2-construction-tokenization-and-reserve"
       ],
       "uncertainties": [
         {
@@ -13722,6 +13882,110 @@
         {
           "status": "resolved",
           "note": "T5's controlled rows support scoped comparisons, while its final system changes several factors together and does not identify a single sufficient cause."
+        }
+      ]
+    },
+    {
+      "id": "nonembedding-parameter-compute-accounting",
+      "name": "Non-embedding parameter and compute accounting",
+      "kind": "formalism",
+      "description": "Define model scale with vocabulary and positional embeddings excluded, then estimate forward-plus-backward training work as approximately six floating-point operations per non-embedding parameter per token while keeping omitted context-dependent terms explicit.",
+      "claimIds": [
+        "kaplan-2020-autoregressive-transformer-experimental-family",
+        "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+        "kaplan-2020-training-sweep-and-procedure",
+        "kaplan-2020-model-data-compute-axis-fits",
+        "kaplan-2020-critical-batch-adjustment",
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The definition is source-specific: it omits embeddings, biases, other sub-leading terms, and context-dependent attention work, so it is not interchangeable with total parameter count or measured hardware FLOPs."
+        }
+      ]
+    },
+    {
+      "id": "autoregressive-transformer-loss-scaling",
+      "name": "Autoregressive Transformer loss scaling",
+      "kind": "finding",
+      "description": "Within a measured decoder-only Transformer and WebText2 regime, cross-entropy loss follows approximate bottleneck-conditioned power laws in non-embedding parameter count, dataset tokens, and batch-adjusted training compute.",
+      "claimIds": [
+        "kaplan-2020-version-and-scope-boundary",
+        "kaplan-2020-autoregressive-transformer-experimental-family",
+        "kaplan-2020-training-sweep-and-procedure",
+        "kaplan-2020-transformer-shape-sensitivity-boundary",
+        "kaplan-2020-model-data-compute-axis-fits",
+        "kaplan-2020-joint-model-data-overfitting-fit",
+        "kaplan-2020-learning-curve-fit",
+        "kaplan-2020-extrapolation-and-regime-boundary",
+        "kaplan-2020-fit-normalization-discrepancies",
+        "kaplan-2020-statistical-and-optimization-limits"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The finding concerns cross-entropy in the paper's measured family and does not establish universal architecture, capability, downstream-task, tokenizer, or present-day compute-optimal scaling."
+        }
+      ]
+    },
+    {
+      "id": "finite-data-overfitting-scaling",
+      "name": "Finite-data overfitting scaling",
+      "kind": "finding",
+      "description": "Early-stopped loss and detectable overfitting can be modeled jointly as a function of model size and dataset tokens, separating data-limited from parameter-limited regimes under a fixed regularization procedure.",
+      "claimIds": [
+        "kaplan-2020-joint-model-data-overfitting-fit",
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-extrapolation-and-regime-boundary",
+        "kaplan-2020-statistical-and-optimization-limits"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper's D∝N^0.74 overfitting-avoidance relation is not its compute-efficient one-epoch allocation, and the smallest-data regime is poorly fit."
+        }
+      ]
+    },
+    {
+      "id": "critical-batch-size-scaling",
+      "name": "Critical batch-size scaling",
+      "kind": "finding",
+      "description": "Estimate a loss-dependent batch scale that trades serial steps against processed examples, then use it to distinguish observed fixed-batch compute from minimum-compute and minimum-step counterfactuals.",
+      "claimIds": [
+        "kaplan-2020-critical-batch-adjustment",
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-extrapolation-and-regime-boundary",
+        "kaplan-2020-fit-normalization-discrepancies",
+        "kaplan-2020-statistical-and-optimization-limits"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The critical-batch fit is measured on a narrow model subset and is especially uncertain outside the observed loss range; it is an adjustment model, not a guarantee about arbitrary hardware throughput."
+        }
+      ]
+    },
+    {
+      "id": "compute-efficient-model-data-allocation",
+      "name": "Compute-efficient model and data allocation",
+      "kind": "finding",
+      "description": "Under a fixed non-embedding training-compute and cross-entropy objective, allocate increasing budget across model parameters, critical batch, serial steps, and one-epoch data according to fitted exponents rather than scaling every resource equally.",
+      "claimIds": [
+        "kaplan-2020-model-data-compute-axis-fits",
+        "kaplan-2020-critical-batch-adjustment",
+        "kaplan-2020-learning-curve-fit",
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-early-stopping-efficiency-illustration",
+        "kaplan-2020-extrapolation-and-regime-boundary",
+        "kaplan-2020-fit-normalization-discrepancies",
+        "kaplan-2020-statistical-and-optimization-limits"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The historical prescription minimizes estimated non-embedding training compute for loss; it excludes inference, hardware, energy, and lifecycle costs, and later compute-optimal revisions require separate evidence."
         }
       ]
     }
@@ -15602,6 +15866,11 @@
         "metadata",
         "full-text"
       ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
       "pagination": {
         "scheme": "printed",
         "pageStart": 1,
@@ -20274,6 +20543,117 @@
         "pageEnd": 1305
       },
       "accessNote": "The peer-reviewed EMNLP 2021 audit examines a released C4 instance, exact benchmark-text matches, source composition, and blocklist effects. It provides later empirical context and does not reconstruct the exact bytes used by the original T5 checkpoints."
+    },
+    {
+      "id": "kaplan-2020-arxiv-record",
+      "relatedWorkIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "title": "arXiv record for Scaling Laws for Neural Language Models",
+      "url": "https://arxiv.org/abs/2001.08361",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kaplan-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission history contains exactly one version posted 23 January 2020 at 03:59:20 UTC. The aggregate DOI is not another version. The record says 19 pages, while the immutable PDF contains thirty leaves with the main discussion ending on p. 19 and appendices continuing through p. 30."
+    },
+    {
+      "id": "kaplan-2020-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "title": "Immutable arXiv version 1 full text of Scaling Laws for Neural Language Models",
+      "url": "https://arxiv.org/pdf/2001.08361v1",
+      "accessDate": "2026-08-30",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kaplan-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 30
+      },
+      "accessNote": "The complete thirty-leaf first version was extracted and visually checked. Its stable internal page numbers, sections, equations, figures, and tables control claims; internal theoretical-expression and normalization discrepancies are preserved instead of reconciled by inference."
+    },
+    {
+      "id": "kaplan-2020-arxiv-license",
+      "relatedWorkIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the paper record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kaplan-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The version record links this perpetual, non-exclusive license for arXiv to distribute the submitted article. It is not a general content-reuse license and does not grant rights over WebText2 documents, code, run artifacts, or checkpoints."
+    },
+    {
+      "id": "kaplan-2020-openai-publication",
+      "relatedWorkIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "title": "OpenAI publication record for Scaling Laws for Neural Language Models",
+      "url": "https://openai.com/index/scaling-laws-for-neural-language-models/",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "kaplan-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The dated 23 January 2020 author-organization page links the arXiv paper as its sole research artifact. It is an announcement record, not another paper version, publication venue, code release, data release, or checkpoint release."
+    },
+    {
+      "id": "kaplan-2020-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "title": "Immutable arXiv version 1 source package for Scaling Laws for Neural Language Models",
+      "url": "https://arxiv.org/src/2001.08361v1",
+      "accessDate": "2026-08-30",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "kaplan-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The inspected 47-entry archive contains a figures directory, forty-two rendered PDF figure assets, main.tex, main.bbl, halpha.bst, and a style file. It contains no executable experiment code, WebText2 records or URL manifest, preprocessing pipeline, tokenizer files, raw result tables, fit notebook, per-run configurations, seeds, logs, checkpoints, or checkpoint manifest."
     }
   ],
   "claims": [
@@ -38921,6 +39301,546 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-08-28"
+    },
+    {
+      "id": "kaplan-2020-version-and-scope-boundary",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling"
+      ],
+      "statement": "The promoted evidence family is the sole arXiv version posted 23 January 2020. Its immutable thirty-leaf preprint studies empirical language-model loss scaling; no later paper revision, proceedings article, or journal article is merged into this node.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version header, title, abstract, and complete evidence envelope",
+            "section": "Title page; Abstract; 1 Introduction; Appendices A–D",
+            "pageStart": 1,
+            "pageEnd": 30
+          },
+          "support": "The immutable file identifies itself as arXiv:2001.08361v1 dated 23 January 2020 and contains the complete promoted study and appendices."
+        }
+      ],
+      "limitations": [
+        "The arXiv comments field says 19 pages, but the immutable file has thirty leaves: the main discussion ends on p. 19 and appendices continue through p. 30.",
+        "The absence of another version is an audit of the inspected official ledger, not a universal claim about every possible author draft."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-autoregressive-transformer-experimental-family",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling"
+      ],
+      "statement": "The study primarily trains decoder-only Transformers on WebText2 with reversible 50,257-unit byte-pair tokenization, optimizes autoregressive cross-entropy averaged over 1,024-token contexts, and varies 768 to 1.5 billion non-embedding parameters, roughly 22 million to 23 billion dataset tokens, model shape, context length, and batch size; LSTMs and Universal Transformers are secondary comparisons.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Autoregressive Transformer scope, tokenization, metric, and experimental ranges",
+            "section": "2 Background and Methods; 3 Empirical Results and Basic Power Laws",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "The methods define the model family and metric; Section 3 lists the exact parameter, data, shape, context, and batch ranges."
+        }
+      ],
+      "limitations": [
+        "The lower endpoint is 768 parameters, not 768 million.",
+        "The paper does not establish the same fits for encoder-only, encoder–decoder, sparse, recurrent, later mixture, or non-language architectures."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "webtext-pretraining-corpus-construction",
+        "byte-level-byte-pair-tokenization"
+      ],
+      "statement": "WebText2 extends WebText's outbound Reddit links with at least three karma through December 2017 by adding January–October 2018 links under the same threshold and extracting new pages with Newspaper3k. The paper reports 20.3 million documents, 96 GB of text, 16.2 billion wc-defined words, 22.9 billion reversible-tokenizer tokens, and a 660-million-token test reserve, plus separately prepared Books Corpus, Common Crawl, English Wikipedia, and public Internet Books evaluation samples.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "WebText2 extension, extraction, corpus measures, tokenization, and reserve",
+            "section": "2.3 Datasets",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The dataset section states the time windows, karma threshold, extractor, reported sizes, reversible token count, held-out reserve, and external evaluation distributions."
+        }
+      ],
+      "limitations": [
+        "The paper does not release the WebText2 pages, URL list, exact splits, extraction outputs, deduplication state, or item-level rights manifest.",
+        "The separately prepared evaluation samples are not additional training corpora."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "nonembedding-parameter-compute-accounting"
+      ],
+      "statement": "The paper defines N as non-embedding model parameters, excluding vocabulary and positional embeddings, and approximates forward compute as 2N plus a context-dependent attention term. For its principal regime it drops that term and estimates forward-plus-backward training compute as C≈6NBS, where B is tokens per batch and S is parameter updates; one PF-day is 8.64×10^19 floating-point operations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Non-embedding parameter definition and compute approximation",
+            "section": "1.3 Notation; 2.1 Parameter and Compute Scaling of Transformers",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "table": "1",
+            "equation": "2.1–2.2"
+          },
+          "support": "The notation and operation table define N, C, B, S, PF-days, omitted terms, and the six-times-N per-token training estimate."
+        }
+      ],
+      "limitations": [
+        "Biases, nonlinearities, normalization, embeddings, and other sub-leading terms are excluded from N or the operation table.",
+        "The context-dependent term can cease to be negligible when context length approaches or exceeds roughly twelve times model width."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-training-sweep-and-procedure",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling"
+      ],
+      "statement": "Unless otherwise noted, runs use 250,000 updates, batches of 512 sequences of 1,024 tokens, Adam, a 3,000-step linear warmup, and cosine decay to zero; models above one billion parameters use Adafactor for memory reasons. The reported scaling evidence also includes dedicated variations of batch, data, shape, context, schedule, and convergence state.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Default training procedure and experimental variations",
+            "section": "2.2 Training Procedures; 3 Empirical Results and Basic Power Laws",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The paper states the default optimizer, batch, duration, warmup, and decay, then lists the varied factors."
+        }
+      ],
+      "limitations": [
+        "Defaults do not apply to every specialized scan, fit, or comparison.",
+        "The paper does not provide a run-by-run manifest binding every plotted point to exact seeds, configurations, or checkpoints."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-transformer-shape-sensitivity-boundary",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling"
+      ],
+      "statement": "At fixed non-embedding parameter count, the tested Transformer depth, width, head-count, and feed-forward variations change loss by only a few percent across a broad range: aspect ratio varies forty-fold, and a 6-layer width-4,288 model finishes within 3% loss of the 48-layer width-1,600 comparison. Models with fewer than two layers or extreme depth-to-width ratios depart from the shared trend.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Controlled Transformer-shape comparisons and exceptions",
+            "section": "3.1 Approximate Transformer Shape and Hyperparameter Independence; 3.2 Performance with Non-Embedding Parameter Count N",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "figure": "5–6"
+          },
+          "support": "The section and captions report the few-percent range, forty-fold aspect-ratio span, 3% comparison, and small or extreme-shape departures."
+        }
+      ],
+      "limitations": [
+        "This is a within-family shape result, not evidence that architecture, attention pattern, objective, data, tokenizer, or optimization never matters.",
+        "Holding N fixed requires coupled changes to width when depth or feed-forward dimension changes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-model-data-compute-axis-fits",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "For separately bottlenecked regimes, Table 5 reports L(N) with α_N=0.076 and N_c=8.8×10^13 non-embedding parameters, L(D) with α_D=0.095 and D_c=5.4×10^13 tokens, naive fixed-batch L(C) with α_C=0.057 and C_c=1.6×10^7 PF-days, and batch-adjusted minimum-compute L(C_min) with α_C^min=0.050 and C_c^min=3.1×10^8 PF-days. The paper associates these fits with WebText2 and its tokenizer and reports measured ranges of six orders in N, over two in D, and eight in C_min.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Single-axis and adjusted-compute power-law fits",
+            "section": "1.2 Summary of Scaling Laws; Appendix A Summary of Power Laws",
+            "pageStart": 4,
+            "pageEnd": 20,
+            "table": "5",
+            "equation": "1.1–1.3"
+          },
+          "support": "The equations define the bottleneck conditions, while Table 5 prints the fitted exponents and tokenization-dependent scales."
+        }
+      ],
+      "limitations": [
+        "The fits apply when the named resource is the active bottleneck; they are not one unconditional equation for every run.",
+        "N_c, D_c, and C_c depend on vocabulary, tokenization, data, and the paper's compute definition and have no claimed fundamental meaning.",
+        "The fixed-batch C fit and adjusted C_min fit have different exponents and must not be substituted for one another."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-joint-model-data-overfitting-fit",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling",
+        "finite-data-overfitting-scaling"
+      ],
+      "statement": "The joint early-stopped surface L(N,D)=[(N_c/N)^(α_N/α_D)+D_c/D]^α_D fits α_N=0.076, α_D=0.103, N_c=6.4×10^13, and D_c=1.8×10^13 in Table 2. Using roughly 0.02 loss variation as a detectable-overfitting threshold, the paper estimates D≳5×10^3 N^0.74 tokens near convergence, so an eight-fold N increase corresponds to about five-fold more data under this criterion.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Joint N–D surface, fit constants, and overfitting threshold",
+            "section": "4.1 Proposed L(N,D) Equation; 4.2 Results",
+            "pageStart": 11,
+            "pageEnd": 12,
+            "figure": "9",
+            "table": "2",
+            "equation": "4.1–4.4"
+          },
+          "support": "The equation and table report the joint fit; Section 4.2 derives the detectable-overfitting relation from its stated variation threshold."
+        }
+      ],
+      "limitations": [
+        "The joint-fit constants differ from the single-axis values because the fit target differs; they are not contradictory substitutes.",
+        "The smallest roughly 20-million-token subset is poorly fit, an epoch contains only forty updates, dropout remains fixed at 10%, and regularization and data augmentation are not optimized.",
+        "This overfitting-avoidance relation is not the Table 6 compute-efficient one-epoch data allocation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-critical-batch-adjustment",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "nonembedding-parameter-compute-accounting",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "The paper models a loss-dependent critical batch size B_crit≈B*/L^(1/α_B), with α_B≈0.21 and B*≈2.0×10^8 tokens in Equation 5.3, rounded to 2.1×10^8 in Table 5. It defines S_min=S/(1+B_crit/B) as the large-batch minimum-step counterfactual and C_min=C/(1+B/B_crit) as the small-batch minimum-compute counterfactual; training at B_crit uses about twice each minimum.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Critical-batch fit and step/compute adjustments",
+            "section": "5.1 Adjustment for Training at B_crit(L); Appendix A Summary of Power Laws",
+            "pageStart": 12,
+            "pageEnd": 20,
+            "figure": "10",
+            "table": "5",
+            "equation": "5.1–5.5"
+          },
+          "support": "The section defines the tradeoff, gives the fitted loss relation, and derives the S_min and C_min transforms used by later allocations."
+        },
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Two-model batch scans underlying the critical-batch fit",
+            "section": "D.3 Batch Size",
+            "pageStart": 24,
+            "pageEnd": 24,
+            "figure": "18",
+            "equation": "5.1"
+          },
+          "support": "The appendix shows the two model-size batch scans used to measure the loss-dependent critical-batch relation."
+        }
+      ],
+      "limitations": [
+        "The displayed critical-batch measurements use two model sizes, and Appendix C says extrapolation beyond the observed loss range is especially uncertain.",
+        "The transform standardizes an optimization tradeoff; it is not a measured hardware-throughput law or an instruction to use one literal batch size at every point."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-learning-curve-fit",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "After warmup and the initial transient, stable Adam runs are fit by L(N,S_min)=(N_c/N)^α_N+(S_c/S_min)^α_S with α_N=0.077, α_S=0.76, N_c=6.5×10^13, and S_c=2.1×10^3 steps in Table 3. The paper uses this additive model to derive the compute-efficient frontier.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Post-transient N–S_min learning-curve model",
+            "section": "5.2 Results for L(N,S_min) and Performance with Model Size and Compute",
+            "pageStart": 13,
+            "pageEnd": 14,
+            "figure": "11",
+            "table": "3",
+            "equation": "5.6"
+          },
+          "support": "The section states the included run family and warmup boundary, prints the fitted constants, and shows the post-transient surface."
+        }
+      ],
+      "limitations": [
+        "The paper calls the small-S fits mediocre and says the power-law equation breaks down very early in training.",
+        "Adafactor runs are not included in the stated stable-Adam fit."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-compute-efficient-allocation",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "nonembedding-parameter-compute-accounting",
+        "finite-data-overfitting-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "With C_min measured in PF-days, Table 6 summarizes N_opt=1.3×10^9 C_min^0.73 non-embedding parameters, B_crit=2.0×10^6 C_min^0.24 tokens, a lower-bound S_min=5.4×10^3 C_min^0.03 steps, and one-epoch D_opt=2×10^10 C_min^0.27 tokens. The measured serial-step exponent is small enough that the paper says it may be consistent with zero.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Empirical compute-efficient allocation and scales",
+            "section": "6.1 Optimal Performance and Allocations; Appendix A Summary of Power Laws",
+            "pageStart": 16,
+            "pageEnd": 20,
+            "figure": "14",
+            "table": "6",
+            "equation": "6.1–6.2"
+          },
+          "support": "Section 6.1 derives the allocation direction and Table 6 prints the four exponents and normalizations under their conditions."
+        }
+      ],
+      "limitations": [
+        "The .73/.24/.03/.27 allocation appears in Table 6, not Table 5.",
+        "C_min is minimum estimated non-embedding compute in the small-batch limit; training at B_crit consumes about twice C_min.",
+        "The optimization target is cross-entropy loss and excludes inference, hardware, energy, and lifecycle cost; D_opt assumes one epoch and is not the separate D∝N^0.74 overfitting criterion."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-early-stopping-efficiency-illustration",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "Appendix B places the fitted compute-efficient frontier at α_N/α_S≈10% higher loss than the same model's converged loss. Against an assumed 2%-from-convergence comparison, it derives 2.7 times more parameters, 7.7 times fewer updates, and 65% less compute to reach the same loss.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Compute-efficient stopping relation and illustrative convergence comparison",
+            "section": "B.2 Efficient Training; B.3 Comparison to Inefficient",
+            "pageStart": 21,
+            "pageEnd": 22,
+            "equation": "B.5 and B.11–B.14"
+          },
+          "support": "The appendix derives the frontier ratio, chooses the 2% comparator, and prints the parameter, step, and compute ratios."
+        }
+      ],
+      "limitations": [
+        "The 2% comparator is an illustrative choice, not a measured universal baseline.",
+        "The roughly 10% value is a loss gap from the same model's converged loss, not a percentage of training progress, data saved, accuracy, or capability."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-extrapolation-and-regime-boundary",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling",
+        "finite-data-overfitting-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "The extrapolated compute and one-epoch data trends eventually contradict: their displayed intersection is roughly 10^4 PF-days, 10^12 parameters, 10^12 tokens, and 1.7 nats per token, with about an order of magnitude uncertainty in either direction. The paper says its laws must break down at or before this regime, lacks a solid theory for them, and does not establish that smoother language-model loss yields useful downstream-task improvement.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Extrapolated contradiction, speculative intersection, theory gap, and task boundary",
+            "section": "6.3 Contradictions and a Conjecture; 8 Discussion; C Caveats",
+            "pageStart": 17,
+            "pageEnd": 23,
+            "figure": "15",
+            "equation": "6.6–6.8"
+          },
+          "support": "The paper labels the intersection highly uncertain, says the laws must fail, identifies missing theory, and leaves loss-to-task translation for future investigation."
+        }
+      ],
+      "limitations": [
+        "The intersection is a conjectural breakdown marker, not a demonstrated maximum model, dataset, compute budget, entropy, or capability threshold.",
+        "Later evidence cannot be projected backward as if this 2020 paper had tested it."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-fit-normalization-discrepancies",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "The empirical optimized-compute exponent is 0.050 in Equation 1.3 and Table 5; the distinct theoretical expression is printed as approximately 0.054 in Equation 6.4 and approximately 0.052 in Equation B.7. Table 5 gives C_c=1.6×10^7 and C_c^min=3.1×10^8 PF-days, while Figure 13's legend displays 2.0×10^7 and 2.3×10^8; the primary source does not reconcile either pair.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Empirical fit, theoretical-expression, and figure-normalization discrepancies",
+            "section": "1.2 Summary of Scaling Laws; 6.2 Predictions from L(N,S_min); Appendix A; B.2 Efficient Training",
+            "pageStart": 4,
+            "pageEnd": 21,
+            "figure": "13",
+            "table": "5",
+            "equation": "1.3, 6.4, B.7"
+          },
+          "support": "The cited equations distinguish the empirical fit from two inconsistent decimal printings of the theoretical expression, while the table and figure print two different normalization pairs."
+        }
+      ],
+      "limitations": [
+        "The empirical 0.050 fit and symbolic theoretical expression serve different roles; only the 0.054 and 0.052 theoretical printings are same-role alternatives.",
+        "Author errata or fitting artifacts would be required to identify the intended theoretical approximation and normalization pair."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The paper does not resolve which theoretical decimal approximation or which fixed-batch and adjusted-compute normalization pair was intended.",
+          "resolutionCondition": "An author correction or source run artifact is required."
+        }
+      ],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-statistical-and-optimization-limits",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "autoregressive-transformer-loss-scaling",
+        "finite-data-overfitting-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "statement": "The evidence envelope is not a complete uncertainty or optimization study: fixed-batch C curves are not truly optimal; one-layer models and the largest incompletely converged runs are excluded from selected fits; Section 4 uses roughly 0.02 loss variation while Figure 22 reports run-to-run variation around 0.05; and the size-based learning-rate rule is described as improvable and invalid above 10^10 parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Fixed-batch, seed-scale, learning-rate, and fit-exclusion limits",
+            "section": "3.3 Performance with Dataset Size and Compute; 4.2 Results; C Caveats; D.6 Learning Rate Schedules and Error Analysis; D.7 Fit Details and Power Law Quality",
+            "pageStart": 9,
+            "pageEnd": 26,
+            "figure": "22–23",
+            "equation": "D.1"
+          },
+          "support": "The cited sections explicitly identify the nonoptimal fixed batch, two variation scales, learning-rate breakdown, omitted hyperparameter tests, and fit exclusions."
+        }
+      ],
+      "limitations": [
+        "The paper supplies no complete repeated-seed table, confidence intervals, or run-level fit manifest that maps the 0.02 and 0.05 variation estimates to identical conditions.",
+        "It did not try higher learning rates for intentionally short compute-limited runs and may have omitted other scale-sensitive hyperparameters."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The relationship between the roughly 0.02 and 0.05 loss-variation estimates is not documented.",
+          "resolutionCondition": "Run-level seed and schedule records are required."
+        }
+      ],
+      "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "kaplan-2020-artifact-data-and-rights-boundary",
+      "workId": "kaplan-2020-scaling-laws-neural-language-models",
+      "ideaIds": [
+        "webtext-pretraining-corpus-construction",
+        "nonembedding-parameter-compute-accounting"
+      ],
+      "statement": "The audited paper family supplies the preprint and its equations, figures, tables, and references, but no immutable official code, run manifest, released WebText2 payload, exact prepared-data manifest, or model checkpoint was identified. The linked arXiv license grants arXiv a perpetual non-exclusive right to distribute the article and does not establish general reuse rights for the article, third-party web text, code, runs, or models.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Paper-level method and evidence envelope without an artifact release section",
+            "section": "2 Background and Methods; 8 Discussion; C Caveats; complete references",
+            "pageStart": 6,
+            "pageEnd": 30
+          },
+          "support": "The complete paper documents methods and caveats but does not identify an official reconstruction package or release manifest."
+        },
+        {
+          "sourceId": "kaplan-2020-arxiv-license",
+          "locator": {
+            "label": "Non-exclusive arXiv distribution grant",
+            "section": "License terms",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The linked license grants article distribution rights to arXiv and does not state general reuse terms for other artifact classes."
+        },
+        {
+          "sourceId": "kaplan-2020-arxiv-v1-source-package",
+          "locator": {
+            "label": "Immutable source-archive inventory",
+            "section": "Archive root and figures directory"
+          },
+          "support": "The complete source package contains publication source and rendered figure assets but no executable code, corpus data, run records, raw tables, or model artifacts."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is scoped to the official primary records inspected on 30 August 2026 and is not a claim that no private or later unofficial implementation exists.",
+        "Dataset selection and public web access do not convey permission to redistribute or reuse incorporated pages."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-30"
     }
   ],
   "relationships": [
@@ -44997,6 +45917,85 @@
         "Immutable paper and code versions, prepared-data manifests, checkpoint artifacts, and license-scope analysis"
       ],
       "successCriterion": "The learner can derive the relative-bias and span-transform computations, reproduce the promoted aggregate comparisons under their controls, keep C4 1.0.0 separate from later defaults, explain why final T5 is supervised-mixed and fine-tuned, reconcile JMLR with the v4 C4 correction, flag both unresolved table conflicts, defend the Transformer and BERT edges, and separate article, code, corpus, checkpoint, and later-audit evidence."
+    },
+    {
+      "id": "beginner-kaplan-2020-three-scale-knobs-and-limits",
+      "mode": "beginner",
+      "objective": "Treat model parameters, training tokens, and compute as three separate dials; identify which dial is limiting loss, compare overfitting avoidance with compute-efficient allocation, and see why the paper's larger-model/fewer-step lesson is a historical fit with a breakdown boundary rather than a universal rule.",
+      "workIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "ideaIds": [
+        "byte-level-byte-pair-tokenization",
+        "webtext-pretraining-corpus-construction",
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling",
+        "finite-data-overfitting-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "claimIds": [
+        "kaplan-2020-autoregressive-transformer-experimental-family",
+        "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+        "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+        "kaplan-2020-transformer-shape-sensitivity-boundary",
+        "kaplan-2020-model-data-compute-axis-fits",
+        "kaplan-2020-joint-model-data-overfitting-fit",
+        "kaplan-2020-critical-batch-adjustment",
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-extrapolation-and-regime-boundary"
+      ],
+      "prerequisites": [
+        "A language model assigns probabilities to next tokens",
+        "A parameter count, a token count, and a compute budget measure different resources",
+        "A small power-law exponent describes a multiplicative trend, not a guarantee",
+        "A fitted trend can fail outside the data used to estimate it"
+      ],
+      "successCriterion": "The learner can distinguish N, D, C, and C_min; explain why doubling N changes fitted loss by only about 5% in the parameter-limited regime; keep D∝N^0.74 separate from D_opt∝C_min^0.27; locate the .73/.24/.03/.27 allocation in Table 6; and name one reason the prescription cannot be treated as current or universal."
+    },
+    {
+      "id": "expert-kaplan-2020-fits-allocation-and-validity-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct the non-embedding FLOP account, single-axis and joint loss surfaces, critical-batch transforms, post-transient learning curve, and compute-efficient allocation; then audit fit scopes, exclusions, theoretical-printing and normalization discrepancies, extrapolation, WebText2 provenance, artifact absence, and rights without asserting the deferred GPT-3 relationship.",
+      "workIds": [
+        "kaplan-2020-scaling-laws-neural-language-models"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "webtext-pretraining-corpus-construction",
+        "nonembedding-parameter-compute-accounting",
+        "autoregressive-transformer-loss-scaling",
+        "finite-data-overfitting-scaling",
+        "critical-batch-size-scaling",
+        "compute-efficient-model-data-allocation"
+      ],
+      "claimIds": [
+        "kaplan-2020-version-and-scope-boundary",
+        "kaplan-2020-autoregressive-transformer-experimental-family",
+        "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+        "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+        "kaplan-2020-training-sweep-and-procedure",
+        "kaplan-2020-transformer-shape-sensitivity-boundary",
+        "kaplan-2020-model-data-compute-axis-fits",
+        "kaplan-2020-joint-model-data-overfitting-fit",
+        "kaplan-2020-critical-batch-adjustment",
+        "kaplan-2020-learning-curve-fit",
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-early-stopping-efficiency-illustration",
+        "kaplan-2020-extrapolation-and-regime-boundary",
+        "kaplan-2020-fit-normalization-discrepancies",
+        "kaplan-2020-statistical-and-optimization-limits",
+        "kaplan-2020-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive cross-entropy, decoder-only Transformers, BPE, and context windows",
+        "Power-law fits, log-log slopes, bottleneck conditions, and extrapolation error",
+        "Early stopping, overfitting, repeated-run variation, and coupled fit parameters",
+        "Batch-size time/compute tradeoffs and non-embedding FLOP accounting",
+        "Immutable source versions, data manifests, run artifacts, and license scope"
+      ],
+      "successCriterion": "The learner can reproduce, interpret, and state the conditions for Equations 1.1–1.8, 2.1–2.2, 4.1–4.4, and 5.1–5.6; derive their downstream allocation consequences; reproduce Tables 2, 3, 5, and 6 without mixing constants; distinguish C from C_min and B_crit from an arbitrary batch; distinguish the empirical .050 fit from the .054/.052 theoretical printings and explain both Table 5/Figure 13 normalization discrepancies; defend the 768-to-1.5B and WebText2 evidence envelope; and separate paper, corpus, code, run, checkpoint, and rights claims."
     }
   ]
 }
