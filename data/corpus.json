@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-30",
+  "asOf": "2026-08-31",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -11745,6 +11745,266 @@
           "note": "The September model card and hosted API describe later model or product states and remain unbound provenance records rather than paper revisions."
         }
       ]
+    },
+    {
+      "id": "hoffmann-2022-training-compute-optimal-language-models",
+      "title": "Training Compute-Optimal Large Language Models",
+      "authors": [
+        "Jordan Hoffmann",
+        "Sebastian Borgeaud",
+        "Arthur Mensch",
+        "Elena Buchatskaya",
+        "Trevor Cai",
+        "Eliza Rutherford",
+        "Diego de Las Casas",
+        "Lisa Anne Hendricks",
+        "Johannes Welbl",
+        "Aidan Clark",
+        "Tom Hennigan",
+        "Eric Noland",
+        "Katie Millican",
+        "George van den Driessche",
+        "Bogdan Damoc",
+        "Aurelia Guy",
+        "Simon Osindero",
+        "Karen Simonyan",
+        "Erich Elsen",
+        "Oriol Vinyals",
+        "Jack W. Rae",
+        "Laurent Sifre"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "J. Hoffmann et al., “Training Compute-Optimal Large Language Models,” in Advances in Neural Information Processing Systems 35, pp. 30016–30030, 2022.",
+      "chronology": {
+        "orderingEventId": "hoffmann-2022-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "hoffmann-2022-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2022-03-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hoffmann-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 29 March 2022 at 13:38:03 UTC"
+              }
+            ],
+            "versionId": "hoffmann-2022-arxiv-v1-version",
+            "sourceIds": [
+              "hoffmann-2022-arxiv-record",
+              "hoffmann-2022-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "hoffmann-2022-neurips-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2022 proceedings publication",
+            "date": {
+              "value": "2022",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "hoffmann-2022-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS 2022 main-track proceedings record"
+              }
+            ],
+            "versionId": "hoffmann-2022-neurips-version",
+            "sourceIds": [
+              "hoffmann-2022-neurips-record",
+              "hoffmann-2022-neurips-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "hoffmann-2022-arxiv-v1-version",
+          "title": "Training Compute-Optimal Large Language Models",
+          "authors": [
+            "Jordan Hoffmann",
+            "Sebastian Borgeaud",
+            "Arthur Mensch",
+            "Elena Buchatskaya",
+            "Trevor Cai",
+            "Eliza Rutherford",
+            "Diego de Las Casas",
+            "Lisa Anne Hendricks",
+            "Johannes Welbl",
+            "Aidan Clark",
+            "Tom Hennigan",
+            "Eric Noland",
+            "Katie Millican",
+            "George van den Driessche",
+            "Bogdan Damoc",
+            "Aurelia Guy",
+            "Simon Osindero",
+            "Karen Simonyan",
+            "Erich Elsen",
+            "Jack W. Rae",
+            "Oriol Vinyals",
+            "Laurent Sifre"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Hoffmann et al., “Training Compute-Optimal Large Language Models,” arXiv:2203.15556v1, 29 March 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2203.15556v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2203.15556",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "hoffmann-2022-arxiv-record",
+            "hoffmann-2022-arxiv-v1-full-text",
+            "hoffmann-2022-arxiv-v1-source-package",
+            "hoffmann-2022-arxiv-license"
+          ],
+          "notes": "The arXiv record exposes a single version posted on 29 March 2022. Its current 36-page DeepMind-style PDF and 24-file source package retain the v1 banner and include the full appendix and model card. The dynamically generated 2023 copyright line is not a second chronology event. This artifact prints LaMDA at 168B training tokens where the canonical NeurIPS Table 1 prints 768B."
+        },
+        {
+          "id": "hoffmann-2022-neurips-version",
+          "title": "Training Compute-Optimal Large Language Models",
+          "authors": [
+            "Jordan Hoffmann",
+            "Sebastian Borgeaud",
+            "Arthur Mensch",
+            "Elena Buchatskaya",
+            "Trevor Cai",
+            "Eliza Rutherford",
+            "Diego de Las Casas",
+            "Lisa Anne Hendricks",
+            "Johannes Welbl",
+            "Aidan Clark",
+            "Tom Hennigan",
+            "Eric Noland",
+            "Katie Millican",
+            "George van den Driessche",
+            "Bogdan Damoc",
+            "Aurelia Guy",
+            "Simon Osindero",
+            "Karen Simonyan",
+            "Erich Elsen",
+            "Oriol Vinyals",
+            "Jack W. Rae",
+            "Laurent Sifre"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2022 article",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Hoffmann et al., “Training Compute-Optimal Large Language Models,” in Advances in Neural Information Processing Systems 35, pp. 30016–30030, 2022.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Neural Information Processing Systems Foundation, Inc.",
+            "volume": "35",
+            "pages": [
+              "30016-30030"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.52202/068431-2176",
+                "label": "Proceedings DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "hoffmann-2022-neurips-record",
+            "hoffmann-2022-neurips-full-text",
+            "hoffmann-2022-neurips-supplement",
+            "hoffmann-2022-crossref-record"
+          ],
+          "notes": "The canonical proceedings treatment is a 15-page article plus a separately distributed 17-page supplement whose visible pagination continues from 16 through 32. The NeurIPS record heading says “An empirical analysis of compute-optimal large language model training,” while the linked PDF and Crossref deposit say “Training Compute-Optimal Large Language Models.” The title page controls author spelling and order; the record and Crossref deposit expand or accent some given names and place Oriol Vinyals before Jack Rae."
+        }
+      ],
+      "canonicalVersionId": "hoffmann-2022-neurips-version",
+      "preferredSourceIds": [
+        "hoffmann-2022-neurips-record",
+        "hoffmann-2022-neurips-full-text",
+        "hoffmann-2022-neurips-supplement"
+      ],
+      "sourceIds": [
+        "hoffmann-2022-arxiv-record",
+        "hoffmann-2022-arxiv-v1-full-text",
+        "hoffmann-2022-arxiv-v1-source-package",
+        "hoffmann-2022-arxiv-license",
+        "hoffmann-2022-deepmind-publication",
+        "hoffmann-2022-neurips-record",
+        "hoffmann-2022-neurips-full-text",
+        "hoffmann-2022-neurips-supplement",
+        "hoffmann-2022-crossref-record",
+        "hoffmann-2022-neurips-rights"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Hoffmann et al. revisit fixed-training-compute allocation with three empirical estimators, expose learning-schedule and scale differences from Kaplan et al., and validate the resulting smaller-model/more-data prescription through the compute-matched Chinchilla–Gopher comparison. The work is retained as a central scaling turn, not as a timeless 20-tokens-per-parameter rule or proof that model size and data should be balanced under every architecture, corpus, objective, hardware, or inference workload."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "fixed-compute-model-data-allocation",
+        "schedule-matched-training-horizon",
+        "training-curve-envelope-scaling",
+        "isoflop-profile-scaling",
+        "parametric-model-data-loss-surface",
+        "balanced-parameter-token-scaling",
+        "compute-matched-chinchilla-validation",
+        "massivetext-mixture-training",
+        "training-versus-inference-model-size"
+      ],
+      "significance": {
+        "beginner": "A training budget can buy a larger model, more examples, or both. Chinchilla’s lesson is that spending nearly all extra compute on parameters can leave a model undertrained: across this study’s regime, parameters and training tokens rose at roughly the same rate, and a 70B model trained on 1.4T tokens beat the 280B Gopher at matched training compute. That is a bounded empirical result, not a universal recipe.",
+        "expert": "The study estimates N_opt(C) and D_opt(C) through a training-curve envelope, nine IsoFLOP profiles, and a robust fit L̂(N,D)=E+A/N^α+B/D^β. It contrasts .46–.50 parameter and .50–.54 token exponents with Kaplan’s .73/.27 allocation, counts total-parameter and exact Transformer FLOPs, and validates at 5.76×10^23 FLOPs with a Gopher-derived 70B/1.4T model. Interpretation must preserve schedule matching, dataset and single-epoch scope, only two comparable large runs, curvature, task-protocol differences, no Chinchilla replicate, proprietary artifacts, title and author metadata conflicts, and the 1.3T/1.4T and other reporting discrepancies."
+      },
+      "limitations": [
+        "The fitted frontier minimizes smoothed autoregressive training loss under a fixed training-FLOP budget; it does not jointly optimize inference demand, memory, wall-clock time, energy, carbon, data acquisition, or total lifecycle cost.",
+        "The scaling analyses cover dense autoregressive Transformers, the paper's tokenizer, optimizer heuristics, sequence length, MassiveText-derived data, and measured compute range; mixture-of-experts, retrieval, other objectives, modalities, and later architectures require new evidence.",
+        "The three estimators share training runs, architectural choices, data, schedules, and a power-law premise, so agreement among them is not three independent replications.",
+        "Only Chinchilla and Gopher are comparable at the largest scale, with no intermediate large-scale validation points and no repeated Chinchilla training run.",
+        "The paper observes curvature in the high-compute frontier and says the power-law projection may still overestimate optimal large-model size.",
+        "The analysis is framed around less than one aggregate epoch, while the 1.4T Chinchilla mixture repeats MassiveWeb about 1.24 times and Wikipedia about 3.40 times; data quality and repeated-data behavior remain unresolved.",
+        "The learning-rate cycle must be chosen for the target training horizon. Intermediate points from a longer schedule can overestimate the loss attainable with a matched shorter schedule.",
+        "Chinchilla and Gopher differ in size and data exposure but also in optimizer, tokenizer normalization, batch schedule, and sample mixture; downstream comparisons do not isolate token count alone.",
+        "Several comparisons reuse evaluation protocols from the Gopher paper, and the paper explicitly says GPT-3 and MT-NLG RACE prompts differ; broad cross-model score comparisons are not uniformly controlled.",
+        "The benchmark tables report point estimates without repeated large-model runs, confidence intervals, or task-level significance tests. The abstract’s word “uniformly” exceeds several printed ties or exceptions.",
+        "MassiveText, run-level measurements, fitting code, checkpoints, tokenizer assets, and Chinchilla weights are not released; the paper checklist says code and data are proprietary, and the model card says the model will not be public.",
+        "The source family contains title, author-form, LaMDA-token, MMLU-rounding, bootstrap-rounding, and 1.3T-versus-1.4T differences that must remain version- and source-bound."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The arXiv record exposes only v1, while its current PDF uses a dynamic 2023 copyright line and differs from the canonical proceedings files; no second arXiv chronology event or author erratum explains every difference.",
+          "resolutionCondition": "A versioned author statement or immutable historical arXiv rendering is required to date and classify each change."
+        },
+        {
+          "status": "open",
+          "note": "The paper repeatedly reports 1.4T Chinchilla tokens, while the official DeepMind article reports 1.3T; no run manifest resolves whether this is rounding, a schedule boundary, or an error.",
+          "resolutionCondition": "A primary run manifest or author correction must define the exact counted-token boundary."
+        },
+        {
+          "status": "resolved",
+          "note": "The canonical work identity follows the linked NeurIPS PDF and Crossref title, with the NeurIPS record’s alternate heading retained as metadata rather than treated as another paper."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -13766,7 +14026,8 @@
         "brown-2020-optimizer-schedule-and-parallel-training",
         "brown-2020-autoregressive-objective-and-task-limitations",
         "brown-2020-calibration-interpretability-and-inference-boundary",
-        "brown-2020-internal-reporting-discrepancies"
+        "brown-2020-internal-reporting-discrepancies",
+        "hoffmann-2022-chinchilla-architecture-and-training"
       ],
       "uncertainties": []
     },
@@ -14680,6 +14941,165 @@
         {
           "status": "resolved",
           "note": "The paper supplies estimated compute and one order-of-magnitude inference example, not measured training energy, carbon emissions, or a lifecycle assessment."
+        }
+      ]
+    },
+    {
+      "id": "fixed-compute-model-data-allocation",
+      "name": "Fixed-compute model and data allocation",
+      "kind": "problem",
+      "description": "Given a fixed training-FLOP budget, choose a parameter count and training-token count that minimize fitted autoregressive loss while keeping compute conventions and the measured regime explicit.",
+      "claimIds": [
+        "hoffmann-2022-fixed-compute-objective-and-accounting",
+        "hoffmann-2022-training-family-and-three-approaches",
+        "hoffmann-2022-schedule-horizon-dependence",
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-kaplan-allocation-challenge",
+        "hoffmann-2022-gopher-budget-frontier-projections",
+        "hoffmann-2022-scaling-validity-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The promoted object is a bounded loss-minimization problem under training compute, not a universal optimum over serving cost, latency, memory, energy, data rights, or downstream utility."
+        }
+      ]
+    },
+    {
+      "id": "schedule-matched-training-horizon",
+      "name": "Schedule-matched training horizon",
+      "kind": "constraint",
+      "description": "Fit or compare a model at a target token horizon using a learning-rate schedule designed for that horizon rather than treating an intermediate point on a longer decay schedule as equivalent.",
+      "claimIds": [
+        "hoffmann-2022-schedule-horizon-dependence",
+        "hoffmann-2022-kaplan-allocation-challenge",
+        "hoffmann-2022-scaling-validity-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper shows schedule dependence and proposes it as one contributor to disagreement with Kaplan; it does not isolate every methodological cause."
+        }
+      ]
+    },
+    {
+      "id": "training-curve-envelope-scaling",
+      "name": "Training-curve envelope scaling",
+      "kind": "mechanism",
+      "description": "For each compute budget, form a loss envelope across complete training curves, smooth the budget-wise minima, and fit power laws for the model and token coordinates of the frontier.",
+      "claimIds": [
+        "hoffmann-2022-training-family-and-three-approaches",
+        "hoffmann-2022-balanced-scaling-estimates"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "isoflop-profile-scaling",
+      "name": "IsoFLOP profile scaling",
+      "kind": "mechanism",
+      "description": "At each fixed compute budget, compare final loss across model sizes, locate the profile minimum, and fit how its parameter and token coordinates move as compute grows.",
+      "claimIds": [
+        "hoffmann-2022-training-family-and-three-approaches",
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-cross-dataset-isoflop-check",
+        "hoffmann-2022-gopher-budget-frontier-projections"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "parametric-model-data-loss-surface",
+      "name": "Parametric model-data loss surface",
+      "kind": "mechanism",
+      "description": "Fit an irreducible-loss term plus separate inverse power laws in parameters and tokens, then minimize the fitted surface along a fixed-compute constraint.",
+      "claimIds": [
+        "hoffmann-2022-fixed-compute-objective-and-accounting",
+        "hoffmann-2022-training-family-and-three-approaches",
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-parametric-loss-fit",
+        "hoffmann-2022-gopher-budget-frontier-projections"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The additive power-law form is a fitted premise with visible high-compute curvature, not a mechanistic decomposition proven outside the sampled family."
+        }
+      ]
+    },
+    {
+      "id": "balanced-parameter-token-scaling",
+      "name": "Near-balanced parameter and token scaling",
+      "kind": "finding",
+      "description": "Within the paper's dense autoregressive-Transformer regime, the compute-optimal parameter and token coordinates grow at similar powers of training compute rather than assigning most marginal compute to parameters.",
+      "claimIds": [
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-cross-dataset-isoflop-check",
+        "hoffmann-2022-kaplan-allocation-challenge",
+        "hoffmann-2022-gopher-budget-frontier-projections",
+        "hoffmann-2022-scaling-validity-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Near-balanced exponents do not establish an architecture-independent constant tokens-per-parameter rule."
+        }
+      ]
+    },
+    {
+      "id": "compute-matched-chinchilla-validation",
+      "name": "Compute-matched Chinchilla validation",
+      "kind": "finding",
+      "description": "Train a smaller Gopher-derived model on substantially more tokens at approximately the same training FLOPs, then compare language-model loss and downstream task results with protocol and confound boundaries intact.",
+      "claimIds": [
+        "hoffmann-2022-version-and-title-boundary",
+        "hoffmann-2022-chinchilla-gopher-compute-match",
+        "hoffmann-2022-chinchilla-architecture-and-training",
+        "hoffmann-2022-language-model-and-aggregate-results",
+        "hoffmann-2022-reading-and-commonsense-results",
+        "hoffmann-2022-question-answering-and-truthfulqa-results",
+        "hoffmann-2022-evaluation-comparability-boundary",
+        "hoffmann-2022-bias-toxicity-and-use-boundary",
+        "hoffmann-2022-scaling-validity-boundary",
+        "hoffmann-2022-reporting-discrepancies"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The large-scale comparison validates one selected configuration, not every projected point, and changes optimizer, tokenizer normalization, batch schedule, and sample mixture as well as parameter and token counts."
+        }
+      ]
+    },
+    {
+      "id": "massivetext-mixture-training",
+      "name": "MassiveText mixture training",
+      "kind": "mechanism",
+      "description": "Sample a disclosed mixture of filtered web pages, books, C4, news, code, and Wikipedia at source-specific weights and aggregate repeat rates while retaining the proprietary-data boundary.",
+      "claimIds": [
+        "hoffmann-2022-chinchilla-architecture-and-training",
+        "hoffmann-2022-massivetext-mixture",
+        "hoffmann-2022-bias-toxicity-and-use-boundary",
+        "hoffmann-2022-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The composition table does not expose an immutable corpus manifest, prepared examples, source-level rights, filtering code, or deduplication artifacts.",
+          "resolutionCondition": "A versioned training-data and preprocessing release with rights metadata is required."
+        }
+      ]
+    },
+    {
+      "id": "training-versus-inference-model-size",
+      "name": "Training versus inference model size",
+      "kind": "finding",
+      "description": "A smaller model trained on more tokens can use a fixed training budget effectively while reducing per-token serving cost, but the paper does not optimize or measure a complete inference workload.",
+      "claimIds": [
+        "hoffmann-2022-chinchilla-gopher-compute-match",
+        "hoffmann-2022-scaling-validity-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The serving advantage is inferred from parameter count; latency, throughput, memory traffic, hardware utilization, energy, and lifecycle cost are not measured."
         }
       ]
     }
@@ -21729,6 +22149,232 @@
         "version-boundary"
       ],
       "accessNote": "The 11 June 2020 private-beta service announcement describes controlled hosted access rather than an open model release. The product state is not a paper version and does not support promoted paper claims or lineage."
+    },
+    {
+      "id": "hoffmann-2022-arxiv-record",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "arXiv record for Training Compute-Optimal Large Language Models",
+      "url": "https://arxiv.org/abs/2203.15556",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "hoffmann-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official history exposes exactly one submission, version 1 posted 29 March 2022 at 13:38:03 UTC. The aggregate arXiv DOI identifies this preprint family rather than another revision."
+    },
+    {
+      "id": "hoffmann-2022-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Immutable arXiv version 1 of Training Compute-Optimal Large Language Models",
+      "url": "https://arxiv.org/pdf/2203.15556v1",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "hoffmann-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 36
+      },
+      "accessNote": "The complete 36-page v1 artifact, SHA-256 3fd3632a8ef48171bd25282990221d49535d75356192f068b3b2ebe08f2aedd4, was extracted and every page was rendered and visually inspected. Its dynamic 2023 copyright line does not establish another arXiv event; it retains arXiv-only formulas and reporting differences."
+    },
+    {
+      "id": "hoffmann-2022-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Immutable arXiv version 1 source package",
+      "url": "https://arxiv.org/src/2203.15556v1",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "hoffmann-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 24-file archive contains five TeX, BibTeX, or style files, eighteen rendered PDF figures, and one logo. It contains no executable experiment code, raw curve data, model or tokenizer artifact, prepared corpus, run manifest, seed, log, environment lockfile, or evaluation package."
+    },
+    {
+      "id": "hoffmann-2022-arxiv-license",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "arXiv non-exclusive distribution license",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "hoffmann-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The terms grant arXiv non-exclusive distribution rights. They do not supply a Creative Commons or general reuse license for the paper, model, code, figures, or underlying data."
+    },
+    {
+      "id": "hoffmann-2022-deepmind-publication",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "DeepMind article on compute-optimal language-model training",
+      "url": "https://deepmind.google/blog/an-empirical-analysis-of-compute-optimal-large-language-model-training/",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The mutable organization article says it was published 12 April 2022 and modified 7 July 2026, uses a four-person byline, and currently reports 1.3T Chinchilla tokens plus a PaLM-budget projection absent from the papers. It remains outside the paper-version family and is not promoted as claim or lineage evidence."
+    },
+    {
+      "id": "hoffmann-2022-neurips-record",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Official NeurIPS record for An empirical analysis of compute-optimal large language model training",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/c1e2faff6f588870935f114ebe04a3e5-Abstract-Conference.html",
+      "accessDate": "2026-08-31",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "hoffmann-2022-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official main-track record supplies the 2022 venue, alternate landing-page title, metadata author forms and order, and links to the main paper and supplement. It does not establish an exact paper-publication day."
+    },
+    {
+      "id": "hoffmann-2022-neurips-full-text",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Official NeurIPS article for Training Compute-Optimal Large Language Models",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/c1e2faff6f588870935f114ebe04a3e5-Paper-Conference.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "hoffmann-2022-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-page archival article, SHA-256 1e9f9c9d41306b611ee8dc01745fe38bff2ba9400c38ee0dbd6fdf571c20fd25, was extracted and every page was rendered and visually inspected. Article-page locators remain separate from bibliographic pp. 30016–30030."
+    },
+    {
+      "id": "hoffmann-2022-neurips-supplement",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Official NeurIPS supplement for Training Compute-Optimal Large Language Models",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/c1e2faff6f588870935f114ebe04a3e5-Supplemental-Conference.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "hoffmann-2022-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 16,
+        "pageEnd": 32
+      },
+      "accessNote": "The complete 17-page supplement, SHA-256 85d124a7522497ae1c36b4a7f33a414ce4b6dc68062a32cc5e4add303e3f0046, was extracted and every page was rendered and visually inspected. Its visible page numbers continue the main paper at 16–32."
+    },
+    {
+      "id": "hoffmann-2022-crossref-record",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Crossref publisher deposit for Training Compute-Optimal Large Language Models",
+      "url": "https://api.crossref.org/works/10.52202%2F068431-2176",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "hoffmann-2022-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The publisher deposit supplies DOI 10.52202/068431-2176, volume 35, pp. 30016–30030, and the PDF title. Its 2 March 2026 record-creation timestamp is retrospective metadata, not a 2022 publication event; its author forms and order differ from the PDF."
+    },
+    {
+      "id": "hoffmann-2022-neurips-rights",
+      "relatedWorkIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "title": "Current NeurIPS copyright policy",
+      "url": "https://neurips.cc/FAQ/Copyright",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The current policy says authors retain copyright and grant the venue non-exclusive publication rights. It is retained only as qualified present-day context: no paper-specific Creative Commons or general-reuse license was identified, and the policy is not bound backward as a 2022 artifact."
     }
   ],
   "claims": [
@@ -41946,6 +42592,839 @@
         }
       ],
       "checkedDate": "2026-08-30"
+    },
+    {
+      "id": "hoffmann-2022-version-and-title-boundary",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation"
+      ],
+      "statement": "The source family has one 36-page arXiv v1 posted on 29 March 2022 and a canonical NeurIPS package split into a 15-page article and a 17-page supplement. The arXiv title page orders Jack W. Rae before Oriol Vinyals, whereas the proceedings PDF reverses them; the NeurIPS landing record uses “An empirical analysis of compute-optimal large language model training,” while both paper PDFs use “Training Compute-Optimal Large Language Models.” ArXiv Table 1 prints 168B LaMDA training tokens and the proceedings corrects that row to 768B.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-arxiv-record",
+          "locator": {
+            "label": "ArXiv version history",
+            "section": "Submission history",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The official ledger establishes the sole v1 submission and its exact posting timestamp."
+        },
+        {
+          "sourceId": "hoffmann-2022-arxiv-v1-full-text",
+          "locator": {
+            "label": "ArXiv title page, author order, and comparison table",
+            "section": "Title page; 1 Introduction",
+            "pageStart": 1,
+            "pageEnd": 3,
+            "table": "1"
+          },
+          "support": "The immutable preprint supplies its title, complete author order, unified pagination, and 168B LaMDA row."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Canonical title page, author order, and comparison table",
+            "section": "Title page; 1 Introduction",
+            "pageStart": 1,
+            "pageEnd": 3,
+            "table": "1"
+          },
+          "support": "The archival article supplies the printed PDF title, Vinyals-before-Rae order, split main-paper pagination, and corrected 768B LaMDA row."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-record",
+          "locator": {
+            "label": "Alternate NeurIPS landing title",
+            "section": "Official proceedings landing record",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The publisher landing page prints the alternate “An empirical analysis” title and links the separate main and supplemental artifacts."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Canonical supplement pagination envelope",
+            "section": "Complete supplement",
+            "pageStart": 16,
+            "pageEnd": 32
+          },
+          "support": "The separately distributed supplement contains seventeen visible pages numbered 16 through 32."
+        }
+      ],
+      "limitations": [
+        "The alternate NeurIPS landing title and metadata-only author forms are preserved in source and version notes rather than treated as another paper."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-fixed-compute-objective-and-accounting",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "parametric-model-data-loss-surface"
+      ],
+      "statement": "For a training budget C, the paper defines N_opt(C) and D_opt(C) as the parameter and seen-token coordinates minimizing smoothed autoregressive training loss subject to FLOPs(N,D)=C. Its fits use C≈6ND, while the detailed Transformer account includes embeddings, logits, dense blocks, and sequence-length-dependent attention with backward cost assumed to be twice forward; Table A5 reports exact-to-6ND ratios from 0.99 to 1.10 for 73M–6.8B configurations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Fixed-compute optimization target and 6ND approximation",
+            "section": "1 Introduction; 3 Estimating the optimal parameter/training tokens allocation",
+            "pageStart": 3,
+            "pageEnd": 6,
+            "equation": "1–3"
+          },
+          "support": "Equation 1 defines the constrained loss minimum and the methods section states the 6ND approximation used in the fits."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Detailed Transformer training-FLOP account",
+            "section": "F FLOPs computation",
+            "pageStart": 20,
+            "pageEnd": 22,
+            "table": "A5"
+          },
+          "support": "The supplement itemizes forward and backward operations, includes embedding matrices in N, and tabulates exact-to-approximate ratios."
+        }
+      ],
+      "limitations": [
+        "The objective is training loss at fixed estimated training FLOPs; it does not optimize downstream accuracy, unique-data acquisition, wall-clock time, memory, hardware efficiency, serving demand, energy, or lifecycle cost."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-training-family-and-three-approaches",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "training-curve-envelope-scaling",
+        "isoflop-profile-scaling",
+        "parametric-model-data-loss-surface"
+      ],
+      "statement": "The study reports more than 400 dense autoregressive-Transformer runs. Its configuration table contains 50 architectures from 44M to 16.183B parameters, although run-level token counts and seeds are not enumerated. Approach 1 smooths and interpolates multiple complete training curves to trace budget-wise minima; Approach 2 fits parabolic loss profiles at nine IsoFLOP budgets from 6×10^18 to 3×10^21 FLOPs; Approach 3 robustly fits one joint model-and-data loss surface.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Three compute-optimal estimators",
+            "section": "3.1 Approach 1: Fix model sizes and vary number of training tokens; 3.2 Approach 2: IsoFLOP profiles; 3.3 Approach 3: Fitting a parametric loss function",
+            "pageStart": 4,
+            "pageEnd": 6,
+            "figure": "2–4"
+          },
+          "support": "The main article defines the curve-envelope, fixed-budget profile, and parametric-surface procedures and their measured compute range."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Architecture-configuration inventory",
+            "section": "K List of trained models",
+            "pageStart": 30,
+            "pageEnd": 32,
+            "table": "A14"
+          },
+          "support": "The final supplement table lists 50 parameter configurations spanning 44M through 16.183B."
+        }
+      ],
+      "limitations": [
+        "The methods reuse one experimental family, schedules, data, optimizer choices, and power-law premise; their agreement is not three independent replications.",
+        "Table A14 is an architecture inventory rather than a complete regression dataset or run manifest."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-schedule-horizon-dependence",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "schedule-matched-training-horizon"
+      ],
+      "statement": "A loss point at a target horizon depends on the learning-rate cycle chosen for that horizon. Cosine schedules lasting 1, 1.1, 1.25, 1.5, 2, or 5 times the target duration show clear degradation when the cycle overshoots by more than 25%; a tenfold terminal learning-rate decay is slightly better than decay to zero, while fivefold decay is worse. Five 1.1B runs on random data subsets have mean final loss 2.488 and standard deviation 0.00257.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Schedule-length ablation and small-run repeat check",
+            "section": "B Optimal cosine cycle length; D.1 Approach 1: Fixing model sizes and varying training sequences",
+            "pageStart": 16,
+            "pageEnd": 17,
+            "figure": "A1"
+          },
+          "support": "The schedule ablation supplies the tested duration and decay factors, and D.1 reports the five-run 1.1B mean and standard deviation."
+        }
+      ],
+      "limitations": [
+        "The five-run variation estimate is for one 1.1B setting and does not quantify uncertainty at Chinchilla scale.",
+        "Schedule mismatch can contribute to allocation differences without isolating every cause."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-balanced-scaling-estimates",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "training-curve-envelope-scaling",
+        "isoflop-profile-scaling",
+        "parametric-model-data-loss-surface",
+        "balanced-parameter-token-scaling"
+      ],
+      "statement": "For N_opt∝C^a and D_opt∝C^b, Table 2 reports curve-envelope a/b=.50/.50 with 10th–90th bootstrap ranges (.488,.502)/(.501,.512), IsoFLOP .49/.51 with (.462,.534)/(.483,.529), and parametric .46/.54 with (.454,.455)/(.542,.543). The ranges come from 100 resamples, each retaining 80% of the data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Estimator exponents and bootstrap intervals",
+            "section": "3 Estimating the optimal parameter/training tokens allocation; Table 2 discussion",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "2"
+          },
+          "support": "Table 2 prints all three point estimates and percentile ranges and the surrounding text defines the resampling procedure."
+        }
+      ],
+      "limitations": [
+        "The resamples draw from correlated runs in one experimental family and are not confidence intervals over training seeds, datasets, architectures, or future compute regimes.",
+        "The printed point estimates are coarsely rounded; two lie just outside their displayed higher-precision intervals."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-parametric-loss-fit",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "parametric-model-data-loss-surface"
+      ],
+      "statement": "Approach 3 fits L̂(N,D)=E+A/N^α+B/D^β to observed log loss with a δ=10^-3 Huber objective, L-BFGS, log-sum-exp evaluation, and multiple initializations. The reported parameters are E=1.69, A=406.4, B=410.7, α=.34, and β=.28; under C≈6ND the arXiv version additionally prints the closed-form frontier exponents a=β/(α+β) and b=α/(α+β).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Separable loss surface and robust fitting objective",
+            "section": "3.3 Approach 3: Fitting a parametric loss function",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "equation": "2–3"
+          },
+          "support": "The main article prints the separable loss form and Huber fitting objective."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Fit implementation and coefficients",
+            "section": "D.2 Approach 3: Parametric fitting of the loss",
+            "pageStart": 18,
+            "pageEnd": 19,
+            "equation": "4–10"
+          },
+          "support": "The supplement supplies the optimization details and fitted constants."
+        },
+        {
+          "sourceId": "hoffmann-2022-arxiv-v1-full-text",
+          "locator": {
+            "label": "ArXiv-only closed-form fixed-compute frontier",
+            "section": "3.3 Fitting a parametric loss function",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "equation": "3–6"
+          },
+          "support": "The preprint prints the analytic N_opt and D_opt forms later omitted from the proceedings main article."
+        }
+      ],
+      "limitations": [
+        "The additive power-law surface is an empirical fit and the paper observes curvature at high compute.",
+        "Supplement equations 5 and 7 omit the minus sign expected for minimized cross-entropy; the stated implementation and positive loss values indicate a reporting error rather than a promoted alternative objective."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-cross-dataset-isoflop-check",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "isoflop-profile-scaling",
+        "balanced-parameter-token-scaling"
+      ],
+      "statement": "Four-budget IsoFLOP checks report C4 a/b=.50/.50 and GitHub-code .53/.47, compared with MassiveText .49/.51. The paper conditions the similarity on training for no more than one epoch and does not supply immutable C4 or GitHub snapshots or raw profile data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "C4 and GitHub IsoFLOP robustness checks",
+            "section": "C Consistency of scaling results across datasets",
+            "pageStart": 16,
+            "pageEnd": 18,
+            "figure": "A2",
+            "table": "A2"
+          },
+          "support": "Table A2 supplies the three exponent pairs and the surrounding section states the restricted epoch and dataset interpretation."
+        }
+      ],
+      "limitations": [
+        "Two additional datasets and four budgets do not establish dataset independence or behavior under repeated epochs."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact C4 and GitHub inputs and regression rows are unavailable.",
+          "resolutionCondition": "Immutable data snapshots and raw run-level IsoFLOP records are required."
+        }
+      ],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-kaplan-allocation-challenge",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "schedule-matched-training-horizon",
+        "balanced-parameter-token-scaling"
+      ],
+      "statement": "Hoffmann et al. explicitly contrast their near-balanced estimates with Kaplan et al.'s N_opt∝C^.73 and D_opt∝C^.27 allocation and argue that schedule matching and larger tested models contribute to the difference. At 10^21 FLOPs, Appendix D.4 compares 2.80B and 4.74B trained models, near the respective 2.86B and 4.68B predictions, using the same 0.5M-token batch, 1.5×10^-4 maximum learning rate, and depth-to-width ratio; it reports lower final loss for the smaller recommendation without tabulating the endpoint value.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Kaplan contrast and three target estimates",
+            "section": "1 Introduction; 2 Related Work; 3 Estimating the optimal parameter/training tokens allocation",
+            "pageStart": 2,
+            "pageEnd": 7,
+            "table": "2"
+          },
+          "support": "The target directly names Kaplan's allocation, proposes bounded methodological contributors, and places .73/.27 beside its three estimates."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Controlled small-scale comparison of competing recommendations",
+            "section": "D.4 Small-scale comparison to Kaplan et al. (2020)",
+            "pageStart": 19,
+            "pageEnd": 21,
+            "figure": "A4"
+          },
+          "support": "The appendix states predicted and trained sizes, matched hyperparameters, and the direction of the final-loss comparison."
+        }
+      ],
+      "limitations": [
+        "The target says schedule mismatch contributes to the disagreement; it does not isolate every cause.",
+        "Kaplan uses non-embedding parameters and a different compute convention, while Hoffmann generally counts total parameters and fuller Transformer operations.",
+        "One approximately 10^21-FLOP comparison does not prove a universal allocation law."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-gopher-budget-frontier-projections",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "isoflop-profile-scaling",
+        "parametric-model-data-loss-surface",
+        "balanced-parameter-token-scaling"
+      ],
+      "statement": "At the nominal 5.76×10^23-FLOP Gopher budget, Approach 1 projects about 67B parameters and 1.5T tokens, Approach 2 about 63B and 1.4T, and Approach 3 about 40B parameters. The paper therefore treats 40–70B as a plausible range and selects 70B for Chinchilla partly for data and computational efficiency rather than presenting one exact estimator-independent optimum.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Gopher-budget projections and selected validation size",
+            "section": "3 Estimating the optimal parameter/training tokens allocation; 4 Chinchilla",
+            "pageStart": 4,
+            "pageEnd": 7,
+            "figure": "2–4"
+          },
+          "support": "The three figures place distinct frontier estimates at Gopher compute, and Section 4 states the 40–70B range and reason for selecting 70B."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Estimator-specific token and FLOP projections",
+            "section": "D.3 Predicted compute optimal frontier for all three methods",
+            "pageStart": 19,
+            "pageEnd": 20,
+            "table": "A3–A4"
+          },
+          "support": "The appendix tables expose widening estimator disagreement rather than a single universal size-token lookup."
+        }
+      ],
+      "limitations": [
+        "The projections extrapolate fitted power laws beyond much of the measured sweep and diverge materially across estimators.",
+        "Table A4's Approach-3 175B row contains a factor-of-ten FLOP error retained in the discrepancy claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-chinchilla-gopher-compute-match",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation",
+        "training-versus-inference-model-size"
+      ],
+      "statement": "The reported validation compares nominal Chinchilla at 70B parameters and 1.4T seen tokens with Gopher at 280B and 300B tokens under the same stated 5.76×10^23 training-FLOP budget. Chinchilla is four times smaller by nominal parameter count and sees about 4.67 times as many tokens; the paper's “4× more data” phrasing is approximate. The smaller parameter count implies lower per-token fine-tuning and inference compute, but the paper reports no serving-latency, throughput, memory-traffic, utilization, or energy measurement.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Compute-matched Chinchilla and Gopher configuration",
+            "section": "Abstract; 1 Introduction; 4 Chinchilla; 4.1 Model and training details",
+            "pageStart": 1,
+            "pageEnd": 8,
+            "table": "1, 3"
+          },
+          "support": "The article supplies nominal model sizes, tokens, attributed training compute, and the qualitative downstream-compute implication."
+        }
+      ],
+      "limitations": [
+        "Rounded N and D values under 6ND do not independently reconstruct exact compute equality; the supplement gives a more detailed Gopher estimate of 6.3×10^23 FLOPs.",
+        "Smaller parameter count does not by itself quantify end-to-end serving cost."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-chinchilla-architecture-and-training",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "compute-matched-chinchilla-validation",
+        "massivetext-mixture-training"
+      ],
+      "statement": "Chinchilla is a Gopher-derived English autoregressive Transformer with 80 layers, 64 heads, key/value size 128, model width 8,192, feed-forward width 32,768, maximum learning rate 10^-4, and a token batch rising from 1.5M to 3M halfway through training. It uses AdamW, bfloat16 forward/backward with a float32 optimizer master copy, a modified 32,000-unit SentencePiece tokenizer without NFKC normalization, and JAX/Haiku on TPUv3 and TPUv4; the new and Gopher vocabularies produce the same token on 94.15% of sampled tokens.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Chinchilla architecture, optimizer, precision, tokenizer, and hardware",
+            "section": "4.1 Model and training details",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "Section 4.1 and Table 3 provide the architecture, batch, learning-rate, optimizer, precision, tokenizer, software, and accelerator details."
+        }
+      ],
+      "limitations": [
+        "Sequence length, warmup, weight decay, several optimizer settings, and inherited Gopher procedures are not fully restated in this paper.",
+        "Optimizer, tokenizer normalization, batch schedule, and data sampling differ from Gopher, so the large comparison does not isolate token count alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-massivetext-mixture",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "massivetext-mixture-training"
+      ],
+      "statement": "At 1.4T tokens, Table A1 gives Chinchilla's MassiveText mixture as MassiveWeb 1.9TB/604M documents/45% sampling/1.24 epochs, Books 2.1TB/4M/30%/.75, C4 .75TB/361M/10%/.77, News 2.7TB/1.1B/10%/.21, GitHub 3.1TB/142M/4%/.13, and Wikipedia .001TB/6M/1%/3.40. The aggregate is not a one-pass unique-token corpus: source components have different repeat rates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "MassiveText component sizes, weights, and epochs",
+            "section": "A Training dataset",
+            "pageStart": 16,
+            "pageEnd": 16,
+            "table": "A1"
+          },
+          "support": "Table A1 prints each component's disk size, document count, Chinchilla and Gopher sampling weight, and approximate Chinchilla epochs."
+        }
+      ],
+      "limitations": [
+        "The table does not release exact snapshots, filtered documents, URLs, preprocessing or deduplication code, contamination records, or source-level rights."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The prepared MassiveText payload and rights manifest are proprietary and unresolved.",
+          "resolutionCondition": "A versioned prepared corpus with provenance and rights metadata is required."
+        }
+      ],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-language-model-and-aggregate-results",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation"
+      ],
+      "statement": "Chinchilla reports WikiText-103 perplexity 7.16 versus Gopher 7.75 and lower bits per byte than Gopher on all 19 listed Pile subsets, although Jurassic-1 is lower on dm_mathematics and ubuntu_irc. Five-shot MMLU is 67.6 versus 60.0, with Chinchilla better on 51 of 57 tasks, tied on 2, and worse on 4; BIG-bench averages 65.1 versus 54.4 and Chinchilla is worse on 4 of 62 tasks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Language-modeling, MMLU, and BIG-bench summaries",
+            "section": "4.2 Results",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "The main evaluation section reports the aggregate language-modeling, MMLU, and BIG-bench comparisons and their exceptions."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Per-dataset and per-task evaluation details",
+            "section": "H Results",
+            "pageStart": 23,
+            "pageEnd": 27,
+            "figure": "A8–A10",
+            "table": "A7–A10"
+          },
+          "support": "The supplement provides the 19 Pile rows, WikiText value, MMLU task counts, and BIG-bench task distribution."
+        }
+      ],
+      "limitations": [
+        "The article cautions that greater data exposure can increase benchmark leakage, and the tables do not report repeated Chinchilla runs, confidence intervals, or task-level significance tests."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-reading-and-commonsense-results",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation"
+      ],
+      "statement": "For Chinchilla/Gopher, Table 4 reports LAMBADA 77.4/74.5, RACE-middle 86.8/75.1, and RACE-high 82.3/71.6. Table 5 reports HellaSWAG 80.8/79.2, PIQA 81.8/81.8, WinoGrande 74.9/70.1, SIQA 51.3/50.6, and BoolQ 83.7/79.3; MT-NLG's PIQA 82.0 exceeds Chinchilla's 81.8.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Reading-comprehension and commonsense task rows",
+            "section": "4.2 Results",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "table": "4–5"
+          },
+          "support": "The two tables print the task-level accuracies and expose the Gopher tie and MT-NLG exception."
+        }
+      ],
+      "limitations": [
+        "GPT-3 and MT-NLG RACE prompt formats differ and the paper explicitly says those RACE results are not comparable.",
+        "The tables report point estimates without task-level uncertainty or matched training data."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-question-answering-and-truthfulqa-results",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation"
+      ],
+      "statement": "TruthfulQA reports Chinchilla 43.6/58.5/66.7 at 0/5/10-shot, versus Gopher 29.5 at 0-shot and 43.7 at 10-shot. On Natural Questions, Chinchilla/Gopher score 16.6/10.1, 31.5/24.5, and 35.5/28.2 at 0/5/64-shot. TriviaQA-unfiltered scores are 67.0/52.8, 73.2/63.6, and 72.3/61.3; TriviaQA-filtered scores are 55.4/43.5, 64.1/57.0, and 64.6/57.2. Chinchilla's unfiltered 64-shot value is below its 5-shot value.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "TruthfulQA summary",
+            "section": "4.2 Results",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "The main evaluation prose prints the zero-, five-, and ten-shot Chinchilla values and available Gopher comparisons."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Closed-book question-answering table",
+            "section": "H.5 Question Answering",
+            "pageStart": 31,
+            "pageEnd": 31,
+            "table": "A11"
+          },
+          "support": "Table A11 provides each Natural Questions and TriviaQA row by shot count, including the nonmonotonic unfiltered Chinchilla result."
+        }
+      ],
+      "limitations": [
+        "Prompt, corpus, tokenizer, and model-size differences prevent causal attribution to training-token allocation alone.",
+        "No repeated large-model evaluation or statistical uncertainty is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-evaluation-comparability-boundary",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation"
+      ],
+      "statement": "Most downstream procedures are inherited from the Gopher evaluation rather than re-specified here, and cross-model rows mix training corpora, tokenizers, sizes, and sometimes prompts. The paper explicitly says GPT-3 and MT-NLG RACE results are not comparable because prompt formats differ, cautions that Chinchilla's greater data exposure can increase leakage, and supplies no confidence intervals or significance tests for the headline benchmark tables.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Evaluation protocol, leakage, and RACE comparison boundaries",
+            "section": "4.2 Results",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "4–5"
+          },
+          "support": "The evaluation section defers to Gopher, flags leakage risk, and marks the RACE prompt mismatch while reporting point estimates."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Reproducibility checklist uncertainty boundary",
+            "section": "NeurIPS Paper Checklist",
+            "pageStart": 14,
+            "pageEnd": 15
+          },
+          "support": "The checklist says Chinchilla was not repeated and error bars over model repetitions are unavailable."
+        }
+      ],
+      "limitations": [
+        "A printed win, tie, or loss is a result under its listed protocol, not a uniformly controlled causal comparison across model families."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-bias-toxicity-and-use-boundary",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation",
+        "massivetext-mixture-training"
+      ],
+      "statement": "Winogender overall accuracy is 78.3 for Chinchilla and 71.4 for Gopher, with subgroup variation. For 25,000 unconditional samples, Gopher toxicity mean/median/95th percentile are .081/.064/.230 and Chinchilla's are .087/.066/.238: every printed Chinchilla statistic is slightly higher although the authors call the differences negligible. The embedded model card warns of toxic language, bias, private-information leakage, English-only scope, and absent intersectional evaluation; the arXiv version says intended users are DeepMind researchers and the model will not be public.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Winogender, toxicity, and archival model-card evidence",
+            "section": "I Gender bias and toxicity; J Model Card",
+            "pageStart": 26,
+            "pageEnd": 31,
+            "table": "A12–A13"
+          },
+          "support": "The supplement prints subgroup Winogender and toxicity statistics and the archival model-card risk and scope disclosures."
+        },
+        {
+          "sourceId": "hoffmann-2022-arxiv-v1-full-text",
+          "locator": {
+            "label": "ArXiv model-card intended-user and nonrelease fields",
+            "section": "Model Card — Model Details",
+            "pageStart": 31,
+            "pageEnd": 34
+          },
+          "support": "The fuller preprint model card states intended internal users and that the model will not be publicly available."
+        }
+      ],
+      "limitations": [
+        "The selected bias and toxicity probes do not constitute a complete safety, fairness, privacy, or deployment evaluation.",
+        "Winogender improvement does not support a claim that Chinchilla has lower measured unconditional toxicity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-scaling-validity-boundary",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "schedule-matched-training-horizon",
+        "balanced-parameter-token-scaling",
+        "compute-matched-chinchilla-validation",
+        "training-versus-inference-model-size"
+      ],
+      "statement": "The promoted scaling result is conditional on dense English autoregressive Transformers, the studied optimizer and tokenizer recipe, MassiveText-derived data, the measured compute range, and predominantly sub-epoch training. The authors observe high-compute curvature, retain power-law fits, and say these may still overestimate optimal large-model size. Only Chinchilla and Gopher form the comparable large-scale pair; there is no intermediate-scale validation series or repeated Chinchilla run.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Dataset, extrapolation, and large-scale validation limits",
+            "section": "3 Estimating the optimal parameter/training tokens allocation; 5 Discussion & Conclusion",
+            "pageStart": 7,
+            "pageEnd": 10
+          },
+          "support": "The article discusses curvature, data-quality and repeated-data bounds, the fitted regime, and the absence of additional comparable large models."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "High-compute curvature and model-card scope",
+            "section": "D.3 Predicted compute optimal frontier for all three methods; J Model Card",
+            "pageStart": 19,
+            "pageEnd": 30,
+            "figure": "A3"
+          },
+          "support": "The supplement displays estimator divergence and curvature and bounds architecture, language, use, and release scope."
+        }
+      ],
+      "limitations": [
+        "Mixture-of-experts, retrieval, other objectives or modalities, multiple-epoch training, later architectures, and joint training-serving optimization require new evidence.",
+        "The familiar approximately 20-tokens-per-parameter shorthand is derived from nominal Chinchilla and Approach-1 values, not fitted as a universal constant."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-reporting-discrepancies",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "compute-matched-chinchilla-validation"
+      ],
+      "statement": "The paper family retains material internal anomalies. Supplement equations 5 and 7 minimize E[log p] without the negative sign required for cross-entropy; main §3.3 refers to the two model/data terms in Eq. 3 although they are in Eq. 2; Table A4 prints 175B×12.0T as 1.26×10^24 FLOPs although 6ND is 1.26×10^25; arXiv §3.4 gives 175B as 4.41×10^24/4.2T and 280B as 6.8T while its Table 3 gives 3.85×10^24/3.7T and 5.9T; Table 2's rounded Approach-1 b=.50 and Approach-3 a=.46 lie outside their displayed intervals; the abstract says MMLU 67.5 while §4.2 says 67.6; and “uniformly” overstates printed MMLU, BIG-bench, PIQA, and Pile ties or losses.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Equation reference, intervals, MMLU, and headline wording",
+            "section": "Abstract; 3.3 Approach 3: Fitting a parametric loss function; Table 2 discussion; 4.2 Results",
+            "pageStart": 1,
+            "pageEnd": 9,
+            "table": "2, 4–5"
+          },
+          "support": "The main article prints the Eq. 3 reference, rounded estimates and intervals, 67.5/67.6 difference, and detailed exceptions to its headline wording."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Loss-sign and Approach-3 FLOP anomalies",
+            "section": "D.2 Approach 3: Parametric fitting of the loss; D.3 Predicted compute optimal frontier for all three methods",
+            "pageStart": 18,
+            "pageEnd": 20,
+            "equation": "5, 7",
+            "table": "A4"
+          },
+          "support": "The supplement exposes the apparent sign omission and the nonmonotonic factor-of-ten FLOP row."
+        },
+        {
+          "sourceId": "hoffmann-2022-arxiv-v1-full-text",
+          "locator": {
+            "label": "ArXiv prose-versus-table projection conflict",
+            "section": "3.4 Comparing the three approaches",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "The preprint places conflicting 175B and 280B projection values in adjacent prose and Table 3."
+        }
+      ],
+      "limitations": [
+        "Coarse rounding may explain the interval display, but no inspected author erratum resolves the other anomalies.",
+        "The 1.3T value on the mutable DeepMind article is retained as an unbound source boundary rather than used as promoted claim evidence."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No primary correction was identified for the sign, equation-reference, factor-of-ten, projection, or headline discrepancies.",
+          "resolutionCondition": "A versioned author erratum or released run table is required."
+        }
+      ],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "hoffmann-2022-artifact-data-and-rights-boundary",
+      "workId": "hoffmann-2022-training-compute-optimal-language-models",
+      "ideaIds": [
+        "massivetext-mixture-training"
+      ],
+      "statement": "The arXiv source package is a publication bundle of five TeX, BibTeX, or style files, eighteen rendered PDF figures, and one logo, not an experiment release. The inspected official artifacts provide no executable fitting or training code, raw curves, complete run map, MassiveText payload or URL manifest, tokenizer vocabulary, seeds, logs, environment lockfile, evaluation harness, checkpoint, or public Chinchilla model. The NeurIPS checklist says code and data are proprietary and no new assets were released; arXiv's non-exclusive distribution grant is not a general reuse license.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "hoffmann-2022-arxiv-v1-source-package",
+          "locator": {
+            "label": "Complete publication-source archive tree",
+            "section": "Archive manifest and extracted tree",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The immutable archive inventory establishes its 24 publication-only files and absence of reconstruction artifacts."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Code, data, asset, repeat, and error-bar checklist responses",
+            "section": "NeurIPS Paper Checklist",
+            "pageStart": 14,
+            "pageEnd": 15
+          },
+          "support": "The archival checklist labels code and data proprietary, says no new assets were released, and records the missing large-model repeat and repetition error bars."
+        },
+        {
+          "sourceId": "hoffmann-2022-arxiv-v1-full-text",
+          "locator": {
+            "label": "Fuller model-card release boundary",
+            "section": "Model Card — Model Details",
+            "pageStart": 31,
+            "pageEnd": 34
+          },
+          "support": "The preprint model card states that Chinchilla is for internal DeepMind users and will not be made public."
+        },
+        {
+          "sourceId": "hoffmann-2022-arxiv-license",
+          "locator": {
+            "label": "Non-exclusive repository distribution terms",
+            "section": "License terms",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The arXiv terms establish repository distribution rather than general reuse rights for the paper or associated artifacts."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is limited to official records inspected on 31 August 2026 and does not imply that private artifacts or independent implementations do not exist.",
+        "Current NeurIPS policy is retained only as an unbound source boundary and is not treated as a paper-specific 2022 license."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Exact reconstruction and broad reuse rights are not established.",
+          "resolutionCondition": "Version-bound code, run records, corpus and tokenizer manifests, model artifacts, evaluation records, and explicit licenses are required."
+        }
+      ],
+      "checkedDate": "2026-08-31"
     }
   ],
   "relationships": [
@@ -45326,6 +46805,64 @@
           "note": "The target's separate loss-trend test remains node-local and is not used to broaden this allocation relationship."
         }
       ]
+    },
+    {
+      "id": "kaplan-2020-to-hoffmann-2022",
+      "from": {
+        "kind": "work",
+        "id": "kaplan-2020-scaling-laws-neural-language-models"
+      },
+      "to": {
+        "kind": "work",
+        "id": "hoffmann-2022-training-compute-optimal-language-models"
+      },
+      "connectionType": "challenges",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Hoffmann et al. explicitly revisit Kaplan et al.'s fixed-compute allocation, place Kaplan's .73/.27 parameter/token exponents beside three near-balanced estimates, and test the competing recommendations at approximately 10^21 FLOPs. The relationship records a scoped empirical challenge, including schedule and accounting differences, rather than a claim that either allocation is universal.",
+      "claimIds": [
+        "kaplan-2020-compute-efficient-allocation",
+        "kaplan-2020-training-sweep-and-procedure",
+        "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+        "hoffmann-2022-kaplan-allocation-challenge",
+        "hoffmann-2022-fixed-compute-objective-and-accounting"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Target-side Kaplan contrast and allocation estimates",
+            "section": "1 Introduction; 2 Related Work; 3 Estimating the optimal parameter/training tokens allocation",
+            "pageStart": 2,
+            "pageEnd": 7,
+            "table": "2"
+          },
+          "support": "The target names Kaplan's allocation, proposes qualified schedule and scale contributors to the disagreement, and contrasts .73/.27 with all three target estimates."
+        },
+        {
+          "sourceId": "hoffmann-2022-neurips-supplement",
+          "locator": {
+            "label": "Target-side small-scale allocation comparison and compute accounting",
+            "section": "D.4 Small-scale comparison to Kaplan et al. (2020); F FLOPs computation",
+            "pageStart": 19,
+            "pageEnd": 22,
+            "figure": "A4",
+            "table": "A5"
+          },
+          "support": "The target compares approximately 2.80B and 4.74B trained models under matched listed settings and documents its fuller total-parameter FLOP convention."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is limited to the allocation prescription and its tested loss regime; it does not transfer Kaplan's WebText2 fits or project Chinchilla's data, architecture, results, or release policy backward."
+        },
+        {
+          "status": "resolved",
+          "note": "Schedule mismatch is one proposed contributor, while non-embedding versus total-parameter conventions and different compute accounts also prevent an unlimited causal interpretation."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -48274,6 +49811,89 @@
         "Version-bound evidence, immutable release artifacts, and license scope"
       ],
       "successCriterion": "The learner can reproduce Tables 2.1 and 2.2 and the key training settings; keep total parameters, non-embedding scale, and estimated FLOPs distinct; reconstruct the zero/one/few-shot and task-specific scoring rules; defend exactly the GPT-2 and Kaplan relationship scopes; audit headline, contamination, news, bias, compute, and limitation claims at their source locators; enumerate the retained reporting differences; and separate the paper family from later API and model-card states."
+    },
+    {
+      "id": "beginner-hoffmann-2022-budget-balance-and-boundaries",
+      "mode": "beginner",
+      "objective": "Treat fixed training compute as a budget split between model parameters and seen tokens, use an IsoFLOP loss valley to explain why a smaller model trained longer can outperform a larger undertrained model, and keep the measured Chinchilla–Gopher result separate from universal allocation or serving-cost claims.",
+      "workIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "ideaIds": [
+        "fixed-compute-model-data-allocation",
+        "schedule-matched-training-horizon",
+        "isoflop-profile-scaling",
+        "balanced-parameter-token-scaling",
+        "compute-matched-chinchilla-validation",
+        "training-versus-inference-model-size"
+      ],
+      "claimIds": [
+        "hoffmann-2022-fixed-compute-objective-and-accounting",
+        "hoffmann-2022-training-family-and-three-approaches",
+        "hoffmann-2022-schedule-horizon-dependence",
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-kaplan-allocation-challenge",
+        "hoffmann-2022-chinchilla-gopher-compute-match",
+        "hoffmann-2022-language-model-and-aggregate-results",
+        "hoffmann-2022-scaling-validity-boundary"
+      ],
+      "prerequisites": [
+        "A language model predicts tokens and training loss measures that prediction task",
+        "Parameter count, seen-token count, and estimated FLOPs describe different resources",
+        "A fixed budget can be divided between a larger model and more training examples",
+        "A fitted trend has an evidence range and can fail outside it"
+      ],
+      "successCriterion": "The learner can define N, D, and C; sketch an IsoFLOP loss valley; contrast near-balanced scaling with Kaplan's .73/.27 prescription; reproduce the nominal 70B/1.4T versus 280B/300B comparison; and name one schedule, evaluation, data, or serving-cost boundary that prevents a universal 20-tokens-per-parameter conclusion."
+    },
+    {
+      "id": "expert-hoffmann-2022-three-estimators-validation-and-provenance",
+      "mode": "expert",
+      "objective": "Reconstruct the curve-envelope, IsoFLOP, and parametric estimators and their fixed-compute account; then audit schedule matching, bootstrap interpretation, Kaplan comparison, C4 and GitHub checks, Chinchilla validation, evaluation controls, extrapolation, artifacts, rights, and version-specific reporting anomalies.",
+      "workIds": [
+        "hoffmann-2022-training-compute-optimal-language-models"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "fixed-compute-model-data-allocation",
+        "schedule-matched-training-horizon",
+        "training-curve-envelope-scaling",
+        "isoflop-profile-scaling",
+        "parametric-model-data-loss-surface",
+        "balanced-parameter-token-scaling",
+        "compute-matched-chinchilla-validation",
+        "massivetext-mixture-training",
+        "training-versus-inference-model-size"
+      ],
+      "claimIds": [
+        "hoffmann-2022-version-and-title-boundary",
+        "hoffmann-2022-fixed-compute-objective-and-accounting",
+        "hoffmann-2022-training-family-and-three-approaches",
+        "hoffmann-2022-schedule-horizon-dependence",
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-parametric-loss-fit",
+        "hoffmann-2022-cross-dataset-isoflop-check",
+        "hoffmann-2022-kaplan-allocation-challenge",
+        "hoffmann-2022-gopher-budget-frontier-projections",
+        "hoffmann-2022-chinchilla-gopher-compute-match",
+        "hoffmann-2022-chinchilla-architecture-and-training",
+        "hoffmann-2022-massivetext-mixture",
+        "hoffmann-2022-language-model-and-aggregate-results",
+        "hoffmann-2022-reading-and-commonsense-results",
+        "hoffmann-2022-question-answering-and-truthfulqa-results",
+        "hoffmann-2022-evaluation-comparability-boundary",
+        "hoffmann-2022-bias-toxicity-and-use-boundary",
+        "hoffmann-2022-scaling-validity-boundary",
+        "hoffmann-2022-reporting-discrepancies",
+        "hoffmann-2022-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive Transformer loss, cosine schedules, tokens seen, and total versus non-embedding parameter counts",
+        "Power-law regression, constrained optimization, Huber loss, bootstrap percentiles, and extrapolation error",
+        "FLOP accounting, sequence-length-dependent attention cost, and training versus inference workloads",
+        "Benchmark prompting, leakage, repeated-run uncertainty, and confounded model comparisons",
+        "Immutable version provenance, source manifests, model and data artifacts, and license scope"
+      ],
+      "successCriterion": "The learner can reconstruct Equations 1–3 and the appendix fit, reproduce .50/.50, .49/.51, and .46/.54 with their intervals, explain the matched-horizon assumption and Kaplan accounting boundary, derive the estimator-specific Gopher-budget range, audit the 70B/1.4T validation and six-source mixture, enumerate the sign, cross-reference, 10× FLOP, projection, interval, and evaluation discrepancies, and separate paper versions, mutable organization prose, proprietary data, unreleased model artifacts, and distribution rights."
     }
   ]
 }

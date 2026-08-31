@@ -217,7 +217,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-2)?.id, workId);
+  assert.equal(corpus.works.at(-3)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -308,7 +308,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
   assert.match(artifacts?.statement ?? "", /no immutable official code/);
   assert.deepEqual(
     relationships.map((item) => item.id),
-    ["kaplan-2020-to-brown-2020"],
+    ["kaplan-2020-to-brown-2020", "kaplan-2020-to-hoffmann-2022"],
   );
   assert.deepEqual(
     objectives.map((item) => item.mode).sort(),
@@ -376,8 +376,8 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     "brown-2020-neurips-version",
   ];
 
-  assert.equal(corpus.works.at(-1)?.id, workId);
-  assert.equal(corpus.works.at(-2)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(corpus.works.at(-2)?.id, workId);
+  assert.equal(corpus.works.at(-3)?.id, "kaplan-2020-scaling-laws-neural-language-models");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
   assert.deepEqual(
@@ -619,6 +619,289 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
   assert.ok(readme.includes("Brown et al.’s GPT-3 family"));
   assert.ok(corpusFormat.includes("Brown et al. 2020 is represented"));
   assert.ok(historicalScope.includes("The GPT-3 family was checked on 2026-08-30"));
+});
+
+test("preserves Chinchilla estimators, archival conflicts, and scoped Kaplan challenge", () => {
+  const workId = "hoffmann-2022-training-compute-optimal-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const arxiv = work?.versions.find(
+    (item) => item.id === "hoffmann-2022-arxiv-v1-version",
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "hoffmann-2022-neurips-version",
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-neurips-supplement",
+  );
+  const sourcePackage = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-arxiv-v1-source-package",
+  );
+  const deepmind = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-deepmind-publication",
+  );
+  const rights = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-neurips-rights",
+  );
+  const accounting = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-fixed-compute-objective-and-accounting",
+  );
+  const family = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-training-family-and-three-approaches",
+  );
+  const schedules = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-schedule-horizon-dependence",
+  );
+  const estimates = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-balanced-scaling-estimates",
+  );
+  const parametric = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-parametric-loss-fit",
+  );
+  const crossDataset = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-cross-dataset-isoflop-check",
+  );
+  const challenge = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-kaplan-allocation-challenge",
+  );
+  const computeMatch = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-chinchilla-gopher-compute-match",
+  );
+  const mixture = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-massivetext-mixture",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-language-model-and-aggregate-results",
+  );
+  const discrepancies = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-reporting-discrepancies",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-artifact-data-and-rights-boundary",
+  );
+  const expectedSourceIds = [
+    "hoffmann-2022-arxiv-record",
+    "hoffmann-2022-arxiv-v1-full-text",
+    "hoffmann-2022-arxiv-v1-source-package",
+    "hoffmann-2022-arxiv-license",
+    "hoffmann-2022-deepmind-publication",
+    "hoffmann-2022-neurips-record",
+    "hoffmann-2022-neurips-full-text",
+    "hoffmann-2022-neurips-supplement",
+    "hoffmann-2022-crossref-record",
+    "hoffmann-2022-neurips-rights",
+  ];
+
+  assert.equal(corpus.works.at(-1)?.id, workId);
+  assert.equal(work?.chronology.orderingEventId, "hoffmann-2022-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2022-03-29", "day"],
+      ["2022", "year"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    ["hoffmann-2022-arxiv-v1-version", "hoffmann-2022-neurips-version"],
+  );
+  assert.equal(work?.canonicalVersionId, "hoffmann-2022-neurips-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "hoffmann-2022-neurips-record",
+    "hoffmann-2022-neurips-full-text",
+    "hoffmann-2022-neurips-supplement",
+  ]);
+  assert.deepEqual(arxiv?.sourceIds, expectedSourceIds.slice(0, 4));
+  assert.deepEqual(canonical?.sourceIds, expectedSourceIds.slice(5, 9));
+  assert.deepEqual(arxiv?.authors.slice(-4), [
+    "Erich Elsen",
+    "Jack W. Rae",
+    "Oriol Vinyals",
+    "Laurent Sifre",
+  ]);
+  assert.deepEqual(canonical?.authors.slice(-4), [
+    "Erich Elsen",
+    "Oriol Vinyals",
+    "Jack W. Rae",
+    "Laurent Sifre",
+  ]);
+  assert.deepEqual(work?.authors, canonical?.authors);
+  assert.deepEqual(canonical?.bibliography.pages, ["30016-30030"]);
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 15,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 16,
+    pageEnd: 32,
+  });
+  assert.match(sourcePackage?.accessNote ?? "", /24-file archive/);
+  assert.match(sourcePackage?.accessNote ?? "", /no executable experiment code/);
+  assert.deepEqual(deepmind?.versionIds, []);
+  assert.deepEqual(deepmind?.supports, ["metadata", "version-boundary"]);
+  assert.match(deepmind?.accessNote ?? "", /1\.3T/);
+  assert.deepEqual(rights?.versionIds, []);
+  assert.ok(rights?.supports.includes("version-boundary"));
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+
+  assert.equal(claims.length, 20);
+  assert.match(accounting?.statement ?? "", /0\.99 to 1\.10/);
+  assert.match(accounting?.limitations.join(" ") ?? "", /serving demand/);
+  assert.match(family?.statement ?? "", /50 architectures/);
+  assert.match(family?.statement ?? "", /44M to 16\.183B/);
+  assert.match(family?.statement ?? "", /6×10\^18 to 3×10\^21/);
+  assert.match(schedules?.statement ?? "", /more than 25%/);
+  assert.match(schedules?.statement ?? "", /2\.488/);
+  assert.match(schedules?.statement ?? "", /0\.00257/);
+  for (const value of [
+    ".50/.50",
+    "(.488,.502)/(.501,.512)",
+    ".49/.51",
+    "(.462,.534)/(.483,.529)",
+    ".46/.54",
+    "(.454,.455)/(.542,.543)",
+  ])
+    assert.ok(estimates?.statement.includes(value));
+  for (const value of ["E=1.69", "A=406.4", "B=410.7", "α=.34", "β=.28"])
+    assert.ok(parametric?.statement.includes(value));
+  assert.match(parametric?.limitations.join(" ") ?? "", /omit the minus sign/);
+  assert.match(crossDataset?.statement ?? "", /C4 a\/b=.50\/.50/);
+  assert.match(crossDataset?.statement ?? "", /GitHub-code \.53\/.47/);
+  assert.match(challenge?.statement ?? "", /N_opt∝C\^\.73/);
+  assert.match(challenge?.statement ?? "", /2\.80B and 4\.74B/);
+  assert.match(challenge?.limitations.join(" ") ?? "", /non-embedding parameters/);
+  assert.match(computeMatch?.statement ?? "", /5\.76×10\^23/);
+  assert.match(computeMatch?.statement ?? "", /4\.67 times/);
+  assert.match(computeMatch?.statement ?? "", /no serving-latency/);
+  assert.match(mixture?.statement ?? "", /Wikipedia \.001TB\/6M\/1%\/3\.40/);
+  assert.match(results?.statement ?? "", /MMLU is 67\.6 versus 60\.0/);
+  assert.match(results?.statement ?? "", /worse on 4 of 62/);
+  for (const value of [
+    "1.26×10^24",
+    "1.26×10^25",
+    "4.41×10^24/4.2T",
+    "67.5",
+    "67.6",
+    "uniformly",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.equal(discrepancies?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /five TeX, BibTeX, or style files/);
+  assert.match(artifacts?.statement ?? "", /code and data are proprietary/);
+  assert.match(artifacts?.statement ?? "", /not a general reuse license/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+  for (const item of claims)
+    for (const evidence of item.evidence)
+      assert.notEqual(
+        evidence.support,
+        "The cited primary-source passage, table, figure, or artifact directly bounds this statement.",
+      );
+
+  assert.deepEqual(incoming.map((item) => item.id), [
+    "kaplan-2020-to-hoffmann-2022",
+  ]);
+  assert.equal(incoming[0]?.connectionType, "challenges");
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.deepEqual(incoming[0]?.claimIds, [
+    "kaplan-2020-compute-efficient-allocation",
+    "kaplan-2020-training-sweep-and-procedure",
+    "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+    "hoffmann-2022-kaplan-allocation-challenge",
+    "hoffmann-2022-fixed-compute-objective-and-accounting",
+  ]);
+  assert.deepEqual(
+    incoming[0]?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+      figure: item.locator.figure,
+      table: item.locator.table,
+    })),
+    [
+      {
+        sourceId: "hoffmann-2022-neurips-full-text",
+        pageStart: 2,
+        pageEnd: 7,
+        figure: undefined,
+        table: "2",
+      },
+      {
+        sourceId: "hoffmann-2022-neurips-supplement",
+        pageStart: 19,
+        pageEnd: 22,
+        figure: "A4",
+        table: "A5",
+      },
+    ],
+  );
+  for (const item of incoming[0]?.sourceEvidence ?? [])
+    assert.ok(
+      corpus.sources
+        .find((source) => source.id === item.sourceId)
+        ?.relatedWorkIds.includes(workId),
+    );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-hoffmann-2022-budget-balance-and-boundaries", "beginner"],
+      [
+        "expert-hoffmann-2022-three-estimators-validation-and-provenance",
+        "expert",
+      ],
+    ],
+  );
+  assert.equal(work?.ideaIds.length, 10);
+  for (const ideaId of work?.ideaIds ?? [])
+    assert.ok(
+      corpus.ideas
+        .find((item) => item.id === ideaId)
+        ?.claimIds.some((claimId) =>
+          claims.some((claim) => claim.id === claimId),
+        ),
+    );
+  assert.ok(readme.includes("Hoffmann et al.’s Chinchilla study"));
+  assert.ok(corpusFormat.includes("Hoffmann et al. 2022 is represented"));
+  assert.ok(
+    historicalScope.includes(
+      "The Hoffmann compute-optimal study was checked on 2026-08-31",
+    ),
+  );
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
