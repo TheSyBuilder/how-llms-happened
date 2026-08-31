@@ -11747,6 +11747,650 @@
       ]
     },
     {
+      "id": "stiennon-2020-learning-to-summarize-human-feedback",
+      "title": "Learning to summarize from human feedback",
+      "authors": [
+        "Nisan Stiennon",
+        "Long Ouyang",
+        "Jeff Wu",
+        "Daniel M. Ziegler",
+        "Ryan Lowe",
+        "Chelsea Voss",
+        "Alec Radford",
+        "Dario Amodei",
+        "Paul Christiano"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "N. Stiennon et al., “Learning to Summarize from Human Feedback,” in Advances in Neural Information Processing Systems 33, pp. 3008–3021, 2020.",
+      "chronology": {
+        "orderingEventId": "stiennon-2020-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "stiennon-2020-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2020-09-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "stiennon-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 2 September 2020 at 19:54:41 UTC"
+              }
+            ],
+            "versionId": "stiennon-2020-arxiv-v1-version",
+            "sourceIds": [
+              "stiennon-2020-arxiv-record",
+              "stiennon-2020-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "stiennon-2020-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2020-10-27",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "stiennon-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 27 October 2020 at 22:19:53 UTC"
+              }
+            ],
+            "versionId": "stiennon-2020-arxiv-v2-version",
+            "sourceIds": [
+              "stiennon-2020-arxiv-record",
+              "stiennon-2020-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "stiennon-2020-neurips-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2020 proceedings publication",
+            "date": {
+              "value": "2020",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "stiennon-2020-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS 2020 proceedings record and volume identity"
+              }
+            ],
+            "versionId": "stiennon-2020-neurips-version",
+            "sourceIds": [
+              "stiennon-2020-neurips-record",
+              "stiennon-2020-neurips-full-text"
+            ]
+          },
+          {
+            "id": "stiennon-2020-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2022-02-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "stiennon-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 15 February 2022 at 19:09:36 UTC"
+              }
+            ],
+            "versionId": "stiennon-2020-arxiv-v3-version",
+            "sourceIds": [
+              "stiennon-2020-arxiv-record",
+              "stiennon-2020-arxiv-v3-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "stiennon-2020-arxiv-v1-version",
+          "title": "Learning to summarize from human feedback",
+          "authors": [
+            "Nisan Stiennon",
+            "Long Ouyang",
+            "Jeff Wu",
+            "Daniel M. Ziegler",
+            "Ryan Lowe",
+            "Chelsea Voss",
+            "Alec Radford",
+            "Dario Amodei",
+            "Paul Christiano"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "N. Stiennon et al., “Learning to summarize from human feedback,” arXiv:2009.01325v1, 2 September 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2009.01325v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "stiennon-2020-arxiv-record",
+            "stiennon-2020-arxiv-v1-full-text",
+            "stiennon-2020-arxiv-license",
+            "stiennon-2020-arxiv-v1-source-package",
+            "stiennon-2020-openai-publication",
+            "stiennon-2020-initial-release-repository"
+          ],
+          "notes": "The first 44-page public manuscript states that inference code and a model card are available but that the human-feedback dataset cannot yet be released. Its printed reward-model loss omits the leading negative sign added in version 3."
+        },
+        {
+          "id": "stiennon-2020-arxiv-v2-version",
+          "title": "Learning to summarize from human feedback",
+          "authors": [
+            "Nisan Stiennon",
+            "Long Ouyang",
+            "Jeff Wu",
+            "Daniel M. Ziegler",
+            "Ryan Lowe",
+            "Chelsea Voss",
+            "Alec Radford",
+            "Dario Amodei",
+            "Paul Christiano"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "N. Stiennon et al., “Learning to summarize from human feedback,” arXiv:2009.01325v2, 27 October 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2009.01325v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "stiennon-2020-arxiv-record",
+            "stiennon-2020-arxiv-v2-full-text",
+            "stiennon-2020-arxiv-license",
+            "stiennon-2020-arxiv-v2-source-package",
+            "stiennon-2020-feedback-dataset-release"
+          ],
+          "notes": "This 45-page revision packages the NeurIPS article and appendix, changes the release statement to a dataset with more than 64,000 comparisons, and retains the unnegated printed reward-model loss."
+        },
+        {
+          "id": "stiennon-2020-neurips-version",
+          "title": "Learning to summarize from human feedback",
+          "authors": [
+            "Nisan Stiennon",
+            "Long Ouyang",
+            "Jeff Wu",
+            "Daniel M. Ziegler",
+            "Ryan Lowe",
+            "Chelsea Voss",
+            "Alec Radford",
+            "Dario Amodei",
+            "Paul Christiano"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2020 article and supplement",
+          "language": "en",
+          "bibliography": {
+            "citation": "N. Stiennon et al., “Learning to summarize from human feedback,” in Advances in Neural Information Processing Systems 33, pp. 3008–3021, 2020.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Curran Associates, Inc.",
+            "volume": "33",
+            "pages": [
+              "3008-3021"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "stiennon-2020-neurips-record",
+            "stiennon-2020-neurips-full-text",
+            "stiennon-2020-neurips-supplement",
+            "stiennon-2020-feedback-dataset-release"
+          ],
+          "notes": "The canonical record supplies a 14-page main article and a separately distributed 31-page supplement whose visible folios run 15–45. The landing-page title uses “with human feedback,” while the PDF title uses “from human feedback.” The main article retains the loss-sign error corrected only in arXiv version 3."
+        },
+        {
+          "id": "stiennon-2020-arxiv-v3-version",
+          "title": "Learning to summarize from human feedback",
+          "authors": [
+            "Nisan Stiennon",
+            "Long Ouyang",
+            "Jeff Wu",
+            "Daniel M. Ziegler",
+            "Ryan Lowe",
+            "Chelsea Voss",
+            "Alec Radford",
+            "Dario Amodei",
+            "Paul Christiano"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "N. Stiennon et al., “Learning to summarize from human feedback,” arXiv:2009.01325v3, 15 February 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2009.01325v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2009.01325",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "stiennon-2020-arxiv-record",
+            "stiennon-2020-arxiv-v3-full-text",
+            "stiennon-2020-arxiv-license",
+            "stiennon-2020-arxiv-v3-source-package",
+            "stiennon-2020-release-license-clarification"
+          ],
+          "notes": "The latest 45-page preprint adds the missing leading negative sign to the pairwise reward-model loss on article p. 6. The audited technical substance is otherwise materially stable against version 2."
+        }
+      ],
+      "canonicalVersionId": "stiennon-2020-neurips-version",
+      "preferredSourceIds": [
+        "stiennon-2020-neurips-record",
+        "stiennon-2020-neurips-full-text",
+        "stiennon-2020-neurips-supplement"
+      ],
+      "sourceIds": [
+        "stiennon-2020-arxiv-record",
+        "stiennon-2020-arxiv-v1-full-text",
+        "stiennon-2020-arxiv-v2-full-text",
+        "stiennon-2020-arxiv-v3-full-text",
+        "stiennon-2020-arxiv-license",
+        "stiennon-2020-arxiv-v1-source-package",
+        "stiennon-2020-arxiv-v2-source-package",
+        "stiennon-2020-arxiv-v3-source-package",
+        "stiennon-2020-neurips-record",
+        "stiennon-2020-neurips-full-text",
+        "stiennon-2020-neurips-supplement",
+        "stiennon-2020-openai-publication",
+        "stiennon-2020-initial-release-repository",
+        "stiennon-2020-feedback-dataset-release",
+        "stiennon-2020-release-license-clarification"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Stiennon et al. turn pairwise judgments about English summaries into a learned scalar reward and use KL-regularized PPO to update a GPT-style policy at billion-parameter scale. The work is retained as the focused summarization bridge into later instruction-following RLHF, with evaluator scope, length confounding, reward over-optimization, and release boundaries kept visible."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "human-evaluated-summary-quality",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization"
+      ],
+      "significance": {
+        "beginner": "A model first learns to imitate human-written summaries, then a second model learns which of two summaries people prefer. Reinforcement learning improves the summarizer against that learned score while a tether to the supervised model limits how far it can drift.",
+        "expert": "The study fine-tunes 1.3B and 6.7B GPT-style decoders on filtered TL;DR data, fits pairwise reward models from 64,832 comparisons, and runs PPO with terminal reward, a log-ratio KL penalty, and a separate value network. Its strongest evidence is human preference under a researcher-defined labeler protocol; corrected-loss, length, domain-transfer, over-optimization, artifact, and rights boundaries remain version-specific."
+      },
+      "limitations": [
+        "The promoted result is a 24–48-token English summarization study on a heavily filtered, relationship-skewed Reddit distribution; it is not a general assistant or universal preference result.",
+        "Contractor judgments follow researcher-authored instructions and a small calibration process. Preference labels do not represent every reader, culture, use case, or affected group.",
+        "Human-feedback policies learned longer summaries. Length controls reduce the headline preference advantage, and CNN/DM transfer compares substantially different output-length distributions.",
+        "The learned reward is an imperfect proxy. Stronger optimization eventually makes the earlier reward model anti-correlate with fresh human judgments.",
+        "The study lacks an equal-cost supervised baseline built from equally curated high-quality demonstrations, so it does not isolate feedback format from annotation effort.",
+        "Reported results mix exploratory data rounds, changing policies, improved cleaning, and improved hyperparameters rather than one preregistered fixed pipeline.",
+        "The 6.7B PPO run required about 320 GPU-days and thousands of labeler hours; the released 1.3B artifacts do not reproduce the full 6.7B result.",
+        "The paper, software, feedback data, processed TL;DR corpus, original Reddit text, and CNN/DM material have distinct provenance and rights scopes."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "ArXiv version 3 corrects the missing negative sign in the pairwise reward-model loss; earlier preprints and the canonical proceedings article retain the erroneous printing."
+        },
+        {
+          "status": "open",
+          "note": "Exact end-to-end reconstruction of the 6.7B training result is not established by the released 1.3B inference package, feedback data, and paper hyperparameters.",
+          "resolutionCondition": "Versioned pretraining inputs, training code, full run manifests, contractor workflow records, and 6.7B model artifacts would be required."
+        }
+      ]
+    },
+    {
+      "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "title": "Training language models to follow instructions with human feedback",
+      "authors": [
+        "Long Ouyang",
+        "Jeff Wu",
+        "Xu Jiang",
+        "Diogo Almeida",
+        "Carroll L. Wainwright",
+        "Pamela Mishkin",
+        "Chong Zhang",
+        "Sandhini Agarwal",
+        "Katarina Slama",
+        "Alex Ray",
+        "John Schulman",
+        "Jacob Hilton",
+        "Fraser Kelton",
+        "Luke Miller",
+        "Maddie Simens",
+        "Amanda Askell",
+        "Peter Welinder",
+        "Paul Christiano",
+        "Jan Leike",
+        "Ryan Lowe"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "L. Ouyang et al., “Training Language Models to Follow Instructions with Human Feedback,” in Advances in Neural Information Processing Systems 35, pp. 27730–27744, 2022.",
+      "chronology": {
+        "orderingEventId": "ouyang-2022-openai-preprint-published",
+        "events": [
+          {
+            "id": "ouyang-2022-openai-preprint-published",
+            "kind": "online-publication",
+            "label": "OpenAI preprint published",
+            "date": {
+              "value": "2022-01-27",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "ouyang-2022-openai-publication",
+                "precision": "day",
+                "locator": "Official publication page dated 27 January 2022 and linked paper"
+              },
+              {
+                "sourceId": "ouyang-2022-release-repository",
+                "precision": "day",
+                "locator": "Commit-pinned 27 January 2022 paper link and release tree"
+              }
+            ],
+            "versionId": "ouyang-2022-openai-preprint-version",
+            "sourceIds": [
+              "ouyang-2022-openai-publication",
+              "ouyang-2022-openai-preprint-full-text",
+              "ouyang-2022-release-repository"
+            ]
+          },
+          {
+            "id": "ouyang-2022-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2022-03-04",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "ouyang-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, sole version posted 4 March 2022 at 07:04:42 UTC"
+              }
+            ],
+            "versionId": "ouyang-2022-arxiv-v1-version",
+            "sourceIds": [
+              "ouyang-2022-arxiv-record",
+              "ouyang-2022-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "ouyang-2022-neurips-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2022 proceedings publication",
+            "date": {
+              "value": "2022-12-06",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "ouyang-2022-neurips-record",
+                "precision": "day",
+                "locator": "Official NeurIPS record citation_publication_date metadata, 6 December 2022"
+              }
+            ],
+            "versionId": "ouyang-2022-neurips-version",
+            "sourceIds": [
+              "ouyang-2022-neurips-record",
+              "ouyang-2022-neurips-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "ouyang-2022-openai-preprint-version",
+          "title": "Training language models to follow instructions with human feedback",
+          "authors": [
+            "Long Ouyang",
+            "Jeff Wu",
+            "Xu Jiang",
+            "Diogo Almeida",
+            "Carroll L. Wainwright",
+            "Pamela Mishkin",
+            "Chong Zhang",
+            "Sandhini Agarwal",
+            "Katarina Slama",
+            "Alex Ray",
+            "John Schulman",
+            "Jacob Hilton",
+            "Fraser Kelton",
+            "Luke Miller",
+            "Maddie Simens",
+            "Amanda Askell",
+            "Peter Welinder",
+            "Paul Christiano",
+            "Jan Leike",
+            "Ryan Lowe"
+          ],
+          "kind": "preprint",
+          "label": "OpenAI January preprint",
+          "language": "en",
+          "bibliography": {
+            "citation": "L. Ouyang et al., “Training language models to follow instructions with human feedback,” OpenAI preprint, 27 January 2022.",
+            "venue": "OpenAI",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "ouyang-2022-openai-publication",
+            "ouyang-2022-openai-preprint-full-text",
+            "ouyang-2022-release-repository",
+            "ouyang-2022-model-card"
+          ],
+          "notes": "The first verified public paper is a 68-page author-hosted preprint linked from the dated 27 January publication page. The March arXiv text later adds the T0++ qualification and a navigation citation, revises TruthfulQA reporting, and standardizes Equation 2 notation; the two files are not byte-identical."
+        },
+        {
+          "id": "ouyang-2022-arxiv-v1-version",
+          "title": "Training language models to follow instructions with human feedback",
+          "authors": [
+            "Long Ouyang",
+            "Jeff Wu",
+            "Xu Jiang",
+            "Diogo Almeida",
+            "Carroll L. Wainwright",
+            "Pamela Mishkin",
+            "Chong Zhang",
+            "Sandhini Agarwal",
+            "Katarina Slama",
+            "Alex Ray",
+            "John Schulman",
+            "Jacob Hilton",
+            "Fraser Kelton",
+            "Luke Miller",
+            "Maddie Simens",
+            "Amanda Askell",
+            "Peter Welinder",
+            "Paul Christiano",
+            "Jan Leike",
+            "Ryan Lowe"
+          ],
+          "kind": "preprint",
+          "label": "Sole arXiv version",
+          "language": "en",
+          "bibliography": {
+            "citation": "L. Ouyang et al., “Training language models to follow instructions with human feedback,” arXiv:2203.02155v1, 4 March 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2203.02155v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2203.02155",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "ouyang-2022-arxiv-record",
+            "ouyang-2022-arxiv-v1-full-text",
+            "ouyang-2022-arxiv-license",
+            "ouyang-2022-arxiv-v1-source-package"
+          ],
+          "notes": "ArXiv records one 68-page revision only. It postdates the author-hosted release and contains substantive reporting and citation corrections relative to that January preprint."
+        },
+        {
+          "id": "ouyang-2022-neurips-version",
+          "title": "Training language models to follow instructions with human feedback",
+          "authors": [
+            "Long Ouyang",
+            "Jeff Wu",
+            "Xu Jiang",
+            "Diogo Almeida",
+            "Carroll L. Wainwright",
+            "Pamela Mishkin",
+            "Chong Zhang",
+            "Sandhini Agarwal",
+            "Katarina Slama",
+            "Alex Ray",
+            "John Schulman",
+            "Jacob Hilton",
+            "Fraser Kelton",
+            "Luke Miller",
+            "Maddie Simens",
+            "Amanda Askell",
+            "Peter Welinder",
+            "Paul Christiano",
+            "Jan Leike",
+            "Ryan Lowe"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2022 article and supplement",
+          "language": "en",
+          "bibliography": {
+            "citation": "L. Ouyang et al., “Training Language Models to Follow Instructions with Human Feedback,” in Advances in Neural Information Processing Systems 35, pp. 27730–27744, 2022.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Curran Associates, Inc.",
+            "volume": "35",
+            "pages": [
+              "27730-27744"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.52202/068431-2011",
+                "label": "Proceedings DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "ouyang-2022-neurips-record",
+            "ouyang-2022-neurips-full-text",
+            "ouyang-2022-neurips-supplement"
+          ],
+          "notes": "The canonical artifact is a 15-page main article plus a separately distributed 47-page supplement whose visible folios run 16–62. Technical locators use those article folios, not volume pp. 27730–27744."
+        }
+      ],
+      "canonicalVersionId": "ouyang-2022-neurips-version",
+      "preferredSourceIds": [
+        "ouyang-2022-neurips-record",
+        "ouyang-2022-neurips-full-text",
+        "ouyang-2022-neurips-supplement"
+      ],
+      "sourceIds": [
+        "ouyang-2022-openai-publication",
+        "ouyang-2022-openai-preprint-full-text",
+        "ouyang-2022-arxiv-record",
+        "ouyang-2022-arxiv-v1-full-text",
+        "ouyang-2022-arxiv-license",
+        "ouyang-2022-arxiv-v1-source-package",
+        "ouyang-2022-neurips-record",
+        "ouyang-2022-neurips-full-text",
+        "ouyang-2022-neurips-supplement",
+        "ouyang-2022-release-repository",
+        "ouyang-2022-model-card"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Ouyang et al. explicitly extend the demonstration–reward-model–PPO recipe from narrow text tasks to a diverse commercial prompt distribution and make GPT-3-family post-training a central instruction-following branch. The work is retained for the pipeline, human evaluation, regression-mitigation method, and unusually explicit account of whose preferences are represented—not as proof of universal alignment or safety."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization",
+        "labeler-scoped-instruction-alignment",
+        "pretraining-mix-regularized-policy-optimization"
+      ],
+      "significance": {
+        "beginner": "InstructGPT starts from GPT-3, learns from people-written examples, then learns from rankings of candidate answers. People preferred the tuned answers on the study’s held-out prompts, but the result reflects a specific mostly English evaluator and API distribution rather than a model that is always truthful, harmless, or aligned to everyone.",
+        "expert": "The work applies 16-epoch SFT, a shared 6B ranking model trained from K=4–9 response orderings, and KL-regularized PPO across 1.3B, 6B, and 175B policies. PPO-ptx adds weighted pretraining gradients to reduce capability regressions. Interpretation must preserve the January/arXiv/proceedings versions, user-disjoint prompt splits, labeler/reference-group scope, conditional safety results, deployed-model mismatch, private-data and artifact limits, and target-evidenced GPT-3 and Stiennon edges."
+      },
+      "limitations": [
+        "Fine-tuning data is more than 96% English and reflects prompts from a commercial API plus labeler-written bootstrapping examples; it is not a representative sample of global language use.",
+        "About forty screened contractors and the researchers who wrote their instructions define the learned preference signal. Their judgments cannot stand for every user, stakeholder, or affected group.",
+        "Held-out evaluators came from the same vendors and did not receive the screening test; agreement across that pool is not evidence of generalization to arbitrary populations.",
+        "The headline preference results use held-out prompts from the same source distribution and study-specific sampling, ranking, and baseline conditions. They are not universal task or intelligence comparisons.",
+        "Truthfulness, toxicity, bias, hallucination, and public-task measurements are partial proxies. Toxicity improvement depends on a respectful prompt, and the selected bias probes show no significant improvement.",
+        "PPO-ptx reduces but does not eliminate public-benchmark regressions and may reintroduce undesirable behavior present in pretraining data.",
+        "The models still follow some harmful requests, fabricate information, over-hedge, accept false premises, and struggle with multiple or exact constraints.",
+        "The API-default models used the same human-feedback data with a similar but different procedure; the paper checkpoints and deployed product models are not identical artifacts.",
+        "No public InstructGPT weights, full prompt/demonstration/ranking corpus, or end-to-end training implementation is supplied, and the companion repository has no express license."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The dated OpenAI paper and immutable release repository establish a 27 January 2022 public preprint before the sole arXiv posting on 4 March; the corpus orders the work by that earlier verified release."
+        },
+        {
+          "status": "open",
+          "note": "Exact correspondence between the paper’s experimental checkpoints and contemporaneous API deployments is not established; the official model card says the deployed models used a slightly different procedure.",
+          "resolutionCondition": "A versioned deployment manifest mapping model identifiers, training procedure, data snapshot, and checkpoint hashes would be required."
+        }
+      ]
+    },
+    {
       "id": "hoffmann-2022-training-compute-optimal-language-models",
       "title": "Training Compute-Optimal Large Language Models",
       "authors": [
@@ -14027,7 +14671,9 @@
         "brown-2020-autoregressive-objective-and-task-limitations",
         "brown-2020-calibration-interpretability-and-inference-boundary",
         "brown-2020-internal-reporting-discrepancies",
-        "hoffmann-2022-chinchilla-architecture-and-training"
+        "hoffmann-2022-chinchilla-architecture-and-training",
+        "stiennon-2020-gpt3-style-model-family-and-sft",
+        "ouyang-2022-gpt3-initialization-and-sft"
       ],
       "uncertainties": []
     },
@@ -14943,6 +15589,132 @@
           "note": "The paper supplies estimated compute and one order-of-magnitude inference example, not measured training energy, carbon emissions, or a lifecycle assessment."
         }
       ]
+    },
+    {
+      "id": "human-evaluated-summary-quality",
+      "name": "Human-evaluated summary quality",
+      "kind": "objective",
+      "description": "Treat informed human judgments of accuracy, coverage, coherence, and overall usefulness as the target for abstractive summarization while keeping evaluator instructions, output length, domain, and reference quality explicit.",
+      "claimIds": [
+        "stiennon-2020-likelihood-and-metric-misalignment",
+        "stiennon-2020-tldr-corpus-task-and-split",
+        "stiennon-2020-tldr-preference-results",
+        "stiennon-2020-length-and-quality-axis-boundary",
+        "stiennon-2020-cnndm-transfer-boundary",
+        "stiennon-2020-reward-model-and-metric-validity",
+        "stiennon-2020-cost-and-baseline-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "supervised-demonstration-fine-tuning",
+      "name": "Supervised demonstration fine-tuning",
+      "kind": "mechanism",
+      "description": "Update a pretrained causal language model on human-written task demonstrations so it produces a useful initial policy before preference modeling or policy optimization.",
+      "claimIds": [
+        "stiennon-2020-gpt3-style-model-family-and-sft",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-gpt3-initialization-and-sft",
+        "ouyang-2022-instructgpt-preference-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "human-preference-comparison-data",
+      "name": "Human preference comparison data",
+      "kind": "mechanism",
+      "description": "Collect pairwise choices or within-prompt rankings over model outputs so relative judgments can supervise a preference predictor without requiring a handcrafted scalar quality metric.",
+      "claimIds": [
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-labeler-protocol-and-agreement",
+        "stiennon-2020-pairwise-reward-model-objective",
+        "stiennon-2020-artifact-data-and-rights-boundary",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-labeler-selection-and-agreement",
+        "ouyang-2022-ranked-preference-reward-model",
+        "ouyang-2022-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "learned-human-preference-reward-model",
+      "name": "Learned human-preference reward model",
+      "kind": "mechanism",
+      "description": "Fit a scalar model whose reward differences predict which response a human evaluator prefers, then use that learned proxy for evaluation or policy optimization.",
+      "claimIds": [
+        "stiennon-2020-version-release-and-loss-boundary",
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-pairwise-reward-model-objective",
+        "stiennon-2020-reward-model-scaling-and-overoptimization",
+        "stiennon-2020-reward-model-and-metric-validity",
+        "stiennon-2020-artifact-data-and-rights-boundary",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-ranked-preference-reward-model",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "kl-regularized-preference-policy-optimization",
+      "name": "KL-regularized preference policy optimization",
+      "kind": "mechanism",
+      "description": "Optimize a language-model policy against learned preference reward while penalizing log-probability divergence from a supervised reference policy to limit mode collapse and unsupported reward extrapolation.",
+      "claimIds": [
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-kl-regularized-ppo-and-value-function",
+        "stiennon-2020-tldr-preference-results",
+        "stiennon-2020-reward-model-scaling-and-overoptimization",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "ouyang-2022-instructgpt-preference-results",
+        "ouyang-2022-public-task-regression-and-ppo-ptx"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "reward-model-overoptimization",
+      "name": "Reward-model over-optimization",
+      "kind": "problem",
+      "description": "Policy search can exploit errors in a learned reward proxy so predicted reward continues rising after fresh human preference plateaus or declines.",
+      "claimIds": [
+        "stiennon-2020-likelihood-and-metric-misalignment",
+        "stiennon-2020-reward-model-scaling-and-overoptimization",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "labeler-scoped-instruction-alignment",
+      "name": "Labeler-scoped instruction alignment",
+      "kind": "objective",
+      "description": "Train responses toward inferred user intent under helpfulness, truthfulness, and harmlessness guidance while explicitly treating the result as preferences of a particular labeler, researcher, prompt, and deployment context rather than universal human values.",
+      "claimIds": [
+        "ouyang-2022-version-and-deployment-boundary",
+        "ouyang-2022-labeler-scoped-alignment-objective",
+        "ouyang-2022-api-prompt-data-and-splits",
+        "ouyang-2022-labeler-selection-and-agreement",
+        "ouyang-2022-api-evaluation-design",
+        "ouyang-2022-instructgpt-preference-results",
+        "ouyang-2022-instruction-following-and-hallucination-results",
+        "ouyang-2022-truthfulness-toxicity-and-bias-boundary",
+        "ouyang-2022-qualitative-generalization-and-failure-boundary",
+        "ouyang-2022-alignment-population-and-misuse-boundary",
+        "ouyang-2022-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "pretraining-mix-regularized-policy-optimization",
+      "name": "Pretraining-mix-regularized policy optimization",
+      "kind": "mechanism",
+      "description": "Accumulate a weighted next-token likelihood gradient from pretraining-distribution text alongside PPO gradients to reduce capability regressions during preference optimization.",
+      "claimIds": [
+        "ouyang-2022-version-and-deployment-boundary",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "ouyang-2022-public-task-regression-and-ppo-ptx",
+        "ouyang-2022-truthfulness-toxicity-and-bias-boundary"
+      ],
+      "uncertainties": []
     },
     {
       "id": "fixed-compute-model-data-allocation",
@@ -22149,6 +22921,613 @@
         "version-boundary"
       ],
       "accessNote": "The 11 June 2020 private-beta service announcement describes controlled hosted access rather than an open model release. The product state is not a paper version and does not support promoted paper claims or lineage."
+    },
+    {
+      "id": "stiennon-2020-arxiv-record",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "arXiv record for Learning to summarize from human feedback",
+      "url": "https://arxiv.org/abs/2009.01325",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v1-version",
+        "stiennon-2020-arxiv-v2-version",
+        "stiennon-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission ledger records v1 on 2 September 2020, v2 on 27 October 2020, and v3 on 15 February 2022 with UTC timestamps. It identifies NeurIPS 2020 but does not collapse the proceedings artifact into an arXiv revision."
+    },
+    {
+      "id": "stiennon-2020-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable Stiennon arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2009.01325v1",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 44
+      },
+      "accessNote": "The complete 44-page ordering manuscript has SHA-256 d31a0ea508665f9ff5ef59a4af24e6d6784550e3647b19408adc21e390ffd0d5. It contains the pre-dataset-release footnote and the unnegated reward-loss printing."
+    },
+    {
+      "id": "stiennon-2020-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable Stiennon arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2009.01325v2",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 45
+      },
+      "accessNote": "The complete 45-page revision has SHA-256 0a6e780103fbf38fd95a9acef561dba97930118fce9764d563adf752222137c0. It carries the released-data update and the uncorrected reward-loss sign."
+    },
+    {
+      "id": "stiennon-2020-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable Stiennon arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/2009.01325v3",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 45
+      },
+      "accessNote": "The complete 45-page revision has SHA-256 6bb15be37338385cae1d910bcb46bb2cc99e599918a0625c9c1d0a57f90e5224. It supplies the corrected negative sign in the pairwise reward-model loss."
+    },
+    {
+      "id": "stiennon-2020-arxiv-license",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the Stiennon record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v1-version",
+        "stiennon-2020-arxiv-v2-version",
+        "stiennon-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The terms grant arXiv a perpetual non-exclusive distribution right. They are not general reuse terms for the paper, code, model, comparison data, Reddit text, or CNN/DM material."
+    },
+    {
+      "id": "stiennon-2020-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable Stiennon arXiv version 1 source package",
+      "url": "https://arxiv.org/src/2009.01325v1",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 123 publication-source and figure entries and no end-to-end training package."
+    },
+    {
+      "id": "stiennon-2020-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable Stiennon arXiv version 2 source package",
+      "url": "https://arxiv.org/src/2009.01325v2",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 123 publication-source and figure entries and exposes the released-data textual revision."
+    },
+    {
+      "id": "stiennon-2020-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable Stiennon arXiv version 3 source package",
+      "url": "https://arxiv.org/src/2009.01325v3",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "stiennon-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 61 publication-source and figure entries and exposes the one-line reward-loss sign correction."
+    },
+    {
+      "id": "stiennon-2020-neurips-record",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "NeurIPS proceedings record for Learning to summarize with human feedback",
+      "url": "https://proceedings.neurips.cc/paper/2020/hash/1f89885d556929e98d3ef9b86448f951-Abstract.html",
+      "accessDate": "2026-08-31",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "stiennon-2020-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official volume record uses “with human feedback” in its page title, links a PDF titled “from human feedback,” and supplies volume pp. 3008–3021 without an article DOI or exact publication day."
+    },
+    {
+      "id": "stiennon-2020-neurips-full-text",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Canonical NeurIPS article for Learning to summarize from human feedback",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/1f89885d556929e98d3ef9b86448f951-Paper.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "stiennon-2020-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 14
+      },
+      "accessNote": "The complete 14-page canonical article has SHA-256 684358e00bc065438b9e54f6af3dcfa6badbc13aeb50ab727ab5cc4b9850fb84. Article folios control locators; the reward-model loss lacks the negative sign later added to arXiv v3."
+    },
+    {
+      "id": "stiennon-2020-neurips-supplement",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Official NeurIPS supplement for Learning to summarize from human feedback",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/1f89885d556929e98d3ef9b86448f951-Supplemental.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "stiennon-2020-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 15,
+        "pageEnd": 45
+      },
+      "accessNote": "The complete 31-page supplement has SHA-256 d4a6b5e5c98bae682e875a6a2dded385cd591aa6c628fb91d549423883cc4f28. Its visible article folios continue from 15 through 45."
+    },
+    {
+      "id": "stiennon-2020-openai-publication",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "OpenAI publication for Learning to summarize with human feedback",
+      "url": "https://openai.com/index/learning-to-summarize-with-human-feedback/",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "stiennon-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The dated 4 September 2020 author publication summarizes the method and results and links the paper, samples, model card, and release repository. Its rounded 12B language is not used for exact model-size claims."
+    },
+    {
+      "id": "stiennon-2020-initial-release-repository",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable initial summarization release tree with model card",
+      "url": "https://github.com/openai/summarize-from-feedback/tree/820485ce3b83fc7bf75e487abfe04f61e3c47887",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "stiennon-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 2 September 2020 tree supplies inference and evaluation code, a model card, the 1.3B model release path, and a Modified MIT license; it does not release the 6.7B weights or full training environment."
+    },
+    {
+      "id": "stiennon-2020-feedback-dataset-release",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable feedback-dataset release commit",
+      "url": "https://github.com/openai/summarize-from-feedback/commit/065ea4e1607a5822a3d78cc13a8cec63a2919c1b",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "stiennon-2020-arxiv-v2-version",
+        "stiennon-2020-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 21 October 2020 commit documents 64,832 TL;DR comparisons and TL;DR/CNN-DM evaluation data, matching the later v2 and proceedings release state."
+    },
+    {
+      "id": "stiennon-2020-release-license-clarification",
+      "relatedWorkIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "title": "Immutable summarization code and feedback-data license clarification",
+      "url": "https://raw.githubusercontent.com/openai/summarize-from-feedback/56b6bb613a1b58a8aa7a5e29266f65c7b980ee48/LICENSE",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "stiennon-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned Modified MIT text explicitly covers repository software and the feedback dataset, excludes the processed Reddit TL;DR dataset, and points to the source dataset's separate attribution terms."
+    },
+    {
+      "id": "ouyang-2022-openai-publication",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "OpenAI publication for Aligning language models to follow instructions",
+      "url": "https://openai.com/index/instruction-following/",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "ouyang-2022-openai-preprint-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official page is dated 27 January 2022, links the author-hosted paper, and describes API deployment. Product statements are kept separate from the paper checkpoints because the model card says deployed models used a slightly different procedure."
+    },
+    {
+      "id": "ouyang-2022-openai-preprint-full-text",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Author-hosted January InstructGPT preprint",
+      "url": "https://cdn.openai.com/papers/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "ouyang-2022-openai-preprint-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 68
+      },
+      "accessNote": "The complete 68-page public preprint has SHA-256 288651c4b12132fc16bccff539996e10629bcbd5ef452734cae018e88b6419a5. Direct text comparison establishes substantive differences from the March arXiv revision."
+    },
+    {
+      "id": "ouyang-2022-arxiv-record",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "arXiv record for Training language models to follow instructions with human feedback",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "ouyang-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The submission ledger records one version posted 4 March 2022 at 07:04:42 UTC. It does not record the earlier author-hosted preprint as an arXiv revision."
+    },
+    {
+      "id": "ouyang-2022-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Immutable InstructGPT arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2203.02155v1",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "ouyang-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 68
+      },
+      "accessNote": "The sole 68-page arXiv PDF has SHA-256 c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98. It contains corrected TruthfulQA framing and other textual changes relative to the January author preprint."
+    },
+    {
+      "id": "ouyang-2022-arxiv-license",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the InstructGPT record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "ouyang-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The terms grant arXiv a non-exclusive distribution right and do not license the companion repository, prompts, labels, model weights, code, or deployment artifacts."
+    },
+    {
+      "id": "ouyang-2022-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Immutable InstructGPT arXiv source package",
+      "url": "https://arxiv.org/src/2203.02155v1",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "ouyang-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive contains 33 publication-source and figure entries. It is not a training implementation, prompt corpus, label release, run manifest, or model checkpoint package."
+    },
+    {
+      "id": "ouyang-2022-neurips-record",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "NeurIPS proceedings record for Training language models to follow instructions with human feedback",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/b1efde53be364a73914f58805a001731-Abstract.html",
+      "accessDate": "2026-08-31",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "ouyang-2022-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record binds the work to NeurIPS 2022, volume 35, Main Conference Track, pp. 27730–27744, DOI 10.52202/068431-2011, and publication-date metadata for 6 December 2022."
+    },
+    {
+      "id": "ouyang-2022-neurips-full-text",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Canonical NeurIPS article for Training language models to follow instructions with human feedback",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Paper-Conference.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "ouyang-2022-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 15
+      },
+      "accessNote": "The complete 15-page canonical article has SHA-256 4ed5ef926ed5ad385d30ee4319f9b13650da29a3f015bc4e888bd669ee4670e5. Article folios, rather than volume pagination, control claim locators."
+    },
+    {
+      "id": "ouyang-2022-neurips-supplement",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Official NeurIPS supplement for Training language models to follow instructions with human feedback",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Supplemental-Conference.pdf",
+      "accessDate": "2026-08-31",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "ouyang-2022-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 16,
+        "pageEnd": 62
+      },
+      "accessNote": "The complete 47-page supplement has SHA-256 894590b17f9580c304dcbb48265546b7f1305e2da7c9e649921e48a826d3b5a4. Its visible article folios continue from 16 through 62."
+    },
+    {
+      "id": "ouyang-2022-release-repository",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Immutable January InstructGPT release repository",
+      "url": "https://github.com/openai/following-instructions-human-feedback/tree/5c0534c78136809ab0118c5c1b74d159befa2467",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "ouyang-2022-openai-preprint-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 27 January tree contains a README, model card, and eight CSV sample files for automatic evaluations. It has no LICENSE, model weights, full prompt or label data, or training code."
+    },
+    {
+      "id": "ouyang-2022-model-card",
+      "relatedWorkIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "title": "Commit-pinned January InstructGPT model card",
+      "url": "https://raw.githubusercontent.com/openai/following-instructions-human-feedback/5c0534c78136809ab0118c5c1b74d159befa2467/model-card.md",
+      "accessDate": "2026-08-31",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "ouyang-2022-openai-preprint-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The January 2022 model card states that InstructGPT initializes from GPT-3, describes the labeler and data envelope, and says API-deployed models use the same feedback data with a slightly different procedure."
     },
     {
       "id": "hoffmann-2022-arxiv-record",
@@ -42594,6 +43973,1203 @@
       "checkedDate": "2026-08-30"
     },
     {
+      "id": "stiennon-2020-version-release-and-loss-boundary",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "learned-human-preference-reward-model"
+      ],
+      "statement": "The work has three arXiv revisions and a canonical NeurIPS article-plus-supplement. Version 1 says the preference dataset is not yet released; version 2 and the proceedings record a dataset with more than 64,000 comparisons; version 3 alone corrects the pairwise reward-model loss by adding the leading negative sign. The proceedings landing title says “with human feedback,” while every audited PDF says “from human feedback.”",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Original release statement and uncorrected loss",
+            "section": "Title page footnote; 3.4 Models",
+            "pageStart": 1,
+            "pageEnd": 6
+          },
+          "support": "The ordering manuscript says the feedback data cannot yet be released and prints the loss without a leading minus sign."
+        },
+        {
+          "sourceId": "stiennon-2020-arxiv-v2-full-text",
+          "locator": {
+            "label": "Released-data update and uncorrected loss",
+            "section": "Title page footnote; 3.4 Models",
+            "pageStart": 1,
+            "pageEnd": 6
+          },
+          "support": "Version 2 announces the released comparison data while retaining the unnegated loss."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-record",
+          "locator": {
+            "label": "Proceedings landing-title boundary",
+            "section": "Official proceedings record",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The publisher record uses “with human feedback” while linking the canonical PDF titled “from human feedback.”"
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Canonical title, released-data footnote, and uncorrected loss",
+            "section": "Title page footnote; 3.4 Models",
+            "pageStart": 1,
+            "pageEnd": 6
+          },
+          "support": "The canonical PDF uses “from,” announces the released comparison data, and retains the unnegated loss."
+        },
+        {
+          "sourceId": "stiennon-2020-arxiv-v3-full-text",
+          "locator": {
+            "label": "Corrected pairwise reward loss",
+            "section": "3.4 Models",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The latest revision prints the negative log-likelihood form with a leading minus sign."
+        }
+      ],
+      "limitations": [
+        "The title difference is a publisher-record metadata boundary, not evidence of a second paper."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-likelihood-and-metric-misalignment",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-evaluated-summary-quality",
+        "reward-model-overoptimization"
+      ],
+      "statement": "The paper distinguishes maximizing demonstration likelihood or ROUGE from the desired behavior of producing summaries that informed evaluators judge accurate, coherent, well-covered, and useful. Likelihood places mass on low-quality demonstrations, sampling shifts the generated distribution, and automatic overlap metrics need not preserve human ranking as policies improve.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Motivation and metric-proxy boundary",
+            "section": "1 Introduction; 4.4 Analyzing automatic metrics",
+            "pageStart": 1,
+            "pageEnd": 9
+          },
+          "support": "The article states the objective mismatch and later measures loss of agreement between automatic metrics and human preferences."
+        }
+      ],
+      "limitations": [
+        "This is an empirical argument within English summarization, not proof that human ratings are noiseless or that likelihood and ROUGE are never useful."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-comparison-reward-model-ppo-pipeline",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "statement": "Starting from a supervised TL;DR policy, the procedure samples competing summaries, asks a human to choose the better one, trains a scalar reward model from those comparisons, and updates the policy with PPO against that learned reward. Data collection and model training can repeat, although the actual project changed procedures while accumulating labels rather than following a fixed loop exactly.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Three-step preference-learning pipeline",
+            "section": "3.1 High-level methodology",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "figure": "2"
+          },
+          "support": "The section and Figure 2 specify comparison collection, reward-model fitting, and PPO policy optimization, then qualify the actual iteration history."
+        }
+      ],
+      "limitations": [
+        "The diagram is a methodological abstraction; Appendix C.6 documents exploratory policy mixtures, cleaning, and hyperparameter changes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-tldr-corpus-task-and-split",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-evaluated-summary-quality"
+      ],
+      "statement": "The supervised TL;DR corpus contains 123,169 filtered Reddit posts with reference summaries restricted to 24–48 tokens and about five percent held out; development used 1,913 validation articles excluded from reported evaluation. PPO could draw from a broader 287,790-post body-filtered pool because it did not require references. Relationships is 54.25% of the supervised training set, and roughly two thirds concerns relationships or advice.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Main TL;DR task and corpus envelope",
+            "section": "3.2 Datasets and task",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The main article gives the 123,169 total, summary-length filter, held-out share, and evaluator-defined under-48-token task."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "Filtering, broader PPO pool, development exclusion, and topic distribution",
+            "section": "A TL;DR dataset details",
+            "pageStart": 16,
+            "pageEnd": 16,
+            "table": "2"
+          },
+          "support": "The appendix prints both corpus sizes, the 1,913-article development boundary, Table 2, and the relationship-domain caution."
+        }
+      ],
+      "limitations": [
+        "Filtering removes duplicates and selected topics and is not a neutral sample of Reddit or summarization use."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-labeler-protocol-and-agreement",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data"
+      ],
+      "statement": "Contractors from Upwork, Scale, and Lionbridge were paid hourly, onboarded against researcher judgments, wrote a naive interpretation before viewing each post, expressed pairwise preference on a nine-point confidence scale, and received continuing calibration. On the specified 1.3B-supervised subset, labeler–researcher agreement is 77% ±2% and researcher–researcher agreement 73% ±4%; training-corpus labeler–labeler agreement is 72%, with usually one label per comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Offline collection and headline agreement",
+            "section": "3.3 Collecting human feedback",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The main article describes the vendors, offline batches, continuing communication, and headline agreement values."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "Onboarding, comparison interface, calibration, and agreement scope",
+            "section": "C.1–C.3 Human data collection details",
+            "pageStart": 19,
+            "pageEnd": 20
+          },
+          "support": "The supplement specifies paid onboarding, naive interpretations, the confidence scale, shared calibration fraction, label multiplicity, and agreement denominators."
+        }
+      ],
+      "limitations": [
+        "Agreement measures task consistency under researcher-authored instructions; they do not establish universal preference agreement."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-gpt3-style-model-family-and-sft",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "supervised-demonstration-fine-tuning"
+      ],
+      "statement": "The study uses GPT-3-style Transformer decoders at 1.3B and 6.7B parameters for its human-feedback experiments. Pretrained causal models are first fine-tuned for one epoch to predict filtered human TL;DRs; those supervised policies serve as baselines, candidate generators, and initializations for the policy and reward model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Model family and supervised-policy roles",
+            "section": "3.4 Models",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The article names the GPT-3-style decoder family, model sizes, pretraining objective, supervised fine-tuning, and initialization roles."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "Architecture and supervised-training settings",
+            "section": "B.1 Hyperparameters",
+            "pageStart": 17,
+            "pageEnd": 18
+          },
+          "support": "The supplement supplies learned positions, BPE, optimizer, mixed-precision boundary, one-epoch SFT, learning rates, and batch size."
+        }
+      ],
+      "limitations": [
+        "The 1.3B and 6.7B models are GPT-3-style family members, not the 175B GPT-3 checkpoint evaluated by Brown et al."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-pairwise-reward-model-objective",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model"
+      ],
+      "statement": "A supervised summarizer plus a randomly initialized scalar head maps each post–summary pair to a reward. The corrected objective minimizes the negative log sigmoid of the preferred-minus-rejected reward difference, so that difference represents preference log odds; after training, reference-summary rewards are shifted to mean zero.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-arxiv-v3-full-text",
+          "locator": {
+            "label": "Corrected pairwise reward objective and normalization",
+            "section": "3.4 Models",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "Version 3 supplies the corrected loss, reward definition, scalar head, and reference-mean normalization."
+        }
+      ],
+      "limitations": [
+        "Earlier paper versions print the expression without the leading minus; they cannot support the minimization form."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-kl-regularized-ppo-and-value-function",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "statement": "PPO treats a full-summary reward-model score as terminal reward and subtracts beta times the generated-summary log-probability ratio against the supervised policy. The KL term encourages exploration and limits distribution shift. The value Transformer has separate parameters, starts from the reward model, and the main runs use gamma=1, lambda=.95, four optimization epochs per rollout batch, beta=.05, and one million episodes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "KL-regularized terminal reward and separate value network",
+            "section": "3.4 Models",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The main article prints the reward, explains both KL roles, and specifies separate policy/value parameters and initialization."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "Main PPO hyperparameters",
+            "section": "B.1 Hyperparameters",
+            "pageStart": 17,
+            "pageEnd": 18
+          },
+          "support": "The appendix gives gamma, lambda, epochs, learning rates, beta, batch sizes, and one-million-episode horizon."
+        }
+      ],
+      "limitations": [
+        "The log-ratio term is evaluated on sampled sequences and bounds divergence only under the study's training and sampling conditions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-tldr-preference-results",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-evaluated-summary-quality",
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "statement": "Against TL;DR references, the 1.3B human-feedback policy records 61% raw preference versus 43% for a roughly ten-times-larger 12.9B supervised policy; both human-feedback sizes exceed reference preference, and the 6.7B policy exceeds the 1.3B policy. These are evaluator preferences under the paper's deterministic-sampling and reference-comparison protocol, not a common automatic metric.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "TL;DR reference-preference results",
+            "section": "Figure 1; 4.1 Summarizing Reddit posts",
+            "pageStart": 2,
+            "pageEnd": 6,
+            "figure": "1"
+          },
+          "support": "Figure 1 and Section 4.1 supply the model-size rows, preference comparisons, one-standard-error bars, and 61-versus-43 statement."
+        }
+      ],
+      "limitations": [
+        "Human-written TL;DRs are noisy task references rather than an upper bound on carefully produced human summaries."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-length-and-quality-axis-boundary",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-evaluated-summary-quality"
+      ],
+      "statement": "Human-feedback policies generate longer summaries, so output length confounds preference. Length control lowers the 6.7B policy's reference preference from about 70% to about 65% and explains roughly one third of its advantage over 6.7B supervision. On separate seven-point ratings, the 6.7B policy receives 7/7 overall quality on 45% of samples, versus 20% for 6.7B supervision and 23% for references, with gains across coverage, accuracy, coherence, and overall quality.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Length-controlled preference and four-axis ratings",
+            "section": "Figure 1; 4.1 Summarizing Reddit posts",
+            "pageStart": 2,
+            "pageEnd": 7
+          },
+          "support": "The article reports the controlled preference, explains the length confound, and gives the 7/7 rates and quality axes."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "Length-control regression details",
+            "section": "F Controlling for summary length",
+            "pageStart": 30,
+            "pageEnd": 30
+          },
+          "support": "The appendix describes the length-only regression and controlled policy coefficients."
+        }
+      ],
+      "limitations": [
+        "The length regression is an adjustment, not a randomized intervention that isolates every quality difference."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-cnndm-transfer-boundary",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-evaluated-summary-quality"
+      ],
+      "statement": "Without CNN/DailyMail fine-tuning, the Reddit-trained human-feedback models outperform Reddit-supervised and pretraining-only transfers on human quality ratings. At similar lengths, the 6.7B feedback policy nearly matches the 6.7B CNN/DM-supervised model, but the transferred outputs average roughly half as many tokens and the distributions have little length overlap.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Cross-domain transfer and length mismatch",
+            "section": "4.2 Transfer to summarizing news articles",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The section and Figure 4 report transfer quality, absence of news-specific tuning, and the output-length comparison."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "CNN/DM length-controlled comparison",
+            "section": "F Controlling for summary length",
+            "pageStart": 30,
+            "pageEnd": 30,
+            "table": "14"
+          },
+          "support": "Table 14 supplies average lengths and controlled quality estimates."
+        }
+      ],
+      "limitations": [
+        "This is transfer within English summarization after broad web pretraining, not zero-exposure domain adaptation or a like-for-like length comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-reward-model-scaling-and-overoptimization",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization"
+      ],
+      "statement": "Across reward models from 160M to 13B parameters and 8,000 to 64,000 comparisons, doubling data adds about 1.1 percentage points of validation accuracy and doubling model size about 1.8 points. With an earlier rm3, light PPO optimization improves fresh human preference, but stronger optimization creates a growing reward–human gap and eventually anti-correlates with human judgments.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Reward scaling and over-optimization",
+            "section": "4.3 Understanding the reward model",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "figure": "5–6"
+          },
+          "support": "Figures 5 and 6 and surrounding text report the scaling slopes and the nonmonotonic human-preference response."
+        }
+      ],
+      "limitations": [
+        "The over-optimization curve uses an earlier reward model, and the scaling slopes are empirical within the sampled size and data range."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-reward-model-and-metric-validity",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "learned-human-preference-reward-model",
+        "human-evaluated-summary-quality"
+      ],
+      "statement": "On CNN/DM comparisons, 1.3B and 6.7B reward models agree with labelers 62.4% and 66.5% of the time, while inter-labeler agreement is 66.9%. The 6.7B model identifies original summaries over role-reversed perturbations about 97%, yet retains length and artificial-pattern failures. ROUGE agreement falls from roughly 57% on supervised-policy comparisons to about chance on feedback-policy comparisons, while the reward model remains above chance near 62%.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Reward validation and metric agreement",
+            "section": "4.3–4.4",
+            "pageStart": 8,
+            "pageEnd": 9
+          },
+          "support": "The article reports CNN/DM agreement, edit and reversal probes, ROUGE erosion, and reward-model agreement."
+        },
+        {
+          "sourceId": "stiennon-2020-neurips-supplement",
+          "locator": {
+            "label": "Detailed validation and agreement matrices",
+            "section": "G.6–G.7",
+            "pageStart": 34,
+            "pageEnd": 38
+          },
+          "support": "Tables 17–23 provide the perturbation, human, reward, ROUGE, length, copying, and log-probability comparisons."
+        }
+      ],
+      "limitations": [
+        "Agreement on selected comparisons and synthetic perturbations does not establish calibrated reward outside the sampled tasks and policies."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-cost-and-baseline-boundary",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-evaluated-summary-quality"
+      ],
+      "statement": "Fine-tuning the 6.7B policy with reinforcement learning required about 320 GPU-days, and the comparison training set consumed thousands of labeler hours plus substantial researcher calibration time. The study did not collect an equal-budget set of high-quality demonstrations for a supervised comparison, so it cannot separate comparison-based reward learning from the amount and curation of human effort.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-neurips-full-text",
+          "locator": {
+            "label": "Compute, annotation cost, and missing equal-budget baseline",
+            "section": "5 Discussion",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "The discussion states the GPU-day and labeler-hour costs and identifies the absent demonstration-data ablation."
+        }
+      ],
+      "limitations": [
+        "GPU-days omit hardware specification and full pretraining cost and cannot be converted into a current energy or monetary estimate from the paper alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "stiennon-2020-artifact-data-and-rights-boundary",
+      "workId": "stiennon-2020-learning-to-summarize-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model"
+      ],
+      "statement": "The official release supplies inference/evaluation code, a model card, 1.3B supervised, reward, and PPO model paths, 64,832 TL;DR comparisons, and TL;DR/CNN-DM evaluation labels. It does not release the 6.7B weights or a complete pretraining and training environment. The pinned Modified MIT text covers repository software and feedback data but excludes the processed Reddit TL;DR corpus; the paper's separate arXiv grant authorizes arXiv to distribute the article rather than granting general reuse.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "stiennon-2020-initial-release-repository",
+          "locator": {
+            "label": "Initial code, model, and model-card tree",
+            "section": "Repository tree; README; model_card.md",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The immutable tree establishes released inference assets, the 1.3B model scope, and the absent 6.7B model."
+        },
+        {
+          "sourceId": "stiennon-2020-feedback-dataset-release",
+          "locator": {
+            "label": "Feedback dataset manifest",
+            "section": "README dataset-release diff",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The commit establishes the 64,832-comparison and evaluation-data release."
+        },
+        {
+          "sourceId": "stiennon-2020-release-license-clarification",
+          "locator": {
+            "label": "Software and feedback-data license scope",
+            "section": "Complete LICENSE",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned license names code and feedback data and explicitly excludes processed TL;DR data."
+        },
+        {
+          "sourceId": "stiennon-2020-arxiv-license",
+          "locator": {
+            "label": "Paper distribution-rights boundary",
+            "section": "License terms",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The arXiv license is a non-exclusive distribution grant rather than a blanket artifact license."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is limited to official records inspected on 31 August 2026 and does not exclude private or independent assets."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Original Reddit posts and CNN/DM material retain source-specific rights not resolved by the repository license.",
+          "resolutionCondition": "A complete item-level provenance and rights manifest would be required."
+        }
+      ],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-version-and-deployment-boundary",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment",
+        "pretraining-mix-regularized-policy-optimization"
+      ],
+      "statement": "A 68-page OpenAI preprint was public on 27 January 2022, before the sole 68-page arXiv revision on 4 March and the canonical 15-page NeurIPS article plus 47-page supplement. The arXiv text adds reporting, citation, and notation corrections relative to January. The companion model card says API-deployed models used the same feedback data but a slightly different procedure, so the measured paper checkpoints are not identified as the API-default artifacts.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-openai-publication",
+          "locator": {
+            "label": "Dated paper and deployment announcement",
+            "section": "Complete publication page",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The official page establishes the 27 January public paper link and contemporaneous API product statement."
+        },
+        {
+          "sourceId": "ouyang-2022-openai-preprint-full-text",
+          "locator": {
+            "label": "First public paper evidence envelope",
+            "section": "Complete preprint",
+            "pageStart": 1,
+            "pageEnd": 68
+          },
+          "support": "The author-hosted full text supplies the January paper state."
+        },
+        {
+          "sourceId": "ouyang-2022-arxiv-v1-full-text",
+          "locator": {
+            "label": "Corrected arXiv evidence envelope",
+            "section": "Complete preprint",
+            "pageStart": 1,
+            "pageEnd": 68
+          },
+          "support": "The sole arXiv text exposes changes relative to January, including T0++, TruthfulQA, citation, and notation updates."
+        },
+        {
+          "sourceId": "ouyang-2022-model-card",
+          "locator": {
+            "label": "Paper-versus-deployment boundary",
+            "section": "Model version",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned model card states that deployed models use the same data with a slightly different procedure."
+        }
+      ],
+      "limitations": [
+        "The official product page is release context, not evidence that every product statement applies to the canonical paper checkpoints."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-labeler-scoped-alignment-objective",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "The paper operationalizes alignment as helpfulness, truthfulness, and harmlessness with respect to inferred user intent, while explicitly stating that its actual target is a specific reference group: contractor demonstrations and preferences shaped by researcher instructions and by API-customer prompts. It does not claim to identify universal human values or the uniquely correct preference source.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Operational alignment definition and scope",
+            "section": "1 Introduction; 3.5 Evaluation",
+            "pageStart": 2,
+            "pageEnd": 6
+          },
+          "support": "The article defines user-intent alignment and the helpful/truthful/harmless evaluation frame."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Reference-group qualification",
+            "section": "G.2 Who are we aligning to?",
+            "pageStart": 53,
+            "pageEnd": 54
+          },
+          "support": "The supplement enumerates training labelers, researchers, API customers, end users, and affected groups and rejects a universal preference interpretation."
+        }
+      ],
+      "limitations": [
+        "Helpfulness, truthfulness, and harmlessness are study-specific guidance and proxies, not complete or mutually consistent formal objectives."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-sft-rm-ppo-pipeline",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "statement": "The method begins with labeler-written demonstrations and supervised fine-tuning of GPT-3, collects rankings of candidate responses and fits a scalar reward model, then optimizes the supervised policy against that reward with PPO. Comparison collection, reward fitting, and PPO can repeat, although most ranked data in this study comes from supervised-policy outputs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Three-stage InstructGPT pipeline",
+            "section": "3.1 High-level methodology",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "figure": "2"
+          },
+          "support": "The target paper enumerates demonstrations-to-SFT, rankings-to-RM, and RM-to-PPO and qualifies iteration and data origin."
+        }
+      ],
+      "limitations": [
+        "The diagram summarizes the paper pipeline and does not identify the deployed API procedure, which the model card says differs slightly."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-gpt3-initialization-and-sft",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "supervised-demonstration-fine-tuning"
+      ],
+      "statement": "All language-model policies use the GPT-3 architecture and byte-pair encoding at 1.3B, 6B, and 175B parameters. Supervised policies fine-tune GPT-3 on labeler demonstrations for 16 epochs with cosine learning-rate decay and residual dropout .2, and final SFT selection uses validation reward-model score rather than minimum validation loss.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "GPT-3 base model and supervised fine-tuning",
+            "section": "3.1; 3.4 Models",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The article explicitly starts from and fine-tunes GPT-3 and gives the main SFT settings and selection rule."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Architecture and exact SFT settings",
+            "section": "D Additional model details; D.1 Details of SFT training",
+            "pageStart": 30,
+            "pageEnd": 30
+          },
+          "support": "The supplement states architecture, tokenizer, context, optimizer, epochs, dropout, learning rates, batches, and RM-based selection."
+        }
+      ],
+      "limitations": [
+        "This is post-training of GPT-3-family models, not a newly pretrained architecture or release of the base checkpoints."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-api-prompt-data-and-splits",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "Fine-tuning prompts come from a commercial language-model API and labeler-written bootstrapping tasks, are heuristically deduplicated and filtered for personally identifiable information, and are more than 96% English. Training contains 11,295 labeler plus 1,430 user SFT prompts, 6,623 labeler plus 26,584 user RM prompts, and 31,144 user PPO prompts. Validation and test exclude users represented in training, but users can contribute multiple prompts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Prompt sources, language, filtering, and split policy",
+            "section": "3.2 Dataset",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The main article gives data sources, task diversity, English share, deduplication, PII filtering, and user-disjoint split rule."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Dataset counts and per-user contribution",
+            "section": "A.3–A.4",
+            "pageStart": 20,
+            "pageEnd": 21,
+            "table": "3–6"
+          },
+          "support": "Tables 3–6 provide exact train/validation counts, language estimate, prompt lengths, and average prompts per user."
+        }
+      ],
+      "limitations": [
+        "User-level separation limits direct leakage across splits but does not make prompts independent, representative, public, or reconstructible."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-labeler-selection-and-agreement",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "About forty contractors from Upwork and Scale AI wrote demonstrations, ranked outputs, and performed main evaluations. Training labelers were screened for sensitive-speech recognition, ranking agreement, nuanced demonstration quality, and self-assessed competence; held-out labelers came from the same vendors without that screen. Training-labeler agreement is 72.6% ±1.5% and held-out-labeler agreement 77.3% ±1.3%. The voluntary demographic table has nineteen respondents, not the full workforce.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Contractor sources and agreement",
+            "section": "3.3 Human data collection",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The article gives contractor count, vendors, screening intent, held-out-labeler difference, and agreement estimates."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Selection criteria and survey denominator",
+            "section": "B.1–B.4",
+            "pageStart": 22,
+            "pageEnd": 28
+          },
+          "support": "The supplement lists screening criteria and identifies nineteen voluntary demographic and satisfaction respondents."
+        }
+      ],
+      "limitations": [
+        "Held-out labelers are not an out-of-vendor or globally representative population, and the voluntary survey cannot characterize all contractors."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-ranked-preference-reward-model",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model"
+      ],
+      "statement": "Labelers rank K=4–9 responses for a prompt, ties are dropped, and all pairwise preferred-versus-rejected combinations from one ranking are trained together so correlated pairs do not become repeated independent updates. One 6B reward model, initialized from a GPT-3 model fine-tuned on selected public NLP tasks, trains for one epoch; reward differences enter the averaged negative log-sigmoid loss and demonstrations are bias-normalized to mean reward zero.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Ranked-response reward-model objective",
+            "section": "3.4 Models",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "equation": "1"
+          },
+          "support": "Equation 1 and surrounding text define K-way ranking conversion, pairwise reward differences, and the 6B RM scope."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Reward-model batching, initialization, and training",
+            "section": "D.2 Details of RM training",
+            "pageStart": 30,
+            "pageEnd": 30
+          },
+          "support": "The supplement explains within-prompt batching, tie removal, normalization, initialization, one epoch, learning rate, and batch semantics."
+        }
+      ],
+      "limitations": [
+        "All policy sizes share one 6B reward model; the study does not isolate how reward-model scale affects each policy or preference group."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization",
+        "pretraining-mix-regularized-policy-optimization"
+      ],
+      "statement": "PPO treats prompt-to-response generation as a one-step bandit with reward-model score and a per-token KL penalty to the supervised policy. PPO-ptx additionally accumulates a weighted pretraining-likelihood gradient. Main runs use beta=.02, gamma=27.8 for the pretraining term, eight pretraining examples per RL episode, 256,000 episodes over about 31,000 unique prompts, batch 512, minibatch 64, clip .2, and rollout temperature 1. Across policy sizes, they use the same 6B reward model plus a separate 6B value function initialized from it.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Bandit PPO, KL, value initialization, and PPO-ptx distinction",
+            "section": "3.4 Models",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The article identifies the bandit episode, reward, per-token KL, value initialization, and pretraining-gradient variant."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Combined objective and exact PPO settings",
+            "section": "D.3–D.4",
+            "pageStart": 31,
+            "pageEnd": 31,
+            "equation": "2"
+          },
+          "support": "Equation 2 and the training description give initialization, beta, gamma, data ratio, episodes, batches, clipping, sampling, and 6B value/RM scope."
+        }
+      ],
+      "limitations": [
+        "PPO-ptx is a bundled intervention; its coefficient and data ratio were tuned on selected tasks and do not guarantee preservation of every pretrained behavior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-api-evaluation-design",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "The main API-distribution metric is pairwise human preference on held-out prompts, with API test prompts restricted to users absent from training and 175B SFT used as the common baseline. Labelers also assign 1–7 overall quality and behavior metadata. Because many training and test prompts were written for an earlier instruction-following model, the paper separately checks prompts submitted to ordinary GPT-3 and warns that the primary distribution may disadvantage GPT-3 baselines.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "API-distribution human evaluation",
+            "section": "3.5 Evaluation; 4.1 Results on the API distribution",
+            "pageStart": 6,
+            "pageEnd": 8
+          },
+          "support": "The main text defines user-disjoint evaluation, baseline, preference and Likert metrics, and behavior metadata."
+        },
+        {
+          "sourceId": "ouyang-2022-openai-preprint-full-text",
+          "locator": {
+            "label": "Instruction-prompt baseline caveat",
+            "section": "Evaluation details",
+            "pageStart": 11,
+            "pageEnd": 12
+          },
+          "support": "The fuller preprint explicitly warns that InstructGPT-oriented prompts may disadvantage GPT-3 and records the alternate GPT-prompt distribution check."
+        }
+      ],
+      "limitations": [
+        "User-disjoint prompts reduce direct overlap but do not control every distribution, decoding, or evaluator difference among models."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-instructgpt-preference-results",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "supervised-demonstration-fine-tuning",
+        "kl-regularized-preference-policy-optimization",
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "Across 1.3B, 6B, and 175B sizes, labelers prefer PPO-ptx outputs to GPT-3-family baselines on the paper's held-out API prompt distribution; the 1.3B PPO-ptx model exceeds 175B GPT-3. In direct 175B comparisons, InstructGPT is preferred to unprompted GPT-3 85% ±3% and to few-shot-prompted GPT-3 71% ±4%. Held-out vendor labelers preserve the broad ranking, but this is not a universal-user result.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Model-size and direct preference comparisons",
+            "section": "1 Introduction; 4.1 Results on the API distribution",
+            "pageStart": 2,
+            "pageEnd": 8,
+            "figure": "1, 3"
+          },
+          "support": "Figures 1, 3, and the result prose give the 1.3B-versus-175B result, direct win rates, and held-out-labeler check."
+        }
+      ],
+      "limitations": [
+        "The comparisons are not compute matched and combine post-training, prompt, data, sampling, and scale differences."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-instruction-following-and-hallucination-results",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "On the API evaluation, labelers rate InstructGPT outputs as more likely to attempt the intended task, follow explicit constraints, and use customer-assistant-appropriate language than GPT-3. For closed-domain tasks, the introduction reports a 21% hallucination rate versus 41% for GPT-3. These are labeler-coded study fields, not a general factuality audit or proof that every output follows the correct instruction.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Instruction adherence and closed-domain hallucinations",
+            "section": "1 Introduction; 4.1 Results on the API distribution",
+            "pageStart": 3,
+            "pageEnd": 7,
+            "figure": "4"
+          },
+          "support": "The introduction prints 21% versus 41%, while Figure 4 and Section 4.1 show the behavior metadata trends."
+        }
+      ],
+      "limitations": [
+        "Hallucination is a binary label on identified closed-domain examples and does not cover open-domain verification, calibration, or unseen deployment contexts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-public-task-regression-and-ppo-ptx",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "kl-regularized-preference-policy-optimization",
+        "pretraining-mix-regularized-policy-optimization"
+      ],
+      "statement": "Plain PPO regresses on several public NLP tasks, especially in few-shot evaluation. Mixing pretraining gradients into PPO reduces many regressions and raises HellaSwag above GPT-3, but 175B PPO-ptx still trails GPT-3 on DROP, SQuADv2, and French-to-English translation. Sweeps show that increasing KL alone up to 100 times the default does not recover DROP and SQuAD, while pretraining coefficient 27.8 is a selected cross-size compromise rather than a universal setting.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Remaining public-task regressions",
+            "section": "4.2 Results on public NLP datasets",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "The article states what PPO-ptx mitigates and names remaining task deficits."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Zero/few-shot tables and coefficient ablations",
+            "section": "F.1; F.9–F.13",
+            "pageStart": 40,
+            "pageEnd": 52,
+            "table": "12"
+          },
+          "support": "Figures 24–25 and 36–41 plus Table 12 preserve task rows, pretraining-mix and KL sweeps, data ratio, and final hyperparameter compromise."
+        }
+      ],
+      "limitations": [
+        "Public benchmark rows mix prompts, metrics, and shot settings and do not measure every capability that pretraining or post-training can alter."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-truthfulness-toxicity-and-bias-boundary",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment",
+        "pretraining-mix-regularized-policy-optimization"
+      ],
+      "statement": "Most PPO models improve human-rated TruthfulQA truthfulness and informativeness over same-size GPT-3, but 1.3B PPO-ptx is an exception. On RealToxicityPrompts, lower toxicity appears when a safe-and-respectful instruction is present and disappears without it; the prompts are sampled approximately uniformly by input toxicity rather than by the standard distribution. InstructGPT shows no significant improvement on Winogender or CrowS-Pairs, and biased instructions can yield more toxic outputs than same-size GPT-3.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Truthfulness, toxicity, and bias summary",
+            "section": "4.2 Results on public NLP datasets; 5.2 Limitations",
+            "pageStart": 8,
+            "pageEnd": 10
+          },
+          "support": "The article states the TruthfulQA exception, prompt-conditional toxicity result, bias non-improvement, and harmful-instruction limit."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Safety-proxy protocols and result tables",
+            "section": "C.2; F.6–F.8; Table 12",
+            "pageStart": 27,
+            "pageEnd": 49,
+            "table": "12"
+          },
+          "support": "The supplement defines the proxies, toxicity sampling, prompts, and bias/toxicity rows and limitations."
+        }
+      ],
+      "limitations": [
+        "These datasets and label fields are partial behavioral proxies and do not establish honesty, harmless deployment, or fairness across groups and contexts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-qualitative-generalization-and-failure-boundary",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "The 175B PPO-ptx policy qualitatively follows some non-English and code instructions despite little such fine-tuning data, but the study does not quantify those capabilities. Documented failures include accepting false premises, excessive hedging, and degraded performance under multiple or exact constraints; proposed explanations are author hypotheses rather than controlled causal findings.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Qualitative transfer and simple failures",
+            "section": "4.3 Qualitative results",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "The section states the qualitative scope, enumerates failure modes, and labels the proposed explanations as suspicions."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Selected qualitative examples",
+            "section": "F.2; H Model samples",
+            "pageStart": 41,
+            "pageEnd": 62
+          },
+          "support": "Figures 26–27 and 42–50 provide selected examples and explicit sampling and cherry-picking boundaries."
+        }
+      ],
+      "limitations": [
+        "Selected examples cannot establish rates, language coverage, code correctness, or robust out-of-distribution generalization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-alignment-population-and-misuse-boundary",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "The authors characterize the models as neither fully aligned nor fully safe: outputs can remain toxic, biased, fabricated, sexual, or violent, and following user instructions can increase misuse or real-world harm. Fine-tuning behavior reflects pretraining, contractor preferences, researcher instructions, API-customer demand, and deployment context; the paper explicitly rejects the claim that its researchers, labelers, or customers are necessarily the correct source of preferences.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Model, methodology, and broader-impact limitations",
+            "section": "5.2 Limitations; 5.3 Broader impacts",
+            "pageStart": 10,
+            "pageEnd": 10
+          },
+          "support": "The article enumerates unsafe behaviors, English and contractor scope, misuse, and high-stakes deployment cautions."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Stakeholder and preference-source analysis",
+            "section": "G.1–G.2",
+            "pageStart": 50,
+            "pageEnd": 54
+          },
+          "support": "The supplement analyzes alignment tax, harmful instructions, reference groups, customers, end users, affected populations, and the impossibility of satisfying all preferences simultaneously."
+        }
+      ],
+      "limitations": [
+        "The discussion identifies governance and value-choice problems but does not resolve them or evaluate downstream harms comprehensively."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "ouyang-2022-artifact-data-and-rights-boundary",
+      "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "labeler-scoped-instruction-alignment"
+      ],
+      "statement": "Official public artifacts include the paper family, a model card, evaluation and toxicity-labeling instructions, and eight CSV files of sampled outputs on public evaluations. The release repository contains no InstructGPT weights, full API-prompt, demonstration, or ranking data, training code, or LICENSE. The arXiv non-exclusive distribution grant covers paper hosting rather than repository, model, or data reuse, and the NeurIPS checklist says prompts and completions are not released because they may contain sensitive information.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "ouyang-2022-release-repository",
+          "locator": {
+            "label": "Release tree and missing license",
+            "section": "Complete repository tree and README",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The immutable tree contains only the README, model card, and eight sample CSVs and has no LICENSE or reconstruction package."
+        },
+        {
+          "sourceId": "ouyang-2022-model-card",
+          "locator": {
+            "label": "Data, model, and deployment envelope",
+            "section": "Model details; Data and performance",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The model card describes private labeled data and API access without announcing model weights or training code."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Sensitive-data nonrelease and reproducibility checklist",
+            "section": "NeurIPS Paper Checklist",
+            "pageStart": 11,
+            "pageEnd": 12
+          },
+          "support": "The checklist says prompts and completions are not publicly available because they may contain sensitive information."
+        },
+        {
+          "sourceId": "ouyang-2022-arxiv-license",
+          "locator": {
+            "label": "Paper distribution-rights boundary",
+            "section": "License terms",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The linked arXiv terms are a distribution grant rather than general artifact reuse permission."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is scoped to official primary records inspected on 31 August 2026 and does not imply that private or independent implementations do not exist."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Exact paper-checkpoint reconstruction and broad reuse rights are not established.",
+          "resolutionCondition": "Versioned base and tuned checkpoints, training code, data manifests, run records, evaluation harnesses, and explicit licenses would be required."
+        }
+      ],
+      "checkedDate": "2026-08-31"
+    },
+    {
       "id": "hoffmann-2022-version-and-title-boundary",
       "workId": "hoffmann-2022-training-compute-optimal-language-models",
       "ideaIds": [
@@ -46807,6 +49383,95 @@
       ]
     },
     {
+      "id": "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+      "from": {
+        "kind": "work",
+        "id": "stiennon-2020-learning-to-summarize-human-feedback"
+      },
+      "to": {
+        "kind": "work",
+        "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Ouyang et al. explicitly state that their methodology follows Stiennon et al., carry the demonstration/comparison/reward/PPO pattern into a broad API instruction distribution, describe the earlier pairwise loss, and again name Stiennon when defining PPO with reference-policy KL control. The edge is restricted to that methodological extension and does not transfer summarization data, evaluator populations, model sizes, results, or safety claims.",
+      "claimIds": [
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-kl-regularized-ppo-and-value-function",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-ranked-preference-reward-model",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Target names prior methodology and broadens its task distribution",
+            "section": "2 Related work; 3.1 High-level methodology",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The target names Stiennon's summarization setting and states that its three-step methodology follows that work."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Target carries forward reward modeling, PPO, and KL control",
+            "section": "3.4 Models",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The target describes Stiennon's pairwise objective and says it again follows Stiennon for PPO and reference-policy KL regularization."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "brown-2020-to-ouyang-2022-gpt3-posttraining",
+      "from": {
+        "kind": "work",
+        "id": "brown-2020-language-models-few-shot-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Ouyang et al. explicitly start from GPT-3, retain its model architecture and tokenizer family across 1.3B, 6B, and 175B policies, and then add supervised demonstration tuning and preference-based post-training. The edge records base-model and architecture reuse only; it does not transfer Brown et al.'s exact corpus, in-context results, contamination findings, API state, or release artifacts.",
+      "claimIds": [
+        "brown-2020-model-configurations-and-175b",
+        "ouyang-2022-gpt3-initialization-and-sft"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "ouyang-2022-neurips-full-text",
+          "locator": {
+            "label": "Target explicitly starts from and fine-tunes GPT-3",
+            "section": "3.1 High-level methodology; 3.4 Models",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The target cites Brown et al. for the pretrained model and states that supervised policies fine-tune GPT-3."
+        },
+        {
+          "sourceId": "ouyang-2022-neurips-supplement",
+          "locator": {
+            "label": "Target retains GPT-3 architecture and tokenizer",
+            "section": "D Additional model details",
+            "pageStart": 30,
+            "pageEnd": 30
+          },
+          "support": "The target says every model uses the GPT-3 architecture and Brown et al. byte-pair encoding."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
       "id": "kaplan-2020-to-hoffmann-2022",
       "from": {
         "kind": "work",
@@ -49811,6 +52476,153 @@
         "Version-bound evidence, immutable release artifacts, and license scope"
       ],
       "successCriterion": "The learner can reproduce Tables 2.1 and 2.2 and the key training settings; keep total parameters, non-embedding scale, and estimated FLOPs distinct; reconstruct the zero/one/few-shot and task-specific scoring rules; defend exactly the GPT-2 and Kaplan relationship scopes; audit headline, contamination, news, bias, compute, and limitation claims at their source locators; enumerate the retained reporting differences; and separate the paper family from later API and model-card states."
+    },
+    {
+      "id": "beginner-stiennon-2020-preferences-to-rewarded-summarization",
+      "mode": "beginner",
+      "objective": "Trace how a summarizer moves from imitating noisy references to learning from pairwise reader choices and then improving against that learned score, while seeing why length, evaluator instructions, and reward hacking limit a simple “humans preferred it” headline.",
+      "workIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "ideaIds": [
+        "human-evaluated-summary-quality",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "claimIds": [
+        "stiennon-2020-likelihood-and-metric-misalignment",
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-tldr-corpus-task-and-split",
+        "stiennon-2020-tldr-preference-results",
+        "stiennon-2020-length-and-quality-axis-boundary",
+        "stiennon-2020-reward-model-scaling-and-overoptimization"
+      ],
+      "prerequisites": [
+        "A language model predicts the next token and can be fine-tuned on examples",
+        "A pairwise preference says which of two outputs an evaluator likes more",
+        "A learned score can be useful without being a perfect measure of quality",
+        "Changing output length can change a reader's judgment"
+      ],
+      "successCriterion": "The learner can explain the supervised-policy, comparison, reward-model, and PPO stages; state what the KL tether does; reproduce the 61-versus-43 and controlled-length boundaries; and give one reason the learned reward and contractor preferences are not ground truth."
+    },
+    {
+      "id": "expert-stiennon-2020-rm-ppo-kl-and-evaluation-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct the version-corrected pairwise loss, reference normalization, terminal reward, KL-regularized PPO objective, separate value initialization, data and labeler protocol, main results, reward scaling and over-optimization, metric validity, transfer, compute, artifact, and rights boundaries.",
+      "workIds": [
+        "stiennon-2020-learning-to-summarize-human-feedback"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "human-evaluated-summary-quality",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization"
+      ],
+      "claimIds": [
+        "stiennon-2020-version-release-and-loss-boundary",
+        "stiennon-2020-likelihood-and-metric-misalignment",
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-tldr-corpus-task-and-split",
+        "stiennon-2020-labeler-protocol-and-agreement",
+        "stiennon-2020-gpt3-style-model-family-and-sft",
+        "stiennon-2020-pairwise-reward-model-objective",
+        "stiennon-2020-kl-regularized-ppo-and-value-function",
+        "stiennon-2020-tldr-preference-results",
+        "stiennon-2020-length-and-quality-axis-boundary",
+        "stiennon-2020-cnndm-transfer-boundary",
+        "stiennon-2020-reward-model-scaling-and-overoptimization",
+        "stiennon-2020-reward-model-and-metric-validity",
+        "stiennon-2020-cost-and-baseline-boundary",
+        "stiennon-2020-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Causal Transformer language modeling and supervised sequence fine-tuning",
+        "Bradley–Terry or logistic pairwise likelihood and reward identifiability",
+        "PPO, value functions, generalized advantage estimation, KL regularization, and off-distribution reward error",
+        "Human-evaluation design, agreement, confounding, and domain transfer",
+        "Immutable version provenance, release manifests, and license scope"
+      ],
+      "successCriterion": "The learner can derive the corrected negative log-sigmoid loss and sequence reward, distinguish every model and data role, reproduce main hyperparameters and preference conditions, explain the length and rm3 over-optimization curves, audit the CNN/DM and metric evidence, and separate v1/v2/v3/proceedings plus code/data/model rights."
+    },
+    {
+      "id": "beginner-ouyang-2022-instructions-human-feedback-and-scope",
+      "mode": "beginner",
+      "objective": "Compare prompting with three kinds of post-training—demonstrations, ranked answers, and reward-guided practice—then interpret why a smaller tuned model can be preferred without concluding that it is universally smarter, truthful, safe, or aligned to everyone.",
+      "workIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "ideaIds": [
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "labeler-scoped-instruction-alignment"
+      ],
+      "claimIds": [
+        "ouyang-2022-labeler-scoped-alignment-objective",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-gpt3-initialization-and-sft",
+        "ouyang-2022-api-prompt-data-and-splits",
+        "ouyang-2022-instructgpt-preference-results",
+        "ouyang-2022-instruction-following-and-hallucination-results",
+        "ouyang-2022-truthfulness-toxicity-and-bias-boundary",
+        "ouyang-2022-alignment-population-and-misuse-boundary"
+      ],
+      "prerequisites": [
+        "A pretrained model can be prompted without changing its weights",
+        "Supervised examples and reinforcement learning do change model weights",
+        "A ranking is evidence about one evaluator's preference under one instruction set",
+        "Benchmark and safety scores depend on prompts, populations, and protocols"
+      ],
+      "successCriterion": "The learner can distinguish GPT-3, SFT, RM, PPO, and PPO-ptx; explain the 1.3B-versus-175B preference result in its test scope; name one remaining regression and one conditional safety result; and identify whose preferences and prompts shaped the model."
+    },
+    {
+      "id": "expert-ouyang-2022-rlhf-prompt-data-evaluation-and-artifact-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct the January, arXiv, and proceedings envelopes; GPT-3 initialization; SFT, K-way ranking loss, PPO, KL, and PPO-ptx objectives; prompt and labeler provenance; evaluation controls; preference and safety evidence; deployment mismatch; and private-artifact and rights limits.",
+      "workIds": [
+        "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization",
+        "labeler-scoped-instruction-alignment",
+        "pretraining-mix-regularized-policy-optimization"
+      ],
+      "claimIds": [
+        "ouyang-2022-version-and-deployment-boundary",
+        "ouyang-2022-labeler-scoped-alignment-objective",
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-gpt3-initialization-and-sft",
+        "ouyang-2022-api-prompt-data-and-splits",
+        "ouyang-2022-labeler-selection-and-agreement",
+        "ouyang-2022-ranked-preference-reward-model",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "ouyang-2022-api-evaluation-design",
+        "ouyang-2022-instructgpt-preference-results",
+        "ouyang-2022-instruction-following-and-hallucination-results",
+        "ouyang-2022-public-task-regression-and-ppo-ptx",
+        "ouyang-2022-truthfulness-toxicity-and-bias-boundary",
+        "ouyang-2022-qualitative-generalization-and-failure-boundary",
+        "ouyang-2022-alignment-population-and-misuse-boundary",
+        "ouyang-2022-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "GPT-3 causal-decoder architecture, tokenizer, prompting, and model-size conventions",
+        "Supervised fine-tuning, pairwise ranking likelihood, PPO, value functions, and KL control",
+        "Multi-objective optimization and weighted pretraining gradients",
+        "User-disjoint data splits, annotator agreement, proxy safety metrics, and evaluation confounds",
+        "Paper-version, deployment, code, data, model, and license provenance"
+      ],
+      "successCriterion": "The learner can reproduce Equations 1–2 and core hyperparameters; trace SFT, RM, PPO, and PPO-ptx data paths; defend the Stiennon and GPT-3 edge scopes; audit exact preference, hallucination, regression, truthfulness, toxicity, and bias conditions; and distinguish paper checkpoints from API deployments and released samples from missing training assets."
     },
     {
       "id": "beginner-hoffmann-2022-budget-balance-and-boundaries",

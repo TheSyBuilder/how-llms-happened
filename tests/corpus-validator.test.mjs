@@ -217,7 +217,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-3)?.id, workId);
+  assert.equal(corpus.works.at(-5)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -376,8 +376,8 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     "brown-2020-neurips-version",
   ];
 
-  assert.equal(corpus.works.at(-2)?.id, workId);
-  assert.equal(corpus.works.at(-3)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(corpus.works.at(-4)?.id, workId);
+  assert.equal(corpus.works.at(-5)?.id, "kaplan-2020-scaling-laws-neural-language-models");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
   assert.deepEqual(
@@ -619,6 +619,434 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
   assert.ok(readme.includes("Brown et al.’s GPT-3 family"));
   assert.ok(corpusFormat.includes("Brown et al. 2020 is represented"));
   assert.ok(historicalScope.includes("The GPT-3 family was checked on 2026-08-30"));
+});
+
+test("preserves Stiennon 2020 reward learning, release boundaries, and instruction lineage", () => {
+  const workId = "stiennon-2020-learning-to-summarize-human-feedback";
+  const ouyangWorkId =
+    "ouyang-2022-training-language-models-follow-instructions-human-feedback";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) =>
+      (item.from.kind === "work" && item.from.id === workId) ||
+      (item.to.kind === "work" && item.to.id === workId),
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "stiennon-2020-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "stiennon-2020-neurips-supplement",
+  );
+  const versionBoundary = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-version-release-and-loss-boundary",
+  );
+  const pipeline = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-comparison-reward-model-ppo-pipeline",
+  );
+  const rewardModel = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-pairwise-reward-model-objective",
+  );
+  const ppo = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-kl-regularized-ppo-and-value-function",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-tldr-preference-results",
+  );
+  const overoptimization = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-reward-model-scaling-and-overoptimization",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-artifact-data-and-rights-boundary",
+  );
+  const expectedVersionIds = [
+    "stiennon-2020-arxiv-v1-version",
+    "stiennon-2020-arxiv-v2-version",
+    "stiennon-2020-neurips-version",
+    "stiennon-2020-arxiv-v3-version",
+  ];
+  const expectedSourceIds = [
+    "stiennon-2020-arxiv-record",
+    "stiennon-2020-arxiv-v1-full-text",
+    "stiennon-2020-arxiv-v2-full-text",
+    "stiennon-2020-arxiv-v3-full-text",
+    "stiennon-2020-arxiv-license",
+    "stiennon-2020-arxiv-v1-source-package",
+    "stiennon-2020-arxiv-v2-source-package",
+    "stiennon-2020-arxiv-v3-source-package",
+    "stiennon-2020-neurips-record",
+    "stiennon-2020-neurips-full-text",
+    "stiennon-2020-neurips-supplement",
+    "stiennon-2020-openai-publication",
+    "stiennon-2020-initial-release-repository",
+    "stiennon-2020-feedback-dataset-release",
+    "stiennon-2020-release-license-clarification",
+  ];
+
+  assert.equal(corpus.works.at(-3)?.id, workId);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.chronology.orderingEventId, "stiennon-2020-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2020-09-02", "day"],
+      ["2020-10-27", "day"],
+      ["2020", "year"],
+      ["2022-02-15", "day"],
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "stiennon-2020-neurips-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "stiennon-2020-neurips-record",
+    "stiennon-2020-neurips-full-text",
+    "stiennon-2020-neurips-supplement",
+  ]);
+  assert.deepEqual(
+    work?.versions.find((item) => item.id === work.canonicalVersionId)
+      ?.bibliography.pages,
+    ["3008-3021"],
+  );
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 14,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 15,
+    pageEnd: 45,
+  });
+  assert.match(
+    work?.versions.find((item) => item.id === "stiennon-2020-arxiv-v1-version")
+      ?.notes ?? "",
+    /human-feedback dataset cannot yet be released/,
+  );
+  assert.match(
+    work?.versions.find((item) => item.id === "stiennon-2020-arxiv-v3-version")
+      ?.notes ?? "",
+    /missing leading negative sign/,
+  );
+
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+
+  assert.equal(claims.length, 15);
+  assert.equal(versionBoundary?.directness, "editorial-inference");
+  assert.match(versionBoundary?.statement ?? "", /three arXiv revisions/);
+  assert.match(versionBoundary?.statement ?? "", /leading negative sign/);
+  assert.deepEqual(
+    versionBoundary?.evidence.map((item) => item.sourceId),
+    [
+      "stiennon-2020-arxiv-v1-full-text",
+      "stiennon-2020-arxiv-v2-full-text",
+      "stiennon-2020-neurips-record",
+      "stiennon-2020-neurips-full-text",
+      "stiennon-2020-arxiv-v3-full-text",
+    ],
+  );
+  assert.match(pipeline?.statement ?? "", /scalar reward model/);
+  assert.match(pipeline?.statement ?? "", /PPO/);
+  assert.match(rewardModel?.statement ?? "", /negative log sigmoid/);
+  assert.match(rewardModel?.statement ?? "", /mean zero/);
+  for (const value of ["gamma=1", "lambda=.95", "beta=.05", "one million episodes"])
+    assert.ok(ppo?.statement.includes(value));
+  assert.match(results?.statement ?? "", /61% raw preference versus 43%/);
+  assert.match(results?.statement ?? "", /12\.9B supervised policy/);
+  assert.match(overoptimization?.statement ?? "", /160M to 13B/);
+  assert.match(overoptimization?.statement ?? "", /anti-correlates/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /64,832 TL;DR comparisons/);
+  assert.match(artifacts?.statement ?? "", /6\.7B weights/);
+  assert.match(artifacts?.statement ?? "", /Modified MIT/);
+  assert.match(artifacts?.statement ?? "", /authorizes arXiv to distribute the article/);
+  assert.doesNotMatch(artifacts?.statement ?? "", /authorizes repository distribution/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+
+  assert.deepEqual(relationships.map((item) => item.id), [
+    "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+  ]);
+  const edge = relationships[0];
+  assert.equal(edge?.to.id, ouyangWorkId);
+  assert.equal(edge?.connectionType, "extends");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "qualified");
+  assert.deepEqual(edge?.claimIds, [
+    "stiennon-2020-comparison-reward-model-ppo-pipeline",
+    "stiennon-2020-kl-regularized-ppo-and-value-function",
+    "ouyang-2022-sft-rm-ppo-pipeline",
+    "ouyang-2022-ranked-preference-reward-model",
+    "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+  ]);
+  assert.deepEqual(
+    edge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      {
+        sourceId: "ouyang-2022-neurips-full-text",
+        pageStart: 4,
+        pageEnd: 5,
+      },
+      {
+        sourceId: "ouyang-2022-neurips-full-text",
+        pageStart: 6,
+        pageEnd: 6,
+      },
+    ],
+  );
+  for (const evidence of edge?.sourceEvidence ?? [])
+    assert.ok(
+      corpus.sources
+        .find((source) => source.id === evidence.sourceId)
+        ?.relatedWorkIds.includes(ouyangWorkId),
+    );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-stiennon-2020-preferences-to-rewarded-summarization", "beginner"],
+      ["expert-stiennon-2020-rm-ppo-kl-and-evaluation-boundaries", "expert"],
+    ],
+  );
+});
+
+test("preserves Ouyang 2022 post-training versions, scoped results, and incoming lineage", () => {
+  const workId =
+    "ouyang-2022-training-language-models-follow-instructions-human-feedback";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "ouyang-2022-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "ouyang-2022-neurips-supplement",
+  );
+  const versionBoundary = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-version-and-deployment-boundary",
+  );
+  const pipeline = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-sft-rm-ppo-pipeline",
+  );
+  const gpt3 = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-gpt3-initialization-and-sft",
+  );
+  const rewardModel = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-ranked-preference-reward-model",
+  );
+  const ppo = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-instructgpt-preference-results",
+  );
+  const regression = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-public-task-regression-and-ppo-ptx",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-artifact-data-and-rights-boundary",
+  );
+  const expectedVersionIds = [
+    "ouyang-2022-openai-preprint-version",
+    "ouyang-2022-arxiv-v1-version",
+    "ouyang-2022-neurips-version",
+  ];
+  const expectedSourceIds = [
+    "ouyang-2022-openai-publication",
+    "ouyang-2022-openai-preprint-full-text",
+    "ouyang-2022-arxiv-record",
+    "ouyang-2022-arxiv-v1-full-text",
+    "ouyang-2022-arxiv-license",
+    "ouyang-2022-arxiv-v1-source-package",
+    "ouyang-2022-neurips-record",
+    "ouyang-2022-neurips-full-text",
+    "ouyang-2022-neurips-supplement",
+    "ouyang-2022-release-repository",
+    "ouyang-2022-model-card",
+  ];
+
+  assert.equal(corpus.works.at(-2)?.id, workId);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "ouyang-2022-openai-preprint-published",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2022-01-27", "day"],
+      ["2022-03-04", "day"],
+      ["2022-12-06", "day"],
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "ouyang-2022-neurips-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "ouyang-2022-neurips-record",
+    "ouyang-2022-neurips-full-text",
+    "ouyang-2022-neurips-supplement",
+  ]);
+  assert.deepEqual(
+    work?.versions.find((item) => item.id === work.canonicalVersionId)
+      ?.bibliography.pages,
+    ["27730-27744"],
+  );
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 15,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 16,
+    pageEnd: 62,
+  });
+  assert.match(
+    work?.versions.find((item) => item.id === "ouyang-2022-openai-preprint-version")
+      ?.notes ?? "",
+    /first verified public paper/,
+  );
+  assert.match(
+    work?.versions.find((item) => item.id === "ouyang-2022-arxiv-v1-version")
+      ?.notes ?? "",
+    /substantive reporting and citation corrections/,
+  );
+
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+
+  assert.equal(claims.length, 16);
+  assert.equal(versionBoundary?.directness, "editorial-inference");
+  assert.match(versionBoundary?.statement ?? "", /27 January 2022/);
+  assert.match(versionBoundary?.statement ?? "", /slightly different procedure/);
+  assert.match(pipeline?.statement ?? "", /supervised fine-tuning of GPT-3/);
+  assert.match(pipeline?.statement ?? "", /most ranked data/);
+  for (const value of ["1.3B", "6B", "175B", "16 epochs", "residual dropout .2"])
+    assert.ok(gpt3?.statement.includes(value));
+  assert.match(rewardModel?.statement ?? "", /K=4–9/);
+  assert.match(rewardModel?.statement ?? "", /One 6B reward model/);
+  for (const value of ["beta=.02", "gamma=27.8", "256,000 episodes", "batch 512"])
+    assert.ok(ppo?.statement.includes(value));
+  assert.match(ppo?.statement ?? "", /same 6B reward model/);
+  assert.match(ppo?.statement ?? "", /separate 6B value function initialized from it/);
+  assert.match(results?.statement ?? "", /85% ±3%/);
+  assert.match(results?.statement ?? "", /71% ±4%/);
+  assert.match(results?.statement ?? "", /not a universal-user result/);
+  assert.match(regression?.statement ?? "", /HellaSwag/);
+  assert.match(regression?.statement ?? "", /DROP, SQuADv2, and French-to-English translation/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /eight CSV files/);
+  assert.match(artifacts?.statement ?? "", /no InstructGPT weights/);
+  assert.match(artifacts?.statement ?? "", /sensitive information/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+
+  assert.deepEqual(incoming.map((item) => item.id), [
+    "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+    "brown-2020-to-ouyang-2022-gpt3-posttraining",
+  ]);
+  const stiennonEdge = incoming[0];
+  const brownEdge = incoming[1];
+  for (const edge of incoming) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.causalLanguage, "qualified");
+    for (const evidence of edge.sourceEvidence)
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === evidence.sourceId)
+          ?.relatedWorkIds.includes(workId),
+      );
+  }
+  assert.equal(stiennonEdge?.connectionType, "extends");
+  assert.equal(brownEdge?.connectionType, "extends");
+  assert.deepEqual(brownEdge?.claimIds, [
+    "brown-2020-model-configurations-and-175b",
+    "ouyang-2022-gpt3-initialization-and-sft",
+  ]);
+  assert.deepEqual(
+    brownEdge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      {
+        sourceId: "ouyang-2022-neurips-full-text",
+        pageStart: 5,
+        pageEnd: 6,
+      },
+      {
+        sourceId: "ouyang-2022-neurips-supplement",
+        pageStart: 30,
+        pageEnd: 30,
+      },
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-ouyang-2022-instructions-human-feedback-and-scope", "beginner"],
+      [
+        "expert-ouyang-2022-rlhf-prompt-data-evaluation-and-artifact-boundaries",
+        "expert",
+      ],
+    ],
+  );
 });
 
 test("preserves Chinchilla estimators, archival conflicts, and scoped Kaplan challenge", () => {
