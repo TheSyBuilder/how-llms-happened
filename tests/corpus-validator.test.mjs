@@ -217,7 +217,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-5)?.id, workId);
+  assert.equal(corpus.works.at(-7)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -376,8 +376,8 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     "brown-2020-neurips-version",
   ];
 
-  assert.equal(corpus.works.at(-4)?.id, workId);
-  assert.equal(corpus.works.at(-5)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(corpus.works.at(-6)?.id, workId);
+  assert.equal(corpus.works.at(-7)?.id, "kaplan-2020-scaling-laws-neural-language-models");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
   assert.deepEqual(
@@ -686,7 +686,7 @@ test("preserves Stiennon 2020 reward learning, release boundaries, and instructi
     "stiennon-2020-release-license-clarification",
   ];
 
-  assert.equal(corpus.works.at(-3)?.id, workId);
+  assert.equal(corpus.works.at(-5)?.id, workId);
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "stiennon-2020-arxiv-v1-posted");
   assert.deepEqual(
@@ -835,6 +835,201 @@ test("preserves Stiennon 2020 reward learning, release boundaries, and instructi
       ["beginner-stiennon-2020-preferences-to-rewarded-summarization", "beginner"],
       ["expert-stiennon-2020-rm-ppo-kl-and-evaluation-boundaries", "expert"],
     ],
+  );
+});
+
+test("preserves FLAN versions, held-out clusters, ablations, and release boundaries", () => {
+  const workId = "wei-2021-finetuned-language-models-zero-shot-learners";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const canonical = work?.versions.find(
+    (item) => item.id === work?.canonicalVersionId,
+  );
+  const cameraReady = work?.versions.find(
+    (item) => item.id === "wei-2022-arxiv-v5-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "wei-2022-arxiv-v5-full-text",
+  );
+  const code = corpus.sources.find(
+    (item) => item.id === "wei-2021-flan-initial-code-snapshot",
+  );
+  const headline = claims.find(
+    (item) => item.id === "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+  );
+  const scale = claims.find(
+    (item) => item.id === "wei-2022-scale-dependent-transfer-ablation",
+  );
+  const semantics = claims.find(
+    (item) => item.id === "wei-2022-instruction-semantics-ablation",
+  );
+  const artifacts = claims.find(
+    (item) => item.id === "wei-2021-code-model-data-and-rights-boundary",
+  );
+  const parallel = corpus.relationships.find(
+    (item) => item.id === "wei-2021-to-sanh-2021-concurrent-instruction-tuning",
+  );
+
+  assert.equal(corpus.works.at(-4)?.id, workId);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2021-09-03", "day"],
+      ["2021-10-05", "day"],
+      ["2021-11-04", "day"],
+      ["2021-12-02", "day"],
+      ["2022-02-08", "day"],
+      ["2022", "year"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "wei-2021-arxiv-v1-version",
+      "wei-2021-arxiv-v2-version",
+      "wei-2021-arxiv-v3-version",
+      "wei-2021-arxiv-v4-version",
+      "wei-2022-arxiv-v5-version",
+      "wei-2022-iclr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "wei-2022-iclr-version");
+  assert.deepEqual(work?.preferredSourceIds, ["wei-2022-iclr-record"]);
+  assert.equal(canonical?.authors.length, 9);
+  assert.equal(cameraReady?.authors.length, 9);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 46,
+  });
+  assert.deepEqual(code?.versionIds, ["wei-2021-arxiv-v1-version"]);
+  assert.equal(work?.sourceIds.length, 11);
+  assert.equal(claims.length, 13);
+  assert.match(headline?.statement ?? "", /20 of 25/);
+  assert.match(headline?.limitations.join(" ") ?? "", /12 best-development-template wins/);
+  assert.match(scale?.statement ?? "", /hurts it at 8B and below/);
+  assert.match(semantics?.statement ?? "", /55\.2/);
+  assert.match(artifacts?.statement ?? "", /not the internal LaMDA-PT or 137B FLAN weights/);
+  assert.equal(parallel?.connectionType, "conceptual-parallel");
+  assert.equal(parallel?.evidenceClass, "editorial-synthesis");
+  assert.equal(parallel?.causalLanguage, "prohibited");
+  assert.deepEqual(
+    corpus.learningObjectives
+      .filter((item) => item.workIds.includes(workId))
+      .map((item) => item.id),
+    [
+      "beginner-wei-2021-instructions-task-holdouts-and-scale",
+      "expert-wei-2021-flan-mixture-evaluation-and-artifact-boundaries",
+    ],
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id === workId &&
+        item.to.id ===
+          "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+    ),
+    false,
+  );
+});
+
+test("preserves T0 authorship, prompt evaluation, mixture, and lineage boundaries", () => {
+  const workId =
+    "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const canonical = work?.versions.find(
+    (item) => item.id === work?.canonicalVersionId,
+  );
+  const cameraReady = work?.versions.find(
+    (item) => item.id === "sanh-2022-arxiv-v3-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "sanh-2022-arxiv-v3-full-text",
+  );
+  const registry = corpus.sources.find(
+    (item) => item.id === "sanh-2022-t-zero-dataset-registry",
+  );
+  const authorship = claims.find(
+    (item) => item.id === "sanh-2021-version-authorship-and-canonical-boundary",
+  );
+  const variants = claims.find(
+    (item) => item.id === "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+  );
+  const results = claims.find(
+    (item) => item.id === "sanh-2022-held-out-task-results",
+  );
+  const robustness = claims.find(
+    (item) => item.id === "sanh-2022-prompt-and-dataset-diversity-ablation",
+  );
+  const artifacts = claims.find(
+    (item) => item.id === "sanh-2022-artifact-mixture-and-rights-boundary",
+  );
+  const t5Edge = corpus.relationships.find(
+    (item) => item.id === "raffel-2019-to-sanh-2021-t5-plus-lm-substrate",
+  );
+
+  assert.equal(corpus.works.at(-3)?.id, workId);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2021-10-15", "day"],
+      ["2021-12-13", "day"],
+      ["2022-03-17", "day"],
+      ["2022", "year"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "sanh-2021-arxiv-v1-version",
+      "sanh-2021-arxiv-v2-version",
+      "sanh-2022-arxiv-v3-version",
+      "sanh-2022-iclr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "sanh-2022-iclr-version");
+  assert.deepEqual(work?.preferredSourceIds, [
+    "sanh-2022-iclr-record",
+    "sanh-2022-official-citation",
+  ]);
+  assert.equal(canonical?.authors.length, 40);
+  assert.equal(cameraReady?.authors.length, 42);
+  assert.ok(cameraReady?.authors.includes("Michael McKenna"));
+  assert.ok(cameraReady?.authors.includes("Tali Bers"));
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 216,
+  });
+  assert.equal(work?.sourceIds.length, 16);
+  assert.equal(claims.length, 15);
+  assert.match(authorship?.statement ?? "", /list 40 and omit Michael McKenna and Tali Bers/);
+  assert.match(variants?.statement ?? "", /39, 49, and 55/);
+  assert.match(results?.statement ?? "", /Story Cloze 48\.85→94\.71/);
+  assert.match(robustness?.statement ?? "", /shrinks IQR on 7/);
+  assert.match(registry?.accessNote ?? "", /38 rows marked BASE and no TyDiQA/);
+  assert.match(artifacts?.uncertainties[0]?.note ?? "", /missing TyDiQA/);
+  assert.equal(t5Edge?.connectionType, "extends");
+  assert.equal(t5Edge?.evidenceClass, "documented-influence");
+  assert.equal(t5Edge?.causalLanguage, "qualified");
+  assert.deepEqual(
+    corpus.learningObjectives
+      .filter((item) => item.workIds.includes(workId))
+      .map((item) => item.id),
+    [
+      "beginner-sanh-2021-prompts-mixtures-and-robustness",
+      "expert-sanh-2021-t0-prompt-evaluation-and-release-boundaries",
+    ],
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id === workId &&
+        item.to.id ===
+          "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+    ),
+    false,
   );
 });
 

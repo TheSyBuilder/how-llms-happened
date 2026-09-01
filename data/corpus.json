@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-08-31",
+  "asOf": "2026-09-01",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -12077,6 +12077,938 @@
       ]
     },
     {
+      "id": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "title": "Finetuned Language Models Are Zero-Shot Learners",
+      "authors": [
+        "Jason Wei",
+        "Maarten Bosma",
+        "Vincent Y. Zhao",
+        "Kelvin Guu",
+        "Adams Wei Yu",
+        "Brian Lester",
+        "Nan Du",
+        "Andrew M. Dai",
+        "Quoc V. Le"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” International Conference on Learning Representations, 2022 (arXiv v1 posted 3 September 2021).",
+      "chronology": {
+        "orderingEventId": "wei-2021-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "wei-2021-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2021-09-03",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "wei-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 3 September 2021 at 17:55:52 UTC"
+              }
+            ],
+            "versionId": "wei-2021-arxiv-v1-version",
+            "sourceIds": [
+              "wei-2021-arxiv-record",
+              "wei-2021-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "wei-2021-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2021-10-05",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "wei-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 5 October 2021 at 02:13:12 UTC"
+              }
+            ],
+            "versionId": "wei-2021-arxiv-v2-version",
+            "sourceIds": [
+              "wei-2021-arxiv-record",
+              "wei-2021-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "wei-2021-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2021-11-04",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "wei-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 4 November 2021 at 23:05:34 UTC"
+              }
+            ],
+            "versionId": "wei-2021-arxiv-v3-version",
+            "sourceIds": [
+              "wei-2021-arxiv-record",
+              "wei-2021-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "wei-2021-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2021-12-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "wei-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 2 December 2021 at 00:45:29 UTC"
+              }
+            ],
+            "versionId": "wei-2021-arxiv-v4-version",
+            "sourceIds": [
+              "wei-2021-arxiv-record",
+              "wei-2021-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "wei-2022-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 5 posted",
+            "date": {
+              "value": "2022-02-08",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "wei-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 posted 8 February 2022 at 20:26:45 UTC"
+              }
+            ],
+            "versionId": "wei-2022-arxiv-v5-version",
+            "sourceIds": [
+              "wei-2021-arxiv-record",
+              "wei-2022-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "wei-2022-iclr-publication",
+            "kind": "proceedings-publication",
+            "label": "ICLR 2022 conference publication",
+            "date": {
+              "value": "2022",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "wei-2022-iclr-record",
+                "precision": "year",
+                "locator": "Official virtual-program record labels the work a 2022 Poster"
+              }
+            ],
+            "versionId": "wei-2022-iclr-version",
+            "sourceIds": [
+              "wei-2022-iclr-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "wei-2021-arxiv-v1-version",
+          "title": "Finetuned Language Models Are Zero-Shot Learners",
+          "authors": [
+            "Jason Wei",
+            "Maarten Bosma",
+            "Vincent Y. Zhao",
+            "Kelvin Guu",
+            "Adams Wei Yu",
+            "Brian Lester",
+            "Nan Du",
+            "Andrew M. Dai",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” arXiv:2109.01652v1, 3 September 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2109.01652v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "wei-2021-arxiv-record",
+            "wei-2021-arxiv-v1-full-text",
+            "wei-2021-arxiv-license",
+            "wei-2021-flan-initial-code-snapshot",
+            "wei-2021-flan-apache-license"
+          ],
+          "notes": "The 29-page ordering artifact reports 19 of 25 wins over zero-shot GPT-3, uses the 11,313-example TFDS TriviaQA development set, and predates the later contamination, few-shot, instruction-role, FAQ, and GLaM additions."
+        },
+        {
+          "id": "wei-2021-arxiv-v2-version",
+          "title": "Finetuned Language Models Are Zero-Shot Learners",
+          "authors": [
+            "Jason Wei",
+            "Maarten Bosma",
+            "Vincent Y. Zhao",
+            "Kelvin Guu",
+            "Adams Wei Yu",
+            "Brian Lester",
+            "Nan Du",
+            "Andrew M. Dai",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” arXiv:2109.01652v2, 5 October 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2109.01652v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "wei-2021-arxiv-record",
+            "wei-2021-arxiv-v2-full-text",
+            "wei-2021-arxiv-license"
+          ],
+          "notes": "This 41-page revision changes task terminology to datasets and task clusters, renames open-domain QA to closed-book QA, uses the 7,993-example Wikipedia TriviaQA split, raises the stated GPT-3 comparison to 20 of 25, and adds contamination, few-shot, and other analyses."
+        },
+        {
+          "id": "wei-2021-arxiv-v3-version",
+          "title": "Finetuned Language Models Are Zero-Shot Learners",
+          "authors": [
+            "Jason Wei",
+            "Maarten Bosma",
+            "Vincent Y. Zhao",
+            "Kelvin Guu",
+            "Adams Wei Yu",
+            "Brian Lester",
+            "Nan Du",
+            "Andrew M. Dai",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” arXiv:2109.01652v3, 4 November 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2109.01652v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "wei-2021-arxiv-record",
+            "wei-2021-arxiv-v3-full-text",
+            "wei-2021-arxiv-license"
+          ],
+          "notes": "The 41-page revision carries the 2.49-trillion-token LaMDA-PT count. Version 5's change appendix attributes the 2.81T-to-2.49T correction to this transition but also duplicates it under the previous transition, so the exact first corrected revision is not inferred from that appendix alone."
+        },
+        {
+          "id": "wei-2021-arxiv-v4-version",
+          "title": "Finetuned Language Models Are Zero-Shot Learners",
+          "authors": [
+            "Jason Wei",
+            "Maarten Bosma",
+            "Vincent Y. Zhao",
+            "Kelvin Guu",
+            "Adams Wei Yu",
+            "Brian Lester",
+            "Nan Du",
+            "Andrew M. Dai",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” arXiv:2109.01652v4, 2 December 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2109.01652v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "wei-2021-arxiv-record",
+            "wei-2021-arxiv-v4-full-text",
+            "wei-2021-arxiv-license"
+          ],
+          "notes": "This 47-page revision adds a frequently asked questions appendix, qualitative examples, the role-of-instructions ablation, and newer related work."
+        },
+        {
+          "id": "wei-2022-arxiv-v5-version",
+          "title": "Finetuned Language Models Are Zero-Shot Learners",
+          "authors": [
+            "Jason Wei",
+            "Maarten Bosma",
+            "Vincent Y. Zhao",
+            "Kelvin Guu",
+            "Adams Wei Yu",
+            "Brian Lester",
+            "Nan Du",
+            "Andrew M. Dai",
+            "Quoc V. Le"
+          ],
+          "kind": "preprint",
+          "label": "ICLR camera-ready arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” arXiv:2109.01652v5, 8 February 2022; camera-ready text for ICLR 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2109.01652v5",
+                "label": "arXiv version 5 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2109.01652",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "wei-2021-arxiv-record",
+            "wei-2022-arxiv-v5-full-text",
+            "wei-2021-arxiv-license",
+            "wei-2022-arxiv-v5-source-package"
+          ],
+          "notes": "The 46-page author-posted camera-ready text marks itself as an ICLR 2022 conference paper, adds the GLaM baseline, revises result presentation, and moves instruction-role and prompt-tuning analyses. Technical claims use this immutable file rather than assuming byte identity with the venue artifact."
+        },
+        {
+          "id": "wei-2022-iclr-version",
+          "title": "Finetuned Language Models Are Zero-Shot Learners",
+          "authors": [
+            "Jason Wei",
+            "Maarten Bosma",
+            "Vincent Y. Zhao",
+            "Kelvin Guu",
+            "Adams Wei Yu",
+            "Brian Lester",
+            "Nan Du",
+            "Andrew M. Dai",
+            "Quoc V. Le"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ICLR 2022 record",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. Wei et al., “Finetuned Language Models Are Zero-Shot Learners,” International Conference on Learning Representations, 2022.",
+            "venue": "International Conference on Learning Representations",
+            "series": "ICLR",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "wei-2022-iclr-record"
+          ],
+          "notes": "The official ICLR virtual-program record supplies canonical title, authors, year, abstract, and Poster status. The venue full text was behind an interactive verification gate during audit, so no byte identity with arXiv v5 is asserted."
+        }
+      ],
+      "canonicalVersionId": "wei-2022-iclr-version",
+      "preferredSourceIds": [
+        "wei-2022-iclr-record"
+      ],
+      "sourceIds": [
+        "wei-2021-arxiv-record",
+        "wei-2021-arxiv-v1-full-text",
+        "wei-2021-arxiv-v2-full-text",
+        "wei-2021-arxiv-v3-full-text",
+        "wei-2021-arxiv-v4-full-text",
+        "wei-2022-arxiv-v5-full-text",
+        "wei-2021-arxiv-license",
+        "wei-2022-arxiv-v5-source-package",
+        "wei-2022-iclr-record",
+        "wei-2021-flan-initial-code-snapshot",
+        "wei-2021-flan-apache-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "FLAN makes supervised multitask instruction tuning a direct intervention on a 137B decoder-only language model, evaluates task-family holdouts with separate checkpoints, and isolates dataset diversity, scale, and instruction semantics. Its headline gains are retained with prompt-selection, comparator, contamination, cluster-taxonomy, compute, model-release, and data-rights limits."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning",
+        "task-family-held-out-generalization",
+        "instruction-tuning-scale-dependence",
+        "benchmark-overlap-contamination-audit"
+      ],
+      "significance": {
+        "beginner": "FLAN trains one large language model across many tasks written as natural-language instructions, then tests a separately tuned checkpoint on each withheld kind of task. It shows that instructions, training-task diversity, and model scale matter, while also showing that the gains are not uniform and that zero-shot labels depend on the evaluation protocol.",
+        "expert": "The work converts 62 TFDS dataset families into templated examples, uses cluster-level exclusion guards, and instruction-tunes 137B LaMDA-PT for 30,000 steps. The evidence includes prompt-aggregated and development-selected results, cluster/dataset/template/scale/semantic ablations, few-shot and prompt-tuning extensions, and an n-gram contamination audit, all bounded by separate held-out checkpoints, unreleased weights, internal pretraining, and paper/code/data rights separation."
+      },
+      "limitations": [
+        "Reported task-cluster results come from separately instruction-tuned held-out-cluster checkpoints rather than one universal FLAN checkpoint.",
+        "The best-development-template protocol uses held-out-task development labels and is not a no-selection zero-shot evaluation; means across all templates are reported separately.",
+        "GPT-3 and GLaM comparator rows come from different papers with different prompts, examples, data, and inference procedures.",
+        "Cluster assignment is subjective, and the paper's 62 dataset families, 12 displayed clusters, and lower-level code registrations are not interchangeable counts.",
+        "Instruction tuning hurts held-out performance at 8B parameters and below in the reported family; the capacity explanation is explicitly hypothetical.",
+        "Many instructions are short, English-centered, and classification-like; the 1,024-token context also truncates some long-form tasks.",
+        "Post-hoc n-gram overlap cannot prove absence of memorization and yields tiny, shifted clean subsets for several benchmarks.",
+        "The released repository supplies transformations, templates, mixtures, and evaluation code, but not the internal 137B checkpoint, its pretraining data, or a complete training environment.",
+        "Apache 2.0 covers the inspected repository software, not the upstream TFDS datasets or internal model and pretraining artifacts."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The arXiv ledger fixes 3 September 2021 as the ordering event and the ICLR program fixes the canonical 2022 venue identity without collapsing those artifacts."
+        },
+        {
+          "status": "open",
+          "note": "The audited source does not establish byte identity between arXiv v5 and the OpenReview-hosted venue PDF.",
+          "resolutionCondition": "A retrievable venue PDF and checksum comparison with arXiv v5 are required."
+        },
+        {
+          "status": "open",
+          "note": "No public original 137B FLAN checkpoint, complete LaMDA-PT corpus manifest, or end-to-end run package was identified.",
+          "resolutionCondition": "Versioned weights, training inputs, dependency locks, and run manifests would be required for full reconstruction."
+        }
+      ]
+    },
+    {
+      "id": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+      "authors": [
+        "Victor Sanh",
+        "Albert Webson",
+        "Colin Raffel",
+        "Stephen Bach",
+        "Lintang Sutawika",
+        "Zaid Alyafeai",
+        "Antoine Chaffin",
+        "Arnaud Stiegler",
+        "Arun Raja",
+        "Manan Dey",
+        "M Saiful Bari",
+        "Canwen Xu",
+        "Urmish Thakker",
+        "Shanya Sharma",
+        "Eliza Szczechla",
+        "Taewoon Kim",
+        "Gunjan Chhablani",
+        "Nihal Nayak",
+        "Debajyoti Datta",
+        "Jonathan Chang",
+        "Mike Tian-Jian Jiang",
+        "Han Wang",
+        "Matteo Manica",
+        "Sheng Shen",
+        "Zheng Xin Yong",
+        "Harshit Pandey",
+        "Rachel Bawden",
+        "Thomas Wang",
+        "Trishala Neeraj",
+        "Jos Rozen",
+        "Abheesht Sharma",
+        "Andrea Santilli",
+        "Thibault Fevry",
+        "Jason Fries",
+        "Ryan Teehan",
+        "Teven Le Scao",
+        "Stella R Biderman",
+        "Leo Gao",
+        "Thomas Wolf",
+        "Alexander M Rush"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "V. Sanh et al., “Multitask Prompted Training Enables Zero-Shot Task Generalization,” International Conference on Learning Representations, 2022 (arXiv v1 posted 15 October 2021).",
+      "chronology": {
+        "orderingEventId": "sanh-2021-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "sanh-2021-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2021-10-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sanh-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 15 October 2021 at 17:08:57 UTC"
+              }
+            ],
+            "versionId": "sanh-2021-arxiv-v1-version",
+            "sourceIds": [
+              "sanh-2021-arxiv-record",
+              "sanh-2021-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "sanh-2021-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2021-12-13",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sanh-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 13 December 2021 at 03:31:00 UTC"
+              }
+            ],
+            "versionId": "sanh-2021-arxiv-v2-version",
+            "sourceIds": [
+              "sanh-2021-arxiv-record",
+              "sanh-2021-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "sanh-2022-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2022-03-17",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sanh-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 17 March 2022 at 17:53:01 UTC"
+              }
+            ],
+            "versionId": "sanh-2022-arxiv-v3-version",
+            "sourceIds": [
+              "sanh-2021-arxiv-record",
+              "sanh-2022-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "sanh-2022-iclr-publication",
+            "kind": "proceedings-publication",
+            "label": "ICLR 2022 Spotlight publication",
+            "date": {
+              "value": "2022",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "sanh-2022-iclr-record",
+                "precision": "year",
+                "locator": "Official virtual-program record labels the work a 2022 Spotlight"
+              }
+            ],
+            "versionId": "sanh-2022-iclr-version",
+            "sourceIds": [
+              "sanh-2022-iclr-record",
+              "sanh-2022-official-citation"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "sanh-2021-arxiv-v1-version",
+          "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+          "authors": [
+            "Victor Sanh",
+            "Albert Webson",
+            "Colin Raffel",
+            "Stephen H. Bach",
+            "Lintang Sutawika",
+            "Zaid Alyafeai",
+            "Antoine Chaffin",
+            "Arnaud Stiegler",
+            "Teven Le Scao",
+            "Arun Raja",
+            "Manan Dey",
+            "M Saiful Bari",
+            "Canwen Xu",
+            "Urmish Thakker",
+            "Shanya Sharma",
+            "Eliza Szczechla",
+            "Taewoon Kim",
+            "Gunjan Chhablani",
+            "Nihal V. Nayak",
+            "Debajyoti Datta",
+            "Jonathan Chang",
+            "Mike Tian-Jian Jiang",
+            "Han Wang",
+            "Matteo Manica",
+            "Sheng Shen",
+            "Zheng-Xin Yong",
+            "Harshit Pandey",
+            "Michael McKenna",
+            "Rachel Bawden",
+            "Thomas Wang",
+            "Trishala Neeraj",
+            "Jos Rozen",
+            "Abheesht Sharma",
+            "Andrea Santilli",
+            "Thibault Fevry",
+            "Jason Alan Fries",
+            "Ryan Teehan",
+            "Tali Bers",
+            "Stella Biderman",
+            "Leo Gao",
+            "Thomas Wolf",
+            "Alexander M. Rush"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Sanh et al., “Multitask Prompted Training Enables Zero-Shot Task Generalization,” arXiv:2110.08207v1, 15 October 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2110.08207v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sanh-2021-arxiv-record",
+            "sanh-2021-arxiv-v1-full-text",
+            "sanh-2021-arxiv-license"
+          ],
+          "notes": "The 161-page ordering artifact displays 42 title-page names and explicitly selects checkpoint 12,200 using validation scores on training tasks, stating that all models were fine-tuned for 12,200 steps."
+        },
+        {
+          "id": "sanh-2021-arxiv-v2-version",
+          "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+          "authors": [
+            "Victor Sanh",
+            "Albert Webson",
+            "Colin Raffel",
+            "Stephen H. Bach",
+            "Lintang Sutawika",
+            "Zaid Alyafeai",
+            "Antoine Chaffin",
+            "Arnaud Stiegler",
+            "Teven Le Scao",
+            "Arun Raja",
+            "Manan Dey",
+            "M Saiful Bari",
+            "Canwen Xu",
+            "Urmish Thakker",
+            "Shanya Sharma",
+            "Eliza Szczechla",
+            "Taewoon Kim",
+            "Gunjan Chhablani",
+            "Nihal V. Nayak",
+            "Debajyoti Datta",
+            "Jonathan Chang",
+            "Mike Tian-Jian Jiang",
+            "Han Wang",
+            "Matteo Manica",
+            "Sheng Shen",
+            "Zheng-Xin Yong",
+            "Harshit Pandey",
+            "Michael McKenna",
+            "Rachel Bawden",
+            "Thomas Wang",
+            "Trishala Neeraj",
+            "Jos Rozen",
+            "Abheesht Sharma",
+            "Andrea Santilli",
+            "Thibault Fevry",
+            "Jason Alan Fries",
+            "Ryan Teehan",
+            "Tali Bers",
+            "Stella Biderman",
+            "Leo Gao",
+            "Thomas Wolf",
+            "Alexander M. Rush"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Sanh et al., “Multitask Prompted Training Enables Zero-Shot Task Generalization,” arXiv:2110.08207v2, 13 December 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2110.08207v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sanh-2021-arxiv-record",
+            "sanh-2021-arxiv-v2-full-text",
+            "sanh-2021-arxiv-license",
+            "sanh-2022-t-zero-release-tree",
+            "sanh-2022-t-zero-dataset-registry",
+            "sanh-2022-t-zero-training-instructions",
+            "sanh-2022-t-zero-apache-license",
+            "sanh-2021-promptsource-v010-snapshot",
+            "sanh-2021-promptsource-apache-license"
+          ],
+          "notes": "This 216-page expansion retains the 42-name preprint title page, expands the prompt and dataset appendices, reports the larger 2,073-prompt/177-dataset P3 state, and removes the explicit 12,200-step sentence while retaining training-task-validation checkpoint selection."
+        },
+        {
+          "id": "sanh-2022-arxiv-v3-version",
+          "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+          "authors": [
+            "Victor Sanh",
+            "Albert Webson",
+            "Colin Raffel",
+            "Stephen H. Bach",
+            "Lintang Sutawika",
+            "Zaid Alyafeai",
+            "Antoine Chaffin",
+            "Arnaud Stiegler",
+            "Teven Le Scao",
+            "Arun Raja",
+            "Manan Dey",
+            "M Saiful Bari",
+            "Canwen Xu",
+            "Urmish Thakker",
+            "Shanya Sharma",
+            "Eliza Szczechla",
+            "Taewoon Kim",
+            "Gunjan Chhablani",
+            "Nihal V. Nayak",
+            "Debajyoti Datta",
+            "Jonathan Chang",
+            "Mike Tian-Jian Jiang",
+            "Han Wang",
+            "Matteo Manica",
+            "Sheng Shen",
+            "Zheng-Xin Yong",
+            "Harshit Pandey",
+            "Michael McKenna",
+            "Rachel Bawden",
+            "Thomas Wang",
+            "Trishala Neeraj",
+            "Jos Rozen",
+            "Abheesht Sharma",
+            "Andrea Santilli",
+            "Thibault Fevry",
+            "Jason Alan Fries",
+            "Ryan Teehan",
+            "Tali Bers",
+            "Stella Biderman",
+            "Leo Gao",
+            "Thomas Wolf",
+            "Alexander M. Rush"
+          ],
+          "kind": "preprint",
+          "label": "ICLR camera-ready arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Sanh et al., “Multitask Prompted Training Enables Zero-Shot Task Generalization,” arXiv:2110.08207v3, 17 March 2022; camera-ready text for ICLR 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2110.08207v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2110.08207",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "sanh-2021-arxiv-record",
+            "sanh-2022-arxiv-v3-full-text",
+            "sanh-2021-arxiv-license",
+            "sanh-2022-arxiv-v3-source-package",
+            "sanh-2022-t-zero-release-tree",
+            "sanh-2022-t-zero-dataset-registry",
+            "sanh-2022-t-zero-training-instructions",
+            "sanh-2022-t-zero-apache-license",
+            "sanh-2021-promptsource-v010-snapshot",
+            "sanh-2021-promptsource-apache-license",
+            "sanh-2022-t0-model-card",
+            "sanh-2022-p3-dataset-card"
+          ],
+          "notes": "The 216-page author-posted camera-ready text marks itself as published at ICLR 2022, clarifies held-out terminology, T5+LM initialization, rank classification without length normalization, prompt aggregation, and comparison with FLAN. It still displays 42 title-page names, unlike the 40-name venue record."
+        },
+        {
+          "id": "sanh-2022-iclr-version",
+          "title": "Multitask Prompted Training Enables Zero-Shot Task Generalization",
+          "authors": [
+            "Victor Sanh",
+            "Albert Webson",
+            "Colin Raffel",
+            "Stephen Bach",
+            "Lintang Sutawika",
+            "Zaid Alyafeai",
+            "Antoine Chaffin",
+            "Arnaud Stiegler",
+            "Arun Raja",
+            "Manan Dey",
+            "M Saiful Bari",
+            "Canwen Xu",
+            "Urmish Thakker",
+            "Shanya Sharma",
+            "Eliza Szczechla",
+            "Taewoon Kim",
+            "Gunjan Chhablani",
+            "Nihal Nayak",
+            "Debajyoti Datta",
+            "Jonathan Chang",
+            "Mike Tian-Jian Jiang",
+            "Han Wang",
+            "Matteo Manica",
+            "Sheng Shen",
+            "Zheng Xin Yong",
+            "Harshit Pandey",
+            "Rachel Bawden",
+            "Thomas Wang",
+            "Trishala Neeraj",
+            "Jos Rozen",
+            "Abheesht Sharma",
+            "Andrea Santilli",
+            "Thibault Fevry",
+            "Jason Fries",
+            "Ryan Teehan",
+            "Teven Le Scao",
+            "Stella R Biderman",
+            "Leo Gao",
+            "Thomas Wolf",
+            "Alexander M Rush"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ICLR 2022 Spotlight record",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Sanh et al., “Multitask Prompted Training Enables Zero-Shot Task Generalization,” International Conference on Learning Representations, 2022.",
+            "venue": "International Conference on Learning Representations",
+            "series": "ICLR",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "sanh-2022-iclr-record",
+            "sanh-2022-official-citation"
+          ],
+          "notes": "The official ICLR program and project citation supply a 40-author venue identity and Spotlight status, omitting Michael McKenna and Tali Bers from the 42-name arXiv title page. No byte identity with arXiv v3 is asserted."
+        }
+      ],
+      "canonicalVersionId": "sanh-2022-iclr-version",
+      "preferredSourceIds": [
+        "sanh-2022-iclr-record",
+        "sanh-2022-official-citation"
+      ],
+      "sourceIds": [
+        "sanh-2021-arxiv-record",
+        "sanh-2021-arxiv-v1-full-text",
+        "sanh-2021-arxiv-v2-full-text",
+        "sanh-2022-arxiv-v3-full-text",
+        "sanh-2021-arxiv-license",
+        "sanh-2022-arxiv-v3-source-package",
+        "sanh-2022-iclr-record",
+        "sanh-2022-official-citation",
+        "sanh-2022-t-zero-release-tree",
+        "sanh-2022-t-zero-dataset-registry",
+        "sanh-2022-t-zero-training-instructions",
+        "sanh-2022-t-zero-apache-license",
+        "sanh-2021-promptsource-v010-snapshot",
+        "sanh-2021-promptsource-apache-license",
+        "sanh-2022-t0-model-card",
+        "sanh-2022-p3-dataset-card"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "T0 converts a public, contributor-built prompt collection into a controlled multitask T5+LM intervention, measures prompt-distribution robustness, and tests task-family holdouts at 3B and 11B scale. Its variant-specific training leakage, fuzzy task taxonomy, rank-classification protocol, pretraining overlap, artifact mismatch, authorship metadata, compute, bias, and upstream-data rights remain explicit."
+      },
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning",
+        "task-family-held-out-generalization",
+        "prompt-distribution-robustness-evaluation",
+        "public-prompt-pool-materialization",
+        "answer-choice-likelihood-ranking"
+      ],
+      "significance": {
+        "beginner": "T0 trains a T5-style reader-writer on many public datasets expressed through many different prompts, then tests new task groups and reports the middle and spread of scores across prompt wordings. The study shows that prompt and dataset diversity can help, while also revealing that the meaning of zero-shot changes across T0, T0+, and T0++.",
+        "expert": "The work builds T0/T0+/T0++ from 11B T5+LM with Jinja prompt templates, capped mixture sampling, target-only likelihood training, and choice ranking without length normalization. It contributes a 2,073-prompt P3 snapshot and public model family, but interpretation must preserve 39/49/55 paper mixtures, 116-prompt held-out evaluation, median/IQR aggregation, comparator asymmetry, task-taxonomy and C4-overlap limits, 40-versus-42-author artifacts, and released-registry and upstream-rights discrepancies."
+      },
+      "limitations": [
+        "Task groups are mainly format-based and can leak underlying skills: the paper notes entailment-like QA, coreference-like ReCoRD, and ambiguous boundaries among completion, coreference, and NLI.",
+        "T0+ trains on GPT-3 evaluation datasets, and T0++ additionally trains on several reported held-out datasets; only NLI and BIG-bench remain held out for T0++.",
+        "Most evaluation uses validation splits and rank classification over provided choices, not unconstrained generation; option likelihoods are not length-normalized.",
+        "T0 aggregates medians and interquartile ranges over prompts while the imported GPT-3 comparison uses one published prompt, so the comparator protocols are asymmetric.",
+        "No repeated training seeds, confidence intervals, formal significance tests, or seed for the one-random-prompt condition are reported.",
+        "Exact 16-token C4 matching does not detect semantic or cross-task leakage, omits BIG-bench, and flags potentially consequential overlap for HellaSwag and RTE.",
+        "Paper Table 5 lists 39 T0 dataset configurations including TyDiQA, while the inspected release registry has 38 BASE configurations and no TyDiQA; the sources do not explain the discrepancy.",
+        "The aggregate Apache labels on code, the pinned T0 model card, PromptSource, and P3 do not establish compatible rights for every upstream dataset; Story Cloze separately requires access approval.",
+        "Zero-shot T0 remains behind task-specific fine-tuning, and the bias appendix shows that filtering some training data does not make the models bias-free or harmless."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The corpus separates the 42-name arXiv artifacts from the 40-name official ICLR identity instead of silently choosing one list for every version."
+        },
+        {
+          "status": "open",
+          "note": "The cause of the paper's 39-row T0 mixture versus the release registry's 38 BASE rows and absent TyDiQA is unreported.",
+          "resolutionCondition": "A paper-era run manifest or author clarification mapping every training configuration to released materialized data is required."
+        },
+        {
+          "status": "open",
+          "note": "The audited sources do not establish byte identity between arXiv v3 and the OpenReview-hosted venue PDF.",
+          "resolutionCondition": "A retrievable venue PDF and checksum comparison with arXiv v3 are required."
+        }
+      ]
+    },
+    {
       "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
       "title": "Training language models to follow instructions with human feedback",
       "authors": [
@@ -14673,7 +15605,8 @@
         "brown-2020-internal-reporting-discrepancies",
         "hoffmann-2022-chinchilla-architecture-and-training",
         "stiennon-2020-gpt3-style-model-family-and-sft",
-        "ouyang-2022-gpt3-initialization-and-sft"
+        "ouyang-2022-gpt3-initialization-and-sft",
+        "wei-2022-lamda-pt-model-and-pretraining-boundary"
       ],
       "uncertainties": []
     },
@@ -15232,7 +16165,8 @@
         "raffel-2020-unified-text-to-text-framework",
         "raffel-2020-encoder-decoder-architecture",
         "raffel-2020-architecture-comparison",
-        "raffel-2019-release-reconstruction-and-rights-boundary"
+        "raffel-2019-release-reconstruction-and-rights-boundary",
+        "sanh-2022-t5-plus-lm-model-and-objective"
       ],
       "uncertainties": [
         {
@@ -15535,7 +16469,8 @@
         "brown-2020-posthoc-overlap-analysis",
         "brown-2020-contamination-result-boundary",
         "brown-2020-arithmetic-memorization-spot-check",
-        "brown-2020-internal-reporting-discrepancies"
+        "brown-2020-internal-reporting-discrepancies",
+        "wei-2022-contamination-audit-and-evaluation-limits"
       ],
       "uncertainties": [
         {
@@ -15682,6 +16617,141 @@
         "ouyang-2022-kl-regularized-ppo-and-pretraining-mix"
       ],
       "uncertainties": []
+    },
+    {
+      "id": "multitask-supervised-instruction-tuning",
+      "name": "Multitask supervised instruction tuning",
+      "kind": "mechanism",
+      "description": "Update a pretrained language model on a heterogeneous supervised mixture whose inputs verbalize task intent, so one post-trained model can be evaluated on excluded task families without task-specific parameter updates at inference.",
+      "claimIds": [
+        "wei-2021-version-and-canonical-boundary",
+        "wei-2022-lamda-pt-model-and-pretraining-boundary",
+        "wei-2022-dataset-clusters-templates-and-mixture",
+        "wei-2022-instruction-tuning-optimization",
+        "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+        "wei-2022-cluster-and-dataset-diversity-ablation",
+        "wei-2022-scale-dependent-transfer-ablation",
+        "wei-2022-few-shot-and-prompt-tuning-extensions",
+        "wei-2021-code-model-data-and-rights-boundary",
+        "wei-2022-environmental-and-scope-boundary",
+        "sanh-2021-version-authorship-and-canonical-boundary",
+        "sanh-2022-t5-plus-lm-model-and-objective",
+        "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+        "sanh-2022-training-mixture-and-checkpoint-selection",
+        "sanh-2022-held-out-task-results",
+        "sanh-2022-big-bench-results",
+        "sanh-2022-flan-comparison-and-instructionless-ablation",
+        "sanh-2022-artifact-mixture-and-rights-boundary",
+        "sanh-2022-compute-bias-and-scope-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "prompt-template-mixture-conditioning",
+      "name": "Prompt-template mixture conditioning",
+      "kind": "mechanism",
+      "description": "Render each supervised dataset through multiple natural-language input and target templates, sampling across wordings and sometimes task inversions so training does not bind a dataset to one prompt surface form.",
+      "claimIds": [
+        "wei-2022-dataset-clusters-templates-and-mixture",
+        "wei-2022-instruction-semantics-ablation",
+        "wei-2022-few-shot-and-prompt-tuning-extensions",
+        "wei-2021-code-model-data-and-rights-boundary",
+        "sanh-2022-p3-prompt-collection-and-experimental-subset",
+        "sanh-2022-prompt-and-dataset-diversity-ablation",
+        "sanh-2022-flan-comparison-and-instructionless-ablation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "A larger public prompt pool is not identical to the subset and prompt filters used in any one training mixture."
+        }
+      ]
+    },
+    {
+      "id": "task-family-held-out-generalization",
+      "name": "Task-family held-out generalization",
+      "kind": "constraint",
+      "description": "Evaluate transfer by excluding labeled datasets from a declared task family during post-training, while retaining explicit guards for overlapping taxonomies, pretraining exposure, and variant-specific leakage.",
+      "claimIds": [
+        "wei-2022-held-out-cluster-evaluation-protocol",
+        "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+        "wei-2022-cluster-and-dataset-diversity-ablation",
+        "wei-2022-contamination-audit-and-evaluation-limits",
+        "sanh-2022-task-taxonomy-and-held-out-design",
+        "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+        "sanh-2022-held-out-task-results",
+        "sanh-2022-big-bench-results",
+        "sanh-2022-contamination-and-lambada-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Held out from supervised post-training does not imply absent from language-model pretraining or absent as a latent skill in another training task."
+        }
+      ]
+    },
+    {
+      "id": "instruction-tuning-scale-dependence",
+      "name": "Instruction-tuning scale dependence",
+      "kind": "finding",
+      "description": "In one related decoder-only model family, the same instruction-mixture intervention improves held-out tasks at roughly hundred-billion-parameter scale but can reduce them at eight billion parameters and below.",
+      "claimIds": [
+        "wei-2022-scale-dependent-transfer-ablation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The result is a family-specific ablation, not a universal scaling law or proof that parameter count alone causes instruction generalization."
+        }
+      ]
+    },
+    {
+      "id": "prompt-distribution-robustness-evaluation",
+      "name": "Prompt-distribution robustness evaluation",
+      "kind": "objective",
+      "description": "Treat prompt wording as an evaluation distribution and report central tendency plus dispersion across all eligible templates instead of selecting one favorable prompt on held-out labels.",
+      "claimIds": [
+        "sanh-2022-rank-classification-and-prompt-aggregation",
+        "sanh-2022-prompt-and-dataset-diversity-ablation",
+        "sanh-2022-gpt3-prompt-comparator-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Median and interquartile range across a finite contributed prompt set do not measure robustness to every valid instruction."
+        }
+      ]
+    },
+    {
+      "id": "public-prompt-pool-materialization",
+      "name": "Public prompt-pool materialization",
+      "kind": "mechanism",
+      "description": "Maintain community-authored input and target templates with task metadata, then materialize eligible source datasets into prompted examples for reproducible multitask training and evaluation.",
+      "claimIds": [
+        "sanh-2022-p3-prompt-collection-and-experimental-subset",
+        "sanh-2022-artifact-mixture-and-rights-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Tooling, template code, materialized examples, source datasets, and trained checkpoints have separate provenance and license scopes."
+        }
+      ]
+    },
+    {
+      "id": "answer-choice-likelihood-ranking",
+      "name": "Answer-choice likelihood ranking",
+      "kind": "mechanism",
+      "description": "Score each allowed textual answer under a generative model and predict the option with highest target-sequence likelihood, with results sensitive to candidate formulation and normalization choices.",
+      "claimIds": [
+        "sanh-2022-rank-classification-and-prompt-aggregation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "T0 uses unnormalized option likelihood, so this evaluation is distinct from free generation and can favor shorter answer strings."
+        }
+      ]
     },
     {
       "id": "labeler-scoped-instruction-alignment",
@@ -23274,6 +24344,683 @@
         "pageEnd": 1
       },
       "accessNote": "The pinned Modified MIT text explicitly covers repository software and the feedback dataset, excludes the processed Reddit TL;DR dataset, and points to the source dataset's separate attribution terms."
+    },
+    {
+      "id": "wei-2021-arxiv-record",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "arXiv record for Finetuned Language Models Are Zero-Shot Learners",
+      "url": "https://arxiv.org/abs/2109.01652",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2021-arxiv-v1-version",
+        "wei-2021-arxiv-v2-version",
+        "wei-2021-arxiv-v3-version",
+        "wei-2021-arxiv-v4-version",
+        "wei-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "accessNote": "The submission ledger records five revisions from 3 September 2021 through 8 February 2022 and links the non-exclusive arXiv distribution license.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "wei-2021-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Immutable FLAN arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2109.01652v1",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 29-page first posting has SHA-256 8a83d64be74769838a8de9f0c5b50d680b870b4b4a7f169f7d5b7d03b736f4b0.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 29
+      }
+    },
+    {
+      "id": "wei-2021-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Immutable FLAN arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2109.01652v2",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2021-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 41-page revision has SHA-256 72b6fea9ce89344b0128596dad3610a40d366e16c826ab3a29066e5b1345af4d.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 41
+      }
+    },
+    {
+      "id": "wei-2021-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Immutable FLAN arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/2109.01652v3",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2021-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 41-page revision has SHA-256 4bb13df84c30e0970546e994c82e23d26375326c252666d989df7b0b4df89329.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 41
+      }
+    },
+    {
+      "id": "wei-2021-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Immutable FLAN arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/2109.01652v4",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2021-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 47-page revision has SHA-256 995079fbeef52bfb1092a92c23c6a56f5c7f37ac7e65f834e90548930c333a28.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 47
+      }
+    },
+    {
+      "id": "wei-2022-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Immutable FLAN arXiv version 5 camera-ready full text",
+      "url": "https://arxiv.org/pdf/2109.01652v5",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 46-page author-posted ICLR camera-ready file has SHA-256 7126b83c5590b9eb4b6e6027446cb88c0aeff132e47d88e9407982b1f7fad044.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 46
+      }
+    },
+    {
+      "id": "wei-2021-arxiv-license",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the FLAN record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2021-arxiv-v1-version",
+        "wei-2021-arxiv-v2-version",
+        "wei-2021-arxiv-v3-version",
+        "wei-2021-arxiv-v4-version",
+        "wei-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The terms grant arXiv a non-exclusive distribution right and do not provide a general reuse license for the article, repository, model, or upstream datasets.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "wei-2022-arxiv-v5-source-package",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Immutable FLAN arXiv version 5 source package",
+      "url": "https://arxiv.org/src/2109.01652v5",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "wei-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive has SHA-256 6809f969c199b09ebc3d8b4145d2dd80d8c8891a8c395ad218d11f1e5b30496e and 44 paper-source and figure entries; it is not a model implementation or checkpoint package."
+    },
+    {
+      "id": "wei-2022-iclr-record",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Official ICLR 2022 record for Finetuned Language Models Are Zero-Shot Learners",
+      "url": "https://iclr.cc/virtual/2022/poster/6254",
+      "accessDate": "2026-09-01",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "wei-2022-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "accessNote": "The official program page supplies title, nine authors, abstract, 2022 venue identity, Poster status, and the OpenReview forum link. It does not expose a stable full-text checksum.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "wei-2021-flan-initial-code-snapshot",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Initial official FLAN repository snapshot",
+      "url": "https://github.com/google-research/FLAN/tree/3770e8379f1766eab4e2875ea1a829a074389b59",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "wei-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The immutable 1 September 2021 launch tree contains task splits, templates, mixtures, and evaluation code. It contains no LaMDA-PT or 137B FLAN weights, pretraining corpus, or end-to-end training environment.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "wei-2021-flan-apache-license",
+      "relatedWorkIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "title": "Pinned launch-time FLAN Apache License 2.0",
+      "url": "https://github.com/google-research/FLAN/blob/3770e8379f1766eab4e2875ea1a829a074389b59/LICENSE",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "wei-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Apache License 2.0 covers repository software; it is not extended to the paper, upstream TFDS datasets, internal pretraining text, or unreleased model objects without separate evidence.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2021-arxiv-record",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "arXiv record for Multitask Prompted Training Enables Zero-Shot Task Generalization",
+      "url": "https://arxiv.org/abs/2110.08207",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sanh-2021-arxiv-v1-version",
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "accessNote": "The ledger records versions on 15 October and 13 December 2021 and 17 March 2022. Its current author metadata lists 41 names, unlike the 42-name PDF title pages and 40-name venue record.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2021-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Immutable T0 arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2110.08207v1",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sanh-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 161-page first posting has SHA-256 4bdc79c81dc203f3c6d0041609afa54123d4fd42034c6e8ba8d395e11216066d.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 161
+      }
+    },
+    {
+      "id": "sanh-2021-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Immutable T0 arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2110.08207v2",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 216-page revision has SHA-256 7dd4aa0f177385c6f6c12215ec992fe265e36b4d582ee4fbe8581ff35f9d27ce.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 216
+      }
+    },
+    {
+      "id": "sanh-2022-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Immutable T0 arXiv version 3 camera-ready full text",
+      "url": "https://arxiv.org/pdf/2110.08207v3",
+      "accessDate": "2026-09-01",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete 216-page author-posted ICLR camera-ready file has SHA-256 d4daf6dfe3a50b2af04f89c9669e5c5c90195b61642052f6b92de36ec4c8f029.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 216
+      }
+    },
+    {
+      "id": "sanh-2021-arxiv-license",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Creative Commons Attribution 4.0 terms linked from the T0 arXiv record",
+      "url": "https://creativecommons.org/licenses/by/4.0/legalcode.en",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "public-archive",
+      "versionIds": [
+        "sanh-2021-arxiv-v1-version",
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The arXiv record links CC BY 4.0 for the article. That article license does not by itself license code, checkpoints, prompts, or incorporated third-party datasets.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Immutable T0 arXiv version 3 source package",
+      "url": "https://arxiv.org/src/2110.08207v3",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected archive has SHA-256 b5b965abf1a76f6bbfc6fa3d6cd46970b51cb0b8411518a596578b7276720272e and 38 publication-source and figure entries; it is not the model implementation or a training-data package."
+    },
+    {
+      "id": "sanh-2022-iclr-record",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Official ICLR 2022 record for Multitask Prompted Training Enables Zero-Shot Task Generalization",
+      "url": "https://iclr.cc/virtual/2022/7102",
+      "accessDate": "2026-09-01",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "sanh-2022-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "accessNote": "The official program page supplies the 40-author venue identity, abstract, 2022 publication year, Spotlight status, and OpenReview link; Michael McKenna and Tali Bers appear on the arXiv title pages but not this record.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-official-citation",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Commit-pinned official T0 ICLR citation",
+      "url": "https://github.com/bigscience-workshop/t-zero/blob/7a699e3ba15c1aeccf5b99cf2e2df3790f0dffce/CITATION.bib",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2022-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The project citation identifies an ICLR 2022 in-proceedings artifact with the same 40 authors as the official program. It is metadata, not evidence that the venue PDF is byte-identical to arXiv v3.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-t-zero-release-tree",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Paper-era T0 code and checkpoint-link release tree",
+      "url": "https://github.com/bigscience-workshop/t-zero/tree/11f42bf6880a85ee72d4415e53b5054d42f4aa0b",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The immutable 20 January 2022 tree contains training, evaluation, and inference code and links six paper checkpoints after a staggered December-January release. It does not contain pretrained T5 inputs or every materialized upstream dataset.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-t-zero-dataset-registry",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Paper-era T0 dataset registry",
+      "url": "https://github.com/bigscience-workshop/t-zero/blob/11f42bf6880a85ee72d4415e53b5054d42f4aa0b/t0/datasets.csv",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The release registry contains 38 rows marked BASE and no TyDiQA row, while paper Table 5 lists a 39-configuration T0 mixture including TyDiQA.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-t-zero-training-instructions",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Paper-era T0 training and data instructions",
+      "url": "https://github.com/bigscience-workshop/t-zero/blob/11f42bf6880a85ee72d4415e53b5054d42f4aa0b/training/README.md",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The instructions describe P3 caching, a separate Story Cloze access requirement, and a total-step reproduction command. They do not resolve the TyDiQA discrepancy or fully lock transitive dependencies.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-t-zero-apache-license",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Pinned paper-era T0 Apache License 2.0",
+      "url": "https://github.com/bigscience-workshop/t-zero/blob/11f42bf6880a85ee72d4415e53b5054d42f4aa0b/LICENSE",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Apache License 2.0 covers repository software and does not itself establish rights in T5 checkpoints, P3 constituents, or upstream dataset content.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2021-promptsource-v010-snapshot",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "PromptSource version 0.1.0 paper-era snapshot",
+      "url": "https://github.com/bigscience-workshop/promptsource/tree/4a662713df656d37ee1f3fb8ee7966cb2b8e5a74",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The immutable v0.1.0-era tree is the dependency named by the T0 package and contains the prompt-authoring interface and templates; it is distinct from the materialized P3 data payload.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2021-promptsource-apache-license",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Pinned PromptSource Apache License 2.0",
+      "url": "https://github.com/bigscience-workshop/promptsource/blob/4a662713df656d37ee1f3fb8ee7966cb2b8e5a74/LICENSE",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2021-arxiv-v2-version",
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Apache License 2.0 covers PromptSource software; it does not automatically relicense source datasets or every prompted example.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-t0-model-card",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Immutable official T0 model card",
+      "url": "https://huggingface.co/bigscience/T0/blob/1cfa27271f8085c29323c94bd659004b210f20b5/README.md",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The pinned card documents the paper model, 12,200 fine-tuning steps, bf16 training, public family links, Apache tag, limitations, and inference guidance. It is a current immutable card snapshot, not a paper revision or original upload timestamp.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "sanh-2022-p3-dataset-card",
+      "relatedWorkIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "title": "Immutable official P3 dataset card",
+      "url": "https://huggingface.co/datasets/bigscience/P3/blob/db485208b9f41d46c1d0975202328d08f8199046/README.md",
+      "accessDate": "2026-09-01",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "sanh-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The pinned card identifies materialized prompted examples used for T0 and declares Apache 2.0 at aggregate level. It does not constitute a complete item-level rights audit of every upstream dataset.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
     },
     {
       "id": "ouyang-2022-openai-publication",
@@ -44539,6 +46286,1063 @@
       "checkedDate": "2026-08-31"
     },
     {
+      "id": "wei-2021-version-and-canonical-boundary",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "The FLAN family begins with a 29-page arXiv posting on 3 September 2021, passes through four dated revisions, and ends in a 46-page author-posted camera-ready v5 plus a separate official ICLR 2022 Poster record. The corpus keeps all six artifacts distinct and does not assume the venue PDF is byte-identical to arXiv v5.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2021-arxiv-record",
+          "locator": {
+            "label": "Five-version arXiv ledger",
+            "section": "Submission history",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Records every arXiv posting date and the v5 ICLR comment."
+        },
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Author-posted camera-ready identity and changes",
+            "section": "Title page; unnumbered Changes block",
+            "pageStart": 1,
+            "pageEnd": 35
+          },
+          "support": "Marks the text as an ICLR 2022 conference paper and enumerates version deltas."
+        },
+        {
+          "sourceId": "wei-2022-iclr-record",
+          "locator": {
+            "label": "Canonical venue identity",
+            "section": "Official program record",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Confirms the title, authors, abstract, year, and Poster status without exposing a stable venue-file checksum."
+        }
+      ],
+      "limitations": [
+        "The v5 change appendix duplicates the 2.81T-to-2.49T correction under two transition headings, so it does not by itself resolve the exact first corrected revision."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Byte identity between the author-posted and venue-hosted camera-ready files remains unverified.",
+          "resolutionCondition": "A retrievable venue file and checksum comparison are required."
+        }
+      ],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-lamda-pt-model-and-pretraining-boundary",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "FLAN starts from LaMDA-PT, a dense left-to-right decoder-only Transformer with 137 billion parameters, trained only with a language-model objective on 2.49 trillion BPE tokens from web documents including code, dialogue, and Wikipedia, using a 32,000-item SentencePiece vocabulary; about 10% of the pretraining data is non-English.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "LaMDA-PT substrate and pretraining envelope",
+            "section": "2.4 Training details",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "Specifies architecture, size, corpus categories, corrected token count, vocabulary, language mix, and pretraining objective."
+        }
+      ],
+      "limitations": [
+        "The pretraining mixture is summarized rather than released as a versioned example-level manifest, and the 137B checkpoint is not public."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-dataset-clusters-templates-and-mixture",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning"
+      ],
+      "statement": "The paper organizes 62 public TFDS dataset families into 12 task clusters, writes ten natural-language templates per dataset with up to three task inversions, appends allowed OPTIONS for classification, caps each dataset at 30,000 examples, and samples examples proportionally with weight saturating at 3,000 examples.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Datasets, clusters, templates, and classification options",
+            "section": "2.1 Tasks and templates; 2.3 Classification with options",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "Defines the paper taxonomy, template count, inverse formulations, and OPTIONS suffix."
+        },
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Dataset cap and mixture weighting",
+            "section": "2.4 Training details; Appendix G",
+            "pageStart": 4,
+            "pageEnd": 36
+          },
+          "support": "Gives the 30,000-example cap and 3,000-example maximum mixing rate."
+        },
+        {
+          "sourceId": "wei-2021-flan-initial-code-snapshot",
+          "locator": {
+            "label": "Launch task and mixture implementation",
+            "section": "flan/task_splits.py; flan/templates.py; flan/mixtures.py",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Corroborates held-out cluster keys, template structures, and examples-proportional capped mixing."
+        }
+      ],
+      "limitations": [
+        "Figure 3, Appendix G, and the 17 lower-level code cluster keys are not one-to-one; 62 and 12 are paper-level dataset-family and taxonomy counts, not raw SeqIO registration counts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-held-out-cluster-evaluation-protocol",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "task-family-held-out-generalization"
+      ],
+      "statement": "A FLAN evaluation dataset counts as unseen only if every task cluster to which it belongs is excluded from instruction tuning. Reporting c held-out clusters therefore uses c separately tuned models, with extra mutual exclusions for NLI versus paraphrase and for hybrid reading-comprehension-plus-commonsense datasets versus their parent clusters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Cluster-level exclusion rule",
+            "section": "2.2 Evaluation splits",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "Defines unseen status, separate held-out-cluster checkpoints, and special overlap guards."
+        },
+        {
+          "sourceId": "wei-2021-flan-initial-code-snapshot",
+          "locator": {
+            "label": "Launch held-out split construction",
+            "section": "flan/task_splits.py held-out cluster construction",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Implements the cluster exclusions and cross-cluster guards."
+        }
+      ],
+      "limitations": [
+        "Unseen means absent from instruction tuning, not absent from LaMDA-PT pretraining or semantically unrelated to every included dataset."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-instruction-tuning-optimization",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "FLAN fine-tunes for 30,000 gradient steps with Adafactor at learning rate 3×10⁻⁵, a batch of 8,192 tokens, 1,024-token inputs, 256-token targets, packed examples separated by EOS, and uses the final checkpoint; the run takes about 60 hours on 128 TPUv3 cores.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Instruction-tuning optimization",
+            "section": "2.4 Training details",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "Reports steps, optimizer, learning rate, batch, lengths, packing, checkpoint choice, hardware, and approximate duration."
+        }
+      ],
+      "limitations": [
+        "The paper does not release a complete run manifest or the internal checkpoint needed to reproduce this exact run."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "task-family-held-out-generalization"
+      ],
+      "statement": "Using the best held-out development template, the paper states that FLAN exceeds zero-shot GPT-3 on 20 of 25 evaluations and few-shot GPT-3 on 10, while exceeding zero-shot GLaM on 13 of 19 and one-shot GLaM on 11 of 19. On seven additional commonsense and coreference tasks, FLAN improves over LaMDA-PT on only three.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Main cross-model comparisons and additional-task failures",
+            "section": "3 Results; Tables 1-2",
+            "pageStart": 4,
+            "pageEnd": 6
+          },
+          "support": "Reports the 20/25, 10, 13/19, 11/19, and 3/7 statements with prompt-aggregation details."
+        }
+      ],
+      "limitations": [
+        "The best-development-template protocol uses task labels to select a template; mean-template results are also reported and are a stricter no-selection summary.",
+        "Direct Table 1-2 arithmetic yields 12 best-development-template wins over few-shot GPT-3 but 10 mean-template wins, so the prose count of 10 is retained as published rather than silently recomputed.",
+        "GPT-3 and GLaM values are cross-paper comparisons with different prompts, demonstrations, and evaluation procedures."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-cluster-and-dataset-diversity-ablation",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "task-family-held-out-generalization"
+      ],
+      "statement": "Across one-to-seven training clusters, the held-out average is 49.9, 55.0, 59.3, 59.2, 60.8, 61.9, and 63.5 as the included dataset count rises from 11 to 39. With seven clusters fixed, using up to four datasets per cluster improves the three held-out-cluster average by almost ten points, whereas more templates per dataset has little additional effect in that ablation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Training-cluster diversity sweep",
+            "section": "4.1 Number of instruction-tuning clusters; Figure 6",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "Reports the cluster counts, dataset counts, averages, sentiment exception, and unsaturated trend."
+        },
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Datasets-versus-templates ablation",
+            "section": "Appendix B.1; Figure 11",
+            "pageStart": 24,
+            "pageEnd": 24
+          },
+          "support": "Holds cluster count fixed and separates dataset diversity from additional templates."
+        }
+      ],
+      "limitations": [
+        "Clusters are added in a fixed size-based order, there are no repeated training seeds, and the design cannot identify which added cluster causes which target improvement."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-scale-dependent-transfer-ablation",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "instruction-tuning-scale-dependence"
+      ],
+      "statement": "In a 422M, 2B, 8B, 68B, and 137B related-model sweep, instruction tuning improves held-out performance at 68B and 137B but hurts it at 8B and below. The paper offers limited capacity as one possible explanation rather than a demonstrated cause.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Model-size ablation",
+            "section": "4.2 Scaling laws; Figure 7",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "Shows the five sizes, sign reversal, and explicitly conjectural capacity explanation."
+        }
+      ],
+      "limitations": [
+        "The sweep is not a general scaling law, does not isolate architecture or compute, and reports no repeated-run uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-instruction-semantics-ablation",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "prompt-template-mixture-conditioning"
+      ],
+      "statement": "Across four held-out clusters, natural instructions at training and evaluation average 55.2, training with no template then evaluating with instructions averages 37.3, training with dataset names then evaluating with instructions averages 46.6, and using dataset names at both stages averages 47.0.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Instruction-role ablation",
+            "section": "4.3 Role of instructions; Table 3",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "Reports all four intervention conditions and the four-cluster averages."
+        }
+      ],
+      "limitations": [
+        "Dataset names are a particular nonsemantic control and the four-cluster average does not establish how arbitrary instruction wording behaves."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-few-shot-and-prompt-tuning-extensions",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning"
+      ],
+      "statement": "Adding randomly drawn held-out-task exemplars at inference and during instruction-tuning examples improves the reported average for every evaluated cluster and reduces template variation, with at most 16 exemplars and under 960 tokens. In separate 32-shot and full-data prompt-tuning experiments, a ten-token learned prompt adapts FLAN more effectively than LaMDA-PT.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Few-shot exemplar extension",
+            "section": "4.4 Instructions with few-shot exemplars; Figure 9",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "Defines exemplar sampling and limits and reports improvement across all seven cluster averages."
+        },
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Prompt-tuning extension",
+            "section": "4.5 Instruction tuning facilitates prompt tuning; Figure 10",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "Compares prompt-tuning adaptation of FLAN and LaMDA-PT."
+        }
+      ],
+      "limitations": [
+        "The prompt-tuning result is supervised downstream adaptation, not zero-shot evaluation, and the few-shot extension changes both training and inference formatting."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-contamination-audit-and-evaluation-limits",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "benchmark-overlap-contamination-audit",
+        "task-family-held-out-generalization"
+      ],
+      "statement": "A post-hoc roughly 13-gram audit removes examples colliding with LaMDA-PT pretraining text. Clean fractions fall to 0.6% for DROP, 0.9% for SQuAD v2, 1.4% for ANLI R1, and 2.1% for ANLI R2; ReCoRD and PIQA are the remaining datasets with clean performance more than 1% lower than overall performance in relative terms, but the authors report no overall contamination-rate correlation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Post-hoc overlap method and clean-subset results",
+            "section": "Appendix C Data contamination analysis; Table 5",
+            "pageStart": 24,
+            "pageEnd": 27
+          },
+          "support": "Defines the n-gram procedure, clean fractions, score comparisons, and explicit methodological warnings."
+        }
+      ],
+      "limitations": [
+        "N-gram matches can be false positives, clean subsets can be distribution-shifted and tiny, Table 5 uses one template, and the analysis cannot prove absence of memorization or isolate causal score inflation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2021-code-model-data-and-rights-boundary",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning"
+      ],
+      "statement": "The launch repository releases task transformations, templates, mixture construction, and evaluation code under Apache 2.0, but not the internal LaMDA-PT or 137B FLAN weights, pretraining corpus, or a complete training environment. The software license does not relicense the many upstream TFDS datasets, and later Flan-T5 or Flan Collection artifacts are not original-FLAN evidence.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2021-flan-initial-code-snapshot",
+          "locator": {
+            "label": "Launch artifact tree and model placeholder",
+            "section": "Repository tree; README; flan/tasks.py",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Establishes the released code scope and absence of the internal vocabulary and model objects."
+        },
+        {
+          "sourceId": "wei-2021-flan-apache-license",
+          "locator": {
+            "label": "Repository software license",
+            "section": "Complete LICENSE",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Provides Apache 2.0 terms for repository software."
+        },
+        {
+          "sourceId": "wei-2021-arxiv-license",
+          "locator": {
+            "label": "Article distribution-rights boundary",
+            "section": "License terms",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Shows that the arXiv grant is not a general artifact license."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is limited to official sources inspected on 1 September 2026 and does not exclude private or independent reconstructions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "wei-2022-environmental-and-scope-boundary",
+      "workId": "wei-2021-finetuned-language-models-zero-shot-learners",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "The paper reports 451 MWh and 26 tCO2e for the reused pretrained models and says FLAN's added gradient steps are under 2% of pretraining steps, without measuring an exact incremental footprint. It also limits the study through subjective clusters, short mostly English instructions, possible pretraining overlap, 1,024-token context, 137B serving cost, and propagation of labeled-data biases.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "wei-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Ethics, compute, and study limitations",
+            "section": "6 Discussion; Ethics statement; FAQ",
+            "pageStart": 9,
+            "pageEnd": 31
+          },
+          "support": "States the pretraining energy estimate, relative tuning-step bound, and language, context, cluster, cost, overlap, and bias limitations."
+        }
+      ],
+      "limitations": [
+        "Pretraining energy is inherited from a cited prior estimate and the paper does not report measured FLAN-only electricity or emissions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2021-version-authorship-and-canonical-boundary",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "The T0 family has 161-, 216-, and 216-page arXiv revisions dated 15 October 2021, 13 December 2021, and 17 March 2022. Every PDF title page lists 42 names, while the official ICLR record and project citation list 40 and omit Michael McKenna and Tali Bers; the corpus therefore preserves a separate canonical venue version rather than applying one author list to every artifact.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2021-arxiv-record",
+          "locator": {
+            "label": "Three-version ledger and current metadata",
+            "section": "Submission history and author list",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Records the three dates and a current 41-name metadata state."
+        },
+        {
+          "sourceId": "sanh-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 title page",
+            "section": "Title page",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Displays the 42-name preprint author list."
+        },
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version 3 title page",
+            "section": "Title page",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Retains the 42-name preprint author list and ICLR camera-ready header."
+        },
+        {
+          "sourceId": "sanh-2022-iclr-record",
+          "locator": {
+            "label": "Official venue author list",
+            "section": "Official program record",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Lists 40 authors and Spotlight status."
+        },
+        {
+          "sourceId": "sanh-2022-official-citation",
+          "locator": {
+            "label": "Project venue citation",
+            "section": "CITATION.bib",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Independently records the 40-author ICLR citation."
+        }
+      ],
+      "limitations": [
+        "No authorship correction note explaining the two omitted venue names was identified, and venue-file byte identity with arXiv v3 was not established."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-task-taxonomy-and-held-out-design",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "task-family-held-out-generalization"
+      ],
+      "statement": "T0 groups datasets mainly by task format, then holds out NLI, coreference, sentence completion, and word-sense disambiguation: CB, RTE, three ANLI rounds, WSC, Winogrande, COPA, HellaSwag, Story Cloze, and WiC form 11 reported dataset-or-round results. Fourteen selected English, tokenizer-compatible BIG-bench tasks provide a second held-out set.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Task taxonomy, held-out groups, and BIG-bench subset",
+            "section": "3 Measuring generalization to held-out tasks; Figure 2",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "Defines the four groups, evaluation datasets, selection rules, and acknowledged taxonomy heuristic."
+        }
+      ],
+      "limitations": [
+        "The taxonomy is fuzzy and format-based; Appendix D documents entailment- and coreference-like content crossing the nominal group boundaries."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-p3-prompt-collection-and-experimental-subset",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "prompt-template-mixture-conditioning",
+        "public-prompt-pool-materialization"
+      ],
+      "statement": "P3 is reported as 2,073 contributor-written prompts for 177 datasets, using Jinja input and target templates plus answer-choice and metric metadata. Training can include original-task and inverted or non-original prompts, while reported held-out evaluation excludes non-original prompts; T0's experimental subset averages 8.03 eligible templates per training dataset rather than using the whole public pool.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Prompt representation and P3 pool",
+            "section": "4 A unified prompt format",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "Defines template functions, metadata, contributor guidance, original/non-original prompts, and the 2,073/177 pool."
+        },
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Experimental prompt-count conditions",
+            "section": "6.2 Prompt robustness",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "Defines p=1, p=5.7 original-only, and p=8.03 all eligible training templates."
+        }
+      ],
+      "limitations": [
+        "P3's full pool, the experimental mixtures, and the materialized Hugging Face dataset are related but nonidentical artifact scopes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-t5-plus-lm-model-and-objective",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "Every T0 variant initializes from encoder-decoder T5+LM: T5 pretraining on one trillion C4 tokens with its masked span-style objective followed by 100 billion additional C4 tokens under standard language modeling. Main variants use 11B parameters, the smaller ablation uses 3B, and prompted fine-tuning maximizes target-token likelihood without reconstructing input tokens.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "T5+LM initialization and target-only objective",
+            "section": "5 Experimental setup",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "Names the T5 and LM-adaptation stages, 11B/3B sizes, and autoregressive target likelihood."
+        }
+      ],
+      "limitations": [
+        "The extra 100B-token LM adaptation is attributed to Lester et al.; the T5 source node covers the base architecture and original pretraining rather than that later checkpoint as a separate work."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "task-family-held-out-generalization"
+      ],
+      "statement": "T0, T0+, and T0++ use 39, 49, and 55 paper-listed dataset configurations. T0+ adds GPT-3 evaluation datasets; T0++ additionally adds SuperGLUE except RTE and CB, leaving only NLI and BIG-bench held out. Consequently the gray T0+ and T0++ cells for trained-on tasks are not zero-shot results.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Variant definitions",
+            "section": "5 Experimental setup",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "Defines which dataset groups T0+ and T0++ add and which tasks remain held out."
+        },
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Mixture table and trained-on result shading",
+            "section": "Appendix D.4 Table 5; Appendix F Table 6",
+            "pageStart": 24,
+            "pageEnd": 26
+          },
+          "support": "Lists 39/49/55 configurations and visually separates trained-on evaluation rows."
+        }
+      ],
+      "limitations": [
+        "Model comparisons across variants change the training mixture, so a higher row cannot be attributed to a single dataset or prompt factor."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-training-mixture-and-checkpoint-selection",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "T0 samples datasets proportionally while capping any dataset above 500,000 examples at 500000 divided by its template count, packs 1,024-token inputs and 256-token targets into batches of 1,024 sequences or 2²⁰ input tokens, and trains with Adafactor at learning rate 10⁻³ and dropout 0.1. Checkpoints are selected only with validation splits of training datasets.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Mixture sampling, optimization, and checkpoint selection",
+            "section": "5 Experimental setup",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "Reports the sampling cap, lengths, packing, batch, optimizer, learning rate, dropout, and selection data."
+        },
+        {
+          "sourceId": "sanh-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-specific step count",
+            "section": "5 Experimental setup",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "States that checkpoint 12,200 was selected and all models were fine-tuned for 12,200 steps in version 1."
+        },
+        {
+          "sourceId": "sanh-2022-t0-model-card",
+          "locator": {
+            "label": "Model-card training configuration",
+            "section": "Training procedure",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Restates 12,200 fine-tuning steps and bf16 activations for the released model."
+        }
+      ],
+      "limitations": [
+        "Versions 2 and 3 remove the explicit 12,200-step sentence; the release reproduction command's 1,112,200 total is consistent with a 1.1M-step base plus 12,200 but that decomposition is not promoted as direct evidence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-rank-classification-and-prompt-aggregation",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "prompt-distribution-robustness-evaluation",
+        "answer-choice-likelihood-ranking"
+      ],
+      "statement": "For classification, T0 ranks candidate target strings by unnormalized sequence likelihood. It performs no held-out development-set prompt selection and reports the median and interquartile range across all eligible prompts, usually on validation splits; BIG-bench uses one maintainer prompt per task.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Rank classification and prompt aggregation",
+            "section": "5 Experimental setup; 6 Results",
+            "pageStart": 5,
+            "pageEnd": 7
+          },
+          "support": "Defines candidate scoring, absence of length normalization and prompt selection, splits, and median/IQR reporting."
+        }
+      ],
+      "limitations": [
+        "Unnormalized sequence likelihood can favor shorter options, and a finite prompt pool does not sample all valid phrasings."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-held-out-task-results",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "task-family-held-out-generalization"
+      ],
+      "statement": "Table 6 reports median T5+LM→T0 accuracy gains on all 11 held-out results: WSC 57.69→64.42, Winogrande 50.71→60.46, ANLI R1/R2/R3 32.85→44.70, 32.90→39.40, and 33.75→42.42, CB 33.93→78.57, RTE 51.81→81.23, COPA 55.00→90.79, HellaSwag 27.73→33.65, Story Cloze 48.85→94.71, and WiC 50.24→57.21. T0 matches or exceeds all displayed GPT-3 sizes on 9 of 11, except Winogrande and HellaSwag.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Held-out result interpretation",
+            "section": "6.1 Generalization to held-out tasks",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "States improvement on all 11 and the 9/11 GPT-3 comparison."
+        },
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Exact median result matrix",
+            "section": "Appendix F Table 6",
+            "pageStart": 26,
+            "pageEnd": 26
+          },
+          "support": "Supplies every T5+LM and T0 median listed in the claim."
+        }
+      ],
+      "limitations": [
+        "The paper reports no repeated training runs or formal significance tests, and GPT-3 uses a different prompt-aggregation protocol."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-big-bench-results",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "task-family-held-out-generalization"
+      ],
+      "statement": "Across 14 selected BIG-bench tasks, at least one T0 variant exceeds every displayed diagnostic language-model baseline on 13 tasks; StrategyQA is the exception. The winning variant can differ by task, and T0, T0+, and T0++ have different supervised mixtures.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "BIG-bench comparison",
+            "section": "6.1 Generalization to held-out tasks; Figure 5",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "Reports the 13-of-14 comparison and the StrategyQA exception across variants."
+        }
+      ],
+      "limitations": [
+        "This is a per-task best-of-variants statement over a selected 14-task subset, not one model beating all baselines on the entire BIG-bench collection."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-prompt-and-dataset-diversity-ablation",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "prompt-template-mixture-conditioning",
+        "prompt-distribution-robustness-evaluation"
+      ],
+      "statement": "Moving from one random original-task prompt to 5.7 original prompts per dataset improves the held-out median on 8 of 11 results and shrinks IQR on 7; moving from 5.7 to 8.03 prompts including non-original tasks improves median on 9 and shrinks IQR on 8. Increasing dataset configurations 39→49→55 improves all five NLI medians at each step but shrinks IQR on only 1 of 5 and then 2 of 5.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Prompt-count and dataset-count robustness ablations",
+            "section": "6.2 Prompt robustness; Figure 6",
+            "pageStart": 7,
+            "pageEnd": 9
+          },
+          "support": "Reports the p and d conditions and counts of median and IQR improvements."
+        }
+      ],
+      "limitations": [
+        "The p=1 prompt is randomly selected without a reported seed or repeated selection; dataset-count stages also change which tasks are trained."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-gpt3-prompt-comparator-boundary",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "prompt-distribution-robustness-evaluation"
+      ],
+      "statement": "In an RTE API check, the Brown-style prompt scores 58.8% rather than the published 63.5%, while nine alternative prompts have median 52.96 and IQR 1.28. The authors cannot verify that API davinci is identical to the 175B GPT-3 artifact, and the main comparison contrasts GPT-3's single reported prompt with T0's prompt median.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "GPT-3 prompt robustness check",
+            "section": "6.2 Prompt robustness",
+            "pageStart": 8,
+            "pageEnd": 9
+          },
+          "support": "Reports the ten-prompt RTE check, median, IQR, published value, and API-model identity caveat."
+        }
+      ],
+      "limitations": [
+        "One API task cannot calibrate all imported GPT-3 rows, and API state may have changed after the original paper."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-flan-comparison-and-instructionless-ablation",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning"
+      ],
+      "statement": "T0 describes FLAN as concurrent work with largely the same broad method but different prompt diversity, scale, and holdout design. On common datasets T0 is better on CB and RTE, similar on Story Cloze and COPA, and worse on Winogrande and ANLI; removing instructions raises HellaSwag's median from 33.65 to 57.93 and gives Winogrande 62.15, so instruction semantics are not uniformly beneficial.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Concurrent FLAN comparison and instruction removal",
+            "section": "2 Related work; 7 Discussion",
+            "pageStart": 3,
+            "pageEnd": 10
+          },
+          "support": "Calls FLAN concurrent, enumerates protocol and result differences, and reports the instructionless HellaSwag and Winogrande ablation."
+        }
+      ],
+      "limitations": [
+        "T0++ has more supervised task exposure than T0, and the paper treats architecture/objective and prompt diversity as possible explanations rather than established causes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-contamination-and-lambada-boundary",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "task-family-held-out-generalization"
+      ],
+      "statement": "An exact suffix-array audit searches groups of 16 C4 tokens and reports matches including HellaSwag 912/10,000, RTE hypotheses 156/3,000, RTE premises 329/3,000, ANLI premises 337/1,000, and Winogrande 0/1,767. The authors flag HellaSwag's 9.12% and RTE-hypothesis 5.2% as potentially problematic and omit LAMBADA from the main matrix because format and pretraining differences confound comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Exact C4 overlap audit",
+            "section": "Appendix E Contamination analysis; Table 7",
+            "pageStart": 25,
+            "pageEnd": 25
+          },
+          "support": "Defines the 16-token method, enumerates overlaps, and identifies potentially problematic rates."
+        },
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "LAMBADA evaluation boundary",
+            "section": "Appendix F; LAMBADA discussion",
+            "pageStart": 26,
+            "pageEnd": 27
+          },
+          "support": "Explains why LAMBADA is separated from the main held-out comparison and reports format-sensitive results."
+        }
+      ],
+      "limitations": [
+        "Exact lexical matching is not semantic leakage detection, can over-count longer overlapping blocks, does not audit cross-task supervision or BIG-bench, and is not converted into a causal score correction."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-artifact-mixture-and-rights-boundary",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "public-prompt-pool-materialization"
+      ],
+      "statement": "The official release supplies training, evaluation, and inference code, PromptSource tooling, materialized P3 data, and six linked T0-family checkpoints. Paper Table 5 lists 39 base T0 configurations including TyDiQA, while the paper-era registry has 38 BASE rows and no TyDiQA. Apache declarations cover the inspected repositories, the pinned T0 model card, and aggregate P3 artifact but do not establish rights for every upstream dataset; Story Cloze separately requires approved access.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Paper training-mixture table and public-artifact statement",
+            "section": "Abstract; Appendix D.4 Table 5",
+            "pageStart": 1,
+            "pageEnd": 24
+          },
+          "support": "States that models and prompts are public and lists the 39 paper configurations including TyDiQA."
+        },
+        {
+          "sourceId": "sanh-2022-t-zero-release-tree",
+          "locator": {
+            "label": "Paper-era code and model-link manifest",
+            "section": "Repository tree and README",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Establishes released implementation categories and six checkpoint links."
+        },
+        {
+          "sourceId": "sanh-2022-t-zero-dataset-registry",
+          "locator": {
+            "label": "Released mixture registry",
+            "section": "Complete t0/datasets.csv",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Contains 38 BASE rows and no TyDiQA entry."
+        },
+        {
+          "sourceId": "sanh-2022-t-zero-training-instructions",
+          "locator": {
+            "label": "P3 and Story Cloze release boundary",
+            "section": "Training README data preparation",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Links cached P3 and states that Story Cloze requires separate access."
+        },
+        {
+          "sourceId": "sanh-2022-t-zero-apache-license",
+          "locator": {
+            "label": "T0 software license",
+            "section": "Complete LICENSE",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Provides Apache 2.0 terms for repository software."
+        },
+        {
+          "sourceId": "sanh-2021-promptsource-apache-license",
+          "locator": {
+            "label": "PromptSource software license",
+            "section": "Complete LICENSE",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Provides Apache 2.0 terms for prompt tooling."
+        },
+        {
+          "sourceId": "sanh-2022-t0-model-card",
+          "locator": {
+            "label": "Pinned T0 model-card license and family boundary",
+            "section": "Model card metadata and model-family links",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned T0 card declares Apache 2.0 for that model artifact and links the public T0-family variants without serving as license evidence for every linked card."
+        },
+        {
+          "sourceId": "sanh-2022-p3-dataset-card",
+          "locator": {
+            "label": "Pinned aggregate P3 record",
+            "section": "Dataset card",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "Identifies materialized examples used for T0 and the aggregate Apache declaration."
+        }
+      ],
+      "limitations": [
+        "The current immutable Hugging Face cards are artifact records rather than original upload-time manifests, and the cause of the 39-versus-38 discrepancy is unresolved."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No inspected primary source explains the missing TyDiQA release entry.",
+          "resolutionCondition": "A paper-era run manifest or author clarification is required."
+        }
+      ],
+      "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "sanh-2022-compute-bias-and-scope-boundary",
+      "workId": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning"
+      ],
+      "statement": "The paper estimates about 270 TPU-v3-512 hours and 8.9 tCO2e for all reported experiments, while a single T0 run is about 27 hours and 0.9 tCO2e; evaluation and preprocessing are additional. It excludes some harmful datasets but explicitly says the models are not bias-free, reports problematic generations and gender-bias probes, and notes that zero-shot T0 remains behind task-specific fine-tuning.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Carbon estimate and accounting boundary",
+            "section": "Appendix B.1 Carbon emissions; Table 1",
+            "pageStart": 18,
+            "pageEnd": 19
+          },
+          "support": "Reports hardware hours, carbon estimates, single-run values, and omitted evaluation/preprocessing cost."
+        },
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Risk, bias, and task-specific-performance limits",
+            "section": "Appendix B.2-B.3",
+            "pageStart": 19,
+            "pageEnd": 21
+          },
+          "support": "States that filtering does not remove bias, presents problematic outputs and bias evaluations, and qualifies zero-shot performance."
+        }
+      ],
+      "limitations": [
+        "The emissions number is an estimate derived from prior T5 measurements and regional carbon intensity rather than direct end-to-end metering."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-01"
+    },
+    {
       "id": "ouyang-2022-version-and-deployment-boundary",
       "workId": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
       "ideaIds": [
@@ -49383,6 +52187,80 @@
       ]
     },
     {
+      "id": "raffel-2019-to-sanh-2021-t5-plus-lm-substrate",
+      "from": {
+        "kind": "work",
+        "id": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Sanh et al. explicitly initialize every T0 variant from an LM-adapted T5 checkpoint and retain T5's encoder-decoder text-to-text substrate before adding 100B-token LM adaptation and prompted multitask fine-tuning. The edge covers the T5 architecture and interface lineage, not the later LM-adaptation work as an original T5 result, nor T0 prompts, mixtures, checkpoints, or scores as properties of T5.",
+      "claimIds": [
+        "raffel-2020-unified-text-to-text-framework",
+        "raffel-2020-encoder-decoder-architecture",
+        "sanh-2022-t5-plus-lm-model-and-objective"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Target names T5 and the LM-adapted initialization",
+            "section": "5 Experimental setup",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The target specifies the T5 encoder-decoder base, Lester et al. LM adaptation, and 11B/3B initialization."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": []
+    },
+    {
+      "id": "wei-2021-to-sanh-2021-concurrent-instruction-tuning",
+      "from": {
+        "kind": "work",
+        "id": "wei-2021-finetuned-language-models-zero-shot-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      },
+      "connectionType": "conceptual-parallel",
+      "evidenceClass": "editorial-synthesis",
+      "confidence": "high",
+      "rationale": "T0 calls FLAN concurrent work that shares largely the same broad multitask instruction-tuning method, then directly contrasts prompt diversity, model scale, held-out-task design, architecture, and results. The chronological direction only follows public posting dates; it does not encode derivation, inspiration, priority, or transfer of data or weights.",
+      "claimIds": [
+        "wei-2022-dataset-clusters-templates-and-mixture",
+        "wei-2022-held-out-cluster-evaluation-protocol",
+        "sanh-2022-p3-prompt-collection-and-experimental-subset",
+        "sanh-2022-flan-comparison-and-instructionless-ablation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "sanh-2022-arxiv-v3-full-text",
+          "locator": {
+            "label": "Target identifies concurrent method and differences",
+            "section": "2 Related work; 7 Discussion",
+            "pageStart": 3,
+            "pageEnd": 10
+          },
+          "support": "The target calls Wei et al. concurrent, says the broad method is similar, and enumerates protocol and empirical differences."
+        }
+      ],
+      "causalLanguage": "prohibited",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "ArXiv posting dates order the records but do not resolve private conception, circulation, or influence."
+        }
+      ]
+    },
+    {
       "id": "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
       "from": {
         "kind": "work",
@@ -52547,6 +55425,144 @@
         "Immutable version provenance, release manifests, and license scope"
       ],
       "successCriterion": "The learner can derive the corrected negative log-sigmoid loss and sequence reward, distinguish every model and data role, reproduce main hyperparameters and preference conditions, explain the length and rm3 over-optimization curves, audit the CNN/DM and metric evidence, and separate v1/v2/v3/proceedings plus code/data/model rights."
+    },
+    {
+      "id": "beginner-wei-2021-instructions-task-holdouts-and-scale",
+      "mode": "beginner",
+      "objective": "Explain how FLAN turns many labeled datasets into instruction examples, why each reported task cluster needs its own held-out checkpoint, and why stronger average results do not mean every task, prompt, or model size improves.",
+      "workIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning",
+        "task-family-held-out-generalization",
+        "instruction-tuning-scale-dependence"
+      ],
+      "claimIds": [
+        "wei-2022-dataset-clusters-templates-and-mixture",
+        "wei-2022-held-out-cluster-evaluation-protocol",
+        "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+        "wei-2022-cluster-and-dataset-diversity-ablation",
+        "wei-2022-scale-dependent-transfer-ablation",
+        "wei-2022-instruction-semantics-ablation"
+      ],
+      "prerequisites": [
+        "A pretrained language model can be fine-tuned by updating its weights",
+        "A natural-language template can turn a labeled example into input and target text",
+        "A held-out evaluation should separate training examples from the evaluated category",
+        "An average can improve while individual tasks or model sizes do not"
+      ],
+      "successCriterion": "The learner can distinguish pretraining, instruction tuning, and inference; explain the leave-one-cluster-out design; state the 20-of-25 headline with its prompt-selection boundary; and describe the sign reversal below 68B without calling it a universal law."
+    },
+    {
+      "id": "expert-wei-2021-flan-mixture-evaluation-and-artifact-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct FLAN's six-version envelope, LaMDA-PT substrate, dataset-family and code-taxonomy counts, template and mixture pipeline, cluster exclusions, optimization, comparator protocols, ablations, contamination audit, compute estimate, and software/model/data rights boundaries.",
+      "workIds": [
+        "wei-2021-finetuned-language-models-zero-shot-learners"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning",
+        "task-family-held-out-generalization",
+        "instruction-tuning-scale-dependence",
+        "benchmark-overlap-contamination-audit"
+      ],
+      "claimIds": [
+        "wei-2021-version-and-canonical-boundary",
+        "wei-2022-lamda-pt-model-and-pretraining-boundary",
+        "wei-2022-dataset-clusters-templates-and-mixture",
+        "wei-2022-held-out-cluster-evaluation-protocol",
+        "wei-2022-instruction-tuning-optimization",
+        "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+        "wei-2022-cluster-and-dataset-diversity-ablation",
+        "wei-2022-scale-dependent-transfer-ablation",
+        "wei-2022-instruction-semantics-ablation",
+        "wei-2022-few-shot-and-prompt-tuning-extensions",
+        "wei-2022-contamination-audit-and-evaluation-limits",
+        "wei-2021-code-model-data-and-rights-boundary",
+        "wei-2022-environmental-and-scope-boundary"
+      ],
+      "prerequisites": [
+        "Decoder-only Transformer language modeling and supervised sequence fine-tuning",
+        "Mixture sampling, task taxonomies, prompt selection, and cross-paper comparator validity",
+        "Controlled ablations, repeated-run uncertainty, and contamination analysis",
+        "Immutable paper, code, model, dataset, and license provenance"
+      ],
+      "successCriterion": "The learner can reproduce the core hyperparameters and holdout guards; separate mean-template from best-development reporting; interpret every diversity, scale, and semantic ablation; audit the table-count anomaly and contamination limits; and distinguish the ICLR record, five arXiv texts, launch code, missing weights, and upstream rights."
+    },
+    {
+      "id": "beginner-sanh-2021-prompts-mixtures-and-robustness",
+      "mode": "beginner",
+      "objective": "Trace how T0 turns public datasets into many prompt wordings, why it reports a middle score and spread across prompts, and how adding training datasets changes which T0-family results still count as zero-shot.",
+      "workIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning",
+        "task-family-held-out-generalization",
+        "prompt-distribution-robustness-evaluation",
+        "public-prompt-pool-materialization"
+      ],
+      "claimIds": [
+        "sanh-2022-task-taxonomy-and-held-out-design",
+        "sanh-2022-p3-prompt-collection-and-experimental-subset",
+        "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+        "sanh-2022-rank-classification-and-prompt-aggregation",
+        "sanh-2022-held-out-task-results",
+        "sanh-2022-prompt-and-dataset-diversity-ablation"
+      ],
+      "prerequisites": [
+        "A T5-style model reads text and generates text",
+        "The same task can be worded through multiple prompts",
+        "Median and interquartile range summarize a distribution",
+        "Training on an evaluation dataset removes a zero-shot claim for that dataset"
+      ],
+      "successCriterion": "The learner can distinguish P3 from T0's training subset; explain T0, T0+, and T0++; describe likelihood ranking and median/IQR reporting; and give one prompt-robustness improvement plus one reason the comparison with GPT-3 is asymmetric."
+    },
+    {
+      "id": "expert-sanh-2021-t0-prompt-evaluation-and-release-boundaries",
+      "mode": "expert",
+      "objective": "Reconstruct the four-version authorship envelope, T5+LM initialization, P3 and PromptSource scopes, 39/49/55 paper mixtures, optimization and checkpoint selection, rank evaluation, exact result and robustness matrices, contamination, FLAN and GPT-3 comparisons, carbon and bias analyses, and release and rights discrepancies.",
+      "workIds": [
+        "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization"
+      ],
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "multitask-supervised-instruction-tuning",
+        "prompt-template-mixture-conditioning",
+        "task-family-held-out-generalization",
+        "prompt-distribution-robustness-evaluation",
+        "public-prompt-pool-materialization",
+        "answer-choice-likelihood-ranking"
+      ],
+      "claimIds": [
+        "sanh-2021-version-authorship-and-canonical-boundary",
+        "sanh-2022-task-taxonomy-and-held-out-design",
+        "sanh-2022-p3-prompt-collection-and-experimental-subset",
+        "sanh-2022-t5-plus-lm-model-and-objective",
+        "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+        "sanh-2022-training-mixture-and-checkpoint-selection",
+        "sanh-2022-rank-classification-and-prompt-aggregation",
+        "sanh-2022-held-out-task-results",
+        "sanh-2022-big-bench-results",
+        "sanh-2022-prompt-and-dataset-diversity-ablation",
+        "sanh-2022-gpt3-prompt-comparator-boundary",
+        "sanh-2022-flan-comparison-and-instructionless-ablation",
+        "sanh-2022-contamination-and-lambada-boundary",
+        "sanh-2022-artifact-mixture-and-rights-boundary",
+        "sanh-2022-compute-bias-and-scope-boundary"
+      ],
+      "prerequisites": [
+        "Encoder-decoder T5 objectives, language-model adaptation, and target likelihood",
+        "Multitask mixture sampling, Jinja prompt templates, and option ranking",
+        "Prompt-distribution summaries, task holdouts, comparator asymmetry, and overlap audits",
+        "Version-specific authorship, code/model/data provenance, and license scope"
+      ],
+      "successCriterion": "The learner can reproduce the T0 hyperparameters and 11 held-out medians; identify which T0+ and T0++ rows are trained-on; derive every p and d robustness count; defend the scoped T5 and FLAN relationships; and audit the 40/42 authors, 39/38 mixture, Story Cloze, checkpoint, P3, and upstream-rights boundaries."
     },
     {
       "id": "beginner-ouyang-2022-instructions-human-feedback-and-scope",
