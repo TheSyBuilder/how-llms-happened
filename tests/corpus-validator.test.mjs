@@ -217,7 +217,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-7)?.id, workId);
+  assert.equal(corpus.works.at(-9)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -319,6 +319,275 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
   assert.ok(historicalScope.includes("The Kaplan scaling-law preprint was checked on 2026-08-30"));
 });
 
+test("preserves REALM versions, latent retrieval, index boundaries, and lineage", () => {
+  const workId =
+    "guu-2020-realm-retrieval-augmented-language-model-pre-training";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "realm-2020-pmlr-full-text",
+  );
+  const arxivV1 = corpus.sources.find(
+    (item) => item.id === "realm-2020-arxiv-v1-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "realm-2020-pmlr-supplement",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "realm-2020-version-and-proceedings-boundary",
+  );
+  const latent = claims.find(
+    (item) => item.id === "realm-2020-latent-document-objective",
+  );
+  const encoders = claims.find(
+    (item) => item.id === "realm-2020-dense-retriever-and-knowledge-encoder",
+  );
+  const freeze = claims.find(
+    (item) => item.id === "realm-2020-finetuning-index-freeze-boundary",
+  );
+  const results = claims.find(
+    (item) => item.id === "realm-2020-openqa-results",
+  );
+  const ablations = claims.find(
+    (item) => item.id === "realm-2020-ablation-results",
+  );
+  const update = claims.find(
+    (item) => item.id === "realm-2020-corpus-swap-and-retrieval-utility",
+  );
+  const release = claims.find(
+    (item) => item.id === "realm-2020-release-and-reproduction-boundary",
+  );
+  const bertEdge = corpus.relationships.find(
+    (item) => item.id === "devlin-2018-to-guu-2020-realm",
+  );
+
+  assert.equal(corpus.works.at(-8)?.id, workId);
+  assert.equal(work?.canonicalVersionId, "realm-2020-icml-version");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-02-10", "2020-11-21"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    ["realm-2020-arxiv-v1-version", "realm-2020-icml-version"],
+  );
+  assert.deepEqual(work?.authors, [
+    "Kelvin Guu",
+    "Kenton Lee",
+    "Zora Tung",
+    "Panupong Pasupat",
+    "Ming-Wei Chang",
+  ]);
+  assert.deepEqual(main?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 10,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 2,
+  });
+  assert.deepEqual(arxivV1?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 12,
+  });
+  assert.equal(claims.length, 16);
+  assert.match(versionBoundary?.statement ?? "", /extended-ORQA row/);
+  assert.match(versionBoundary?.statement ?? "", /CC-News ablation row/);
+  assert.equal(
+    versionBoundary?.evidence.find(
+      (item) => item.sourceId === "realm-2020-arxiv-v1-full-text",
+    )?.locator.pageStart,
+    undefined,
+  );
+  assert.match(latent?.statement ?? "", /p\(y\|x\)/);
+  assert.equal(
+    latent?.evidence[0]?.locator.section,
+    "3.1. REALM’s generative process",
+  );
+  assert.match(latent?.limitations.join(" ") ?? "", /top-k/);
+  assert.match(encoders?.statement ?? "", /title-plus-body pair/);
+  assert.match(encoders?.statement ?? "", /selected passage body/);
+  assert.match(freeze?.statement ?? "", /freezes the document encoder/);
+  for (const value of ["39.2/40.2/46.8", "40.4/40.7/42.9", "330 million"])
+    assert.ok(results?.statement.includes(value));
+  for (const value of ["38.5/52.0", "30-times-staler", "28.7/15.1"])
+    assert.ok(ablations?.statement.includes(value));
+  assert.match(update?.statement ?? "", /Lawrence/);
+  assert.match(update?.limitations.join(" ") ?? "", /does not erase parametric memory/);
+  assert.match(release?.statement ?? "", /ScaNN-style retrieval/);
+  assert.match(release?.statement ?? "", /brute-force matrix multiplication/);
+  assert.equal(bertEdge?.connectionType, "combines");
+  assert.equal(bertEdge?.evidenceClass, "documented-influence");
+  assert.equal(bertEdge?.causalLanguage, "qualified");
+  assert.equal(
+    bertEdge?.sourceEvidence[0]?.locator.section,
+    "3.2. Model architecture; 3.4. Injecting inductive biases into pre-training",
+  );
+  assert.ok(bertEdge?.claimIds.some((id) => id.startsWith("devlin-2018")));
+  assert.ok(bertEdge?.claimIds.some((id) => id.startsWith("realm-2020")));
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Guu et al.’s REALM family"));
+  assert.ok(corpusFormat.includes("Guu et al. 2020 is represented"));
+  assert.ok(
+    historicalScope.includes("The REALM family was checked on 2026-09-02"),
+  );
+});
+
+test("preserves RAG revisions, marginalization, results, and artifact boundaries", () => {
+  const workId =
+    "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "rag-2020-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "rag-2020-neurips-supplement",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "rag-2020-version-formula-and-result-boundary",
+  );
+  const token = claims.find(
+    (item) => item.id === "rag-2021-token-level-marginalization-correction",
+  );
+  const results = claims.find((item) => item.id === "rag-2020-openqa-results");
+  const protocol = claims.find(
+    (item) => item.id === "rag-2020-corpus-and-task-protocol",
+  );
+  const diversity = claims.find(
+    (item) => item.id === "rag-2020-diversity-results",
+  );
+  const human = claims.find(
+    (item) => item.id === "rag-2020-human-evaluation-integrity-boundary",
+  );
+  const hotSwap = claims.find(
+    (item) => item.id === "rag-2020-index-hot-swap-result",
+  );
+  const port = claims.find(
+    (item) => item.id === "rag-2020-implementation-port-boundary",
+  );
+  const collapse = claims.find(
+    (item) => item.id === "rag-2020-retrieval-count-null-and-collapse-limits",
+  );
+  const accounting = claims.find(
+    (item) => item.id === "rag-2020-parameter-compute-and-index-boundary",
+  );
+  const realmEdge = corpus.relationships.find(
+    (item) => item.id === "guu-2020-realm-to-lewis-2020-rag",
+  );
+
+  assert.equal(corpus.works.at(-7)?.id, workId);
+  assert.equal(work?.canonicalVersionId, "rag-2020-neurips-version");
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "rag-2020-arxiv-v1-version",
+      "rag-2020-arxiv-v2-version",
+      "rag-2021-arxiv-v3-version",
+      "rag-2021-arxiv-v4-version",
+      "rag-2020-neurips-version",
+    ],
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-05-22", "2020", "2020-12-07", "2021-03-29", "2021-04-12"],
+  );
+  assert.equal(work?.authors.length, 12);
+  assert.equal(work?.authors[0], "Patrick Lewis");
+  assert.equal(work?.authors.at(-1), "Douwe Kiela");
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 16,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 17,
+    pageEnd: 19,
+  });
+  assert.equal(claims.length, 18);
+  assert.match(versionBoundary?.statement ?? "", /56\.1/);
+  assert.match(versionBoundary?.statement ?? "", /56\.8/);
+  assert.match(versionBoundary?.statement ?? "", /undefined z_i/);
+  assert.ok(
+    versionBoundary?.evidence.some(
+      (item) => item.sourceId === "rag-2020-arxiv-v2-full-text",
+    ),
+  );
+  assert.equal(token?.evidence[0]?.sourceId, "rag-2021-arxiv-v4-full-text");
+  assert.match(token?.limitations.join(" ") ?? "", /only v4/);
+  for (const value of ["44.1", "44.5", "56.8", "68.0", "52.2"])
+    assert.ok(results?.statement.includes(value));
+  assert.equal(
+    protocol?.evidence[1]?.locator.section,
+    "Appendices D–E; Appendix I Number of instances per dataset",
+  );
+  assert.equal(
+    diversity?.evidence[0]?.locator.section,
+    "4.5 Additional Results, Generation Diversity",
+  );
+  assert.match(results?.limitations.join(" ") ?? "", /standard-split RAG rows remain below/);
+  for (const value of ["452", "42.7%", "93.0%", "11.7%"])
+    assert.ok(human?.statement.includes(value));
+  assert.equal(human?.directness, "editorial-inference");
+  for (const value of ["82", "70%", "68%", "12%", "4%"])
+    assert.ok(hotSwap?.statement.includes(value));
+  assert.match(hotSwap?.limitations.join(" ") ?? "", /not evidence for general factual updating/);
+  assert.match(port?.statement ?? "", /Fairseq/);
+  assert.match(port?.statement ?? "", /Hugging Face Transformers/);
+  assert.match(port?.statement ?? "", /not the exact original experiment environment/);
+  assert.equal(
+    collapse?.evidence[1]?.locator.section,
+    "Appendix F Null Document Probabilities; Appendix H Retrieval Collapse",
+  );
+  assert.equal(
+    accounting?.evidence[1]?.locator.section,
+    "Appendix C Training setup Details; Appendix G Parameters",
+  );
+  assert.equal(
+    port?.evidence[0]?.locator.section,
+    "Appendix C Training setup Details",
+  );
+  assert.equal(realmEdge?.connectionType, "extends");
+  assert.equal(realmEdge?.evidenceClass, "documented-influence");
+  assert.equal(realmEdge?.causalLanguage, "qualified");
+  assert.ok(realmEdge?.claimIds.some((id) => id.startsWith("realm-2020")));
+  assert.ok(realmEdge?.claimIds.some((id) => id.startsWith("rag-2020") || id.startsWith("rag-2021")));
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.to.kind === "work" &&
+        item.to.id === workId &&
+        [
+          "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+          "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+        ].includes(item.from.id),
+    ),
+    false,
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Lewis et al.’s RAG family"));
+  assert.ok(corpusFormat.includes("Lewis et al. 2020 is represented"));
+  assert.ok(
+    historicalScope.includes("The RAG family was checked on 2026-09-02"),
+  );
+});
+
 test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage", () => {
   const workId = "brown-2020-language-models-few-shot-learners";
   const work = corpus.works.find((item) => item.id === workId);
@@ -377,7 +646,7 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
   ];
 
   assert.equal(corpus.works.at(-6)?.id, workId);
-  assert.equal(corpus.works.at(-7)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(corpus.works.at(-9)?.id, "kaplan-2020-scaling-laws-neural-language-models");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
   assert.deepEqual(

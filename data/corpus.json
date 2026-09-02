@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-01",
+  "asOf": "2026-09-02",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -11209,6 +11209,607 @@
       ]
     },
     {
+      "id": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+      "authors": [
+        "Kelvin Guu",
+        "Kenton Lee",
+        "Zora Tung",
+        "Panupong Pasupat",
+        "Ming-Wei Chang"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "K. Guu et al., “REALM: Retrieval-Augmented Language Model Pre-Training,” in Proceedings of the 37th International Conference on Machine Learning, PMLR 119, pp. 3929–3938, 2020.",
+      "chronology": {
+        "orderingEventId": "realm-2020-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "realm-2020-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "Sole arXiv version 1 posted",
+            "date": {
+              "value": "2020-02-10",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "realm-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, sole version posted 10 February 2020 at 18:40:59 UTC"
+              }
+            ],
+            "versionId": "realm-2020-arxiv-v1-version",
+            "sourceIds": [
+              "realm-2020-arxiv-record",
+              "realm-2020-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "realm-2020-icml-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "ICML 2020 proceedings publication",
+            "date": {
+              "value": "2020-11-21",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "realm-2020-pmlr-volume-record",
+                "precision": "day",
+                "locator": "PMLR volume record, published 21 November 2020"
+              }
+            ],
+            "versionId": "realm-2020-icml-version",
+            "sourceIds": [
+              "realm-2020-pmlr-volume-record",
+              "realm-2020-pmlr-record",
+              "realm-2020-pmlr-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "realm-2020-arxiv-v1-version",
+          "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+          "authors": [
+            "Kelvin Guu",
+            "Kenton Lee",
+            "Zora Tung",
+            "Panupong Pasupat",
+            "Ming-Wei Chang"
+          ],
+          "kind": "preprint",
+          "label": "Sole arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Guu et al., “REALM: Retrieval-Augmented Language Model Pre-Training,” arXiv:2002.08909v1, 10 February 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2002.08909v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2002.08909",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "realm-2020-arxiv-record",
+            "realm-2020-arxiv-v1-full-text",
+            "realm-2020-arxiv-license",
+            "realm-2020-arxiv-v1-source-package",
+            "realm-2020-initial-release-repository",
+            "realm-2020-release-license"
+          ],
+          "notes": "The only arXiv revision is a twelve-page integrated manuscript. It precedes final PMLR changes to fine-tuning prose, Table 1, Table 2, and one approximate T5-scale summary; those additions are not projected backward."
+        },
+        {
+          "id": "realm-2020-icml-version",
+          "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+          "authors": [
+            "Kelvin Guu",
+            "Kenton Lee",
+            "Zora Tung",
+            "Panupong Pasupat",
+            "Ming-Wei Chang"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ICML 2020 proceedings article",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Guu et al., “REALM: Retrieval-Augmented Language Model Pre-Training,” in Proceedings of the 37th International Conference on Machine Learning, PMLR 119, pp. 3929–3938, 2020.",
+            "venue": "Proceedings of the 37th International Conference on Machine Learning",
+            "series": "Proceedings of Machine Learning Research",
+            "publisher": "PMLR",
+            "volume": "119",
+            "pages": [
+              "3929-3938"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "realm-2020-pmlr-volume-record",
+            "realm-2020-pmlr-record",
+            "realm-2020-pmlr-full-text",
+            "realm-2020-pmlr-supplement",
+            "realm-2020-initial-release-repository",
+            "realm-2020-release-license"
+          ],
+          "notes": "The canonical package is a ten-leaf main PDF plus a two-leaf supplement. Neither file exposes dependable visible folios, so structural locators control claims and volume pp. 3929–3938 remain bibliographic metadata only."
+        }
+      ],
+      "canonicalVersionId": "realm-2020-icml-version",
+      "preferredSourceIds": [
+        "realm-2020-pmlr-record",
+        "realm-2020-pmlr-full-text",
+        "realm-2020-pmlr-supplement"
+      ],
+      "sourceIds": [
+        "realm-2020-arxiv-record",
+        "realm-2020-arxiv-v1-full-text",
+        "realm-2020-arxiv-license",
+        "realm-2020-arxiv-v1-source-package",
+        "realm-2020-pmlr-volume-record",
+        "realm-2020-pmlr-record",
+        "realm-2020-pmlr-full-text",
+        "realm-2020-pmlr-supplement",
+        "realm-2020-initial-release-repository",
+        "realm-2020-release-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "REALM joins masked-language-model pretraining to learned retrieval over a large textual corpus and makes the retrieved passage a latent variable. It is retained as the bridge from parametric Transformer pretraining to retrieval-augmented models, with extractive, infrastructure, and artifact limits kept explicit."
+      },
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-conditioned-latent-document-marginalization",
+        "parametric-nonparametric-memory-composition",
+        "retrieval-augmented-language-model-pretraining",
+        "salient-span-masked-retrieval-pretraining",
+        "asynchronous-document-index-refresh",
+        "retrieval-index-hot-swapping"
+      ],
+      "significance": {
+        "beginner": "REALM gives a language model a searchable external memory: it retrieves passages before predicting a masked word or answering a question, and training rewards passages that make the answer more likely. The paper also shows why swapping the corpus can update some facts without erasing knowledge already stored in the network.",
+        "expert": "REALM optimizes a top-k approximation to a discrete latent-passage marginal with dense dual encoders, a separate knowledge encoder, salient-span masking, fresh rescoring, and asynchronously rebuilt MIPS indices. Its evidence remains bound to three extractive open-QA datasets, frozen fine-tuning document embeddings, expensive TPU indexing, and a public release that does not reproduce the original ScaNN infrastructure or fully license data and checkpoints."
+      },
+      "limitations": [
+        "The paper evaluates extractive open-domain question answering rather than open-ended generation, multilingual transfer, safety, calibration, temporal robustness, or structured and multimodal knowledge.",
+        "Top-k candidate selection is approximate and non-differentiable, document embeddings are stale between index refreshes, and the document encoder/index is frozen during reported task fine-tuning.",
+        "Reported tables contain single values without repeated-seed variance, confidence intervals, or significance tests; component ablations change coupled settings and do not establish independent additive effects.",
+        "The reported pretraining system uses 64 training TPUs plus 16 TPUs for document embedding, while the public single-machine path changes retrieval infrastructure and is explicitly not expected to reach full quality.",
+        "Corpus replacement updates selected examples but does not guarantee removal of facts retained parametrically, and the released code, checkpoints, paper, Wikipedia, and CC-News have separate provenance and rights."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The inspected release does not provide an immutable complete pretraining/retrieval-corpus manifest, run ledger, or express license for the named checkpoint and data objects.",
+          "resolutionCondition": "Immutable official manifests, archived run artifacts, and authoritative object-level terms would be required for reconstruction and reuse claims."
+        },
+        {
+          "status": "open",
+          "note": "The PMLR footer preserves a planned Vienna location while the official volume record describes the conference as virtual; the volume record controls event context."
+        }
+      ]
+    },
+    {
+      "id": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "authors": [
+        "Patrick Lewis",
+        "Ethan Perez",
+        "Aleksandra Piktus",
+        "Fabio Petroni",
+        "Vladimir Karpukhin",
+        "Naman Goyal",
+        "Heinrich Küttler",
+        "Mike Lewis",
+        "Wen-tau Yih",
+        "Tim Rocktäschel",
+        "Sebastian Riedel",
+        "Douwe Kiela"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” in Advances in Neural Information Processing Systems 33, pp. 9459–9474, 2020.",
+      "chronology": {
+        "orderingEventId": "rag-2020-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "rag-2020-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2020-05-22",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rag-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 22 May 2020 at 21:34:34 UTC"
+              }
+            ],
+            "versionId": "rag-2020-arxiv-v1-version",
+            "sourceIds": [
+              "rag-2020-arxiv-record",
+              "rag-2020-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "rag-2020-neurips-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2020 proceedings publication",
+            "date": {
+              "value": "2020",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rag-2020-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS 2020 proceedings record and volume identity"
+              }
+            ],
+            "versionId": "rag-2020-neurips-version",
+            "sourceIds": [
+              "rag-2020-neurips-record",
+              "rag-2020-neurips-full-text"
+            ]
+          },
+          {
+            "id": "rag-2020-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2020-12-07",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rag-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 7 December 2020 at 16:23:06 UTC"
+              }
+            ],
+            "versionId": "rag-2020-arxiv-v2-version",
+            "sourceIds": [
+              "rag-2020-arxiv-record",
+              "rag-2020-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "rag-2021-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2021-03-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rag-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 29 March 2021 at 10:12:16 UTC"
+              }
+            ],
+            "versionId": "rag-2021-arxiv-v3-version",
+            "sourceIds": [
+              "rag-2020-arxiv-record",
+              "rag-2021-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "rag-2021-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2021-04-12",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rag-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 12 April 2021 at 15:42:18 UTC"
+              }
+            ],
+            "versionId": "rag-2021-arxiv-v4-version",
+            "sourceIds": [
+              "rag-2020-arxiv-record",
+              "rag-2021-arxiv-v4-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "rag-2020-arxiv-v1-version",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "Fabio Petroni",
+            "Vladimir Karpukhin",
+            "Naman Goyal",
+            "Heinrich Küttler",
+            "Mike Lewis",
+            "Wen-tau Yih",
+            "Tim Rocktäschel",
+            "Sebastian Riedel",
+            "Douwe Kiela"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” arXiv:2005.11401v1, 22 May 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.11401v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rag-2020-arxiv-record",
+            "rag-2020-arxiv-v1-full-text",
+            "rag-2020-arxiv-license",
+            "rag-2020-arxiv-v1-source-package"
+          ],
+          "notes": "The eighteen-page ordering manuscript is under-review text. It lacks the later public-code note and expanded appendices and reports 56.1 for the standard TriviaQA RAG-Sequence row."
+        },
+        {
+          "id": "rag-2020-arxiv-v2-version",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "Fabio Petroni",
+            "Vladimir Karpukhin",
+            "Naman Goyal",
+            "Heinrich Küttler",
+            "Mike Lewis",
+            "Wen-tau Yih",
+            "Tim Rocktäschel",
+            "Sebastian Riedel",
+            "Douwe Kiela"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” arXiv:2005.11401v2, 7 December 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.11401v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rag-2020-arxiv-record",
+            "rag-2020-arxiv-v2-full-text",
+            "rag-2020-arxiv-license",
+            "rag-2020-huggingface-release",
+            "rag-2020-huggingface-license"
+          ],
+          "notes": "This nineteen-page revision adds the public-code note and expanded implementation material, changes the standard TriviaQA RAG-Sequence result to 56.8, and introduces an unexplained human-specificity percentage inconsistency."
+        },
+        {
+          "id": "rag-2021-arxiv-v3-version",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "Fabio Petroni",
+            "Vladimir Karpukhin",
+            "Naman Goyal",
+            "Heinrich Küttler",
+            "Mike Lewis",
+            "Wen-tau Yih",
+            "Tim Rocktäschel",
+            "Sebastian Riedel",
+            "Douwe Kiela"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” arXiv:2005.11401v3, 29 March 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.11401v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rag-2020-arxiv-record",
+            "rag-2021-arxiv-v3-full-text",
+            "rag-2020-arxiv-license",
+            "rag-2020-huggingface-release",
+            "rag-2020-huggingface-license"
+          ],
+          "notes": "The audited technical payload matches version 2; the immutable PDF differs in repository stamp and remains a separate revision record."
+        },
+        {
+          "id": "rag-2021-arxiv-v4-version",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "Fabio Petroni",
+            "Vladimir Karpukhin",
+            "Naman Goyal",
+            "Heinrich Küttler",
+            "Mike Lewis",
+            "Wen-tau Yih",
+            "Tim Rocktäschel",
+            "Sebastian Riedel",
+            "Douwe Kiela"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” arXiv:2005.11401v4, 12 April 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2005.11401v4",
+                "label": "arXiv version 4 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2005.11401",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rag-2020-arxiv-record",
+            "rag-2021-arxiv-v4-full-text",
+            "rag-2020-arxiv-license",
+            "rag-2021-arxiv-v4-source-package",
+            "rag-2020-huggingface-release",
+            "rag-2020-huggingface-license"
+          ],
+          "notes": "The latest nineteen-page revision corrects the RAG-Token equation's undefined z_i inside the document sum to z and adjusts related-work attribution. Those repairs are not projected backward into the canonical proceedings equation."
+        },
+        {
+          "id": "rag-2020-neurips-version",
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "Fabio Petroni",
+            "Vladimir Karpukhin",
+            "Naman Goyal",
+            "Heinrich Küttler",
+            "Mike Lewis",
+            "Wen-tau Yih",
+            "Tim Rocktäschel",
+            "Sebastian Riedel",
+            "Douwe Kiela"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2020 article",
+          "language": "en",
+          "bibliography": {
+            "citation": "P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” in Advances in Neural Information Processing Systems 33, pp. 9459–9474, 2020.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Curran Associates, Inc.",
+            "volume": "33",
+            "pages": [
+              "9459-9474"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "rag-2020-neurips-record",
+            "rag-2020-neurips-full-text",
+            "rag-2020-neurips-supplement",
+            "rag-2020-huggingface-release",
+            "rag-2020-huggingface-license"
+          ],
+          "notes": "The canonical package has a sixteen-page main article plus a three-page supplement whose visible article folios continue through 19. It retains the pre-v4 RAG-Token notation and reports the revised 56.8 TriviaQA value."
+        }
+      ],
+      "canonicalVersionId": "rag-2020-neurips-version",
+      "preferredSourceIds": [
+        "rag-2020-neurips-record",
+        "rag-2020-neurips-full-text",
+        "rag-2020-neurips-supplement"
+      ],
+      "sourceIds": [
+        "rag-2020-arxiv-record",
+        "rag-2020-arxiv-v1-full-text",
+        "rag-2020-arxiv-v2-full-text",
+        "rag-2021-arxiv-v3-full-text",
+        "rag-2021-arxiv-v4-full-text",
+        "rag-2020-arxiv-license",
+        "rag-2020-arxiv-v1-source-package",
+        "rag-2021-arxiv-v4-source-package",
+        "rag-2020-neurips-record",
+        "rag-2020-neurips-full-text",
+        "rag-2020-neurips-supplement",
+        "rag-2020-huggingface-release",
+        "rag-2020-huggingface-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "RAG combines dense retrieval with a pretrained encoder-decoder generator and distinguishes sequence-level from token-level marginalization over retrieved passages. It extends retrieval augmentation from masked and extractive prediction into generation while preserving a replaceable non-parametric index."
+      },
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-conditioned-latent-document-marginalization",
+        "parametric-nonparametric-memory-composition",
+        "retrieval-augmented-sequence-generation",
+        "sequence-level-document-marginalization",
+        "token-level-document-marginalization",
+        "retrieval-index-hot-swapping",
+        "retrieval-collapse"
+      ],
+      "significance": {
+        "beginner": "RAG lets a generator consult retrieved Wikipedia passages rather than relying only on parameters. Its two variants either keep one latent passage for a whole answer or let the document mixture change token by token, and its small index-swap probe demonstrates why external memory can be easier to update than weights.",
+        "expert": "RAG fine-tunes a DPR query encoder and BART-large generator under truncated latent-document marginal likelihood while freezing the document encoder and index. The corpus separates sequence- and token-level objectives, decoding approximations, task-specific top-k choices, comparator and human-evaluation caveats, canonical notation defects, post-submission code porting, and the limited 82-item hot-swap result."
+      },
+      "limitations": [
+        "The experiments span open QA, MS MARCO generation, Jeopardy question generation, and FEVER label prediction, but do not establish general factuality, attribution, multilingual behavior, safety, calibration, or robust knowledge editing.",
+        "Reported values have no repeated-seed variance, confidence intervals, or significance tests; several comparator rows use gold evidence, different splits, or extra supervision.",
+        "The dense retriever begins from supervised DPR training, the document encoder and index are frozen during RAG fine-tuning, and BM25 outperforms the learned dense retriever on the reported FEVER development comparison.",
+        "The 82-item index replacement probe uses one templated class of facts and cannot establish broad temporal updating or deletion of parametric knowledge.",
+        "The public Hugging Face implementation is a post-submission port rather than the original Fairseq experiment code, and paper, code, model, Wikipedia, and benchmark rights remain separate."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The proceedings human-specificity percentages sum to 93.0%, and its prose says both systems were factual in a further 17% while the factuality table prints 11.7% for both good.",
+          "resolutionCondition": "An author erratum or underlying annotation table is required to reconcile the printed percentages."
+        },
+        {
+          "status": "open",
+          "note": "The supplement prints 728-dimensional DPR vectors although the named BERT-base DPR configuration is commonly represented with 768 dimensions; no inspected erratum resolves the discrepancy.",
+          "resolutionCondition": "Archived experiment configuration or author clarification is required to determine whether 728 is a typographical or implementation-specific value."
+        }
+      ]
+    },
+    {
       "id": "brown-2020-language-models-few-shot-learners",
       "title": "Language Models are Few-Shot Learners",
       "authors": [
@@ -14729,7 +15330,11 @@
         "gehring-2017-causal-decoder-and-parallelism",
         "gehring-2017-training-and-decoding",
         "gehring-2017-data-and-tokenization",
-        "raffel-2020-encoder-decoder-architecture"
+        "raffel-2020-encoder-decoder-architecture",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-decoding-and-retrieval-budgets",
+        "rag-2020-generation-and-classification-results",
+        "rag-2020-diversity-results"
       ],
       "uncertainties": [
         {
@@ -15730,7 +16335,9 @@
         "yang-2019-permutation-language-model-objective",
         "liu-2019-predecessor-and-scope-boundary",
         "liu-2019-implementation-and-length-schedule",
-        "liu-2019-aggregate-roberta-recipe"
+        "liu-2019-aggregate-roberta-recipe",
+        "realm-2020-dense-retriever-and-knowledge-encoder",
+        "realm-2020-initialization-and-supervision-boundary"
       ],
       "uncertainties": [
         {
@@ -15755,7 +16362,9 @@
         "yang-2019-fair-bert-comparison",
         "liu-2019-predecessor-and-scope-boundary",
         "liu-2019-static-dynamic-masking-ablation",
-        "liu-2019-aggregate-roberta-recipe"
+        "liu-2019-aggregate-roberta-recipe",
+        "realm-2020-masked-pretraining-and-extractive-reader",
+        "realm-2020-initialization-and-supervision-boundary"
       ],
       "uncertainties": [
         {
@@ -16384,6 +16993,179 @@
           "note": "The historical prescription minimizes estimated non-embedding training compute for loss; it excludes inference, hardware, energy, and lifecycle costs, and later compute-optimal revisions require separate evidence."
         }
       ]
+    },
+    {
+      "id": "dense-dual-encoder-document-retrieval",
+      "name": "Dense dual-encoder document retrieval",
+      "kind": "mechanism",
+      "description": "Encode a query and each candidate passage independently, rank candidates by vector similarity, and use a maximum-inner-product index or equivalent search layer to expose a small retrieved set.",
+      "claimIds": [
+        "realm-2020-dense-retriever-and-knowledge-encoder",
+        "realm-2020-retriever-gradient-and-index-refresh",
+        "realm-2020-finetuning-index-freeze-boundary",
+        "realm-2020-initialization-and-supervision-boundary",
+        "realm-2020-corpus-training-and-runtime",
+        "realm-2020-ablation-results",
+        "realm-2020-release-and-reproduction-boundary",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-training-freeze-and-supervision-boundary",
+        "rag-2020-corpus-and-task-protocol",
+        "rag-2020-fever-retrieval-boundary",
+        "rag-2020-retriever-ablation-results",
+        "rag-2020-retrieval-count-null-and-collapse-limits",
+        "rag-2020-parameter-compute-and-index-boundary",
+        "rag-2020-implementation-port-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "retrieval-conditioned-latent-document-marginalization",
+      "name": "Retrieval-conditioned latent-document marginalization",
+      "kind": "formalism",
+      "description": "Treat the retrieved passage as a discrete latent variable and approximate the output likelihood by summing passage-conditioned predictions over a truncated top-k retrieval distribution.",
+      "claimIds": [
+        "realm-2020-latent-document-objective",
+        "realm-2020-retriever-gradient-and-index-refresh",
+        "realm-2020-fermat-qualitative-example",
+        "rag-2020-sequence-level-marginalization",
+        "rag-2021-token-level-marginalization-correction"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "parametric-nonparametric-memory-composition",
+      "name": "Parametric and non-parametric memory composition",
+      "kind": "mechanism",
+      "description": "Combine knowledge stored in model parameters with a separately replaceable text corpus or index whose retrieved contents condition prediction.",
+      "claimIds": [
+        "realm-2020-dense-retriever-and-knowledge-encoder",
+        "realm-2020-masked-pretraining-and-extractive-reader",
+        "realm-2020-openqa-evaluation-protocol",
+        "realm-2020-openqa-results",
+        "realm-2020-fermat-qualitative-example",
+        "realm-2020-corpus-swap-and-retrieval-utility",
+        "realm-2020-artifact-data-and-rights-boundary",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-corpus-and-task-protocol",
+        "rag-2020-human-evaluation-integrity-boundary",
+        "rag-2020-index-hot-swap-result",
+        "rag-2020-parameter-compute-and-index-boundary",
+        "rag-2020-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "retrieval-augmented-language-model-pretraining",
+      "name": "Retrieval-augmented language-model pretraining",
+      "kind": "objective",
+      "description": "Train a language model and retriever jointly so masked-token likelihood supplies a learning signal for selecting external passages without passage-relevance labels.",
+      "claimIds": [
+        "realm-2020-version-and-proceedings-boundary",
+        "realm-2020-latent-document-objective",
+        "realm-2020-masked-pretraining-and-extractive-reader",
+        "realm-2020-salient-masking-null-and-source-exclusion",
+        "realm-2020-corpus-training-and-runtime",
+        "realm-2020-openqa-evaluation-protocol",
+        "realm-2020-openqa-results",
+        "realm-2020-release-and-reproduction-boundary",
+        "realm-2020-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "salient-span-masked-retrieval-pretraining",
+      "name": "Salient-span masked retrieval pretraining",
+      "kind": "objective",
+      "description": "Mask a named entity or date so predicting the missing span encourages retrieval of passages containing useful factual context.",
+      "claimIds": [
+        "realm-2020-salient-masking-null-and-source-exclusion",
+        "realm-2020-ablation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "asynchronous-document-index-refresh",
+      "name": "Asynchronous document-index refresh",
+      "kind": "mechanism",
+      "description": "Recompute document embeddings and rebuild a retrieval index in parallel with model training, accepting bounded staleness between refreshes and rescoring selected candidates with current parameters.",
+      "claimIds": [
+        "realm-2020-retriever-gradient-and-index-refresh",
+        "realm-2020-finetuning-index-freeze-boundary",
+        "realm-2020-corpus-training-and-runtime",
+        "realm-2020-ablation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "retrieval-augmented-sequence-generation",
+      "name": "Retrieval-augmented sequence generation",
+      "kind": "mechanism",
+      "description": "Condition an autoregressive generator on retrieved passages and optimize output likelihood after marginalizing the retrieved document variable.",
+      "claimIds": [
+        "rag-2020-version-formula-and-result-boundary",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-sequence-level-marginalization",
+        "rag-2021-token-level-marginalization-correction",
+        "rag-2020-training-freeze-and-supervision-boundary",
+        "rag-2020-corpus-and-task-protocol",
+        "rag-2020-openqa-results",
+        "rag-2020-generation-and-classification-results",
+        "rag-2020-human-evaluation-integrity-boundary",
+        "rag-2020-diversity-results",
+        "rag-2020-fever-retrieval-boundary",
+        "rag-2020-retriever-ablation-results",
+        "rag-2020-retrieval-count-null-and-collapse-limits",
+        "rag-2020-implementation-port-boundary",
+        "rag-2020-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "sequence-level-document-marginalization",
+      "name": "Sequence-level document marginalization",
+      "kind": "formalism",
+      "description": "Choose a latent retrieved passage for an entire target sequence and sum the complete sequence probability over the truncated retrieval distribution.",
+      "claimIds": [
+        "rag-2020-version-formula-and-result-boundary",
+        "rag-2020-sequence-level-marginalization",
+        "rag-2020-decoding-and-retrieval-budgets",
+        "rag-2020-openqa-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "token-level-document-marginalization",
+      "name": "Token-level document marginalization",
+      "kind": "formalism",
+      "description": "Marginalize the retrieved passage separately inside each next-token probability so different documents may support different output positions.",
+      "claimIds": [
+        "rag-2020-version-formula-and-result-boundary",
+        "rag-2021-token-level-marginalization-correction",
+        "rag-2020-decoding-and-retrieval-budgets",
+        "rag-2020-openqa-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "retrieval-index-hot-swapping",
+      "name": "Retrieval-index hot swapping",
+      "kind": "mechanism",
+      "description": "Replace the external retrieval corpus or index at inference time while retaining model parameters, enabling narrowly scoped knowledge updates whose success still depends on retrieval and reader behavior.",
+      "claimIds": [
+        "realm-2020-corpus-swap-and-retrieval-utility",
+        "rag-2020-index-hot-swap-result"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "retrieval-collapse",
+      "name": "Retrieval collapse",
+      "kind": "problem",
+      "description": "A retrieval-augmented generator can converge to nearly input-invariant retrieved passages that the generator ignores, defeating the intended grounding path.",
+      "claimIds": [
+        "rag-2020-retrieval-count-null-and-collapse-limits"
+      ],
+      "uncertainties": []
     },
     {
       "id": "alternating-dense-local-sparse-attention",
@@ -23605,6 +24387,546 @@
         "pageEnd": 1
       },
       "accessNote": "The inspected 47-entry archive contains a figures directory, forty-two rendered PDF figure assets, main.tex, main.bbl, halpha.bst, and a style file. It contains no executable experiment code, WebText2 records or URL manifest, preprocessing pipeline, tokenizer files, raw result tables, fit notebook, per-run configurations, seeds, logs, checkpoints, or checkpoint manifest."
+    },
+    {
+      "id": "realm-2020-arxiv-record",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "arXiv record for REALM: Retrieval-Augmented Language Model Pre-Training",
+      "url": "https://arxiv.org/abs/2002.08909",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "realm-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record contains exactly one submission, posted 10 February 2020 at 18:40:59 UTC, and links the non-exclusive distribution license."
+    },
+    {
+      "id": "realm-2020-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "Immutable REALM arXiv v1 full text",
+      "url": "https://arxiv.org/pdf/2002.08909v1",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "realm-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete twelve-leaf integrated manuscript has SHA-256 0ec1a7ab3de5514c6d3baa8af0322816d4ee7cd4c14b9f2c450cbc9da9e6b363. It has no dependable visible folios, so structural locators control claims.",
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 12
+      }
+    },
+    {
+      "id": "realm-2020-arxiv-license",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the REALM record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "realm-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The terms authorize arXiv distribution; they do not establish a general reuse license for the paper, code, checkpoints, Wikipedia, CC-News, or bucket contents.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "realm-2020-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "Immutable REALM arXiv v1 source package",
+      "url": "https://arxiv.org/src/2002.08909v1",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "realm-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected publication bundle supplies article source and figures, not training code, run manifests, corpora, checkpoints, seeds, or logs."
+    },
+    {
+      "id": "realm-2020-pmlr-volume-record",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "PMLR volume record for ICML 2020",
+      "url": "https://proceedings.mlr.press/v119/",
+      "accessDate": "2026-09-02",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "realm-2020-icml-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official volume says ICML was held virtually 13–18 July 2020 and the volume was published 21 November 2020."
+    },
+    {
+      "id": "realm-2020-pmlr-record",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "PMLR record for Retrieval Augmented Language Model Pre-Training",
+      "url": "https://proceedings.mlr.press/v119/guu20a.html",
+      "accessDate": "2026-09-02",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "realm-2020-icml-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The landing record supplies PMLR 119 and volume pp. 3929–3938 but normalizes the printed title and Ming-Wei Chang spelling; the PDFs control canonical title and author identity."
+    },
+    {
+      "id": "realm-2020-pmlr-full-text",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "Canonical ICML article for REALM",
+      "url": "https://proceedings.mlr.press/v119/guu20a/guu20a.pdf",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "realm-2020-icml-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete ten-leaf canonical article has SHA-256 653e9bf290eabefa71d08dc0b1170486336b7d9e31d832921e8305fd78f8d416. It exposes no dependable visible folios, so claim locators are structural.",
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 10
+      }
+    },
+    {
+      "id": "realm-2020-pmlr-supplement",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "Official ICML supplement for REALM",
+      "url": "https://proceedings.mlr.press/v119/guu20a/guu20a-supp.pdf",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "realm-2020-icml-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The two-leaf supplement has SHA-256 493856befb58aebec80ab735662af2e4737cdb9051ee5b651198e70a573a0dd9. Structural appendix, table, and figure labels control locators.",
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 2
+      }
+    },
+    {
+      "id": "realm-2020-initial-release-repository",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "Immutable initial Google Research REALM release",
+      "url": "https://github.com/google-research/language/tree/7beecc7d5cbc1daa5a7ee677b138750e5f43e89b/language/realm",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "realm-2020-arxiv-v1-version",
+        "realm-2020-icml-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The 12 August 2020 release covers pretraining, points fine-tuning to ORQA, replaces the experiment's ScaNN path with brute-force matrix multiplication, exposes a small verification subset and named GCS objects, and says its scaled single-machine configuration is not expected to reach paper quality.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "realm-2020-release-license",
+      "relatedWorkIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "title": "Apache 2.0 license for the initial Google Research language tree",
+      "url": "https://github.com/google-research/language/blob/7beecc7d5cbc1daa5a7ee677b138750e5f43e89b/LICENSE",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "realm-2020-arxiv-v1-version",
+        "realm-2020-icml-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Apache 2.0 covers repository software in the initial release tree; it does not transfer to the paper, checkpoints, GCS data objects, Wikipedia, or CC-News.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "rag-2020-arxiv-record",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "arXiv record for Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2020-arxiv-v1-version",
+        "rag-2020-arxiv-v2-version",
+        "rag-2021-arxiv-v3-version",
+        "rag-2021-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The record lists four revisions posted 22 May 2020, 7 December 2020, 29 March 2021, and 12 April 2021."
+    },
+    {
+      "id": "rag-2020-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable RAG arXiv v1 full text",
+      "url": "https://arxiv.org/pdf/2005.11401v1",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete eighteen-page ordering manuscript has SHA-256 25b55fd0f7c6c91cbe2c88690a33923077103e8f563d154faa1ce11d3527e601. Article folios control locators.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 18
+      }
+    },
+    {
+      "id": "rag-2020-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable RAG arXiv v2 full text",
+      "url": "https://arxiv.org/pdf/2005.11401v2",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete nineteen-page second revision has SHA-256 c8f40da51c0510d3667aea55e2d95814e8b446c676df7311c513fbd4afc0ac0f. It contains the expanded appendix and public-code note.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 19
+      }
+    },
+    {
+      "id": "rag-2021-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable RAG arXiv v3 full text",
+      "url": "https://arxiv.org/pdf/2005.11401v3",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2021-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete nineteen-page third revision has SHA-256 703f56f8f4c0ae1e3fe41d303eead3dbe63a51581f306b868e3d58e6e05c180a; its audited technical payload matches v2.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 19
+      }
+    },
+    {
+      "id": "rag-2021-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable RAG arXiv v4 full text",
+      "url": "https://arxiv.org/pdf/2005.11401v4",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2021-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete nineteen-page latest revision has SHA-256 23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233. It alone corrects the RAG-Token equation's z_i term to z.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 19
+      }
+    },
+    {
+      "id": "rag-2020-arxiv-license",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the RAG record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2020-arxiv-v1-version",
+        "rag-2020-arxiv-v2-version",
+        "rag-2021-arxiv-v3-version",
+        "rag-2021-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The terms authorize arXiv distribution and are not a general reuse license for the paper, code, model, Wikipedia index, or benchmark data.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "rag-2020-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable RAG arXiv v1 source package",
+      "url": "https://arxiv.org/src/2005.11401v1",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected source bundle supports the v1 baseline and contains publication material rather than the Fairseq experiment implementation, data, checkpoints, or run artifacts."
+    },
+    {
+      "id": "rag-2021-arxiv-v4-source-package",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable RAG arXiv v4 source package",
+      "url": "https://arxiv.org/src/2005.11401v4",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rag-2021-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected source bundle confirms the latest equation and attribution edits but does not supply the original Fairseq experiment environment or artifacts."
+    },
+    {
+      "id": "rag-2020-neurips-record",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "NeurIPS proceedings record for Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+      "accessDate": "2026-09-02",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "rag-2020-neurips-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the canonical author order, volume identity, and bibliographic pp. 9459–9474 without an exact paper-specific publication day."
+    },
+    {
+      "id": "rag-2020-neurips-full-text",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Canonical NeurIPS article for Retrieval-Augmented Generation",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Paper.pdf",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "rag-2020-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "accessNote": "The complete sixteen-page canonical article has SHA-256 720f67eb41aa49995d5fcf3d24ac7efe431fbe08ce109b14b5a9fa4d4ebe2f8b. Visible article folios control locators; the RAG-Token equation retains the pre-v4 z_i notation.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 16
+      }
+    },
+    {
+      "id": "rag-2020-neurips-supplement",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Official NeurIPS supplement for Retrieval-Augmented Generation",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2020/file/6b493230205f780e1bc26945df7481e5-Supplemental.pdf",
+      "accessDate": "2026-09-02",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "rag-2020-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The three-page supplement has SHA-256 897e4d2ee3cbd3d3bad4c2cbe479f50cd716415307567bb7d4f822fb0b0be845. Its visible article folios continue from 17 through 19.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 17,
+        "pageEnd": 19
+      }
+    },
+    {
+      "id": "rag-2020-huggingface-release",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Immutable initial Hugging Face Transformers RAG port",
+      "url": "https://github.com/huggingface/transformers/tree/c754c41c6193565fecaf411b1de385bf90ab5c70/examples/rag",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "rag-2020-arxiv-v2-version",
+        "rag-2021-arxiv-v3-version",
+        "rag-2021-arxiv-v4-version",
+        "rag-2020-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "The 22 September 2020 commit introduces the post-submission RAG port. The supplement says the reported experiments used Fairseq on eight 32GB V100 GPUs and that the later port achieved equivalent performance; the port is not an archived copy of the experiment environment.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
+    },
+    {
+      "id": "rag-2020-huggingface-license",
+      "relatedWorkIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "title": "Apache 2.0 license for the initial Hugging Face Transformers RAG port",
+      "url": "https://github.com/huggingface/transformers/blob/c754c41c6193565fecaf411b1de385bf90ab5c70/LICENSE",
+      "accessDate": "2026-09-02",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "rag-2020-arxiv-v2-version",
+        "rag-2021-arxiv-v3-version",
+        "rag-2021-arxiv-v4-version",
+        "rag-2020-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "accessNote": "Apache 2.0 covers code in the pinned Transformers tree, not the paper, pretrained weights, Wikipedia passages, DPR artifacts, or benchmark datasets.",
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      }
     },
     {
       "id": "brown-2020-arxiv-record",
@@ -44690,6 +46012,1159 @@
       "checkedDate": "2026-08-30"
     },
     {
+      "id": "realm-2020-version-and-proceedings-boundary",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-augmented-language-model-pretraining"
+      ],
+      "statement": "REALM has one twelve-page arXiv revision and a canonical ICML/PMLR package split into a ten-leaf article and two-leaf supplement. The final package adds fine-tuning detail, an extended-ORQA row, a CC-News ablation row, and revised approximate T5-scale prose, so the two versions are related but not interchangeable evidence envelopes.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-arxiv-record",
+          "locator": {
+            "label": "Sole arXiv revision",
+            "section": "Submission history"
+          },
+          "support": "The official record lists only version 1, posted 10 February 2020."
+        },
+        {
+          "sourceId": "realm-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Original integrated article and appendix",
+            "section": "4. Experiments; Tables 1–2; Appendices A–D",
+            "table": "1–2"
+          },
+          "support": "The ordering manuscript supplies the pre-final fine-tuning prose and shorter result tables."
+        },
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Canonical main-paper changes",
+            "section": "4.3. Implementation Details; 4.4. Main results; 4.5. Analysis",
+            "table": "1–2"
+          },
+          "support": "The final article adds the reported epoch counts and additional Table 1 and Table 2 rows."
+        },
+        {
+          "sourceId": "realm-2020-pmlr-supplement",
+          "locator": {
+            "label": "Separated final appendices",
+            "section": "Appendices A–D"
+          },
+          "support": "PMLR distributes the derivations, corpus-update examples, and retrieval-utility analysis as a separate supplement."
+        }
+      ],
+      "limitations": [
+        "Claims using the added final rows, final fine-tuning epochs, or revised comparator prose must not be attached to arXiv v1."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-latent-document-objective",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-conditioned-latent-document-marginalization",
+        "retrieval-augmented-language-model-pretraining"
+      ],
+      "statement": "REALM decomposes prediction into retrieval followed by passage-conditioned prediction and defines p(y|x) as a sum over latent passages z; the implementation approximates that corpus-wide marginal with the retriever's top-k candidates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Retrieve-then-predict latent objective",
+            "section": "3.1. REALM’s generative process",
+            "equation": "1"
+          },
+          "support": "Equation 1 defines the latent-passage marginal and the surrounding text states that training uses a top-k approximation."
+        }
+      ],
+      "limitations": [
+        "The exact written sum and the implemented truncated approximation are distinct; top-k candidate discovery is itself approximate."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-dense-retriever-and-knowledge-encoder",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "deep-bidirectional-transformer-pretraining",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "REALM scores passages by the inner product of BERT-style query and document encoders: the document embedder encodes a title-plus-body pair, while a separate Transformer knowledge encoder jointly processes the input and the selected passage body.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Dense retriever and passage-conditioned encoder",
+            "section": "3.2. Model architecture"
+          },
+          "support": "The retriever embeds each document's title and body for inner-product scoring; the knowledge encoder separately joins the input with the retrieved passage body."
+        }
+      ],
+      "limitations": [
+        "The corpus-wide softmax is the model definition; candidate discovery uses approximate maximum-inner-product search."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-masked-pretraining-and-extractive-reader",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "masked-language-model-pretraining",
+        "retrieval-augmented-language-model-pretraining",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "During pretraining the knowledge encoder predicts masked tokens conditioned on a retrieved passage; during open-QA fine-tuning it assigns probability to contiguous spans and sums scores for spans matching the answer string.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Pretraining and QA output layers",
+            "section": "3.2. Model architecture"
+          },
+          "support": "The paper specifies masked-token prediction for pretraining and an extractive span model for open question answering."
+        }
+      ],
+      "limitations": [
+        "The downstream reader assumes an answer occurs verbatim as a contiguous span; it is not an open-ended generator."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-retriever-gradient-and-index-refresh",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-conditioned-latent-document-marginalization",
+        "asynchronous-document-index-refresh",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The retriever gradient raises a passage's score when its conditional prediction probability exceeds the current marginal, while training asynchronously rebuilds a stale document index every several hundred steps and rescores selected passages with current parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Retriever gradient and asynchronous MIPS refresh",
+            "section": "3.3. Training",
+            "figure": "3"
+          },
+          "support": "The displayed gradient gives the relevance update and Figure 3 documents asynchronous index reconstruction with fresh rescoring."
+        },
+        {
+          "sourceId": "realm-2020-pmlr-supplement",
+          "locator": {
+            "label": "Retriever-gradient derivation",
+            "section": "Appendix A. Derivation of the gradient with respect to the knowledge retriever; Appendix B. Connection between REALM and supervised learning"
+          },
+          "support": "The supplement derives the posterior-minus-prior form of the retriever gradient."
+        }
+      ],
+      "limitations": [
+        "A positive optimization signal is not proof that a retrieved passage is factually correct or causally explanatory; selection still uses a truncated stale candidate set."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-finetuning-index-freeze-boundary",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "asynchronous-document-index-refresh"
+      ],
+      "statement": "For reported task fine-tuning, REALM builds the document index once and freezes the document encoder while continuing to update the query encoder; periodic document-index refresh is a pretraining mechanism, not part of the evaluated fine-tuning recipe.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Fine-tuning index boundary",
+            "section": "3.3. Training; footnote 3"
+          },
+          "support": "The paper states that the document encoder is not updated during fine-tuning and leaves fine-tuning refresh as possible future work."
+        }
+      ],
+      "limitations": [
+        "Calling the complete task-time retrieval stack jointly trained would erase this asymmetric update boundary."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-salient-masking-null-and-source-exclusion",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "salient-span-masked-retrieval-pretraining",
+        "retrieval-augmented-language-model-pretraining"
+      ],
+      "statement": "REALM masks one named entity or date identified by a CoNLL-2003-trained BERT tagger and date regex, adds a null passage, and excludes the originating passage when the pretraining and knowledge corpora coincide to deter trivial exact-match retrieval.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Salient span masking and trivial-retrieval controls",
+            "section": "3.4. Injecting inductive biases into pre-training"
+          },
+          "support": "The paper specifies entity/date selection, null-document behavior, and source-passage exclusion."
+        }
+      ],
+      "limitations": [
+        "The source-exclusion rule is conditional on same-corpus pretraining; the null passage also represents predictions that need no retrieved knowledge."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-initialization-and-supervision-boundary",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "deep-bidirectional-transformer-pretraining",
+        "masked-language-model-pretraining",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "REALM warm-starts the retriever with the Inverse Cloze Task and the knowledge encoder with uncased BERT-base, while salient-span selection uses a supervised named-entity tagger; its no-relevance-label retriever training is therefore not training without pretrained or supervised components.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "BERT and ICT initialization",
+            "section": "3.4. Injecting inductive biases into pre-training"
+          },
+          "support": "The final paper names ICT retriever initialization, a twelve-layer 768-hidden 12-head uncased BERT-base knowledge encoder, and the CoNLL-2003-trained tagger."
+        }
+      ],
+      "limitations": [
+        "The paper's retriever-supervision description is scoped to passage relevance labels, not to every upstream component or annotation source."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-corpus-training-and-runtime",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "asynchronous-document-index-refresh",
+        "retrieval-augmented-language-model-pretraining"
+      ],
+      "statement": "The evaluated system retrieves from a 20 December 2018 English Wikipedia snapshot split into at-most-288-WordPiece passages, producing more than 13 million candidates. Pretraining runs 200,000 steps with batch 512, learning rate 3×10^-5, 64 training TPUs plus 16 embedding TPUs, and eight candidates including null; inference retrieves five passages and is reported to fit on one 12GB GPU.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Corpus, training, and inference configuration",
+            "section": "4.3. Implementation Details"
+          },
+          "support": "The paper reports the snapshot, passage limit, candidate count, training schedule and hardware, candidate counts, and inference memory boundary."
+        }
+      ],
+      "limitations": [
+        "The resource statement describes the paper experiment and does not apply to the scaled public single-machine configuration."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-openqa-evaluation-protocol",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-augmented-language-model-pretraining",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "REALM evaluates exact match on NaturalQuestions-Open, WebQuestions, and CuratedTREC with approximately 79k/4k, 3k/2k, and 1k/1k train/test examples. NaturalQuestions is restricted to answers of at most five tokens and does not provide the suggested document.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Open-QA datasets and exact-match protocol",
+            "section": "4.1. Open-QA Benchmarks"
+          },
+          "support": "The paper defines the three datasets, approximate split sizes, NaturalQuestions answer-length restriction, and exact-match evaluation."
+        }
+      ],
+      "limitations": [
+        "CuratedTREC uses regex-derived answer supervision, which the paper says prevents the stated generation-model comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-openqa-results",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-augmented-language-model-pretraining",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "Final Table 1 reports Wikipedia-pretrained REALM at 39.2/40.2/46.8 and CC-News-pretrained REALM at 40.4/40.7/42.9 exact match on NaturalQuestions/WebQuestions/CuratedTREC; both rows list 330 million parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Final open-QA results",
+            "section": "4.4. Main results",
+            "table": "1"
+          },
+          "support": "Table 1 reports the two REALM rows, parameter count, and three exact-match columns."
+        }
+      ],
+      "limitations": [
+        "The two variants trade off CuratedTREC against NaturalQuestions and WebQuestions; no variance, confidence interval, or single universally superior row is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-ablation-results",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "salient-span-masked-retrieval-pretraining",
+        "asynchronous-document-index-refresh",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "On NaturalQuestions development, final Table 2 reports EM/zero-shot Recall@5 of 38.2/38.5 for Wikipedia REALM, 38.5/52.0 for CC-News REALM, 37.4/38.5 with a REALM retriever and baseline encoder, 35.3/13.9 with the baseline retriever and REALM encoder, 31.3/13.9 for ORQA, 32.3/24.2 for uniform masking, 35.3/26.1 for random spans, and 28.7/15.1 with a 30-times-staler index.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "NaturalQuestions development ablations",
+            "section": "4.5. Analysis",
+            "table": "2"
+          },
+          "support": "Table 2 supplies the exact-match and retrieval-recall rows for pretraining corpus, component swaps, masking, and index staleness."
+        }
+      ],
+      "limitations": [
+        "This is one development set with single reported values; rows alter different coupled components and do not identify independent additive effects."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-fermat-qualitative-example",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "parametric-nonparametric-memory-composition",
+        "retrieval-conditioned-latent-document-marginalization"
+      ],
+      "statement": "In one Fermat completion, BERT assigns 1.1×10^-14 to the answer, REALM conditioned on one useful passage assigns 1.0, and REALM marginalized across eight retrieved passages assigns 0.129.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Fermat passage-conditioned example",
+            "section": "4.5. Analysis, Examples of retrieved documents",
+            "table": "3"
+          },
+          "support": "Table 3 prints the BERT, single-passage conditional, and eight-passage marginal probabilities."
+        }
+      ],
+      "limitations": [
+        "This is one selected qualitative case and does not establish corpus-wide interpretability or factuality."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-corpus-swap-and-retrieval-utility",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-index-hot-swapping",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "Without changing model parameters, replacing the 2018 retrieval corpus with January 2020 Wikipedia lets REALM retrieve the new Excellent Cadaver page and assign 0.13 to Lawrence in one example, while another Thatcher fact does not update. The supplement defines retrieval utility as log p(y|z,x) minus log p(y|null,x).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-pmlr-supplement",
+          "locator": {
+            "label": "Corpus replacement examples",
+            "section": "Appendix C. Adapting to new knowledge",
+            "table": "4"
+          },
+          "support": "Table 4 reports the successful Lawrence update; the surrounding Appendix C prose separately reports the Thatcher case that does not update."
+        },
+        {
+          "sourceId": "realm-2020-pmlr-supplement",
+          "locator": {
+            "label": "Retrieval utility",
+            "section": "Appendix D. Retrieval Utility",
+            "equation": "2",
+            "figure": "4"
+          },
+          "support": "Equation 2 defines retrieval utility, and Figure 4 plots it against pretraining steps for three masking schemes."
+        }
+      ],
+      "limitations": [
+        "Corpus replacement can update selected answers but does not erase parametric memory; negative retrieval utility is ambiguous and Figure 4 has no tabulated uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-release-and-reproduction-boundary",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-augmented-language-model-pretraining",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The initial public REALM tree covers pretraining and sends fine-tuning to ORQA. It replaces the experiment's ScaNN-style retrieval with brute-force matrix multiplication, provides named checkpoint and small-data paths, and says its single-machine scaled configuration is not expected to reach full performance.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-initial-release-repository",
+          "locator": {
+            "label": "Initial release scope",
+            "section": "README",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned release documents pretraining coverage, the ORQA dependency, retrieval substitution, named GCS objects, a small verification subset, and scaled-quality warning."
+        }
+      ],
+      "limitations": [
+        "The release's reproduction statement is a README assertion without archived paper-run logs or the original distributed infrastructure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "realm-2020-artifact-data-and-rights-boundary",
+      "workId": "guu-2020-realm-retrieval-augmented-language-model-pre-training",
+      "ideaIds": [
+        "retrieval-augmented-language-model-pretraining",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "Apache 2.0 applies to the pinned Google Research software tree, while arXiv grants repository distribution rather than broad reuse. No inspected source supplies one license or manifest covering the paper, GCS checkpoints, pretraining and retrieval corpora, Wikipedia, and CC-News.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "realm-2020-release-license",
+          "locator": {
+            "label": "Software license scope",
+            "section": "Apache License 2.0",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned repository states Apache 2.0 terms for software in the tree."
+        },
+        {
+          "sourceId": "realm-2020-arxiv-license",
+          "locator": {
+            "label": "Article distribution terms",
+            "section": "arXiv non-exclusive distribution license",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The linked terms authorize arXiv distribution rather than general downstream reuse."
+        },
+        {
+          "sourceId": "realm-2020-initial-release-repository",
+          "locator": {
+            "label": "Data and checkpoint boundary",
+            "section": "README",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The release names bucket objects and a small subset but does not provide an express umbrella license or complete immutable corpus manifest."
+        }
+      ],
+      "limitations": [
+        "Repository code licensing must not be projected onto paper text, model artifacts, or third-party corpora."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Current availability and object-level reuse terms for each named GCS path were not established.",
+          "resolutionCondition": "Authoritative archived object manifests and licenses would be required to change this boundary."
+        }
+      ],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-version-formula-and-result-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "sequence-level-document-marginalization",
+        "token-level-document-marginalization",
+        "retrieval-augmented-sequence-generation"
+      ],
+      "statement": "RAG has four arXiv revisions and a canonical NeurIPS main-plus-supplement package. Version 1 reports 56.1 for standard-split TriviaQA RAG-Sequence and omits later implementation appendices; version 2 and the proceedings report 56.8; version 4 alone corrects the RAG-Token generator term from an undefined z_i inside the document sum to z.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Original result and manuscript scope",
+            "section": "2.1 Models; 4.1 Open-domain Question Answering; appendices",
+            "pageStart": 3,
+            "pageEnd": 18,
+            "table": "1"
+          },
+          "support": "Version 1 prints the pre-final token equation, the 56.1 TriviaQA result, and the shorter appendix set."
+        },
+        {
+          "sourceId": "rag-2020-arxiv-v2-full-text",
+          "locator": {
+            "label": "Revised TriviaQA result",
+            "section": "4.1 Open-domain Question Answering",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "Version 2 changes the standard-split TriviaQA RAG-Sequence result to 56.8."
+        },
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Canonical result and retained notation",
+            "section": "2.1 Models; 4.1 Open-domain Question Answering",
+            "pageStart": 3,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "The proceedings prints z_i in the token formula and 56.8 in Table 1."
+        },
+        {
+          "sourceId": "rag-2021-arxiv-v4-full-text",
+          "locator": {
+            "label": "Post-proceedings formula correction",
+            "section": "2.1 Models",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "Version 4 replaces z_i with the summed latent variable z in the RAG-Token generator term."
+        }
+      ],
+      "limitations": [
+        "The corrected v4 equation must not be silently projected into the canonical proceedings artifact; canonical result claims and corrected-formula claims have different source boundaries."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-hybrid-dpr-bart-index",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "parametric-nonparametric-memory-composition",
+        "retrieval-augmented-sequence-generation",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "RAG combines a pretrained DPR dense retriever with a BART-large encoder-decoder generator. The retriever uses BERT-base query and document encoders with inner-product ranking, while the generator concatenates the input and each retrieved passage; the paper calls the generator parametric memory and the Wikipedia index non-parametric memory.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "DPR retriever and BART generator",
+            "section": "1 Introduction; 2.2 Retriever: DPR; 2.3 Generator: BART",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "figure": "1"
+          },
+          "support": "The target names DPR and BART, defines the dual-encoder score, and describes input-passage concatenation and the two memory roles."
+        }
+      ],
+      "limitations": [
+        "BART and DPR are local substrates here because they are not separately promoted work nodes in the current corpus; no edge is inferred from their names alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-sequence-level-marginalization",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-conditioned-latent-document-marginalization",
+        "sequence-level-document-marginalization",
+        "retrieval-augmented-sequence-generation"
+      ],
+      "statement": "RAG-Sequence approximates p(y|x) by summing over top-k passages, weighting each passage by retrieval probability and the complete autoregressive probability of the target sequence under that same passage.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "RAG-Sequence latent-document likelihood",
+            "section": "2.1 Models",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "The sequence-level model equation uses one latent passage for every target token and marginalizes complete sequence probabilities."
+        }
+      ],
+      "limitations": [
+        "One passage is latent for the full output, and top-k truncation is not exact marginalization over the complete corpus."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2021-token-level-marginalization-correction",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-conditioned-latent-document-marginalization",
+        "token-level-document-marginalization",
+        "retrieval-augmented-sequence-generation"
+      ],
+      "statement": "In the corrected arXiv v4 formulation, RAG-Token multiplies next-token probabilities whose inner sum marginalizes a top-k passage z for each output position. The retrieved candidate set remains conditioned on the input x rather than being re-queried from each generated prefix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2021-arxiv-v4-full-text",
+          "locator": {
+            "label": "Corrected RAG-Token likelihood",
+            "section": "2.1 Models",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "The second displayed equation uses z consistently in the retrieval and generator factors and the surrounding prose defines a per-token mixture."
+        }
+      ],
+      "limitations": [
+        "The proceedings, arXiv v2, and arXiv v3 print z_i inside the sum; only v4 is evidence for the corrected expression."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-training-freeze-and-supervision-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-augmented-sequence-generation"
+      ],
+      "statement": "RAG fine-tuning minimizes target-sequence negative marginal log likelihood while updating the query encoder and BART generator; the document encoder and document index remain fixed. No passage labels are used during RAG task fine-tuning, but the initializing DPR retriever was trained with NaturalQuestions and TriviaQA answer-containing passages.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "DPR initialization and asymmetric RAG fine-tuning",
+            "section": "2.2 Retriever: DPR; 2.4 Training",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "The paper names DPR's retrieval supervision, states the document encoder is held fixed, and says the query encoder and generator are trained without direct document supervision."
+        }
+      ],
+      "limitations": [
+        "The paper's end-to-end wording is bounded: task loss reaches the query encoder and generator, not the frozen document encoder or index."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-decoding-and-retrieval-budgets",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "sequence-level-document-marginalization",
+        "token-level-document-marginalization"
+      ],
+      "statement": "RAG-Token uses ordinary autoregressive beam decoding after token-level marginalization. RAG-Sequence uses per-document beams with Thorough global rescoring or a Fast approximation that assigns zero contribution where a sequence is absent from a passage beam. Reported QA tests use 15 passages for RAG-Token and 50 plus Thorough decoding for RAG-Sequence; generation tasks use 10 passages, beam four, and Fast decoding.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Token and sequence decoding",
+            "section": "2.5 Decoding",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The main article distinguishes standard token decoding from Thorough and Fast RAG-Sequence approximations."
+        },
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Task-specific retrieval and decoding budgets",
+            "section": "Appendix A Implementation Details",
+            "pageStart": 17,
+            "pageEnd": 17
+          },
+          "support": "The supplement records QA and generation top-k, beam, greedy, Thorough, and Fast settings."
+        }
+      ],
+      "limitations": [
+        "Headline comparisons between the two formulations do not always use equal retrieval or decoding budgets."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-corpus-and-task-protocol",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-augmented-sequence-generation",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "The main index is December 2018 English Wikipedia split into disjoint 100-word passages and searched with FAISS/HNSW. Evaluation covers exact-match open QA, answer-conditioned Jeopardy question generation, MS MARCO generation without gold passages, and FEVER label generation without evidence-extraction training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Wikipedia index and evaluated tasks",
+            "section": "3 Experiments; 3.1 Open-domain Question Answering; 3.2 Abstractive Question Answering; 3.3 Jeopardy Question Generation; 3.4 Fact Verification",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The paper defines the passage corpus, approximate retrieval stack, task inputs and targets, and metrics."
+        },
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Dataset sizes and preprocessing",
+            "section": "Appendices D–E; Appendix I Number of instances per dataset",
+            "pageStart": 17,
+            "pageEnd": 19,
+            "table": "7"
+          },
+          "support": "The supplement supplies split counts and QA and FEVER preprocessing qualifications."
+        }
+      ],
+      "limitations": [
+        "TriviaQA standard and Wiki splits are different; CuratedTREC and TriviaQA use answer-string filtering or heuristics, and FEVER evidence extraction is outside the reported task."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-openqa-results",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-augmented-sequence-generation",
+        "sequence-level-document-marginalization",
+        "token-level-document-marginalization"
+      ],
+      "statement": "Canonical Table 1 reports RAG-Token at 44.1 NQ, 55.2 TriviaQA standard, 66.1 TriviaQA Wiki, 45.5 WebQuestions, and 50.0 CuratedTREC exact match; RAG-Sequence reports 44.5, 56.8, 68.0, 45.2, and 52.2. DPR reports 41.5/57.9/—/41.1/50.6 and REALM 40.4/—/—/40.7/46.8.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Open-QA test results",
+            "section": "4.1 Open-domain Question Answering",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "Table 1 prints the RAG, DPR, and REALM rows across NaturalQuestions, two TriviaQA columns, WebQuestions, and CuratedTREC."
+        }
+      ],
+      "limitations": [
+        "The two TriviaQA columns are different splits, the standard-split RAG rows remain below the DPR comparator, retrieval budgets differ between RAG variants, and no uncertainty or significance is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-generation-and-classification-results",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-augmented-sequence-generation",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Canonical Table 2 reports BART/RAG-Token/RAG-Sequence at 15.1/17.3/14.7 BLEU-1 and 19.7/22.2/21.4 Q-BLEU-1 on Jeopardy, and 38.2/40.1/40.8 ROUGE-L plus 41.6/41.5/44.2 BLEU-1 on MS MARCO. For FEVER, BART records 64.0/81.1 and length-one RAG 72.5/89.5 on three-way/two-way accuracy.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Generation and FEVER test results",
+            "section": "4.2 Abstractive Question Answering; 4.3 Jeopardy Question Generation; 4.4 Fact Verification",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "table": "2"
+          },
+          "support": "Table 2 reports the BART and RAG rows for Jeopardy, MS MARCO, and FEVER."
+        }
+      ],
+      "limitations": [
+        "Gold-context comparators have different evidence access; the one-token FEVER target makes the two RAG marginalizations equivalent, and no uncertainty or significance is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-human-evaluation-integrity-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-augmented-sequence-generation",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "For 452 Jeopardy BART-versus-RAG-Token pairs, factuality judgments are BART better 7.1%, RAG better 42.7%, both good 11.7%, both poor 17.7%, and no majority 20.8%. Specificity is printed as 16.8%, 37.4%, 11.8%, 6.9%, and 20.1%, which sums to 93.0%; the prose's additional 17% factuality statement also conflicts with the table's 11.7% both-good cell.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Jeopardy human judgments and internal conflicts",
+            "section": "4.3 Jeopardy Question Generation",
+            "pageStart": 6,
+            "pageEnd": 8,
+            "table": "4"
+          },
+          "support": "Table 4 prints factuality and specificity percentages; the surrounding prose supplies the conflicting further-17% statement."
+        },
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Human-evaluation protocol",
+            "section": "Appendix B Human Evaluation",
+            "pageStart": 17,
+            "pageEnd": 17
+          },
+          "support": "The supplement describes randomized presentation, permits web research, includes gold checks, and removes two annotators without reporting total annotator count or agreement."
+        }
+      ],
+      "limitations": [
+        "These bounded pairwise judgments do not establish broad factuality or specificity; no annotator count, inter-annotator agreement, confidence interval, or explanation of the inconsistent cells is provided."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "ArXiv v1 prints 18.8% for specificity both-good, making that column sum to 100%, while v2 and the proceedings print 11.8% without explanation.",
+          "resolutionCondition": "Underlying annotations or an author erratum are required to resolve the changed and internally inconsistent percentages."
+        }
+      ],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-diversity-results",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-augmented-sequence-generation",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Distinct-trigram ratios for gold/BART/RAG-Token/RAG-Sequence are 89.6/70.7/77.8/83.5 on MS MARCO and 90.0/32.4/46.8/53.8 on Jeopardy.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Distinct-trigram ratios",
+            "section": "4.5 Additional Results, Generation Diversity",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "5"
+          },
+          "support": "Table 5 reports the four systems on both datasets."
+        }
+      ],
+      "limitations": [
+        "Distinct trigrams measure surface-form variety, not semantic diversity, factuality, or quality; the paper reports no uncertainty or formal comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-fever-retrieval-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-augmented-sequence-generation"
+      ],
+      "statement": "On FEVER, the top-ranked retrieved article matches a gold article in 71% of cases and the top ten contain a gold article in 90%. RAG's label accuracy is within 2.7 points of a two-way gold-evidence RoBERTa comparator and within 4.3 points of three-way pipeline systems.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "FEVER retrieval and accuracy context",
+            "section": "4.4 Fact Verification",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The paper reports article-title retrieval coverage and contextualizes two-way and three-way accuracy gaps."
+        }
+      ],
+      "limitations": [
+        "Article-title overlap is not evidence-sentence accuracy or proof that the generator used the passage; the paper omits the evidence-extraction task and notes a Wikipedia-dump mismatch."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-retriever-ablation-results",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-augmented-sequence-generation"
+      ],
+      "statement": "On development sets, learning the RAG-Sequence query encoder raises NaturalQuestions exact match from 41.2 with frozen retrieval to 44.0 and generally improves the listed tasks, but BM25 yields the best FEVER retrieval comparison at 75.1/91.6 versus 74.5/90.6 for learned dense retrieval.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Retriever learning and retrieval-method ablations",
+            "section": "4.5 Additional Results",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "6"
+          },
+          "support": "Table 6 compares learned and frozen retrievers across tasks, and the surrounding text reports BM25 versus dense FEVER retrieval."
+        }
+      ],
+      "limitations": [
+        "These are development-set ablations without repeated seeds; they do not show dense learned retrieval is universally better."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-index-hot-swap-result",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-index-hot-swapping",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "For 82 templated world-leader questions, matched 2016 and 2018 Wikipedia indices yield 70% and 68% accuracy, while mismatched old/new indices yield 12% and 4%, without retraining the model.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "2016/2018 index replacement probe",
+            "section": "4.5 Additional Results, Index hot-swapping",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "The paper reports the four matched and mismatched index accuracies for the constructed leader-question set."
+        }
+      ],
+      "limitations": [
+        "This is one NQ-trained model, one hand-selected temporal relation, 82 templated items, and no uncertainty; it is not evidence for general factual updating or deletion of parametric facts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-retrieval-count-null-and-collapse-limits",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-collapse",
+        "retrieval-augmented-sequence-generation",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "Within the plotted NaturalQuestions range, more retrieved passages improve RAG-Sequence while RAG-Token peaks at ten; null-document variants do not improve results. Preliminary story-generation experiments exhibit retrieval collapse, retrieving similar passages regardless of input while the generator behaves like BART.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Retrieved-document count",
+            "section": "4.5 Additional Results",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "figure": "3"
+          },
+          "support": "Figure 3 and surrounding prose report the qualitative top-k trends and runtime tradeoff."
+        },
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Null-document and retrieval-collapse experiments",
+            "section": "Appendix F Null Document Probabilities; Appendix H Retrieval Collapse",
+            "pageStart": 18,
+            "pageEnd": 19
+          },
+          "support": "The supplement says the null variants were not helpful and describes preliminary story-generation collapse."
+        }
+      ],
+      "limitations": [
+        "Figure 3 provides no exact table or error bars; collapse evidence is preliminary, and proposed causes are hypotheses rather than isolated mechanisms."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-parameter-compute-and-index-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "The main text rounds BART-large to 400 million parameters, while the supplement lists 406 million plus 110 million each for query and document encoders and calls the 626-million total trainable despite holding the document encoder fixed. Reported experiments use Fairseq on eight 32GB V100 GPUs; the index is about 100GB on CPU, with a compressed 36GB port described after submission.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Main-text generator size",
+            "section": "2.3 Generator: BART",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "The main article describes BART-large as 400M parameters."
+        },
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Parameter, hardware, and index accounting",
+            "section": "Appendix C Training setup Details; Appendix G Parameters",
+            "pageStart": 17,
+            "pageEnd": 19
+          },
+          "support": "The supplement reports Fairseq hardware, 406M and two 110M components, the 626M label, and 100GB/36GB index sizes."
+        }
+      ],
+      "limitations": [
+        "A frozen document encoder is not part of the optimized parameter set; the supplement also prints 728-dimensional vectors, an unresolved discrepancy against the named BERT-base DPR representation."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The supplement's 728-dimensional DPR vector count is not reconciled with its BERT-base description.",
+          "resolutionCondition": "The original experiment configuration or an author erratum is required to resolve the dimensionality."
+        }
+      ],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-implementation-port-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-augmented-sequence-generation",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The reported experiments ran in Fairseq. After submission, the authors ported RAG to Hugging Face Transformers and reported equivalent performance; the pinned 22 September 2020 public tree is therefore a later implementation, not the exact original experiment environment.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Experiment framework and later port",
+            "section": "Appendix C Training setup Details",
+            "pageStart": 17,
+            "pageEnd": 17
+          },
+          "support": "The supplement separates Fairseq experiments from the post-submission Hugging Face port and its reported equivalent performance."
+        },
+        {
+          "sourceId": "rag-2020-huggingface-release",
+          "locator": {
+            "label": "Pinned public port",
+            "section": "Initial RAG release tree",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The immutable commit records the public RAG port and its runnable examples."
+        }
+      ],
+      "limitations": [
+        "No inspected artifact pins the original Fairseq revision, complete environment, run manifest, all seeds, human annotations, or the 82-item index-swap list."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-02"
+    },
+    {
+      "id": "rag-2020-artifact-data-and-rights-boundary",
+      "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
+      "ideaIds": [
+        "retrieval-augmented-sequence-generation",
+        "parametric-nonparametric-memory-composition"
+      ],
+      "statement": "Apache 2.0 applies to the pinned Transformers code tree, while arXiv grants repository distribution rather than broad reuse. No inspected source supplies one license or immutable manifest covering the paper, original Fairseq runs, pretrained weights, DPR dependencies, Wikipedia-derived index, benchmarks, and human-evaluation data.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rag-2020-huggingface-license",
+          "locator": {
+            "label": "Public-port software license",
+            "section": "Apache License 2.0",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned Transformers tree states Apache 2.0 terms for its code."
+        },
+        {
+          "sourceId": "rag-2020-arxiv-license",
+          "locator": {
+            "label": "Article distribution terms",
+            "section": "arXiv non-exclusive distribution license",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The linked terms authorize arXiv distribution rather than general downstream reuse."
+        },
+        {
+          "sourceId": "rag-2020-neurips-supplement",
+          "locator": {
+            "label": "Missing experiment-artifact envelope",
+            "section": "Appendix C Training setup Details; Appendix G Parameters",
+            "pageStart": 17,
+            "pageEnd": 19
+          },
+          "support": "The supplement identifies framework, hardware, model components, and index sizes but no exact run or rights manifest."
+        }
+      ],
+      "limitations": [
+        "Code licensing cannot be projected onto paper text, weights, third-party components, Wikipedia, or benchmark datasets."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact correspondence between current model/index artifacts and every paper checkpoint and run is not documented.",
+          "resolutionCondition": "Immutable release manifests with digests, run provenance, and authoritative rights documentation would be required."
+        }
+      ],
+      "checkedDate": "2026-09-02"
+    },
+    {
       "id": "brown-2020-version-and-model-chronology",
       "workId": "brown-2020-language-models-few-shot-learners",
       "ideaIds": [
@@ -52406,6 +54881,88 @@
           "note": "Schedule mismatch is one proposed contributor, while non-embedding versus total-parameter conventions and different compute accounts also prevent an unlimited causal interpretation."
         }
       ]
+    },
+    {
+      "id": "devlin-2018-to-guu-2020-realm",
+      "from": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "to": {
+        "kind": "work",
+        "id": "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "REALM explicitly uses BERT-style query and document encoders, initializes its distinct knowledge encoder from uncased BERT-base, and retains masked-token pretraining while adding latent passage retrieval. The edge carries only those named encoder, initialization, and masked-objective dependencies; it does not transfer BERT's next-sentence objective, corpora, task results, or release state.",
+      "claimIds": [
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-masked-language-model-objective",
+        "realm-2020-dense-retriever-and-knowledge-encoder",
+        "realm-2020-masked-pretraining-and-extractive-reader",
+        "realm-2020-initialization-and-supervision-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Target-side BERT substrate and initialization",
+            "section": "3.2. Model architecture; 3.4. Injecting inductive biases into pre-training"
+          },
+          "support": "The target names BERT-style retriever encoders, masked-token prediction, and uncased BERT-base initialization while documenting retrieval as the added component."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is restricted to target-named BERT mechanisms and initialization; ICT/ORQA retrieval ancestry remains node-local because ORQA is not yet a promoted endpoint."
+        }
+      ]
+    },
+    {
+      "id": "guu-2020-realm-to-lewis-2020-rag",
+      "from": {
+        "kind": "work",
+        "id": "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "RAG explicitly places REALM among differentiable-retrieval models limited to extractive downstream tasks, retains top-k latent-document marginalization and hybrid parametric/non-parametric memory, and carries that pattern into pretrained sequence-to-sequence generation with separate sequence- and token-level formulations. The edge does not transfer REALM's salient-span pretraining, knowledge encoder, index-refresh schedule, QA reader, datasets, results, or artifacts.",
+      "claimIds": [
+        "realm-2020-latent-document-objective",
+        "realm-2020-masked-pretraining-and-extractive-reader",
+        "realm-2020-finetuning-index-freeze-boundary",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-sequence-level-marginalization",
+        "rag-2021-token-level-marginalization-correction",
+        "rag-2020-training-freeze-and-supervision-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Target-side REALM boundary and generative extension",
+            "section": "1 Introduction; 2 Methods; 5 Related Work",
+            "pageStart": 1,
+            "pageEnd": 9
+          },
+          "support": "The target names REALM as a masked-language-model plus differentiable-retriever precedent for extractive QA, then states that RAG brings hybrid memory to sequence-to-sequence generation and distinguishes two latent-document formulations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge records a documented extension of latent retrieval into generation, not identity between REALM and RAG retrievers, pretraining recipes, or task evidence."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -55262,6 +57819,137 @@
         "Immutable source versions, data manifests, run artifacts, and license scope"
       ],
       "successCriterion": "The learner can reproduce, interpret, and state the conditions for Equations 1.1–1.8, 2.1–2.2, 4.1–4.4, and 5.1–5.6; derive their downstream allocation consequences; reproduce Tables 2, 3, 5, and 6 without mixing constants; distinguish C from C_min and B_crit from an arbitrary batch; distinguish the empirical .050 fit from the .054/.052 theoretical printings and explain both Table 5/Figure 13 normalization discrepancies; defend the 768-to-1.5B and WebText2 evidence envelope; and separate paper, corpus, code, run, checkpoint, and rights claims."
+    },
+    {
+      "id": "beginner-realm-2020-retrieve-predict-and-update",
+      "mode": "beginner",
+      "objective": "Trace a masked sentence or question through dense retrieval, passage-conditioned prediction, and marginalization; then use the successful Lawrence update and unsuccessful Thatcher update to distinguish replaceable corpus memory from knowledge retained in model parameters.",
+      "workIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-conditioned-latent-document-marginalization",
+        "parametric-nonparametric-memory-composition",
+        "retrieval-index-hot-swapping"
+      ],
+      "claimIds": [
+        "realm-2020-latent-document-objective",
+        "realm-2020-dense-retriever-and-knowledge-encoder",
+        "realm-2020-masked-pretraining-and-extractive-reader",
+        "realm-2020-corpus-swap-and-retrieval-utility"
+      ],
+      "prerequisites": [
+        "A masked language model predicts hidden tokens from context",
+        "A vector retriever ranks passages for a query",
+        "A probability mixture can weight several alternative passages",
+        "Model weights and a document corpus are different forms of memory"
+      ],
+      "successCriterion": "The learner can narrate retrieve-then-predict, explain why top-k is an approximation, distinguish extractive answering from generation, and state why changing a corpus can update one answer without guaranteeing removal of parametric facts."
+    },
+    {
+      "id": "expert-realm-2020-gradient-index-and-evidence-boundaries",
+      "mode": "expert",
+      "objective": "Derive REALM's truncated latent-document objective and retriever gradient, analyze stale-index refresh and fine-tuning freeze asymmetry, reconstruct final tables without projecting them into arXiv v1, and audit release, compute, data, and rights boundaries.",
+      "workIds": [
+        "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      ],
+      "ideaIds": [
+        "retrieval-conditioned-latent-document-marginalization",
+        "salient-span-masked-retrieval-pretraining",
+        "asynchronous-document-index-refresh",
+        "retrieval-augmented-language-model-pretraining",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "claimIds": [
+        "realm-2020-version-and-proceedings-boundary",
+        "realm-2020-latent-document-objective",
+        "realm-2020-retriever-gradient-and-index-refresh",
+        "realm-2020-finetuning-index-freeze-boundary",
+        "realm-2020-salient-masking-null-and-source-exclusion",
+        "realm-2020-initialization-and-supervision-boundary",
+        "realm-2020-corpus-training-and-runtime",
+        "realm-2020-openqa-results",
+        "realm-2020-ablation-results",
+        "realm-2020-release-and-reproduction-boundary",
+        "realm-2020-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Latent-variable maximum likelihood and truncated normalization",
+        "Dense dual encoders, maximum-inner-product search, and stale indices",
+        "Masked-language-model pretraining and extractive span readers",
+        "Ablation validity, immutable versioning, and artifact-license scope"
+      ],
+      "successCriterion": "The learner can derive the posterior-minus-prior retrieval update, separate fresh rescoring from stale candidate discovery, explain why document-encoder freezing changes task fine-tuning, reproduce Tables 1 and 2 with their caveats, and keep paper, code, checkpoint, data, and rights claims distinct."
+    },
+    {
+      "id": "beginner-rag-2020-sequence-token-and-index-memory",
+      "mode": "beginner",
+      "objective": "Trace an input through DPR retrieval and BART generation, compare one-document-per-sequence with per-token document mixtures, and interpret the index-swap probe without assuming retrieved text is always correct or actually used.",
+      "workIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-augmented-sequence-generation",
+        "sequence-level-document-marginalization",
+        "token-level-document-marginalization",
+        "retrieval-index-hot-swapping"
+      ],
+      "claimIds": [
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-sequence-level-marginalization",
+        "rag-2021-token-level-marginalization-correction",
+        "rag-2020-index-hot-swap-result",
+        "rag-2020-retrieval-count-null-and-collapse-limits"
+      ],
+      "prerequisites": [
+        "An autoregressive generator predicts one token at a time",
+        "A retriever can return several candidate passages",
+        "A weighted sum can marginalize an unknown choice",
+        "A model's parameters and retrieval index are separate storage systems"
+      ],
+      "successCriterion": "The learner can explain both RAG formulations using a two-document multi-token example, identify which parameters and index components are frozen, state the 82-item hot-swap boundary, and describe retrieval collapse."
+    },
+    {
+      "id": "expert-rag-2020-likelihood-decoding-and-provenance",
+      "mode": "expert",
+      "objective": "Derive both truncated RAG likelihoods and their gradient paths, audit the canonical z_i defect against the v4 correction, compare token, Thorough, and Fast decoding, reconstruct task results and retrieval budgets, and assess human-evaluation, code-port, data, and rights provenance.",
+      "workIds": [
+        "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      ],
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "dense-dual-encoder-document-retrieval",
+        "retrieval-conditioned-latent-document-marginalization",
+        "retrieval-augmented-sequence-generation",
+        "sequence-level-document-marginalization",
+        "token-level-document-marginalization",
+        "retrieval-collapse"
+      ],
+      "claimIds": [
+        "rag-2020-version-formula-and-result-boundary",
+        "rag-2020-sequence-level-marginalization",
+        "rag-2021-token-level-marginalization-correction",
+        "rag-2020-training-freeze-and-supervision-boundary",
+        "rag-2020-decoding-and-retrieval-budgets",
+        "rag-2020-corpus-and-task-protocol",
+        "rag-2020-openqa-results",
+        "rag-2020-generation-and-classification-results",
+        "rag-2020-human-evaluation-integrity-boundary",
+        "rag-2020-retriever-ablation-results",
+        "rag-2020-retrieval-count-null-and-collapse-limits",
+        "rag-2020-parameter-compute-and-index-boundary",
+        "rag-2020-implementation-port-boundary",
+        "rag-2020-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive sequence probabilities, latent variables, and top-k truncation",
+        "Beam search and approximate global rescoring",
+        "Dense passage retrieval and frozen-versus-trainable parameter paths",
+        "Evaluation confounds, immutable artifacts, and license boundaries"
+      ],
+      "successCriterion": "The learner can write the corrected RAG-Sequence and RAG-Token equations, identify why the venue token equation is inconsistent, compare decoding costs and approximations, reproduce Tables 1, 2, 4, and 6 with their inconsistencies and access caveats, and separate Fairseq experiments from the later public port."
     },
     {
       "id": "beginner-brown-2020-context-learning-without-weight-updates",
