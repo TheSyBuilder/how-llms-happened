@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-02",
+  "asOf": "2026-09-03",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -10171,6 +10171,308 @@
       ]
     },
     {
+      "id": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "title": "Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+      "authors": [
+        "Kenton Lee",
+        "Ming-Wei Chang",
+        "Kristina Toutanova"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "K. Lee, M.-W. Chang, and K. Toutanova, “Latent Retrieval for Weakly Supervised Open Domain Question Answering,” in Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pp. 6086–6096, 2019.",
+      "chronology": {
+        "orderingEventId": "orqa-2019-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "orqa-2019-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2019-06-01",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "orqa-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 1 June 2019 at 22:02:39 UTC"
+              }
+            ],
+            "versionId": "orqa-2019-arxiv-v1-version",
+            "sourceIds": [
+              "orqa-2019-arxiv-record",
+              "orqa-2019-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "orqa-2019-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2019-06-06",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "orqa-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 6 June 2019 at 19:45:44 UTC"
+              }
+            ],
+            "versionId": "orqa-2019-arxiv-v2-version",
+            "sourceIds": [
+              "orqa-2019-arxiv-record",
+              "orqa-2019-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "orqa-2019-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2019-06-27",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "orqa-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 27 June 2019 at 21:06:12 UTC"
+              }
+            ],
+            "versionId": "orqa-2019-arxiv-v3-version",
+            "sourceIds": [
+              "orqa-2019-arxiv-record",
+              "orqa-2019-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "orqa-2019-acl-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "ACL 2019 proceedings publication",
+            "date": {
+              "value": "2019-07",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "orqa-2019-acl-record",
+                "precision": "month",
+                "locator": "ACL Anthology citation metadata, publication date 2019/7"
+              }
+            ],
+            "versionId": "orqa-2019-acl-version",
+            "sourceIds": [
+              "orqa-2019-acl-record",
+              "orqa-2019-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "orqa-2019-arxiv-v1-version",
+          "title": "Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+          "authors": [
+            "Kenton Lee",
+            "Ming-Wei Chang",
+            "Kristina Toutanova"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Lee, M.-W. Chang, and K. Toutanova, “Latent Retrieval for Weakly Supervised Open Domain Question Answering,” arXiv:1906.00300v1, 1 June 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1906.00300v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "orqa-2019-arxiv-record",
+            "orqa-2019-arxiv-v1-full-text",
+            "orqa-2019-arxiv-license",
+            "orqa-2019-arxiv-v1-source-package"
+          ],
+          "notes": "The eleven-page ordering manuscript includes a BERTserini 78-paragraph/34.0 row in Table 6 and comparison prose that later revisions remove. Its printed full loss already contains the unresolved P′-versus-P notation defect."
+        },
+        {
+          "id": "orqa-2019-arxiv-v2-version",
+          "title": "Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+          "authors": [
+            "Kenton Lee",
+            "Ming-Wei Chang",
+            "Kristina Toutanova"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Lee, M.-W. Chang, and K. Toutanova, “Latent Retrieval for Weakly Supervised Open Domain Question Answering,” arXiv:1906.00300v2, 6 June 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1906.00300v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "orqa-2019-arxiv-record",
+            "orqa-2019-arxiv-v2-full-text",
+            "orqa-2019-arxiv-license",
+            "orqa-2019-arxiv-v2-source-package"
+          ],
+          "notes": "This eleven-page revision removes the BERTserini 78-paragraph/34.0 Table 6 row and rewrites the associated comparison. It retains the grammar later repaired in v3 and the unresolved P′ notation."
+        },
+        {
+          "id": "orqa-2019-arxiv-v3-version",
+          "title": "Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+          "authors": [
+            "Kenton Lee",
+            "Ming-Wei Chang",
+            "Kristina Toutanova"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Lee, M.-W. Chang, and K. Toutanova, “Latent Retrieval for Weakly Supervised Open Domain Question Answering,” arXiv:1906.00300v3, 27 June 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1906.00300v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1906.00300",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "orqa-2019-arxiv-record",
+            "orqa-2019-arxiv-v3-full-text",
+            "orqa-2019-arxiv-license",
+            "orqa-2019-arxiv-v3-source-package",
+            "orqa-2020-partial-release-commit",
+            "orqa-2020-finished-release-commit",
+            "orqa-2020-corrected-release-snapshot",
+            "orqa-2020-release-license"
+          ],
+          "notes": "The only detected scientific-source change from v2 is a grammar repair in Section 5. Later public code is versioned as an artifact and does not turn this paper revision into a 2020 publication."
+        },
+        {
+          "id": "orqa-2019-acl-version",
+          "title": "Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+          "authors": [
+            "Kenton Lee",
+            "Ming-Wei Chang",
+            "Kristina Toutanova"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ACL 2019 proceedings article",
+          "language": "en",
+          "bibliography": {
+            "citation": "K. Lee, M.-W. Chang, and K. Toutanova, “Latent Retrieval for Weakly Supervised Open Domain Question Answering,” in Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pp. 6086–6096, 2019.",
+            "venue": "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
+            "publisher": "Association for Computational Linguistics",
+            "pages": [
+              "6086-6096"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/P19-1612",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "orqa-2019-acl-record",
+            "orqa-2019-acl-full-text",
+            "acl-2016-plus-rights-policy",
+            "orqa-2020-partial-release-commit",
+            "orqa-2020-finished-release-commit",
+            "orqa-2020-corrected-release-snapshot",
+            "orqa-2020-release-license"
+          ],
+          "notes": "The canonical eleven-page article carries printed folios 6086–6096. Its scientific body aligns with arXiv v2 rather than v3: it keeps the corrected Table 6 but the older Section 5 grammar, and it retains the P′ notation defect."
+        }
+      ],
+      "canonicalVersionId": "orqa-2019-acl-version",
+      "preferredSourceIds": [
+        "orqa-2019-acl-record",
+        "orqa-2019-acl-full-text"
+      ],
+      "sourceIds": [
+        "orqa-2019-arxiv-record",
+        "orqa-2019-arxiv-v1-full-text",
+        "orqa-2019-arxiv-v2-full-text",
+        "orqa-2019-arxiv-v3-full-text",
+        "orqa-2019-arxiv-license",
+        "orqa-2019-arxiv-v1-source-package",
+        "orqa-2019-arxiv-v2-source-package",
+        "orqa-2019-arxiv-v3-source-package",
+        "orqa-2019-acl-record",
+        "orqa-2019-acl-full-text",
+        "acl-2016-plus-rights-policy",
+        "orqa-2020-partial-release-commit",
+        "orqa-2020-finished-release-commit",
+        "orqa-2020-corrected-release-snapshot",
+        "orqa-2020-release-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "ORQA joins inverse-cloze initialization, dense dual-encoder retrieval, a fixed passage index, and weakly supervised marginalization over answer-bearing block–span derivations. REALM explicitly retains that framework as a comparison and fine-tuning substrate while changing the pretraining and index-update regime."
+      },
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "inverse-cloze-retriever-pretraining",
+        "latent-answer-derivation-marginalization",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "significance": {
+        "beginner": "ORQA learns where to look and what span to read from question–answer pairs alone. An inverse-cloze warm-up teaches semantic passage matching, then a trainable question encoder changes which fixed indexed blocks reach a jointly trained reader.",
+        "expert": "ORQA combines 128-dimensional BERT dual encoders, in-batch inverse-cloze pretraining, a frozen block index, a top-five block–span marginal, and an early top-5,000 retriever marginal. Its claims remain bounded by answer-string supervision, an undefined P′ in the printed loss, mixed dataset behavior, and a delayed release that covers only part of the paper evaluation surface."
+      },
+      "limitations": [
+        "The evidence is English factoid open QA over fixed Wikipedia snapshots; it does not establish generative answering, multilingual transfer, temporal updating, calibration, safety, or citation faithfulness.",
+        "The evidence block encoder and precomputed index remain fixed during QA fine-tuning, so end-to-end refers to the trainable question encoder and reader rather than full index learning or refresh.",
+        "Answer-string matching can admit spurious derivations, examples with no retrieved match are discarded, and dataset construction and lexical biases differ substantially across the five evaluations.",
+        "BM25 remains stronger on reported TriviaQA and SQuAD tests, and the paper notes that 128-dimensional dense vectors can lose rare exact lexical distinctions.",
+        "Tables and figures report single values without repeated-seed variance, confidence intervals, significance tests, or an immutable experiment manifest.",
+        "The corrected public release limits fine-tuning/modeling support to Natural Questions and WebQuestions rather than all paper datasets while retaining CuratedTREC preprocessing and evaluation; paper, code, GCS objects, Wikipedia, and benchmarks retain separate provenance and rights."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Every inspected paper version writes P′ in the full-loss marginal although only P is defined; later code is consistent with P, but no author erratum was found.",
+          "resolutionCondition": "An author correction or archived experiment specification is required to establish the intended printed symbol without editorial repair."
+        },
+        {
+          "status": "open",
+          "note": "The paper names locality-sensitive hashing only as an available MIPS example and does not identify the exact approximate-index implementation used in the reported experiments.",
+          "resolutionCondition": "An archived paper-era run configuration or author clarification would be required to bind the results to a specific index implementation."
+        }
+      ]
+    },
+    {
       "id": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
       "title": "XLNet: Generalized Autoregressive Pretraining for Language Understanding",
       "authors": [
@@ -11378,7 +11680,8 @@
         "retrieval-augmented-language-model-pretraining",
         "salient-span-masked-retrieval-pretraining",
         "asynchronous-document-index-refresh",
-        "retrieval-index-hot-swapping"
+        "retrieval-index-hot-swapping",
+        "inverse-cloze-retriever-pretraining"
       ],
       "significance": {
         "beginner": "REALM gives a language model a searchable external memory: it retrieves passages before predicting a masked word or answering a question, and training rewards passages that make the answer more likely. The paper also shows why swapping the corpus can update some facts without erasing knowledge already stored in the network.",
@@ -11400,6 +11703,336 @@
         {
           "status": "open",
           "note": "The PMLR footer preserves a planned Vienna location while the official volume record describes the conference as virtual; the volume record controls event context."
+        }
+      ]
+    },
+    {
+      "id": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "authors": [
+        "Vladimir Karpukhin",
+        "Barlas Oğuz",
+        "Sewon Min",
+        "Patrick Lewis",
+        "Ledell Wu",
+        "Sergey Edunov",
+        "Danqi Chen",
+        "Wen-tau Yih"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "V. Karpukhin et al., “Dense Passage Retrieval for Open-Domain Question Answering,” in Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 6769–6781, 2020.",
+      "chronology": {
+        "orderingEventId": "dpr-2020-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "dpr-2020-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2020-04-10",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dpr-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 10 April 2020 at 04:53:17 UTC"
+              }
+            ],
+            "versionId": "dpr-2020-arxiv-v1-version",
+            "sourceIds": [
+              "dpr-2020-arxiv-record",
+              "dpr-2020-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "dpr-2020-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2020-05-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dpr-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 2 May 2020 at 00:53:53 UTC"
+              }
+            ],
+            "versionId": "dpr-2020-arxiv-v2-version",
+            "sourceIds": [
+              "dpr-2020-arxiv-record",
+              "dpr-2020-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "dpr-2020-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2020-09-30",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dpr-2020-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 30 September 2020 at 21:27:13 UTC"
+              }
+            ],
+            "versionId": "dpr-2020-arxiv-v3-version",
+            "sourceIds": [
+              "dpr-2020-arxiv-record",
+              "dpr-2020-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "dpr-2020-emnlp-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "EMNLP 2020 proceedings publication",
+            "date": {
+              "value": "2020-11",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "dpr-2020-emnlp-record",
+                "precision": "month",
+                "locator": "ACL Anthology citation metadata, publication date 2020/11"
+              }
+            ],
+            "versionId": "dpr-2020-emnlp-version",
+            "sourceIds": [
+              "dpr-2020-emnlp-record",
+              "dpr-2020-emnlp-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "dpr-2020-arxiv-v1-version",
+          "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "authors": [
+            "Vladimir Karpukhin",
+            "Barlas Oğuz",
+            "Sewon Min",
+            "Ledell Wu",
+            "Sergey Edunov",
+            "Danqi Chen",
+            "Wen-tau Yih"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Karpukhin et al., “Dense Passage Retrieval for Open-Domain Question Answering,” arXiv:2004.04906v1, 10 April 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2004.04906v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dpr-2020-arxiv-record",
+            "dpr-2020-arxiv-v1-full-text",
+            "dpr-2020-arxiv-license",
+            "dpr-2020-arxiv-v1-source-package"
+          ],
+          "notes": "The ten-page ordering manuscript has seven authors and omits Patrick Lewis. It promises future code, reports the core retrieval and QA matrices, and contains copied GraphRetriever values and qualitative column labels changed in v2."
+        },
+        {
+          "id": "dpr-2020-arxiv-v2-version",
+          "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "authors": [
+            "Vladimir Karpukhin",
+            "Barlas Oğuz",
+            "Sewon Min",
+            "Patrick Lewis",
+            "Ledell Wu",
+            "Sergey Edunov",
+            "Danqi Chen",
+            "Wen-tau Yih"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Karpukhin et al., “Dense Passage Retrieval for Open-Domain Question Answering,” arXiv:2004.04906v2, 2 May 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2004.04906v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dpr-2020-arxiv-record",
+            "dpr-2020-arxiv-v2-full-text",
+            "dpr-2020-arxiv-license",
+            "dpr-2020-arxiv-v2-source-package",
+            "dpr-2020-initial-release-repository",
+            "dpr-2020-release-license"
+          ],
+          "notes": "This eleven-page revision adds Patrick Lewis, changes three copied GraphRetriever values and the BM25/DPR qualitative labels, and adds a 36.8 Natural Questions development result for joint retriever–reader training."
+        },
+        {
+          "id": "dpr-2020-arxiv-v3-version",
+          "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "authors": [
+            "Vladimir Karpukhin",
+            "Barlas Oğuz",
+            "Sewon Min",
+            "Patrick Lewis",
+            "Ledell Wu",
+            "Sergey Edunov",
+            "Danqi Chen",
+            "Wen-tau Yih"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Karpukhin et al., “Dense Passage Retrieval for Open-Domain Question Answering,” arXiv:2004.04906v3, 30 September 2020.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2004.04906v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2004.04906",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dpr-2020-arxiv-record",
+            "dpr-2020-arxiv-v3-full-text",
+            "dpr-2020-arxiv-license",
+            "dpr-2020-arxiv-v3-source-package",
+            "dpr-2020-initial-release-repository",
+            "dpr-2020-pre-v3-release-snapshot",
+            "dpr-2020-release-artifact-manifest",
+            "dpr-2020-release-license"
+          ],
+          "notes": "The thirteen-page camera-ready revision expands training, hybrid retrieval, cross-dataset, runtime, and Appendix A–D evidence; changes the joint-training value from 36.8 to 39.8; and reports released code and trained models. Its scientific body matches the canonical proceedings article."
+        },
+        {
+          "id": "dpr-2020-emnlp-version",
+          "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "authors": [
+            "Vladimir Karpukhin",
+            "Barlas Oğuz",
+            "Sewon Min",
+            "Patrick Lewis",
+            "Ledell Wu",
+            "Sergey Edunov",
+            "Danqi Chen",
+            "Wen-tau Yih"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical EMNLP 2020 proceedings article",
+          "language": "en",
+          "bibliography": {
+            "citation": "V. Karpukhin et al., “Dense Passage Retrieval for Open-Domain Question Answering,” in Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pp. 6769–6781, 2020.",
+            "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+            "publisher": "Association for Computational Linguistics",
+            "pages": [
+              "6769-6781"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/2020.emnlp-main.550",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "dpr-2020-emnlp-record",
+            "dpr-2020-emnlp-full-text",
+            "acl-2016-plus-rights-policy",
+            "dpr-2020-initial-release-repository",
+            "dpr-2020-pre-v3-release-snapshot",
+            "dpr-2020-release-artifact-manifest",
+            "dpr-2020-release-license"
+          ],
+          "notes": "The canonical thirteen-page article carries printed folios 6769–6781. Its technical payload matches arXiv v3; publisher headers, the rights line, and pagination keep it a separate evidence object."
+        }
+      ],
+      "canonicalVersionId": "dpr-2020-emnlp-version",
+      "preferredSourceIds": [
+        "dpr-2020-emnlp-record",
+        "dpr-2020-emnlp-full-text"
+      ],
+      "sourceIds": [
+        "dpr-2020-arxiv-record",
+        "dpr-2020-arxiv-v1-full-text",
+        "dpr-2020-arxiv-v2-full-text",
+        "dpr-2020-arxiv-v3-full-text",
+        "dpr-2020-arxiv-license",
+        "dpr-2020-arxiv-v1-source-package",
+        "dpr-2020-arxiv-v2-source-package",
+        "dpr-2020-arxiv-v3-source-package",
+        "dpr-2020-emnlp-record",
+        "dpr-2020-emnlp-full-text",
+        "acl-2016-plus-rights-policy",
+        "dpr-2020-initial-release-repository",
+        "dpr-2020-pre-v3-release-snapshot",
+        "dpr-2020-release-artifact-manifest",
+        "dpr-2020-release-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "DPR makes answer-supervised dense passage retrieval the explicit research object, tests in-batch and BM25 hard negatives, and separates an offline passage index from a downstream reader. RAG later names DPR as its retriever and index initialization, making the bounded substrate relationship directly inspectable."
+      },
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval",
+        "in-batch-negative-retriever-training",
+        "bm25-hard-negative-mining",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "significance": {
+        "beginner": "DPR learns separate question and passage vectors from answer-bearing examples, so semantic matches can be searched in a precomputed Wikipedia index before a reader examines the candidates. In-batch and BM25 hard negatives teach it which plausible-looking passages to reject.",
+        "expert": "DPR trains BERT-base dual encoders with a contrastive softmax, answer-derived positives, in-batch positives-as-negatives, and BM25 hard negatives; it then indexes 21,015,324 100-word passages with FAISS and feeds up to 100 results to a distinct cross-encoder reader. The evidence keeps index rebuild cost, frozen-passage joint-training ablation, answer-containment metric, version deltas, and release provenance explicit."
+      },
+      "limitations": [
+        "The evidence is English factoid extractive QA over a fixed 2018 Wikipedia snapshot; tables, infoboxes, lists, and disambiguation pages are removed, and generation, multilingual transfer, temporal updating, calibration, safety, and attribution are untested.",
+        "Retrieval accuracy means that at least one returned passage contains an answer string; it is not human relevance judgment and can count spurious matches or overlook relevant paraphrases.",
+        "In-batch and BM25 negatives are not audited for false negatives, and weak positives for three datasets can inherit BM25 and answer-string biases.",
+        "BM25 remains stronger on SQuAD and can preserve rare salient phrases that dense vectors miss; hybrid rows are not uniformly superior across tasks.",
+        "Reported tables contain single values without repeated-seed variance, confidence intervals, or significance tests, and copied comparator blocks were not uniformly rerun.",
+        "The paper profiles full dense-index rebuilding rather than incremental insertion, deletion, refresh correctness, or knowledge editing; its dense and BM25 throughput units are not normalized alike.",
+        "The public repository, downloadable checkpoints, embeddings, indices, Wikipedia passages, benchmark derivatives, paper, and dependencies do not share one demonstrated license or immutable experiment manifest."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The canonical paper calls the corpus units 100-word passages but later compares ORQA using the phrase 100 tokens; no inspected erratum resolves that wording difference.",
+          "resolutionCondition": "An author correction or archived preprocessing specification would be required to change the canonical 100-word interpretation."
+        },
+        {
+          "status": "open",
+          "note": "The paper does not state which FAISS index variant produced Table 2; its runtime profile uses HNSW while the pinned public snapshot defaults to exhaustive inner-product search.",
+          "resolutionCondition": "A paper-era run manifest or author clarification would be required to bind the main results to an exact index configuration."
         }
       ]
     },
@@ -11792,7 +12425,7 @@
       "limitations": [
         "The experiments span open QA, MS MARCO generation, Jeopardy question generation, and FEVER label prediction, but do not establish general factuality, attribution, multilingual behavior, safety, calibration, or robust knowledge editing.",
         "Reported values have no repeated-seed variance, confidence intervals, or significance tests; several comparator rows use gold evidence, different splits, or extra supervision.",
-        "The dense retriever begins from supervised DPR training, the document encoder and index are frozen during RAG fine-tuning, and BM25 outperforms the learned dense retriever on the reported FEVER development comparison.",
+        "The dense retriever begins from supervised DPR training, now represented by a bounded incoming substrate edge; the document encoder and index remain frozen during RAG fine-tuning, and BM25 outperforms the learned dense retriever on the reported FEVER development comparison.",
         "The 82-item index replacement probe uses one templated class of facts and cannot establish broad temporal updating or deletion of parametric knowledge.",
         "The public Hugging Face implementation is a post-submission port rather than the original Fairseq experiment code, and paper, code, model, Wikipedia, and benchmark rights remain separate."
       ],
@@ -16995,6 +17628,51 @@
       ]
     },
     {
+      "id": "inverse-cloze-retriever-pretraining",
+      "name": "Inverse-cloze retriever pretraining",
+      "kind": "objective",
+      "description": "Use one sentence as a pseudo-query, its surrounding text as a positive passage, and other batch passages as negatives to initialize semantic retrieval before downstream answer supervision.",
+      "claimIds": [
+        "orqa-2019-ict-retriever-pretraining",
+        "orqa-2019-corpus-and-training-boundary",
+        "orqa-2019-masking-rate-ablation",
+        "orqa-2020-release-and-reproduction-boundary",
+        "realm-2020-initialization-and-supervision-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "latent-answer-derivation-marginalization",
+      "name": "Latent answer-derivation marginalization",
+      "kind": "formalism",
+      "description": "Normalize joint scores over retrieved evidence blocks and candidate answer spans, then sum the probability of derivations whose span text matches the observed answer.",
+      "claimIds": [
+        "orqa-2019-version-and-proceedings-boundary",
+        "orqa-2019-open-retrieval-task-and-supervision",
+        "orqa-2019-latent-answer-derivation-objective",
+        "orqa-2019-openqa-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "two-stage-retriever-reader-open-domain-qa",
+      "name": "Retriever–reader open-domain question answering",
+      "kind": "mechanism",
+      "description": "Use a corpus-scale retriever to expose a bounded candidate set, then a more expensive passage-and-span reader to score answers within those candidates while keeping the two scoring roles explicit.",
+      "claimIds": [
+        "orqa-2019-open-retrieval-task-and-supervision",
+        "orqa-2019-dense-retriever-and-span-reader",
+        "orqa-2019-openqa-evaluation-protocol",
+        "orqa-2019-openqa-results",
+        "orqa-2019-strong-supervision-comparison",
+        "orqa-2019-retrieval-and-evaluation-limits",
+        "dpr-2020-reader-pipeline-and-objective",
+        "dpr-2020-canonical-end-to-end-qa-results",
+        "dpr-2020-joint-training-and-index-freeze-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
       "id": "dense-dual-encoder-document-retrieval",
       "name": "Dense dual-encoder document retrieval",
       "kind": "mechanism",
@@ -17014,7 +17692,24 @@
         "rag-2020-retriever-ablation-results",
         "rag-2020-retrieval-count-null-and-collapse-limits",
         "rag-2020-parameter-compute-and-index-boundary",
-        "rag-2020-implementation-port-boundary"
+        "rag-2020-implementation-port-boundary",
+        "orqa-2019-dense-retriever-and-span-reader",
+        "orqa-2019-ict-retriever-pretraining",
+        "orqa-2019-fixed-document-index-and-query-update",
+        "orqa-2019-corpus-and-training-boundary",
+        "orqa-2019-retrieval-and-evaluation-limits",
+        "orqa-2020-release-and-reproduction-boundary",
+        "orqa-2019-artifact-data-and-rights-boundary",
+        "dpr-2020-dual-encoder-scoring-and-offline-index",
+        "dpr-2020-supervised-retriever-objective-and-negatives",
+        "dpr-2020-corpus-and-positive-passage-construction",
+        "dpr-2020-canonical-retrieval-test-results",
+        "dpr-2020-index-cost-and-implementation-boundary",
+        "dpr-2020-reader-pipeline-and-objective",
+        "dpr-2020-joint-training-and-index-freeze-boundary",
+        "dpr-2020-lexical-and-evaluation-limits",
+        "dpr-2020-release-and-reproduction-boundary",
+        "dpr-2020-artifact-data-and-rights-boundary"
       ],
       "uncertainties": []
     },
@@ -17093,6 +17788,49 @@
         "realm-2020-finetuning-index-freeze-boundary",
         "realm-2020-corpus-training-and-runtime",
         "realm-2020-ablation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "answer-supervised-dense-passage-retrieval",
+      "name": "Answer-supervised dense passage retrieval",
+      "kind": "objective",
+      "description": "Train decomposable question and passage encoders from passages matched to gold contexts or selected because they contain an answer string, without requiring manual passage-relevance labels.",
+      "claimIds": [
+        "dpr-2020-version-and-proceedings-boundary",
+        "dpr-2020-supervised-retriever-objective-and-negatives",
+        "dpr-2020-corpus-and-positive-passage-construction",
+        "dpr-2020-dataset-counts-and-training-boundary",
+        "dpr-2020-canonical-retrieval-test-results",
+        "dpr-2020-distant-supervision-and-loss-ablation-results",
+        "dpr-2020-sample-efficiency-and-transfer-boundary",
+        "dpr-2020-joint-training-and-index-freeze-boundary",
+        "dpr-2020-release-and-reproduction-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "in-batch-negative-retriever-training",
+      "name": "In-batch negative retriever training",
+      "kind": "mechanism",
+      "description": "Reuse the positive passage paired with every other question in a batch as a contrastive negative, turning a B-pair batch into a B-by-B score matrix without separately encoding B times as many negatives.",
+      "claimIds": [
+        "dpr-2020-supervised-retriever-objective-and-negatives",
+        "dpr-2020-dataset-counts-and-training-boundary",
+        "dpr-2020-negative-training-ablation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "bm25-hard-negative-mining",
+      "name": "BM25 hard-negative mining",
+      "kind": "mechanism",
+      "description": "Select lexically plausible high-ranked passages that lack a recognized answer as difficult contrastive negatives, while retaining the possibility that answer matching can mislabel relevant passages.",
+      "claimIds": [
+        "dpr-2020-supervised-retriever-objective-and-negatives",
+        "dpr-2020-dataset-counts-and-training-boundary",
+        "dpr-2020-negative-training-ablation-results",
+        "dpr-2020-lexical-and-evaluation-limits"
       ],
       "uncertainties": []
     },
@@ -23368,23 +24106,365 @@
         "peters-2017-deep-contextualized-word-representations",
         "howard-ruder-2018-universal-language-model-fine-tuning",
         "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
-        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+        "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
       ],
       "title": "ACL Anthology copyright and licensing policy",
       "url": "https://aclanthology.org/faq/copyright/",
-      "accessDate": "2026-08-26",
+      "accessDate": "2026-09-03",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
         "peters-2018-naacl-version",
         "howard-ruder-2018-acl-version",
         "devlin-2019-naacl-version",
-        "dai-2019-acl-version"
+        "dai-2019-acl-version",
+        "orqa-2019-acl-version",
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the six bound ACL, NAACL, or EMNLP proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
+    },
+    {
+      "id": "orqa-2019-arxiv-record",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "arXiv record for Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+      "url": "https://arxiv.org/abs/1906.00300",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v1-version",
+        "orqa-2019-arxiv-v2-version",
+        "orqa-2019-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official record lists versions posted 1, 6, and 27 June 2019 with exact UTC timestamps and links arXiv's non-exclusive distribution license."
+    },
+    {
+      "id": "orqa-2019-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable ORQA arXiv v1 full text",
+      "url": "https://arxiv.org/pdf/1906.00300v1",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete eleven-page ordering manuscript has SHA-256 39978bd182a4a81ef6d16dd8dfe1bb70b5286b2181a9bdebfc421cac3271a37f. Structural anchors control claims because repository-rendered pages are not canonical ACL folios."
+    },
+    {
+      "id": "orqa-2019-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable ORQA arXiv v2 full text",
+      "url": "https://arxiv.org/pdf/1906.00300v2",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete eleven-page second revision has SHA-256 82405485ab8d406a22446f930c685cb5f97f166dbeaa09caf8910677dc78590a. It removes one Table 6 row and revises the associated prose."
+    },
+    {
+      "id": "orqa-2019-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable ORQA arXiv v3 full text",
+      "url": "https://arxiv.org/pdf/1906.00300v3",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete eleven-page latest revision has SHA-256 796b27cd8e8199ae841bdb4584c774673fc3ed64aa25a12ddd61de7e79a8b1b0. Its only detected scientific-source change from v2 is a Section 5 grammar repair."
+    },
+    {
+      "id": "orqa-2019-arxiv-license",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the ORQA record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v1-version",
+        "orqa-2019-arxiv-v2-version",
+        "orqa-2019-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The terms authorize arXiv distribution; they do not establish a general reuse license for the paper, code, GCS objects, Wikipedia, or benchmark datasets."
+    },
+    {
+      "id": "orqa-2019-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable ORQA arXiv v1 source package",
+      "url": "https://arxiv.org/src/1906.00300v1",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected sixteen-entry publication bundle has SHA-256 33f57c93e5c8279c509acff69c67c0dd3f47f7d31ec066796148de5f38804b40 and supports source-level version comparison; it is not training code or a run manifest."
+    },
+    {
+      "id": "orqa-2019-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable ORQA arXiv v2 source package",
+      "url": "https://arxiv.org/src/1906.00300v2",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected sixteen-entry publication bundle has SHA-256 9f1398145a8e54933aef198dd131b081ee299a033e1f1d48496363cc6f104259 and supports source-level version comparison; it is not training code or a run manifest."
+    },
+    {
+      "id": "orqa-2019-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable ORQA arXiv v3 source package",
+      "url": "https://arxiv.org/src/1906.00300v3",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "orqa-2019-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected sixteen-entry publication bundle has SHA-256 32c197cd0356497d7cb0f835bb33f902bb0000305c7070a9c44cdc5d4eea61c9 and supports source-level version comparison; it is not training code or a run manifest."
+    },
+    {
+      "id": "orqa-2019-acl-record",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "ACL Anthology record for Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+      "url": "https://aclanthology.org/P19-1612/",
+      "accessDate": "2026-09-03",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "orqa-2019-acl-version"
       ],
       "supports": [
         "metadata"
       ],
-      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the four bound ACL or NAACL proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
+      "accessNote": "The official record supplies the canonical author order, ACL 2019 venue, July publication precision, pp. 6086–6096, and DOI 10.18653/v1/P19-1612."
+    },
+    {
+      "id": "orqa-2019-acl-full-text",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Canonical ACL article for ORQA",
+      "url": "https://aclanthology.org/P19-1612.pdf",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "orqa-2019-acl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 6086,
+        "pageEnd": 6096
+      },
+      "accessNote": "The complete eleven-page canonical article has SHA-256 8b3e17f84a58ce9b3183e8bcabfd8a0cc377553068540cd56fb6ff7b16b3e006. Printed article folios 6086–6096 control claim locators."
+    },
+    {
+      "id": "orqa-2020-partial-release-commit",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable partial Google Research ORQA release",
+      "url": "https://github.com/google-research/language/commit/b6e5d192578c5c5b80f5ddbe1d3c8089ecd24c5e",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "orqa-2019-arxiv-v3-version",
+        "orqa-2019-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 6 March 2020 commit releases splits and evaluation while its README says modeling is forthcoming; it postdates every paper revision."
+    },
+    {
+      "id": "orqa-2020-finished-release-commit",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Immutable completed Google Research ORQA release commit",
+      "url": "https://github.com/google-research/language/commit/2fbedd1eb58e15fd3dec294c0422802f9056a5fe",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "orqa-2019-arxiv-v3-version",
+        "orqa-2019-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 12 August 2020 commit is titled 'Finish release of ORQA' and adds the modeling, indexing, preprocessing, and fine-tuning path after publication."
+    },
+    {
+      "id": "orqa-2020-corrected-release-snapshot",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Corrected initial complete Google Research ORQA snapshot",
+      "url": "https://github.com/google-research/language/tree/99432c0c5114d0889408ea97d9d01dd61b191e05/language/orqa",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "orqa-2019-arxiv-v3-version",
+        "orqa-2019-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 14 August 2020 snapshot corrects several paths plus answer mapping and ScaNN sample configuration, but leaves the documented Wikipedia-preprocessing module path invalid and tf-hub-nightly unpinned; it limits fine-tuning/modeling support to Natural Questions and WebQuestions while retaining CuratedTREC preprocessing and evaluation, names GCS data, index, and model objects, and reports released models about one exact-match point below paper values."
+    },
+    {
+      "id": "orqa-2020-release-license",
+      "relatedWorkIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "title": "Apache 2.0 license for the corrected Google Research ORQA tree",
+      "url": "https://github.com/google-research/language/blob/99432c0c5114d0889408ea97d9d01dd61b191e05/LICENSE",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "orqa-2019-arxiv-v3-version",
+        "orqa-2019-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Apache 2.0 covers repository software in the pinned tree; it does not transfer to the paper, GCS objects, Wikipedia, benchmark datasets, or third-party dependencies."
     },
     {
       "id": "yang-2019-arxiv-record",
@@ -24617,6 +25697,340 @@
         "pageStart": 1,
         "pageEnd": 1
       }
+    },
+    {
+      "id": "dpr-2020-arxiv-record",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "arXiv record for Dense Passage Retrieval for Open-Domain Question Answering",
+      "url": "https://arxiv.org/abs/2004.04906",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v1-version",
+        "dpr-2020-arxiv-v2-version",
+        "dpr-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official record lists versions posted 10 April, 2 May, and 30 September 2020 with exact UTC timestamps and links arXiv's non-exclusive distribution license."
+    },
+    {
+      "id": "dpr-2020-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR arXiv v1 full text",
+      "url": "https://arxiv.org/pdf/2004.04906v1",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete ten-page seven-author ordering manuscript has SHA-256 2b03fbde33c88fcf82091e6325806bd2656ca777032471e182c602c76ccdab01. Structural anchors control its version-specific claims."
+    },
+    {
+      "id": "dpr-2020-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR arXiv v2 full text",
+      "url": "https://arxiv.org/pdf/2004.04906v2",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The complete eleven-page eight-author revision has SHA-256 cb551710ff63f08048057924d0f4e7a954aaaeff19e31b6e306fa0aef32d6291 and contains the comparator, label, and 36.8 joint-result changes."
+    },
+    {
+      "id": "dpr-2020-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR arXiv v3 full text",
+      "url": "https://arxiv.org/pdf/2004.04906v3",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 13
+      },
+      "accessNote": "The complete thirteen-page camera-ready revision has SHA-256 3e67fc1a9977715acf722d85f0b7d124b03715e975f6310a4d6c12094190912f and matches the canonical scientific payload under normalized comparison."
+    },
+    {
+      "id": "dpr-2020-arxiv-license",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the DPR record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v1-version",
+        "dpr-2020-arxiv-v2-version",
+        "dpr-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The terms authorize arXiv distribution and are not a general reuse license for the paper, code, checkpoints, Wikipedia passages, or benchmark derivatives."
+    },
+    {
+      "id": "dpr-2020-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR arXiv v1 source package",
+      "url": "https://arxiv.org/src/2004.04906v1",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected 107-entry publication bundle has SHA-256 4ae7dc372c3b3fa8822073d0c7c12efa4b5283264ef721c02186a5460861829f and supports source-level version comparison; it is not the public DPR code or an experiment manifest."
+    },
+    {
+      "id": "dpr-2020-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR arXiv v2 source package",
+      "url": "https://arxiv.org/src/2004.04906v2",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected 39-entry publication bundle has SHA-256 9274df08c95f66922ae30a30a36cbcf11d30240c7781cdad58d7c06558458cf1 and supports source-level version comparison; it is not the public DPR code or an experiment manifest."
+    },
+    {
+      "id": "dpr-2020-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR arXiv v3 source package",
+      "url": "https://arxiv.org/src/2004.04906v3",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "dpr-2020-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The inspected 27-entry publication bundle has SHA-256 015017d532eaae6a85c446207e046a2ca8c67c8bef844a3fcdb411935255e8c5 and supports source-level version comparison; it is not the public DPR code or an experiment manifest."
+    },
+    {
+      "id": "dpr-2020-emnlp-record",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "ACL Anthology record for Dense Passage Retrieval for Open-Domain Question Answering",
+      "url": "https://aclanthology.org/2020.emnlp-main.550/",
+      "accessDate": "2026-09-03",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "The official record supplies the canonical author order, EMNLP venue, November publication precision, pp. 6769–6781, and DOI 10.18653/v1/2020.emnlp-main.550."
+    },
+    {
+      "id": "dpr-2020-emnlp-full-text",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Canonical EMNLP article for DPR",
+      "url": "https://aclanthology.org/2020.emnlp-main.550.pdf",
+      "accessDate": "2026-09-03",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 6769,
+        "pageEnd": 6781
+      },
+      "accessNote": "The complete thirteen-page canonical article has SHA-256 2abfc7991519be2b8ce30215905516fdb593218b7bf59e50ece0d8a088a7c4d5. Printed article folios 6769–6781 control claim locators."
+    },
+    {
+      "id": "dpr-2020-initial-release-repository",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable initial Facebook Research DPR release",
+      "url": "https://github.com/facebookresearch/DPR/tree/8ac669786770cd39279e0ab5f0ec30c8740e843e",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "dpr-2020-arxiv-v2-version",
+        "dpr-2020-arxiv-v3-version",
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 13 May 2020 initial commit follows arXiv v2 and exposes retriever, reader, preprocessing, download, checkpoint, embedding, and index workflows; its README still contains an internal repository install URL."
+    },
+    {
+      "id": "dpr-2020-pre-v3-release-snapshot",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR release snapshot preceding arXiv v3",
+      "url": "https://github.com/facebookresearch/DPR/tree/123bd4b87d1e34af117cf4d830639956eab540c4",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "dpr-2020-arxiv-v3-version",
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 14 September 2020 snapshot is the last inspected public state before v3. It documents paper-era recipes and exposes exact and HNSW FAISS paths but is not an official release tag or complete experiment archive."
+    },
+    {
+      "id": "dpr-2020-release-artifact-manifest",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "Immutable DPR downloadable-artifact manifest",
+      "url": "https://github.com/facebookresearch/DPR/blob/123bd4b87d1e34af117cf4d830639956eab540c4/data/download_data.py",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "dpr-2020-arxiv-v3-version",
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned downloader enumerates external Wikipedia passages, retriever and reader checkpoints, passage embeddings, retrieval results, and serialized indices; it is not a per-object provenance, checksum, rights, or run manifest."
+    },
+    {
+      "id": "dpr-2020-release-license",
+      "relatedWorkIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "title": "CC BY-NC 4.0 license for the pinned DPR repository tree",
+      "url": "https://github.com/facebookresearch/DPR/blob/123bd4b87d1e34af117cf4d830639956eab540c4/LICENSE",
+      "accessDate": "2026-09-03",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "dpr-2020-arxiv-v2-version",
+        "dpr-2020-arxiv-v3-version",
+        "dpr-2020-emnlp-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned repository license is Creative Commons Attribution-NonCommercial 4.0 International and has SHA-256 4b531055125dcda36059651634bdb424ad2612f4759b3d2067a731d2823d1cdc. It does not automatically license external objects named by the downloader."
     },
     {
       "id": "rag-2020-arxiv-record",
@@ -43779,6 +45193,493 @@
       "checkedDate": "2026-08-26"
     },
     {
+      "id": "orqa-2019-version-and-proceedings-boundary",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "latent-answer-derivation-marginalization"
+      ],
+      "statement": "ORQA has three arXiv revisions and a canonical ACL article. Version 2 removes the BERTserini 78-paragraph/34.0 Table 6 row and revises the comparison; version 3 only repairs Section 5 grammar, while the canonical scientific body aligns with version 2 rather than the syntactically latest preprint.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-arxiv-record",
+          "locator": {
+            "label": "Three-revision submission ledger",
+            "section": "Submission history"
+          },
+          "support": "The official record dates versions 1–3 to 1, 6, and 27 June 2019."
+        },
+        {
+          "sourceId": "orqa-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version-1 comparison row",
+            "section": "9.1. Strongly supervised comparison",
+            "table": "6"
+          },
+          "support": "Version 1 Table 6 includes the later-removed BERTserini 78-paragraph/34.0 row."
+        },
+        {
+          "sourceId": "orqa-2019-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 table and prose change",
+            "section": "9.1. Strongly supervised comparison",
+            "table": "6"
+          },
+          "support": "Version 2 removes that row and changes the surrounding comparison while retaining the older Section 5 grammar."
+        },
+        {
+          "sourceId": "orqa-2019-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 grammar repair",
+            "section": "5. Inference"
+          },
+          "support": "Source comparison finds the v2-to-v3 change in the scientific text repairs 'only considering' to 'only consider.'"
+        },
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Canonical body and printed comparison",
+            "section": "5. Inference; 9.1. Strongly supervised comparison",
+            "pageStart": 6090,
+            "pageEnd": 6093,
+            "table": "6"
+          },
+          "support": "The proceedings article carries v2's Table 6 and older Section 5 grammar on printed pp. 6090 and 6093."
+        }
+      ],
+      "limitations": [
+        "The normalized text comparison establishes the inspected files' boundary; it does not identify a hidden publisher production lineage or author intent."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-open-retrieval-task-and-supervision",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "latent-answer-derivation-marginalization",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "ORQA represents an answer derivation as an evidence block and contiguous span, adds retrieval and reader scores, and fine-tunes from question–answer strings without gold evidence or a black-box IR candidate set.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Open-retrieval task and derivation score",
+            "section": "1. Introduction; 2. Overview; 3. Open-Retrieval Question Answering",
+            "pageStart": 6086,
+            "pageEnd": 6088,
+            "equation": "joint derivation score"
+          },
+          "support": "The paper contrasts pipelined candidate generation with an open-retrieval model and defines a derivation as block plus span with additive retriever and reader scores."
+        }
+      ],
+      "limitations": [
+        "The no-gold-evidence description applies to task fine-tuning; BERT initialization and ICT pseudo-labels remain upstream supervision."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-dense-retriever-and-span-reader",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "ORQA independently encodes questions and blocks with uncased BERT-base, projects each CLS representation to 128 dimensions, and ranks by inner product; a separate BERT reader scores span endpoint pairs through an MLP, and the two scores add at the derivation level.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Dense retriever and reader equations",
+            "section": "3. Open-Retrieval Question Answering",
+            "pageStart": 6088,
+            "pageEnd": 6088
+          },
+          "support": "The displayed equations define 128-dimensional question and block projections, inner-product retrieval, BERT reader endpoints, and the span MLP."
+        }
+      ],
+      "limitations": [
+        "Separate BERT_Q and BERT_B notation does not license an encoder-weight-tying claim, and the cross-encoded reader is not part of the precomputed retrieval score."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-ict-retriever-pretraining",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "inverse-cloze-retriever-pretraining",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The Inverse Cloze Task pretrains the retriever to select a random sentence's surrounding block against in-batch negatives, removing the sentence from its block in 90% of examples and retaining it in 10% to balance semantic and lexical matching.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Inverse Cloze construction and objective",
+            "section": "4. Inverse Cloze Task",
+            "pageStart": 6088,
+            "pageEnd": 6089,
+            "equation": "ICT block softmax"
+          },
+          "support": "The paper defines the in-batch block softmax and its random-sentence pseudo-query, with the 90% removal and 10% retention policy."
+        }
+      ],
+      "limitations": [
+        "ICT is a pseudo-supervised initialization objective rather than evidence that document relevance is learned without an inductive proxy."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-fixed-document-index-and-query-update",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "ORQA precomputes ICT block embeddings into a maximum-inner-product index and freezes the evidence encoder during QA fine-tuning while updating the question encoder and reader, so query-side changes can alter top-k retrieval without rebuilding document vectors.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Precomputed index and asymmetric fine-tuning",
+            "section": "5. Inference; 6. Learning",
+            "pageStart": 6089,
+            "pageEnd": 6090
+          },
+          "support": "The paper precomputes block representations for MIPS and states that every parameter except the evidence block encoder is updated during downstream learning."
+        }
+      ],
+      "limitations": [
+        "The paper does not periodically refresh or backpropagate into the document index and does not bind its results to a named approximate-search implementation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-latent-answer-derivation-objective",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "latent-answer-derivation-marginalization"
+      ],
+      "statement": "ORQA normalizes joint block–span scores over five retrieved blocks, marginalizes spans whose text exactly matches the answer, adds an early answer-containing-block marginal over 5,000 blocks, and discards examples with no match; the printed full loss references an undefined P′ instead of the defined P.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Full and early marginal objectives",
+            "section": "6. Learning",
+            "pageStart": 6090,
+            "pageEnd": 6090,
+            "equation": "full and early losses"
+          },
+          "support": "The equations define the top-five block–span distribution, answer-string marginal, top-5,000 early block distribution, summed loss, and no-match discard rule; the full loss prints P′ without a definition."
+        }
+      ],
+      "limitations": [
+        "Exact answer-string occurrence is not proof that a block or span supplies the intended evidence, and fewer-than-10% discarded examples is a paper report rather than a released item ledger."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The P′ symbol persists across every inspected paper version although only P is defined; treating it as P is an editorial repair supported but not explicitly authorized by later code.",
+          "resolutionCondition": "An author erratum or archived objective specification would resolve the symbol."
+        }
+      ],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-corpus-and-training-boundary",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "inverse-cloze-retriever-pretraining"
+      ],
+      "statement": "The main system uses English Wikipedia dated 20 December 2018, sentence-preserving blocks of at most 288 WordPieces with titles, and just over 13 million indexed blocks. All BERT components start from uncased BERT-base; ICT runs 100,000 steps at learning rate 10^-4 and batch 4,096 on Cloud TPUs, while QA fine-tuning uses learning rate 10^-5, batch 1, a 12GB GPU, spans of at most 10 tokens, two epochs on the three large datasets, and 20 on the two small datasets.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Corpus and training configuration",
+            "section": "7.3. Implementation Details",
+            "pageStart": 6091,
+            "pageEnd": 6092
+          },
+          "support": "The implementation section supplies the snapshot, block construction and count, BERT size, retriever dimension, ICT and downstream schedules, hardware, span cap, and epoch split."
+        }
+      ],
+      "limitations": [
+        "Cloud TPU count and model-to-device mapping are not reported, and no immutable prepared-corpus or run manifest binds every result to exact preprocessing and randomness."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-openqa-evaluation-protocol",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "Table 3 lists train/dev/test sizes of 79,168/8,757/3,610 for Natural Questions, 3,417/361/2,032 for WebQuestions, 1,353/133/694 for CuratedTREC, 78,785/8,837/11,313 for TriviaQA, and 78,713/8,886/10,570 for SQuAD. Conversions retain short Natural Questions answers, Freebase strings, regex answers, unfiltered TriviaQA without distant evidence, and open-domain SQuAD; exact match uses minor DrQA-style normalization.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Dataset assumptions",
+            "section": "2.1. Task; 7.1. Open Domain QA Datasets",
+            "pageStart": 6087,
+            "pageEnd": 6091
+          },
+          "support": "The paper defines question–answer supervision and explains each dataset conversion, held-out split policy, and exact-match normalization."
+        },
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Open-QA dataset counts",
+            "section": "7.1. Open Domain QA Datasets",
+            "pageStart": 6091,
+            "pageEnd": 6091,
+            "table": "3"
+          },
+          "support": "Table 3 supplies the exact train, development, and test counts for all five datasets."
+        },
+        {
+          "sourceId": "orqa-2020-partial-release-commit",
+          "locator": {
+            "label": "CuratedTREC release evaluation",
+            "section": "language/orqa/README.md lines 21–29 and 90–111"
+          },
+          "support": "The pinned author release identifies the DrQA CuratedTREC inputs and explicitly requires regular-expression evaluation for their references."
+        }
+      ],
+      "limitations": [
+        "The reported random 10% holdouts have no paper seed, and the later deterministic release splitter is not silently projected back into the experiments."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-openqa-results",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "latent-answer-derivation-marginalization",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "Table 5 reports ORQA development exact match of 31.3/38.5/36.8/45.1/26.5 and test exact match of 33.3/36.4/30.1/45.0/20.2 on Natural Questions, WebQuestions, CuratedTREC, TriviaQA, and SQuAD. The corresponding BM25+BERT rows are 24.8/20.8/27.1/47.2/28.1 and 26.5/17.7/21.3/47.1/33.2.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Development and test exact-match matrix",
+            "section": "8.2. Results",
+            "pageStart": 6092,
+            "pageEnd": 6093,
+            "table": "5"
+          },
+          "support": "Table 5 prints all five datasets for both splits and all four systems."
+        }
+      ],
+      "limitations": [
+        "ORQA exceeds this BM25 pipeline on the three information-seeking test sets but trails it on TriviaQA and SQuAD; the table has no repeated-seed uncertainty or significance analysis."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-strong-supervision-comparison",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "Canonical Table 6 reports strongly supervised SQuAD exact match of 27.1 for five-document DrQA, 28.4 for DrQA with distant supervision, 29.8 with distant supervision plus multitask learning, 19.1/36.6/38.6 for BERTserini using five documents/29 paragraphs/100 paragraphs, and 34.7 for BM25+BERT with gold derivations over five ORQA blocks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Strong-supervision comparison",
+            "section": "9.1. Strongly supervised comparison",
+            "pageStart": 6093,
+            "pageEnd": 6093,
+            "table": "6"
+          },
+          "support": "Table 6 supplies the exact rows and retrieval-unit labels."
+        }
+      ],
+      "limitations": [
+        "Documents, paragraphs, and ORQA blocks are different retrieval units, and the copied systems do not form a uniform budget-controlled experiment."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-masking-rate-ablation",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "inverse-cloze-retriever-pretraining"
+      ],
+      "statement": "On Natural Questions development, Figure 3 plots ORQA exact match of 25.0, 26.8, 27.8, 29.3, 29.8, 31.3, 30.2, and 21.7 at ICT masking rates 0, 0.1, 0.2, 0.5, 0.8, 0.9, 0.95, and 1, with a 24.8 BM25+BERT reference line.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "ICT masking-rate curve",
+            "section": "9.2. Inverse Cloze Task",
+            "pageStart": 6093,
+            "pageEnd": 6093,
+            "figure": "3"
+          },
+          "support": "Figure 3 provides the eight plotted points and BM25+BERT reference."
+        }
+      ],
+      "limitations": [
+        "The single development curve has no error bars, repeated-seed statistics, confidence intervals, or significance test."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-retrieval-and-evaluation-limits",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "The paper reports that a 128-dimensional dense vector can lose extremely specific lexical distinctions, that BM25 remains stronger on TriviaQA and SQuAD, and that SQuAD questions are correlated through only 536 source documents; its results provide no repeated-seed uncertainty or significance analysis.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2019-acl-full-text",
+          "locator": {
+            "label": "Dataset bias and lexical retrieval limits",
+            "section": "7.2. Dataset Biases; 8.2. Results; 9.3. Example Predictions",
+            "pageStart": 6091,
+            "pageEnd": 6094
+          },
+          "support": "The paper describes SQuAD's document concentration, the two datasets where BM25 leads, and an example where compressed retrieval loses a specific phrase."
+        }
+      ],
+      "limitations": [
+        "The lexical observation comes from selected examples and does not establish a universal dense-versus-sparse ranking."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2020-release-and-reproduction-boundary",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "inverse-cloze-retriever-pretraining"
+      ],
+      "statement": "The official artifact was partial on 6 March 2020, completed on 12 August, and materially corrected on 14 August. The corrected snapshot supports Natural Questions and WebQuestions fine-tuning, uses TensorFlow 2.1 and ScaNN 1.0 with custom operations, and says released models are about one exact-match point below the paper because of training variance and open-source implementation differences.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "orqa-2020-partial-release-commit",
+          "locator": {
+            "label": "Partial release commit",
+            "section": "Commit and language/orqa README"
+          },
+          "support": "The commit exposes data splits and evaluation while its README says modeling is forthcoming."
+        },
+        {
+          "sourceId": "orqa-2020-finished-release-commit",
+          "locator": {
+            "label": "Completed release commit",
+            "section": "Commit and language/orqa README"
+          },
+          "support": "The 12 August commit is titled 'Finish release of ORQA' and adds the modeling workflow."
+        },
+        {
+          "sourceId": "orqa-2020-corrected-release-snapshot",
+          "locator": {
+            "label": "Corrected complete ORQA snapshot",
+            "section": "language/orqa README and implementation tree"
+          },
+          "support": "The 14 August snapshot corrects several release paths and configuration details, identifies the two fine-tuning tasks and dependencies, retains one broken preprocessing command and an unpinned nightly dependency, and bounds released-model performance."
+        }
+      ],
+      "limitations": [
+        "The release does not support the full five-dataset modeling surface; its Wikipedia preprocessing command points to a nonexistent module path, tf-hub-nightly is unpinned, and its ScaNN implementation must not be projected backward as the paper's unidentified MIPS engine."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "orqa-2019-artifact-data-and-rights-boundary",
+      "workId": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The ACL article, arXiv deposits, Apache-licensed repository code, named GCS objects, Wikipedia snapshot, and benchmark datasets retain separate provenance and terms; no inspected source grants one umbrella license or immutable manifest over all ORQA artifacts.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "acl-2016-plus-rights-policy",
+          "locator": {
+            "label": "ACL article rights",
+            "section": "Copyright and licensing policy"
+          },
+          "support": "The publisher policy applies CC BY 4.0 to post-2016 ACL materials while excluding third-party content."
+        },
+        {
+          "sourceId": "orqa-2019-arxiv-license",
+          "locator": {
+            "label": "arXiv deposit terms",
+            "section": "Non-exclusive distribution license"
+          },
+          "support": "The record-linked terms authorize arXiv distribution rather than general downstream reuse."
+        },
+        {
+          "sourceId": "orqa-2020-release-license",
+          "locator": {
+            "label": "Repository software license",
+            "section": "Apache License 2.0"
+          },
+          "support": "Apache 2.0 covers software in the pinned tree and does not itself license external papers, data, checkpoints, or dependencies."
+        },
+        {
+          "sourceId": "orqa-2020-corrected-release-snapshot",
+          "locator": {
+            "label": "Named release objects",
+            "section": "language/orqa README"
+          },
+          "support": "The release names separate GCS data, index, and model objects without supplying one object-level rights manifest."
+        }
+      ],
+      "limitations": [
+        "Absence of an umbrella grant is not a finding that every individual object is unusable; each requires its own authoritative terms and provenance audit."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
       "id": "yang-2019-version-boundary",
       "workId": "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding",
       "ideaIds": [
@@ -46237,7 +48138,8 @@
       "ideaIds": [
         "deep-bidirectional-transformer-pretraining",
         "masked-language-model-pretraining",
-        "dense-dual-encoder-document-retrieval"
+        "dense-dual-encoder-document-retrieval",
+        "inverse-cloze-retriever-pretraining"
       ],
       "statement": "REALM warm-starts the retriever with the Inverse Cloze Task and the knowledge encoder with uncased BERT-base, while salient-span selection uses a supervised named-entity tagger; its no-relevance-label retriever training is therefore not training without pretrained or supervised components.",
       "directness": "direct",
@@ -46513,6 +48415,559 @@
       "checkedDate": "2026-09-02"
     },
     {
+      "id": "dpr-2020-version-and-proceedings-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "answer-supervised-dense-passage-retrieval"
+      ],
+      "statement": "DPR has three arXiv revisions and a canonical EMNLP article. Version 1 has seven authors; version 2 adds Patrick Lewis, changes copied GraphRetriever values and qualitative labels, and reports 36.8 for joint training; version 3 expands the final evidence and changes that joint result to 39.8, while its scientific body matches the proceedings article.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-arxiv-record",
+          "locator": {
+            "label": "Three-revision submission ledger",
+            "section": "Submission history"
+          },
+          "support": "The official record dates versions 1–3 to 10 April, 2 May, and 30 September 2020."
+        },
+        {
+          "sourceId": "dpr-2020-arxiv-v1-full-text",
+          "locator": {
+            "label": "Seven-author ordering version",
+            "section": "Title page; 5.3. Qualitative Analysis, Table 3; Table 5"
+          },
+          "support": "Version 1 omits Patrick Lewis and contains the earlier GraphRetriever values in Table 5 and qualitative result labels in Table 3."
+        },
+        {
+          "sourceId": "dpr-2020-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version-2 changes and joint result",
+            "section": "Title page; 5.3. Qualitative Analysis, Table 3; 6.2. Results; Table 5"
+          },
+          "support": "Version 2 adds Patrick Lewis, changes the GraphRetriever values in Table 5 and qualitative labels in Table 3, and reports joint training at 36.8 exact match in Section 6.2."
+        },
+        {
+          "sourceId": "dpr-2020-arxiv-v3-full-text",
+          "locator": {
+            "label": "Camera-ready expansion",
+            "section": "4. Experimental Setup; 5. Experiments: Passage Retrieval; Appendices A–D"
+          },
+          "support": "Version 3 expands training, hybrid, runtime, and appendix evidence and reports 39.8 for joint training."
+        },
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Canonical scientific payload",
+            "section": "Main article and Appendices A–D",
+            "pageStart": 6769,
+            "pageEnd": 6781
+          },
+          "support": "The proceedings text matches the inspected version-3 scientific body and adds publisher formatting and printed pp. 6769–6781."
+        }
+      ],
+      "limitations": [
+        "The raw-text match establishes the inspected v3/proceedings boundary; it does not make their files or publication identities interchangeable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-dual-encoder-scoring-and-offline-index",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "DPR uses independent uncased BERT-base question and passage encoders whose CLS outputs are 768-dimensional vectors, ranks passages by their inner product, precomputes passage vectors into an offline FAISS index, and encodes only the question at retrieval time.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Dual-encoder score and offline index",
+            "section": "3.1. Overview; 3.2. Training",
+            "pageStart": 6770,
+            "pageEnd": 6771,
+            "equation": "1"
+          },
+          "support": "The paper defines the two BERT-base encoders and dot-product score, then describes precomputed passage vectors and FAISS retrieval."
+        }
+      ],
+      "limitations": [
+        "The decomposable retrieval score does not include the later cross-encoder reader, and the main result table is not bound to an exact FAISS index variant."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-supervised-retriever-objective-and-negatives",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval",
+        "in-batch-negative-retriever-training",
+        "bm25-hard-negative-mining"
+      ],
+      "statement": "DPR minimizes the negative log likelihood of one positive passage against random, BM25 hard, or other questions' gold passages. In a batch of B question–positive pairs, the B×B score matrix supplies B−1 in-batch negatives per question; the main batch-128 model adds one BM25 passage per question, yielding 127 gold plus 128 BM25 negatives for each query.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Contrastive loss and negative classes",
+            "section": "3.2. Training",
+            "pageStart": 6771,
+            "pageEnd": 6772,
+            "equation": "2"
+          },
+          "support": "Equation 2 defines the positive-versus-negatives softmax and the text defines random, BM25, and gold-passage negative sources."
+        },
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "In-batch and hard-negative accounting",
+            "section": "5.2. Ablation Study on Model Training",
+            "pageStart": 6773,
+            "pageEnd": 6774,
+            "table": "3"
+          },
+          "support": "The text and Table 3 explain the B×B in-batch matrix and clarify the 127+128 main setting."
+        }
+      ],
+      "limitations": [
+        "Answer absence does not guarantee that a BM25 passage is irrelevant, and other questions' positives are not audited for semantic false negatives."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-corpus-and-positive-passage-construction",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval"
+      ],
+      "statement": "DPR cleans English Wikipedia dated 20 December 2018 with DrQA, removes tables, infoboxes, lists, and disambiguation pages, and creates 21,015,324 disjoint 100-word passages with title and separator. Natural Questions and SQuAD positives are matched from gold contexts; TriviaQA, WebQuestions, and CuratedTREC use the highest BM25 top-100 answer-containing passage and discard unmatched questions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Wikipedia preprocessing and positive construction",
+            "section": "4.1. Wikipedia Data Pre-processing; 4.2. Question Answering Datasets",
+            "pageStart": 6772,
+            "pageEnd": 6772
+          },
+          "support": "The paper supplies the snapshot, removals, passage count and format, and separate gold-context and distant-positive procedures."
+        }
+      ],
+      "limitations": [
+        "The weak positive procedure inherits BM25 and exact-answer biases, and the cleaned fixed snapshot omits structured article content."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-dataset-counts-and-training-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "answer-supervised-dense-passage-retrieval",
+        "in-batch-negative-retriever-training",
+        "bm25-hard-negative-mining"
+      ],
+      "statement": "Table 1 reports original-to-retained training counts and dev/test counts of 79,168→58,880/8,757/3,610 for Natural Questions, 78,785→60,413/8,837/11,313 for TriviaQA, 3,417→2,474/361/2,032 for WebQuestions, 1,353→1,125/133/694 for CuratedTREC, and 78,713→70,096/8,886/10,570 for SQuAD. Main retriever training uses Adam, linear warm-up, dropout 0.1, learning rate 10^-5, batch 128 plus one BM25 negative, up to 40 epochs for large datasets and 100 for small datasets; multi-set training excludes SQuAD.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Dataset counts and main retriever schedule",
+            "section": "4.2. Question Answering Datasets; 5. Experiments: Passage Retrieval",
+            "pageStart": 6772,
+            "pageEnd": 6773,
+            "table": "1"
+          },
+          "support": "Table 1 supplies retained counts; the following Section 5 setup supplies optimization settings, epoch limits, and the multi-set exclusion."
+        }
+      ],
+      "limitations": [
+        "The pinned public README's best-Natural-Questions recipe uses different learning rate and seed details and is kept artifact-specific rather than substituted for the paper recipe."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-canonical-retrieval-test-results",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval"
+      ],
+      "statement": "For Natural Questions/TriviaQA/WebQuestions/TREC/SQuAD, Table 2 reports top-20|top-100 answer-containing retrieval rates of 59.1/66.9/55.0/70.9/68.8|73.7/76.7/71.1/84.1/80.0 for BM25; 78.4/79.4/73.2/79.8/63.2|85.4/85.0/81.4/89.1/77.2 for single-set DPR; and 79.4/78.8/75.0/89.1/51.6|86.0/84.7/82.9/93.9/67.6 for multi-set DPR.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Canonical retrieval test matrix",
+            "section": "5.1. Main Results",
+            "pageStart": 6773,
+            "pageEnd": 6773,
+            "table": "2"
+          },
+          "support": "Table 2 prints top-20 and top-100 rates for BM25, single-set and multi-set DPR, and their hybrid variants across five datasets."
+        }
+      ],
+      "limitations": [
+        "The metric checks answer-string containment rather than judged relevance; SQuAD reverses the dense advantage, and omitted hybrid rows are not uniformly stronger."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-negative-training-ablation-results",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "in-batch-negative-retriever-training",
+        "bm25-hard-negative-mining"
+      ],
+      "statement": "On Natural Questions development, Table 3 reports top-5/20/100 of 47.0/64.3/77.8 for seven random negatives, 50.0/63.3/74.8 for seven BM25 negatives, 42.6/63.1/78.3 for seven gold negatives, 55.8/73.0/83.1 for 127 in-batch gold negatives, 65.0/77.3/84.4 for 31+32 gold/BM25 negatives, and 65.8/78.0/84.9 for 127+128.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Negative-source and count ablations",
+            "section": "5.2. Ablation Study on Model Training",
+            "pageStart": 6774,
+            "pageEnd": 6774,
+            "table": "3"
+          },
+          "support": "Table 3 supplies the exact retrieval rates for random, BM25, gold, in-batch, and combined settings."
+        }
+      ],
+      "limitations": [
+        "Rows change both negative source and effective count; they do not identify independent additive effects or provide repeated-seed uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-distant-supervision-and-loss-ablation-results",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "answer-supervised-dense-passage-retrieval"
+      ],
+      "statement": "On Natural Questions development, Appendix Table 5 reports top-1/5/20/100 of 44.9/66.8/78.1/85.0 for gold-matched positives and 43.9/65.3/77.1/84.4 for distant positives. Table 6 reports 44.9/66.8/78.1/85.0 for dot-product NLL, 41.6/65.0/77.2/84.5 for dot-product triplet, 43.5/64.7/76.1/83.1 for L2 NLL, and 42.2/66.0/78.1/84.9 for L2 triplet.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Positive-supervision and loss ablations",
+            "section": "Appendix A. Distant Supervision; Appendix B. Alternative Similarity Functions & Loss",
+            "pageStart": 6780,
+            "pageEnd": 6780,
+            "table": "5–6"
+          },
+          "support": "Tables 5 and 6 supply the exact four-cutoff rows for supervision, similarity, and loss variants."
+        }
+      ],
+      "limitations": [
+        "The authors state these appendix runs use better hyperparameters than Table 3, so their absolute values are not a controlled continuation of that table; cosine has no printed numeric row."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-sample-efficiency-and-transfer-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "answer-supervised-dense-passage-retrieval"
+      ],
+      "statement": "Figure 1 reports that a Natural Questions DPR trained with 1,000 examples already exceeds BM25 and improves as training grows to 59,000 examples. Without target fine-tuning, the Natural-Questions-only retriever reaches top-20 rates 69.9 on WebQuestions and 86.3 on TREC, versus 75.0/89.1 for target-trained DPR and 55.0/70.9 for BM25.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Sample-efficiency curve and zero-shot transfer",
+            "section": "5.2. Ablation Study on Model Training",
+            "pageStart": 6773,
+            "pageEnd": 6774,
+            "figure": "1"
+          },
+          "support": "Figure 1 and the transfer paragraph provide the qualitative data-scale result and exact WebQuestions/TREC top-20 comparisons."
+        }
+      ],
+      "limitations": [
+        "The canonical figure supports the curve and qualitative threshold; exact intermediate plotted coordinates are not promoted from an arXiv source script into the proceedings claim."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-index-cost-and-implementation-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The paper's CPU HNSW profile returns top 100 at 995.0 questions per second on an Intel Xeon E5-2698 v4 server with 512GB memory, while Lucene BM25 reports 23.7 per CPU thread. Encoding 21 million passages takes about 8.8 hours on eight GPUs, the dense index takes 8.5 hours on one server, and Lucene indexing about 30 minutes; the pinned public snapshot instead defaults to exhaustive IndexFlatIP and makes HNSW optional.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Search throughput and full-index costs",
+            "section": "5.4. Run-time Efficiency",
+            "pageStart": 6775,
+            "pageEnd": 6775
+          },
+          "support": "The paper supplies HNSW parameters, hardware, top-100 throughput, embedding and index construction times, and the Lucene comparator."
+        },
+        {
+          "sourceId": "dpr-2020-pre-v3-release-snapshot",
+          "locator": {
+            "label": "Public index implementation boundary",
+            "section": "dense_retriever.py and dpr/indexer/faiss_indexers.py"
+          },
+          "support": "The pinned tree defaults to exact IndexFlatIP while exposing HNSW as a separate option that transforms inner product for L2 search."
+        }
+      ],
+      "limitations": [
+        "Dense and BM25 throughput use different normalization units, the paper does not bind Table 2 to an index variant, and full rebuild cost does not demonstrate incremental updates or hot swapping."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-reader-pipeline-and-objective",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "The normal QA system trains DPR and a separate BERT-base cross-encoder reader. From up to 100 retrieved passages, the reader assigns passage-selection and answer-span scores; training samples one positive plus 23 negatives and maximizes the correct-span marginal and positive-passage likelihood before choosing retrieval count on development data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Reader architecture and losses",
+            "section": "6.1. End-to-end QA System",
+            "pageStart": 6775,
+            "pageEnd": 6775,
+            "equation": "3–5"
+          },
+          "support": "Equations 3–5 and surrounding text define passage selection, span scoring, the reader objective, training sample, and tuned inference count."
+        }
+      ],
+      "limitations": [
+        "The cross-encoder reader is a separate stage and cannot be used for corpus-wide decomposable retrieval without reranking a selected candidate set."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-canonical-end-to-end-qa-results",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "statement": "For Natural Questions/TriviaQA/WebQuestions/TREC/SQuAD, canonical Table 4 reports exact match of 32.6/52.4/29.9/24.9/38.1 for the authors' BM25 pipeline; 41.5/56.8/34.6/25.9/29.8 for single-set DPR; 39.0/57.0/35.2/28.0/36.7 for its hybrid; 41.5/56.8/42.4/49.4/24.1 for multi-set DPR; and 38.8/57.9/41.1/50.6/35.8 for the multi-set hybrid.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Canonical end-to-end exact-match matrix",
+            "section": "6.2. Results",
+            "pageStart": 6776,
+            "pageEnd": 6776,
+            "table": "4"
+          },
+          "support": "Table 4 prints the five authors' pipeline rows across all five datasets."
+        }
+      ],
+      "limitations": [
+        "The comparator block is copied from cited papers rather than uniformly rerun, row choice differs by dataset, and no one DPR or hybrid row leads all five tasks."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-joint-training-and-index-freeze-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "answer-supervised-dense-passage-retrieval",
+        "two-stage-retriever-reader-open-domain-qa",
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "Appendix D jointly updates the question encoder and reader while freezing the passage encoder to preserve an HNSW index, retrieves 100 passages, uses a batch of 16 questions and all 1,600 candidates in the retriever loss, and samples reader passages from the top five positives and top 30 negatives. It reports 39.8 Natural Questions development exact match, equal to the authors' regular reader on that development comparison.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Joint retriever–reader ablation",
+            "section": "Appendix D. Joint Learning of Retriever and Reader",
+            "pageStart": 6780,
+            "pageEnd": 6781
+          },
+          "support": "The appendix specifies the frozen passage side, candidate and batch counts, combined loss path, sampling windows, and 39.8 development comparison."
+        }
+      ],
+      "limitations": [
+        "This is an appendix ablation rather than the main DPR training pipeline; it does not update document embeddings and 39.8 is not Table 4's 41.5 Natural Questions test value."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-lexical-and-evaluation-limits",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "bm25-hard-negative-mining"
+      ],
+      "statement": "The authors conjecture that DPR's SQuAD deficit follows from high lexical overlap and concentration in 500+ Wikipedia articles, show selected cases where dense retrieval captures semantics, and give a rare 'Thoros of Myr' phrase case where BM25 succeeds and DPR fails; answer-string containment remains the retrieval metric rather than judged relevance.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "SQuAD counterexample and metric boundary",
+            "section": "5.1. Main Results",
+            "pageStart": 6773,
+            "pageEnd": 6773,
+            "table": "2"
+          },
+          "support": "The main-results discussion explains the SQuAD reversal and defines the answer-containing top-k metric."
+        },
+        {
+          "sourceId": "dpr-2020-emnlp-full-text",
+          "locator": {
+            "label": "Sparse and dense qualitative cases",
+            "section": "5.3. Qualitative Analysis; Appendix C. Qualitative Analysis",
+            "pageStart": 6775,
+            "pageEnd": 6781,
+            "table": "7"
+          },
+          "support": "The selected examples include semantic dense matches and the rare-phrase case that favors BM25."
+        }
+      ],
+      "limitations": [
+        "Selected examples do not establish universal semantic or lexical behavior, and the answer-containment metric can reward a spurious occurrence."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-release-and-reproduction-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval"
+      ],
+      "statement": "DPR's initial public repository commit is dated 13 May 2020, after arXiv v2; the last inspected public snapshot before v3 supplies retriever, reader, indexing, download, checkpoint, embedding, and result paths. Its best-Natural-Questions README recipe uses learning rate 2×10^-5, seed 12345, sequence length 256, per-GPU batch 16 on eight GPUs, and 40 epochs, so it is not silently substituted for the canonical 10^-5 main recipe.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "dpr-2020-initial-release-repository",
+          "locator": {
+            "label": "Initial public repository state",
+            "section": "Initial commit and README"
+          },
+          "support": "The 13 May commit provides the initial DPR code/data/checkpoint workflow after arXiv versions 1 and 2."
+        },
+        {
+          "sourceId": "dpr-2020-pre-v3-release-snapshot",
+          "locator": {
+            "label": "Pre-v3 implementation and recipe",
+            "section": "README and implementation tree"
+          },
+          "support": "The 14 September snapshot exposes the paper-era system and prints a best-Natural-Questions recipe distinct from canonical main settings."
+        },
+        {
+          "sourceId": "dpr-2020-release-artifact-manifest",
+          "locator": {
+            "label": "Named downloadable artifact manifest",
+            "section": "data/download_data.py"
+          },
+          "support": "The pinned manifest enumerates passage, checkpoint, embedding, result, reader, and index objects without a complete experiment ledger."
+        }
+      ],
+      "limitations": [
+        "No official tag or release object pins the exact experiment state, and later repository upgrades and mined-negative checkpoints are not projected into the 2020 work."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
+      "id": "dpr-2020-artifact-data-and-rights-boundary",
+      "workId": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval"
+      ],
+      "statement": "The ACL article, arXiv deposits, CC-BY-NC-licensed repository tree, downloadable checkpoints, embeddings, indices, Wikipedia passages, benchmark derivatives, and pretrained dependencies retain separate provenance and terms; the release manifest does not supply one object-level rights grant or immutable experiment ledger for all of them.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "acl-2016-plus-rights-policy",
+          "locator": {
+            "label": "ACL article rights",
+            "section": "Copyright and licensing policy"
+          },
+          "support": "The publisher policy applies CC BY 4.0 to post-2016 ACL materials while excluding third-party content."
+        },
+        {
+          "sourceId": "dpr-2020-arxiv-license",
+          "locator": {
+            "label": "arXiv deposit terms",
+            "section": "Non-exclusive distribution license"
+          },
+          "support": "The record-linked terms authorize arXiv distribution rather than general downstream reuse."
+        },
+        {
+          "sourceId": "dpr-2020-release-license",
+          "locator": {
+            "label": "Repository license scope",
+            "section": "Creative Commons Attribution-NonCommercial 4.0 International"
+          },
+          "support": "The pinned license covers the repository tree and does not itself grant rights in external paper, corpus, benchmark, model, or dependency objects."
+        },
+        {
+          "sourceId": "dpr-2020-release-artifact-manifest",
+          "locator": {
+            "label": "External object manifest",
+            "section": "data/download_data.py"
+          },
+          "support": "The downloader names external objects but does not attach a comprehensive per-object license and provenance manifest."
+        }
+      ],
+      "limitations": [
+        "Absence of a single umbrella grant does not resolve every object's individual status; reuse requires source-specific terms and provenance review."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-03"
+    },
+    {
       "id": "rag-2020-version-formula-and-result-boundary",
       "workId": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks",
       "ideaIds": [
@@ -46600,7 +49055,7 @@
         }
       ],
       "limitations": [
-        "BART and DPR are local substrates here because they are not separately promoted work nodes in the current corpus; no edge is inferred from their names alone."
+        "BART remains a local substrate because it is not separately promoted; DPR is represented by a qualified edge limited to the target-documented retriever and index boundary, not by name alone."
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-02"
@@ -54917,7 +57372,87 @@
       "uncertainties": [
         {
           "status": "resolved",
-          "note": "The edge is restricted to target-named BERT mechanisms and initialization; ICT/ORQA retrieval ancestry remains node-local because ORQA is not yet a promoted endpoint."
+          "note": "The edge is restricted to target-named BERT mechanisms and initialization; ICT and fixed-index open-QA ancestry are represented separately through the promoted ORQA endpoint."
+        }
+      ]
+    },
+    {
+      "id": "lee-2019-orqa-to-guu-2020-realm",
+      "from": {
+        "kind": "work",
+        "id": "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      },
+      "to": {
+        "kind": "work",
+        "id": "guu-2020-realm-retrieval-augmented-language-model-pre-training"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "REALM explicitly identifies ORQA's ICT-initialized, fixed-index latent-variable open-QA framework as its comparator, follows ORQA's fine-tuning approach, and adds retrieval-augmented language-model pretraining plus document-side index updates during pretraining. The edge carries only those target-named mechanisms and contrasts, not ORQA's reader equation, 128-dimensional projection, early-loss constants, datasets, results, artifacts, or rights.",
+      "claimIds": [
+        "orqa-2019-ict-retriever-pretraining",
+        "orqa-2019-latent-answer-derivation-objective",
+        "orqa-2019-fixed-document-index-and-query-update",
+        "realm-2020-latent-document-objective",
+        "realm-2020-retriever-gradient-and-index-refresh",
+        "realm-2020-finetuning-index-freeze-boundary",
+        "realm-2020-initialization-and-supervision-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "realm-2020-pmlr-full-text",
+          "locator": {
+            "label": "Target-side ORQA framework, initialization, and contrast",
+            "section": "3.4. Injecting inductive biases into pre-training; 4.2. Approaches compared; 4.3. Implementation Details"
+          },
+          "support": "REALM names ORQA's similar latent-variable marginal likelihood and ICT initialization, contrasts ORQA's fixed index with document-side pretraining updates, and says fine-tuning follows ORQA."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is restricted to target-documented framework reuse and contrast; it does not claim formula identity, sole causation, or transfer of ORQA-local constants, evidence, and artifacts."
+        }
+      ]
+    },
+    {
+      "id": "karpukhin-2020-dpr-to-lewis-2020-rag",
+      "from": {
+        "kind": "work",
+        "id": "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "RAG explicitly identifies DPR as its retrieval component, retains BERT-base query and document encoders, inner-product ranking, and a precomputed Wikipedia passage index, and initializes from DPR supervision on Natural Questions and TriviaQA. RAG then combines that substrate with BART and latent-document generation while freezing the document encoder and index. The edge excludes DPR's reader, BM25 hybrid, negative ablations, results, artifacts, and rights.",
+      "claimIds": [
+        "dpr-2020-dual-encoder-scoring-and-offline-index",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-training-freeze-and-supervision-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Target-side DPR retriever and index initialization",
+            "section": "2.2. Retriever: DPR; 2.4. Training",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "RAG names the DPR bi-encoder, Wikipedia index, Natural Questions and TriviaQA initialization, and the document-side freeze while its query encoder and generator train."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge carries only the target-named retriever/index substrate and initialization; RAG's generator, marginalization, task evidence, and update probe remain target-specific."
         }
       ]
     },
@@ -57508,6 +60043,69 @@
       "successCriterion": "The learner can repair Equation 1 while naming its printed index error, derive the byte-to-BPE and causal-stack computation, keep report configurations separate from corrected checkpoint labels, reconstruct the promoted task conditions and selected reported values, test the scale claim against nonmonotonic rows, audit 8-gram overlap and sample selection, defend the GPT and Transformer edges, and explain why released inference artifacts cannot reproduce WebText training or benchmark evaluation."
     },
     {
+      "id": "beginner-orqa-2019-ict-to-latent-openqa",
+      "mode": "beginner",
+      "objective": "Trace how a sentence-and-context ICT example initializes retrieval, then follow a downstream QA example through a frozen block index, top-five retrieval, span scoring, and answer-string marginalization; explain how query updates can change candidates without changing indexed block vectors.",
+      "workIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "ideaIds": [
+        "inverse-cloze-retriever-pretraining",
+        "dense-dual-encoder-document-retrieval",
+        "latent-answer-derivation-marginalization",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "claimIds": [
+        "orqa-2019-open-retrieval-task-and-supervision",
+        "orqa-2019-dense-retriever-and-span-reader",
+        "orqa-2019-ict-retriever-pretraining",
+        "orqa-2019-fixed-document-index-and-query-update",
+        "orqa-2019-latent-answer-derivation-objective"
+      ],
+      "prerequisites": [
+        "A vector retriever can rank independently encoded passages",
+        "A reader can score answer spans inside retrieved text",
+        "A probability sum can combine several hidden derivations",
+        "A query encoder and a precomputed document index can change independently"
+      ],
+      "successCriterion": "The learner can narrate ICT, distinguish retrieval from reading, explain the fixed document-side boundary, and state why answer-string marginalization can learn without gold passages yet still admit spurious evidence."
+    },
+    {
+      "id": "expert-orqa-2019-objectives-index-results-and-provenance",
+      "mode": "expert",
+      "objective": "Derive ORQA's ICT, full, and early objectives; identify the undefined P′; distinguish query-side adaptation from document-index updating; reproduce the principal results and ablation; and audit version, release, and rights boundaries.",
+      "workIds": [
+        "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering"
+      ],
+      "ideaIds": [
+        "inverse-cloze-retriever-pretraining",
+        "dense-dual-encoder-document-retrieval",
+        "latent-answer-derivation-marginalization",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "claimIds": [
+        "orqa-2019-version-and-proceedings-boundary",
+        "orqa-2019-dense-retriever-and-span-reader",
+        "orqa-2019-ict-retriever-pretraining",
+        "orqa-2019-fixed-document-index-and-query-update",
+        "orqa-2019-latent-answer-derivation-objective",
+        "orqa-2019-corpus-and-training-boundary",
+        "orqa-2019-openqa-evaluation-protocol",
+        "orqa-2019-openqa-results",
+        "orqa-2019-strong-supervision-comparison",
+        "orqa-2019-masking-rate-ablation",
+        "orqa-2020-release-and-reproduction-boundary",
+        "orqa-2019-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Contrastive softmaxes and latent-variable marginal likelihood",
+        "Dense dual encoders, maximum-inner-product search, and frozen indices",
+        "Extractive span scoring and answer-string supervision",
+        "Version comparison, result-table auditing, and license scope"
+      ],
+      "successCriterion": "The learner can reconstruct both losses and index gradient paths, explain the P′ defect, reproduce Tables 3, 5, and 6 plus Figure 3 with caveats, and keep paper, code, model, data, and rights evidence separate."
+    },
+    {
       "id": "beginner-yang-2019-permute-prediction-not-words",
       "mode": "beginner",
       "objective": "Trace one target across several factorization orders, see that the written sentence never moves, compare the content and query streams, and explain how sampled partial prediction plus bounded memory provides varied context without revealing the answer.",
@@ -57881,6 +60479,74 @@
         "Ablation validity, immutable versioning, and artifact-license scope"
       ],
       "successCriterion": "The learner can derive the posterior-minus-prior retrieval update, separate fresh rescoring from stale candidate discovery, explain why document-encoder freezing changes task fine-tuning, reproduce Tables 1 and 2 with their caveats, and keep paper, code, checkpoint, data, and rights claims distinct."
+    },
+    {
+      "id": "beginner-dpr-2020-query-passage-ranking",
+      "mode": "beginner",
+      "objective": "Trace a question through independently encoded passage ranking, answer-bearing supervision, in-batch and BM25 hard negatives, an offline index, and a separate reader while comparing semantic and keyword matching failures.",
+      "workIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval",
+        "in-batch-negative-retriever-training",
+        "bm25-hard-negative-mining",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "claimIds": [
+        "dpr-2020-dual-encoder-scoring-and-offline-index",
+        "dpr-2020-supervised-retriever-objective-and-negatives",
+        "dpr-2020-corpus-and-positive-passage-construction",
+        "dpr-2020-canonical-retrieval-test-results",
+        "dpr-2020-reader-pipeline-and-objective",
+        "dpr-2020-lexical-and-evaluation-limits"
+      ],
+      "prerequisites": [
+        "A dot product can rank query and passage vectors",
+        "A contrastive loss compares one positive with several negatives",
+        "Keyword and semantic retrieval have different failure modes",
+        "Corpus retrieval and answer-span reading are separate stages"
+      ],
+      "successCriterion": "The learner can separate retriever from reader, explain in-batch and hard negatives, interpret answer-containment accuracy, and give one dense-retrieval and one BM25 counterexample without claiming universal superiority."
+    },
+    {
+      "id": "expert-dpr-2020-objective-negatives-index-and-reader",
+      "mode": "expert",
+      "objective": "Derive DPR's contrastive objective and effective negative counts; audit positive construction, retrieval and reader experiments, FAISS rebuild and freeze behavior, version deltas, release artifacts, and rights scope.",
+      "workIds": [
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+      ],
+      "ideaIds": [
+        "dense-dual-encoder-document-retrieval",
+        "answer-supervised-dense-passage-retrieval",
+        "in-batch-negative-retriever-training",
+        "bm25-hard-negative-mining",
+        "two-stage-retriever-reader-open-domain-qa"
+      ],
+      "claimIds": [
+        "dpr-2020-version-and-proceedings-boundary",
+        "dpr-2020-dual-encoder-scoring-and-offline-index",
+        "dpr-2020-supervised-retriever-objective-and-negatives",
+        "dpr-2020-corpus-and-positive-passage-construction",
+        "dpr-2020-dataset-counts-and-training-boundary",
+        "dpr-2020-canonical-retrieval-test-results",
+        "dpr-2020-negative-training-ablation-results",
+        "dpr-2020-distant-supervision-and-loss-ablation-results",
+        "dpr-2020-index-cost-and-implementation-boundary",
+        "dpr-2020-reader-pipeline-and-objective",
+        "dpr-2020-canonical-end-to-end-qa-results",
+        "dpr-2020-joint-training-and-index-freeze-boundary",
+        "dpr-2020-release-and-reproduction-boundary",
+        "dpr-2020-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Contrastive likelihoods and matrix-based in-batch training",
+        "Dense indexing, approximate nearest neighbors, and rebuild costs",
+        "Cross-encoder span readers and staged versus joint optimization",
+        "Evaluation-confound, immutable-version, and artifact-license audits"
+      ],
+      "successCriterion": "The learner can derive Equation 2, reconstruct Table 3 negative counts and Tables 2/5/6 boundaries, distinguish main and joint reader training, explain what the index does not update, and keep paper, code, downloadable objects, data, and rights distinct."
     },
     {
       "id": "beginner-rag-2020-sequence-token-and-index-memory",

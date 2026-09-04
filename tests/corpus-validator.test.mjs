@@ -217,7 +217,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-9)?.id, workId);
+  assert.equal(corpus.works.at(-10)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -319,6 +319,125 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
   assert.ok(historicalScope.includes("The Kaplan scaling-law preprint was checked on 2026-08-30"));
 });
 
+test("preserves ORQA versions, fixed-index learning, results, and REALM lineage", () => {
+  const workId =
+    "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = corpus.sources.find(
+    (item) => item.id === "orqa-2019-acl-full-text",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "orqa-2019-version-and-proceedings-boundary",
+  );
+  const latent = claims.find(
+    (item) => item.id === "orqa-2019-latent-answer-derivation-objective",
+  );
+  const freeze = claims.find(
+    (item) => item.id === "orqa-2019-fixed-document-index-and-query-update",
+  );
+  const evaluation = claims.find(
+    (item) => item.id === "orqa-2019-openqa-evaluation-protocol",
+  );
+  const results = claims.find(
+    (item) => item.id === "orqa-2019-openqa-results",
+  );
+  const masking = claims.find(
+    (item) => item.id === "orqa-2019-masking-rate-ablation",
+  );
+  const release = claims.find(
+    (item) => item.id === "orqa-2020-release-and-reproduction-boundary",
+  );
+  const edge = corpus.relationships.find(
+    (item) => item.id === "lee-2019-orqa-to-guu-2020-realm",
+  );
+  const ictIdea = corpus.ideas.find(
+    (item) => item.id === "inverse-cloze-retriever-pretraining",
+  );
+  const aclRights = corpus.sources.find(
+    (item) => item.id === "acl-2016-plus-rights-policy",
+  );
+  const beginnerObjective = objectives.find((item) => item.mode === "beginner");
+
+  assert.equal(corpus.works.at(-14)?.id, workId);
+  assert.equal(work?.chronology.orderingEventId, "orqa-2019-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2019-06-01", "2019-06-06", "2019-06-27", "2019-07"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "orqa-2019-arxiv-v1-version",
+      "orqa-2019-arxiv-v2-version",
+      "orqa-2019-arxiv-v3-version",
+      "orqa-2019-acl-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "orqa-2019-acl-version");
+  assert.deepEqual(work?.authors, [
+    "Kenton Lee",
+    "Ming-Wei Chang",
+    "Kristina Toutanova",
+  ]);
+  assert.deepEqual(canonical?.pagination, {
+    scheme: "printed",
+    pageStart: 6086,
+    pageEnd: 6096,
+  });
+  assert.equal(claims.length, 14);
+  assert.match(versionBoundary?.statement ?? "", /canonical scientific body aligns with version 2/);
+  assert.match(versionBoundary?.statement ?? "", /78-paragraph\/34\.0/);
+  assert.ok(latent?.statement.includes("P′"));
+  assert.match(latent?.statement ?? "", /five retrieved blocks/);
+  assert.match(latent?.statement ?? "", /5,000 blocks/);
+  assert.match(freeze?.statement ?? "", /freezes the evidence encoder/);
+  assert.match(freeze?.statement ?? "", /without rebuilding document vectors/);
+  for (const value of [
+    "31.3/38.5/36.8/45.1/26.5",
+    "33.3/36.4/30.1/45.0/20.2",
+    "26.5/17.7/21.3/47.1/33.2",
+  ])
+    assert.ok(results?.statement.includes(value));
+  for (const value of ["25.0", "31.3", "21.7", "24.8"])
+    assert.ok(masking?.statement.includes(value));
+  assert.match(release?.statement ?? "", /6 March 2020/);
+  assert.match(release?.statement ?? "", /14 August/);
+  assert.match(release?.statement ?? "", /Natural Questions and WebQuestions fine-tuning/);
+  assert.match(release?.limitations.join(" ") ?? "", /five-dataset/);
+  assert.match(release?.limitations.join(" ") ?? "", /nonexistent module path/);
+  assert.ok(
+    evaluation?.evidence.some(
+      (item) => item.sourceId === "orqa-2020-partial-release-commit",
+    ),
+  );
+  assert.match(work?.limitations.join(" ") ?? "", /CuratedTREC preprocessing and evaluation/);
+  assert.match(
+    beginnerObjective?.objective ?? "",
+    /then follow a downstream QA example/,
+  );
+  assert.equal(work?.ideaIds.includes("retrieval-conditioned-latent-document-marginalization"), false);
+  assert.ok(ictIdea?.claimIds.includes("realm-2020-initialization-and-supervision-boundary"));
+  assert.equal(edge?.connectionType, "extends");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "qualified");
+  assert.equal(edge?.sourceEvidence[0]?.sourceId, "realm-2020-pmlr-full-text");
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("orqa-2019")));
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("realm-2020")));
+  assert.ok(aclRights?.relatedWorkIds.includes(workId));
+  assert.ok(aclRights?.versionIds.includes("orqa-2019-acl-version"));
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Lee, Chang, and Toutanova’s ORQA family"));
+  assert.ok(corpusFormat.includes("Lee, Chang, and Toutanova 2019 is represented"));
+  assert.ok(historicalScope.includes("The ORQA family was checked on 2026-09-03"));
+});
+
 test("preserves REALM versions, latent retrieval, index boundaries, and lineage", () => {
   const workId =
     "guu-2020-realm-retrieval-augmented-language-model-pre-training";
@@ -364,7 +483,7 @@ test("preserves REALM versions, latent retrieval, index boundaries, and lineage"
     (item) => item.id === "devlin-2018-to-guu-2020-realm",
   );
 
-  assert.equal(corpus.works.at(-8)?.id, workId);
+  assert.equal(corpus.works.at(-9)?.id, workId);
   assert.equal(work?.canonicalVersionId, "realm-2020-icml-version");
   assert.deepEqual(
     work?.chronology.events.map((item) => item.date.value),
@@ -439,6 +558,165 @@ test("preserves REALM versions, latent retrieval, index boundaries, and lineage"
   assert.ok(corpusFormat.includes("Guu et al. 2020 is represented"));
   assert.ok(
     historicalScope.includes("The REALM family was checked on 2026-09-02"),
+  );
+});
+
+test("preserves DPR versions, contrastive retrieval, index limits, and RAG lineage", () => {
+  const workId =
+    "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = corpus.sources.find(
+    (item) => item.id === "dpr-2020-emnlp-full-text",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "dpr-2020-version-and-proceedings-boundary",
+  );
+  const encoders = claims.find(
+    (item) => item.id === "dpr-2020-dual-encoder-scoring-and-offline-index",
+  );
+  const objective = claims.find(
+    (item) => item.id === "dpr-2020-supervised-retriever-objective-and-negatives",
+  );
+  const corpusClaim = claims.find(
+    (item) => item.id === "dpr-2020-corpus-and-positive-passage-construction",
+  );
+  const trainingBoundary = claims.find(
+    (item) => item.id === "dpr-2020-dataset-counts-and-training-boundary",
+  );
+  const retrieval = claims.find(
+    (item) => item.id === "dpr-2020-canonical-retrieval-test-results",
+  );
+  const negativeAblation = claims.find(
+    (item) => item.id === "dpr-2020-negative-training-ablation-results",
+  );
+  const appendixAblation = claims.find(
+    (item) => item.id === "dpr-2020-distant-supervision-and-loss-ablation-results",
+  );
+  const index = claims.find(
+    (item) => item.id === "dpr-2020-index-cost-and-implementation-boundary",
+  );
+  const qa = claims.find(
+    (item) => item.id === "dpr-2020-canonical-end-to-end-qa-results",
+  );
+  const joint = claims.find(
+    (item) => item.id === "dpr-2020-joint-training-and-index-freeze-boundary",
+  );
+  const sampleEfficiency = claims.find(
+    (item) => item.id === "dpr-2020-sample-efficiency-and-transfer-boundary",
+  );
+  const lexicalLimits = claims.find(
+    (item) => item.id === "dpr-2020-lexical-and-evaluation-limits",
+  );
+  const ragHybrid = corpus.claims.find(
+    (item) => item.id === "rag-2020-hybrid-dpr-bart-index",
+  );
+  const edge = corpus.relationships.find(
+    (item) => item.id === "karpukhin-2020-dpr-to-lewis-2020-rag",
+  );
+  const aclRights = corpus.sources.find(
+    (item) => item.id === "acl-2016-plus-rights-policy",
+  );
+
+  assert.equal(corpus.works.at(-8)?.id, workId);
+  assert.equal(work?.chronology.orderingEventId, "dpr-2020-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-04-10", "2020-05-02", "2020-09-30", "2020-11"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "dpr-2020-arxiv-v1-version",
+      "dpr-2020-arxiv-v2-version",
+      "dpr-2020-arxiv-v3-version",
+      "dpr-2020-emnlp-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "dpr-2020-emnlp-version");
+  assert.equal(work?.versions[0]?.authors.includes("Patrick Lewis"), false);
+  assert.equal(work?.versions[0]?.authors.length, 7);
+  assert.equal(work?.authors.includes("Patrick Lewis"), true);
+  assert.deepEqual(canonical?.pagination, {
+    scheme: "printed",
+    pageStart: 6769,
+    pageEnd: 6781,
+  });
+  assert.equal(claims.length, 16);
+  for (const value of ["seven authors", "Patrick Lewis", "36.8", "39.8"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  for (const sourceId of ["dpr-2020-arxiv-v1-full-text", "dpr-2020-arxiv-v2-full-text"]) {
+    const section = versionBoundary?.evidence.find(
+      (item) => item.sourceId === sourceId,
+    )?.locator.section;
+    assert.match(section ?? "", /Table 3/);
+    assert.match(section ?? "", /Table 5/);
+  }
+  assert.match(encoders?.statement ?? "", /768-dimensional/);
+  assert.match(encoders?.statement ?? "", /offline FAISS index/);
+  assert.match(objective?.statement ?? "", /B×B/);
+  assert.match(objective?.statement ?? "", /127 gold plus 128 BM25/);
+  assert.match(corpusClaim?.statement ?? "", /21,015,324/);
+  assert.match(corpusClaim?.statement ?? "", /100-word passages/);
+  assert.deepEqual(trainingBoundary?.evidence[0]?.locator, {
+    label: "Dataset counts and main retriever schedule",
+    section: "4.2. Question Answering Datasets; 5. Experiments: Passage Retrieval",
+    pageStart: 6772,
+    pageEnd: 6773,
+    table: "1",
+  });
+  for (const value of [
+    "59.1/66.9/55.0/70.9/68.8",
+    "78.4/79.4/73.2/79.8/63.2",
+    "79.4/78.8/75.0/89.1/51.6",
+  ])
+    assert.ok(retrieval?.statement.includes(value));
+  for (const value of ["47.0/64.3/77.8", "65.0/77.3/84.4", "65.8/78.0/84.9"])
+    assert.ok(negativeAblation?.statement.includes(value));
+  for (const value of ["44.9/66.8/78.1/85.0", "42.2/66.0/78.1/84.9"])
+    assert.ok(appendixAblation?.statement.includes(value));
+  for (const value of ["995.0", "23.7", "8.8 hours", "8.5 hours", "IndexFlatIP"])
+    assert.ok(index?.statement.includes(value));
+  for (const value of [
+    "32.6/52.4/29.9/24.9/38.1",
+    "41.5/56.8/34.6/25.9/29.8",
+    "38.8/57.9/41.1/50.6/35.8",
+  ])
+    assert.ok(qa?.statement.includes(value));
+  assert.match(joint?.statement ?? "", /freezing the passage encoder/);
+  assert.match(joint?.statement ?? "", /1,600 candidates/);
+  assert.match(joint?.limitations.join(" ") ?? "", /not Table 4's 41.5/);
+  assert.equal(sampleEfficiency?.evidence[0]?.locator.pageStart, 6773);
+  assert.equal(sampleEfficiency?.evidence[0]?.locator.pageEnd, 6774);
+  assert.match(lexicalLimits?.statement ?? "", /authors conjecture/i);
+  assert.match(lexicalLimits?.statement ?? "", /500\+/);
+  assert.equal(edge?.connectionType, "combines");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "qualified");
+  assert.equal(edge?.sourceEvidence[0]?.sourceId, "rag-2020-neurips-full-text");
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("dpr-2020")));
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("rag-2020")));
+  assert.equal(
+    edge?.claimIds.includes("dpr-2020-corpus-and-positive-passage-construction"),
+    false,
+  );
+  assert.match(ragHybrid?.limitations.join(" ") ?? "", /DPR is represented by a qualified edge/);
+  assert.ok(aclRights?.relatedWorkIds.includes(workId));
+  assert.ok(aclRights?.versionIds.includes("dpr-2020-emnlp-version"));
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Karpukhin et al.’s DPR family"));
+  assert.ok(corpusFormat.includes("Karpukhin et al. 2020 is represented"));
+  assert.ok(historicalScope.includes("The DPR family was checked on 2026-09-03"));
+  assert.ok(
+    historicalScope.includes(
+      "connect BERT-era foundations and the ORQA/DPR retrievers to REALM and RAG",
+    ),
   );
 });
 
@@ -646,7 +924,7 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
   ];
 
   assert.equal(corpus.works.at(-6)?.id, workId);
-  assert.equal(corpus.works.at(-9)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(corpus.works.at(-10)?.id, "kaplan-2020-scaling-laws-neural-language-models");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
   assert.deepEqual(
