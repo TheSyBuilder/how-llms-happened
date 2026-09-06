@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-03",
+  "asOf": "2026-09-05",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -11355,6 +11355,240 @@
       ]
     },
     {
+      "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+      "authors": [
+        "Mike Lewis",
+        "Yinhan Liu",
+        "Naman Goyal",
+        "Marjan Ghazvininejad",
+        "Abdelrahman Mohamed",
+        "Omer Levy",
+        "Veselin Stoyanov",
+        "Luke Zettlemoyer"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "M. Lewis, Y. Liu, N. Goyal, M. Ghazvininejad, A. Mohamed, O. Levy, V. Stoyanov, and L. Zettlemoyer, “BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension,” in Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pp. 7871–7880, 2020.",
+      "chronology": {
+        "orderingEventId": "bart-2019-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "bart-2019-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2019-10-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bart-2019-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 29 October 2019 at 18:01:00 UTC"
+              }
+            ],
+            "versionId": "bart-2019-arxiv-v1-version",
+            "sourceIds": [
+              "bart-2019-arxiv-record",
+              "bart-2019-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "bart-2020-acl-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "ACL 2020 proceedings publication",
+            "date": {
+              "value": "2020-06-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bart-2020-acl-publication-date",
+                "precision": "day",
+                "locator": "Official ACL 2020 call for papers, proceedings publication scheduled for 19 June 2020"
+              }
+            ],
+            "versionId": "bart-2020-acl-version",
+            "sourceIds": [
+              "bart-2020-acl-publication-date",
+              "bart-2020-acl-record",
+              "bart-2020-acl-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "bart-2019-arxiv-v1-version",
+          "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "authors": [
+            "Mike Lewis",
+            "Yinhan Liu",
+            "Naman Goyal",
+            "Marjan Ghazvininejad",
+            "Abdelrahman Mohamed",
+            "Omer Levy",
+            "Ves Stoyanov",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "M. Lewis et al., “BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension,” arXiv:1910.13461v1, 29 October 2019.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "1910.13461v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.1910.13461",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bart-2019-arxiv-record",
+            "bart-2019-arxiv-v1-full-text",
+            "bart-2019-arxiv-license",
+            "bart-2019-arxiv-v1-source-package",
+            "bart-2019-fairseq-initial-release",
+            "bart-2020-fairseq-license"
+          ],
+          "notes": "The only arXiv revision is the ten-page ordering manuscript. It prints “Ves Stoyanov” and headlines an approximately six-ROUGE XSum gain against BERTSUMEXTABS; the later ACL article keeps BART's scores but adds a stronger comparison and supersedes that headline."
+        },
+        {
+          "id": "bart-2020-acl-version",
+          "title": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "authors": [
+            "Mike Lewis",
+            "Yinhan Liu",
+            "Naman Goyal",
+            "Marjan Ghazvininejad",
+            "Abdelrahman Mohamed",
+            "Omer Levy",
+            "Veselin Stoyanov",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ACL 2020 proceedings article",
+          "language": "en",
+          "bibliography": {
+            "citation": "M. Lewis, Y. Liu, N. Goyal, M. Ghazvininejad, A. Mohamed, O. Levy, V. Stoyanov, and L. Zettlemoyer, “BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension,” in Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pp. 7871–7880, 2020.",
+            "venue": "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+            "editors": [
+              "Dan Jurafsky",
+              "Joyce Chai",
+              "Natalie Schluter",
+              "Joel Tetreault"
+            ],
+            "publisher": "Association for Computational Linguistics",
+            "publicationPlaces": [
+              "Online"
+            ],
+            "pages": [
+              "7871-7880"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.18653/v1/2020.acl-main.703",
+                "label": "ACL Anthology DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bart-2020-acl-record",
+            "bart-2020-acl-full-text",
+            "bart-2020-acl-publication-date",
+            "acl-2016-plus-rights-policy",
+            "bart-2019-fairseq-initial-release",
+            "bart-2020-fairseq-paper-era-readme",
+            "bart-2020-fairseq-paper-era-model",
+            "bart-2020-fairseq-paper-era-summarization",
+            "bart-2020-fairseq-license"
+          ],
+      "notes": "The canonical ten-page article has printed pp. 7871–7880 and bibliographic month July, while ACL's official proceedings date is 19 June 2020. It adds RoBERTaShare to XSum, reduces the headline gain to about 3.5 ROUGE, adds human evaluation, and explicitly frames unsupported hallucination as the main qualitative limitation after the arXiv version had already shown the example; it also expands release and related-work detail without changing BART's reported system scores."
+        }
+      ],
+      "canonicalVersionId": "bart-2020-acl-version",
+      "preferredSourceIds": [
+        "bart-2020-acl-record",
+        "bart-2020-acl-full-text"
+      ],
+      "sourceIds": [
+        "bart-2019-arxiv-record",
+        "bart-2019-arxiv-v1-full-text",
+        "bart-2019-arxiv-license",
+        "bart-2019-arxiv-v1-source-package",
+        "bart-2020-acl-record",
+        "bart-2020-acl-full-text",
+        "bart-2020-acl-publication-date",
+        "bart-2019-fairseq-initial-release",
+        "bart-2020-fairseq-paper-era-readme",
+        "bart-2020-fairseq-paper-era-model",
+        "bart-2020-fairseq-paper-era-summarization",
+        "bart-2020-fairseq-license",
+        "acl-2016-plus-rights-policy",
+        "liu-2019-arxiv-v1-full-text"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "BART is a convergence node between bidirectional masked representation learning and left-to-right sequence generation. Its controlled corruption comparison, reusable encoder–decoder adaptation routes, strong historical generation results, explicit hallucination evidence, and later use as RAG's generator make it central to the path from pretrained Transformers to retrieval-augmented language models."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "source-conditioned-autoregressive-decoding",
+        "deep-bidirectional-transformer-pretraining",
+        "byte-level-byte-pair-tokenization",
+        "bidirectional-autoregressive-sequence-denoising",
+        "full-sequence-denoising-reconstruction",
+        "span-infilling-length-reconstruction",
+        "sentence-permutation-denoising",
+        "target-side-monolingual-sequence-transfer",
+        "denoising-objective-task-dependence"
+      ],
+      "significance": {
+        "beginner": "BART learns by repairing damaged text: it can read the entire corrupted input, then write the original text one token at a time. The same pretrained model can become a classifier, tagger, summarizer, dialogue model, or translation component, while its fluent but unsupported summaries show why generation quality and factual grounding are different problems.",
+        "expert": "BART composes a bidirectional Transformer encoder with an autoregressive cross-attentive decoder under full-sequence denoising. Its controlled base-scale objective matrix, large infilling-plus-sentence-permutation recipe, task-specific adapters, versioned XSum comparator boundary, paper-versus-fairseq decoding conflict, and explicit BART→RAG reuse require separate treatment of causal evidence, reproduction recipes, artifacts, and rights."
+      },
+      "limitations": [
+        "The controlled objective study changes architecture and adaptation format across some replicated objective families, tunes learning rate and layer normalization separately, simplifies predecessors, and omits XLNet relative positions and recurrence; it is not a complete isolated factorial study.",
+        "Objective rankings are task-dependent: the pure language model has the best ELI5 perplexity, deletion improves all four generation perplexities over token masking, and infilling plus sentence shuffling is uniquely best on CNN/DailyMail while tying infilling for best SQuAD F1.",
+        "Large-model results compare complete systems trained under differing resources, data, preprocessing, decoding, and evidence access; they do not isolate the denoising objective as the cause of every gain.",
+        "The paper reports no pretraining optimizer, learning-rate schedule, warmup, weight decay, actual sequence length, hardware, wall time, seeds, run counts, error bars, or corruption rates for the controlled BART rows.",
+        "The human evaluation reports preference percentages and significance but not sample size, rater agreement, or the statistical test; human references beat BART 67% to 33%.",
+        "BART can hallucinate fluent information unsupported by its source; the paper's selected Science-publication example is qualitative evidence rather than an incidence estimate.",
+        "Romanian-to-English transfer is weak and prone to overfitting without back-translation, and the displayed 37.96 versus 36.80 arithmetic is +1.16 even though the prose reports the gain as +1.1; the unrounded values behind that discrepancy are not disclosed.",
+        "The paper states beam five for generation, while the official task recipe uses beam four for CNN/DailyMail and beam six for XSum; the repository recipe is not silently treated as the exact paper run.",
+        "The initial code release describes itself as needing cleanup and reproducibility work. No immutable experiment manifest binds the paper runs, complete environment, training corpus bytes, checkpoints, and human-evaluation records.",
+        "ACL article rights, arXiv distribution terms, fairseq MIT terms for code and advertised pretrained models, exact checkpoint identity, training corpora, benchmark data, and third-party material remain separate provenance and license questions."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The official arXiv record has only version 1; the ACL camera-ready paper is a distinct canonical proceedings version rather than arXiv v2."
+        },
+        {
+          "status": "resolved",
+          "note": "ACL metadata supplies the canonical full author name Veselin Stoyanov, while both inspected title pages print Ves Stoyanov."
+        },
+        {
+          "status": "open",
+          "note": "The inspected primary sources do not bind the official fairseq task recipes and downloadable checkpoints to the exact paper-run environment or complete run ledger.",
+          "resolutionCondition": "An author-published immutable experiment manifest with revisions, dependencies, commands, data hashes, checkpoint hashes, and run identifiers is required."
+        }
+      ]
+    },
+    {
       "id": "kaplan-2020-scaling-laws-neural-language-models",
       "title": "Scaling Laws for Neural Language Models",
       "authors": [
@@ -15967,7 +16201,15 @@
         "rag-2020-hybrid-dpr-bart-index",
         "rag-2020-decoding-and-retrieval-budgets",
         "rag-2020-generation-and-classification-results",
-        "rag-2020-diversity-results"
+        "rag-2020-diversity-results",
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales",
+        "bart-2020-task-adaptation-routes",
+        "bart-2020-target-side-translation-adapter",
+        "bart-2020-summarization-results-and-version-baseline",
+        "bart-2020-other-generation-and-translation-results",
+        "bart-2020-hallucination-and-task-limitations",
+        "bart-2020-release-and-reproduction-boundary"
       ],
       "uncertainties": [
         {
@@ -16560,7 +16802,8 @@
         "radford-2019-gpt-continuity-and-model-changes",
         "yang-2019-target-aware-two-stream-attention",
         "liu-2019-predecessor-and-scope-boundary",
-        "raffel-2020-encoder-decoder-architecture"
+        "raffel-2020-encoder-decoder-architecture",
+        "bart-2020-transformer-architecture-and-scales"
       ],
       "uncertainties": [
         {
@@ -16611,7 +16854,8 @@
         "radford-2019-gpt-continuity-and-model-changes",
         "yang-2019-target-aware-two-stream-attention",
         "liu-2019-predecessor-and-scope-boundary",
-        "raffel-2020-encoder-decoder-architecture"
+        "raffel-2020-encoder-decoder-architecture",
+        "bart-2020-transformer-architecture-and-scales"
       ],
       "uncertainties": [
         {
@@ -16970,7 +17214,9 @@
         "liu-2019-implementation-and-length-schedule",
         "liu-2019-aggregate-roberta-recipe",
         "realm-2020-dense-retriever-and-knowledge-encoder",
-        "realm-2020-initialization-and-supervision-boundary"
+        "realm-2020-initialization-and-supervision-boundary",
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales"
       ],
       "uncertainties": [
         {
@@ -17240,7 +17486,8 @@
         "kaplan-2020-webtext2-construction-tokenization-and-reserve",
         "brown-2020-gpt2-architecture-inheritance",
         "brown-2020-context-tokenizer-and-packed-sequences",
-        "brown-2020-artifact-and-reproducibility-boundary"
+        "brown-2020-artifact-and-reproducibility-boundary",
+        "bart-2020-large-pretraining-recipe-and-data"
       ],
       "uncertainties": [
         {
@@ -17541,6 +17788,85 @@
           "note": "The definition is source-specific: it omits embeddings, biases, other sub-leading terms, and context-dependent attention work, so it is not interchangeable with total parameter count or measured hardware FLOPs."
         }
       ]
+    },
+    {
+      "id": "bidirectional-autoregressive-sequence-denoising",
+      "name": "Bidirectional–autoregressive sequence denoising",
+      "kind": "mechanism",
+      "description": "A corrupted sequence is read with bidirectional self-attention and reconstructed by a source-conditioned left-to-right decoder, joining whole-input understanding to autoregressive generation in one pretrained model.",
+      "claimIds": [
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales",
+        "bart-2020-task-adaptation-routes",
+        "bart-2019-version-and-proceedings-boundary",
+        "bart-2020-large-pretraining-recipe-and-data",
+        "bart-2020-discriminative-understanding-results",
+        "bart-2020-summarization-results-and-version-baseline",
+        "bart-2020-xsum-human-evaluation",
+        "bart-2020-release-and-reproduction-boundary",
+        "bart-2020-artifact-data-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "full-sequence-denoising-reconstruction",
+      "name": "Full-sequence denoising reconstruction",
+      "kind": "objective",
+      "description": "Training predicts every token of the original sequence from a corrupted input, so loss covers intact as well as damaged positions and supports corruptions that change sequence length.",
+      "claimIds": [
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-controlled-objective-study-design",
+        "bart-2020-composable-corruption-functions"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "span-infilling-length-reconstruction",
+      "name": "Span infilling with hidden length",
+      "kind": "mechanism",
+      "description": "Sampled spans are replaced by one mask symbol irrespective of span length, requiring reconstruction of both the missing content and how many tokens were removed; zero-length spans act as insertions.",
+      "claimIds": [
+        "bart-2020-composable-corruption-functions",
+        "bart-2020-controlled-objective-results",
+        "bart-2020-large-pretraining-recipe-and-data"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "sentence-permutation-denoising",
+      "name": "Sentence-permutation denoising",
+      "kind": "mechanism",
+      "description": "A document-level corruption shuffles sentence order before reconstruction, testing whether the model can recover discourse-scale ordering rather than only local token content.",
+      "claimIds": [
+        "bart-2020-composable-corruption-functions",
+        "bart-2020-controlled-objective-results",
+        "bart-2020-large-pretraining-recipe-and-data"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "target-side-monolingual-sequence-transfer",
+      "name": "Target-side monolingual sequence transfer",
+      "kind": "mechanism",
+      "description": "A pretrained monolingual encoder–decoder is reused on the target side of translation by attaching a new source encoder, first training the interface while most pretrained parameters stay fixed and then tuning the complete system.",
+      "claimIds": [
+        "bart-2020-target-side-translation-adapter",
+        "bart-2020-other-generation-and-translation-results"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "denoising-objective-task-dependence",
+      "name": "Denoising-objective task dependence",
+      "kind": "finding",
+      "description": "No pretraining corruption dominates every evaluation: objective rankings change between extractive understanding and multiple generation tasks, and multi-factor replicas limit causal interpretation.",
+      "claimIds": [
+        "bart-2020-controlled-objective-study-design",
+        "bart-2020-controlled-objective-results",
+        "bart-2020-hallucination-and-task-limitations",
+        "bart-2020-xsum-human-evaluation"
+      ],
+      "uncertainties": []
     },
     {
       "id": "autoregressive-transformer-loss-scaling",
@@ -24108,11 +24434,12 @@
         "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
         "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
         "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering",
-        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering"
+        "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering",
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
       ],
       "title": "ACL Anthology copyright and licensing policy",
       "url": "https://aclanthology.org/faq/copyright/",
-      "accessDate": "2026-09-03",
+      "accessDate": "2026-09-05",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
@@ -24121,7 +24448,8 @@
         "devlin-2019-naacl-version",
         "dai-2019-acl-version",
         "orqa-2019-acl-version",
-        "dpr-2020-emnlp-version"
+        "dpr-2020-emnlp-version",
+        "bart-2020-acl-version"
       ],
       "supports": [
         "metadata",
@@ -24132,7 +24460,7 @@
         "pageStart": 1,
         "pageEnd": 1
       },
-      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the six bound ACL, NAACL, or EMNLP proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
+      "accessNote": "The Anthology policy states that materials published from 2016 onward are licensed CC BY 4.0 while excluding third-party material. That status applies to the seven bound ACL, NAACL, or EMNLP proceedings articles and is not extended to arXiv manuscripts, datasets, pretrained weights, code, or other externally supplied content."
     },
     {
       "id": "orqa-2019-arxiv-record",
@@ -24736,7 +25064,8 @@
     {
       "id": "liu-2019-arxiv-v1-full-text",
       "relatedWorkIds": [
-        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+        "liu-2019-roberta-robustly-optimized-bert-pretraining-approach",
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
       ],
       "title": "Immutable RoBERTa arXiv version 1 full text",
       "url": "https://arxiv.org/pdf/1907.11692v1",
@@ -25356,6 +25685,299 @@
         "pageEnd": 1305
       },
       "accessNote": "The peer-reviewed EMNLP 2021 audit examines a released C4 instance, exact benchmark-text matches, source composition, and blocklist effects. It provides later empirical context and does not reconstruct the exact bytes used by the original T5 checkpoints."
+    },
+    {
+      "id": "bart-2019-arxiv-record",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "arXiv record for BART",
+      "url": "https://arxiv.org/abs/1910.13461",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bart-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official record supplies the sole v1 timestamp, arXiv identifiers, author form Ves Stoyanov, subject classes, and the linked non-exclusive distribution license."
+    },
+    {
+      "id": "bart-2019-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Immutable BART arXiv v1 full text",
+      "url": "https://arxiv.org/pdf/1910.13461v1",
+      "accessDate": "2026-09-05",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bart-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The complete ten-page ordering manuscript has SHA-256 c884c393e817e408e581a3ac219263f54e086b0703e0b079e41c2f2e71f63195. Structural anchors control version-specific evidence because the preprint has no printed folios."
+    },
+    {
+      "id": "bart-2019-arxiv-license",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the BART record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bart-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The terms authorize arXiv to distribute the deposit and are not a general public-reuse license for the article, software, weights, datasets, or benchmark derivatives."
+    },
+    {
+      "id": "bart-2019-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Immutable BART arXiv v1 source package",
+      "url": "https://arxiv.org/src/1910.13461v1",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bart-2019-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The publication source archive has SHA-256 63fd1d20c4f58c3a01698805d2f067c5917bb1a723fc29a8602727377ba4d690; extracted main.tex has SHA-256 69f1c42d65a6cce53a4174ee6e570ed1533d2b4e929fdbae22fd19929ec65032. It supports source-level version comparison, not experiment reconstruction."
+    },
+    {
+      "id": "bart-2020-acl-record",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "ACL Anthology record for BART",
+      "url": "https://aclanthology.org/2020.acl-main.703/",
+      "accessDate": "2026-09-05",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official record supplies canonical authorship with Veselin Stoyanov, ACL 2020 venue metadata, Online publication place, July bibliographic month, pp. 7871–7880, Anthology ID 2020.acl-main.703, and DOI 10.18653/v1/2020.acl-main.703."
+    },
+    {
+      "id": "bart-2020-acl-full-text",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Canonical ACL 2020 article for BART",
+      "url": "https://aclanthology.org/2020.acl-main.703.pdf",
+      "accessDate": "2026-09-05",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 7871,
+        "pageEnd": 7880
+      },
+      "accessNote": "The complete ten-page canonical article has SHA-256 3562c723fe7bebb8b362533122b3ca5c065037c8e8d67460654cf3740652bb59. Printed folios 7871–7880 control canonical claim locators; rendered pages 7871, 7875, 7877, and 7878 were visually inspected."
+    },
+    {
+      "id": "bart-2020-acl-publication-date",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Official ACL 2020 proceedings publication schedule",
+      "url": "https://acl2020.org/calls/papers/",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official call for papers declares 19 June 2020 as the proceedings publication date. This is distinct from the article's July bibliographic month and the 5–10 July online conference span."
+    },
+    {
+      "id": "bart-2019-fairseq-initial-release",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Immutable initial fairseq BART release commit",
+      "url": "https://github.com/facebookresearch/fairseq/commit/a92bcdad5a0dea6a440cc92976e4166811b16671",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bart-2019-arxiv-v1-version",
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 9 November 2019 commit is the initial public BART code and model release. Its own message says the release still needs cleanup, instructions, and reproducibility checking; the launch README lists large and MNLI checkpoints at rounded 400M scale."
+    },
+    {
+      "id": "bart-2020-fairseq-paper-era-readme",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Immutable pre-publication fairseq BART README",
+      "url": "https://github.com/facebookresearch/fairseq/blob/be5313acc7856e69a4d91aa804bca254cc2886c2/examples/bart/README.md",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 27 May 2020 path snapshot is the latest BART README revision before the official proceedings date and has SHA-256 f5b37460783a052f528bcab6498a9292775c43a955cfa3326bd048943ff0f50c. It lists 140M base and 400M large, MNLI, CNN/DailyMail, and XSum checkpoints plus usage and evaluation instructions."
+    },
+    {
+      "id": "bart-2020-fairseq-paper-era-model",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Immutable pre-publication fairseq BART model configuration",
+      "url": "https://github.com/facebookresearch/fairseq/blob/be5313acc7856e69a4d91aa804bca254cc2886c2/fairseq/models/bart/model.py",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned implementation file has SHA-256 0ca0f2bb4ecd2eb7435100aca8c444aaa7df71d5f30b2437132872eff07cd15c. It records released base and large architecture defaults; these are implementation evidence rather than an exact binding for every paper experiment."
+    },
+    {
+      "id": "bart-2020-fairseq-paper-era-summarization",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "Immutable pre-publication fairseq BART summarization recipe",
+      "url": "https://github.com/facebookresearch/fairseq/blob/be5313acc7856e69a4d91aa804bca254cc2886c2/examples/bart/README.summarization.md",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned official reproduction recipe provides optimizer, schedule, and task-specific generation commands. Its CNN/DailyMail beam four and XSum beam six differ from the paper's general beam-five statement, so it is retained as artifact-specific evidence rather than silently substituted for the exact paper run."
+    },
+    {
+      "id": "bart-2020-fairseq-license",
+      "relatedWorkIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "title": "MIT license for the pinned fairseq BART software tree",
+      "url": "https://github.com/facebookresearch/fairseq/blob/be5313acc7856e69a4d91aa804bca254cc2886c2/LICENSE",
+      "accessDate": "2026-09-05",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bart-2019-arxiv-v1-version",
+        "bart-2020-acl-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned MIT text has SHA-256 52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85. The initial top-level fairseq README explicitly applies MIT to source code and pretrained models; the terms do not license the articles, training corpora, benchmarks, dependencies, or third-party objects, and the original model endpoints lack published cryptographic hashes."
     },
     {
       "id": "kaplan-2020-arxiv-record",
@@ -47373,6 +47995,606 @@
       "checkedDate": "2026-08-28"
     },
     {
+      "id": "bart-2019-version-and-proceedings-boundary",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising"
+      ],
+      "statement": "BART has one arXiv revision, posted 29 October 2019, and a distinct canonical ACL 2020 proceedings article officially published 19 June with July bibliographic metadata. The camera-ready article keeps BART's reported scores but replaces the approximately six-ROUGE XSum headline with about 3.5 after adding RoBERTaShare, adds XSum human evaluation, explicitly generalizes the arXiv version's unsupported-claim example into the model's main qualitative limitation, and uses Veselin Stoyanov in ACL metadata while both title pages print Ves Stoyanov.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2019-arxiv-record",
+          "locator": {
+            "label": "Single-revision preprint ledger",
+            "section": "Submission history"
+          },
+          "support": "The official record contains only arXiv v1, posted 29 October 2019, and names Ves Stoyanov."
+        },
+        {
+          "sourceId": "bart-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Ordering-version headline and comparator",
+            "section": "Abstract; 5.3 Generation Tasks, Summarization",
+            "table": "3"
+          },
+          "support": "The ordering manuscript headlines an approximately six-ROUGE gain and compares unchanged BART XSum scores chiefly against BERTSUMEXTABS."
+        },
+        {
+          "sourceId": "bart-2020-acl-record",
+          "locator": {
+            "label": "Canonical ACL identity",
+            "section": "Bibliographic metadata"
+          },
+          "support": "The publisher record supplies the full canonical author form, July bibliographic month, pages, venue, and DOI."
+        },
+        {
+          "sourceId": "bart-2020-acl-publication-date",
+          "locator": {
+            "label": "Official proceedings date",
+            "section": "Important Dates"
+          },
+          "support": "The conference's official publication schedule declares 19 June 2020 for the proceedings."
+        },
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Camera-ready additions and revised headline",
+            "section": "Abstract; 5.3 Generation Tasks, Summarization; 6 Qualitative Analysis",
+            "pageStart": 7871,
+            "pageEnd": 7878,
+            "table": "4–5 and 9"
+          },
+          "support": "The canonical article adds RoBERTaShare and human preference results while preserving the BART result rows; unlike the arXiv version, it explicitly generalizes the already-present unsupported-claim example into the model's main qualitative limitation."
+        }
+      ],
+      "limitations": [
+        "The stronger-baseline explanation for the headline change is an inference from the official tables; it is not stated as a revision note by the authors.",
+        "The June publication date, July bibliographic month, and July conference dates are separate date concepts rather than contradictory timestamps."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-conditional-denoising-objective",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "full-sequence-denoising-reconstruction",
+        "source-conditioned-autoregressive-decoding",
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "BART corrupts a document, encodes the corrupted sequence bidirectionally, and trains a left-to-right decoder to minimize cross-entropy for the complete original sequence. A faithful editorial formalization is −Σₜ log pθ(xₜ | x<t, g(x)); unlike masked-token prediction, the loss covers every original position and permits corruptions that change length.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Denoising sequence-to-sequence objective",
+            "section": "1 Introduction; 2 Model; 2.2 Pre-training BART; 7 Related Work",
+            "pageStart": 7871,
+            "pageEnd": 7879,
+            "figure": "1"
+          },
+          "support": "The paper states the corruption-to-original training path, bidirectional encoder, autoregressive decoder, original-document negative log likelihood, and prediction of the full output sequence."
+        }
+      ],
+      "limitations": [
+        "The displayed factorization is a faithful editorial rendering of the prose, not an equation printed by the authors.",
+        "The decoder receives uncorrupted preceding target tokens under teacher forcing; this objective alone does not guarantee factual grounding at inference."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-transformer-architecture-and-scales",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "source-conditioned-autoregressive-decoding",
+        "deep-bidirectional-transformer-pretraining"
+      ],
+      "statement": "BART uses a standard Transformer encoder–decoder with decoder cross-attention, changes ReLU to GELU, initializes parameters from N(0, 0.02), and removes BERT's extra feed-forward layer before word prediction; an equivalent-sized model has about 10% more parameters than BERT. Paper base and large configurations use 6+6 layers with hidden size 768 and 12+12 with hidden size 1024, while the pinned release records 12/16 heads and 3072/4096 feed-forward widths for base/large and rounds checkpoints to 140M/400M parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Paper architecture and scale",
+            "section": "2.1 Architecture; 4 Comparing Pre-training Objectives; 5.1 Experimental Setup",
+            "pageStart": 7872,
+            "pageEnd": 7876
+          },
+          "support": "The article identifies the standard sequence-to-sequence Transformer, cross-attention, GELU, initialization, BERT difference, parameter overhead, layer counts, and hidden sizes."
+        },
+        {
+          "sourceId": "bart-2020-fairseq-paper-era-model",
+          "locator": {
+            "label": "Released base and large architecture defaults",
+            "section": "bart_base_architecture and bart_large_architecture"
+          },
+          "support": "The pinned implementation supplies released head counts, feed-forward widths, shared embeddings, learned positions, dropout, and normalization defaults."
+        },
+        {
+          "sourceId": "bart-2020-fairseq-paper-era-readme",
+          "locator": {
+            "label": "Released checkpoint scale labels",
+            "section": "Pre-trained models"
+          },
+          "support": "The paper-era README labels base as 140M and large-family checkpoints as 400M."
+        }
+      ],
+      "limitations": [
+        "Implementation defaults document the released model family but do not bind every setting to every controlled or downstream paper run.",
+        "The paper's approximately 10% parameter comparison is architectural prose, not a complete parameter-accounting table."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-composable-corruption-functions",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "full-sequence-denoising-reconstruction",
+        "span-infilling-length-reconstruction",
+        "sentence-permutation-denoising"
+      ],
+      "statement": "BART evaluates five composable corruptions: token masking, token deletion, text infilling, sentence permutation, and document rotation. Infilling samples span lengths from Poisson λ=3 and replaces each span with one mask, including zero-length spans that insert masks; sentence permutation shuffles full-stop-delimited sentences, while rotation chooses a token uniformly and makes it the document start.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Five noising transformations",
+            "section": "2.2 Pre-training BART",
+            "pageStart": 7872,
+            "pageEnd": 7873,
+            "figure": "2"
+          },
+          "support": "The article defines each corruption, the Poisson span distribution, one-mask collapse, zero-length insertion case, full-stop sentence split, and uniform document rotation."
+        }
+      ],
+      "limitations": [
+        "The paper does not report every corruption rate used for the controlled BART rows, and its full-stop sentence splitter is an implementation choice rather than a language-universal sentence definition."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-task-adaptation-routes",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "For sequence classification, BART feeds the same sequence to encoder and decoder, appends a token so its final decoder state can attend to the complete sequence, and applies a new linear classifier. Token classification labels each top decoder state, while sequence generation directly fine-tunes the input-to-output mapping with label-smoothed cross-entropy, beam search, duplicate-trigram blocking, and validation-tuned length controls.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Classification, tagging, and generation adapters",
+            "section": "3 Fine-tuning BART; 5.3 Generation Tasks",
+            "pageStart": 7873,
+            "pageEnd": 7877,
+            "figure": "3"
+          },
+          "support": "The paper specifies the sequence-level endpoint token and classifier, token-level decoder states, direct sequence fine-tuning, smoothing, beam, trigram blocking, and tuned length settings."
+        }
+      ],
+      "limitations": [
+        "The paper's general beam-five statement conflicts with task-specific official release commands and is preserved separately from those artifact recipes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-target-side-translation-adapter",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "target-side-monolingual-sequence-transfer",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "For translation into English, BART replaces the source embedding path with a randomly initialized six-layer source encoder that may use a disjoint vocabulary. Stage one updates that encoder plus BART positional embeddings and the input projection of BART encoder layer 1 self-attention while freezing most BART parameters; stage two briefly fine-tunes all parameters, so the paper's “Fixed BART” label does not mean every BART parameter stayed fixed.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Two-stage source-encoder adaptation",
+            "section": "3.4 Machine Translation; 5.4 Translation",
+            "pageStart": 7873,
+            "pageEnd": 7877,
+            "figure": "3b",
+            "table": "8"
+          },
+          "support": "The article defines the replacement encoder, potentially disjoint vocabulary, exact stage-one trainable interface, stage-two full tuning, and Fixed/Tuned BART result labels."
+        }
+      ],
+      "limitations": [
+        "The new source encoder is not evidence that BART was bilingually pretrained; transfer is target-side and the reported system also relies on back-translation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-controlled-objective-study-design",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "full-sequence-denoising-reconstruction",
+        "denoising-objective-task-dependence"
+      ],
+      "statement": "The objective comparison trains base-size 6+6-layer, 768-hidden models for one million steps on the same BooksCorpus-plus-Wikipedia data and uses a shared code and fine-tuning framework for the replicated-objective and BART rows. Control remains incomplete: learning rate and layer normalization are tuned separately, predecessors are simplified, the XLNet-like replica omits relative positions and recurrence, adaptation format differs by family, and the published BERT row is a reference rather than a controlled run.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Controlled-objective protocol and confounds",
+            "section": "4 Comparing Pre-training Objectives; 4.1 Comparison Objectives",
+            "pageStart": 7873,
+            "pageEnd": 7875,
+            "table": "1"
+          },
+          "support": "The article states common scale, steps, data, code, and fine-tuning intent, then discloses per-objective tuning, simplified replicas, omitted XLNet mechanisms, differing adaptation, and the published BERT comparator."
+        }
+      ],
+      "limitations": [
+        "Only the replicated-objective and BART blocks are approximately controlled; the design cannot isolate every architecture, objective, optimization, and adaptation factor.",
+        "The paper reports no repeated-seed uncertainty or error bars for the objective matrix."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-controlled-objective-results",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "span-infilling-length-reconstruction",
+        "sentence-permutation-denoising",
+        "denoising-objective-task-dependence"
+      ],
+      "statement": "Table 1 reports SQuAD F1/MNLI accuracy/ELI5, XSum, ConvAI2, CNN-DailyMail perplexity as follows: BERT Base reference 88.5/84.3/—/—/—/—; Masked LM 90.0/83.5/24.77/7.87/12.59/7.06; Masked Seq2Seq 87.0/82.1/23.40/6.80/11.43/6.19; Language Model 76.7/80.1/21.40/7.00/11.51/6.56; Permuted LM 89.1/83.7/24.03/7.69/12.23/6.96; Multitask Masked LM 89.2/82.4/23.73/7.50/12.39/6.74; BART masking 90.4/84.1/25.05/7.08/11.73/6.10; deletion 90.4/84.1/24.61/6.90/11.46/5.87; infilling 90.8/84.0/24.26/6.61/11.05/5.83; rotation 77.2/75.3/53.69/17.14/19.87/10.59; sentence shuffling 85.4/81.5/41.87/10.93/16.67/7.89; and infilling plus shuffling 90.8/83.8/24.17/6.62/11.12/5.41.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Complete controlled objective matrix",
+            "section": "4.2 Tasks; 4.3 Results",
+            "pageStart": 7874,
+            "pageEnd": 7875,
+            "table": "1"
+          },
+          "support": "Table 1 prints every promoted cell and the surrounding text interprets the task-dependent objective behavior."
+        }
+      ],
+      "limitations": [
+        "Higher is better only for SQuAD and MNLI; lower is better for the four perplexities.",
+        "The pure language model wins ELI5, deletion beats token masking on every listed generation perplexity, rotation and sentence shuffling are weak alone, and the combined corruption is uniquely best on CNN/DailyMail while tying infilling for best SQuAD F1; no row dominates every task.",
+        "Author interpretations about bidirectionality and left-to-right pretraining arise from multi-factor comparisons rather than isolated architecture ablations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-large-pretraining-recipe-and-data",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "span-infilling-length-reconstruction",
+        "sentence-permutation-denoising",
+        "byte-level-byte-pair-tokenization"
+      ],
+      "statement": "Large BART uses 12 encoder and 12 decoder layers with hidden size 1024, a batch reported only as 8,000, 500,000 steps, the GPT-2 byte-pair tokenizer, 30% token masking through text infilling, permutation of all sentences, and dropout disabled for the final 10% of training. It says it uses the same roughly 160GB corpus as RoBERTa; joining that citation to RoBERTa yields BookCorpus plus Wikipedia 16GB, CC-News 76GB, OpenWebText 38GB, and Stories 31GB.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Large-model recipe and referenced corpus",
+            "section": "5.1 Experimental Setup",
+            "pageStart": 7875,
+            "pageEnd": 7876
+          },
+          "support": "The BART article prints the topology, batch, steps, tokenizer, corruption mixture, masking rate, dropout boundary, and same-data-as-RoBERTa statement."
+        },
+        {
+          "sourceId": "liu-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "RoBERTa corpus expansion cited by BART",
+            "section": "3.2 Data"
+          },
+          "support": "The cited RoBERTa source enumerates and sizes the four corpus groups behind its more-than-160GB training mixture."
+        }
+      ],
+      "limitations": [
+        "The four-corpus expansion is cross-paper provenance, not detail restated by BART.",
+        "The unit behind batch 8,000 is not specified, and the paper omits pretraining optimizer, schedule, warmup, weight decay, actual sequence length, hardware, runtime, seeds, and run counts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-discriminative-understanding-results",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising"
+      ],
+      "statement": "For large models, BART reports GLUE values MNLI-m/mm 89.9/90.1, SST 96.6, QQP 92.5, QNLI 94.9, STS-B 91.2, RTE 87.0, MRPC 90.4, and CoLA 62.8, compared with RoBERTa's 90.2/90.2, 96.4, 92.2, 94.7, 92.4, 86.6, 90.9, and 68.0. On SQuAD 1.1/2.0 BART reports 88.8/94.6 and 86.1/89.2 EM/F1 versus RoBERTa's 88.9/94.6 and 86.5/89.4.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "GLUE and SQuAD matrices",
+            "section": "5.2 Discriminative Tasks",
+            "pageStart": 7876,
+            "pageEnd": 7876,
+            "table": "2–3"
+          },
+          "support": "Tables 2 and 3 print the BART and RoBERTa large-model GLUE and SQuAD results."
+        }
+      ],
+      "limitations": [
+        "Comparable aggregate behavior does not mean BART matches RoBERTa on every task, and the paper anomalously labels STS-B as accuracy rather than documenting its usual correlation metric.",
+        "The comparison does not isolate architecture from all pretraining and fine-tuning choices and reports no uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-summarization-results-and-version-baseline",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "Canonical Table 4 reports BART ROUGE-1/2/L of 44.16/21.28/40.90 on CNN/DailyMail and 45.14/22.27/37.25 on XSum. The displayed CNN/DailyMail UniLM row is 43.33/20.21/40.51; ACL's added XSum RoBERTaShare row is 41.45/18.79/33.90, making BART's displayed gains 3.69/3.48/3.35, whereas arXiv v1 compared against BERTSUMEXTABS 38.81/16.50/31.27 and headlined roughly six.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Canonical summarization results and stronger XSum baseline",
+            "section": "5.3 Generation Tasks, Summarization",
+            "pageStart": 7876,
+            "pageEnd": 7877,
+            "table": "4"
+          },
+          "support": "Table 4 prints the canonical BART, UniLM, and RoBERTaShare result rows and the text states the revised approximately 3.5-ROUGE headline."
+        },
+        {
+          "sourceId": "bart-2019-arxiv-v1-full-text",
+          "locator": {
+            "label": "Ordering-version XSum comparator",
+            "section": "5.3 Generation Tasks, Summarization",
+            "table": "3"
+          },
+          "support": "The arXiv table prints the same BART scores but uses BERTSUMEXTABS as the strongest displayed XSum comparator behind the earlier headline."
+        }
+      ],
+      "limitations": [
+        "The comparator rows come from cited systems rather than one controlled rerun, and no repeated-run uncertainty is reported.",
+        "The numerical explanation of the changed headline is an inference from the versioned tables."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-xsum-human-evaluation",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "denoising-objective-task-dependence"
+      ],
+      "statement": "In the ACL-only XSum human evaluation, BART is preferred over BERTSUMEXTABS 73% to 27%, a difference the authors call statistically significant, while human reference summaries are preferred over BART 67% to 33%. The article does not state that the reference comparison is significant and reports no sample size, rater count or agreement, or statistical test.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "XSum human preference results",
+            "section": "5.3 Generation Tasks, Summarization",
+            "pageStart": 7877,
+            "pageEnd": 7877,
+            "table": "5"
+          },
+          "support": "Table 5 prints both two-way preference comparisons; the accompanying prose calls only BART's improvement over previous work statistically significant."
+        }
+      ],
+      "limitations": [
+        "The paper does not disclose the sample size, rater count or agreement, or statistical test, preventing reconstruction of uncertainty and annotator consistency from the printed percentages.",
+        "Human references remain preferred, so the result is not evidence of human-level summarization."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-other-generation-and-translation-results",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "source-conditioned-autoregressive-decoding",
+        "target-side-monolingual-sequence-transfer"
+      ],
+      "statement": "BART reports ConvAI2 validation F1 20.72 and perplexity 11.85 versus the displayed best system's 19.09/17.51; ELI5 ROUGE-1/2/L 30.6/6.2/24.3 versus Seq2Seq Multitask 28.9/5.4/23.1; and WMT16 Romanian-to-English BLEU 36.80 for the back-translation baseline, 36.29 for Fixed BART, and 37.96 for Tuned BART. The translation prose calls the tuned gain +1.1, while arithmetic on printed values is +1.16.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Dialogue, long-form answer, and translation results",
+            "section": "5.3 Generation Tasks; 5.4 Translation",
+            "pageStart": 7877,
+            "pageEnd": 7877,
+            "table": "6–8"
+          },
+          "support": "Tables 6–8 print the ConvAI2, ELI5, and Romanian-to-English rows and the translation discussion supplies back-translation and overfitting context."
+        }
+      ],
+      "limitations": [
+        "ConvAI2 perplexity is renormalized with the official tokenizer, comparator systems differ, and the ELI5 input weakly constrains output.",
+        "Romanian-to-English uses back-translation; preliminary training without it was weaker and prone to overfitting, and no uncertainty is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-hallucination-and-task-limitations",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "denoising-objective-task-dependence",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The paper identifies BART's main qualitative weakness as hallucinating information unsupported by the input, illustrated by a generated claim that a work was published in Science. It also notes weakly constrained ELI5 generation, preliminary translation overfitting without back-translation, significant additive sentence-permutation benefit only on CNN/DailyMail at base scale, and leaves improved or task-tailored corruptions to future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Explicit failure cases and scope limits",
+            "section": "5.1 Experimental Setup; 5.3 Generation Tasks; 5.4 Translation; 6 Qualitative Analysis; 8 Conclusions",
+            "pageStart": 7875,
+            "pageEnd": 7879,
+            "table": "9"
+          },
+          "support": "The article states each limitation, gives the unsupported Science example, and frames corruption design as open work."
+        }
+      ],
+      "limitations": [
+        "The selected outputs and task-specific observations do not estimate hallucination prevalence or establish a universal failure rate.",
+        "The sentence-permutation significance statement lacks a reported statistical procedure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-release-and-reproduction-boundary",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "source-conditioned-autoregressive-decoding"
+      ],
+      "statement": "The initial official fairseq BART release arrived 9 November 2019 and described itself as needing cleanup, instructions, and reproducibility checks. A 27 May 2020 path snapshot supplies base and large checkpoints, released architecture defaults, evaluation commands, and a summarization recipe, but its CNN/DailyMail beam four and XSum beam six differ from the paper's general beam five; these artifact settings are not treated as an exact manifest for every paper run.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bart-2019-fairseq-initial-release",
+          "locator": {
+            "label": "Initial public release boundary",
+            "section": "Commit message and added BART tree"
+          },
+          "support": "The initial release date and its own incomplete-cleanup and reproducibility warning are preserved by the immutable commit."
+        },
+      {
+        "sourceId": "bart-2020-fairseq-paper-era-readme",
+          "locator": {
+            "label": "Paper-era checkpoint and evaluation surface",
+            "section": "Pre-trained models; Example usage"
+          },
+          "support": "The pinned README lists base, large, MNLI, CNN/DailyMail, and XSum checkpoints with evaluation examples."
+        },
+        {
+          "sourceId": "bart-2020-fairseq-paper-era-model",
+          "locator": {
+            "label": "Released architecture defaults",
+            "section": "bart_base_architecture; bart_large_architecture"
+          },
+          "support": "The pinned model configuration supplies the released base and large architecture defaults named in the claim."
+        },
+        {
+          "sourceId": "bart-2020-fairseq-paper-era-summarization",
+          "locator": {
+            "label": "Official recipe and decoding conflict",
+            "section": "Fine-tuning and evaluation commands"
+          },
+          "support": "The recipe supplies optimizer and schedule details plus task-specific generation beams that conflict with the paper's general statement."
+        },
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Paper generation beam",
+            "section": "5.3 Generation Tasks, Summarization",
+            "pageStart": 7876,
+            "pageEnd": 7876
+          },
+          "support": "The canonical article states beam size five for the generation experiments."
+        }
+      ],
+      "limitations": [
+        "No official release tag, complete dependency lock, corpus-byte manifest, checkpoint-to-run ledger, hardware record, seed set, or human-evaluation artifact binds the full study.",
+        "Later fairseq states and checkpoints are not projected backward into the 2019 ordering manuscript or exact ACL experiments."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
+      "id": "bart-2020-artifact-data-and-rights-boundary",
+      "workId": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining",
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising"
+      ],
+      "statement": "The ACL article is covered by ACL's post-2016 CC BY 4.0 policy subject to third-party exclusions; arXiv's terms authorize repository distribution rather than general reuse; and the fairseq release applies MIT to source code and its advertised pretrained models. Those terms do not license BooksCorpus, Wikipedia, CC-News, OpenWebText, Stories, benchmarks, dependencies, or third-party material, while the original model endpoints lack published cryptographic hashes needed to prove current objects are bit-identical to the 2019 release.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "acl-2016-plus-rights-policy",
+          "locator": {
+            "label": "Canonical article rights",
+            "section": "Copyright and licensing policy"
+          },
+          "support": "The publisher applies CC BY 4.0 to post-2016 ACL materials while excluding third-party material."
+        },
+        {
+          "sourceId": "bart-2019-arxiv-license",
+          "locator": {
+            "label": "Preprint distribution terms",
+            "section": "Non-exclusive distribution license"
+          },
+          "support": "The record-linked terms grant arXiv distribution rights rather than a downstream umbrella reuse license."
+        },
+        {
+          "sourceId": "bart-2020-fairseq-license",
+          "locator": {
+            "label": "Fairseq license text",
+            "section": "MIT License"
+          },
+          "support": "The pinned fairseq tree carries MIT terms without purporting to license external articles, corpora, benchmarks, dependencies, or third-party material."
+        },
+        {
+          "sourceId": "bart-2019-fairseq-initial-release",
+          "locator": {
+            "label": "Pretrained-model license and artifact identity boundary",
+            "section": "Top-level README licensing statement; BART README model links"
+          },
+          "support": "The initial tree says source code and pretrained models are MIT-licensed and names the BART downloads, but supplies no published object digests."
+        }
+      ],
+      "limitations": [
+        "Absence of one umbrella grant does not determine every external object's status; reuse requires source-specific provenance and terms review."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-05"
+    },
+    {
       "id": "kaplan-2020-version-and-scope-boundary",
       "workId": "kaplan-2020-scaling-laws-neural-language-models",
       "ideaIds": [
@@ -49047,7 +50269,7 @@
           "locator": {
             "label": "DPR retriever and BART generator",
             "section": "1 Introduction; 2.2 Retriever: DPR; 2.3 Generator: BART",
-            "pageStart": 2,
+          "pageStart": 1,
             "pageEnd": 3,
             "figure": "1"
           },
@@ -49055,10 +50277,10 @@
         }
       ],
       "limitations": [
-        "BART remains a local substrate because it is not separately promoted; DPR is represented by a qualified edge limited to the target-documented retriever and index boundary, not by name alone."
+        "DPR is represented by a qualified edge limited to the target-documented retriever and index; BART is represented by a separate qualified edge limited to the target-documented generator substrate. Neither edge transfers source-side task results, artifacts, data, or rights."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-09-02"
+      "checkedDate": "2026-09-05"
     },
     {
       "id": "rag-2020-sequence-level-marginalization",
@@ -57036,6 +58258,205 @@
       ]
     },
     {
+      "id": "vaswani-2017-to-lewis-2019-bart",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BART explicitly uses the standard Transformer sequence-to-sequence architecture: bidirectional encoder self-attention, causal decoder self-attention, encoder–decoder cross-attention, feed-forward sublayers, and autoregressive target generation. The edge excludes the Transformer's translation-only framing, sinusoidal positions, original normalization and activation defaults, training recipe, benchmarks, results, and every BART-specific corruption.",
+      "claimIds": [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Target-side Transformer architecture inheritance",
+            "section": "2 Model; 2.1 Architecture",
+            "pageStart": 7872,
+            "pageEnd": 7872
+          },
+          "support": "The target calls its model a standard sequence-to-sequence Transformer, cites Vaswani et al., and identifies its decoder cross-attention and scoped deviations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is limited to the target-named architecture and does not transfer BART's objective, corruptions, data, adapters, or evidence."
+        }
+      ]
+    },
+    {
+      "id": "devlin-2018-to-lewis-2019-bart",
+      "from": {
+        "kind": "work",
+        "id": "devlin-2018-bert-pre-training-deep-bidirectional-transformers"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BART explicitly combines BERT-style bidirectional masked representation learning with autoregressive generation, uses a bidirectional Transformer encoder, and evaluates token masking while changing the target from selected masked positions to complete-sequence reconstruction. The edge excludes BERT's encoder-only topology, next-sentence objective, WordPiece procedure, pretraining recipe, task heads, data, and results.",
+      "claimIds": [
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-masked-language-model-objective",
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales",
+        "bart-2020-controlled-objective-study-design"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Target-side BERT combination and contrast",
+            "section": "1 Introduction; 2 Model; 4.1 Comparison Objectives; 7 Related Work",
+            "pageStart": 7871,
+            "pageEnd": 7879
+          },
+          "support": "The target names BERT's masked language model and bidirectional encoder as a substrate and repeatedly contrasts BART's full autoregressive reconstruction and sequence-to-sequence architecture."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge carries masked bidirectional pretraining as an explicitly named component while keeping BART's decoder, full-sequence loss, corruptions, and results target-specific."
+        }
+      ]
+    },
+    {
+      "id": "radford-2018-to-lewis-2019-bart",
+      "from": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BART's introduction explicitly pairs BERT's bidirectional masking with GPT's left-to-right language-model pretraining, and its decoder supplies the autoregressive half of that combination. BART also follows the GPT activation and initialization family, but the edge excludes GPT's decoder-only topology, BooksCorpus-only recipe, task serialization, supervised auxiliary objective, fine-tuning protocol, and results.",
+      "claimIds": [
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-pretraining-data-and-optimization",
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Target-side GPT autoregressive component",
+            "section": "1 Introduction; 2.1 Architecture; 7 Related Work",
+            "pageStart": 7871,
+            "pageEnd": 7879
+          },
+          "support": "The target names GPT's left-to-right language-model pretraining in its motivating combination and documents the autoregressive decoder, GELU, and N(0, 0.02) initialization."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is restricted to the target-documented autoregressive and implementation family; it does not assign the encoder, denoising objective, data, or downstream evidence to GPT."
+        }
+      ]
+    },
+    {
+      "id": "radford-2019-to-lewis-2019-bart",
+      "from": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BART explicitly uses the byte-pair encoding tokenizer from GPT-2 for its large training recipe. The edge is limited to that tokenizer family and excludes GPT-2's decoder-only architecture, causal objective, WebText construction, task-conditioning evaluation, model scale, results, staged releases, and release-strategy claims.",
+      "claimIds": [
+        "radford-2019-byte-level-bpe",
+        "bart-2020-large-pretraining-recipe-and-data"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Target-side GPT-2 tokenizer reuse",
+            "section": "5.1 Experimental Setup",
+            "pageStart": 7875,
+            "pageEnd": 7876
+          },
+          "support": "The target explicitly says that large BART uses the byte-pair encoding tokenizer used in GPT-2."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship transfers only the named tokenizer family and not GPT-2's architecture, corpus, scale evidence, results, or release policy."
+        }
+      ]
+    },
+    {
+      "id": "liu-2019-to-lewis-2019-bart",
+      "from": {
+        "kind": "work",
+        "id": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BART explicitly uses the same pretraining data as RoBERTa and follows its large-scale 500,000-step, batch-8,000 training envelope while placing that recipe in an encoder–decoder denoising model. The edge excludes RoBERTa's encoder-only architecture, masked-token-only objective, NSP ablations, sequence-packing study, fine-tuning protocol, benchmark results, and causal credit for BART's corruptions.",
+      "claimIds": [
+        "liu-2019-pretraining-corpora",
+        "liu-2019-aggregate-roberta-recipe",
+        "bart-2020-large-pretraining-recipe-and-data"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bart-2020-acl-full-text",
+          "locator": {
+            "label": "Target-side RoBERTa data and scale reuse",
+            "section": "5.1 Experimental Setup",
+            "pageStart": 7875,
+            "pageEnd": 7876
+          },
+          "support": "The target explicitly says it uses the same roughly 160GB pretraining data as RoBERTa and prints the matching batch and maximum-step scale."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Corpus composition is expanded through the cited RoBERTa paper; the edge keeps BART's architecture, objective, and results separate."
+        }
+      ]
+    },
+    {
       "id": "radford-2019-to-brown-2020",
       "from": {
         "kind": "work",
@@ -57496,6 +58917,46 @@
         {
           "status": "resolved",
           "note": "The edge records a documented extension of latent retrieval into generation, not identity between REALM and RAG retrievers, pretraining recipes, or task evidence."
+        }
+      ]
+    },
+    {
+      "id": "lewis-2019-bart-to-lewis-2020-rag",
+      "from": {
+        "kind": "work",
+        "id": "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      },
+      "to": {
+        "kind": "work",
+        "id": "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks"
+      },
+      "connectionType": "combines",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "RAG explicitly chooses pretrained BART-large as its encoder–decoder generator, concatenates each retrieved passage with the input, and fine-tunes the BART generator with the query encoder while holding the DPR document encoder and index fixed. The edge carries the target-named denoising-pretrained sequence generator and excludes BART's standalone corruption comparison, benchmark rows, translation adapter, artifacts, data, and rights.",
+      "claimIds": [
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales",
+        "rag-2020-hybrid-dpr-bart-index",
+        "rag-2020-training-freeze-and-supervision-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rag-2020-neurips-full-text",
+          "locator": {
+            "label": "Target-side BART generator and training boundary",
+            "section": "1 Introduction; 2.3 Generator: BART; 2.4 Training",
+            "pageStart": 1,
+            "pageEnd": 4
+          },
+          "support": "RAG names BART-large as its pretrained sequence-to-sequence generator, describes its denoising pretraining and passage concatenation, and states that fine-tuning updates BART while the document encoder and index remain fixed."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is confined to the target-documented generator substrate and training boundary; it does not transfer BART's standalone task evidence or release provenance into RAG."
         }
       ]
     }
@@ -60338,6 +61799,84 @@
         "Immutable paper and code versions, prepared-data manifests, checkpoint artifacts, and license-scope analysis"
       ],
       "successCriterion": "The learner can derive the relative-bias and span-transform computations, reproduce the promoted aggregate comparisons under their controls, keep C4 1.0.0 separate from later defaults, explain why final T5 is supervised-mixed and fine-tuned, reconcile JMLR with the v4 C4 correction, flag both unresolved table conflicts, defend the Transformer and BERT edges, and separate article, code, corpus, checkpoint, and later-audit evidence."
+    },
+    {
+      "id": "beginner-lewis-2019-repair-text-then-reuse-the-model",
+      "mode": "beginner",
+      "objective": "Repair a damaged document by reading all corrupted context and writing the original left-to-right; compare mask, delete, span-collapse, sentence-shuffle, and rotation noise; then trace how one pretrained encoder–decoder becomes a classifier, tagger, generator, translation component, and later RAG generator without equating fluency with factual grounding.",
+      "workIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "ideaIds": [
+        "bidirectional-autoregressive-sequence-denoising",
+        "full-sequence-denoising-reconstruction",
+        "span-infilling-length-reconstruction",
+        "sentence-permutation-denoising",
+        "target-side-monolingual-sequence-transfer",
+        "denoising-objective-task-dependence"
+      ],
+      "claimIds": [
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-composable-corruption-functions",
+        "bart-2020-task-adaptation-routes",
+        "bart-2020-target-side-translation-adapter",
+        "bart-2020-controlled-objective-results",
+        "bart-2020-hallucination-and-task-limitations"
+      ],
+      "prerequisites": [
+        "An encoder can read a token sequence with context from both directions",
+        "An autoregressive decoder predicts the next token from an input and an earlier target prefix",
+        "Pretraining happens before task-specific fine-tuning",
+        "A fluent output can contain information unsupported by its source"
+      ],
+      "successCriterion": "The learner can explain full-sequence denoising, distinguish the five corruption operators, identify why span collapse hides missing length, read Table 1 as task-dependent evidence, describe three adaptation routes, and flag unsupported content in the paper's qualitative example."
+    },
+    {
+      "id": "expert-lewis-2019-objectives-adapters-evidence-and-provenance",
+      "mode": "expert",
+      "objective": "Reconstruct BART's conditional autoregressive denoising factorization, architecture, corruption operators, controlled base-scale matrix, large-model recipe, downstream adapters and tables, target-side translation transfer, and BART→RAG reuse while auditing version drift, comparator and metric boundaries, missing uncertainty, paper-versus-code settings, artifact completeness, and rights scope.",
+      "workIds": [
+        "lewis-2019-bart-denoising-sequence-to-sequence-pretraining"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "source-conditioned-autoregressive-decoding",
+        "deep-bidirectional-transformer-pretraining",
+        "byte-level-byte-pair-tokenization",
+        "bidirectional-autoregressive-sequence-denoising",
+        "full-sequence-denoising-reconstruction",
+        "span-infilling-length-reconstruction",
+        "sentence-permutation-denoising",
+        "target-side-monolingual-sequence-transfer",
+        "denoising-objective-task-dependence"
+      ],
+      "claimIds": [
+        "bart-2019-version-and-proceedings-boundary",
+        "bart-2020-conditional-denoising-objective",
+        "bart-2020-transformer-architecture-and-scales",
+        "bart-2020-composable-corruption-functions",
+        "bart-2020-task-adaptation-routes",
+        "bart-2020-target-side-translation-adapter",
+        "bart-2020-controlled-objective-study-design",
+        "bart-2020-controlled-objective-results",
+        "bart-2020-large-pretraining-recipe-and-data",
+        "bart-2020-discriminative-understanding-results",
+        "bart-2020-summarization-results-and-version-baseline",
+        "bart-2020-xsum-human-evaluation",
+        "bart-2020-other-generation-and-translation-results",
+        "bart-2020-hallucination-and-task-limitations",
+        "bart-2020-release-and-reproduction-boundary",
+        "bart-2020-artifact-data-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Encoder–decoder Transformers, self-attention, cross-attention, causal masking, and teacher forcing",
+        "Masked-token prediction, autoregressive likelihood, span corruption, and sequence-length changes",
+        "Controlled comparisons, multi-factor confounding, imported baselines, metric direction, and repeated-run uncertainty",
+        "Fine-tuning interfaces, frozen-versus-trainable parameter boundaries, beam decoding, and back-translation",
+        "Immutable paper and code versions, artifact manifests, corpus provenance, checkpoint identity, and license scope"
+      ],
+      "successCriterion": "The learner can derive the denoising loss, reproduce every promoted Table 1 row and canonical downstream result, separate the six-ROUGE arXiv headline from the ACL baseline set, explain the partial Fixed-BART update and paper/code beam conflict, defend all six qualified lineage edges including BART→RAG, and state what remains unreproducible or separately licensed."
     },
     {
       "id": "beginner-kaplan-2020-three-scale-knobs-and-limits",

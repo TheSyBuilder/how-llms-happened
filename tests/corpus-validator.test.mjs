@@ -157,6 +157,262 @@ test("preserves T5 paper, C4, and lineage boundaries", () => {
   assert.ok(historicalScope.includes("The T5 family was checked on 2026-08-28"));
 });
 
+test("preserves BART versions, denoising results, rights, and RAG lineage", () => {
+  const workId =
+    "lewis-2019-bart-denoising-sequence-to-sequence-pretraining";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) => item.from.id === workId || item.to.id === workId,
+  );
+  const arxiv = work?.versions.find(
+    (item) => item.id === "bart-2019-arxiv-v1-version",
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "bart-2020-acl-version",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "bart-2020-acl-full-text",
+  );
+  const arxivLicense = corpus.sources.find(
+    (item) => item.id === "bart-2019-arxiv-license",
+  );
+  const fairseqLicense = corpus.sources.find(
+    (item) => item.id === "bart-2020-fairseq-license",
+  );
+  const aclRights = corpus.sources.find(
+    (item) => item.id === "acl-2016-plus-rights-policy",
+  );
+  const ragHybrid = corpus.claims.find(
+    (item) => item.id === "rag-2020-hybrid-dpr-bart-index",
+  );
+
+  assert.equal(corpus.works.at(-11)?.id, workId);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.chronology.orderingEventId, "bart-2019-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2019-10-29", "2020-06-19"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    ["bart-2019-arxiv-v1-version", "bart-2020-acl-version"],
+  );
+  assert.equal(work?.canonicalVersionId, "bart-2020-acl-version");
+  assert.equal(arxiv?.authors.at(-2), "Ves Stoyanov");
+  assert.equal(canonical?.authors.at(-2), "Veselin Stoyanov");
+  assert.equal(work?.authors.at(-2), "Veselin Stoyanov");
+  assert.deepEqual(canonical?.bibliography.pages, ["7871-7880"]);
+  assert.ok(
+    canonical?.bibliography.identifiers.some(
+      (item) =>
+        item.type === "doi" &&
+        item.value === "10.18653/v1/2020.acl-main.703",
+    ),
+  );
+  assert.deepEqual(canonicalText?.pagination, {
+    scheme: "printed",
+    pageStart: 7871,
+    pageEnd: 7880,
+  });
+
+  assert.equal(claims.length, 16);
+  const versionBoundary = findClaim("bart-2019-version-and-proceedings-boundary");
+  for (const value of ["six-ROUGE", "3.5", "RoBERTaShare"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  assert.match(
+    versionBoundary?.evidence.find(
+      (item) => item.sourceId === "bart-2020-acl-full-text",
+    )?.support ?? "",
+    /already-present unsupported-claim example/,
+  );
+
+  const objective = findClaim("bart-2020-conditional-denoising-objective");
+  assert.match(objective?.statement ?? "", /complete original sequence/);
+  assert.match(objective?.statement ?? "", /every original position/);
+
+  const architecture = findClaim("bart-2020-transformer-architecture-and-scales");
+  for (const value of ["6+6", "12+12", "768", "1024", "10%"])
+    assert.ok(architecture?.statement.includes(value));
+
+  const noise = findClaim("bart-2020-composable-corruption-functions");
+  for (const value of [
+    "token masking",
+    "token deletion",
+    "text infilling",
+    "sentence permutation",
+    "document rotation",
+    "Poisson λ=3",
+    "zero-length",
+  ])
+    assert.ok(noise?.statement.includes(value));
+
+  const controlled = findClaim("bart-2020-controlled-objective-results");
+  assert.ok(controlled?.statement.includes("BERT Base reference 88.5/84.3"));
+  for (const value of [
+    "76.7/80.1/21.40/7.00/11.51/6.56",
+    "90.4/84.1/24.61/6.90/11.46/5.87",
+    "90.8/84.0/24.26/6.61/11.05/5.83",
+    "90.8/83.8/24.17/6.62/11.12/5.41",
+  ])
+    assert.ok(controlled?.statement.includes(value));
+  assert.match(
+    controlled?.limitations.join(" ") ?? "",
+    /uniquely best on CNN\/DailyMail.*tying infilling for best SQuAD F1/,
+  );
+  assert.equal(
+    findClaim("bart-2020-controlled-objective-study-design")?.evidence[0]?.locator
+      .pageStart,
+    7873,
+  );
+
+  const discriminative = findClaim(
+    "bart-2020-discriminative-understanding-results",
+  );
+  assert.match(discriminative?.statement ?? "", /For large models/);
+  assert.doesNotMatch(discriminative?.statement ?? "", /single-task|SST-2/);
+  for (const value of ["89.9/90.1", "96.6", "62.8", "88.8/94.6", "86.1/89.2"])
+    assert.ok(discriminative?.statement.includes(value));
+
+  const summarization = findClaim(
+    "bart-2020-summarization-results-and-version-baseline",
+  );
+  assert.equal(
+    summarization?.evidence[0]?.locator.section,
+    "5.3 Generation Tasks, Summarization",
+  );
+  for (const value of [
+    "44.16/21.28/40.90",
+    "45.14/22.27/37.25",
+    "38.81/16.50/31.27",
+    "41.45/18.79/33.90",
+  ])
+    assert.ok(summarization?.statement.includes(value));
+
+  const human = findClaim("bart-2020-xsum-human-evaluation");
+  for (const value of ["73%", "27%", "67%", "33%"])
+    assert.ok(human?.statement.includes(value));
+  assert.match(human?.statement ?? "", /does not state that the reference comparison is significant/);
+  assert.match(
+    human?.limitations.join(" ") ?? "",
+    /sample size|rater count|agreement|statistical test/i,
+  );
+
+  const generation = findClaim(
+    "bart-2020-other-generation-and-translation-results",
+  );
+  for (const value of ["20.72", "11.85", "30.6/6.2/24.3", "36.80", "36.29", "37.96"])
+    assert.ok(generation?.statement.includes(value));
+  assert.match(work?.limitations.join(" ") ?? "", /prose reports the gain as \+1\.1/);
+  assert.doesNotMatch(work?.limitations.join(" ") ?? "", /rounds the gain/);
+
+  const qualitative = findClaim("bart-2020-hallucination-and-task-limitations");
+  assert.match(qualitative?.statement ?? "", /hallucinating information unsupported/);
+
+  const release = findClaim("bart-2020-release-and-reproduction-boundary");
+  assert.match(release?.statement ?? "", /9 November 2019/);
+  assert.match(release?.statement ?? "", /beam four/);
+  assert.match(release?.statement ?? "", /beam six/);
+  assert.ok(
+    release?.evidence.some(
+      (item) => item.sourceId === "bart-2020-fairseq-paper-era-model",
+    ),
+  );
+  assert.ok(
+    release?.evidence.some((item) => item.sourceId === "bart-2020-acl-full-text"),
+  );
+
+  const artifacts = findClaim("bart-2020-artifact-data-and-rights-boundary");
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /CC BY 4\.0/);
+  assert.match(artifacts?.statement ?? "", /MIT/);
+  assert.match(artifacts?.statement ?? "", /cryptographic hashes/);
+
+  assert.deepEqual(arxivLicense?.versionIds, ["bart-2019-arxiv-v1-version"]);
+  assert.match(arxivLicense?.accessNote ?? "", /not a general public-reuse license/);
+  assert.match(fairseqLicense?.accessNote ?? "", /source code and pretrained models/);
+  assert.match(fairseqLicense?.accessNote ?? "", /do not license the articles/);
+  assert.match(
+    fairseqLicense?.accessNote ?? "",
+    /52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85/,
+  );
+  assert.ok(aclRights?.relatedWorkIds.includes(workId));
+  assert.ok(aclRights?.versionIds.includes("bart-2020-acl-version"));
+  assert.match(aclRights?.accessNote ?? "", /seven bound/);
+
+  const expectedEdges = new Map([
+    ["vaswani-2017-to-lewis-2019-bart", "builds-on"],
+    ["devlin-2018-to-lewis-2019-bart", "combines"],
+    ["radford-2018-to-lewis-2019-bart", "combines"],
+    ["radford-2019-to-lewis-2019-bart", "builds-on"],
+    ["liu-2019-to-lewis-2019-bart", "builds-on"],
+    ["lewis-2019-bart-to-lewis-2020-rag", "combines"],
+  ]);
+  assert.deepEqual(
+    relationships.map((item) => item.id).sort(),
+    [...expectedEdges.keys()].sort(),
+  );
+  for (const edge of relationships) {
+    assert.equal(edge.connectionType, expectedEdges.get(edge.id));
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+  }
+
+  const ragEdge = relationships.find(
+    (item) => item.id === "lewis-2019-bart-to-lewis-2020-rag",
+  );
+  assert.equal(ragEdge?.sourceEvidence[0]?.sourceId, "rag-2020-neurips-full-text");
+  assert.equal(ragEdge?.sourceEvidence[0]?.locator.pageStart, 1);
+  assert.equal(
+    ragEdge?.sourceEvidence[0]?.locator.section,
+    "1 Introduction; 2.3 Generator: BART; 2.4 Training",
+  );
+  assert.match(ragHybrid?.limitations.join(" ") ?? "", /qualified edge/);
+  assert.doesNotMatch(
+    ragHybrid?.limitations.join(" ") ?? "",
+    /BART remains a local substrate/,
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id ===
+          "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer" &&
+        item.to.id === workId,
+    ),
+    false,
+  );
+
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-lewis-2019-repair-text-then-reuse-the-model", "beginner"],
+      [
+        "expert-lewis-2019-objectives-adapters-evidence-and-provenance",
+        "expert",
+      ],
+    ],
+  );
+  assert.match(objectives[0]?.objective ?? "", /Corrupt|damaged/i);
+  assert.match(objectives[1]?.successCriterion ?? "", /Table 1/);
+  assert.match(objectives[1]?.successCriterion ?? "", /BART→RAG/);
+
+  assert.ok(readme.includes("Lewis et al.’s BART family"));
+  assert.ok(corpusFormat.includes("Lewis et al. 2019 is represented"));
+  assert.ok(
+    historicalScope.includes("The BART family was checked on 2026-09-05"),
+  );
+  assert.ok(historicalScope.includes("BART→RAG"));
+  assert.doesNotMatch(
+    `${corpusFormat}\n${historicalScope}`,
+    /BART remains (?:a )?(?:RAG-)?local substrate/,
+  );
+});
+
 test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () => {
   const workId = "kaplan-2020-scaling-laws-neural-language-models";
   const work = corpus.works.find((item) => item.id === workId);
@@ -362,7 +618,7 @@ test("preserves ORQA versions, fixed-index learning, results, and REALM lineage"
   );
   const beginnerObjective = objectives.find((item) => item.mode === "beginner");
 
-  assert.equal(corpus.works.at(-14)?.id, workId);
+  assert.equal(corpus.works.at(-15)?.id, workId);
   assert.equal(work?.chronology.orderingEventId, "orqa-2019-arxiv-v1-posted");
   assert.deepEqual(
     work?.chronology.events.map((item) => item.date.value),
@@ -715,7 +971,7 @@ test("preserves DPR versions, contrastive retrieval, index limits, and RAG linea
   assert.ok(historicalScope.includes("The DPR family was checked on 2026-09-03"));
   assert.ok(
     historicalScope.includes(
-      "connect BERT-era foundations and the ORQA/DPR retrievers to REALM and RAG",
+      "connect BERT-era foundations, the ORQA/DPR retrievers, and BART’s generator substrate to REALM and RAG",
     ),
   );
 });
@@ -7860,6 +8116,12 @@ test("retains the Transformer as a canonical proceedings node with revision boun
       ],
       [
         "vaswani-2017-to-raffel-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-lewis-2019-bart",
         "builds-on",
         "documented-influence",
         "qualified",
