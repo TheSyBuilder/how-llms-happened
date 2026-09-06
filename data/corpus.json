@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-05",
+  "asOf": "2026-09-06",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -11514,7 +11514,7 @@
             "bart-2020-fairseq-paper-era-summarization",
             "bart-2020-fairseq-license"
           ],
-      "notes": "The canonical ten-page article has printed pp. 7871–7880 and bibliographic month July, while ACL's official proceedings date is 19 June 2020. It adds RoBERTaShare to XSum, reduces the headline gain to about 3.5 ROUGE, adds human evaluation, and explicitly frames unsupported hallucination as the main qualitative limitation after the arXiv version had already shown the example; it also expands release and related-work detail without changing BART's reported system scores."
+          "notes": "The canonical ten-page article has printed pp. 7871–7880 and bibliographic month July, while ACL's official proceedings date is 19 June 2020. It adds RoBERTaShare to XSum, reduces the headline gain to about 3.5 ROUGE, adds human evaluation, and explicitly frames unsupported hallucination as the main qualitative limitation after the arXiv version had already shown the example; it also expands release and related-work detail without changing BART's reported system scores."
         }
       ],
       "canonicalVersionId": "bart-2020-acl-version",
@@ -14477,6 +14477,442 @@
       ]
     },
     {
+      "id": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+      "authors": [
+        "Jack W. Rae",
+        "Sebastian Borgeaud",
+        "Trevor Cai",
+        "Katie Millican",
+        "Jordan Hoffmann",
+        "Francis Song",
+        "John Aslanides",
+        "Sarah Henderson",
+        "Roman Ring",
+        "Susannah Young",
+        "Eliza Rutherford",
+        "Tom Hennigan",
+        "Jacob Menick",
+        "Albin Cassirer",
+        "Richard Powell",
+        "George van den Driessche",
+        "Lisa Anne Hendricks",
+        "Maribeth Rauh",
+        "Po-Sen Huang",
+        "Amelia Glaese",
+        "Johannes Welbl",
+        "Sumanth Dathathri",
+        "Saffron Huang",
+        "Jonathan Uesato",
+        "John Mellor",
+        "Irina Higgins",
+        "Antonia Creswell",
+        "Nat McAleese",
+        "Amy Wu",
+        "Erich Elsen",
+        "Siddhant Jayakumar",
+        "Elena Buchatskaya",
+        "David Budden",
+        "Esme Sutherland",
+        "Karen Simonyan",
+        "Michela Paganini",
+        "Laurent Sifre",
+        "Lena Martens",
+        "Xiang Lorraine Li",
+        "Adhiguna Kuncoro",
+        "Aida Nematzadeh",
+        "Elena Gribovskaya",
+        "Domenic Donato",
+        "Angeliki Lazaridou",
+        "Arthur Mensch",
+        "Jean-Baptiste Lespiau",
+        "Maria Tsimpoukelli",
+        "Nikolai Grigorev",
+        "Doug Fritz",
+        "Thibault Sottiaux",
+        "Mantas Pajarskas",
+        "Toby Pohlen",
+        "Zhitao Gong",
+        "Daniel Toyama",
+        "Cyprien de Masson d’Autume",
+        "Yujia Li",
+        "Tayfun Terzi",
+        "Vladimir Mikulik",
+        "Igor Babuschkin",
+        "Aidan Clark",
+        "Diego de Las Casas",
+        "Aurelia Guy",
+        "Chris Jones",
+        "James Bradbury",
+        "Matthew Johnson",
+        "Blake Hechtman",
+        "Laura Weidinger",
+        "Iason Gabriel",
+        "William Isaac",
+        "Ed Lockhart",
+        "Simon Osindero",
+        "Laura Rimell",
+        "Chris Dyer",
+        "Oriol Vinyals",
+        "Kareem Ayoub",
+        "Jeff Stanway",
+        "Lorrayne Bennett",
+        "Demis Hassabis",
+        "Koray Kavukcuoglu",
+        "Geoffrey Irving"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "J. W. Rae et al., “Scaling Language Models: Methods, Analysis & Insights from Training Gopher,” arXiv:2112.11446v2, 21 January 2022.",
+      "chronology": {
+        "orderingEventId": "rae-2021-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "rae-2021-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2021-12-08",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rae-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 submitted 8 December 2021 at 19:41:47 UTC"
+              }
+            ],
+            "versionId": "rae-2021-arxiv-v1-version",
+            "sourceIds": [
+              "rae-2021-arxiv-record",
+              "rae-2021-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "rae-2022-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2022-01-21",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rae-2021-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 submitted 21 January 2022 at 18:39:38 UTC"
+              }
+            ],
+            "versionId": "rae-2022-arxiv-v2-version",
+            "sourceIds": [
+              "rae-2021-arxiv-record",
+              "rae-2022-arxiv-v2-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "rae-2021-arxiv-v1-version",
+          "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+          "authors": [
+            "Jack W. Rae",
+            "Sebastian Borgeaud",
+            "Trevor Cai",
+            "Katie Millican",
+            "Jordan Hoffmann",
+            "Francis Song",
+            "John Aslanides",
+            "Sarah Henderson",
+            "Roman Ring",
+            "Susannah Young",
+            "Eliza Rutherford",
+            "Tom Hennigan",
+            "Jacob Menick",
+            "Albin Cassirer",
+            "Richard Powell",
+            "George van den Driessche",
+            "Lisa Anne Hendricks",
+            "Maribeth Rauh",
+            "Po-Sen Huang",
+            "Amelia Glaese",
+            "Johannes Welbl",
+            "Sumanth Dathathri",
+            "Saffron Huang",
+            "Jonathan Uesato",
+            "John Mellor",
+            "Irina Higgins",
+            "Antonia Creswell",
+            "Nat McAleese",
+            "Amy Wu",
+            "Erich Elsen",
+            "Siddhant Jayakumar",
+            "Elena Buchatskaya",
+            "David Budden",
+            "Esme Sutherland",
+            "Karen Simonyan",
+            "Michela Paganini",
+            "Laurent Sifre",
+            "Lena Martens",
+            "Xiang Lorraine Li",
+            "Adhiguna Kuncoro",
+            "Aida Nematzadeh",
+            "Elena Gribovskaya",
+            "Domenic Donato",
+            "Angeliki Lazaridou",
+            "Arthur Mensch",
+            "Jean-Baptiste Lespiau",
+            "Maria Tsimpoukelli",
+            "Nikolai Grigorev",
+            "Doug Fritz",
+            "Thibault Sottiaux",
+            "Mantas Pajarskas",
+            "Toby Pohlen",
+            "Zhitao Gong",
+            "Daniel Toyama",
+            "Cyprien de Masson d’Autume",
+            "Yujia Li",
+            "Tayfun Terzi",
+            "Vladimir Mikulik",
+            "Igor Babuschkin",
+            "Aidan Clark",
+            "Diego de Las Casas",
+            "Aurelia Guy",
+            "Chris Jones",
+            "James Bradbury",
+            "Matthew Johnson",
+            "Blake Hechtman",
+            "Laura Weidinger",
+            "Iason Gabriel",
+            "William Isaac",
+            "Ed Lockhart",
+            "Simon Osindero",
+            "Laura Rimell",
+            "Chris Dyer",
+            "Oriol Vinyals",
+            "Kareem Ayoub",
+            "Jeff Stanway",
+            "Lorrayne Bennett",
+            "Demis Hassabis",
+            "Koray Kavukcuoglu",
+            "Geoffrey Irving"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. W. Rae et al., “Scaling Language Models: Methods, Analysis & Insights from Training Gopher,” arXiv:2112.11446v1, 8 December 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2112.11446v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2112.11446",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rae-2021-arxiv-record",
+            "rae-2021-arxiv-v1-full-text",
+            "rae-2021-arxiv-v1-source-package",
+            "rae-2021-arxiv-license",
+            "rae-2021-deepmind-launch-full-text"
+          ],
+          "notes": "The 118-page ordering manuscript is substantively mirrored by the hash-recorded DeepMind launch PDF inspected on 6 September 2026. It retains the original TruthfulQA comparison, labels the cell-biology dialogue factual, omits raw Winogender values, and contains the broader scale-summary wording corrected in version 2."
+        },
+        {
+          "id": "rae-2022-arxiv-v2-version",
+          "title": "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+          "authors": [
+            "Jack W. Rae",
+            "Sebastian Borgeaud",
+            "Trevor Cai",
+            "Katie Millican",
+            "Jordan Hoffmann",
+            "Francis Song",
+            "John Aslanides",
+            "Sarah Henderson",
+            "Roman Ring",
+            "Susannah Young",
+            "Eliza Rutherford",
+            "Tom Hennigan",
+            "Jacob Menick",
+            "Albin Cassirer",
+            "Richard Powell",
+            "George van den Driessche",
+            "Lisa Anne Hendricks",
+            "Maribeth Rauh",
+            "Po-Sen Huang",
+            "Amelia Glaese",
+            "Johannes Welbl",
+            "Sumanth Dathathri",
+            "Saffron Huang",
+            "Jonathan Uesato",
+            "John Mellor",
+            "Irina Higgins",
+            "Antonia Creswell",
+            "Nat McAleese",
+            "Amy Wu",
+            "Erich Elsen",
+            "Siddhant Jayakumar",
+            "Elena Buchatskaya",
+            "David Budden",
+            "Esme Sutherland",
+            "Karen Simonyan",
+            "Michela Paganini",
+            "Laurent Sifre",
+            "Lena Martens",
+            "Xiang Lorraine Li",
+            "Adhiguna Kuncoro",
+            "Aida Nematzadeh",
+            "Elena Gribovskaya",
+            "Domenic Donato",
+            "Angeliki Lazaridou",
+            "Arthur Mensch",
+            "Jean-Baptiste Lespiau",
+            "Maria Tsimpoukelli",
+            "Nikolai Grigorev",
+            "Doug Fritz",
+            "Thibault Sottiaux",
+            "Mantas Pajarskas",
+            "Toby Pohlen",
+            "Zhitao Gong",
+            "Daniel Toyama",
+            "Cyprien de Masson d’Autume",
+            "Yujia Li",
+            "Tayfun Terzi",
+            "Vladimir Mikulik",
+            "Igor Babuschkin",
+            "Aidan Clark",
+            "Diego de Las Casas",
+            "Aurelia Guy",
+            "Chris Jones",
+            "James Bradbury",
+            "Matthew Johnson",
+            "Blake Hechtman",
+            "Laura Weidinger",
+            "Iason Gabriel",
+            "William Isaac",
+            "Ed Lockhart",
+            "Simon Osindero",
+            "Laura Rimell",
+            "Chris Dyer",
+            "Oriol Vinyals",
+            "Kareem Ayoub",
+            "Jeff Stanway",
+            "Lorrayne Bennett",
+            "Demis Hassabis",
+            "Koray Kavukcuoglu",
+            "Geoffrey Irving"
+          ],
+          "kind": "preprint",
+          "label": "Canonical arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "J. W. Rae et al., “Scaling Language Models: Methods, Analysis & Insights from Training Gopher,” arXiv:2112.11446v2, 21 January 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2112.11446v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2112.11446",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rae-2021-arxiv-record",
+            "rae-2022-arxiv-v2-full-text",
+            "rae-2022-arxiv-v2-source-package",
+            "rae-2021-arxiv-license"
+          ],
+          "notes": "The canonical 120-page revision preserves the 2021-12-08 manuscript date while correcting evaluation interpretation: it qualifies TruthfulQA with protocol ablations, relabels the cell-biology dialogue as mixed factuality, adds raw Winogender values and another dialogue, revises the broad scaling summary, and changes contact and copyright details."
+        }
+      ],
+      "canonicalVersionId": "rae-2022-arxiv-v2-version",
+      "preferredSourceIds": [
+        "rae-2021-arxiv-record",
+        "rae-2022-arxiv-v2-full-text"
+      ],
+      "sourceIds": [
+        "rae-2021-arxiv-record",
+        "rae-2021-arxiv-v1-full-text",
+        "rae-2021-arxiv-v1-source-package",
+        "rae-2022-arxiv-v2-full-text",
+        "rae-2022-arxiv-v2-source-package",
+        "rae-2021-arxiv-license",
+        "rae-2021-deepmind-launch-full-text",
+        "rae-2021-deepmind-launch-post"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Gopher joins a GPT-2-derived dense autoregressive architecture to the documented MassiveText pipeline, broad fixed-token scaling analysis, safety probes, implementation-aware compute account, and explicit non-release boundaries. It is also the direct model and dataset substrate that Chinchilla modifies, so preserving Gopher closes a major provenance gap in the compute-optimal lineage."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "decoder-only-transformer-language-modeling",
+        "relative-positional-self-attention",
+        "massivetext-mixture-training",
+        "demonstration-conditioned-in-context-learning",
+        "prompt-conditioned-bias-probing",
+        "rms-normalized-autoregressive-transformer",
+        "sentencepiece-byte-fallback-tokenization",
+        "large-scale-low-precision-training",
+        "distributed-dense-transformer-training",
+        "practical-training-compute-accounting",
+        "massivetext-corpus-pipeline",
+        "fixed-token-capability-scaling-profile",
+        "relative-position-context-extrapolation",
+        "prompt-conditioned-dialogue",
+        "scale-dependent-toxicity-and-bias"
+      ],
+      "significance": {
+        "beginner": "Gopher scales one family of next-token Transformers to 280 billion parameters and tests the family widely. The results show large knowledge and reading gains, but much smaller or negative gains on some reasoning tasks, continued toxicity and bias risks, and no public model or MassiveText release.",
+        "expert": "The work holds corpus family and 300B seen tokens constant across six increasingly expensive autoregressive Transformers, combines RMSNorm and Transformer-XL relative positions with a GPT-2-derived stack, documents MassiveText construction, and reports broad evaluation, safety, precision, parallelism, FLOP, and carbon boundaries. Its v2 corrections, scaling-curve deviation, lower-bound compute account, and target-evidenced Gopher→Chinchilla reuse require version- and claim-level treatment."
+      },
+      "limitations": [
+        "The family is not a controlled parameter-count intervention: depth, width, head count, key/value size, learning rate, batch size, precision regime, and total compute vary, while every model sees 300B tokens.",
+        "The 152-task matrix mixes losses, exact match, accuracy, prompts, shot counts, imported baselines, supervised systems, human estimates, and datasets with different leakage risks; 100 of 124 improvements is not a uniform controlled comparison.",
+        "The paper filters near-duplicate training documents only for selected tasks available before the November 2020 MassiveText snapshot and explicitly warns that later evaluations may leak.",
+        "MassiveText is predominantly English, static, privately held, built from sources with distinct provenance and rights, and not accompanied by a prepared-data manifest or released preprocessing implementation.",
+        "The paper's visible component document counts sum to about 2.217B rather than the prose's 2.35B, and its selected source-weight description does not fully reconcile with rounded Table 2 weights.",
+        "Toxicity, sentiment, stereotype, subgroup, and dialect probes rely on incomplete templates and classifiers whose own social and demographic limitations are acknowledged.",
+        "Prompting raw Gopher into dialogue does not make it consistently factual or safe; fine-tuning on mined dialogue has no significant preference advantage in the reported 1,400 ratings.",
+        "The controlled full-precision-master-weight study is at 417M parameters rather than a repeated Gopher run, and the 280B training run itself is not repeated.",
+        "The reported 6.31×10^23 training FLOPs are a best-effort implementation-aware lower bound that excludes development, pre-emption, and other inefficiency; the carbon value is an estimate from facility and chip assumptions, not direct whole-project measurement.",
+        "The paper PDFs and publication sources are public, but Gopher weights, MassiveText, preprocessing code, a paper-specific training/evaluation implementation, tokenizer artifact, run manifest, and general reuse grant are not supplied."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The first arXiv posting on 8 December 2021 orders the work; the unchanged 2021-12-08 date printed in version 2 is a manuscript date, not the revision timestamp."
+        },
+        {
+          "status": "resolved",
+          "note": "DeepMind's 118-page launch PDF is byte-different but substantively equivalent to arXiv v1 and is retained as a mirror, not modeled as a third manuscript version."
+        },
+        {
+          "status": "open",
+          "note": "No immutable public manifest maps the paper's code, tokenizer, data shards, checkpoints, evaluation artifacts, and run identifiers.",
+          "resolutionCondition": "An author-published versioned artifact manifest with payload hashes, source provenance, rights, commands, environments, and run records is required."
+        }
+      ]
+    },
+    {
       "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback",
       "title": "Training language models to follow instructions with human feedback",
       "authors": [
@@ -16803,7 +17239,8 @@
         "yang-2019-target-aware-two-stream-attention",
         "liu-2019-predecessor-and-scope-boundary",
         "raffel-2020-encoder-decoder-architecture",
-        "bart-2020-transformer-architecture-and-scales"
+        "bart-2020-transformer-architecture-and-scales",
+        "rae-2021-gopher-family-and-architecture"
       ],
       "uncertainties": [
         {
@@ -16855,7 +17292,8 @@
         "yang-2019-target-aware-two-stream-attention",
         "liu-2019-predecessor-and-scope-boundary",
         "raffel-2020-encoder-decoder-architecture",
-        "bart-2020-transformer-architecture-and-scales"
+        "bart-2020-transformer-architecture-and-scales",
+        "rae-2021-gopher-family-and-architecture"
       ],
       "uncertainties": [
         {
@@ -17069,7 +17507,7 @@
       "id": "decoder-only-transformer-language-modeling",
       "name": "Decoder-only Transformer language modeling",
       "kind": "mechanism",
-      "description": "A causally masked stack of Transformer decoder blocks maps prior-token embeddings and learned positions to a next-token distribution without a separate source encoder or encoder-decoder attention path.",
+      "description": "A causally masked stack of Transformer blocks maps prior-token embeddings plus a position representation to a next-token distribution without a separate source encoder or encoder-decoder attention path.",
       "claimIds": [
         "radford-2018-decoder-only-transformer-architecture",
         "radford-2018-transformer-antecedent-boundary",
@@ -17088,7 +17526,9 @@
         "hoffmann-2022-chinchilla-architecture-and-training",
         "stiennon-2020-gpt3-style-model-family-and-sft",
         "ouyang-2022-gpt3-initialization-and-sft",
-        "wei-2022-lamda-pt-model-and-pretraining-boundary"
+        "wei-2022-lamda-pt-model-and-pretraining-boundary",
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-gopher-training-recipe"
       ],
       "uncertainties": []
     },
@@ -17362,7 +17802,7 @@
       "id": "relative-positional-self-attention",
       "name": "Relative-positional self-attention",
       "kind": "mechanism",
-      "description": "Attention scores combine content similarity with query-to-key distance so cached states retain meaningful ordering even when absolute position numbers repeat across segments.",
+      "description": "Attention scores combine content similarity with query-to-key distance, preserving order through relative offsets rather than requiring absolute position indices; a model may use this mechanism with or without cached cross-segment states.",
       "claimIds": [
         "dai-2019-relative-positional-attention",
         "dai-2019-relative-shift-computation",
@@ -17374,7 +17814,9 @@
         "yang-2019-transformer-xl-integration",
         "yang-2019-pretraining-data-and-compute",
         "yang-2019-component-ablation",
-        "yang-2019-attention-visualization-boundary"
+        "yang-2019-attention-visualization-boundary",
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-relative-position-context-extrapolation"
       ],
       "uncertainties": [
         {
@@ -18279,7 +18721,10 @@
         "brown-2020-headline-task-results",
         "brown-2020-in-context-interpretation-boundary",
         "brown-2020-autoregressive-objective-and-task-limitations",
-        "brown-2020-artifact-and-reproducibility-boundary"
+        "brown-2020-artifact-and-reproducibility-boundary",
+        "rae-2021-gopher-broad-evaluation-profile",
+        "rae-2021-fever-task-training-boundary",
+        "rae-2021-prompted-dialogue-and-factuality-boundary"
       ],
       "uncertainties": [
         {
@@ -18347,7 +18792,8 @@
       "description": "Probe generated continuations and word associations under demographic prompts to expose representation patterns while keeping prompt choice, sentiment tools, sample size, and normative interpretation explicit.",
       "claimIds": [
         "brown-2020-bias-analysis-boundary",
-        "brown-2020-internal-reporting-discrepancies"
+        "brown-2020-internal-reporting-discrepancies",
+        "rae-2021-scale-dependent-toxicity-and-bias"
       ],
       "uncertainties": [
         {
@@ -18600,6 +19046,156 @@
       ]
     },
     {
+      "id": "rms-normalized-autoregressive-transformer",
+      "name": "RMS-normalized autoregressive Transformer",
+      "kind": "mechanism",
+      "description": "Scale a causal Transformer language model while replacing LayerNorm with RMSNorm and retaining explicit bounds around the rest of the inherited decoder architecture.",
+      "claimIds": [
+        "rae-2021-gopher-version-boundary",
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-gopher-training-recipe",
+        "rae-2021-model-data-and-replication-boundary",
+        "rae-2021-artifact-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "sentencepiece-byte-fallback-tokenization",
+      "name": "SentencePiece tokenization with byte fallback",
+      "kind": "mechanism",
+      "description": "Tokenize text with a fixed SentencePiece subword vocabulary while falling back to bytes for open-vocabulary coverage, keeping normalization loss and tokenizer identity explicit.",
+      "claimIds": [
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-gopher-tokenizer-normalization-limitation"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Open-vocabulary byte fallback does not make the paper's NFKC preprocessing lossless; superscript and other compatibility distinctions can still collapse."
+        }
+      ]
+    },
+    {
+      "id": "large-scale-low-precision-training",
+      "name": "Large-scale low-precision training",
+      "kind": "mechanism",
+      "description": "Reduce large-model memory and training cost with bfloat16 parameters and activations while testing whether stochastic rounding or a full-precision master copy preserves small optimizer updates.",
+      "claimIds": [
+        "rae-2021-gopher-training-recipe",
+        "rae-2021-gopher-distributed-training-and-compute",
+        "rae-2021-bfloat16-staleness-and-master-weight-fix"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The controlled master-weight comparison is reported at 417M parameters, not as a repeated 280B Gopher run."
+        }
+      ]
+    },
+    {
+      "id": "distributed-dense-transformer-training",
+      "name": "Distributed dense-Transformer training",
+      "kind": "mechanism",
+      "description": "Fit a dense Transformer and its optimizer state across accelerators with data and model parallelism, rematerialization, state partitioning, and pipeline stages across larger hardware groups.",
+      "claimIds": [
+        "rae-2021-gopher-distributed-training-and-compute",
+        "rae-2021-compute-and-carbon-accounting"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "practical-training-compute-accounting",
+      "name": "Practical training-compute accounting",
+      "kind": "formalism",
+      "description": "Report implementation-aware training and evaluation FLOPs, accelerator-time decomposition, and carbon-estimate inputs while naming omitted development, pre-emption, and operational work.",
+      "claimIds": [
+        "rae-2021-gopher-distributed-training-and-compute",
+        "rae-2021-compute-and-carbon-accounting"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "A best-effort implementation-aware lower bound is not directly interchangeable with a theoretical six-parameter-token FLOP estimate or total project energy."
+        }
+      ]
+    },
+    {
+      "id": "massivetext-corpus-pipeline",
+      "name": "MassiveText corpus pipeline",
+      "kind": "mechanism",
+      "description": "Build a multi-source English corpus with source-specific sampling, heuristic web filtering, repetition removal, near-duplicate controls, test-overlap filtering, and fixed-length example construction.",
+      "claimIds": [
+        "rae-2021-massivetext-composition-and-sampling",
+        "rae-2021-massivetext-sequence-construction",
+        "rae-2021-massivetext-filter-deduplicate-decontaminate",
+        "rae-2021-massivetext-ablation-boundary",
+        "rae-2021-model-data-and-replication-boundary",
+        "rae-2021-artifact-and-rights-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The paper does not provide an immutable prepared-corpus manifest, preprocessing implementation, full source-level rights record, or final payload digest.",
+          "resolutionCondition": "A versioned data and preprocessing release with provenance, rights, and payload hashes is required."
+        }
+      ]
+    },
+    {
+      "id": "fixed-token-capability-scaling-profile",
+      "name": "Fixed-token capability-scaling profile",
+      "kind": "finding",
+      "description": "Compare related autoregressive models trained for the same token count across a broad task matrix, preserving nonuniform gains, changed training regimes, heterogeneous metrics, and negative cases.",
+      "claimIds": [
+        "rae-2021-gopher-training-recipe",
+        "rae-2021-fixed-token-scale-sweep-and-nonuniform-gains",
+        "rae-2021-gopher-broad-evaluation-profile",
+        "rae-2021-gopher-scaling-curve-deviation",
+        "rae-2021-fever-task-training-boundary"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Holding token count and corpus family fixed does not isolate parameter count because architecture dimensions, optimizer settings, batch size, precision, and training compute also change."
+        }
+      ]
+    },
+    {
+      "id": "relative-position-context-extrapolation",
+      "name": "Relative-position context extrapolation",
+      "kind": "mechanism",
+      "description": "Evaluate beyond a trained context window by clamping relative-distance features at the training limit, gaining usable context for some domains while collapsing all farther distances into one position class.",
+      "claimIds": [
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-relative-position-context-extrapolation"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "prompt-conditioned-dialogue",
+      "name": "Prompt-conditioned raw-model dialogue",
+      "kind": "mechanism",
+      "description": "Turn a raw autoregressive language model into a conversational interface by placing a hand-written persona and example turns in context, without treating format compliance as factuality or safety training.",
+      "claimIds": [
+        "rae-2021-prompted-dialogue-and-factuality-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "scale-dependent-toxicity-and-bias",
+      "name": "Scale-dependent toxicity and distributional bias",
+      "kind": "finding",
+      "description": "Measure how prompted toxicity, unprompted generations, toxicity classification, stereotypes, sentiment associations, and dialect likelihood vary with model scale under explicitly limited classifiers and templates.",
+      "claimIds": [
+        "rae-2021-scale-dependent-toxicity-and-bias"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Classifier scores and selected templates are partial, culturally contingent measurements rather than a complete fairness or harm profile."
+        }
+      ]
+    },
+    {
       "id": "labeler-scoped-instruction-alignment",
       "name": "Labeler-scoped instruction alignment",
       "kind": "objective",
@@ -18765,7 +19361,12 @@
         "hoffmann-2022-chinchilla-architecture-and-training",
         "hoffmann-2022-massivetext-mixture",
         "hoffmann-2022-bias-toxicity-and-use-boundary",
-        "hoffmann-2022-artifact-data-and-rights-boundary"
+        "hoffmann-2022-artifact-data-and-rights-boundary",
+        "rae-2021-massivetext-composition-and-sampling",
+        "rae-2021-massivetext-sequence-construction",
+        "rae-2021-massivetext-ablation-boundary",
+        "rae-2021-model-data-and-replication-boundary",
+        "rae-2021-artifact-and-rights-boundary"
       ],
       "uncertainties": [
         {
@@ -28381,6 +28982,199 @@
       }
     },
     {
+      "id": "rae-2021-arxiv-record",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "arXiv record for Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+      "url": "https://arxiv.org/abs/2112.11446",
+      "accessDate": "2026-09-06",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rae-2021-arxiv-v1-version",
+        "rae-2022-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official submission history records v1 at 8 December 2021 19:41:47 UTC and v2 at 21 January 2022 18:39:38 UTC; its current comment reports 120 pages. The immutable PDFs establish the 118-page v1 and 120-page v2 counts. The aggregate DOI identifies the two-version preprint family rather than another publication."
+    },
+    {
+      "id": "rae-2021-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "Immutable arXiv version 1 of the Gopher report",
+      "url": "https://arxiv.org/pdf/2112.11446v1",
+      "accessDate": "2026-09-06",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rae-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 118
+      },
+      "accessNote": "The complete 118-page ordering artifact has SHA-256 a7aa3b0c47a8cfda50a9c3e9c8b3dd53dbbd296103536b9cd80dc425672e73bc. Its title page and version-sensitive result, TruthfulQA, bias, and dialogue sections were extracted and compared against v2."
+    },
+    {
+      "id": "rae-2021-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "Immutable arXiv version 1 source package for the Gopher report",
+      "url": "https://arxiv.org/src/2112.11446v1",
+      "accessDate": "2026-09-06",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rae-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 8,032,322-byte archive has SHA-256 34bee7d4c894b40e7469e92d56bae38246029215a3ed9310da7de7c7aafe2513 and 290 entries across duplicated manuscript trees. It contains TeX, bibliography, cache fragments, and figures but no executable training or evaluation implementation, model, tokenizer, prepared corpus, or run manifest."
+    },
+    {
+      "id": "rae-2022-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "Canonical arXiv version 2 of the Gopher report",
+      "url": "https://arxiv.org/pdf/2112.11446v2",
+      "accessDate": "2026-09-06",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rae-2022-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 120
+      },
+      "accessNote": "The complete 120-page canonical revision has SHA-256 b0b535d60cf933e9adb767e4e6dc9cc21ac71d2e168c07051e281da86e59711e. Text was extracted across the report and key architecture, data, provenance, scaling, safety, compute, and dialogue pages were rendered and visually inspected."
+    },
+    {
+      "id": "rae-2022-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "Immutable arXiv version 2 source package for the Gopher report",
+      "url": "https://arxiv.org/src/2112.11446v2",
+      "accessDate": "2026-09-06",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rae-2022-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 8,131,416-byte archive has SHA-256 fc8172c4f9317debdd9714014fa4ba11ba9805f86b2b70136430a69102fe6249 and 292 entries across duplicated manuscript trees. Relative to v1, only main.tex, generated contents, and a new summary figure change; there is still no executable experiment package or archive-level reuse license."
+    },
+    {
+      "id": "rae-2021-arxiv-license",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "arXiv non-exclusive distribution license linked from the Gopher record",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-06",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rae-2021-arxiv-v1-version",
+        "rae-2022-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record-linked terms grant arXiv perpetual non-exclusive distribution rights. They do not supply a Creative Commons or general downstream reuse license for the paper, figures, model, code, tokenizer, training corpus, or benchmark derivatives."
+    },
+    {
+      "id": "rae-2021-deepmind-launch-full-text",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "Author-hosted DeepMind launch PDF mirror for the Gopher report",
+      "url": "https://storage.googleapis.com/deepmind-media/research/language-research/Training%20Gopher.pdf",
+      "accessDate": "2026-09-06",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "rae-2021-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 118
+      },
+      "accessNote": "The 2,843,495-byte author-hosted PDF has SHA-256 e523ba5933551a318fc49d6aaf1da36fc6b2491f5dea1641f17a1f2a6c19c8d1. It is byte-different but substantively equivalent to arXiv v1, lacks the arXiv side banner, and is retained as an official launch mirror rather than a third manuscript version."
+    },
+    {
+      "id": "rae-2021-deepmind-launch-post",
+      "relatedWorkIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "title": "DeepMind launch article for Gopher, ethical considerations, and retrieval",
+      "url": "https://deepmind.google/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval/",
+      "accessDate": "2026-09-06",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The mutable organization article is dated 8 December 2021 and links the unversioned launch PDF URL. Its prose calls a cell-biology dialogue factual where canonical v2 documents a subtle error, so it is retained only as launch metadata and a version boundary, not claim or lineage evidence."
+    },
+    {
       "id": "ouyang-2022-openai-publication",
       "relatedWorkIds": [
         "ouyang-2022-training-language-models-follow-instructions-human-feedback"
@@ -31707,11 +32501,11 @@
         },
         {
           "sourceId": "miikkulainen-dyer-1991-author-manuscript",
-          "locator": {
-            "label": "Externally supplied system control, manuscript p. 34",
-            "section": "11.4 Implementing control with networks",
-            "pageStart": 34,
-            "pageEnd": 34
+        "locator": {
+          "label": "Externally supplied system control, manuscript p. 34",
+          "section": "11.4 Implementing control with networks",
+          "pageStart": 34,
+          "pageEnd": 34
           },
           "support": "States that the reported simulations use an external supervisor and presents network control as future work."
         }
@@ -48503,8 +49297,8 @@
           },
           "support": "The initial release date and its own incomplete-cleanup and reproducibility warning are preserved by the immutable commit."
         },
-      {
-        "sourceId": "bart-2020-fairseq-paper-era-readme",
+        {
+          "sourceId": "bart-2020-fairseq-paper-era-readme",
           "locator": {
             "label": "Paper-era checkpoint and evaluation surface",
             "section": "Pre-trained models; Example usage"
@@ -50269,7 +51063,7 @@
           "locator": {
             "label": "DPR retriever and BART generator",
             "section": "1 Introduction; 2.2 Retriever: DPR; 2.3 Generator: BART",
-          "pageStart": 1,
+            "pageStart": 1,
             "pageEnd": 3,
             "figure": "1"
           },
@@ -53493,6 +54287,842 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-01"
+    },
+    {
+      "id": "rae-2021-gopher-version-boundary",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "rms-normalized-autoregressive-transformer"
+      ],
+      "statement": "The Gopher preprint family has two arXiv manuscripts: a 118-page version 1 submitted 8 December 2021 and a 120-page version 2 submitted 21 January 2022. Canonical v2 preserves the printed 2021-12-08 manuscript date but revises scaling language, qualifies TruthfulQA with protocol ablations, relabels a supposedly factual dialogue as mixed factuality, adds raw Winogender values and another dialogue, and changes contact and copyright details. The hash-recorded DeepMind launch PDF inspected on 6 September 2026 is substantively v1-equivalent rather than a third version.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2021-arxiv-record",
+          "locator": {
+            "label": "Two-version submission history",
+            "section": "Submission history"
+          },
+          "support": "The aggregate record supplies both immutable version timestamps and the current 120-page comment; the immutable PDF records supply the version-specific page counts."
+        },
+        {
+          "sourceId": "rae-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 manuscript metadata and rights state",
+            "section": "Title page",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The ordering manuscript prints its 2021-12-08 date, original corresponding-author details, and 2021 DeepMind copyright state."
+        },
+        {
+          "sourceId": "rae-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 broad scaling language",
+            "section": "4.3 Performance Improvements with Scale",
+            "pageStart": 12,
+            "pageEnd": 12
+          },
+          "support": "Version 1 makes the broader claim that smaller models often outperform larger models across the low-gain categories."
+        },
+        {
+          "sourceId": "rae-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 factual-dialogue label",
+            "section": "6 Dialogue",
+            "pageStart": 20,
+            "pageEnd": 20,
+            "table": "7"
+          },
+          "support": "Version 1 labels the cell-biology exchange an example of factual dialogue."
+        },
+        {
+          "sourceId": "rae-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 TruthfulQA comparison",
+            "section": "D.10 TruthfulQA",
+            "pageStart": 81,
+            "pageEnd": 82,
+            "figure": "A17"
+          },
+          "support": "Version 1 presents the cross-family comparison without the later task-formulation ablation."
+        },
+        {
+          "sourceId": "rae-2021-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 Winogender reporting state",
+            "section": "E.3 Distributional Bias",
+            "pageStart": 95,
+            "pageEnd": 95,
+            "figure": "A24"
+          },
+          "support": "Version 1 reports the Winogender figure and prose without the raw-value table added in version 2."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 manuscript metadata and rights state",
+            "section": "Title page",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The canonical revision retains the 2021-12-08 manuscript date while changing corresponding-author and copyright details."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 narrowed scaling language",
+            "section": "4.3 Performance Improvements with Scale",
+            "pageStart": 12,
+            "pageEnd": 12
+          },
+          "support": "Version 2 removes the broader claim about smaller models outperforming larger ones across the low-gain categories."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 mixed-factuality correction",
+            "section": "6 Dialogue",
+            "pageStart": 20,
+            "pageEnd": 20,
+            "table": "7"
+          },
+          "support": "Version 2 relabels and explains the cell-biology exchange as mixed factuality."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 TruthfulQA qualification and ablation",
+            "section": "D.10 TruthfulQA",
+            "pageStart": 81,
+            "pageEnd": 83,
+            "figure": "A17",
+            "table": "A16"
+          },
+          "support": "Version 2 qualifies the cross-family comparison by task setup and adds the task-formulation ablation."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 raw Winogender values",
+            "section": "E.3 Distributional Bias",
+            "pageStart": 96,
+            "pageEnd": 96,
+            "table": "A21",
+            "figure": "A24"
+          },
+          "support": "Version 2 adds a raw-number table beside the Winogender analysis."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 added dialogue",
+            "section": "H Dialogue-Prompted Gopher Details",
+            "pageStart": 119,
+            "pageEnd": 119,
+            "table": "A41"
+          },
+          "support": "Version 2 adds a second cell-biology dialogue labeled semi-factual."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-source-package",
+          "locator": {
+            "label": "Source-level v1-to-v2 comparison",
+            "section": "main.tex and generated contents"
+          },
+          "support": "The source diff isolates substantive text and figure changes from PDF production differences."
+        },
+        {
+          "sourceId": "rae-2021-deepmind-launch-full-text",
+          "locator": {
+            "label": "Author-hosted launch-mirror metadata",
+            "section": "Title page",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The hash-recorded author-hosted payload has the v1-era title-page state and lacks the arXiv side banner; full-text comparison recorded in the source metadata bounds the v1-equivalence inference."
+        }
+      ],
+      "limitations": [
+        "The unchanged manuscript date printed in v2 is not evidence that the January revision existed in December, and the launch mirror's different PDF bytes do not by themselves define a distinct manuscript.",
+        "Version 2 contains unresolved citation markers introduced by additions, so canonical means latest identified manuscript rather than typographically flawless artifact."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-gopher-family-and-architecture",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "decoder-only-transformer-language-modeling",
+        "relative-positional-self-attention",
+        "rms-normalized-autoregressive-transformer",
+        "sentencepiece-byte-fallback-tokenization",
+        "relative-position-context-extrapolation"
+      ],
+      "statement": "The family contains 44M, 117M, 417M, 1.4B, 7.1B, and nominal 280B autoregressive Transformer language models; the largest is Gopher. Gopher uses 80 layers, 128 heads, key/value width 128, model width 16,384, and feed-forward width four times model width. The target says it uses the Radford et al. 2019 architecture with RMSNorm replacing LayerNorm and Dai et al. relative positional encoding replacing absolute positions, plus a 32,000-item SentencePiece vocabulary with byte fallback.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Model family, dimensions, and named architecture changes",
+            "section": "2 Background; 3.1 Model",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "The canonical paper names the six scales, identifies Gopher, prints every listed dimension, and directly attributes the base architecture and relative-position scheme."
+        }
+      ],
+      "limitations": [
+        "The Gopher paragraph says autoregressive Transformer; decoder-only continuity is bounded to its explicit adoption of the GPT-2 report's architecture rather than treated as a new invention.",
+        "The edge from Transformer-XL carries relative-position scoring only, not segment recurrence, a hidden-state cache, or Transformer-XL benchmark results.",
+        "The paper's 280B label is nominal; this claim does not independently reconstruct an exact trainable-parameter inventory."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-gopher-training-recipe",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "rms-normalized-autoregressive-transformer",
+        "large-scale-low-precision-training",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "Every family member trains for 300B tokens with a 2,048-token context and Adam. Gopher uses a peak learning rate of 4×10^-5 after 1,500 warmup steps from 10^-7, a tenfold cosine decay, a batch that grows from 3M to 6M tokens, global gradient clipping at 0.25, and bfloat16 parameters and activations updated with stochastic rounding.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Family training schedule and Gopher-specific hyperparameters",
+            "section": "3.2 Training",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "The canonical methods paragraph and model table state the common token/context budget and each Gopher setting."
+        }
+      ],
+      "limitations": [
+        "The sweep does not isolate parameter count: depth, width, head count, key/value size, learning rate, batch size, precision regime, and total compute change with scale.",
+        "The paper subsequently reports that stochastic rounding does not fully recover mixed-precision performance."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-gopher-distributed-training-and-compute",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "large-scale-low-precision-training",
+        "distributed-dense-transformer-training",
+        "practical-training-compute-accounting"
+      ],
+      "statement": "The authors built the training and evaluation codebase with JAX and Haiku and used TPUv3 chips. Gopher's half-precision parameters plus single-precision Adam state occupy 2.5 TiB, so training partitions optimizer state, applies model and data parallelism within TPU pods, rematerializes activations, and pipelines across pods. The 6M-token configuration uses 4,096 chips; its accelerator-time breakdown assigns 51% to linears, 8% attention, 3% optimizer, 7% model parallelism, 17% rematerialization, 9% pipelining, and 5% other work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Software stack, state footprint, and parallel topology",
+            "section": "3.3 Infrastructure",
+            "pageStart": 6,
+            "pageEnd": 7
+          },
+          "support": "The methods section names JAX, Haiku, TPUv3, the 2.5 TiB state footprint, and each parallelism mechanism."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Gopher accelerator-time decomposition",
+            "section": "F Compute Usage",
+            "pageStart": 102,
+            "pageEnd": 103,
+            "table": "A27"
+          },
+          "support": "The appendix prints the chip count, 6M-batch boundary, and percentage breakdown."
+        }
+      ],
+      "limitations": [
+        "The percentages are rounded and the 3M-token Gopher batch has roughly doubled optimizer and pipeline contributions rather than the same breakdown.",
+        "Named libraries and topology are not a released paper-specific implementation or complete environment lock."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-massivetext-composition-and-sampling",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "massivetext-mixture-training",
+        "massivetext-corpus-pipeline"
+      ],
+      "statement": "MassiveText combines MassiveWeb, books, C4, news, GitHub, and Wikipedia. Table 2 reports 506B, 560B, 182B, 676B, 422B, and 4B SentencePiece tokens respectively and samples them for Gopher at 48%, 27%, 10%, 10%, 3%, and 2%. The component token counts sum to 2.35T, and the 300B-token Gopher run consumes about 12.8% of that aggregate under nonuniform sampling.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "MassiveText component sizes and sampling weights",
+            "section": "3.4 Training Dataset",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "2"
+          },
+          "support": "The canonical composition table and surrounding prose state every component, token count, sampling weight, total, and seen-token fraction."
+        }
+      ],
+      "limitations": [
+        "Twelve-point-eight percent is an aggregate comparison, not a uniform fraction of each component: source-specific resampling can repeat or omit examples.",
+        "The displayed document counts sum to about 2.217B rather than the prose's 2.35B, which may depend on unreported unrounded counts.",
+        "Appendix A's selected 50/30/10/10 split multiplied by 95% does not fully reconcile with every rounded Table 2 weight."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-massivetext-sequence-construction",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "massivetext-mixture-training",
+        "massivetext-corpus-pipeline"
+      ],
+      "statement": "To form a 2,048-token training sequence, the pipeline selects a document, crops at most 15 times the target length in UTF-8 bytes, tokenizes with beginning- and end-of-document markers, concatenates ten crops because most documents are short, keeps each full 2,048-token block, discards the short tail, then source-weights, shuffles, and batches the examples.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Fixed-length example construction",
+            "section": "A.1.2 Dataset sequence sampling",
+            "pageStart": 42,
+            "pageEnd": 42
+          },
+          "support": "The appendix enumerates cropping, boundary tokens, ten-document concatenation, splitting, tail discard, mixture sampling, shuffling, and batching."
+        }
+      ],
+      "limitations": [
+        "The prose gives an algorithmic description but no released implementation, random seed, exact document-order manifest, or prepared sequence hashes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-massivetext-filter-deduplicate-decontaminate",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "massivetext-corpus-pipeline"
+      ],
+      "statement": "MassiveWeb receives explicit-content filtering through Google SafeSearch, custom HTML extraction, heuristic quality filters, and repetitive-text removal. Document deduplication combines exact matching with punctuation-insensitive, whitespace-normalized MinHash over 13-grams and removes one document when estimated Jaccard similarity exceeds 0.8; selected test-set filtering uses the same 13-gram and threshold scheme.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "MassiveText filtering, deduplication, and test-overlap pipeline",
+            "section": "A.1.1 Pipeline stages",
+            "pageStart": 39,
+            "pageEnd": 42,
+            "figure": "A1",
+            "table": "A1"
+          },
+          "support": "The appendix diagrams and specifies the stages, normalization, MinHash representation, 0.8 threshold, and test-filter reuse."
+        }
+      ],
+      "limitations": [
+        "Page 39 says all subsets are deduplicated and its diagram depicts deduplication broadly, while footnote 14 on page 41 explicitly exempts Wikipedia and GitHub; the conflict is not silently resolved.",
+        "The learned gold-corpus quality classifier is intentionally rejected to limit demographic and dialect erasure, but simple heuristics can still encode bias and lose useful text.",
+        "Similarity thresholds reduce selected overlap and duplication; they do not prove absence of paraphrases, memorization, or later-benchmark leakage."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-massivetext-ablation-boundary",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "massivetext-mixture-training",
+        "massivetext-corpus-pipeline"
+      ],
+      "statement": "A seven-mixture sweep over four downstream losses informs the source weights. Separate 1.4B-model experiments using only 5GB from each candidate web corpus report that heuristic filtering and exact/fuzzy deduplication progressively improve three evaluation losses, and the final MassiveWeb variant beats the tested OpenWebText and C4 variants on those evaluations.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Mixture and web-pipeline ablations",
+            "section": "A.3.1 MassiveText Subsets Weighting; A.3.2 Iterative Refinement of MassiveWeb",
+            "pageStart": 45,
+            "pageEnd": 46,
+            "figure": "A4–A5"
+          },
+          "support": "The appendix states the sweep designs and plots the selected loss comparisons."
+        }
+      ],
+      "limitations": [
+        "The 5GB, 1.4B-model proxy study does not establish that every stage is universally beneficial, isolate every stage independently, or prove full-scale superiority over all C4 and OpenWebText constructions.",
+        "The mixture weights optimize four selected losses and are not a task-neutral or rights-aware optimum."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-gopher-tokenizer-normalization-limitation",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "sentencepiece-byte-fallback-tokenization"
+      ],
+      "statement": "Gopher's tokenizer applies lossy NFKC compatibility normalization. The appendix notes that this can collapse superscripts, reduce expressivity, and alter both training and evaluation text, and recommends a lossless normalization approach for future work; one appendix occurrence transposes the acronym as NKFC.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Tokenizer normalization failure and model-card preprocessing",
+            "section": "A.4 Limitations; B Gopher Model Card",
+            "pageStart": 46,
+            "pageEnd": 51,
+            "table": "A4"
+          },
+          "support": "The appendix describes the superscript failure and recommendation, while the model card confirms NFKC preprocessing."
+        }
+      ],
+      "limitations": [
+        "Byte fallback provides open-vocabulary symbol coverage after normalization; it cannot recover distinctions already collapsed by NFKC."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-fixed-token-scale-sweep-and-nonuniform-gains",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "Against the best Gopher-family model up to 7.1B, the 280B model has zero or no gain on 16 of 152 tasks, gains up to 25% on 57, and gains over 25% on 79. Knowledge-heavy medicine, science, technology, social-science, and humanities tasks show many large gains, while mathematics, logical reasoning, and common-sense categories benefit less and include lower 280B results on Abstract Algebra, Temporal Sequences, and High School Mathematics. The paper labels 79 of 152 as 51.2%; direct division is about 52.0%.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Task-bucket counts, domain pattern, and negative cases",
+            "section": "4.3 Performance Improvements with Scale",
+            "pageStart": 11,
+            "pageEnd": 13,
+            "figure": "4"
+          },
+          "support": "The canonical text prints the three buckets, describes the category pattern, and names counterexamples; arithmetic checks the printed percentage."
+        }
+      ],
+      "limitations": [
+        "Relative percentage changes mix metrics with different scales and directions; the paper itself notes that bits-per-byte compresses apparent language-modeling gains relative to accuracy tasks.",
+        "The family comparison keeps token count and corpus family fixed but not compute, optimizer scale, architecture dimensions, precision, or batch size.",
+        "Selected task categories and examples do not establish a universal capability threshold or monotonic emergence law."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-gopher-broad-evaluation-profile",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "fixed-token-capability-scaling-profile",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "The report evaluates 152 tasks, of which 124 have selected prior language-model results; Gopher improves the chosen metric on 100 of 124. It reports 60.0 five-shot average accuracy across 57 MMLU tasks versus 43.9 for GPT-3 and 48.9 for UnifiedQA, RACE-h 71.6 versus 46.8 GPT-3 and 47.9 Megatron-Turing NLG, RACE-m 75.1 versus 58.1 GPT-3, and state of the art on 11 of 19 language-modeling datasets, while retaining much higher supervised and human RACE references.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Evaluation inventory and headline comparison matrix",
+            "section": "4 Results; 4.1 Comparison to State of the Art; 4.2 Results by Category",
+            "pageStart": 7,
+            "pageEnd": 11,
+            "figure": "1–3",
+            "table": "3–5"
+          },
+          "support": "The canonical task inventory, plots, tables, and prose print the task counts, comparison counts, MMLU, RACE, and language-modeling values."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Full task and language-modeling result tables",
+            "section": "D.1 Full Results; D.2 Pile; D.3 Language Modelling",
+            "pageStart": 55,
+            "pageEnd": 61,
+            "table": "A5–A7"
+          },
+          "support": "The appendix exposes shot counts, imported comparator scope, and mixed wins and losses behind the summary."
+        }
+      ],
+      "limitations": [
+        "The 100-of-124 headline combines heterogeneous prompts, shot counts, metrics, test sets, baselines, corpora, and publication states; it is not one controlled experiment or a universal dominance rate.",
+        "Book and article gains may partly reflect MassiveText's 27% book sampling, while Gopher remains relatively worse on Ubuntu IRC, DM Mathematics, and OpenWebText in the Pile subset.",
+        "The MMLU comparison imports baseline and human estimates, and the paper's claim of more than 30% over UnifiedQA is neither 30 percentage points nor a 30% relative gain."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-gopher-scaling-curve-deviation",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "Across multiple language-model evaluations, the 417M through 7.1B points approximately follow a log-log loss trend, but the 280B Gopher point notably deviates. The authors retain two explanations—Gopher may be under-trained, or the power law may bend at this scale—and note PG-19 as an evaluation where the trend still appears to hold.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Large-model loss-curve deviation and competing explanations",
+            "section": "D.5 Scaling Curves",
+            "pageStart": 61,
+            "pageEnd": 63,
+            "figure": "A10"
+          },
+          "support": "The appendix plots the family and explicitly states the deviation, under-training hypothesis, alternative curve-bending hypothesis, and PG-19 exception."
+        }
+      ],
+      "limitations": [
+        "This is a diagnostic ambiguity under Gopher's fixed 300B-token schedule, not a fixed-compute optimum, a fitted Chinchilla allocation law, or proof of either explanation.",
+        "Task-specific loss curves do not establish the same scaling behavior for downstream accuracy, reasoning, safety, or serving cost."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-relative-position-context-extrapolation",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "relative-positional-self-attention",
+        "relative-position-context-extrapolation"
+      ],
+      "statement": "Naively evaluating beyond the trained 2,048-token span caused an unreported sharp degradation. Clamping relative positions at 2,048 permits longer-context gains principally on articles and code, smaller gains on books, and no gain on PubMed Abstracts, but makes every token farther than 2,048 positionally indistinguishable.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Longer-context clamp experiment",
+            "section": "D.6 Scaling Context Length",
+            "pageStart": 62,
+            "pageEnd": 64,
+            "figure": "A11"
+          },
+          "support": "The appendix describes the failed naive extension, clamping method, domain-specific results, and positional indistinguishability boundary."
+        }
+      ],
+      "limitations": [
+        "The experiment changes evaluation context without adding Transformer-XL segment recurrence or proving unbounded memory; distances beyond the clamp share one encoding.",
+        "Section D.6 prose calls the shorter comparison window 1,000 tokens, while Figure A11 and its caption label that baseline 1,024; the record does not silently choose between them.",
+        "The magnitude of the naive degradation is not reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-fever-task-training-boundary",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "fixed-token-capability-scaling-profile",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "FEVER evaluation leaves Gopher's weights frozen but trains a multiclass logistic regression on the language model's three label probabilities and uses a fixed 15-example prompt. Scale mainly improves discrimination of SUPPORTED versus REFUTED claims; REFUTED versus NOTENOUGHINFO plateaus after roughly one billion parameters.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Fact-checking result and label-pair scaling",
+            "section": "4.2.2 Fact Checking",
+            "pageStart": 10,
+            "pageEnd": 11,
+            "figure": "3"
+          },
+          "support": "The main result reports the scale trend and separates SUPPORTED-versus-REFUTED gains from the plateauing unknown-versus-false boundary."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Frozen-model, learned-classifier, and prompt boundary",
+            "section": "D.12 Fact Checking",
+            "pageStart": 84,
+            "pageEnd": 86
+          },
+          "support": "The appendix specifies the frozen language model, trained multiclass logistic regression, label probabilities, and fixed 15-example prompt."
+        }
+      ],
+      "limitations": [
+        "This is not task-training-free fact checking: the language model is frozen, but the logistic classifier is supervised on FEVER training data.",
+        "Performance on one label boundary does not establish a deeper understanding of misinformation, a point the authors explicitly distinguish from knowing more facts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-scale-dependent-toxicity-and-bias",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "prompt-conditioned-bias-probing",
+        "scale-dependent-toxicity-and-bias"
+      ],
+      "statement": "On 10% of 100,000 RealToxicityPrompts with 25 continuations each, toxic-prompt continuations become more toxic with scale and plateau around 7.1B, while 25,000 unprompted samples per model remain low and do not increase with scale. Twenty-shot toxicity classification reaches about 0.76 AUC at 280B. Scale improves Winogender accuracy but leaves stereotype-conditioned gaps, yields no clear sentiment-bias trend, and does not close the perplexity gap between African-American-aligned and White-aligned tweets.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Main toxicity, stereotype, sentiment, and dialect scaling findings",
+            "section": "5 Toxicity and Bias Analysis",
+            "pageStart": 13,
+            "pageEnd": 17,
+            "figure": "5–8"
+          },
+          "support": "The canonical main text reports the prompted/unprompted trends, classification result, and nonuniform distributional-bias findings."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Safety-probe methods, raw values, and classifier caveats",
+            "section": "E Toxicity and Bias Analysis",
+            "pageStart": 89,
+            "pageEnd": 101,
+            "table": "A18–A25"
+          },
+          "support": "The appendix specifies sampling, Perspective API scoring, subgroup metrics, templates, raw Winogender values, and dialect comparisons."
+        }
+      ],
+      "limitations": [
+        "Perspective API and sentiment classifiers have acknowledged social and demographic biases, toxicity is context-dependent, and selected English templates and groups are incomplete.",
+        "Appendix dialogue prose elsewhere mislabels the rising conditioned Figure 5a curves as unprompted, conflicting with the explicit Section 5.1.1 distinction preserved here.",
+        "Improved classification or average Winogender accuracy does not imply fair subgroup outcomes or removal of representational and allocational harms."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-prompted-dialogue-and-factuality-boundary",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "prompt-conditioned-dialogue"
+      ],
+      "statement": "An approximately 800-token hand-written prompt makes raw Gopher continue a dialogue format with nucleus sampling at p=.8, but the paper shows confident errors and warns that prompting does not make the model consistently reliable or factual. Fine-tuning on about 5B tokens of mined MassiveWeb dialogue produces no significant preference in 1,400 ratings: Table A31 reports fine-tuned preference 0.50±0.04 or 0.49±0.04 depending on the move selector. Canonical v2 relabels a cell-biology example from factual to mixed factuality and explains its error.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Prompted dialogue behavior and factuality caveat",
+            "section": "6 Dialogue",
+            "pageStart": 17,
+            "pageEnd": 20,
+            "table": "6–8"
+          },
+          "support": "The main text shows the prompt-conditioned interface, selected successes and failures, and explicit reliability warning."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Dialogue construction and fine-tuning comparison",
+            "section": "H Dialogue-Prompted Gopher Details",
+            "pageStart": 112,
+            "pageEnd": 120,
+            "table": "A30–A42"
+          },
+          "support": "The appendix prints the complete prompt, sampling method, context cost, mined-data size, rater count, move-selector caveat, and preference intervals."
+        }
+      ],
+      "limitations": [
+        "The selected dialogue transcripts are qualitative and cannot estimate factuality, safety, usefulness, or adversarial robustness rates.",
+        "The 1,400 ratings use a study-specific comparison and move-selection procedure; a null preference does not establish equivalence across all dialogue distributions.",
+        "The prompt consumes about 800 of the trained 2,048-token context and its hand-authored claims about truthfulness and bias are instructions, not guarantees."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-bfloat16-staleness-and-master-weight-fix",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "large-scale-low-precision-training"
+      ],
+      "statement": "The paper reports that bfloat16 parameters can become stale because small optimizer updates fail to change their stored value. In a 417M-model ablation, stochastic rounding still underperforms full precision, while retaining an FP32 master parameter copy in optimizer state matches full-precision performance and preserves roughly 1.4× bfloat16 training speed.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Low-precision failure analysis and master-weight ablation",
+            "section": "C.2 Mixed Precision Training",
+            "pageStart": 53,
+            "pageEnd": 55,
+            "figure": "A7"
+          },
+          "support": "The appendix defines parameter staleness, compares the precision strategies, and reports the performance and speed boundary."
+        }
+      ],
+      "limitations": [
+        "The controlled experiment is at 417M parameters and is not a repeated 280B Gopher run, so its fix is not promoted as a measured large-run gain.",
+        "The surrounding prose inconsistently counts the tested configurations and misstates one plot color; the figure and caption control the comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-model-data-and-replication-boundary",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "rms-normalized-autoregressive-transformer",
+        "massivetext-mixture-training",
+        "massivetext-corpus-pipeline"
+      ],
+      "statement": "The embedded datasheet says MassiveText preprocessing software is unavailable and the dataset will not be distributed outside DeepMind. The model card says intended users are DeepMind researchers, Gopher will not be public, downstream use requires additional safety and fairness analysis, and the model was not trained repeatedly. It also anticipates toxic or biased output, likely personal information, predominantly English behavior, uneven dialect performance, and no intersectional-bias investigation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "MassiveText availability and provenance boundary",
+            "section": "A.5 MassiveText Datasheet",
+            "pageStart": 47,
+            "pageEnd": 49,
+            "table": "A3"
+          },
+          "support": "The embedded datasheet gives collection dates, source-license notes, no preprocessing-software release, no third-party distribution, and predominantly English scope."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Gopher intended-use, non-release, replication, and harm boundary",
+            "section": "B Gopher Model Card",
+            "pageStart": 49,
+            "pageEnd": 52,
+            "table": "A4"
+          },
+          "support": "The embedded model card states the intended users, public-release decision, use restrictions, one-run status, and listed risks and omissions."
+        }
+      ],
+      "limitations": [
+        "A public paper and embedded model card are not a model release, data license, preprocessing package, or experiment manifest.",
+        "The datasheet answers no to confidential information while the model card says personal information is likely present; neither provides a comprehensive privacy audit.",
+        "The GitHub component's permissive-license allowlist does not establish source-level provenance or an umbrella right to redistribute the compiled MassiveText mixture."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-compute-and-carbon-accounting",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "distributed-dense-transformer-training",
+        "practical-training-compute-accounting"
+      ],
+      "statement": "Appendix F reports Gopher training at 6.31×10^8 PFLOPs, or 6.31×10^23 FLOPs, and total listed evaluation at 4.72×10^6 PFLOPs. Its implementation-aware account includes a 33% rematerialization cost plus padding and repeated evaluation computation but is explicitly a best-effort lower bound excluding development, pre-emption, and other inefficiency. The carbon estimate uses 4,096 TPUv3 chips for 920 hours in November–December 2020, Georgia data-center PUE 1.08, October grid intensity 0.33 tCO2e/MWh, and estimated 283W per chip to obtain 380 net tCO2e.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Implementation-aware FLOPs and carbon-estimate inputs",
+            "section": "F Compute Usage",
+            "pageStart": 102,
+            "pageEnd": 103,
+            "table": "A26–A27"
+          },
+          "support": "The appendix prints training and evaluation PFLOPs, included and excluded work, hardware-time decomposition, and every carbon-estimate input and result."
+        }
+      ],
+      "limitations": [
+        "The FLOP figure is a lower bound under the paper's practical account and differs from later nominal 6ND comparisons; it excludes research development, failed or pre-empted work, and other operational overhead.",
+        "The 380-tCO2e result is an estimate from chip power, facility efficiency, time, and a monthly grid factor rather than direct whole-project energy and emissions measurement.",
+        "Evaluation FLOPs reflect repeated common-prefix computation that the authors estimate could be reduced by 4–100× depending on the task."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
+    },
+    {
+      "id": "rae-2021-artifact-and-rights-boundary",
+      "workId": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+      "ideaIds": [
+        "rms-normalized-autoregressive-transformer",
+        "massivetext-mixture-training",
+        "massivetext-corpus-pipeline"
+      ],
+      "statement": "The public Gopher artifacts inspected for this audit are the DeepMind/arXiv paper PDFs and arXiv publication-source archives. The v1 and v2 archives contain duplicated TeX, bibliography, cache fragments, and figures but no executable training/evaluation code, weights, tokenizer, prepared MassiveText data, environment lock, or run manifest. Both PDFs say all rights reserved; arXiv's non-exclusive distribution license authorizes repository distribution rather than a general reuse grant for the paper, model, code, data, or third-party material.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "rae-2021-arxiv-v1-source-package",
+          "locator": {
+            "label": "Version 1 publication-source inventory",
+            "section": "Complete archive tree"
+          },
+          "support": "The full archive contains publication files and no executable experiment or model/data package."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-source-package",
+          "locator": {
+            "label": "Version 2 publication-source inventory",
+            "section": "Complete archive tree"
+          },
+          "support": "The full canonical archive changes publication text/assets but still contains no experiment package or archive-level license."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Copyright and explicit non-release statements",
+            "section": "Title page; A.5 MassiveText Datasheet; B Gopher Model Card",
+            "pageStart": 1,
+            "pageEnd": 52,
+            "table": "A3–A4"
+          },
+          "support": "The canonical paper states all rights reserved and explicitly says neither model nor dataset will be public."
+        },
+        {
+          "sourceId": "rae-2021-arxiv-license",
+          "locator": {
+            "label": "Preprint distribution-rights boundary",
+            "section": "Non-exclusive distribution license"
+          },
+          "support": "The record-linked terms grant arXiv distribution rights rather than downstream public reuse rights."
+        }
+      ],
+      "limitations": [
+        "An absence finding is bounded to the complete paper/source artifacts and named release surface inspected on 2026-09-06; it is not proof that no related artifact can ever exist.",
+        "A permissive header in the DeepMind LaTeX class applies to that template file, not the paper text, figures, model, dataset, or third-party sources.",
+        "Reuse of each external corpus, benchmark, dependency, figure, and model artifact requires its own provenance and rights analysis."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-06"
     },
     {
       "id": "ouyang-2022-version-and-deployment-boundary",
@@ -58701,6 +60331,94 @@
       "uncertainties": []
     },
     {
+      "id": "radford-2019-to-rae-2021-gopher",
+      "from": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Rae et al. explicitly say the Gopher family uses the autoregressive Transformer architecture detailed in Radford et al. 2019, then enumerate RMSNorm and relative-position changes while scaling the dense stack. The edge carries only target-named decoder architecture continuity and excludes GPT-2's WebText, tokenizer, model sizes, task results, staged releases, and release policy.",
+      "claimIds": [
+        "radford-2019-gpt-continuity-and-model-changes",
+        "rae-2021-gopher-family-and-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Target-side GPT-2 architecture continuity",
+            "section": "3.1 Model",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The target directly names Radford et al. 2019 as the detailed autoregressive Transformer architecture and then states its own two normalization and position changes."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is limited to the explicit architectural substrate; SentencePiece with byte fallback is target-specific here and does not transfer GPT-2's tokenizer claim."
+        }
+      ]
+    },
+    {
+      "id": "dai-2019-to-rae-2021-gopher",
+      "from": {
+        "kind": "work",
+        "id": "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context"
+      },
+      "to": {
+        "kind": "work",
+        "id": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Rae et al. explicitly replace absolute positions with the relative positional encoding scheme from Dai et al. 2019 and use that choice for longer-context evaluation. The edge carries relative-position attention only; Gopher does not inherit Transformer-XL's segment recurrence, cached hidden-state memory, benchmark results, or evidence of unbounded context.",
+      "claimIds": [
+        "dai-2019-relative-positional-attention",
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-relative-position-context-extrapolation"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Target-side Transformer-XL relative-position reuse",
+            "section": "3.1 Model",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The target directly names Dai et al.'s relative-position scheme as its replacement for absolute positional encoding."
+        },
+        {
+          "sourceId": "rae-2022-arxiv-v2-full-text",
+          "locator": {
+            "label": "Target-side clamped relative-position evaluation",
+            "section": "D.6 Scaling Context Length",
+            "pageStart": 62,
+            "pageEnd": 64,
+            "figure": "A11"
+          },
+          "support": "The target tests its clamped relative-position implementation beyond the trained context and states the domain-specific gains and positional-indistinguishability limit."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge excludes Transformer-XL recurrence and results; all distances beyond Gopher's clamp become positionally indistinguishable."
+        }
+      ]
+    },
+    {
       "id": "kaplan-2020-to-hoffmann-2022",
       "from": {
         "kind": "work",
@@ -58755,6 +60473,54 @@
         {
           "status": "resolved",
           "note": "Schedule mismatch is one proposed contributor, while non-embedding versus total-parameter conventions and different compute accounts also prevent an unlimited causal interpretation."
+        }
+      ]
+    },
+    {
+      "id": "rae-2021-gopher-to-hoffmann-2022",
+      "from": {
+        "kind": "work",
+        "id": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      },
+      "to": {
+        "kind": "work",
+        "id": "hoffmann-2022-training-compute-optimal-language-models"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Hoffmann et al. explicitly use the same model architecture, training setup, and MassiveText dataset as Gopher before enumerating Chinchilla's changes. The edge carries the dense autoregressive substrate, corpus family, and documented tokenizer and precision lessons while keeping Chinchilla's smaller configuration, longer token budget, AdamW, FP32 master weights, NFKC change, batch schedule, source weights, results, and compute-optimal conclusions target-specific.",
+      "claimIds": [
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-gopher-training-recipe",
+        "rae-2021-massivetext-composition-and-sampling",
+        "rae-2021-gopher-tokenizer-normalization-limitation",
+        "rae-2021-bfloat16-staleness-and-master-weight-fix",
+        "hoffmann-2022-chinchilla-gopher-compute-match",
+        "hoffmann-2022-chinchilla-architecture-and-training",
+        "hoffmann-2022-massivetext-mixture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "hoffmann-2022-neurips-full-text",
+          "locator": {
+            "label": "Target-side Gopher architecture, training, and MassiveText reuse",
+            "section": "4 Chinchilla; 4.1 Model and training details; 4.2 Evaluation",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "The target says Chinchilla uses Gopher's architecture and training setup except for listed changes and identifies MassiveText as the same dataset with a different mixture."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is not a claim that Chinchilla is merely a smaller Gopher: the target changes model dimensions, token count, optimizer, normalization behavior, master-weight handling, batch schedule, mixture, and evaluation conditions."
+        },
+        {
+          "status": "resolved",
+          "note": "Gopher's 6.31×10^23 implementation-aware lower bound and Chinchilla's nominal 5.76×10^23 matching account remain distinct rather than silently equated."
         }
       ]
     },
@@ -62458,6 +64224,98 @@
       "successCriterion": "The learner can reproduce the T0 hyperparameters and 11 held-out medians; identify which T0+ and T0++ rows are trained-on; derive every p and d robustness count; defend the scoped T5 and FLAN relationships; and audit the 40/42 authors, 39/38 mixture, Story Cloze, checkpoint, P3, and upstream-rights boundaries."
     },
     {
+      "id": "beginner-rae-2021-scale-a-model-without-hiding-the-boundaries",
+      "mode": "beginner",
+      "objective": "Trace how Gopher scales a next-token Transformer to 280B parameters, trains on the MassiveText mixture, and is tested across many tasks; then explain why uneven reasoning gains, prompted toxicity, confident dialogue errors, and unreleased artifacts prevent a simple bigger-is-always-better story.",
+      "workIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "ideaIds": [
+        "rms-normalized-autoregressive-transformer",
+        "massivetext-mixture-training",
+        "massivetext-corpus-pipeline",
+        "fixed-token-capability-scaling-profile",
+        "scale-dependent-toxicity-and-bias",
+        "prompt-conditioned-dialogue"
+      ],
+      "claimIds": [
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-gopher-training-recipe",
+        "rae-2021-massivetext-composition-and-sampling",
+        "rae-2021-massivetext-filter-deduplicate-decontaminate",
+        "rae-2021-fixed-token-scale-sweep-and-nonuniform-gains",
+        "rae-2021-gopher-broad-evaluation-profile",
+        "rae-2021-gopher-scaling-curve-deviation",
+        "rae-2021-scale-dependent-toxicity-and-bias",
+        "rae-2021-prompted-dialogue-and-factuality-boundary",
+        "rae-2021-model-data-and-replication-boundary"
+      ],
+      "prerequisites": [
+        "A causal language model predicts the next token from earlier tokens",
+        "Parameter count, training tokens, and compute describe different parts of model scale",
+        "A benchmark result depends on its prompt, metric, comparison system, and data overlap",
+        "Publicly readable papers do not imply public weights, data, code, or reuse rights"
+      ],
+      "successCriterion": "The learner can describe the six-model family and 300B-token schedule, reconstruct the six MassiveText weights, contrast knowledge and reading gains with named negative reasoning cases, distinguish prompted from unprompted toxicity, identify one dialogue factuality failure, and state which core artifacts remain private."
+    },
+    {
+      "id": "expert-rae-2021-gopher-provenance-scaling-compute-and-lineage",
+      "mode": "expert",
+      "objective": "Audit Gopher's two manuscript versions, architecture and GPT-2/Transformer-XL inheritance, training numerics and parallel topology, MassiveText construction, broad evaluation and leakage controls, nonuniform scaling, safety and dialogue evidence, precision failure, implementation-aware compute and carbon accounting, artifact and rights boundaries, and scoped extension into Chinchilla.",
+      "workIds": [
+        "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "decoder-only-transformer-language-modeling",
+        "relative-positional-self-attention",
+        "massivetext-mixture-training",
+        "demonstration-conditioned-in-context-learning",
+        "prompt-conditioned-bias-probing",
+        "rms-normalized-autoregressive-transformer",
+        "sentencepiece-byte-fallback-tokenization",
+        "large-scale-low-precision-training",
+        "distributed-dense-transformer-training",
+        "practical-training-compute-accounting",
+        "massivetext-corpus-pipeline",
+        "fixed-token-capability-scaling-profile",
+        "relative-position-context-extrapolation",
+        "prompt-conditioned-dialogue",
+        "scale-dependent-toxicity-and-bias"
+      ],
+      "claimIds": [
+        "rae-2021-gopher-version-boundary",
+        "rae-2021-gopher-family-and-architecture",
+        "rae-2021-gopher-training-recipe",
+        "rae-2021-gopher-distributed-training-and-compute",
+        "rae-2021-massivetext-composition-and-sampling",
+        "rae-2021-massivetext-sequence-construction",
+        "rae-2021-massivetext-filter-deduplicate-decontaminate",
+        "rae-2021-massivetext-ablation-boundary",
+        "rae-2021-gopher-tokenizer-normalization-limitation",
+        "rae-2021-fixed-token-scale-sweep-and-nonuniform-gains",
+        "rae-2021-gopher-broad-evaluation-profile",
+        "rae-2021-gopher-scaling-curve-deviation",
+        "rae-2021-relative-position-context-extrapolation",
+        "rae-2021-fever-task-training-boundary",
+        "rae-2021-scale-dependent-toxicity-and-bias",
+        "rae-2021-prompted-dialogue-and-factuality-boundary",
+        "rae-2021-bfloat16-staleness-and-master-weight-fix",
+        "rae-2021-model-data-and-replication-boundary",
+        "rae-2021-compute-and-carbon-accounting",
+        "rae-2021-artifact-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "Causal Transformers, multi-head self-attention, normalization, relative position scoring, tokenization, and context windows",
+        "Adam schedules, gradient clipping, bfloat16 arithmetic, master weights, data/model/pipeline parallelism, and rematerialization",
+        "Corpus sampling, heuristic filtering, MinHash/Jaccard deduplication, benchmark overlap, and immutable data manifests",
+        "Few-shot probability scoring, heterogeneous baselines, supervised probes, scaling curves, calibration, and uncertainty",
+        "Model cards, dataset datasheets, FLOP accounts, carbon-estimate system boundaries, source fixity, and license scope"
+      ],
+      "successCriterion": "The learner can reproduce Table 1 and Table 2, audit all twenty promoted claims and both version states, explain the 79-of-152 arithmetic and 280B loss-curve deviation, separate conditioned from unconditioned toxicity, bound the FEVER classifier and dialogue studies, reconcile practical versus nominal FLOPs, and defend the GPT-2→Gopher, Transformer-XL→Gopher, and Gopher→Chinchilla edges without transferring excluded data, results, recurrence, artifacts, or rights."
+    },
+    {
       "id": "beginner-ouyang-2022-instructions-human-feedback-and-scope",
       "mode": "beginner",
       "objective": "Compare prompting with three kinds of post-training—demonstrations, ranked answers, and reward-guided practice—then interpret why a smaller tuned model can be preferred without concluding that it is universally smarter, truthful, safe, or aligned to everyone.",
@@ -62569,7 +64427,7 @@
     {
       "id": "expert-hoffmann-2022-three-estimators-validation-and-provenance",
       "mode": "expert",
-      "objective": "Reconstruct the curve-envelope, IsoFLOP, and parametric estimators and their fixed-compute account; then audit schedule matching, bootstrap interpretation, Kaplan comparison, C4 and GitHub checks, Chinchilla validation, evaluation controls, extrapolation, artifacts, rights, and version-specific reporting anomalies.",
+      "objective": "Reconstruct the curve-envelope, IsoFLOP, and parametric estimators and their fixed-compute account; then audit schedule matching, bootstrap interpretation, Kaplan comparison, the Gopher architecture and MassiveText substrate, C4 and GitHub checks, Chinchilla validation, evaluation controls, extrapolation, artifacts, rights, and version-specific reporting anomalies.",
       "workIds": [
         "hoffmann-2022-training-compute-optimal-language-models"
       ],
@@ -62614,7 +64472,7 @@
         "Benchmark prompting, leakage, repeated-run uncertainty, and confounded model comparisons",
         "Immutable version provenance, source manifests, model and data artifacts, and license scope"
       ],
-      "successCriterion": "The learner can reconstruct Equations 1–3 and the appendix fit, reproduce .50/.50, .49/.51, and .46/.54 with their intervals, explain the matched-horizon assumption and Kaplan accounting boundary, derive the estimator-specific Gopher-budget range, audit the 70B/1.4T validation and six-source mixture, enumerate the sign, cross-reference, 10× FLOP, projection, interval, and evaluation discrepancies, and separate paper versions, mutable organization prose, proprietary data, unreleased model artifacts, and distribution rights."
+      "successCriterion": "The learner can reconstruct Equations 1–3 and the appendix fit, reproduce .50/.50, .49/.51, and .46/.54 with their intervals, explain the matched-horizon assumption and Kaplan accounting boundary, derive the estimator-specific Gopher-budget range, audit the 70B/1.4T validation and six-source mixture, defend the qualified Gopher→Chinchilla substrate edge and its explicit changes, enumerate the sign, cross-reference, 10× FLOP, projection, interval, and evaluation discrepancies, and separate paper versions, mutable organization prose, proprietary data, unreleased model artifacts, and distribution rights."
     }
   ]
 }
