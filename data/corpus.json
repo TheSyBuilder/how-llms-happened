@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-06",
+  "asOf": "2026-09-07",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -15485,6 +15485,886 @@
           "note": "The canonical work identity follows the linked NeurIPS PDF and Crossref title, with the NeurIPS record’s alternate heading retained as metadata rather than treated as another paper."
         }
       ]
+    },
+    {
+      "id": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "title": "PaLM: Scaling Language Modeling with Pathways",
+      "authors": [
+        "Aakanksha Chowdhery",
+        "Sharan Narang",
+        "Jacob Devlin",
+        "Maarten Bosma",
+        "Gaurav Mishra",
+        "Adam Roberts",
+        "Paul Barham",
+        "Hyung Won Chung",
+        "Charles Sutton",
+        "Sebastian Gehrmann",
+        "Parker Schuh",
+        "Kensen Shi",
+        "Sasha Tsvyashchenko",
+        "Joshua Maynez",
+        "Abhishek Rao",
+        "Parker Barnes",
+        "Yi Tay",
+        "Noam Shazeer",
+        "Vinodkumar Prabhakaran",
+        "Emily Reif",
+        "Nan Du",
+        "Ben Hutchinson",
+        "Reiner Pope",
+        "James Bradbury",
+        "Jacob Austin",
+        "Michael Isard",
+        "Guy Gur-Ari",
+        "Pengcheng Yin",
+        "Toju Duke",
+        "Anselm Levskaya",
+        "Sanjay Ghemawat",
+        "Sunipa Dev",
+        "Henryk Michalewski",
+        "Xavier Garcia",
+        "Vedant Misra",
+        "Kevin Robinson",
+        "Liam Fedus",
+        "Denny Zhou",
+        "Daphne Ippolito",
+        "David Luan",
+        "Hyeontaek Lim",
+        "Barret Zoph",
+        "Alexander Spiridonov",
+        "Ryan Sepassi",
+        "David Dohan",
+        "Shivani Agrawal",
+        "Mark Omernick",
+        "Andrew M. Dai",
+        "Thanumalayan Sankaranarayana Pillai",
+        "Marie Pellat",
+        "Aitor Lewkowycz",
+        "Erica Moreira",
+        "Rewon Child",
+        "Oleksandr Polozov",
+        "Katherine Lee",
+        "Zongwei Zhou",
+        "Xuezhi Wang",
+        "Brennan Saeta",
+        "Mark Diaz",
+        "Orhan Firat",
+        "Michele Catasta",
+        "Jason Wei",
+        "Kathy Meier-Hellstern",
+        "Douglas Eck",
+        "Jeff Dean",
+        "Slav Petrov",
+        "Noah Fiedel"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” Journal of Machine Learning Research, vol. 24, no. 240, pp. 1–113, 2023.",
+      "chronology": {
+        "orderingEventId": "chowdhery-2022-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "chowdhery-2022-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2022-04-05",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chowdhery-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 submitted 5 April 2022 at 16:11:45 UTC"
+              }
+            ],
+            "versionId": "chowdhery-2022-arxiv-v1-version",
+            "sourceIds": [
+              "chowdhery-2022-arxiv-record",
+              "chowdhery-2022-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "chowdhery-2022-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2022-04-07",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chowdhery-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 submitted 7 April 2022 at 16:38:01 UTC"
+              }
+            ],
+            "versionId": "chowdhery-2022-arxiv-v2-version",
+            "sourceIds": [
+              "chowdhery-2022-arxiv-record",
+              "chowdhery-2022-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "chowdhery-2022-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2022-04-19",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chowdhery-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 submitted 19 April 2022 at 05:28:38 UTC"
+              }
+            ],
+            "versionId": "chowdhery-2022-arxiv-v3-version",
+            "sourceIds": [
+              "chowdhery-2022-arxiv-record",
+              "chowdhery-2022-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "chowdhery-2022-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2022-09-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chowdhery-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 submitted 29 September 2022 at 13:22:22 UTC"
+              }
+            ],
+            "versionId": "chowdhery-2022-arxiv-v4-version",
+            "sourceIds": [
+              "chowdhery-2022-arxiv-record",
+              "chowdhery-2022-arxiv-v4-full-text"
+            ]
+          },
+          {
+            "id": "chowdhery-2022-arxiv-v5-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 5 posted",
+            "date": {
+              "value": "2022-10-05",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chowdhery-2022-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 5 submitted 5 October 2022 at 06:02:24 UTC"
+              }
+            ],
+            "versionId": "chowdhery-2022-arxiv-v5-version",
+            "sourceIds": [
+              "chowdhery-2022-arxiv-record",
+              "chowdhery-2022-arxiv-v5-full-text"
+            ]
+          },
+          {
+            "id": "chowdhery-2023-jmlr-published",
+            "kind": "journal-publication",
+            "label": "JMLR article published",
+            "date": {
+              "value": "2023-08",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "chowdhery-2023-jmlr-full-text",
+                "precision": "month",
+                "locator": "Article header, Published 8/23"
+              }
+            ],
+            "versionId": "chowdhery-2023-jmlr-version",
+            "sourceIds": [
+              "chowdhery-2023-jmlr-record",
+              "chowdhery-2023-jmlr-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "chowdhery-2022-arxiv-v1-version",
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "authors": [
+            "Aakanksha Chowdhery",
+            "Sharan Narang",
+            "Jacob Devlin",
+            "Maarten Bosma",
+            "Gaurav Mishra",
+            "Adam Roberts",
+            "Paul Barham",
+            "Hyung Won Chung",
+            "Charles Sutton",
+            "Sebastian Gehrmann",
+            "Parker Schuh",
+            "Kensen Shi",
+            "Sasha Tsvyashchenko",
+            "Joshua Maynez",
+            "Abhishek Rao",
+            "Parker Barnes",
+            "Yi Tay",
+            "Noam Shazeer",
+            "Vinodkumar Prabhakaran",
+            "Emily Reif",
+            "Nan Du",
+            "Ben Hutchinson",
+            "Reiner Pope",
+            "James Bradbury",
+            "Jacob Austin",
+            "Michael Isard",
+            "Guy Gur-Ari",
+            "Pengcheng Yin",
+            "Toju Duke",
+            "Anselm Levskaya",
+            "Sanjay Ghemawat",
+            "Sunipa Dev",
+            "Henryk Michalewski",
+            "Xavier Garcia",
+            "Vedant Misra",
+            "Kevin Robinson",
+            "Liam Fedus",
+            "Denny Zhou",
+            "Daphne Ippolito",
+            "David Luan",
+            "Hyeontaek Lim",
+            "Barret Zoph",
+            "Alexander Spiridonov",
+            "Ryan Sepassi",
+            "David Dohan",
+            "Shivani Agrawal",
+            "Mark Omernick",
+            "Andrew M. Dai",
+            "Thanumalayan Sankaranarayana Pillai",
+            "Marie Pellat",
+            "Aitor Lewkowycz",
+            "Erica Moreira",
+            "Rewon Child",
+            "Oleksandr Polozov",
+            "Katherine Lee",
+            "Zongwei Zhou",
+            "Xuezhi Wang",
+            "Brennan Saeta",
+            "Mark Diaz",
+            "Orhan Firat",
+            "Michele Catasta",
+            "Jason Wei",
+            "Kathy Meier-Hellstern",
+            "Douglas Eck",
+            "Jeff Dean",
+            "Slav Petrov",
+            "Noah Fiedel"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” arXiv:2204.02311v1, 5 April 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2204.02311v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chowdhery-2022-arxiv-record",
+            "chowdhery-2022-arxiv-v1-full-text",
+            "chowdhery-2022-arxiv-v1-source-package",
+            "chowdhery-2022-cc-by-license"
+          ],
+          "notes": "The 83-page ordering manuscript contains the original infrastructure wording, early chain-of-thought attribution and contamination framing, and no MMLU or continued-training appendix."
+        },
+        {
+          "id": "chowdhery-2022-arxiv-v2-version",
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "authors": [
+            "Aakanksha Chowdhery",
+            "Sharan Narang",
+            "Jacob Devlin",
+            "Maarten Bosma",
+            "Gaurav Mishra",
+            "Adam Roberts",
+            "Paul Barham",
+            "Hyung Won Chung",
+            "Charles Sutton",
+            "Sebastian Gehrmann",
+            "Parker Schuh",
+            "Kensen Shi",
+            "Sasha Tsvyashchenko",
+            "Joshua Maynez",
+            "Abhishek Rao",
+            "Parker Barnes",
+            "Yi Tay",
+            "Noam Shazeer",
+            "Vinodkumar Prabhakaran",
+            "Emily Reif",
+            "Nan Du",
+            "Ben Hutchinson",
+            "Reiner Pope",
+            "James Bradbury",
+            "Jacob Austin",
+            "Michael Isard",
+            "Guy Gur-Ari",
+            "Pengcheng Yin",
+            "Toju Duke",
+            "Anselm Levskaya",
+            "Sanjay Ghemawat",
+            "Sunipa Dev",
+            "Henryk Michalewski",
+            "Xavier Garcia",
+            "Vedant Misra",
+            "Kevin Robinson",
+            "Liam Fedus",
+            "Denny Zhou",
+            "Daphne Ippolito",
+            "David Luan",
+            "Hyeontaek Lim",
+            "Barret Zoph",
+            "Alexander Spiridonov",
+            "Ryan Sepassi",
+            "David Dohan",
+            "Shivani Agrawal",
+            "Mark Omernick",
+            "Andrew M. Dai",
+            "Thanumalayan Sankaranarayana Pillai",
+            "Marie Pellat",
+            "Aitor Lewkowycz",
+            "Erica Moreira",
+            "Rewon Child",
+            "Oleksandr Polozov",
+            "Katherine Lee",
+            "Zongwei Zhou",
+            "Xuezhi Wang",
+            "Brennan Saeta",
+            "Mark Diaz",
+            "Orhan Firat",
+            "Michele Catasta",
+            "Jason Wei",
+            "Kathy Meier-Hellstern",
+            "Douglas Eck",
+            "Jeff Dean",
+            "Slav Petrov",
+            "Noah Fiedel"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” arXiv:2204.02311v2, 7 April 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2204.02311v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chowdhery-2022-arxiv-record",
+            "chowdhery-2022-arxiv-v2-full-text",
+            "chowdhery-2022-arxiv-v2-source-package",
+            "chowdhery-2022-cc-by-license"
+          ],
+          "notes": "This 83-page revision expands code-safety discussion, corrects chain-of-thought attribution and task presentation, and removes the unverified duration attached to the inter-pod communication burst."
+        },
+        {
+          "id": "chowdhery-2022-arxiv-v3-version",
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "authors": [
+            "Aakanksha Chowdhery",
+            "Sharan Narang",
+            "Jacob Devlin",
+            "Maarten Bosma",
+            "Gaurav Mishra",
+            "Adam Roberts",
+            "Paul Barham",
+            "Hyung Won Chung",
+            "Charles Sutton",
+            "Sebastian Gehrmann",
+            "Parker Schuh",
+            "Kensen Shi",
+            "Sasha Tsvyashchenko",
+            "Joshua Maynez",
+            "Abhishek Rao",
+            "Parker Barnes",
+            "Yi Tay",
+            "Noam Shazeer",
+            "Vinodkumar Prabhakaran",
+            "Emily Reif",
+            "Nan Du",
+            "Ben Hutchinson",
+            "Reiner Pope",
+            "James Bradbury",
+            "Jacob Austin",
+            "Michael Isard",
+            "Guy Gur-Ari",
+            "Pengcheng Yin",
+            "Toju Duke",
+            "Anselm Levskaya",
+            "Sanjay Ghemawat",
+            "Sunipa Dev",
+            "Henryk Michalewski",
+            "Xavier Garcia",
+            "Vedant Misra",
+            "Kevin Robinson",
+            "Liam Fedus",
+            "Denny Zhou",
+            "Daphne Ippolito",
+            "David Luan",
+            "Hyeontaek Lim",
+            "Barret Zoph",
+            "Alexander Spiridonov",
+            "Ryan Sepassi",
+            "David Dohan",
+            "Shivani Agrawal",
+            "Mark Omernick",
+            "Andrew M. Dai",
+            "Thanumalayan Sankaranarayana Pillai",
+            "Marie Pellat",
+            "Aitor Lewkowycz",
+            "Erica Moreira",
+            "Rewon Child",
+            "Oleksandr Polozov",
+            "Katherine Lee",
+            "Zongwei Zhou",
+            "Xuezhi Wang",
+            "Brennan Saeta",
+            "Mark Diaz",
+            "Orhan Firat",
+            "Michele Catasta",
+            "Jason Wei",
+            "Kathy Meier-Hellstern",
+            "Douglas Eck",
+            "Jeff Dean",
+            "Slav Petrov",
+            "Noah Fiedel"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” arXiv:2204.02311v3, 19 April 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2204.02311v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chowdhery-2022-arxiv-record",
+            "chowdhery-2022-arxiv-v3-full-text",
+            "chowdhery-2022-arxiv-v3-source-package",
+            "chowdhery-2022-cc-by-license",
+            "chowdhery-2022-bigbench-score-artifacts"
+          ],
+          "notes": "This 83-page revision changes the reported Gopher utilization comparator using a personal communication and clarifies chain-of-thought attribution, protocol, and comparator descriptions without changing PaLM's reported scores."
+        },
+        {
+          "id": "chowdhery-2022-arxiv-v4-version",
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "authors": [
+            "Aakanksha Chowdhery",
+            "Sharan Narang",
+            "Jacob Devlin",
+            "Maarten Bosma",
+            "Gaurav Mishra",
+            "Adam Roberts",
+            "Paul Barham",
+            "Hyung Won Chung",
+            "Charles Sutton",
+            "Sebastian Gehrmann",
+            "Parker Schuh",
+            "Kensen Shi",
+            "Sasha Tsvyashchenko",
+            "Joshua Maynez",
+            "Abhishek Rao",
+            "Parker Barnes",
+            "Yi Tay",
+            "Noam Shazeer",
+            "Vinodkumar Prabhakaran",
+            "Emily Reif",
+            "Nan Du",
+            "Ben Hutchinson",
+            "Reiner Pope",
+            "James Bradbury",
+            "Jacob Austin",
+            "Michael Isard",
+            "Guy Gur-Ari",
+            "Pengcheng Yin",
+            "Toju Duke",
+            "Anselm Levskaya",
+            "Sanjay Ghemawat",
+            "Sunipa Dev",
+            "Henryk Michalewski",
+            "Xavier Garcia",
+            "Vedant Misra",
+            "Kevin Robinson",
+            "Liam Fedus",
+            "Denny Zhou",
+            "Daphne Ippolito",
+            "David Luan",
+            "Hyeontaek Lim",
+            "Barret Zoph",
+            "Alexander Spiridonov",
+            "Ryan Sepassi",
+            "David Dohan",
+            "Shivani Agrawal",
+            "Mark Omernick",
+            "Andrew M. Dai",
+            "Thanumalayan Sankaranarayana Pillai",
+            "Marie Pellat",
+            "Aitor Lewkowycz",
+            "Erica Moreira",
+            "Rewon Child",
+            "Oleksandr Polozov",
+            "Katherine Lee",
+            "Zongwei Zhou",
+            "Xuezhi Wang",
+            "Brennan Saeta",
+            "Mark Diaz",
+            "Orhan Firat",
+            "Michele Catasta",
+            "Jason Wei",
+            "Kathy Meier-Hellstern",
+            "Douglas Eck",
+            "Jeff Dean",
+            "Slav Petrov",
+            "Noah Fiedel"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” arXiv:2204.02311v4, 29 September 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2204.02311v4",
+                "label": "arXiv version 4 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chowdhery-2022-arxiv-record",
+            "chowdhery-2022-arxiv-v4-full-text",
+            "chowdhery-2022-arxiv-v4-source-package",
+            "chowdhery-2022-cc-by-license"
+          ],
+          "notes": "This 87-page revision adds MMLU and the 62B continued-training appendix, corrects evaluation values, and expands dataset analysis. Its new MMLU table swaps Chinchilla's STEM and Social Sciences cells; its complete 78-file source tree is the comparison base for version 5."
+        },
+        {
+          "id": "chowdhery-2022-arxiv-v5-version",
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "authors": [
+            "Aakanksha Chowdhery",
+            "Sharan Narang",
+            "Jacob Devlin",
+            "Maarten Bosma",
+            "Gaurav Mishra",
+            "Adam Roberts",
+            "Paul Barham",
+            "Hyung Won Chung",
+            "Charles Sutton",
+            "Sebastian Gehrmann",
+            "Parker Schuh",
+            "Kensen Shi",
+            "Sasha Tsvyashchenko",
+            "Joshua Maynez",
+            "Abhishek Rao",
+            "Parker Barnes",
+            "Yi Tay",
+            "Noam Shazeer",
+            "Vinodkumar Prabhakaran",
+            "Emily Reif",
+            "Nan Du",
+            "Ben Hutchinson",
+            "Reiner Pope",
+            "James Bradbury",
+            "Jacob Austin",
+            "Michael Isard",
+            "Guy Gur-Ari",
+            "Pengcheng Yin",
+            "Toju Duke",
+            "Anselm Levskaya",
+            "Sanjay Ghemawat",
+            "Sunipa Dev",
+            "Henryk Michalewski",
+            "Xavier Garcia",
+            "Vedant Misra",
+            "Kevin Robinson",
+            "Liam Fedus",
+            "Denny Zhou",
+            "Daphne Ippolito",
+            "David Luan",
+            "Hyeontaek Lim",
+            "Barret Zoph",
+            "Alexander Spiridonov",
+            "Ryan Sepassi",
+            "David Dohan",
+            "Shivani Agrawal",
+            "Mark Omernick",
+            "Andrew M. Dai",
+            "Thanumalayan Sankaranarayana Pillai",
+            "Marie Pellat",
+            "Aitor Lewkowycz",
+            "Erica Moreira",
+            "Rewon Child",
+            "Oleksandr Polozov",
+            "Katherine Lee",
+            "Zongwei Zhou",
+            "Xuezhi Wang",
+            "Brennan Saeta",
+            "Mark Diaz",
+            "Orhan Firat",
+            "Michele Catasta",
+            "Jason Wei",
+            "Kathy Meier-Hellstern",
+            "Douglas Eck",
+            "Jeff Dean",
+            "Slav Petrov",
+            "Noah Fiedel"
+          ],
+          "kind": "preprint",
+          "label": "Canonical arXiv version 5",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” arXiv:2204.02311v5, 5 October 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2204.02311v5",
+                "label": "arXiv version 5 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2204.02311",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chowdhery-2022-arxiv-record",
+            "chowdhery-2022-arxiv-v5-full-text",
+            "chowdhery-2022-arxiv-v5-source-package",
+            "chowdhery-2022-cc-by-license"
+          ],
+          "notes": "This 87-page revision fixes the MMLU category placement and interpretation while retaining the continued-training appendix. Its source diff changes only evals-gpt3.tex relative to the complete version 4 source tree."
+        },
+        {
+          "id": "chowdhery-2023-jmlr-version",
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "authors": [
+            "Aakanksha Chowdhery",
+            "Sharan Narang",
+            "Jacob Devlin",
+            "Maarten Bosma",
+            "Gaurav Mishra",
+            "Adam Roberts",
+            "Paul Barham",
+            "Hyung Won Chung",
+            "Charles Sutton",
+            "Sebastian Gehrmann",
+            "Parker Schuh",
+            "Kensen Shi",
+            "Sasha Tsvyashchenko",
+            "Joshua Maynez",
+            "Abhishek Rao",
+            "Parker Barnes",
+            "Yi Tay",
+            "Noam Shazeer",
+            "Vinodkumar Prabhakaran",
+            "Emily Reif",
+            "Nan Du",
+            "Ben Hutchinson",
+            "Reiner Pope",
+            "James Bradbury",
+            "Jacob Austin",
+            "Michael Isard",
+            "Guy Gur-Ari",
+            "Pengcheng Yin",
+            "Toju Duke",
+            "Anselm Levskaya",
+            "Sanjay Ghemawat",
+            "Sunipa Dev",
+            "Henryk Michalewski",
+            "Xavier Garcia",
+            "Vedant Misra",
+            "Kevin Robinson",
+            "Liam Fedus",
+            "Denny Zhou",
+            "Daphne Ippolito",
+            "David Luan",
+            "Hyeontaek Lim",
+            "Barret Zoph",
+            "Alexander Spiridonov",
+            "Ryan Sepassi",
+            "David Dohan",
+            "Shivani Agrawal",
+            "Mark Omernick",
+            "Andrew M. Dai",
+            "Thanumalayan Sankaranarayana Pillai",
+            "Marie Pellat",
+            "Aitor Lewkowycz",
+            "Erica Moreira",
+            "Rewon Child",
+            "Oleksandr Polozov",
+            "Katherine Lee",
+            "Zongwei Zhou",
+            "Xuezhi Wang",
+            "Brennan Saeta",
+            "Mark Diaz",
+            "Orhan Firat",
+            "Michele Catasta",
+            "Jason Wei",
+            "Kathy Meier-Hellstern",
+            "Douglas Eck",
+            "Jeff Dean",
+            "Slav Petrov",
+            "Noah Fiedel"
+          ],
+          "kind": "journal",
+          "label": "Canonical JMLR article",
+          "language": "en",
+          "bibliography": {
+            "citation": "A. Chowdhery et al., “PaLM: Scaling Language Modeling with Pathways,” Journal of Machine Learning Research, vol. 24, no. 240, pp. 1–113, 2023.",
+            "venue": "Journal of Machine Learning Research",
+            "volume": "24",
+            "issues": [
+              "240"
+            ],
+            "pages": [
+              "1–113"
+            ],
+            "identifiers": [
+              {
+                "type": "catalog-id",
+                "value": "22-1144",
+                "label": "JMLR manuscript identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "chowdhery-2023-jmlr-record",
+            "chowdhery-2023-jmlr-full-text",
+            "chowdhery-2022-cc-by-license"
+          ],
+          "notes": "The canonical 113-page journal article records submission in October 2022, revision in June 2023, and publication in August 2023. It carries the v5 MMLU correction, adds application, prompting, and calibration qualifications, corrects a nearby appendix-table cross-reference, and retains the malformed parallel-block equation and several cataloged table inconsistencies."
+        }
+      ],
+      "canonicalVersionId": "chowdhery-2023-jmlr-version",
+      "preferredSourceIds": [
+        "chowdhery-2023-jmlr-record",
+        "chowdhery-2023-jmlr-full-text"
+      ],
+      "sourceIds": [
+        "chowdhery-2022-arxiv-record",
+        "chowdhery-2022-arxiv-v1-full-text",
+        "chowdhery-2022-arxiv-v1-source-package",
+        "chowdhery-2022-arxiv-v2-full-text",
+        "chowdhery-2022-arxiv-v2-source-package",
+        "chowdhery-2022-arxiv-v3-full-text",
+        "chowdhery-2022-arxiv-v3-source-package",
+        "chowdhery-2022-arxiv-v4-full-text",
+        "chowdhery-2022-arxiv-v4-source-package",
+        "chowdhery-2022-arxiv-v5-full-text",
+        "chowdhery-2022-arxiv-v5-source-package",
+        "chowdhery-2023-jmlr-record",
+        "chowdhery-2023-jmlr-full-text",
+        "chowdhery-2022-cc-by-license",
+        "chowdhery-2022-google-research-record",
+        "chowdhery-2022-google-launch-post",
+        "chowdhery-2022-bigbench-score-artifacts",
+        "chowdhery-2023-palm-api-announcement"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "PaLM connects a documented causal-Transformer and inference-time few-shot lineage to a 540B dense, multilingual text-and-code model trained across two TPU v4 pods. Its architecture changes, Pathways topology, scale-conditioned evaluation, chain-of-thought results, contamination and memorization audits, safety probes, compute account, six-version record, and explicit non-release boundaries make it a central dense-scaling node rather than a headline-only benchmark entry."
+      },
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "prompt-conditioned-bias-probing",
+        "sentencepiece-byte-fallback-tokenization",
+        "distributed-dense-transformer-training",
+        "practical-training-compute-accounting",
+        "benchmark-overlap-contamination-audit",
+        "fixed-token-capability-scaling-profile",
+        "scale-dependent-toxicity-and-bias",
+        "swiglu-transformer-feedforward",
+        "parallel-attention-mlp-transformer-block",
+        "multi-query-attention",
+        "rotary-position-embeddings",
+        "pipeline-free-multipod-data-parallelism",
+        "model-flops-utilization",
+        "z-loss-stabilized-autoregressive-training",
+        "multilingual-code-mixture-pretraining",
+        "coarse-scale-discontinuity-audit",
+        "few-shot-chain-of-thought-prompting",
+        "exact-continuation-memorization-audit",
+        "refreshed-data-continued-pretraining"
+      ],
+      "significance": {
+        "beginner": "PaLM scales one causal Transformer family to 540 billion parameters and shows that demonstrations and worked reasoning examples can unlock large benchmark gains. The same record also shows uneven tasks, checkpoint variance, memorization, toxicity and bias, proprietary data, and no public PaLM checkpoint, so scale and impressive examples are not universal reliability or a release guarantee.",
+        "expert": "PaLM combines SwiGLU, parallel attention–MLP blocks, multi-query attention, RoPE, shared embeddings, a 256k lossless tokenizer, and pipeline-free Pathways training across 6,144 TPU v4 chips. The corpus preserves its three-point scale design, heterogeneous evaluation matrix, operational discontinuity statistic, chain-of-thought and derivative-model boundaries, 8-gram contamination audit, exact-continuation memorization, safety protocols, detailed FLOP/carbon account, refreshed-data continuation, revision corrections, and nonrelease surface."
+      },
+      "limitations": [
+        "The three model sizes change depth, width, head count, batch schedule, and total compute together, so parameter count is not an isolated causal intervention.",
+        "The text says all three models use one identical 780B-token epoch, but the evaluated 62B checkpoint has 795B tokens and the literal 540B batch schedule totals about 775.95B tokens.",
+        "English, BIG-bench, reasoning, code, multilingual, and safety results mix task-specific shot counts, prompts, decoding rules, metrics, checkpoints, and selected contemporaneous comparators without repeat-level uncertainty.",
+        "The discontinuity screen uses only 8B, 62B, and 540B observations; it does not establish a phase transition, general threshold, or mechanism.",
+        "Chain-of-thought exemplars are manually supplied, final answers alone are scored, and comparator systems may add finetuning, calculators, or verifiers; fluent rationales are not evidence of faithful reasoning.",
+        "PaLM-Coder is a separately code-finetuned derivative, so its results do not transfer to the base PaLM checkpoint.",
+        "The multilingual corpus remains about 78% English excluding code; multilingual benchmarks use asymmetric prompts, subset sampling, heterogeneous baselines, and language-dependent shot counts.",
+        "The exact-continuation, 8-gram contamination, Winogender, co-occurrence, and toxicity protocols each measure a narrow observable and do not establish comprehensive privacy, fairness, safety, or absence of benchmark inflation.",
+        "The paper's training FLOPs omit development, evictions, and other inefficiency; the carbon estimate omits embodied hardware and broader project work, and renewable compensation does not mean zero gross emissions.",
+        "Continued 62B training changes token count, dataset freshness, source weights, and mixture contents together and does not improve every reported repeated-versus-refreshed comparison.",
+        "The prepared corpus, preprocessing implementation, PaLM weights, tokenizer artifact, exact configs, seeds, raw generations, and run manifest are not released; generic JAX, T5X, and Pathways references and aggregate BIG-bench score JSONs are not a reproduction package.",
+        "Public article rights are CC BY 4.0, but that license does not establish reuse rights for the model, training data, source repositories, benchmark material, or other third-party artifacts."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The JMLR article records publication only as August 2023, so no exact journal-publication day is asserted.",
+          "resolutionCondition": "An official JMLR publication record with a day-level timestamp is required."
+        },
+        {
+          "status": "open",
+          "note": "No immutable public manifest maps PaLM checkpoints, exact configs, tokenizer, prepared data, evaluation predictions, environment, seeds, and run identifiers.",
+          "resolutionCondition": "An author-published versioned artifact release with provenance, rights, hashes, commands, and run records is required."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -17240,7 +18120,8 @@
         "liu-2019-predecessor-and-scope-boundary",
         "raffel-2020-encoder-decoder-architecture",
         "bart-2020-transformer-architecture-and-scales",
-        "rae-2021-gopher-family-and-architecture"
+        "rae-2021-gopher-family-and-architecture",
+        "chowdhery-2022-palm-model-family-and-architecture"
       ],
       "uncertainties": [
         {
@@ -17293,7 +18174,8 @@
         "liu-2019-predecessor-and-scope-boundary",
         "raffel-2020-encoder-decoder-architecture",
         "bart-2020-transformer-architecture-and-scales",
-        "rae-2021-gopher-family-and-architecture"
+        "rae-2021-gopher-family-and-architecture",
+        "chowdhery-2022-palm-model-family-and-architecture"
       ],
       "uncertainties": [
         {
@@ -17528,7 +18410,11 @@
         "ouyang-2022-gpt3-initialization-and-sft",
         "wei-2022-lamda-pt-model-and-pretraining-boundary",
         "rae-2021-gopher-family-and-architecture",
-        "rae-2021-gopher-training-recipe"
+        "rae-2021-gopher-training-recipe",
+        "chowdhery-2022-version-and-publication-boundary",
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "chowdhery-2022-training-objective-schedule-and-instability",
+        "chowdhery-2022-artifact-and-rights-boundary"
       ],
       "uncertainties": []
     },
@@ -18724,7 +19610,13 @@
         "brown-2020-artifact-and-reproducibility-boundary",
         "rae-2021-gopher-broad-evaluation-profile",
         "rae-2021-fever-task-training-boundary",
-        "rae-2021-prompted-dialogue-and-factuality-boundary"
+        "rae-2021-prompted-dialogue-and-factuality-boundary",
+        "chowdhery-2022-english-evaluation-and-mmlu",
+        "chowdhery-2022-bigbench-performance-and-human-boundary",
+        "chowdhery-2022-chain-of-thought-reasoning",
+        "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
+        "chowdhery-2022-translation-and-multilingual-evaluation",
+        "chowdhery-2022-shot-count-and-checkpoint-variance"
       ],
       "uncertainties": [
         {
@@ -18761,7 +19653,8 @@
         "brown-2020-contamination-result-boundary",
         "brown-2020-arithmetic-memorization-spot-check",
         "brown-2020-internal-reporting-discrepancies",
-        "wei-2022-contamination-audit-and-evaluation-limits"
+        "wei-2022-contamination-audit-and-evaluation-limits",
+        "chowdhery-2022-contamination-clean-subset"
       ],
       "uncertainties": [
         {
@@ -18793,7 +19686,9 @@
       "claimIds": [
         "brown-2020-bias-analysis-boundary",
         "brown-2020-internal-reporting-discrepancies",
-        "rae-2021-scale-dependent-toxicity-and-bias"
+        "rae-2021-scale-dependent-toxicity-and-bias",
+        "chowdhery-2022-bias-and-cooccurrence-boundary",
+        "chowdhery-2022-realtoxicity-profile"
       ],
       "uncertainties": [
         {
@@ -19066,7 +19961,8 @@
       "description": "Tokenize text with a fixed SentencePiece subword vocabulary while falling back to bytes for open-vocabulary coverage, keeping normalization loss and tokenizer identity explicit.",
       "claimIds": [
         "rae-2021-gopher-family-and-architecture",
-        "rae-2021-gopher-tokenizer-normalization-limitation"
+        "rae-2021-gopher-tokenizer-normalization-limitation",
+        "chowdhery-2022-tokenizer-and-sequence-construction"
       ],
       "uncertainties": [
         {
@@ -19096,10 +19992,11 @@
       "id": "distributed-dense-transformer-training",
       "name": "Distributed dense-Transformer training",
       "kind": "mechanism",
-      "description": "Fit a dense Transformer and its optimizer state across accelerators with data and model parallelism, rematerialization, state partitioning, and pipeline stages across larger hardware groups.",
+      "description": "Fit a dense Transformer and its optimizer state across accelerators with data and model parallelism, rematerialization, state partitioning, and an explicit pipeline or pipeline-free topology across larger hardware groups.",
       "claimIds": [
         "rae-2021-gopher-distributed-training-and-compute",
-        "rae-2021-compute-and-carbon-accounting"
+        "rae-2021-compute-and-carbon-accounting",
+        "chowdhery-2022-distributed-pathways-training"
       ],
       "uncertainties": []
     },
@@ -19110,7 +20007,9 @@
       "description": "Report implementation-aware training and evaluation FLOPs, accelerator-time decomposition, and carbon-estimate inputs while naming omitted development, pre-emption, and operational work.",
       "claimIds": [
         "rae-2021-gopher-distributed-training-and-compute",
-        "rae-2021-compute-and-carbon-accounting"
+        "rae-2021-compute-and-carbon-accounting",
+        "chowdhery-2022-model-flops-utilization",
+        "chowdhery-2022-compute-and-carbon-accounting"
       ],
       "uncertainties": [
         {
@@ -19150,7 +20049,13 @@
         "rae-2021-fixed-token-scale-sweep-and-nonuniform-gains",
         "rae-2021-gopher-broad-evaluation-profile",
         "rae-2021-gopher-scaling-curve-deviation",
-        "rae-2021-fever-task-training-boundary"
+        "rae-2021-fever-task-training-boundary",
+        "chowdhery-2022-training-objective-schedule-and-instability",
+        "chowdhery-2022-english-evaluation-and-mmlu",
+        "chowdhery-2022-bigbench-performance-and-human-boundary",
+        "chowdhery-2022-operational-discontinuity-boundary",
+        "chowdhery-2022-shot-count-and-checkpoint-variance",
+        "chowdhery-2022-version-specific-reporting-discrepancies"
       ],
       "uncertainties": [
         {
@@ -19186,7 +20091,10 @@
       "kind": "finding",
       "description": "Measure how prompted toxicity, unprompted generations, toxicity classification, stereotypes, sentiment associations, and dialect likelihood vary with model scale under explicitly limited classifiers and templates.",
       "claimIds": [
-        "rae-2021-scale-dependent-toxicity-and-bias"
+        "rae-2021-scale-dependent-toxicity-and-bias",
+        "chowdhery-2022-bias-and-cooccurrence-boundary",
+        "chowdhery-2022-realtoxicity-profile",
+        "chowdhery-2022-model-dataset-and-use-boundary"
       ],
       "uncertainties": [
         {
@@ -19391,6 +20299,141 @@
           "note": "The serving advantage is inferred from parameter count; latency, throughput, memory traffic, hardware utilization, energy, and lifecycle cost are not measured."
         }
       ]
+    },
+    {
+      "id": "swiglu-transformer-feedforward",
+      "name": "SwiGLU Transformer feed-forward layer",
+      "kind": "mechanism",
+      "description": "Use a gated SwiGLU intermediate transformation in each causal Transformer block while keeping the extra matrix multiplication and comparison baseline explicit.",
+      "claimIds": [
+        "chowdhery-2022-palm-model-family-and-architecture"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "parallel-attention-mlp-transformer-block",
+      "name": "Parallel attention–MLP Transformer block",
+      "kind": "mechanism",
+      "description": "Apply attention and the feed-forward path in parallel to the same normalized input, then add both outputs to the residual stream so their large matrix multiplications can be fused.",
+      "claimIds": [
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "chowdhery-2022-version-specific-reporting-discrepancies"
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "PaLM reports a small 8B ablation cost and no 62B cost, then extrapolates quality neutrality at 540B rather than running a controlled 540B ablation."
+        }
+      ]
+    },
+    {
+      "id": "multi-query-attention",
+      "name": "Multi-query attention",
+      "kind": "mechanism",
+      "description": "Retain one query projection per attention head while sharing key and value projections across heads to reduce cached state and accelerator work during autoregressive decoding.",
+      "claimIds": [
+        "chowdhery-2022-palm-model-family-and-architecture"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "rotary-position-embeddings",
+      "name": "Rotary position embeddings",
+      "kind": "mechanism",
+      "description": "Encode token position by rotating query and key channels as a function of position instead of adding an absolute or relative position vector to token representations.",
+      "claimIds": [
+        "chowdhery-2022-palm-model-family-and-architecture"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "pipeline-free-multipod-data-parallelism",
+      "name": "Pipeline-free multi-pod data parallelism",
+      "kind": "mechanism",
+      "description": "Shard a dense model within each accelerator pod, replicate the sharded model across pods, and exchange gradients between pods without introducing pipeline stages.",
+      "claimIds": [
+        "chowdhery-2022-distributed-pathways-training"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "model-flops-utilization",
+      "name": "Model FLOPs utilization",
+      "kind": "formalism",
+      "description": "Compare achieved token throughput with the theoretical peak throughput implied by model-required forward and backward FLOPs, while stating whether attention and rematerialization work enter the numerator or denominator.",
+      "claimIds": [
+        "chowdhery-2022-model-flops-utilization",
+        "chowdhery-2022-compute-and-carbon-accounting"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "z-loss-stabilized-autoregressive-training",
+      "name": "Z-loss-stabilized autoregressive training",
+      "kind": "objective",
+      "description": "Add a small squared log-partition penalty to next-token log loss to discourage excessively large logits while preserving the main autoregressive objective.",
+      "claimIds": [
+        "chowdhery-2022-training-objective-schedule-and-instability"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "multilingual-code-mixture-pretraining",
+      "name": "Multilingual text-and-code mixture pretraining",
+      "kind": "mechanism",
+      "description": "Pretrain one decoder on a weighted mixture of multilingual web, conversation, books, encyclopedic text, news, and repository-license-filtered source code while retaining language, filtering, provenance, and distribution limits.",
+      "claimIds": [
+        "chowdhery-2022-tokenizer-and-sequence-construction",
+        "chowdhery-2022-training-mixture-and-provenance",
+        "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
+        "chowdhery-2022-translation-and-multilingual-evaluation",
+        "chowdhery-2022-model-dataset-and-use-boundary",
+        "chowdhery-2022-artifact-and-rights-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "coarse-scale-discontinuity-audit",
+      "name": "Coarse-scale discontinuity audit",
+      "kind": "formalism",
+      "description": "Project a task's largest-scale score from its two smaller-scale scores and record the residual, while treating three model sizes without repeats or uncertainty bands as a descriptive screen rather than a mechanistic threshold test.",
+      "claimIds": [
+        "chowdhery-2022-operational-discontinuity-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "few-shot-chain-of-thought-prompting",
+      "name": "Few-shot chain-of-thought prompting",
+      "kind": "mechanism",
+      "description": "Place worked intermediate-reasoning exemplars in the inference context and score only the produced answer, keeping prompt authorship, calculator use, comparators, and faithfulness unbundled.",
+      "claimIds": [
+        "chowdhery-2022-chain-of-thought-reasoning",
+        "chowdhery-2022-explanation-evidence-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "exact-continuation-memorization-audit",
+      "name": "Exact-continuation memorization audit",
+      "kind": "mechanism",
+      "description": "Prompt with the opening of sampled training spans, greedily decode the continuation, and stratify exact matches by model scale and span duplication without equating the result to untargeted extraction risk.",
+      "claimIds": [
+        "chowdhery-2022-exact-continuation-memorization",
+        "chowdhery-2022-duplication-memorization-gradient"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "refreshed-data-continued-pretraining",
+      "name": "Refreshed-data continued pretraining",
+      "kind": "mechanism",
+      "description": "Resume a checkpoint for additional tokens using refreshed data and a revised mixture, then compare repeated-data and refreshed-data controls before attributing the resulting capability change.",
+      "claimIds": [
+        "chowdhery-2022-refreshed-data-continued-training",
+        "chowdhery-2022-version-specific-reporting-discrepancies"
+      ],
+      "uncertainties": []
     }
   ],
   "sources": [
@@ -29653,6 +30696,450 @@
         "version-boundary"
       ],
       "accessNote": "The current policy says authors retain copyright and grant the venue non-exclusive publication rights. It is retained only as qualified present-day context: no paper-specific Creative Commons or general-reuse license was identified, and the policy is not bound backward as a 2022 artifact."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-record",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "arXiv record for PaLM: Scaling Language Modeling with Pathways",
+      "url": "https://arxiv.org/abs/2204.02311",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v1-version",
+        "chowdhery-2022-arxiv-v2-version",
+        "chowdhery-2022-arxiv-v3-version",
+        "chowdhery-2022-arxiv-v4-version",
+        "chowdhery-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official submission history exposes five immutable preprint revisions at 5 April, 7 April, 19 April, 29 September, and 5 October 2022 UTC and identifies CC BY 4.0. The immutable PDFs establish 83 pages for v1–v3 and 87 pages for v4–v5; the aggregate DOI identifies the preprint family rather than the later JMLR article."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 1 full text for PaLM",
+      "url": "https://arxiv.org/pdf/2204.02311v1",
+      "accessDate": "2026-09-07",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 83
+      },
+      "accessNote": "The 83-page ordering PDF has SHA-256 692b101e3d0abf3736fa6721dc03de4fe86eed27f8831705e8aafb81f9aa0a90 and preserves the original infrastructure, chain-of-thought, code-safety, contamination, and evaluation wording."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 1 source package for PaLM",
+      "url": "https://arxiv.org/src/2204.02311v1",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,478,498-byte archive has SHA-256 6758686fc1c7cf0ce70601bf268986f99d30e81ff12d9ed57e4c230aecf5b015 and 75 publication files. It contains manuscript sources and figures, not executable experiments, model artifacts, data, or a run environment."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 2 full text for PaLM",
+      "url": "https://arxiv.org/pdf/2204.02311v2",
+      "accessDate": "2026-09-07",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 83
+      },
+      "accessNote": "The 83-page PDF has SHA-256 68f11f5763239adbed754c04015fc6d9c049ad82399b310453bf50ffe2879c59d and expands code-safety discussion, corrects reasoning attribution, and removes the v1 inter-pod burst-duration phrase."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 2 source package for PaLM",
+      "url": "https://arxiv.org/src/2204.02311v2",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,479,528-byte archive has SHA-256 4eca55c8ad897fc3a2a9757ece23ae208f622152fdf0c23b13eb1e818c1dbdfb and 75 publication files. Source comparison localizes the v1-to-v2 changes without supplying an experiment package."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 3 full text for PaLM",
+      "url": "https://arxiv.org/pdf/2204.02311v3",
+      "accessDate": "2026-09-07",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 83
+      },
+      "accessNote": "The 83-page PDF has SHA-256 0da124ae0760e2408dc759850a503cada5cd301182e66cf2f3de15ae747a8a92 and contains the revised Gopher utilization comparator plus clarified chain-of-thought attribution, protocol, and comparator descriptions."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 3 source package for PaLM",
+      "url": "https://arxiv.org/src/2204.02311v3",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,479,652-byte archive has SHA-256 02c5830270b98695962d337bf6003d179c964d5731fe9fd304aa22604b21aae5 and 75 publication files. It retains manuscript assets only and makes the v2-to-v3 textual corrections inspectable."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 4 full text for PaLM",
+      "url": "https://arxiv.org/pdf/2204.02311v4",
+      "accessDate": "2026-09-07",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 87
+      },
+      "accessNote": "The 87-page PDF has SHA-256 818e586b1241a91aecd1b55af0280b3f312ec773c740b25e37f8a49744c1c377 and adds MMLU, corrected XSum and ANLI values, expanded dataset statistics, and the continued-training appendix. Its new MMLU table swaps Chinchilla's STEM and Social Sciences values."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v4-source-package",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 4 source package for PaLM",
+      "url": "https://arxiv.org/src/2204.02311v4",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,514,475-byte archive has SHA-256 2f2dd77f94845eb1d6dfc5f86804b4089e39f26221f4b26b567319f65e765576 and 78 files: 40 TeX, 33 PDF, three PNG, one BST, and one BBL. It contains the complete publication manuscript tree but no executable experiment, model, tokenizer, data, environment, or run package."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v5-full-text",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 5 full text for PaLM",
+      "url": "https://arxiv.org/pdf/2204.02311v5",
+      "accessDate": "2026-09-07",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 87
+      },
+      "accessNote": "The 87-page PDF has SHA-256 1e88f1f3027cd1abecb1713c1c08a89137c7730582549ec7ca78ca329f3f975d and corrects v4's MMLU category placement and interpretation while retaining the expanded evaluation and continued-training material."
+    },
+    {
+      "id": "chowdhery-2022-arxiv-v5-source-package",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable arXiv version 5 source package for PaLM",
+      "url": "https://arxiv.org/src/2204.02311v5",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v5-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,508,711-byte archive has SHA-256 d817081efdcba9ef3a6b01f02abb25b1cf5cee06610b90884c3ada71cccde3d5 and the same 78-file type inventory as v4. Only evals-gpt3.tex changes relative to v4; neither package supplies executable experiments, weights, tokenizer, data, environment, or a run manifest."
+    },
+    {
+      "id": "chowdhery-2023-jmlr-record",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Official JMLR record for PaLM: Scaling Language Modeling with Pathways",
+      "url": "https://www.jmlr.org/papers/v24/22-1144.html",
+      "accessDate": "2026-09-07",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "chowdhery-2023-jmlr-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official record supplies the Journal of Machine Learning Research volume 24, article 240, 1–113 pagination, 2023 citation, author list, abstract, BibTeX, and CC BY 4.0 attribution terms. It exposes no DOI or exact publication day."
+    },
+    {
+      "id": "chowdhery-2023-jmlr-full-text",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Canonical JMLR full text for PaLM: Scaling Language Modeling with Pathways",
+      "url": "https://www.jmlr.org/papers/volume24/22-1144/22-1144.pdf",
+      "accessDate": "2026-09-07",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "chowdhery-2023-jmlr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 113
+      },
+      "accessNote": "The 2,198,671-byte canonical article has SHA-256 9e59e21d8978858976a4b07a5195a58fcd6b9eb46079c228a0a87cd516a5d1ac. Its header records Submitted 10/22, Revised 6/23, and Published 8/23; the article carries the v5 correction, expanded application qualifications, and cataloged equation and table anomalies."
+    },
+    {
+      "id": "chowdhery-2022-cc-by-license",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Creative Commons Attribution 4.0 International license",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v1-version",
+        "chowdhery-2022-arxiv-v2-version",
+        "chowdhery-2022-arxiv-v3-version",
+        "chowdhery-2022-arxiv-v4-version",
+        "chowdhery-2022-arxiv-v5-version",
+        "chowdhery-2023-jmlr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The arXiv record and JMLR article each identify CC BY 4.0 for their publication text. The linked terms permit sharing and adaptation with attribution and stated conditions; they do not establish rights in PaLM weights, training data, source repositories, benchmark contents, or other third-party material."
+    },
+    {
+      "id": "chowdhery-2022-google-research-record",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Google Research publication record for PaLM",
+      "url": "https://research.google/pubs/palm-scaling-language-modeling-with-pathways/",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The mutable institutional record names the authors and 2022 arXiv publication and links the aggregate preprint. It does not host a versioned technical artifact or identify a PaLM checkpoint, tokenizer, corpus, or reproduction package."
+    },
+    {
+      "id": "chowdhery-2022-google-launch-post",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Google Research launch article for PaLM",
+      "url": "https://research.google/blog/pathways-language-model-palm-scaling-to-540-billion-parameters-for-breakthrough-performance/",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The mutable author-organization article is dated 4 April 2022, one day before arXiv v1, and links the paper while summarizing launch claims. It is retained as launch metadata rather than an independent manuscript version, claim source, or model release."
+    },
+    {
+      "id": "chowdhery-2022-bigbench-score-artifacts",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Immutable BIG-bench commit adding PaLM score artifacts",
+      "url": "https://github.com/google/BIG-bench/commit/7c38338456bd1d5aea3e3081c3ea6b12302e5b9b",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "chowdhery-2022-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The immutable 15 June 2022 author-repository commit adds 489 JSON files: 163 BIG-bench tasks for each of the legacy PaLM 8b, 64b, and 535b labels. The files expose aggregate metrics by shot and subtask plus model metadata, not raw generations, checkpoints, exact configs, tokenizer, training data, seeds, or a complete evaluation run map; the following commit normalizes model-name metadata."
+    },
+    {
+      "id": "chowdhery-2023-palm-api-announcement",
+      "relatedWorkIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "title": "Google Developers announcement of the PaLM API and MakerSuite",
+      "url": "https://developers.googleblog.com/en/palm-api-makersuite-an-approachable-way-to-start-prototyping-and-building-generative-ai-applications/",
+      "accessDate": "2026-09-07",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 14 March 2023 announcement describes a private-preview API backed by an unspecified efficient model. It does not bind that service to the paper's 540B checkpoint, publish PaLM weights, or create another version of the paper; later product branding must not be back-projected onto the audited model."
     }
   ],
   "claims": [
@@ -32501,11 +33988,11 @@
         },
         {
           "sourceId": "miikkulainen-dyer-1991-author-manuscript",
-        "locator": {
-          "label": "Externally supplied system control, manuscript p. 34",
-          "section": "11.4 Implementing control with networks",
-          "pageStart": 34,
-          "pageEnd": 34
+          "locator": {
+            "label": "Externally supplied system control, manuscript p. 34",
+            "section": "11.4 Implementing control with networks",
+            "pageStart": 34,
+            "pageEnd": 34
           },
           "support": "States that the reported simulations use an external supervisor and presents network control as future work."
         }
@@ -56587,6 +58074,1059 @@
         }
       ],
       "checkedDate": "2026-08-31"
+    },
+    {
+      "id": "chowdhery-2022-version-and-publication-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling"
+      ],
+      "statement": "The PaLM family comprises five arXiv manuscripts posted on 5 April, 7 April, 19 April, 29 September, and 5 October 2022, followed by a canonical 113-page JMLR article published in August 2023. Version 2 expands code-safety and reasoning attribution, version 3 corrects Gopher-utilization and chain-of-thought framing, version 4 adds MMLU and continued 62B training but swaps two Chinchilla category cells, and version 5 fixes that swap through a one-file source change. JMLR carries the v5 correction, adds application qualifications, and corrects a nearby cross-reference while retaining the malformed parallel-block equation and cataloged table inconsistencies.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2022-arxiv-record",
+          "locator": {
+            "label": "Five-revision preprint history",
+            "section": "Submission history"
+          },
+          "support": "The aggregate record supplies each immutable arXiv submission timestamp and the CC BY 4.0 license selection."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v2-source-package",
+          "locator": {
+            "label": "Version 2 source-level changes",
+            "section": "Complete publication-source diff against version 1"
+          },
+          "support": "The source diff localizes revised code-safety, chain-of-thought, translation, infrastructure, and attribution text."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v3-source-package",
+          "locator": {
+            "label": "Version 3 source-level changes",
+            "section": "Complete publication-source diff against version 2"
+          },
+          "support": "The source diff localizes the Gopher-utilization correction and chain-of-thought attribution, protocol, and comparator clarifications."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v4-full-text",
+          "locator": {
+            "label": "Version 4 MMLU addition",
+            "section": "6.1.1 Massive Multitask Language Understanding",
+            "pageStart": 13,
+            "pageEnd": 13,
+            "table": "6"
+          },
+          "support": "The immutable PDF adds MMLU and preserves the initial swapped Chinchilla category values."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v4-full-text",
+          "locator": {
+            "label": "Version 4 continued-training addition",
+            "section": "F Training for longer",
+            "pageStart": 76,
+            "pageEnd": 78,
+            "table": "31–33"
+          },
+          "support": "The immutable PDF adds the 62B continuation, refreshed-data comparison, changed mixture, and arXiv/math component."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v4-source-package",
+          "locator": {
+            "label": "Complete version 4 publication-source inventory",
+            "section": "Complete archive tree"
+          },
+          "support": "The 78-file archive contains the complete publication manuscript tree and provides the comparison base for version 5."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v5-full-text",
+          "locator": {
+            "label": "Version 5 MMLU correction",
+            "section": "6.1.1 Massive Multitask Language Understanding",
+            "pageStart": 13,
+            "pageEnd": 13,
+            "table": "6"
+          },
+          "support": "The immutable revision restores Chinchilla's 54.9 STEM and 79.3 Social Sciences placement and revises the prose conclusion."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v5-source-package",
+          "locator": {
+            "label": "One-file version 5 source correction",
+            "section": "Complete archive tree"
+          },
+          "support": "The complete 78-file package changes only evals-gpt3.tex relative to version 4 and remains a publication-source rather than experiment release."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Canonical journal publication state",
+            "section": "Article header",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The article header establishes the canonical 113-page JMLR version and records its submission, revision, publication, and license metadata."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Expanded journal limitations",
+            "section": "11 Societal Impact & Ethical Considerations",
+            "pageStart": 59,
+            "pageEnd": 61
+          },
+          "support": "The journal version expands the application, hallucination, calibration, prompt-engineering, staleness, and inference-cost qualifications."
+        }
+      ],
+      "limitations": [
+        "The JMLR header reports only submission, revision, and publication months rather than exact days.",
+        "Canonical means the latest publisher article, not a claim that every residual numerical or typesetting inconsistency was repaired."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-palm-model-family-and-architecture",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "decoder-only-transformer-language-modeling",
+        "swiglu-transformer-feedforward",
+        "parallel-attention-mlp-transformer-block",
+        "multi-query-attention",
+        "rotary-position-embeddings"
+      ],
+      "statement": "PaLM is a dense causal decoder-only Transformer family. The 8.63B, 62.50B, and 540.35B configurations respectively use 32/64/118 layers, 16/32/48 heads, model widths 4,096/8,192/18,432, feed-forward widths 16,384/32,768/73,728, and head width 256. Each block uses SwiGLU, parallel attention and MLP paths, shared key/value projections across heads, RoPE, tied input/output embeddings, and no dense-kernel or layer-norm biases. The parallel form is reported about 15% faster at large scale; quality is tested at 8B and 62B, not in a controlled 540B ablation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Decoder family, architectural changes, and exact configurations",
+            "section": "2 Model Architecture; 2.1 Model Scale Hyperparameters",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "1"
+          },
+          "support": "The canonical article defines every listed modification and prints all three configuration rows."
+        }
+      ],
+      "limitations": [
+        "The target credits the individual modifications to prior cited work; this claim describes PaLM's combination rather than authorship priority.",
+        "The stated multi-query quality neutrality is not accompanied by a PaLM ablation table in the article.",
+        "Depth, width, heads, batch size, and compute vary together, so the family is not a parameter-only intervention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-tokenizer-and-sequence-construction",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "sentencepiece-byte-fallback-tokenization",
+        "multilingual-code-mixture-pretraining"
+      ],
+      "statement": "A 256k-token SentencePiece vocabulary is trained on the PaLM training data. The tokenizer preserves spaces, maps out-of-vocabulary Unicode characters to one token per UTF-8 byte, and splits digits individually; the authors call the mapping lossless. Training concatenates examples and divides them into 2,048-token windows without padding, permits windows to cross document boundaries, and inserts an end-of-document token.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Tokenizer design",
+            "section": "2 Model Architecture",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "The architecture section directly gives vocabulary size, whitespace and byte behavior, digit splitting, and lossless mapping."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Sequence packing",
+            "section": "5 Training Setup",
+            "pageStart": 13,
+            "pageEnd": 14
+          },
+          "support": "The training section specifies the 2,048-token windows, concatenation, cross-document packing, lack of padding, and end-of-document token."
+        }
+      ],
+      "limitations": [
+        "The paper does not identify the SentencePiece model type, normalization configuration, sample, reserved-token accounting, or tokenizer artifact.",
+        "Lossless round-trip mechanics do not establish equal token efficiency or quality across scripts and languages."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-training-mixture-and-provenance",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "multilingual-code-mixture-pretraining"
+      ],
+      "statement": "The reported 780B-token training mixture samples 50% multilingual social-media conversations, 27% multilingual filtered webpages, 13% English books, 5% GitHub code, 4% multilingual Wikipedia, and 1% English news. The datasheet lists 124 languages and about 78% English excluding code, collection during 2019–2021, proprietary unavailable preprocessing, no ethical review, and no external dataset distribution. GitHub contributes 196 GB across 24 named languages after repository-license filtering intended to exclude copyleft and Levenshtein-based deduplication.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Training mixture and code-corpus construction",
+            "section": "3 Training Dataset",
+            "pageStart": 9,
+            "pageEnd": 10,
+            "table": "2"
+          },
+          "support": "The canonical article prints all six mixture weights and describes web filtering, code licensing, language selection, and deduplication."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Dataset language, collection, review, processing, and distribution boundaries",
+            "section": "Appendix D Datasheet for PaLM Dataset",
+            "pageStart": 95,
+            "pageEnd": 99,
+            "table": "27–29"
+          },
+          "support": "The datasheet reports collection dates, 124 languages, approximate English share, unavailable software, lack of ethical review, and non-distribution."
+        }
+      ],
+      "limitations": [
+        "The paper does not publish an immutable prepared-corpus manifest, filtering thresholds, license taxonomy, source-level provenance, or final shard hashes.",
+        "Repository-level license filtering does not resolve file-level, dependency, personal-data, or downstream benchmark rights.",
+        "Document deduplication leaves paragraph- and sentence-level duplication, patterned redundancy, and SEO spam even though the proprietary pipeline says it removes boilerplate.",
+        "Table 28 excludes code but prints English as 578.064B and 77.984%; the percentage uses a non-code denominator rather than the full 780B corpus, so it is not silently recomputed against the headline total."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-distributed-pathways-training",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "distributed-dense-transformer-training",
+        "pipeline-free-multipod-data-parallelism"
+      ],
+      "statement": "PaLM 540B is trained with JAX and T5X on 6,144 TPU v4 chips across two pods, each using 3,072 chips on 768 hosts. Within each pod, the model uses 12-way model parallelism and 256-way fully sharded data parallelism; Pathways adds two-way pod-level data parallelism without pipeline stages. A 1.3 GB gradient exchange per corresponding host pair produces an 81 Tbps aggregate burst, and two-pod throughput is 1.95 times one-pod throughput, reported as 97% of ideal weak scaling.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Pipeline-free two-pod topology and scaling result",
+            "section": "4 Training Infrastructure",
+            "pageStart": 9,
+            "pageEnd": 12,
+            "figure": "2"
+          },
+          "support": "The canonical article names the software and hardware, gives every parallel dimension and communication quantity, and reports the weak-scaling comparison."
+        }
+      ],
+      "limitations": [
+        "The 81 Tbps value is an aggregate burst requirement, not sustained application throughput; v1's approximate 200 ms duration was removed from later versions.",
+        "The two-pod comparison measures this topology and batch setting rather than arbitrary Pathways programs or larger pod counts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-model-flops-utilization",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "model-flops-utilization",
+        "practical-training-compute-accounting"
+      ],
+      "statement": "At batch size 2,048, PaLM 540B reports 238.3 thousand tokens per second. Its model FLOPs utilization is 45.7% when self-attention matmuls are omitted from required model FLOPs and 46.2% when they are included; hardware FLOPs utilization rises to 57.8% when rematerialization work is counted. The analytic MFU denominator uses 6N plus 12LHQ times sequence length per token, whereas HFU measures a broader executed-work scope.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Throughput and utilization comparison",
+            "section": "4.1 Training Efficiency",
+            "pageStart": 12,
+            "pageEnd": 13,
+            "table": "3"
+          },
+          "support": "Table 3 provides throughput and the three utilization scopes for PaLM 540B."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "MFU definition and denominator",
+            "section": "Appendix B Compute Usage and Environmental Impact",
+            "pageStart": 90,
+            "pageEnd": 90,
+            "equation": "MFU throughput ratio"
+          },
+          "support": "The appendix derives the token-level dense-model and attention FLOP terms and distinguishes MFU from rematerialization-inclusive HFU."
+        }
+      ],
+      "limitations": [
+        "MFU and HFU use different work scopes and cannot be compared as if they were the same efficiency metric.",
+        "The reported figure is workload- and batch-specific and does not measure end-to-end research productivity, energy efficiency, or serving efficiency."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-training-objective-schedule-and-instability",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "z-loss-stabilized-autoregressive-training",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "PaLM uses a causal next-token objective without label smoothing and adds 10^-4 times the squared log partition as z-loss. It uses unfactorized Adafactor, learning rate 10^-2 for 10,000 steps then inverse-square-root decay, β1=.9, β2=1−k^-0.8, global gradient clipping at 1, dynamic weight decay proportional to learning-rate squared, and no pretraining dropout. Only the 540B run shows about twenty loss spikes; recovery restarts roughly 100 steps earlier and skips about 200–500 batches, without a demonstrated root cause.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Optimization, objective, batching, and loss-spike handling",
+            "section": "5 Training Setup; 5.1 Training Instability",
+            "pageStart": 13,
+            "pageEnd": 15
+          },
+          "support": "The canonical article specifies the optimizer equations and objective and describes the observed spikes and manual recovery procedure."
+        }
+      ],
+      "limitations": [
+        "The objective prose says the model minimizes average log probability without printing the conventional negative sign; the atlas records the causal next-token objective without silently treating the displayed wording as a valid loss equation.",
+        "Manual batch skipping means the final 540B trajectory is not the nominal uninterrupted shuffle; the stated exact-replay guarantee applies only while the step-to-batch mapping remains unchanged.",
+        "No repeated 540B run, causal spike diagnosis, precision inventory, seed list, or fully executable configuration is supplied."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-english-evaluation-and-mmlu",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "Across the same 29 English benchmark splits used by GPT-3 and GLaM, PaLM 540B is higher than the selected single-checkpoint prior envelope on 24 tasks at one shot and 28 tasks at task-specific few-shot counts. One-shot NLG/NLU averages are 63.9/74.7 for 540B, 57.7/67.3 for 62B, and 41.5/59.2 for 8B, versus 52.9/65.4 for GPT-3 and 58.4/68.7 for GLaM. Canonical five-shot MMLU averages are 25.3, 53.7, and 69.3 for PaLM 8B/62B/540B versus 67.5 reproduced for Chinchilla; 540B is higher in Humanities, STEM, and Social Sciences but lower in Other.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "English benchmark envelope, averages, and corrected MMLU",
+            "section": "6.1 English NLP tasks; 6.1.1 Massive Multitask Language Understanding",
+            "pageStart": 15,
+            "pageEnd": 18,
+            "table": "4–6"
+          },
+          "support": "Tables 4–6 supply the task rows, heterogeneous shot counts, one-shot averages, and canonical MMLU category values."
+        }
+      ],
+      "limitations": [
+        "Few-shot is not one fixed treatment: PaLM uses task-specific counts from 1 to 64 and comparator rows use their own settings.",
+        "The averages combine heterogeneous metrics and selected contemporaneous baselines without uncertainty intervals or significance tests.",
+        "RACE comparison is limited to the GPT-3-style setup, and the existing Chinchilla record separately preserves its 67.5/67.6 MMLU reporting discrepancy."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-bigbench-performance-and-human-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "On 58 textual BIG-bench tasks shared with selected earlier results, PaLM 540B at five shots is higher on 44 tasks and exceeds the reported average crowdworker aggregate. Across all 150 tasks, however, average crowdworkers remain higher on 35%, and PaLM exceeds the reported best-human value on only 3 of 24 BIG-bench Lite tasks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Common-task envelope, aggregate human comparison, and remaining headroom",
+            "section": "6.2 BIG-bench",
+            "pageStart": 19,
+            "pageEnd": 25,
+            "figure": "3–7"
+          },
+          "support": "Figures 3–7 state the 44-of-58 result, aggregate comparison, 35% task-level human advantage, and 3-of-24 Lite result."
+        }
+      ],
+      "limitations": [
+        "The prior envelope mixes GPT-3 one-shot with Gopher and Chinchilla five-shot results and is not a controlled system comparison.",
+        "Crowdworker aggregates typically cover about ten people, allow external tools, and vary in language expertise; neither average nor best reported score is a universal human ceiling.",
+        "The paper's significance wording is descriptive prose rather than a reported statistical test."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-operational-discontinuity-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "coarse-scale-discontinuity-audit",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "PaLM operationalizes a BIG-bench discontinuity from only three model sizes. Logical Sequence scores 13%, 25%, and 87%; extending the smaller-scale increment predicts 37% at 540B, leaving a +50-point residual. Under this screen, 25% of 150 tasks exceed +10 and 15% exceed +20.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Three-point discontinuity definition and task counts",
+            "section": "6.2 BIG-bench",
+            "pageStart": 22,
+            "pageEnd": 23,
+            "figure": "5"
+          },
+          "support": "The canonical article works the Logical Sequence calculation and reports the proportions above both residual cutoffs."
+        }
+      ],
+      "limitations": [
+        "Three scale points without intermediate checkpoints, repeats, or uncertainty bands do not establish a phase transition or causal threshold.",
+        "The statistic operates separately on selected task metrics and prompts; some tasks remain flat or decline with scale."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-chain-of-thought-reasoning",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "few-shot-chain-of-thought-prompting"
+      ],
+      "statement": "On GSM8K with eight manually supplied exemplars, PaLM 540B scores 58% with chain-of-thought plus a calculator, 54% with chain-of-thought alone, and 17% with direct prompting; PaLM 62B with chain-of-thought scores 33%. The reproduced 55% comparator combines finetuning, intermediate reasoning, a calculator, and a verifier. Across seven reasoning tasks, the paper reports four selected contemporaneous best results and three close results.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Chain-of-thought protocol, GSM8K ablation, and seven-task profile",
+            "section": "6.3 Reasoning; 6.3.1 Arithmetic reasoning",
+            "pageStart": 26,
+            "pageEnd": 29,
+            "table": "10",
+            "figure": "8–10"
+          },
+          "support": "The text, Table 10, and Figures 8–10 state the prompt construction, final-answer scoring, exact GSM8K values, comparator components, and broader task summary."
+        }
+      ],
+      "limitations": [
+        "The article credits chain-of-thought to prior work; the PaLM result applies the method rather than establishing its authorship priority.",
+        "The model-scale and prompt-format changes are not isolated from one another, and comparator systems use different training and verification.",
+        "Prompt examples are manually written, only answers are scored, and no repeat-level uncertainty is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "multilingual-code-mixture-pretraining",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "Base PaLM pretraining contains about 39B code tokens, including 2.7B Python tokens. On HumanEval, PaLM 540B reports pass@1 26.2 and pass@100 76.2; on MBPP it reports pass@1 36.8 and pass@80 75.0 under the paper's sampling protocols. PaLM-Coder is a distinct derivative fine-tuned for 6.5B token exposures on a 60% Python, 30% other-code, and 10% natural-language mixture, then 1.9B more on Python, for 8.4B total exposures; the paper separately reports 7.75B finetuning-data tokens and 5.9B Python tokens, so its program synthesis and repair results are not base-PaLM results.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Base code mixture, benchmark results, and PaLM-Coder finetuning",
+            "section": "6.4 Code Tasks",
+            "pageStart": 29,
+            "pageEnd": 36,
+            "table": "11–13"
+          },
+          "support": "The canonical article separates base-model rows from the separately code-finetuned derivative and prints the token and benchmark values."
+        }
+      ],
+      "limitations": [
+        "Pass@k values depend on sampling count, temperature selection, tests, and the article's estimator; they are not guarantees of secure or generally correct code.",
+        "DeepFix compilation success is not semantic correctness or security, and prompt edits are anecdotal rather than a controlled repair study.",
+        "The comparator API model's exact checkpoint and training details are not identified in the paper.",
+        "The reported 7.75B equals the implied code-only exposure after excluding the first stage's 0.65B natural-language share; the article calls it finetuning data rather than explicitly distinguishing total exposure from code exposure, and its 5.9B Python total is rounded."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-translation-and-multilingual-evaluation",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "multilingual-code-mixture-pretraining",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "PaLM is not deliberately trained on parallel text, though naturally occurring parallel examples may remain. Translation is generally stronger into English: for WMT'19 Kazakh, English→Kazakh is 1.8/4.2/5.1 BLEU at zero/one/few shots versus a cited supervised 15.5, while Kazakh→English is 18.0/20.3/20.8 versus 30.5. On TyDiQA validation, 540B reports 80.0 exact match after finetuning and 60.5 few-shot, versus 79.1 for mT5 XXL and 81.4 for ByT5 XXL; English-output GEM gains do not transfer uniformly to non-English generation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Translation direction, prompt, and low-resource result boundary",
+            "section": "6.5 Translation; 6.5.1 Extremely low-resource translation",
+            "pageStart": 36,
+            "pageEnd": 39,
+            "table": "14–15"
+          },
+          "support": "Tables 14–15 and associated text state the no-deliberate-parallel-data caveat, directional asymmetry, prompt difference, and Kazakh values."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Multilingual generation and question-answering profile",
+            "section": "6.6 Multilingual Natural Language Generation; 6.7 Multilingual Question Answering",
+            "pageStart": 39,
+            "pageEnd": 44,
+            "table": "16–17"
+          },
+          "support": "Tables 16–17 supply the GEM and TyDiQA setups, selected comparators, and exact-match values."
+        }
+      ],
+      "limitations": [
+        "Zero-shot translation prompts name both languages while one- and few-shot prompts omit language names, so demonstration count is confounded with prompt information.",
+        "Large GEM test sets are subsampled to 5,000 while published baselines use full splits, and decoding setups differ.",
+        "TyDiQA uses language-dependent shot counts and selects the best overall checkpoint; the comparison does not establish uniform multilingual parity."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-shot-count-and-checkpoint-variance",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "More demonstrations usually help across five analyzed tasks, but TriviaQA one-shot exceeds five- and eight-shot performance at every PaLM scale. Across fifteen 540B checkpoints spaced by 2B tokens, WebQuestions varies substantially and the 770B checkpoint is higher than later checkpoints; headline tables use the final checkpoint. Canonical text says 8B and 540B results use approximately 780B-token checkpoints while 62B uses 795B because of checkpoint selection.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Shot-count exceptions, checkpoint variance, and selected token counts",
+            "section": "6.8 Analysis",
+            "pageStart": 44,
+            "pageEnd": 45,
+            "figure": "16–17"
+          },
+          "support": "Figures 16–17 and the accompanying text report the TriviaQA exception, WebQuestions trajectory, final-checkpoint policy, and 62B oversight."
+        }
+      ],
+      "limitations": [
+        "No repeated demonstration draws, prompt variants, seeds, confidence intervals, or checkpoint-selection correction are reported.",
+        "ArXiv versions additionally print stale 8B/535B/64B labels around 777B/795B details; the journal uses rounded 780B/795B model labels."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-exact-continuation-memorization",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "exact-continuation-memorization-audit"
+      ],
+      "statement": "The memorization audit samples 100-token training spans, provides the opening 50 tokens, greedily generates 50 more, and counts an exact continuation. The observed exact-match rates are 1.6% for PaLM 8B and 2.4% for PaLM 540B.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Exact-continuation protocol and scale result",
+            "section": "7 Memorization",
+            "pageStart": 45,
+            "pageEnd": 46,
+            "figure": "18a"
+          },
+          "support": "The canonical article defines the 50-token prompt and continuation test and reports both model-scale rates."
+        }
+      ],
+      "limitations": [
+        "The number of sampled spans is not reported, and exact greedy continuation measures neither approximate memorization nor untargeted extraction.",
+        "Privacy risk depends on content sensitivity, prompt access, decoding strategy, and deployment context rather than this rate alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-duplication-memorization-gradient",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "exact-continuation-memorization-audit"
+      ],
+      "statement": "For PaLM 540B, sampled spans appearing once in training have a 0.75% exact-continuation rate, whereas spans appearing more than 500 times exceed 40%. Whole-document deduplication therefore leaves repeated 100-token spans and boilerplate that strongly stratify this observed rate.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Continuation rate by span repetition and held-out overlap",
+            "section": "7 Memorization",
+            "pageStart": 46,
+            "pageEnd": 47,
+            "figure": "18b–c"
+          },
+          "support": "Figure 18b–c and the associated discussion report the frequency-stratified values and remaining within-document repetition."
+        }
+      ],
+      "limitations": [
+        "This is a corpus-specific observational association rather than a randomized estimate of duplication's causal effect.",
+        "The buckets do not describe semantic duplicates, near matches, or the sensitivity of memorized content."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-contamination-clean-subset",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "benchmark-overlap-contamination-audit"
+      ],
+      "statement": "Ten of the 29 English benchmarks are classified as wholly contaminated or constructed from the web. A sample is treated as clean when less than 70% of the 8-grams in its question, prompt, or target occur in training data. Clean-minus-full score deltas have mixed signs for 8B and 540B; translation target-overlap filtering is similar on five of six pairs, while German→English falls by about three BLEU across scales.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "English and translation overlap definitions and score comparisons",
+            "section": "8 Dataset Contamination",
+            "pageStart": 47,
+            "pageEnd": 49,
+            "table": "18–19"
+          },
+          "support": "Tables 18–19 define the threshold, list the ten task classifications, and report the mixed English and directional translation deltas."
+        }
+      ],
+      "limitations": [
+        "Clean and full subsets differ in composition, some clean sets are small, and no confidence intervals are supplied; mixed signs do not prove absence of inflation.",
+        "Table 19 full-set translation values differ materially from Table 14 without an explicit split or protocol mapping, so the tables are not merged.",
+        "Eight-gram overlap cannot detect every paraphrase, semantic duplicate, or benchmark-derived training artifact."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-explanation-evidence-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "few-shot-chain-of-thought-prompting"
+      ],
+      "statement": "The explanation section presents author-written and author-selected qualitative examples generated greedily from one fixed two-shot prompt. The article explicitly says this is not a thorough quantitative analysis, so the outputs demonstrate a prompting behavior rather than faithful reasoning, calibrated confidence, or reasoning for the claimed causal basis.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Qualitative explanation protocol and explicit scope",
+            "section": "9 Exploring Explanations",
+            "pageStart": 50,
+            "pageEnd": 51,
+            "figure": "19"
+          },
+          "support": "The section states who wrote and selected the examples, identifies the fixed prompt and greedy decoding, and names the lack of quantitative analysis."
+        }
+      ],
+      "limitations": [
+        "Selected natural-language rationales may be plausible while remaining post-hoc, unfaithful, or sensitive to prompt and decoding changes.",
+        "No counterfactual, mechanistic, annotation-reliability, or calibration study accompanies the examples."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-bias-and-cooccurrence-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "prompt-conditioned-bias-probing",
+        "scale-dependent-toxicity-and-bias"
+      ],
+      "statement": "On Winogender at one shot, PaLM 540B scores 79.4% under multiple-choice likelihood ranking but 69.7% under generative exact match; four-shot generative accuracy reaches 84.7%, below the cited 95.9% human value. For identity co-occurrence, each prompt receives 800 top-k-40, temperature-1 samples and only the initial complete sentence is analyzed; 62B and 540B share 70% of their top-ten terms on average.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Winogender scoring modes and human comparison",
+            "section": "10.1.1 Gender and occupation bias",
+            "pageStart": 52,
+            "pageEnd": 54,
+            "figure": "20–21"
+          },
+          "support": "Figures 20–21 report the multiple-choice, generative, shot-count, stereotype, and human values."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Identity-prompt sampling and cross-scale overlap",
+            "section": "10.1.2 Toxicity and bias",
+            "pageStart": 54,
+            "pageEnd": 55
+          },
+          "support": "The section states the 800-output sampling, top-k and temperature settings, first-sentence filter, descriptive-word extraction, and 70% cross-scale top-ten overlap."
+        }
+      ],
+      "limitations": [
+        "Likelihood ranking can mark a low-probability answer correct and overstate free-generation ability; stereotype-aligned cases remain easier than gotcha cases.",
+        "Identity terms are not disambiguated, small prompt changes can alter results sharply, and the extraction has no human-labeled validity study.",
+        "Cross-scale overlap does not isolate whether data composition matters more than model size."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-realtoxicity-profile",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "prompt-conditioned-bias-probing",
+        "scale-dependent-toxicity-and-bias"
+      ],
+      "statement": "For 10,000 random RealToxicityPrompts with 25 continuations each, the probability that at least one initial-sentence continuation exceeds Perspective API score 0.5 is .78/.81/.80 after toxic prompts and .44/.46/.46 after non-toxic prompts for PaLM 8B/62B/540B. Across all 128 generated steps, the corresponding probabilities are .90/.91/.91 and .53/.58/.56.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "RealToxicityPrompts protocol and conditional probabilities",
+            "section": "10.2 Toxicity in open-ended generation",
+            "pageStart": 57,
+            "pageEnd": 58,
+            "table": "20",
+            "figure": "23"
+          },
+          "support": "The section, Figure 23, and Table 20 state the sample count, decoding, classifier cutoff, length conditions, and all twelve values."
+        }
+      ],
+      "limitations": [
+        "These are probabilities of at least one flagged continuation among 25, not per-generation toxicity rates.",
+        "Perspective scores increase with generated length and may encode identity and dialect biases; the English-only protocol is not a comprehensive harm evaluation.",
+        "PaLM's sentence and length conditions differ from Gopher's sampling protocol, so raw values are not directly interchangeable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-compute-and-carbon-accounting",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "practical-training-compute-accounting",
+        "model-flops-utilization"
+      ],
+      "statement": "The article reports 4.29×10^22, 3.08×10^23, and 2.56×10^24 training FLOPs for PaLM 8B, 62B, and 540B, using the non-rematerialization FLOP column and 780B/795B/780B labeled tokens. For 540B it estimates 271.43 tCO2e from Oklahoma PUE 1.08, 89% carbon-free energy, 0.079 tCO2e/MWh, 6,144 chips for 1,200 hours plus 3,072 chips for 336 hours including downtime and repeats, and 378.5 W measured system power per chip.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Training FLOPs, system inputs, and carbon estimate",
+            "section": "Appendix B Compute Usage and Environmental Impact",
+            "pageStart": 90,
+            "pageEnd": 91,
+            "table": "22"
+          },
+          "support": "Table 22 and its surrounding derivation provide each FLOP total, token label, facility and grid factor, chip-time component, measured power, and final estimate."
+        }
+      ],
+      "limitations": [
+        "The training FLOPs exclude development, evictions, and other inefficiency and use a different scope from rematerialization-inclusive executed work.",
+        "The carbon value is an estimate rather than direct whole-project measurement and excludes embodied hardware, data preparation, development, inference, and downstream use.",
+        "Renewable compensation and annual average carbon-free energy do not imply zero gross emissions or round-the-clock carbon-free operation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-refreshed-data-continued-training",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "refreshed-data-continued-pretraining"
+      ],
+      "statement": "A later experiment resumes PaLM 62B from 600B tokens and continues to 1.325T with a refreshed mixture: 40% conversations, 27% webpages, 13% books, 10% GitHub, 4% Wikipedia, 1% news, and 5% new arXiv/math data. Relative to the reported 795B checkpoint, 1.325T results change MMLU 53.7→62.8, common-task BIG-bench 32.4→40.8, GSM8K 33.0→48.7, MBPP 21.4→31.2, HumanEval 15.9→23.7, NLG average 57.7→60.1, and NLU average 67.3→71.1. In the 95B repeat-versus-refresh probe, refreshed data is higher on six of eight rows, ties one, and is lower on HellaSwag.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Continued-training mixture, controls, results, and compute table",
+            "section": "Appendix F Training for longer",
+            "pageStart": 102,
+            "pageEnd": 104,
+            "table": "31–33",
+            "figure": "26–27"
+          },
+          "support": "Figures 26–27 and Tables 31–33 state the resume point, revised source weights, 95B comparison, downstream values, and simple-compute comparison."
+        }
+      ],
+      "limitations": [
+        "The intervention changes token count, freshness, source weights, and adds a new corpus component; it does not isolate any one cause.",
+        "The refreshed-data row is not uniformly higher despite the table caption's broader wording, and downstream checkpoint curves are not monotonic on every task.",
+        "The appendix's simple 6NT FLOPs differ in scope from Appendix B's implementation-aware values and the comparison to Chinchilla also changes model, data, and evaluation conditions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-model-dataset-and-use-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "multilingual-code-mixture-pretraining",
+        "scale-dependent-toxicity-and-bias"
+      ],
+      "statement": "The datasheet says the static 2019–2021 training data will not be distributed outside Google, preprocessing software is proprietary and unavailable, and no ethical review was conducted. The model card identifies research within Google as the primary use and says PaLM should not be used for downstream applications without application-specific safety and fairness assessment. The journal additionally names unsupported or hallucinated content, prompt sensitivity, inference cost, stale language, possible dialect exclusion, malicious use, and benchmark construct validity.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Dataset availability and governance",
+            "section": "Appendix D Datasheet for PaLM Dataset",
+            "pageStart": 95,
+            "pageEnd": 97,
+            "table": "27"
+          },
+          "support": "Table 27 directly states the collection period, processing availability, ethical-review state, and external distribution policy."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Research-use and application-risk boundaries",
+            "section": "10.3 Limitations; 11 Societal Impact & Ethical Considerations",
+            "pageStart": 58,
+            "pageEnd": 61
+          },
+          "support": "The canonical article identifies capability, representational, misuse, prompt, cost, staleness, and construct-validity limits."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Model-card scope and known limitations",
+            "section": "Appendix E Model Card",
+            "pageStart": 99,
+            "pageEnd": 101,
+            "table": "30"
+          },
+          "support": "Table 30 limits the model to research and requires further analysis before application use."
+        }
+      ],
+      "limitations": [
+        "A model card and dataset datasheet communicate known boundaries but do not themselves mitigate the named risks.",
+        "The fairness analysis is English-only and covers selected gender, race, ethnicity, and religion probes rather than all relevant social contexts."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-artifact-and-rights-boundary",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "multilingual-code-mixture-pretraining"
+      ],
+      "statement": "The inspected public release surface contains the CC BY 4.0 article PDFs and arXiv publication-source packages, generic framework and systems references, and 489 PaLM BIG-bench aggregate-score JSONs spanning 163 tasks and three legacy model labels. The score files are not raw generations or a complete run map, and the complete v4/v5 manuscript trees contain no PaLM checkpoint, weights, tokenizer, prepared corpus, model-specific executable training or evaluation implementation, exact configuration, seeds, environment, or run manifest. Article reuse terms do not establish rights for model, data, code repositories, benchmarks, or other third-party artifacts.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2022-arxiv-v4-source-package",
+          "locator": {
+            "label": "Complete version 4 publication-source inventory",
+            "section": "Complete archive tree"
+          },
+          "support": "The 78-file archive contains TeX and publication assets and no executable model, data, environment, or run package."
+        },
+        {
+          "sourceId": "chowdhery-2022-arxiv-v5-source-package",
+          "locator": {
+            "label": "Complete version 5 publication-source inventory",
+            "section": "Complete archive tree"
+          },
+          "support": "The 78-file archive changes one manuscript file and contains no PaLM reconstruction artifacts."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Dataset nonrelease and model-card artifact scope",
+            "section": "Appendix D Datasheet; Appendix E Model Card",
+            "pageStart": 95,
+            "pageEnd": 101,
+            "table": "27, 30"
+          },
+          "support": "The article states that preprocessing is unavailable and data will not be distributed, and it names research use without a public-checkpoint release."
+        },
+        {
+          "sourceId": "chowdhery-2022-bigbench-score-artifacts",
+          "locator": {
+            "label": "Released aggregate BIG-bench scores",
+            "section": "PaLM results commit"
+          },
+          "support": "The immutable repository commit adds 489 per-task aggregate-score JSONs across the 8b, 64b, and 535b labels, with no raw generations or model artifacts."
+        },
+        {
+          "sourceId": "chowdhery-2022-cc-by-license",
+          "locator": {
+            "label": "Article-license terms",
+            "section": "Creative Commons Attribution 4.0 International"
+          },
+          "support": "The license defines reuse conditions for licensed article material; it does not grant rights in absent model, data, benchmark, or third-party artifacts."
+        }
+      ],
+      "limitations": [
+        "The absence finding is bounded to the official paper, source packages, organization records, launch article, and BIG-bench release surface inspected on 2026-09-07; the separately cataloged API announcement is an unbound service boundary and is not evidence for this claim.",
+        "Availability of JAX, T5X, or Pathways components does not reproduce PaLM without model-specific artifacts and data.",
+        "Every external dataset, benchmark, repository, dependency, and figure requires its own provenance and rights analysis."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "chowdhery-2022-version-specific-reporting-discrepancies",
+      "workId": "chowdhery-2022-palm-scaling-language-modeling-pathways",
+      "ideaIds": [
+        "parallel-attention-mlp-transformer-block",
+        "fixed-token-capability-scaling-profile",
+        "refreshed-data-continued-pretraining"
+      ],
+      "statement": "The source family retains unresolved reporting differences. Canonical JMLR prints a malformed serialized parallel-block equation, while surrounding prose defines the intended parallel paths. Section 3 says every model trains exactly one identically shuffled 780B-token epoch, Section 6.8 labels 8B/540B about 780B and 62B 795B, and the rounded 540B batch schedule arithmetically totals 775.94624B tokens. JMLR Appendix Table 44 gives PaLM-540B XSum ROUGE-2 as a lone 56.36 where a precision/recall/F-measure triple is required, despite main Table 16 F-measure 21.2. Tables 21 and 31 label 540B HellaSwag/BoolQ zero-shot but print one-shot values 83.6/88.7 rather than Table 4 zero-shot 83.4/88.0.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Malformed parallel-block equation",
+            "section": "2 Model Architecture",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The displayed serialized expression leaves the MLP parenthesis unmatched, while the adjacent standard formula and prose identify the intended parallel inputs."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Dataset token-count statement",
+            "section": "3 Training Dataset",
+            "pageStart": 9,
+            "pageEnd": 10,
+            "table": "2"
+          },
+          "support": "The article describes one identically shuffled 780B-token epoch for each model."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Rounded 540B batch schedule",
+            "section": "5 Training Setup",
+            "pageStart": 13,
+            "pageEnd": 15
+          },
+          "support": "The batch transition steps and 2,048-token sequence length supply the inputs to the editorial schedule arithmetic."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Selected checkpoint token labels",
+            "section": "6.8 Analysis",
+            "pageStart": 44,
+            "pageEnd": 45,
+            "figure": "16–17"
+          },
+          "support": "The evaluation analysis labels 8B and 540B at about 780B tokens and 62B at 795B tokens."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Compute-table token totals",
+            "section": "Appendix B Compute Usage and Environmental Impact",
+            "pageStart": 90,
+            "pageEnd": 90,
+            "table": "22"
+          },
+          "support": "Table 22 prints the 780B, 795B, and 780B token totals used for the three reported training-FLOP values."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "XSum main-table value",
+            "section": "6.6 Multilingual Natural Language Generation",
+            "pageStart": 41,
+            "pageEnd": 41,
+            "table": "16"
+          },
+          "support": "Main Table 16 reports XSum ROUGE-2 F-measure 21.2."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "XSum appendix-table inconsistency",
+            "section": "Appendix H.3 Multilingual NLG results",
+            "pageStart": 112,
+            "pageEnd": 112,
+            "table": "44"
+          },
+          "support": "Appendix Table 44 has the structurally incomplete 56.36 cell where the table requires a precision/recall/F-measure triple."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Reference zero- and one-shot values",
+            "section": "6.1 English NLP tasks",
+            "pageStart": 15,
+            "pageEnd": 17,
+            "table": "4"
+          },
+          "support": "Table 4 separates the HellaSwag and BoolQ zero-shot and one-shot values used for comparison."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Main scaling-table shot-label inconsistency",
+            "section": "13 Open Questions in Scaling",
+            "pageStart": 63,
+            "pageEnd": 64,
+            "table": "21"
+          },
+          "support": "Table 21 labels the copied one-shot HellaSwag and BoolQ values as zero-shot."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Appendix scaling-table shot-label inconsistency",
+            "section": "Appendix F Training for longer",
+            "pageStart": 102,
+            "pageEnd": 103,
+            "table": "31"
+          },
+          "support": "Table 31 repeats the copied one-shot HellaSwag and BoolQ values under zero-shot labels."
+        }
+      ],
+      "limitations": [
+        "The 775.94624B value is an editorial calculation from rounded step boundaries, not an author-provided exact token ledger.",
+        "No author erratum was identified for the equation, XSum cell, or shot-labeled scaling tables, so the atlas preserves rather than repairs them.",
+        "Aggregate results that consume the affected HellaSwag and BoolQ rows inherit the reporting caveat."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-07"
     }
   ],
   "relationships": [
@@ -60725,6 +63265,181 @@
           "note": "The edge is confined to the target-documented generator substrate and training boundary; it does not transfer BART's standalone task evidence or release provenance into RAG."
         }
       ]
+    },
+    {
+      "id": "vaswani-2017-to-chowdhery-2022-palm",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Chowdhery et al. explicitly describe PaLM as a standard Transformer in decoder-only causal form and then enumerate its changes. The edge carries masked self-attention, multiple heads, and positionwise computation while excluding Vaswani's encoder, cross-attention path, translation objective, sinusoidal positions, model dimensions, data, and results.",
+      "claimIds": [
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-positionwise-computation",
+        "chowdhery-2022-palm-model-family-and-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Target-side Transformer substrate and enumerated changes",
+            "section": "2 Model Architecture",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "The target names Vaswani et al., specifies decoder-only causal masking, and separately lists SwiGLU, parallel paths, shared keys and values, RoPE, tied embeddings, and the absence of dense-kernel and layer-norm biases."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship is limited to the explicitly named architectural substrate; PaLM does not inherit the original encoder or translation system."
+        }
+      ]
+    },
+    {
+      "id": "brown-2020-to-chowdhery-2022-palm",
+      "from": {
+        "kind": "work",
+        "id": "brown-2020-language-models-few-shot-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "PaLM explicitly presents GPT-3's inference-only demonstration setting, continues the dense autoregressive scaling line, and reuses the 29-benchmark split and GPT-3-style RACE frame. The edge carries decoder-only inference-time task conditioning and evaluation continuity, not GPT-3's tokenizer, corpus, locally banded attention, training schedule, exact prompts, results, artifacts, or release policy.",
+      "claimIds": [
+        "brown-2020-zero-one-few-shot-definitions",
+        "brown-2020-evaluation-demonstration-selection",
+        "brown-2020-model-configurations-and-175b",
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "chowdhery-2022-english-evaluation-and-mmlu"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Target-side GPT-3 few-shot and scaling continuity",
+            "section": "1 Introduction",
+            "pageStart": 4,
+            "pageEnd": 6
+          },
+          "support": "The target directly frames GPT-3's frozen few-shot setup and states that PaLM continues the dense autoregressive scaling line."
+        },
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Target-side GPT-3 benchmark continuity",
+            "section": "6.1 English NLP tasks",
+            "pageStart": 15,
+            "pageEnd": 18,
+            "table": "4"
+          },
+          "support": "The target uses the same 29 benchmark splits as GPT-3 and GLaM and preserves the GPT-3-style RACE setup."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The benchmark edge does not make PaLM's task-specific shot counts or prompts identical to GPT-3's settings."
+        }
+      ]
+    },
+    {
+      "id": "rae-2021-to-chowdhery-2022-palm-toxicity",
+      "from": {
+        "kind": "work",
+        "id": "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher"
+      },
+      "to": {
+        "kind": "work",
+        "id": "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "PaLM explicitly adapts Gopher's scale-conditioned RealToxicityPrompts and Perspective-style evaluation, then changes the sample count and reports both initial-sentence and 128-step conditions. The edge carries only toxicity-evaluation method continuity; it excludes Gopher's architecture, MassiveText, tokenizer, training, raw values, dialogue study, and release policy.",
+      "claimIds": [
+        "rae-2021-scale-dependent-toxicity-and-bias",
+        "chowdhery-2022-realtoxicity-profile"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Target-side adaptation of Gopher toxicity evaluation",
+            "section": "10.2 Toxicity in open-ended generation",
+            "pageStart": 57,
+            "pageEnd": 58,
+            "table": "20",
+            "figure": "23"
+          },
+          "support": "The target names Rae et al. as the adapted methodology and specifies its own prompts, samples, classifier, and two length conditions."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Changed sampling and generation-length rules prevent direct raw-value transfer between Gopher and PaLM."
+        }
+      ]
+    },
+    {
+      "id": "hoffmann-2022-to-chowdhery-2022-palm-scaling-question",
+      "from": {
+        "kind": "work",
+        "id": "hoffmann-2022-training-compute-optimal-language-models"
+      },
+      "to": {
+        "kind": "work",
+        "id": "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "PaLM's post-Chinchilla scaling discussion treats the parameter-versus-token allocation as the relevant question, accepts the evidence that Gopher was undertrained, and then declines to extrapolate because PaLM lacks a matched allocation ablation and uses different data. The edge carries the compute-allocation question and its qualification, not Chinchilla's architecture, MassiveText mixture, optimizer, numeric rule, results, artifacts, or rights.",
+      "claimIds": [
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-chinchilla-gopher-compute-match",
+        "hoffmann-2022-scaling-validity-boundary",
+        "chowdhery-2022-refreshed-data-continued-training",
+        "chowdhery-2022-version-specific-reporting-discrepancies"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "chowdhery-2023-jmlr-full-text",
+          "locator": {
+            "label": "Target-side Chinchilla allocation question and extrapolation boundary",
+            "section": "13 Open Questions in Scaling",
+            "pageStart": 63,
+            "pageEnd": 66,
+            "table": "21",
+            "figure": "24–25"
+          },
+          "support": "The target discusses Chinchilla's parameter/token result, recognizes the Gopher finding, and explicitly names data differences and the missing PaLM ablation that prevent direct extrapolation."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This is a documented response to a scaling question, not architectural or dataset inheritance and not evidence that PaLM is compute-optimal."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -64473,6 +67188,112 @@
         "Immutable version provenance, source manifests, model and data artifacts, and license scope"
       ],
       "successCriterion": "The learner can reconstruct Equations 1–3 and the appendix fit, reproduce .50/.50, .49/.51, and .46/.54 with their intervals, explain the matched-horizon assumption and Kaplan accounting boundary, derive the estimator-specific Gopher-budget range, audit the 70B/1.4T validation and six-source mixture, defend the qualified Gopher→Chinchilla substrate edge and its explicit changes, enumerate the sign, cross-reference, 10× FLOP, projection, interval, and evaluation discrepancies, and separate paper versions, mutable organization prose, proprietary data, unreleased model artifacts, and distribution rights."
+    },
+    {
+      "id": "beginner-chowdhery-2022-scale-prompt-and-check-the-boundaries",
+      "mode": "beginner",
+      "objective": "Explain how PaLM combines a larger frozen language model with inference-time examples and worked reasoning prompts, then distinguish higher selected benchmark scores from universal capability, human-level performance, a proven threshold, faithful explanations, comprehensive safety, or public model availability.",
+      "workIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "few-shot-chain-of-thought-prompting",
+        "coarse-scale-discontinuity-audit",
+        "exact-continuation-memorization-audit",
+        "scale-dependent-toxicity-and-bias",
+        "multilingual-code-mixture-pretraining",
+        "benchmark-overlap-contamination-audit"
+      ],
+      "claimIds": [
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "chowdhery-2022-training-mixture-and-provenance",
+        "chowdhery-2022-english-evaluation-and-mmlu",
+        "chowdhery-2022-bigbench-performance-and-human-boundary",
+        "chowdhery-2022-operational-discontinuity-boundary",
+        "chowdhery-2022-chain-of-thought-reasoning",
+        "chowdhery-2022-shot-count-and-checkpoint-variance",
+        "chowdhery-2022-exact-continuation-memorization",
+        "chowdhery-2022-contamination-clean-subset",
+        "chowdhery-2022-realtoxicity-profile",
+        "chowdhery-2022-artifact-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "A causal decoder predicts the next token from earlier context",
+        "A frozen model can receive task instructions and demonstrations without changing its weights",
+        "Benchmark values depend on prompts, shot counts, checkpoints, metrics, and comparison systems",
+        "Reading a paper or using a hosted service does not imply downloadable weights, data, code, or reuse rights"
+      ],
+      "successCriterion": "The learner can name the three model sizes and core architectural changes, reconstruct one English and one reasoning comparison, calculate the BIG-bench residual example, identify the TriviaQA and checkpoint exceptions, separate memorization from contamination and toxicity, and state which PaLM artifacts remain unavailable."
+    },
+    {
+      "id": "expert-chowdhery-2022-versions-systems-evaluation-and-provenance",
+      "mode": "expert",
+      "objective": "Audit PaLM's five arXiv revisions and canonical JMLR article, exact architecture and optimizer, multilingual text-and-code mixture, tokenizer, Pathways topology, utilization and compute scopes, heterogeneous evaluation matrix, reasoning and derivative boundaries, contamination, memorization, safety, continued training, reporting discrepancies, artifacts, rights, and four qualified incoming lineage edges.",
+      "workIds": [
+        "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      ],
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "multi-head-attention",
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "prompt-conditioned-bias-probing",
+        "sentencepiece-byte-fallback-tokenization",
+        "distributed-dense-transformer-training",
+        "practical-training-compute-accounting",
+        "benchmark-overlap-contamination-audit",
+        "fixed-token-capability-scaling-profile",
+        "scale-dependent-toxicity-and-bias",
+        "swiglu-transformer-feedforward",
+        "parallel-attention-mlp-transformer-block",
+        "multi-query-attention",
+        "rotary-position-embeddings",
+        "pipeline-free-multipod-data-parallelism",
+        "model-flops-utilization",
+        "z-loss-stabilized-autoregressive-training",
+        "multilingual-code-mixture-pretraining",
+        "coarse-scale-discontinuity-audit",
+        "few-shot-chain-of-thought-prompting",
+        "exact-continuation-memorization-audit",
+        "refreshed-data-continued-pretraining"
+      ],
+      "claimIds": [
+        "chowdhery-2022-version-and-publication-boundary",
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "chowdhery-2022-tokenizer-and-sequence-construction",
+        "chowdhery-2022-training-mixture-and-provenance",
+        "chowdhery-2022-distributed-pathways-training",
+        "chowdhery-2022-model-flops-utilization",
+        "chowdhery-2022-training-objective-schedule-and-instability",
+        "chowdhery-2022-english-evaluation-and-mmlu",
+        "chowdhery-2022-bigbench-performance-and-human-boundary",
+        "chowdhery-2022-operational-discontinuity-boundary",
+        "chowdhery-2022-chain-of-thought-reasoning",
+        "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
+        "chowdhery-2022-translation-and-multilingual-evaluation",
+        "chowdhery-2022-shot-count-and-checkpoint-variance",
+        "chowdhery-2022-exact-continuation-memorization",
+        "chowdhery-2022-duplication-memorization-gradient",
+        "chowdhery-2022-contamination-clean-subset",
+        "chowdhery-2022-explanation-evidence-boundary",
+        "chowdhery-2022-bias-and-cooccurrence-boundary",
+        "chowdhery-2022-realtoxicity-profile",
+        "chowdhery-2022-compute-and-carbon-accounting",
+        "chowdhery-2022-refreshed-data-continued-training",
+        "chowdhery-2022-model-dataset-and-use-boundary",
+        "chowdhery-2022-artifact-and-rights-boundary",
+        "chowdhery-2022-version-specific-reporting-discrepancies"
+      ],
+      "prerequisites": [
+        "Causal Transformers, multi-head and multi-query attention, gated feed-forward layers, normalization, RoPE, tied embeddings, and subword tokenization",
+        "Adafactor, inverse-square-root schedules, z-loss, gradient clipping, rematerialization, fully sharded data parallelism, model parallelism, and multi-pod collectives",
+        "Few-shot scoring, chain-of-thought prompts, pass@k, BLEU and ROUGE, heterogeneous benchmark envelopes, checkpoint selection, and uncertainty",
+        "Corpus sampling, repository-license filters, document deduplication, n-gram overlap, exact extraction, classifier-mediated safety probes, and immutable manifests",
+        "MFU and HFU denominators, implementation-aware FLOPs, carbon-estimate system boundaries, article versus artifact rights, and hosted-service boundaries"
+      ],
+      "successCriterion": "The learner can audit all six versions and twenty-five claims, reproduce Tables 1–3 and the principal evaluation caveats, derive the +50 BIG-bench residual and 775.94624B schedule total, distinguish MFU, HFU, and two FLOP accounts, bound PaLM-Coder and the public artifact surface, explain the XSum and shot-label discrepancies, and defend the Transformer, GPT-3, Gopher-toxicity, and Chinchilla-question edges without transferring excluded mechanisms, data, results, artifacts, or rights."
     }
   ]
 }

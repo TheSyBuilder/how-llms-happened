@@ -22,6 +22,10 @@ function copyCorpus() {
   return JSON.parse(JSON.stringify(corpus));
 }
 
+function workIndex(workId) {
+  return corpus.works.findIndex((item) => item.id === workId);
+}
+
 function assertRejected(candidate, expectedMessage) {
   const errors = validateCorpus(candidate, schema);
   assert.ok(
@@ -191,7 +195,7 @@ test("preserves BART versions, denoising results, rights, and RAG lineage", () =
     (item) => item.id === "rag-2020-hybrid-dpr-bart-index",
   );
 
-  assert.equal(corpus.works.at(-12)?.id, workId);
+  assert.equal(workIndex(workId), 45);
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "bart-2019-arxiv-v1-posted");
   assert.deepEqual(
@@ -473,7 +477,7 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     "kaplan-2020-arxiv-v1-source-package",
   ];
 
-  assert.equal(corpus.works.at(-11)?.id, workId);
+  assert.equal(workIndex(workId), 46);
   assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
   assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
   assert.equal(work?.versions.length, 1);
@@ -618,7 +622,7 @@ test("preserves ORQA versions, fixed-index learning, results, and REALM lineage"
   );
   const beginnerObjective = objectives.find((item) => item.mode === "beginner");
 
-  assert.equal(corpus.works.at(-16)?.id, workId);
+  assert.equal(workIndex(workId), 41);
   assert.equal(work?.chronology.orderingEventId, "orqa-2019-arxiv-v1-posted");
   assert.deepEqual(
     work?.chronology.events.map((item) => item.date.value),
@@ -739,7 +743,7 @@ test("preserves REALM versions, latent retrieval, index boundaries, and lineage"
     (item) => item.id === "devlin-2018-to-guu-2020-realm",
   );
 
-  assert.equal(corpus.works.at(-10)?.id, workId);
+  assert.equal(workIndex(workId), 47);
   assert.equal(work?.canonicalVersionId, "realm-2020-icml-version");
   assert.deepEqual(
     work?.chronology.events.map((item) => item.date.value),
@@ -877,7 +881,7 @@ test("preserves DPR versions, contrastive retrieval, index limits, and RAG linea
     (item) => item.id === "acl-2016-plus-rights-policy",
   );
 
-  assert.equal(corpus.works.at(-9)?.id, workId);
+  assert.equal(workIndex(workId), 48);
   assert.equal(work?.chronology.orderingEventId, "dpr-2020-arxiv-v1-posted");
   assert.deepEqual(
     work?.chronology.events.map((item) => item.date.value),
@@ -1022,7 +1026,7 @@ test("preserves RAG revisions, marginalization, results, and artifact boundaries
     (item) => item.id === "guu-2020-realm-to-lewis-2020-rag",
   );
 
-  assert.equal(corpus.works.at(-8)?.id, workId);
+  assert.equal(workIndex(workId), 49);
   assert.equal(work?.canonicalVersionId, "rag-2020-neurips-version");
   assert.deepEqual(
     work?.versions.map((item) => item.id),
@@ -1179,8 +1183,8 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     "brown-2020-neurips-version",
   ];
 
-  assert.equal(corpus.works.at(-7)?.id, workId);
-  assert.equal(corpus.works.at(-11)?.id, "kaplan-2020-scaling-laws-neural-language-models");
+  assert.equal(workIndex(workId), 50);
+  assert.equal(workIndex("kaplan-2020-scaling-laws-neural-language-models"), 46);
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
   assert.deepEqual(
@@ -1489,7 +1493,7 @@ test("preserves Stiennon 2020 reward learning, release boundaries, and instructi
     "stiennon-2020-release-license-clarification",
   ];
 
-  assert.equal(corpus.works.at(-6)?.id, workId);
+  assert.equal(workIndex(workId), 51);
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.chronology.orderingEventId, "stiennon-2020-arxiv-v1-posted");
   assert.deepEqual(
@@ -1673,7 +1677,7 @@ test("preserves FLAN versions, held-out clusters, ablations, and release boundar
     (item) => item.id === "wei-2021-to-sanh-2021-concurrent-instruction-tuning",
   );
 
-  assert.equal(corpus.works.at(-5)?.id, workId);
+  assert.equal(workIndex(workId), 52);
   assert.deepEqual(
     work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
     [
@@ -1772,7 +1776,7 @@ test("preserves T0 authorship, prompt evaluation, mixture, and lineage boundarie
     (item) => item.id === "raffel-2019-to-sanh-2021-t5-plus-lm-substrate",
   );
 
-  assert.equal(corpus.works.at(-4)?.id, workId);
+  assert.equal(workIndex(workId), 53);
   assert.deepEqual(
     work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
     [
@@ -1923,7 +1927,7 @@ test("preserves Gopher versions, scaling boundaries, and scoped Chinchilla linea
     "rae-2021-deepmind-launch-post",
   ];
 
-  assert.equal(corpus.works.at(-3)?.id, workId);
+  assert.equal(workIndex(workId), 54);
   assert.equal(work?.artifactType, "preprint");
   assert.equal(work?.chronology.orderingEventId, "rae-2021-arxiv-v1-posted");
   assert.deepEqual(
@@ -2112,6 +2116,7 @@ test("preserves Gopher versions, scaling boundaries, and scoped Chinchilla linea
       "radford-2019-to-rae-2021-gopher",
       "dai-2019-to-rae-2021-gopher",
       "rae-2021-gopher-to-hoffmann-2022",
+      "rae-2021-to-chowdhery-2022-palm-toxicity",
     ],
   );
   const gpt2Edge = relationships.find(
@@ -2123,9 +2128,13 @@ test("preserves Gopher versions, scaling boundaries, and scoped Chinchilla linea
   const chinchillaEdge = relationships.find(
     (item) => item.id === "rae-2021-gopher-to-hoffmann-2022",
   );
+  const palmToxicityEdge = relationships.find(
+    (item) => item.id === "rae-2021-to-chowdhery-2022-palm-toxicity",
+  );
   assert.equal(gpt2Edge?.connectionType, "extends");
   assert.equal(transformerXlEdge?.connectionType, "builds-on");
   assert.equal(chinchillaEdge?.connectionType, "extends");
+  assert.equal(palmToxicityEdge?.connectionType, "builds-on");
   assert.equal(gpt2Edge?.from.id, "radford-2019-language-models-unsupervised-multitask-learners");
   assert.equal(
     transformerXlEdge?.from.id,
@@ -2276,7 +2285,7 @@ test("preserves Ouyang 2022 post-training versions, scoped results, and incoming
     "ouyang-2022-model-card",
   ];
 
-  assert.equal(corpus.works.at(-2)?.id, workId);
+  assert.equal(workIndex(workId), 55);
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(
     work?.chronology.orderingEventId,
@@ -2507,7 +2516,7 @@ test("preserves Chinchilla estimators, archival conflicts, and scoped incoming l
     "hoffmann-2022-neurips-rights",
   ];
 
-  assert.equal(corpus.works.at(-1)?.id, workId);
+  assert.equal(workIndex(workId), 56);
   assert.equal(work?.chronology.orderingEventId, "hoffmann-2022-arxiv-v1-posted");
   assert.deepEqual(
     work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
@@ -2742,6 +2751,322 @@ test("preserves Chinchilla estimators, archival conflicts, and scoped incoming l
     historicalScope.includes(
       "The Hoffmann compute-optimal study was checked on 2026-08-31",
     ),
+  );
+});
+
+test("preserves PaLM versions, systems evidence, evaluation bounds, and scoped lineage", () => {
+  const workId = "chowdhery-2022-palm-scaling-language-modeling-pathways";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "chowdhery-2023-jmlr-version",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "chowdhery-2023-jmlr-full-text",
+  );
+  const v4Source = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-arxiv-v4-source-package",
+  );
+  const v3Text = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-arxiv-v3-full-text",
+  );
+  const scores = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-bigbench-score-artifacts",
+  );
+  const api = corpus.sources.find(
+    (item) => item.id === "chowdhery-2023-palm-api-announcement",
+  );
+  const launch = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-google-launch-post",
+  );
+  const versionBoundary = findClaim(
+    "chowdhery-2022-version-and-publication-boundary",
+  );
+  const architecture = findClaim(
+    "chowdhery-2022-palm-model-family-and-architecture",
+  );
+  const data = findClaim("chowdhery-2022-training-mixture-and-provenance");
+  const distributed = findClaim(
+    "chowdhery-2022-distributed-pathways-training",
+  );
+  const utilization = findClaim("chowdhery-2022-model-flops-utilization");
+  const training = findClaim(
+    "chowdhery-2022-training-objective-schedule-and-instability",
+  );
+  const english = findClaim("chowdhery-2022-english-evaluation-and-mmlu");
+  const discontinuity = findClaim(
+    "chowdhery-2022-operational-discontinuity-boundary",
+  );
+  const reasoning = findClaim("chowdhery-2022-chain-of-thought-reasoning");
+  const code = findClaim(
+    "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
+  );
+  const memorization = findClaim(
+    "chowdhery-2022-exact-continuation-memorization",
+  );
+  const toxicity = findClaim("chowdhery-2022-realtoxicity-profile");
+  const compute = findClaim("chowdhery-2022-compute-and-carbon-accounting");
+  const continued = findClaim(
+    "chowdhery-2022-refreshed-data-continued-training",
+  );
+  const artifacts = findClaim(
+    "chowdhery-2022-artifact-and-rights-boundary",
+  );
+  const discrepancies = findClaim(
+    "chowdhery-2022-version-specific-reporting-discrepancies",
+  );
+
+  assert.equal(workIndex(workId), 57);
+  assert.equal(work?.artifactType, "journal-article");
+  assert.equal(work?.authors.length, 67);
+  assert.deepEqual(work?.authors.slice(0, 4), [
+    "Aakanksha Chowdhery",
+    "Sharan Narang",
+    "Jacob Devlin",
+    "Maarten Bosma",
+  ]);
+  assert.deepEqual(work?.authors.slice(-4), [
+    "Douglas Eck",
+    "Jeff Dean",
+    "Slav Petrov",
+    "Noah Fiedel",
+  ]);
+  assert.equal(work?.chronology.orderingEventId, "chowdhery-2022-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2022-04-05", "day"],
+      ["2022-04-07", "day"],
+      ["2022-04-19", "day"],
+      ["2022-09-29", "day"],
+      ["2022-10-05", "day"],
+      ["2023-08", "month"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "chowdhery-2022-arxiv-v1-version",
+      "chowdhery-2022-arxiv-v2-version",
+      "chowdhery-2022-arxiv-v3-version",
+      "chowdhery-2022-arxiv-v4-version",
+      "chowdhery-2022-arxiv-v5-version",
+      "chowdhery-2023-jmlr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "chowdhery-2023-jmlr-version");
+  assert.deepEqual(work?.preferredSourceIds, [
+    "chowdhery-2023-jmlr-record",
+    "chowdhery-2023-jmlr-full-text",
+  ]);
+  assert.equal(work?.sourceIds.length, 18);
+  assert.deepEqual(canonical?.authors, work?.authors);
+  assert.deepEqual(canonical?.bibliography.pages, ["1–113"]);
+  assert.equal(
+    canonical?.bibliography.identifiers.some((item) => item.type === "doi"),
+    false,
+  );
+  assert.deepEqual(canonicalText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 113,
+  });
+  assert.match(canonicalText?.accessNote ?? "", /9e59e21d8978858976a4b07/);
+  assert.match(v4Source?.accessNote ?? "", /1,514,475-byte archive/);
+  assert.match(v4Source?.accessNote ?? "", /78 files/);
+  assert.doesNotMatch(v4Source?.accessNote ?? "", /incomplete/);
+  assert.match(v3Text?.accessNote ?? "", /chain-of-thought attribution, protocol/);
+  assert.doesNotMatch(v3Text?.accessNote ?? "", /overlap/);
+  assert.deepEqual(scores?.versionIds, ["chowdhery-2022-arxiv-v3-version"]);
+  assert.match(scores?.accessNote ?? "", /489 JSON files/);
+  assert.match(scores?.accessNote ?? "", /163 BIG-bench tasks/);
+  assert.deepEqual(api?.versionIds, []);
+  assert.deepEqual(api?.supports, ["metadata", "version-boundary"]);
+  assert.match(api?.accessNote ?? "", /does not bind that service/);
+  assert.equal(
+    corpus.claims.some((claim) =>
+      claim.evidence.some(
+        (item) => item.sourceId === "chowdhery-2023-palm-api-announcement",
+      ),
+    ),
+    false,
+  );
+  assert.deepEqual(launch?.versionIds, []);
+  assert.deepEqual(launch?.supports, ["metadata", "version-boundary"]);
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+
+  assert.equal(claims.length, 25);
+  assert.match(versionBoundary?.statement ?? "", /five arXiv manuscripts/);
+  assert.match(versionBoundary?.statement ?? "", /canonical 113-page JMLR/);
+  assert.match(versionBoundary?.statement ?? "", /one-file source change/);
+  for (const value of [
+    "8.63B, 62.50B, and 540.35B",
+    "32/64/118 layers",
+    "SwiGLU",
+    "shared key/value projections",
+    "RoPE",
+    "no dense-kernel or layer-norm biases",
+    "about 15% faster",
+  ])
+    assert.ok(architecture?.statement.includes(value));
+  for (const value of [
+    "50% multilingual social-media conversations",
+    "27% multilingual filtered webpages",
+    "5% GitHub code",
+    "124 languages",
+    "196 GB",
+  ])
+    assert.ok(data?.statement.includes(value));
+  assert.match(data?.limitations.join(" ") ?? "", /non-code denominator/);
+  for (const value of [
+    "6,144",
+    "12-way model parallelism",
+    "256-way fully sharded data parallelism",
+    "corresponding host pair",
+    "81 Tbps",
+    "1.95 times",
+  ])
+    assert.ok(distributed?.statement.includes(value));
+  for (const value of ["238.3 thousand", "45.7%", "46.2%", "57.8%"])
+    assert.ok(utilization?.statement.includes(value));
+  assert.match(training?.statement ?? "", /causal next-token objective/);
+  assert.match(training?.limitations.join(" ") ?? "", /conventional negative sign/);
+  assert.match(training?.limitations.join(" ") ?? "", /step-to-batch mapping/);
+  assert.match(english?.statement ?? "", /24 tasks at one shot and 28 tasks/);
+  assert.match(english?.statement ?? "", /25.3, 53.7, and 69.3/);
+  assert.match(discontinuity?.statement ?? "", /13%, 25%, and 87%/);
+  assert.match(discontinuity?.statement ?? "", /\+50-point residual/);
+  assert.match(reasoning?.statement ?? "", /58% with chain-of-thought plus a calculator/);
+  assert.match(reasoning?.statement ?? "", /54% with chain-of-thought alone/);
+  assert.match(code?.statement ?? "", /8\.4B total exposures/);
+  assert.match(code?.statement ?? "", /7\.75B finetuning-data tokens/);
+  assert.match(code?.limitations.join(" ") ?? "", /code-only exposure/);
+  assert.match(memorization?.statement ?? "", /1.6% for PaLM 8B and 2.4%/);
+  assert.match(toxicity?.statement ?? "", /\.78\/\.81\/\.80/);
+  assert.match(compute?.statement ?? "", /2.56×10\^24/);
+  assert.match(compute?.statement ?? "", /271.43 tCO2e/);
+  assert.match(continued?.statement ?? "", /53.7→62.8/);
+  assert.match(continued?.limitations.join(" ") ?? "", /not uniformly higher/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /489 PaLM BIG-bench/);
+  assert.match(artifacts?.statement ?? "", /no PaLM checkpoint/);
+  assert.doesNotMatch(artifacts?.statement ?? "", /API/);
+  assert.match(artifacts?.limitations.join(" ") ?? "", /unbound service boundary/);
+  const identityEvidence = findClaim(
+    "chowdhery-2022-bias-and-cooccurrence-boundary",
+  )?.evidence.find(
+    (item) => item.locator.label === "Identity-prompt sampling and cross-scale overlap",
+  );
+  assert.deepEqual(identityEvidence?.locator, {
+    label: "Identity-prompt sampling and cross-scale overlap",
+    section: "10.1.2 Toxicity and bias",
+    pageStart: 54,
+    pageEnd: 55,
+  });
+  const useRiskEvidence = findClaim(
+    "chowdhery-2022-model-dataset-and-use-boundary",
+  )?.evidence.find(
+    (item) => item.locator.label === "Research-use and application-risk boundaries",
+  );
+  assert.deepEqual(useRiskEvidence?.locator, {
+    label: "Research-use and application-risk boundaries",
+    section: "10.3 Limitations; 11 Societal Impact & Ethical Considerations",
+    pageStart: 58,
+    pageEnd: 61,
+  });
+  assert.deepEqual(
+    discrepancies?.evidence.find(
+      (item) => item.locator.label === "XSum main-table value",
+    )?.locator,
+    {
+      label: "XSum main-table value",
+      section: "6.6 Multilingual Natural Language Generation",
+      pageStart: 41,
+      pageEnd: 41,
+      table: "16",
+    },
+  );
+  assert.equal(discrepancies?.directness, "editorial-inference");
+  for (const value of [
+    "775.94624B",
+    "lone 56.36",
+    "83.6/88.7",
+    "83.4/88.0",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  for (const item of discrepancies?.evidence ?? [])
+    if (item.locator.pageStart && item.locator.pageEnd)
+      assert.ok(
+        item.locator.pageEnd - item.locator.pageStart <= 2,
+        `${item.locator.label} must use a local three-page-or-smaller span`,
+      );
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+
+  assert.deepEqual(
+    incoming.map((item) => [item.id, item.connectionType]),
+    [
+      ["vaswani-2017-to-chowdhery-2022-palm", "extends"],
+      ["brown-2020-to-chowdhery-2022-palm", "extends"],
+      ["rae-2021-to-chowdhery-2022-palm-toxicity", "builds-on"],
+      [
+        "hoffmann-2022-to-chowdhery-2022-palm-scaling-question",
+        "addresses",
+      ],
+    ],
+  );
+  for (const edge of incoming) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+    for (const item of edge.sourceEvidence) {
+      assert.equal(item.sourceId, "chowdhery-2023-jmlr-full-text");
+      assert.ok(
+        item.locator.pageEnd - item.locator.pageStart <= 3,
+        `${item.locator.label} must use a local four-page-or-smaller span`,
+      );
+    }
+  }
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      [
+        "beginner-chowdhery-2022-scale-prompt-and-check-the-boundaries",
+        "beginner",
+      ],
+      [
+        "expert-chowdhery-2022-versions-systems-evaluation-and-provenance",
+        "expert",
+      ],
+    ],
+  );
+  assert.equal(work?.ideaIds.length, 23);
+  assert.ok(readme.includes("Chowdhery et al.’s PaLM family"));
+  assert.ok(corpusFormat.includes("Chowdhery et al. 2022/2023 is represented"));
+  assert.ok(
+    historicalScope.includes("The PaLM family was checked on 2026-09-07"),
   );
 });
 
@@ -8538,6 +8863,12 @@ test("retains the Transformer as a canonical proceedings node with revision boun
       [
         "vaswani-2017-to-lewis-2019-bart",
         "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-chowdhery-2022-palm",
+        "extends",
         "documented-influence",
         "qualified",
       ],
