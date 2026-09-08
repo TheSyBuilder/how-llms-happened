@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-07",
+  "asOf": "2026-09-09",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -16365,6 +16365,408 @@
           "resolutionCondition": "An author-published versioned artifact release with provenance, rights, hashes, commands, and run records is required."
         }
       ]
+    },
+    {
+      "id": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "title": "OPT: Open Pre-trained Transformer Language Models",
+      "authors": [
+        "Susan Zhang",
+        "Stephen Roller",
+        "Naman Goyal",
+        "Mikel Artetxe",
+        "Moya Chen",
+        "Shuohui Chen",
+        "Christopher Dewan",
+        "Mona Diab",
+        "Xian Li",
+        "Xi Victoria Lin",
+        "Todor Mihaylov",
+        "Myle Ott",
+        "Sam Shleifer",
+        "Kurt Shuster",
+        "Daniel Simig",
+        "Punit Singh Koura",
+        "Anjali Sridhar",
+        "Tianlu Wang",
+        "Luke Zettlemoyer"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "S. Zhang et al., “OPT: Open Pre-trained Transformer Language Models,” arXiv:2205.01068v4, 21 June 2022.",
+      "chronology": {
+        "orderingEventId": "zhang-2022-opt-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "zhang-2022-opt-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2022-05-02",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "zhang-2022-opt-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 2022-05-02 UTC"
+              }
+            ],
+            "versionId": "zhang-2022-opt-arxiv-v1-version",
+            "sourceIds": [
+              "zhang-2022-opt-arxiv-record",
+              "zhang-2022-opt-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "zhang-2022-opt-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2022-05-03",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "zhang-2022-opt-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 2022-05-03 UTC"
+              }
+            ],
+            "versionId": "zhang-2022-opt-arxiv-v2-version",
+            "sourceIds": [
+              "zhang-2022-opt-arxiv-record",
+              "zhang-2022-opt-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "zhang-2022-opt-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2022-05-05",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "zhang-2022-opt-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 2022-05-05 UTC"
+              }
+            ],
+            "versionId": "zhang-2022-opt-arxiv-v3-version",
+            "sourceIds": [
+              "zhang-2022-opt-arxiv-record",
+              "zhang-2022-opt-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "zhang-2022-opt-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2022-06-21",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "zhang-2022-opt-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 2022-06-21 UTC"
+              }
+            ],
+            "versionId": "zhang-2022-opt-arxiv-v4-version",
+            "sourceIds": [
+              "zhang-2022-opt-arxiv-record",
+              "zhang-2022-opt-arxiv-v4-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "zhang-2022-opt-arxiv-v1-version",
+          "title": "OPT: Open Pre-trained Transformer Language Models",
+          "authors": [
+            "Susan Zhang",
+            "Stephen Roller",
+            "Naman Goyal",
+            "Mikel Artetxe",
+            "Moya Chen",
+            "Shuohui Chen",
+            "Christopher Dewan",
+            "Mona Diab",
+            "Xian Li",
+            "Xi Victoria Lin",
+            "Todor Mihaylov",
+            "Myle Ott",
+            "Sam Shleifer",
+            "Kurt Shuster",
+            "Daniel Simig",
+            "Punit Singh Koura",
+            "Anjali Sridhar",
+            "Tianlu Wang",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Zhang et al., “OPT: Open Pre-trained Transformer Language Models,” arXiv:2205.01068v1, 2 May 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2205.01068v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "zhang-2022-opt-arxiv-record",
+            "zhang-2022-opt-arxiv-v1-full-text",
+            "zhang-2022-opt-arxiv-v1-source-package",
+            "zhang-2022-opt-cc-by-license",
+            "zhang-2022-opt-initial-metaseq-release",
+            "zhang-2022-opt-metaseq-mit-license",
+            "zhang-2022-opt-logbook-snapshot"
+          ],
+          "notes": "The 30-leaf ordering manuscript says public checkpoint release extends from 125M through 30B, calls the zero-shot average an outperformance in its Figure 3 caption, and accompanies the initial public metaseq/code, appendix-card stub links, license, logbook, and smaller-checkpoint release."
+        },
+        {
+          "id": "zhang-2022-opt-arxiv-v2-version",
+          "title": "OPT: Open Pre-trained Transformer Language Models",
+          "authors": [
+            "Susan Zhang",
+            "Stephen Roller",
+            "Naman Goyal",
+            "Mikel Artetxe",
+            "Moya Chen",
+            "Shuohui Chen",
+            "Christopher Dewan",
+            "Mona Diab",
+            "Xian Li",
+            "Xi Victoria Lin",
+            "Todor Mihaylov",
+            "Myle Ott",
+            "Sam Shleifer",
+            "Kurt Shuster",
+            "Daniel Simig",
+            "Punit Singh Koura",
+            "Anjali Sridhar",
+            "Tianlu Wang",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Zhang et al., “OPT: Open Pre-trained Transformer Language Models,” arXiv:2205.01068v2, 3 May 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2205.01068v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "zhang-2022-opt-arxiv-record",
+            "zhang-2022-opt-arxiv-v2-full-text",
+            "zhang-2022-opt-arxiv-v2-source-package",
+            "zhang-2022-opt-cc-by-license",
+            "zhang-2022-opt-175b-access-snapshot"
+          ],
+          "notes": "This 30-leaf revision changes the zero-shot Figure 3 caption from outperformance to largely matching GPT-3, adds Salesforce to a release-context footnote, and repairs one license sentence. Later that day, the public repository added controlled-access download instructions for 992 OPT-175B parameter files."
+        },
+        {
+          "id": "zhang-2022-opt-arxiv-v3-version",
+          "title": "OPT: Open Pre-trained Transformer Language Models",
+          "authors": [
+            "Susan Zhang",
+            "Stephen Roller",
+            "Naman Goyal",
+            "Mikel Artetxe",
+            "Moya Chen",
+            "Shuohui Chen",
+            "Christopher Dewan",
+            "Mona Diab",
+            "Xian Li",
+            "Xi Victoria Lin",
+            "Todor Mihaylov",
+            "Myle Ott",
+            "Sam Shleifer",
+            "Kurt Shuster",
+            "Daniel Simig",
+            "Punit Singh Koura",
+            "Anjali Sridhar",
+            "Tianlu Wang",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Zhang et al., “OPT: Open Pre-trained Transformer Language Models,” arXiv:2205.01068v3, 5 May 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2205.01068v3",
+                "label": "arXiv version 3 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "zhang-2022-opt-arxiv-record",
+            "zhang-2022-opt-arxiv-v3-full-text",
+            "zhang-2022-opt-arxiv-v3-source-package",
+            "zhang-2022-opt-cc-by-license",
+            "zhang-2022-opt-model-license-snapshot"
+          ],
+          "notes": "This 30-leaf revision fixes the Megatron-LM citation used by the training-efficiency paragraph and adds Bender et al. to the limitations references without changing the reported models, training recipe, or results. The corrected model-license snapshot followed later that day."
+        },
+        {
+          "id": "zhang-2022-opt-arxiv-v4-version",
+          "title": "OPT: Open Pre-trained Transformer Language Models",
+          "authors": [
+            "Susan Zhang",
+            "Stephen Roller",
+            "Naman Goyal",
+            "Mikel Artetxe",
+            "Moya Chen",
+            "Shuohui Chen",
+            "Christopher Dewan",
+            "Mona Diab",
+            "Xian Li",
+            "Xi Victoria Lin",
+            "Todor Mihaylov",
+            "Myle Ott",
+            "Sam Shleifer",
+            "Kurt Shuster",
+            "Daniel Simig",
+            "Punit Singh Koura",
+            "Anjali Sridhar",
+            "Tianlu Wang",
+            "Luke Zettlemoyer"
+          ],
+          "kind": "preprint",
+          "label": "Canonical arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Zhang et al., “OPT: Open Pre-trained Transformer Language Models,” arXiv:2205.01068v4, 21 June 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2205.01068v4",
+                "label": "arXiv version 4 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2205.01068",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "zhang-2022-opt-arxiv-record",
+            "zhang-2022-opt-arxiv-v4-full-text",
+            "zhang-2022-opt-arxiv-v4-source-package",
+            "zhang-2022-opt-cc-by-license",
+            "zhang-2022-opt-66b-release-commit",
+            "zhang-2022-opt-175b-raw-md5-manifest-commit",
+            "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+            "zhang-2022-opt-logbook-regeneration-commit",
+            "zhang-2022-opt-consolidated-checkpoint-rerelease",
+            "zhang-2022-opt-checksum-revision-commit"
+          ],
+          "notes": "The canonical 30-leaf revision adds the 66B configuration and changes public-release prose and contributor scope from 30B to 66B, but leaves the model-count sentence at eight while Table 1 now contains nine rows. The official 66B checkpoint-and-checksum commit followed on 22 June."
+        }
+      ],
+      "canonicalVersionId": "zhang-2022-opt-arxiv-v4-version",
+      "preferredSourceIds": [
+        "zhang-2022-opt-arxiv-record",
+        "zhang-2022-opt-arxiv-v4-full-text"
+      ],
+      "sourceIds": [
+        "zhang-2022-opt-arxiv-record",
+        "zhang-2022-opt-arxiv-v1-full-text",
+        "zhang-2022-opt-arxiv-v2-full-text",
+        "zhang-2022-opt-arxiv-v3-full-text",
+        "zhang-2022-opt-arxiv-v4-full-text",
+        "zhang-2022-opt-arxiv-v1-source-package",
+        "zhang-2022-opt-arxiv-v2-source-package",
+        "zhang-2022-opt-arxiv-v3-source-package",
+        "zhang-2022-opt-arxiv-v4-source-package",
+        "zhang-2022-opt-cc-by-license",
+        "zhang-2022-opt-meta-launch-post",
+        "zhang-2022-opt-initial-metaseq-release",
+        "zhang-2022-opt-175b-access-snapshot",
+        "zhang-2022-opt-175b-raw-md5-manifest-commit",
+        "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+        "zhang-2022-opt-model-license-snapshot",
+        "zhang-2022-opt-metaseq-mit-license",
+        "zhang-2022-opt-logbook-snapshot",
+        "zhang-2022-opt-66b-release-commit",
+        "zhang-2022-opt-logbook-regeneration-commit",
+        "zhang-2022-opt-consolidated-checkpoint-rerelease",
+        "zhang-2022-opt-checksum-revision-commit"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "OPT is a pivotal open-checkpoint and operational-transparency branch in the GPT-3-scale lineage. Its main contribution is not a new decoder objective: it attempts a size- and evaluation-aligned replication while releasing code, incident logs, cards, and a scale ladder of weights, with the largest checkpoint gated under restrictive terms. That combination makes access and reproducibility themselves part of the historical record."
+      },
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "demonstration-conditioned-in-context-learning",
+        "natural-language-task-conditioning",
+        "scale-dependent-in-context-learning",
+        "distributed-dense-transformer-training",
+        "fixed-token-capability-scaling-profile",
+        "prompt-conditioned-dialogue",
+        "practical-training-compute-accounting",
+        "reported-compute-versus-measured-energy",
+        "cross-corpus-minhash-deduplication",
+        "midflight-large-run-recovery",
+        "training-run-operational-logbook",
+        "research-gated-model-weight-release",
+        "public-model-scale-ladder",
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "significance": {
+        "beginner": "OPT asks what changes when a GPT-3-scale model family becomes inspectable rather than API-only. The smaller and 66B checkpoints, public code, cards, and training logbook widened study access, while 175B remained request-gated and the data stayed unavailable—so “open” must be unpacked artifact by artifact.",
+        "expert": "OPT largely follows the GPT-3 model, optimization, and prompting frame but changes its corpus and distributed implementation. Its scientific value includes versioned configuration, cross-corpus deduplication, FSDP-plus-tensor-parallel training, disclosed mid-flight interventions, a broad scale ladder, and safety evaluations; its evidentiary value depends on preserving incomplete data provenance, heterogeneous comparisons, restrictive model terms, and internal reporting inconsistencies."
+      },
+      "limitations": [
+        "OPT is a GPT-3-class replication study, not a new Transformer architecture, language-model objective, or instruction-tuned system.",
+        "The reported 180B-token corpus, 300B-token schedule, data mixture, filtering, and validation split are not accompanied by an immutable prepared-corpus manifest or distribution package.",
+        "OPT-175B training includes unablated restarts and mid-flight learning-rate, clipping, optimizer, loss-scaler, and implementation interventions, so the final trajectory is not one controlled recipe.",
+        "Average GPT-3 comparisons combine reconstructed prompts, reported results, and later Davinci API checks; several tasks are unstable, mismatched, excluded, or internally described inconsistently.",
+        "The responsible-AI probes are English-heavy, benchmark- and prompt-specific, and sometimes compare against a potentially safety-mediated API rather than the original GPT-3 checkpoint.",
+        "Public availability is tiered: checkpoints through 66B are directly listed, while the paper-era 175B path requires approved access and presigned URLs under non-commercial restrictions.",
+        "The public code, model weights, paper, logbook, and source datasets have separate licenses and provenance; no one grant covers the complete training and evaluation stack."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The paper does not publish source-level token counts or sampling weights for the combined 180B-token corpus, so the exact repetition pattern behind the nominal 300B-token schedule cannot be reconstructed.",
+          "resolutionCondition": "An immutable prepared-corpus manifest with source weights, document and token counts, filters, and per-run sampling logs is required."
+        },
+        {
+          "status": "resolved",
+          "note": "The launch-day release lacked a public weight manifest, but official 4 and 6 June commits added MD5 identities for the 992 raw OPT-175B shards and the derived eight-part evaluation package; access nevertheless remained controlled."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -18414,7 +18816,9 @@
         "chowdhery-2022-version-and-publication-boundary",
         "chowdhery-2022-palm-model-family-and-architecture",
         "chowdhery-2022-training-objective-schedule-and-instability",
-        "chowdhery-2022-artifact-and-rights-boundary"
+        "chowdhery-2022-artifact-and-rights-boundary",
+        "zhang-2022-opt-model-family-and-gpt3-replication",
+        "zhang-2022-opt-initialization-and-training-recipe"
       ],
       "uncertainties": []
     },
@@ -18750,7 +19154,9 @@
         "radford-2019-natural-language-task-conditioning",
         "radford-2019-lambada-cbt-and-winograd-results",
         "radford-2019-coqa-and-summarization-results",
-        "radford-2019-translation-and-natural-questions-results"
+        "radford-2019-translation-and-natural-questions-results",
+        "zhang-2022-opt-hate-speech-api-comparison",
+        "zhang-2022-opt-generation-instruction-and-use-limitations"
       ],
       "uncertainties": [
         {
@@ -18815,7 +19221,8 @@
         "brown-2020-gpt2-architecture-inheritance",
         "brown-2020-context-tokenizer-and-packed-sequences",
         "brown-2020-artifact-and-reproducibility-boundary",
-        "bart-2020-large-pretraining-recipe-and-data"
+        "bart-2020-large-pretraining-recipe-and-data",
+        "zhang-2022-opt-corpus-tokenizer-and-deduplication"
       ],
       "uncertainties": [
         {
@@ -19616,7 +20023,8 @@
         "chowdhery-2022-chain-of-thought-reasoning",
         "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
         "chowdhery-2022-translation-and-multilingual-evaluation",
-        "chowdhery-2022-shot-count-and-checkpoint-variance"
+        "chowdhery-2022-shot-count-and-checkpoint-variance",
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope"
       ],
       "uncertainties": [
         {
@@ -19633,7 +20041,8 @@
       "description": "Across a fixed family of autoregressive models, the gap between zero-, one-, and few-shot behavior often grows with scale, while individual tasks remain weak, nonmonotonic, prompt-sensitive, or split-dependent.",
       "claimIds": [
         "brown-2020-model-configurations-and-175b",
-        "brown-2020-headline-task-results"
+        "brown-2020-headline-task-results",
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope"
       ],
       "uncertainties": [
         {
@@ -19703,7 +20112,8 @@
       "kind": "finding",
       "description": "Keep estimated training FLOPs and PF-days separate from measured electricity, carbon, and lifecycle impact, and do not let a narrow inference-energy estimate substitute for the missing measurements.",
       "claimIds": [
-        "brown-2020-compute-and-energy-boundary"
+        "brown-2020-compute-and-energy-boundary",
+        "zhang-2022-opt-carbon-accounting-boundary"
       ],
       "uncertainties": [
         {
@@ -19996,7 +20406,8 @@
       "claimIds": [
         "rae-2021-gopher-distributed-training-and-compute",
         "rae-2021-compute-and-carbon-accounting",
-        "chowdhery-2022-distributed-pathways-training"
+        "chowdhery-2022-distributed-pathways-training",
+        "zhang-2022-opt-distributed-training-efficiency"
       ],
       "uncertainties": []
     },
@@ -20009,7 +20420,8 @@
         "rae-2021-gopher-distributed-training-and-compute",
         "rae-2021-compute-and-carbon-accounting",
         "chowdhery-2022-model-flops-utilization",
-        "chowdhery-2022-compute-and-carbon-accounting"
+        "chowdhery-2022-compute-and-carbon-accounting",
+        "zhang-2022-opt-carbon-accounting-boundary"
       ],
       "uncertainties": [
         {
@@ -20055,7 +20467,9 @@
         "chowdhery-2022-bigbench-performance-and-human-boundary",
         "chowdhery-2022-operational-discontinuity-boundary",
         "chowdhery-2022-shot-count-and-checkpoint-variance",
-        "chowdhery-2022-version-specific-reporting-discrepancies"
+        "chowdhery-2022-version-specific-reporting-discrepancies",
+        "zhang-2022-opt-initialization-and-training-recipe",
+        "zhang-2022-opt-internal-reporting-discrepancies"
       ],
       "uncertainties": [
         {
@@ -20081,7 +20495,9 @@
       "kind": "mechanism",
       "description": "Turn a raw autoregressive language model into a conversational interface by placing a hand-written persona and example turns in context, without treating format compliance as factuality or safety training.",
       "claimIds": [
-        "rae-2021-prompted-dialogue-and-factuality-boundary"
+        "rae-2021-prompted-dialogue-and-factuality-boundary",
+        "zhang-2022-opt-dialogue-evaluation-and-leakage-check",
+        "zhang-2022-opt-dialogue-safety-profile"
       ],
       "uncertainties": []
     },
@@ -20432,6 +20848,83 @@
       "claimIds": [
         "chowdhery-2022-refreshed-data-continued-training",
         "chowdhery-2022-version-specific-reporting-discrepancies"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "cross-corpus-minhash-deduplication",
+      "name": "Cross-corpus MinHash deduplication",
+      "kind": "mechanism",
+      "description": "Compare documents across a combined training collection with approximate MinHash locality-sensitive hashing and remove pairs above a declared Jaccard threshold, while retaining the limits of approximate similarity and undisclosed preprocessing.",
+      "claimIds": [
+        "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+        "zhang-2022-opt-data-card-and-distribution-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "midflight-large-run-recovery",
+      "name": "Mid-flight large-run recovery",
+      "kind": "mechanism",
+      "description": "Recover an unstable long-running training job by selecting an earlier healthy checkpoint and changing optimization or infrastructure settings, while recording that the final run is no longer one clean controlled recipe.",
+      "claimIds": [
+        "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+        "zhang-2022-opt-logbook-code-and-reconstruction-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "training-run-operational-logbook",
+      "name": "Training-run operational logbook",
+      "kind": "mechanism",
+      "description": "Publish dated incident, restart, diagnostic, and intervention records from a large training run so operational decisions and human overhead can be audited alongside the final model description.",
+      "claimIds": [
+        "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+        "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+        "zhang-2022-opt-carbon-accounting-boundary",
+        "zhang-2022-opt-artifact-evolution-and-integrity"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "research-gated-model-weight-release",
+      "name": "Research-gated model-weight release",
+      "kind": "constraint",
+      "description": "Distribute some checkpoints directly while placing the largest weights behind eligibility review and non-commercial terms, keeping availability, access procedure, permitted use, and open-source code as separate properties.",
+      "claimIds": [
+        "zhang-2022-opt-version-and-release-boundary",
+        "zhang-2022-opt-generation-instruction-and-use-limitations",
+        "zhang-2022-opt-checkpoint-release-staging",
+        "zhang-2022-opt-paper-code-model-and-data-rights",
+        "zhang-2022-opt-artifact-evolution-and-integrity"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "public-model-scale-ladder",
+      "name": "Public model-scale ladder",
+      "kind": "mechanism",
+      "description": "Release related checkpoints at multiple parameter scales so researchers can compare behaviors across a family, while preserving differences in training runs, data exposure, and artifact completeness.",
+      "claimIds": [
+        "zhang-2022-opt-version-and-release-boundary",
+        "zhang-2022-opt-model-family-and-gpt3-replication",
+        "zhang-2022-opt-checkpoint-release-staging",
+        "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+        "zhang-2022-opt-internal-reporting-discrepancies",
+        "zhang-2022-opt-artifact-evolution-and-integrity"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "benchmark-scoped-model-harm-profiling",
+      "name": "Benchmark-scoped model harm profiling",
+      "kind": "mechanism",
+      "description": "Profile one declared model or access surface with toxicity, stereotype, hate-speech, and unsafe-dialogue benchmarks while preserving prompt, decoding, classifier, comparator, language, and construct-validity limits instead of generalizing to comprehensive safety or causal data effects.",
+      "claimIds": [
+        "zhang-2022-opt-hate-speech-api-comparison",
+        "zhang-2022-opt-stereotype-benchmark-profile",
+        "zhang-2022-opt-realtoxicity-profile",
+        "zhang-2022-opt-dialogue-safety-profile"
       ],
       "uncertainties": []
     }
@@ -31140,6 +31633,558 @@
         "pageEnd": 1
       },
       "accessNote": "The 14 March 2023 announcement describes a private-preview API backed by an unspecified efficient model. It does not bind that service to the paper's 540B checkpoint, publish PaLM weights, or create another version of the paper; later product branding must not be back-projected onto the audited model."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-record",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "arXiv record for OPT: Open Pre-trained Transformer Language Models",
+      "url": "https://arxiv.org/abs/2205.01068",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version",
+        "zhang-2022-opt-arxiv-v2-version",
+        "zhang-2022-opt-arxiv-v3-version",
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official ledger lists four revisions posted 2, 3, and 5 May and 21 June 2022 UTC, all under CC BY 4.0. The aggregate DOI identifies the preprint family rather than a separate journal or proceedings publication."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2205.01068v1",
+      "accessDate": "2026-09-09",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 30
+      },
+      "accessNote": "The complete unfoliated 30-leaf PDF is 1,750,601-bytes with SHA-256 d61aab59b02568b907722ecb1cd9dbab16391ad3f13f97aea73926ca64d640fb. Evidence uses stable section, table, figure, appendix, and footnote anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2205.01068v2",
+      "accessDate": "2026-09-09",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 30
+      },
+      "accessNote": "The complete unfoliated 30-leaf PDF is 1,752,381-bytes with SHA-256 45192a2729d467a44f7d32f077e223c9602da294e8e89ed2d191e555b6413d96. Evidence uses stable section, table, figure, appendix, and footnote anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/2205.01068v3",
+      "accessDate": "2026-09-09",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 30
+      },
+      "accessNote": "The complete unfoliated 30-leaf PDF is 1,753,546-bytes with SHA-256 5a8d59ddd11da05acf491de7b7206bc56257c591869e06327d4955c4c0d1265c. Evidence uses stable section, table, figure, appendix, and footnote anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Canonical OPT arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/2205.01068v4",
+      "accessDate": "2026-09-09",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 30
+      },
+      "accessNote": "The complete unfoliated 30-leaf PDF is 1,765,159-bytes with SHA-256 dc88168a2514e4c66a5a791cab6dfacae9bbd566a3d86a119add151f31484d87. Evidence uses stable section, table, figure, appendix, and footnote anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv v1 source package",
+      "url": "https://arxiv.org/src/2205.01068v1",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 9,416,740-byte archive has SHA-256 72756bc0b35e62a10e3ff5ceded512a471c10e766b656b4f89ace80161199747 and 41 files. It contains publication source and figures, not checkpoints, training data, a runnable experiment environment, or a complete run manifest."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv v2 source package",
+      "url": "https://arxiv.org/src/2205.01068v2",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 9,413,028-byte archive has SHA-256 1e8a5a734dca6e4d4048faf9aeefd335bb6e5ef601910a18e1ed09b716a0e0aa and 41 files. It contains publication source and figures, not checkpoints, training data, a runnable experiment environment, or a complete run manifest."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv v3 source package",
+      "url": "https://arxiv.org/src/2205.01068v3",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 8,009,449-byte archive has SHA-256 733edaa4532d2999ae9a11af11bb5da41499c14cc47b8fe4a508c7fd6e8e646f and 40 files. It contains publication source and figures, not checkpoints, training data, a runnable experiment environment, or a complete run manifest."
+    },
+    {
+      "id": "zhang-2022-opt-arxiv-v4-source-package",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT arXiv v4 source package",
+      "url": "https://arxiv.org/src/2205.01068v4",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 8,020,484-byte archive has SHA-256 70fdc8868d8392bae94236c423aa73a4c14c2b2a42a8fc6db6c27d2653a9309e and 40 files. It contains publication source and figures, not checkpoints, training data, a runnable experiment environment, or a complete run manifest."
+    },
+    {
+      "id": "zhang-2022-opt-cc-by-license",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Creative Commons Attribution 4.0 International license",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version",
+        "zhang-2022-opt-arxiv-v2-version",
+        "zhang-2022-opt-arxiv-v3-version",
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The arXiv record identifies CC BY 4.0 for each article revision. Those terms govern the paper text and figures, not model weights, source code, datasets, benchmark material, or third-party components."
+    },
+    {
+      "id": "zhang-2022-opt-meta-launch-post",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Meta AI launch article for OPT-175B",
+      "url": "https://ai.meta.com/blog/democratizing-access-to-large-scale-language-models-with-opt-175b/",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The mutable institutional article is dated 3 May 2022 and announces research access to OPT-175B plus smaller checkpoints. It is launch provenance, not another paper version or a complete immutable model manifest."
+    },
+    {
+      "id": "zhang-2022-opt-initial-metaseq-release",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Initial official metaseq and OPT release commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/f2cd36798793604cf51ab8b8a2cb167c964f9667",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 2 May 2022 commit f2cd367 adds the public metaseq tree, OPT project README, model and data cards, model license, 114-page OPT-175B logbook, and direct checkpoint links through 30B; 66B is marked TBD and 175B points to an access form."
+    },
+    {
+      "id": "zhang-2022-opt-175b-access-snapshot",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT-175B controlled-access instructions",
+      "url": "https://github.com/facebookresearch/metaseq/blob/478019cb0e333a9f544e5c31c938fec1c10cd58f/projects/OPT/download_opt175b.md",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The immutable 3 May commit documents presigned-email access and 992 parameter files arranged as 124 data-parallel shards by eight tensor-parallel parts, followed by resharding for evaluation. It is an access procedure, not a public weight digest or proof that every requester received access."
+    },
+    {
+      "id": "zhang-2022-opt-175b-raw-md5-manifest-commit",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT-175B raw-shard checksum-manifest commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/000394b5c615d692401fa167d8c6e0ea01f48e99",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 4 June 2022 commit 000394b adds a 993-line CSV—one header plus MD5 values for all 992 raw OPT-175B parameter shards—and links it from the controlled-access instructions. The manifest identifies files but does not remove the approval gate or establish result reconstruction."
+    },
+    {
+      "id": "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT-175B consolidated-part checksum commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/ae825b2fa9010ab0406f20d6164ebb058a7e97cf",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 6 June 2022 commit ae825b2 adds MD5 checks for the eight derived OPT-175B resharded parts plus tokenizer and dictionary files. It identifies the then-current derived evaluation package separately from the 992 raw shards."
+    },
+    {
+      "id": "zhang-2022-opt-model-license-snapshot",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Corrected immutable OPT model-license snapshot",
+      "url": "https://github.com/facebookresearch/metaseq/blob/67a3a81165f78f9d1843900749d4727e41e88fef/projects/OPT/MODEL_LICENSE.md",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The immutable 5 May correction adds employer-or-entity acceptance language. The agreement grants limited non-commercial research rights, bars listed uses, requires attribution, is revocable and non-sublicensable, and leaves third-party materials to their own terms."
+    },
+    {
+      "id": "zhang-2022-opt-metaseq-mit-license",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Initial immutable metaseq MIT license",
+      "url": "https://github.com/facebookresearch/metaseq/blob/f2cd36798793604cf51ab8b8a2cb167c964f9667/LICENSE",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The initial repository root applies MIT terms to the public code subject to separately identified components. It does not license OPT weights, training data, paper text, or third-party assets."
+    },
+    {
+      "id": "zhang-2022-opt-logbook-snapshot",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Initial immutable OPT-175B operational logbook",
+      "url": "https://github.com/facebookresearch/metaseq/blob/f2cd36798793604cf51ab8b8a2cb167c964f9667/projects/OPT/chronicles/OPT175B_Logbook.pdf",
+      "accessDate": "2026-09-09",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 114
+      },
+      "accessNote": "The released 114-leaf operational document has SHA-256 5591564de6a1ba07ddf26180f9b0c702e66bb3c94e8e7932c3eb5c5290b6d03f. It contains reverse-chronological incident and intervention entries with selected details scrubbed, not a self-contained data, environment, or checkpoint manifest."
+    },
+    {
+      "id": "zhang-2022-opt-66b-release-commit",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable official OPT-66B release commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/84c412fbe99da7518b0c1ed7a3379106cd7459b3",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 22 June 2022 commit 84c412f adds eight OPT-66B checkpoint links, an eight-row MD5 manifest, and a separate baseline logbook one day after arXiv v4 added the 66B paper row. OPT-175B remains request-only in that snapshot."
+    },
+    {
+      "id": "zhang-2022-opt-logbook-regeneration-commit",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT-175B logbook-regeneration commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/e99de43c92b1e9f6dd9a2ad1c8e8027f17476b2f",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 21 September 2022 commit e99de43 regenerates the OPT-175B logbook after a data-source rename. The initial 13,933,020-byte PDF blob 62ad3628cd346ec9c6e12b6ca0f2dddf19bfaa05 has SHA-256 5591564de6a1ba07ddf26180f9b0c702e66bb3c94e8e7932c3eb5c5290b6d03f; the 13,511,530-byte replacement blob 4fe0df5f5e34d9c7522de1dd3c7b6b43a023dea8 has SHA-256 7487efe14181d05aded4fcd36bf2ae507091b45aad4cb0ccd47d1b0e455ecdd8. Extracted text changes six labels from reddit to the source spelling pushift.io, apart from wrapping."
+    },
+    {
+      "id": "zhang-2022-opt-consolidated-checkpoint-rerelease",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT consolidated-checkpoint re-release commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/eca010efc48be4ec418eb70349c7e68d3886cec5",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 5 April 2023 commit eca010e and linked PR 701 re-release most 125M–66B checkpoints at consolidated v1_20230405 paths to address user pain points. The 350M link remains on the earlier path, and author review warns that its missing layer norms may require code changes. This is a post-paper artifact state, not a manuscript revision."
+    },
+    {
+      "id": "zhang-2022-opt-checksum-revision-commit",
+      "relatedWorkIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "title": "Immutable OPT consolidated-checksum revision commit",
+      "url": "https://github.com/facebookresearch/metaseq/commit/edc996d0a0966c13132b4c06b322af053e0e22df",
+      "accessDate": "2026-09-09",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "zhang-2022-opt-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 6 April 2023 commit edc996d and linked PR 703 replace sixteen consolidated-checkpoint checksum lines after adding shard metadata. Its OPT-66B manifest repeats MD5 1fc5525be4bb541773daf529d419c759 for two distinct shard filenames; the record does not establish whether that repetition is a typo or reflects file identity."
     }
   ],
   "claims": [
@@ -59127,6 +60172,743 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-07"
+    },
+    {
+      "id": "zhang-2022-opt-version-and-release-boundary",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "public-model-scale-ladder",
+        "research-gated-model-weight-release"
+      ],
+      "statement": "The OPT paper family contains four 30-leaf arXiv manuscripts posted on 2 May, 3 May, 5 May, and 21 June 2022. Version 2 changes the zero-shot average caption from saying OPT outperforms GPT-3 to saying it largely matches GPT-3; version 3 repairs one Megatron-LM citation and adds a limitations citation; version 4 adds the 66B model row and expands stated public release from 30B to 66B. No separate proceedings or journal version was identified in the audited primary records.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-record",
+          "locator": {
+            "label": "Four-version submission history and article license",
+            "section": "Submission history; article record"
+          },
+          "support": "The official ledger supplies the four UTC posting dates, aggregate identity, and CC BY 4.0 link."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v1-source-package",
+          "locator": {
+            "label": "Ordering manuscript and release wording",
+            "section": "sections/introduction.tex; sections/results.tex; complete archive tree"
+          },
+          "support": "The version-1 source contains the through-30B release language and the original Figure 3 outperformance caption."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v2-source-package",
+          "locator": {
+            "label": "Version-2 caption and release-text changes",
+            "section": "sections/introduction.tex; sections/results.tex; sections/release.tex"
+          },
+          "support": "The source diff adds a cited release example, repairs one license sentence, and changes the Figure 3 caption to largely matches."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v3-source-package",
+          "locator": {
+            "label": "Version-3 citation-only changes",
+            "section": "sections/training.tex; sections/limitations.tex"
+          },
+          "support": "The source diff changes the Megatron citation key and adds Bender et al. to the limitations reference list."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-source-package",
+          "locator": {
+            "label": "Version-4 66B additions",
+            "section": "sections/model_arch.tex; sections/introduction.tex; sections/contributions.tex"
+          },
+          "support": "The source diff adds the 66B table row and changes release and contributor scope from 30B to 66B."
+        }
+      ],
+      "limitations": [
+        "The aggregate arXiv DOI does not identify an additional publication version.",
+        "Repository commits are model and code release artifacts, not paper revisions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-model-family-and-gpt3-replication",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "public-model-scale-ladder"
+      ],
+      "statement": "OPT is a decoder-only Transformer family designed to roughly match GPT-3 model sizes and performance while changing data and infrastructure. Canonical Table 1 lists 125M, 350M, 1.3B, 2.7B, 6.7B, 13B, 30B, 66B, and 175B configurations; OPT-175B has 96 layers, 96 attention heads, model width 12,288, peak learning rate 1.2×10^-4, and a two-million-token global batch.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Replication goal and complete canonical model table",
+            "section": "1 Introduction; 2.1 Models",
+            "table": "1"
+          },
+          "support": "The introduction names the GPT-3 size/performance replication goal and Table 1 prints all nine configurations and the listed 175B dimensions."
+        }
+      ],
+      "limitations": [
+        "Matching nominal size and selected evaluation settings does not make OPT and GPT-3 identical: their corpora, implementations, training trajectories, access conditions, and many evaluation details differ.",
+        "The paper does not publish head width, feed-forward width, positional-embedding details, exact parameter totals, or a complete architectural configuration for every row in Table 1."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-initialization-and-training-recipe",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "fixed-token-capability-scaling-profile"
+      ],
+      "statement": "OPT initializes weights from a zero-mean normal distribution with standard deviation .006, scales output-layer initialization by 1/√(2L), sets biases to zero, uses ReLU and 2,048-token sequences, and trains with AdamW β1=.9, β2=.95, weight decay .1, dropout .1 outside embeddings, and gradient clipping initially at 1.0. Its nominal linear schedule warms OPT-175B for 2,000 steps, warms smaller models for 375M tokens, and decays to 10% of peak learning rate over 300B tokens, with constant model-specific batches. The official completion note records 300B token exposures and 4.30×10^23 FLOPs for OPT-175B; its roughly 33-day figure assumes uninterrupted training on 1,024 A100s and is not the observed elapsed time or the paper's realized 992-GPU topology.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Initialization, optimizer, sequence, schedule, dropout, and clipping",
+            "section": "2.2 Training Setup",
+            "table": "1"
+          },
+          "support": "The section directly states every listed setting and points to later mid-flight exceptions."
+        },
+        {
+          "sourceId": "zhang-2022-opt-initial-metaseq-release",
+          "locator": {
+            "label": "Official completion record and idealized duration boundary",
+            "section": "projects/OPT/chronicles/final_update.md, 175B Training Run Completed"
+          },
+          "support": "The author note records completion at 300B token exposures and 4.30E+23 FLOPs, and explicitly conditions its 33-day/1,024-A100 estimate on no hardware or numerical failures."
+        }
+      ],
+      "limitations": [
+        "The paper does not state a next-token loss equation, optimizer epsilon, complete per-model update counts, random seeds, or every effective final setting.",
+        "Mid-flight learning-rate, clipping, loss-scaler, optimizer, and implementation changes mean the nominal recipe is not the complete realized OPT-175B trajectory.",
+        "The 180B-token prepared corpus size and 300B completed token exposures are different quantities; the release does not provide the source-level repeat and sampling ledger needed to reconcile them."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "byte-level-byte-pair-tokenization",
+        "cross-corpus-minhash-deduplication"
+      ],
+      "statement": "The reported roughly 180B-token, predominantly English corpus combines BookCorpus, CC-Stories, CCNewsV2 through 28 September 2021, eight selected Pile components, and longest-path documents derived from PushShift.io Reddit threads. OPT uses the GPT-2 byte-level BPE tokenizer, removes cross-dataset near-duplicate documents with MinHashLSH at Jaccard similarity at least .95, rejects some Pile components after 1.3B-scale gradient-spike tests or suitability review, and discards about 66% of Reddit material when retaining one longest comment chain per thread.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Corpus composition, tokenizer, deduplication, exclusions, and Reddit conversion",
+            "section": "2.3 Pre-training Corpus"
+          },
+          "support": "The corpus section names every included source family, tokenizer, threshold, token total, exclusion rationale, CCNews cutoff, and Reddit reduction."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Dataset composition and size restatement",
+            "section": "Appendix C.2 Composition"
+          },
+          "support": "The datasheet enumerates five source groups, their named subcomponents, and about 180B tokens corresponding to 800GB."
+        }
+      ],
+      "limitations": [
+        "No source-level document or token counts, sampling weights, exact snapshots, MinHash parameters beyond the threshold, removal counts, or complete preprocessing code are reported.",
+        "The corpus is about 180B tokens while the nominal schedule reaches 300B seen tokens, but the paper does not publish the exact sampling and repetition ledger needed to reconstruct exposure by source.",
+        "Predominantly English does not mean English-only; language proportions are not reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-data-card-and-distribution-boundary",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "cross-corpus-minhash-deduplication"
+      ],
+      "statement": "The datasheet describes about 800GB of raw-text documents, cross-corpus MinHashLSH deduplication at Jaccard similarity of at least 0.95, a random approximately 200MB validation set sampled proportionally to source size, machine-mined and machine-filtered collection, and CC-News material spanning September 2016 through September 2021. It says the combined training dataset was not distributed outside Meta at publication, supplies no license or update plan, and records no direct notification, consent, revocation, or complete impact-assessment procedure for people represented in web, news, encyclopedia, book, or Reddit text.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Dataset composition, collection, distribution, and maintenance answers",
+            "section": "Appendix C.2 Composition; C.3 Collection Process; C.6 Distribution; C.7 Maintenance"
+          },
+          "support": "The datasheet provides the volume and validation split, describes collection, records no external distribution or license, and answers the notification, consent, update, and maintenance questions."
+        }
+      ],
+      "limitations": [
+        "Calling component datasets publicly available does not establish a unified right to redistribute or reuse the prepared OPT corpus.",
+        "Several datasheet answers are internally terse or inconsistent—for example, the data relates to people in Composition but Collection Process answers that it does not—so absence of a recorded process is not proof that no internal process existed."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-distributed-training-efficiency",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "distributed-dense-transformer-training"
+      ],
+      "statement": "OPT-175B trains on 992 NVIDIA A100 GPUs with 80GB each, combining fully sharded data parallelism with Megatron-LM tensor parallelism and no pipeline parallelism. The report gives up to 147 TFLOP/s per GPU, shards FP32 Adam state across hosts, keeps model weights in FP16, and uses dynamic loss scaling against underflow.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Hardware, parallelism, precision, and peak utilization",
+            "section": "1 Introduction; 2.4 Training Efficiency; 6 Considerations for Release"
+          },
+          "support": "The target states the 992-GPU topology, parallelism types, precision states, loss scaling, peak throughput, and absence of pipeline parallelism."
+        }
+      ],
+      "limitations": [
+        "The 147 TFLOP/s figure is reported as an achieved maximum, not an end-to-end average or model-FLOP-utilization percentage.",
+        "The paper does not report communication topology, per-stage memory, wall-clock utilization distribution, energy draw, or a controlled comparison against pipeline parallelism."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "midflight-large-run-recovery",
+        "training-run-operational-logbook"
+      ],
+      "statement": "Across two months, OPT-175B hardware failures caused at least 35 manual restarts, more than 100 hosts to be cycled, and an estimated 70-plus automatic restarts. Loss divergences correlated with the dynamic loss scale falling to zero and final-layer activation norms spiking; recovery used earlier checkpoints, lower learning rates, and clipping reduced from 1.0 to .3. Other live interventions temporarily switched to SGD before reverting to AdamW, reset the loss scaler with mixed success, and upgraded Megatron to reduce activation pressure and improve throughput.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Hardware failures, divergence diagnosis, recovery, and live interventions",
+            "section": "2.5 Training Processes",
+            "figure": "1–2"
+          },
+          "support": "The section reports the counts, observed correlations, checkpoint criteria, and each named mid-flight change."
+        },
+        {
+          "sourceId": "zhang-2022-opt-logbook-snapshot",
+          "locator": {
+            "label": "Reverse-chronological operational incident record",
+            "section": "175B Log; Instructions; dated run entries"
+          },
+          "support": "The released logbook documents run launches, failures, monitoring, restarts, diagnostic context, and intervention decisions, with selected operational details scrubbed."
+        }
+      ],
+      "limitations": [
+        "The interventions were not independently ablated at 175B scale, so their individual causal effects on final quality are unresolved.",
+        "Restart and host counts are lower bounds or estimates, not a complete machine-event ledger.",
+        "The public logbook is a scrubbed operational record and references internal paths, revisions, and systems that are not fully mapped into the public release."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "scale-dependent-in-context-learning"
+      ],
+      "statement": "OPT evaluates sixteen NLP tasks using GPT-3 prompts and an attempted reimplementation of its setup, reporting accuracy rather than F1 for MultiRC and ReCoRD and casting WSC as multiple choice. The plotted zero-, one-, and 32-shot summaries average fourteen tasks after removing MultiRC and WiC; the authors characterize many GPT-3 comparisons as similar but also report task-level instability, majority-class behavior, an unreproduced MultiRC result through the Davinci API, and strong sensitivity to prompt and shot differences.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Prompting protocol, exclusions, task-level caveats, and scale plots",
+            "section": "3.1 Prompting & Few-Shot; Appendix A Additional Evaluations",
+            "figure": "3–4, 6–7"
+          },
+          "support": "The target defines the task set and scoring choices, names the two excluded averages, qualifies GPT-3 comparison and API reproduction, and plots the complete zero-, one-, and 32-shot curves."
+        }
+      ],
+      "limitations": [
+        "Most values are plotted rather than tabulated, and the external comparison mixes OPT evaluations, values transcribed from earlier papers, and an API that may not reproduce the original GPT-3 model or serving stack.",
+        "Task averages hide erratic and nonmonotonic behavior; the excluded tasks and varying comparator coverage prevent one uniform claim of parity.",
+        "The paper does not report repeated seeds, confidence intervals, or significance tests for the headline language-task curves."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-dialogue-evaluation-and-leakage-check",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "prompt-conditioned-dialogue"
+      ],
+      "statement": "Without task supervision, OPT-175B uses greedy generations of at most 32 tokens after only alternating speaker labels. On ConvAI2 it reports perplexity 10.8 and unigram F1 .185, versus 10.7/.185 on the unreleased hidden test; on Wizard of Internet it reports 12.0/.147, and on a MultiSessionChat subset 9.7/.177. Its leakage check searches only for the opening ConvAI2 conversation and finds no match, while post-crawl release dates are used to argue lower leakage risk for Wizard of Internet and MultiSessionChat.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Dialogue prompting, result table, hidden tests, and leakage probes",
+            "section": "3.2 Dialogue",
+            "table": "2"
+          },
+          "support": "The section specifies decoding and prompts, Table 2 prints the main metrics, and the following prose supplies hidden-test and later-dataset checks."
+        }
+      ],
+      "limitations": [
+        "Searching one known conversation is not a comprehensive document, n-gram, semantic, or benchmark-contamination audit.",
+        "The hidden and subset evaluations are not publicly reconstructible from the paper, and the compared dialogue systems differ in supervision and decoding.",
+        "Metric similarity does not by itself establish the paper's broader interpretation of strong persona consistency."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-hate-speech-api-comparison",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "On the English ETHOS hate-speech setup, Davinci/OPT-175B F1 is .628/.667 at zero shot, .616/.713 at one shot, .354/.759 for few-shot binary, and .672/.812 for few-shot multiclass. The authors explicitly offer two untested explanations: the Davinci API may add safety controls beyond the original GPT-3 checkpoint, and OPT's social-media training text may aid toxic-language classification.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "ETHOS prompting, all four result rows, and comparator caveats",
+            "section": "4.1 Hate Speech Detection",
+            "table": "3"
+          },
+          "support": "The section defines the binary and multiclass prompts, Table 3 prints all F1 values, and the prose labels both proposed explanations as speculation."
+        }
+      ],
+      "limitations": [
+        "Better classification F1 does not mean safer generation or less biased representations.",
+        "The comparator is a served Davinci API, not a verified copy of the original GPT-3 paper checkpoint, and neither proposed explanation is experimentally isolated.",
+        "The task and prompt family do not cover the full distribution or social meaning of hate speech."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-stereotype-benchmark-profile",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "CrowS-Pairs reports lower-is-better overall scores of 67.2 for Davinci and 69.5 for OPT-175B; OPT is higher in seven of nine categories, lower for religion, and tied for disability. StereoSet reports Davinci/OPT overall language-model score 77.6/74.8, stereotype score 60.8/59.9, and combined ICAT 60.8/60.0, with category-level tradeoffs. The paper associates CrowS-Pairs differences with PushShift Reddit but does not isolate corpus causality.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "CrowS-Pairs category and aggregate results",
+            "section": "4.2 CrowS-Pairs",
+            "table": "4"
+          },
+          "support": "Table 4 prints all nine category scores and the overall values; surrounding prose proposes rather than demonstrates a data-source explanation."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "StereoSet component and aggregate results",
+            "section": "4.3 StereoSet",
+            "table": "5"
+          },
+          "support": "Table 5 separates language-model, stereotype, and ICAT scores by category and overall."
+        }
+      ],
+      "limitations": [
+        "The metrics encode benchmark-specific constructions and normative choices and do not constitute a comprehensive fairness assessment.",
+        "A lower stereotype score can coincide with a lower language-model score, so the combined ICAT and components must remain separate.",
+        "No controlled corpus ablation attributes differences to Reddit or any other source."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-realtoxicity-profile",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "Following PaLM's RealToxicityPrompts setup, OPT samples 25 continuations of 20 tokens for each of 10,000 random prompts with nucleus p=.9 and plots mean continuation toxicity by prompt-toxicity bucket. The paper reports OPT-175B above both Davinci and PaLM across the displayed profile and increasing continuation toxicity with prompt toxicity, while its explanation based on unmoderated social-media text remains conjectural.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "RealToxicityPrompts sampling and comparative curve",
+            "section": "4.4 RealToxicityPrompts",
+            "figure": "5"
+          },
+          "support": "The section specifies the prompt and continuation sample counts, length, nucleus setting, aggregation, comparators, plotted ordering, and speculative data explanation."
+        }
+      ],
+      "limitations": [
+        "Figure 5 does not publish a numerical table, uncertainty intervals, model sampling seeds, or Perspective API version.",
+        "Mean classifier probabilities by prompt bucket are not a per-generation harm rate and inherit classifier and prompt-distribution biases.",
+        "The OPT and comparison curves depend on potentially different model access and inference stacks."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-dialogue-safety-profile",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "prompt-conditioned-dialogue",
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "On SaferDialogues, OPT-175B reports perplexity 14.7 and F1 .141. On Safety Bench Unit Tests, its lower-is-better unsafe-response fractions are .033 Safe, .261 Realistic, .567 Unsafe, and .283 Adversarial; the Unsafe value is worse than Reddit 2.7B, BlenderBot 1, and R2C2. The paper observes lower toxicity for the task-fine-tuned dialogue models and recommends explicit curated fine-tuning for future dialogue experiments.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Dialogue-safety metrics and interpretation",
+            "section": "4.5 Dialogue Safety Evaluations",
+            "table": "6"
+          },
+          "support": "Table 6 supplies each metric and the following prose bounds the comparison and recommendation."
+        }
+      ],
+      "limitations": [
+        "The compared systems differ in scale, supervision, training data, and generation behavior, so the table does not isolate one causal safety intervention.",
+        "These two benchmark families do not establish safety for open-ended deployment or other languages and domains."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-generation-instruction-and-use-limitations",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "natural-language-task-conditioning",
+        "research-gated-model-weight-release"
+      ],
+      "statement": "The authors report that raw OPT-175B often simulates a dialogue instead of following declarative instructions or point-blank questions, can become repetitive even with sampling, can produce factual errors, and has a high propensity for toxic or stereotyped text. They apply no instruction or safety mitigation in the initial release because the goal is GPT-3 replication, describe the technology as premature for commercial deployment, and place production and real-world deployments outside intended use.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Instruction, repetition, factuality, toxicity, and deployment boundaries",
+            "section": "5 Limitations; Appendix D.2 Intended Use; D.3 Data, Limitations, and Recommendations"
+          },
+          "support": "The limitations and model card directly enumerate the behaviors, absence of mitigation, research purpose, and out-of-scope uses."
+        }
+      ],
+      "limitations": [
+        "Several behavior statements are qualitative or anecdotal and do not supply rates, calibrated uncertainty, or systematic multilingual evaluation.",
+        "A stated intended-use boundary is governance documentation, not a technical prevention mechanism."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-checkpoint-release-staging",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "public-model-scale-ladder",
+        "research-gated-model-weight-release"
+      ],
+      "statement": "The initial metaseq release directly links OPT checkpoints from 125M through 30B, marks 66B TBD, and routes 175B to an access form. The controlled 175B procedure added on 3 May expects an emailed presigned URL for 992 parameter files—124 data-parallel shards times eight tensor-parallel parts—before resharding; 4 and 6 June commits add MD5 manifests for those raw shards and the derived eight-part package without removing the access gate. ArXiv v4 adds 66B to the paper, and the 22 June repository commit publishes eight 66B links plus per-shard MD5 values; 175B remains request-only in that snapshot.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-initial-metaseq-release",
+          "locator": {
+            "label": "Initial checkpoint matrix and access split",
+            "section": "projects/OPT/README.md at initial commit"
+          },
+          "support": "The immutable release table directly links 125M–30B weights, labels 66B TBD, and links an access form for 175B."
+        },
+        {
+          "sourceId": "zhang-2022-opt-175b-access-snapshot",
+          "locator": {
+            "label": "Controlled OPT-175B download and resharding procedure",
+            "section": "Accessing OPT-175B; Download all shards; Reshard the shards"
+          },
+          "support": "The immutable instructions state the emailed presigned-URL flow and 124×8 file layout."
+        },
+        {
+          "sourceId": "zhang-2022-opt-175b-raw-md5-manifest-commit",
+          "locator": {
+            "label": "Raw OPT-175B shard manifest",
+            "section": "Commit diff; projects/OPT/assets/opt175b_md5sum_shards.csv"
+          },
+          "support": "The immutable release adds one header and MD5 identities for all 992 raw parameter shards while retaining controlled access."
+        },
+        {
+          "sourceId": "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+          "locator": {
+            "label": "Derived OPT-175B evaluation-package checksums",
+            "section": "Commit diff; projects/OPT/download_opt175b.md"
+          },
+          "support": "The immutable update adds MD5 values for eight resharded parts and the tokenizer and dictionary files."
+        },
+        {
+          "sourceId": "zhang-2022-opt-66b-release-commit",
+          "locator": {
+            "label": "Later OPT-66B links and checksum manifest",
+            "section": "projects/OPT/README.md; projects/OPT/assets/opt66b_md5sum_shards.csv"
+          },
+          "support": "The immutable release diff adds eight direct checkpoint URLs and eight MD5 entries while retaining gated 175B access."
+        }
+      ],
+      "limitations": [
+        "Direct download links do not by themselves prove complete paper-result reconstruction, and MD5 is retained as the published identity rather than presented as a modern collision-resistant integrity guarantee.",
+        "The inspected paper-era records do not show approval rates, approval duration, or revocation history; checksum manifests identify files but do not establish who could retrieve them.",
+        "Later conversions and community integrations are separate artifact lineages and are not silently substituted for the paper-era checkpoints."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "training-run-operational-logbook",
+        "public-model-scale-ladder",
+        "midflight-large-run-recovery"
+      ],
+      "statement": "The initial public release contains metaseq training and inference code, an OPT README, one-line stub links to the appendix model and data cards, a model license, and a 114-leaf scrubbed OPT-175B operational logbook. The logbook records dated launches, failures, monitoring incidents, restarts, and interventions, but it references internal paths, infrastructure, commits, and removed credentials; that launch-day tree lacks the prepared 180B-token corpus, its source-weight manifest, complete run configuration and environment lock, all evaluation commands and seeds, and a public cryptographic identity for the gated 175B checkpoint.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-initial-metaseq-release",
+          "locator": {
+            "label": "Initial public repository inventory",
+            "section": "Complete commit tree; projects/OPT"
+          },
+          "support": "The immutable commit tree exposes code, the OPT documentation, one-line card pointers, and operational artifacts but no prepared corpus or complete immutable run package."
+        },
+        {
+          "sourceId": "zhang-2022-opt-logbook-snapshot",
+          "locator": {
+            "label": "Operational logbook scope and scrubbed boundary",
+            "section": "Title; Purpose; Instructions; 175B Log; dated entries"
+          },
+          "support": "The 114-leaf document exposes operational history while visibly scrubbing selected values and relying on internal systems and paths."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Paper-level code, logbook, and omitted-detail framing",
+            "section": "6 Considerations for Release; Appendix C Datasheet; Appendix D Model Card"
+          },
+          "support": "The paper identifies metaseq and the logbook as disclosure artifacts while stating that the dataset is not distributed and implementation details may be omitted from the report."
+        }
+      ],
+      "limitations": [
+        "This is an audit of the initial and paper-linked release surfaces, not a claim that no later reconstruction or derivative implementation exists.",
+        "Operational transparency materially improves inspection without converting an intervention-heavy run into a controlled or byte-reproducible experiment."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-carbon-accounting-boundary",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "practical-training-compute-accounting",
+        "reported-compute-versus-measured-energy",
+        "training-run-operational-logbook"
+      ],
+      "statement": "The report estimates 75 tCO2e for developing OPT-175B and says ablations, baselines, and downtime make its own total-cost estimate roughly twice as high. It compares 75 with a cited 500-ton GPT-3 estimate to describe roughly one-seventh carbon and with Gopher's cited 380 tons, while explicitly warning that accounting methods are not standardized and that training-only figures omit experimentation, downstream inference, and embodied hardware impacts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Carbon estimate, development multiplier, comparators, and system boundary",
+            "section": "1 Introduction; 6 Considerations for Release"
+          },
+          "support": "The target reports the 75-ton estimate and approximately two-times footnote, compares GPT-3 and Gopher, and names accounting and lifecycle omissions."
+        }
+      ],
+      "limitations": [
+        "Seventy-five divided by 500 is .15, closer to one-sixth-and-two-thirds than exactly one-seventh; the paper's fraction is approximate.",
+        "The paper does not publish the complete energy, grid-intensity, location, PUE, utilization, time-varying, or embodied-carbon inputs needed to independently reproduce the estimate.",
+        "The comparison mixes estimates with different system boundaries and is not a controlled energy-efficiency experiment."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-paper-code-model-and-data-rights",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "research-gated-model-weight-release"
+      ],
+      "statement": "The OPT article revisions use CC BY 4.0. The initial metaseq repository uses MIT terms for the public code subject to separately licensed components. The corrected OPT model agreement grants a revocable, non-transferable, non-sublicensable license only for non-commercial research, lists additional prohibited uses, and assigns third-party materials to their own terms. The prepared training corpus is not distributed and has no umbrella license in the paper.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-cc-by-license",
+          "locator": {
+            "label": "Article reuse terms",
+            "section": "Creative Commons Attribution 4.0 International"
+          },
+          "support": "The linked license defines attribution and reuse conditions for the licensed article material."
+        },
+        {
+          "sourceId": "zhang-2022-opt-metaseq-mit-license",
+          "locator": {
+            "label": "Public repository code terms",
+            "section": "MIT License"
+          },
+          "support": "The initial root license grants standard MIT rights for the covered software."
+        },
+        {
+          "sourceId": "zhang-2022-opt-model-license-snapshot",
+          "locator": {
+            "label": "Model-license grant, restrictions, and third-party boundary",
+            "section": "1 License Grant; 2 Restrictions; 8 Third Party Materials"
+          },
+          "support": "The corrected immutable agreement defines the limited research grant, enumerated restrictions, revocation and transfer limits, and separate third-party terms."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Dataset non-distribution and model-card license statement",
+            "section": "Appendix C.6 Distribution; Appendix D.1 Model Details"
+          },
+          "support": "The paper states that the prepared dataset is not distributed and points model use to a non-commercial agreement."
+        }
+      ],
+      "limitations": [
+        "This record separates the observed grants and restrictions; it is not legal advice and does not determine rights in every source document, benchmark, output, or derivative.",
+        "The model agreement is titled OPT-175B but the paper and project README describe it as governing OPT and smaller baselines; the exact artifact-by-artifact legal scope is not independently adjudicated here."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-internal-reporting-discrepancies",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "fixed-token-capability-scaling-profile",
+        "public-model-scale-ladder"
+      ],
+      "statement": "Canonical version 4 still says eight models although Table 1 contains nine after adding 66B. For OPT-175B, Table 1 prints peak learning rate 1.2×10^-4 and a two-million-token batch, while the initial public configuration file prints 3×10^-5 and 250,000 tokens. The datasheet says some documents relate to people in C.2 but answers no to the repeated question in C.3 before marking notice, consent, and revocation items not applicable. Section 3.1 says OPT underperforms GPT-3 on three tasks but names only ARC Challenge and MultiRC. Figure 4 says one- and few-shot OPT lags GPT-3 while its adjacent prose says the averages are similar. Version 1's Figure 3 says zero-shot OPT outperforms GPT-3, wording changed in version 2 to largely matches without replacing the plotted data.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Canonical model-count, underperformance-count, and multishot wording conflicts",
+            "section": "2.1 Models; 3.1 Prompting & Few-Shot; Appendix C.2 Composition; C.3 Collection Process",
+            "table": "1",
+            "figure": "4"
+          },
+          "support": "The model sentence and Table 1 disagree after the 66B addition; the task count enumerates two names; Figure 4's caption differs from the adjacent summary; and the datasheet gives conflicting answers about whether records relate to people."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v1-source-package",
+          "locator": {
+            "label": "Original zero-shot caption",
+            "section": "sections/results.tex, Figure 3 caption"
+          },
+          "support": "Version 1 uses the verb outperforms for the zero-shot average."
+        },
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v2-source-package",
+          "locator": {
+            "label": "Corrected zero-shot caption",
+            "section": "sections/results.tex, Figure 3 caption"
+          },
+          "support": "Version 2 changes only the claim wording to largely matches in that caption."
+        },
+        {
+          "sourceId": "zhang-2022-opt-initial-metaseq-release",
+          "locator": {
+            "label": "Initial public OPT-175B hyperparameter configuration",
+            "section": "metaseq/launcher/opt_job_constants.py"
+          },
+          "support": "The immutable initial configuration maps OPT-175B to learning rate 3e-5 and batch size 0.25M, unlike canonical Table 1's 1.2e-4 and 2M values."
+        }
+      ],
+      "limitations": [
+        "The atlas preserves these source conflicts instead of choosing an unstated correction.",
+        "The launch-day launcher constants are a public configuration mismatch, not proof that the realized run used a 250,000-token batch or that Table 1's peak learning rate is erroneous; disclosed mid-flight changes further limit that inference.",
+        "Plots and prose are insufficient to infer missing task identities or a single definitive aggregate conclusion."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "zhang-2022-opt-artifact-evolution-and-integrity",
+      "workId": "zhang-2022-opt-open-pre-trained-transformer-language-models",
+      "ideaIds": [
+        "training-run-operational-logbook",
+        "public-model-scale-ladder",
+        "research-gated-model-weight-release"
+      ],
+      "statement": "OPT's public release is not one immutable artifact bundle. After the final arXiv revision, Meta regenerated the OPT-175B logbook with six data-source label changes, re-released most 125M–66B checkpoints under consolidated object paths, and revised sixteen consolidated-checkpoint checksum lines after adding shard metadata. The resulting 66B manifest repeats one MD5 for two distinct shard filenames, so reproducible provenance requires commit, blob, and object identities rather than mutable main-branch paths or model aliases.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "zhang-2022-opt-logbook-regeneration-commit",
+          "locator": {
+            "label": "Post-paper logbook regeneration and blob change",
+            "section": "Commit diff; projects/OPT/chronicles/OPT175B_Logbook.pdf"
+          },
+          "support": "The immutable commit replaces the paper-era logbook blob; content comparison finds six reddit-to-pushift.io label substitutions in addition to a new byte identity."
+        },
+        {
+          "sourceId": "zhang-2022-opt-consolidated-checkpoint-rerelease",
+          "locator": {
+            "label": "Consolidated checkpoint re-release and 350M warning",
+            "section": "Commit diff; linked PR 701 description and author review"
+          },
+          "support": "The release moves most directly listed sizes to new consolidated paths, retains the earlier 350M path, and records that the 350M checkpoint may require code changes because layer norms are missing."
+        },
+        {
+          "sourceId": "zhang-2022-opt-checksum-revision-commit",
+          "locator": {
+            "label": "Checksum rewrite and repeated 66B digest",
+            "section": "Commit diff; linked PR 703; projects/OPT/assets/opt66b_md5sum_shards.csv"
+          },
+          "support": "The commit explains why consolidated-checkpoint checksums changed and its 66B manifest prints one digest for two distinct part filenames."
+        }
+      ],
+      "limitations": [
+        "The repeated 66B digest is an unresolved integrity-documentation ambiguity, not evidence that either weight object is corrupted or identical.",
+        "The original raw 992-shard OPT-175B manifest did not change in the audited record; later resharded-checkpoint checksum changes must not be projected back onto those raw files.",
+        "These post-paper release states are bound to the canonical version for provenance navigation but are not additional manuscript revisions or silent corrections to paper claims."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-09"
     }
   ],
   "relationships": [
@@ -63440,6 +65222,158 @@
           "note": "This is a documented response to a scaling question, not architectural or dataset inheritance and not evidence that PaLM is compute-optimal."
         }
       ]
+    },
+    {
+      "id": "brown-2020-to-zhang-2022-opt",
+      "from": {
+        "kind": "work",
+        "id": "brown-2020-language-models-few-shot-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "OPT explicitly sets out to reproduce GPT-3-scale dense decoder models and its zero-, one-, and few-shot evaluation frame while making a broader artifact surface available. The edge carries the target-named model-size, optimizer-family, sequence-length, and prompting substrate; it excludes GPT-3's corpus mixture, batch ramp, sparse-attention alternation, exact learning rates, results, API behavior, artifacts, and rights.",
+      "claimIds": [
+        "brown-2020-model-configurations-and-175b",
+        "brown-2020-optimizer-schedule-and-parallel-training",
+        "brown-2020-zero-one-few-shot-definitions",
+        "brown-2020-evaluation-demonstration-selection",
+        "zhang-2022-opt-model-family-and-gpt3-replication",
+        "zhang-2022-opt-initialization-and-training-recipe",
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side GPT-3 replication objective, model scale, and evaluation continuity",
+            "section": "1 Introduction; 2.1 Models; 2.2 Training Setup; 3.1 Prompting & Few-Shot",
+            "table": "1",
+            "figure": "3–4"
+          },
+          "support": "The target names GPT-3 as the replication baseline, says its models and hyperparameters largely follow Brown et al., aligns the principal model sizes, and attempts to reproduce the GPT-3 prompting protocol while recording its deviations; OPT's linear schedule is not treated as GPT-3's cosine schedule."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This is a qualified replication-and-extension edge, not identity between the models, training data, realized runs, evaluation services, result values, or release regimes."
+        }
+      ]
+    },
+    {
+      "id": "radford-2019-to-zhang-2022-opt-tokenizer",
+      "from": {
+        "kind": "work",
+        "id": "radford-2019-language-models-unsupervised-multitask-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "OPT explicitly uses GPT-2's byte-level BPE tokenizer. The edge carries only that reversible byte-level subword substrate; it does not transfer WebText, GPT-2 model dimensions, context length, training recipe, downstream values, artifacts, or rights.",
+      "claimIds": [
+        "radford-2019-byte-level-bpe",
+        "zhang-2022-opt-corpus-tokenizer-and-deduplication"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side GPT-2 tokenizer adoption",
+            "section": "2.3 Pre-training Corpus"
+          },
+          "support": "The target directly states that the training data are tokenized with the GPT-2 byte-level BPE tokenizer."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The cited continuity is tokenizer-specific; OPT's model lineage is separately mediated through its explicit GPT-3 replication objective."
+        }
+      ]
+    },
+    {
+      "id": "liu-2019-to-zhang-2022-opt-data-substrate",
+      "from": {
+        "kind": "work",
+        "id": "liu-2019-roberta-robustly-optimized-bert-pretraining-approach"
+      },
+      "to": {
+        "kind": "work",
+        "id": "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "OPT explicitly groups BookCorpus, CC-Stories, and its updated CCNewsV2 as corpora used to train RoBERTa. The edge carries that named data-source substrate only; it excludes RoBERTa's encoder, masked objective, masking and packing recipe, complete corpus, training settings, benchmark results, released models, and rights.",
+      "claimIds": [
+        "liu-2019-pretraining-corpora",
+        "zhang-2022-opt-corpus-tokenizer-and-deduplication"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side RoBERTa corpus continuity and changed snapshot",
+            "section": "2.3 Pre-training Corpus; Appendix C.2 Composition"
+          },
+          "support": "The target names three RoBERTa-associated datasets in its first corpus group and states that CCNewsV2 extends the news collection through 28 September 2021."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This relationship does not imply document identity, the same snapshots, equivalent preprocessing, or permission to redistribute the prepared OPT mixture."
+        }
+      ]
+    },
+    {
+      "id": "chowdhery-2022-to-zhang-2022-opt-toxicity-method",
+      "from": {
+        "kind": "work",
+        "id": "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      },
+      "to": {
+        "kind": "work",
+        "id": "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "OPT explicitly says its RealToxicityPrompts comparison follows PaLM, retaining 10,000 random prompts, 25 continuations, and prompt-toxicity bucketing while using its own 20-token nucleus samples and mean-toxicity plot. The edge carries only that target-named evaluation method; it excludes PaLM's architecture, data, training, numerical toxicity rates, other safety probes, artifacts, and rights.",
+      "claimIds": [
+        "chowdhery-2022-realtoxicity-profile",
+        "zhang-2022-opt-realtoxicity-profile"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "zhang-2022-opt-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side adaptation of the PaLM toxicity setup",
+            "section": "4.4 RealToxicityPrompts",
+            "figure": "5"
+          },
+          "support": "The target says it follows PaLM and states its own prompt sample, continuation count, generation length, nucleus setting, bucketing, and comparison curve."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Different generation lengths, aggregation, model access paths, and absent uncertainty estimates prevent raw-value transfer or a controlled model comparison."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -67294,6 +69228,97 @@
         "MFU and HFU denominators, implementation-aware FLOPs, carbon-estimate system boundaries, article versus artifact rights, and hosted-service boundaries"
       ],
       "successCriterion": "The learner can audit all six versions and twenty-five claims, reproduce Tables 1–3 and the principal evaluation caveats, derive the +50 BIG-bench residual and 775.94624B schedule total, distinguish MFU, HFU, and two FLOP accounts, bound PaLM-Coder and the public artifact surface, explain the XSum and shot-label discrepancies, and defend the Transformer, GPT-3, Gopher-toxicity, and Chinchilla-question edges without transferring excluded mechanisms, data, results, artifacts, or rights."
+    },
+    {
+      "id": "beginner-zhang-2022-unpack-open-model-access",
+      "mode": "beginner",
+      "objective": "Explain why OPT widened access to GPT-3-scale language-model research, then unpack ‘open’ into separate paper, code, card, logbook, checkpoint, data, access, and license properties instead of treating it as one binary label.",
+      "workIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "scale-dependent-in-context-learning",
+        "public-model-scale-ladder",
+        "research-gated-model-weight-release",
+        "training-run-operational-logbook",
+        "prompt-conditioned-dialogue",
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "claimIds": [
+        "zhang-2022-opt-model-family-and-gpt3-replication",
+        "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+        "zhang-2022-opt-dialogue-evaluation-and-leakage-check",
+        "zhang-2022-opt-realtoxicity-profile",
+        "zhang-2022-opt-dialogue-safety-profile",
+        "zhang-2022-opt-generation-instruction-and-use-limitations",
+        "zhang-2022-opt-checkpoint-release-staging",
+        "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+        "zhang-2022-opt-paper-code-model-and-data-rights",
+        "zhang-2022-opt-internal-reporting-discrepancies",
+        "zhang-2022-opt-artifact-evolution-and-integrity"
+      ],
+      "prerequisites": [
+        "A decoder-only language model predicts the next token from earlier context",
+        "Zero-, one-, and few-shot labels describe information placed in the prompt, not whether the pretraining corpus contains related text",
+        "A paper, source-code repository, model checkpoint, prepared dataset, and license are separate artifacts"
+      ],
+      "successCriterion": "The learner can name the nine canonical OPT sizes, explain the GPT-3 replication goal and intervention-heavy 175B run, distinguish direct checkpoints through 66B from gated 175B access, identify that the prepared corpus was not distributed at publication, separate paper, code, and model terms, and state why selected benchmark and API comparisons do not establish universal parity or safety."
+    },
+    {
+      "id": "expert-zhang-2022-audit-replication-training-release-and-rights",
+      "mode": "expert",
+      "objective": "Audit all four OPT manuscripts, model and corpus specifications, distributed training and mid-flight recovery, heterogeneous language and responsible-AI evaluations, operational logbook, staged checkpoint release, reconstruction gaps, carbon boundary, reporting discrepancies, rights matrix, and four qualified incoming lineage edges.",
+      "workIds": [
+        "zhang-2022-opt-open-pre-trained-transformer-language-models"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "byte-level-byte-pair-tokenization",
+        "demonstration-conditioned-in-context-learning",
+        "natural-language-task-conditioning",
+        "scale-dependent-in-context-learning",
+        "distributed-dense-transformer-training",
+        "fixed-token-capability-scaling-profile",
+        "prompt-conditioned-dialogue",
+        "practical-training-compute-accounting",
+        "reported-compute-versus-measured-energy",
+        "cross-corpus-minhash-deduplication",
+        "midflight-large-run-recovery",
+        "training-run-operational-logbook",
+        "research-gated-model-weight-release",
+        "public-model-scale-ladder",
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "claimIds": [
+        "zhang-2022-opt-version-and-release-boundary",
+        "zhang-2022-opt-model-family-and-gpt3-replication",
+        "zhang-2022-opt-initialization-and-training-recipe",
+        "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+        "zhang-2022-opt-data-card-and-distribution-boundary",
+        "zhang-2022-opt-distributed-training-efficiency",
+        "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+        "zhang-2022-opt-dialogue-evaluation-and-leakage-check",
+        "zhang-2022-opt-hate-speech-api-comparison",
+        "zhang-2022-opt-stereotype-benchmark-profile",
+        "zhang-2022-opt-realtoxicity-profile",
+        "zhang-2022-opt-dialogue-safety-profile",
+        "zhang-2022-opt-generation-instruction-and-use-limitations",
+        "zhang-2022-opt-checkpoint-release-staging",
+        "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+        "zhang-2022-opt-carbon-accounting-boundary",
+        "zhang-2022-opt-paper-code-model-and-data-rights",
+        "zhang-2022-opt-internal-reporting-discrepancies",
+        "zhang-2022-opt-artifact-evolution-and-integrity"
+      ],
+      "prerequisites": [
+        "Decoder-only Transformers, byte-level BPE, initialization scaling, AdamW, learning-rate schedules, mixed precision, loss scaling, FSDP, and tensor parallelism",
+        "Corpus snapshots, approximate deduplication, token exposure, validation sampling, benchmark prompting, API comparators, leakage checks, and classifier-mediated safety probes",
+        "Operational incident analysis, checkpoint recovery, throughput and carbon-accounting system boundaries, immutable source provenance, artifact manifests, and license scope"
+      ],
+      "successCriterion": "The learner can audit four versions and twenty claims, reconstruct Table 1 and the nominal recipe while preserving every disclosed live intervention, evaluate the dialogue and responsible-AI tables with their comparator limits, explain the eight-versus-nine, paper-versus-code, and evaluation-wording conflicts, trace later logbook and checkpoint identity changes, map the initial through-66B and gated-175B release states, separate the article, code, model, and data rights, and defend the GPT-3, GPT-2-tokenizer, RoBERTa-data, and PaLM-toxicity edges without transferring excluded data, results, artifacts, or rights."
     }
   ]
 }

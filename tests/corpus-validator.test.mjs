@@ -1387,6 +1387,7 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     [
       "brown-2020-model-configurations-and-175b",
       "brown-2020-headline-task-results",
+      "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
     ],
   );
   assert.ok(
@@ -1412,7 +1413,10 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
   assert.deepEqual(
     corpus.ideas.find((item) => item.id === "reported-compute-versus-measured-energy")
       ?.claimIds,
-    ["brown-2020-compute-and-energy-boundary"],
+    [
+      "brown-2020-compute-and-energy-boundary",
+      "zhang-2022-opt-carbon-accounting-boundary",
+    ],
   );
   assert.deepEqual(
     corpus.claims.find((item) => item.id === "brown-2020-compute-and-energy-boundary")
@@ -3067,6 +3071,323 @@ test("preserves PaLM versions, systems evidence, evaluation bounds, and scoped l
   assert.ok(corpusFormat.includes("Chowdhery et al. 2022/2023 is represented"));
   assert.ok(
     historicalScope.includes("The PaLM family was checked on 2026-09-07"),
+  );
+});
+
+test("preserves OPT versions, training incidents, tiered artifacts, and scoped lineage", () => {
+  const workId = "zhang-2022-opt-open-pre-trained-transformer-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "zhang-2022-opt-arxiv-v4-version",
+  );
+  const launch = findSource("zhang-2022-opt-meta-launch-post");
+  const logbook = findSource("zhang-2022-opt-logbook-snapshot");
+  const rawManifest = findSource(
+    "zhang-2022-opt-175b-raw-md5-manifest-commit",
+  );
+  const reshardManifest = findSource(
+    "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+  );
+  const training = findClaim("zhang-2022-opt-initialization-and-training-recipe");
+  const corpusClaim = findClaim(
+    "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+  );
+  const distributed = findClaim("zhang-2022-opt-distributed-training-efficiency");
+  const incidents = findClaim(
+    "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+  );
+  const promptEvaluation = findClaim(
+    "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+  );
+  const checkpoints = findClaim("zhang-2022-opt-checkpoint-release-staging");
+  const reconstruction = findClaim(
+    "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+  );
+  const rights = findClaim("zhang-2022-opt-paper-code-model-and-data-rights");
+  const discrepancies = findClaim(
+    "zhang-2022-opt-internal-reporting-discrepancies",
+  );
+  const artifactEvolution = findClaim(
+    "zhang-2022-opt-artifact-evolution-and-integrity",
+  );
+
+  assert.equal(workIndex(workId), 58);
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.authors.length, 19);
+  assert.deepEqual(work?.authors.slice(0, 3), [
+    "Susan Zhang",
+    "Stephen Roller",
+    "Naman Goyal",
+  ]);
+  assert.deepEqual(work?.authors.slice(-3), [
+    "Anjali Sridhar",
+    "Tianlu Wang",
+    "Luke Zettlemoyer",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022-05-02", "2022-05-03", "2022-05-05", "2022-06-21"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "zhang-2022-opt-arxiv-v1-version",
+      "zhang-2022-opt-arxiv-v2-version",
+      "zhang-2022-opt-arxiv-v3-version",
+      "zhang-2022-opt-arxiv-v4-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "zhang-2022-opt-arxiv-v4-version");
+  assert.deepEqual(work?.preferredSourceIds, [
+    "zhang-2022-opt-arxiv-record",
+    "zhang-2022-opt-arxiv-v4-full-text",
+  ]);
+  assert.equal(work?.sourceIds.length, 22);
+  assert.deepEqual(work?.sourceIds, [
+    "zhang-2022-opt-arxiv-record",
+    "zhang-2022-opt-arxiv-v1-full-text",
+    "zhang-2022-opt-arxiv-v2-full-text",
+    "zhang-2022-opt-arxiv-v3-full-text",
+    "zhang-2022-opt-arxiv-v4-full-text",
+    "zhang-2022-opt-arxiv-v1-source-package",
+    "zhang-2022-opt-arxiv-v2-source-package",
+    "zhang-2022-opt-arxiv-v3-source-package",
+    "zhang-2022-opt-arxiv-v4-source-package",
+    "zhang-2022-opt-cc-by-license",
+    "zhang-2022-opt-meta-launch-post",
+    "zhang-2022-opt-initial-metaseq-release",
+    "zhang-2022-opt-175b-access-snapshot",
+    "zhang-2022-opt-175b-raw-md5-manifest-commit",
+    "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+    "zhang-2022-opt-model-license-snapshot",
+    "zhang-2022-opt-metaseq-mit-license",
+    "zhang-2022-opt-logbook-snapshot",
+    "zhang-2022-opt-66b-release-commit",
+    "zhang-2022-opt-logbook-regeneration-commit",
+    "zhang-2022-opt-consolidated-checkpoint-rerelease",
+    "zhang-2022-opt-checksum-revision-commit",
+  ]);
+  assert.equal(work?.ideaIds.length, 16);
+  assert.match(canonical?.notes ?? "", /eight while Table 1 now contains nine/);
+
+  const pdfHashes = {
+    v1: "d61aab59b02568b907722ecb1cd9dbab16391ad3f13f97aea73926ca64d640fb",
+    v2: "45192a2729d467a44f7d32f077e223c9602da294e8e89ed2d191e555b6413d96",
+    v3: "5a8d59ddd11da05acf491de7b7206bc56257c591869e06327d4955c4c0d1265c",
+    v4: "dc88168a2514e4c66a5a791cab6dfacae9bbd566a3d86a119add151f31484d87",
+  };
+  const sourcePackages = {
+    v1: ["72756bc0b35e62a10e3ff5ceded512a471c10e766b656b4f89ace80161199747", 41],
+    v2: ["1e8a5a734dca6e4d4048faf9aeefd335bb6e5ef601910a18e1ed09b716a0e0aa", 41],
+    v3: ["733edaa4532d2999ae9a11af11bb5da41499c14cc47b8fe4a508c7fd6e8e646f", 40],
+    v4: ["70fdc8868d8392bae94236c423aa73a4c14c2b2a42a8fc6db6c27d2653a9309e", 40],
+  };
+  for (const key of ["v1", "v2", "v3", "v4"]) {
+    const source = findSource(`zhang-2022-opt-arxiv-${key}-full-text`);
+    const sourcePackage = findSource(
+      `zhang-2022-opt-arxiv-${key}-source-package`,
+    );
+    assert.deepEqual(source?.pagination, {
+      scheme: "pdf-page",
+      pageStart: 1,
+      pageEnd: 30,
+    });
+    assert.match(source?.accessNote ?? "", /complete unfoliated 30-leaf PDF/);
+    assert.ok(source?.accessNote.includes(pdfHashes[key]));
+    assert.ok(sourcePackage?.accessNote.includes(sourcePackages[key][0]));
+    assert.ok(
+      sourcePackage?.accessNote.includes(`${sourcePackages[key][1]} files`),
+    );
+  }
+  assert.equal(sources.length, 22);
+  assert.deepEqual(launch?.versionIds, []);
+  assert.deepEqual(launch?.supports, ["metadata", "version-boundary"]);
+  assert.equal(
+    claims.some((claim) =>
+      claim.evidence.some((item) => item.sourceId === launch?.id),
+    ),
+    false,
+  );
+  assert.deepEqual(logbook?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 114,
+  });
+  assert.match(logbook?.accessNote ?? "", /5591564de6a1ba07/);
+  assert.match(rawManifest?.accessNote ?? "", /993-line CSV/);
+  assert.match(rawManifest?.accessNote ?? "", /992 raw OPT-175B/);
+  assert.match(reshardManifest?.accessNote ?? "", /eight derived OPT-175B/);
+  for (const id of [
+    "zhang-2022-opt-logbook-regeneration-commit",
+    "zhang-2022-opt-consolidated-checkpoint-rerelease",
+    "zhang-2022-opt-checksum-revision-commit",
+  ])
+    assert.deepEqual(findSource(id)?.versionIds, [
+      "zhang-2022-opt-arxiv-v4-version",
+    ]);
+  for (const source of sources) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+
+  assert.equal(claims.length, 20);
+  assert.deepEqual(
+    claims.map((item) => item.id),
+    [
+      "zhang-2022-opt-version-and-release-boundary",
+      "zhang-2022-opt-model-family-and-gpt3-replication",
+      "zhang-2022-opt-initialization-and-training-recipe",
+      "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+      "zhang-2022-opt-data-card-and-distribution-boundary",
+      "zhang-2022-opt-distributed-training-efficiency",
+      "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+      "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+      "zhang-2022-opt-dialogue-evaluation-and-leakage-check",
+      "zhang-2022-opt-hate-speech-api-comparison",
+      "zhang-2022-opt-stereotype-benchmark-profile",
+      "zhang-2022-opt-realtoxicity-profile",
+      "zhang-2022-opt-dialogue-safety-profile",
+      "zhang-2022-opt-generation-instruction-and-use-limitations",
+      "zhang-2022-opt-checkpoint-release-staging",
+      "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+      "zhang-2022-opt-carbon-accounting-boundary",
+      "zhang-2022-opt-paper-code-model-and-data-rights",
+      "zhang-2022-opt-internal-reporting-discrepancies",
+      "zhang-2022-opt-artifact-evolution-and-integrity",
+    ],
+  );
+  assert.match(findClaim("zhang-2022-opt-model-family-and-gpt3-replication")?.statement ?? "", /125M, 350M, 1.3B, 2.7B, 6.7B, 13B, 30B, 66B, and 175B/);
+  for (const value of ["300B token exposures", "4.30×10^23", "1,024 A100s", "992-GPU"])
+    assert.ok(training?.statement.includes(value));
+  for (const value of ["180B-token", "MinHashLSH", "at least .95", "about 66%"])
+    assert.ok(corpusClaim?.statement.includes(value));
+  assert.match(
+    findClaim("zhang-2022-opt-data-card-and-distribution-boundary")?.statement ?? "",
+    /not distributed outside Meta at publication/,
+  );
+  for (const value of ["992", "147 TFLOP/s", "FP32 Adam", "FP16"])
+    assert.ok(distributed?.statement.includes(value));
+  for (const value of ["at least 35", "70-plus", "clipping reduced", "temporarily switched to SGD"])
+    assert.ok(incidents?.statement.includes(value));
+  assert.match(promptEvaluation?.statement ?? "", /average fourteen tasks/);
+  assert.match(
+    findClaim("zhang-2022-opt-dialogue-evaluation-and-leakage-check")?.limitations.join(" ") ?? "",
+    /not a comprehensive document, n-gram, semantic, or benchmark-contamination audit/,
+  );
+  assert.ok(
+    findClaim("zhang-2022-opt-hate-speech-api-comparison")?.statement.includes(
+      ".354/.759",
+    ),
+  );
+  assert.match(findClaim("zhang-2022-opt-stereotype-benchmark-profile")?.statement ?? "", /69.5 for OPT-175B/);
+  assert.match(findClaim("zhang-2022-opt-realtoxicity-profile")?.statement ?? "", /25 continuations of 20 tokens/);
+  assert.match(findClaim("zhang-2022-opt-dialogue-safety-profile")?.statement ?? "", /.567 Unsafe/);
+  for (const value of ["992 parameter files", "MD5 manifests", "eight 66B links", "request-only"])
+    assert.ok(checkpoints?.statement.includes(value));
+  assert.match(reconstruction?.statement ?? "", /one-line stub links/);
+  assert.match(reconstruction?.statement ?? "", /launch-day tree lacks/);
+  assert.match(findClaim("zhang-2022-opt-carbon-accounting-boundary")?.statement ?? "", /75 tCO2e/);
+  assert.match(findClaim("zhang-2022-opt-carbon-accounting-boundary")?.limitations.join(" ") ?? "", /Seventy-five divided by 500 is .15/);
+  assert.match(rights?.statement ?? "", /CC BY 4.0/);
+  assert.match(rights?.statement ?? "", /non-commercial research/);
+  for (const value of [
+    "eight models although Table 1 contains nine",
+    "1.2×10^-4",
+    "3×10^-5",
+    "250,000 tokens",
+    "some documents relate to people",
+    "underperforms GPT-3 on three tasks but names only",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.match(discrepancies?.limitations.join(" ") ?? "", /not proof that the realized run used/);
+  for (const value of [
+    "six data-source label changes",
+    "consolidated object paths",
+    "sixteen consolidated-checkpoint checksum lines",
+    "two distinct shard filenames",
+  ])
+    assert.ok(artifactEvolution?.statement.includes(value));
+  assert.match(artifactEvolution?.limitations.join(" ") ?? "", /unresolved integrity-documentation ambiguity/);
+
+  assert.deepEqual(
+    incoming.map((item) => [item.id, item.connectionType]),
+    [
+      ["brown-2020-to-zhang-2022-opt", "extends"],
+      ["radford-2019-to-zhang-2022-opt-tokenizer", "builds-on"],
+      ["liu-2019-to-zhang-2022-opt-data-substrate", "builds-on"],
+      ["chowdhery-2022-to-zhang-2022-opt-toxicity-method", "builds-on"],
+    ],
+  );
+  for (const edge of incoming) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+    assert.ok(
+      edge.sourceEvidence.every(
+        (item) => item.sourceId === "zhang-2022-opt-arxiv-v4-full-text",
+      ),
+    );
+  }
+  assert.deepEqual(incoming[0].claimIds, [
+    "brown-2020-model-configurations-and-175b",
+    "brown-2020-optimizer-schedule-and-parallel-training",
+    "brown-2020-zero-one-few-shot-definitions",
+    "brown-2020-evaluation-demonstration-selection",
+    "zhang-2022-opt-model-family-and-gpt3-replication",
+    "zhang-2022-opt-initialization-and-training-recipe",
+    "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+  ]);
+  assert.deepEqual(incoming[1].claimIds, [
+    "radford-2019-byte-level-bpe",
+    "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+  ]);
+  assert.deepEqual(incoming[2].claimIds, [
+    "liu-2019-pretraining-corpora",
+    "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+  ]);
+  assert.deepEqual(incoming[3].claimIds, [
+    "chowdhery-2022-realtoxicity-profile",
+    "zhang-2022-opt-realtoxicity-profile",
+  ]);
+  for (const excluded of [
+    "vaswani-2017-attention-is-all-you-need",
+    "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+    "hoffmann-2022-training-compute-optimal-language-models",
+    "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+  ])
+    assert.equal(incoming.some((item) => item.from.id === excluded), false);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      ["beginner-zhang-2022-unpack-open-model-access", "beginner", 12],
+      [
+        "expert-zhang-2022-audit-replication-training-release-and-rights",
+        "expert",
+        20,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Zhang et al.’s OPT family"));
+  assert.ok(corpusFormat.includes("Zhang et al. 2022 is represented"));
+  assert.ok(
+    historicalScope.includes("The OPT family was checked on 2026-09-09"),
   );
 });
 
