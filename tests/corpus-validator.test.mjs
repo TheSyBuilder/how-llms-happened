@@ -10,13 +10,15 @@ const [corpus, schema] = await Promise.all(
     new URL("../schemas/corpus.schema.json", import.meta.url),
   ].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
 );
-const [readme, corpusFormat, historicalScope] = await Promise.all(
-  [
-    new URL("../README.md", import.meta.url),
-    new URL("../docs/corpus-format.md", import.meta.url),
-    new URL("../docs/historical-scope.md", import.meta.url),
-  ].map((url) => readFile(url, "utf8")),
-);
+const [readme, corpusFormat, historicalScope, currentEndpoint] =
+  await Promise.all(
+    [
+      new URL("../README.md", import.meta.url),
+      new URL("../docs/corpus-format.md", import.meta.url),
+      new URL("../docs/historical-scope.md", import.meta.url),
+      new URL("../docs/current-endpoint.md", import.meta.url),
+    ].map((url) => readFile(url, "utf8")),
+  );
 
 function copyCorpus() {
   return JSON.parse(JSON.stringify(corpus));
@@ -3389,6 +3391,198 @@ test("preserves OPT versions, training incidents, tiered artifacts, and scoped l
   assert.ok(
     historicalScope.includes("The OPT family was checked on 2026-09-09"),
   );
+});
+
+test("preserves ROOTS count scopes, governance limits, and deferred BLOOM lineage", () => {
+  const workId = "laurencon-2022-bigscience-roots-corpus";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const relationships = corpus.relationships.filter(
+    (item) => item.from.id === workId || item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "laurencon-2022-roots-neurips-version",
+  );
+  const mainText = findSource("laurencon-2022-roots-neurips-main-full-text");
+  const supplement = findSource("laurencon-2022-roots-neurips-supplement");
+  const arxivText = findSource("laurencon-2023-roots-arxiv-v1-full-text");
+  const sourcePackage = findSource(
+    "laurencon-2023-roots-arxiv-v1-source-package",
+  );
+  const counts = findClaim(
+    "laurencon-2022-roots-corpus-scale-and-count-scopes",
+  );
+  const github = findClaim(
+    "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+  );
+  const filtering = findClaim("laurencon-2022-roots-filter-removal-profile");
+  const dedup = findClaim("laurencon-2022-roots-oscar-deduplication");
+  const pii = findClaim("laurencon-2022-roots-implemented-pii-redaction");
+  const governance = findClaim(
+    "laurencon-2022-roots-governance-and-component-release",
+  );
+  const limitations = findClaim(
+    "laurencon-2022-roots-consent-privacy-and-representation-limits",
+  );
+  const rights = findClaim("laurencon-2022-roots-artifact-and-rights-boundary");
+
+  assert.equal(workIndex(workId), 59);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.authors.length, 54);
+  assert.deepEqual(work?.authors.slice(0, 3), [
+    "Hugo Laurençon",
+    "Lucile Saulnier",
+    "Thomas Wang",
+  ]);
+  assert.deepEqual(work?.authors.slice(-3), [
+    "Margaret Mitchell",
+    "Sasha Luccioni",
+    "Yacine Jernite",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022", "2023-03-07"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "laurencon-2022-roots-neurips-version",
+      "laurencon-2023-roots-arxiv-v1-version",
+    ],
+  );
+  assert.equal(
+    work?.canonicalVersionId,
+    "laurencon-2022-roots-neurips-version",
+  );
+  assert.deepEqual(canonical?.bibliography.pages, ["31809-31826"]);
+  assert.ok(
+    canonical?.bibliography.identifiers.some(
+      (item) =>
+        item.type === "doi" && item.value === "10.52202/068431-2306",
+    ),
+  );
+  assert.equal(work?.sourceIds.length, 9);
+  assert.equal(work?.ideaIds.length, 6);
+
+  assert.deepEqual(mainText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 18,
+  });
+  assert.match(mainText?.accessNote ?? "", /c20b7fea1bd9b067/);
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 19,
+    pageEnd: 35,
+  });
+  assert.match(supplement?.accessNote ?? "", /b7eda85989557100/);
+  assert.deepEqual(arxivText?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 36,
+  });
+  assert.match(arxivText?.accessNote ?? "", /dc62414caee7c365/);
+  assert.match(sourcePackage?.accessNote ?? "", /63b59c47ed9309c0/);
+  assert.match(sourcePackage?.accessNote ?? "", /106 files/);
+  for (const source of sources) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+
+  assert.equal(claims.length, 16);
+  assert.deepEqual(
+    claims.map((item) => item.id),
+    [
+      "laurencon-2022-roots-version-and-publication-boundary",
+      "laurencon-2022-roots-corpus-scale-and-count-scopes",
+      "laurencon-2022-roots-participatory-source-selection",
+      "laurencon-2022-roots-acquisition-and-final-selection",
+      "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+      "laurencon-2022-roots-crowdsourced-cleaning-feedback-loop",
+      "laurencon-2022-roots-oscar-selection-and-filtering",
+      "laurencon-2022-roots-filter-removal-profile",
+      "laurencon-2022-roots-oscar-deduplication",
+      "laurencon-2022-roots-implemented-pii-redaction",
+      "laurencon-2022-roots-natural-and-code-distribution",
+      "laurencon-2022-roots-tokenizer-fertility-analysis",
+      "laurencon-2022-roots-governance-and-component-release",
+      "laurencon-2022-roots-consent-privacy-and-representation-limits",
+      "laurencon-2022-roots-artifact-and-rights-boundary",
+      "laurencon-2022-roots-reconstruction-boundary",
+    ],
+  );
+  for (const value of [
+    "252",
+    "539",
+    "147",
+    "517",
+    "485",
+    "498",
+  ])
+    assert.ok(counts?.statement.includes(value));
+  assert.match(
+    counts?.statement ?? "",
+    /46 natural languages and 13 programming/,
+  );
+  assert.match(github?.statement ?? "", /GPL-licensed repositories/);
+  assert.match(github?.statement ?? "", /preprocessing bug/);
+  for (const value of ["20.3%", "48.8%", "5.2%", "16.9%"])
+    assert.ok(filtering?.statement.includes(value));
+  for (const value of ["6-grams", "threshold 4", "0.7%", "6,000", "21.67%"])
+    assert.ok(dedup?.statement.includes(value));
+  for (const value of [
+    "KEY",
+    "EMAIL",
+    "USER",
+    "IP_ADDRESS",
+    "not operationalized",
+  ])
+    assert.ok(pii?.statement.includes(value));
+  assert.match(governance?.statement ?? "", /223 of 498/);
+  assert.match(governance?.statement ?? "", /preliminary and gated/);
+  assert.match(limitations?.statement ?? "", /consent and privacy/);
+  assert.match(limitations?.statement ?? "", /privileged voices/);
+  for (const value of ["CC BY 4.0", "Apache 2.0", "umbrella license"])
+    assert.ok(rights?.statement.includes(value));
+
+  assert.deepEqual(relationships, []);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-laurencon-2022-follow-data-choices-not-one-number",
+        "beginner",
+        10,
+      ],
+      [
+        "expert-laurencon-2022-audit-roots-construction-governance-and-provenance",
+        "expert",
+        16,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Laurençon et al.’s ROOTS family"));
+  assert.ok(corpusFormat.includes("Laurençon et al. 2022/2023 is represented"));
+  assert.ok(
+    historicalScope.includes("The ROOTS family was checked on 2026-09-11"),
+  );
+  assert.ok(
+    currentEndpoint.includes("ROOTS now enters the corpus as a distinct"),
+  );
+  assert.ok(currentEndpoint.includes("BLOOM remains under claim-level review"));
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {

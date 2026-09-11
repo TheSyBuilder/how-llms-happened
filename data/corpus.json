@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-09",
+  "asOf": "2026-09-11",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -16767,6 +16767,344 @@
           "note": "The launch-day release lacked a public weight manifest, but official 4 and 6 June commits added MD5 identities for the 992 raw OPT-175B shards and the derived eight-part evaluation package; access nevertheless remained controlled."
         }
       ]
+    },
+    {
+      "id": "laurencon-2022-bigscience-roots-corpus",
+      "title": "The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset",
+      "authors": [
+        "Hugo Laurençon",
+        "Lucile Saulnier",
+        "Thomas Wang",
+        "Christopher Akiki",
+        "Albert Villanova del Moral",
+        "Teven Le Scao",
+        "Leandro von Werra",
+        "Chenghao Mou",
+        "Eduardo González Ponferrada",
+        "Huu Nguyen",
+        "Jörg Frohberg",
+        "Mario Šaško",
+        "Quentin Lhoest",
+        "Angelina McMillan-Major",
+        "Gérard Dupont",
+        "Stella Biderman",
+        "Anna Rogers",
+        "Loubna Ben allal",
+        "Francesco De Toni",
+        "Giada Pistilli",
+        "Olivier Nguyen",
+        "Somaieh Nikpoor",
+        "Maraim Masoud",
+        "Pierre Colombo",
+        "Javier de la Rosa",
+        "Paulo Villegas",
+        "Tristan Thrush",
+        "Shayne Longpre",
+        "Sebastian Nagel",
+        "Leon Weber",
+        "Manuel Romero Muñoz",
+        "Jian Zhu",
+        "Daniel van Strien",
+        "Zaid Alyafeai",
+        "Khalid Almubarak",
+        "Vu Minh Chien",
+        "Itziar Gonzalez-Dios",
+        "Aitor Soroa",
+        "Kyle Lo",
+        "Manan Dey",
+        "Pedro Ortiz Suarez",
+        "Aaron Gokaslan",
+        "Shamik Bose",
+        "David Ifeoluwa Adelani",
+        "Long Phan",
+        "Hieu Tran",
+        "Ian Yu",
+        "Suhas Pai",
+        "Jenny Chim",
+        "Violette Lepercq",
+        "Suzana Ilić",
+        "Margaret Mitchell",
+        "Sasha Luccioni",
+        "Yacine Jernite"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "H. Laurençon et al., “The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset,” in Advances in Neural Information Processing Systems 35, pp. 31809–31826, 2022.",
+      "chronology": {
+        "orderingEventId": "laurencon-2022-roots-neurips-proceedings-published",
+        "events": [
+          {
+            "id": "laurencon-2022-roots-neurips-proceedings-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2022 proceedings publication",
+            "date": {
+              "value": "2022",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "laurencon-2022-roots-neurips-record",
+                "precision": "year",
+                "locator": "Official NeurIPS 2022 Datasets and Benchmarks proceedings record"
+              }
+            ],
+            "versionId": "laurencon-2022-roots-neurips-version",
+            "sourceIds": [
+              "laurencon-2022-roots-neurips-record",
+              "laurencon-2022-roots-neurips-main-full-text"
+            ]
+          },
+          {
+            "id": "laurencon-2023-roots-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "Combined arXiv version posted",
+            "date": {
+              "value": "2023-03-07",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "laurencon-2023-roots-arxiv-record",
+                "precision": "day",
+                "locator": "ArXiv submission history, version 1 posted 7 March 2023 at 14:25:44 UTC"
+              }
+            ],
+            "versionId": "laurencon-2023-roots-arxiv-v1-version",
+            "sourceIds": [
+              "laurencon-2023-roots-arxiv-record",
+              "laurencon-2023-roots-arxiv-v1-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "laurencon-2022-roots-neurips-version",
+          "title": "The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset",
+          "authors": [
+            "Hugo Laurençon",
+            "Lucile Saulnier",
+            "Thomas Wang",
+            "Christopher Akiki",
+            "Albert Villanova del Moral",
+            "Teven Le Scao",
+            "Leandro von Werra",
+            "Chenghao Mou",
+            "Eduardo González Ponferrada",
+            "Huu Nguyen",
+            "Jörg Frohberg",
+            "Mario Šaško",
+            "Quentin Lhoest",
+            "Angelina McMillan-Major",
+            "Gérard Dupont",
+            "Stella Biderman",
+            "Anna Rogers",
+            "Loubna Ben allal",
+            "Francesco De Toni",
+            "Giada Pistilli",
+            "Olivier Nguyen",
+            "Somaieh Nikpoor",
+            "Maraim Masoud",
+            "Pierre Colombo",
+            "Javier de la Rosa",
+            "Paulo Villegas",
+            "Tristan Thrush",
+            "Shayne Longpre",
+            "Sebastian Nagel",
+            "Leon Weber",
+            "Manuel Romero Muñoz",
+            "Jian Zhu",
+            "Daniel van Strien",
+            "Zaid Alyafeai",
+            "Khalid Almubarak",
+            "Vu Minh Chien",
+            "Itziar Gonzalez-Dios",
+            "Aitor Soroa",
+            "Kyle Lo",
+            "Manan Dey",
+            "Pedro Ortiz Suarez",
+            "Aaron Gokaslan",
+            "Shamik Bose",
+            "David Ifeoluwa Adelani",
+            "Long Phan",
+            "Hieu Tran",
+            "Ian Yu",
+            "Suhas Pai",
+            "Jenny Chim",
+            "Violette Lepercq",
+            "Suzana Ilić",
+            "Margaret Mitchell",
+            "Sasha Luccioni",
+            "Yacine Jernite"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2022 article and supplement",
+          "language": "en",
+          "bibliography": {
+            "citation": "H. Laurençon et al., “The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset,” in Advances in Neural Information Processing Systems 35, pp. 31809–31826, 2022.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Curran Associates, Inc.",
+            "volume": "35",
+            "pages": [
+              "31809-31826"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.52202/068431-2306",
+                "label": "Proceedings DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "laurencon-2022-roots-neurips-record",
+            "laurencon-2022-roots-neurips-main-full-text",
+            "laurencon-2022-roots-neurips-supplement",
+            "laurencon-2022-roots-data-preparation-snapshot",
+            "laurencon-2022-roots-data-preparation-apache-license"
+          ],
+          "notes": "The canonical treatment is an eighteen-leaf main article plus a separately distributed seventeen-leaf supplement whose visible local folios continue from 19 through 35. Bibliographic pages 31809–31826 identify the main volume article; claim locators use the visible local folios and structural anchors. The main text carries the construction pipeline and principal results, while the supplement carries filter definitions, the unused Muliwai route, data-source tables, and contribution detail."
+        },
+        {
+          "id": "laurencon-2023-roots-arxiv-v1-version",
+          "title": "The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset",
+          "authors": [
+            "Hugo Laurençon",
+            "Lucile Saulnier",
+            "Thomas Wang",
+            "Christopher Akiki",
+            "Albert Villanova del Moral",
+            "Teven Le Scao",
+            "Leandro von Werra",
+            "Chenghao Mou",
+            "Eduardo González Ponferrada",
+            "Huu Nguyen",
+            "Jörg Frohberg",
+            "Mario Šaško",
+            "Quentin Lhoest",
+            "Angelina McMillan-Major",
+            "Gérard Dupont",
+            "Stella Biderman",
+            "Anna Rogers",
+            "Loubna Ben allal",
+            "Francesco De Toni",
+            "Giada Pistilli",
+            "Olivier Nguyen",
+            "Somaieh Nikpoor",
+            "Maraim Masoud",
+            "Pierre Colombo",
+            "Javier de la Rosa",
+            "Paulo Villegas",
+            "Tristan Thrush",
+            "Shayne Longpre",
+            "Sebastian Nagel",
+            "Leon Weber",
+            "Manuel Romero Muñoz",
+            "Jian Zhu",
+            "Daniel van Strien",
+            "Zaid Alyafeai",
+            "Khalid Almubarak",
+            "Vu Minh Chien",
+            "Itziar Gonzalez-Dios",
+            "Aitor Soroa",
+            "Kyle Lo",
+            "Manan Dey",
+            "Pedro Ortiz Suarez",
+            "Aaron Gokaslan",
+            "Shamik Bose",
+            "David Ifeoluwa Adelani",
+            "Long Phan",
+            "Hieu Tran",
+            "Ian Yu",
+            "Suhas Pai",
+            "Jenny Chim",
+            "Violette Lepercq",
+            "Suzana Ilić",
+            "Margaret Mitchell",
+            "Sasha Luccioni",
+            "Yacine Jernite"
+          ],
+          "kind": "preprint",
+          "label": "Combined arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "H. Laurençon et al., “The BigScience ROOTS Corpus: A 1.6TB Composite Multilingual Dataset,” arXiv:2303.03915v1, 7 March 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2303.03915v1",
+                "label": "ArXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2303.03915",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "laurencon-2023-roots-arxiv-record",
+            "laurencon-2023-roots-arxiv-v1-full-text",
+            "laurencon-2023-roots-arxiv-v1-source-package",
+            "laurencon-2023-roots-arxiv-cc-by-license"
+          ],
+          "notes": "The sole arXiv revision is a thirty-six-leaf recombination of the venue article and supplement with an added contents leaf and continuous PDF-viewer pagination. It postdates the proceedings treatment and exposes the complete source package under CC BY 4.0; it is not used to backdate the paper's public chronology."
+        }
+      ],
+      "canonicalVersionId": "laurencon-2022-roots-neurips-version",
+      "preferredSourceIds": [
+        "laurencon-2022-roots-neurips-record",
+        "laurencon-2022-roots-neurips-main-full-text",
+        "laurencon-2022-roots-neurips-supplement"
+      ],
+      "sourceIds": [
+        "laurencon-2022-roots-neurips-record",
+        "laurencon-2022-roots-neurips-main-full-text",
+        "laurencon-2022-roots-neurips-supplement",
+        "laurencon-2023-roots-arxiv-record",
+        "laurencon-2023-roots-arxiv-v1-full-text",
+        "laurencon-2023-roots-arxiv-v1-source-package",
+        "laurencon-2023-roots-arxiv-cc-by-license",
+        "laurencon-2022-roots-data-preparation-snapshot",
+        "laurencon-2022-roots-data-preparation-apache-license"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "ROOTS makes multilingual training data and its governance a separate historical object: source discovery, language expertise, source-level traceability, processing, release controls, privacy limitations, and artifact-specific rights are documented rather than collapsed into a model paper's corpus summary. Its importance is this inspectable sociotechnical data pipeline, not a priority claim about multilingual web corpora or participatory research."
+      },
+      "ideaIds": [
+        "participatory-multilingual-source-curation",
+        "source-traceable-composite-data-governance",
+        "language-specific-web-document-filtering",
+        "length-split-near-duplicate-removal",
+        "limited-pattern-based-pii-redaction",
+        "tokenizer-fertility-corpus-audit"
+      ],
+      "significance": {
+        "beginner": "ROOTS shows that a training corpus is a chain of choices made by people: which languages and sources count, how documents are cleaned, what can be redistributed, and which harms remain after filtering. Its three incompatible-looking dataset counts are a practical lesson in asking what exactly was counted.",
+        "expert": "ROOTS supplies a versioned, source-located account of a 1.6TB composite corpus: community-sourced and OSCAR components, heterogeneous acquisition routes, source- and document-level deduplication, language-conditioned thresholds, limited PII redaction, component-governed release, and tokenizer-fertility analysis. It also exposes reconstruction gaps and value conflicts that aggregate dataset-size reporting obscures."
+      },
+      "limitations": [
+        "The paper reports 252 catalogued sources, 517 datasets after the three acquisition pipelines, 485 non-empty processed datasets in one stage, and 498 constituent Hugging Face datasets, but does not publish a single reconciliation ledger for those scopes.",
+        "Only 223 of 498 components were described as directly distributable in the venue paper; the complete prepared corpus, immutable component manifest, and component digests were not supplied in the audited publication bundle.",
+        "OSCAR and other web-derived components retain unresolved consent, privacy, representation, and legal questions; the implemented pattern-based redaction is explicitly incomplete.",
+        "The descriptive corpus analyses do not isolate how any individual sourcing, filtering, or governance choice changes a trained model's capabilities or harms."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The primary paper does not explicitly map its 517 acquisition outputs and 485 non-empty processed datasets onto the final 498 constituent datasets."
+        },
+        {
+          "status": "open",
+          "note": "The publication identifies a preliminary gated component release but does not provide an immutable full-corpus manifest from which every paper-era component and access condition can be reconstructed."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -20925,6 +21263,77 @@
         "zhang-2022-opt-stereotype-benchmark-profile",
         "zhang-2022-opt-realtoxicity-profile",
         "zhang-2022-opt-dialogue-safety-profile"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "participatory-multilingual-source-curation",
+      "name": "Participatory multilingual source curation",
+      "kind": "mechanism",
+      "description": "A corpus-building process in which language communities help choose sources and set processing thresholds, making language expertise part of data construction rather than a post-hoc evaluation layer.",
+      "claimIds": [
+        "laurencon-2022-roots-participatory-source-selection",
+        "laurencon-2022-roots-crowdsourced-cleaning-feedback-loop"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "source-traceable-composite-data-governance",
+      "name": "Source-traceable composite data governance",
+      "kind": "constraint",
+      "description": "A release and stewardship scheme that keeps corpus components identifiable so access and reuse decisions can reflect the source's licenses, custodians, privacy risk, and agreements instead of inheriting one umbrella label.",
+      "claimIds": [
+        "laurencon-2022-roots-version-and-publication-boundary",
+        "laurencon-2022-roots-corpus-scale-and-count-scopes",
+        "laurencon-2022-roots-acquisition-and-final-selection",
+        "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+        "laurencon-2022-roots-natural-and-code-distribution",
+        "laurencon-2022-roots-governance-and-component-release",
+        "laurencon-2022-roots-artifact-and-rights-boundary",
+        "laurencon-2022-roots-consent-privacy-and-representation-limits",
+        "laurencon-2022-roots-reconstruction-boundary"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "language-specific-web-document-filtering",
+      "name": "Language-specific web-document filtering",
+      "kind": "mechanism",
+      "description": "A web-corpus pipeline whose repetition, character, function-word, flagged-word, perplexity, and length thresholds are selected separately by language with native-speaker review.",
+      "claimIds": [
+        "laurencon-2022-roots-oscar-selection-and-filtering",
+        "laurencon-2022-roots-filter-removal-profile"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "length-split-near-duplicate-removal",
+      "name": "Length-split near-duplicate removal",
+      "kind": "mechanism",
+      "description": "A deduplication pipeline that uses one similarity method for shorter documents and a substring method for long documents after observing length-related false positives.",
+      "claimIds": [
+        "laurencon-2022-roots-oscar-deduplication"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "limited-pattern-based-pii-redaction",
+      "name": "Limited pattern-based PII redaction",
+      "kind": "constraint",
+      "description": "A scalable redaction pass for a bounded set of identifier patterns whose operational simplicity leaves other personal information and consent questions unresolved.",
+      "claimIds": [
+        "laurencon-2022-roots-implemented-pii-redaction",
+        "laurencon-2022-roots-consent-privacy-and-representation-limits"
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "tokenizer-fertility-corpus-audit",
+      "name": "Tokenizer-fertility corpus audit",
+      "kind": "mechanism",
+      "description": "Using tokens per input byte as a component-level diagnostic for unusual content, possible language or crawl errors, and cross-corpus domain differences while avoiding direct tokenizer quality claims.",
+      "claimIds": [
+        "laurencon-2022-roots-tokenizer-fertility-analysis"
       ],
       "uncertainties": []
     }
@@ -32185,6 +32594,211 @@
         "pageEnd": 1
       },
       "accessNote": "Immutable 6 April 2023 commit edc996d and linked PR 703 replace sixteen consolidated-checkpoint checksum lines after adding shard metadata. Its OPT-66B manifest repeats MD5 1fc5525be4bb541773daf529d419c759 for two distinct shard filenames; the record does not establish whether that repetition is a typo or reflects file identity."
+    },
+    {
+      "id": "laurencon-2022-roots-neurips-record",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Canonical NeurIPS ROOTS proceedings record and bibliography",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/ce9e92e3de2372a4b93353eb7f3dc0bd-Abstract-Datasets_and_Benchmarks.html",
+      "accessDate": "2026-09-11",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "laurencon-2022-roots-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "reference-list"
+      ],
+      "accessNote": "The official Datasets and Benchmarks record supplies the title, ordered 54-author list, volume, track, article and supplement links, and DOI 10.52202/068431-2306. Its BibTeX record supplies volume pages 31809–31826 and Curran Associates publication metadata."
+    },
+    {
+      "id": "laurencon-2022-roots-neurips-main-full-text",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Canonical NeurIPS ROOTS main article",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/ce9e92e3de2372a4b93353eb7f3dc0bd-Paper-Datasets_and_Benchmarks.pdf",
+      "accessDate": "2026-09-11",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "laurencon-2022-roots-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 18
+      },
+      "accessNote": "The complete eighteen-leaf main article is 3,001,266 bytes with SHA-256 c20b7fea1bd9b067e72bb8ba70f1fe7125c8ca7c63735df298babd666e1108d1. Technical evidence uses its visible local article folios 1–18 and stable section, table, figure, and paragraph anchors rather than volume pagination."
+    },
+    {
+      "id": "laurencon-2022-roots-neurips-supplement",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Canonical NeurIPS ROOTS supplementary material",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/file/ce9e92e3de2372a4b93353eb7f3dc0bd-Supplemental-Datasets_and_Benchmarks.pdf",
+      "accessDate": "2026-09-11",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "laurencon-2022-roots-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 19,
+        "pageEnd": 35
+      },
+      "accessNote": "The complete seventeen-leaf supplement is 3,425,703 bytes with SHA-256 b7eda859895571001a047a0d53e4e249d8785abb8dcd426d1a9591feab48306b. Its visible local article folios continue from 19 through 35 and contain the detailed filters, Muliwai boundary, source tables, and author contributions."
+    },
+    {
+      "id": "laurencon-2023-roots-arxiv-record",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "ROOTS arXiv record and submission history",
+      "url": "https://arxiv.org/abs/2303.03915",
+      "accessDate": "2026-09-11",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "laurencon-2023-roots-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata"
+      ],
+      "accessNote": "ArXiv records one version posted 7 March 2023 at 14:25:44 UTC, labels it for the NeurIPS 2022 Datasets and Benchmarks Track, exposes an aggregate DOI, and links CC BY 4.0 terms. The record postdates and does not replace the venue chronology."
+    },
+    {
+      "id": "laurencon-2023-roots-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Combined ROOTS arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2303.03915v1",
+      "accessDate": "2026-09-11",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "laurencon-2023-roots-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 36
+      },
+      "accessNote": "The complete thirty-six-leaf combined PDF is 4,666,027 bytes with SHA-256 dc62414caee7c3653389ddf69cb6c350a5161dc4bf79c2b9c8b08a2016acf085. It adds a contents leaf and places the venue main article and supplement in one PDF-viewer pagination space."
+    },
+    {
+      "id": "laurencon-2023-roots-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Combined ROOTS arXiv version 1 source package",
+      "url": "https://arxiv.org/src/2303.03915v1",
+      "accessDate": "2026-09-11",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "laurencon-2023-roots-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text"
+      ],
+      "accessNote": "The immutable 11,679,917-byte gzip archive has SHA-256 63b59c47ed9309c01f9711939ae675762f188059958d45524122c1aebcba860a and expands to 106 files. The package exposes the main sections, ethics and filter appendices, source table, bibliography, and figures, but no prepared dataset manifest or corpus payload."
+    },
+    {
+      "id": "laurencon-2023-roots-arxiv-cc-by-license",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "accessDate": "2026-09-11",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "laurencon-2023-roots-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "ArXiv links this license as the rights statement for the combined article. The license grants reuse of covered article material with attribution and does not license the ROOTS components, their source documents, or unrelated repository artifacts."
+    },
+    {
+      "id": "laurencon-2022-roots-data-preparation-snapshot",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Paper-era ROOTS data-preparation repository snapshot",
+      "url": "https://github.com/bigscience-workshop/data-preparation/tree/dd3c9aea927ef748978a69459b2889792c4facb6",
+      "accessDate": "2026-09-11",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "laurencon-2022-roots-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 18 November 2022 tree dd3c9aea contains sourcing, preprocessing, filtering, deduplication, and analysis code plus the ROOTS pipeline diagram. It supplies runnable project tooling but not the complete prepared corpus, all input snapshots, a full environment lock, or an artifact digest ledger."
+    },
+    {
+      "id": "laurencon-2022-roots-data-preparation-apache-license",
+      "relatedWorkIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "title": "Paper-era ROOTS data-preparation Apache 2.0 license",
+      "url": "https://github.com/bigscience-workshop/data-preparation/blob/dd3c9aea927ef748978a69459b2889792c4facb6/LICENSE",
+      "accessDate": "2026-09-11",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "laurencon-2022-roots-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable blob 261eeb9 records Apache License 2.0 for the covered repository software. It does not grant rights in ROOTS components, source documents, model weights, paper text, or third-party dependencies and data."
     }
   ],
   "claims": [
@@ -60909,6 +61523,508 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-09"
+    },
+    {
+      "id": "laurencon-2022-roots-version-and-publication-boundary",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "The canonical ROOTS publication is an eighteen-leaf NeurIPS 2022 Datasets and Benchmarks article with volume pages 31809–31826 and a separately distributed seventeen-leaf supplement. The sole arXiv revision was posted on 7 March 2023 and recombines the article and supplement with a contents leaf into one thirty-six-leaf file; the later combined artifact does not move its text or CC BY terms backward into the 2022 venue bundle.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Venue identity and main-article extent",
+            "section": "Title page; 1 Introduction; References"
+          },
+          "support": "The venue article identifies the NeurIPS track and contains eighteen visible local folios."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-supplement",
+          "locator": {
+            "label": "Separately distributed continuing supplement",
+            "section": "A Ethical Considerations and Broader Impacts Statement through F Author Contributions"
+          },
+          "support": "The supplemental file visibly continues local folios 19–35."
+        },
+        {
+          "sourceId": "laurencon-2023-roots-arxiv-v1-full-text",
+          "locator": {
+            "label": "Later combined article-and-supplement artifact",
+            "section": "Contents; 1 Introduction; A Ethical Considerations and Broader Impacts Statement"
+          },
+          "support": "The arXiv PDF adds contents and places both venue components in one thirty-six-leaf file."
+        }
+      ],
+      "limitations": [
+        "The NeurIPS record gives year precision only; no more exact proceedings-publication day is inferred."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-corpus-scale-and-count-scopes",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "ROOTS is reported as 1.6TB across 59 languages: 46 natural languages and 13 programming languages. The paper separately reports 252 collaboratively catalogued sources, 539 pseudo-crawled domain names yielding 147 pseudo-crawl datasets, 517 datasets across three acquisition pipelines, 485 non-empty datasets after one crowdsourced processing stage, and 498 constituent Hugging Face datasets; these labels mark different reported stages and are not treated as interchangeable counts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Corpus scale and language scope",
+            "section": "Abstract; 1.1 Outline of the Paper; 4 A First look at ROOTS"
+          },
+          "support": "The abstract and corpus overview provide the byte and language totals."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Source, domain, pipeline, and constituent-dataset counts",
+            "section": "1 Introduction; 2 (Crowd) Sourcing a Language Resource Catalogue; 2.1 Obtaining Data from the Identified Resources; 2.2 Processing Pipeline for Quality Improvement on Crowdsourced Datasets"
+          },
+          "support": "The text names the 252, 539, 147, 517, 485, and 498 scopes at their respective stages."
+        }
+      ],
+      "limitations": [
+        "The paper does not provide a row-level reconciliation showing exactly how the 517 acquisition outputs and 485 non-empty processed datasets become 498 final constituents.",
+        "Terabytes and dataset counts do not state the number of unique training-token exposures used by a particular model."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The exact mapping among the 517, 485, and 498 scopes remains unstated in the audited primary publication."
+        }
+      ],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-participatory-source-selection",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "participatory-multilingual-source-curation"
+      ],
+      "statement": "The community-selected 62% of ROOTS began with open catalogue submissions and hackathons with locally focused communities. The language plan started from eight high-speaker languages, expanded language groupings through community recommendations, and allowed an additional language when at least three fluent participants committed to selecting sources and guiding its processing choices; the resulting catalogue reported at least 21 sources per considered language category.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Language-community participation and eligibility rule",
+            "section": "1 Introduction; 2 (Crowd) Sourcing a Language Resource Catalogue"
+          },
+          "support": "The article states the 62% component, catalogue and hackathon process, source count, and three-fluent-participant rule."
+        }
+      ],
+      "limitations": [
+        "Participation documents who helped curate the corpus; it does not establish consent by every data subject or rights-holder represented in the selected or crawled text.",
+        "The threshold of three fluent participants is an operational inclusion rule, not evidence that coverage or representation is complete within a language."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-acquisition-and-final-selection",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "The non-OSCAR portion used three acquisition routes: gathered datasets and collections, locally selected sites recovered through Common Crawl pseudo-crawls, and code from GitHub BigQuery plus Stack Exchange. The final selection manually resolved overlapping sources, removed cross-pipeline duplicate versions such as pseudo-crawled Wikipedia and GitHub, dropped noisy or very small resources under stated conditions, and removed pseudo-crawl domains smaller than 2MB after filtering.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Three acquisition routes and final source selection",
+            "section": "2 (Crowd) Sourcing a Language Resource Catalogue; 2.1 Obtaining Data from the Identified Resources"
+          },
+          "support": "The article separates gathered collections, pseudo-crawls, and code and describes overlap and size/noise removals."
+        }
+      ],
+      "limitations": [
+        "The paper gives examples and aggregate counts rather than a complete machine-readable decision ledger for every included, merged, or excluded source."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "The GitHub BigQuery code subset follows AlphaCode's language choices, exact-deduplicates files, and filters by source length, alphabetic-character share, maximum line length, and token-length standard deviation. The realized dataset was also restricted to GPL-licensed repositories because of a preprocessing bug; this is recorded as an outcome, not a recommended licensing filter.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Code-source filters and unintended GPL-only restriction",
+            "section": "2.1 Obtaining Data from the Identified Resources, GitHub Code"
+          },
+          "support": "The paragraph gives the code source, filter ranges, and the explicit preprocessing-bug statement."
+        }
+      ],
+      "limitations": [
+        "The article does not publish the affected repository list, license-version breakdown, file manifest, or before-and-after counts needed to quantify the bug's effect.",
+        "Repository license labels do not by themselves determine rights in every file, dependency, generated artifact, or corpus derivative."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-crowdsourced-cleaning-feedback-loop",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "participatory-multilingual-source-curation"
+      ],
+      "statement": "For gathered and pseudo-crawled data, ROOTS separates document- versus dataset-scoped operations and cleaning versus whole-document filtering. A released visualization displayed altered or removed samples and estimated removed bytes or examples, enabling iterative dataset- and language-specific pipeline changes with native-speaker input; the article reports 485 non-empty datasets at this stage.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Cleaning/filtering taxonomy and visual feedback loop",
+            "section": "2.2 Processing Pipeline for Quality Improvement on Crowdsourced Datasets",
+            "figure": "2"
+          },
+          "support": "The section defines the operation scopes and describes the sample/statistic visualization and native-speaker iteration."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-supplement",
+          "locator": {
+            "label": "Worked pseudo-crawl visualization example",
+            "section": "B.2 Visualization tool use cases"
+          },
+          "support": "The supplement walks through repeated-line removal and the revised normalized-URL step."
+        }
+      ],
+      "limitations": [
+        "The paper does not report inter-rater agreement, a blinded quality study, or a controlled downstream model comparison for this feedback process."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-oscar-selection-and-filtering",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "language-specific-web-document-filtering"
+      ],
+      "statement": "OSCAR 21.09, based on the February 2021 Common Crawl snapshot, supplies 38% of ROOTS by bytes. For 13 languages with available native-speaker parameters, the pipeline uses language-conditioned thresholds over character and word repetition, special-character ratios, closed-class words, flagged-word ratios, perplexity, and minimum word count; language experts inspected the effects through a visualization before thresholds were applied.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "OSCAR share, snapshot, filter families, and language scope",
+            "section": "3 Processing OSCAR; 3.1 Data cleaning and filtering"
+          },
+          "support": "The section identifies OSCAR 21.09, the February 2021 crawl, 38% share, six filter families, thirteen languages, and native-speaker threshold selection."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-supplement",
+          "locator": {
+            "label": "Detailed human-curated OSCAR filter definitions",
+            "section": "C Exhaustive list of human curated filters used on OSCAR"
+          },
+          "support": "The supplement gives formulas and implementation intent for the repetition, special-character, closed-class, flagged-word, identification, and perplexity filters."
+        }
+      ],
+      "limitations": [
+        "Only thirteen of the 46 natural-language categories receive this documented OSCAR-specific thresholding because the required parameters and cutoff values were not obtained for the others.",
+        "Filter thresholds encode operational judgments and can remove valid text; the paper does not show that the resulting documents are error-free or harm-free."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-filter-removal-profile",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "language-specific-web-document-filtering"
+      ],
+      "statement": "The combined OSCAR filtering removal rates reported for Arabic, Basque, Bengali, Catalan, Chinese, English, French, Hindi, Indonesian, Portuguese, Urdu, Vietnamese, and Spanish are respectively 20.3%, 5.2%, 48.8%, 21.1%, 23.1%, 17.2%, 17.0%, 25.7%, 10.4%, 12.6%, 15.8%, 21.3%, and 16.9% of documents.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Per-language combined filtering removal rates",
+            "section": "3.1 Data cleaning and filtering",
+            "table": "1"
+          },
+          "support": "The thirteen values are the complete Table 1 row and are explicitly percentages of documents removed by filtering."
+        }
+      ],
+      "limitations": [
+        "The table reports one combined rate per language and does not identify the marginal causal contribution of each filter; the nearby figure shows individual-filter percentages for only five languages."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-oscar-deduplication",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "length-split-near-duplicate-removal"
+      ],
+      "statement": "Beyond OSCAR's prior exact deduplication, ROOTS applies SimHash over 6-grams with Hamming-distance threshold 4 and reports an average 0.7% of documents, ranging from 0.07% to 2.7% by language, as near-duplicates. Because long documents produced false positives, documents above 6,000 characters were retained within those clusters and instead processed with suffix-array substring deduplication; the paper reports an average 21.67% of bytes, ranging from 10.61% to 32.30%, as duplicated under that analysis.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Length-split near-duplicate and substring pipeline",
+            "section": "3.2 Deduplication"
+          },
+          "support": "The section states both algorithms, thresholds, the long-document exception, and both reported ranges."
+        }
+      ],
+      "limitations": [
+        "The 0.7% figure counts documents whereas the 21.67% figure counts bytes; they are not directly comparable removal rates.",
+        "The article says duplicated under the substring analysis but does not publish a final per-language deletion ledger or downstream memorization evaluation for ROOTS-trained models."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-implemented-pii-redaction",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "limited-pattern-based-pii-redaction"
+      ],
+      "statement": "The implemented OSCAR privacy pass is rule-based and redacts bounded pattern classes labeled KEY, EMAIL, USER, and IP_ADDRESS, including numeric or alphanumeric identifiers while skipping years and simple numbers. The separately released Muliwai neural and back-translation library was not operationalized on ROOTS because its corpus-scale effect could not be assessed within the compute-allocation time constraint.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Actual rule-based PII redaction classes",
+            "section": "3.3 Personally identifiable information"
+          },
+          "support": "The main article enumerates the four realized redaction labels and their bounded examples."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-supplement",
+          "locator": {
+            "label": "Unrealized Muliwai route",
+            "section": "D PII filtering initiative"
+          },
+          "support": "The supplement describes Muliwai and explicitly states why it was not used on ROOTS."
+        }
+      ],
+      "limitations": [
+        "Pattern matching does not cover all personal information, names, indirect identifiers, or context-dependent privacy risks.",
+        "Publishing Muliwai does not make its neural redaction procedure part of the realized ROOTS construction pipeline."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-natural-and-code-distribution",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "By bytes, ROOTS reports English at 30.03%, Simplified Chinese at 16.16%, French at 12.9%, Spanish at 10.85%, Portuguese at 4.91%, and Arabic at 4.6%; the 46 natural languages span three macroareas and nine language families. The code subset spans 13 programming languages, with Java, PHP, and C++ accounting for more than half of its documents, and the median document size for the complete corpus is 1,129 bytes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Natural-language shares, language-family scope, and document size",
+            "section": "4.1 Natural Languages",
+            "figure": "1, 5"
+          },
+          "support": "The section states the top byte shares, macroarea/family totals, and median document length."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Programming-language document profile",
+            "section": "4.2 Programming Languages"
+          },
+          "support": "The section states the thirteen-language code scope and the combined majority for Java, PHP, and C++."
+        }
+      ],
+      "limitations": [
+        "Byte shares are not token shares, document shares, speaker-population coverage, or evidence of equivalent model quality across languages.",
+        "The three macroareas represented in the corpus leave other linguistic macroareas absent from this accounting."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-tokenizer-fertility-analysis",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "tokenizer-fertility-corpus-audit"
+      ],
+      "statement": "ROOTS uses tokens per byte as a component-level audit signal: unexpectedly high fertility helped identify possible language-classification or crawl errors and compare component-domain fit under the BLOOM, GPT-NeoX-20B, and T5 tokenizers. The paper retains unusual but intentional components such as old books, dictionaries, technical text, forums, spoken Arabic, and diacritized classical Arabic when their deviations reflect desired textual diversity.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Tokens-per-byte diagnostic and retained outliers",
+            "section": "4.3 Tokenizer analysis of the component datasets",
+            "figure": "7–8"
+          },
+          "support": "The section defines the diagnostic, excludes components below five documents from the outlier analysis, names the comparison tokenizers, and explains retained deviations."
+        }
+      ],
+      "limitations": [
+        "The compared tokenizers differ in algorithms, vocabulary sizes, and training corpora, and the authors explicitly avoid treating the plots as direct tokenizer comparisons.",
+        "Tokens per byte is a coarse aggregate diagnostic and does not by itself establish correctness, semantic quality, representativeness, or model utility."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-governance-and-component-release",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "ROOTS sought permission from specific providers when possible, kept sources separate until late preprocessing for traceability, and used a composite release model conditioned on source licenses, privacy risks, and custodian agreements. The venue paper reports direct access to 223 of 498 components, subject to their conditions, plus a research sign-up route for broader corpus analysis; the paper calls the release preliminary and gated by commitment to the BigScience ethical charter.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Traceability, source-specific agreements, and 223-of-498 release",
+            "section": "1 Introduction; 1.1 Data Governance"
+          },
+          "support": "The article states the gated preliminary release, permission and separation practices, component-dependent release, distributable-component count, and research access form."
+        }
+      ],
+      "limitations": [
+        "Access to 223 components is not a blanket license for those components, the other 275 components, their source documents, or the assembled corpus.",
+        "The paper does not supply an immutable manifest that binds the 223 released components and every contemporaneous access condition to content digests."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-consent-privacy-and-representation-limits",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance",
+        "limited-pattern-based-pii-redaction"
+      ],
+      "statement": "The authors identify an unresolved tension between using Common Crawl for scale and comparability and respecting consent and privacy: their preprocessing removes only some PII categories, crawled contributors are generally impractical to identify and ask for consent, similar concerns apply to other web-derived sources such as WuDao, and reliance on medium-to-large digitized sources still over-represents privileged voices and language varieties.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-neurips-supplement",
+          "locator": {
+            "label": "Consent, privacy, and representation limitations",
+            "section": "A Ethical Considerations and Broader Impacts Statement, Limitations of the Approach"
+          },
+          "support": "The supplement explicitly states the Common Crawl tension, incomplete PII coverage, consent obstacle, WuDao example, and privileged-voice skew."
+        }
+      ],
+      "limitations": [
+        "Community participation in source and threshold selection does not resolve consent for people whose text is present in crawled or previously assembled datasets.",
+        "These are acknowledged limitations rather than measurements of the frequency or severity of every affected content category."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-artifact-and-rights-boundary",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "The combined arXiv article is distributed under CC BY 4.0, while the paper-era data-preparation repository applies Apache 2.0 to covered software. ROOTS itself is a composite whose component access and reuse depend on source licenses, privacy risks, and custodian agreements; neither article terms nor repository-code terms create an umbrella license for the complete corpus, source documents, or downstream model artifacts.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2023-roots-arxiv-cc-by-license",
+          "locator": {
+            "label": "Combined article reuse terms",
+            "section": "Creative Commons Attribution 4.0 International"
+          },
+          "support": "The arXiv record links CC BY 4.0 for the combined article."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-data-preparation-apache-license",
+          "locator": {
+            "label": "Data-preparation software terms",
+            "section": "Apache License, Version 2.0"
+          },
+          "support": "The immutable paper-era repository license governs covered software."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Component-specific release and rights conditions",
+            "section": "1.1 Data Governance; 5 Conclusion"
+          },
+          "support": "The article makes release conditional on the licensing and governance needs of individual data sources."
+        }
+      ],
+      "limitations": [
+        "This source inventory is not legal advice and does not adjudicate copyright, database rights, privacy law, fair use, or every component's license compatibility.",
+        "No article-level Creative Commons grant was verified for the separately hosted NeurIPS main and supplement; CC BY is therefore bound to the arXiv version only."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "laurencon-2022-roots-reconstruction-boundary",
+      "workId": "laurencon-2022-bigscience-roots-corpus",
+      "ideaIds": [
+        "source-traceable-composite-data-governance"
+      ],
+      "statement": "The audited publication surface includes the main article, supplement, combined source package, source tables, and a paper-era Apache-licensed data-preparation repository with sourcing, preprocessing, filtering, deduplication, and analysis code. It does not provide a complete immutable input-and-output manifest, all source snapshots and permissions, full prepared-corpus digests, environment lock, execution logs, or an automated ledger reconciling every reported dataset count.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "laurencon-2022-roots-data-preparation-snapshot",
+          "locator": {
+            "label": "Paper-era public data-preparation tree",
+            "section": "Repository root; sourcing; preprocessing; analysis"
+          },
+          "support": "The immutable tree exposes the pipeline code surface and its limits."
+        },
+        {
+          "sourceId": "laurencon-2022-roots-neurips-main-full-text",
+          "locator": {
+            "label": "Preliminary release, aggregate count scopes, and publication-source boundary",
+            "section": "1 Introduction; 1.1 Data Governance; 2.1 Obtaining Data from the Identified Resources"
+          },
+          "support": "The paper documents partial access and aggregate stages without a digest-bound reconstruction ledger; the inspected combined publication package contains the cited paper sections and figures, not a prepared-corpus payload."
+        }
+      ],
+      "limitations": [
+        "A public code tree and descriptive paper materially improve inspectability but do not alone guarantee byte-identical corpus reconstruction.",
+        "Current repository or hosting state may differ from the paper-era artifact and is not silently substituted for it."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-11"
     }
   ],
   "relationships": [
@@ -69319,6 +70435,78 @@
         "Operational incident analysis, checkpoint recovery, throughput and carbon-accounting system boundaries, immutable source provenance, artifact manifests, and license scope"
       ],
       "successCriterion": "The learner can audit four versions and twenty claims, reconstruct Table 1 and the nominal recipe while preserving every disclosed live intervention, evaluate the dialogue and responsible-AI tables with their comparator limits, explain the eight-versus-nine, paper-versus-code, and evaluation-wording conflicts, trace later logbook and checkpoint identity changes, map the initial through-66B and gated-175B release states, separate the article, code, model, and data rights, and defend the GPT-3, GPT-2-tokenizer, RoBERTa-data, and PaLM-toxicity edges without transferring excluded data, results, artifacts, or rights."
+    },
+    {
+      "id": "beginner-laurencon-2022-follow-data-choices-not-one-number",
+      "mode": "beginner",
+      "objective": "Trace how communities, source owners, crawls, filters, and release rules shape ROOTS, and replace the idea of one neutral dataset size with a sequence of countable decisions and unresolved limits.",
+      "workIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "ideaIds": [
+        "participatory-multilingual-source-curation",
+        "source-traceable-composite-data-governance",
+        "language-specific-web-document-filtering",
+        "limited-pattern-based-pii-redaction"
+      ],
+      "claimIds": [
+        "laurencon-2022-roots-corpus-scale-and-count-scopes",
+        "laurencon-2022-roots-participatory-source-selection",
+        "laurencon-2022-roots-acquisition-and-final-selection",
+        "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+        "laurencon-2022-roots-oscar-selection-and-filtering",
+        "laurencon-2022-roots-implemented-pii-redaction",
+        "laurencon-2022-roots-natural-and-code-distribution",
+        "laurencon-2022-roots-governance-and-component-release",
+        "laurencon-2022-roots-consent-privacy-and-representation-limits",
+        "laurencon-2022-roots-artifact-and-rights-boundary"
+      ],
+      "prerequisites": [
+        "A language model learns from tokenized text assembled from many documents",
+        "A source, a processed dataset, a corpus component, and a model's training-token exposures are different countable objects",
+        "Public access and permission to reuse are separate questions"
+      ],
+      "successCriterion": "The learner can explain the 62/38 corpus split, distinguish the 252/517/485/498 scopes, describe one language-specific filter and the GPL-only bug, state what the PII pass did not cover, and explain why the 223-component release and two public licenses do not create one open-corpus permission."
+    },
+    {
+      "id": "expert-laurencon-2022-audit-roots-construction-governance-and-provenance",
+      "mode": "expert",
+      "objective": "Audit ROOTS across its venue and arXiv artifacts, acquisition stages, language-conditioned filtering, length-split deduplication, bounded PII redaction, corpus diagnostics, composite governance, incomplete release, reconstruction gaps, and component-specific rights.",
+      "workIds": [
+        "laurencon-2022-bigscience-roots-corpus"
+      ],
+      "ideaIds": [
+        "participatory-multilingual-source-curation",
+        "source-traceable-composite-data-governance",
+        "language-specific-web-document-filtering",
+        "length-split-near-duplicate-removal",
+        "limited-pattern-based-pii-redaction",
+        "tokenizer-fertility-corpus-audit"
+      ],
+      "claimIds": [
+        "laurencon-2022-roots-version-and-publication-boundary",
+        "laurencon-2022-roots-corpus-scale-and-count-scopes",
+        "laurencon-2022-roots-participatory-source-selection",
+        "laurencon-2022-roots-acquisition-and-final-selection",
+        "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+        "laurencon-2022-roots-crowdsourced-cleaning-feedback-loop",
+        "laurencon-2022-roots-oscar-selection-and-filtering",
+        "laurencon-2022-roots-filter-removal-profile",
+        "laurencon-2022-roots-oscar-deduplication",
+        "laurencon-2022-roots-implemented-pii-redaction",
+        "laurencon-2022-roots-natural-and-code-distribution",
+        "laurencon-2022-roots-tokenizer-fertility-analysis",
+        "laurencon-2022-roots-governance-and-component-release",
+        "laurencon-2022-roots-consent-privacy-and-representation-limits",
+        "laurencon-2022-roots-artifact-and-rights-boundary",
+        "laurencon-2022-roots-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "Common Crawl and OSCAR snapshots, dataset loaders, WARC/HTML extraction, source- and document-level deduplication, and tokenizer fertility",
+        "SimHash and Hamming distance, suffix-array substring matching, n-gram repetition filters, perplexity filtering, and regular-expression redaction",
+        "Data provenance, component manifests, source licensing, access controls, custodianship, privacy, consent, and version-scoped publication rights"
+      ],
+      "successCriterion": "The learner can audit both publication versions and sixteen claims, reconstruct the reported acquisition and filtering stages, keep every count and unit in scope, explain the two deduplication regimes and realized PII route, identify the release and reconstruction gaps, and defend an artifact-by-artifact rights matrix without treating participation, access, or code licensing as blanket corpus consent or permission."
     }
   ]
 }
