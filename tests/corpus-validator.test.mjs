@@ -1390,6 +1390,7 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
       "brown-2020-model-configurations-and-175b",
       "brown-2020-headline-task-results",
       "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+      "bigscience-2022-bloom-superglue-scaling-envelope",
     ],
   );
   assert.ok(
@@ -1418,6 +1419,7 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     [
       "brown-2020-compute-and-energy-boundary",
       "zhang-2022-opt-carbon-accounting-boundary",
+      "bigscience-2022-bloom-compute-energy-and-carbon-scopes",
     ],
   );
   assert.deepEqual(
@@ -3393,7 +3395,7 @@ test("preserves OPT versions, training incidents, tiered artifacts, and scoped l
   );
 });
 
-test("preserves ROOTS count scopes, governance limits, and deferred BLOOM lineage", () => {
+test("preserves ROOTS count scopes, governance limits, and target-evidenced BLOOM lineage", () => {
   const workId = "laurencon-2022-bigscience-roots-corpus";
   const work = corpus.works.find((item) => item.id === workId);
   const claims = corpus.claims.filter((item) => item.workId === workId);
@@ -3558,7 +3560,18 @@ test("preserves ROOTS count scopes, governance limits, and deferred BLOOM lineag
   for (const value of ["CC BY 4.0", "Apache 2.0", "umbrella license"])
     assert.ok(rights?.statement.includes(value));
 
-  assert.deepEqual(relationships, []);
+  assert.deepEqual(
+    relationships.map((item) => item.id),
+    ["laurencon-2022-roots-to-bigscience-2022-bloom-data"],
+  );
+  assert.match(relationships[0]?.rationale ?? "", /training-data role only/);
+  assert.deepEqual(
+    relationships[0]?.to,
+    {
+      kind: "work",
+      id: "bigscience-2022-bloom-open-access-multilingual-language-model",
+    },
+  );
   assert.deepEqual(
     objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
     [
@@ -3580,9 +3593,195 @@ test("preserves ROOTS count scopes, governance limits, and deferred BLOOM lineag
     historicalScope.includes("The ROOTS family was checked on 2026-09-11"),
   );
   assert.ok(
-    currentEndpoint.includes("ROOTS now enters the corpus as a distinct"),
+    currentEndpoint.includes("ROOTS and BLOOM now enter the corpus as distinct"),
   );
-  assert.ok(currentEndpoint.includes("BLOOM remains under claim-level review"));
+  assert.ok(currentEndpoint.includes("target-side data-substrate evidence"));
+});
+
+test("preserves BLOOM revisions, run conflicts, evaluation scope, artifacts, rights, and lineage", () => {
+  const workId =
+    "bigscience-2022-bloom-open-access-multilingual-language-model";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const dropout = findClaim("bigscience-2022-bloom-paper-code-dropout-conflict");
+  const tokens = findClaim(
+    "bigscience-2022-bloom-optimizer-schedule-and-token-extension",
+  );
+  const translation = findClaim(
+    "bigscience-2022-bloom-machine-translation-and-truncation",
+  );
+  const humaneval = findClaim("bigscience-2022-bloom-humaneval-code-results");
+  const bloomz = findClaim("bigscience-2022-bloomz-derivative-boundary");
+  const rights = findClaim("bigscience-2022-bloom-paper-code-model-data-rights");
+  const reconstruction = findClaim("bigscience-2022-bloom-reconstruction-boundary");
+  const currentCard = findSource(
+    "bigscience-2026-bloom-current-model-card-boundary",
+  );
+  const currentIntermediate = findSource(
+    "bigscience-2026-bloom-intermediate-repository-boundary",
+  );
+  const bloomzBoundary = findSource("muennighoff-2022-bloomz-arxiv-boundary");
+
+  assert.equal(workIndex(workId), 60);
+  assert.equal(work?.artifactType, "preprint");
+  assert.deepEqual(work?.authors, ["BigScience Workshop"]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022-11-09", "2022-12-11", "2023-03-13", "2023-06-27"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "bigscience-2022-bloom-arxiv-v1-version",
+      "bigscience-2022-bloom-arxiv-v2-version",
+      "bigscience-2022-bloom-arxiv-v3-version",
+      "bigscience-2022-bloom-arxiv-v4-version",
+    ],
+  );
+  assert.equal(
+    work?.canonicalVersionId,
+    "bigscience-2022-bloom-arxiv-v4-version",
+  );
+  assert.equal(work?.sourceIds.length, 19);
+  assert.equal(work?.ideaIds.length, 22);
+  assert.equal(claims.length, 23);
+
+  const pdfHashes = [
+    "3ef17485d9f1db85",
+    "fcee26a2ea9d5dbd",
+    "f13cdd7c94549f21",
+    "8033c3e611aaa120",
+  ];
+  const sourceHashes = [
+    "6dc1b207fed64ae8",
+    "1707f57040273326",
+    "8601de346dd62194",
+    "0d0cf52afa008ad0",
+  ];
+  for (const version of [1, 2, 3, 4]) {
+    const fullText = findSource(
+      `bigscience-2022-bloom-arxiv-v${version}-full-text`,
+    );
+    const sourcePackage = findSource(
+      `bigscience-2022-bloom-arxiv-v${version}-source-package`,
+    );
+    assert.deepEqual(fullText?.pagination, {
+      scheme: "pdf-page",
+      pageStart: 1,
+      pageEnd: version <= 2 ? 62 : 73,
+    });
+    assert.match(fullText?.accessNote ?? "", new RegExp(pdfHashes[version - 1]));
+    assert.match(
+      sourcePackage?.accessNote ?? "",
+      new RegExp(sourceHashes[version - 1]),
+    );
+  }
+  assert.match(work?.versions[1]?.notes ?? "", /Davut Emre Taşar/);
+  assert.match(work?.versions[1]?.notes ?? "", /Shachar Mirkin/);
+  assert.match(work?.versions[2]?.notes ?? "", /HELM/);
+  assert.match(work?.versions[3]?.notes ?? "", /DiaBLa Table 7/);
+
+  assert.match(tokens?.statement ?? "", /341B/);
+  assert.match(tokens?.statement ?? "", /366B/);
+  assert.match(tokens?.statement ?? "", /410B/);
+  assert.match(tokens?.statement ?? "", /25B repeated/);
+  assert.match(dropout?.statement ?? "", /no dropout/);
+  assert.match(dropout?.statement ?? "", /0\.1/);
+  assert.equal(dropout?.uncertainties[0]?.status, "disputed");
+  assert.match(dropout?.uncertainties[0]?.resolutionCondition ?? "", /runtime/);
+
+  for (const value of [
+    "21.96/34.22",
+    "26.79/35.42",
+    "1.96/13.95",
+    "11.48/25.80",
+    "5.7/12.1",
+    "37.6/41.4",
+    "38.5/41.6",
+  ])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of ["15.52%", "32.20%", "55.45%", "12.06%"])
+    assert.ok(humaneval?.statement.includes(value));
+  assert.match(bloomz?.statement ?? "", /83-dataset, 46-language, 16-task/);
+  assert.match(bloomz?.statement ?? "", /13B fine-tuning token exposures/);
+  for (const value of [
+    "CC BY 4.0",
+    "Apache 2.0",
+    "NVIDIA redistribution",
+    "thirteen behavioral restrictions",
+  ])
+    assert.ok(rights?.statement.includes(value));
+  assert.match(reconstruction?.statement ?? "", /byte-identical reconstruction/);
+
+  for (const boundary of [currentCard, currentIntermediate, bloomzBoundary]) {
+    assert.deepEqual(boundary?.versionIds, []);
+    assert.deepEqual(boundary?.supports, ["metadata", "version-boundary"]);
+    assert.equal(
+      claims.some((claim) =>
+        claim.evidence.some((item) => item.sourceId === boundary?.id),
+      ),
+      false,
+    );
+    assert.equal(
+      incoming.some((relationship) =>
+        relationship.sourceEvidence.some(
+          (item) => item.sourceId === boundary?.id,
+        ),
+      ),
+      false,
+    );
+  }
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    [
+      "vaswani-2017-to-bigscience-2022-bloom",
+      "radford-2018-to-bigscience-2022-bloom-decoder",
+      "laurencon-2022-roots-to-bigscience-2022-bloom-data",
+      "hoffmann-2022-to-bigscience-2022-bloom-token-extension",
+    ],
+  );
+  assert.ok(
+    incoming.every(
+      (item) =>
+        item.evidenceClass === "documented-influence" &&
+        item.causalLanguage === "qualified",
+    ),
+  );
+  assert.match(incoming[2]?.rationale ?? "", /training-data role only/);
+  assert.match(incoming[3]?.rationale ?? "", /does not claim/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-bigscience-2022-separate-model-results-and-release",
+        "beginner",
+        10,
+      ],
+      [
+        "expert-bigscience-2022-audit-four-revision-run-and-artifact-lineage",
+        "expert",
+        23,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("BigScience Workshop’s BLOOM family"));
+  assert.ok(corpusFormat.includes("BigScience Workshop’s BLOOM family"));
+  assert.ok(
+    historicalScope.includes("The BLOOM family was checked on 2026-09-12"),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: ROOTS and BLOOM"));
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
@@ -9384,6 +9583,12 @@ test("retains the Transformer as a canonical proceedings node with revision boun
       [
         "vaswani-2017-to-chowdhery-2022-palm",
         "extends",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-bigscience-2022-bloom",
+        "builds-on",
         "documented-influence",
         "qualified",
       ],

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-11",
+  "asOf": "2026-09-12",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -17105,6 +17105,354 @@
           "note": "The publication identifies a preliminary gated component release but does not provide an immutable full-corpus manifest from which every paper-era component and access condition can be reconstructed."
         }
       ]
+    },
+    {
+      "id": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+      "authors": [
+        "BigScience Workshop"
+      ],
+      "artifactType": "preprint",
+      "displayCitation": "BigScience Workshop, “BLOOM: A 176B-Parameter Open-Access Multilingual Language Model,” arXiv:2211.05100v4, 27 June 2023.",
+      "chronology": {
+        "orderingEventId": "bigscience-2022-bloom-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "bigscience-2022-bloom-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2022-11-09",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bigscience-2022-bloom-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 2022-11-09 UTC"
+              }
+            ],
+            "versionId": "bigscience-2022-bloom-arxiv-v1-version",
+            "sourceIds": [
+              "bigscience-2022-bloom-arxiv-record",
+              "bigscience-2022-bloom-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "bigscience-2022-bloom-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2022-12-11",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bigscience-2022-bloom-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 2022-12-11 UTC"
+              }
+            ],
+            "versionId": "bigscience-2022-bloom-arxiv-v2-version",
+            "sourceIds": [
+              "bigscience-2022-bloom-arxiv-record",
+              "bigscience-2022-bloom-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "bigscience-2023-bloom-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2023-03-13",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bigscience-2022-bloom-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 2023-03-13 UTC"
+              }
+            ],
+            "versionId": "bigscience-2022-bloom-arxiv-v3-version",
+            "sourceIds": [
+              "bigscience-2022-bloom-arxiv-record",
+              "bigscience-2022-bloom-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "bigscience-2023-bloom-arxiv-v4-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 4 posted",
+            "date": {
+              "value": "2023-06-27",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "bigscience-2022-bloom-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 4 posted 2023-06-27 UTC"
+              }
+            ],
+            "versionId": "bigscience-2022-bloom-arxiv-v4-version",
+            "sourceIds": [
+              "bigscience-2022-bloom-arxiv-record",
+              "bigscience-2022-bloom-arxiv-v4-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "bigscience-2022-bloom-arxiv-v1-version",
+          "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+          "authors": [
+            "BigScience Workshop"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "BigScience Workshop, “BLOOM: A 176B-Parameter Open-Access Multilingual Language Model,” arXiv:2211.05100v1, 9 November 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2211.05100v1",
+                "label": "arXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2211.05100",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bigscience-2022-bloom-arxiv-record",
+            "bigscience-2022-bloom-arxiv-v1-full-text",
+            "bigscience-2022-bloom-arxiv-v1-source-package",
+            "bigscience-2022-bloom-arxiv-cc-by-license",
+            "bigscience-2022-bloom-training-repository-snapshot",
+            "bigscience-2022-bloom-training-code-license",
+            "bigscience-2022-bloom-megatron-deepspeed-snapshot",
+            "bigscience-2022-bloom-megatron-deepspeed-license",
+            "bigscience-2022-bloom-model-release-snapshot",
+            "bigscience-2022-bloom-rail-license-snapshot"
+          ],
+          "notes": "The 62-leaf ordering manuscript documents the released 176B model, its training and evaluation, and category-based contributor roster. Its body predates the later HELM section and the reorganized translation evaluation."
+        },
+        {
+          "id": "bigscience-2022-bloom-arxiv-v2-version",
+          "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+          "authors": [
+            "BigScience Workshop"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "BigScience Workshop, “BLOOM: A 176B-Parameter Open-Access Multilingual Language Model,” arXiv:2211.05100v2, 11 December 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2211.05100v2",
+                "label": "arXiv version 2 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2211.05100",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bigscience-2022-bloom-arxiv-record",
+            "bigscience-2022-bloom-arxiv-v2-full-text",
+            "bigscience-2022-bloom-arxiv-v2-source-package",
+            "bigscience-2022-bloom-arxiv-cc-by-license",
+            "bigscience-2022-bloom-training-repository-snapshot",
+            "bigscience-2022-bloom-training-code-license",
+            "bigscience-2022-bloom-megatron-deepspeed-snapshot",
+            "bigscience-2022-bloom-megatron-deepspeed-license",
+            "bigscience-2022-bloom-model-release-snapshot",
+            "bigscience-2022-bloom-rail-license-snapshot"
+          ],
+          "notes": "This 62-leaf revision changes the categorized contributor roster: it adds Davut Emre Taşar to Tokenization and Shachar Mirkin to Evaluation and Interpretability, and replaces Karën Fort with Jesse Dodge in Broader Impacts. The audited body otherwise retains the version-1 scientific content."
+        },
+        {
+          "id": "bigscience-2022-bloom-arxiv-v3-version",
+          "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+          "authors": [
+            "BigScience Workshop"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "BigScience Workshop, “BLOOM: A 176B-Parameter Open-Access Multilingual Language Model,” arXiv:2211.05100v3, 13 March 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2211.05100v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2211.05100",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bigscience-2022-bloom-arxiv-record",
+            "bigscience-2022-bloom-arxiv-v3-full-text",
+            "bigscience-2022-bloom-arxiv-v3-source-package",
+            "bigscience-2022-bloom-arxiv-cc-by-license",
+            "bigscience-2022-bloom-training-repository-snapshot",
+            "bigscience-2022-bloom-training-code-license",
+            "bigscience-2022-bloom-megatron-deepspeed-snapshot",
+            "bigscience-2022-bloom-megatron-deepspeed-license",
+            "bigscience-2022-bloom-model-release-snapshot",
+            "bigscience-2022-bloom-rail-license-snapshot"
+          ],
+          "notes": "This 73-leaf revision substantially expands and reorganizes evaluation, including contextual DiaBLa analysis, revised FLORES presentation, sentence-embedding sections, reproduced HELM results, and a larger appendix with prompts and examples. Those additions are not projected backward into versions 1–2."
+        },
+        {
+          "id": "bigscience-2022-bloom-arxiv-v4-version",
+          "title": "BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+          "authors": [
+            "BigScience Workshop"
+          ],
+          "kind": "preprint",
+          "label": "Canonical arXiv version 4",
+          "language": "en",
+          "bibliography": {
+            "citation": "BigScience Workshop, “BLOOM: A 176B-Parameter Open-Access Multilingual Language Model,” arXiv:2211.05100v4, 27 June 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2211.05100v4",
+                "label": "arXiv version 4 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2211.05100",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "bigscience-2022-bloom-arxiv-record",
+            "bigscience-2022-bloom-arxiv-v4-full-text",
+            "bigscience-2022-bloom-arxiv-v4-source-package",
+            "bigscience-2022-bloom-arxiv-cc-by-license",
+            "bigscience-2022-bloom-training-repository-snapshot",
+            "bigscience-2022-bloom-training-code-license",
+            "bigscience-2022-bloom-megatron-deepspeed-snapshot",
+            "bigscience-2022-bloom-megatron-deepspeed-license",
+            "bigscience-2022-bloom-model-release-snapshot",
+            "bigscience-2022-bloom-rail-license-snapshot"
+          ],
+          "notes": "The canonical 73-leaf revision adds Daniel McDuff to Broader Impacts, repairs the truncation markers in DiaBLa Table 7, and reflows and reorders the multilingual-probing tables, figures, and discussion. The audited scientific values are otherwise retained from version 3."
+        }
+      ],
+      "canonicalVersionId": "bigscience-2022-bloom-arxiv-v4-version",
+      "preferredSourceIds": [
+        "bigscience-2022-bloom-arxiv-v4-full-text",
+        "bigscience-2022-bloom-arxiv-v4-source-package",
+        "bigscience-2022-bloom-training-repository-snapshot",
+        "bigscience-2022-bloom-model-release-snapshot",
+        "bigscience-2022-bloom-rail-license-snapshot"
+      ],
+      "sourceIds": [
+        "bigscience-2022-bloom-arxiv-record",
+        "bigscience-2022-bloom-arxiv-v1-full-text",
+        "bigscience-2022-bloom-arxiv-v1-source-package",
+        "bigscience-2022-bloom-arxiv-v2-full-text",
+        "bigscience-2022-bloom-arxiv-v2-source-package",
+        "bigscience-2022-bloom-arxiv-v3-full-text",
+        "bigscience-2022-bloom-arxiv-v3-source-package",
+        "bigscience-2022-bloom-arxiv-v4-full-text",
+        "bigscience-2022-bloom-arxiv-v4-source-package",
+        "bigscience-2022-bloom-arxiv-cc-by-license",
+        "bigscience-2022-bloom-training-repository-snapshot",
+        "bigscience-2022-bloom-training-code-license",
+        "bigscience-2022-bloom-megatron-deepspeed-snapshot",
+        "bigscience-2022-bloom-megatron-deepspeed-license",
+        "bigscience-2022-bloom-model-release-snapshot",
+        "bigscience-2022-bloom-rail-license-snapshot",
+        "bigscience-2026-bloom-current-model-card-boundary",
+        "bigscience-2026-bloom-intermediate-repository-boundary",
+        "muennighoff-2022-bloomz-arxiv-boundary"
+      ],
+      "inclusion": {
+        "status": "branch",
+        "confidence": "high",
+        "rationale": "BLOOM makes a multilingual 176B-scale dense model an unusually inspectable sociotechnical object: target-side documentation ties the model to ROOTS, records architecture and run operations, exposes multiple model scales and checkpoint documentation, and separates a use-restricted weight license from code and paper terms. Its historical value is this joined multilingual, operational, artifact, and governance surface—not a priority claim for decoder-only language modeling, ALiBi, instruction tuning, model cards, or responsible licensing."
+      },
+      "ideaIds": [
+        "alibi-distance-linear-logit-bias",
+        "embedding-layernorm-stability-tradeoff",
+        "multilingual-tokenizer-fertility-balancing",
+        "checkpoint-level-model-documentation",
+        "responsible-use-restricted-model-release",
+        "output-truncation-sensitive-generation-evaluation",
+        "decoder-only-transformer-language-modeling",
+        "multilingual-code-mixture-pretraining",
+        "distributed-dense-transformer-training",
+        "large-scale-low-precision-training",
+        "practical-training-compute-accounting",
+        "reported-compute-versus-measured-energy",
+        "training-run-operational-logbook",
+        "public-model-scale-ladder",
+        "prompt-distribution-robustness-evaluation",
+        "demonstration-conditioned-in-context-learning",
+        "benchmark-scoped-model-harm-profiling",
+        "multitask-supervised-instruction-tuning",
+        "instruction-tuning-scale-dependence",
+        "balanced-parameter-token-scaling",
+        "byte-level-byte-pair-tokenization",
+        "scale-dependent-in-context-learning"
+      ],
+      "significance": {
+        "beginner": "BLOOM shows that one model name can hide several different things: a four-revision paper, six pretrained sizes, a particular 176B training run, intermediate and final checkpoints, a later fine-tuned BLOOMZ derivative, and different permissions for paper, code, weights, and data. Its results also change sharply with prompts, languages, and output handling.",
+        "expert": "BLOOM supplies a versioned account of ROOTS-conditioned multilingual causal pretraining, ALiBi and embedding-LayerNorm design choices, 3D Megatron-DeepSpeed execution, bfloat16 stability, a 366B-exposure run, heterogeneous prompt-based evaluations, checkpoint-level documentation, carbon scopes, and RAIL-governed model release. The record preserves small-scale ablation limits, paper/config conflicts, mutable model-card drift, BLOOMZ nonidentity, and incomplete byte-identical reconstruction."
+      },
+      "limitations": [
+        "Architecture and objective choices were ablated at 1.3B or 6.7B parameters, and the paper itself questions extrapolation to 176B after a reported outlier-feature phase transition above 6.7B.",
+        "The evaluation suite mixes tasks, prompts, languages, shots, metrics, output handling, and external comparator sources; it does not support a prompt-independent or universal performance ranking.",
+        "The paper reports about 341B ROOTS corpus tokens and 366B training-token exposures, while paper-era training documentation also uses 350B unique tokens and an unrealized 450B plan; no immutable exposure-by-source ledger reconciles those scopes.",
+        "Public code, checkpoints, model cards, and operational notes improve inspection but do not supply the complete prepared training shards, immutable environment, all internal revisions, optimizer-state history, or event logs needed for byte-identical reruns.",
+        "The BLOOM RAIL terms restrict specified behaviors and do not transfer the paper's CC BY terms or software licenses to model weights, ROOTS components, third-party datasets, outputs, or downstream systems."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "Canonical paper Section 3.5 says training used no dropout, while the paper-era public 176B training README says Megatron-LM defaults of 0.1 attention and hidden dropout were inherited and the audited final Slurm file does not override them.",
+          "resolutionCondition": "Resolve with an immutable runtime argument dump or training log bound to the final 176B job."
+        },
+        {
+          "status": "open",
+          "note": "The inspected public sources do not completely reconcile approximately 341B corpus tokens, 350B unique-token wording, 366B realized exposures, and the 410B/450B schedule horizons."
+        },
+        {
+          "status": "open",
+          "note": "The exact paper-era dependency commits and all prepared data-shard identities are not bound into one public immutable run manifest."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -19156,7 +19504,9 @@
         "chowdhery-2022-training-objective-schedule-and-instability",
         "chowdhery-2022-artifact-and-rights-boundary",
         "zhang-2022-opt-model-family-and-gpt3-replication",
-        "zhang-2022-opt-initialization-and-training-recipe"
+        "zhang-2022-opt-initialization-and-training-recipe",
+        "bigscience-2022-bloom-causal-decoder-objective-and-family",
+        "bigscience-2022-bloom-176b-architecture"
       ],
       "uncertainties": []
     },
@@ -19560,7 +19910,8 @@
         "brown-2020-context-tokenizer-and-packed-sequences",
         "brown-2020-artifact-and-reproducibility-boundary",
         "bart-2020-large-pretraining-recipe-and-data",
-        "zhang-2022-opt-corpus-tokenizer-and-deduplication"
+        "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+        "bigscience-2022-bloom-tokenizer-design-and-fertility"
       ],
       "uncertainties": [
         {
@@ -20362,7 +20713,9 @@
         "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
         "chowdhery-2022-translation-and-multilingual-evaluation",
         "chowdhery-2022-shot-count-and-checkpoint-variance",
-        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope"
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+        "bigscience-2022-bloom-prompt-distribution-evaluation-protocol",
+        "bigscience-2022-bloom-machine-translation-and-truncation"
       ],
       "uncertainties": [
         {
@@ -20380,7 +20733,8 @@
       "claimIds": [
         "brown-2020-model-configurations-and-175b",
         "brown-2020-headline-task-results",
-        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope"
+        "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+        "bigscience-2022-bloom-superglue-scaling-envelope"
       ],
       "uncertainties": [
         {
@@ -20451,7 +20805,8 @@
       "description": "Keep estimated training FLOPs and PF-days separate from measured electricity, carbon, and lifecycle impact, and do not let a narrow inference-energy estimate substitute for the missing measurements.",
       "claimIds": [
         "brown-2020-compute-and-energy-boundary",
-        "zhang-2022-opt-carbon-accounting-boundary"
+        "zhang-2022-opt-carbon-accounting-boundary",
+        "bigscience-2022-bloom-compute-energy-and-carbon-scopes"
       ],
       "uncertainties": [
         {
@@ -20577,7 +20932,8 @@
         "sanh-2022-big-bench-results",
         "sanh-2022-flan-comparison-and-instructionless-ablation",
         "sanh-2022-artifact-mixture-and-rights-boundary",
-        "sanh-2022-compute-bias-and-scope-boundary"
+        "sanh-2022-compute-bias-and-scope-boundary",
+        "bigscience-2022-bloomz-derivative-boundary"
       ],
       "uncertainties": []
     },
@@ -20631,7 +20987,8 @@
       "kind": "finding",
       "description": "In one related decoder-only model family, the same instruction-mixture intervention improves held-out tasks at roughly hundred-billion-parameter scale but can reduce them at eight billion parameters and below.",
       "claimIds": [
-        "wei-2022-scale-dependent-transfer-ablation"
+        "wei-2022-scale-dependent-transfer-ablation",
+        "bigscience-2022-bloomz-derivative-boundary"
       ],
       "uncertainties": [
         {
@@ -20648,7 +21005,9 @@
       "claimIds": [
         "sanh-2022-rank-classification-and-prompt-aggregation",
         "sanh-2022-prompt-and-dataset-diversity-ablation",
-        "sanh-2022-gpt3-prompt-comparator-boundary"
+        "sanh-2022-gpt3-prompt-comparator-boundary",
+        "bigscience-2022-bloom-prompt-distribution-evaluation-protocol",
+        "bigscience-2022-bloom-superglue-scaling-envelope"
       ],
       "uncertainties": [
         {
@@ -20727,7 +21086,9 @@
       "claimIds": [
         "rae-2021-gopher-training-recipe",
         "rae-2021-gopher-distributed-training-and-compute",
-        "rae-2021-bfloat16-staleness-and-master-weight-fix"
+        "rae-2021-bfloat16-staleness-and-master-weight-fix",
+        "bigscience-2022-bloom-hardware-parallelism-and-throughput",
+        "bigscience-2022-bloom-bfloat16-stability"
       ],
       "uncertainties": [
         {
@@ -20745,7 +21106,8 @@
         "rae-2021-gopher-distributed-training-and-compute",
         "rae-2021-compute-and-carbon-accounting",
         "chowdhery-2022-distributed-pathways-training",
-        "zhang-2022-opt-distributed-training-efficiency"
+        "zhang-2022-opt-distributed-training-efficiency",
+        "bigscience-2022-bloom-hardware-parallelism-and-throughput"
       ],
       "uncertainties": []
     },
@@ -20759,7 +21121,9 @@
         "rae-2021-compute-and-carbon-accounting",
         "chowdhery-2022-model-flops-utilization",
         "chowdhery-2022-compute-and-carbon-accounting",
-        "zhang-2022-opt-carbon-accounting-boundary"
+        "zhang-2022-opt-carbon-accounting-boundary",
+        "bigscience-2022-bloom-optimizer-schedule-and-token-extension",
+        "bigscience-2022-bloom-compute-energy-and-carbon-scopes"
       ],
       "uncertainties": [
         {
@@ -20981,7 +21345,8 @@
         "hoffmann-2022-cross-dataset-isoflop-check",
         "hoffmann-2022-kaplan-allocation-challenge",
         "hoffmann-2022-gopher-budget-frontier-projections",
-        "hoffmann-2022-scaling-validity-boundary"
+        "hoffmann-2022-scaling-validity-boundary",
+        "bigscience-2022-bloom-optimizer-schedule-and-token-extension"
       ],
       "uncertainties": [
         {
@@ -21142,7 +21507,9 @@
         "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
         "chowdhery-2022-translation-and-multilingual-evaluation",
         "chowdhery-2022-model-dataset-and-use-boundary",
-        "chowdhery-2022-artifact-and-rights-boundary"
+        "chowdhery-2022-artifact-and-rights-boundary",
+        "bigscience-2022-bloom-roots-training-substrate",
+        "bigscience-2022-bloom-humaneval-code-results"
       ],
       "uncertainties": []
     },
@@ -21220,7 +21587,10 @@
         "zhang-2022-opt-instability-restarts-and-midflight-recovery",
         "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
         "zhang-2022-opt-carbon-accounting-boundary",
-        "zhang-2022-opt-artifact-evolution-and-integrity"
+        "zhang-2022-opt-artifact-evolution-and-integrity",
+        "bigscience-2022-bloom-paper-code-dropout-conflict",
+        "bigscience-2022-bloom-run-incidents-and-checkpoints",
+        "bigscience-2022-bloom-reconstruction-boundary"
       ],
       "uncertainties": []
     },
@@ -21249,7 +21619,9 @@
         "zhang-2022-opt-checkpoint-release-staging",
         "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
         "zhang-2022-opt-internal-reporting-discrepancies",
-        "zhang-2022-opt-artifact-evolution-and-integrity"
+        "zhang-2022-opt-artifact-evolution-and-integrity",
+        "bigscience-2022-bloom-causal-decoder-objective-and-family",
+        "bigscience-2022-bloom-release-artifact-boundary"
       ],
       "uncertainties": []
     },
@@ -21262,7 +21634,10 @@
         "zhang-2022-opt-hate-speech-api-comparison",
         "zhang-2022-opt-stereotype-benchmark-profile",
         "zhang-2022-opt-realtoxicity-profile",
-        "zhang-2022-opt-dialogue-safety-profile"
+        "zhang-2022-opt-dialogue-safety-profile",
+        "bigscience-2023-bloom-helm-reproduced-evaluation",
+        "bigscience-2023-bloom-multilingual-probing-scale-boundary",
+        "bigscience-2023-bloom-crowspairs-bias-boundary"
       ],
       "uncertainties": []
     },
@@ -21336,6 +21711,78 @@
         "laurencon-2022-roots-tokenizer-fertility-analysis"
       ],
       "uncertainties": []
+    },
+    {
+      "id": "alibi-distance-linear-logit-bias",
+      "name": "ALiBi distance-linear attention-logit bias",
+      "kind": "mechanism",
+      "description": "Inject head-specific linear distance penalties directly into causal attention logits instead of adding learned or sinusoidal position vectors to token embeddings.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "BLOOM adopts ALiBi but does not claim its mechanism or long-context motivation as a BigScience contribution."
+        }
+      ],
+      "claimIds": [
+        "bigscience-2022-bloom-176b-architecture",
+        "bigscience-2022-bloom-alibi-and-layernorm-ablation-boundary"
+      ]
+    },
+    {
+      "id": "embedding-layernorm-stability-tradeoff",
+      "name": "Embedding LayerNorm stability trade-off",
+      "kind": "constraint",
+      "description": "Add normalization immediately after token embeddings to reduce observed large-run instability while retaining the possibility that it degrades zero-shot transfer or becomes unnecessary under a wider numeric format.",
+      "uncertainties": [],
+      "claimIds": [
+        "bigscience-2022-bloom-176b-architecture",
+        "bigscience-2022-bloom-alibi-and-layernorm-ablation-boundary",
+        "bigscience-2022-bloom-bfloat16-stability"
+      ]
+    },
+    {
+      "id": "multilingual-tokenizer-fertility-balancing",
+      "name": "Multilingual tokenizer fertility balancing",
+      "kind": "mechanism",
+      "description": "Design and audit a byte-level subword vocabulary across languages with fertility constraints, lossless encoding, no text normalization, and language-aware pretokenization rather than reusing an English-only tokenizer unchanged.",
+      "uncertainties": [],
+      "claimIds": [
+        "bigscience-2022-bloom-tokenizer-design-and-fertility"
+      ]
+    },
+    {
+      "id": "checkpoint-level-model-documentation",
+      "name": "Checkpoint-level model documentation",
+      "kind": "mechanism",
+      "description": "Publish model cards, intermediate training states, and operational context at checkpoint granularity so a release can be inspected as an evolving run rather than only as final weights.",
+      "uncertainties": [],
+      "claimIds": [
+        "bigscience-2022-bloom-version-and-contributor-boundary",
+        "bigscience-2022-bloom-run-incidents-and-checkpoints",
+        "bigscience-2022-bloom-release-artifact-boundary",
+        "bigscience-2022-bloom-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "responsible-use-restricted-model-release",
+      "name": "Responsible-use-restricted model release",
+      "kind": "constraint",
+      "description": "Make model parameters available under terms that grant reuse while prohibiting enumerated behaviors, keeping model, source code, data, and output rights as separate scopes.",
+      "uncertainties": [],
+      "claimIds": [
+        "bigscience-2022-bloom-paper-code-model-data-rights",
+        "bigscience-2022-bloom-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "output-truncation-sensitive-generation-evaluation",
+      "name": "Output-truncation-sensitive generation evaluation",
+      "kind": "finding",
+      "description": "Report how generation metrics change when overlong or wrong-language continuations are truncated, so content quality is not silently conflated with stopping behavior.",
+      "uncertainties": [],
+      "claimIds": [
+        "bigscience-2022-bloom-machine-translation-and-truncation"
+      ]
     }
   ],
   "sources": [
@@ -32799,6 +33246,481 @@
         "pageEnd": 1
       },
       "accessNote": "Immutable blob 261eeb9 records Apache License 2.0 for the covered repository software. It does not grant rights in ROOTS components, source documents, model weights, paper text, or third-party dependencies and data."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-record",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "arXiv record for BLOOM: A 176B-Parameter Open-Access Multilingual Language Model",
+      "url": "https://arxiv.org/abs/2211.05100",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official ledger identifies the BigScience Workshop preprint family, four UTC submission dates, aggregate DOI, and CC BY 4.0 article terms."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2211.05100v1",
+      "accessDate": "2026-09-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 62
+      },
+      "accessNote": "The complete 62-leaf PDF is 3,017,040 bytes with SHA-256 3ef17485d9f1db85377faa7252cca06130751fb3b9bc445e9ff08241bc8175be. Evidence uses stable section, table, figure, and appendix anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 1 source package",
+      "url": "https://arxiv.org/src/2211.05100v1",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 6dc1b207fed64ae89929e814de0ff2edf3ae16aa4270eb8bcc45b2b5ec24350e. It contains manuscript source and figures, not model weights, optimizer states, prepared training shards, or a complete runnable environment."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2211.05100v2",
+      "accessDate": "2026-09-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 62
+      },
+      "accessNote": "The complete 62-leaf PDF is 3,017,050 bytes with SHA-256 fcee26a2ea9d5dbdf34c4a8902e57bdc7c8a989046032e8e21556748a32a6da7. Evidence uses stable section, table, figure, and appendix anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 2 source package",
+      "url": "https://arxiv.org/src/2211.05100v2",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 1707f570402733265709c10bb0e7f762185d09c73b06dec2128cff6a61938e6b. It contains manuscript source and figures, not model weights, optimizer states, prepared training shards, or a complete runnable environment."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/2211.05100v3",
+      "accessDate": "2026-09-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 73
+      },
+      "accessNote": "The complete 73-leaf PDF is 2,993,657 bytes with SHA-256 f13cdd7c94549f21d8854063406272dec54569810f65f730aab87c6224e4de67. Evidence uses stable section, table, figure, and appendix anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 3 source package",
+      "url": "https://arxiv.org/src/2211.05100v3",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 8601de346dd62194311ac9a93204e0537904cdb8393eaf4d7aac7707ce772d50. It contains manuscript source and figures, not model weights, optimizer states, prepared training shards, or a complete runnable environment."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v4-full-text",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Canonical BLOOM arXiv version 4 full text",
+      "url": "https://arxiv.org/pdf/2211.05100v4",
+      "accessDate": "2026-09-12",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 73
+      },
+      "accessNote": "The complete 73-leaf PDF is 3,029,243 bytes with SHA-256 8033c3e611aaa120cb7294085ebd6ee297ffae9ec02393b1c4f1593d7e6ee065. Evidence uses stable section, table, figure, and appendix anchors rather than PDF-viewer positions."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-v4-source-package",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM arXiv version 4 source package",
+      "url": "https://arxiv.org/src/2211.05100v4",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 0d0cf52afa008ad04da14d2149c12627e2f2ca252d58f4596259ff0701c5f597. It contains manuscript source and figures, not model weights, optimizer states, prepared training shards, or a complete runnable environment."
+    },
+    {
+      "id": "bigscience-2022-bloom-arxiv-cc-by-license",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Creative Commons Attribution 4.0 International license",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The arXiv ledger links CC BY 4.0 for all four article revisions. Those terms govern the paper text and figures, not model weights, source code, ROOTS components, evaluation datasets, or third-party artifacts."
+    },
+    {
+      "id": "bigscience-2022-bloom-training-repository-snapshot",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable paper-era BigScience 176B training repository snapshot",
+      "url": "https://github.com/bigscience-workshop/bigscience/tree/aa872e754106f6678e8a9dac8c6962404ba39a6d/train/tr11-176B-ml",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 4 November 2022 tree aa872e7 contains the 176B README, final Slurm configuration, environment launcher, checkpoint procedures, reshaping notes, and dated chronicles. It retains internal paths and branch names rather than one complete dependency lock or public prepared-data manifest."
+    },
+    {
+      "id": "bigscience-2022-bloom-training-code-license",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Apache 2.0 license for the BigScience training repository",
+      "url": "https://github.com/bigscience-workshop/bigscience/blob/aa872e754106f6678e8a9dac8c6962404ba39a6d/LICENSE",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The repository-level Apache 2.0 file governs covered BigScience software at the paper-era snapshot; it does not license model weights, ROOTS data, paper text, or separately noticed dependencies."
+    },
+    {
+      "id": "bigscience-2022-bloom-megatron-deepspeed-snapshot",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable paper-era Megatron-DeepSpeed training-stack snapshot",
+      "url": "https://github.com/bigscience-workshop/Megatron-DeepSpeed/tree/1e77844c26c2e488f57e125917ba666d5afcf9c1",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Commit 1e77844 is the public pre-version-1 training-stack tree used to inspect BLOOM-specific bfloat16 optimizer, ALiBi, tensor, pipeline, and ZeRO-related implementation surfaces. The publication and training repository do not bind every runtime dependency to this one commit."
+    },
+    {
+      "id": "bigscience-2022-bloom-megatron-deepspeed-license",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Composite license file for the Megatron-DeepSpeed snapshot",
+      "url": "https://raw.githubusercontent.com/bigscience-workshop/Megatron-DeepSpeed/1e77844c26c2e488f57e125917ba666d5afcf9c1/LICENSE",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The snapshot license begins with NVIDIA redistribution conditions and separately reproduces Apache 2.0 terms for Hugging Face and Google Research code and MIT terms for Fairseq-derived code. It is not a single blanket Apache grant for every file or downstream artifact."
+    },
+    {
+      "id": "bigscience-2022-bloom-model-release-snapshot",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BLOOM model repository at the safetensors release commit",
+      "url": "https://huggingface.co/bigscience/bloom/commit/4d8e28c67403974b0f17a4ac5992e4ba0b0dbb6f",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 21 October 2022 commit 4d8e28c adds a 72-shard safetensors representation to the existing BLOOM checkpoint repository. The bound model card labels itself version 1.3, identifies training iteration 95000 and 366B seen tokens, and is distinct from later card and serialization changes."
+    },
+    {
+      "id": "bigscience-2022-bloom-rail-license-snapshot",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Immutable BigScience BLOOM RAIL License v1.0",
+      "url": "https://huggingface.co/spaces/bigscience/license/blob/eaa6609655e3f94644ec51337d3282596261c386/BLOOMLICENSE.txt",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "bigscience-2022-bloom-arxiv-v1-version",
+        "bigscience-2022-bloom-arxiv-v2-version",
+        "bigscience-2022-bloom-arxiv-v3-version",
+        "bigscience-2022-bloom-arxiv-v4-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 19 July 2022 license snapshot grants model-related permissions subject to conditions and thirteen enumerated use restrictions, excludes training data from its license scope, and does not make an affirmative copyright grant over generated outputs."
+    },
+    {
+      "id": "bigscience-2026-bloom-current-model-card-boundary",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Current mutable BLOOM model card",
+      "url": "https://huggingface.co/bigscience/bloom",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The current mutable card records later repository state, including a warning that earlier model-card evaluation results were incorrect and removed. It is retained as artifact-evolution provenance and cannot silently revise the paper family or the paper-era checkpoint snapshot."
+    },
+    {
+      "id": "bigscience-2026-bloom-intermediate-repository-boundary",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "Current mutable BLOOM intermediate-checkpoint repository",
+      "url": "https://huggingface.co/bigscience/bloom-intermediate",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The current repository exposes a later mutable packaging of intermediate training states and warns that these checkpoints are not fully trained. It documents release evolution but is not bound into any paper revision."
+    },
+    {
+      "id": "muennighoff-2022-bloomz-arxiv-boundary",
+      "relatedWorkIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "title": "arXiv record for Crosslingual Generalization through Multitask Finetuning",
+      "url": "https://arxiv.org/abs/2211.01786",
+      "accessDate": "2026-09-12",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "version-boundary"
+      ],
+      "accessNote": "The official record identifies the separate BLOOMZ/xP3 publication family. It prevents the fine-tuned derivative, its later versions, and its artifacts from being collapsed into the base BLOOM paper or checkpoint."
     }
   ],
   "claims": [
@@ -62025,6 +62947,796 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-11"
+    },
+    {
+      "id": "bigscience-2022-bloom-version-and-contributor-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "checkpoint-level-model-documentation"
+      ],
+      "statement": "The BLOOM paper family has four arXiv revisions posted on 9 November 2022, 11 December 2022, 13 March 2023, and 27 June 2023. Versions 1–2 are 62 leaves; version 2 changes categorized contributors but retains the audited scientific body. Versions 3–4 are 73 leaves; version 3 materially expands and reorganizes evaluation, and version 4 adds one Broader Impacts contributor, repairs DiaBLa truncation markers, and reflows the multilingual-probing material without changing its reported values.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 extent and content boundary",
+            "section": "Title and categorized contributor lists; 4 Evaluation; 6 Author Contributions"
+          },
+          "support": "The ordering manuscript supplies the original 62-leaf body and contributor categories."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 extent and content boundary",
+            "section": "Title and categorized contributor lists; 4 Evaluation; 6 Author Contributions"
+          },
+          "support": "Comparison with version 1 isolates the contributor-list additions and replacement while retaining the 62-leaf scientific body."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version 3 extent and content boundary",
+            "section": "Title and categorized contributor lists; 4 Evaluation; 4.9 Multilingual Probing; 6 Author Contributions"
+          },
+          "support": "Comparison with version 2 shows the 73-leaf expanded evaluation, HELM material, and enlarged appendix."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Version 4 extent and content boundary",
+            "section": "Title and categorized contributor lists; 4 Evaluation; 4.9 Multilingual Probing; 6 Author Contributions"
+          },
+          "support": "Comparison with version 3 isolates the contributor addition, DiaBLa symbols, and probing-layout repair in the canonical file."
+        }
+      ],
+      "limitations": [
+        "Repository, checkpoint, and model-card changes are release artifacts rather than additional paper revisions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-roots-training-substrate",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "multilingual-code-mixture-pretraining"
+      ],
+      "statement": "BLOOM was trained on ROOTS, which the target paper describes as 498 Hugging Face datasets totaling 1.61TB across 46 natural and 13 programming languages. The paper's about 341B corpus-token count is not the 176B run's 366B training-token exposures: after one intended pass, large models received an additional 25B repeated-token exposures.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side ROOTS identity, size, and language scope",
+            "section": "3.1 Training Dataset; 3.5 Training",
+            "figure": "2–4",
+            "table": "1, 3"
+          },
+          "support": "The model paper explicitly names ROOTS as the training corpus and separates corpus tokens from realized exposures."
+        }
+      ],
+      "limitations": [
+        "The 498 components are not one uniform license or access regime.",
+        "Training-token exposures count repeated input and do not measure unique documents, bytes, or per-language effective exposure."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-causal-decoder-objective-and-family",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "public-model-scale-ladder"
+      ],
+      "statement": "BLOOM is a causal decoder-only Transformer family with six reported pretrained sizes: 560M, 1.1B, 1.7B, 3B, 7.1B, and 176B. The architecture/objective choice follows smaller 6.7B experiments comparing causal, prefix, and masked objectives across decoder-only and encoder–decoder forms; the final 176B run itself is not a repeated objective ablation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Decoder-only objective and six-size family",
+            "section": "3.2.1 Design Methodology; 3.2.2 Architecture and Pretraining Objective; 3.5 Training",
+            "table": "3"
+          },
+          "support": "The paper states the selected causal decoder-only form, the smaller ablation scale, and all six model configurations."
+        }
+      ],
+      "limitations": [
+        "The six sizes do not share identical precision, batch size, peak learning rate, or total exposure counts.",
+        "The objective comparison is summarized from a companion study and does not provide a controlled 176B-scale alternative."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-176b-architecture",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "alibi-distance-linear-logit-bias",
+        "embedding-layernorm-stability-tradeoff"
+      ],
+      "statement": "The final model contains 176,247,271,424 parameters, rounded to 176,247M in Table 3, with 70 decoder blocks, model width 14,336, 112 attention heads, GELU, tied token/output embeddings, a 250,680-item vocabulary, and 2,048-token sequences. It uses pre-normalization, ALiBi attention-logit biases, and an additional LayerNorm after the embedding layer.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Exact parameter count and architecture",
+            "section": "3.2.3 Modeling Details; 3.5 Training",
+            "figure": "5",
+            "table": "3"
+          },
+          "support": "The architecture figure, prose, and table together supply the exact total, rounded table value, dimensions, and deviations."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-model-release-snapshot",
+          "locator": {
+            "label": "Paper-era final-checkpoint configuration",
+            "section": "Model card, Model Details; Training"
+          },
+          "support": "The immutable model repository independently binds the exact parameter total, layer/head/width values, vocabulary, sequence length, and iteration 95000 checkpoint identity."
+        }
+      ],
+      "limitations": [
+        "The 250,680 logical vocabulary differs from the 250,880 padded vocabulary used by the public training configuration."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-alibi-and-layernorm-ablation-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "alibi-distance-linear-logit-bias",
+        "embedding-layernorm-stability-tradeoff"
+      ],
+      "statement": "At 1.3B scale, BLOOM's design study found ALiBi training smoother and downstream performance better at the original sequence length than learned or rotary positions. The added embedding LayerNorm stabilized preliminary 104B float16 training but penalized zero-shot generalization in smaller experiments; the final run kept it for stability even though the authors say bfloat16 may make it unnecessary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "ALiBi and embedding-LayerNorm selection trade-offs",
+            "section": "3.2.1 Design Methodology; 3.2.3 Modeling Details"
+          },
+          "support": "The target identifies the ablation scale, reported benefits, zero-shot penalty, precision change, and unresolved necessity."
+        }
+      ],
+      "limitations": [
+        "The paper does not report a 176B controlled ALiBi alternative or a 176B bfloat16 run without embedding LayerNorm.",
+        "Performance at the trained 2,048-token length does not establish long-context extrapolation for the released model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-tokenizer-design-and-fertility",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "byte-level-byte-pair-tokenization",
+        "multilingual-tokenizer-fertility-balancing"
+      ],
+      "statement": "BLOOM uses a byte-level BPE tokenizer with no text normalization, a language- and code-conscious pretokenizer, and a 250,680-item vocabulary including 200 reserved tokens. Fertility comparisons aimed to keep each language within ten percentage points of a monolingual tokenizer; Arabic is the stated exception at thirteen points. Whole URLs found in an early vocabulary led the team to deduplicate lines in tokenizer-training data.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Lossless multilingual tokenizer construction and audit",
+            "section": "3.3 Tokenizer",
+            "table": "2"
+          },
+          "support": "The section states byte-level BPE, normalization and pretokenization choices, fertility criterion and exception, URL failure, line deduplication, and final vocabulary accounting."
+        }
+      ],
+      "limitations": [
+        "Fertility is a segmentation diagnostic rather than direct evidence of semantic quality or equal downstream performance.",
+        "The paper does not publish a controlled 176B comparison against a reused English tokenizer."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-hardware-parallelism-and-throughput",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "distributed-dense-transformer-training",
+        "large-scale-low-precision-training"
+      ],
+      "statement": "The final run used 384 active NVIDIA A100 80GB GPUs on 48 Jean Zay nodes, with 32 additional GPUs on four reserve nodes. Megatron-DeepSpeed combined four-way tensor parallelism, twelve-stage pipeline parallelism, eight-way data parallelism, ZeRO-stage-1-equivalent optimizer-state sharding, activation checkpointing, and fused kernels. The fastest reported configuration reached 156 TFLOP/s per GPU, half the cited 312 TFLOP/s peak, not an end-to-end average.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Hardware, 3D parallelism, sharding, and peak throughput",
+            "section": "3.4 Engineering; 3.4.1 Hardware; 3.4.2 Framework; 3.4.3 Parallelism; 3.4.4 Fused CUDA Kernels"
+          },
+          "support": "The target states the active/reserve hardware, topology, checkpointing, kernels, ZeRO description, and fastest throughput."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-training-repository-snapshot",
+          "locator": {
+            "label": "Final public Slurm topology and ZeRO-equivalent setting",
+            "section": "tr11-176B-ml.slurm; README.md, ZeRO"
+          },
+          "support": "The paper-era configuration records TP=4, PP=12, microbatch 2, global batch 2048, bfloat16, activation checkpointing, and ZERO_STAGE=0 because its bfloat16 optimizer implements a stage-1 equivalent."
+        }
+      ],
+      "limitations": [
+        "156 TFLOP/s is a fastest-configuration value and does not state mean utilization over the 3.5-month run.",
+        "The paper calls the optimizer sharding ZeRO stage 1 while the public configuration uses stage 0 plus a custom equivalent; the implementation distinction must remain visible."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-bfloat16-stability",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "large-scale-low-precision-training",
+        "embedding-layernorm-stability-tradeoff"
+      ],
+      "statement": "BLOOM trained in bfloat16 mixed precision while retaining numerically sensitive operations such as gradient accumulation and softmax in float32. The authors report that bfloat16 removed the float16 instability encountered in earlier large experiments, but the final run simultaneously retained embedding LayerNorm and other engineering changes, so the paper does not isolate one causal fix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Mixed-precision regime and reported stability",
+            "section": "3.2.3 Modeling Details; 3.4.3 Parallelism"
+          },
+          "support": "The paper states the float32-sensitive operations, final bfloat16 regime, earlier float16 instability, and retained LayerNorm."
+        }
+      ],
+      "limitations": [
+        "No controlled 176B float16/bfloat16 pair or 176B LayerNorm ablation is reported."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-optimizer-schedule-and-token-extension",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "balanced-parameter-token-scaling",
+        "practical-training-compute-accounting"
+      ],
+      "statement": "The 176B run used global batch 2,048, peak learning rate 6×10^-5, Adam β=(0.9, 0.95), weight decay 0.1, gradient clipping 1.0, 375M warmup tokens, cosine decay planned over 410B tokens, and minimum rate 6×10^-6. It stopped at 366B exposures, so the decay endpoint was not reached; the additional 25B repeated exposures beyond ROOTS's approximately 341B tokens were adopted after revised scaling laws appeared during training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Realized optimizer and incomplete schedule horizon",
+            "section": "3.5 Training",
+            "table": "3"
+          },
+          "support": "Table 3 and surrounding prose provide the settings, planned horizon, realized exposures, repeated-token extension, and scaling-law rationale."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-model-release-snapshot",
+          "locator": {
+            "label": "Final checkpoint exposure identity",
+            "section": "Model card, Training; Model Details"
+          },
+          "support": "The immutable model repository binds iteration 95000 to 366B seen tokens."
+        }
+      ],
+      "limitations": [
+        "The public configuration retains an unrealized 450B train-sample plan and therefore cannot be read as the final completed exposure count.",
+        "The additional exposures repeat data; they are not 25B newly collected unique tokens."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-paper-code-dropout-conflict",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "training-run-operational-logbook"
+      ],
+      "statement": "Canonical paper Section 3.5 says BLOOM used no dropout. In contrast, the immutable paper-era 176B training README says Megatron-LM's default attention and hidden dropout values of 0.1 were inherited, while the inspected final Slurm configuration supplies no explicit dropout override. Without a final runtime argument dump, the realized setting remains disputed rather than silently reconciled.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Paper no-dropout statement",
+            "section": "3.5 Training"
+          },
+          "support": "The canonical prose directly says weight decay and gradient clipping were used with no dropout."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-training-repository-snapshot",
+          "locator": {
+            "label": "Paper-era README and final Slurm settings",
+            "section": "README.md, Dropout; tr11-176B-ml.slurm, training arguments"
+          },
+          "support": "The README prints inherited 0.1 defaults and the final public Slurm file does not visibly override attention or hidden dropout."
+        }
+      ],
+      "limitations": [
+        "Repository documentation and a configuration file do not substitute for a captured runtime argument dump from the final job."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "The audited paper and public training configuration support incompatible dropout readings.",
+          "resolutionCondition": "A final-run log or immutable runtime configuration that prints the effective attention and hidden dropout values would resolve the discrepancy."
+        }
+      ],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-run-incidents-and-checkpoints",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "training-run-operational-logbook",
+        "checkpoint-level-model-documentation"
+      ],
+      "statement": "During the roughly 3.5-month run, the paper reports one or two GPU failures per week, automatic reserve-node replacement, checkpoints every three hours, 5–10-hour downtimes from a data-loader deadlock and disk-space issues, and one loss spike from which training recovered. The paper-era repository adds dated chronicles, backup and checkpoint procedures, a 2.3TB full-state versus 329GB bfloat16-weight distinction, and topology-reshaping instructions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Run duration, failure profile, checkpoint interval, and recovery",
+            "section": "3.4.1 Hardware; 3.4.5 Additional Challenges"
+          },
+          "support": "The paper states duration, failure frequency, backup nodes, checkpoint interval, downtime, and loss-spike outcome."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-training-repository-snapshot",
+          "locator": {
+            "label": "Dated operations, backup, and checkpoint-state documentation",
+            "section": "README.md, Checkpoints; chronicles.md; backup-schedule.md; reshaping-log.md"
+          },
+          "support": "The immutable tree supplies operational context, checkpoint sizes, preservation procedures, and reshaping mechanics beyond the paper summary."
+        }
+      ],
+      "limitations": [
+        "The public chronicles are human-authored operational notes rather than a complete machine-event ledger.",
+        "The paper's comparison with OPT concerns stated intervention burden, not a controlled cross-project reliability study."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-compute-energy-and-carbon-scopes",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "practical-training-compute-accounting",
+        "reported-compute-versus-measured-energy"
+      ],
+      "statement": "The paper reports 1,082,990 compute hours for final training and separately estimates 433 MWh and 25 metric tons CO2e for its energy-related training phase. Its 81-ton broader training total adds 11 tons for equipment manufacture and 45 tons for idle-cluster consumption. The paper further says final training was 37% of overall BigScience compute emissions and gives a deployment example of about 20kg CO2e per day; these boundaries are not interchangeable.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Compute and carbon accounting boundaries",
+            "section": "3.4.1 Hardware; 5.3 Environmental Impact",
+            "table": "15"
+          },
+          "support": "The hardware section gives compute hours; the environmental section separates energy, manufacture, idle consumption, project share, and one deployment estimate."
+        }
+      ],
+      "limitations": [
+        "Compute hours are not GPU-hours, FLOPs, electricity, or carbon without the paper's stated conversion boundary.",
+        "The 20kg/day deployment example is workload- and infrastructure-specific and is not a lifecycle estimate for all uses."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-release-artifact-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "checkpoint-level-model-documentation",
+        "public-model-scale-ladder"
+      ],
+      "statement": "The audited release surface contains six pretrained model scales, a final 176B checkpoint at iteration 95000 after 366B token exposures, checkpoint-specific model-card intent, paper-era training configuration and chronicles, and public intermediate-state documentation. An October 2022 immutable model-repository commit adds a 72-shard safetensors serialization; later card, index, serialization, and intermediate-repository changes are release evolution, not paper revisions or automatically identical checkpoints.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Six sizes, model cards, and checkpoint-level release intent",
+            "section": "3.5 Training; 3.6 Release",
+            "table": "3"
+          },
+          "support": "The paper lists all six sizes and says the final model and each checkpoint received model-card documentation."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-model-release-snapshot",
+          "locator": {
+            "label": "Immutable final-checkpoint repository state",
+            "section": "Commit files and model card"
+          },
+          "support": "The commit binds the 72-shard safetensors addition to an existing iteration-95000, 366B-token model repository state."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-training-repository-snapshot",
+          "locator": {
+            "label": "Paper-era configuration, chronicles, and checkpoint mechanics",
+            "section": "README.md; chronicles.md; tr11-176B-ml.slurm; reshaping-log.md"
+          },
+          "support": "The immutable code tree identifies run documents and distinguishes full-state, weight-only, converted, and synchronized artifacts."
+        }
+      ],
+      "limitations": [
+        "The paper and repository do not provide one digest manifest covering every public checkpoint, optimizer state, log, model card, conversion, and later serialization.",
+        "Intermediate checkpoints are not fully trained substitutes for the final model and may differ in packaging across repository history."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-paper-code-model-data-rights",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "responsible-use-restricted-model-release"
+      ],
+      "statement": "BLOOM's paper revisions are under CC BY 4.0. Covered BigScience training code is under Apache 2.0, while Megatron-DeepSpeed's repository-level file preserves NVIDIA redistribution conditions plus separately noticed Apache and MIT code. The model parameters use BLOOM RAIL v1.0 with thirteen behavioral restrictions; that license explicitly excludes training data and does not turn paper, code, ROOTS components, third-party datasets, outputs, or downstream systems into one uniformly licensed artifact.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-cc-by-license",
+          "locator": {
+            "label": "Paper reuse terms",
+            "section": "Creative Commons Attribution 4.0 International"
+          },
+          "support": "The arXiv ledger applies CC BY 4.0 to the article revisions."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-training-code-license",
+          "locator": {
+            "label": "BigScience software terms",
+            "section": "Apache License, Version 2.0"
+          },
+          "support": "The immutable training repository applies Apache 2.0 to its covered software."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-megatron-deepspeed-license",
+          "locator": {
+            "label": "Megatron-DeepSpeed composite code terms",
+            "section": "NVIDIA conditions; Apache License; MIT License"
+          },
+          "support": "The file preserves multiple code-rights regimes rather than one project-wide Apache label."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-rail-license-snapshot",
+          "locator": {
+            "label": "Model grant, use restrictions, data exclusion, and output boundary",
+            "section": "BigScience BLOOM RAIL 1.0, Sections I–V; Attachment A"
+          },
+          "support": "The immutable license defines model and derivatives, states the data exclusion, supplies permissions and conditions, and enumerates thirteen restricted uses."
+        }
+      ],
+      "limitations": [
+        "This provenance inventory is not legal advice and does not adjudicate copyright, database rights, privacy law, license compatibility, or every dependency and dataset term.",
+        "Public access is not equivalent to unrestricted open-source licensing when behavioral-use clauses govern model use."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-prompt-distribution-evaluation-protocol",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "prompt-distribution-robustness-evaluation",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "For the main prompted evaluations, BigScience contributors wrote multiple task prompts in PromptSource before BLOOM's release and did not tune them on the model. SuperGLUE uses five randomly selected prompts per dataset and reports average behavior over that finite prompt distribution; candidate tasks rank labels by conditional log-likelihood. This protocol targets typical contributed prompt variation, not the best prompt or all valid instructions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Prompt construction, selection, and label ranking",
+            "section": "4.1 Experimental Setup; 4.2 SuperGLUE"
+          },
+          "support": "The paper states prompt provenance, pre-release timing, absence of BLOOM tuning, random five-prompt selection, and candidate log-likelihood scoring."
+        }
+      ],
+      "limitations": [
+        "Five contributed prompts are not a representative sample of every natural instruction or user distribution.",
+        "Prompt-wise averaging does not remove task, language, calibration, or candidate-verbalization effects."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-superglue-scaling-envelope",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "prompt-distribution-robustness-evaluation",
+        "scale-dependent-in-context-learning"
+      ],
+      "statement": "On the evaluated SuperGLUE subset, many non-entailment tasks remain near chance on average. Base BLOOM generally trails OPT in zero shot but often matches or improves relative to OPT in one shot; neither family shows a uniform advantage and scaling is weak or inconsistent across tasks and prompts. T0 values are not a like-for-like base-model comparison because T0 received multitask prompted fine-tuning.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "SuperGLUE prompt and scaling envelope",
+            "section": "4.2 SuperGLUE",
+            "figure": "6–9"
+          },
+          "support": "The section and plots report chance-level cases, zero-/one-shot family patterns, nonuniform scaling, and the T0 fine-tuning caveat."
+        }
+      ],
+      "limitations": [
+        "The displayed subset omits compute-heavy SuperGLUE tasks and does not support a whole-benchmark average claim.",
+        "The external model families differ in data, tokenizer, architecture, checkpoints, and prompting details."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-machine-translation-and-truncation",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "output-truncation-sensitive-generation-evaluation"
+      ],
+      "statement": "BLOOM's translation evidence is strongly direction-, prompt-, and output-treatment-dependent. In WMT14/19, zero-/one-shot BLEU is 21.96/34.22 for English→French, 26.79/35.42 for French→English, 1.96/13.95 for English→Hindi, and 11.48/25.80 for Hindi→English; the dedicated M2M comparator remains higher for the English–French directions. On DiaBLa, truncating overgenerated outputs changes random-example BLEU from 5.7/12.1 to 37.6/41.4 and previous-context BLEU from 6.1/12.3 to 38.5/41.6. FLORES results are poor for Swahili↔Yoruba, each with fewer than 50,000 pretraining tokens, while Romance-language transfer includes unseen Galician.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "WMT direction and shot results",
+            "section": "4.3.1 WMT",
+            "table": "6"
+          },
+          "support": "The table prints all four named BLOOM direction/shot pairs and the dedicated-system comparison."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "DiaBLa truncation sensitivity",
+            "section": "4.3.2 DiaBLa",
+            "table": "7"
+          },
+          "support": "The corrected canonical table marks truncated versus untruncated generation and prints the four BLEU pairs."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "FLORES low-resource and unseen-related-language boundary",
+            "section": "4.3.3 Flores-101",
+            "table": "8"
+          },
+          "support": "The prose identifies the Swahili/Yoruba failure, their under-50k exposure, and Galician Romance transfer."
+        }
+      ],
+      "limitations": [
+        "BLEU values after reference-length truncation measure a different output transformation and cannot be read as unmodified generation quality.",
+        "The low-resource and related-language observations are associations, not controlled causal estimates of corpus size or linguistic distance."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-humaneval-code-results",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "multilingual-code-mixture-pretraining"
+      ],
+      "statement": "On HumanEval, base BLOOM-176B reports pass@1 15.52%, pass@10 32.20%, and pass@100 55.45%. The separately fine-tuned BLOOMZ derivative reports 12.06%, 26.53%, and 48.44%, while Codex comparators are substantially higher. The result is a Python code-generation benchmark profile, not a general measure of multilingual programming competence or safe code.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "HumanEval base and derivative results",
+            "section": "4.5 Code Generation",
+            "table": "9"
+          },
+          "support": "Table 9 prints the three pass@k values for BLOOM and BLOOMZ and the Codex comparison rows."
+        }
+      ],
+      "limitations": [
+        "Pass@k depends on the sampling protocol and test suite and does not measure security, maintainability, or non-Python languages.",
+        "The current mutable model card later removed prior evaluation material it says was incorrect; the canonical paper table remains version-bound rather than silently overwritten by the card."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2023-bloom-helm-reproduced-evaluation",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "Added in arXiv version 3, the HELM section reproduces external five-shot English-only results rather than a new BigScience-controlled run. It places BLOOM roughly near GPT-3 davinci v1 and J1-Grande v1 in accuracy while behind newer monolingual systems; the reproduced profile also describes weak calibration, strong robustness and fairness, slightly above-average toxicity, and average bias. These dimensions do not collapse into one ranking.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version-3 HELM addition",
+            "section": "4.6 HELM benchmark"
+          },
+          "support": "Version 3 adds the HELM prose and figure and identifies the results as reproduced from Liang et al."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Canonical reproduced HELM profile",
+            "section": "4.6 HELM benchmark",
+            "figure": "10"
+          },
+          "support": "The canonical version retains the external five-shot scope, comparator description, and multidimensional profile."
+        }
+      ],
+      "limitations": [
+        "The section imports external results and does not supply a BigScience-controlled common inference stack, raw generations, or repeated-run uncertainty.",
+        "HELM's five-shot English scenarios do not measure the full multilingual distribution or later model-repository state."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloomz-derivative-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "multitask-supervised-instruction-tuning",
+        "instruction-tuning-scale-dependence"
+      ],
+      "statement": "BLOOMZ is a separate derivative produced after base pretraining by multitask prompted fine-tuning on xP3, an 83-dataset, 46-language, 16-task mixture. Table 3 reports 13B fine-tuning token exposures and a constant 2×10^-5 learning rate; the best validation checkpoint is selected after performance plateaus between roughly 1B and 6B exposures. BLOOMZ's held-out multilingual gains and HumanEval regression do not rewrite the base BLOOM checkpoint or its results.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "BLOOMZ construction, mixture, and training settings",
+            "section": "3.1.4 Prompted Datasets; 3.5 Training; 4.7 Multitask Prompted Finetuning",
+            "table": "3",
+            "figure": "4, 11"
+          },
+          "support": "The paper identifies the post-pretraining derivative, xP3 scope, 13B-token schedule, checkpoint selection, plateau, and held-out-task evaluation."
+        }
+      ],
+      "limitations": [
+        "BLOOMZ depends on separate fine-tuning data, checkpoints, and publication/repository history.",
+        "The held-out tasks and language mixture do not establish general instruction following across arbitrary languages or tasks."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2023-bloom-multilingual-probing-scale-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "The multilingual probing study trains logistic classifiers on end-of-training layer representations for 17 languages and 38 morphosyntactic features, averages three seeds, and compares BLOOM-1.7B with BLOOM-176B and count-based features. The smaller model is on par with or better than the 176B model on average and both exceed the aggregate count baselines, while language- and feature-level exceptions remain; the analysis averages layers and does not observe acquisition through training.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Probing design, aggregate result, and scope limits",
+            "section": "4.9 Multilingual Probing",
+            "table": "11–13",
+            "figure": "12"
+          },
+          "support": "The method and canonical repaired tables state the language/feature scope, classifiers, seeds, baselines, size comparison, and end-state/layer-averaged limits."
+        }
+      ],
+      "limitations": [
+        "A linear probe can exploit correlations in fixed representations and does not by itself demonstrate usable grammatical knowledge or causal linguistic mechanisms.",
+        "The paper's transfer and generalization explanations remain interpretations; the statistical results are mixed across model size, family, script, and data-size criteria."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2023-bloom-crowspairs-bias-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "benchmark-scoped-model-harm-profiling"
+      ],
+      "statement": "The preliminary bias study adapts revised English and French CrowS-Pairs minimal pairs to an autoregressive prompt-choice setup. Canonical Table 14 reports overall prompt accuracy 49.78% for English and 50.61% for French, near the stated 0.5 reference, but the authors also acknowledge that masked-model metric validity does not transfer naturally and that two languages, one dataset, and one prompt family cannot establish broad absence of bias.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Autoregressive CrowS-Pairs adaptation and aggregate results",
+            "section": "4.10 Bias",
+            "table": "14",
+            "figure": "13"
+          },
+          "support": "The section explains the prompt adaptation, prints language/category values and significance marks, and states the metric and coverage qualifications."
+        }
+      ],
+      "limitations": [
+        "Near-0.5 aggregate prompt accuracy can hide category-level and instance-level behavior and does not validate fairness in generation or deployment.",
+        "The prompt-choice adaptation changes the original masked-language-model metric and lacks a comprehensive external validity study."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "bigscience-2022-bloom-reconstruction-boundary",
+      "workId": "bigscience-2022-bloom-open-access-multilingual-language-model",
+      "ideaIds": [
+        "checkpoint-level-model-documentation",
+        "training-run-operational-logbook",
+        "responsible-use-restricted-model-release"
+      ],
+      "statement": "The audited publication and release surface exposes four paper/source packages, exact paper-era training and model-repository commits, architecture and Slurm settings, dated chronicles, checkpoint procedures, model cards, final weights, and separate license files. It does not expose one immutable manifest binding the prepared ROOTS shards, their sampling order, all dependency commits, runtime arguments, optimizer-state checkpoints, evaluation prompts/generations, machine events, conversions, digests, and every artifact-specific permission needed for a byte-identical reconstruction.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-source-package",
+          "locator": {
+            "label": "Canonical publication-source boundary",
+            "section": "Complete source archive"
+          },
+          "support": "The archive contains manuscript materials rather than the training and evaluation payloads."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-training-repository-snapshot",
+          "locator": {
+            "label": "Paper-era run-document and environment boundary",
+            "section": "README.md; start-tr11-176B-ml; tr11-176B-ml.slurm; chronicles.md"
+          },
+          "support": "The public tree provides substantial run detail but retains internal paths, branch names, and incomplete environment/data identity."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-model-release-snapshot",
+          "locator": {
+            "label": "Final model-repository boundary",
+            "section": "Commit tree and model card"
+          },
+          "support": "The checkpoint repository identifies final weights and one serialization state rather than every training state and dependency."
+        },
+        {
+          "sourceId": "bigscience-2022-bloom-rail-license-snapshot",
+          "locator": {
+            "label": "Model-rights boundary",
+            "section": "Sections I–V; Attachment A"
+          },
+          "support": "The model license expressly leaves data outside its licensed material and imposes use conditions."
+        }
+      ],
+      "limitations": [
+        "Inspectability and reproducibility are gradients; the release is materially richer than a paper-only account without constituting a complete replay package.",
+        "Mutable current repositories are retained only as version-boundary provenance and are not substituted for the immutable paper-era snapshots."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-12"
     }
   ],
   "relationships": [
@@ -66490,6 +68202,164 @@
           "note": "Different generation lengths, aggregation, model access paths, and absent uncertainty estimates prevent raw-value transfer or a controlled model comparison."
         }
       ]
+    },
+    {
+      "id": "vaswani-2017-to-bigscience-2022-bloom",
+      "from": {
+        "kind": "work",
+        "id": "vaswani-2017-attention-is-all-you-need"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bigscience-2022-bloom-open-access-multilingual-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BLOOM explicitly places its causal decoder-only model within Transformer architecture while contrasting the original encoder–decoder form and preserving masked self-attention, multi-head attention, feed-forward blocks, residual paths, layer normalization, and tied token/output embeddings. The relationship carries that named architectural substrate only; ALiBi, embedding LayerNorm, model dimensions, objective selection, data, training, evaluations, artifacts, and rights remain target-specific.",
+      "claimIds": [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "bigscience-2022-bloom-causal-decoder-objective-and-family",
+        "bigscience-2022-bloom-176b-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side Transformer architecture and deviation account",
+            "section": "3.2.2 Architecture and Pretraining Objective; 3.2.3 Modeling Details",
+            "figure": "5"
+          },
+          "support": "The target identifies the original Transformer as encoder–decoder, selects the decoder-only causal route, and describes its own positional and normalization deviations."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is architecture-specific and does not assign BLOOM's scale, multilingual corpus, ALiBi, run, results, or release regime to the original Transformer."
+        }
+      ]
+    },
+    {
+      "id": "radford-2018-to-bigscience-2022-bloom-decoder",
+      "from": {
+        "kind": "work",
+        "id": "radford-2018-improving-language-understanding-generative-pre-training"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bigscience-2022-bloom-open-access-multilingual-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BLOOM names GPT as the decoder-only Transformer precedent when motivating its causal architecture. The relationship carries masked causal self-attention and left-to-right language-model structure, not GPT's BooksCorpus, 12-layer configuration, supervised adaptation, learned positions, optimizer, results, artifacts, or rights.",
+      "claimIds": [
+        "radford-2018-decoder-only-transformer-architecture",
+        "bigscience-2022-bloom-causal-decoder-objective-and-family",
+        "bigscience-2022-bloom-176b-architecture"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side GPT decoder-only precedent",
+            "section": "3.2.2 Architecture and Pretraining Objective"
+          },
+          "support": "The target contrasts encoder-only and encoder–decoder routes with the decoder-only GPT precedent and adopts a causal decoder-only model."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The citation establishes a decoder-architecture precedent, not direct code inheritance or identity of model recipe."
+        }
+      ]
+    },
+    {
+      "id": "laurencon-2022-roots-to-bigscience-2022-bloom-data",
+      "from": {
+        "kind": "work",
+        "id": "laurencon-2022-bigscience-roots-corpus"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bigscience-2022-bloom-open-access-multilingual-language-model"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BLOOM's target paper directly states that the model was trained on ROOTS and gives the 498-component, 1.61TB, 46-natural-language, and 13-programming-language substrate. The relationship carries that documented training-data role only; ROOTS governance claims, count reconciliations, permissions, model mechanisms, exposure schedule, results, checkpoints, code, and model license do not transfer across the edge.",
+      "claimIds": [
+        "laurencon-2022-roots-corpus-scale-and-count-scopes",
+        "laurencon-2022-roots-governance-and-component-release",
+        "bigscience-2022-bloom-roots-training-substrate",
+        "bigscience-2022-bloom-optimizer-schedule-and-token-extension"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side ROOTS training-data identity",
+            "section": "Abstract; 3.1 Training Dataset; 3.5 Training",
+            "figure": "2–4",
+            "table": "1, 3"
+          },
+          "support": "The target says BLOOM was trained on ROOTS, states its component, byte, and language scopes, and distinguishes approximately 341B corpus tokens from 366B run exposures."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge identifies the model's training-data substrate and does not treat article, code, data, model, or component rights as transferable."
+        },
+        {
+          "status": "open",
+          "note": "No public immutable ledger maps every ROOTS component and document to its realized BLOOM exposure count."
+        }
+      ]
+    },
+    {
+      "id": "hoffmann-2022-to-bigscience-2022-bloom-token-extension",
+      "from": {
+        "kind": "work",
+        "id": "hoffmann-2022-training-compute-optimal-language-models"
+      },
+      "to": {
+        "kind": "work",
+        "id": "bigscience-2022-bloom-open-access-multilingual-language-model"
+      },
+      "connectionType": "addresses",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "BLOOM explicitly says revised scaling laws published during training led the team to add 25B repeated-token exposures beyond the approximately 341B-token ROOTS pass. This relationship is limited to that mid-run allocation decision; it does not claim that BLOOM satisfies Hoffmann's estimated compute optimum or transfer Chinchilla's architecture, MassiveText mixture, tokenizer, optimizer, evaluations, artifacts, or rights.",
+      "claimIds": [
+        "hoffmann-2022-balanced-scaling-estimates",
+        "hoffmann-2022-scaling-validity-boundary",
+        "bigscience-2022-bloom-optimizer-schedule-and-token-extension"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "bigscience-2022-bloom-arxiv-v4-full-text",
+          "locator": {
+            "label": "Target-side scaling-law response during training",
+            "section": "3.5 Training"
+          },
+          "support": "The target names Hoffmann et al. and directly attributes its additional 25B repeated-token exposures to revised scaling laws published during the run."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The relationship records a bounded schedule adjustment rather than compliance with a universal compute-optimal prescription."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -70507,6 +72377,105 @@
         "Data provenance, component manifests, source licensing, access controls, custodianship, privacy, consent, and version-scoped publication rights"
       ],
       "successCriterion": "The learner can audit both publication versions and sixteen claims, reconstruct the reported acquisition and filtering stages, keep every count and unit in scope, explain the two deduplication regimes and realized PII route, identify the release and reconstruction gaps, and defend an artifact-by-artifact rights matrix without treating participation, access, or code licensing as blanket corpus consent or permission."
+    },
+    {
+      "id": "beginner-bigscience-2022-separate-model-results-and-release",
+      "mode": "beginner",
+      "objective": "Explain how BLOOM's training corpus, model architecture, prompts, checkpoints, BLOOMZ derivative, and licenses form related but nonidentical parts of one project.",
+      "workIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "multilingual-code-mixture-pretraining",
+        "checkpoint-level-model-documentation",
+        "responsible-use-restricted-model-release",
+        "output-truncation-sensitive-generation-evaluation",
+        "practical-training-compute-accounting",
+        "prompt-distribution-robustness-evaluation",
+        "multitask-supervised-instruction-tuning"
+      ],
+      "claimIds": [
+        "bigscience-2022-bloom-version-and-contributor-boundary",
+        "bigscience-2022-bloom-roots-training-substrate",
+        "bigscience-2022-bloom-causal-decoder-objective-and-family",
+        "bigscience-2022-bloom-176b-architecture",
+        "bigscience-2022-bloom-optimizer-schedule-and-token-extension",
+        "bigscience-2022-bloom-release-artifact-boundary",
+        "bigscience-2022-bloom-paper-code-model-data-rights",
+        "bigscience-2022-bloom-prompt-distribution-evaluation-protocol",
+        "bigscience-2022-bloom-machine-translation-and-truncation",
+        "bigscience-2022-bloomz-derivative-boundary"
+      ],
+      "prerequisites": [
+        "A causal decoder predicts the next token from earlier tokens",
+        "A corpus-token count, a training-token exposure count, and a model parameter count measure different things",
+        "A base checkpoint and a separately fine-tuned derivative are different model artifacts"
+      ],
+      "successCriterion": "The learner can distinguish 341B corpus tokens from 366B exposures, state the main 176B dimensions, explain why prompts and truncation change evaluations, keep BLOOMZ separate, and identify different rights for paper, code, weights, and data."
+    },
+    {
+      "id": "expert-bigscience-2022-audit-four-revision-run-and-artifact-lineage",
+      "mode": "expert",
+      "objective": "Audit BLOOM across four paper revisions, target-evidenced technical lineage, architecture ablations, tokenizer, realized training topology and schedule, operational records, evaluation envelopes, derivative boundaries, artifact evolution, reconstruction gaps, and component-specific rights.",
+      "workIds": [
+        "bigscience-2022-bloom-open-access-multilingual-language-model"
+      ],
+      "ideaIds": [
+        "alibi-distance-linear-logit-bias",
+        "embedding-layernorm-stability-tradeoff",
+        "multilingual-tokenizer-fertility-balancing",
+        "checkpoint-level-model-documentation",
+        "responsible-use-restricted-model-release",
+        "output-truncation-sensitive-generation-evaluation",
+        "decoder-only-transformer-language-modeling",
+        "multilingual-code-mixture-pretraining",
+        "distributed-dense-transformer-training",
+        "large-scale-low-precision-training",
+        "practical-training-compute-accounting",
+        "reported-compute-versus-measured-energy",
+        "training-run-operational-logbook",
+        "public-model-scale-ladder",
+        "prompt-distribution-robustness-evaluation",
+        "demonstration-conditioned-in-context-learning",
+        "benchmark-scoped-model-harm-profiling",
+        "multitask-supervised-instruction-tuning",
+        "instruction-tuning-scale-dependence",
+        "balanced-parameter-token-scaling",
+        "byte-level-byte-pair-tokenization",
+        "scale-dependent-in-context-learning"
+      ],
+      "claimIds": [
+        "bigscience-2022-bloom-version-and-contributor-boundary",
+        "bigscience-2022-bloom-roots-training-substrate",
+        "bigscience-2022-bloom-causal-decoder-objective-and-family",
+        "bigscience-2022-bloom-176b-architecture",
+        "bigscience-2022-bloom-alibi-and-layernorm-ablation-boundary",
+        "bigscience-2022-bloom-tokenizer-design-and-fertility",
+        "bigscience-2022-bloom-hardware-parallelism-and-throughput",
+        "bigscience-2022-bloom-bfloat16-stability",
+        "bigscience-2022-bloom-optimizer-schedule-and-token-extension",
+        "bigscience-2022-bloom-paper-code-dropout-conflict",
+        "bigscience-2022-bloom-run-incidents-and-checkpoints",
+        "bigscience-2022-bloom-compute-energy-and-carbon-scopes",
+        "bigscience-2022-bloom-release-artifact-boundary",
+        "bigscience-2022-bloom-paper-code-model-data-rights",
+        "bigscience-2022-bloom-prompt-distribution-evaluation-protocol",
+        "bigscience-2022-bloom-superglue-scaling-envelope",
+        "bigscience-2022-bloom-machine-translation-and-truncation",
+        "bigscience-2022-bloom-humaneval-code-results",
+        "bigscience-2023-bloom-helm-reproduced-evaluation",
+        "bigscience-2022-bloomz-derivative-boundary",
+        "bigscience-2023-bloom-multilingual-probing-scale-boundary",
+        "bigscience-2023-bloom-crowspairs-bias-boundary",
+        "bigscience-2022-bloom-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "Transformer decoder blocks, causal masking, ALiBi, normalization placement, byte-level BPE, and prompt-conditioned evaluation",
+        "Tensor, pipeline, and data parallelism; ZeRO optimizer-state sharding; activation checkpointing; mixed precision; and training-token accounting",
+        "Model-card and checkpoint versioning, content hashes, source-package inspection, license-scope analysis, and benchmark comparability"
+      ],
+      "successCriterion": "The learner can defend all four version boundaries and four incoming relationships; reconstruct the reported 176B configuration, topology, schedule, and carbon scopes; preserve the dropout and token-accounting conflicts; audit the task-specific result conditions; and produce an artifact-by-artifact provenance and rights matrix without conflating BLOOMZ or mutable repository state with the base paper family."
     }
   ]
 }
