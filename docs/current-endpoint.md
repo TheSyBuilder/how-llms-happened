@@ -1,6 +1,6 @@
 # Current endpoint coverage plan
 
-The structured corpus currently reaches 2022 through several distinct branches: compute allocation, dense scaling, instruction tuning, human-feedback post-training, retrieval augmentation, and open-checkpoint transparency. That is a stable intermediate boundary, not the endpoint of LLM history.
+The structured corpus currently reaches 2022 through several distinct branches: compute allocation, dense scaling, instruction tuning, human-feedback post-training, retrieval augmentation, environment action, and open-checkpoint transparency. That is a stable intermediate boundary, not the endpoint of LLM history.
 
 This plan records the next coverage decisions without treating candidate status as inclusion. A candidate enters the corpus only after its paper versions, claims, limitations, artifacts, rights, and lineage relationships pass the same evidence rules as the existing works.
 
@@ -24,6 +24,14 @@ The paired records preserve several boundaries:
 
 ROOTS and BLOOM now enter the corpus as distinct nodes joined only by target-side data-substrate evidence. BLOOM also receives qualified architecture links from Transformer and GPT and a schedule-response link from Hoffmann et al.; none transfers source-side results or rights. These promotions do not establish that BLOOM originated decoder-only modeling, multilingual language modeling, ALiBi, instruction tuning, model cards, or responsible licensing.
 
+## Promoted endpoint: ReAct
+
+[ReAct](https://arxiv.org/abs/2210.03629) adds explicit environment interaction to a frozen language model’s few-shot trajectory: generated thoughts change the prompt context, task actions query or affect an environment, and returned observations condition later steps. The promoted record keeps the three arXiv revisions separate from the canonical ICLR 2023 oral record. Version 3 adds the camera-ready GPT-3 appendix, updated-label example, expanded fine-tuning description, and human-edit material; those additions do not move backward into the earlier revisions.
+
+The task evidence is deliberately split. HotpotQA and FEVER use a hand-built Wikipedia search/lookup/finish interface rather than learned latent retrieval. ALFWorld and WebShop use simulated environments, selected prompt permutations, and unmatched learned comparators. ReAct’s hybrid fallbacks are task-specific heuristics; its manual error percentages come from an author-coded 200-example sample; and the single edited ALFWorld trace is qualitative rather than a general controllability or safety result. Visible thought strings are inspectable interface tokens, not evidence that they faithfully expose hidden model computation.
+
+The immutable January 2023 repository tree supplies text-davinci-002 notebooks and prompts for the four task families, but not PaLM weights or code, paper fine-tuning code or checkpoints, a locked environment, or every service snapshot. Article, code, model/API, benchmark, Wikipedia, and environment rights remain separate. The qualified PaLM→ReAct edge carries only the target’s explicit use of frozen PaLM-540B and few-shot prompting; no RAG, chain-of-thought, WebGPT, GPT-3, or InstructGPT edge is inferred from shared vocabulary or comparison.
+
 ## Coverage lanes beyond 2022
 
 The remaining endpoint is not one chronological ladder. The following lanes are provisional review queues, not preselected promotions.
@@ -32,7 +40,7 @@ The remaining endpoint is not one chronological ladder. The following lanes are 
 |---|---|---|---|
 | Open artifacts and efficient dense models | OPT, ROOTS, and BLOOM | [LLaMA](https://arxiv.org/abs/2302.13971), [Llama 2](https://arxiv.org/abs/2307.09288), [OLMo](https://arxiv.org/abs/2402.00838), and [Dolma](https://arxiv.org/abs/2402.00159) | How did “open model” move from checkpoints and logs toward broader training-stack access, and which assets and permissions were actually supplied? |
 | Preference instruction and preference post-training | FLAN, T0, Stiennon, InstructGPT | [Constitutional AI](https://arxiv.org/abs/2212.08073) and [Direct Preference Optimization](https://arxiv.org/abs/2305.18290) | What changes when supervision comes from written principles, model-generated comparisons, or a direct preference loss instead of the existing human-reward-model-plus-PPO path? |
-| Retrieval, reasoning, and acting | REALM, RAG, GPT-3 and PaLM reasoning evidence | [ReAct](https://arxiv.org/abs/2210.03629) and [Toolformer](https://arxiv.org/abs/2302.04761) | When does an LM merely condition on retrieved text, and when does it select actions or tool calls as part of an interleaved trajectory? |
+| Retrieval, reasoning, and acting | REALM, RAG, PaLM reasoning evidence, and ReAct | [Toolformer](https://arxiv.org/abs/2302.04761) | When does an LM merely condition on retrieved text, and when does it select actions or tool calls as part of an interleaved trajectory? |
 | Sparse and efficient architecture | Transformer, T5, dense scaling branch | [Switch Transformers](https://arxiv.org/abs/2101.03961), [Mixtral](https://arxiv.org/abs/2401.04088), and [Mistral 7B](https://arxiv.org/abs/2310.06825) | Which changes alter active computation, memory traffic, attention cost, or inference behavior rather than only total parameter count? |
 | Reinforcement-learned reasoning | Human-feedback post-training and chain-of-thought evidence | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and its 2025 journal/2026 revision boundary | What evidence supports reasoning improvements from verifiable-reward reinforcement learning, and what depends on hidden base-model, data, evaluator, or release conditions? |
 

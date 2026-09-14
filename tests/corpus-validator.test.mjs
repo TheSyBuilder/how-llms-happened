@@ -3784,6 +3784,164 @@ test("preserves BLOOM revisions, run conflicts, evaluation scope, artifacts, rig
   assert.ok(currentEndpoint.includes("Promoted endpoint: ROOTS and BLOOM"));
 });
 
+test("preserves ReAct revisions, environment protocols, result scope, code boundaries, rights, and lineage", () => {
+  const workId =
+    "yao-2022-react-synergizing-reasoning-acting-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const knowledge = findClaim("yao-2022-react-knowledge-task-main-results");
+  const alfworld = findClaim(
+    "yao-2022-react-alfworld-results-and-selection-boundary",
+  );
+  const webshop = findClaim(
+    "yao-2022-react-webshop-results-and-comparator-boundary",
+  );
+  const gpt3 = findClaim(
+    "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+  );
+  const publicCode = findClaim(
+    "yao-2023-react-public-code-scope-and-result-drift",
+  );
+  const trace = findClaim(
+    "yao-2022-react-reasoning-trace-interpretation-boundary",
+  );
+  const projectPage = findSource("yao-2022-react-project-page");
+  const code = findSource("yao-2023-react-prompting-code-snapshot");
+  const license = findSource("yao-2023-react-code-license");
+
+  assert.equal(workIndex(workId), 61);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.deepEqual(work?.authors, [
+    "Shunyu Yao",
+    "Jeffrey Zhao",
+    "Dian Yu",
+    "Nan Du",
+    "Izhak Shafran",
+    "Karthik Narasimhan",
+    "Yuan Cao",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022-10-06", "2022-11-27", "2023-03-10", "2023"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "yao-2022-react-arxiv-v1-version",
+      "yao-2022-react-arxiv-v2-version",
+      "yao-2022-react-arxiv-v3-version",
+      "yao-2023-react-iclr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "yao-2023-react-iclr-version");
+  assert.equal(work?.sourceIds.length, 13);
+  assert.equal(work?.ideaIds.length, 10);
+  assert.equal(claims.length, 20);
+
+  const pdfHashes = [
+    "6ec7c9ba12a5a746",
+    "4430bc2c4450bd25",
+    "f285b0971ae4a790",
+  ];
+  const sourceHashes = [
+    "7b393d07c85fa118",
+    "60870ace52fc1630",
+    "c81c6344ddae91fc",
+  ];
+  for (const version of [1, 2, 3]) {
+    const fullText = findSource(
+      `yao-2022-react-arxiv-v${version}-full-text`,
+    );
+    const sourcePackage = findSource(
+      `yao-2022-react-arxiv-v${version}-source-package`,
+    );
+    assert.deepEqual(fullText?.pagination, {
+      scheme: "article",
+      pageStart: 1,
+      pageEnd: version === 3 ? 33 : 31,
+    });
+    assert.match(fullText?.accessNote ?? "", new RegExp(pdfHashes[version - 1]));
+    assert.match(
+      sourcePackage?.accessNote ?? "",
+      new RegExp(sourceHashes[version - 1]),
+    );
+  }
+  assert.match(work?.versions[0]?.notes ?? "", /predates the project-code link/);
+  assert.match(work?.versions[1]?.notes ?? "", /unchanged from version 1/);
+  assert.match(work?.versions[2]?.notes ?? "", /adds GPT-3 results/);
+  assert.match(work?.versions[3]?.notes ?? "", /byte identity.*not asserted/);
+
+  for (const value of ["27.4", "60.9", "25.7", "58.9", "29.4", "56.3"])
+    assert.ok(knowledge?.statement.includes(value));
+  assert.match(alfworld?.statement ?? "", /57% average/);
+  assert.match(alfworld?.statement ?? "", /best trial of 71%/);
+  assert.match(alfworld?.statement ?? "", /best-of-six/);
+  for (const value of ["66.6", "40.0%", "1,012", "10,587"])
+    assert.ok(webshop?.statement.includes(value));
+  assert.match(gpt3?.statement ?? "", /text-davinci-002/);
+  assert.match(gpt3?.statement ?? "", /30.8/);
+  assert.match(gpt3?.statement ?? "", /78.4%/);
+  assert.match(publicCode?.statement ?? "", /does not contain PaLM code or weights/);
+  assert.equal(publicCode?.uncertainties[0]?.status, "disputed");
+  assert.match(trace?.statement ?? "", /does not test whether the strings faithfully/);
+
+  assert.deepEqual(projectPage?.versionIds, [
+    "yao-2022-react-arxiv-v2-version",
+    "yao-2022-react-arxiv-v3-version",
+    "yao-2023-react-iclr-version",
+  ]);
+  assert.deepEqual(code?.versionIds, [
+    "yao-2022-react-arxiv-v3-version",
+    "yao-2023-react-iclr-version",
+  ]);
+  assert.match(code?.accessNote ?? "", /text-davinci-002/);
+  assert.match(code?.accessNote ?? "", /no lockfile/);
+  assert.deepEqual(license?.versionIds, ["yao-2023-react-iclr-version"]);
+  assert.match(license?.accessNote ?? "", /30 March 2023/);
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    ["chowdhery-2022-palm-to-yao-2022-react-prompting-substrate"],
+  );
+  assert.equal(incoming[0]?.connectionType, "builds-on");
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.match(incoming[0]?.rationale ?? "", /frozen PaLM-540B/);
+  assert.match(incoming[0]?.rationale ?? "", /rights remain target-specific/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-yao-2022-trace-actions-and-environment-feedback",
+        "beginner",
+        10,
+      ],
+      [
+        "expert-yao-2022-audit-react-protocols-artifacts-and-lineage",
+        "expert",
+        20,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Yao et al.’s ReAct family"));
+  assert.ok(corpusFormat.includes("Yao et al. 2022/2023"));
+  assert.ok(
+    historicalScope.includes("The ReAct family was checked on 2026-09-14"),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: ReAct"));
+});
+
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
   const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
   const versionId = "graves-2013-arxiv-v1-version";

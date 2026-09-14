@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-12",
+  "asOf": "2026-09-14",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -17453,6 +17453,325 @@
           "note": "The exact paper-era dependency commits and all prepared data-shard identities are not bound into one public immutable run manifest."
         }
       ]
+    },
+    {
+      "id": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "authors": [
+        "Shunyu Yao",
+        "Jeffrey Zhao",
+        "Dian Yu",
+        "Nan Du",
+        "Izhak Shafran",
+        "Karthik Narasimhan",
+        "Yuan Cao"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "S. Yao et al., “ReAct: Synergizing Reasoning and Acting in Language Models,” The Eleventh International Conference on Learning Representations, 2023 (arXiv v1 posted 6 October 2022).",
+      "chronology": {
+        "orderingEventId": "yao-2022-react-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "yao-2022-react-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2022-10-06",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yao-2022-react-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 1 posted 2022-10-06 UTC"
+              }
+            ],
+            "versionId": "yao-2022-react-arxiv-v1-version",
+            "sourceIds": [
+              "yao-2022-react-arxiv-record",
+              "yao-2022-react-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "yao-2022-react-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2022-11-27",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yao-2022-react-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 2 posted 2022-11-27 UTC"
+              }
+            ],
+            "versionId": "yao-2022-react-arxiv-v2-version",
+            "sourceIds": [
+              "yao-2022-react-arxiv-record",
+              "yao-2022-react-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "yao-2023-react-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2023-03-10",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yao-2022-react-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, version 3 posted 2023-03-10 UTC"
+              }
+            ],
+            "versionId": "yao-2022-react-arxiv-v3-version",
+            "sourceIds": [
+              "yao-2022-react-arxiv-record",
+              "yao-2022-react-arxiv-v3-full-text"
+            ]
+          },
+          {
+            "id": "yao-2023-react-iclr-publication",
+            "kind": "proceedings-publication",
+            "label": "ICLR 2023 oral publication",
+            "date": {
+              "value": "2023",
+              "precision": "year",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "yao-2023-react-iclr-record",
+                "precision": "year",
+                "locator": "Official ICLR 2023 program record labels the work an in-person oral / top-5% paper"
+              }
+            ],
+            "versionId": "yao-2023-react-iclr-version",
+            "sourceIds": [
+              "yao-2023-react-iclr-record"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "yao-2022-react-arxiv-v1-version",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "authors": [
+            "Shunyu Yao",
+            "Jeffrey Zhao",
+            "Dian Yu",
+            "Nan Du",
+            "Izhak Shafran",
+            "Karthik Narasimhan",
+            "Yuan Cao"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Yao et al., “ReAct: Synergizing Reasoning and Acting in Language Models,” arXiv:2210.03629v1, 6 October 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2210.03629v1",
+                "label": "arXiv version 1 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "yao-2022-react-arxiv-record",
+            "yao-2022-react-arxiv-v1-full-text",
+            "yao-2022-react-arxiv-v1-source-package",
+            "yao-2022-react-arxiv-cc-by-license"
+          ],
+          "notes": "The 31-leaf ordering manuscript defines the interleaved thought/action/observation method and the four benchmark studies. It predates the project-code link, ICLR camera-ready header, GPT-3 appendix, updated-label example, and moved human-edit analysis."
+        },
+        {
+          "id": "yao-2022-react-arxiv-v2-version",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "authors": [
+            "Shunyu Yao",
+            "Jeffrey Zhao",
+            "Dian Yu",
+            "Nan Du",
+            "Izhak Shafran",
+            "Karthik Narasimhan",
+            "Yuan Cao"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Yao et al., “ReAct: Synergizing Reasoning and Acting in Language Models,” arXiv:2210.03629v2, 27 November 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2210.03629v2",
+                "label": "arXiv version 2 identifier"
+              }
+            ]
+          },
+          "sourceIds": [
+            "yao-2022-react-arxiv-record",
+            "yao-2022-react-arxiv-v2-full-text",
+            "yao-2022-react-arxiv-v2-source-package",
+            "yao-2022-react-arxiv-cc-by-license",
+            "yao-2022-react-project-page"
+          ],
+          "notes": "This 31-leaf revision adds the project page and code link in the author note. Source comparison otherwise finds the audited scientific body unchanged from version 1."
+        },
+        {
+          "id": "yao-2022-react-arxiv-v3-version",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "authors": [
+            "Shunyu Yao",
+            "Jeffrey Zhao",
+            "Dian Yu",
+            "Nan Du",
+            "Izhak Shafran",
+            "Karthik Narasimhan",
+            "Yuan Cao"
+          ],
+          "kind": "preprint",
+          "label": "ICLR camera-ready arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Yao et al., “ReAct: Synergizing Reasoning and Acting in Language Models,” arXiv:2210.03629v3, 10 March 2023; camera-ready text for ICLR 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2210.03629v3",
+                "label": "arXiv version 3 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2210.03629",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "yao-2022-react-arxiv-record",
+            "yao-2022-react-arxiv-v3-full-text",
+            "yao-2022-react-arxiv-v3-source-package",
+            "yao-2022-react-arxiv-cc-by-license",
+            "yao-2022-react-project-page",
+            "yao-2022-react-google-research-post",
+            "yao-2023-react-prompting-code-snapshot"
+          ],
+          "notes": "The 33-leaf author-posted camera-ready text marks itself published at ICLR 2023, adds GPT-3 results, an up-to-date HotpotQA example, expanded fine-tuning and human-edit material, and several comparison qualifications. It remains distinct from the venue record and from the later public GitHub release state."
+        },
+        {
+          "id": "yao-2023-react-iclr-version",
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "authors": [
+            "Shunyu Yao",
+            "Jeffrey Zhao",
+            "Dian Yu",
+            "Nan Du",
+            "Izhak Shafran",
+            "Karthik Narasimhan",
+            "Yuan Cao"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical ICLR 2023 oral record",
+          "language": "en",
+          "bibliography": {
+            "citation": "S. Yao et al., “ReAct: Synergizing Reasoning and Acting in Language Models,” The Eleventh International Conference on Learning Representations, 2023.",
+            "venue": "The Eleventh International Conference on Learning Representations",
+            "series": "ICLR",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "yao-2023-react-iclr-record",
+            "yao-2022-react-project-page",
+            "yao-2022-react-google-research-post",
+            "yao-2023-react-prompting-code-snapshot",
+            "yao-2023-react-code-license"
+          ],
+          "notes": "The official ICLR program supplies canonical title, authors, year, abstract, oral/top-5% status, and a 3 May presentation slot. The venue full text was behind an interactive verification gate during audit, so byte identity with arXiv v3 is not asserted."
+        }
+      ],
+      "canonicalVersionId": "yao-2023-react-iclr-version",
+      "preferredSourceIds": [
+        "yao-2023-react-iclr-record"
+      ],
+      "sourceIds": [
+        "yao-2022-react-arxiv-record",
+        "yao-2022-react-arxiv-v1-full-text",
+        "yao-2022-react-arxiv-v1-source-package",
+        "yao-2022-react-arxiv-v2-full-text",
+        "yao-2022-react-arxiv-v2-source-package",
+        "yao-2022-react-arxiv-v3-full-text",
+        "yao-2022-react-arxiv-v3-source-package",
+        "yao-2022-react-arxiv-cc-by-license",
+        "yao-2023-react-iclr-record",
+        "yao-2022-react-project-page",
+        "yao-2022-react-google-research-post",
+        "yao-2023-react-prompting-code-snapshot",
+        "yao-2023-react-code-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "ReAct makes environment interaction part of a prompted language-model trajectory by interleaving generated textual thoughts, task actions, and returned observations. It is retained as a bounded bridge from in-context reasoning to explicit action loops across retrieval and simulated environments, not as a general trained-agent release, a proof that visible thoughts faithfully expose hidden reasoning, or a priority claim for language-conditioned control."
+      },
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "explicit-environment-query-observation-loop",
+        "sparse-asynchronous-reasoning-traces",
+        "heuristic-internal-external-reasoning-fallback",
+        "success-filtered-trajectory-finetuning",
+        "generated-thought-trace-editing",
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "few-shot-chain-of-thought-prompting",
+        "natural-language-task-conditioning"
+      ],
+      "significance": {
+        "beginner": "ReAct shows a language model alternating between notes to itself, actions it can send to a tool or environment, and observations returned by that environment. The useful distinction is that a thought only changes the text context, while an action can fetch information or change simulated state; success still depends on the prompt, the allowed actions, the external environment, and the selected model.",
+        "expert": "ReAct augments a task action space with free-form language traces and prompts frozen PaLM-540B from human trajectories, using dense thought-action-observation alternation for HotpotQA/FEVER and sparse asynchronous thoughts for ALFWorld/WebShop. The record preserves heuristic CoT-SC fallbacks, success-filtered PaLM-8B/62B fine-tuning, prompt-selection and comparator asymmetries, four benchmark environments, visible-trace rather than faithfulness evidence, later GPT-3 code, and separate paper/code/data/model rights."
+      },
+      "limitations": [
+        "The principal experiments use an unreleased PaLM-540B system; the public repository implements later GPT-3 prompting and does not reproduce the complete PaLM environment, generated trajectories, fine-tuning runs, or every benchmark dependency.",
+        "HotpotQA, FEVER, ALFWorld, and WebShop use different action spaces, prompt counts, selection rules, metrics, comparators, and external state, so their results do not form one model-only capability scale.",
+        "Generated thought text is observable and editable output, not direct evidence that it faithfully reports a model's internal computation or provides a causal explanation of every action.",
+        "The strongest ALFWorld figure selects the best of six prompt permutations, the WebShop experiment uses one prompt and a simulated benchmark, and the human-edit result is a single qualitative intervention.",
+        "The paper itself reports loops, reasoning errors, uninformative retrieval, long-context limits, and the need for more high-quality annotations and future multi-task or reinforcement learning.",
+        "Article, code, PaLM access, GPT-3 service use, embedded data subsets, Wikipedia content, ALFWorld, WebShop, and upstream benchmark rights remain distinct."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "No immutable public record establishes byte identity between the ICLR-hosted paper and arXiv version 3.",
+          "resolutionCondition": "A venue PDF with a stable digest or an official author statement tying it exactly to arXiv v3 is required."
+        },
+        {
+          "status": "open",
+          "note": "The current GitHub repository succeeds the anonymous code URL printed in arXiv v3, but the inspected records do not prove that every file is identical to the paper-time anonymous snapshot.",
+          "resolutionCondition": "An archived anonymous repository tree or signed mapping to a public commit is required."
+        },
+        {
+          "status": "disputed",
+          "note": "The public repository's summary reports PaLM HotpotQA/FEVER values of 29.4/62.2 and GPT-3 HotpotQA 30.4, while the camera-ready body reports ReAct 27.4/60.9 on its main evaluation and Appendix Table 5 reports 29.4/30.8 on a 500-question HotpotQA subset.",
+          "resolutionCondition": "A result manifest binding each displayed number to exact examples, prompts, model snapshots, and evaluation scripts is required."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -19506,7 +19825,9 @@
         "zhang-2022-opt-model-family-and-gpt3-replication",
         "zhang-2022-opt-initialization-and-training-recipe",
         "bigscience-2022-bloom-causal-decoder-objective-and-family",
-        "bigscience-2022-bloom-176b-architecture"
+        "bigscience-2022-bloom-176b-architecture",
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2023-react-gpt3-addendum-and-model-identity-boundary"
       ],
       "uncertainties": []
     },
@@ -19844,7 +20165,8 @@
         "radford-2019-coqa-and-summarization-results",
         "radford-2019-translation-and-natural-questions-results",
         "zhang-2022-opt-hate-speech-api-comparison",
-        "zhang-2022-opt-generation-instruction-and-use-limitations"
+        "zhang-2022-opt-generation-instruction-and-use-limitations",
+        "yao-2022-react-palm-frozen-few-shot-and-density"
       ],
       "uncertainties": [
         {
@@ -20715,7 +21037,13 @@
         "chowdhery-2022-shot-count-and-checkpoint-variance",
         "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
         "bigscience-2022-bloom-prompt-distribution-evaluation-protocol",
-        "bigscience-2022-bloom-machine-translation-and-truncation"
+        "bigscience-2022-bloom-machine-translation-and-truncation",
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2022-react-wikipedia-api-and-exemplar-protocol",
+        "yao-2022-react-alfworld-environment-and-prompt-protocol",
+        "yao-2022-react-webshop-environment-and-prompt-protocol",
+        "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+        "yao-2023-react-public-code-scope-and-result-drift"
       ],
       "uncertainties": [
         {
@@ -21530,7 +21858,9 @@
       "description": "Place worked intermediate-reasoning exemplars in the inference context and score only the produced answer, keeping prompt authorship, calculator use, comparators, and faithfulness unbundled.",
       "claimIds": [
         "chowdhery-2022-chain-of-thought-reasoning",
-        "chowdhery-2022-explanation-evidence-boundary"
+        "chowdhery-2022-explanation-evidence-boundary",
+        "yao-2022-react-knowledge-task-main-results",
+        "yao-2022-react-hybrid-fallback-protocol-and-results"
       ],
       "uncertainties": []
     },
@@ -21782,6 +22112,110 @@
       "uncertainties": [],
       "claimIds": [
         "bigscience-2022-bloom-machine-translation-and-truncation"
+      ]
+    },
+    {
+      "id": "interleaved-reasoning-action-observation-trajectories",
+      "name": "Interleaved reasoning-action-observation trajectories",
+      "kind": "mechanism",
+      "description": "Generate visible language traces and task actions in one sequential context, then append environment observations so subsequent tokens can condition on both prior deliberative text and external feedback.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The visible textual trace is an interface object and training target; it is not assumed to be a faithful readout of hidden model computation."
+        }
+      ],
+      "claimIds": [
+        "yao-2022-react-version-and-venue-boundary",
+        "yao-2022-react-interleaved-trace-formalism",
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2022-react-wikipedia-api-and-exemplar-protocol",
+        "yao-2022-react-knowledge-task-main-results",
+        "yao-2022-react-manual-failure-mode-analysis",
+        "yao-2022-react-bootstrap-finetuning-protocol-and-boundary",
+        "yao-2022-react-alfworld-environment-and-prompt-protocol",
+        "yao-2022-react-alfworld-results-and-selection-boundary",
+        "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+        "yao-2022-react-long-horizon-context-and-training-limit",
+        "yao-2023-react-public-code-scope-and-result-drift",
+        "yao-2022-react-reasoning-trace-interpretation-boundary"
+      ]
+    },
+    {
+      "id": "explicit-environment-query-observation-loop",
+      "name": "Explicit environment query-observation loop",
+      "kind": "mechanism",
+      "description": "Expose a bounded action vocabulary that can query or change an external environment and serialize the returned observation into the model's next-step context.",
+      "uncertainties": [],
+      "claimIds": [
+        "yao-2022-react-interleaved-trace-formalism",
+        "yao-2022-react-wikipedia-api-and-exemplar-protocol",
+        "yao-2022-react-knowledge-task-main-results",
+        "yao-2022-react-hybrid-fallback-protocol-and-results",
+        "yao-2022-react-manual-failure-mode-analysis",
+        "yao-2022-react-webshop-environment-and-prompt-protocol",
+        "yao-2022-react-webshop-results-and-comparator-boundary",
+        "yao-2022-react-safety-action-space-boundary",
+        "yao-2023-react-public-code-scope-and-result-drift",
+        "yao-2023-react-paper-code-data-rights"
+      ]
+    },
+    {
+      "id": "sparse-asynchronous-reasoning-traces",
+      "name": "Sparse asynchronous reasoning traces",
+      "kind": "mechanism",
+      "description": "Permit a prompted policy to emit free-form reasoning only at selected points in a long action sequence instead of forcing one thought before every environment action.",
+      "uncertainties": [],
+      "claimIds": [
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2022-react-alfworld-environment-and-prompt-protocol",
+        "yao-2022-react-alfworld-results-and-selection-boundary",
+        "yao-2022-react-webshop-environment-and-prompt-protocol",
+        "yao-2022-react-webshop-results-and-comparator-boundary",
+        "yao-2022-react-inner-monologue-ablation-boundary",
+        "yao-2022-react-long-horizon-context-and-training-limit"
+      ]
+    },
+    {
+      "id": "heuristic-internal-external-reasoning-fallback",
+      "name": "Heuristic internal-external reasoning fallback",
+      "kind": "mechanism",
+      "description": "Switch between self-consistent reasoning-only samples and an environment-acting trajectory when a step limit or low answer agreement indicates that the current route may be unreliable.",
+      "uncertainties": [],
+      "claimIds": [
+        "yao-2022-react-hybrid-fallback-protocol-and-results"
+      ]
+    },
+    {
+      "id": "success-filtered-trajectory-finetuning",
+      "name": "Success-filtered trajectory fine-tuning",
+      "kind": "mechanism",
+      "description": "Use trajectories generated by a larger prompted model only when their final answers pass a task success check, then fine-tune smaller models to decode the retained thought, action, and observation sequences.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Outcome filtering does not validate the factuality or faithfulness of every intermediate trace token."
+        }
+      ],
+      "claimIds": [
+        "yao-2022-react-bootstrap-finetuning-protocol-and-boundary",
+        "yao-2022-react-long-horizon-context-and-training-limit"
+      ]
+    },
+    {
+      "id": "generated-thought-trace-editing",
+      "name": "Generated thought-trace editing",
+      "kind": "mechanism",
+      "description": "Expose generated textual planning traces so a human can revise selected tokens and let later actions condition on the edited context, without changing model parameters.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "ReAct demonstrates this with one qualitative ALFWorld trajectory rather than a systematic controllability or safety evaluation."
+        }
+      ],
+      "claimIds": [
+        "yao-2023-react-human-edit-demonstration-boundary",
+        "yao-2022-react-reasoning-trace-interpretation-boundary"
       ]
     }
   ],
@@ -33721,6 +34155,339 @@
         "version-boundary"
       ],
       "accessNote": "The official record identifies the separate BLOOMZ/xP3 publication family. It prevents the fine-tuned derivative, its later versions, and its artifacts from being collapsed into the base BLOOM paper or checkpoint."
+    },
+    {
+      "id": "yao-2022-react-arxiv-record",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "arXiv record for ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v1-version",
+        "yao-2022-react-arxiv-v2-version",
+        "yao-2022-react-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official ledger supplies the three UTC revision dates, title, seven authors, aggregate arXiv DOI, v3 camera-ready note, project link, and CC BY 4.0 article terms."
+    },
+    {
+      "id": "yao-2022-react-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Immutable ReAct arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2210.03629v1",
+      "accessDate": "2026-09-14",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 31
+      },
+      "accessNote": "The complete 31-leaf PDF is 538,424 bytes with SHA-256 6ec7c9ba12a5a7462afaaa759b9d4186e522fcb502ef480afd7fa1821960a576. Evidence uses the file's visible numbered page space plus section, table, figure, and appendix anchors."
+    },
+    {
+      "id": "yao-2022-react-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Immutable ReAct arXiv version 1 source package",
+      "url": "https://arxiv.org/src/2210.03629v1",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 7b393d07c85fa1180979a2c2e7c4a95fff578915591f7b46a55687618a040753. It contains manuscript source, prompts, tables, and figures, but not PaLM weights, generated experiment trajectories, fine-tuning checkpoints, benchmark services, or a complete runnable environment."
+    },
+    {
+      "id": "yao-2022-react-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Immutable ReAct arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2210.03629v2",
+      "accessDate": "2026-09-14",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 31
+      },
+      "accessNote": "The complete 31-leaf PDF is 538,934 bytes with SHA-256 4430bc2c4450bd25047dc6e5c189296d59663e2a378c12557c7773752c8a369b. Evidence uses the file's visible numbered page space plus section, table, figure, and appendix anchors."
+    },
+    {
+      "id": "yao-2022-react-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Immutable ReAct arXiv version 2 source package",
+      "url": "https://arxiv.org/src/2210.03629v2",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 60870ace52fc16309f48c41c9dbf04ff29658b8d1459986cb7d7f002a82aa486. It contains manuscript source, prompts, tables, and figures, but not PaLM weights, generated experiment trajectories, fine-tuning checkpoints, benchmark services, or a complete runnable environment."
+    },
+    {
+      "id": "yao-2022-react-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Camera-ready ReAct arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/2210.03629v3",
+      "accessDate": "2026-09-14",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 33
+      },
+      "accessNote": "The complete 33-leaf PDF is 633,805 bytes with SHA-256 f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69. Evidence uses the file's visible numbered page space plus section, table, figure, and appendix anchors."
+    },
+    {
+      "id": "yao-2022-react-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Immutable ReAct arXiv version 3 source package",
+      "url": "https://arxiv.org/src/2210.03629v3",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "yao-2022-react-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publication-source archive has SHA-256 c81c6344ddae91fc0a36ea830c414ca72e3736ec02f84ccbd81ed7d7f67c0293. It contains manuscript source, prompts, tables, and figures, but not PaLM weights, generated experiment trajectories, fine-tuning checkpoints, benchmark services, or a complete runnable environment."
+    },
+    {
+      "id": "yao-2022-react-arxiv-cc-by-license",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Creative Commons Attribution 4.0 International license",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "yao-2022-react-arxiv-v1-version",
+        "yao-2022-react-arxiv-v2-version",
+        "yao-2022-react-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The arXiv record links CC BY 4.0 for the article family. Those terms govern the deposited paper material, not PaLM, GPT-3 service access, repository software, embedded data, Wikipedia, ALFWorld, WebShop, or other third-party dependencies."
+    },
+    {
+      "id": "yao-2023-react-iclr-record",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Official ICLR 2023 oral record for ReAct",
+      "url": "https://iclr.cc/virtual/2023/oral/12647",
+      "accessDate": "2026-09-14",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "yao-2023-react-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official ICLR program supplies the 2023 venue identity, title, seven authors, abstract, in-person oral/top-5% status, and 3 May presentation slot. The venue full text was behind interactive verification during audit and is not asserted byte-identical to arXiv v3."
+    },
+    {
+      "id": "yao-2022-react-project-page",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Official ReAct project page",
+      "url": "https://react-lm.github.io/",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yao-2022-react-arxiv-v2-version",
+        "yao-2022-react-arxiv-v3-version",
+        "yao-2023-react-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The author project page identifies the paper, code, Google Research post, authors, four task families, and reasoning-versus-acting framing. It is a mutable project summary rather than an immutable paper revision or result manifest."
+    },
+    {
+      "id": "yao-2022-react-google-research-post",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Google Research post: ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://research.google/blog/react-synergizing-reasoning-and-acting-in-language-models/",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yao-2022-react-arxiv-v3-version",
+        "yao-2023-react-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The dated 8 November 2022 author post explains alternating versus sparse thoughts, the frozen PaLM-540B prompting setup, successful-trajectory fine-tuning, four benchmark families, and future-work boundary. It is contextual evidence, not a substitute for paper tables."
+    },
+    {
+      "id": "yao-2023-react-prompting-code-snapshot",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "Immutable public ReAct GPT-3 prompting release snapshot",
+      "url": "https://github.com/ysymyth/ReAct/tree/770d8da81295da2aaf2e7ef7c003b745bbe3db87",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yao-2022-react-arxiv-v3-version",
+        "yao-2023-react-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 30 January 2023 tree 770d8da contains GPT-3 text-davinci-002 notebooks, prompts, a Wikipedia wrapper, copied HotpotQA and FEVER subsets, ALFWorld configuration, and a live WebShop service URL. It is not the PaLM experiment package, and no lockfile, complete environment, PaLM output set, fine-tuning code, or checkpoint is present."
+    },
+    {
+      "id": "yao-2023-react-code-license",
+      "relatedWorkIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "title": "MIT license added to the public ReAct repository",
+      "url": "https://github.com/ysymyth/ReAct/blob/245c1aa50eed3afe8596622861bde5c730c52d1f/LICENSE",
+      "accessDate": "2026-09-14",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "yao-2023-react-iclr-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The repository-level MIT text was added on 30 March 2023. It covers the repository software as stated and does not establish rights in PaLM, GPT-3, embedded or upstream benchmark data, Wikipedia content, ALFWorld, WebShop, or generated service outputs."
     }
   ],
   "claims": [
@@ -63737,6 +64504,671 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-12"
+    },
+    {
+      "id": "yao-2022-react-version-and-venue-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories"
+      ],
+      "statement": "ReAct has three arXiv revisions posted on 6 October 2022, 27 November 2022, and 10 March 2023 plus a separate canonical ICLR 2023 oral record. Version 2 adds the project-code link to the otherwise retained 31-leaf manuscript; the 33-leaf version 3 is the author-posted camera-ready text and adds GPT-3, updated-label, fine-tuning-detail, and human-edit material. No byte identity with the venue-hosted paper is asserted.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v1-full-text",
+          "locator": {
+            "label": "Version 1 extent and content boundary",
+            "section": "Title; 2 ReAct; 3–4 Experiments; appendix",
+            "pageStart": 1,
+            "pageEnd": 31
+          },
+          "support": "The ordering file supplies the original 31-leaf content boundary."
+        },
+        {
+          "sourceId": "yao-2022-react-arxiv-v2-full-text",
+          "locator": {
+            "label": "Version 2 extent and content boundary",
+            "section": "Title; 2 ReAct; 3–4 Experiments; appendix",
+            "pageStart": 1,
+            "pageEnd": 31
+          },
+          "support": "Comparison with version 1 isolates the added project-code link while retaining the audited body."
+        },
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Version 3 extent and content boundary",
+            "section": "Title; 2 ReAct; 3–4 Experiments; A Additional Results; B Experiment Details",
+            "pageStart": 1,
+            "pageEnd": 33
+          },
+          "support": "Comparison with version 2 identifies the 33-leaf camera-ready additions and reorganization."
+        },
+        {
+          "sourceId": "yao-2023-react-iclr-record",
+          "locator": {
+            "label": "Canonical venue identity",
+            "section": "Official event title, authors, abstract, status, and schedule"
+          },
+          "support": "The ICLR record identifies the paper as an in-person oral/top-5% work in the 2023 conference program."
+        }
+      ],
+      "limitations": [
+        "The later public GitHub repository history is an artifact timeline, not a fourth paper revision."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-interleaved-trace-formalism",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "ReAct augments a task action space A with a free-form language space L. A generated language-space thought does not affect the external environment and returns no observation; it is appended to the context, while a task action can produce an environment observation that conditions later thoughts or actions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Augmented action space and context update",
+            "section": "2 ReAct: Synergizing Reasoning + Acting",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "The target defines A-hat = A union L and distinguishes context-only language thoughts from environment-affecting actions and returned observations."
+        }
+      ],
+      "limitations": [
+        "The notation describes a prompted interaction protocol rather than a new neural architecture or a proof about latent cognition."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-palm-frozen-few-shot-and-density",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "natural-language-task-conditioning",
+        "interleaved-reasoning-action-observation-trajectories",
+        "sparse-asynchronous-reasoning-traces"
+      ],
+      "statement": "The main setup prompts a frozen PaLM-540B with human trajectories containing thoughts, actions, and observations. Knowledge-intensive tasks alternate dense thought-action-observation steps, while long-horizon decision tasks use sparse thoughts whose occurrence is generated asynchronously among actions.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Frozen model, human exemplars, and trace density",
+            "section": "2 ReAct: Synergizing Reasoning + Acting",
+            "pageStart": 3,
+            "pageEnd": 4
+          },
+          "support": "The method section names PaLM-540B, the in-context trajectory fields, and the dense-versus-sparse generation regimes."
+        }
+      ],
+      "limitations": [
+        "The main evidence concerns one unreleased PaLM scale and manually written task-specific exemplars, not a model trained from scratch to use arbitrary tools."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-wikipedia-api-and-exemplar-protocol",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop",
+        "interleaved-reasoning-action-observation-trajectories",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "For question-only HotpotQA and FEVER, ReAct receives no support passages and instead uses search[entity], lookup[string], and finish[answer]. Search returns the opening five sentences of an exact page or five similar entities; lookup steps through matching page sentences. The prompts use six and three manually composed training examples, respectively, and the paper calls this interface weaker than modern lexical or neural retrieval.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Question-only setting, three actions, and exemplar counts",
+            "section": "3.1 Setup; 3.2 Methods",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The target defines the input restriction, search/lookup/finish semantics, explicit retriever limitation, and 6/3 prompt counts."
+        }
+      ],
+      "limitations": [
+        "Live Wikipedia content and search behavior are external state; the paper does not bind an immutable encyclopedia snapshot to every result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-knowledge-task-main-results",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop",
+        "interleaved-reasoning-action-observation-trajectories",
+        "few-shot-chain-of-thought-prompting"
+      ],
+      "statement": "With PaLM-540B under the main Table 1 protocol, ReAct reports 27.4 exact match on HotpotQA and 60.9 accuracy on FEVER, above Act at 25.7/58.9. ReAct trails CoT on HotpotQA (29.4) and leads it on FEVER (56.3); supervised task-specific rows at 67.5/89.5 remain substantially higher.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Main knowledge-task comparison",
+            "section": "3.2 Methods; 3.3 Results and Observations",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "table": "1"
+          },
+          "support": "Table 1 and the surrounding text report all paired values and retain the stronger supervised comparison."
+        }
+      ],
+      "limitations": [
+        "The tasks use different metrics, and the rows are prompting protocols rather than independent model families or repeated-seed estimates."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-hybrid-fallback-protocol-and-results",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "heuristic-internal-external-reasoning-fallback",
+        "few-shot-chain-of-thought-prompting",
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "Two hand-designed hybrids switch between ReAct and 21-sample CoT self-consistency. ReAct→CoT-SC falls back after seven HotpotQA or five FEVER steps and reports 35.1/62.0; CoT-SC→ReAct falls back when the majority has fewer than n/2 votes and reports 34.2/64.6. Each hybrid leads one task rather than defining one uniformly best policy.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Fallback rules and task-specific results",
+            "section": "3.2 Methods; 3.3 Results and Observations",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "table": "1",
+            "figure": "2"
+          },
+          "support": "The target defines both triggers, the base self-consistency sampling regime, and the four Table 1 values."
+        }
+      ],
+      "limitations": [
+        "The thresholds are paper-specific heuristics selected for these two tasks and do not establish a general router between parametric and external knowledge."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-manual-failure-mode-analysis",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "The HotpotQA error study manually labels 50 correct and 50 incorrect trajectories from each of ReAct and CoT. In this selected 200-example sample, successful-trace false positives are 6% versus 14%; CoT hallucination is 56% of its failures, while ReAct failures are labeled 47% reasoning error, 23% uninformative search, 0% hallucination, and 29% label ambiguity.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Selected-trajectory annotation and category shares",
+            "section": "3.3 Results and Observations",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "table": "2"
+          },
+          "support": "Table 2 and prose define the sample and report category percentages."
+        }
+      ],
+      "limitations": [
+        "These are author-coded trajectory categories on stratified correct/incorrect samples, not population failure rates, blinded annotations, inter-rater reliability, or proof of faithful reasoning."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-bootstrap-finetuning-protocol-and-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "success-filtered-trajectory-finetuning",
+        "interleaved-reasoning-action-observation-trajectories"
+      ],
+      "statement": "The fine-tuning study keeps 3,000 PaLM-540B-generated trajectories whose final answers are correct, then trains PaLM-8B and 62B to decode thoughts, actions, and observations conditioned on HotpotQA questions. ReAct/Act use 4,000 steps at both scales; Standard/CoT use 2,000 steps at 8B and 1,000 at 62B, all at batch size 64.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Success-filtered data and scale comparison",
+            "section": "3.2 Methods; 3.3 Results and Observations",
+            "pageStart": 5,
+            "pageEnd": 7,
+            "figure": "3"
+          },
+          "support": "The target states the 3,000-trajectory filter, two model scales, decoded fields, and qualitative scaling comparison."
+        },
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Fine-tuning step counts",
+            "section": "B.1 HotpotQA Finetuning Details",
+            "pageStart": 15,
+            "pageEnd": 15
+          },
+          "support": "The camera-ready appendix supplies batch size and method-specific training steps."
+        }
+      ],
+      "limitations": [
+        "Correct final answers do not validate every intermediate thought or observation, and unequal step counts complicate method attribution.",
+        "The public repository does not contain these PaLM fine-tuning runs, checkpoints, or the full generated-trajectory set."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-alfworld-environment-and-prompt-protocol",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "sparse-asynchronous-reasoning-traces",
+        "interleaved-reasoning-action-observation-trajectories",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "ALFWorld evaluation uses 134 unseen synthetic household games across six task types. For each type, the authors annotate three training trajectories with sparse thoughts and construct six ordered two-trajectory prompt permutations; Act removes the thoughts from the same trajectories, while the BUTLER comparison is trained from 100,000 expert trajectories per task type.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "ALFWorld tasks, prompt permutations, and baseline",
+            "section": "4 Decision Making Tasks",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "The section defines the environment, annotations, six prompt permutations, unseen evaluation set, matched Act prompts, and BUTLER training scope."
+        }
+      ],
+      "limitations": [
+        "Selecting and permuting demonstrations is part of the evaluated system; it is not a model-only comparison."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-alfworld-results-and-selection-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "sparse-asynchronous-reasoning-traces",
+        "interleaved-reasoning-action-observation-trajectories"
+      ],
+      "statement": "Across the six ALFWorld prompt trials, ReAct reports a 57% average success rate and a selected best trial of 71%; the best Act and BUTLER trials report 45% and 37%. The paper also says the worst ReAct trial is 48%, a value not separately tabulated, so the 71-point headline must remain labeled best-of-six.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Average, best, and reported worst trial",
+            "section": "4 Decision Making Tasks",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "3"
+          },
+          "support": "Table 3 prints average and best-of-six ReAct values and selected comparator rows; prose supplies the reported worst-trial value."
+        }
+      ],
+      "limitations": [
+        "BUTLER uses beam search while prompted methods use greedy decoding, and the comparison differs in training data, model, prompt selection, and policy representation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-webshop-environment-and-prompt-protocol",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop",
+        "sparse-asynchronous-reasoning-traces",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "WebShop is a benchmark website with 1.18 million crawled products and 12,000 human instructions; evaluation averages attribute coverage and exact success over 500 test instructions. One-shot ReAct adds sparse reasoning to search, product, option, and buy actions; it is simulated shopping and cannot make a real purchase.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "WebShop scale, actions, prompt, metrics, and test set",
+            "section": "4 Decision Making Tasks",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "The section defines the benchmark corpus, interaction, metrics, 500-item test, one-shot prompt, and actions."
+        },
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Non-purchase safety boundary",
+            "section": "Ethics Statement",
+            "pageStart": 10,
+            "pageEnd": 10
+          },
+          "support": "The paper explicitly states that benchmark actions cannot really buy products."
+        }
+      ],
+      "limitations": [
+        "Crawled product pages and the benchmark service are external dependencies, not a live-commerce deployment or immutable web snapshot bound by the ReAct paper."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-webshop-results-and-comparator-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop",
+        "sparse-asynchronous-reasoning-traces"
+      ],
+      "statement": "On WebShop, ReAct reports mean score 66.6 and 40.0% success, versus Act 62.3/30.1, imitation learning 59.9/29.1, imitation plus reinforcement learning 62.4/28.7, and human expert 82.1/59.6. IL uses 1,012 annotated trajectories and IL+RL adds 10,587 training instructions, so sample counts and learning regimes are not matched.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "WebShop score and success comparisons",
+            "section": "4 Decision Making Tasks",
+            "pageStart": 8,
+            "pageEnd": 8,
+            "table": "4"
+          },
+          "support": "Table 4 and adjacent prose give all values and comparator training-data counts."
+        }
+      ],
+      "limitations": [
+        "The ten-point claim is an absolute success-rate comparison with the selected earlier row, not a controlled attribution to textual reasoning alone."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-inner-monologue-ablation-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "sparse-asynchronous-reasoning-traces"
+      ],
+      "statement": "A ReAct-IM prompt ablation replaces flexible sparse thoughts with dense environment-feedback-style statements. Its selected best-of-six ALFWorld success is 53% versus ReAct's 71%, while its average is 48% versus 57%; the target uses this as a prompt-format comparison, not a reproduction of the separate Inner Monologue system.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "ReAct-IM prompt ablation",
+            "section": "4 Decision Making Tasks; B.2 ALFWorld IM-Style Details",
+            "pageStart": 8,
+            "pageEnd": 15,
+            "table": "3"
+          },
+          "support": "Table 3 supplies average/best values and the appendix defines the restricted thought template."
+        }
+      ],
+      "limitations": [
+        "The paper's comparison to Inner Monologue is conceptual; only a constructed ReAct prompt ablation is evaluated."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "demonstration-conditioned-in-context-learning",
+        "decoder-only-transformer-language-modeling",
+        "interleaved-reasoning-action-observation-trajectories"
+      ],
+      "statement": "Camera-ready Appendix Table 5 evaluates text-davinci-002 with greedy decoding: 30.8 HotpotQA exact match on a random 500-question subset and 78.4% ALFWorld success on 134 games using the prompt selected by PaLM. It labels the API model GPT-3 and only speculates that instruction-following fine-tuning explains its advantage; no exact relationship to the original GPT-3 or InstructGPT paper checkpoints is established.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "GPT-3-labelled addendum",
+            "section": "A.1 GPT-3 Experiments",
+            "pageStart": 14,
+            "pageEnd": 14,
+            "table": "5"
+          },
+          "support": "The added table names text-davinci-002, decoding, subset sizes, prompt selection, and both results, while prose qualifies the instruction-following explanation as possible."
+        }
+      ],
+      "limitations": [
+        "The API model is not identified as a Brown et al. 2020 checkpoint, and the selected PaLM prompt prevents a symmetric prompt search."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2023-react-human-edit-demonstration-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "generated-thought-trace-editing"
+      ],
+      "statement": "One camera-ready ALFWorld example removes a hallucinating sentence and adds a hint in two generated thought fields, after which the remaining trajectory reaches success without changing model parameters. This demonstrates a possible text-interface intervention, not a measured general improvement in controllability, alignment, or safety.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Single thought-edit example",
+            "section": "A.3 Human-in-the-loop Behavior Correction on ALFWorld",
+            "pageStart": 14,
+            "pageEnd": 15,
+            "figure": "5"
+          },
+          "support": "Figure 5 and prose describe the two edits and the changed trajectory outcome."
+        }
+      ],
+      "limitations": [
+        "No control group, success frequency, annotator study, or adversarial safety test is reported for thought editing."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-long-horizon-context-and-training-limit",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "sparse-asynchronous-reasoning-traces",
+        "success-filtered-trajectory-finetuning"
+      ],
+      "statement": "The paper reports repetitive thought/action loops and uninformative-search failures and concludes that large action spaces may require enough demonstrations to exceed the in-context input limit. The PaLM fine-tuning study is initial; higher-quality annotations, multi-task training, and reinforcement learning remain future work.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Observed loop and search failures",
+            "section": "3.3 Results and Observations",
+            "pageStart": 6,
+            "pageEnd": 6
+          },
+          "support": "The analysis identifies repetitive steps, reasoning errors, and uninformative search as observed failure modes."
+        },
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Context and training limits",
+            "section": "6 Conclusion",
+            "pageStart": 9,
+            "pageEnd": 10
+          },
+          "support": "The conclusion states the demonstration/input-length limitation and bounds fine-tuning and future extensions."
+        }
+      ],
+      "limitations": [
+        "The study does not quantify the context threshold across tasks or train one multi-task agent over all four environments."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-safety-action-space-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "The ethics statement warns that connecting language models to external actions can expose private or inappropriate information or enable harmful actions. The experiments restrict interaction to Wikipedia and benchmark WebShop and exclude real purchasing or Wikipedia editing; this is a task-interface restriction, not a general agent-safety result.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "External-action risks and experimental restrictions",
+            "section": "Ethics Statement",
+            "pageStart": 10,
+            "pageEnd": 10
+          },
+          "support": "The target states the risk categories and the no-purchase/no-edit action boundaries."
+        }
+      ],
+      "limitations": [
+        "ALFWorld and WebShop benchmark success does not evaluate authorization, privacy, prompt injection, harmful tools, or real-world recovery."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2023-react-public-code-scope-and-result-drift",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "explicit-environment-query-observation-loop",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "The immutable January 2023 public tree contains text-davinci-002 notebooks for HotpotQA, FEVER, ALFWorld, and WebShop, prompt files, a live Wikipedia wrapper, copied task subsets, ALFWorld configuration, and a fixed HTTP WebShop service. It does not contain PaLM code or weights, fine-tuning code/checkpoints, all generated paper trajectories, a dependency lock, or a complete service snapshot. Its README numbers also differ from the camera-ready body and appendix.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2023-react-prompting-code-snapshot",
+          "locator": {
+            "label": "Public tree contents and executable boundaries",
+            "section": "Repository tree; README; four notebooks; wikienv.py; base_config.yaml"
+          },
+          "support": "The pinned tree identifies every file, GPT-3 model name, API/service dependency, bundled subset, and missing PaLM/fine-tuning surface."
+        },
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Paper-time reproducibility boundary",
+            "section": "Reproducibility Statement; A.1 GPT-3 Experiments",
+            "pageStart": 10,
+            "pageEnd": 14,
+            "table": "5"
+          },
+          "support": "The paper says PaLM is not openly accessible, points to GPT-3 prompting code, and prints paper-specific addendum values."
+        }
+      ],
+      "limitations": [
+        "The GitHub tree postdates arXiv v2 and is not proven byte-identical to the anonymous repository printed in v3."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "README and paper values cannot be merged without exact run manifests; each remains bound to its own source and protocol wording.",
+          "resolutionCondition": "Publish immutable predictions, example IDs, prompts, model snapshots, and evaluation scripts for every displayed row."
+        }
+      ],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2023-react-paper-code-data-rights",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "The arXiv article is deposited under CC BY 4.0, while the public repository gained an MIT software license in March 2023. Neither grant supplies rights to PaLM, GPT-3 access or outputs, copied/upstream HotpotQA and FEVER data, Wikipedia content, ALFWorld, WebShop product data, or other third-party dependencies.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-cc-by-license",
+          "locator": {
+            "label": "Article license scope",
+            "section": "CC BY 4.0 deed and arXiv-linked article terms"
+          },
+          "support": "The license grants article sharing and adaptation subject to attribution and notices."
+        },
+        {
+          "sourceId": "yao-2023-react-code-license",
+          "locator": {
+            "label": "Repository software license scope",
+            "section": "MIT license text"
+          },
+          "support": "The later repository-level file supplies MIT terms for the software while establishing no third-party rights transfer."
+        },
+        {
+          "sourceId": "yao-2023-react-prompting-code-snapshot",
+          "locator": {
+            "label": "External model, data, and environment dependencies",
+            "section": "README; repository tree; notebooks; environment wrapper"
+          },
+          "support": "The tree requires external APIs and environments and includes or references materials outside one self-contained licensed package."
+        }
+      ],
+      "limitations": [
+        "Public availability of code or data paths is not represented as a license for every bundled or fetched object."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "yao-2022-react-reasoning-trace-interpretation-boundary",
+      "workId": "yao-2022-react-synergizing-reasoning-acting-language-models",
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "generated-thought-trace-editing"
+      ],
+      "statement": "ReAct's thought strings are generated tokens that can be inspected, categorized, and edited in the visible trajectory. Those properties support interface-level diagnosability claims, but the study does not test whether the strings faithfully reveal hidden model computation or causally explain every subsequent action.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Visible trace definition and claimed inspection",
+            "section": "2 ReAct: Synergizing Reasoning + Acting; 3.3 Results and Observations; Ethics Statement",
+            "pageStart": 3,
+            "pageEnd": 10
+          },
+          "support": "The paper defines thoughts as language-space actions, presents human inspection and one edit, and describes the resulting trajectories as interpretable and diagnosable."
+        }
+      ],
+      "limitations": [
+        "Interpretability of a serialized behavior trace and faithfulness of an internal explanation are different empirical questions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-14"
     }
   ],
   "relationships": [
@@ -68360,6 +69792,46 @@
           "note": "The relationship records a bounded schedule adjustment rather than compliance with a universal compute-optimal prescription."
         }
       ]
+    },
+    {
+      "id": "chowdhery-2022-palm-to-yao-2022-react-prompting-substrate",
+      "from": {
+        "kind": "work",
+        "id": "chowdhery-2022-palm-scaling-language-modeling-pathways"
+      },
+      "to": {
+        "kind": "work",
+        "id": "yao-2022-react-synergizing-reasoning-acting-language-models"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "ReAct directly names and uses a frozen PaLM-540B as the principal prompted model and inherits its causal-decoder, scale, and in-context demonstration substrate. The relationship carries only that target-documented base-model role; ReAct's thought/action protocol, environments, prompts, results, generated trajectories, fine-tuning, artifacts, and rights remain target-specific, while PaLM's training mixture and broader evaluations do not transfer.",
+      "claimIds": [
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "chowdhery-2022-shot-count-and-checkpoint-variance",
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2022-react-bootstrap-finetuning-protocol-and-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "yao-2022-react-arxiv-v3-full-text",
+          "locator": {
+            "label": "Target-side frozen PaLM-540B substrate",
+            "section": "2 ReAct: Synergizing Reasoning + Acting; 3 Knowledge-Intensive Reasoning Tasks; Reproducibility Statement",
+            "pageStart": 3,
+            "pageEnd": 10
+          },
+          "support": "The target explicitly cites PaLM, uses the frozen 540B model for its principal prompting experiments, and states that the model is not openly accessible."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge records the target's stated model and prompting substrate, not code or checkpoint identity and not a transfer of PaLM results or rights."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -72476,6 +73948,87 @@
         "Model-card and checkpoint versioning, content hashes, source-package inspection, license-scope analysis, and benchmark comparability"
       ],
       "successCriterion": "The learner can defend all four version boundaries and four incoming relationships; reconstruct the reported 176B configuration, topology, schedule, and carbon scopes; preserve the dropout and token-accounting conflicts; audit the task-specific result conditions; and produce an artifact-by-artifact provenance and rights matrix without conflating BLOOMZ or mutable repository state with the base paper family."
+    },
+    {
+      "id": "beginner-yao-2022-trace-actions-and-environment-feedback",
+      "mode": "beginner",
+      "objective": "Follow a ReAct trajectory by separating visible thoughts, environment actions, and returned observations, then explain why prompt choice and the tool boundary can change the result.",
+      "workIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "explicit-environment-query-observation-loop",
+        "sparse-asynchronous-reasoning-traces",
+        "demonstration-conditioned-in-context-learning",
+        "generated-thought-trace-editing"
+      ],
+      "claimIds": [
+        "yao-2022-react-interleaved-trace-formalism",
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2022-react-wikipedia-api-and-exemplar-protocol",
+        "yao-2022-react-alfworld-environment-and-prompt-protocol",
+        "yao-2022-react-alfworld-results-and-selection-boundary",
+        "yao-2022-react-webshop-environment-and-prompt-protocol",
+        "yao-2022-react-webshop-results-and-comparator-boundary",
+        "yao-2023-react-human-edit-demonstration-boundary",
+        "yao-2022-react-safety-action-space-boundary",
+        "yao-2022-react-reasoning-trace-interpretation-boundary"
+      ],
+      "prerequisites": [
+        "A language model predicts tokens from a context",
+        "A tool action can change or query state outside the model",
+        "A benchmark environment is not the same as the live world it imitates"
+      ],
+      "successCriterion": "The learner can label each step of a short ReAct example, distinguish context-only thoughts from environment actions, explain dense versus sparse thoughts, and state why visible traces, benchmark success, and real-world safety are different claims."
+    },
+    {
+      "id": "expert-yao-2022-audit-react-protocols-artifacts-and-lineage",
+      "mode": "expert",
+      "objective": "Audit ReAct across paper revisions, PaLM prompting, CoT-SC routing, success-filtered fine-tuning, four benchmark protocols, prompt selection, trace interpretation, public GPT-3 code, artifact gaps, rights, and target-evidenced lineage.",
+      "workIds": [
+        "yao-2022-react-synergizing-reasoning-acting-language-models"
+      ],
+      "ideaIds": [
+        "interleaved-reasoning-action-observation-trajectories",
+        "explicit-environment-query-observation-loop",
+        "sparse-asynchronous-reasoning-traces",
+        "heuristic-internal-external-reasoning-fallback",
+        "success-filtered-trajectory-finetuning",
+        "generated-thought-trace-editing",
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "few-shot-chain-of-thought-prompting",
+        "natural-language-task-conditioning"
+      ],
+      "claimIds": [
+        "yao-2022-react-version-and-venue-boundary",
+        "yao-2022-react-interleaved-trace-formalism",
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "yao-2022-react-wikipedia-api-and-exemplar-protocol",
+        "yao-2022-react-knowledge-task-main-results",
+        "yao-2022-react-hybrid-fallback-protocol-and-results",
+        "yao-2022-react-manual-failure-mode-analysis",
+        "yao-2022-react-bootstrap-finetuning-protocol-and-boundary",
+        "yao-2022-react-alfworld-environment-and-prompt-protocol",
+        "yao-2022-react-alfworld-results-and-selection-boundary",
+        "yao-2022-react-webshop-environment-and-prompt-protocol",
+        "yao-2022-react-webshop-results-and-comparator-boundary",
+        "yao-2022-react-inner-monologue-ablation-boundary",
+        "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+        "yao-2023-react-human-edit-demonstration-boundary",
+        "yao-2022-react-long-horizon-context-and-training-limit",
+        "yao-2022-react-safety-action-space-boundary",
+        "yao-2023-react-public-code-scope-and-result-drift",
+        "yao-2023-react-paper-code-data-rights",
+        "yao-2022-react-reasoning-trace-interpretation-boundary"
+      ],
+      "prerequisites": [
+        "Decoder-only language modeling, few-shot prompting, chain-of-thought, and self-consistency",
+        "Interactive policies, action spaces, observations, sparse rewards, and benchmark selection",
+        "Versioned publication evidence, immutable code snapshots, metric comparability, and license-scope analysis"
+      ],
+      "successCriterion": "The learner can defend all four version records and the PaLM edge; reconstruct the search, routing, fine-tuning, ALFWorld, and WebShop protocols; reproduce the cited result rows with their selection caveats; and separate visible textual traces, model internals, services, artifacts, and rights."
     }
   ]
 }
