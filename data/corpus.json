@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-14",
+  "asOf": "2026-09-15",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -17772,6 +17772,221 @@
           "resolutionCondition": "A result manifest binding each displayed number to exact examples, prompts, model snapshots, and evaluation scripts is required."
         }
       ]
+    },
+    {
+      "id": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "authors": [
+        "Timo Schick",
+        "Jane Dwivedi-Yu",
+        "Roberto Dessì",
+        "Roberta Raileanu",
+        "Maria Lomeli",
+        "Eric Hambro",
+        "Luke Zettlemoyer",
+        "Nicola Cancedda",
+        "Thomas Scialom"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "T. Schick et al., “Toolformer: Language Models Can Teach Themselves to Use Tools,” in Advances in Neural Information Processing Systems 36, pp. 68539–68551, 2023 (arXiv v1 posted 9 February 2023).",
+      "chronology": {
+        "orderingEventId": "schick-2023-toolformer-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "schick-2023-toolformer-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2023-02-09",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schick-2023-toolformer-arxiv-record",
+                "precision": "day",
+                "locator": "arXiv submission history, sole version posted 2023-02-09 16:49:57 UTC"
+              }
+            ],
+            "versionId": "schick-2023-toolformer-arxiv-v1-version",
+            "sourceIds": [
+              "schick-2023-toolformer-arxiv-record",
+              "schick-2023-toolformer-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "schick-2023-toolformer-neurips-publication",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2023 proceedings publication",
+            "date": {
+              "value": "2023-12-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "schick-2023-toolformer-neurips-record",
+                "precision": "day",
+                "locator": "Official proceedings record metadata, publication date 2023-12-15"
+              }
+            ],
+            "versionId": "schick-2023-toolformer-neurips-version",
+            "sourceIds": [
+              "schick-2023-toolformer-neurips-record",
+              "schick-2023-toolformer-neurips-main-full-text",
+              "schick-2023-toolformer-neurips-supplement"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "schick-2023-toolformer-arxiv-v1-version",
+          "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "authors": [
+            "Timo Schick",
+            "Jane Dwivedi-Yu",
+            "Roberto Dessì",
+            "Roberta Raileanu",
+            "Maria Lomeli",
+            "Luke Zettlemoyer",
+            "Nicola Cancedda",
+            "Thomas Scialom"
+          ],
+          "kind": "preprint",
+          "label": "Sole arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. Schick et al., “Toolformer: Language Models Can Teach Themselves to Use Tools,” arXiv:2302.04761v1, 9 February 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2302.04761v1",
+                "label": "ArXiv version 1 identifier"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2302.04761",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "schick-2023-toolformer-arxiv-record",
+            "schick-2023-toolformer-arxiv-v1-full-text",
+            "schick-2023-toolformer-arxiv-v1-source-package",
+            "schick-2023-toolformer-arxiv-distribution-license"
+          ],
+          "notes": "The 17-leaf ordering manuscript has eight authors and combines the main GPT-J study, additional analysis, prompts, training detail, and DATESET appendix in one file. Its record abstract says “two different search engines,” while the deposited PDF and source enumerate one Atlas question-answering system and one BM25 Wikipedia search system."
+        },
+        {
+          "id": "schick-2023-toolformer-neurips-version",
+          "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "authors": [
+            "Timo Schick",
+            "Jane Dwivedi-Yu",
+            "Roberto Dessì",
+            "Roberta Raileanu",
+            "Maria Lomeli",
+            "Eric Hambro",
+            "Luke Zettlemoyer",
+            "Nicola Cancedda",
+            "Thomas Scialom"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2023 article and supplement",
+          "language": "en",
+          "bibliography": {
+            "citation": "T. Schick et al., “Toolformer: Language Models Can Teach Themselves to Use Tools,” in Advances in Neural Information Processing Systems, vol. 36, pp. 68539–68551, 2023.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "publisher": "Curran Associates, Inc.",
+            "volume": "36",
+            "pages": [
+              "68539-68551"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.52202/075280-2997",
+                "label": "Proceedings DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "schick-2023-toolformer-neurips-record",
+            "schick-2023-toolformer-neurips-main-full-text",
+            "schick-2023-toolformer-neurips-supplement",
+            "schick-2024-toolformer-meta-publication-page"
+          ],
+          "notes": "The canonical version adds Eric Hambro, reformats the retained GPT-J study into a 13-leaf article and 10-leaf supplement, moves additional analysis to the supplement, and adds qualitative failure modes plus LLaMA-v1 investigations. The new supplement also identifies GPT-2 as scorer for the original GPT-J-generated data, in tension with the main text's use of GPT-J as the single model M."
+        }
+      ],
+      "canonicalVersionId": "schick-2023-toolformer-neurips-version",
+      "preferredSourceIds": [
+        "schick-2023-toolformer-neurips-record",
+        "schick-2023-toolformer-neurips-main-full-text",
+        "schick-2023-toolformer-neurips-supplement"
+      ],
+      "sourceIds": [
+        "schick-2023-toolformer-arxiv-record",
+        "schick-2023-toolformer-arxiv-v1-full-text",
+        "schick-2023-toolformer-arxiv-v1-source-package",
+        "schick-2023-toolformer-arxiv-distribution-license",
+        "schick-2023-toolformer-neurips-record",
+        "schick-2023-toolformer-neurips-main-full-text",
+        "schick-2023-toolformer-neurips-supplement",
+        "schick-2024-toolformer-meta-publication-page"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Toolformer adds a distinct training route to the retrieval-and-action lane: a causal language model proposes inline textual API calls from a few demonstrations, executes them, keeps calls whose returned result lowers future-token loss, and then learns the retained call/result sequences with ordinary language modeling. It is retained for that self-labeled tool-use mechanism and its evidence that tool value depends on both tool and base model—not as a priority claim for tool use, an autonomous agent, a released model, or a general solution for safe API execution."
+      },
+      "ideaIds": [
+        "in-context-api-call-annotation",
+        "counterfactual-future-token-tool-filtering",
+        "inline-api-call-language-modeling",
+        "inference-time-api-result-injection",
+        "tool-call-rank-triggering",
+        "model-relative-tool-utility",
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "explicit-environment-query-observation-loop",
+        "natural-language-task-conditioning"
+      ],
+      "significance": {
+        "beginner": "Toolformer turns ordinary text into its own practice material: it proposes places where a tool might help, tries the call, keeps calls that make the next words easier to predict, and studies the edited text. The useful lesson is that a tool is not automatically helpful—a search result can distract a stronger model, and the published system cannot chain calls or revise a query.",
+        "expert": "Toolformer samples call positions and arguments from GPT-J demonstrations, executes five text-valued tools, filters with a counterfactual weighted future-token loss, merges retained annotations into CCNet, and fine-tunes a causal LM before interrupt-and-inject inference. The audit preserves tool-specific thresholds, heuristics, model swaps, top-rank triggering, one-call evaluation cap, full result envelopes, the GPT-J/GPT-2 scorer contradiction, proceedings-only LLaMA addendum, missing release artifacts, and separate rights."
+      },
+      "limitations": [
+        "The evaluated decoder allows at most one API call per input and the independently sampled training calls do not teach chained or interactive tool use, query revision, browsing, or long-horizon environment control.",
+        "API-call triggering is forced whenever the call marker ranks in the top ten, which raises call rates but discards the partial selectivity observed under ordinary greedy decoding.",
+        "Training and evaluation use task-specific heuristics, prompts, tool implementations, lenient answer-containment metrics, and live or snapshot-dependent external systems; results are not a model-only measure of general tool competence.",
+        "The proceedings supplement contradicts the main single-model notation by identifying GPT-2 as scorer for GPT-J-generated training calls and does not publish a run manifest that resolves the realized scoring path.",
+        "The LLaMA addendum shows model-relative utility: Atlas helps selected LAMA tasks, the BM25 search tool reduces all three QA scores, and the calculator study fails to elicit calls from only 401 retained examples.",
+        "No official code, generated annotation corpus, Toolformer checkpoint, tokenizer binding, tool snapshot, predictions, seeds, or end-to-end environment was identified in the paper, supplement, proceedings record, or Meta publication page.",
+        "The audited tools return text and are read-only retrieval, translation, calendar, or arithmetic functions; the study does not evaluate state-changing APIs, prompt injection, malicious tool output, privacy leakage, permissions, or operational safety."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "The main method and experimental setup use GPT-J as model M for sampling and loss filtering, while the proceedings supplement says the original calls were generated by GPT-J and scored by GPT-2.",
+          "resolutionCondition": "A paper-author clarification or immutable training code and run configuration binding the sampling and scoring checkpoints is required."
+        },
+        {
+          "status": "open",
+          "note": "Appendix B says training uses up to 25,000 examples per API, while the LLaMA addendum reports 32,180 retained QA examples and does not state whether or how that set was capped before training.",
+          "resolutionCondition": "A released data manifest or exact training sampler is required to reconcile retained and consumed example counts."
+        },
+        {
+          "status": "open",
+          "note": "The Meta publication page is dated 22 February 2024 and links the canonical paper, but it supplies no independent date for the underlying research or a release artifact.",
+          "resolutionCondition": "A dated official release announcement or immutable artifact record is required before assigning a separate model-release event."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -19827,7 +20042,8 @@
         "bigscience-2022-bloom-causal-decoder-objective-and-family",
         "bigscience-2022-bloom-176b-architecture",
         "yao-2022-react-palm-frozen-few-shot-and-density",
-        "yao-2023-react-gpt3-addendum-and-model-identity-boundary"
+        "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+        "schick-2023-toolformer-base-model-and-training-text-boundary"
       ],
       "uncertainties": []
     },
@@ -20166,7 +20382,9 @@
         "radford-2019-translation-and-natural-questions-results",
         "zhang-2022-opt-hate-speech-api-comparison",
         "zhang-2022-opt-generation-instruction-and-use-limitations",
-        "yao-2022-react-palm-frozen-few-shot-and-density"
+        "yao-2022-react-palm-frozen-few-shot-and-density",
+        "schick-2023-toolformer-lama-and-math-results",
+        "schick-2023-toolformer-qa-multilingual-and-temporal-results"
       ],
       "uncertainties": [
         {
@@ -21043,7 +21261,8 @@
         "yao-2022-react-alfworld-environment-and-prompt-protocol",
         "yao-2022-react-webshop-environment-and-prompt-protocol",
         "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
-        "yao-2023-react-public-code-scope-and-result-drift"
+        "yao-2023-react-public-code-scope-and-result-drift",
+        "schick-2023-toolformer-in-context-call-sampling"
       ],
       "uncertainties": [
         {
@@ -22157,7 +22376,12 @@
         "yao-2022-react-webshop-results-and-comparator-boundary",
         "yao-2022-react-safety-action-space-boundary",
         "yao-2023-react-public-code-scope-and-result-drift",
-        "yao-2023-react-paper-code-data-rights"
+        "yao-2023-react-paper-code-data-rights",
+        "schick-2023-toolformer-record-and-paper-tool-count-conflict",
+        "schick-2023-toolformer-api-call-serialization",
+        "schick-2023-toolformer-five-tool-implementations",
+        "schick-2023-toolformer-qualitative-failure-modes",
+        "schick-2023-toolformer-chaining-interaction-and-cost-limits"
       ]
     },
     {
@@ -22216,6 +22440,105 @@
       "claimIds": [
         "yao-2023-react-human-edit-demonstration-boundary",
         "yao-2022-react-reasoning-trace-interpretation-boundary"
+      ]
+    },
+    {
+      "id": "in-context-api-call-annotation",
+      "name": "In-context API-call annotation",
+      "kind": "mechanism",
+      "description": "Use a small demonstration prompt to make a pretrained causal language model propose call positions and textual API arguments inside ordinary language-modeling examples.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The demonstrations and tool descriptions are human-authored; self-supervision begins with model sampling and loss-based selection."
+        }
+      ],
+      "claimIds": [
+        "schick-2023-toolformer-version-and-publication-boundary",
+        "schick-2023-toolformer-in-context-call-sampling",
+        "schick-2023-toolformer-tool-specific-data-heuristics",
+        "schick-2023-toolformer-llama-generation-and-count-boundary"
+      ]
+    },
+    {
+      "id": "counterfactual-future-token-tool-filtering",
+      "name": "Counterfactual future-token tool filtering",
+      "kind": "objective",
+      "description": "Keep an executed tool call when its result lowers a model's weighted loss on nearby future tokens relative to both no call and the same call without a returned result.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The score measures usefulness to one scorer on one continuation; it is not a human factuality, safety, or task-value label."
+        }
+      ],
+      "claimIds": [
+        "schick-2023-toolformer-execution-and-future-token-loss-filter",
+        "schick-2023-toolformer-weighting-and-retained-example-counts",
+        "schick-2023-toolformer-trigger-and-data-quality-analysis",
+        "schick-2023-toolformer-gptj-generation-gpt2-scoring-conflict",
+        "schick-2023-toolformer-llama-generation-and-count-boundary"
+      ]
+    },
+    {
+      "id": "inline-api-call-language-modeling",
+      "name": "Inline API-call language modeling",
+      "kind": "mechanism",
+      "description": "Interleave retained textual calls and tool results with their source text, then train the same next-token objective over the augmented sequences.",
+      "uncertainties": [],
+      "claimIds": [
+        "schick-2023-toolformer-base-model-and-training-text-boundary",
+        "schick-2023-toolformer-api-call-serialization",
+        "schick-2023-toolformer-augmented-corpus-and-finetuning",
+        "schick-2023-toolformer-language-modeling-perplexity-boundary",
+        "schick-2023-toolformer-chaining-interaction-and-cost-limits",
+        "schick-2023-toolformer-artifact-rights-and-safety-boundary"
+      ]
+    },
+    {
+      "id": "inference-time-api-result-injection",
+      "name": "Inference-time API-result injection",
+      "kind": "mechanism",
+      "description": "Pause autoregressive decoding at a generated call marker, execute an external text-valued tool, insert its result, and resume generation from the expanded context.",
+      "uncertainties": [],
+      "claimIds": [
+        "schick-2023-toolformer-execution-and-future-token-loss-filter",
+        "schick-2023-toolformer-five-tool-implementations",
+        "schick-2023-toolformer-inference-and-rank-trigger",
+        "schick-2023-toolformer-lama-and-math-results",
+        "schick-2023-toolformer-qa-multilingual-and-temporal-results",
+        "schick-2023-toolformer-llama-tool-utility-results",
+        "schick-2023-toolformer-artifact-rights-and-safety-boundary"
+      ]
+    },
+    {
+      "id": "tool-call-rank-triggering",
+      "name": "Tool-call rank triggering",
+      "kind": "mechanism",
+      "description": "Trigger a tool call when the call-start marker appears within a chosen rank of the next-token distribution, trading ordinary model selectivity for a higher call rate.",
+      "uncertainties": [],
+      "claimIds": [
+        "schick-2023-toolformer-inference-and-rank-trigger",
+        "schick-2023-toolformer-trigger-and-data-quality-analysis"
+      ]
+    },
+    {
+      "id": "model-relative-tool-utility",
+      "name": "Model-relative tool utility",
+      "kind": "finding",
+      "description": "Treat a tool's measured benefit as conditional on the base model, tool quality, prompt, task, and call policy rather than as an intrinsic property of external-tool access.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The Toolformer evidence compares a small set of model and tool pairings and does not imply a universal ordering of models or tools."
+        }
+      ],
+      "claimIds": [
+        "schick-2023-toolformer-qa-multilingual-and-temporal-results",
+        "schick-2023-toolformer-model-size-analysis",
+        "schick-2023-toolformer-qualitative-failure-modes",
+        "schick-2023-toolformer-chaining-interaction-and-cost-limits",
+        "schick-2023-toolformer-llama-generation-and-count-boundary",
+        "schick-2023-toolformer-llama-tool-utility-results"
       ]
     }
   ],
@@ -34488,6 +34811,202 @@
         "pageEnd": 1
       },
       "accessNote": "The repository-level MIT text was added on 30 March 2023. It covers the repository software as stated and does not establish rights in PaLM, GPT-3, embedded or upstream benchmark data, Wikipedia content, ALFWorld, WebShop, or generated service outputs."
+    },
+    {
+      "id": "schick-2023-toolformer-arxiv-record",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "arXiv record for Toolformer: Language Models Can Teach Themselves to Use Tools",
+      "url": "https://arxiv.org/abs/2302.04761",
+      "accessDate": "2026-09-15",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "schick-2023-toolformer-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official ledger supplies the sole 9 February 2023 submission, eight-author metadata, aggregate DOI, non-exclusive arXiv distribution-license link, and an abstract that says “two different search engines,” unlike the deposited paper text."
+    },
+    {
+      "id": "schick-2023-toolformer-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "Immutable Toolformer arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2302.04761v1",
+      "accessDate": "2026-09-15",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "schick-2023-toolformer-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 17
+      },
+      "accessNote": "The complete 17-leaf PDF is 657,966 bytes with SHA-256 6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522. It contains the GPT-J study, analysis, prompts, training detail, and DATESET appendix in one two-column artifact."
+    },
+    {
+      "id": "schick-2023-toolformer-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "Immutable Toolformer arXiv version 1 source package",
+      "url": "https://arxiv.org/src/2302.04761v1",
+      "accessDate": "2026-09-15",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "schick-2023-toolformer-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 206,464-byte publication-source archive has SHA-256 5139a320f266bd19b4491cbc6cfdd2e3d3944524600eb78d33d439f432c2f0ce. Its ten files are LaTeX, bibliography/style material, and four figure PDFs; it contains no model, generated corpus, training or inference code, tool implementation, prediction file, environment, or license file."
+    },
+    {
+      "id": "schick-2023-toolformer-arxiv-distribution-license",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "arXiv non-exclusive license to distribute",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-15",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "schick-2023-toolformer-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record-selected terms grant arXiv a perpetual non-exclusive license to distribute the submitted article. They do not state a general public software, model, data, or adaptation license."
+    },
+    {
+      "id": "schick-2023-toolformer-neurips-record",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "Official NeurIPS 2023 proceedings record for Toolformer",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/d842425e4bf79ba039352da0f658a906-Abstract-Conference.html",
+      "accessDate": "2026-09-15",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "schick-2023-toolformer-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official record supplies nine authors, Main Conference Track status, volume 36, pages 68539–68551, DOI 10.52202/075280-2997, publication date 15 December 2023, and separate paper and supplement links."
+    },
+    {
+      "id": "schick-2023-toolformer-neurips-main-full-text",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "Canonical Toolformer NeurIPS 2023 main article",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/d842425e4bf79ba039352da0f658a906-Paper-Conference.pdf",
+      "accessDate": "2026-09-15",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "schick-2023-toolformer-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 13
+      },
+      "accessNote": "The 13-leaf main article is 471,033 bytes with SHA-256 391845b5f4f7f5e7c04a34e5280f031c17a5fbf868f53e1c5af3e25b0179fb1c. Its visible local pages are 1–13; bibliographic pages 68539–68551 belong to the proceedings volume."
+    },
+    {
+      "id": "schick-2023-toolformer-neurips-supplement",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "Canonical Toolformer NeurIPS 2023 supplement",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/d842425e4bf79ba039352da0f658a906-Supplemental-Conference.pdf",
+      "accessDate": "2026-09-15",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "schick-2023-toolformer-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 10
+      },
+      "accessNote": "The separate 10-leaf supplement is 328,446 bytes with SHA-256 a54b40a9e52cfe260fdab898f5f59afc8a571c59ee5f479152af4eced46d0502. It carries appendices A–G, including prompts and training detail, moved analysis, new qualitative failures, and the LLaMA-v1 addendum."
+    },
+    {
+      "id": "schick-2024-toolformer-meta-publication-page",
+      "relatedWorkIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "title": "Meta AI research publication page for Toolformer",
+      "url": "https://ai.meta.com/research/publications/toolformer-language-models-can-teach-themselves-to-use-tools/",
+      "accessDate": "2026-09-15",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "schick-2023-toolformer-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The mutable organizational page, dated 22 February 2024, identifies NeurIPS, the canonical nine-author team, and a paper download. It shortens Jane Dwivedi-Yu to Jane Yu and supplies no code, model, data, or Toolformer release link."
     }
   ],
   "claims": [
@@ -65169,6 +65688,844 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-14"
+    },
+    {
+      "id": "schick-2023-toolformer-version-and-publication-boundary",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "in-context-api-call-annotation"
+      ],
+      "statement": "Toolformer has one 17-leaf arXiv revision posted 9 February 2023 with eight authors and a separate canonical NeurIPS 2023 version with nine authors, a 13-leaf main article, and a 10-leaf supplement. The proceedings adds Eric Hambro, moves the earlier analysis into the supplement, adds qualitative failure modes and LLaMA-v1 investigations, and is dated 15 December 2023 in the official record.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-arxiv-record",
+          "locator": {
+            "label": "Sole preprint revision and author metadata",
+            "section": "Submission history; Authors"
+          },
+          "support": "The ledger supplies one UTC submission and eight authors."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-arxiv-v1-full-text",
+          "locator": {
+            "label": "Ordering manuscript content envelope",
+            "section": "Title; 1–8; A–D",
+            "pageStart": 1,
+            "pageEnd": 17
+          },
+          "support": "The 17-leaf file combines the original main study, analysis, and appendices."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-record",
+          "locator": {
+            "label": "Canonical bibliography and publication date",
+            "section": "Paper metadata; DOI; paper and supplemental links"
+          },
+          "support": "The venue record supplies nine authors, volume, pages, DOI, track, and the exact publication date."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Proceedings-only appendix envelope",
+            "section": "E Additional Analysis; F Failure Modes; G LLaMA Base Model Investigations",
+            "pageStart": 4,
+            "pageEnd": 9
+          },
+          "support": "The supplement retains the moved analysis and adds failure and LLaMA sections absent from arXiv v1."
+        }
+      ],
+      "limitations": [
+        "The 2024 Meta page is an organizational index and not a third paper version or model-release event."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-record-and-paper-tool-count-conflict",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "The arXiv record abstract says the work uses a calculator, a Q&A system, two different search engines, translation, and calendar. The deposited arXiv paper, source, NeurIPS abstract, and method enumerate five tools instead: Atlas question answering, one BM25 Wikipedia search engine, calculator, NLLB translation, and calendar.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-arxiv-record",
+          "locator": {
+            "label": "Record-abstract tool wording",
+            "section": "Abstract"
+          },
+          "support": "The metadata abstract explicitly says “two different search engines.”"
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Five implemented tool roles",
+            "section": "Abstract; 3 Tools",
+            "pageStart": 1,
+            "pageEnd": 4
+          },
+          "support": "The canonical paper names one question-answering system and one Wikipedia search engine among five total tools."
+        }
+      ],
+      "limitations": [
+        "The discrepancy is preserved rather than silently converting the question-answering model into a second search engine."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "The arXiv metadata count and every inspected full-text enumeration disagree.",
+          "resolutionCondition": "An author or repository correction is required to establish whether the metadata phrase was intentional."
+        }
+      ],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-base-model-and-training-text-boundary",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "inline-api-call-language-modeling"
+      ],
+      "statement": "The principal Toolformer system starts from the 6.7-billion-parameter pretrained GPT-J causal language model and constructs its annotation corpus from a subset of CCNet. The statement that the method can use a model's original pretraining data is a general design argument; the experiment does not establish that this CCNet subset is byte-identical to GPT-J's full pretraining mixture.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "GPT-J and CCNet experiment identity",
+            "section": "1 Introduction; 4.1 Experimental Setup",
+            "pageStart": 2,
+            "pageEnd": 5
+          },
+          "support": "The paper names pretrained GPT-J-6.7B as M and a CCNet subset as C."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Generic same-data argument",
+            "section": "1 Introduction; 2 Approach",
+            "pageStart": 2,
+            "pageEnd": 4
+          },
+          "support": "The paper says the method is dataset-agnostic and can be applied to the same dataset used in pretraining; it does not say the realized CCNet subset exhausts GPT-J pretraining."
+        }
+      ],
+      "limitations": [
+        "The paper does not bind an immutable GPT-J checkpoint, tokenizer artifact, CCNet snapshot, or selected-document manifest."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-api-call-serialization",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inline-api-call-language-modeling",
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "A tool call is serialized as an API name and text input between call delimiters; an executed result is inserted after an arrow before the closing delimiter. The implementation reuses the existing token sequences “[”, “]”, and “->” rather than extending the GPT-J vocabulary.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Call and result linearization",
+            "section": "2 Approach",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "equation": "e(c) and e(c,r)"
+          },
+          "support": "The method defines e(c) and e(c,r) and its footnote gives the realized token strings."
+        }
+      ],
+      "limitations": [
+        "The notation requires text-valued inputs and outputs and does not specify typed schemas, structured validation, authentication, or permissions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-in-context-call-sampling",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "in-context-api-call-annotation",
+        "demonstration-conditioned-in-context-learning"
+      ],
+      "statement": "For each API, a few-example prompt asks the base model to annotate a text. Candidate positions are those where the call-start token probability exceeds sampling threshold τs, truncated to the top k positions; up to m calls are then sampled at each retained position until the closing delimiter.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Position and argument sampling procedure",
+            "section": "2 Approach — Sampling API Calls",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "figure": "3"
+          },
+          "support": "The paper defines the prompt, position probability, thresholded position set, top-k truncation, and per-position sampling."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Tool-specific sampling settings",
+            "section": "A API Details",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The supplement gives default τs=.05, k=5, m=5 and calculator/translation overrides τs=0, k=20, m=10."
+        }
+      ],
+      "limitations": [
+        "The demonstrations and heuristics are human-written; “self-supervised” describes subsequent call generation and loss filtering, not an absence of human specification."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-execution-and-future-token-loss-filter",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "counterfactual-future-token-tool-filtering",
+        "inference-time-api-result-injection"
+      ],
+      "statement": "Each sampled call is executed to obtain one text response. A weighted cross-entropy over future original tokens compares the call-plus-result loss Lᵢ⁺ with Lᵢ⁻, the lower of no call and call-without-result; a call is retained only when Lᵢ⁻−Lᵢ⁺ reaches threshold τf. The default τf is 1.0, reduced to 0.5 for calculator and translation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Execution and counterfactual filter",
+            "section": "2 Approach — Executing API Calls; Filtering API Calls",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "equation": "L_i(z), L_i^+, L_i^-, and L_i^- - L_i^+ ≥ τ_f"
+          },
+          "support": "The paper defines the single-text response constraint, weighted loss, two reference conditions, and retention inequality."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Default and sparse-tool thresholds",
+            "section": "A API Details",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The supplement supplies the default and calculator/translation filtering thresholds."
+        }
+      ],
+      "limitations": [
+        "Loss reduction for nearby continuation tokens is a model-relative utility proxy, not human validation of factuality, task value, or safety."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-weighting-and-retained-example-counts",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "counterfactual-future-token-tool-filtering"
+      ],
+      "statement": "The experiment weights only nearby future tokens with w̃t=max(0,1−0.2t), normalizes those weights, and drops texts whose calls are all filtered out. At τf=.5/1/2, retained examples are 51,987/18,526/5,135 for QA; 207,241/60,974/13,944 for WikiSearch; 3,680/994/138 for calculator; 61,811/20,587/3,007 for calendar; and 3,156/1,034/229 for translation.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Weight schedule and post-filter text selection",
+            "section": "4.1 Experimental Setup",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "equation": "w_t and w-tilde_t"
+          },
+          "support": "The setup gives the normalized local weighting rule and removal of examples with no surviving call."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Threshold-dependent retained counts",
+            "section": "4.1 Experimental Setup",
+            "pageStart": 5,
+            "pageEnd": 5,
+            "table": "2"
+          },
+          "support": "Table 2 prints all fifteen count cells."
+        }
+      ],
+      "limitations": [
+        "Counts are threshold-specific retained examples, not unique source documents, tool invocations consumed in training, or pretraining-token totals."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-augmented-corpus-and-finetuning",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inline-api-call-language-modeling"
+      ],
+      "statement": "Surviving call/result strings are interleaved with their original CCNet text and the resulting C* is used with an ordinary language-modeling objective. The GPT-J setup uses learning rate 10⁻⁵ with 10% linear warmup; Appendix B reports up to 25,000 examples per API, sequence length 1,024, effective batch 128, BF16 ZeRO-3 on eight 40GB A100s, up to 2,000 steps or about ten hours, and checkpoint selection every 500 steps on a 1,000-example CCNet development set.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Merged annotation corpus and objective",
+            "section": "2 Approach — Model Finetuning; 4.1 Experimental Setup",
+            "pageStart": 4,
+            "pageEnd": 5
+          },
+          "support": "The paper defines x* and ordinary LM fine-tuning and supplies the learning rate, batch, and warmup."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Hardware, precision, duration, and selection",
+            "section": "B Toolformer Training",
+            "pageStart": 3,
+            "pageEnd": 3
+          },
+          "support": "The supplement gives the example cap, sequence length, hardware, precision, steps, elapsed time, evaluation cadence, and dev-set size."
+        }
+      ],
+      "limitations": [
+        "The paper reports no random seeds, optimizer family or moments, weight decay, gradient clipping, full data order, exact checkpoint selected, or measured compute and energy."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-five-tool-implementations",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inference-time-api-result-injection",
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "The five realized tools are Atlas-large for QA annotation and Atlas-xxl at inference after Natural Questions fine-tuning; a four-operation Python calculator rounded to two decimals; BM25 over the KILT Wikipedia dump; 600M-parameter NLLB translation into English with fastText language detection; and a no-argument calendar returning the current date.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Five tool roles",
+            "section": "3 Tools",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "table": "1"
+          },
+          "support": "The main article names the five tools, model families, retriever, corpus, and result behavior."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Annotation-versus-inference tool details",
+            "section": "A.1 Implementation",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The supplement distinguishes Atlas-large from Atlas-xxl and states calculator and translation behavior."
+        }
+      ],
+      "limitations": [
+        "The paper does not bind Atlas, NLLB, fastText, KILT, Wikipedia, BM25 index, or calendar responses to immutable service and model digests."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-tool-specific-data-heuristics",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "in-context-api-call-annotation"
+      ],
+      "statement": "Calculator annotation is focused using numeric and cue-pattern filters, with only 1% of documents retained when they merely contain three numbers. Calendar annotation keeps roughly 18% of documents whose URL exposes a date. Translation considers non-English ten-token spans bracketed by English at fastText confidence above .8 and removes calls whose translated input appears only after the call because that look-ahead is unavailable at inference.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Calculator, calendar, and translation selection rules",
+            "section": "A.1 Implementation",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The appendix gives the numeric predicates, random 1% branch, URL-date retention, language-span test, and post-generation look-ahead removal."
+        }
+      ],
+      "limitations": [
+        "The heuristics change the annotation distribution and are not learned general detectors of when a tool will help."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-inference-and-rank-trigger",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inference-time-api-result-injection",
+        "tool-call-rank-triggering"
+      ],
+      "statement": "At inference, decoding pauses after the generated arrow marker, an external executor runs the named API, and the result plus closing delimiter is inserted before generation resumes. Downstream evaluation departs from ordinary greedy decoding by forcing the call-start token when it ranks among the top ten and permits at most one API call per input.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Interrupt, execute, insert, and resume loop",
+            "section": "2 Approach — Inference",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The method states exactly where decoding pauses and how the response is inserted."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Top-ten trigger and one-call cap",
+            "section": "4.2 Downstream Tasks",
+            "pageStart": 5,
+            "pageEnd": 5
+          },
+          "support": "The evaluation protocol sets k=10 for call triggering and caps each input at one call."
+        }
+      ],
+      "limitations": [
+        "The executor is outside the language model; the paper does not specify robust parsing, unknown-tool behavior, timeouts, error recovery, retries, or side-effect isolation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-lama-and-math-results",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inference-time-api-result-injection",
+        "natural-language-task-conditioning"
+      ],
+      "statement": "Under prompted zero-shot evaluation and the top-ten call trigger, GPT-J/GPT-J+CC/Toolformer-disabled/Toolformer score 17.8/19.2/22.1/33.8 on LAMA-SQuAD, 4.9/5.6/6.3/11.5 on Google-RE, 31.9/33.2/34.9/53.5 on T-REx, 7.5/9.6/14.8/40.4 on ASDiv, 5.2/5.0/6.3/29.4 on SVAMP, and 9.9/9.3/15.0/44.0 on MAWPS. QA calls occur on 98.1% of LAMA cases and calculator calls on 97.9% of math cases.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Main LAMA and math matrix",
+            "section": "4.2 Downstream Tasks — LAMA; Math Benchmarks",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "table": "3"
+          },
+          "support": "Table 3 and its prose supply the six four-row comparisons and call shares."
+        }
+      ],
+      "limitations": [
+        "LAMA accepts the correct word within the first five generated words and disables WikiSearch; math accepts the first number, or first number after an equals sign, rather than using each benchmark's standard supervised protocol.",
+        "OPT-66B and original davinci GPT-3-175B are larger zero-shot comparators under the paper's prompts, not compute-, data-, tokenizer-, or decoding-matched controls."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-qa-multilingual-and-temporal-results",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inference-time-api-result-injection",
+        "model-relative-tool-utility",
+        "natural-language-task-conditioning"
+      ],
+      "statement": "Toolformer scores 26.3/17.7/48.8 on WebQuestions/Natural Questions/TriviaQA versus disabled 18.9/12.6/46.7, while GPT-3 scores 29.0/22.6/65.9; WikiSearch is used on 99.3% of those examples. Translation raises Toolformer above its disabled row in all six MLQA languages but CCNet fine-tuning leaves several results below GPT-J. TEMPLAMA rises from disabled 12.7 to 16.3 while calendar is used only .2%; DATESET rises from 5.9 to 27.3 with calendar use on 54.8%.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "QA and temporal result boundaries",
+            "section": "4.2 Downstream Tasks — Question Answering; Temporal Datasets",
+            "pageStart": 6,
+            "pageEnd": 7,
+            "table": "4"
+          },
+          "support": "Table 4 and prose provide the scores, call shares, stronger GPT-3 rows, and the calendar attribution split."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Multilingual result boundary",
+            "section": "4.2 Downstream Tasks — Multilingual Question Answering",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "5"
+          },
+          "support": "Table 5 and prose state the within-Toolformer gains and the inconsistent comparison with GPT-J."
+        }
+      ],
+      "limitations": [
+        "QA checks whether an answer occurs within the first twenty words, MLQA checks a capped ten-word generation, and DATESET uses a synthetic template distribution; these are different metrics and task constructions.",
+        "The paper says TEMPLAMA gains mostly reflect QA and Wikipedia tools and notes that its one-call cap blocks the calendar-then-QA sequence the task may require."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-language-modeling-perplexity-boundary",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inline-api-call-language-modeling"
+      ],
+      "statement": "GPT-J, GPT-J+CC, and Toolformer-disabled report WikiText perplexities 9.9/10.3/10.3 and held-out-CCNet perplexities 10.6/10.5/10.5. Thus the retained API annotations do not worsen tool-disabled perplexity relative to the matched CCNet fine-tune, but both fine-tunes worsen WikiText relative to the pretrained GPT-J baseline.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Tool-disabled language-modeling comparison",
+            "section": "4.3 Language Modeling",
+            "pageStart": 8,
+            "pageEnd": 8
+          },
+          "support": "The main article explains the two datasets and the matched comparison."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Perplexity table",
+            "section": "C Zero-Shot Prompts",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "table": "2"
+          },
+          "support": "Supplement Table 2 prints all six values."
+        }
+      ],
+      "limitations": [
+        "Perplexity with tools enabled is not reported because the paper says it would require intractable marginalization over possible calls.",
+        "The two datasets and one matched fine-tune do not establish absence of regressions on every language-modeling behavior."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-model-size-analysis",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "model-relative-tool-utility"
+      ],
+      "statement": "A size study applies the method to GPT-2 models of 124M, 355M, 775M, and 1.6B parameters plus GPT-J-6.7B using QA, calculator, and WikiSearch. The paper locates visible aggregate benefit around 775M except for the easier WikiSearch case and reports a persistent gap between tool-enabled and disabled scores at larger sizes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Five-size tool-use curves",
+            "section": "4.4 Scaling Laws",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "figure": "4"
+          },
+          "support": "The article names the model sizes, three tools, qualitative onset, exception, and remaining gap."
+        }
+      ],
+      "limitations": [
+        "The figure aggregates heterogeneous tasks, supplies no uncertainty intervals or repeated seeds, changes model families at 6.7B, and does not establish a universal emergence threshold."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-trigger-and-data-quality-analysis",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "tool-call-rank-triggering",
+        "counterfactual-future-token-tool-filtering"
+      ],
+      "statement": "On T-REx/WebQuestions, moving trigger rank k from 1 to 10 raises call rates from 40.3%/8.5% to 98.1%/100% and overall scores from 47.8/19.3 to 53.5/26.3. Under k=1, no-call subsets score 44.3/19.9 versus disabled 34.9/18.9, but this partial selectivity disappears at larger k. Qualitative annotation examples show that a positive loss-reduction score can still retain an irrelevant search result.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Trigger-rank result matrix",
+            "section": "E Additional Analysis — Decoding Strategy",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "table": "3"
+          },
+          "support": "Table 3 and prose give overall, call, no-call, and call-rate values for k=0/1/3/10."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Qualitative filter false positive",
+            "section": "E Additional Analysis — Data Quality",
+            "pageStart": 4,
+            "pageEnd": 6,
+            "table": "4"
+          },
+          "support": "Table 4 marks the positive-scoring “Fast train success” WikiSearch call as not useful."
+        }
+      ],
+      "limitations": [
+        "The no-call subsets are selected by the model rather than randomized, and the usefulness labels are qualitative author judgments without a reported annotation protocol."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-qualitative-failure-modes",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "model-relative-tool-utility",
+        "explicit-environment-query-observation-loop"
+      ],
+      "statement": "The proceedings supplement groups observed failures as no call, wrong tool, malformed call, useless or wrong result, and failure to reason from a result. It links under-use to the CCNet-paragraph versus short-query shift, reports many invalid calculator generations during annotation despite constrained arithmetic tokens, and notes that the model may ignore or incorporate an erroneous or unfocused search response.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Proceedings-only failure categories",
+            "section": "F Failure Modes",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "The supplement lists the categories and gives qualitative observations for distribution shift, calculator syntax, and response handling."
+        }
+      ],
+      "limitations": [
+        "The authors explicitly say a detailed quantitative classification would require careful human annotation; the section supplies no frequencies, inter-rater agreement, or controlled recovery test."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-chaining-interaction-and-cost-limits",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inline-api-call-language-modeling",
+        "explicit-environment-query-observation-loop",
+        "model-relative-tool-utility"
+      ],
+      "statement": "The study does not train dependent call chains because each tool's calls are generated independently, does not support interactive browsing or query reformulation, is sensitive to exact input wording, yields only a few thousand useful calculator examples after more than one million documents, and omits tool-dependent computational cost from the call decision.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Explicit method limits",
+            "section": "6 Limitations",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "The article states the chain, interaction, wording, sample-efficiency, and cost limitations."
+        }
+      ],
+      "limitations": [
+        "Texts may contain several independently generated calls, but that does not demonstrate a later call conditioned on an earlier tool result."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-gptj-generation-gpt2-scoring-conflict",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "counterfactual-future-token-tool-filtering"
+      ],
+      "statement": "The main approach defines one model M for call sampling and loss filtering, and the experiment names GPT-J as M. The proceedings-only LLaMA discussion instead describes the original training data as generated by GPT-J and scored by GPT-2 and labels that pairing explicitly in Tables 6 and 8; no released implementation or run record resolves the discrepancy.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Single-model method and experiment notation",
+            "section": "2 Approach; 4.1 Experimental Setup",
+            "pageStart": 3,
+            "pageEnd": 5
+          },
+          "support": "The sampling and filtering equations both use M, while the setup names GPT-J as M."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Separate original generator and scorer",
+            "section": "G.4.2 Generating and Scoring",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "6, 8"
+          },
+          "support": "The addendum says GPT-J-generated data was scored by GPT-2 and prints the pairing in two tables."
+        }
+      ],
+      "limitations": [
+        "Claims about whose loss defines original Toolformer utility remain version-sensitive until the realized scoring model is documented."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "The single-M main description and GPT-J/GPT-2 proceedings labels cannot both identify the realized scorer without an unstated model substitution.",
+          "resolutionCondition": "Immutable training code, exact model identifiers, or a paper-author clarification is required."
+        }
+      ],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-llama-generation-and-count-boundary",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "in-context-api-call-annotation",
+        "counterfactual-future-token-tool-filtering",
+        "model-relative-tool-utility"
+      ],
+      "statement": "The proceedings addendum applies the method to LLaMA-v1-7B for QA and WikiSearch, using LLaMA to generate and score calls, k=2 for WikiSearch, τf=1, and learning rate 2×10⁻⁶. It reports 32,180 retained QA and 22,891 WikiSearch examples, even though the shared training appendix says up to 25,000 examples per API and does not state the LLaMA sampling step that reconciles the QA count.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "LLaMA generation and training procedure",
+            "section": "G.1 Motivation; G.2 Method",
+            "pageStart": 7,
+            "pageEnd": 7
+          },
+          "support": "The addendum names the base model, tools, self-generation/scoring route, k override, threshold reuse, and learning rate."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Retained counts versus shared cap",
+            "section": "B Toolformer Training; G.2 Method",
+            "pageStart": 3,
+            "pageEnd": 7,
+            "table": "5"
+          },
+          "support": "Appendix B states the per-API cap and Table 5 prints the larger retained QA count."
+        }
+      ],
+      "limitations": [
+        "The addendum postdates the arXiv artifact and does not identify a released LLaMA-Toolformer checkpoint or generated-data manifest."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The paper does not distinguish retained, train/dev split, sampled, and actually consumed counts clearly enough to reconcile 32,180 with the 25,000-example cap.",
+          "resolutionCondition": "The exact LLaMA data split and training sampler are required."
+        }
+      ],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-llama-tool-utility-results",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "model-relative-tool-utility",
+        "inference-time-api-result-injection"
+      ],
+      "statement": "For LLaMA-v1-7B, self-generated Toolformer data raises SQuAD/Google-RE/T-REx from disabled 27.7/1.1/41.8 to 30.0/12.3/55.5 with the strong Atlas QA tool, but WikiSearch lowers WebQuestions/Natural Questions/TriviaQA from 37.0/27.6/60.2 to 36.6/26.9/57.8. A calculator attempt on roughly half the original CCNet data retains only 401 examples at τf=.5 and elicits no calculator calls.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "LLaMA enabled-versus-disabled tool results",
+            "section": "G.3 Results; G.4.1 Tool Utility",
+            "pageStart": 7,
+            "pageEnd": 9,
+            "table": "8"
+          },
+          "support": "Table 8 and discussion separate the helpful Atlas QA tool from the harmful, noisy BM25 WikiSearch tool."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-supplement",
+          "locator": {
+            "label": "Failed LLaMA calculator study",
+            "section": "G.5 Failed Investigations with Calculator",
+            "pageStart": 9,
+            "pageEnd": 9
+          },
+          "support": "The addendum states the approximate data fraction, retained count, threshold, and absence of elicited tool use."
+        }
+      ],
+      "limitations": [
+        "These are one base-model scale and paper-specific tool implementations; the comparison does not show that stronger models generally need fewer tools or that retrieval is generally harmful.",
+        "The paper attributes the contrast partly to Atlas returning concise targeted answers and BM25 returning noisy passages, so model, tool, prompt, and task change together."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "schick-2023-toolformer-artifact-rights-and-safety-boundary",
+      "workId": "schick-2023-toolformer-language-models-teach-themselves-use-tools",
+      "ideaIds": [
+        "inline-api-call-language-modeling",
+        "inference-time-api-result-injection"
+      ],
+      "statement": "The audited release surface contains papers, publication source, figures, prompts, formulas, and tables, but no official Toolformer code, checkpoint, generated C* corpus, tool snapshot, predictions, seeds, or end-to-end run environment. The arXiv terms grant arXiv non-exclusive distribution rights for the article rather than a public reuse license for model, code, data, or dependencies. The read-only textual tool study does not evaluate state-changing APIs, malicious outputs, prompt injection, privacy, permissions, or operational safety.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "schick-2023-toolformer-arxiv-v1-source-package",
+          "locator": {
+            "label": "Publication-source inventory",
+            "section": "Archive file tree"
+          },
+          "support": "The ten-file archive contains manuscript and figure material only."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-arxiv-distribution-license",
+          "locator": {
+            "label": "Article-distribution grant",
+            "section": "Non-exclusive license to distribute"
+          },
+          "support": "The terms grant distribution permission to arXiv and do not establish a general public artifact license."
+        },
+        {
+          "sourceId": "schick-2024-toolformer-meta-publication-page",
+          "locator": {
+            "label": "Official organizational release surface",
+            "section": "Paper metadata and download"
+          },
+          "support": "The Meta page links the paper but no code, model, or dataset release."
+        },
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Text-only tool constraints",
+            "section": "2 Approach; 3 Tools; 6 Limitations",
+            "pageStart": 2,
+            "pageEnd": 9
+          },
+          "support": "The paper limits tools to text-valued interfaces, names the five read-only tools, and discusses functional rather than adversarial safety limits."
+        }
+      ],
+      "limitations": [
+        "Absence is limited to the inspected official publication and organization surfaces as of the checked date; third-party reimplementations are not treated as paper artifacts.",
+        "Upstream GPT-J, CCNet, Atlas, NLLB, fastText, KILT, Wikipedia, benchmark, GPU-software, and LLaMA rights remain separate and are not granted by the article record."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-15"
     }
   ],
   "relationships": [
@@ -69832,6 +71189,45 @@
           "note": "The edge records the target's stated model and prompting substrate, not code or checkpoint identity and not a transfer of PaLM results or rights."
         }
       ]
+    },
+    {
+      "id": "brown-2020-to-schick-2023-toolformer-in-context-api-sampling",
+      "from": {
+        "kind": "work",
+        "id": "brown-2020-language-models-few-shot-learners"
+      },
+      "to": {
+        "kind": "work",
+        "id": "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Toolformer explicitly says its data-generation route is based on using large language models with in-context learning, cites Brown et al., and then gives GPT-J a few API demonstrations to annotate CCNet. The relationship carries only the target-documented demonstration-conditioned sampling idea. GPT-3 is a comparator, not Toolformer's base model, and no GPT-3 architecture, weights, corpus, result, service, artifact, or right transfers through the edge.",
+      "claimIds": [
+        "brown-2020-zero-one-few-shot-definitions",
+        "brown-2020-in-context-interpretation-boundary",
+        "schick-2023-toolformer-in-context-call-sampling"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "schick-2023-toolformer-neurips-main-full-text",
+          "locator": {
+            "label": "Target-side in-context data-generation attribution",
+            "section": "1 Introduction; 2 Approach — Sampling API Calls",
+            "pageStart": 1,
+            "pageEnd": 3
+          },
+          "support": "The target calls its route based on large-model in-context learning, cites Brown et al., and implements it with few-example API prompts."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is about the cited prompting mechanism, not GPT-3 model inheritance or an exclusive line of influence."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -74029,6 +75425,89 @@
         "Versioned publication evidence, immutable code snapshots, metric comparability, and license-scope analysis"
       ],
       "successCriterion": "The learner can defend all four version records and the PaLM edge; reconstruct the search, routing, fine-tuning, ALFWorld, and WebShop protocols; reproduce the cited result rows with their selection caveats; and separate visible textual traces, model internals, services, artifacts, and rights."
+    },
+    {
+      "id": "beginner-schick-2023-test-when-a-tool-helps",
+      "mode": "beginner",
+      "objective": "Follow Toolformer's propose–try–filter–study loop, distinguish the language model from the external executor, and predict why the same tool can help one model-task pair while distracting another.",
+      "workIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "ideaIds": [
+        "in-context-api-call-annotation",
+        "counterfactual-future-token-tool-filtering",
+        "inline-api-call-language-modeling",
+        "inference-time-api-result-injection",
+        "model-relative-tool-utility",
+        "explicit-environment-query-observation-loop"
+      ],
+      "claimIds": [
+        "schick-2023-toolformer-base-model-and-training-text-boundary",
+        "schick-2023-toolformer-api-call-serialization",
+        "schick-2023-toolformer-in-context-call-sampling",
+        "schick-2023-toolformer-execution-and-future-token-loss-filter",
+        "schick-2023-toolformer-five-tool-implementations",
+        "schick-2023-toolformer-inference-and-rank-trigger",
+        "schick-2023-toolformer-llama-tool-utility-results",
+        "schick-2023-toolformer-chaining-interaction-and-cost-limits",
+        "schick-2023-toolformer-artifact-rights-and-safety-boundary"
+      ],
+      "prerequisites": [
+        "A language model predicts the next token from earlier context",
+        "An external tool can return text that the model did not store in its parameters",
+        "A lower prediction loss is a model score and not automatically a human judgment"
+      ],
+      "successCriterion": "The learner can narrate the four-stage loop, explain the loss comparison in plain language, identify the external executor, contrast the helpful Atlas and harmful BM25 LLaMA results, and state why one-call read-only benchmarks do not establish safe general agents."
+    },
+    {
+      "id": "expert-schick-2023-audit-toolformer-training-execution-and-version-conflicts",
+      "mode": "expert",
+      "objective": "Audit Toolformer across preprint and proceedings artifacts, call sampling and counterfactual filtering, tool-specific heuristics, fine-tuning, interrupt-and-inject decoding, evaluation envelopes, scorer and count conflicts, LLaMA addendum, artifact gaps, rights, and scoped lineage.",
+      "workIds": [
+        "schick-2023-toolformer-language-models-teach-themselves-use-tools"
+      ],
+      "ideaIds": [
+        "in-context-api-call-annotation",
+        "counterfactual-future-token-tool-filtering",
+        "inline-api-call-language-modeling",
+        "inference-time-api-result-injection",
+        "tool-call-rank-triggering",
+        "model-relative-tool-utility",
+        "decoder-only-transformer-language-modeling",
+        "demonstration-conditioned-in-context-learning",
+        "explicit-environment-query-observation-loop",
+        "natural-language-task-conditioning"
+      ],
+      "claimIds": [
+        "schick-2023-toolformer-version-and-publication-boundary",
+        "schick-2023-toolformer-record-and-paper-tool-count-conflict",
+        "schick-2023-toolformer-base-model-and-training-text-boundary",
+        "schick-2023-toolformer-api-call-serialization",
+        "schick-2023-toolformer-in-context-call-sampling",
+        "schick-2023-toolformer-execution-and-future-token-loss-filter",
+        "schick-2023-toolformer-weighting-and-retained-example-counts",
+        "schick-2023-toolformer-augmented-corpus-and-finetuning",
+        "schick-2023-toolformer-five-tool-implementations",
+        "schick-2023-toolformer-tool-specific-data-heuristics",
+        "schick-2023-toolformer-inference-and-rank-trigger",
+        "schick-2023-toolformer-lama-and-math-results",
+        "schick-2023-toolformer-qa-multilingual-and-temporal-results",
+        "schick-2023-toolformer-language-modeling-perplexity-boundary",
+        "schick-2023-toolformer-model-size-analysis",
+        "schick-2023-toolformer-trigger-and-data-quality-analysis",
+        "schick-2023-toolformer-qualitative-failure-modes",
+        "schick-2023-toolformer-chaining-interaction-and-cost-limits",
+        "schick-2023-toolformer-gptj-generation-gpt2-scoring-conflict",
+        "schick-2023-toolformer-llama-generation-and-count-boundary",
+        "schick-2023-toolformer-llama-tool-utility-results",
+        "schick-2023-toolformer-artifact-rights-and-safety-boundary"
+      ],
+      "prerequisites": [
+        "Causal language modeling, in-context demonstrations, token probabilities, weighted cross-entropy, and counterfactual baselines",
+        "Retrieval and question-answering systems, BM25, executable API wrappers, decoding policies, and distribution shift",
+        "Versioned publication evidence, model and dataset provenance, artifact manifests, licensing scope, and benchmark comparability"
+      ],
+      "successCriterion": "The learner can defend both versions and the Brown edge; reconstruct thresholds, loss equations, five tools, data counts, training and decoding settings; reproduce the cited result comparisons; explain the GPT-J/GPT-2 and 25k/32,180 conflicts; and separate papers, models, data, tools, execution, safety, and rights."
     }
   ]
 }

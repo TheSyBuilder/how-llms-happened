@@ -1,6 +1,6 @@
 # Current endpoint coverage plan
 
-The structured corpus currently reaches 2022 through several distinct branches: compute allocation, dense scaling, instruction tuning, human-feedback post-training, retrieval augmentation, environment action, and open-checkpoint transparency. That is a stable intermediate boundary, not the endpoint of LLM history.
+The structured corpus currently reaches from 2022 into 2023 through several distinct branches: compute allocation, dense scaling, instruction tuning, human-feedback post-training, retrieval augmentation, environment action, self-supervised tool use, and open-checkpoint transparency. That is a stable intermediate boundary, not the endpoint of LLM history.
 
 This plan records the next coverage decisions without treating candidate status as inclusion. A candidate enters the corpus only after its paper versions, claims, limitations, artifacts, rights, and lineage relationships pass the same evidence rules as the existing works.
 
@@ -32,6 +32,14 @@ The task evidence is deliberately split. HotpotQA and FEVER use a hand-built Wik
 
 The immutable January 2023 repository tree supplies text-davinci-002 notebooks and prompts for the four task families, but not PaLM weights or code, paper fine-tuning code or checkpoints, a locked environment, or every service snapshot. Article, code, model/API, benchmark, Wikipedia, and environment rights remain separate. The qualified PaLM→ReAct edge carries only the target’s explicit use of frozen PaLM-540B and few-shot prompting; no RAG, chain-of-thought, WebGPT, GPT-3, or InstructGPT edge is inferred from shared vocabulary or comparison.
 
+## Promoted endpoint: Toolformer
+
+[Toolformer](https://arxiv.org/abs/2302.04761) adds a training-time route to tool use rather than ReAct’s hand-authored task trajectories. GPT-J receives a few API demonstrations, proposes inline calls over CCNet, executes them, and retains a call only when its returned result lowers weighted future-token loss against both a no-call and a call-without-result counterfactual. The augmented text is then used for ordinary causal-language-model fine-tuning. At inference, decoding pauses at the result marker, an external executor supplies text, and generation resumes from the expanded context.
+
+The promoted record separates the sole eight-author arXiv revision from the nine-author NeurIPS 2023 article and supplement. It retains the exact sampling and filtering thresholds, tool-specific heuristics, five concrete tool implementations, one-call evaluation cap, forced top-ten trigger, task-specific result envelopes, and proceedings-only LLaMA studies. It also keeps two unresolved implementation boundaries visible: the main paper uses GPT-J as the single sampling-and-scoring model while the supplement names GPT-2 as scorer for GPT-J-generated calls, and the 25,000-example-per-API training cap is not reconciled with 32,180 retained LLaMA QA examples.
+
+No official training or inference code, generated annotation corpus, Toolformer checkpoint, tokenizer binding, tool snapshot, predictions, seeds, or complete environment was identified in the inspected first-party records. The tools are read-only text functions, and the study does not test chained calls, query revision, state-changing APIs, prompt injection, permissions, privacy, or operational safety. The qualified Brown→Toolformer edge carries only Toolformer’s target-side attribution of its few-demonstration call sampler to in-context learning. GPT-3 is a comparator, not Toolformer’s base model; ReAct remains a related but distinct environment-trajectory branch without an inferred lineage edge.
+
 ## Coverage lanes beyond 2022
 
 The remaining endpoint is not one chronological ladder. The following lanes are provisional review queues, not preselected promotions.
@@ -40,7 +48,7 @@ The remaining endpoint is not one chronological ladder. The following lanes are 
 |---|---|---|---|
 | Open artifacts and efficient dense models | OPT, ROOTS, and BLOOM | [LLaMA](https://arxiv.org/abs/2302.13971), [Llama 2](https://arxiv.org/abs/2307.09288), [OLMo](https://arxiv.org/abs/2402.00838), and [Dolma](https://arxiv.org/abs/2402.00159) | How did “open model” move from checkpoints and logs toward broader training-stack access, and which assets and permissions were actually supplied? |
 | Preference instruction and preference post-training | FLAN, T0, Stiennon, InstructGPT | [Constitutional AI](https://arxiv.org/abs/2212.08073) and [Direct Preference Optimization](https://arxiv.org/abs/2305.18290) | What changes when supervision comes from written principles, model-generated comparisons, or a direct preference loss instead of the existing human-reward-model-plus-PPO path? |
-| Retrieval, reasoning, and acting | REALM, RAG, PaLM reasoning evidence, and ReAct | [Toolformer](https://arxiv.org/abs/2302.04761) | When does an LM merely condition on retrieved text, and when does it select actions or tool calls as part of an interleaved trajectory? |
+| Retrieval, reasoning, and acting | REALM, RAG, PaLM reasoning evidence, ReAct, and Toolformer | Further additions are evidence-triggered rather than preselected | When does an LM merely condition on retrieved text, and when does it select actions or tool calls as part of an interleaved trajectory? |
 | Sparse and efficient architecture | Transformer, T5, dense scaling branch | [Switch Transformers](https://arxiv.org/abs/2101.03961), [Mixtral](https://arxiv.org/abs/2401.04088), and [Mistral 7B](https://arxiv.org/abs/2310.06825) | Which changes alter active computation, memory traffic, attention cost, or inference behavior rather than only total parameter count? |
 | Reinforcement-learned reasoning | Human-feedback post-training and chain-of-thought evidence | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and its 2025 journal/2026 revision boundary | What evidence supports reasoning improvements from verifiable-reward reinforcement learning, and what depends on hidden base-model, data, evaluator, or release conditions? |
 

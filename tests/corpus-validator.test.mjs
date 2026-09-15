@@ -3942,6 +3942,159 @@ test("preserves ReAct revisions, environment protocols, result scope, code bound
   assert.ok(currentEndpoint.includes("Promoted endpoint: ReAct"));
 });
 
+test("preserves Toolformer versions, tool pipeline, scorer conflicts, release boundaries, and lineage", () => {
+  const workId =
+    "schick-2023-toolformer-language-models-teach-themselves-use-tools";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 62);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2023-02-09", "2023-12-15"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "schick-2023-toolformer-arxiv-v1-version",
+      "schick-2023-toolformer-neurips-version",
+    ],
+  );
+  assert.equal(work?.versions[0]?.authors.length, 8);
+  assert.ok(!work?.versions[0]?.authors.includes("Eric Hambro"));
+  assert.equal(work?.versions[1]?.authors.length, 9);
+  assert.ok(work?.versions[1]?.authors.includes("Eric Hambro"));
+  assert.deepEqual(work?.versions[1]?.bibliography.pages, ["68539-68551"]);
+  assert.equal(
+    work?.versions[1]?.bibliography.identifiers[0]?.value,
+    "10.52202/075280-2997",
+  );
+  assert.equal(work?.canonicalVersionId, "schick-2023-toolformer-neurips-version");
+  assert.equal(work?.sourceIds.length, 8);
+  assert.equal(work?.ideaIds.length, 10);
+  assert.equal(claims.length, 22);
+
+  assert.deepEqual(
+    findSource("schick-2023-toolformer-arxiv-v1-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 17 },
+  );
+  assert.deepEqual(
+    findSource("schick-2023-toolformer-neurips-main-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 13 },
+  );
+  assert.deepEqual(
+    findSource("schick-2023-toolformer-neurips-supplement")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 10 },
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-arxiv-v1-full-text")?.accessNote ?? "",
+    /6d7483d94653008e/,
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-arxiv-v1-source-package")?.accessNote ?? "",
+    /5139a320f266bd19.*no model.*training or inference code/,
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-neurips-main-full-text")?.accessNote ?? "",
+    /391845b5f4f7f5e7/,
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-neurips-supplement")?.accessNote ?? "",
+    /a54b40a9e52cfe26/,
+  );
+
+  assert.match(
+    findClaim("schick-2023-toolformer-version-and-publication-boundary")
+      ?.statement ?? "",
+    /eight authors.*nine authors.*Eric Hambro.*LLaMA-v1 investigations/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-record-and-paper-tool-count-conflict")
+      ?.statement ?? "",
+    /two different search engines.*five tools instead/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-base-model-and-training-text-boundary")
+      ?.statement ?? "",
+    /6.7-billion-parameter.*subset of CCNet.*does not establish.*byte-identical/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-execution-and-future-token-loss-filter")
+      ?.statement ?? "",
+    /Lᵢ⁻−Lᵢ⁺.*τf.*1.0.*0.5/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-augmented-corpus-and-finetuning")
+      ?.statement ?? "",
+    /25,000.*1,024.*eight 40GB A100s/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-inference-and-rank-trigger")?.statement ??
+      "",
+    /top ten.*at most one API call/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-gptj-generation-gpt2-scoring-conflict")
+      ?.statement ?? "",
+    /GPT-J.*GPT-2.*no released implementation or run record resolves/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-llama-generation-and-count-boundary")
+      ?.statement ?? "",
+    /32,180.*25,000.*does not state/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-llama-tool-utility-results")?.statement ??
+      "",
+    /Atlas QA tool.*WikiSearch lowers.*401 examples.*no calculator calls/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-artifact-rights-and-safety-boundary")
+      ?.statement ?? "",
+    /no official Toolformer code.*checkpoint.*non-exclusive distribution rights.*does not evaluate state-changing APIs/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    ["brown-2020-to-schick-2023-toolformer-in-context-api-sampling"],
+  );
+  assert.equal(incoming[0]?.connectionType, "builds-on");
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.match(incoming[0]?.rationale ?? "", /in-context learning/);
+  assert.match(incoming[0]?.rationale ?? "", /GPT-3 is a comparator/);
+  assert.match(incoming[0]?.rationale ?? "", /no GPT-3 architecture.*right transfers/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      ["beginner-schick-2023-test-when-a-tool-helps", "beginner", 9],
+      [
+        "expert-schick-2023-audit-toolformer-training-execution-and-version-conflicts",
+        "expert",
+        22,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Schick et al.’s Toolformer family"));
+  assert.ok(corpusFormat.includes("Schick et al. 2023"));
+  assert.ok(
+    historicalScope.includes("The Toolformer family was checked on 2026-09-15"),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: Toolformer"));
+});
+
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
   const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
   const versionId = "graves-2013-arxiv-v1-version";
