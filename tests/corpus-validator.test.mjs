@@ -570,7 +570,11 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
   assert.match(artifacts?.statement ?? "", /no immutable official code/);
   assert.deepEqual(
     relationships.map((item) => item.id),
-    ["kaplan-2020-to-brown-2020", "kaplan-2020-to-hoffmann-2022"],
+    [
+      "kaplan-2020-to-brown-2020",
+      "kaplan-2020-to-hoffmann-2022",
+      "kaplan-2020-to-fedus-2021-switch-transformers-capacity-axis",
+    ],
   );
   assert.deepEqual(
     objectives.map((item) => item.mode).sort(),
@@ -4093,6 +4097,136 @@ test("preserves Toolformer versions, tool pipeline, scorer conflicts, release bo
     historicalScope.includes("The Toolformer family was checked on 2026-09-15"),
   );
   assert.ok(currentEndpoint.includes("Promoted endpoint: Toolformer"));
+});
+
+test("preserves Switch Transformer versions, sparse routing, result limits, artifact evolution, and lineage", () => {
+  const workId =
+    "fedus-2021-switch-transformers-scaling-trillion-parameter-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 63);
+  assert.equal(work?.artifactType, "journal-article");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2021-01-11", "2022-04", "2022-04-30", "2022-06-16"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "fedus-2021-switch-transformers-arxiv-v1-version",
+      "fedus-2022-switch-transformers-jmlr-version",
+      "fedus-2022-switch-transformers-arxiv-v2-version",
+      "fedus-2022-switch-transformers-arxiv-v3-version",
+    ],
+  );
+  assert.equal(
+    work?.canonicalVersionId,
+    "fedus-2022-switch-transformers-jmlr-version",
+  );
+  assert.deepEqual(work?.versions[1]?.bibliography.pages, ["1-39"]);
+  assert.equal(work?.sourceIds.length, 15);
+  assert.equal(work?.ideaIds.length, 13);
+  assert.equal(claims.length, 21);
+
+  const expectedArtifacts = [
+    ["fedus-2021-switch-transformers-arxiv-v1-full-text", "pdf-page", 31, "0dba4abc34422f49"],
+    ["fedus-2022-switch-transformers-arxiv-v2-full-text", "pdf-page", 40, "1ad840d21419f625"],
+    ["fedus-2022-switch-transformers-arxiv-v3-full-text", "pdf-page", 40, "f340f6ace31abf7d"],
+    ["fedus-2022-switch-transformers-jmlr-full-text", "printed", 39, "8831edca732dd939"],
+  ];
+  for (const [sourceId, scheme, pageEnd, hash] of expectedArtifacts) {
+    assert.deepEqual(findSource(sourceId)?.pagination, {
+      scheme,
+      pageStart: 1,
+      pageEnd,
+    });
+    assert.match(findSource(sourceId)?.accessNote ?? "", new RegExp(hash));
+  }
+  assert.match(
+    findSource("fedus-2021-switch-transformers-mesh-code-snapshot")
+      ?.accessNote ?? "",
+    /3755319.*does not bind a complete experiment configuration/,
+  );
+  assert.match(
+    findSource("fedus-2022-switch-transformers-t5x-checkpoint-registry")
+      ?.accessNote ?? "",
+    /six Base expert counts.*Large-128.*XXL-128.*C-2048 \(1\.6T\)/,
+  );
+
+  assert.match(
+    findClaim("fedus-2021-switch-transformers-version-boundary")?.statement ??
+      "",
+    /31-leaf.*JMLR 23\(120\):1–39.*v3.*corrects.*Table 9/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-top-one-routing")?.statement ??
+      "",
+    /softmax probabilities.*single highest-probability expert.*y=p_i\(x\)E_i\(x\)/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-capacity-overflow-and-drop")
+      ?.statement ?? "",
+    /static capacity.*skips expert computation.*below 1%/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-large-model-parameter-compute-table")
+      ?.statement ?? "",
+    /395B.*6\.3T.*1,571B.*890B.*headings are swapped/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-large-model-pretraining-and-stability")
+      ?.statement ?? "",
+    /Switch-C shows no observed instability.*Switch-XXL is sometimes unstable/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-artifact-evolution")?.statement ??
+      "",
+    /nine converted checkpoints.*T5X footnote two days later/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-rights-and-reconstruction-boundary")
+      ?.statement ?? "",
+    /CC BY 4\.0.*Apache 2\.0.*do not merge into one license/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    [
+      "raffel-2019-to-fedus-2021-switch-transformers-t5-substrate",
+      "kaplan-2020-to-fedus-2021-switch-transformers-capacity-axis",
+    ],
+  );
+  assert.ok(incoming.every((item) => item.evidenceClass === "documented-influence"));
+  assert.ok(incoming.every((item) => item.causalLanguage === "qualified"));
+  assert.match(incoming[0]?.rationale ?? "", /replaces selected feed-forward blocks/);
+  assert.match(incoming[1]?.rationale ?? "", /fourth design axis/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      ["beginner-fedus-2021-separate-capacity-from-work", "beginner", 7],
+      ["expert-fedus-2021-audit-switch-routing-scaling-and-release", "expert", 21],
+    ],
+  );
+  assert.ok(readme.includes("Fedus, Zoph, and Shazeer’s Switch Transformers family"));
+  assert.ok(corpusFormat.includes("Fedus et al. 2021/2022"));
+  assert.ok(
+    historicalScope.includes(
+      "The Switch Transformers family was checked on 2026-09-16",
+    ),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: Switch Transformers"));
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {

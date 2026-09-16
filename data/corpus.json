@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-15",
+  "asOf": "2026-09-16",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -17987,6 +17987,332 @@
           "resolutionCondition": "A dated official release announcement or immutable artifact record is required before assigning a separate model-release event."
         }
       ]
+    },
+    {
+      "id": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+      "authors": [
+        "William Fedus",
+        "Barret Zoph",
+        "Noam Shazeer"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "W. Fedus, B. Zoph, and N. Shazeer, “Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity,” Journal of Machine Learning Research, 23(120):1–39, 2022 (arXiv v1 posted 11 January 2021).",
+      "chronology": {
+        "orderingEventId": "fedus-2021-switch-transformers-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "fedus-2021-switch-transformers-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2021-01-11",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "fedus-2021-switch-transformers-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 1 posted 2021-01-11 16:11:52 UTC"
+              }
+            ],
+            "versionId": "fedus-2021-switch-transformers-arxiv-v1-version",
+            "sourceIds": [
+              "fedus-2021-switch-transformers-arxiv-record",
+              "fedus-2021-switch-transformers-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "fedus-2022-switch-transformers-jmlr-publication",
+            "kind": "journal-publication",
+            "label": "JMLR publication",
+            "date": {
+              "value": "2022-04",
+              "precision": "month",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+                "precision": "month",
+                "locator": "Article header, ‘Published 4/22’"
+              }
+            ],
+            "versionId": "fedus-2022-switch-transformers-jmlr-version",
+            "sourceIds": [
+              "fedus-2022-switch-transformers-jmlr-record",
+              "fedus-2022-switch-transformers-jmlr-full-text"
+            ]
+          },
+          {
+            "id": "fedus-2022-switch-transformers-arxiv-v2-posted",
+            "kind": "preprint",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2022-04-30",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "fedus-2021-switch-transformers-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 2 posted 2022-04-30 00:02:01 UTC"
+              }
+            ],
+            "versionId": "fedus-2022-switch-transformers-arxiv-v2-version",
+            "sourceIds": [
+              "fedus-2021-switch-transformers-arxiv-record",
+              "fedus-2022-switch-transformers-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "fedus-2022-switch-transformers-arxiv-v3-posted",
+            "kind": "preprint",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2022-06-16",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "fedus-2021-switch-transformers-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 3 posted 2022-06-16 20:36:07 UTC"
+              }
+            ],
+            "versionId": "fedus-2022-switch-transformers-arxiv-v3-version",
+            "sourceIds": [
+              "fedus-2021-switch-transformers-arxiv-record",
+              "fedus-2022-switch-transformers-arxiv-v3-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "fedus-2021-switch-transformers-arxiv-v1-version",
+          "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+          "authors": [
+            "William Fedus",
+            "Barret Zoph",
+            "Noam Shazeer"
+          ],
+          "kind": "preprint",
+          "label": "Ordering arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "W. Fedus, B. Zoph, and N. Shazeer, “Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity,” arXiv:2101.03961v1, 11 January 2021.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2101.03961v1",
+                "label": "ArXiv version 1"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2101.03961",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "fedus-2021-switch-transformers-arxiv-record",
+            "fedus-2021-switch-transformers-arxiv-v1-full-text",
+            "fedus-2021-switch-transformers-arxiv-v1-source-package",
+            "fedus-2021-switch-transformers-arxiv-license",
+            "fedus-2021-switch-transformers-mesh-code-snapshot",
+            "fedus-2021-switch-transformers-mesh-license"
+          ],
+          "notes": "The 31-leaf ordering manuscript already contains the method, experiments, large-model study, and appendices. The later journal family corrects notation, adds provenance and protocol details, renames Switch-Base (expand), changes the Table 1 threshold presentation, reorganizes the downstream tables, and expands qualifications without changing the central top-1 routing result."
+        },
+        {
+          "id": "fedus-2022-switch-transformers-jmlr-version",
+          "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+          "authors": [
+            "William Fedus",
+            "Barret Zoph",
+            "Noam Shazeer"
+          ],
+          "kind": "journal",
+          "label": "Canonical JMLR article",
+          "language": "en",
+          "bibliography": {
+            "citation": "W. Fedus, B. Zoph, and N. Shazeer, “Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity,” Journal of Machine Learning Research, vol. 23, no. 120, pp. 1–39, 2022.",
+            "venue": "Journal of Machine Learning Research",
+            "volume": "23",
+            "issues": [
+              "120"
+            ],
+            "pages": [
+              "1-39"
+            ],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "fedus-2022-switch-transformers-jmlr-record",
+            "fedus-2022-switch-transformers-jmlr-full-text",
+            "fedus-2021-switch-transformers-mesh-code-snapshot",
+            "fedus-2021-switch-transformers-mesh-license"
+          ],
+          "notes": "The canonical 39-page article records submission in August 2021, revision in March 2022, publication in April 2022, editor Alexander Clark, CC BY 4.0 article terms, and the mutable Mesh TensorFlow code link. Its Table 9 second header block swaps the intended ‘Num. Layers’ and ‘Num Experts’ headings; arXiv v3 corrects that presentation."
+        },
+        {
+          "id": "fedus-2022-switch-transformers-arxiv-v2-version",
+          "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+          "authors": [
+            "William Fedus",
+            "Barret Zoph",
+            "Noam Shazeer"
+          ],
+          "kind": "preprint",
+          "label": "JMLR-formatted arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "W. Fedus, B. Zoph, and N. Shazeer, “Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity,” arXiv:2101.03961v2, 30 April 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2101.03961v2",
+                "label": "ArXiv version 2"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2101.03961",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "fedus-2021-switch-transformers-arxiv-record",
+            "fedus-2022-switch-transformers-arxiv-v2-full-text",
+            "fedus-2022-switch-transformers-arxiv-v2-source-package",
+            "fedus-2021-switch-transformers-arxiv-license",
+            "fedus-2021-switch-transformers-mesh-code-snapshot",
+            "fedus-2021-switch-transformers-mesh-license"
+          ],
+          "notes": "The 40-leaf arXiv rendering carries the JMLR-formatted scientific body and the same swapped Table 9 headings as the canonical article. It was posted after the month-level JMLR publication record and is not used to assign a day to the journal event."
+        },
+        {
+          "id": "fedus-2022-switch-transformers-arxiv-v3-version",
+          "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+          "authors": [
+            "William Fedus",
+            "Barret Zoph",
+            "Noam Shazeer"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "W. Fedus, B. Zoph, and N. Shazeer, “Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity,” arXiv:2101.03961v3, 16 June 2022.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2101.03961v3",
+                "label": "ArXiv version 3"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2101.03961",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "fedus-2021-switch-transformers-arxiv-record",
+            "fedus-2022-switch-transformers-arxiv-v3-full-text",
+            "fedus-2022-switch-transformers-arxiv-v3-source-package",
+            "fedus-2021-switch-transformers-arxiv-license",
+            "fedus-2021-switch-transformers-mesh-code-snapshot",
+            "fedus-2021-switch-transformers-mesh-license",
+            "fedus-2022-switch-transformers-t5x-checkpoint-release",
+            "fedus-2022-switch-transformers-t5x-checkpoint-registry",
+            "fedus-2022-switch-transformers-t5x-license"
+          ],
+          "notes": "Version 3 is scientifically aligned with version 2, corrects the Table 9 layer/expert header order, and adds a footnote linking JAX code and all model checkpoints in T5X alongside the TensorFlow implementation. The cited T5X checkpoint release landed two days before this revision."
+        }
+      ],
+      "canonicalVersionId": "fedus-2022-switch-transformers-jmlr-version",
+      "preferredSourceIds": [
+        "fedus-2022-switch-transformers-jmlr-record",
+        "fedus-2022-switch-transformers-jmlr-full-text"
+      ],
+      "sourceIds": [
+        "fedus-2021-switch-transformers-arxiv-record",
+        "fedus-2021-switch-transformers-arxiv-v1-full-text",
+        "fedus-2021-switch-transformers-arxiv-v1-source-package",
+        "fedus-2022-switch-transformers-arxiv-v2-full-text",
+        "fedus-2022-switch-transformers-arxiv-v2-source-package",
+        "fedus-2022-switch-transformers-arxiv-v3-full-text",
+        "fedus-2022-switch-transformers-arxiv-v3-source-package",
+        "fedus-2021-switch-transformers-arxiv-license",
+        "fedus-2022-switch-transformers-jmlr-record",
+        "fedus-2022-switch-transformers-jmlr-full-text",
+        "fedus-2021-switch-transformers-mesh-code-snapshot",
+        "fedus-2021-switch-transformers-mesh-license",
+        "fedus-2022-switch-transformers-t5x-checkpoint-release",
+        "fedus-2022-switch-transformers-t5x-checkpoint-registry",
+        "fedus-2022-switch-transformers-t5x-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Switch Transformers fills the sparse-and-efficient architecture lane with a target-documented mechanism: replace selected T5 feed-forward blocks by token-routed expert banks, activate one expert per token, and scale total parameter capacity without proportionally scaling the reported per-sequence FLOPs. It is retained for that conditional-computation design, stability interventions, distributed implementation, and bounded evidence—not because total parameter count equals active computation, every task improves, the largest run is stable, or the release reconstructs every experiment."
+      },
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling",
+        "token-wise-top-one-expert-routing",
+        "fixed-capacity-expert-dispatch",
+        "router-load-balancing-objective",
+        "selective-router-precision",
+        "expert-only-finetuning-dropout",
+        "joint-data-model-expert-parallelism",
+        "sparse-to-dense-teacher-distillation",
+        "self-attention-sequence-mixing",
+        "source-conditioned-autoregressive-decoding",
+        "unified-text-to-text-task-interface",
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline"
+      ],
+      "significance": {
+        "beginner": "A Switch layer stores many different feed-forward ‘workbenches’ but sends each token to one of them. That makes total capacity grow faster than the work performed on a token, while also introducing a new traffic problem: popular experts overflow and distributed devices must exchange tokens.",
+        "expert": "Switch Transformer replaces alternating T5 FFNs with top-1 token routing, fixed expert capacity, an auxiliary balancing loss, selective float32 routing, expert-only fine-tuning dropout, and expert/data/model parallelism. The record keeps total parameters, FLOPs per sequence, wall-clock comparisons, token drops, stability, downstream transfer, version corrections, code paths, checkpoints, and rights separate."
+      },
+      "limitations": [
+        "The paper's sparsity is over feed-forward weights, not attention patterns; the standard model retains dense attention and does not solve quadratic long-context attention cost.",
+        "Reported total parameters are not active parameters per token. The paper reports FLOPs per sequence and routing/communication costs but does not provide one uniform active-parameter or inference-throughput ledger for every model.",
+        "Fixed expert capacity can drop overflow tokens through the residual path; larger capacity spends more memory and compute, and load balancing does not guarantee semantically useful specialization.",
+        "Speed claims depend on TPUv3 hardware, device counts, Mesh TensorFlow partitioning, communication, implementation details, batch shape, and the selected perplexity threshold.",
+        "Selective precision and smaller initialization stabilize several scales but not Switch-XXL; the larger total-parameter Switch-C is stable while the more compute-intensive Switch-XXL is sometimes unstable.",
+        "Upstream perplexity gains do not uniformly translate to downstream reasoning performance, and the paper's largest-model comparisons are preliminary single-value evaluations without a complete repeated-seed uncertainty study.",
+        "The post-publication T5X release lists nine converted checkpoints and configurations, but no single immutable manifest binds every paper table to raw predictions, seeds, data order, exact runtime, checkpoint digest, and evaluation output."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "Canonical JMLR Table 9 and arXiv v2 label the second header block ‘Num. Experts’ then ‘Num Layers’ even though the values are layer counts then expert counts; arXiv v3 reverses the headings without changing the values.",
+          "resolutionCondition": "An official journal erratum would be required to correct the canonical article rather than relying on the later arXiv revision."
+        },
+        {
+          "status": "open",
+          "note": "JMLR exposes only month-level publication timing (‘Published 4/22’), so its exact public day relative to arXiv v2 on 30 April is not assigned.",
+          "resolutionCondition": "A dated publisher ledger or archived announcement is required for day precision."
+        },
+        {
+          "status": "open",
+          "note": "The T5X registry calls its nine objects converted Mesh TensorFlow checkpoints from the paper, but the audited release does not provide an immutable per-object digest and table-to-checkpoint evaluation manifest.",
+          "resolutionCondition": "A publisher- or author-supplied digest ledger and run mapping is required for byte-level and result-level identity."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -19147,7 +19473,8 @@
         "bart-2020-summarization-results-and-version-baseline",
         "bart-2020-other-generation-and-translation-results",
         "bart-2020-hallucination-and-task-limitations",
-        "bart-2020-release-and-reproduction-boundary"
+        "bart-2020-release-and-reproduction-boundary",
+        "fedus-2022-switch-transformers-t5-substrate"
       ],
       "uncertainties": [
         {
@@ -19743,7 +20070,8 @@
         "raffel-2020-encoder-decoder-architecture",
         "bart-2020-transformer-architecture-and-scales",
         "rae-2021-gopher-family-and-architecture",
-        "chowdhery-2022-palm-model-family-and-architecture"
+        "chowdhery-2022-palm-model-family-and-architecture",
+        "fedus-2022-switch-transformers-t5-substrate"
       ],
       "uncertainties": [
         {
@@ -20619,7 +20947,10 @@
         "raffel-2020-encoder-decoder-architecture",
         "raffel-2020-architecture-comparison",
         "raffel-2019-release-reconstruction-and-rights-boundary",
-        "sanh-2022-t5-plus-lm-model-and-objective"
+        "sanh-2022-t5-plus-lm-model-and-objective",
+        "fedus-2022-switch-transformers-t5-substrate",
+        "fedus-2022-switch-transformers-finetuning-matrix",
+        "fedus-2022-switch-transformers-large-model-downstream-boundary"
       ],
       "uncertainties": [
         {
@@ -20655,7 +20986,8 @@
         "raffel-2020-denoising-objective-comparisons",
         "raffel-2020-span-corruption-selection",
         "raffel-2020-final-recipe-and-model-family",
-        "raffel-2020-nonscaling-recipe-bundle"
+        "raffel-2020-nonscaling-recipe-bundle",
+        "fedus-2022-switch-transformers-t5-substrate"
       ],
       "uncertainties": [
         {
@@ -20676,7 +21008,8 @@
         "raffel-2020-c4-repetition-boundary",
         "raffel-2020-final-recipe-and-model-family",
         "raffel-2019-release-reconstruction-and-rights-boundary",
-        "raffel-2021-c4-audit-boundary"
+        "raffel-2021-c4-audit-boundary",
+        "fedus-2022-switch-transformers-t5-substrate"
       ],
       "uncertainties": [
         {
@@ -22539,6 +22872,119 @@
         "schick-2023-toolformer-chaining-interaction-and-cost-limits",
         "schick-2023-toolformer-llama-generation-and-count-boundary",
         "schick-2023-toolformer-llama-tool-utility-results"
+      ]
+    },
+    {
+      "id": "conditional-parameter-capacity-scaling",
+      "name": "Conditional parameter-capacity scaling",
+      "kind": "formalism",
+      "description": "Increase total stored feed-forward capacity by adding expert parameter sets while activating only a routed subset for each token, keeping total parameters distinct from active arithmetic and communication.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Total parameter count, active parameters, FLOPs, memory, communication, and elapsed time remain separate accounting axes."
+        }
+      ],
+      "claimIds": [
+        "fedus-2022-switch-transformers-top-one-routing",
+        "fedus-2022-switch-transformers-initialization-stability",
+        "fedus-2022-switch-transformers-fixed-compute-scaling",
+        "fedus-2022-switch-transformers-multilingual-scaling",
+        "fedus-2022-switch-transformers-large-model-parameter-compute-table",
+        "fedus-2022-switch-transformers-large-model-pretraining-and-stability",
+        "fedus-2022-switch-transformers-large-model-downstream-boundary",
+        "fedus-2022-switch-transformers-small-scale-boundary"
+      ]
+    },
+    {
+      "id": "token-wise-top-one-expert-routing",
+      "name": "Token-wise top-1 expert routing",
+      "kind": "mechanism",
+      "description": "Use a learned softmax router to send each token representation to one highest-scoring feed-forward expert and scale that expert's output by its gate probability.",
+      "uncertainties": [],
+      "claimIds": [
+        "fedus-2021-switch-transformers-version-boundary",
+        "fedus-2022-switch-transformers-t5-substrate",
+        "fedus-2022-switch-transformers-top-one-routing",
+        "fedus-2022-switch-transformers-capacity-overflow-and-drop",
+        "fedus-2022-switch-transformers-top-one-versus-moe-benchmark",
+        "fedus-2022-switch-transformers-selective-precision",
+        "fedus-2022-switch-transformers-alternative-routing-results",
+        "fedus-2022-switch-transformers-artifact-evolution"
+      ]
+    },
+    {
+      "id": "fixed-capacity-expert-dispatch",
+      "name": "Fixed-capacity expert dispatch",
+      "kind": "mechanism",
+      "description": "Allocate each expert a static token buffer derived from average load and a capacity factor, padding unused slots and bypassing or rerouting overflow under an explicit policy.",
+      "uncertainties": [],
+      "claimIds": [
+        "fedus-2022-switch-transformers-capacity-overflow-and-drop",
+        "fedus-2022-switch-transformers-load-balancing-loss",
+        "fedus-2022-switch-transformers-top-one-versus-moe-benchmark",
+        "fedus-2022-switch-transformers-parallelism-and-communication",
+        "fedus-2022-switch-transformers-alternative-routing-results"
+      ]
+    },
+    {
+      "id": "router-load-balancing-objective",
+      "name": "Router load-balancing objective",
+      "kind": "objective",
+      "description": "Penalize the dot product of realized expert-assignment fractions and differentiable mean router probabilities so token traffic approaches uniform use of available experts.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Uniform traffic is a systems and optimization objective, not proof of semantic specialization or equal expert value."
+        }
+      ],
+      "claimIds": [
+        "fedus-2022-switch-transformers-load-balancing-loss"
+      ]
+    },
+    {
+      "id": "selective-router-precision",
+      "name": "Selective router precision",
+      "kind": "mechanism",
+      "description": "Perform numerically sensitive local router operations in float32, then return dispatch and combine tensors to bfloat16 before cross-device communication.",
+      "uncertainties": [],
+      "claimIds": [
+        "fedus-2022-switch-transformers-selective-precision",
+        "fedus-2022-switch-transformers-large-model-pretraining-and-stability"
+      ]
+    },
+    {
+      "id": "expert-only-finetuning-dropout",
+      "name": "Expert-only fine-tuning dropout",
+      "kind": "mechanism",
+      "description": "Apply stronger dropout inside expert feed-forward computations than in shared layers to regularize sparse models during small-task fine-tuning.",
+      "uncertainties": [],
+      "claimIds": [
+        "fedus-2022-switch-transformers-expert-dropout",
+        "fedus-2022-switch-transformers-finetuning-matrix"
+      ]
+    },
+    {
+      "id": "joint-data-model-expert-parallelism",
+      "name": "Joint data, model, and expert parallelism",
+      "kind": "mechanism",
+      "description": "Partition batches, dense matrix dimensions, and unique experts across a logical device mesh while accounting separately for all-reduce and all-to-all communication.",
+      "uncertainties": [],
+      "claimIds": [
+        "fedus-2022-switch-transformers-parallelism-and-communication",
+        "fedus-2022-switch-transformers-large-model-parameter-compute-table",
+        "fedus-2022-switch-transformers-artifact-evolution",
+        "fedus-2022-switch-transformers-rights-and-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "sparse-to-dense-teacher-distillation",
+      "name": "Sparse-to-dense teacher distillation",
+      "kind": "mechanism",
+      "description": "Initialize a compact dense student from shared non-expert weights and mix teacher probabilities with ground-truth targets to retain part of a sparse teacher's quality gain.",
+      "uncertainties": [],
+      "claimIds": [
+        "fedus-2022-switch-transformers-distillation"
       ]
     }
   ],
@@ -35007,6 +35453,388 @@
         "pageEnd": 1
       },
       "accessNote": "The mutable organizational page, dated 22 February 2024, identifies NeurIPS, the canonical nine-author team, and a paper download. It shortens Jane Dwivedi-Yu to Jane Yu and supplies no code, model, data, or Toolformer release link."
+    },
+    {
+      "id": "fedus-2021-switch-transformers-arxiv-record",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "arXiv record and revision ledger for Switch Transformers",
+      "url": "https://arxiv.org/abs/2101.03961",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2021-switch-transformers-arxiv-v1-version",
+        "fedus-2022-switch-transformers-arxiv-v2-version",
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record supplies three exact UTC submission times, stable author/title metadata, current category and comment fields, the aggregate DOI, revision-specific links, and the selected non-exclusive distribution license."
+    },
+    {
+      "id": "fedus-2021-switch-transformers-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Switch Transformers arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2101.03961v1",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2021-switch-transformers-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 31
+      },
+      "accessNote": "The 31-leaf ordering PDF is 1,182,747 bytes with SHA-256 0dba4abc34422f49a5363f63c90d2103e4a982c921c597b8c3560cc34fd80d9c. Locators use PDF leaves because this preprint has no stable printed article pagination."
+    },
+    {
+      "id": "fedus-2021-switch-transformers-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Switch Transformers arXiv version 1 source package",
+      "url": "https://export.arxiv.org/e-print/2101.03961v1",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2021-switch-transformers-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,545,241-byte archive has SHA-256 81b127d839599cfd656a4128418a7e2a5591701b056ff9b5963cf25291af6c0b and contains manuscript, appendix, bibliography, styles, and rendered figures but no training data, predictions, checkpoints, or run manifest."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Switch Transformers arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2101.03961v2",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 40
+      },
+      "accessNote": "The 40-leaf JMLR-formatted arXiv rendering is 1,302,393 bytes with SHA-256 1ad840d21419f62503754857b64204b54694e6af89be82074e28989d7a91a75f. It retains the canonical Table 9 header swap."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Switch Transformers arXiv version 2 source package",
+      "url": "https://export.arxiv.org/e-print/2101.03961v2",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,173,570-byte archive has SHA-256 56fb2f7d66793d2bb9df4c5c5840aa0e13d94820e05b940f224fbce8ce4990f8 and exposes the JMLR-formatted source plus figures and bibliography, not experiment artifacts."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Switch Transformers arXiv version 3 full text",
+      "url": "https://arxiv.org/pdf/2101.03961v3",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 40
+      },
+      "accessNote": "The 40-leaf latest PDF is 1,304,157 bytes with SHA-256 f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6. Relative to v2 it corrects the Table 9 header order and adds the T5X code/checkpoint footnote."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Switch Transformers arXiv version 3 source package",
+      "url": "https://export.arxiv.org/e-print/2101.03961v3",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 1,173,620-byte archive has SHA-256 9cc848cc3b0479a554fdd993e12b900dec71c8ff1be295bd38cf33e72545d836 and makes the two v2-to-v3 textual changes directly auditable."
+    },
+    {
+      "id": "fedus-2021-switch-transformers-arxiv-license",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "arXiv non-exclusive license to distribute",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "fedus-2021-switch-transformers-arxiv-v1-version",
+        "fedus-2022-switch-transformers-arxiv-v2-version",
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record-selected terms grant arXiv a perpetual non-exclusive right to distribute the submitted article. They do not state general reuse terms for code, checkpoints, data, or dependencies."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-jmlr-record",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "JMLR record for Switch Transformers",
+      "url": "https://jmlr.org/papers/v23/21-0998.html",
+      "accessDate": "2026-09-16",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "fedus-2022-switch-transformers-jmlr-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The publisher record supplies the three authors, title, volume 23, article 120, pages 1–39, year 2022, abstract, BibTeX, PDF, and code link."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-jmlr-full-text",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Canonical JMLR Switch Transformers article",
+      "url": "https://jmlr.org/papers/volume23/21-0998/21-0998.pdf",
+      "accessDate": "2026-09-16",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "fedus-2022-switch-transformers-jmlr-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "printed",
+        "pageStart": 1,
+        "pageEnd": 39
+      },
+      "accessNote": "The 39-page publisher PDF is 1,082,151 bytes with SHA-256 8831edca732dd939854957b4b1a493fa553e7b43dd431a5d4fee15493bba6e3e. Printed pages 1–39 control canonical claims and expose submission/revision/publication months plus CC BY 4.0 terms."
+    },
+    {
+      "id": "fedus-2021-switch-transformers-mesh-code-snapshot",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Paper-era Mesh TensorFlow expert-routing code snapshot",
+      "url": "https://github.com/tensorflow/mesh/blob/37553191b0c99ee48e82f2a129fc4922b76cb419/mesh_tensorflow/transformer/moe.py",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "fedus-2021-switch-transformers-arxiv-v1-version",
+        "fedus-2022-switch-transformers-jmlr-version",
+        "fedus-2022-switch-transformers-arxiv-v2-version",
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Commit 3755319 predates arXiv v1 and its 51,901-byte moe.py blob fbf7ba5 has SHA-256 a1e83f2553894d092c3d895e3f646b3fb1ebc23807e8b54b9737cd0f5c53a3d4. It contains top-2, random-top-1/drop, and a separately named NTLB switch path; the paper links the mutable master file rather than this commit and does not bind a complete experiment configuration."
+    },
+    {
+      "id": "fedus-2021-switch-transformers-mesh-license",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Paper-era Mesh TensorFlow Apache 2.0 license",
+      "url": "https://github.com/tensorflow/mesh/blob/37553191b0c99ee48e82f2a129fc4922b76cb419/LICENSE",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "fedus-2021-switch-transformers-arxiv-v1-version",
+        "fedus-2022-switch-transformers-jmlr-version",
+        "fedus-2022-switch-transformers-arxiv-v2-version",
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Apache License 2.0 covers repository software at the pinned state; it does not itself license the paper, checkpoints, C4, mC4, benchmarks, or third-party dependencies."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-t5x-checkpoint-release",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Official T5X commit releasing Switch Transformer checkpoints",
+      "url": "https://github.com/google-research/t5x/commit/199f226eeff5f87e038a54dd03c207706ac7b2d4",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable 14 June 2022 commit 199f226 is titled ‘Open-source Switch Transformer checkpoints’ and precedes arXiv v3 by two days. It is a post-JMLR artifact event, not a journal-text revision."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-t5x-checkpoint-registry",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Pinned T5X Switch Transformer checkpoint registry",
+      "url": "https://github.com/google-research/t5x/blob/199f226eeff5f87e038a54dd03c207706ac7b2d4/docs/models.md",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 17,053-byte file has blob SHA 95cf24a and SHA-256 21d705b123a7757c7aac01d0a519a247853d2da60af76dd76e1a07f037c68599. It lists six Base expert counts, Large-128, XXL-128, and C-2048 (1.6T) converted Mesh TensorFlow checkpoints, but links configuration files through mutable branch paths and supplies no object digests or paper-table run map."
+    },
+    {
+      "id": "fedus-2022-switch-transformers-t5x-license",
+      "relatedWorkIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "title": "Pinned T5X Apache 2.0 license",
+      "url": "https://github.com/google-research/t5x/blob/199f226eeff5f87e038a54dd03c207706ac7b2d4/LICENSE",
+      "accessDate": "2026-09-16",
+      "sourceClass": "official-record",
+      "authority": "institutional-host",
+      "versionIds": [
+        "fedus-2022-switch-transformers-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Apache License 2.0 covers the T5X repository software at the checkpoint-release commit. It does not itself establish rights in model parameters, paper text, C4/mC4 content, or benchmark data."
     }
   ],
   "claims": [
@@ -66526,6 +67354,797 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-15"
+    },
+    {
+      "id": "fedus-2021-switch-transformers-version-boundary",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "token-wise-top-one-expert-routing"
+      ],
+      "statement": "The family contains a 31-leaf arXiv v1 posted 11 January 2021, the canonical JMLR 23(120):1–39 article published with month precision in April 2022, a JMLR-formatted arXiv v2 posted 30 April, and arXiv v3 posted 16 June. Version 2 expands and corrects details relative to v1; version 3 only adds the T5X checkpoint/code footnote and corrects the layer/expert header order in Table 9.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2021-switch-transformers-arxiv-record",
+          "locator": {
+            "label": "Three-version submission ledger",
+            "section": "Submission history"
+          },
+          "support": "The record supplies exact UTC dates for arXiv v1–v3."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Canonical journal identity and month-level history",
+            "section": "Article header",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The header prints volume, pages, submission, revision, and publication months."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-arxiv-v3-source-package",
+          "locator": {
+            "label": "Two textual changes from arXiv v2",
+            "section": "21-0998.tex abstract footnote and Table 9 source"
+          },
+          "support": "Direct source comparison shows the new T5X footnote and swapped header correction without changed table values."
+        }
+      ],
+      "limitations": [
+        "The month-only JMLR record cannot establish its exact public day relative to arXiv v2 on 30 April.",
+        "Later artifact releases do not become journal-paper revisions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-t5-substrate",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "self-attention-sequence-mixing",
+        "source-conditioned-autoregressive-decoding",
+        "unified-text-to-text-task-interface",
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline",
+        "token-wise-top-one-expert-routing"
+      ],
+      "statement": "The principal models are T5 encoder–decoders trained on C4 with 15% span corruption and sentinel replacement. Switch variants preserve the dense attention and text-to-text substrate while replacing selected feed-forward blocks—every other FFN in the controlled Table 1 models—with sparse expert banks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "T5-derived C4 objective and alternating expert placement",
+            "section": "2.3 Putting It All Together: The Switch Transformer",
+            "pageStart": 7,
+            "pageEnd": 7,
+            "table": "1"
+          },
+          "support": "The method names C4, the 15% sentinel corruption, T5 baselines, and experts at every other feed-forward layer."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Dense-attention rather than attention-sparsity boundary",
+            "section": "6 Related Work; 7 Discussion",
+            "pageStart": 23,
+            "pageEnd": 24
+          },
+          "support": "The article distinguishes sparse expert weights from sparse attention and states that this version does not employ attention sparsity."
+        }
+      ],
+      "limitations": [
+        "The study's revised C4 removes intra-example duplication and is not byte-identical to the original T5 comparison corpus.",
+        "Sparse FFNs do not imply sparse attention or an attention-free model."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-top-one-routing",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "token-wise-top-one-expert-routing",
+        "conditional-parameter-capacity-scaling"
+      ],
+      "statement": "For token representation x, a learned linear router produces softmax probabilities p_i(x) over N experts. Switch selects the single highest-probability expert, computes y=p_i(x)E_i(x), and retains the selected gate value so the router receives gradient even though the expert index is discrete.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Top-1 expert selection and gated output",
+            "section": "2.1 Simplifying Sparse Routing",
+            "pageStart": 3,
+            "pageEnd": 5,
+            "equation": "1–2",
+            "figure": "2"
+          },
+          "support": "Equations 1–2 define router probabilities and gated expert output; the prose defines k=1 and its differentiability boundary."
+        }
+      ],
+      "limitations": [
+        "Only one expert output is active per token in a Switch layer, but dense attention, embeddings, routing, communication, and other dense layers still consume computation.",
+        "Top-1 is the paper's simplification of prior top-k MoE routing, not evidence that every later sparse architecture should use one expert."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-capacity-overflow-and-drop",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "fixed-capacity-expert-dispatch",
+        "token-wise-top-one-expert-routing"
+      ],
+      "statement": "Each expert receives a static capacity of (tokens per batch / number of experts) × capacity factor. A token routed beyond that capacity skips expert computation and continues through the residual path; extra capacity reduces overflow but pads unused slots and increases memory, computation, and communication. The authors report typical drop rates below 1% under their balancing setup.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Static capacity, overflow behavior, and trade-off",
+            "section": "2.2 Efficient Sparse Routing",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "equation": "3",
+            "figure": "3"
+          },
+          "support": "Equation 3 and surrounding prose define capacity, dropped-token behavior, padding cost, and the reported typical rate."
+        }
+      ],
+      "limitations": [
+        "The below-1% statement is an empirical report for the authors' experiments, not a guarantee for every batch, data distribution, expert count, or implementation.",
+        "Passing through the residual connection preserves a representation path but does not apply the selected expert computation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-load-balancing-loss",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "router-load-balancing-objective",
+        "fixed-capacity-expert-dispatch"
+      ],
+      "statement": "The auxiliary routing loss is αNΣ_i f_iP_i, where f_i is the nondifferentiable fraction of tokens dispatched to expert i and P_i is the differentiable mean router probability. Uniform routing minimizes the dot product; the study uses α=10⁻² after a powers-of-ten sweep from 10⁻¹ to 10⁻⁵.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Balancing objective, definitions, and coefficient sweep",
+            "section": "2.2 Efficient Sparse Routing",
+            "pageStart": 6,
+            "pageEnd": 6,
+            "equation": "4–6"
+          },
+          "support": "Equations 4–6 and prose define the two statistics, differentiability, N scaling, and selected coefficient."
+        }
+      ],
+      "limitations": [
+        "Balancing token counts and probability mass does not demonstrate semantic expert specialization or equal downstream utility.",
+        "The loss is added at each Switch layer and its coefficient remains a task- and scale-sensitive hyperparameter."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-top-one-versus-moe-benchmark",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "token-wise-top-one-expert-routing",
+        "fixed-capacity-expert-dispatch"
+      ],
+      "statement": "In the 32-TPUv3, 128-expert Table 1 comparison, top-1 Switch at capacity 1.0 reaches negative log perplexity −1.561 after 100k steps, the −1.50 threshold in 62.8 hours, and 1,000 examples/s; top-2 MoE at capacity 1.0 reports −1.572, 80.1 hours, and 860 examples/s. The expanded Switch-Base+ row reaches −1.534 at 780 examples/s.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Controlled Switch, MoE, and dense matrix",
+            "section": "2.3 Putting It All Together: The Switch Transformer",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "table": "1"
+          },
+          "support": "Table 1 prints all quality, threshold-time, speed, capacity, expert, hardware, and model-expansion conditions."
+        }
+      ],
+      "limitations": [
+        "The threshold is described as arbitrary, every model required training beyond 100k steps to reach it, and T5-Base did not reach it within the displayed run.",
+        "The paper explicitly says measured speed reflects both algorithm and implementation; one MoE row unexpectedly slows when capacity is reduced."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-selective-precision",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "selective-router-precision",
+        "token-wise-top-one-expert-routing"
+      ],
+      "statement": "Selective precision casts router inputs and local softmax-related routing work to float32, then casts dispatch/combine tensors back to bfloat16 before all-to-all communication. In the 32-expert early-training comparison, float32 and selective precision score −1.718/1,160 and −1.716/1,390 examples/s, while all-bfloat16 reports −3.780 and divergence at 1,390 examples/s.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Localized float32 router and three-way result",
+            "section": "2.4 Improved Training and Fine-Tuning Techniques",
+            "pageStart": 8,
+            "pageEnd": 9,
+            "table": "2"
+          },
+          "support": "Table 2 and following prose define the casts, communication boundary, quality, speed, and divergence."
+        }
+      ],
+      "limitations": [
+        "This is a single early-training model comparison without reported repeated-seed intervals and does not show that arbitrary sparse routers are stable in bfloat16.",
+        "Later large-model instability remains despite this intervention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-initialization-stability",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling"
+      ],
+      "statement": "The study reduces the Transformer initialization scale from 1.0 to 0.1. Across three seeds of a 32-expert model at 3.5k steps, Table 3 reports average negative log perplexity −2.72 with standard deviation 0.01 at 0.1× initialization versus −3.60 and 0.68 at 1.0×.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Initialization rule and three-seed stability comparison",
+            "section": "2.4 Improved Training and Fine-Tuning Techniques",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "table": "3"
+          },
+          "support": "The section defines the truncated-normal scale and Table 3 prints both means and standard deviations."
+        }
+      ],
+      "limitations": [
+        "The table measures one model early in training; the paper's claim of broader use spans scales but does not provide a repeated-seed table for every scale.",
+        "A lower negative log perplexity is worse under the article's higher-is-better sign convention."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-expert-dropout",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "expert-only-finetuning-dropout"
+      ],
+      "statement": "During fine-tuning, the authors keep non-expert dropout at 0.1 and raise only expert FFN dropout to 0.4. On models pretrained for 34B C4 tokens, Table 4 reports 85.2/19.6/83.7/73.0 on GLUE/CNNDM/SQuAD/SuperGLUE, while uniform 0.1 gives 84.7/19.1/83.7/73.0 and larger uniform dropout is mixed or worse.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Expert-specific regularization sweep",
+            "section": "2.4 Improved Training and Fine-Tuning Techniques",
+            "pageStart": 9,
+            "pageEnd": 10,
+            "table": "4"
+          },
+          "support": "Table 4 and prose define expert dropout and print the five rows."
+        }
+      ],
+      "limitations": [
+        "The expert-only row does not improve every task over uniform 0.1, and the displayed sweep does not establish 0.4 as universal.",
+        "The comparison uses validation aggregates and does not report repeated-seed uncertainty."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-fixed-compute-scaling",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling"
+      ],
+      "statement": "With approximately fixed FLOPs per token, adding experts improves pretraining loss but shows diminishing returns. On 32 TPUv3 cores, 64-expert Switch-Base reaches T5-Base's perplexity in one-seventh the time; Switch-Base also outpaces T5-Large by 2.5× on wall-clock time even though T5-Large applies 3.5× more FLOPs per token.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Expert-count scaling and diminishing returns",
+            "section": "3.1 Scaling Results on a Step-Basis",
+            "pageStart": 10,
+            "pageEnd": 11,
+            "figure": "4"
+          },
+          "support": "Figure 4 varies expert count under fixed per-token compute and states the diminishing-return boundary."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Time-basis dense comparisons",
+            "section": "3.2 Scaling Results on a Time-Basis; 3.3 Scaling Versus a Larger Dense Model",
+            "pageStart": 12,
+            "pageEnd": 13,
+            "figure": "5–6"
+          },
+          "support": "Figures 5–6 give the 7× and 2.5× threshold comparisons and hardware/compute conditions."
+        }
+      ],
+      "limitations": [
+        "The ratios are time-to-matched-perplexity comparisons, not end-to-end training, inference, energy, cost, or lifecycle ratios.",
+        "Router work and device communication mean constant nominal FFN FLOPs do not imply constant elapsed time."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-finetuning-matrix",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "unified-text-to-text-task-interface",
+        "expert-only-finetuning-dropout"
+      ],
+      "statement": "After 550k pretraining steps with 2²⁰ tokens per batch—about 576B token exposures—the FLOP-matched Switch-Base and Switch-Large rows improve most displayed validation aggregates over T5-Base and T5-Large, including SuperGLUE 79.5 versus 75.1 and 84.7 versus 82.7. Exceptions include ARC Challenge for Base (32.8 versus 35.5) and ARC Easy for Large (66.0 versus 68.8).",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Pretraining and fine-tuning protocol",
+            "section": "4.1 Fine-Tuning",
+            "pageStart": 13,
+            "pageEnd": 14
+          },
+          "support": "The section gives token batch, steps, total exposure, dropout, fine-tuning duration, evaluation cadence, and task set."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Downstream results including negative rows",
+            "section": "4.1 Fine-Tuning",
+            "pageStart": 14,
+            "pageEnd": 15,
+            "table": "5"
+          },
+          "support": "Table 5 prints the complete matrix and the prose identifies the ARC exceptions."
+        }
+      ],
+      "limitations": [
+        "These are validation-set point estimates with task-specific metrics and peak checkpoint selection, not one commensurate measure or a repeated-seed study.",
+        "The revised C4 corpus and training exposure differ from original T5, so the rows are the paper's controlled retraining comparison rather than reuse of published T5 numbers."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-distillation",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "sparse-to-dense-teacher-distillation"
+      ],
+      "statement": "A 223M dense student initialized from the teacher's non-expert weights and trained with 0.75 hard-label plus 0.25 teacher-probability loss preserves 29% of the 3.8B teacher's pretraining quality gain. Across 1.1B–14.7B teachers, 82%–99% compression preserves 27%–37% of the defined gain; a 7.41B SuperGLUE teacher distilled to 223M preserves 30% of its gain.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Pretraining distillation recipe and quality-gain definition",
+            "section": "4.2 Distillation",
+            "pageStart": 15,
+            "pageEnd": 16,
+            "table": "6–7"
+          },
+          "support": "Tables 6–7 define the hard/soft mixture, initialization, parameter sizes, quality values, and compression rates."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Fine-tuned SuperGLUE distillation",
+            "section": "4.2 Distillation",
+            "pageStart": 16,
+            "pageEnd": 17,
+            "table": "8"
+          },
+          "support": "Table 8 gives teacher/student parameters, equal reported FLOPs, scores, compression, and retained gain."
+        }
+      ],
+      "limitations": [
+        "Percent of teacher performance means the fraction of improvement over the dense baseline, not retained absolute score, retained parameters, or identical behavior.",
+        "The paper says model quality is not fully preserved and expects larger students for substantially stronger teachers."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-multilingual-scaling",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling"
+      ],
+      "statement": "On mC4's 101 languages represented as 107 script-aware tasks, one-million-step mSwitch-Base pretraining improves final negative log perplexity over FLOP-matched mT5-Base for every displayed language. The paper reports a mean step speedup of 5× and at least 4× for 91% of languages to reach the dense baseline's final perplexity.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Multilingual corpus, task count, gains, and step ratios",
+            "section": "4.3 Multilingual Learning",
+            "pageStart": 17,
+            "pageEnd": 18,
+            "figure": "7–8"
+          },
+          "support": "Figures 7–8 and prose define languages, tasks, training steps, comparison, mean, percentile, and speedup denominator."
+        }
+      ],
+      "limitations": [
+        "The speedup is a pretraining-step ratio to matched perplexity, not measured wall-clock or downstream-task speedup by language.",
+        "The language-by-language plot reports point comparisons without uncertainty or downstream evaluations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-parallelism-and-communication",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "joint-data-model-expert-parallelism",
+        "fixed-capacity-expert-dispatch"
+      ],
+      "statement": "The distributed design separates data-parallel batch partitions, model-parallel weight partitions, and expert-parallel unique FFNs. Expert routing performs all-to-all exchanges of bfloat16 tensors shaped by experts, capacity, and model width; combining expert and model parallelism adds both all-to-all routing and all-reduce communication, so device layout is empirically balanced against memory and FLOPs.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Partitioning modes and communication costs",
+            "section": "5 Designing Models with Data, Model, and Expert-Parallelism",
+            "pageStart": 18,
+            "pageEnd": 21,
+            "figure": "9"
+          },
+          "support": "Sections 5.1–5.5 and Figure 9 define the tensor layouts, communication types, and three-way trade-off."
+        }
+      ],
+      "limitations": [
+        "The implementation study is centered on TPU logical meshes and does not provide a hardware-independent latency or network model.",
+        "More stored expert parameters can require more devices and communication even when reported per-token arithmetic is similar."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-large-model-parameter-compute-table",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling",
+        "joint-data-model-expert-parallelism"
+      ],
+      "statement": "Canonical Table 9 reports T5-XXL at 11B parameters and 6.3T FLOPs/sequence, Switch-XXL at 395B and the same 6.3T, and Switch-C at 1,571B and 890B. Switch-XXL uses 24 layers and 64 experts every other FFN; Switch-C uses 15 layers and 2,048 experts at every FFN. The canonical/v2 column headings are swapped, while arXiv v3 prints the intended layer-then-expert order.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Total-parameter, sequence-FLOP, architecture, and result matrix",
+            "section": "5.6 Towards Trillion Parameter Models",
+            "pageStart": 21,
+            "pageEnd": 22,
+            "table": "9"
+          },
+          "support": "Table 9 prints the model rows and the misordered second header block."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-arxiv-v3-full-text",
+          "locator": {
+            "label": "Corrected layer and expert headings",
+            "section": "5.6 Towards Trillion Parameter Models",
+            "table": "9"
+          },
+          "support": "ArXiv v3 reverses the two headings while retaining all displayed values."
+        }
+      ],
+      "limitations": [
+        "Parameters are total stored parameters; FLOPs/sequence is a separate forward-pass accounting and neither column is an active-parameter count.",
+        "The paper's rounded headline 1.6T corresponds to the displayed 1,571B total."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "The canonical/v2 labels and the v3-corrected labels assign different meanings to the same middle columns; the row values and surrounding architecture prose support the v3 order.",
+          "resolutionCondition": "A JMLR erratum is required to correct the canonical rendering."
+        }
+      ],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-large-model-pretraining-and-stability",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling",
+        "selective-router-precision"
+      ],
+      "statement": "At 250k/500k C4 steps, Table 9 reports negative log perplexity −1.147/−1.095 for T5-XXL, −1.086/−1.008 for Switch-XXL, and −1.096/−1.043 for Switch-C, with Switch-C described as 4× faster to fixed perplexity at the same compute budget. Switch-C shows no observed instability, whereas the nearly ten-times-higher-FLOP Switch-XXL is sometimes unstable and is not pretrained for a full million steps.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Large-model quality, threshold speed, and instability boundary",
+            "section": "5.6 Towards Trillion Parameter Models",
+            "pageStart": 21,
+            "pageEnd": 22,
+            "table": "9"
+          },
+          "support": "Table 9 and following prose provide all three quality pairs, the 4× statement, and the contrasted stability outcome."
+        }
+      ],
+      "limitations": [
+        "The 4× value is time to fixed perplexity, and the article notes that the T5-XXL comparison used an easier duplicated C4 variant.",
+        "Observed stability of Switch-C does not prove that more total parameters are stabilizing; architecture, FLOPs, depth, expert count, and parallelism all differ."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-large-model-downstream-boundary",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling",
+        "unified-text-to-text-task-interface"
+      ],
+      "statement": "A partially pretrained Switch-XXL checkpoint exposed to 503B tokens reports 89.7 SQuAD and 87.5 SuperGLUE, below cited 91.3 and 90.0 state-of-the-art values, while ANLI reaches 65.7 versus cited 49.4. Closed-book Natural Questions/WebQuestions/TriviaQA reach 34.4/41.0/47.5 versus T5-XXL 32.8/37.2/42.9; the article says upstream gains transfer less reliably to reasoning than knowledge tasks.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Preliminary large-model reasoning and knowledge results",
+            "section": "5.6 Towards Trillion Parameter Models",
+            "pageStart": 22,
+            "pageEnd": 23
+          },
+          "support": "The section states the partial exposure, multitask setup, individual values, cited comparators, and transfer qualification."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Fixed-perplexity downstream anomaly",
+            "section": "Appendix E Relation of Upstream to Downstream Model Performance",
+            "pageStart": 31,
+            "pageEnd": 31,
+            "figure": "13"
+          },
+          "support": "Figure 13 states that dense models can be stronger at fixed perplexity on SuperGLUE and that more statistics are needed."
+        }
+      ],
+      "limitations": [
+        "The tasks use different metrics and external cited comparators; the section supplies no matched repeated-seed uncertainty.",
+        "Correlation between pretraining loss and task score does not make perplexity an interchangeable downstream metric."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-alternative-routing-results",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "token-wise-top-one-expert-routing",
+        "fixed-capacity-expert-dispatch"
+      ],
+      "statement": "Three alternatives remain bounded appendices: expert self-attention improves float32 pretraining quality but diverges in bfloat16; No-Token-Left-Behind reroutes overflow tokens yet yields no empirical benefit; and router exploration scores −1.471 argmax, −1.570 softmax sampling, −1.480 input dropout, and −1.468 input jitter, after which the study uses jitter.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Expert-attention precision boundary",
+            "section": "Appendix A Switch for Attention",
+            "pageStart": 26,
+            "pageEnd": 27,
+            "table": "10",
+            "figure": "10"
+          },
+          "support": "Table 10 prints float32 improvements and bfloat16 divergence and says the variant is excluded from the final design."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "No-Token-Left-Behind negative result",
+            "section": "Appendix B Preventing Token Dropping with No-Token-Left-Behind",
+            "pageStart": 27,
+            "pageEnd": 28,
+            "figure": "11"
+          },
+          "support": "The appendix defines iterative rerouting and reports no empirical benefit."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Router exploration matrix",
+            "section": "Appendix C Encouraging Exploration Across Experts",
+            "pageStart": 29,
+            "pageEnd": 29,
+            "table": "11"
+          },
+          "support": "Table 11 prints the four strategies and the prose selects input jitter."
+        }
+      ],
+      "limitations": [
+        "The exploration table caption says lower is better even though negative log perplexity elsewhere uses a higher-is-better sign convention; the values favor jitter only under the paper's usual convention.",
+        "The linked Mesh code's function named `_switch_gating` implements the NTLB path, while the publication's standard pseudocode drops overflow; names alone cannot identify the experiment route."
+      ],
+      "uncertainties": [
+        {
+          "status": "disputed",
+          "note": "Appendix Table 11 labels negative log perplexity as lower-is-better, conflicting with every main-table arrow and the ranking implied by the selected input-jitter policy.",
+          "resolutionCondition": "An author or publisher correction is required to resolve the caption direction explicitly."
+        }
+      ],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-small-scale-boundary",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling"
+      ],
+      "statement": "Appendix D shows Switch-Base curves with 2, 4, and 8 experts above the FLOP-matched T5-Base curve and recommends roughly one expert per core. This demonstrates a small-expert regime in the tested setup, not that the trillion-parameter configuration fits commodity hardware.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Few-expert scaling curves",
+            "section": "Appendix D Switch Transformers in Lower Compute Regimes",
+            "pageStart": 29,
+            "pageEnd": 30,
+            "figure": "12"
+          },
+          "support": "Figure 12 and prose identify the expert counts, dense baseline, and per-core recommendation."
+        }
+      ],
+      "limitations": [
+        "The appendix supplies curves without tabulated values, elapsed time, memory measurements, or GPU model details.",
+        "Small expert count does not remove distributed-routing or capacity considerations."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-artifact-evolution",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "joint-data-model-expert-parallelism",
+        "token-wise-top-one-expert-routing"
+      ],
+      "statement": "The paper-era Mesh TensorFlow file exposes top-2, random-top-1/drop, and NTLB routing code but no complete paper run configuration. On 14 June 2022, after JMLR publication, T5X added paths for nine converted checkpoints: Base with 8/16/32/64/128/256 experts, Large-128, XXL-128, and C-2048 (1.6T); arXiv v3 added the corresponding T5X footnote two days later.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2021-switch-transformers-mesh-code-snapshot",
+          "locator": {
+            "label": "Paper-era multi-route implementation surface",
+            "section": "transformer_moe_layer and gating functions"
+          },
+          "support": "The pinned file dispatches among top_2, rand_1, and switch paths and contains separate overflow behavior."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-t5x-checkpoint-release",
+          "locator": {
+            "label": "Checkpoint publication commit",
+            "section": "Commit metadata and diff"
+          },
+          "support": "The immutable commit supplies the release date and adds the Switch checkpoint registry."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-t5x-checkpoint-registry",
+          "locator": {
+            "label": "Nine converted checkpoint paths",
+            "section": "Mixture of Experts (MoE) Checkpoints"
+          },
+          "support": "The pinned registry lists all nine names, GCS paths, and configuration links."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-arxiv-v3-full-text",
+          "locator": {
+            "label": "Post-JMLR T5X footnote",
+            "section": "Abstract footnotes"
+          },
+          "support": "Version 3 says JAX code and all model checkpoints are available at T5X."
+        }
+      ],
+      "limitations": [
+        "The registry does not publish per-object digests, immutable configuration dependencies, raw predictions, or a table-to-checkpoint run map.",
+        "Converted checkpoints and a later JAX stack are not evidence that the original experiments ran in T5X."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "fedus-2022-switch-transformers-rights-and-reconstruction-boundary",
+      "workId": "fedus-2021-switch-transformers-scaling-trillion-parameter-models",
+      "ideaIds": [
+        "joint-data-model-expert-parallelism"
+      ],
+      "statement": "The JMLR article is CC BY 4.0; the arXiv copies use arXiv's non-exclusive distribution grant; and the pinned Mesh TensorFlow and T5X repositories use Apache 2.0 for covered software. These terms do not merge into one license for checkpoints, C4/mC4 text, benchmark data, dependencies, or outputs, and the audited release lacks one immutable end-to-end environment, prepared-data manifest, seeds, raw evaluation bundle, and table-to-run ledger.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Article license and code pointer",
+            "section": "Article header",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The canonical PDF prints CC BY 4.0 terms and links the Mesh code."
+        },
+        {
+          "sourceId": "fedus-2021-switch-transformers-arxiv-license",
+          "locator": {
+            "label": "ArXiv distribution terms",
+            "section": "License terms"
+          },
+          "support": "The terms grant arXiv article distribution rather than a general artifact license."
+        },
+        {
+          "sourceId": "fedus-2021-switch-transformers-mesh-license",
+          "locator": {
+            "label": "Mesh TensorFlow software terms",
+            "section": "Apache License 2.0"
+          },
+          "support": "The pinned repository license governs covered code."
+        },
+        {
+          "sourceId": "fedus-2022-switch-transformers-t5x-license",
+          "locator": {
+            "label": "T5X software terms",
+            "section": "Apache License 2.0"
+          },
+          "support": "The pinned release repository license governs covered code."
+        },
+        {
+          "sourceId": "fedus-2021-switch-transformers-arxiv-v1-source-package",
+          "locator": {
+            "label": "Publication-source inventory",
+            "section": "Archive tree"
+          },
+          "support": "The ordering archive contains publication assets rather than experiment data and run records."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is scoped to the official publisher, arXiv, Mesh TensorFlow, and T5X surfaces inspected on the checked date.",
+        "Public access to checkpoint paths or web-derived data does not by itself establish redistribution or downstream-use rights."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-16"
     }
   ],
   "relationships": [
@@ -71228,6 +72847,88 @@
           "note": "The edge is about the cited prompting mechanism, not GPT-3 model inheritance or an exclusive line of influence."
         }
       ]
+    },
+    {
+      "id": "raffel-2019-to-fedus-2021-switch-transformers-t5-substrate",
+      "from": {
+        "kind": "work",
+        "id": "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer"
+      },
+      "to": {
+        "kind": "work",
+        "id": "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Switch Transformers explicitly builds its controlled architecture, corpus, corruption objective, dense baselines, and downstream interface from T5, then replaces selected feed-forward blocks with routed expert banks. The relationship carries that named encoder–decoder and training substrate only; it does not transfer original T5's exact C4 payload, results, checkpoints, implementation, rights, or later Switch routing and scaling claims.",
+      "claimIds": [
+        "raffel-2020-encoder-decoder-architecture",
+        "raffel-2020-sentinel-denoising-objective",
+        "raffel-2020-c4-construction-and-launch-provenance",
+        "fedus-2022-switch-transformers-t5-substrate",
+        "fedus-2022-switch-transformers-finetuning-matrix"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Target-side T5 architecture, C4 objective, and baseline continuity",
+            "section": "Abstract; 2.3 Putting It All Together; 4.1 Fine-Tuning",
+            "pageStart": 1,
+            "pageEnd": 14
+          },
+          "support": "The target says its models are based on T5-Base/T5-Large, uses C4 and the T5 span-corruption recipe, and constructs FLOP-matched Switch variants while documenting its revised-C4 deviation."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is substrate-specific and does not make routed experts part of the original T5 work or equate the two C4 preparations."
+        }
+      ]
+    },
+    {
+      "id": "kaplan-2020-to-fedus-2021-switch-transformers-capacity-axis",
+      "from": {
+        "kind": "work",
+        "id": "kaplan-2020-scaling-laws-neural-language-models"
+      },
+      "to": {
+        "kind": "work",
+        "id": "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      },
+      "connectionType": "extends",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "Switch explicitly cites Kaplan's model/data/compute scaling frame and says it is heeding those results while testing a fourth design axis: more total parameters at approximately constant FLOPs per example through conditional activation. The edge carries that target-stated experimental motivation, not Kaplan's fitted constants, WebText2 setting, non-embedding accounting, dense architecture, allocation exponents, artifacts, or rights.",
+      "claimIds": [
+        "kaplan-2020-model-data-compute-axis-fits",
+        "kaplan-2020-compute-efficient-allocation",
+        "fedus-2022-switch-transformers-top-one-routing",
+        "fedus-2022-switch-transformers-fixed-compute-scaling",
+        "fedus-2022-switch-transformers-large-model-parameter-compute-table"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "fedus-2022-switch-transformers-jmlr-full-text",
+          "locator": {
+            "label": "Target-side scaling-law motivation and fourth-axis statement",
+            "section": "2 Switch Transformer; 3 Scaling Properties; 7 Discussion",
+            "pageStart": 3,
+            "pageEnd": 24
+          },
+          "support": "The target names Kaplan's three scaling axes, says it heeds those results, defines total parameter count at constant FLOPs as a fourth axis, and later limits its claim to controlled sparse-versus-dense comparisons."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "This is an extension of the experimental scaling frame, not evidence that Kaplan proposed top-1 experts or endorsed total parameters as an independent universal cause of quality."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -75508,6 +77209,88 @@
         "Versioned publication evidence, model and dataset provenance, artifact manifests, licensing scope, and benchmark comparability"
       ],
       "successCriterion": "The learner can defend both versions and the Brown edge; reconstruct thresholds, loss equations, five tools, data counts, training and decoding settings; reproduce the cited result comparisons; explain the GPT-J/GPT-2 and 25k/32,180 conflicts; and separate papers, models, data, tools, execution, safety, and rights."
+    },
+    {
+      "id": "beginner-fedus-2021-separate-capacity-from-work",
+      "mode": "beginner",
+      "objective": "Trace one token through a Switch layer, distinguish the many stored experts from the one selected expert, and explain why overflow, device traffic, and downstream transfer prevent ‘more parameters for free’ from being literally true.",
+      "workIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling",
+        "token-wise-top-one-expert-routing",
+        "fixed-capacity-expert-dispatch",
+        "router-load-balancing-objective",
+        "joint-data-model-expert-parallelism"
+      ],
+      "claimIds": [
+        "fedus-2022-switch-transformers-t5-substrate",
+        "fedus-2022-switch-transformers-top-one-routing",
+        "fedus-2022-switch-transformers-capacity-overflow-and-drop",
+        "fedus-2022-switch-transformers-load-balancing-loss",
+        "fedus-2022-switch-transformers-fixed-compute-scaling",
+        "fedus-2022-switch-transformers-large-model-parameter-compute-table",
+        "fedus-2022-switch-transformers-large-model-downstream-boundary"
+      ],
+      "prerequisites": [
+        "A Transformer block contains attention and position-wise feed-forward computation",
+        "A parameter is stored model capacity, while a FLOP describes performed arithmetic",
+        "Tokens in one batch can make different learned routing choices"
+      ],
+      "successCriterion": "The learner can narrate top-1 routing and capacity overflow, read the 1,571B/890B and 395B/6.3T rows without confusing parameters with FLOPs, and name at least two costs or evidence limits hidden by the sparse-capacity headline."
+    },
+    {
+      "id": "expert-fedus-2021-audit-switch-routing-scaling-and-release",
+      "mode": "expert",
+      "objective": "Audit Switch Transformers across all four publication artifacts, routing equations, balancing and stability interventions, distributed layouts, controlled and trillion-scale results, downstream anomalies, negative appendix findings, checkpoint evolution, rights, and scoped T5/Kaplan lineage.",
+      "workIds": [
+        "fedus-2021-switch-transformers-scaling-trillion-parameter-models"
+      ],
+      "ideaIds": [
+        "conditional-parameter-capacity-scaling",
+        "token-wise-top-one-expert-routing",
+        "fixed-capacity-expert-dispatch",
+        "router-load-balancing-objective",
+        "selective-router-precision",
+        "expert-only-finetuning-dropout",
+        "joint-data-model-expert-parallelism",
+        "sparse-to-dense-teacher-distillation",
+        "self-attention-sequence-mixing",
+        "source-conditioned-autoregressive-decoding",
+        "unified-text-to-text-task-interface",
+        "sentinel-delimited-span-reconstruction",
+        "heuristically-filtered-web-corpus-pipeline"
+      ],
+      "claimIds": [
+        "fedus-2021-switch-transformers-version-boundary",
+        "fedus-2022-switch-transformers-t5-substrate",
+        "fedus-2022-switch-transformers-top-one-routing",
+        "fedus-2022-switch-transformers-capacity-overflow-and-drop",
+        "fedus-2022-switch-transformers-load-balancing-loss",
+        "fedus-2022-switch-transformers-top-one-versus-moe-benchmark",
+        "fedus-2022-switch-transformers-selective-precision",
+        "fedus-2022-switch-transformers-initialization-stability",
+        "fedus-2022-switch-transformers-expert-dropout",
+        "fedus-2022-switch-transformers-fixed-compute-scaling",
+        "fedus-2022-switch-transformers-finetuning-matrix",
+        "fedus-2022-switch-transformers-distillation",
+        "fedus-2022-switch-transformers-multilingual-scaling",
+        "fedus-2022-switch-transformers-parallelism-and-communication",
+        "fedus-2022-switch-transformers-large-model-parameter-compute-table",
+        "fedus-2022-switch-transformers-large-model-pretraining-and-stability",
+        "fedus-2022-switch-transformers-large-model-downstream-boundary",
+        "fedus-2022-switch-transformers-alternative-routing-results",
+        "fedus-2022-switch-transformers-small-scale-boundary",
+        "fedus-2022-switch-transformers-artifact-evolution",
+        "fedus-2022-switch-transformers-rights-and-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "Transformer encoder–decoders, T5 span corruption, mixture-of-experts routing, residual paths, and cross-entropy objectives",
+        "bfloat16/float32 mixed precision, dropout, model/data/expert parallelism, all-reduce and all-to-all communication",
+        "Parameter, FLOP, step, token, wall-clock, checkpoint, source-version, and software/data licensing boundaries"
+      ],
+      "successCriterion": "The learner can derive Equations 1–6, reconstruct Tables 1–11 and their conditions, resolve the Table 9 header using v3 without rewriting JMLR, distinguish total from active capacity, defend both incoming edges, and state exactly what the Mesh and T5X releases do and do not reconstruct."
     }
   ]
 }
