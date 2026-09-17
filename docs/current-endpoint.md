@@ -1,6 +1,6 @@
 # Current endpoint coverage plan
 
-The structured corpus currently reaches from 2022 into 2023 through several distinct branches: compute allocation, dense scaling, instruction tuning, human-feedback post-training, retrieval augmentation, environment action, self-supervised tool use, and open-checkpoint transparency. That is a stable intermediate boundary, not the endpoint of LLM history.
+The structured corpus currently reaches from 2022–2023 branches into a bounded 2025 reasoning-post-training endpoint: compute allocation, dense and sparse scaling, instruction tuning, human-feedback post-training, retrieval augmentation, environment action, self-supervised tool use, open-checkpoint transparency, and verifiable-reward reasoning. That is a stable intermediate boundary, not the endpoint of LLM history.
 
 This plan records the next coverage decisions without treating candidate status as inclusion. A candidate enters the corpus only after its paper versions, claims, limitations, artifacts, rights, and lineage relationships pass the same evidence rules as the existing works.
 
@@ -50,6 +50,25 @@ The headline parameter counts are not active-compute counts. Canonical Table 9 r
 
 Two qualified incoming edges delimit the lineage. T5→Switch carries only the explicitly reused architecture, objective, corpus family, and task interface. Kaplan→Switch carries only the paper’s stated extension of the model/data/compute scaling frame to a fourth, conditional-capacity axis. Neither edge transfers source-side results, artifacts, fitted constants, accounting conventions, or rights.
 
+## Promoted endpoint: DeepSeek-R1
+
+[DeepSeek-R1](https://www.nature.com/articles/s41586-025-09422-z) fills the bounded reinforcement-learned-reasoning lane. The promoted family begins with a 20 January 2025 GitHub technical report, separates the byte-distinct arXiv v1, treats the September Nature article plus supplement as canonical, and preserves the expanded January 2026 arXiv v2 as a later rendering. The May 2025 R1-0528 checkpoint is a separate release boundary, not a revision of the January experiment.
+
+The record keeps four model identities apart. DeepSeek-V3-Base is the 671-billion-total, 37-billion-active pretrained substrate. DeepSeek-R1-Zero applies GRPO directly to that base without an intervening supervised-fine-tuning stage. Final DeepSeek-R1 adds cold-start traces, reasoning RL, rejection-sampled reasoning and general SFT, and a later mixed RL stage with rule and learned preference rewards. Six dense Qwen/Llama students receive supervised fine-tuning on R1-generated traces but no reported RL stage. “Pure RL” therefore describes R1-Zero’s immediate post-training sequence, not an untrained model, a base corpus without human/model-generated reasoning, or the final R1 pipeline.
+
+The promotion preserves several evidence limits:
+
+- GRPO removes PPO’s separately trained value model, not rollout, reward, reference-model, or distributed-system cost. R1-Zero’s accuracy and format rewards verify final outcomes and tags rather than every intermediate reasoning token.
+- Longer traces, reflective words, and visible self-correction-like text are output behaviors. They do not prove that natural-language rationales faithfully expose latent computation.
+- Stage results are nonmonotonic. R1-Zero exceeds final R1 on some reported rows, while later stages sharply improve model-judged instruction and preference suites.
+- Exact 10-gram decontamination cannot remove paraphrased or discussed test material. AIME 2025 reduces one leakage path but does not turn the benchmark suite into a contamination-free causal study.
+- Failed 7B dense and 16B MoE trials, reward hacking, process-reward-model difficulty, and unsuccessful iterative MCTS are retained alongside positive results.
+- The paper reports about 147,000 H800 GPU-hours for R1-Zero, R1 post-training, and SFT-data creation at an assumed $2 per GPU-hour. That estimate excludes V3 pretraining and is not an energy, labor, failed-run, or full-lifecycle audit.
+- Public weights, V3 inference code, publication files, and sample records do not reconstruct the complete RL/SFT corpora, preference labels, rollouts, seeds, optimizer states, predictions, or one locked table-to-run environment.
+- Article, repository code, V3 model, R1/R1-Zero weights, Qwen/Llama student bases, data, benchmarks, and the later R1-0528 checkpoint retain separate identities and rights.
+
+One qualified incoming edge records only a target-side methodological contrast. R1 explicitly describes the Ouyang et al. SFT→reward-model→PPO pipeline before applying outcome-based GRPO directly to a pretrained base for R1-Zero. The edge does not imply that R1 rejects all supervised or preference learning: final R1 reintroduces both, and no GPT-3 architecture, data, results, artifacts, evaluator population, or rights transfer across the relationship.
+
 ## Coverage lanes beyond 2022
 
 The remaining endpoint is not one chronological ladder. The following lanes are provisional review queues, not preselected promotions.
@@ -60,7 +79,7 @@ The remaining endpoint is not one chronological ladder. The following lanes are 
 | Preference instruction and preference post-training | FLAN, T0, Stiennon, InstructGPT | [Constitutional AI](https://arxiv.org/abs/2212.08073) and [Direct Preference Optimization](https://arxiv.org/abs/2305.18290) | What changes when supervision comes from written principles, model-generated comparisons, or a direct preference loss instead of the existing human-reward-model-plus-PPO path? |
 | Retrieval, reasoning, and acting | REALM, RAG, PaLM reasoning evidence, ReAct, and Toolformer | Further additions are evidence-triggered rather than preselected | When does an LM merely condition on retrieved text, and when does it select actions or tool calls as part of an interleaved trajectory? |
 | Sparse and efficient architecture | Transformer, T5, dense scaling branch, and Switch Transformers | [Mixtral](https://arxiv.org/abs/2401.04088) and [Mistral 7B](https://arxiv.org/abs/2310.06825) remain comparison candidates | Which changes alter active computation, memory traffic, attention cost, or inference behavior rather than only total parameter count? |
-| Reinforcement-learned reasoning | Human-feedback post-training and chain-of-thought evidence | [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and its 2025 journal/2026 revision boundary | What evidence supports reasoning improvements from verifiable-reward reinforcement learning, and what depends on hidden base-model, data, evaluator, or release conditions? |
+| Reinforcement-learned reasoning | DeepSeek-R1-Zero and DeepSeek-R1 | Further additions are evidence-triggered rather than preselected | Which findings generalize beyond verifiable outcomes, a large exposed base, long visible traces, and incomplete run reconstruction? |
 
 These lanes can overlap in calendar time while remaining distinct in the graph. A model that uses several mechanisms does not automatically become the canonical source for each of them.
 

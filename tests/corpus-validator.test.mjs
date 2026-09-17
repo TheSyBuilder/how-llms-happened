@@ -4229,6 +4229,135 @@ test("preserves Switch Transformer versions, sparse routing, result limits, arti
   assert.ok(currentEndpoint.includes("Promoted endpoint: Switch Transformers"));
 });
 
+test("preserves DeepSeek-R1 versions, RL stages, evaluation limits, artifacts, and lineage", () => {
+  const workId =
+    "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 64);
+  assert.equal(work?.artifactType, "journal-article");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2025-01-20", "2025-01-22", "2025-09-17", "2026-01-04"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "deepseek-ai-2025-r1-github-report-version",
+      "deepseek-ai-2025-r1-arxiv-v1-version",
+      "deepseek-ai-2025-r1-nature-version",
+      "deepseek-ai-2026-r1-arxiv-v2-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "deepseek-ai-2025-r1-nature-version");
+  assert.equal(work?.sourceIds.length, 21);
+  assert.equal(work?.ideaIds.length, 13);
+  assert.equal(claims.length, 15);
+
+  assert.deepEqual(
+    findSource("deepseek-ai-2025-r1-nature-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 11 },
+  );
+  assert.match(
+    findSource("deepseek-ai-2025-r1-nature-full-text")?.accessNote ?? "",
+    /916fdaafc3b44143/,
+  );
+  assert.deepEqual(
+    findSource("deepseek-ai-2025-r1-nature-supplement")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 83 },
+  );
+  assert.deepEqual(
+    findSource("deepseek-ai-2025-r1-0528-release-note")?.versionIds,
+    [],
+  );
+  assert.ok(
+    findSource("deepseek-ai-2025-r1-0528-release-note")?.supports.includes(
+      "version-boundary",
+    ),
+  );
+
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary")
+      ?.statement ?? "",
+    /without an intervening supervised-fine-tuning stage.*14\.8 trillion tokens/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-grpo-objective")?.statement ?? "",
+    /standardizes each reward.*removes PPO's separately trained value model/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-multistage-pipeline")?.statement ?? "",
+    /600,000 reasoning and 200,000 non-reasoning.*mixed RL stage/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-stage-evaluation-boundary")?.statement ??
+      "",
+    /GPQA Diamond falls.*AlpacaEval rises/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-evaluation-and-contamination-boundary")
+      ?.statement ?? "",
+    /10-gram decontamination.*paraphrased test material may remain/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-negative-results-and-capacity-dependence")
+      ?.statement ?? "",
+    /7B dense and 16B MoE.*Process reward modeling.*MCTS/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary")
+      ?.statement ?? "",
+    /documentation rather than training code.*do not collapse into one ‘open’ license/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => [item.id, item.connectionType]),
+    [["ouyang-2022-to-deepseek-r1-sft-first-rlhf-contrast", "challenges"]],
+  );
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.match(incoming[0]?.rationale ?? "", /target-side contrast/);
+  assert.match(
+    incoming[0]?.rationale ?? "",
+    /R1's later production pipeline reintroduces SFT/,
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-deepseek-r1-separate-zero-final-and-distilled-models",
+        "beginner",
+        6,
+      ],
+      [
+        "expert-deepseek-r1-audit-rl-reasoning-and-release-boundaries",
+        "expert",
+        15,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("DeepSeek-AI’s R1 family"));
+  assert.ok(corpusFormat.includes("DeepSeek-AI 2025/2026"));
+  assert.ok(
+    historicalScope.includes(
+      "The DeepSeek-R1 family was checked on 2026-09-17",
+    ),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: DeepSeek-R1"));
+});
+
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
   const workId = "graves-2013-generating-sequences-recurrent-neural-networks";
   const versionId = "graves-2013-arxiv-v1-version";

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-16",
+  "asOf": "2026-09-17",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -18313,6 +18313,315 @@
           "resolutionCondition": "A publisher- or author-supplied digest ledger and run mapping is required for byte-level and result-level identity."
         }
       ]
+    },
+    {
+      "id": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "title": "DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning",
+      "authors": [
+        "DeepSeek-AI"
+      ],
+      "artifactType": "journal-article",
+      "displayCitation": "DeepSeek-AI, “DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning,” Nature, vol. 645, pp. 633–638, 2025 (first public technical report 20 January 2025).",
+      "chronology": {
+        "orderingEventId": "deepseek-ai-2025-r1-github-report-release",
+        "events": [
+          {
+            "id": "deepseek-ai-2025-r1-github-report-release",
+            "kind": "technical-report",
+            "label": "First public repository report",
+            "date": {
+              "value": "2025-01-20",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "deepseek-ai-2025-r1-github-release-commit",
+                "precision": "day",
+                "locator": "Commit 23807ced51627276434655dd9f27725354818974, 2025-01-20T20:19:44+08:00"
+              }
+            ],
+            "versionId": "deepseek-ai-2025-r1-github-report-version",
+            "sourceIds": [
+              "deepseek-ai-2025-r1-github-release-commit",
+              "deepseek-ai-2025-r1-github-report-full-text"
+            ]
+          },
+          {
+            "id": "deepseek-ai-2025-r1-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2025-01-22",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "deepseek-ai-2025-r1-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 1 posted 2025-01-22 15:19:35 UTC"
+              }
+            ],
+            "versionId": "deepseek-ai-2025-r1-arxiv-v1-version",
+            "sourceIds": [
+              "deepseek-ai-2025-r1-arxiv-record",
+              "deepseek-ai-2025-r1-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "deepseek-ai-2025-r1-nature-publication",
+            "kind": "online-publication",
+            "label": "Nature version of record published online",
+            "date": {
+              "value": "2025-09-17",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "deepseek-ai-2025-r1-nature-record",
+                "precision": "day",
+                "locator": "Article metadata, published 17 September 2025"
+              }
+            ],
+            "versionId": "deepseek-ai-2025-r1-nature-version",
+            "sourceIds": [
+              "deepseek-ai-2025-r1-nature-record",
+              "deepseek-ai-2025-r1-nature-full-text",
+              "deepseek-ai-2025-r1-nature-supplement"
+            ]
+          },
+          {
+            "id": "deepseek-ai-2026-r1-arxiv-v2-posted",
+            "kind": "preprint",
+            "label": "Expanded arXiv version 2 posted",
+            "date": {
+              "value": "2026-01-04",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "deepseek-ai-2025-r1-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 2 posted 2026-01-04 03:57:36 UTC"
+              }
+            ],
+            "versionId": "deepseek-ai-2026-r1-arxiv-v2-version",
+            "sourceIds": [
+              "deepseek-ai-2025-r1-arxiv-record",
+              "deepseek-ai-2026-r1-arxiv-v2-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "deepseek-ai-2025-r1-github-report-version",
+          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "authors": [
+            "DeepSeek-AI"
+          ],
+          "kind": "technical-report",
+          "label": "First public GitHub technical report",
+          "language": "en",
+          "bibliography": {
+            "citation": "DeepSeek-AI, “DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,” technical report, 20 January 2025.",
+            "venue": "DeepSeek-AI GitHub repository",
+            "pages": [],
+            "identifiers": []
+          },
+          "sourceIds": [
+            "deepseek-ai-2025-r1-github-release-commit",
+            "deepseek-ai-2025-r1-github-report-full-text",
+            "deepseek-ai-2025-r1-release-readme-snapshot",
+            "deepseek-ai-2025-r1-release-license-snapshot",
+            "deepseek-ai-2025-r1-huggingface-r1-snapshot",
+            "deepseek-ai-2025-r1-huggingface-r1-zero-snapshot",
+            "deepseek-ai-2025-r1-huggingface-distill-qwen-32b-snapshot"
+          ],
+          "notes": "The first verified public report is the 22-leaf PDF in the initial repository commit. It precedes arXiv v1 by two days and is not byte-identical to it; the repository also released model links and MIT-licensed repository material, not the training implementation or complete training datasets."
+        },
+        {
+          "id": "deepseek-ai-2025-r1-arxiv-v1-version",
+          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "authors": [
+            "DeepSeek-AI"
+          ],
+          "kind": "preprint",
+          "label": "Ordering arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "DeepSeek-AI, “DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,” arXiv:2501.12948v1, 22 January 2025.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2501.12948v1",
+                "label": "ArXiv version 1"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2501.12948",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "deepseek-ai-2025-r1-arxiv-record",
+            "deepseek-ai-2025-r1-arxiv-v1-full-text",
+            "deepseek-ai-2025-r1-arxiv-v1-source-package"
+          ],
+          "notes": "The 22-leaf first arXiv revision refines prose, corrects small errors, and expands evaluation-protocol wording relative to the GitHub report. It remains much shorter than the peer-reviewed Nature article plus supplement and the later 86-leaf arXiv revision."
+        },
+        {
+          "id": "deepseek-ai-2025-r1-nature-version",
+          "title": "DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning",
+          "authors": [
+            "DeepSeek-AI"
+          ],
+          "kind": "journal",
+          "label": "Canonical Nature article and supplement",
+          "language": "en",
+          "bibliography": {
+            "citation": "DeepSeek-AI, “DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning,” Nature, vol. 645, pp. 633–638, 2025.",
+            "venue": "Nature",
+            "publisher": "Springer Nature",
+            "volume": "645",
+            "issues": [],
+            "pages": [
+              "633-638"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.1038/s41586-025-09422-z",
+                "label": "Version-of-record DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "deepseek-ai-2025-r1-nature-record",
+            "deepseek-ai-2025-r1-nature-full-text",
+            "deepseek-ai-2025-r1-nature-supplement",
+            "deepseek-ai-2025-r1-nature-peer-review",
+            "deepseek-ai-2024-v3-release-snapshot",
+            "deepseek-ai-2024-v3-code-license-snapshot",
+            "deepseek-ai-2024-v3-model-license-snapshot"
+          ],
+          "notes": "The canonical record comprises an 11-leaf CC BY 4.0 article, an 83-leaf supplement, and a separately published 64-leaf peer-review file. The article records receipt on 14 February and acceptance on 17 July 2025; its contributor list is far longer than the group-author shorthand used by this corpus."
+        },
+        {
+          "id": "deepseek-ai-2026-r1-arxiv-v2-version",
+          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "authors": [
+            "DeepSeek-AI"
+          ],
+          "kind": "preprint",
+          "label": "Expanded arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "DeepSeek-AI, “DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,” arXiv:2501.12948v2, 4 January 2026.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2501.12948v2",
+                "label": "ArXiv version 2"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2501.12948",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "deepseek-ai-2025-r1-arxiv-record",
+            "deepseek-ai-2026-r1-arxiv-v2-full-text",
+            "deepseek-ai-2026-r1-arxiv-v2-source-package"
+          ],
+          "notes": "The 86-leaf revision incorporates the expanded peer-reviewed account and supplement into one arXiv manuscript, adds a long contributor list and extensive training, evaluation, safety, and discussion material, and is not byte-identical to the Nature article-plus-supplement package. Its Open Weights, Code, and Data section retains an unresolved ‘xxx’ placeholder for the claimed SFT/RL-data release."
+        }
+      ],
+      "canonicalVersionId": "deepseek-ai-2025-r1-nature-version",
+      "preferredSourceIds": [
+        "deepseek-ai-2025-r1-nature-record",
+        "deepseek-ai-2025-r1-nature-full-text",
+        "deepseek-ai-2025-r1-nature-supplement"
+      ],
+      "sourceIds": [
+        "deepseek-ai-2025-r1-arxiv-record",
+        "deepseek-ai-2025-r1-github-release-commit",
+        "deepseek-ai-2025-r1-github-report-full-text",
+        "deepseek-ai-2025-r1-arxiv-v1-full-text",
+        "deepseek-ai-2025-r1-arxiv-v1-source-package",
+        "deepseek-ai-2025-r1-nature-record",
+        "deepseek-ai-2025-r1-nature-full-text",
+        "deepseek-ai-2025-r1-nature-supplement",
+        "deepseek-ai-2025-r1-nature-peer-review",
+        "deepseek-ai-2026-r1-arxiv-v2-full-text",
+        "deepseek-ai-2026-r1-arxiv-v2-source-package",
+        "deepseek-ai-2025-r1-release-readme-snapshot",
+        "deepseek-ai-2025-r1-release-license-snapshot",
+        "deepseek-ai-2025-r1-huggingface-r1-snapshot",
+        "deepseek-ai-2025-r1-huggingface-r1-zero-snapshot",
+        "deepseek-ai-2025-r1-huggingface-distill-qwen-32b-snapshot",
+        "deepseek-ai-2024-v3-release-snapshot",
+        "deepseek-ai-2024-v3-code-license-snapshot",
+        "deepseek-ai-2024-v3-model-license-snapshot",
+        "deepseek-ai-2025-r1-0528-release-note",
+        "deepseek-ai-2025-r1-0528-huggingface-record"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "DeepSeek-R1 fills the bounded reinforcement-learned-reasoning lane with an unusually detailed peer-reviewed account of outcome-verifiable RL, an SFT-free first stage, a separate multistage production model, explicit negative results, and released weights. It is retained for those mechanisms and boundaries—not as proof that visible rationales are faithful, that the base model lacked reasoning traces, that every capability improved, or that public artifacts reconstruct the training run."
+      },
+      "ideaIds": [
+        "group-relative-policy-optimization",
+        "verifiable-outcome-reasoning-reward",
+        "sft-free-reasoning-reinforcement-learning",
+        "multistage-reasoning-post-training",
+        "language-consistency-reward",
+        "rejection-sampled-reasoning-trace-finetuning",
+        "reasoning-trace-distillation",
+        "adaptive-reasoning-token-allocation",
+        "decoder-only-transformer-language-modeling",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "reward-model-overoptimization"
+      ],
+      "significance": {
+        "beginner": "DeepSeek-R1-Zero starts from an already pretrained large model and rewards correct, well-formatted final answers without first teaching worked solutions. The later DeepSeek-R1 adds curated examples, preference rewards, and another RL stage to improve readability and general usefulness, so ‘pure RL’ describes one post-training stage rather than the model’s whole history.",
+        "expert": "The work applies GRPO with group-normalized outcome rewards and reference-policy KL control to DeepSeek-V3-Base, then builds R1 through cold-start SFT, rule-reward RL, rejection-sampled reasoning/general SFT, and mixed rule/model-reward RL. Interpretation must preserve base-model exposure, stage-specific data and rewards, reward hacking, nonmonotonic evaluation, decontamination limits, distillation identity, mutable artifact releases, and absent run-level reconstruction materials."
+      },
+      "limitations": [
+        "‘Pure reinforcement learning’ means that DeepSeek-R1-Zero receives no supervised fine-tuning immediately before RL; it still inherits DeepSeek-V3-Base architecture, 14.8-trillion-token pretraining, and whatever human- or model-generated reasoning patterns were present in that corpus.",
+        "Rule rewards apply most cleanly to domains with automatically checkable final answers. The paper does not show the same recipe solving open-ended writing, factuality, social judgment, or tool use without learned evaluators or supervised data.",
+        "Longer visible reasoning, reflective words, and self-correction-like text do not establish that natural-language rationales faithfully reveal latent computation or that every extra token is useful.",
+        "Stage results are nonmonotonic across benchmarks; DeepSeek-R1-Zero exceeds the final model on some reported GPQA and Chinese factual-QA rows, while general instruction-preference gains arrive mainly in later stages.",
+        "The reported decontamination removes exact 10-gram matches but explicitly cannot prevent paraphrased or discussed test items from appearing in pretraining; several comparisons also use heterogeneous external or model-judged protocols.",
+        "Smaller 7B dense and 16B MoE trials did not obtain meaningful AIME gains and instead lengthened repetitive outputs, so the evidence does not establish base-model-independent effectiveness.",
+        "The released repositories and model snapshots do not supply the complete RL/SFT corpora, preference labels, rollouts, data order, seeds, optimizer checkpoints, raw predictions, or one immutable environment and table-to-run ledger.",
+        "DeepSeek-R1, DeepSeek-R1-Zero, the six dense distilled models, their Qwen/Llama bases, DeepSeek-V3 inference code, paper text, datasets, and the later R1-0528 checkpoint carry separate identities and rights."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The Nature data-availability statement points to GitHub and Zenodo samples, while the expanded arXiv source says SFT and RL data are released at an unresolved ‘xxx’ and mentions review attachments; no complete public dataset-to-run manifest was identified.",
+          "resolutionCondition": "A versioned first-party inventory with stable object identifiers, contents, licenses, and stage/run mappings is required."
+        },
+        {
+          "status": "open",
+          "note": "The supplement's RL-data table lists 17,000 coding items while adjacent prose describes 17,000 algorithm problems plus 8,000 bug-fix items; the scopes are not reconciled.",
+          "resolutionCondition": "An author correction or released row-level manifest must identify whether the table excludes, overlaps, or summarizes the bug-fix subset."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -20371,7 +20680,8 @@
         "bigscience-2022-bloom-176b-architecture",
         "yao-2022-react-palm-frozen-few-shot-and-density",
         "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
-        "schick-2023-toolformer-base-model-and-training-text-boundary"
+        "schick-2023-toolformer-base-model-and-training-text-boundary",
+        "deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary"
       ],
       "uncertainties": []
     },
@@ -21720,7 +22030,9 @@
         "stiennon-2020-gpt3-style-model-family-and-sft",
         "ouyang-2022-sft-rm-ppo-pipeline",
         "ouyang-2022-gpt3-initialization-and-sft",
-        "ouyang-2022-instructgpt-preference-results"
+        "ouyang-2022-instructgpt-preference-results",
+        "deepseek-ai-2025-r1-multistage-pipeline",
+        "deepseek-ai-2025-r1-distillation-boundary"
       ],
       "uncertainties": []
     },
@@ -21737,7 +22049,8 @@
         "ouyang-2022-sft-rm-ppo-pipeline",
         "ouyang-2022-labeler-selection-and-agreement",
         "ouyang-2022-ranked-preference-reward-model",
-        "ouyang-2022-artifact-data-and-rights-boundary"
+        "ouyang-2022-artifact-data-and-rights-boundary",
+        "deepseek-ai-2025-r1-preference-reward-models"
       ],
       "uncertainties": []
     },
@@ -21755,7 +22068,9 @@
         "stiennon-2020-artifact-data-and-rights-boundary",
         "ouyang-2022-sft-rm-ppo-pipeline",
         "ouyang-2022-ranked-preference-reward-model",
-        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix"
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "deepseek-ai-2025-r1-preference-reward-models",
+        "deepseek-ai-2025-r1-safety-tool-and-prompt-limitations"
       ],
       "uncertainties": []
     },
@@ -21784,7 +22099,9 @@
       "claimIds": [
         "stiennon-2020-likelihood-and-metric-misalignment",
         "stiennon-2020-reward-model-scaling-and-overoptimization",
-        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix"
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "deepseek-ai-2025-r1-preference-reward-models",
+        "deepseek-ai-2025-r1-negative-results-and-capacity-dependence"
       ],
       "uncertainties": []
     },
@@ -22985,6 +23302,133 @@
       "uncertainties": [],
       "claimIds": [
         "fedus-2022-switch-transformers-distillation"
+      ]
+    },
+    {
+      "id": "group-relative-policy-optimization",
+      "name": "Group-relative policy optimization",
+      "kind": "objective",
+      "description": "Sample multiple outputs for each prompt, standardize rewards within that group to estimate relative advantages, and optimize a clipped policy-ratio objective with reference-policy KL control without a separately trained critic.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Eliminating the value model reduces one PPO component but not rollout, reward, reference-policy, or distributed-training requirements."
+        }
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-grpo-objective",
+        "deepseek-ai-2025-r1-zero-reward-and-training-recipe",
+        "deepseek-ai-2025-r1-training-cost-and-infrastructure",
+        "deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "verifiable-outcome-reasoning-reward",
+      "name": "Verifiable-outcome reasoning reward",
+      "kind": "objective",
+      "description": "Reward a generated solution using automatically checked final-answer correctness plus explicit output-format constraints while leaving intermediate reasoning tokens unsupervised.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Verifiable outcomes are strongest for tasks with reliable parsers, compilers, tests, or concise reference answers and do not validate every intermediate step."
+        }
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-zero-reward-and-training-recipe",
+        "deepseek-ai-2025-r1-data-scope-and-provenance",
+        "deepseek-ai-2025-r1-evaluation-and-contamination-boundary",
+        "deepseek-ai-2025-r1-negative-results-and-capacity-dependence"
+      ]
+    },
+    {
+      "id": "sft-free-reasoning-reinforcement-learning",
+      "name": "SFT-free reasoning reinforcement learning",
+      "kind": "mechanism",
+      "description": "Apply outcome-driven policy optimization directly to a pretrained base checkpoint without an intervening supervised reasoning-trace fine-tuning stage.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "SFT-free describes the immediate post-training sequence, not the pretrained base model's data provenance or absence of prior reasoning exposure."
+        }
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary",
+        "deepseek-ai-2025-r1-zero-behavior-and-evidence-boundary",
+        "deepseek-ai-2025-r1-negative-results-and-capacity-dependence"
+      ]
+    },
+    {
+      "id": "multistage-reasoning-post-training",
+      "name": "Multistage reasoning post-training",
+      "kind": "mechanism",
+      "description": "Alternate curated supervised traces, verifiable-reward reinforcement learning, rejection-sampled supervised data, and mixed preference/reasoning reinforcement learning to balance reasoning, readability, safety, and general instruction following.",
+      "uncertainties": [],
+      "claimIds": [
+        "deepseek-ai-2025-r1-version-and-release-boundary",
+        "deepseek-ai-2025-r1-multistage-pipeline",
+        "deepseek-ai-2025-r1-training-cost-and-infrastructure",
+        "deepseek-ai-2025-r1-stage-evaluation-boundary",
+        "deepseek-ai-2025-r1-safety-tool-and-prompt-limitations",
+        "deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "language-consistency-reward",
+      "name": "Language-consistency reward",
+      "kind": "objective",
+      "description": "Reward the fraction of response words that match a designated target language to reduce cross-language mixing during reasoning-oriented policy optimization.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Surface-language consistency is not semantic correctness, multilingual coverage, or cross-lingual fairness."
+        }
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-multistage-pipeline"
+      ]
+    },
+    {
+      "id": "rejection-sampled-reasoning-trace-finetuning",
+      "name": "Rejection-sampled reasoning-trace fine-tuning",
+      "kind": "mechanism",
+      "description": "Generate candidate long-form solutions, retain traces that pass correctness and readability filters, mix them with general instruction data, and fine-tune a base model on the curated set.",
+      "uncertainties": [],
+      "claimIds": [
+        "deepseek-ai-2025-r1-multistage-pipeline",
+        "deepseek-ai-2025-r1-data-scope-and-provenance"
+      ]
+    },
+    {
+      "id": "reasoning-trace-distillation",
+      "name": "Reasoning-trace distillation",
+      "kind": "mechanism",
+      "description": "Supervised-fine-tune a smaller student model on long-form outputs generated by a stronger reasoning teacher while preserving the student's distinct base architecture and rights.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Teacher-output transfer is not evidence that the student shares the teacher's architecture, reinforcement-learning history, or internal computation."
+        }
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-distillation-boundary",
+        "deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "adaptive-reasoning-token-allocation",
+      "name": "Adaptive reasoning-token allocation",
+      "kind": "mechanism",
+      "description": "Allow a model to vary the number of visible intermediate tokens it generates before a final answer, using more serial generation as a form of test-time computation on some harder prompts.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "Token count is an observable compute proxy; it is not a direct measure of problem difficulty, useful reasoning, or faithful internal cognition."
+        }
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-zero-behavior-and-evidence-boundary",
+        "deepseek-ai-2025-r1-stage-evaluation-boundary",
+        "deepseek-ai-2025-r1-evaluation-and-contamination-boundary"
       ]
     }
   ],
@@ -35835,6 +36279,526 @@
         "pageEnd": 1
       },
       "accessNote": "Apache License 2.0 covers the T5X repository software at the checkpoint-release commit. It does not itself establish rights in model parameters, paper text, C4/mC4 content, or benchmark data."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-arxiv-record",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "ArXiv record and revision ledger for DeepSeek-R1",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "public-archive",
+      "versionIds": [
+        "deepseek-ai-2025-r1-arxiv-v1-version",
+        "deepseek-ai-2026-r1-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record supplies exact UTC posting times for two revisions, title and author metadata, the aggregate DOI, version-specific files, and the selected arXiv distribution license."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-github-release-commit",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-R1 public repository commit",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1/commit/23807ced51627276434655dd9f27725354818974",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "Immutable commit 23807ced was authored 20 January 2025 at 20:19:44 +08:00 and contains the first report PDF, README, license, and figure. It establishes the ordering event and exact release tree."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-github-report-full-text",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "First public DeepSeek-R1 technical-report PDF",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1/blob/23807ced51627276434655dd9f27725354818974/DeepSeek_R1.pdf",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 22
+      },
+      "accessNote": "The 22-leaf, 1,326,429-byte PDF has SHA-256 d13540d64005867bccb6d39cad7554740a2bb6e9796e9b46abc3baa9b5b88fae. It is earlier than and byte-distinct from arXiv v1."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-R1 arXiv version 1 full text",
+      "url": "https://arxiv.org/pdf/2501.12948v1",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "deepseek-ai-2025-r1-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 22
+      },
+      "accessNote": "The 22-leaf, 1,312,189-byte PDF has SHA-256 52d8ca3ac93e88cef9944e1fd03b0e04aec5954495a8250fb2fadf8fa20a4dad. It corrects wording and expands pass-at-k protocol language relative to the repository report."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-R1 arXiv version 1 source package",
+      "url": "https://export.arxiv.org/e-print/2501.12948v1",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "deepseek-ai-2025-r1-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The source archive has SHA-256 726027e67bca1090ea816aa63099efca2141bd7177de4b90e8fd69583687175f and contains publication source and figures, not training data, rollouts, predictions, or a run manifest."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-nature-record",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Nature record for DeepSeek-R1",
+      "url": "https://www.nature.com/articles/s41586-025-09422-z",
+      "accessDate": "2026-09-17",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The version-of-record page supplies DOI, dates, volume 645, pages 633–638, the full contributor list, article metrics, CC BY 4.0 terms, supplement and peer-review links, and data/code availability statements."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-nature-full-text",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Canonical Nature DeepSeek-R1 article",
+      "url": "https://www.nature.com/articles/s41586-025-09422-z.pdf",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 11
+      },
+      "accessNote": "The 11-leaf, 2,735,576-byte publisher PDF has SHA-256 916fdaafc3b44143a9744481d079744f773d73d06372f82b1dba1076525927f2. PDF leaves are used for locators because Methods and extended data continue beyond printed journal pp. 633–638."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-nature-supplement",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-R1 Nature supplementary information",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-025-09422-z/MediaObjects/41586_2025_9422_MOESM1_ESM.pdf",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 83
+      },
+      "accessNote": "The separately distributed 83-leaf, 5,226,755-byte supplement has SHA-256 4dc9d0c192bfaa3ae329cf847d1847cb647a2bcef2fcabaab8ae4d2331621328 and contains the expanded training, infrastructure, evaluation, safety, distillation, and negative-result account."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-nature-peer-review",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-R1 Nature peer-review file",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-025-09422-z/MediaObjects/41586_2025_9422_MOESM2_ESM.pdf",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "publisher",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 64
+      },
+      "accessNote": "The 64-leaf, 770,730-byte file has SHA-256 b6e20dfbe46786bdb4922ccfefd84257bc6e30130b7a0c89f4396431a647eee9 and preserves review history; it is contextual evidence rather than the canonical scientific text."
+    },
+    {
+      "id": "deepseek-ai-2026-r1-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Expanded DeepSeek-R1 arXiv version 2 full text",
+      "url": "https://arxiv.org/pdf/2501.12948v2",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "deepseek-ai-2026-r1-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "pdf-page",
+        "pageStart": 1,
+        "pageEnd": 86
+      },
+      "accessNote": "The 86-leaf, 5,034,998-byte PDF has SHA-256 b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4. It consolidates an expanded account related to the Nature publication but is a distinct rendering and later revision."
+    },
+    {
+      "id": "deepseek-ai-2026-r1-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Expanded DeepSeek-R1 arXiv version 2 source package",
+      "url": "https://export.arxiv.org/e-print/2501.12948v2",
+      "accessDate": "2026-09-17",
+      "sourceClass": "primary-full-text",
+      "authority": "public-archive",
+      "versionIds": [
+        "deepseek-ai-2026-r1-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The source archive has SHA-256 71b18a7e73434b7b49981e380d5d2eac54548f2359e93059dfcba8e1f05afcc3. It exposes manuscript tables and example Markdown assets but retains an unresolved ‘xxx’ data-release placeholder and is not a complete training corpus."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-release-readme-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-R1 release README snapshot",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1/blob/23807ced51627276434655dd9f27725354818974/README.md",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned 14,554-byte README has SHA-256 a9f6e7cd2a7561f6de0c30bdf52ec06c324a64e1fd0a8da68d73a9f258969cf7 and links R1, R1-Zero, six distills, inference guidance, and claimed weight/code terms. It is documentation, not training code."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-release-license-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-R1 repository MIT license",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1/blob/23807ced51627276434655dd9f27725354818974/LICENSE",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned 1,064-byte file has SHA-256 1c8f573e830ca9b3ebfeb7ace1823146e22b66f99ee223840e7637c9e745e1c7. It is the repository's MIT software license and does not erase separate article, base-model, student-model, dataset, or dependency terms."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-huggingface-r1-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-R1 Hugging Face snapshot",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1/tree/5a56bdbde75a16bdfbf3a8e9c852be3dfcfb8eef",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The initial 20 January 2025 snapshot identifies a 671B-total, 37B-active MoE checkpoint with 128K context and 163 safetensor shards. Later mutable page changes are excluded by the commit binding."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-huggingface-r1-zero-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-R1-Zero Hugging Face snapshot",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Zero/tree/cfa4541c2f577dafd72f51f2b14119bde0f3c812",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The initial 20 January 2025 snapshot binds the distinct SFT-free reasoning-RL checkpoint release; it must not be substituted for the multistage DeepSeek-R1 checkpoint."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-huggingface-distill-qwen-32b-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-R1-Distill-Qwen-32B snapshot",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B/tree/2a29ab14a7dcfb5132537e18050d0ebe5008f7fb",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-github-report-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "This representative initial student snapshot binds one of six separately released dense distills. Its Qwen base identity and license remain relevant; it is not a smaller parameterization of the R1 MoE architecture."
+    },
+    {
+      "id": "deepseek-ai-2024-v3-release-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Initial DeepSeek-V3 repository snapshot",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3/tree/4c2fdb8f55e049553b9f4f1a3241f86d739c8cf8",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 26 December 2024 initial V3 repository snapshot supplies model documentation, conversion and inference code, and separate code/model terms. It does not contain R1 training code or a complete R1 run environment."
+    },
+    {
+      "id": "deepseek-ai-2024-v3-code-license-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-V3 initial code-license snapshot",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3/blob/4c2fdb8f55e049553b9f4f1a3241f86d739c8cf8/LICENSE-CODE",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned file has SHA-256 1c8f573e830ca9b3ebfeb7ace1823146e22b66f99ee223840e7637c9e745e1c7 and applies MIT terms to covered V3 code, not automatically to weights, datasets, articles, or student bases."
+    },
+    {
+      "id": "deepseek-ai-2024-v3-model-license-snapshot",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-V3 initial model-license snapshot",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3/blob/4c2fdb8f55e049553b9f4f1a3241f86d739c8cf8/LICENSE-MODEL",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "deepseek-ai-2025-r1-nature-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned model terms have SHA-256 ccfee4895df06bcab524151c278e8dde88bbe76165a24ecbcbcf9fafd71fd2b3 and remain distinct from V3 code terms and later R1 release statements."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-0528-release-note",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "Official DeepSeek-R1-0528 release note",
+      "url": "https://api-docs.deepseek.com/news/news250528/",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The dated 28 May 2025 note describes a later checkpoint update with changed reasoning, JSON, and function-calling behavior. It is a post-report release boundary, not a revision of the January experiment or Nature text."
+    },
+    {
+      "id": "deepseek-ai-2025-r1-0528-huggingface-record",
+      "relatedWorkIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "title": "DeepSeek-R1-0528 Hugging Face release record",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
+      "accessDate": "2026-09-17",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [],
+      "supports": [
+        "metadata",
+        "full-text",
+        "version-boundary"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The official model page names the later checkpoint separately. Mutable current-page content is used only to establish release identity, not to overwrite the pinned January artifacts or paper results."
     }
   ],
   "claims": [
@@ -68145,6 +69109,640 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-16"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-version-and-release-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "multistage-reasoning-post-training"
+      ],
+      "statement": "The work first appeared as a 22-leaf GitHub technical report on 20 January 2025, followed by a byte-distinct 22-leaf arXiv v1 on 22 January, the canonical 11-leaf Nature article plus 83-leaf supplement on 17 September, and an 86-leaf expanded arXiv v2 on 4 January 2026.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-github-release-commit",
+          "locator": {
+            "label": "Initial public release commit",
+            "section": "Commit metadata and tree"
+          },
+          "support": "The immutable commit supplies the 20 January date and first report tree."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-arxiv-record",
+          "locator": {
+            "label": "Two-version arXiv ledger",
+            "section": "Submission history"
+          },
+          "support": "The record supplies exact UTC times for versions 1 and 2."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-record",
+          "locator": {
+            "label": "Canonical publication record",
+            "section": "Article metadata"
+          },
+          "support": "Nature supplies received, accepted, published, volume, page, DOI, and supplementary-file metadata."
+        }
+      ],
+      "limitations": [
+        "Paper-version chronology does not imply byte identity or retroactive application of later details to earlier files.",
+        "The mutable current repository PDF differs again from the initial report and is not used as the ordering artifact."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "decoder-only-transformer-language-modeling",
+        "sft-free-reasoning-reinforcement-learning"
+      ],
+      "statement": "DeepSeek-R1-Zero applies GRPO directly to DeepSeek-V3-Base without an intervening supervised-fine-tuning stage. That 671B-total, 37B-active MoE substrate was pretrained on 14.8 trillion tokens, so the paper's ‘pure RL’ label describes post-training order rather than an untrained model or absence of human- and model-generated traces in base pretraining.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "R1-Zero base-model and no-SFT boundary",
+            "section": "DeepSeek-R1-Zero; Methods—GRPO"
+          },
+          "support": "The canonical article states that R1-Zero builds on DeepSeek-V3-Base and bypasses SFT before RL."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "DeepSeek-V3 pretraining composition and model scale",
+            "section": "A.1 Pre-training of DeepSeek-V3-Base; B.4 training scale"
+          },
+          "support": "The supplement records the 14.8T-token base training and 660/671B-scale R1 family context, including naturally crawled model-generated web content."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-huggingface-r1-zero-snapshot",
+          "locator": {
+            "label": "Pinned released R1-Zero checkpoint identity",
+            "section": "Model card and repository tree"
+          },
+          "support": "The initial model repository binds the released R1-Zero checkpoint separately from R1."
+        }
+      ],
+      "limitations": [
+        "No-pre-RL-SFT does not identify every source of reasoning behavior in the pretrained base.",
+        "The corpus does not infer direct Switch Transformer lineage from shared MoE vocabulary; the target names DeepSeek-V3 as its architectural substrate."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-grpo-objective",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "group-relative-policy-optimization"
+      ],
+      "statement": "For each prompt, GRPO samples a group of outputs, standardizes each reward against the group's mean and standard deviation to form advantages, applies a clipped old-policy importance ratio, and penalizes divergence from a reference policy. It removes PPO's separately trained value model but still requires multiple rollouts, a reference policy, a reward function, and policy updates.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Canonical GRPO definition",
+            "section": "Methods—GRPO",
+            "figure": "Extended Data Fig. 2",
+            "equation": "1–2–3"
+          },
+          "support": "Equations 1–3 and Extended Data Figure 2 define group-relative advantages, clipping, and reference-policy KL."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "GRPO and PPO comparison",
+            "section": "A.3 Comparison between GRPO and PPO"
+          },
+          "support": "The supplement contrasts value-model resource requirements and objective components."
+        }
+      ],
+      "limitations": [
+        "Within-group normalization makes advantage scale depend on the sampled group and reward distribution.",
+        "Removing a value network does not remove inference, reward computation, reference-model, or rollout-system cost."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-zero-reward-and-training-recipe",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "group-relative-policy-optimization",
+        "verifiable-outcome-reasoning-reward"
+      ],
+      "statement": "R1-Zero combines equal-weight accuracy and format rewards: boxed or parsed mathematical answers and compiled/tested code supply outcome checks, while `<think>` tags supply formatting checks. The Nature-era run uses learning rate 3×10⁻⁶, KL coefficient .001, temperature 1, 16 samples per question, batch 512, 10,400 policy steps, a reference refresh every 400 steps, and a 32,768-token limit raised to 65,536 after step 8,200.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Rule-reward design",
+            "section": "DeepSeek-R1-Zero; Methods—GRPO",
+            "equation": "4"
+          },
+          "support": "The article defines accuracy and format rewards and provides the run hyperparameters."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Reasoning-domain verifier construction",
+            "section": "B.2 RL Data; B.4.1 Hyper-Parameters of RL"
+          },
+          "support": "The supplement details math, code, STEM, and logic prompt verification plus rollout settings."
+        }
+      ],
+      "limitations": [
+        "Correct final answers do not certify every intermediate token, and format compliance is not reasoning correctness.",
+        "The verifier recipe is concentrated in mathematical, coding, STEM, and logic settings with checkable outcomes."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-zero-behavior-and-evidence-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "sft-free-reasoning-reinforcement-learning",
+        "adaptive-reasoning-token-allocation"
+      ],
+      "statement": "Across R1-Zero training, reported AIME 2024 pass@1 rises from 15.6% to 77.9%, consensus-at-16 reaches 86.7%, and response length rises. Later analysis reports 5–7× more selected reflective words and a spike in ‘wait’ after step 8,000; these output-text correlations support changed generation behavior, not faithful access to hidden reasoning or a causal decomposition of which intervention produced it.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "R1-Zero AIME and length trajectory",
+            "section": "DeepSeek-R1-Zero",
+            "figure": "1"
+          },
+          "support": "Figure 1 and adjacent prose provide the pass-at-one, consensus, and response-length trajectories."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Reflective-word analysis",
+            "section": "Extended Data Fig. 1",
+            "figure": "Extended Data Fig. 1"
+          },
+          "support": "The expanded analysis defines the expert-selected vocabulary and timing of the observed word-frequency changes."
+        }
+      ],
+      "limitations": [
+        "AIME trajectories are one benchmark on repeated training checkpoints and are not a broad causal identification design.",
+        "Natural-language self-correction markers can be performative, spurious, or unfaithful to internal computation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-multistage-pipeline",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "multistage-reasoning-post-training",
+        "rejection-sampled-reasoning-trace-finetuning",
+        "supervised-demonstration-fine-tuning",
+        "language-consistency-reward"
+      ],
+      "statement": "DeepSeek-R1 is not R1-Zero continued unchanged. It adds thousands of curated cold-start reasoning traces, a reasoning-focused RL stage with a language-consistency reward, rejection-sampled SFT on about 600,000 reasoning and 200,000 non-reasoning examples, and a later mixed RL stage combining rule rewards with helpfulness, safety, format, and language signals.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Four-stage R1 construction",
+            "section": "DeepSeek-R1",
+            "figure": "2"
+          },
+          "support": "Figure 2 and prose identify cold start, reasoning RL, rejection-sampled SFT, and second RL stages."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Canonical stage implementation details",
+            "section": "Methods—Cold start; reasoning-oriented RL; rejection sampling and SFT; diverse RL"
+          },
+          "support": "Methods specifies stage order, data scopes, language reward, and model-based preference rewards."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "SFT construction and hyperparameters",
+            "section": "B.3 SFT Data; B.4.2 Hyper-Parameters of SFT"
+          },
+          "support": "The supplement details trace generation, filtering, data counts, 2–3 epochs, cosine schedule, 32,768 context, and batch 128."
+        }
+      ],
+      "limitations": [
+        "The final R1 result cannot be attributed to rule-reward RL alone because curated/model-generated SFT and learned preference rewards intervene.",
+        "The language reward improves consistency but an ablation reports a slight coding tradeoff; it is not a general multilingual solution."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-preference-reward-models",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "reward-model-overoptimization"
+      ],
+      "statement": "The later R1 stage uses a helpfulness reward model trained on 66,000 length-balanced preference pairs judged four times by DeepSeek-V3 with randomized response positions, plus a pointwise safety reward model trained from 106,000 labeled prompts. The final 1,700-step RL run adds general preference rewards only for its last 400 steps because longer optimization produces reward hacking: reward-model score rises while Codeforces performance falls.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Model-based reward construction",
+            "section": "Methods—Model-based rewards; Diverse RL training"
+          },
+          "support": "Methods records helpfulness and safety reward-model datasets, judge protocol, and late-stage reward activation."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Helpful and safety reward-model hyperparameters",
+            "section": "A.4 Reward Model; B.4.1 Hyper-Parameters of RL"
+          },
+          "support": "The supplement gives pair/prompt counts, one-epoch training, batch and learning rate, and second-RL temperature/step settings."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Observed reward hacking",
+            "section": "B.5 Reward Hacking"
+          },
+          "support": "The training curve contrasts increasing reward-model score with declining Codeforces outcomes."
+        }
+      ],
+      "limitations": [
+        "DeepSeek-V3 judgment is model-mediated preference labeling, not direct measurement of a universal human preference distribution.",
+        "The in-house reward-model datasets and annotations are not released as a complete versioned corpus in the audited surfaces."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-data-scope-and-provenance",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "verifiable-outcome-reasoning-reward",
+        "rejection-sampled-reasoning-trace-finetuning"
+      ],
+      "statement": "Cold-start traces are sampled from R1-Zero, correctness/readability-filtered, and refined by DeepSeek-V3; code prompts derive from 5,151 Codeforces and 2,504 AtCoder problems with generated tests filtered using known submissions. The reasoning SFT pool keeps correct, readable traces and the non-reasoning pool reuses the V3 pipeline. Counts and construction rules are described, but row-level training membership, data order, prompts, labels, and stage manifests are not completely public.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Cold-start and code-data construction",
+            "section": "B.3.1 Cold Start; B.2.2 Code Data"
+          },
+          "support": "The supplement identifies source counts, generated tests, filtering, and V3 refinement."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Reasoning and non-reasoning SFT pools",
+            "section": "B.3.2 Reasoning SFT Data; B.3.3 Non-Reasoning SFT Data"
+          },
+          "support": "The supplement describes filtering and approximately 600k/200k dataset composition."
+        },
+        {
+          "sourceId": "deepseek-ai-2026-r1-arxiv-v2-source-package",
+          "locator": {
+            "label": "Publication-source artifact inventory",
+            "section": "Archive tree; I. Open Weights, Code, and Data"
+          },
+          "support": "The archive provides examples and publication assets but not the complete training datasets; the release sentence retains an unresolved placeholder."
+        }
+      ],
+      "limitations": [
+        "Public benchmark origins do not establish redistribution rights for every derived prompt, test, submission, or generated trace.",
+        "The supplement's 17,000-code table entry and adjacent 17,000-algorithm-plus-8,000-bug-fix prose remain unreconciled."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-training-cost-and-infrastructure",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "group-relative-policy-optimization",
+        "multistage-reasoning-post-training"
+      ],
+      "statement": "The expanded account reports 512 H800 GPUs for about 198 hours on R1-Zero, 80 hours on R1, and 5,000 GPU-hours for SFT-data creation: about 147,000 H800 GPU-hours and a paper-priced $294,000 at $2 per GPU-hour. It describes vLLM rollouts, expert parallelism, hot-expert replicas, speculative decoding, asynchronous rule rewards, and model offloading, but excludes V3 pretraining and does not provide energy, utilization, labor, failed-run, or full-lifecycle accounting.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Reported post-training cost table",
+            "section": "B.4.4 Training Cost",
+            "table": "7"
+          },
+          "support": "Table 7 provides devices, durations, data-creation hours, total GPU-hours, and assumed hourly price."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Training-system architecture",
+            "section": "B.1 Training Infrastructure"
+          },
+          "support": "The supplement describes rollout, expert-parallel, speculative, reward, and model-lifecycle optimizations."
+        }
+      ],
+      "limitations": [
+        "The dollar figure is an assumed GPU-hour price, not an audited total project budget.",
+        "No energy or emissions measurement is supplied, so efficiency and lower-energy language cannot be converted into measured environmental impact."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-stage-evaluation-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "multistage-reasoning-post-training",
+        "adaptive-reasoning-token-allocation"
+      ],
+      "statement": "Stage-wise results are not monotonically increasing. Table 2 reports AIME 2024 pass@1 of 77.9 for R1-Zero, 59.0/74.0/78.1 for Dev1–3, and 79.8 for final R1; GPQA Diamond falls from 75.8 for R1-Zero to 71.5 final, while AlpacaEval rises from 24.7 to 87.6 and Arena-Hard from 53.6 to 92.3. The final pipeline therefore trades across reasoning, instruction following, and preference proxies rather than universally dominating every stage.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Stage-wise evaluation matrix",
+            "section": "DeepSeek-R1—Table 2",
+            "table": "2"
+          },
+          "support": "The canonical table prints the five-stage values across knowledge, reasoning, coding, instruction, and preference benchmarks."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Stage-wise evaluation details",
+            "section": "E. Ablation and Analysis of Each Stage"
+          },
+          "support": "The supplement breaks out task results and interprets which stages change difficult coding and general-preference performance."
+        }
+      ],
+      "limitations": [
+        "Different tasks use different prompts, metrics, sampling, judges, and baselines; row values are not interchangeable measures of general intelligence.",
+        "Model-judged AlpacaEval and Arena-Hard inherit judge, presentation, and length biases despite the authors' final-summary mitigation."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-evaluation-and-contamination-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "verifiable-outcome-reasoning-reward",
+        "adaptive-reasoning-token-allocation"
+      ],
+      "statement": "The expanded evaluation uses zero-shot or task-specific prompts, up to 32,768 output tokens, sampled pass@k for math/code, GPT-4-Turbo-1106 judging for two preference suites, and some reported proprietary-baseline numbers rather than matched local inference. Exact 10-gram decontamination removes matches from pre- and post-training data, but the authors explicitly say paraphrased test material may remain; AIME 2025 is added as a post-cutoff check and yields 75% pass@1 versus a reported 80% for o1.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Evaluation prompts, baselines, and sampling",
+            "section": "D.1 Experiment Setup"
+          },
+          "support": "The supplement specifies prompts, judge model, output cap, sampling, pass-at-k, and externally reported baseline handling."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Exact-match decontamination and admitted paraphrase limit",
+            "section": "D.1 Decontamination"
+          },
+          "support": "The method filters matching 10-grams and immediately acknowledges that paraphrases can evade it."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Post-cutoff competition check",
+            "section": "D.3 Generalization to Real-World Competitions"
+          },
+          "support": "The supplement reports AIME 2025 and AMC 12 2024 results and states the comparison conditions."
+        }
+      ],
+      "limitations": [
+        "A post-cutoff benchmark reduces one contamination path but does not identify every pretraining analogue, discussion, benchmark-selection effect, or evaluator artifact.",
+        "Competition-score analogies do not establish human-level mathematical understanding or comparable time, tool, and participation conditions."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-distillation-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "reasoning-trace-distillation",
+        "supervised-demonstration-fine-tuning"
+      ],
+      "statement": "Six dense student releases fine-tune Qwen or Llama bases for 2–3 epochs on about 800,000 R1-generated examples and receive no RL stage. A Qwen2.5-32B base trained with more than 10,000 RL steps remains below R1-Distill-Qwen-32B on all displayed reasoning benchmarks, but this matched-table result does not prove that distillation always beats RL across bases, budgets, domains, or future recipes.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Six student identities and SFT-only training",
+            "section": "B.4.3 Hyper-Parameters of Distillation; F. DeepSeek-R1 Distillation",
+            "table": "6 and 15"
+          },
+          "support": "The supplement binds each student to a base model and says distillation uses SFT without RL."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Distillation-versus-RL comparison",
+            "section": "F.1 Distillation v.s. Reinforcement Learning",
+            "table": "16"
+          },
+          "support": "Table 16 compares Qwen2.5-32B-Zero with the 32B distilled student on five displayed metrics."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-huggingface-distill-qwen-32b-snapshot",
+          "locator": {
+            "label": "Representative released student snapshot",
+            "section": "Model card and repository tree"
+          },
+          "support": "The snapshot establishes a separately packaged 32B Qwen student rather than an R1 MoE checkpoint variant."
+        }
+      ],
+      "limitations": [
+        "The six students inherit their own base architecture, tokenizer/configuration, and base-model license constraints.",
+        "No measured energy comparison supports the paper's broader lower-energy framing."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-negative-results-and-capacity-dependence",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "sft-free-reasoning-reinforcement-learning",
+        "verifiable-outcome-reasoning-reward",
+        "reward-model-overoptimization"
+      ],
+      "statement": "The expanded discussion reports that 7B dense and 16B MoE bases lengthened and repeated outputs without meaningful AIME gains, while 32B, 230B, and 671B models showed stronger RL gains. Process reward modeling was difficult to scale without ambiguous steps and reward hacking, and MCTS could improve inference with a pretrained value model but failed to deliver reliable iterative self-improvement because token search and value estimation were hard.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Base-capacity dependence",
+            "section": "G.1 Key Findings"
+          },
+          "support": "The discussion names failed small-base trials, repetition, and the larger configurations that showed gains."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "PRM and MCTS unsuccessful attempts",
+            "section": "G.2 Unsuccessful Attempts"
+          },
+          "support": "The authors enumerate process-definition, annotation, reward-hacking, search-space, and value-model obstacles."
+        }
+      ],
+      "limitations": [
+        "These are author-reported development findings without a complete released run ledger or controlled cross-scale sweep.",
+        "Failure in this implementation does not establish that process reward models or tree search are generally incapable."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-safety-tool-and-prompt-limitations",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "multistage-reasoning-post-training",
+        "learned-human-preference-reward-model"
+      ],
+      "statement": "DeepSeek-R1 has no demonstrated native tool-use training in the paper, can mix languages outside Chinese and English, may overthink, and often performs worse under few-shot prompting, for which the authors recommend zero-shot instructions. The expanded safety study separates the base response model from a risk-control system and acknowledges jailbreaks can elicit actionable dangerous plans; neither chain-of-thought length nor safety-reward training establishes operational safety.",
+      "directness": "direct",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Canonical limitations",
+            "section": "Limitations"
+          },
+          "support": "The article names absent software-engineering RL/tool use, language mixing, prompt sensitivity, and other capability limits."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-supplement",
+          "locator": {
+            "label": "Safety model versus risk-control system",
+            "section": "C. DeepSeek-R1 Safety Report"
+          },
+          "support": "The supplement reports model-only and risk-control variants separately across standard, in-house multilingual, and jailbreak suites."
+        },
+        {
+          "sourceId": "deepseek-ai-2026-r1-arxiv-v2-full-text",
+          "locator": {
+            "label": "Ethics and jailbreak acknowledgement",
+            "section": "Ethics and Safety Statement"
+          },
+          "support": "The expanded manuscript states that adversarial prompts can elicit harmful operational guidance."
+        }
+      ],
+      "limitations": [
+        "In-house multilingual prompts, translations, LLM judge, category weights, and rejection scoring make the reported safety aggregate protocol-specific.",
+        "A system-level rejection rate is not the same object as the base model's response safety and can change independently."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary",
+      "workId": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning",
+      "ideaIds": [
+        "multistage-reasoning-post-training",
+        "reasoning-trace-distillation",
+        "group-relative-policy-optimization"
+      ],
+      "statement": "Official surfaces release R1 and R1-Zero weights, six dense distills, report/publication files, and V3 conversion/inference code. The initial R1 repository contains documentation rather than training code; the audited surfaces lack complete training data, preference labels, rollouts, optimizer states, seeds, raw predictions, and a locked end-to-end environment. MIT repository/code terms, CC BY article terms, V3 model terms, Qwen/Llama base licenses, benchmark/data rights do not collapse into one ‘open’ license or artifact identity.",
+      "directness": "editorial-inference",
+      "confidence": "high",
+      "evidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-github-release-commit",
+          "locator": {
+            "label": "Initial release-tree inventory",
+            "section": "Repository tree"
+          },
+          "support": "The repository tree contains README, report, license, figure, and workflow files but no R1 training implementation or data manifest."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-huggingface-r1-snapshot",
+          "locator": {
+            "label": "Pinned full-model weight release",
+            "section": "Repository tree"
+          },
+          "support": "The snapshot supplies sharded R1 weights and configuration."
+        },
+        {
+          "sourceId": "deepseek-ai-2024-v3-release-snapshot",
+          "locator": {
+            "label": "V3 inference-code boundary",
+            "section": "Repository tree and inference documentation"
+          },
+          "support": "The V3 repository supplies inference/conversion code rather than the R1 training stack."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-record",
+          "locator": {
+            "label": "Article, code, and data availability statements",
+            "section": "Data availability; Code availability; Rights and permissions"
+          },
+          "support": "Nature identifies CC BY article terms, repository links, and sample archives without one complete reconstruction manifest."
+        },
+        {
+          "sourceId": "deepseek-ai-2025-r1-release-license-snapshot",
+          "locator": {
+            "label": "R1 repository MIT terms",
+            "section": "MIT License"
+          },
+          "support": "The pinned license governs covered repository material."
+        },
+        {
+          "sourceId": "deepseek-ai-2024-v3-model-license-snapshot",
+          "locator": {
+            "label": "Distinct V3 model terms",
+            "section": "Model License"
+          },
+          "support": "The base model's terms are a separate rights layer."
+        }
+      ],
+      "limitations": [
+        "Artifact absence is scoped to the official paper, repository, Hugging Face, V3, release-note, and publisher surfaces inspected on the checked date.",
+        "A usable public checkpoint supports inference research but does not by itself reproduce training claims or resolve downstream data and model licenses."
+      ],
+      "uncertainties": [],
+      "checkedDate": "2026-09-17"
     }
   ],
   "relationships": [
@@ -72929,6 +74527,54 @@
           "note": "This is an extension of the experimental scaling frame, not evidence that Kaplan proposed top-1 experts or endorsed total parameters as an independent universal cause of quality."
         }
       ]
+    },
+    {
+      "id": "ouyang-2022-to-deepseek-r1-sft-first-rlhf-contrast",
+      "from": {
+        "kind": "work",
+        "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      },
+      "to": {
+        "kind": "work",
+        "id": "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      },
+      "connectionType": "challenges",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "DeepSeek-R1 names Ouyang et al. when describing widely used SFT-first, learned-reward-model, PPO-style LLM post-training and motivates R1-Zero as a deliberate target-side contrast: outcome-based GRPO directly on a pretrained base, without a pre-RL SFT stage or separate critic. The edge records that scoped methodological challenge only; R1's later production pipeline reintroduces SFT and model-based preference rewards, and no GPT-3 architecture, prompt distribution, evaluator population, results, artifacts, or rights transfer across it.",
+      "claimIds": [
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-ranked-preference-reward-model",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary",
+        "deepseek-ai-2025-r1-grpo-objective",
+        "deepseek-ai-2025-r1-multistage-pipeline"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "deepseek-ai-2025-r1-nature-full-text",
+          "locator": {
+            "label": "Target-side PPO contrast and Ouyang citation",
+            "section": "Methods—GRPO"
+          },
+          "support": "The target says GRPO was proposed to simplify and reduce the resource cost of PPO, which it identifies as widely used in LLM RL with an Ouyang citation."
+        },
+        {
+          "sourceId": "deepseek-ai-2026-r1-arxiv-v2-full-text",
+          "locator": {
+            "label": "Target-side SFT-first alignment contrast",
+            "section": "H.3 Reinforcement Learning for Reasoning Enhancement"
+          },
+          "support": "The target describes conventional SFT, human-preference reward modeling, and PPO/DPO, then contrasts its outcome-based RL directly on a base model."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The challenge applies to R1-Zero's immediate training order and value-model choice, not to all human-feedback training or to final R1, which again uses supervised and preference-model stages."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -77291,6 +78937,81 @@
         "Parameter, FLOP, step, token, wall-clock, checkpoint, source-version, and software/data licensing boundaries"
       ],
       "successCriterion": "The learner can derive Equations 1–6, reconstruct Tables 1–11 and their conditions, resolve the Table 9 header using v3 without rewriting JMLR, distinguish total from active capacity, defend both incoming edges, and state exactly what the Mesh and T5X releases do and do not reconstruct."
+    },
+    {
+      "id": "beginner-deepseek-r1-separate-zero-final-and-distilled-models",
+      "mode": "beginner",
+      "objective": "Explain the difference between DeepSeek-V3-Base, R1-Zero, final R1, and the six dense distilled students, and state why ‘pure RL’ applies only to R1-Zero's immediate post-training stage.",
+      "workIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "ideaIds": [
+        "sft-free-reasoning-reinforcement-learning",
+        "verifiable-outcome-reasoning-reward",
+        "multistage-reasoning-post-training",
+        "reasoning-trace-distillation",
+        "adaptive-reasoning-token-allocation"
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary",
+        "deepseek-ai-2025-r1-zero-reward-and-training-recipe",
+        "deepseek-ai-2025-r1-zero-behavior-and-evidence-boundary",
+        "deepseek-ai-2025-r1-multistage-pipeline",
+        "deepseek-ai-2025-r1-distillation-boundary",
+        "deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "A pretrained model can receive several distinct post-training stages",
+        "A final-answer verifier differs from supervision of intermediate reasoning",
+        "A distilled student retains its own base architecture and license"
+      ],
+      "successCriterion": "The learner can draw the four model identities in order, identify which stages use SFT, rule rewards, learned preference rewards, or teacher outputs, and name at least three limits hidden by the phrase ‘pure RL.’"
+    },
+    {
+      "id": "expert-deepseek-r1-audit-rl-reasoning-and-release-boundaries",
+      "mode": "expert",
+      "objective": "Audit DeepSeek-R1 across report, arXiv, Nature, checkpoint, data, code, evaluation, safety, rights, and lineage records while reconstructing GRPO, both RL stages, SFT pools, reward models, costs, nonmonotonic outcomes, negative results, and distillation boundaries.",
+      "workIds": [
+        "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning"
+      ],
+      "ideaIds": [
+        "group-relative-policy-optimization",
+        "verifiable-outcome-reasoning-reward",
+        "sft-free-reasoning-reinforcement-learning",
+        "multistage-reasoning-post-training",
+        "language-consistency-reward",
+        "rejection-sampled-reasoning-trace-finetuning",
+        "reasoning-trace-distillation",
+        "adaptive-reasoning-token-allocation",
+        "decoder-only-transformer-language-modeling",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "reward-model-overoptimization"
+      ],
+      "claimIds": [
+        "deepseek-ai-2025-r1-version-and-release-boundary",
+        "deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary",
+        "deepseek-ai-2025-r1-grpo-objective",
+        "deepseek-ai-2025-r1-zero-reward-and-training-recipe",
+        "deepseek-ai-2025-r1-zero-behavior-and-evidence-boundary",
+        "deepseek-ai-2025-r1-multistage-pipeline",
+        "deepseek-ai-2025-r1-preference-reward-models",
+        "deepseek-ai-2025-r1-data-scope-and-provenance",
+        "deepseek-ai-2025-r1-training-cost-and-infrastructure",
+        "deepseek-ai-2025-r1-stage-evaluation-boundary",
+        "deepseek-ai-2025-r1-evaluation-and-contamination-boundary",
+        "deepseek-ai-2025-r1-distillation-boundary",
+        "deepseek-ai-2025-r1-negative-results-and-capacity-dependence",
+        "deepseek-ai-2025-r1-safety-tool-and-prompt-limitations",
+        "deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "Autoregressive Transformer and sparse-MoE pretraining, policy gradients, PPO, KL regularization, reward modeling, rejection sampling, and knowledge distillation",
+        "Pass-at-k, majority voting, model-judged evaluation, benchmark contamination, jailbreak evaluation, and stage-wise ablation",
+        "Publication versions, Git commits, model snapshots, data manifests, reconstruction ledgers, and layered software/model/data licensing"
+      ],
+      "successCriterion": "The learner can derive Equations 1–4, rebuild the stage/data/reward map, reproduce the reported cost arithmetic, explain nonmonotonic Table 2 rows and the 10-gram limit, defend the qualified Ouyang edge, and inventory exactly which public artifacts do and do not reconstruct each claim."
     }
   ]
 }
