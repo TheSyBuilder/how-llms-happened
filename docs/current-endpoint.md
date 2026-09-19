@@ -1,8 +1,8 @@
-# Current endpoint coverage plan
+# Current endpoint coverage review
 
 The structured corpus currently reaches from 2022–2023 branches into a bounded 2025 reasoning-post-training endpoint: compute allocation, dense and sparse scaling, instruction tuning, human-feedback post-training, retrieval augmentation, environment action, self-supervised tool use, open-checkpoint transparency, and verifiable-reward reasoning. That is a stable intermediate boundary, not the endpoint of LLM history.
 
-This plan records the next coverage decisions without treating candidate status as inclusion. A candidate enters the corpus only after its paper versions, claims, limitations, artifacts, rights, and lineage relationships pass the same evidence rules as the existing works.
+This review records endpoint decisions without treating candidate status as inclusion. A candidate enters the corpus only after its paper versions, claims, limitations, artifacts, rights, and lineage relationships pass the same evidence rules as the existing works.
 
 ## Promoted endpoint: ROOTS and BLOOM
 
@@ -69,19 +69,37 @@ The promotion preserves several evidence limits:
 
 One qualified incoming edge records only a target-side methodological contrast. R1 explicitly describes the Ouyang et al. SFT→reward-model→PPO pipeline before applying outcome-based GRPO directly to a pretrained base for R1-Zero. The edge does not imply that R1 rejects all supervised or preference learning: final R1 reintroduces both, and no GPT-3 architecture, data, results, artifacts, evaluator population, or rights transfer across the relationship.
 
-## Coverage lanes beyond 2022
+## M2 closure audit
 
-The remaining endpoint is not one chronological ladder. The following lanes are provisional review queues, not preselected promotions.
+The 19 September 2026 closure audit tests the promoted corpus against the endpoint acceptance rule rather than asking whether every popular model has a node. Eight lanes pass. One narrow but consequential gap remains, so M2 stays active and interaction work remains gated.
 
-| Lane | Existing anchor | Primary candidates | Question the lane must answer |
-|---|---|---|---|
-| Open artifacts and efficient dense models | OPT, ROOTS, and BLOOM | [LLaMA](https://arxiv.org/abs/2302.13971), [Llama 2](https://arxiv.org/abs/2307.09288), [OLMo](https://arxiv.org/abs/2402.00838), and [Dolma](https://arxiv.org/abs/2402.00159) | How did “open model” move from checkpoints and logs toward broader training-stack access, and which assets and permissions were actually supplied? |
-| Preference instruction and preference post-training | FLAN, T0, Stiennon, InstructGPT | [Constitutional AI](https://arxiv.org/abs/2212.08073) and [Direct Preference Optimization](https://arxiv.org/abs/2305.18290) | What changes when supervision comes from written principles, model-generated comparisons, or a direct preference loss instead of the existing human-reward-model-plus-PPO path? |
-| Retrieval, reasoning, and acting | REALM, RAG, PaLM reasoning evidence, ReAct, and Toolformer | Further additions are evidence-triggered rather than preselected | When does an LM merely condition on retrieved text, and when does it select actions or tool calls as part of an interleaved trajectory? |
-| Sparse and efficient architecture | Transformer, T5, dense scaling branch, and Switch Transformers | [Mixtral](https://arxiv.org/abs/2401.04088) and [Mistral 7B](https://arxiv.org/abs/2310.06825) remain comparison candidates | Which changes alter active computation, memory traffic, attention cost, or inference behavior rather than only total parameter count? |
-| Reinforcement-learned reasoning | DeepSeek-R1-Zero and DeepSeek-R1 | Further additions are evidence-triggered rather than preselected | Which findings generalize beyond verifiable outcomes, a large exposed base, long visible traces, and incomplete run reconstruction? |
+| Acceptance lane | Evidence already in the corpus | Decision |
+|---|---|---|
+| Dense pretraining and allocation | Kaplan separates model, data, and compute variables; Gopher supplies a fixed-token dense family; Hoffmann re-estimates the fixed-compute frontier; PaLM, OPT, and BLOOM expose later training and evaluation boundaries. | Pass |
+| Supervised instruction tuning | FLAN and T0 provide distinct decoder-only and encoder–decoder multitask routes with prompt, mixture, leakage, and held-out-task boundaries. | Pass |
+| Preference optimization | Stiennon and InstructGPT document supervised initialization, learned reward models, KL-regularized PPO, evaluator-population scope, and overoptimization limits. | **Open gap:** the corpus does not yet explain direct offline preference optimization without a separately fitted reward model and policy-gradient stage. |
+| Retrieval augmentation | ORQA and DPR establish complementary retriever precursors; REALM and RAG separate extractive retrieval-aware pretraining from retrieved-context generation. | Pass |
+| Environment action and tool use | ReAct records interleaved thought/action/observation trajectories; Toolformer records self-supervised call generation, execution, filtering, and inference-time result injection. | Pass |
+| Sparse capacity | Switch Transformers records token routing, fixed expert capacity, balancing, stability mitigations, total-versus-active parameters, and mixed transfer evidence. | Pass |
+| Open artifacts and data governance | OPT, ROOTS, and BLOOM separate checkpoints, logs, data construction, model documentation, mutable artifacts, and component-specific rights. | Pass |
+| Reasoning-oriented post-training | DeepSeek-R1 separates the pretrained base, SFT-free-before-RL R1-Zero, multistage final R1, and distilled students while preserving reward, contamination, reconstruction, and negative-result limits. | Pass |
+| Version and lineage integrity | All 65 works use version-aware source records; every promoted edge is evidence-bound or explicitly editorial, and every full-treatment work has beginner and expert objectives. | Pass |
 
-These lanes can overlap in calendar time while remaining distinct in the graph. A model that uses several mechanisms does not automatically become the canonical source for each of them.
+The remaining blocker is [Direct Preference Optimization](https://arxiv.org/abs/2305.18290), not because later systems use the name, but because the paper changes the optimization path itself. It derives a policy objective from the KL-constrained reward-maximization formulation and trains from static preference pairs with a classification-style loss, omitting a separately fitted reward model, policy-gradient sampling, and PPO during fine-tuning. The official [NeurIPS 2023 record](https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html) confirms the work as a distinct conference contribution rather than only a later implementation convention.
+
+Before M2 can close, DPO needs the same claim-level treatment as every other promoted work: arXiv versions 1–3 and the canonical proceedings article and supplement; exact derivation assumptions; reference-policy and temperature roles; sentiment, summarization, and dialogue protocols; comparison and uncertainty limits; data, code, checkpoint, and rights boundaries; and target-side relationships to the Stiennon and Ouyang reward-model-plus-PPO path. Promotion is not automatic: the audit may still reject or narrow individual claims, relationships, or artifacts.
+
+## Explicit candidate decisions
+
+These decisions are exclusions from the minimum M2 closure set, not claims that the papers are unimportant or permanently outside the atlas.
+
+- [Constitutional AI](https://arxiv.org/abs/2212.08073) remains a future feedback-provenance branch. Its principles, self-critiques, revisions, and model-generated preferences change who or what supplies supervision, but its reported reinforcement-learning phase still uses a learned preference model and RL. The existing Stiennon–InstructGPT path covers that optimizer family; AI-feedback provenance is valuable expansion, not the remaining minimum mechanism gap.
+- [LLaMA](https://arxiv.org/abs/2302.13971) and [Llama 2](https://arxiv.org/abs/2307.09288) remain later model-family candidates. They matter for efficient dense training, widely reused checkpoints, licensing, dialogue post-training, and safety practice, but the minimum corpus already contains dense allocation, public-checkpoint, supervised-instruction, and reward-model-plus-PPO branches. Popularity and downstream adoption alone do not justify another node.
+- [OLMo](https://arxiv.org/abs/2402.00838) and [Dolma](https://arxiv.org/abs/2402.00159) remain a coherent future full-stack-openness slice. Releasing training data, code, intermediate checkpoints, and logs in one project advances inspectability, but OPT plus ROOTS and BLOOM already establish the minimum artifact, data-governance, and rights vocabulary required before interaction design.
+- [Mistral 7B](https://arxiv.org/abs/2310.06825) remains an inference-efficiency candidate for grouped-query and sliding-window attention. [Mixtral](https://arxiv.org/abs/2401.04088) remains a later top-2 sparse-decoder candidate. Neither is needed to establish the minimum sparse-capacity branch because Switch already records routing, expert capacity, communication, stability, active-versus-total scale, and transfer limits.
+- Retrieval, acting, tool use, and reinforcement-learned reasoning receive no additional preselected candidate. New work must add a necessary mechanism, stronger public evidence, or a missing branch rather than merely a newer date or larger benchmark score.
+
+These branches overlap in calendar time while remaining distinct in the graph. A model that uses several mechanisms does not automatically become the canonical source for each of them.
 
 ## Endpoint acceptance rule
 
