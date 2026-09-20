@@ -69,25 +69,33 @@ The promotion preserves several evidence limits:
 
 One qualified incoming edge records only a target-side methodological contrast. R1 explicitly describes the Ouyang et al. SFT→reward-model→PPO pipeline before applying outcome-based GRPO directly to a pretrained base for R1-Zero. The edge does not imply that R1 rejects all supervised or preference learning: final R1 reintroduces both, and no GPT-3 architecture, data, results, artifacts, evaluator population, or rights transfer across the relationship.
 
+## Promoted endpoint: Direct Preference Optimization
+
+[Direct Preference Optimization](https://arxiv.org/abs/2305.18290) fills the remaining preference-optimization mechanism lane. Starting from the same KL-regularized reward objective used to describe learned-reward RLHF, it rewrites the reward through the optimal policy/reference-policy log ratio and substitutes that representation into a Bradley–Terry preference model. The resulting logistic loss trains a policy directly on fixed chosen/rejected pairs, without fitting a separate reward network or running policy-gradient sampling during the DPO update. This does not remove supervised initialization, preference collection, the frozen reference policy, the implicit reward interpretation, or evaluator choices.
+
+The representation result has real conditions. The reference policy must assign positive probability to every prompt–completion pair under consideration, beta must be positive, and rewards are identified only up to a prompt-dependent additive function. The finite neural-network fit is not the non-parametric optimum itself. The promoted family keeps arXiv versions 1–3 separate from the canonical NeurIPS article and supplement: version 2 corrects a derivation constant, changes the framing to an implicit reward parameterization, adds transfer and experiment detail, and prints RMSprop where version 1 and the proceedings supplement print Adam; version 3 changes attribution and punctuation rather than the technical result.
+
+The evidence remains task- and evaluator-specific. The sentiment experiment uses synthetic pairs and the same classifier family for labeling and evaluation. TL;DR uses Stiennon preference data gathered from a different but similarly trained SFT policy, approximate GPT-4 plot readings without uncertainty, and a separate small volunteer study. The one-turn Helpful–Harmless experiment has no successful matched PPO run and uses Best-of-128 only as a rough proxy. CNN/DailyMail adds one model-judged transfer test after version 1. These results do not establish evaluator-independent human alignment, broad distribution-shift robustness, or scaling beyond the tested task-dependent models up to 6B parameters.
+
+The public reference repository appeared after arXiv v1, and its initial loss masking was corrected eight days later. The corrected paper-era tree provides generic DPO and SFT paths for HH, SHP, and StackExchange, but not the exact sentiment or TL;DR pipelines, paper checkpoints, raw judgments, seeds, or a complete table-to-run ledger. Paper, code, models, datasets, service outputs, and dependencies retain separate rights. The qualified Stiennon→DPO edge carries only the named TL;DR preference-data and evaluation substrate; the qualified Ouyang→DPO edge records only the target’s bounded challenge to the standalone reward-model-plus-PPO optimizer path.
+
 ## M2 closure audit
 
-The 19 September 2026 closure audit tests the promoted corpus against the endpoint acceptance rule rather than asking whether every popular model has a node. Eight lanes pass. One narrow but consequential gap remains, so M2 stays active and interaction work remains gated.
+The 20 September 2026 closure audit tests the promoted corpus against the endpoint acceptance rule rather than asking whether every popular model has a node. All nine lanes pass. M2 is complete, and M3 interaction-design research becomes active; product implementation remains gated until the interaction language and its evidence requirements are audited and specified.
 
 | Acceptance lane | Evidence already in the corpus | Decision |
 |---|---|---|
 | Dense pretraining and allocation | Kaplan separates model, data, and compute variables; Gopher supplies a fixed-token dense family; Hoffmann re-estimates the fixed-compute frontier; PaLM, OPT, and BLOOM expose later training and evaluation boundaries. | Pass |
 | Supervised instruction tuning | FLAN and T0 provide distinct decoder-only and encoder–decoder multitask routes with prompt, mixture, leakage, and held-out-task boundaries. | Pass |
-| Preference optimization | Stiennon and InstructGPT document supervised initialization, learned reward models, KL-regularized PPO, evaluator-population scope, and overoptimization limits. | **Open gap:** the corpus does not yet explain direct offline preference optimization without a separately fitted reward model and policy-gradient stage. |
+| Preference optimization | Stiennon and InstructGPT document supervised initialization, learned reward models, KL-regularized PPO, evaluator-population scope, and overoptimization limits; DPO adds the direct offline policy-log-ratio route while preserving reference-policy, preference-data, evaluator, and implicit-reward boundaries. | Pass |
 | Retrieval augmentation | ORQA and DPR establish complementary retriever precursors; REALM and RAG separate extractive retrieval-aware pretraining from retrieved-context generation. | Pass |
 | Environment action and tool use | ReAct records interleaved thought/action/observation trajectories; Toolformer records self-supervised call generation, execution, filtering, and inference-time result injection. | Pass |
 | Sparse capacity | Switch Transformers records token routing, fixed expert capacity, balancing, stability mitigations, total-versus-active parameters, and mixed transfer evidence. | Pass |
 | Open artifacts and data governance | OPT, ROOTS, and BLOOM separate checkpoints, logs, data construction, model documentation, mutable artifacts, and component-specific rights. | Pass |
 | Reasoning-oriented post-training | DeepSeek-R1 separates the pretrained base, SFT-free-before-RL R1-Zero, multistage final R1, and distilled students while preserving reward, contamination, reconstruction, and negative-result limits. | Pass |
-| Version and lineage integrity | All 65 works use version-aware source records; every promoted edge is evidence-bound or explicitly editorial, and every full-treatment work has beginner and expert objectives. | Pass |
+| Version and lineage integrity | All 66 works use version-aware source records; every promoted edge is evidence-bound or explicitly editorial, and every full-treatment work has beginner and expert objectives. | Pass |
 
-The remaining blocker is [Direct Preference Optimization](https://arxiv.org/abs/2305.18290), not because later systems use the name, but because the paper changes the optimization path itself. It derives a policy objective from the KL-constrained reward-maximization formulation and trains from static preference pairs with a classification-style loss, omitting a separately fitted reward model, policy-gradient sampling, and PPO during fine-tuning. The official [NeurIPS 2023 record](https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html) confirms the work as a distinct conference contribution rather than only a later implementation convention.
-
-Before M2 can close, DPO needs the same claim-level treatment as every other promoted work: arXiv versions 1–3 and the canonical proceedings article and supplement; exact derivation assumptions; reference-policy and temperature roles; sentiment, summarization, and dialogue protocols; comparison and uncertainty limits; data, code, checkpoint, and rights boundaries; and target-side relationships to the Stiennon and Ouyang reward-model-plus-PPO path. Promotion is not automatic: the audit may still reject or narrow individual claims, relationships, or artifacts.
+The minimum corpus now explains every required mechanism and research-practice lane with claim-level primary evidence. Candidate deferrals below remain deliberate rather than permanent, and the endpoint remains revisable when new work adds a necessary mechanism, stronger evidence, or a missing branch. The next milestone is a primary-source audit of exemplary educational interactions and an evidence-backed interaction catalog; no product shell is authorized merely by closing the corpus milestone.
 
 ## Explicit candidate decisions
 
@@ -103,7 +111,7 @@ These branches overlap in calendar time while remaining distinct in the graph. A
 
 ## Endpoint acceptance rule
 
-M2 is complete only when the corpus can explain the major technical and research-practice changes that shape current LLMs without relying on product popularity as evidence. At minimum, the final endpoint review must show:
+M2 closes only when the corpus can explain the major technical and research-practice changes that shape current LLMs without relying on product popularity as evidence. This audit now satisfies the rule through:
 
 - one evidence-backed path through dense pretraining and allocation;
 - distinct supervised-instruction and preference-optimization paths;

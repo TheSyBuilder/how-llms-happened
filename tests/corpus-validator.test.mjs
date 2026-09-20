@@ -1610,8 +1610,11 @@ test("preserves Stiennon 2020 reward learning, release boundaries, and instructi
 
   assert.deepEqual(relationships.map((item) => item.id), [
     "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+    "stiennon-2020-to-rafailov-2023-dpo-tldr-preference-substrate",
   ]);
-  const edge = relationships[0];
+  const edge = relationships.find(
+    (item) => item.id === "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+  );
   assert.equal(edge?.to.id, ouyangWorkId);
   assert.equal(edge?.connectionType, "extends");
   assert.equal(edge?.evidenceClass, "documented-influence");
@@ -4356,6 +4359,116 @@ test("preserves DeepSeek-R1 versions, RL stages, evaluation limits, artifacts, a
     ),
   );
   assert.ok(currentEndpoint.includes("Promoted endpoint: DeepSeek-R1"));
+});
+
+test("preserves DPO derivation assumptions, version boundaries, evaluations, artifacts, and lineage", () => {
+  const workId = "rafailov-2023-direct-preference-optimization";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 65);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2023-05-29", "2023-12-13", "2023-12-15", "2024-07-29"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "rafailov-2023-dpo-arxiv-v1-version",
+      "rafailov-2023-dpo-arxiv-v2-version",
+      "rafailov-2023-dpo-neurips-version",
+      "rafailov-2024-dpo-arxiv-v3-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "rafailov-2023-dpo-neurips-version");
+  assert.equal(work?.sourceIds.length, 15);
+  assert.equal(work?.ideaIds.length, 10);
+  assert.equal(claims.length, 17);
+
+  assert.deepEqual(
+    findSource("rafailov-2023-dpo-neurips-main-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 14 },
+  );
+  assert.deepEqual(
+    findSource("rafailov-2023-dpo-neurips-supplement")?.pagination,
+    { scheme: "article", pageStart: 15, pageEnd: 27 },
+  );
+  assert.match(work?.versions[0]?.notes ?? "", /prints Adam/);
+  assert.match(work?.versions[0]?.notes ?? "", /lacks the CNN\/DailyMail/);
+  assert.match(work?.versions[1]?.notes ?? "", /implicit reward parameterization/);
+  assert.match(work?.versions[1]?.notes ?? "", /RMSprop instead of Adam/);
+
+  assert.match(
+    findClaim("rafailov-2023-dpo-reward-equivalence-and-support-assumptions")
+      ?.statement ?? "",
+    /pi_ref\(y\|x\)>0 for every pair and beta>0/,
+  );
+  const optimizer = findClaim(
+    "rafailov-2023-dpo-hyperparameter-and-optimizer-boundary",
+  );
+  assert.match(optimizer?.statement ?? "", /Adam.*RMSprop/);
+  assert.ok(
+    work?.uncertainties.some(
+      (item) => item.status === "open" && /optimizer/i.test(item.note),
+    ),
+  );
+  assert.match(
+    findClaim("rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary")
+      ?.statement ?? "",
+    /rough PPO-level proxy/,
+  );
+  assert.match(
+    findClaim("rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary")
+      ?.statement ?? "",
+    /label-masking bug.*not the exact sentiment or TL;DR pipelines.*raw human or GPT-4 judgments/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => [
+      item.id,
+      item.connectionType,
+      item.evidenceClass,
+      item.causalLanguage,
+    ]),
+    [
+      [
+        "stiennon-2020-to-rafailov-2023-dpo-tldr-preference-substrate",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "ouyang-2022-to-rafailov-2023-dpo-rm-ppo-contrast",
+        "challenges",
+        "documented-influence",
+        "qualified",
+      ],
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.mode, item.claimIds.length]),
+    [
+      ["beginner", 8],
+      ["expert", 17],
+    ],
+  );
+  assert.ok(readme.includes("Rafailov et al.’s DPO family"));
+  assert.ok(corpusFormat.includes("Rafailov et al. 2023/2024"));
+  assert.ok(
+    currentEndpoint.includes("Promoted endpoint: Direct Preference Optimization"),
+  );
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-17",
+  "asOf": "2026-09-20",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -18622,6 +18622,355 @@
           "resolutionCondition": "An author correction or released row-level manifest must identify whether the table excludes, overlaps, or summarizes the bug-fix subset."
         }
       ]
+    },
+    {
+      "id": "rafailov-2023-direct-preference-optimization",
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "authors": [
+        "Rafael Rafailov",
+        "Archit Sharma",
+        "Eric Mitchell",
+        "Stefano Ermon",
+        "Christopher D. Manning",
+        "Chelsea Finn"
+      ],
+      "artifactType": "conference-paper",
+      "displayCitation": "R. Rafailov et al., “Direct Preference Optimization: Your Language Model is Secretly a Reward Model,” Advances in Neural Information Processing Systems 36, 53728–53741 (2023; arXiv v1 posted 29 May 2023).",
+      "chronology": {
+        "orderingEventId": "rafailov-2023-dpo-arxiv-v1-posted",
+        "events": [
+          {
+            "id": "rafailov-2023-dpo-arxiv-v1-posted",
+            "kind": "preprint",
+            "label": "arXiv version 1 posted",
+            "date": {
+              "value": "2023-05-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rafailov-2023-dpo-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 1 posted 29 May 2023 at 17:57:46 UTC"
+              }
+            ],
+            "versionId": "rafailov-2023-dpo-arxiv-v1-version",
+            "sourceIds": [
+              "rafailov-2023-dpo-arxiv-record",
+              "rafailov-2023-dpo-arxiv-v1-full-text"
+            ]
+          },
+          {
+            "id": "rafailov-2023-dpo-arxiv-v2-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 2 posted",
+            "date": {
+              "value": "2023-12-13",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rafailov-2023-dpo-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 2 posted 13 December 2023 at 18:48:48 UTC"
+              }
+            ],
+            "versionId": "rafailov-2023-dpo-arxiv-v2-version",
+            "sourceIds": [
+              "rafailov-2023-dpo-arxiv-record",
+              "rafailov-2023-dpo-arxiv-v2-full-text"
+            ]
+          },
+          {
+            "id": "rafailov-2023-dpo-neurips-published",
+            "kind": "proceedings-publication",
+            "label": "NeurIPS 2023 proceedings publication",
+            "date": {
+              "value": "2023-12-15",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rafailov-2023-dpo-neurips-record",
+                "precision": "day",
+                "locator": "Official citation metadata, publication date 15 December 2023"
+              }
+            ],
+            "versionId": "rafailov-2023-dpo-neurips-version",
+            "sourceIds": [
+              "rafailov-2023-dpo-neurips-record",
+              "rafailov-2023-dpo-neurips-main-full-text",
+              "rafailov-2023-dpo-neurips-supplement"
+            ]
+          },
+          {
+            "id": "rafailov-2024-dpo-arxiv-v3-posted",
+            "kind": "manuscript-revised",
+            "label": "arXiv version 3 posted",
+            "date": {
+              "value": "2024-07-29",
+              "precision": "day",
+              "calendar": "gregorian"
+            },
+            "dateEvidence": [
+              {
+                "sourceId": "rafailov-2023-dpo-arxiv-record",
+                "precision": "day",
+                "locator": "Submission history, version 3 posted 29 July 2024 at 22:26:36 UTC"
+              }
+            ],
+            "versionId": "rafailov-2024-dpo-arxiv-v3-version",
+            "sourceIds": [
+              "rafailov-2023-dpo-arxiv-record",
+              "rafailov-2024-dpo-arxiv-v3-full-text"
+            ]
+          }
+        ]
+      },
+      "versions": [
+        {
+          "id": "rafailov-2023-dpo-arxiv-v1-version",
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "authors": [
+            "Rafael Rafailov",
+            "Archit Sharma",
+            "Eric Mitchell",
+            "Stefano Ermon",
+            "Christopher D. Manning",
+            "Chelsea Finn"
+          ],
+          "kind": "preprint",
+          "label": "Ordering arXiv version 1",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Rafailov et al., “Direct Preference Optimization: Your Language Model is Secretly a Reward Model,” arXiv:2305.18290v1, 29 May 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2305.18290v1",
+                "label": "arXiv version 1"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rafailov-2023-dpo-arxiv-record",
+            "rafailov-2023-dpo-arxiv-v1-full-text",
+            "rafailov-2023-dpo-arxiv-v1-source-package",
+            "rafailov-2023-dpo-arxiv-license"
+          ],
+          "notes": "The first 26-leaf preprint contains the core derivation and three task families. It says DPO avoids explicit reward estimation, prints Adam as the default optimizer, lacks the CNN/DailyMail transfer subsection, and predates the public reference-code repository."
+        },
+        {
+          "id": "rafailov-2023-dpo-arxiv-v2-version",
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "authors": [
+            "Rafael Rafailov",
+            "Archit Sharma",
+            "Eric Mitchell",
+            "Stefano Ermon",
+            "Christopher D. Manning",
+            "Chelsea Finn"
+          ],
+          "kind": "preprint",
+          "label": "arXiv version 2",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Rafailov et al., “Direct Preference Optimization: Your Language Model is Secretly a Reward Model,” arXiv:2305.18290v2, 13 December 2023.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2305.18290v2",
+                "label": "arXiv version 2"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rafailov-2023-dpo-arxiv-record",
+            "rafailov-2023-dpo-arxiv-v2-full-text",
+            "rafailov-2023-dpo-arxiv-v2-source-package",
+            "rafailov-2023-dpo-arxiv-license",
+            "rafailov-2023-dpo-initial-code-commit",
+            "rafailov-2023-dpo-tokenization-fix",
+            "rafailov-2023-dpo-paper-era-code-snapshot",
+            "rafailov-2023-dpo-code-license"
+          ],
+          "notes": "The 27-leaf second revision uses final styling, adds the CNN/DailyMail transfer experiment and sentiment details, changes the framing from no reward model to an implicit reward parameterization, fixes the KL derivation's final constant, names RMSprop instead of Adam, and names gpt-4-0314. It was posted two days before the proceedings publication date and is not silently substituted for the separately distributed proceedings files."
+        },
+        {
+          "id": "rafailov-2023-dpo-neurips-version",
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "authors": [
+            "Rafael Rafailov",
+            "Archit Sharma",
+            "Eric Mitchell",
+            "Stefano Ermon",
+            "Christopher D. Manning",
+            "Chelsea Finn"
+          ],
+          "kind": "proceedings",
+          "label": "Canonical NeurIPS 2023 article and supplement",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Rafailov et al., “Direct Preference Optimization: Your Language Model is Secretly a Reward Model,” in Advances in Neural Information Processing Systems 36, pp. 53728–53741, 2023.",
+            "venue": "Advances in Neural Information Processing Systems",
+            "series": "NeurIPS",
+            "editors": [
+              "Alice Oh",
+              "Tristan Naumann",
+              "Amir Globerson",
+              "Kate Saenko",
+              "Moritz Hardt",
+              "Sergey Levine"
+            ],
+            "publisher": "Curran Associates, Inc.",
+            "volume": "36",
+            "pages": [
+              "53728-53741"
+            ],
+            "identifiers": [
+              {
+                "type": "doi",
+                "value": "10.52202/075280-2338",
+                "label": "Proceedings DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rafailov-2023-dpo-neurips-record",
+            "rafailov-2023-dpo-neurips-main-full-text",
+            "rafailov-2023-dpo-neurips-supplement",
+            "rafailov-2023-dpo-initial-code-commit",
+            "rafailov-2023-dpo-tokenization-fix",
+            "rafailov-2023-dpo-paper-era-code-snapshot",
+            "rafailov-2023-dpo-code-license"
+          ],
+          "notes": "The canonical record is a 14-leaf article with printed pp. 1–14 plus a 13-leaf supplement with printed pp. 15–27. It includes the CNN/DailyMail subsection but retains the stronger no-explicit-reward wording and prints Adam in the supplement. The official landing metadata swaps Christopher Manning and Stefano Ermon relative to the PDF title page and first preprint; the corpus preserves the title-page order."
+        },
+        {
+          "id": "rafailov-2024-dpo-arxiv-v3-version",
+          "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "authors": [
+            "Rafael Rafailov",
+            "Archit Sharma",
+            "Eric Mitchell",
+            "Stefano Ermon",
+            "Christopher D. Manning",
+            "Chelsea Finn"
+          ],
+          "kind": "preprint",
+          "label": "Latest arXiv version 3",
+          "language": "en",
+          "bibliography": {
+            "citation": "R. Rafailov et al., “Direct Preference Optimization: Your Language Model is Secretly a Reward Model,” arXiv:2305.18290v3, 29 July 2024.",
+            "venue": "arXiv",
+            "pages": [],
+            "identifiers": [
+              {
+                "type": "arxiv",
+                "value": "2305.18290v3",
+                "label": "arXiv version 3"
+              },
+              {
+                "type": "doi",
+                "value": "10.48550/arXiv.2305.18290",
+                "label": "Aggregate arXiv DOI"
+              }
+            ]
+          },
+          "sourceIds": [
+            "rafailov-2023-dpo-arxiv-record",
+            "rafailov-2024-dpo-arxiv-v3-full-text",
+            "rafailov-2024-dpo-arxiv-v3-source-package",
+            "rafailov-2023-dpo-arxiv-license",
+            "rafailov-2023-dpo-initial-code-commit",
+            "rafailov-2023-dpo-tokenization-fix",
+            "rafailov-2023-dpo-paper-era-code-snapshot",
+            "rafailov-2023-dpo-code-license"
+          ],
+          "notes": "The latest 27-leaf revision retains version 2's technical text and results. Its source changes only the attribution around the KL-regularized RL objective, adds two references, and repairs punctuation; bundled unused style and old-method files are not additional paper versions."
+        }
+      ],
+      "canonicalVersionId": "rafailov-2023-dpo-neurips-version",
+      "preferredSourceIds": [
+        "rafailov-2023-dpo-neurips-record",
+        "rafailov-2023-dpo-neurips-main-full-text",
+        "rafailov-2023-dpo-neurips-supplement"
+      ],
+      "sourceIds": [
+        "rafailov-2023-dpo-arxiv-record",
+        "rafailov-2023-dpo-arxiv-v1-full-text",
+        "rafailov-2023-dpo-arxiv-v1-source-package",
+        "rafailov-2023-dpo-arxiv-v2-full-text",
+        "rafailov-2023-dpo-arxiv-v2-source-package",
+        "rafailov-2024-dpo-arxiv-v3-full-text",
+        "rafailov-2024-dpo-arxiv-v3-source-package",
+        "rafailov-2023-dpo-arxiv-license",
+        "rafailov-2023-dpo-neurips-record",
+        "rafailov-2023-dpo-neurips-main-full-text",
+        "rafailov-2023-dpo-neurips-supplement",
+        "rafailov-2023-dpo-initial-code-commit",
+        "rafailov-2023-dpo-tokenization-fix",
+        "rafailov-2023-dpo-paper-era-code-snapshot",
+        "rafailov-2023-dpo-code-license"
+      ],
+      "inclusion": {
+        "status": "core",
+        "confidence": "high",
+        "rationale": "Rafailov et al. derive a classification-style policy objective for static pairwise preferences from the same KL-regularized reward-maximization formulation used by learned-reward-plus-PPO systems. The work is retained as the direct offline preference-optimization branch, with theorem assumptions, reference-policy dependence, evaluator scope, task-specific comparisons, version corrections, and release boundaries explicit."
+      },
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "policy-reward-logratio-duality",
+        "implicit-policy-defined-preference-reward",
+        "offline-static-preference-policy-learning",
+        "evaluator-dependent-preference-evidence",
+        "human-preference-comparison-data",
+        "supervised-demonstration-fine-tuning",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization",
+        "reward-model-overoptimization"
+      ],
+      "significance": {
+        "beginner": "DPO learns from a fixed set of chosen-versus-rejected answers by comparing how much the trainable model, relative to a frozen reference model, favors each answer. It removes a separately trained reward network and PPO update loop, but it does not remove preferences, a reference policy, an implicit reward interpretation, or evaluator choices.",
+        "expert": "Under a Bradley–Terry or Plackett–Luce preference model, positive-support reference policy, and beta greater than zero, DPO substitutes r(x,y)=beta log(pi/pi_ref)+beta log Z(x) into the KL-regularized optimum so Z cancels in reward differences. The resulting logistic loss trains policy log-ratios on offline pairs; evidence spans controlled sentiment, TL;DR, and one-turn HH with version-specific optimizer, evaluator, comparator, and artifact limits."
+      },
+      "limitations": [
+        "The closed-form optimum is derived for a general non-parametric policy and a specified reward; training a finite neural network on a finite preference sample does not guarantee recovery of that optimum.",
+        "The representation theorem assumes beta is positive and the reference policy assigns positive probability to every prompt–completion pair under consideration.",
+        "Bradley–Terry and Plackett–Luce treat preferences as generated from scalar reward differences; inconsistent, context-dependent, population-dependent, or intransitive judgments can violate that model.",
+        "DPO removes a separately fitted reward network and policy-gradient sampling during fine-tuning, not the earlier cost of generating candidate answers, collecting preferences, training or selecting a reference model, or evaluating outputs.",
+        "The three experiments use different model families, datasets, proxy or human labels, evaluators, sampling temperatures, baselines, and maximum scales. They are not one controlled cross-task benchmark.",
+        "The controlled sentiment task uses a classifier-generated reward and synthetic preference pairs, so it cannot establish human-alignment quality.",
+        "The TL;DR and dialogue headline curves are primarily judged by gpt-4-0314; prompt wording changes judgments, and the small volunteer study is a convenience sample with a STEM and mainly computer-science focus.",
+        "The dialogue study has no successful matched in-study PPO baseline: a third-party 6B PPO checkpoint did not beat the 2.8B base under the authors' attempted prompting and temperatures, so Best-of-128 is used only as a rough PPO-level proxy.",
+        "The CNN/DailyMail transfer table uses one task shift, two inherited sampling temperatures, the same modified GPT-4 prompt, and no reported human validation or uncertainty intervals.",
+        "Reward over-optimization, use of additional unlabeled prompts, and scaling beyond models up to 6B remain open in the paper rather than demonstrated advantages.",
+        "The public reference repository postdates arXiv v1, its initial release contained a loss-masking bug fixed eight days later, and its paper-era tree does not release the exact sentiment or TL;DR pipelines, DPO checkpoints, raw judgments, or a complete table-to-run ledger.",
+        "The arXiv manuscripts use CC BY 4.0 and the reference code uses Apache 2.0; model checkpoints, datasets, Reddit text, Anthropic data, GPT-4 service outputs, dependencies, and third-party baselines retain separate identities and terms."
+      ],
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "All three arXiv PDFs and source packages plus the canonical article and supplement were compared. Version 2 contains substantive framing, derivation, optimizer, and experiment-detail changes; version 3 is citation-level."
+        },
+        {
+          "status": "open",
+          "note": "The canonical supplement prints Adam while arXiv versions 2–3 print RMSprop; the inspected primary records do not identify which optimizer produced every reported run.",
+          "resolutionCondition": "Immutable experiment configurations and optimizer-state checkpoints mapped to each result would be required to resolve the run-level optimizer identity."
+        },
+        {
+          "status": "open",
+          "note": "No inspected first-party artifact provides all trained policies, preference examples after processing, raw GPT-4 and human judgments, seeds, environments, and exact result scripts.",
+          "resolutionCondition": "A versioned release with complete data manifests, checkpoints, predictions, evaluator outputs, run configurations, and environment locks would be required for end-to-end reconstruction."
+        }
+      ]
     }
   ],
   "ideas": [
@@ -22032,7 +22381,11 @@
         "ouyang-2022-gpt3-initialization-and-sft",
         "ouyang-2022-instructgpt-preference-results",
         "deepseek-ai-2025-r1-multistage-pipeline",
-        "deepseek-ai-2025-r1-distillation-boundary"
+        "deepseek-ai-2025-r1-distillation-boundary",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast",
+        "rafailov-2023-dpo-offline-data-and-reference-policy",
+        "rafailov-2023-dpo-sentiment-protocol",
+        "rafailov-2023-dpo-tldr-protocol-and-data-boundary"
       ],
       "uncertainties": []
     },
@@ -22050,7 +22403,11 @@
         "ouyang-2022-labeler-selection-and-agreement",
         "ouyang-2022-ranked-preference-reward-model",
         "ouyang-2022-artifact-data-and-rights-boundary",
-        "deepseek-ai-2025-r1-preference-reward-models"
+        "deepseek-ai-2025-r1-preference-reward-models",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast",
+        "rafailov-2023-dpo-pairwise-objective",
+        "rafailov-2023-dpo-offline-data-and-reference-policy",
+        "rafailov-2023-dpo-tldr-protocol-and-data-boundary"
       ],
       "uncertainties": []
     },
@@ -22070,7 +22427,8 @@
         "ouyang-2022-ranked-preference-reward-model",
         "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
         "deepseek-ai-2025-r1-preference-reward-models",
-        "deepseek-ai-2025-r1-safety-tool-and-prompt-limitations"
+        "deepseek-ai-2025-r1-safety-tool-and-prompt-limitations",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast"
       ],
       "uncertainties": []
     },
@@ -22087,7 +22445,8 @@
         "ouyang-2022-sft-rm-ppo-pipeline",
         "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
         "ouyang-2022-instructgpt-preference-results",
-        "ouyang-2022-public-task-regression-and-ppo-ptx"
+        "ouyang-2022-public-task-regression-and-ppo-ptx",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast"
       ],
       "uncertainties": []
     },
@@ -22101,7 +22460,8 @@
         "stiennon-2020-reward-model-scaling-and-overoptimization",
         "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
         "deepseek-ai-2025-r1-preference-reward-models",
-        "deepseek-ai-2025-r1-negative-results-and-capacity-dependence"
+        "deepseek-ai-2025-r1-negative-results-and-capacity-dependence",
+        "rafailov-2023-dpo-scale-and-open-question-boundary"
       ],
       "uncertainties": []
     },
@@ -23429,6 +23789,88 @@
         "deepseek-ai-2025-r1-zero-behavior-and-evidence-boundary",
         "deepseek-ai-2025-r1-stage-evaluation-boundary",
         "deepseek-ai-2025-r1-evaluation-and-contamination-boundary"
+      ]
+    },
+    {
+      "id": "direct-preference-policy-optimization",
+      "name": "Direct preference policy optimization",
+      "kind": "objective",
+      "description": "Fit a language-model policy directly to pairwise preference labels with a logistic objective over policy-versus-reference log-probability ratios, without a separately trained scalar reward network or policy-gradient stage.",
+      "uncertainties": [],
+      "claimIds": [
+        "rafailov-2023-dpo-pairwise-objective",
+        "rafailov-2023-dpo-gradient-and-naive-loss-boundary",
+        "rafailov-2023-dpo-offline-data-and-reference-policy",
+        "rafailov-2023-dpo-hyperparameter-and-optimizer-boundary",
+        "rafailov-2023-dpo-sentiment-protocol",
+        "rafailov-2023-dpo-sentiment-frontier",
+        "rafailov-2023-dpo-tldr-results-and-evaluation-boundary",
+        "rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary",
+        "rafailov-2023-dpo-cnn-dm-transfer-boundary",
+        "rafailov-2023-dpo-scale-and-open-question-boundary",
+        "rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "policy-reward-logratio-duality",
+      "name": "Policy–reward log-ratio duality",
+      "kind": "mechanism",
+      "description": "Rewrite the optimizer of a KL-regularized reward objective as a reference policy exponentially tilted by reward, then recover an equivalent reward from the policy-to-reference log ratio up to a prompt-only constant.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The paper's representation theorem assumes a positive reference probability for every prompt–completion pair and beta greater than zero; it is not an unconditional statement about finite neural optimization."
+        }
+      ],
+      "claimIds": [
+        "rafailov-2023-dpo-kl-optimum-and-logratio-reward",
+        "rafailov-2023-dpo-reward-equivalence-and-support-assumptions"
+      ]
+    },
+    {
+      "id": "implicit-policy-defined-preference-reward",
+      "name": "Implicit policy-defined preference reward",
+      "kind": "mechanism",
+      "description": "Interpret beta times the policy-to-reference log-probability ratio as the representative reward selected from a preference-equivalent class, so the trained policy acts as both generator and implicit reward parameterization.",
+      "uncertainties": [],
+      "claimIds": [
+        "rafailov-2023-dpo-version-and-framing-boundary",
+        "rafailov-2023-dpo-kl-optimum-and-logratio-reward",
+        "rafailov-2023-dpo-pairwise-objective",
+        "rafailov-2023-dpo-reward-equivalence-and-support-assumptions"
+      ]
+    },
+    {
+      "id": "offline-static-preference-policy-learning",
+      "name": "Offline static-preference policy learning",
+      "kind": "mechanism",
+      "description": "Optimize a policy from a fixed batch of preferred and dispreferred response pairs without sampling new responses inside the policy-update loop.",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The preference pairs still originate from earlier model sampling and human or proxy labeling; offline optimization does not remove data-generation or evaluator costs."
+        }
+      ],
+      "claimIds": [
+        "rafailov-2023-dpo-offline-data-and-reference-policy",
+        "rafailov-2023-dpo-sentiment-protocol",
+        "rafailov-2023-dpo-tldr-protocol-and-data-boundary",
+        "rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary",
+        "rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary"
+      ]
+    },
+    {
+      "id": "evaluator-dependent-preference-evidence",
+      "name": "Evaluator-dependent preference evidence",
+      "kind": "finding",
+      "description": "Treat measured preference gains as conditional on the evaluator, prompt wording, candidate sampling temperature, reference response, task distribution, and comparison protocol rather than as a universal quality ordering.",
+      "uncertainties": [],
+      "claimIds": [
+        "rafailov-2023-dpo-tldr-results-and-evaluation-boundary",
+        "rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary",
+        "rafailov-2023-dpo-cnn-dm-transfer-boundary",
+        "rafailov-2023-dpo-gpt4-and-human-evaluation-boundary",
+        "rafailov-2023-dpo-scale-and-open-question-boundary"
       ]
     }
   ],
@@ -36799,6 +37241,391 @@
         "pageEnd": 1
       },
       "accessNote": "The official model page names the later checkpoint separately. Mutable current-page content is used only to establish release identity, not to overwrite the pinned January artifacts or paper results."
+    },
+    {
+      "id": "rafailov-2023-dpo-arxiv-record",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "arXiv record for Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+      "url": "https://arxiv.org/abs/2305.18290",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v1-version",
+        "rafailov-2023-dpo-arxiv-v2-version",
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The submission ledger contains exactly three revisions: 29 May 2023, 13 December 2023, and 29 July 2024. It links CC BY 4.0 and an aggregate arXiv DOI; neither creates another version."
+    },
+    {
+      "id": "rafailov-2023-dpo-arxiv-v1-full-text",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable arXiv version 1 full text of Direct Preference Optimization",
+      "url": "https://arxiv.org/pdf/2305.18290v1",
+      "accessDate": "2026-09-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v1-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 26
+      },
+      "accessNote": "The complete 26-leaf first revision has SHA-256 304d57efe53317673ee5e93e1e1d990e3231fb4e24198aedd4829968e2c3cfbb. It controls first-public wording and excludes later transfer evidence and corrections."
+    },
+    {
+      "id": "rafailov-2023-dpo-arxiv-v1-source-package",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable arXiv version 1 source package for Direct Preference Optimization",
+      "url": "https://arxiv.org/src/2305.18290v1",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v1-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The inspected four-file archive has SHA-256 8454ecce846b470df3ea1315950eda9456374ead297454dcde61f01b22fc1487 and contains main.tex, commands, bibliography output, and venue style but no executable experiments, datasets, judgments, checkpoints, predictions, or environment lock."
+    },
+    {
+      "id": "rafailov-2023-dpo-arxiv-v2-full-text",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable arXiv version 2 full text of Direct Preference Optimization",
+      "url": "https://arxiv.org/pdf/2305.18290v2",
+      "accessDate": "2026-09-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v2-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 27
+      },
+      "accessNote": "The complete 27-leaf second revision has SHA-256 a280dc33571ceb07c9ede5fc997f81162c5491080c9ef3f2abe13bfd0c713bfd. It contains the post-v1 corrections and transfer experiment and remains distinct from the proceedings split files."
+    },
+    {
+      "id": "rafailov-2023-dpo-arxiv-v2-source-package",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable arXiv version 2 source package for Direct Preference Optimization",
+      "url": "https://arxiv.org/src/2305.18290v2",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v2-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The inspected four-file archive has SHA-256 9fc21b51497395aef2f0844d5b5b4651d8a2b13874db5adb8f03dffca6dc74a4. A direct source diff exposes the revised implicit-reward framing, added transfer and sentiment detail, derivation correction, and RMSprop wording."
+    },
+    {
+      "id": "rafailov-2024-dpo-arxiv-v3-full-text",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable arXiv version 3 full text of Direct Preference Optimization",
+      "url": "https://arxiv.org/pdf/2305.18290v3",
+      "accessDate": "2026-09-20",
+      "sourceClass": "primary-full-text",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 27
+      },
+      "accessNote": "The complete 27-leaf latest revision has SHA-256 92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a. Its technical claims and tables match version 2 within the inspected source diff."
+    },
+    {
+      "id": "rafailov-2024-dpo-arxiv-v3-source-package",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable arXiv version 3 source package for Direct Preference Optimization",
+      "url": "https://arxiv.org/src/2305.18290v3",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The inspected archive has SHA-256 0197d1412cf5e244fb4e316dfbbf36bfafb620c40f91f46aaec37ba9101bd05e. Relative to version 2, main.tex adds two citations around the prior KL objective and punctuation; unused bundled style and old-method files are not paper revisions."
+    },
+    {
+      "id": "rafailov-2023-dpo-arxiv-license",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Creative Commons Attribution 4.0 license linked from the DPO arXiv record",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "institutional-repository",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v1-version",
+        "rafailov-2023-dpo-arxiv-v2-version",
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The version records link CC BY 4.0 for the arXiv manuscripts. The license does not automatically cover the code repository, datasets, third-party checkpoints, model-service outputs, dependencies, or benchmark material."
+    },
+    {
+      "id": "rafailov-2023-dpo-neurips-record",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Official NeurIPS 2023 record for Direct Preference Optimization",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html",
+      "accessDate": "2026-09-20",
+      "sourceClass": "publisher-record",
+      "authority": "publisher",
+      "versionIds": [
+        "rafailov-2023-dpo-neurips-version"
+      ],
+      "supports": [
+        "metadata",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The record identifies the main-track article, volume 36, pp. 53728–53741, DOI 10.52202/075280-2338, publication date 15 December 2023, and separate main and supplemental PDFs. Its metadata author order swaps Manning and Ermon relative to the PDF title page."
+    },
+    {
+      "id": "rafailov-2023-dpo-neurips-main-full-text",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Canonical NeurIPS 2023 main article for Direct Preference Optimization",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Paper-Conference.pdf",
+      "accessDate": "2026-09-20",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "rafailov-2023-dpo-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 14
+      },
+      "accessNote": "The complete 14-leaf article has SHA-256 894386aafb8581f85644773b303dd7cd96377cafe5c23e1b6b442ac6f5884e7c. Technical locators use visible article pp. 1–14 rather than volume folios."
+    },
+    {
+      "id": "rafailov-2023-dpo-neurips-supplement",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Canonical NeurIPS 2023 supplement for Direct Preference Optimization",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/a85b405ed65c6477a4fe8302b5e06ce7-Supplemental-Conference.pdf",
+      "accessDate": "2026-09-20",
+      "sourceClass": "primary-full-text",
+      "authority": "publisher",
+      "versionIds": [
+        "rafailov-2023-dpo-neurips-version"
+      ],
+      "supports": [
+        "full-text",
+        "claim-location",
+        "reference-list"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 15,
+        "pageEnd": 27
+      },
+      "accessNote": "The complete 13-leaf supplement has SHA-256 7c3138467487cf0c8cd67a7554eed60c5aa63e60a9e6b498c9db6a85bf232077 and visible article pp. 15–27. It supplies proofs, code sketch, hyperparameters, experimental detail, samples, and volunteer-study context."
+    },
+    {
+      "id": "rafailov-2023-dpo-initial-code-commit",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Initial public DPO reference-implementation commit",
+      "url": "https://github.com/eric-mitchell/direct-preference-optimization/commit/e05cf705c1d62719a591a647513e8a0acb3b332d",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v2-version",
+        "rafailov-2023-dpo-neurips-version",
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The immutable 22 June 2023 commit introduces an Apache-licensed reference implementation after arXiv v1. Its 15-file tree supports SFT and DPO over HH, SHP, and StackExchange, not the paper's exact sentiment or TL;DR pipelines, and contains no paper checkpoint or raw evaluation bundle."
+    },
+    {
+      "id": "rafailov-2023-dpo-tokenization-fix",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "DPO reference-code loss-masking correction commit",
+      "url": "https://github.com/eric-mitchell/direct-preference-optimization/commit/21fd7fecc3be287cb2fbddcf6c383634a8bf7a09",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v2-version",
+        "rafailov-2023-dpo-neurips-version",
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The immutable 30 June 2023 commit says it fixes incorrect loss masking and changes label padding from the tokenizer pad token to -100. It proves that the initial public tree should not be treated as the corrected paper-era implementation."
+    },
+    {
+      "id": "rafailov-2023-dpo-paper-era-code-snapshot",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Immutable corrected DPO reference-code snapshot before proceedings",
+      "url": "https://github.com/eric-mitchell/direct-preference-optimization/tree/1ea1c0682982f0854954e6ba4a9cf09e9f407a64",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v2-version",
+        "rafailov-2023-dpo-neurips-version",
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The 22 July 2023 snapshot is the last release state before a November addition of conservative DPO and IPO. The inspected README, trainer, data loader, requirements, and license hashes are recorded privately; the tree provides a general reference implementation, not a complete immutable reproduction package for the three paper experiments."
+    },
+    {
+      "id": "rafailov-2023-dpo-code-license",
+      "relatedWorkIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "title": "Apache 2.0 license for the corrected DPO reference-code snapshot",
+      "url": "https://github.com/eric-mitchell/direct-preference-optimization/blob/1ea1c0682982f0854954e6ba4a9cf09e9f407a64/LICENSE",
+      "accessDate": "2026-09-20",
+      "sourceClass": "official-record",
+      "authority": "author",
+      "versionIds": [
+        "rafailov-2023-dpo-arxiv-v2-version",
+        "rafailov-2023-dpo-neurips-version",
+        "rafailov-2024-dpo-arxiv-v3-version"
+      ],
+      "supports": [
+        "metadata",
+        "full-text",
+        "claim-location"
+      ],
+      "pagination": {
+        "scheme": "article",
+        "pageStart": 1,
+        "pageEnd": 1
+      },
+      "accessNote": "The pinned license file has SHA-256 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4. Apache 2.0 applies to the repository work, not automatically to manuscripts, models, datasets, service outputs, or dependencies."
     }
   ],
   "claims": [
@@ -69743,6 +70570,683 @@
       ],
       "uncertainties": [],
       "checkedDate": "2026-09-17"
+    },
+    {
+      "id": "rafailov-2023-dpo-version-and-framing-boundary",
+      "ideaIds": [
+        "implicit-policy-defined-preference-reward"
+      ],
+      "statement": "The 29 May 2023 first preprint, 15 December 2023 canonical proceedings article plus supplement, 13 December 2023 arXiv v2, and 29 July 2024 arXiv v3 form one version family; v2 changes the reward-model framing, corrects a derivation constant and optimizer name, and incorporates transfer and experiment detail, while v3 changes only attribution and punctuation in the principal source.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-arxiv-record",
+          "locator": {
+            "label": "Three-version submission ledger",
+            "section": "Submission history",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The official record supplies the exact dates and UTC times for all three arXiv revisions."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-record",
+          "locator": {
+            "label": "Canonical proceedings identity",
+            "section": "Citation metadata and file links",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The publisher record supplies the separate article and supplement, volume, folios, DOI, and publication date."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-arxiv-v2-source-package",
+          "locator": {
+            "label": "Version 1 to version 2 source delta",
+            "section": "main.tex source comparison",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The source delta exposes the implicit-reward wording, CNN/DailyMail addition, KL constant correction, sentiment details, GPT-4 snapshot, and RMSprop change."
+        },
+        {
+          "sourceId": "rafailov-2024-dpo-arxiv-v3-source-package",
+          "locator": {
+            "label": "Version 2 to version 3 source delta",
+            "section": "main.tex and main.bbl source comparison",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The principal source changes only two historical citations and punctuation; technical text and results remain stable."
+        }
+      ],
+      "limitations": [
+        "Version chronology does not make the later arXiv text identical to the canonical proceedings files or move later corrections backward.",
+        "Unused files bundled in version 3 do not constitute additional experiments or paper versions."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-three-stage-rlhf-contrast",
+      "ideaIds": [
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "statement": "The target describes the established language-model RLHF route as supervised fine-tuning, sampling and labeling response comparisons to fit a scalar reward, and PPO-style optimization of that learned reward with a KL penalty to an SFT reference; DPO is proposed as a change of optimizer for the latter preference-learning path, not as removal of pretraining, SFT, or preference data.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Target-side prior-pipeline account",
+            "section": "1 Introduction; 2 Related Work; 3 Preliminaries",
+            "pageStart": 1,
+            "pageEnd": 3,
+            "equation": "1–3"
+          },
+          "support": "The article explicitly cites Stiennon and Ouyang among the learned-reward and PPO precedents and writes the three phases, reward likelihood, and KL-regularized policy objective."
+        }
+      ],
+      "limitations": [
+        "The description is a family-level abstraction and does not make every RLHF implementation identical.",
+        "DPO's experiments do not reproduce or directly compare against InstructGPT's API-prompt distribution or deployed models."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-kl-optimum-and-logratio-reward",
+      "ideaIds": [
+        "policy-reward-logratio-duality",
+        "implicit-policy-defined-preference-reward"
+      ],
+      "statement": "For reward r, reference policy pi_ref, and beta-weighted KL regularization, the paper derives the non-parametric optimum pi_r(y|x)=pi_ref(y|x)exp(r(x,y)/beta)/Z(x), then rearranges it as r(x,y)=beta log(pi_r/pi_ref)+beta log Z(x).",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Closed-form optimum and inverse mapping",
+            "section": "4 Direct Preference Optimization",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "equation": "4–5"
+          },
+          "support": "Equations 4 and 5 state the reference-policy exponential tilt and inverse reward expression."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Complete KL-objective derivation",
+            "section": "A.1 Deriving the Optimum of the KL-Constrained Reward Maximization Objective",
+            "pageStart": 15,
+            "pageEnd": 15
+          },
+          "support": "The appendix rewrites the objective as KL to pi-star plus a prompt-only constant and invokes Gibbs' inequality for the optimum."
+        }
+      ],
+      "limitations": [
+        "The derivation treats a general non-parametric policy over completions; parametric optimization error and finite-data error remain outside the equality.",
+        "Z depends on the prompt, reference policy, reward, and beta even though it cancels from within-prompt reward differences."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-pairwise-objective",
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "implicit-policy-defined-preference-reward",
+        "human-preference-comparison-data"
+      ],
+      "statement": "Under a Bradley–Terry model for a preferred response y_w over y_l, substituting the policy-defined reward makes the prompt-only partition term cancel and yields a negative log-sigmoid loss on beta times the policy log-ratio advantage over the reference log-ratio.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Preference probability and DPO loss",
+            "section": "4 Direct Preference Optimization",
+            "pageStart": 4,
+            "pageEnd": 4,
+            "equation": "6–7"
+          },
+          "support": "Equations 6 and 7 express preference probability and the empirical DPO objective only through policy and reference log probabilities."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Bradley–Terry substitution proof",
+            "section": "A.2 Deriving the DPO Objective Under the Bradley-Terry Model",
+            "pageStart": 16,
+            "pageEnd": 16
+          },
+          "support": "The appendix shows cancellation of beta log Z(x) and derives the sigmoid form."
+        }
+      ],
+      "limitations": [
+        "A logistic pairwise preference model is an assumption about how labels arise, not a direct observation of a universal human utility function.",
+        "The loss is direct with respect to policy parameters but still defines and fits an implicit reward representation in later-version wording."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-reward-equivalence-and-support-assumptions",
+      "ideaIds": [
+        "policy-reward-logratio-duality",
+        "implicit-policy-defined-preference-reward"
+      ],
+      "statement": "Rewards that differ only by a prompt-dependent additive function induce the same Bradley–Terry or Plackett–Luce preferences and the same KL-regularized optimum; the representation theorem selects a unique policy-log-ratio representative for each class when pi_ref(y|x)>0 for every pair and beta>0.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Reward equivalence class results",
+            "section": "5.1 Your Language Model Is Secretly a Reward Model",
+            "pageStart": 5,
+            "pageEnd": 6
+          },
+          "support": "Definition 1, Lemmas 1–2, and Theorem 1 state the equivalence and representability results, with full assumptions deferred."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Full-support and positive-beta assumptions",
+            "section": "A.5 Proof of Lemma 1 and 2; A.6 Proof of Theorem 1",
+            "pageStart": 17,
+            "pageEnd": 19
+          },
+          "support": "The restated theorem requires positive reference probability for every prompt–answer pair and beta greater than zero and proves uniqueness within each reward class."
+        }
+      ],
+      "limitations": [
+        "The theorem is about representable reward classes under the stated preference family and support assumptions, not consistency for arbitrary noisy preferences or guaranteed neural-network convergence."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-gradient-and-naive-loss-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization"
+      ],
+      "statement": "The DPO gradient raises preferred-response likelihood and lowers rejected-response likelihood, weighted more when the implicit reward orders the pair incorrectly; the paper's unlikelihood baseline removes this dynamic weighting and produces degenerate repeated-token summaries in selected examples.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "DPO gradient interpretation",
+            "section": "4 Direct Preference Optimization",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The displayed gradient identifies the preferred, rejected, and error-dependent weighting factors."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Unlikelihood baseline and samples",
+            "section": "A.4 Deriving the Gradient; C.3 Unlikelihood baseline",
+            "pageStart": 17,
+            "pageEnd": 22,
+            "table": "3"
+          },
+          "support": "The supplement derives the gradient and shows two selected temperature-1.0 TL;DR outputs with severe repetition for the naive alternative."
+        }
+      ],
+      "limitations": [
+        "Two qualitative unlikelihood samples do not establish that every fixed or alternative pairwise objective degenerates.",
+        "Increasing and decreasing sequence likelihood does not identify which tokens caused the preference or ensure factuality, safety, or calibrated reward."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-offline-data-and-reference-policy",
+      "ideaIds": [
+        "offline-static-preference-policy-learning",
+        "direct-preference-policy-optimization",
+        "supervised-demonstration-fine-tuning",
+        "human-preference-comparison-data"
+      ],
+      "statement": "The general pipeline samples two completions per prompt from a reference, obtains preferred/rejected labels, and then trains only on the fixed pair set; when the data-generating SFT model is available it is the reference, otherwise the authors first maximize likelihood of preferred completions to create a reference that better matches the pair distribution.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Offline-pair and reference-policy procedure",
+            "section": "4 Direct Preference Optimization — DPO outline",
+            "pageStart": 4,
+            "pageEnd": 4
+          },
+          "support": "The outline distinguishes preference-data creation from DPO updates and gives the preferred-completion reference fallback."
+        }
+      ],
+      "limitations": [
+        "Public preference sets may have been sampled from a different policy than the available reference; the fallback mitigates but does not measure or eliminate that shift.",
+        "No sampling inside DPO updates does not mean the complete workflow requires no generation, label collection, or reference-model computation."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-hyperparameter-and-optimizer-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization"
+      ],
+      "statement": "The supplement uses batch size 64, learning rate 1e-6 with 150-step linear warmup, beta 0.1 by default and 0.5 for TL;DR; however, the canonical proceedings supplement and arXiv v1 print Adam while arXiv versions 2–3 print RMSprop.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Canonical implementation hyperparameters",
+            "section": "B DPO Implementation Details and Hyperparameters",
+            "pageStart": 19,
+            "pageEnd": 20
+          },
+          "support": "The canonical supplement prints beta, batch size, Adam, learning rate, warmup, and the TL;DR beta exception."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-arxiv-v2-full-text",
+          "locator": {
+            "label": "Revised optimizer wording",
+            "section": "B DPO Implementation Details and Hyperparameters",
+            "pageStart": 20,
+            "pageEnd": 21
+          },
+          "support": "Version 2 retains the numerical settings but names RMSprop instead of Adam."
+        }
+      ],
+      "limitations": [
+        "The primary records do not map the optimizer discrepancy to individual runs, so neither name is generalized across every result.",
+        "Beta both scales the policy/reference log-ratio in the loss and corresponds to the KL coefficient in the idealized reward objective; its practical effect remains model- and data-dependent."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "The run-level optimizer identity is unresolved across the proceedings and later arXiv text."
+        }
+      ],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-sentiment-protocol",
+      "ideaIds": [
+        "offline-static-preference-policy-learning",
+        "direct-preference-policy-optimization",
+        "supervised-demonstration-fine-tuning"
+      ],
+      "statement": "For controlled sentiment, the authors SFT GPT-2-large on IMDb, take 2–8-token review prefixes, sample four completions for each of 25,000 prefixes, create six within-prefix pairs using siebert/sentiment-roberta-large-english as the ordering reward, and compare DPO with learned-reward and ground-truth-reward PPO variants.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Controlled-sentiment task and methods",
+            "section": "6 Experiments — Tasks; Methods",
+            "pageStart": 7,
+            "pageEnd": 8
+          },
+          "support": "The main article identifies IMDb, GPT-2-large, classifier-generated pairs, PPO, PPO-GT, preferred fine-tuning, and unlikelihood comparisons."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Sentiment data-generation detail",
+            "section": "C.1 IMDb Sentiment Experiment and Baseline Details",
+            "pageStart": 20,
+            "pageEnd": 20
+          },
+          "support": "The supplement supplies prefix length, classifier identity, completion and pair counts, one SFT epoch, three reward-model epochs, and PPO batch-sample detail."
+        }
+      ],
+      "limitations": [
+        "The labels are generated by one sentiment classifier rather than people and measure a narrow positive-sentiment objective.",
+        "The SFT subset size, seeds, and a complete immutable run manifest are not reported in the cited text."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-sentiment-frontier",
+      "ideaIds": [
+        "direct-preference-policy-optimization"
+      ],
+      "statement": "Across the reported 22-run conservativeness sweep, the DPO sentiment points have the highest classifier reward at the compared sequence-level KL values and dominate the displayed PPO and PPO-GT frontiers after 100 training steps, but this is one synthetic proxy-reward environment rather than a human-preference result.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Reward–KL frontier and sweep",
+            "section": "6.1 How well can DPO optimize the RLHF objective?",
+            "pageStart": 7,
+            "pageEnd": 8,
+            "figure": "2 left"
+          },
+          "support": "Figure 2 and the surrounding text report the 22 runs, target-KL and beta sweeps, 100-step evaluation, and displayed frontier ordering."
+        }
+      ],
+      "limitations": [
+        "No confidence intervals, seed-replicate distribution, or matched compute accounting is reported for the frontier points.",
+        "The same classifier supplies both pair labels and evaluation reward, so the result does not test evaluator shift."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-tldr-protocol-and-data-boundary",
+      "ideaIds": [
+        "offline-static-preference-policy-learning",
+        "human-preference-comparison-data",
+        "supervised-demonstration-fine-tuning"
+      ],
+      "statement": "The TL;DR study fine-tunes one public GPT-J SFT checkpoint with DPO, PPO, and preferred-only supervision using Stiennon et al.'s Reddit comparison data; the paper notes that those preferences were collected from a different but similarly trained SFT model, so the public reference and original pair-generating policy are not identical artifacts.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "TL;DR model and preference provenance",
+            "section": "6 Experiments — Tasks; 6.2 Can DPO scale to real preference datasets?",
+            "pageStart": 7,
+            "pageEnd": 9
+          },
+          "support": "The target names the Reddit task, Stiennon comparisons, public GPT-J SFT checkpoint, different pair-generating SFT, and shared model across DPO, PPO, and Preferred-FT."
+        }
+      ],
+      "limitations": [
+        "The data and SFT checkpoint are inherited artifacts with their own filtering, population, and rights limits; they are not a new DPO preference-data release.",
+        "Reference-policy mismatch is acknowledged but not isolated by an ablation."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-tldr-results-and-evaluation-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "evaluator-dependent-preference-evidence"
+      ],
+      "statement": "Against human-written TL;DR references under the paper's concise gpt-4-0314 evaluator, DPO reports about 61% win rate at temperature 0 versus PPO's about 57% at its temperature-0 optimum; in a separate volunteer comparison, temperature-0.25 DPO is preferred over greedy PPO in 58% of recorded judgments.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "TL;DR automated and human comparisons",
+            "section": "6.2 Can DPO scale to real preference datasets?; 6.4 Validating GPT-4 judgments with human judgments",
+            "pageStart": 9,
+            "pageEnd": 10,
+            "figure": "2 right",
+            "table": "2"
+          },
+          "support": "Figure 2 and Table 2 supply the approximate GPT-4 curve maxima and 58% human DPO-versus-PPO row under stated temperatures."
+        }
+      ],
+      "limitations": [
+        "The 61% and 57% are approximate plot readings without reported uncertainty, and sampling temperature is tuned separately by method.",
+        "The volunteer result is one selected DPO/PPO temperature pairing and uses a small nonrepresentative rater pool."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "offline-static-preference-policy-learning",
+        "evaluator-dependent-preference-evidence"
+      ],
+      "statement": "For one-turn Anthropic Helpful–Harmless dialogue, the study preferred-fine-tunes Pythia-2.8B on chosen completions before DPO, compares GPT-4 win rates against held-out chosen responses, and uses Best-of-128 as only a rough PPO-level proxy because an external 6B PPO checkpoint could not be made to beat the 2.8B base under attempted prompts and temperatures.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Dialogue task, reference construction, and comparator limits",
+            "section": "6 Experiments — Tasks; 6.2 Can DPO scale to real preference datasets?",
+            "pageStart": 7,
+            "pageEnd": 9,
+            "figure": "3"
+          },
+          "support": "The target gives the 170k-dialogue source, one-turn test subset, Pythia reference construction, Best-of-128 comparison, external PPO attempt, and proxy rationale."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Dialogue qualitative success and failure examples",
+            "section": "D.2 Sample Responses and GPT-4 Judgments",
+            "pageStart": 25,
+            "pageEnd": 26,
+            "table": "7–10"
+          },
+          "support": "Selected examples include helpful outputs alongside a verbose factual error and an evaluator arithmetic error."
+        }
+      ],
+      "limitations": [
+        "Best-of-128 performs reward-model-guided test-time search and is not a matched PPO training run.",
+        "The failed external PPO comparison differs in parameter count, provenance, implementation, prompting, and sampling; it cannot isolate optimizer quality.",
+        "Selected qualitative examples are not a representative safety, factuality, or evaluator-accuracy audit."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-cnn-dm-transfer-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "evaluator-dependent-preference-evidence"
+      ],
+      "statement": "Applying the TL;DR-trained policies to CNN/DailyMail test articles, the proceedings and later arXiv versions report GPT-4 win rates against ground-truth summaries of 0.36 versus 0.26 at temperature 0 and 0.31 versus 0.23 at temperature 0.25 for DPO versus PPO; this subsection is absent from arXiv v1.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Out-of-distribution summary table",
+            "section": "6.3 Generalization to a new input distribution",
+            "pageStart": 9,
+            "pageEnd": 9,
+            "table": "1"
+          },
+          "support": "Table 1 gives all four win rates and states the inherited temperatures and modified concise GPT-4 prompt."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-arxiv-v1-source-package",
+          "locator": {
+            "label": "First-version absence boundary",
+            "section": "main.tex source inventory",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The version 1 source has no CNN/DailyMail subsection or result table."
+        }
+      ],
+      "limitations": [
+        "The study tests one distribution shift with two inherited temperatures and does not report human evaluation, confidence intervals, or a broad transfer suite.",
+        "Ground-truth news summaries and a modified model-judge prompt are not the same evaluation target as human preferences over Reddit summaries."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-gpt4-and-human-evaluation-boundary",
+      "ideaIds": [
+        "evaluator-dependent-preference-evidence"
+      ],
+      "statement": "The automated TL;DR and dialogue evaluations use gpt-4-0314 with randomized response order; the concise versus simple summary prompt changes win rates, and the validation study uses 25 volunteers who each compare 25 summaries, with one late respondent excluded and a visitor-heavy, STEM and mainly computer-science sample.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Prompt-sensitive evaluator agreement",
+            "section": "6.4 Validating GPT-4 judgments with human judgments",
+            "pageStart": 10,
+            "pageEnd": 10,
+            "table": "2"
+          },
+          "support": "Table 2 reports 272, 122, and 199 recorded comparison counts, GPT-4 win rates under two prompts, human win rates, and available agreement values."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-supplement",
+          "locator": {
+            "label": "Evaluator prompts and volunteer pool",
+            "section": "C.2 GPT-4 prompts; D.3 Human study details",
+            "pageStart": 20,
+            "pageEnd": 27
+          },
+          "support": "The supplement names gpt-4-0314, prints the prompts, states randomized order, and describes the 25-person convenience pool and late exclusion."
+        }
+      ],
+      "limitations": [
+        "Agreement with a small convenience sample does not validate GPT-4 as a universal preference evaluator or establish independence among judgments.",
+        "The automated judge can be wrong even in the paper's selected examples, including a basic arithmetic comparison in Table 10."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-scale-and-open-question-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "reward-model-overoptimization",
+        "evaluator-dependent-preference-evidence"
+      ],
+      "statement": "The study evaluates task-dependent models up to 6B parameters and leaves scaling to larger models, reward over-optimization, effective use of extra unlabeled prompts, comprehensive distribution-shift testing, and robust automated evaluation as open questions rather than established DPO properties.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Stated limitations and future work",
+            "section": "7 Discussion — Limitations & Future Work",
+            "pageStart": 10,
+            "pageEnd": 10
+          },
+          "support": "The authors enumerate distribution shift, self-labeling, reward over-optimization, larger scale, and evaluator-prompt sensitivity as unresolved."
+        }
+      ],
+      "limitations": [
+        "The paper's 'up to 6B' statement spans different task models and does not constitute a model-size scaling law or controlled size ablation."
+      ],
+      "uncertainties": [],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
+    },
+    {
+      "id": "rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary",
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "offline-static-preference-policy-learning"
+      ],
+      "statement": "The public record supplies CC BY 4.0 manuscripts and an Apache-2.0 reference implementation released after arXiv v1; the initial code had a later-fixed label-masking bug, and the corrected paper-era tree provides generic HH, SHP, and StackExchange training support but not the exact sentiment or TL;DR pipelines, paper DPO checkpoints, raw human or GPT-4 judgments, seeds, or a complete result ledger.",
+      "evidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-initial-code-commit",
+          "locator": {
+            "label": "Initial reference-code scope",
+            "section": "Commit tree; README; preference_datasets.py",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The initial tree postdates v1 and contains generic SFT/DPO code and three loaders but no exact paper experiment release."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-tokenization-fix",
+          "locator": {
+            "label": "Loss-mask bug correction",
+            "section": "Commit diff in preference_datasets.py",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The commit explicitly changes response-label padding to -100 and identifies the prior masking error."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-paper-era-code-snapshot",
+          "locator": {
+            "label": "Corrected pre-proceedings implementation snapshot",
+            "section": "README; config; train.py; trainers.py; preference_datasets.py; requirements.txt",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned tree implements the DPO loss and reference model and documents hardware for a separate example, without a paper table-to-run package."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-arxiv-license",
+          "locator": {
+            "label": "Article reuse terms",
+            "section": "CC BY 4.0 deed",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The arXiv records link attribution terms for the manuscripts."
+        },
+        {
+          "sourceId": "rafailov-2023-dpo-code-license",
+          "locator": {
+            "label": "Software terms",
+            "section": "Apache License 2.0",
+            "pageStart": 1,
+            "pageEnd": 1
+          },
+          "support": "The pinned repository license applies separately to the code work."
+        }
+      ],
+      "limitations": [
+        "Example W&B links and third-party checkpoint URLs do not supply an immutable, complete first-party reproduction ledger for the published tables and curves.",
+        "Article and software licenses do not settle rights for Reddit text, IMDb, CNN/DailyMail, Anthropic HH, SHP, StackExchange, model weights, GPT-4 outputs, or dependencies."
+      ],
+      "uncertainties": [
+        {
+          "status": "open",
+          "note": "Exact end-to-end reconstruction of every paper result is not established by the inspected release surface."
+        }
+      ],
+      "workId": "rafailov-2023-direct-preference-optimization",
+      "directness": "direct",
+      "confidence": "high",
+      "checkedDate": "2026-09-20"
     }
   ],
   "relationships": [
@@ -74575,6 +76079,90 @@
           "note": "The challenge applies to R1-Zero's immediate training order and value-model choice, not to all human-feedback training or to final R1, which again uses supervised and preference-model stages."
         }
       ]
+    },
+    {
+      "id": "stiennon-2020-to-rafailov-2023-dpo-tldr-preference-substrate",
+      "from": {
+        "kind": "work",
+        "id": "stiennon-2020-learning-to-summarize-human-feedback"
+      },
+      "to": {
+        "kind": "work",
+        "id": "rafailov-2023-direct-preference-optimization"
+      },
+      "connectionType": "builds-on",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "DPO directly cites Stiennon et al., reuses its Reddit TL;DR human-comparison data, uses a related public SFT checkpoint, and compares the new offline objective against the learned-reward PPO route on the same task family. The edge carries the preference-data and evaluation substrate plus the explicit optimizer contrast only; it does not make the SFT checkpoints identical or transfer Stiennon's model scale, labeler population, results, artifacts, or rights.",
+      "claimIds": [
+        "stiennon-2020-comparison-reward-model-ppo-pipeline",
+        "stiennon-2020-tldr-corpus-task-and-split",
+        "stiennon-2020-tldr-preference-results",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast",
+        "rafailov-2023-dpo-tldr-protocol-and-data-boundary",
+        "rafailov-2023-dpo-tldr-results-and-evaluation-boundary"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Target-side Stiennon data and PPO attribution",
+            "section": "2 Related Work; 3 Preliminaries; 6 Experiments — Tasks; 6.2 Can DPO scale to real preference datasets?",
+            "pageStart": 2,
+            "pageEnd": 9
+          },
+          "support": "The target names Stiennon as a reward-model-plus-PPO precedent and states that its TL;DR comparison labels were gathered by that work from a different but similarly trained SFT model."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge is limited to directly named data and method substrate and does not equate checkpoints or carry result values across works."
+        }
+      ]
+    },
+    {
+      "id": "ouyang-2022-to-rafailov-2023-dpo-rm-ppo-contrast",
+      "from": {
+        "kind": "work",
+        "id": "ouyang-2022-training-language-models-follow-instructions-human-feedback"
+      },
+      "to": {
+        "kind": "work",
+        "id": "rafailov-2023-direct-preference-optimization"
+      },
+      "connectionType": "challenges",
+      "evidenceClass": "documented-influence",
+      "confidence": "high",
+      "rationale": "DPO names Ouyang et al. among the later three-stage RLHF systems, writes the supervised-policy, ranked-preference reward-model, and KL-regularized PPO route as its target-side baseline, then replaces the standalone reward and policy-gradient stages with a direct logistic policy objective. The challenge is optimizer- and pipeline-specific; DPO neither reproduces InstructGPT nor disputes its API-prompt results, labeler scope, PPO-ptx mixture, safety findings, deployment, artifacts, or rights.",
+      "claimIds": [
+        "ouyang-2022-sft-rm-ppo-pipeline",
+        "ouyang-2022-ranked-preference-reward-model",
+        "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast",
+        "rafailov-2023-dpo-kl-optimum-and-logratio-reward",
+        "rafailov-2023-dpo-pairwise-objective"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "rafailov-2023-dpo-neurips-main-full-text",
+          "locator": {
+            "label": "Target-side learned-reward and PPO contrast with Ouyang citation",
+            "section": "1 Introduction; 2 Related Work; 3 Preliminaries; 4 Direct Preference Optimization",
+            "pageStart": 1,
+            "pageEnd": 4
+          },
+          "support": "The target cites Ouyang in the established RLHF family, formalizes the family objective, and states its bounded replacement of standalone reward-model and RL optimization stages."
+        }
+      ],
+      "causalLanguage": "qualified",
+      "uncertainties": [
+        {
+          "status": "resolved",
+          "note": "The edge records an explicit methodological challenge to the named pipeline family, not a matched empirical comparison with InstructGPT."
+        }
+      ]
     }
   ],
   "learningObjectives": [
@@ -79012,6 +80600,82 @@
         "Publication versions, Git commits, model snapshots, data manifests, reconstruction ledgers, and layered software/model/data licensing"
       ],
       "successCriterion": "The learner can derive Equations 1–4, rebuild the stage/data/reward map, reproduce the reported cost arithmetic, explain nonmonotonic Table 2 rows and the 10-gram limit, defend the qualified Ouyang edge, and inventory exactly which public artifacts do and do not reconstruct each claim."
+    },
+    {
+      "id": "beginner-rafailov-2023-dpo-pairs-reference-and-evidence",
+      "mode": "beginner",
+      "objective": "Use one chosen/rejected pair to explain how DPO changes a model relative to a reference, distinguish removing a standalone reward model and PPO from removing preferences or rewards entirely, and compare what the sentiment, summary, and dialogue studies actually establish.",
+      "workIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "ideaIds": [
+        "direct-preference-policy-optimization",
+        "offline-static-preference-policy-learning",
+        "implicit-policy-defined-preference-reward",
+        "evaluator-dependent-preference-evidence",
+        "human-preference-comparison-data"
+      ],
+      "claimIds": [
+        "rafailov-2023-dpo-three-stage-rlhf-contrast",
+        "rafailov-2023-dpo-pairwise-objective",
+        "rafailov-2023-dpo-offline-data-and-reference-policy",
+        "rafailov-2023-dpo-sentiment-frontier",
+        "rafailov-2023-dpo-tldr-results-and-evaluation-boundary",
+        "rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary",
+        "rafailov-2023-dpo-gpt4-and-human-evaluation-boundary",
+        "rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "Pairwise preferences",
+        "Log probability as model confidence",
+        "A reference model as a behavioral tether"
+      ],
+      "successCriterion": "The learner can trace the sign of the update for a chosen and rejected response, name the remaining reference and data dependencies, and give one protocol-specific reason each headline result cannot be generalized to universal alignment."
+    },
+    {
+      "id": "expert-rafailov-2023-dpo-derivation-versions-and-lineage",
+      "mode": "expert",
+      "objective": "Derive the DPO objective and gradient from the KL-regularized optimum and Bradley–Terry likelihood, audit full-support and beta assumptions, reconstruct each experimental comparator, and preserve proceedings, arXiv, code, evaluator, rights, and Stiennon/Ouyang lineage boundaries.",
+      "workIds": [
+        "rafailov-2023-direct-preference-optimization"
+      ],
+      "ideaIds": [
+        "policy-reward-logratio-duality",
+        "implicit-policy-defined-preference-reward",
+        "direct-preference-policy-optimization",
+        "offline-static-preference-policy-learning",
+        "evaluator-dependent-preference-evidence",
+        "human-preference-comparison-data",
+        "learned-human-preference-reward-model",
+        "kl-regularized-preference-policy-optimization"
+      ],
+      "claimIds": [
+        "rafailov-2023-dpo-version-and-framing-boundary",
+        "rafailov-2023-dpo-three-stage-rlhf-contrast",
+        "rafailov-2023-dpo-kl-optimum-and-logratio-reward",
+        "rafailov-2023-dpo-pairwise-objective",
+        "rafailov-2023-dpo-reward-equivalence-and-support-assumptions",
+        "rafailov-2023-dpo-gradient-and-naive-loss-boundary",
+        "rafailov-2023-dpo-offline-data-and-reference-policy",
+        "rafailov-2023-dpo-hyperparameter-and-optimizer-boundary",
+        "rafailov-2023-dpo-sentiment-protocol",
+        "rafailov-2023-dpo-sentiment-frontier",
+        "rafailov-2023-dpo-tldr-protocol-and-data-boundary",
+        "rafailov-2023-dpo-tldr-results-and-evaluation-boundary",
+        "rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary",
+        "rafailov-2023-dpo-cnn-dm-transfer-boundary",
+        "rafailov-2023-dpo-gpt4-and-human-evaluation-boundary",
+        "rafailov-2023-dpo-scale-and-open-question-boundary",
+        "rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary"
+      ],
+      "prerequisites": [
+        "Conditional language-model likelihood and sequence log probabilities",
+        "KL-regularized policy optimization, partition functions, and Gibbs' inequality",
+        "Bradley–Terry and Plackett–Luce preference models",
+        "PPO, supervised fine-tuning, reward modeling, sampling temperature, and evaluator agreement",
+        "Paper versions, source diffs, git commits, artifact inventories, and layered licensing"
+      ],
+      "successCriterion": "The learner can reproduce Equations 3–7 and the gradient weighting, state the exact theorem assumptions, separate synthetic, GPT-4, volunteer, and proxy-comparator evidence, explain the Adam/RMSprop and code-bug boundaries, and defend both qualified incoming edges without transferring source-side results or rights."
     }
   ]
 }
