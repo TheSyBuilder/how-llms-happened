@@ -7,7 +7,7 @@ The future first vertical slice is reserved for the classical smoothing sequence
 3. Kneser and Ney’s 1995 context-diversity fallback distribution.
 4. Chen and Goodman’s 1998 expanded study of interpolation and count-dependent discounts, with the 1999 journal article retained as a companion version.
 
-This is a scope decision, not permission to begin interface implementation. The slice’s [interaction language](interaction-language.md) now passes the project’s [interaction gate](editorial-method.md#interaction-gate) with two accepted briefs; the beginner and expert paths still need a product-architecture review.
+This is the selected scope for the first implementation milestone. The slice’s [interaction language](interaction-language.md) passes the project’s [interaction gate](editorial-method.md#interaction-gate) with two accepted briefs, and its [product architecture](product-architecture.md) now defines the complete beginner and expert journeys, evidence system, visual roles, content boundary, technical approach, and implementation gates.
 
 ## Why this sequence goes first
 
@@ -28,14 +28,14 @@ The recurrent-memory sequence is not rejected. Its carried state, temporal credi
 
 Starting with smoothing therefore reduces simultaneous factual, pedagogical, and interface variables while still exercising the atlas’s core requirements: distinct beginner and expert paths, source-level evidence, equations, uncertainty, and a cause-and-effect interaction whose value must be demonstrated.
 
-## Remaining gate
+## Implementation gate
 
-The interaction review accepts a probability-mass ledger and a context-coverage lens. It also rejects an empirical-result scrubber, an unrestricted smoothing formula playground, and automatic probability-flow animation. Before implementation, the selected slice still requires M4 product architecture to define:
+The interaction review accepts a probability-mass ledger and a context-coverage lens. It also rejects an empirical-result scrubber, an unrestricted smoothing formula playground, and automatic probability-flow animation. The product architecture requires implementation to preserve:
 
-- the complete information architecture around the four historical stages;
-- distinct beginner and expert journeys through the shared corpus and accepted interactions;
-- the visual system, content components, and source-inspection behavior;
-- the corpus-to-view-model boundary and technical approach;
-- test and review plans that carry the accepted keyboard, screen-reader, reduced-motion, mobile, performance, and factual criteria into implementation.
+- separate, shareable beginner and expert routes around the same claim IDs;
+- build-time evidence binding and mode-neutral work records;
+- the warm technical ledger visual system and source-inspection behavior;
+- static narrative, evidence, and before/after treatments when JavaScript is unavailable;
+- keyboard, screen-reader, reduced-motion, mobile, performance, rights, and factual gates before the slice expands.
 
-Implementation remains gated until that architecture passes. The slice choice or an accepted interaction may be revisited for new evidence, a correction, failed learner testing, or another clearly recorded editorial reason, including an unresolvable product constraint.
+M4 passes at specification level, so M5 may begin with the static shell and build-time corpus adapter, followed by the Good prelude and Katz stage in both modes. The slice choice, architecture, or an accepted interaction may be revisited for new evidence, a correction, failed learner testing, or another clearly recorded editorial reason, including an unresolvable product constraint.
