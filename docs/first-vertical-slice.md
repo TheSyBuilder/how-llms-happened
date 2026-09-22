@@ -1,6 +1,6 @@
 # First vertical slice
 
-The future first vertical slice is reserved for the classical smoothing sequence:
+The first vertical slice covers the classical smoothing sequence:
 
 1. I. J. Good’s 1953 frequency-of-frequencies treatment as a short context and attribution prelude.
 2. Katz’s 1987 recursive backoff estimator as the first full paper experience.
