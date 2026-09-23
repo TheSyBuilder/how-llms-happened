@@ -5,7 +5,30 @@
   "description": "Source-backed research corpus and interactive history of large language models.",
   "type": "module",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/check-build.mjs",
+    "preview": "astro preview",
+    "check": "astro check && node --test",
     "test": "node --test",
+    "test:e2e": "playwright test",
     "validate:corpus": "node scripts/validate-corpus.mjs"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^6.0.5",
+    "ajv": "^8.20.0",
+    "astro": "^7.3.4",
+    "katex": "^0.18.7",
+    "preact": "^10.29.8"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "fsevents": false
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.10.0",
+    "typescript": "^6.0.3"
   }
 }

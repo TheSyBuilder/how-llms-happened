@@ -76521,6 +76521,50 @@
       "successCriterion": "The learner can enumerate the 24/12 input groups, two six-unit code groups, 12-unit central layer, six-unit penultimate layer, and 24 outputs; distinguish the summed squared-error, batch-gradient, and momentum procedure from conditional sequence likelihood; separate qualitative unit interpretations from measured evidence; and preserve the two-initialization, arbitrary-design, biological-plausibility, and task-scope caveats."
     },
     {
+      "id": "beginner-good-1953-unseen-mass",
+      "mode": "beginner",
+      "objective": "Use singleton counts to estimate how much probability may belong to unseen types, while keeping that corpus-level reserve separate from the later question of how a conditional language model distributes it.",
+      "workIds": [
+        "good-1953-population-frequencies"
+      ],
+      "ideaIds": [
+        "frequency-of-frequencies-discounting"
+      ],
+      "claimIds": [
+        "good-1953-frequency-of-frequencies",
+        "good-1953-turing-attribution",
+        "good-1953-unseen-mass"
+      ],
+      "prerequisites": [
+        "Counts and proportions",
+        "Seen versus unseen types",
+        "Probability mass summing to one"
+      ],
+      "successCriterion": "Given a labelled sample, the learner can compute n₁/N, explain it as an approximate reserve for unseen types, name Turing's credited role, and state that the estimate does not yet define conditional language-model backoff."
+    },
+    {
+      "id": "expert-good-1953-frequency-estimator",
+      "mode": "expert",
+      "objective": "Reconstruct Good's smoothed frequency-of-frequencies adjusted-count relation and represented-versus-unseen mass identities, audit the explicit Turing attribution, and preserve the boundary between population-frequency estimation and later conditional language-model backoff.",
+      "workIds": [
+        "good-1953-population-frequencies"
+      ],
+      "ideaIds": [
+        "frequency-of-frequencies-discounting"
+      ],
+      "claimIds": [
+        "good-1953-frequency-of-frequencies",
+        "good-1953-turing-attribution",
+        "good-1953-unseen-mass"
+      ],
+      "prerequisites": [
+        "Discrete probability distributions",
+        "Frequency-of-frequencies notation",
+        "Approximate estimators and smoothing"
+      ],
+      "successCriterion": "The learner can define nᵣ, N, and r*, recover r* ≈ (r + 1)nᵣ₊₁/nᵣ and n₁/N, explain why the nᵣ sequence must be smoothed, and keep Good's population-level result distinct from Katz's history-specific reserve and normalizer."
+    },
+    {
       "id": "beginner-katz-1987-backoff",
       "mode": "beginner",
       "objective": "Explain how discounting saves probability for unseen phrases, why lower-order patterns divide that reserve instead of replacing every higher-order estimate, and how zero-estimate backoff differs from interpolation.",

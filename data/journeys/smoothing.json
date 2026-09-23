@@ -1,0 +1,143 @@
+{
+  "$schema": "../../schemas/journey.schema.json",
+  "id": "smoothing",
+  "slug": "smoothing",
+  "title": "The smoothing story",
+  "question": "Where should probability go when the exact phrase is rare or missing?",
+  "estimatedMinutes": {
+    "beginner": 24,
+    "expert": 42
+  },
+  "stages": [
+    {
+      "slug": "good-1953",
+      "workId": "good-1953-population-frequencies",
+      "status": "built",
+      "objectiveIds": {
+        "beginner": "beginner-good-1953-unseen-mass",
+        "expert": "expert-good-1953-frequency-estimator"
+      },
+      "contribution": {
+        "text": "Use the frequency of rare types to estimate how much probability may belong to unseen types.",
+        "claimIds": [
+          "good-1953-frequency-of-frequencies",
+          "good-1953-unseen-mass"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-good-signal",
+            "kind": "explanation",
+            "heading": "Rare events carry a signal",
+            "body": "Good's article asks what low-frequency observations reveal about a larger population. Types seen exactly once supply evidence that some probability still belongs to types absent from the sample.",
+            "claimIds": [
+              "good-1953-frequency-of-frequencies",
+              "good-1953-unseen-mass"
+            ]
+          },
+          {
+            "id": "beginner-good-boundary",
+            "kind": "limitation",
+            "heading": "A reserve, not yet a routing rule",
+            "body": "This estimate concerns population-level unseen mass. It does not yet say how a conditional language model should divide that reserve after a particular history.",
+            "claimIds": [
+              "good-1953-unseen-mass"
+            ]
+          },
+          {
+            "id": "beginner-good-credit",
+            "kind": "explanation",
+            "heading": "The attribution matters",
+            "body": "Good explicitly credits A. M. Turing for the central adjusted-count formula and for a large share of the work behind it.",
+            "claimIds": [
+              "good-1953-turing-attribution"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-good-estimator",
+            "kind": "equation",
+            "heading": "Adjusted counts from frequencies of frequencies",
+            "body": "For n_r types observed r times, Good relates the expected frequency of one such type to r*/N, with r* approximately (r + 1)n_(r+1)/n_r after smoothing the n_r sequence.",
+            "claimIds": [
+              "good-1953-frequency-of-frequencies"
+            ]
+          },
+          {
+            "id": "expert-good-mass",
+            "kind": "equation",
+            "heading": "The complementary mass identity",
+            "body": "The represented population receives approximate mass 1 - n_1/N, leaving n_1/N for a previously unseen species on the next draw.",
+            "claimIds": [
+              "good-1953-unseen-mass"
+            ]
+          },
+          {
+            "id": "expert-good-boundary",
+            "kind": "limitation",
+            "heading": "Scope and attribution boundary",
+            "body": "The result is approximate, its count-of-counts sequence is smoothed, its setup is population estimation rather than conditional backoff, and Good explicitly attributes the central formula to Turing.",
+            "claimIds": [
+              "good-1953-frequency-of-frequencies",
+              "good-1953-turing-attribution",
+              "good-1953-unseen-mass"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "katz-1987",
+      "workId": "katz-1987-sparse-data",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-katz-1987-backoff",
+        "expert": "expert-katz-1987-estimator"
+      },
+      "contribution": {
+        "text": "Reserve mass inside a conditional history and route it through a zero-estimate backoff gate.",
+        "claimIds": [
+          "katz-1987-history-reserved-mass",
+          "katz-1987-zero-estimate-gate"
+        ]
+      },
+      "blocks": { "beginner": [], "expert": [] }
+    },
+    {
+      "slug": "kneser-ney-1995",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-kneser-ney-1995-context-diversity",
+        "expert": "expert-kneser-ney-1995-estimator"
+      },
+      "contribution": {
+        "text": "Allocate fallback mass with evidence about how widely a continuation appears across predecessor contexts.",
+        "claimIds": [
+          "kneser-ney-1995-context-diversity",
+          "kneser-ney-1995-singleton-distribution"
+        ]
+      },
+      "blocks": { "beginner": [], "expert": [] }
+    },
+    {
+      "slug": "chen-goodman-1998",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-chen-goodman-1998-two-levers",
+        "expert": "expert-chen-goodman-1998-modified-estimator"
+      },
+      "contribution": {
+        "text": "Interpolate lower-order evidence and separate discount tiers inside a later modified implementation.",
+        "claimIds": [
+          "chen-goodman-1998-interpolated-form",
+          "chen-goodman-1998-three-discount-form"
+        ]
+      },
+      "blocks": { "beginner": [], "expert": [] }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+---
+import { renderToString } from "katex";
+
+import EvidenceDetails from "../../../../components/EvidenceDetails.astro";
+import GoodMassLedger from "../../../../components/GoodMassLedger.astro";
+import JourneyMap from "../../../../components/JourneyMap.astro";
+import ModeSwitch from "../../../../components/ModeSwitch.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import {
+  getBuiltStagePaths,
+  getJourneyOverview,
+  getStageView,
+  type Mode,
+} from "../../../../lib/site-data";
+
+export function getStaticPaths() {
+  return getBuiltStagePaths();
+}
+
+const rawMode = Astro.params.mode;
+const slug = Astro.params.stage;
+if ((rawMode !== "beginner" && rawMode !== "expert") || slug === undefined) {
+  throw new Error("Invalid smoothing stage route.");
+}
+const mode: Mode = rawMode;
+const view = getStageView(mode, slug);
+const journey = getJourneyOverview();
+const fixture = view.fixture;
+if (fixture === undefined) {
+  throw new Error(`Stage ${slug} is missing its reviewed fixture.`);
+}
+
+const adjustedCountEquation = renderToString(
+  String.raw`r^{*} \approx (r+1)\frac{n_{r+1}}{n_r}, \qquad \hat p_r = \frac{r^{*}}{N}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const massEquation = renderToString(
+  String.raw`P(\text{unseen next}) \approx \frac{n_1}{N}, \qquad P(\text{represented}) \approx 1 - \frac{n_1}{N}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+---
+
+<BaseLayout
+  title={`${mode === "beginner" ? "Beginner" : "Expert"}: Good 1953 — LLM Lineage`}
+  description="Good's frequency-of-frequencies estimate and its boundary before conditional language-model backoff."
+  eyebrow={`${mode} journey`}
+>
+  <div class="shell breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/journeys/smoothing/">Smoothing</a><span aria-hidden="true">/</span>
+    <a href={`/journeys/smoothing/${mode}/`}>{mode}</a><span aria-hidden="true">/</span>
+    <span aria-current="page">Good 1953</span>
+  </div>
+
+  <article class="stage-shell">
+    <div class="stage-reading">
+      <ModeSwitch activeMode={mode} alternateHref={view.alternateMode.href} />
+      <header class="stage-header">
+        <p class="stage-number">Stage {view.stage.position} of {view.stage.total} · {view.work.chronologyDate.slice(0, 4)}</p>
+        <h1>{mode === "beginner" ? "How can rare events reveal the unseen?" : "What does n₁/N estimate—and what does it not?"}</h1>
+        <p class="stage-question">{view.contribution}</p>
+        <dl class="stage-meta">
+          <div><dt>Work</dt><dd>{view.work.authors.join(", ")}</dd></div>
+          <div><dt>Version</dt><dd>{view.canonicalVersion.label}</dd></div>
+          <div><dt>Corpus role</dt><dd>{view.work.inclusionStatus} · {view.work.inclusionConfidence}</dd></div>
+          <div><dt>Publication</dt><dd>{view.work.chronologyLabel}</dd></div>
+        </dl>
+      </header>
+
+      <section class="objective-band" aria-labelledby="objective-heading">
+        <h2 id="objective-heading">Your task</h2>
+        <p>{view.objective.objective}</p>
+        <details>
+          <summary>Success criterion</summary>
+          <p>{view.objective.successCriterion}</p>
+        </details>
+      </section>
+
+      {mode === "expert" && (
+        <section class="reading-block" aria-labelledby="notation-heading">
+          <p class="kicker">Notation</p>
+          <h2 id="notation-heading">Two related estimates, one crucial scope boundary</h2>
+          <div class="equation-panel" aria-label="Good adjusted-count relation" tabindex="0">
+            <span class="equation-label">Adjusted count and expected frequency</span>
+            <div set:html={adjustedCountEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Good represented and unseen mass relations" tabindex="0">
+            <span class="equation-label">Complementary population mass</span>
+            <div set:html={massEquation} />
+          </div>
+        </section>
+      )}
+
+      {view.blocks.map((block) => (
+        <section class:list={["reading-block", { "reading-block--limitation": block.kind === "limitation" }]} aria-labelledby={`${block.id}-heading`}>
+          <p class="kicker">{block.kind}</p>
+          <h2 id={`${block.id}-heading`}>{block.heading}</h2>
+          <p>{block.body}</p>
+          {block.evidence.map((evidence) => <EvidenceDetails evidence={evidence} />)}
+        </section>
+      ))}
+
+    </div>
+
+    <aside class="stage-workbench" aria-label="Good unseen-mass workbench">
+      <GoodMassLedger fixture={fixture} mode={mode} />
+      <div class="mt-4">
+        <p class="eyebrow">Journey position</p>
+        <JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact />
+      </div>
+    </aside>
+
+    <div class="stage-conclusion">
+      <section class="limitation-band" aria-labelledby="limits-heading">
+        <h2 id="limits-heading">What remains limited here</h2>
+        <ul>{view.limitations.map((item) => <li>{item}</li>)}</ul>
+      </section>
+
+      <footer class="stage-footer">
+        <div>
+          <a href={`/reference/works/${view.work.id}/`}>Inspect the complete work record</a>
+          <p class="muted">All three claims, version metadata, sources, and boundaries.</p>
+        </div>
+        <div class="next-preview">
+          <strong>Next: Katz, 1987</strong>
+          <p>The following chapter will move from a population-level reserve to history-specific discounting and a zero-estimate gate.</p>
+          <a href="/journeys/smoothing/">Return to the journey map</a>
+        </div>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/fixture.schema.json",
+  "id": "good-singleton-reserve",
+  "kind": "good-unseen-mass",
+  "label": "Synthetic example",
+  "description": "A twelve-observation sample with three types that appear once.",
+  "representedClaimIds": [
+    "good-1953-frequency-of-frequencies",
+    "good-1953-unseen-mass"
+  ],
+  "observedTypes": [
+    { "label": "alder", "count": 4 },
+    { "label": "birch", "count": 3 },
+    { "label": "cedar", "count": 2 },
+    { "label": "dogwood", "count": 1 },
+    { "label": "elm", "count": 1 },
+    { "label": "fir", "count": 1 }
+  ],
+  "expected": {
+    "sampleSize": 12,
+    "singletonTypes": 3,
+    "representedMass": 0.75,
+    "unseenMass": 0.25
+  }
+}
