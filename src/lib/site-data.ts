@@ -4,6 +4,11 @@ import { resolve } from "node:path";
 import Ajv2020, { type AnySchema, type ErrorObject } from "ajv/dist/2020.js";
 
 import { validateCorpus } from "../../scripts/lib/validate-corpus.mjs";
+import {
+  assertKatzExpected,
+  calculateKatzScenario,
+  type KatzFixture,
+} from "./katz-engine.ts";
 
 export type Mode = "beginner" | "expert";
 export type StageStatus = "built" | "planned";
@@ -259,7 +264,8 @@ export type StageView = {
   limitations: string[];
   uncertainties: string[];
   evidence: EvidenceView[];
-  fixture?: GoodFixture;
+  goodFixture?: GoodFixture;
+  katzFixture?: KatzFixture;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -454,6 +460,38 @@ function validateFixture(fixture: GoodFixture, indexes: Indexes): void {
   }
 }
 
+function validateKatzFixture(fixture: KatzFixture, indexes: Indexes): void {
+  const scenarioIds = new Set<string>();
+  for (const claimId of fixture.representedClaimIds) {
+    const claim = required(indexes.claims, claimId, "Katz fixture claim");
+    if (claim.workId !== "katz-1987-sparse-data") {
+      throw new Error(`Katz fixture cannot represent claim from ${claim.workId}.`);
+    }
+  }
+
+  for (const scenario of fixture.scenarios) {
+    if (scenarioIds.has(scenario.id)) {
+      throw new Error(`Duplicate Katz scenario id: ${scenario.id}`);
+    }
+    scenarioIds.add(scenario.id);
+    const result = calculateKatzScenario(scenario);
+    assertKatzExpected(scenario, result);
+    if (!closeEnough(result.total, 1)) {
+      throw new Error(`Katz fixture ${scenario.id} normalization invariant failed.`);
+    }
+    if (result.continuations.some((item) => item.finalProbability < 0)) {
+      throw new Error(`Katz fixture ${scenario.id} produced a negative probability.`);
+    }
+  }
+
+  if (!fixture.scenarios.some((scenario) => scenario.modes.includes("beginner"))) {
+    throw new Error("Katz fixture must expose at least one beginner scenario.");
+  }
+  if (!fixture.scenarios.some((scenario) => scenario.modes.includes("expert"))) {
+    throw new Error("Katz fixture must expose at least one expert scenario.");
+  }
+}
+
 const rawCorpus = readJson("data/corpus.json");
 const rawCorpusSchema = readJson("schemas/corpus.schema.json");
 const corpusErrors = validateCorpus(rawCorpus, rawCorpusSchema);
@@ -467,10 +505,13 @@ const indexes = makeIndexes(corpus);
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const rawJourneySchema = readJson("schemas/journey.schema.json");
 const rawFixtureSchema = readJson("schemas/fixture.schema.json");
+const rawKatzFixtureSchema = readJson("schemas/katz-fixture.schema.json");
 const rawManifest = readJson("data/journeys/smoothing.json");
 const rawFixture = readJson("data/fixtures/good-singleton-reserve.json");
+const rawKatzFixture = readJson("data/fixtures/katz-probability-mass.json");
 const journeyValidator = ajv.compile(rawJourneySchema as AnySchema);
 const fixtureValidator = ajv.compile(rawFixtureSchema as AnySchema);
+const katzFixtureValidator = ajv.compile(rawKatzFixtureSchema as AnySchema);
 
 if (!journeyValidator(rawManifest)) {
   throw new Error(`Journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
@@ -478,11 +519,16 @@ if (!journeyValidator(rawManifest)) {
 if (!fixtureValidator(rawFixture)) {
   throw new Error(`Fixture schema failed: ${formatSchemaErrors(fixtureValidator.errors)}`);
 }
+if (!katzFixtureValidator(rawKatzFixture)) {
+  throw new Error(`Katz fixture schema failed: ${formatSchemaErrors(katzFixtureValidator.errors)}`);
+}
 
 const manifest = rawManifest as JourneyManifest;
 const goodFixture = rawFixture as GoodFixture;
+const katzFixture = rawKatzFixture as KatzFixture;
 validateManifest(manifest, indexes);
 validateFixture(goodFixture, indexes);
+validateKatzFixture(katzFixture, indexes);
 
 function chronologySummary(work: Work): { label: string; date: string } {
   const event = work.chronology.events.find((item) => item.id === work.chronology.orderingEventId);
@@ -626,7 +672,8 @@ export function getStageView(mode: Mode, slug: string): StageView {
     limitations: work.limitations,
     uncertainties: work.uncertainties.map((item) => item.note),
     evidence,
-    ...(stage.slug === "good-1953" ? { fixture: goodFixture } : {}),
+    ...(stage.slug === "good-1953" ? { goodFixture } : {}),
+    ...(stage.slug === "katz-1987" ? { katzFixture } : {}),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {
@@ -660,6 +707,10 @@ export function getBuiltReferenceWorkIds(): string[] {
 
 export function getFixtureForTests(): GoodFixture {
   return goodFixture;
+}
+
+export function getKatzFixtureForTests(): KatzFixture {
+  return katzFixture;
 }
 
 export function getCorpusSummary(): {

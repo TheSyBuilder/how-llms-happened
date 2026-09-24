@@ -4,6 +4,8 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "allowJs": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "noUncheckedIndexedAccess": true,
     "verbatimModuleSyntax": true
   }

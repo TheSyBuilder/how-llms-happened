@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { extname, join, relative, resolve } from "node:path";
+import { dirname, extname, join, relative, resolve } from "node:path";
 import { gzipSync } from "node:zlib";
 
 const distRoot = resolve("dist");
@@ -28,6 +28,18 @@ function fileForPathname(pathname) {
   return join(direct, "index.html");
 }
 
+function collectJavaScript(path, visited = new Set()) {
+  const normalized = resolve(path);
+  if (visited.has(normalized)) return visited;
+  if (!existsSync(normalized)) return visited;
+  visited.add(normalized);
+  const source = readFileSync(normalized, "utf8");
+  for (const match of source.matchAll(/["'](\.\/[^"']+\.js)["']/g)) {
+    collectJavaScript(resolve(dirname(normalized), match[1]), visited);
+  }
+  return visited;
+}
+
 if (!existsSync(distRoot)) {
   throw new Error("dist/ does not exist; run Astro before the build audit.");
 }
@@ -45,8 +57,11 @@ for (const htmlPath of htmlFiles) {
   if (mainCount !== 1) failures.push(`${route} has ${mainCount} main landmarks.`);
   if (headingCount !== 1) failures.push(`${route} has ${headingCount} h1 elements.`);
 
-  const scriptSources = [...html.matchAll(/<script[^>]+src="([^"]+\.js[^"]*)"/g)].map((match) => match[1]);
-  let compressedClientBytes = 0;
+  const scriptSources = [
+    ...html.matchAll(/<script[^>]+src="([^"]+\.js[^"]*)"/g),
+    ...html.matchAll(/(?:component-url|renderer-url|before-hydration-url)="([^"]+\.js[^"]*)"/g),
+  ].map((match) => match[1]);
+  const assetPaths = new Set();
   for (const scriptSource of scriptSources) {
     if (!scriptSource.startsWith("/")) continue;
     const assetPath = fileForPathname(new URL(scriptSource, "https://local.invalid").pathname);
@@ -54,8 +69,14 @@ for (const htmlPath of htmlFiles) {
       failures.push(`${route} references missing script ${scriptSource}.`);
       continue;
     }
-    compressedClientBytes += gzipSync(readFileSync(assetPath)).byteLength;
+    for (const dependency of collectJavaScript(assetPath)) assetPaths.add(dependency);
   }
+  const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
+    .filter((match) => !/\ssrc=/.test(match[0]))
+    .map((match) => match[1]);
+  const compressedClientBytes = [...assetPaths]
+    .reduce((total, assetPath) => total + gzipSync(readFileSync(assetPath)).byteLength, 0)
+    + inlineScripts.reduce((total, source) => total + gzipSync(source).byteLength, 0);
   if (compressedClientBytes > 40 * 1024) {
     failures.push(`${route} ships ${compressedClientBytes} compressed client bytes; budget is 40960.`);
   }
@@ -80,13 +101,25 @@ for (const htmlPath of htmlFiles) {
     }
   }
 
-  routes.push({ route, compressedClientBytes, scriptCount: scriptSources.length });
+  routes.push({
+    route,
+    compressedClientBytes,
+    scriptCount: scriptSources.length + inlineScripts.length,
+    clientAssetCount: assetPaths.size,
+  });
+}
+
+const katzFixturePath = resolve("data/fixtures/katz-probability-mass.json");
+const katzFixtureBytes = existsSync(katzFixturePath) ? readFileSync(katzFixturePath).byteLength : 0;
+if (katzFixtureBytes > 10 * 1024) {
+  failures.push(`Katz fixture is ${katzFixtureBytes} bytes; budget is 10240.`);
 }
 
 const report = {
   generatedAt: new Date().toISOString(),
   routeCount: routes.length,
   unresolvedReferenceCount: failures.length,
+  katzFixtureBytes,
   routes: routes.sort((left, right) => left.route.localeCompare(right.route)),
 };
 

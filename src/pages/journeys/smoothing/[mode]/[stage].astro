@@ -4,6 +4,7 @@ import { renderToString } from "katex";
 import EvidenceDetails from "../../../../components/EvidenceDetails.astro";
 import GoodMassLedger from "../../../../components/GoodMassLedger.astro";
 import JourneyMap from "../../../../components/JourneyMap.astro";
+import KatzMassLedger from "../../../../components/KatzMassLedger";
 import ModeSwitch from "../../../../components/ModeSwitch.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import {
@@ -25,10 +26,25 @@ if ((rawMode !== "beginner" && rawMode !== "expert") || slug === undefined) {
 const mode: Mode = rawMode;
 const view = getStageView(mode, slug);
 const journey = getJourneyOverview();
-const fixture = view.fixture;
-if (fixture === undefined) {
-  throw new Error(`Stage ${slug} is missing its reviewed fixture.`);
-}
+const isGood = slug === "good-1953";
+const isKatz = slug === "katz-1987";
+if (!isGood && !isKatz) throw new Error(`No page treatment is defined for ${slug}.`);
+if (isGood && view.goodFixture === undefined) throw new Error("Good is missing its reviewed fixture.");
+if (isKatz && view.katzFixture === undefined) throw new Error("Katz is missing its reviewed fixture.");
+
+const pageTitle = isGood
+  ? `${mode === "beginner" ? "Beginner" : "Expert"}: Good 1953 — LLM Lineage`
+  : `${mode === "beginner" ? "Beginner" : "Expert"}: Katz 1987 — LLM Lineage`;
+const pageDescription = isGood
+  ? "Good's frequency-of-frequencies estimate and its boundary before conditional language-model backoff."
+  : "Katz's history-specific reserved mass, lower-order normalization, and zero-estimate backoff gate.";
+const heading = isGood
+  ? mode === "beginner"
+    ? "How can rare events reveal the unseen?"
+    : "What does n₁/N estimate—and what does it not?"
+  : mode === "beginner"
+    ? "When does Katz keep an estimate—and when does it back off?"
+    : "How do β̃, α, and the zero-estimate gate fit together?";
 
 const adjustedCountEquation = renderToString(
   String.raw`r^{*} \approx (r+1)\frac{n_{r+1}}{n_r}, \qquad \hat p_r = \frac{r^{*}}{N}`,
@@ -38,18 +54,30 @@ const massEquation = renderToString(
   String.raw`P(\text{unseen next}) \approx \frac{n_1}{N}, \qquad P(\text{represented}) \approx 1 - \frac{n_1}{N}`,
   { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
 );
+const katzReserveEquation = renderToString(
+  String.raw`\tilde p(w\mid h)=\frac{d_r r}{c(h)}, \qquad \tilde\beta(h)=1-\sum_{\tilde p(w\mid h)>0}\tilde p(w\mid h)`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const katzAlphaEquation = renderToString(
+  String.raw`\alpha(h)=\frac{\tilde\beta(h)}{\sum_{\tilde p(w\mid h)=0}p_{m-1}(w\mid h')}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const katzGateEquation = renderToString(
+  String.raw`\hat p(w\mid h)=\begin{cases}\tilde p(w\mid h),&\tilde p(w\mid h)>0\\ \alpha(h)p_{m-1}(w\mid h'),&\tilde p(w\mid h)=0\end{cases}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
 ---
 
 <BaseLayout
-  title={`${mode === "beginner" ? "Beginner" : "Expert"}: Good 1953 — LLM Lineage`}
-  description="Good's frequency-of-frequencies estimate and its boundary before conditional language-model backoff."
+  title={pageTitle}
+  description={pageDescription}
   eyebrow={`${mode} journey`}
 >
   <div class="shell breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">/</span>
     <a href="/journeys/smoothing/">Smoothing</a><span aria-hidden="true">/</span>
     <a href={`/journeys/smoothing/${mode}/`}>{mode}</a><span aria-hidden="true">/</span>
-    <span aria-current="page">Good 1953</span>
+    <span aria-current="page">{view.work.authors[0]} {view.work.chronologyDate.slice(0, 4)}</span>
   </div>
 
   <article class="stage-shell">
@@ -57,7 +85,7 @@ const massEquation = renderToString(
       <ModeSwitch activeMode={mode} alternateHref={view.alternateMode.href} />
       <header class="stage-header">
         <p class="stage-number">Stage {view.stage.position} of {view.stage.total} · {view.work.chronologyDate.slice(0, 4)}</p>
-        <h1>{mode === "beginner" ? "How can rare events reveal the unseen?" : "What does n₁/N estimate—and what does it not?"}</h1>
+        <h1>{heading}</h1>
         <p class="stage-question">{view.contribution}</p>
         <dl class="stage-meta">
           <div><dt>Work</dt><dd>{view.work.authors.join(", ")}</dd></div>
@@ -76,7 +104,7 @@ const massEquation = renderToString(
         </details>
       </section>
 
-      {mode === "expert" && (
+      {mode === "expert" && isGood && (
         <section class="reading-block" aria-labelledby="notation-heading">
           <p class="kicker">Notation</p>
           <h2 id="notation-heading">Two related estimates, one crucial scope boundary</h2>
@@ -87,6 +115,25 @@ const massEquation = renderToString(
           <div class="equation-panel" aria-label="Good represented and unseen mass relations" tabindex="0">
             <span class="equation-label">Complementary population mass</span>
             <div set:html={massEquation} />
+          </div>
+        </section>
+      )}
+
+      {mode === "expert" && isKatz && (
+        <section class="reading-block" aria-labelledby="notation-heading">
+          <p class="kicker">Notation</p>
+          <h2 id="notation-heading">One reserve, one eligible set, one zero gate</h2>
+          <div class="equation-panel" aria-label="Katz discounted estimate and reserved mass" tabindex="0">
+            <span class="equation-label">Seen estimates and the history-specific reserve · equations 13–14</span>
+            <div set:html={katzReserveEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Katz alpha normalizer" tabindex="0">
+            <span class="equation-label">Normalize over lower-order support eligible for backoff · equations 15–16</span>
+            <div set:html={katzAlphaEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Katz zero-estimate piecewise gate" tabindex="0">
+            <span class="equation-label">Use the lower order only when the retained estimate is zero · equations 18–19</span>
+            <div set:html={katzGateEquation} />
           </div>
         </section>
       )}
@@ -102,8 +149,10 @@ const massEquation = renderToString(
 
     </div>
 
-    <aside class="stage-workbench" aria-label="Good unseen-mass workbench">
-      <GoodMassLedger fixture={fixture} mode={mode} />
+    <aside class:list={["stage-workbench", { "stage-workbench--long": isKatz }]} aria-label={isGood ? "Good unseen-mass workbench" : "Katz probability-mass workbench"}>
+      {isGood && view.goodFixture && <GoodMassLedger fixture={view.goodFixture} mode={mode} />}
+      {isKatz && view.katzFixture && <KatzMassLedger fixture={view.katzFixture} mode={mode} client:visible />}
+      {isKatz && <p class="no-script-note">The default Katz ledger, normalized table, and checkpoint answer are server rendered. Scenario controls enhance this state when JavaScript is available.</p>}
       <div class="mt-4">
         <p class="eyebrow">Journey position</p>
         <JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact />
@@ -119,12 +168,22 @@ const massEquation = renderToString(
       <footer class="stage-footer">
         <div>
           <a href={`/reference/works/${view.work.id}/`}>Inspect the complete work record</a>
-          <p class="muted">All three claims, version metadata, sources, and boundaries.</p>
+          <p class="muted">Version metadata, claim locators, sources, and boundaries.</p>
         </div>
         <div class="next-preview">
-          <strong>Next: Katz, 1987</strong>
-          <p>The following chapter will move from a population-level reserve to history-specific discounting and a zero-estimate gate.</p>
-          <a href="/journeys/smoothing/">Return to the journey map</a>
+          {isGood ? (
+            <>
+              <strong>Next: Katz, 1987</strong>
+              <p>Move from a population-level reserve to history-specific discounting and a zero-estimate gate.</p>
+              <a href={`/journeys/smoothing/${mode}/katz-1987/`}>Continue to Katz <span aria-hidden="true">→</span></a>
+            </>
+          ) : (
+            <>
+              <strong>Next: Kneser and Ney, 1995</strong>
+              <p>The next chapter will change the evidence used to divide the fallback mass. It remains queued while Katz is verified.</p>
+              <a href={`/journeys/smoothing/${mode}/good-1953/`}><span aria-hidden="true">←</span> Revisit Good</a>
+            </>
+          )}
         </div>
       </footer>
     </div>

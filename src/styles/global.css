@@ -118,6 +118,7 @@
   }
   .stage-reading { min-width: 0; }
   .stage-workbench { min-width: 0; grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 1rem; align-self: start; }
+  .stage-workbench--long { position: static; grid-row: 1; }
   .stage-conclusion { min-width: 0; grid-column: 1; }
   .reference-shell { max-width: 78rem; padding-top: var(--space-6); }
 }
@@ -176,6 +177,9 @@
   .button:hover { background: var(--rust); color: white; border-color: var(--rust); }
   .button--quiet { background: transparent; color: var(--ink); }
   .button--quiet:hover { color: white; }
+  button.button { cursor: pointer; }
+  button.button:disabled { cursor: not-allowed; opacity: 0.52; background: transparent; color: var(--ink-muted); border-color: var(--rule); }
+  button.button:disabled:hover { background: transparent; color: var(--ink-muted); border-color: var(--rule); }
   .hero-ledger { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule-strong); }
   .hero-ledger > header { display: flex; justify-content: space-between; gap: 1rem; padding: var(--space-3) 0; border-bottom: 1px solid var(--rule); }
   .hero-ledger > header span { color: var(--ink-muted); font-family: var(--mono); font-size: var(--step--1); }
@@ -254,7 +258,7 @@
   .ledger-folio { max-width: 24ch; text-align: right; color: var(--ink-muted); font-size: 0.72rem; }
   .ledger-prompt { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--rule); background: var(--blue-soft); }
   .ledger-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr); }
-  .ledger-table-wrap { padding: var(--space-4); min-width: 0; }
+  .ledger-table-wrap { padding: var(--space-4); min-width: 0; overflow-x: auto; }
   .ledger-table-wrap table { font-size: 0.88rem; }
   .ledger-table-wrap .singleton th, .ledger-table-wrap .singleton td { background: var(--rust-soft); }
   .ledger-table-wrap tfoot { border-top: 2px solid var(--ink); }
@@ -278,6 +282,43 @@
   .frequency-register h3 { margin-bottom: var(--space-3); }
   .frequency-register table { font-size: 0.88rem; }
   .register-note { margin-top: var(--space-3); color: var(--ink-soft); font-size: 0.9rem; }
+  .ledger-controls { padding: var(--space-4); border-bottom: 1px solid var(--rule-strong); background: var(--blue-soft); }
+  .control-row { display: grid; grid-template-columns: minmax(8rem, 0.55fr) minmax(12rem, 1fr); gap: var(--space-2) var(--space-3); align-items: center; }
+  .control-row > label, .ledger-controls legend { font-weight: 700; }
+  .control-row select { min-height: 2.75rem; width: 100%; border: 1px solid var(--ink); border-radius: 0.18rem; padding: 0.55rem 2rem 0.55rem 0.7rem; background: var(--paper-raised); color: var(--ink); }
+  .control-row p { grid-column: 1 / -1; color: var(--ink-soft); font-size: 0.9rem; }
+  .ledger-controls fieldset { min-width: 0; margin: var(--space-4) 0 0; padding: var(--space-3); border: 1px solid var(--rule-strong); }
+  .ledger-controls legend { padding-inline: 0.4rem; }
+  .prediction-question { margin-bottom: var(--space-2); }
+  .radio-choice { display: flex; gap: 0.65rem; align-items: flex-start; min-height: 2.6rem; padding-block: 0.45rem; cursor: pointer; }
+  .radio-choice input { width: 1.2rem; height: 1.2rem; margin-top: 0.15rem; accent-color: var(--blue); flex: 0 0 auto; }
+  .control-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: var(--space-3); }
+  .ledger-live { min-height: 1.6em; margin-top: var(--space-3); color: var(--ink-soft); font-weight: 620; }
+  .scenario-register { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--rule); }
+  .scenario-register dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
+  .scenario-register dt { color: var(--ink-muted); font-size: var(--step--1); }
+  .scenario-register dd { margin-top: 0.2rem; font-family: var(--mono); font-size: 0.84rem; font-weight: 680; overflow-wrap: anywhere; }
+  .katz-count-table { border-bottom: 1px solid var(--rule-strong); }
+  .katz-count-table table, .final-probability-table table { min-width: 29rem; font-size: 0.86rem; }
+  .mass-transfer { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule-strong); }
+  .mass-transfer > div { padding: var(--space-4); }
+  .mass-transfer > div + div { border-left: 1px solid var(--rule-strong); }
+  .mass-transfer .mass-bar { height: 3.25rem; }
+  .mass-redistributed { background-color: var(--teal-soft); background-image: radial-gradient(var(--teal) 1.5px, transparent 1.5px); background-size: 7px 7px; }
+  .mass-empty { display: grid; place-items: center; background: var(--paper-deep); color: var(--ink-soft); font-family: var(--mono); font-size: 0.76rem; }
+  .mass-caption { color: var(--ink-soft); font-size: 0.84rem; }
+  .row-observed th, .row-observed td { background: color-mix(in srgb, var(--blue-soft) 55%, transparent); }
+  .row-redistributed th, .row-redistributed td { background: color-mix(in srgb, var(--teal-soft) 60%, transparent); }
+  .final-probability-table { border-bottom: 1px solid var(--rule-strong); }
+  .final-probability-table tfoot { border-top: 2px solid var(--ink); }
+  .calculation-trace, .comparison-register { padding: var(--space-4); border-bottom: 1px solid var(--rule-strong); }
+  .calculation-trace h3, .comparison-register h3 { margin-bottom: var(--space-3); }
+  .calculation-trace dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-4); }
+  .calculation-trace dl > div { padding: 0.65rem 0; border-top: 1px solid var(--rule); }
+  .calculation-trace dt { color: var(--ink-muted); font-size: var(--step--1); }
+  .calculation-trace dd { margin-top: 0.2rem; font-family: var(--mono); font-size: 0.84rem; overflow-wrap: anywhere; }
+  .comparison-register table { font-size: 0.86rem; }
+  .no-script-note { padding: var(--space-3); border: 1px solid var(--rule-strong); border-top: 0; background: var(--warning-soft); color: var(--ink-soft); }
   .checkpoint { border-top: 1px solid var(--rule-strong); }
   .checkpoint summary { cursor: pointer; padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--teal); }
   .checkpoint p { padding: 0 var(--space-4) var(--space-4); }
@@ -335,6 +376,9 @@
     .path-choice + .path-choice { border-left: 0; border-top: 1px solid var(--rule-strong); }
     .ledger-grid { grid-template-columns: 1fr; }
     .mass-account { border-left: 0; border-top: 1px solid var(--rule-strong); }
+    .scenario-register dl { grid-template-columns: 1fr 1fr; }
+    .mass-transfer { grid-template-columns: 1fr; }
+    .mass-transfer > div + div { border-left: 0; border-top: 1px solid var(--rule-strong); }
   }
 }
 
@@ -353,6 +397,14 @@
     .ledger-header { display: block; }
     .ledger-folio { margin-top: var(--space-2); text-align: left; }
     .ledger-table-wrap, .mass-account, .frequency-register { padding: var(--space-3); }
+    .ledger-controls, .scenario-register, .mass-transfer > div, .calculation-trace, .comparison-register { padding: var(--space-3); }
+    .control-row { grid-template-columns: 1fr; }
+    .control-row p { grid-column: 1; }
+    .control-actions { display: grid; }
+    .control-actions .button { width: 100%; }
+    .scenario-register dl, .calculation-trace dl { grid-template-columns: 1fr; }
+    .katz-count-table table, .final-probability-table table { min-width: 0; }
+    .mass-ledger--expert .katz-count-table table, .mass-ledger--expert .final-probability-table table { min-width: 30rem; }
     th, td { padding-inline: 0.3rem; }
     .stage-footer { display: block; }
     .stage-footer > * + * { margin-top: var(--space-3); }
@@ -365,13 +417,14 @@
 
 @media (forced-colors: active) {
   .mass-represented, .mass-unseen { background: CanvasText; }
+  .mass-redistributed { background: CanvasText; }
   .swatch { forced-color-adjust: none; background: CanvasText; }
 }
 
 @layer print {
   @media print {
     :root { --paper: white; --paper-raised: white; --ink: black; }
-    .site-header nav, .skip-link, .hero-actions, .mode-switch { display: none; }
+    .site-header nav, .skip-link, .hero-actions, .mode-switch, .ledger-controls { display: none; }
     .site-header, .site-footer, .stage-shell, .reference-shell { width: 100%; }
     .stage-shell { display: block; }
     .stage-workbench { margin-top: 2rem; }

@@ -91,7 +91,7 @@
     {
       "slug": "katz-1987",
       "workId": "katz-1987-sparse-data",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-katz-1987-backoff",
         "expert": "expert-katz-1987-estimator"
@@ -103,7 +103,104 @@
           "katz-1987-zero-estimate-gate"
         ]
       },
-      "blocks": { "beginner": [], "expert": [] }
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-katz-scale-change",
+            "kind": "comparison",
+            "heading": "Move the reserve inside one history",
+            "body": "The corpus-level n₁/N total and Katz's history-specific reserve are different quantities. For one observed history, Katz discounts its seen continuations and defines the remaining conditional mass as β̃.",
+            "claimIds": [
+              "katz-1987-global-unseen-mass",
+              "katz-1987-history-reserved-mass"
+            ]
+          },
+          {
+            "id": "beginner-katz-zero-gate",
+            "kind": "explanation",
+            "heading": "Keep a nonzero estimate; back off from zero",
+            "body": "A continuation with a nonzero discounted higher-order estimate keeps that estimate. Only a zero higher-order estimate opens the gate to an α-scaled lower-order probability.",
+            "claimIds": [
+              "katz-1987-lower-order-allocation",
+              "katz-1987-zero-estimate-gate"
+            ]
+          },
+          {
+            "id": "beginner-katz-recursion",
+            "kind": "explanation",
+            "heading": "If the history is missing, shorten it",
+            "body": "When the conditioning history itself has zero count, Katz drops its oldest word and directly uses the already-defined lower-order estimator.",
+            "claimIds": [
+              "katz-1987-recursive-backoff"
+            ]
+          },
+          {
+            "id": "beginner-katz-boundary",
+            "kind": "limitation",
+            "heading": "Hard backoff is not interpolation",
+            "body": "This source-bound Katz stage does not mix lower-order evidence into every seen continuation. Katz also locates the article's contribution in nonlinear backoff, not in the inherited Turing formulas.",
+            "claimIds": [
+              "katz-1987-zero-estimate-gate",
+              "katz-1987-novelty-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-katz-discount",
+            "kind": "equation",
+            "heading": "Separate inherited adjusted counts from Katz's cutoff correction",
+            "body": "Katz adopts Turing's adjusted count and discount notation, then leaves counts above k undiscounted and modifies the coefficients from one through k so the removed mass remains n₁/N.",
+            "claimIds": [
+              "katz-1987-turing-adjusted-count",
+              "katz-1987-discounting-definition",
+              "katz-1987-count-threshold",
+              "katz-1987-low-count-renormalization"
+            ]
+          },
+          {
+            "id": "expert-katz-normalizer",
+            "kind": "equation",
+            "heading": "Derive β̃, the eligible set, and α",
+            "body": "For an observed history, β̃ is one minus the seen estimates. α divides that reserve by lower-order probability only over continuations whose higher-order estimate is zero; it is a normalizer and need not be bounded by one.",
+            "claimIds": [
+              "katz-1987-history-reserved-mass",
+              "katz-1987-lower-order-allocation",
+              "katz-1987-zero-estimate-gate"
+            ]
+          },
+          {
+            "id": "expert-katz-recursion",
+            "kind": "equation",
+            "heading": "Distinguish zero continuation estimates from a zero-count history",
+            "body": "The combined estimator applies α-scaled lower-order probability to an eligible continuation inside an observed history. A zero-count history instead drops its oldest word and uses the lower-order estimator directly.",
+            "claimIds": [
+              "katz-1987-recursive-backoff",
+              "katz-1987-zero-estimate-gate"
+            ]
+          },
+          {
+            "id": "expert-katz-result",
+            "kind": "result",
+            "heading": "Keep the reported comparison inside its evidence envelope",
+            "body": "Table I reports a one-point perplexity difference from Jelinek–Mercer in both displayed rows, using about 750,000 training words and a 100-sentence test. The article supplies no uncertainty or enough detail for reproduction.",
+            "claimIds": [
+              "katz-1987-perplexity-comparison"
+            ]
+          },
+          {
+            "id": "expert-katz-boundary",
+            "kind": "limitation",
+            "heading": "Practical settings are reports, not universal laws",
+            "body": "The paper recommends k around five without a displayed sensitivity analysis and reports a d₁ = 0 space-saving variant under narrowly described experiments. Neither statement makes singleton removal generally lossless.",
+            "claimIds": [
+              "katz-1987-practical-k",
+              "katz-1987-singleton-space-variant",
+              "katz-1987-singleton-performance-report"
+            ]
+          }
+        ]
+      }
     },
     {
       "slug": "kneser-ney-1995",

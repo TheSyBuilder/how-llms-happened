@@ -6,6 +6,7 @@ import {
   getCorpusSummary,
   getFixtureForTests,
   getJourneyOverview,
+  getKatzFixtureForTests,
   getStageView,
   getWorkReference,
 } from "../src/lib/site-data.ts";
@@ -17,14 +18,15 @@ test("the smoothing manifest resolves four ordered corpus works", () => {
     journey.stages.map((stage) => stage.slug),
     ["good-1953", "katz-1987", "kneser-ney-1995", "chen-goodman-1998"],
   );
-  assert.equal(journey.stages[0].status, "built");
-  assert.ok(journey.stages.slice(1).every((stage) => stage.status === "planned"));
+  assert.deepEqual(journey.stages.map((stage) => stage.status), ["built", "built", "planned", "planned"]);
 });
 
-test("built routes expose separate beginner and expert Good pages", () => {
+test("built routes expose separate beginner and expert pages for Good and Katz", () => {
   assert.deepEqual(getBuiltStagePaths(), [
     { params: { mode: "beginner", stage: "good-1953" } },
     { params: { mode: "expert", stage: "good-1953" } },
+    { params: { mode: "beginner", stage: "katz-1987" } },
+    { params: { mode: "expert", stage: "katz-1987" } },
   ]);
 
   const beginner = getStageView("beginner", "good-1953");
@@ -39,14 +41,16 @@ test("built routes expose separate beginner and expert Good pages", () => {
   assert.equal(expert.alternateMode.href, "/journeys/smoothing/beginner/good-1953/");
 });
 
-test("every factual Good block resolves evidence from the same work", () => {
-  for (const mode of ["beginner", "expert"]) {
-    const stage = getStageView(mode, "good-1953");
-    for (const block of stage.blocks) {
-      assert.ok(block.claimIds.length > 0);
-      assert.equal(block.claimIds.length, block.evidence.length);
-      assert.ok(block.evidence.every((evidence) => evidence.workId === stage.work.id));
-      assert.ok(block.evidence.every((evidence) => evidence.sources.length > 0));
+test("every factual built-stage block resolves evidence from the same work", () => {
+  for (const slug of ["good-1953", "katz-1987"]) {
+    for (const mode of ["beginner", "expert"]) {
+      const stage = getStageView(mode, slug);
+      for (const block of stage.blocks) {
+        assert.ok(block.claimIds.length > 0);
+        assert.equal(block.claimIds.length, block.evidence.length);
+        assert.ok(block.evidence.every((evidence) => evidence.workId === stage.work.id));
+        assert.ok(block.evidence.every((evidence) => evidence.sources.length > 0));
+      }
     }
   }
 });
@@ -61,9 +65,24 @@ test("the Good fixture preserves sample, singleton, and mass invariants", () => 
   assert.equal(fixture.expected.unseenMass + fixture.expected.representedMass, 1);
 });
 
+test("the Katz fixture stays bound to Katz claims and never exposes later interpolation", () => {
+  const fixture = getKatzFixtureForTests();
+  assert.equal(fixture.scenarios.length, 3);
+  assert.ok(fixture.representedClaimIds.every((id) => id.startsWith("katz-1987-")));
+  assert.ok(fixture.scenarios.every((scenario) => !JSON.stringify(scenario).includes("interpol")));
+  assert.equal(getStageView("beginner", "katz-1987").katzFixture?.scenarios.length, 3);
+  assert.equal(getStageView("expert", "katz-1987").objective.id, "expert-katz-1987-estimator");
+});
+
 test("the reference view contains all Good claims and source locators", () => {
   const record = getWorkReference("good-1953-population-frequencies");
   assert.equal(record.claims.length, 3);
+  assert.ok(record.claims.every((claim) => claim.sources.every((source) => source.locator.length > 0)));
+});
+
+test("the Katz reference view contains its complete source-bound claim set", () => {
+  const record = getWorkReference("katz-1987-sparse-data");
+  assert.equal(record.claims.length, 14);
   assert.ok(record.claims.every((claim) => claim.sources.every((source) => source.locator.length > 0)));
 });
 

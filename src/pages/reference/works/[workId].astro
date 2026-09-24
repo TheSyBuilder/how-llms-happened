@@ -12,6 +12,7 @@ if (workId === undefined) {
   throw new Error("Missing reference work id.");
 }
 const record = getWorkReference(workId);
+const stageSlug = workId === "good-1953-population-frequencies" ? "good-1953" : "katz-1987";
 ---
 
 <BaseLayout
@@ -31,8 +32,8 @@ const record = getWorkReference(workId);
       <h1>{record.work.title}</h1>
       <p class="citation">{record.work.citation}</p>
       <div class="hero-actions">
-        <a class="button" href="/journeys/smoothing/beginner/good-1953/">Learn with intuition</a>
-        <a class="button button--quiet" href="/journeys/smoothing/expert/good-1953/">Audit the estimator</a>
+        <a class="button" href={`/journeys/smoothing/beginner/${stageSlug}/`}>Learn with intuition</a>
+        <a class="button button--quiet" href={`/journeys/smoothing/expert/${stageSlug}/`}>Audit the estimator</a>
       </div>
     </header>
 
