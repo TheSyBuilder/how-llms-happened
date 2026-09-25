@@ -114,12 +114,18 @@ const katzFixtureBytes = existsSync(katzFixturePath) ? readFileSync(katzFixtureP
 if (katzFixtureBytes > 10 * 1024) {
   failures.push(`Katz fixture is ${katzFixtureBytes} bytes; budget is 10240.`);
 }
+const kneserFixturePath = resolve("data/fixtures/kneser-ney-context-coverage.json");
+const kneserFixtureBytes = existsSync(kneserFixturePath) ? readFileSync(kneserFixturePath).byteLength : 0;
+if (kneserFixtureBytes > 5 * 1024) {
+  failures.push(`Kneser–Ney fixture is ${kneserFixtureBytes} bytes; budget is 5120.`);
+}
 
 const report = {
   generatedAt: new Date().toISOString(),
   routeCount: routes.length,
   unresolvedReferenceCount: failures.length,
   katzFixtureBytes,
+  kneserFixtureBytes,
   routes: routes.sort((left, right) => left.route.localeCompare(right.route)),
 };
 

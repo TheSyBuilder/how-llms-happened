@@ -6,9 +6,16 @@ const beginnerPath = "/journeys/smoothing/beginner/good-1953/";
 const expertPath = "/journeys/smoothing/expert/good-1953/";
 const beginnerKatzPath = "/journeys/smoothing/beginner/katz-1987/";
 const expertKatzPath = "/journeys/smoothing/expert/katz-1987/";
+const beginnerKneserPath = "/journeys/smoothing/beginner/kneser-ney-1995/";
+const expertKneserPath = "/journeys/smoothing/expert/kneser-ney-1995/";
 
 async function waitForKatzHydration(page: Page) {
   await page.getByLabel("Count pattern").scrollIntoViewIfNeeded();
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+}
+
+async function waitForKneserHydration(page: Page) {
+  await page.getByRole("button", { name: "Move to new context" }).scrollIntoViewIfNeeded();
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
 }
 
@@ -110,6 +117,88 @@ test("the Katz stage retains its default ledger and sources without JavaScript",
   await context.close();
 });
 
+test("beginner Kneser–Ney holds raw frequency fixed while context coverage changes", async ({ page }) => {
+  await page.goto(beginnerKneserPath);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Which words travel across more contexts?");
+  await waitForKneserHydration(page);
+  await page.getByRole("radio", { name: "adapts", exact: true }).check();
+  await page.getByRole("button", { name: "Check prediction" }).click();
+  await expect(page.getByRole("status")).toContainText("Correct");
+
+  const summary = page.getByRole("table", { name: "Frequency and fallback evidence in the active synthetic state" });
+  await expect(summary.getByRole("row", { name: /dollars/ })).toContainText("6");
+  await expect(summary.getByRole("row", { name: /dollars/ })).toContainText("0.4");
+  await page.getByRole("button", { name: "Move to new context" }).click();
+  await expect(page.getByRole("status")).toContainText("raw count remains 6; N₊ is now 3");
+  await expect(summary.getByRole("row", { name: /dollars/ })).toContainText("0.5");
+  await page.getByLabel("They receive the same fallback weight").check();
+  await page.getByRole("button", { name: "Check prediction" }).click();
+  await expect(page.getByRole("status")).toContainText("Correct");
+  await page.getByRole("button", { name: "Move to new context" }).click();
+  await expect(page.getByText("Context-coverage leader").locator("..").locator("dd")).toHaveText("dollars");
+});
+
+test("expert Kneser–Ney exposes both source-bound fallback ratios", async ({ page }) => {
+  await page.goto(expertKneserPath);
+  await waitForKneserHydration(page);
+  await expect(page.getByText("N₊ = 2; β₊ = 2/5 = 0.4")).toBeVisible();
+  await expect(page.getByText("N₁ = 0; β₁ = 0/2 = 0")).toBeVisible();
+  await page.getByRole("button", { name: "Move to new context" }).click();
+  await expect(page.getByText("dollars · distinct contexts").locator("..").locator("dd")).toHaveText("N₊ = 3; β₊ = 3/6 = 0.5");
+  await expect(page.getByText("dollars · singleton contexts").locator("..").locator("dd")).toHaveText("N₁ = 1; β₁ = 1/3 = 0.333");
+  await page.getByRole("button", { name: "Compare before" }).click();
+  await expect(page.getByRole("table", { name: "Raw count stays fixed while context evidence changes" })).toBeVisible();
+});
+
+test("a committed Kneser–Ney move stays inside the interaction budget", async ({ page }) => {
+  await page.goto(expertKneserPath);
+  await waitForKneserHydration(page);
+  const elapsed = await page.evaluate(async () => {
+    const lens = document.querySelector<HTMLElement>(".kneser-lens");
+    const button = [...document.querySelectorAll<HTMLButtonElement>("button")]
+      .find((item) => item.textContent?.trim() === "Move to new context");
+    if (lens === null || button === undefined) throw new Error("Kneser–Ney controls are unavailable.");
+    const committed = new Promise<void>((resolve) => {
+      const observer = new MutationObserver(() => {
+        if (lens.dataset.state === "one-new-context") {
+          observer.disconnect();
+          resolve();
+        }
+      });
+      observer.observe(lens, { attributes: true, attributeFilter: ["data-state"] });
+    });
+    const started = performance.now();
+    button.click();
+    await committed;
+    return performance.now() - started;
+  });
+  expect(elapsed).toBeLessThan(50);
+});
+
+test("the Kneser–Ney stage retains its invariant and controlled after-state without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(beginnerKneserPath);
+  await expect(page.getByText("dollars = 6 tokens in every state")).toBeVisible();
+  await page.getByText("Static before-and-after audit").click();
+  const audit = page.getByRole("table", { name: "One controlled move, available without the occurrence graphic" });
+  await expect(audit.getByRole("row", { name: /Before/ })).toContainText("6");
+  await expect(audit.getByRole("row", { name: /After/ })).toContainText("6");
+  await page.getByText("Did the move create more reserve—or change its destination?").click();
+  await expect(page.getByText("Seen-event discounting determines reserve size", { exact: false })).toBeVisible();
+  await context.close();
+});
+
+test("hidden context tiles leave the semantic Kneser–Ney comparison intact", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(beginnerKneserPath);
+  await waitForKneserHydration(page);
+  await page.locator(".coverage-map").evaluate((node) => { (node as HTMLElement).style.display = "none"; });
+  await expect(page.getByRole("table", { name: "Frequency and fallback evidence in the active synthetic state" })).toBeVisible();
+  await expect(page.getByText("Reserve size", { exact: true })).toBeVisible();
+  await expect(page.getByText("Not set by this lens")).toBeVisible();
+});
+
 test("evidence opens inline and reaches a stable claim anchor", async ({ page }) => {
   await page.goto(beginnerPath);
   const firstEvidence = page.locator("details.evidence-details").first();
@@ -144,8 +233,11 @@ test("the built pages have no automatically detectable accessibility violations"
     expertPath,
     beginnerKatzPath,
     expertKatzPath,
+    beginnerKneserPath,
+    expertKneserPath,
     "/reference/works/good-1953-population-frequencies/",
     "/reference/works/katz-1987-sparse-data/",
+    "/reference/works/kneser-ney-1995-improved-backing-off/",
   ];
   for (const path of paths) {
     await page.goto(path);
@@ -155,10 +247,12 @@ test("the built pages have no automatically detectable accessibility violations"
 });
 
 test("narrow and 200%-zoom-equivalent layouts avoid essential page scrolling", async ({ page }) => {
-  for (const width of [320, 640]) {
-    await page.setViewportSize({ width, height: 800 });
-    await page.goto(expertKatzPath);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-    expect(overflow, `${width}px viewport`).toBeLessThanOrEqual(1);
+  for (const path of [expertKatzPath, expertKneserPath]) {
+    for (const width of [320, 640]) {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto(path);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow, `${path} at ${width}px viewport`).toBeLessThanOrEqual(1);
+    }
   }
 });

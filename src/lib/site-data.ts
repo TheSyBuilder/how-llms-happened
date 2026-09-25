@@ -9,6 +9,10 @@ import {
   calculateKatzScenario,
   type KatzFixture,
 } from "./katz-engine.ts";
+import {
+  type KneserFixture,
+  validateKneserScenario,
+} from "./kneser-ney-engine.ts";
 
 export type Mode = "beginner" | "expert";
 export type StageStatus = "built" | "planned";
@@ -266,6 +270,7 @@ export type StageView = {
   evidence: EvidenceView[];
   goodFixture?: GoodFixture;
   katzFixture?: KatzFixture;
+  kneserFixture?: KneserFixture;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -492,6 +497,34 @@ function validateKatzFixture(fixture: KatzFixture, indexes: Indexes): void {
   }
 }
 
+function validateKneserFixture(fixture: KneserFixture, indexes: Indexes): void {
+  const scenarioIds = new Set<string>();
+  const stateIds = new Set<string>();
+  for (const claimId of fixture.representedClaimIds) {
+    const claim = required(indexes.claims, claimId, "Kneser–Ney fixture claim");
+    if (claim.workId !== "kneser-ney-1995-improved-backing-off") {
+      throw new Error(`Kneser–Ney fixture cannot represent claim from ${claim.workId}.`);
+    }
+  }
+
+  for (const scenario of fixture.scenarios) {
+    if (scenarioIds.has(scenario.id)) throw new Error(`Duplicate Kneser–Ney scenario id: ${scenario.id}`);
+    scenarioIds.add(scenario.id);
+    for (const state of scenario.states) {
+      if (stateIds.has(state.id)) throw new Error(`Duplicate Kneser–Ney state id: ${state.id}`);
+      stateIds.add(state.id);
+    }
+    validateKneserScenario(scenario);
+  }
+
+  if (!fixture.scenarios.some((scenario) => scenario.modes.includes("beginner"))) {
+    throw new Error("Kneser–Ney fixture must expose at least one beginner scenario.");
+  }
+  if (!fixture.scenarios.some((scenario) => scenario.modes.includes("expert"))) {
+    throw new Error("Kneser–Ney fixture must expose at least one expert scenario.");
+  }
+}
+
 const rawCorpus = readJson("data/corpus.json");
 const rawCorpusSchema = readJson("schemas/corpus.schema.json");
 const corpusErrors = validateCorpus(rawCorpus, rawCorpusSchema);
@@ -506,12 +539,15 @@ const ajv = new Ajv2020({ allErrors: true, strict: true });
 const rawJourneySchema = readJson("schemas/journey.schema.json");
 const rawFixtureSchema = readJson("schemas/fixture.schema.json");
 const rawKatzFixtureSchema = readJson("schemas/katz-fixture.schema.json");
+const rawKneserFixtureSchema = readJson("schemas/kneser-ney-fixture.schema.json");
 const rawManifest = readJson("data/journeys/smoothing.json");
 const rawFixture = readJson("data/fixtures/good-singleton-reserve.json");
 const rawKatzFixture = readJson("data/fixtures/katz-probability-mass.json");
+const rawKneserFixture = readJson("data/fixtures/kneser-ney-context-coverage.json");
 const journeyValidator = ajv.compile(rawJourneySchema as AnySchema);
 const fixtureValidator = ajv.compile(rawFixtureSchema as AnySchema);
 const katzFixtureValidator = ajv.compile(rawKatzFixtureSchema as AnySchema);
+const kneserFixtureValidator = ajv.compile(rawKneserFixtureSchema as AnySchema);
 
 if (!journeyValidator(rawManifest)) {
   throw new Error(`Journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
@@ -522,13 +558,18 @@ if (!fixtureValidator(rawFixture)) {
 if (!katzFixtureValidator(rawKatzFixture)) {
   throw new Error(`Katz fixture schema failed: ${formatSchemaErrors(katzFixtureValidator.errors)}`);
 }
+if (!kneserFixtureValidator(rawKneserFixture)) {
+  throw new Error(`Kneser–Ney fixture schema failed: ${formatSchemaErrors(kneserFixtureValidator.errors)}`);
+}
 
 const manifest = rawManifest as JourneyManifest;
 const goodFixture = rawFixture as GoodFixture;
 const katzFixture = rawKatzFixture as KatzFixture;
+const kneserFixture = rawKneserFixture as KneserFixture;
 validateManifest(manifest, indexes);
 validateFixture(goodFixture, indexes);
 validateKatzFixture(katzFixture, indexes);
+validateKneserFixture(kneserFixture, indexes);
 
 function chronologySummary(work: Work): { label: string; date: string } {
   const event = work.chronology.events.find((item) => item.id === work.chronology.orderingEventId);
@@ -674,6 +715,7 @@ export function getStageView(mode: Mode, slug: string): StageView {
     evidence,
     ...(stage.slug === "good-1953" ? { goodFixture } : {}),
     ...(stage.slug === "katz-1987" ? { katzFixture } : {}),
+    ...(stage.slug === "kneser-ney-1995" ? { kneserFixture } : {}),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {
@@ -711,6 +753,10 @@ export function getFixtureForTests(): GoodFixture {
 
 export function getKatzFixtureForTests(): KatzFixture {
   return katzFixture;
+}
+
+export function getKneserFixtureForTests(): KneserFixture {
+  return kneserFixture;
 }
 
 export function getCorpusSummary(): {

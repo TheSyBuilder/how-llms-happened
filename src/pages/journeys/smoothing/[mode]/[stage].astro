@@ -5,6 +5,7 @@ import EvidenceDetails from "../../../../components/EvidenceDetails.astro";
 import GoodMassLedger from "../../../../components/GoodMassLedger.astro";
 import JourneyMap from "../../../../components/JourneyMap.astro";
 import KatzMassLedger from "../../../../components/KatzMassLedger";
+import KneserContextLens from "../../../../components/KneserContextLens";
 import ModeSwitch from "../../../../components/ModeSwitch.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import {
@@ -28,23 +29,33 @@ const view = getStageView(mode, slug);
 const journey = getJourneyOverview();
 const isGood = slug === "good-1953";
 const isKatz = slug === "katz-1987";
-if (!isGood && !isKatz) throw new Error(`No page treatment is defined for ${slug}.`);
+const isKneser = slug === "kneser-ney-1995";
+if (!isGood && !isKatz && !isKneser) throw new Error(`No page treatment is defined for ${slug}.`);
 if (isGood && view.goodFixture === undefined) throw new Error("Good is missing its reviewed fixture.");
 if (isKatz && view.katzFixture === undefined) throw new Error("Katz is missing its reviewed fixture.");
+if (isKneser && view.kneserFixture === undefined) throw new Error("Kneser–Ney is missing its reviewed fixture.");
 
 const pageTitle = isGood
   ? `${mode === "beginner" ? "Beginner" : "Expert"}: Good 1953 — LLM Lineage`
-  : `${mode === "beginner" ? "Beginner" : "Expert"}: Katz 1987 — LLM Lineage`;
+  : isKatz
+    ? `${mode === "beginner" ? "Beginner" : "Expert"}: Katz 1987 — LLM Lineage`
+    : `${mode === "beginner" ? "Beginner" : "Expert"}: Kneser–Ney 1995 — LLM Lineage`;
 const pageDescription = isGood
   ? "Good's frequency-of-frequencies estimate and its boundary before conditional language-model backoff."
-  : "Katz's history-specific reserved mass, lower-order normalization, and zero-estimate backoff gate.";
+  : isKatz
+    ? "Katz's history-specific reserved mass, lower-order normalization, and zero-estimate backoff gate."
+    : "Kneser and Ney's original hard-backoff estimator and distinct-context and singleton fallback distributions.";
 const heading = isGood
   ? mode === "beginner"
     ? "How can rare events reveal the unseen?"
     : "What does n₁/N estimate—and what does it not?"
-  : mode === "beginner"
-    ? "When does Katz keep an estimate—and when does it back off?"
-    : "How do β̃, α, and the zero-estimate gate fit together?";
+  : isKatz
+    ? mode === "beginner"
+      ? "When does Katz keep an estimate—and when does it back off?"
+      : "How do β̃, α, and the zero-estimate gate fit together?"
+    : mode === "beginner"
+      ? "Which words travel across more contexts?"
+      : "How do N₊ and N₁ reshape the fallback distribution?";
 
 const adjustedCountEquation = renderToString(
   String.raw`r^{*} \approx (r+1)\frac{n_{r+1}}{n_r}, \qquad \hat p_r = \frac{r^{*}}{N}`,
@@ -64,6 +75,22 @@ const katzAlphaEquation = renderToString(
 );
 const katzGateEquation = renderToString(
   String.raw`\hat p(w\mid h)=\begin{cases}\tilde p(w\mid h),&\tilde p(w\mid h)>0\\ \alpha(h)p_{m-1}(w\mid h'),&\tilde p(w\mid h)=0\end{cases}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const kneserBackoffEquation = renderToString(
+  String.raw`p(w\mid h)=\begin{cases}\alpha(w\mid h),&N(h,w)>0\\ \gamma(h)\,\beta(w\mid \hat h),&N(h,w)=0\end{cases}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const kneserDistinctEquation = renderToString(
+  String.raw`\beta_{+}(w\mid \hat h)=\frac{N_{+}(\cdot,\hat h,w)}{N_{+}(\cdot,\hat h,\cdot)}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const kneserSingletonEquation = renderToString(
+  String.raw`\beta_{1}(w\mid \hat h)=\frac{N_{1}(\cdot,\hat h,w)}{N_{1}(\cdot,\hat h,\cdot)}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const kneserDiscountEquation = renderToString(
+  String.raw`\alpha(w\mid h)=\frac{N(h,w)-d}{N(h)},\qquad 0<d<1`,
   { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
 );
 ---
@@ -138,6 +165,29 @@ const katzGateEquation = renderToString(
         </section>
       )}
 
+      {mode === "expert" && isKneser && (
+        <section class="reading-block" aria-labelledby="notation-heading">
+          <p class="kicker">Notation</p>
+          <h2 id="notation-heading">A seen branch, a normalizer, and two fallback signals</h2>
+          <div class="equation-panel" aria-label="Kneser and Ney original hard-backoff form" tabindex="0">
+            <span class="equation-label">Seen α versus unseen γβ · equations 1–2</span>
+            <div set:html={kneserBackoffEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Kneser and Ney absolute-discount assumption" tabindex="0">
+            <span class="equation-label">Single absolute discount in the simple specialization · equation 8</span>
+            <div set:html={kneserDiscountEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Kneser and Ney distinct-context fallback distribution" tabindex="0">
+            <span class="equation-label">Distinct compatible detailed histories · equation 13</span>
+            <div set:html={kneserDistinctEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Kneser and Ney singleton-event fallback distribution" tabindex="0">
+            <span class="equation-label">Leave-one-out singleton alternative · equation 20</span>
+            <div set:html={kneserSingletonEquation} />
+          </div>
+        </section>
+      )}
+
       {view.blocks.map((block) => (
         <section class:list={["reading-block", { "reading-block--limitation": block.kind === "limitation" }]} aria-labelledby={`${block.id}-heading`}>
           <p class="kicker">{block.kind}</p>
@@ -149,10 +199,12 @@ const katzGateEquation = renderToString(
 
     </div>
 
-    <aside class:list={["stage-workbench", { "stage-workbench--long": isKatz }]} aria-label={isGood ? "Good unseen-mass workbench" : "Katz probability-mass workbench"}>
+    <aside class:list={["stage-workbench", { "stage-workbench--long": isKatz || isKneser }]} aria-label={isGood ? "Good unseen-mass workbench" : isKatz ? "Katz probability-mass workbench" : "Kneser–Ney context-coverage workbench"}>
       {isGood && view.goodFixture && <GoodMassLedger fixture={view.goodFixture} mode={mode} />}
       {isKatz && view.katzFixture && <KatzMassLedger fixture={view.katzFixture} mode={mode} client:visible />}
+      {isKneser && view.kneserFixture && <KneserContextLens fixture={view.kneserFixture} mode={mode} client:visible />}
       {isKatz && <p class="no-script-note">The default Katz ledger, normalized table, and checkpoint answer are server rendered. Scenario controls enhance this state when JavaScript is available.</p>}
+      {isKneser && <p class="no-script-note">The default context table, one controlled after-state, equations, and checkpoint answer are server rendered. Move controls enhance this state when JavaScript is available.</p>}
       <div class="mt-4">
         <p class="eyebrow">Journey position</p>
         <JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact />
@@ -177,11 +229,17 @@ const katzGateEquation = renderToString(
               <p>Move from a population-level reserve to history-specific discounting and a zero-estimate gate.</p>
               <a href={`/journeys/smoothing/${mode}/katz-1987/`}>Continue to Katz <span aria-hidden="true">→</span></a>
             </>
-          ) : (
+          ) : isKatz ? (
             <>
               <strong>Next: Kneser and Ney, 1995</strong>
-              <p>The next chapter will change the evidence used to divide the fallback mass. It remains queued while Katz is verified.</p>
-              <a href={`/journeys/smoothing/${mode}/good-1953/`}><span aria-hidden="true">←</span> Revisit Good</a>
+              <p>Change the evidence used to divide fallback mass while keeping the original zero-count gate.</p>
+              <a href={`/journeys/smoothing/${mode}/kneser-ney-1995/`}>Continue to Kneser–Ney <span aria-hidden="true">→</span></a>
+            </>
+          ) : (
+            <>
+              <strong>Next: Chen and Goodman, 1998/1999</strong>
+              <p>The next chapter will add interpolation and count-specific discounts. It remains unavailable until its separate source treatment is verified.</p>
+              <a href={`/journeys/smoothing/${mode}/katz-1987/`}><span aria-hidden="true">←</span> Revisit Katz</a>
             </>
           )}
         </div>

@@ -7,6 +7,7 @@ import {
   getFixtureForTests,
   getJourneyOverview,
   getKatzFixtureForTests,
+  getKneserFixtureForTests,
   getStageView,
   getWorkReference,
 } from "../src/lib/site-data.ts";
@@ -18,15 +19,17 @@ test("the smoothing manifest resolves four ordered corpus works", () => {
     journey.stages.map((stage) => stage.slug),
     ["good-1953", "katz-1987", "kneser-ney-1995", "chen-goodman-1998"],
   );
-  assert.deepEqual(journey.stages.map((stage) => stage.status), ["built", "built", "planned", "planned"]);
+  assert.deepEqual(journey.stages.map((stage) => stage.status), ["built", "built", "built", "planned"]);
 });
 
-test("built routes expose separate beginner and expert pages for Good and Katz", () => {
+test("built routes expose separate beginner and expert pages through Kneser–Ney", () => {
   assert.deepEqual(getBuiltStagePaths(), [
     { params: { mode: "beginner", stage: "good-1953" } },
     { params: { mode: "expert", stage: "good-1953" } },
     { params: { mode: "beginner", stage: "katz-1987" } },
     { params: { mode: "expert", stage: "katz-1987" } },
+    { params: { mode: "beginner", stage: "kneser-ney-1995" } },
+    { params: { mode: "expert", stage: "kneser-ney-1995" } },
   ]);
 
   const beginner = getStageView("beginner", "good-1953");
@@ -42,7 +45,7 @@ test("built routes expose separate beginner and expert pages for Good and Katz",
 });
 
 test("every factual built-stage block resolves evidence from the same work", () => {
-  for (const slug of ["good-1953", "katz-1987"]) {
+  for (const slug of ["good-1953", "katz-1987", "kneser-ney-1995"]) {
     for (const mode of ["beginner", "expert"]) {
       const stage = getStageView(mode, slug);
       for (const block of stage.blocks) {
@@ -74,6 +77,16 @@ test("the Katz fixture stays bound to Katz claims and never exposes later interp
   assert.equal(getStageView("expert", "katz-1987").objective.id, "expert-katz-1987-estimator");
 });
 
+test("the Kneser–Ney fixture preserves original hard-backoff boundaries", () => {
+  const fixture = getKneserFixtureForTests();
+  assert.equal(fixture.scenarios.length, 1);
+  assert.equal(fixture.scenarios[0].states.length, 3);
+  assert.ok(fixture.representedClaimIds.every((id) => id.startsWith("kneser-ney-1995-")));
+  assert.ok(!JSON.stringify(fixture).match(/D₁|D₁\/D₂|three-discount|interpolated/i));
+  assert.equal(getStageView("beginner", "kneser-ney-1995").kneserFixture?.scenarios.length, 1);
+  assert.equal(getStageView("expert", "kneser-ney-1995").objective.id, "expert-kneser-ney-1995-estimator");
+});
+
 test("the reference view contains all Good claims and source locators", () => {
   const record = getWorkReference("good-1953-population-frequencies");
   assert.equal(record.claims.length, 3);
@@ -83,6 +96,12 @@ test("the reference view contains all Good claims and source locators", () => {
 test("the Katz reference view contains its complete source-bound claim set", () => {
   const record = getWorkReference("katz-1987-sparse-data");
   assert.equal(record.claims.length, 14);
+  assert.ok(record.claims.every((claim) => claim.sources.every((source) => source.locator.length > 0)));
+});
+
+test("the Kneser–Ney reference view contains its complete source-bound claim set", () => {
+  const record = getWorkReference("kneser-ney-1995-improved-backing-off");
+  assert.equal(record.claims.length, 12);
   assert.ok(record.claims.every((claim) => claim.sources.every((source) => source.locator.length > 0)));
 });
 

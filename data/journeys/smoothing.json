@@ -205,7 +205,7 @@
     {
       "slug": "kneser-ney-1995",
       "workId": "kneser-ney-1995-improved-backing-off",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-kneser-ney-1995-context-diversity",
         "expert": "expert-kneser-ney-1995-estimator"
@@ -217,7 +217,110 @@
           "kneser-ney-1995-singleton-distribution"
         ]
       },
-      "blocks": { "beginner": [], "expert": [] }
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-kneser-motivation",
+            "kind": "explanation",
+            "heading": "Frequency can hide a narrow habit",
+            "body": "A continuation may be frequent because it repeats inside a few fixed phrases. The paper's dollars example motivates asking how many different detailed contexts a word completes before using it as evidence for an unseen phrase.",
+            "claimIds": [
+              "kneser-ney-1995-standard-backoff-bias"
+            ]
+          },
+          {
+            "id": "beginner-kneser-two-jobs",
+            "kind": "comparison",
+            "heading": "Keep reserving mass separate from allocating it",
+            "body": "The seen-event estimate and its discount determine what remains for zero-count events. Kneser and Ney leave the fallback distribution free, so a different statistic can decide which unseen continuations receive that mass.",
+            "claimIds": [
+              "kneser-ney-1995-backoff-form",
+              "kneser-ney-1995-free-backoff-distribution"
+            ]
+          },
+          {
+            "id": "beginner-kneser-contexts",
+            "kind": "explanation",
+            "heading": "Count distinct contexts, not repeated tokens",
+            "body": "The distinct-context fallback counts whether a continuation appeared after each compatible detailed history. Repeats within the same predecessor do not increase that continuation's numerator.",
+            "claimIds": [
+              "kneser-ney-1995-context-diversity"
+            ]
+          },
+          {
+            "id": "beginner-kneser-boundary",
+            "kind": "limitation",
+            "heading": "This is the original hard-backoff stage",
+            "body": "The 1995 equation applies the fallback distribution when the detailed event has zero count. It does not yet add continuation evidence to every seen event, and it does not introduce separate count-one, count-two, and count-three-or-more discounts.",
+            "claimIds": [
+              "kneser-ney-1995-backoff-form",
+              "kneser-ney-1995-context-diversity"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-kneser-piecewise",
+            "kind": "equation",
+            "heading": "Read α, β, and γ in their 1995 roles",
+            "body": "For N(h,w) > 0, α(w|h) is the seen-event estimate. For N(h,w) = 0, γ(h) normalizes the free fallback distribution β(w|ĥ). These symbols do not carry Katz's earlier meanings.",
+            "claimIds": [
+              "kneser-ney-1995-backoff-form",
+              "kneser-ney-1995-free-backoff-distribution"
+            ]
+          },
+          {
+            "id": "expert-kneser-marginal",
+            "kind": "equation",
+            "heading": "The marginal-constraint path is approximate",
+            "body": "The derivation asks the detailed joint model to recover a specified coarser marginal, then obtains normalized equation (7) only after treating equation (6)'s denominator as constant with respect to the predicted word.",
+            "claimIds": [
+              "kneser-ney-1995-marginal-constraint"
+            ]
+          },
+          {
+            "id": "expert-kneser-distinct",
+            "kind": "equation",
+            "heading": "Absolute discounting exposes a distinct-context ratio",
+            "body": "Under one absolute discount with 0 < d < 1 and the stated nested-history assumptions, equations (11)–(13) reduce β to a normalized count of compatible detailed histories where the continuation appeared at least once.",
+            "claimIds": [
+              "kneser-ney-1995-absolute-discount",
+              "kneser-ney-1995-context-diversity"
+            ]
+          },
+          {
+            "id": "expert-kneser-singletons",
+            "kind": "equation",
+            "heading": "Leave-one-out yields a related singleton ratio",
+            "body": "The separate leave-one-out route normalizes compatible detailed-history events observed exactly once. Its second summation is also treated as constant with respect to the predicted word, so equation (20) remains an approximation.",
+            "claimIds": [
+              "kneser-ney-1995-singleton-distribution"
+            ]
+          },
+          {
+            "id": "expert-kneser-results",
+            "kind": "result",
+            "heading": "Keep the reported gains inside their tested systems",
+            "body": "The displayed WSJ and Verbmobil comparisons favor the proposed fallback distributions under trigram-centered, incompletely specified setups. Table 1 reports no repeated runs or uncertainty, and Table 2's matched ARPA comparison does not identify the baseline smoothing algorithm.",
+            "claimIds": [
+              "kneser-ney-1995-dataset-and-evaluation-scope",
+              "kneser-ney-1995-estimator-setup",
+              "kneser-ney-1995-table-one-results",
+              "kneser-ney-1995-arpa-comparison"
+            ]
+          },
+          {
+            "id": "expert-kneser-cost-boundary",
+            "kind": "limitation",
+            "heading": "Do not turn an author report into a benchmark",
+            "body": "The paper calls the proposed distributions model-independent and says they add virtually no or no computational cost, but it provides no runtime, build-time, memory, or scaling measurements. Additional smoothing of the fallback distributions is also left unspecified.",
+            "claimIds": [
+              "kneser-ney-1995-estimator-setup",
+              "kneser-ney-1995-cost-claim"
+            ]
+          }
+        ]
+      }
     },
     {
       "slug": "chen-goodman-1998",

@@ -13,7 +13,7 @@ These paths will differ in pedagogy and controls, not in factual standards.
 
 ## Current build
 
-The first implemented sequence now includes the shared site shell, a journey chooser, separate beginner and expert previews, Good’s 1953 prelude in both modes, and a mode-neutral work record. The prelude uses a labelled synthetic sample to make `n₁/N` inspectable without presenting the teaching values as a paper result. Every factual block resolves to the canonical corpus at build time, and the rendered pages remain complete without JavaScript.
+The first implemented sequence now includes the shared site shell, a journey chooser, separate beginner and expert paths, and complete source records for Good 1953, Katz 1987, and Kneser–Ney 1995. Reviewed synthetic fixtures expose `n₁/N`, Katz’s history-specific reserve and zero gate, and Kneser–Ney context coverage without presenting teaching values as paper results. Every factual block resolves to the canonical corpus at build time, all default comparisons remain available without JavaScript, and Chen–Goodman’s later interpolation and multi-discount stage stays unavailable until its separate treatment passes the same gates.
 
 ```sh
 npm install
