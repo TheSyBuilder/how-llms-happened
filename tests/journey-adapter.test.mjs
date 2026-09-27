@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   getBuiltStagePaths,
+  getChenFixtureForTests,
   getCorpusSummary,
   getFixtureForTests,
   getJourneyOverview,
@@ -19,10 +20,10 @@ test("the smoothing manifest resolves four ordered corpus works", () => {
     journey.stages.map((stage) => stage.slug),
     ["good-1953", "katz-1987", "kneser-ney-1995", "chen-goodman-1998"],
   );
-  assert.deepEqual(journey.stages.map((stage) => stage.status), ["built", "built", "built", "planned"]);
+  assert.deepEqual(journey.stages.map((stage) => stage.status), ["built", "built", "built", "built"]);
 });
 
-test("built routes expose separate beginner and expert pages through Kneser–Ney", () => {
+test("built routes expose separate beginner and expert pages through Chen–Goodman", () => {
   assert.deepEqual(getBuiltStagePaths(), [
     { params: { mode: "beginner", stage: "good-1953" } },
     { params: { mode: "expert", stage: "good-1953" } },
@@ -30,6 +31,8 @@ test("built routes expose separate beginner and expert pages through Kneser–Ne
     { params: { mode: "expert", stage: "katz-1987" } },
     { params: { mode: "beginner", stage: "kneser-ney-1995" } },
     { params: { mode: "expert", stage: "kneser-ney-1995" } },
+    { params: { mode: "beginner", stage: "chen-goodman-1998" } },
+    { params: { mode: "expert", stage: "chen-goodman-1998" } },
   ]);
 
   const beginner = getStageView("beginner", "good-1953");
@@ -45,7 +48,7 @@ test("built routes expose separate beginner and expert pages through Kneser–Ne
 });
 
 test("every factual built-stage block resolves evidence from the same work", () => {
-  for (const slug of ["good-1953", "katz-1987", "kneser-ney-1995"]) {
+  for (const slug of ["good-1953", "katz-1987", "kneser-ney-1995", "chen-goodman-1998"]) {
     for (const mode of ["beginner", "expert"]) {
       const stage = getStageView(mode, slug);
       for (const block of stage.blocks) {
@@ -85,6 +88,15 @@ test("the Kneser–Ney fixture preserves original hard-backoff boundaries", () =
   assert.ok(!JSON.stringify(fixture).match(/D₁|D₁\/D₂|three-discount|interpolated/i));
   assert.equal(getStageView("beginner", "kneser-ney-1995").kneserFixture?.scenarios.length, 1);
   assert.equal(getStageView("expert", "kneser-ney-1995").objective.id, "expert-kneser-ney-1995-estimator");
+});
+
+test("the Chen–Goodman fixture keeps interpolation and discount tiers separable", () => {
+  const fixture = getChenFixtureForTests();
+  assert.equal(fixture.scenarios.length, 1);
+  assert.ok(fixture.representedClaimIds.every((id) => id.startsWith("chen-goodman-1998-")));
+  assert.equal(fixture.scenarios[0].continuations.length, 4);
+  assert.equal(getStageView("beginner", "chen-goodman-1998").chenFixture?.scenarios.length, 1);
+  assert.equal(getStageView("expert", "chen-goodman-1998").objective.id, "expert-chen-goodman-1998-modified-estimator");
 });
 
 test("the reference view contains all Good claims and source locators", () => {

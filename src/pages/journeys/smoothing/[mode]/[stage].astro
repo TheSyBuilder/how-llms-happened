@@ -2,6 +2,7 @@
 import { renderToString } from "katex";
 
 import EvidenceDetails from "../../../../components/EvidenceDetails.astro";
+import ChenGoodmanWorkbench from "../../../../components/ChenGoodmanWorkbench";
 import GoodMassLedger from "../../../../components/GoodMassLedger.astro";
 import JourneyMap from "../../../../components/JourneyMap.astro";
 import KatzMassLedger from "../../../../components/KatzMassLedger";
@@ -30,21 +31,27 @@ const journey = getJourneyOverview();
 const isGood = slug === "good-1953";
 const isKatz = slug === "katz-1987";
 const isKneser = slug === "kneser-ney-1995";
-if (!isGood && !isKatz && !isKneser) throw new Error(`No page treatment is defined for ${slug}.`);
+const isChen = slug === "chen-goodman-1998";
+if (!isGood && !isKatz && !isKneser && !isChen) throw new Error(`No page treatment is defined for ${slug}.`);
 if (isGood && view.goodFixture === undefined) throw new Error("Good is missing its reviewed fixture.");
 if (isKatz && view.katzFixture === undefined) throw new Error("Katz is missing its reviewed fixture.");
 if (isKneser && view.kneserFixture === undefined) throw new Error("Kneser–Ney is missing its reviewed fixture.");
+if (isChen && view.chenFixture === undefined) throw new Error("Chen–Goodman is missing its reviewed fixture.");
 
 const pageTitle = isGood
   ? `${mode === "beginner" ? "Beginner" : "Expert"}: Good 1953 — LLM Lineage`
   : isKatz
     ? `${mode === "beginner" ? "Beginner" : "Expert"}: Katz 1987 — LLM Lineage`
-    : `${mode === "beginner" ? "Beginner" : "Expert"}: Kneser–Ney 1995 — LLM Lineage`;
+    : isKneser
+      ? `${mode === "beginner" ? "Beginner" : "Expert"}: Kneser–Ney 1995 — LLM Lineage`
+      : `${mode === "beginner" ? "Beginner" : "Expert"}: Chen–Goodman 1998 — LLM Lineage`;
 const pageDescription = isGood
   ? "Good's frequency-of-frequencies estimate and its boundary before conditional language-model backoff."
   : isKatz
     ? "Katz's history-specific reserved mass, lower-order normalization, and zero-estimate backoff gate."
-    : "Kneser and Ney's original hard-backoff estimator and distinct-context and singleton fallback distributions.";
+    : isKneser
+      ? "Kneser and Ney's original hard-backoff estimator and distinct-context and singleton fallback distributions."
+      : "Chen and Goodman's interpolated estimator, count-specific discount tiers, and bounded implementation comparisons.";
 const heading = isGood
   ? mode === "beginner"
     ? "How can rare events reveal the unseen?"
@@ -53,9 +60,13 @@ const heading = isGood
     ? mode === "beginner"
       ? "When does Katz keep an estimate—and when does it back off?"
       : "How do β̃, α, and the zero-estimate gate fit together?"
-    : mode === "beginner"
-      ? "Which words travel across more contexts?"
-      : "How do N₊ and N₁ reshape the fallback distribution?";
+    : isKneser
+      ? mode === "beginner"
+        ? "Which words travel across more contexts?"
+        : "How do N₊ and N₁ reshape the fallback distribution?"
+      : mode === "beginner"
+        ? "What changes when lower-order evidence reaches every phrase?"
+        : "How do interpolation and D₁/D₂/D₃₊ remain separate levers?";
 
 const adjustedCountEquation = renderToString(
   String.raw`r^{*} \approx (r+1)\frac{n_{r+1}}{n_r}, \qquad \hat p_r = \frac{r^{*}}{N}`,
@@ -91,6 +102,22 @@ const kneserSingletonEquation = renderToString(
 );
 const kneserDiscountEquation = renderToString(
   String.raw`\alpha(w\mid h)=\frac{N(h,w)-d}{N(h)},\qquad 0<d<1`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const chenInterpolationEquation = renderToString(
+  String.raw`p_{\mathrm{KN}}(w\mid h)=\frac{\max(c(h,w)-D(c(h,w)),0)}{c(h)}+\lambda(h)\,p_{\mathrm{KN}}(w\mid h')`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const chenLambdaEquation = renderToString(
+  String.raw`\lambda(h)=\frac{D_1N_1(h\!\cdot)+D_2N_2(h\!\cdot)+D_{3+}N_{3+}(h\!\cdot)}{c(h)}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const chenDiscountEquation = renderToString(
+  String.raw`D(c)=\begin{cases}0,&c=0\\D_1,&c=1\\D_2,&c=2\\D_{3+},&c\ge 3\end{cases}`,
+  { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
+);
+const chenFixedEquation = renderToString(
+  String.raw`Y=\frac{n_1}{n_1+2n_2},\quad D_1=1-2Y\frac{n_2}{n_1},\quad D_2=2-3Y\frac{n_3}{n_2},\quad D_{3+}=3-4Y\frac{n_4}{n_3}`,
   { displayMode: true, throwOnError: true, output: "htmlAndMathml" },
 );
 ---
@@ -188,6 +215,29 @@ const kneserDiscountEquation = renderToString(
         </section>
       )}
 
+      {mode === "expert" && isChen && (
+        <section class="reading-block" aria-labelledby="notation-heading">
+          <p class="kicker">Notation</p>
+          <h2 id="notation-heading">An additive route and three count branches</h2>
+          <div class="equation-panel" aria-label="Chen and Goodman interpolated Kneser Ney estimator" tabindex="0">
+            <span class="equation-label">Higher-order retained term plus lower-order continuation term · report equation 22</span>
+            <div set:html={chenInterpolationEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Chen and Goodman count-dependent discount rule" tabindex="0">
+            <span class="equation-label">Select the discount from the observed count · report section 3</span>
+            <div set:html={chenDiscountEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Chen and Goodman interpolation weight" tabindex="0">
+            <span class="equation-label">Return all removed mass through λ · report section 3</span>
+            <div set:html={chenLambdaEquation} />
+          </div>
+          <div class="equation-panel" aria-label="Chen and Goodman fixed discount estimates" tabindex="0">
+            <span class="equation-label">Count-estimated fixed variant · report equation 26</span>
+            <div set:html={chenFixedEquation} />
+          </div>
+        </section>
+      )}
+
       {view.blocks.map((block) => (
         <section class:list={["reading-block", { "reading-block--limitation": block.kind === "limitation" }]} aria-labelledby={`${block.id}-heading`}>
           <p class="kicker">{block.kind}</p>
@@ -199,12 +249,14 @@ const kneserDiscountEquation = renderToString(
 
     </div>
 
-    <aside class:list={["stage-workbench", { "stage-workbench--long": isKatz || isKneser }]} aria-label={isGood ? "Good unseen-mass workbench" : isKatz ? "Katz probability-mass workbench" : "Kneser–Ney context-coverage workbench"}>
+    <aside class:list={["stage-workbench", { "stage-workbench--long": isKatz || isKneser || isChen }]} aria-label={isGood ? "Good unseen-mass workbench" : isKatz ? "Katz probability-mass workbench" : isKneser ? "Kneser–Ney context-coverage workbench" : "Chen–Goodman interpolation and discount workbench"}>
       {isGood && view.goodFixture && <GoodMassLedger fixture={view.goodFixture} mode={mode} />}
       {isKatz && view.katzFixture && <KatzMassLedger fixture={view.katzFixture} mode={mode} client:visible />}
       {isKneser && view.kneserFixture && <KneserContextLens fixture={view.kneserFixture} mode={mode} client:visible />}
+      {isChen && view.chenFixture && <ChenGoodmanWorkbench fixture={view.chenFixture} mode={mode} client:visible />}
       {isKatz && <p class="no-script-note">The default Katz ledger, normalized table, and checkpoint answer are server rendered. Scenario controls enhance this state when JavaScript is available.</p>}
       {isKneser && <p class="no-script-note">The default context table, one controlled after-state, equations, and checkpoint answer are server rendered. Move controls enhance this state when JavaScript is available.</p>}
+      {isChen && <p class="no-script-note">The default three-tier estimator, both variant totals, the hard-backoff comparison, and checkpoint answer are server rendered. Selection controls enhance this state when JavaScript is available.</p>}
       <div class="mt-4">
         <p class="eyebrow">Journey position</p>
         <JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact />
@@ -235,11 +287,17 @@ const kneserDiscountEquation = renderToString(
               <p>Change the evidence used to divide fallback mass while keeping the original zero-count gate.</p>
               <a href={`/journeys/smoothing/${mode}/kneser-ney-1995/`}>Continue to Kneser–Ney <span aria-hidden="true">→</span></a>
             </>
-          ) : (
+          ) : isKneser ? (
             <>
               <strong>Next: Chen and Goodman, 1998/1999</strong>
-              <p>The next chapter will add interpolation and count-specific discounts. It remains unavailable until its separate source treatment is verified.</p>
-              <a href={`/journeys/smoothing/${mode}/katz-1987/`}><span aria-hidden="true">←</span> Revisit Katz</a>
+              <p>Add lower-order evidence to every continuation, then choose separate discounts for one-, two-, and higher-count events.</p>
+              <a href={`/journeys/smoothing/${mode}/chen-goodman-1998/`}>Continue to Chen–Goodman <span aria-hidden="true">→</span></a>
+            </>
+          ) : (
+            <>
+              <strong>Slice complete: four distinct estimator stages</strong>
+              <p>Return to the journey map, switch learning modes, or audit this report's full claim and source record.</p>
+              <a href="/journeys/smoothing/">Review the complete smoothing path <span aria-hidden="true">→</span></a>
             </>
           )}
         </div>

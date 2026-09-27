@@ -8,6 +8,8 @@ const beginnerKatzPath = "/journeys/smoothing/beginner/katz-1987/";
 const expertKatzPath = "/journeys/smoothing/expert/katz-1987/";
 const beginnerKneserPath = "/journeys/smoothing/beginner/kneser-ney-1995/";
 const expertKneserPath = "/journeys/smoothing/expert/kneser-ney-1995/";
+const beginnerChenPath = "/journeys/smoothing/beginner/chen-goodman-1998/";
+const expertChenPath = "/journeys/smoothing/expert/chen-goodman-1998/";
 
 async function waitForKatzHydration(page: Page) {
   await page.getByLabel("Count pattern").scrollIntoViewIfNeeded();
@@ -16,6 +18,11 @@ async function waitForKatzHydration(page: Page) {
 
 async function waitForKneserHydration(page: Page) {
   await page.getByRole("button", { name: "Move to new context" }).scrollIntoViewIfNeeded();
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+}
+
+async function waitForChenHydration(page: Page) {
+  await page.getByLabel("Inspect continuation").scrollIntoViewIfNeeded();
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
 }
 
@@ -199,6 +206,86 @@ test("hidden context tiles leave the semantic Kneser–Ney comparison intact", a
   await expect(page.getByText("Not set by this lens")).toBeVisible();
 });
 
+test("beginner Chen–Goodman separates count tier from interpolation", async ({ page }) => {
+  await page.goto(beginnerChenPath);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("What changes when lower-order evidence reaches every phrase?");
+  await waitForChenHydration(page);
+  await page.getByLabel("D₁ · count one").check();
+  await page.getByRole("button", { name: "Check tier" }).click();
+  await expect(page.getByRole("status")).toContainText("Correct");
+
+  const table = page.getByRole("table", { name: "Both terms in the active interpolated estimate" });
+  await expect(table.getByRole("row", { name: /adapt/ })).toContainText("0.21");
+  await expect(table.getByRole("row", { name: /silently/ })).toContainText("0.04");
+  await page.getByLabel("One shared discount for every seen count").check();
+  await expect(page.getByRole("status")).toContainText("only the discount rule changed");
+  await expect(table.getByRole("row", { name: /adapt/ })).toContainText("0.135");
+  await expect(page.getByText("lower-order term contributes to 4 of 4 continuations", { exact: false })).toBeVisible();
+});
+
+test("expert Chen–Goodman reconstructs fixed discounts and all count branches", async ({ page }) => {
+  await page.goto(expertChenPath);
+  await waitForChenHydration(page);
+  await expect(page.getByText("Y = n₁/(n₁ + 2n₂) = 0.5")).toBeVisible();
+  await expect(page.getByText("D₃₊ = 2", { exact: true })).toBeVisible();
+  await page.getByLabel("Inspect continuation").selectOption("learn");
+  await page.getByLabel("D₂ · count two").check();
+  await page.getByRole("button", { name: "Check tier" }).click();
+  await expect(page.getByRole("status")).toContainText("Correct");
+  await page.getByLabel("Inspect continuation").selectOption("silently");
+  await page.getByLabel("No discount · count zero").check();
+  await page.getByRole("button", { name: "Check tier" }).click();
+  await expect(page.getByRole("status")).toContainText("count 0");
+});
+
+test("a committed Chen–Goodman variant update stays inside the interaction budget", async ({ page }) => {
+  await page.goto(expertChenPath);
+  await waitForChenHydration(page);
+  const elapsed = await page.evaluate(async () => {
+    const workbench = document.querySelector<HTMLElement>(".chen-workbench");
+    const control = [...document.querySelectorAll<HTMLInputElement>('input[name="chen-variant"]')]
+      .find((item) => item.parentElement?.textContent?.includes("Single-discount"));
+    if (workbench === null || control === undefined) throw new Error("Chen–Goodman controls are unavailable.");
+    const committed = new Promise<void>((resolve) => {
+      const observer = new MutationObserver(() => {
+        if (workbench.dataset.variant === "single") {
+          observer.disconnect();
+          resolve();
+        }
+      });
+      observer.observe(workbench, { attributes: true, attributeFilter: ["data-variant"] });
+    });
+    const started = performance.now();
+    control.click();
+    await committed;
+    return performance.now() - started;
+  });
+  expect(elapsed).toBeLessThan(50);
+});
+
+test("the Chen–Goodman stage preserves its two-lever audit without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(beginnerChenPath);
+  await expect(page.getByRole("table", { name: "Both terms in the active interpolated estimate" })).toBeVisible();
+  await page.getByText("Static hard-backoff versus interpolation audit").click();
+  const audit = page.getByRole("table", { name: "Which rows may receive the lower-order continuation signal?" });
+  await expect(audit.getByRole("row", { name: /1995 hard backoff/ })).toContainText("No lower-order term");
+  await expect(audit.getByRole("row", { name: /1998 interpolation/ })).toContainText("Higher + lower terms");
+  await page.getByText("Which lever makes lower-order evidence reach a seen phrase?").click();
+  await expect(page.getByText("Interpolation does.", { exact: false })).toBeVisible();
+  await context.close();
+});
+
+test("hidden Chen–Goodman graphics leave the semantic estimator intact", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(beginnerChenPath);
+  await waitForChenHydration(page);
+  await page.locator(".two-lever-map").evaluate((node) => { (node as HTMLElement).style.display = "none"; });
+  await expect(page.getByRole("table", { name: "Both terms in the active interpolated estimate" })).toBeVisible();
+  await expect(page.getByRole("table", { name: "Reviewed outputs for the two authored synthetic variants" })).toBeVisible();
+});
+
 test("evidence opens inline and reaches a stable claim anchor", async ({ page }) => {
   await page.goto(beginnerPath);
   const firstEvidence = page.locator("details.evidence-details").first();
@@ -235,9 +322,12 @@ test("the built pages have no automatically detectable accessibility violations"
     expertKatzPath,
     beginnerKneserPath,
     expertKneserPath,
+    beginnerChenPath,
+    expertChenPath,
     "/reference/works/good-1953-population-frequencies/",
     "/reference/works/katz-1987-sparse-data/",
     "/reference/works/kneser-ney-1995-improved-backing-off/",
+    "/reference/works/chen-goodman-1998-empirical-smoothing/",
   ];
   for (const path of paths) {
     await page.goto(path);
@@ -247,7 +337,7 @@ test("the built pages have no automatically detectable accessibility violations"
 });
 
 test("narrow and 200%-zoom-equivalent layouts avoid essential page scrolling", async ({ page }) => {
-  for (const path of [expertKatzPath, expertKneserPath]) {
+  for (const path of [expertKatzPath, expertKneserPath, expertChenPath]) {
     for (const width of [320, 640]) {
       await page.setViewportSize({ width, height: 800 });
       await page.goto(path);

@@ -350,7 +350,7 @@ Visual review compares the result with the warm technical ledger contract. It mu
 
 M4 passes at specification level. The information architecture, two complete journeys, visual roles, source-inspection behavior, corpus boundary, static-first technical approach, progressive-enhancement behavior, and acceptance matrix form one implementable system.
 
-M5 may begin with the smallest coherent build: establish the static Astro shell and build-time adapter, then implement the Good prelude and Katz stage in both modes with the probability-mass ledger. The Kneser–Ney context lens and Chen–Goodman stage follow only after the first pair passes factual, no-JavaScript, keyboard, responsive, visual, and payload checks. A failed gate reopens M4 rather than being papered over in presentation code.
+M5 followed the specified sequence: the static Astro shell and build-time adapter established the evidence boundary; the Good prelude and Katz ledger passed first; the Kneser–Ney context lens and Chen–Goodman stage followed under the same factual, no-JavaScript, keyboard, responsive, visual, and payload gates. The complete four-stage slice now passes those checks. A future failed gate reopens the relevant design decision rather than being papered over in presentation code.
 
 ## Technical references reviewed
 

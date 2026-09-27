@@ -5,6 +5,11 @@ import Ajv2020, { type AnySchema, type ErrorObject } from "ajv/dist/2020.js";
 
 import { validateCorpus } from "../../scripts/lib/validate-corpus.mjs";
 import {
+  calculateChenScenario,
+  type ChenFixture,
+  validateChenScenario,
+} from "./chen-goodman-engine.ts";
+import {
   assertKatzExpected,
   calculateKatzScenario,
   type KatzFixture,
@@ -271,6 +276,7 @@ export type StageView = {
   goodFixture?: GoodFixture;
   katzFixture?: KatzFixture;
   kneserFixture?: KneserFixture;
+  chenFixture?: ChenFixture;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -525,6 +531,33 @@ function validateKneserFixture(fixture: KneserFixture, indexes: Indexes): void {
   }
 }
 
+function validateChenFixture(fixture: ChenFixture, indexes: Indexes): void {
+  const scenarioIds = new Set<string>();
+  for (const claimId of fixture.representedClaimIds) {
+    const claim = required(indexes.claims, claimId, "Chen–Goodman fixture claim");
+    if (claim.workId !== "chen-goodman-1998-empirical-smoothing") {
+      throw new Error(`Chen–Goodman fixture cannot represent claim from ${claim.workId}.`);
+    }
+  }
+  for (const scenario of fixture.scenarios) {
+    if (scenarioIds.has(scenario.id)) throw new Error(`Duplicate Chen–Goodman scenario id: ${scenario.id}`);
+    scenarioIds.add(scenario.id);
+    validateChenScenario(scenario);
+    for (const variant of ["single", "modified"] as const) {
+      const result = calculateChenScenario(scenario, variant);
+      if (result.continuations.some((item) => item.finalProbability < 0)) {
+        throw new Error(`Chen–Goodman fixture ${scenario.id} produced a negative probability.`);
+      }
+    }
+  }
+  if (!fixture.scenarios.some((scenario) => scenario.modes.includes("beginner"))) {
+    throw new Error("Chen–Goodman fixture must expose at least one beginner scenario.");
+  }
+  if (!fixture.scenarios.some((scenario) => scenario.modes.includes("expert"))) {
+    throw new Error("Chen–Goodman fixture must expose at least one expert scenario.");
+  }
+}
+
 const rawCorpus = readJson("data/corpus.json");
 const rawCorpusSchema = readJson("schemas/corpus.schema.json");
 const corpusErrors = validateCorpus(rawCorpus, rawCorpusSchema);
@@ -540,14 +573,17 @@ const rawJourneySchema = readJson("schemas/journey.schema.json");
 const rawFixtureSchema = readJson("schemas/fixture.schema.json");
 const rawKatzFixtureSchema = readJson("schemas/katz-fixture.schema.json");
 const rawKneserFixtureSchema = readJson("schemas/kneser-ney-fixture.schema.json");
+const rawChenFixtureSchema = readJson("schemas/chen-goodman-fixture.schema.json");
 const rawManifest = readJson("data/journeys/smoothing.json");
 const rawFixture = readJson("data/fixtures/good-singleton-reserve.json");
 const rawKatzFixture = readJson("data/fixtures/katz-probability-mass.json");
 const rawKneserFixture = readJson("data/fixtures/kneser-ney-context-coverage.json");
+const rawChenFixture = readJson("data/fixtures/chen-goodman-interpolation-discounts.json");
 const journeyValidator = ajv.compile(rawJourneySchema as AnySchema);
 const fixtureValidator = ajv.compile(rawFixtureSchema as AnySchema);
 const katzFixtureValidator = ajv.compile(rawKatzFixtureSchema as AnySchema);
 const kneserFixtureValidator = ajv.compile(rawKneserFixtureSchema as AnySchema);
+const chenFixtureValidator = ajv.compile(rawChenFixtureSchema as AnySchema);
 
 if (!journeyValidator(rawManifest)) {
   throw new Error(`Journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
@@ -561,15 +597,20 @@ if (!katzFixtureValidator(rawKatzFixture)) {
 if (!kneserFixtureValidator(rawKneserFixture)) {
   throw new Error(`Kneser–Ney fixture schema failed: ${formatSchemaErrors(kneserFixtureValidator.errors)}`);
 }
+if (!chenFixtureValidator(rawChenFixture)) {
+  throw new Error(`Chen–Goodman fixture schema failed: ${formatSchemaErrors(chenFixtureValidator.errors)}`);
+}
 
 const manifest = rawManifest as JourneyManifest;
 const goodFixture = rawFixture as GoodFixture;
 const katzFixture = rawKatzFixture as KatzFixture;
 const kneserFixture = rawKneserFixture as KneserFixture;
+const chenFixture = rawChenFixture as ChenFixture;
 validateManifest(manifest, indexes);
 validateFixture(goodFixture, indexes);
 validateKatzFixture(katzFixture, indexes);
 validateKneserFixture(kneserFixture, indexes);
+validateChenFixture(chenFixture, indexes);
 
 function chronologySummary(work: Work): { label: string; date: string } {
   const event = work.chronology.events.find((item) => item.id === work.chronology.orderingEventId);
@@ -716,6 +757,7 @@ export function getStageView(mode: Mode, slug: string): StageView {
     ...(stage.slug === "good-1953" ? { goodFixture } : {}),
     ...(stage.slug === "katz-1987" ? { katzFixture } : {}),
     ...(stage.slug === "kneser-ney-1995" ? { kneserFixture } : {}),
+    ...(stage.slug === "chen-goodman-1998" ? { chenFixture } : {}),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {
@@ -757,6 +799,10 @@ export function getKatzFixtureForTests(): KatzFixture {
 
 export function getKneserFixtureForTests(): KneserFixture {
   return kneserFixture;
+}
+
+export function getChenFixtureForTests(): ChenFixture {
+  return chenFixture;
 }
 
 export function getCorpusSummary(): {

@@ -239,4 +239,4 @@ The first implementation should teach only the following claims interactively. E
 
 M3 is complete. Both accepted briefs pass the necessity, source-binding, mode-difference, accessibility, keyboard, reduced-motion, mobile, performance, and misconception gates at specification level. The three rejected concepts stay rejected unless new evidence or user testing establishes a learning benefit that a static treatment cannot provide.
 
-The [product architecture](product-architecture.md) now defines the information architecture, separate beginner and expert journeys, visual and content systems, corpus-to-view-model boundary, technical approach, and acceptance matrix. M4 passes at specification level, and M5 may begin with the static shell and the Good–Katz portion of the slice under those gates.
+The [product architecture](product-architecture.md) defines the information architecture, separate beginner and expert journeys, visual and content systems, corpus-to-view-model boundary, technical approach, and acceptance matrix. M4 passed at specification level; the complete Good → Katz → Kneser–Ney → Chen–Goodman implementation now passes the accepted interaction gates.

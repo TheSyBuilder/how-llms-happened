@@ -325,7 +325,7 @@
     {
       "slug": "chen-goodman-1998",
       "workId": "chen-goodman-1998-empirical-smoothing",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-chen-goodman-1998-two-levers",
         "expert": "expert-chen-goodman-1998-modified-estimator"
@@ -337,7 +337,124 @@
           "chen-goodman-1998-three-discount-form"
         ]
       },
-      "blocks": { "beginner": [], "expert": [] }
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-chen-interpolation",
+            "kind": "comparison",
+            "heading": "Open the lower-order route for every continuation",
+            "body": "The 1995 hard-backoff form uses its continuation distribution after a zero higher-order count. Chen and Goodman's later interpolated form adds a scaled lower-order term even when the longer phrase already has a nonzero count.",
+            "claimIds": [
+              "chen-goodman-1998-interpolated-form",
+              "chen-goodman-1998-continuation-distribution"
+            ]
+          },
+          {
+            "id": "beginner-chen-discount-tiers",
+            "kind": "explanation",
+            "heading": "Use the count to choose the discount tier",
+            "body": "The modified estimator uses D₁ for a count of one, D₂ for a count of two, and one shared D₃₊ for every count of three or more. A zero count receives no higher-order discount because it has no retained higher-order term.",
+            "claimIds": [
+              "chen-goodman-1998-three-discount-form"
+            ]
+          },
+          {
+            "id": "beginner-chen-two-levers",
+            "kind": "comparison",
+            "heading": "Do not bundle two different changes",
+            "body": "Interpolation decides whether lower-order evidence can reach seen events. The discount rule decides how much mass each seen count gives up. The report evaluates both a three-discount interpolated implementation and a hard-backoff counterpart, so the two choices must remain separately visible.",
+            "claimIds": [
+              "chen-goodman-1998-implementation-variants",
+              "chen-goodman-1998-interpolation-comparison"
+            ]
+          },
+          {
+            "id": "beginner-chen-results",
+            "kind": "result",
+            "heading": "The tested gains stay inside the tested family",
+            "body": "Within the authors' recursively smoothed implementations, the three-discount variant beats the matched single-discount variant across the displayed WSJ/NAB curves, and interpolation beats its hard-backoff counterpart across the displayed WSJ/NAB and Broadcast News curves. These are bounded implementation comparisons, not universal laws.",
+            "claimIds": [
+              "chen-goodman-1998-multi-discount-comparison",
+              "chen-goodman-1998-interpolation-comparison"
+            ]
+          },
+          {
+            "id": "beginner-chen-boundary",
+            "kind": "limitation",
+            "heading": "This later stage does not rewrite the 1995 paper",
+            "body": "The continuation statistic comes from Kneser and Ney, while all-event interpolation and the D₁/D₂/D₃₊ form belong to this separately dated report. Its evidence concerns count-based English word n-grams, not neural language models.",
+            "claimIds": [
+              "chen-goodman-1998-continuation-distribution",
+              "chen-goodman-1998-evaluation-scope"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-chen-interpolation",
+            "kind": "equation",
+            "heading": "Replace the zero-count gate with an additive lower-order term",
+            "body": "Report equation (22) adds max(c(h,w) − D, 0)/c(h) to λ(h)pKN(w|h′) for every continuation. Equations (21)–(23) retain the normalized distinct-predecessor continuation distribution and generalize it recursively.",
+            "claimIds": [
+              "chen-goodman-1998-interpolated-form",
+              "chen-goodman-1998-continuation-distribution",
+              "chen-goodman-1998-recursive-lower-orders"
+            ]
+          },
+          {
+            "id": "expert-chen-discounts",
+            "kind": "equation",
+            "heading": "Reconstruct D₁, D₂, D₃₊, and λ",
+            "body": "The modified form selects one of three discounts from the observed count and returns their total removed mass through λ. The fixed variant estimates those discounts from n₁ through n₄; the paper leaves some degenerate count-of-counts cases unspecified.",
+            "claimIds": [
+              "chen-goodman-1998-three-discount-form",
+              "chen-goodman-1998-fixed-discount-estimates"
+            ]
+          },
+          {
+            "id": "expert-chen-variants",
+            "kind": "comparison",
+            "heading": "Name the implementation before comparing it",
+            "body": "The held-out kneser-ney-mod implementation uses three tuned discounts per order; kneser-ney-mod-fix uses the count-estimated equation; and kneser-ney-mod-backoff changes the interpolation branch. The evaluated baseline also recursively smooths lower orders and tunes a separate discount at each order.",
+            "claimIds": [
+              "chen-goodman-1998-recursive-lower-orders",
+              "chen-goodman-1998-implementation-variants"
+            ]
+          },
+          {
+            "id": "expert-chen-experiments",
+            "kind": "result",
+            "heading": "Audit the controlled comparisons",
+            "body": "The report measures test cross-entropy across four English corpora, training sizes, and bigram/trigram conditions. Its matched curves favor three discounts over one and interpolation over hard backoff within the stated implementation family; held-out tuning also beats the fixed estimates in the displayed WSJ/NAB conditions, often by a small gap on larger data.",
+            "claimIds": [
+              "chen-goodman-1998-evaluation-scope",
+              "chen-goodman-1998-multi-discount-comparison",
+              "chen-goodman-1998-interpolation-comparison",
+              "chen-goodman-1998-heldout-fixed-comparison"
+            ]
+          },
+          {
+            "id": "expert-chen-diagnostic",
+            "kind": "result",
+            "heading": "Treat the tier pattern as an empirical diagnostic",
+            "body": "The ideal average discount rises sharply at the smallest counts and then levels off. Separate D₁ and D₂ values better follow that pattern, while the reported gain from further splits above count two is marginal; this does not prove universal optimality.",
+            "claimIds": [
+              "chen-goodman-1998-count-diagnostic"
+            ]
+          },
+          {
+            "id": "expert-chen-boundary",
+            "kind": "limitation",
+            "heading": "Preserve attribution and reproducibility limits",
+            "body": "The continuation distribution is credited to Kneser and Ney, the fixed three-discount equations to Klaus Ries through personal communication, and the journal notes independent two-discount work. The report provides no packaged code, splits, or models for exact reproduction.",
+            "claimIds": [
+              "chen-goodman-1998-continuation-distribution",
+              "chen-goodman-1998-fixed-discount-estimates",
+              "chen-goodman-1998-evaluation-scope"
+            ]
+          }
+        ]
+      }
     }
   ]
 }

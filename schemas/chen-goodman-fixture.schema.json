@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/chen-goodman-fixture.schema.json",
+  "title": "LLM Lineage synthetic Chen–Goodman interpolation and discount fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "id", "kind", "label", "description", "representedClaimIds", "scenarios"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "kind": { "const": "chen-goodman-interpolation-discounts" },
+    "label": { "const": "Synthetic example" },
+    "description": { "type": "string", "minLength": 1 },
+    "representedClaimIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/scenario" }
+    }
+  },
+  "$defs": {
+    "mode": { "enum": ["beginner", "expert"] },
+    "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "count", "lowerOrderProbability"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "count": { "type": "integer", "minimum": 0 },
+        "lowerOrderProbability": { "$ref": "#/$defs/probability" }
+      }
+    },
+    "expectedContinuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "tier", "discount", "higherOrderContribution", "lowerOrderContribution", "finalProbability"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "tier": { "enum": ["zero", "D1", "D2", "D3+"] },
+        "discount": { "type": "number", "minimum": 0 },
+        "higherOrderContribution": { "$ref": "#/$defs/probability" },
+        "lowerOrderContribution": { "$ref": "#/$defs/probability" },
+        "finalProbability": { "$ref": "#/$defs/probability" }
+      }
+    },
+    "expectedVariant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retainedMass", "interpolationWeight", "lowerOrderMass", "total", "continuations"],
+      "properties": {
+        "retainedMass": { "$ref": "#/$defs/probability" },
+        "interpolationWeight": { "$ref": "#/$defs/probability" },
+        "lowerOrderMass": { "$ref": "#/$defs/probability" },
+        "total": { "$ref": "#/$defs/probability" },
+        "continuations": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/expectedContinuation" }
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "description", "prompt", "modes", "history", "singleDiscount", "countOfCounts", "continuations", "expected"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 1 },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/mode" }
+        },
+        "history": { "type": "string", "minLength": 1 },
+        "singleDiscount": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 },
+        "countOfCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["n1", "n2", "n3", "n4"],
+          "properties": {
+            "n1": { "type": "integer", "minimum": 1 },
+            "n2": { "type": "integer", "minimum": 1 },
+            "n3": { "type": "integer", "minimum": 1 },
+            "n4": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "continuations": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/continuation" }
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["single", "modified"],
+          "properties": {
+            "single": { "$ref": "#/$defs/expectedVariant" },
+            "modified": { "$ref": "#/$defs/expectedVariant" }
+          }
+        }
+      }
+    }
+  }
+}

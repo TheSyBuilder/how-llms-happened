@@ -119,6 +119,11 @@ const kneserFixtureBytes = existsSync(kneserFixturePath) ? readFileSync(kneserFi
 if (kneserFixtureBytes > 5 * 1024) {
   failures.push(`Kneser–Ney fixture is ${kneserFixtureBytes} bytes; budget is 5120.`);
 }
+const chenFixturePath = resolve("data/fixtures/chen-goodman-interpolation-discounts.json");
+const chenFixtureBytes = existsSync(chenFixturePath) ? readFileSync(chenFixturePath).byteLength : 0;
+if (chenFixtureBytes > 6 * 1024) {
+  failures.push(`Chen–Goodman fixture is ${chenFixtureBytes} bytes; budget is 6144.`);
+}
 
 const report = {
   generatedAt: new Date().toISOString(),
@@ -126,6 +131,7 @@ const report = {
   unresolvedReferenceCount: failures.length,
   katzFixtureBytes,
   kneserFixtureBytes,
+  chenFixtureBytes,
   routes: routes.sort((left, right) => left.route.localeCompare(right.route)),
 };
 
