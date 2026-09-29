@@ -51,24 +51,21 @@ These are different tasks, not expanded and collapsed versions of the same page.
 
 ## Interaction boundary
 
-The branch has a credible cause-and-effect interaction opportunity, but no interaction is accepted by this decision.
-
-A future brief may test whether manipulating a bounded, reviewed sequence helps a learner distinguish:
+The follow-up [recurrent-memory interaction brief](recurrent-memory-interaction.md) accepts one bounded state-and-credit trace for prototyping. The trace uses reviewed synthetic sequences to help a learner distinguish:
 
 - the value carried forward from the error signal assigned backward;
 - fixed retention from learned forgetting;
 - a gate reading cell state from a gate controlling cell retention;
 - an unnormalized recurrent prediction vector from a normalized word distribution.
 
-That brief must be researched and reviewed before implementation. It must explain why a linked static trace is insufficient, bind every historical state to exact claims and versions, use synthetic values that reproduce no paper experiment, provide a semantic table and text trace, and define keyboard, reduced-motion, no-JavaScript, mobile, performance, and misconception tests. It must not present a modern unified LSTM equation as though every term appeared in the original cell.
+The accepted brief binds the interaction to exact claims and objectives, defines a linked static competitor, and sets keyboard, screen-reader, reduced-motion, no-JavaScript, mobile, performance, and misconception tests. The interaction remains provisional: if learner testing does not improve the three named distinctions over the complete static treatment, the client interaction is removed. It must not present a modern unified LSTM equation as though every term appeared in the original cell.
 
 Empirical results remain static and source-conditioned. The interface must not offer controls that blend generated sequence tasks, Penn Treebank language modeling, speech-recognition rescoring, or modern training conventions into a false shared experiment.
 
 ## Implementation gate
 
-Implementation may begin only after the next design pass supplies:
+Implementation may begin only after the remaining design pass supplies:
 
-- a complete interaction brief or an explicit decision that a static treatment teaches better;
 - a stage-by-stage claim inventory and notation crosswalk;
 - the exact Bengio prerequisite treatment and smoothing-journey bridge;
 - reviewed synthetic fixtures with invariants and expected traces, if interaction is accepted;
@@ -76,4 +73,4 @@ Implementation may begin only after the next design pass supplies:
 - static fallbacks, source inspection, checkpoint answers, and mode-switch behavior;
 - acceptance tests for variant leakage, equation integrity, accessibility, reflow, payload, and rendered desktop/mobile quality.
 
-Until those gates pass, M6 remains in research and design. The attention, contextual-transfer, retrieval, and post-training branches remain valid later candidates; their deferral is a sequencing decision, not an importance judgment.
+The interaction brief now passes at specification level; the other gates remain open. Until they pass, M6 remains in research and design. The attention, contextual-transfer, retrieval, and post-training branches remain valid later candidates; their deferral is a sequencing decision, not an importance judgment.
