@@ -64,13 +64,6 @@ Empirical results remain static and source-conditioned. The interface must not o
 
 ## Implementation gate
 
-Implementation may begin only after the remaining design pass supplies:
+The [recurrent-memory slice contract](recurrent-slice-contract.md) closes the remaining design-and-data gate. It supplies the complete claim and objective inventory, source-notation crosswalk, exact Bengio prerequisite, smoothing bridge, a sub-8-KiB schema-validated fixture with reviewed expected traces, separate mode manifests, static fallback requirements, and variant-leakage, accessibility, responsive, payload, and rendered-quality tests.
 
-- a stage-by-stage claim inventory and notation crosswalk;
-- the exact Bengio prerequisite treatment and smoothing-journey bridge;
-- reviewed synthetic fixtures with invariants and expected traces, if interaction is accepted;
-- beginner and expert journey manifests that resolve to the existing objectives;
-- static fallbacks, source inspection, checkpoint answers, and mode-switch behavior;
-- acceptance tests for variant leakage, equation integrity, accessibility, reflow, payload, and rendered desktop/mobile quality.
-
-The interaction brief now passes at specification level; the other gates remain open. Until they pass, M6 remains in research and design. The attention, contextual-transfer, retrieval, and post-training branches remain valid later candidates; their deferral is a sequencing decision, not an importance judgment.
+No route or interactive control was added while closing the gate. Implementation may now begin with the shared recurrent journey shell and Elman in both modes. The complete no-JavaScript same-token treatment must land before hydration, and the other stages plus both static interludes remain planned until each source-dated boundary passes equivalent review. The attention, contextual-transfer, retrieval, and post-training branches remain valid later candidates; their deferral is a sequencing decision, not an importance judgment.

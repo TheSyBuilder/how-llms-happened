@@ -65,9 +65,42 @@
           }
         }
       }
+    },
+    "interludes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/interlude" }
     }
   },
   "$defs": {
+    "interlude": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "placement", "stageSlug", "title", "workIds", "blocks"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "kind": { "enum": ["prerequisite", "bridge"] },
+        "placement": { "enum": ["before", "after"] },
+        "stageSlug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "relatedJourneyId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "workIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "blocks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["beginner", "expert"],
+          "properties": {
+            "beginner": { "$ref": "#/$defs/blocks" },
+            "expert": { "$ref": "#/$defs/blocks" }
+          }
+        }
+      }
+    },
     "blocks": {
       "type": "array",
       "items": {

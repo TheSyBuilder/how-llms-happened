@@ -225,15 +225,8 @@ The fixture should remain below 8 KB. Free-form sequence entry, weight editing, 
 - **Empirical result scrubber:** synthetic trigger tasks, Penn Treebank perplexity, and speech-recognition rescoring do not form one controlled parameter space.
 - **Free gate sliders:** encourage arbitrary states and imply a general simulator; three reviewed retention presets are sufficient for the causal contrast.
 
-## Remaining implementation gate
+## Pre-implementation contract
 
-This brief accepts the interaction at specification level only. Before routes or controls are added, M6 still requires:
+The follow-up [recurrent-memory slice contract](recurrent-slice-contract.md) now supplies the complete claim inventory, source-notation crosswalk, Bengio prerequisite, smoothing bridge, reviewed fixture values, JSON Schema, pure calculation rules, separate mode manifests, static fallback requirements, and automated plus rendered acceptance plan.
 
-- the complete stage-by-stage claim inventory and source-notation crosswalk;
-- the exact Bengio prerequisite panel and smoothing-journey bridge;
-- reviewed fixture values, expected traces, JSON Schema, and pure calculation rules;
-- separate beginner and expert journey manifests;
-- source inspection, mode-switch, and static-fallback content;
-- automated variant-leakage, equation-integrity, accessibility, reflow, payload, and rendered-quality test plans.
-
-The next design artifact should combine the claim inventory, notation crosswalk, and fixture contract. Implementation remains gated until that artifact passes review.
+No route or control was added while closing that gate. The next bounded increment may implement the shared recurrent journey shell and Elman in both modes. It must render the complete no-JavaScript same-token treatment before hydration and keep the remaining five stages plus both static interludes planned until their source-dated boundaries pass equivalent review.

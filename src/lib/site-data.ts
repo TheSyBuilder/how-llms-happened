@@ -18,6 +18,10 @@ import {
   type KneserFixture,
   validateKneserScenario,
 } from "./kneser-ney-engine.ts";
+import {
+  type RecurrentFixture,
+  validateRecurrentFixture,
+} from "./recurrent-memory-engine.ts";
 
 export type Mode = "beginner" | "expert";
 export type StageStatus = "built" | "planned";
@@ -184,13 +188,25 @@ type StageManifest = {
   blocks: Record<Mode, ManifestBlock[]>;
 };
 
-type JourneyManifest = {
+type JourneyInterlude = {
+  id: string;
+  kind: "prerequisite" | "bridge";
+  placement: "before" | "after";
+  stageSlug: string;
+  title: string;
+  relatedJourneyId?: string;
+  workIds: string[];
+  blocks: Record<Mode, ManifestBlock[]>;
+};
+
+export type JourneyManifest = {
   id: string;
   slug: string;
   title: string;
   question: string;
   estimatedMinutes: Record<Mode, number>;
   stages: StageManifest[];
+  interludes?: JourneyInterlude[];
 };
 
 export type GoodFixture = {
@@ -439,6 +455,38 @@ function validateManifest(manifest: JourneyManifest, indexes: Indexes): void {
       }
     }
   }
+
+  const interludeIds = new Set<string>();
+  for (const interlude of manifest.interludes ?? []) {
+    if (interludeIds.has(interlude.id)) {
+      throw new Error(`Duplicate journey interlude id: ${interlude.id}`);
+    }
+    interludeIds.add(interlude.id);
+    if (!stageSlugs.has(interlude.stageSlug)) {
+      throw new Error(`Interlude ${interlude.id} targets unknown stage ${interlude.stageSlug}.`);
+    }
+    if (interlude.kind === "bridge" && interlude.relatedJourneyId === undefined) {
+      throw new Error(`Bridge ${interlude.id} must declare a related journey.`);
+    }
+    for (const workId of interlude.workIds) required(indexes.works, workId, "interlude work");
+    for (const mode of ["beginner", "expert"] as const) {
+      for (const block of interlude.blocks[mode]) {
+        if (blockIds.has(block.id)) throw new Error(`Duplicate journey block id: ${block.id}`);
+        blockIds.add(block.id);
+        if (FACTUAL_BLOCK_KINDS.has(block.kind) && block.claimIds.length === 0) {
+          throw new Error(`Factual block ${block.id} must declare at least one claim.`);
+        }
+        for (const claimId of block.claimIds) {
+          const claim = required(indexes.claims, claimId, `claim for interlude block ${block.id}`);
+          if (!interlude.workIds.includes(claim.workId)) {
+            throw new Error(
+              `Interlude ${interlude.id} does not declare work ${claim.workId} for claim ${claimId}.`,
+            );
+          }
+        }
+      }
+    }
+  }
 }
 
 function validateFixture(fixture: GoodFixture, indexes: Indexes): void {
@@ -558,6 +606,47 @@ function validateChenFixture(fixture: ChenFixture, indexes: Indexes): void {
   }
 }
 
+function validateRecurrentFixtureBindings(
+  fixture: RecurrentFixture,
+  recurrentManifest: JourneyManifest,
+  indexes: Indexes,
+): void {
+  validateRecurrentFixture(fixture);
+  const interactiveWorkIds = new Set([
+    "elman-1988-finding-structure-in-time",
+    "hochreiter-schmidhuber-1995-long-short-term-memory",
+    "gers-schmidhuber-cummins-1999-learning-to-forget",
+    "gers-schraudolph-schmidhuber-2002-precise-timing",
+  ]);
+  for (const claimId of fixture.representedClaimIds) {
+    const claim = required(indexes.claims, claimId, "recurrent fixture claim");
+    if (!interactiveWorkIds.has(claim.workId)) {
+      throw new Error(`Recurrent fixture cannot represent interactive claim from ${claim.workId}.`);
+    }
+  }
+  for (const objectiveId of fixture.representedObjectiveIds) {
+    const objective = required(indexes.objectives, objectiveId, "recurrent fixture objective");
+    if (objective.workIds.length !== 1 || !interactiveWorkIds.has(objective.workIds[0] ?? "")) {
+      throw new Error(`Recurrent fixture objective ${objectiveId} is outside the interactive stages.`);
+    }
+  }
+  const stageSlugs = new Set(recurrentManifest.stages.map((stage) => stage.slug));
+  const expectedStageByKind = new Map<RecurrentFixture["scenarios"][number]["kind"], string>([
+    ["elman-history-contrast", "elman-1988-1990"],
+    ["original-cell-credit", "hochreiter-schmidhuber-1995-1997"],
+    ["forget-retention", "gers-1999-2000"],
+    ["peephole-inspection", "gers-2002"],
+  ]);
+  for (const scenario of fixture.scenarios) {
+    if (!stageSlugs.has(scenario.sourceStage)) {
+      throw new Error(`Recurrent scenario ${scenario.id} targets unknown stage ${scenario.sourceStage}.`);
+    }
+    if (scenario.sourceStage !== expectedStageByKind.get(scenario.kind)) {
+      throw new Error(`Recurrent scenario ${scenario.id} is bound to the wrong historical stage.`);
+    }
+  }
+}
+
 const rawCorpus = readJson("data/corpus.json");
 const rawCorpusSchema = readJson("schemas/corpus.schema.json");
 const corpusErrors = validateCorpus(rawCorpus, rawCorpusSchema);
@@ -574,19 +663,26 @@ const rawFixtureSchema = readJson("schemas/fixture.schema.json");
 const rawKatzFixtureSchema = readJson("schemas/katz-fixture.schema.json");
 const rawKneserFixtureSchema = readJson("schemas/kneser-ney-fixture.schema.json");
 const rawChenFixtureSchema = readJson("schemas/chen-goodman-fixture.schema.json");
+const rawRecurrentFixtureSchema = readJson("schemas/recurrent-memory-fixture.schema.json");
 const rawManifest = readJson("data/journeys/smoothing.json");
+const rawRecurrentManifest = readJson("data/journeys/recurrent-memory.json");
 const rawFixture = readJson("data/fixtures/good-singleton-reserve.json");
 const rawKatzFixture = readJson("data/fixtures/katz-probability-mass.json");
 const rawKneserFixture = readJson("data/fixtures/kneser-ney-context-coverage.json");
 const rawChenFixture = readJson("data/fixtures/chen-goodman-interpolation-discounts.json");
+const rawRecurrentFixture = readJson("data/fixtures/recurrent-memory-trace.json");
 const journeyValidator = ajv.compile(rawJourneySchema as AnySchema);
 const fixtureValidator = ajv.compile(rawFixtureSchema as AnySchema);
 const katzFixtureValidator = ajv.compile(rawKatzFixtureSchema as AnySchema);
 const kneserFixtureValidator = ajv.compile(rawKneserFixtureSchema as AnySchema);
 const chenFixtureValidator = ajv.compile(rawChenFixtureSchema as AnySchema);
+const recurrentFixtureValidator = ajv.compile(rawRecurrentFixtureSchema as AnySchema);
 
 if (!journeyValidator(rawManifest)) {
   throw new Error(`Journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
+}
+if (!journeyValidator(rawRecurrentManifest)) {
+  throw new Error(`Recurrent journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
 }
 if (!fixtureValidator(rawFixture)) {
   throw new Error(`Fixture schema failed: ${formatSchemaErrors(fixtureValidator.errors)}`);
@@ -600,17 +696,27 @@ if (!kneserFixtureValidator(rawKneserFixture)) {
 if (!chenFixtureValidator(rawChenFixture)) {
   throw new Error(`Chen–Goodman fixture schema failed: ${formatSchemaErrors(chenFixtureValidator.errors)}`);
 }
+if (!recurrentFixtureValidator(rawRecurrentFixture)) {
+  throw new Error(`Recurrent fixture schema failed: ${formatSchemaErrors(recurrentFixtureValidator.errors)}`);
+}
 
 const manifest = rawManifest as JourneyManifest;
+const recurrentManifest = rawRecurrentManifest as JourneyManifest;
 const goodFixture = rawFixture as GoodFixture;
 const katzFixture = rawKatzFixture as KatzFixture;
 const kneserFixture = rawKneserFixture as KneserFixture;
 const chenFixture = rawChenFixture as ChenFixture;
+const recurrentFixture = rawRecurrentFixture as RecurrentFixture;
 validateManifest(manifest, indexes);
+validateManifest(recurrentManifest, indexes);
 validateFixture(goodFixture, indexes);
 validateKatzFixture(katzFixture, indexes);
 validateKneserFixture(kneserFixture, indexes);
 validateChenFixture(chenFixture, indexes);
+validateRecurrentFixtureBindings(recurrentFixture, recurrentManifest, indexes);
+if (Buffer.byteLength(readFileSync(resolve(process.cwd(), "data/fixtures/recurrent-memory-trace.json"), "utf8")) >= 8 * 1024) {
+  throw new Error("Recurrent fixture must stay below 8 KB.");
+}
 
 function chronologySummary(work: Work): { label: string; date: string } {
   const event = work.chronology.events.find((item) => item.id === work.chronology.orderingEventId);
@@ -803,6 +909,14 @@ export function getKneserFixtureForTests(): KneserFixture {
 
 export function getChenFixtureForTests(): ChenFixture {
   return chenFixture;
+}
+
+export function getRecurrentFixtureForTests(): RecurrentFixture {
+  return recurrentFixture;
+}
+
+export function getRecurrentManifestForTests(): JourneyManifest {
+  return recurrentManifest;
 }
 
 export function getCorpusSummary(): {
