@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/fixture.schema.json",
+  "title": "LLM Lineage synthetic Good prelude fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "label", "description", "representedClaimIds", "observedTypes", "expected"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "kind": { "const": "good-unseen-mass" },
+    "label": { "const": "Synthetic example" },
+    "description": { "type": "string", "minLength": 1 },
+    "representedClaimIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "observedTypes": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "count"],
+        "properties": {
+          "label": { "type": "string", "minLength": 1 },
+          "count": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sampleSize", "singletonTypes", "representedMass", "unseenMass"],
+      "properties": {
+        "sampleSize": { "type": "integer", "minimum": 1 },
+        "singletonTypes": { "type": "integer", "minimum": 0 },
+        "representedMass": { "type": "number", "minimum": 0, "maximum": 1 },
+        "unseenMass": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

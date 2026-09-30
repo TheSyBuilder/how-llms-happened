@@ -1,0 +1,101 @@
+---
+import EvidenceDetails from "../../../components/EvidenceDetails.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { getBuiltReferenceWorkIds, getWorkReference } from "../../../lib/site-data";
+
+export function getStaticPaths() {
+  return getBuiltReferenceWorkIds().map((workId) => ({ params: { workId } }));
+}
+
+const workId = Astro.params.workId;
+if (workId === undefined) {
+  throw new Error("Missing reference work id.");
+}
+const record = getWorkReference(workId);
+const stageSlug = workId === "good-1953-population-frequencies" ? "good-1953" : "katz-1987";
+---
+
+<BaseLayout
+  title={`${record.work.title} — source record — LLM Lineage`}
+  description={`Mode-neutral evidence record for ${record.work.title}.`}
+  eyebrow="Source record"
+>
+  <div class="reference-shell breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <span>Reference</span><span aria-hidden="true">/</span>
+    <span aria-current="page">{record.work.authors[0]} {record.work.chronologyDate.slice(0, 4)}</span>
+  </div>
+
+  <article class="reference-shell">
+    <header class="reference-header">
+      <p class="eyebrow">{record.work.inclusionStatus} record · {record.work.inclusionConfidence} confidence</p>
+      <h1>{record.work.title}</h1>
+      <p class="citation">{record.work.citation}</p>
+      <div class="hero-actions">
+        <a class="button" href={`/journeys/smoothing/beginner/${stageSlug}/`}>Learn with intuition</a>
+        <a class="button button--quiet" href={`/journeys/smoothing/expert/${stageSlug}/`}>Audit the estimator</a>
+      </div>
+    </header>
+
+    <section class="reference-section reference-grid" aria-labelledby="identity-heading">
+      <div><p class="eyebrow">Identity</p><h2 id="identity-heading" class="mt-3">Canonical record</h2></div>
+      <div>
+        <dl class="stage-meta">
+          <div><dt>Authors</dt><dd>{record.work.authors.join(", ")}</dd></div>
+          <div><dt>Ordering date</dt><dd>{record.work.chronologyDate}</dd></div>
+          <div><dt>Canonical version</dt><dd>{record.canonicalVersion.label}</dd></div>
+          <div><dt>Artifact</dt><dd>{record.canonicalVersion.kind}</dd></div>
+        </dl>
+        <p class="mt-4">{record.work.inclusionRationale}</p>
+      </div>
+    </section>
+
+    <section class="reference-section reference-grid" aria-labelledby="ideas-heading">
+      <div><p class="eyebrow">Mechanism</p><h2 id="ideas-heading" class="mt-3">Bound ideas</h2></div>
+      <div>
+        {record.ideas.map((idea) => (
+          <article>
+            <h3>{idea.name}</h3>
+            <p class="mt-3">{idea.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="reference-section" aria-labelledby="claims-heading">
+      <p class="eyebrow">Atomic evidence</p>
+      <h2 id="claims-heading" class="mt-3">Claims and locators</h2>
+      {record.claims.map((claim) => (
+        <article class="claim-record" id={`claim-${claim.claimId}`}>
+          <h3>{claim.claimId}</h3>
+          <p>{claim.statement}</p>
+          <div class="record-meta"><span>{claim.directness}</span><span>{claim.confidence} confidence</span><span>{claim.versionIds.join(", ")}</span></div>
+          <EvidenceDetails evidence={claim} />
+        </article>
+      ))}
+    </section>
+
+    <section class="reference-section reference-grid" aria-labelledby="boundaries-heading">
+      <div><p class="eyebrow">Scope</p><h2 id="boundaries-heading" class="mt-3">Limitations and uncertainty</h2></div>
+      <div>
+        <ul>{record.limitations.map((item) => <li>{item}</li>)}</ul>
+        {record.uncertainties.map((item) => (
+          <div class="provenance-note mt-3"><strong>{item.status}</strong><p>{item.note}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="reference-section reference-grid" aria-labelledby="lineage-heading">
+      <div><p class="eyebrow">Qualified lineage</p><h2 id="lineage-heading" class="mt-3">Relationships</h2></div>
+      <div>
+        {record.relationships.map((relationship) => (
+          <article>
+            <h3>{relationship.from.id} → {relationship.to.id}</h3>
+            <p class="record-meta"><span>{relationship.connectionType}</span><span>{relationship.evidenceClass}</span><span>{relationship.confidence}</span></p>
+            <p class="mt-3">{relationship.rationale}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </article>
+</BaseLayout>

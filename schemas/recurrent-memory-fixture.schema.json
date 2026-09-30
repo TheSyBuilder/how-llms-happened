@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/recurrent-memory-fixture.schema.json",
+  "title": "LLM Lineage synthetic recurrent-memory trace fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "id", "kind", "label", "description", "representedClaimIds", "representedObjectiveIds", "scenarios"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "$ref": "#/$defs/id" },
+    "kind": { "const": "recurrent-memory-trace" },
+    "label": { "const": "Synthetic example" },
+    "description": { "$ref": "#/$defs/text" },
+    "representedClaimIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "representedObjectiveIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/elmanScenario" },
+          { "$ref": "#/$defs/originalCellScenario" },
+          { "$ref": "#/$defs/forgetScenario" },
+          { "$ref": "#/$defs/peepholeScenario" }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "text": { "type": "string", "minLength": 1 },
+    "number": { "type": "number" },
+    "gate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "mode": { "enum": ["beginner", "expert"] },
+    "modes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/mode" }
+    },
+    "baseScenario": {
+      "type": "object",
+      "required": ["id", "label", "description", "prompt", "modes", "sourceStage"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" },
+        "prompt": { "$ref": "#/$defs/text" },
+        "modes": { "$ref": "#/$defs/modes" },
+        "sourceStage": { "$ref": "#/$defs/id" }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "tokens", "inputs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "$ref": "#/$defs/text" },
+        "tokens": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/text" } },
+        "inputs": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/number" } }
+      }
+    },
+    "historyTrace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "states"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "states": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/number" } }
+      }
+    },
+    "elmanScenario": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/baseScenario" },
+        {
+          "type": "object",
+          "required": ["kind", "activeStep", "initialState", "inputWeight", "recurrentWeight", "bias", "histories", "expected"],
+          "properties": {
+            "kind": { "const": "elman-history-contrast" },
+            "activeStep": { "type": "integer", "minimum": 0 },
+            "initialState": { "$ref": "#/$defs/number" },
+            "inputWeight": { "$ref": "#/$defs/number" },
+            "recurrentWeight": { "$ref": "#/$defs/number" },
+            "bias": { "$ref": "#/$defs/number" },
+            "histories": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "$ref": "#/$defs/history" }
+            },
+            "expected": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["histories"],
+              "properties": {
+                "histories": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": { "$ref": "#/$defs/historyTrace" }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "originalCellStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token", "candidate", "inputGate", "outputGate"],
+      "properties": {
+        "token": { "$ref": "#/$defs/text" },
+        "candidate": { "$ref": "#/$defs/number" },
+        "inputGate": { "$ref": "#/$defs/gate" },
+        "outputGate": { "$ref": "#/$defs/gate" }
+      }
+    },
+    "expectedOriginalStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previousState", "writtenContribution", "state", "exposedOutput"],
+      "properties": {
+        "previousState": { "$ref": "#/$defs/number" },
+        "writtenContribution": { "$ref": "#/$defs/number" },
+        "state": { "$ref": "#/$defs/number" },
+        "exposedOutput": { "$ref": "#/$defs/number" }
+      }
+    },
+    "creditPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["distanceFromTarget", "ordinaryPath", "protectedPath"],
+      "properties": {
+        "distanceFromTarget": { "type": "integer", "minimum": 0 },
+        "ordinaryPath": { "$ref": "#/$defs/number" },
+        "protectedPath": { "$ref": "#/$defs/number" }
+      }
+    },
+    "originalCellScenario": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/baseScenario" },
+        {
+          "type": "object",
+          "required": ["kind", "initialState", "ordinaryLocalFactors", "protectedLocalFactors", "steps", "expected"],
+          "properties": {
+            "kind": { "const": "original-cell-credit" },
+            "initialState": { "$ref": "#/$defs/number" },
+            "ordinaryLocalFactors": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/number" } },
+            "protectedLocalFactors": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/number" } },
+            "steps": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/originalCellStep" } },
+            "expected": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["steps", "credit"],
+              "properties": {
+                "steps": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/expectedOriginalStep" } },
+                "credit": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/creditPoint" } }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "forgetPreset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "forgetGate"],
+      "properties": {
+        "id": { "enum": ["near-retain", "gradual-decay", "near-reset"] },
+        "label": { "$ref": "#/$defs/text" },
+        "forgetGate": { "$ref": "#/$defs/gate" }
+      }
+    },
+    "expectedForgetPreset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "retainedContribution", "resultingState"],
+      "properties": {
+        "id": { "enum": ["near-retain", "gradual-decay", "near-reset"] },
+        "retainedContribution": { "$ref": "#/$defs/number" },
+        "resultingState": { "$ref": "#/$defs/number" }
+      }
+    },
+    "forgetScenario": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/baseScenario" },
+        {
+          "type": "object",
+          "required": ["kind", "previousState", "candidate", "inputGate", "presets", "expected"],
+          "properties": {
+            "kind": { "const": "forget-retention" },
+            "previousState": { "$ref": "#/$defs/number" },
+            "candidate": { "$ref": "#/$defs/number" },
+            "inputGate": { "$ref": "#/$defs/gate" },
+            "presets": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "$ref": "#/$defs/forgetPreset" } },
+            "expected": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["inputGatedWrite", "presets"],
+              "properties": {
+                "inputGatedWrite": { "$ref": "#/$defs/number" },
+                "presets": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "$ref": "#/$defs/expectedForgetPreset" } }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "peepholeParameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previousState", "candidate", "inputExternal", "forgetExternal", "outputExternal", "inputPeepholeWeight", "forgetPeepholeWeight", "outputPeepholeWeight"],
+      "properties": {
+        "previousState": { "$ref": "#/$defs/number" },
+        "candidate": { "$ref": "#/$defs/number" },
+        "inputExternal": { "$ref": "#/$defs/number" },
+        "forgetExternal": { "$ref": "#/$defs/number" },
+        "outputExternal": { "$ref": "#/$defs/number" },
+        "inputPeepholeWeight": { "$ref": "#/$defs/number" },
+        "forgetPeepholeWeight": { "$ref": "#/$defs/number" },
+        "outputPeepholeWeight": { "$ref": "#/$defs/number" }
+      }
+    },
+    "peepholeResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputInspectedState", "forgetInspectedState", "outputInspectedState", "inputGate", "forgetGate", "inputGatedWrite", "retainedContribution", "state", "outputGate", "exposedOutput"],
+      "properties": {
+        "inputInspectedState": { "type": ["number", "null"] },
+        "forgetInspectedState": { "type": ["number", "null"] },
+        "outputInspectedState": { "type": ["number", "null"] },
+        "inputGate": { "$ref": "#/$defs/gate" },
+        "forgetGate": { "$ref": "#/$defs/gate" },
+        "inputGatedWrite": { "$ref": "#/$defs/number" },
+        "retainedContribution": { "$ref": "#/$defs/number" },
+        "state": { "$ref": "#/$defs/number" },
+        "outputGate": { "$ref": "#/$defs/gate" },
+        "exposedOutput": { "$ref": "#/$defs/number" }
+      }
+    },
+    "peepholeScenario": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/baseScenario" },
+        {
+          "type": "object",
+          "required": ["kind", "parameters", "expected"],
+          "properties": {
+            "kind": { "const": "peephole-inspection" },
+            "parameters": { "$ref": "#/$defs/peepholeParameters" },
+            "expected": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["withoutPeepholes", "withPeepholes"],
+              "properties": {
+                "withoutPeepholes": { "$ref": "#/$defs/peepholeResult" },
+                "withPeepholes": { "$ref": "#/$defs/peepholeResult" }
+              }
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    }
+  }
+}

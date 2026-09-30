@@ -1,0 +1,122 @@
+{
+  "$schema": "../../schemas/kneser-ney-fixture.schema.json",
+  "id": "kneser-ney-context-coverage",
+  "kind": "kneser-ney-context-coverage",
+  "label": "Synthetic example",
+  "description": "A teaching corpus where fixed token counts meet changing predecessor coverage.",
+  "representedClaimIds": [
+    "kneser-ney-1995-standard-backoff-bias",
+    "kneser-ney-1995-backoff-form",
+    "kneser-ney-1995-free-backoff-distribution",
+    "kneser-ney-1995-context-diversity",
+    "kneser-ney-1995-singleton-distribution"
+  ],
+  "scenarios": [
+    {
+      "id": "fixed-count-context-spread",
+      "label": "Fixed count, broader coverage",
+      "description": "Only the predecessor coverage of dollars changes.",
+      "prompt": "Which continuation gets more distinct-context fallback weight?",
+      "modes": ["beginner", "expert"],
+      "focusWord": "dollars",
+      "states": [
+        {
+          "id": "concentrated",
+          "label": "Two contexts",
+          "description": "Six dollars tokens follow two predecessors.",
+          "candidates": [
+            {
+              "label": "dollars",
+              "contexts": [
+                { "predecessor": "after a number", "count": 4 },
+                { "predecessor": "after Canadian", "count": 2 }
+              ]
+            },
+            {
+              "label": "adapts",
+              "contexts": [
+                { "predecessor": "system", "count": 2 },
+                { "predecessor": "model", "count": 1 },
+                { "predecessor": "method", "count": 1 }
+              ]
+            }
+          ],
+          "expected": {
+            "totalTokens": 10,
+            "totalDistinctContexts": 5,
+            "totalSingletonContexts": 2,
+            "candidates": [
+              { "label": "dollars", "rawCount": 6, "ordinaryProbability": 0.6, "distinctContextCount": 2, "distinctContextProbability": 0.4, "singletonContextCount": 0, "singletonContextProbability": 0 },
+              { "label": "adapts", "rawCount": 4, "ordinaryProbability": 0.4, "distinctContextCount": 3, "distinctContextProbability": 0.6, "singletonContextCount": 2, "singletonContextProbability": 1 }
+            ]
+          }
+        },
+        {
+          "id": "one-new-context",
+          "label": "One new context",
+          "description": "One token opens a third predecessor.",
+          "candidates": [
+            {
+              "label": "dollars",
+              "contexts": [
+                { "predecessor": "after a number", "count": 3 },
+                { "predecessor": "after Canadian", "count": 2 },
+                { "predecessor": "after export", "count": 1 }
+              ]
+            },
+            {
+              "label": "adapts",
+              "contexts": [
+                { "predecessor": "system", "count": 2 },
+                { "predecessor": "model", "count": 1 },
+                { "predecessor": "method", "count": 1 }
+              ]
+            }
+          ],
+          "expected": {
+            "totalTokens": 10,
+            "totalDistinctContexts": 6,
+            "totalSingletonContexts": 3,
+            "candidates": [
+              { "label": "dollars", "rawCount": 6, "ordinaryProbability": 0.6, "distinctContextCount": 3, "distinctContextProbability": 0.5, "singletonContextCount": 1, "singletonContextProbability": 0.3333333333333333 },
+              { "label": "adapts", "rawCount": 4, "ordinaryProbability": 0.4, "distinctContextCount": 3, "distinctContextProbability": 0.5, "singletonContextCount": 2, "singletonContextProbability": 0.6666666666666666 }
+            ]
+          }
+        },
+        {
+          "id": "two-new-contexts",
+          "label": "Two new contexts",
+          "description": "A second token opens a fourth predecessor.",
+          "candidates": [
+            {
+              "label": "dollars",
+              "contexts": [
+                { "predecessor": "after a number", "count": 2 },
+                { "predecessor": "after Canadian", "count": 2 },
+                { "predecessor": "after export", "count": 1 },
+                { "predecessor": "after billion", "count": 1 }
+              ]
+            },
+            {
+              "label": "adapts",
+              "contexts": [
+                { "predecessor": "system", "count": 2 },
+                { "predecessor": "model", "count": 1 },
+                { "predecessor": "method", "count": 1 }
+              ]
+            }
+          ],
+          "expected": {
+            "totalTokens": 10,
+            "totalDistinctContexts": 7,
+            "totalSingletonContexts": 4,
+            "candidates": [
+              { "label": "dollars", "rawCount": 6, "ordinaryProbability": 0.6, "distinctContextCount": 4, "distinctContextProbability": 0.5714285714285714, "singletonContextCount": 2, "singletonContextProbability": 0.5 },
+              { "label": "adapts", "rawCount": 4, "ordinaryProbability": 0.4, "distinctContextCount": 3, "distinctContextProbability": 0.42857142857142855, "singletonContextCount": 2, "singletonContextProbability": 0.5 }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

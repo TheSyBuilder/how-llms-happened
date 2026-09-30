@@ -1,0 +1,56 @@
+{
+  "$schema": "../../schemas/chen-goodman-fixture.schema.json",
+  "id": "synthetic-chen-goodman-two-levers",
+  "kind": "chen-goodman-interpolation-discounts",
+  "label": "Synthetic example",
+  "description": "A reviewed four-continuation history isolates all-event interpolation from the later choice between one shared discount and count-specific D1, D2, and D3+ tiers. It reproduces no paper corpus or empirical result.",
+  "representedClaimIds": [
+    "chen-goodman-1998-interpolated-form",
+    "chen-goodman-1998-three-discount-form",
+    "chen-goodman-1998-fixed-discount-estimates"
+  ],
+  "scenarios": [
+    {
+      "id": "tiered-history",
+      "label": "One history, all four count branches",
+      "description": "The history has one continuation in each zero, one, two, and three-plus branch. Lower-order continuation probabilities are normalized and fixed across both discount variants. The separate n1–n4 register describes an order-wide synthetic pool, not these four rows.",
+      "prompt": "Which later modified discount tier applies to the highlighted continuation?",
+      "modes": ["beginner", "expert"],
+      "history": "language models",
+      "singleDiscount": 0.75,
+      "countOfCounts": { "n1": 6, "n2": 3, "n3": 2, "n4": 1 },
+      "continuations": [
+        { "label": "adapt", "count": 1, "lowerOrderProbability": 0.42 },
+        { "label": "learn", "count": 2, "lowerOrderProbability": 0.3 },
+        { "label": "predict", "count": 4, "lowerOrderProbability": 0.2 },
+        { "label": "silently", "count": 0, "lowerOrderProbability": 0.08 }
+      ],
+      "expected": {
+        "single": {
+          "retainedMass": 0.6785714285714286,
+          "interpolationWeight": 0.3214285714285714,
+          "lowerOrderMass": 0.3214285714285714,
+          "total": 1,
+          "continuations": [
+            { "label": "adapt", "tier": "D1", "discount": 0.75, "higherOrderContribution": 0.03571428571428571, "lowerOrderContribution": 0.135, "finalProbability": 0.1707142857142857 },
+            { "label": "learn", "tier": "D2", "discount": 0.75, "higherOrderContribution": 0.17857142857142858, "lowerOrderContribution": 0.09642857142857142, "finalProbability": 0.275 },
+            { "label": "predict", "tier": "D3+", "discount": 0.75, "higherOrderContribution": 0.4642857142857143, "lowerOrderContribution": 0.06428571428571428, "finalProbability": 0.5285714285714286 },
+            { "label": "silently", "tier": "zero", "discount": 0, "higherOrderContribution": 0, "lowerOrderContribution": 0.025714285714285714, "finalProbability": 0.025714285714285714 }
+          ]
+        },
+        "modified": {
+          "retainedMass": 0.5,
+          "interpolationWeight": 0.5,
+          "lowerOrderMass": 0.5,
+          "total": 1,
+          "continuations": [
+            { "label": "adapt", "tier": "D1", "discount": 0.5, "higherOrderContribution": 0.07142857142857142, "lowerOrderContribution": 0.21, "finalProbability": 0.2814285714285714 },
+            { "label": "learn", "tier": "D2", "discount": 1, "higherOrderContribution": 0.14285714285714285, "lowerOrderContribution": 0.15, "finalProbability": 0.2928571428571428 },
+            { "label": "predict", "tier": "D3+", "discount": 2, "higherOrderContribution": 0.2857142857142857, "lowerOrderContribution": 0.1, "finalProbability": 0.3857142857142857 },
+            { "label": "silently", "tier": "zero", "discount": 0, "higherOrderContribution": 0, "lowerOrderContribution": 0.04, "finalProbability": 0.04 }
+          ]
+        }
+      }
+    }
+  ]
+}

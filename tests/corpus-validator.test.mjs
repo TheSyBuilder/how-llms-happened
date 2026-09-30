@@ -10,15 +10,22 @@ const [corpus, schema] = await Promise.all(
     new URL("../schemas/corpus.schema.json", import.meta.url),
   ].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
 );
-const [corpusFormat, historicalScope] = await Promise.all(
-  [
-    new URL("../docs/corpus-format.md", import.meta.url),
-    new URL("../docs/historical-scope.md", import.meta.url),
-  ].map((url) => readFile(url, "utf8")),
-);
+const [readme, corpusFormat, historicalScope, currentEndpoint] =
+  await Promise.all(
+    [
+      new URL("../README.md", import.meta.url),
+      new URL("../docs/corpus-format.md", import.meta.url),
+      new URL("../docs/historical-scope.md", import.meta.url),
+      new URL("../docs/current-endpoint.md", import.meta.url),
+    ].map((url) => readFile(url, "utf8")),
+  );
 
 function copyCorpus() {
   return JSON.parse(JSON.stringify(corpus));
+}
+
+function workIndex(workId) {
+  return corpus.works.findIndex((item) => item.id === workId);
 }
 
 function assertRejected(candidate, expectedMessage) {
@@ -38,6 +45,4430 @@ test("binds the corpus to the current schema contract", () => {
   candidate.schemaVersion = "0.7.0";
 
   assertRejected(candidate, "must equal \"0.8.0\"");
+});
+
+test("keeps the documented corpus totals synchronized", () => {
+  const versions = corpus.works.reduce(
+    (total, work) => total + work.versions.length,
+    0,
+  );
+  const summary = `${corpus.works.length} works, ${versions} versions, ${corpus.ideas.length} ideas, ${corpus.sources.length} sources, ${corpus.claims.length} claims, ${corpus.relationships.length} relationships, and ${corpus.learningObjectives.length} learning objectives`;
+
+  assert.ok(corpusFormat.includes(`As of ${corpus.asOf}`));
+  assert.ok(corpusFormat.includes(summary));
+  assert.ok(
+    readme.includes(
+      `${summary.replace(" learning objectives", " beginner/expert learning objectives")}.`,
+    ),
+  );
+});
+
+test("preserves T5 paper, C4, and lineage boundaries", () => {
+  const workId =
+    "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer";
+  const work = corpus.works.find((item) => item.id === workId);
+  const jmlr = work?.versions.find(
+    (item) => item.id === "raffel-2020-jmlr-version",
+  );
+  const latest = work?.versions.find(
+    (item) => item.id === "raffel-2023-arxiv-v4-version",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "raffel-2020-jmlr-full-text",
+  );
+  const launchTasks = corpus.sources.find(
+    (item) => item.id === "raffel-2019-t5-launch-tasks",
+  );
+  const launchPreprocessors = corpus.sources.find(
+    (item) => item.id === "raffel-2019-t5-launch-preprocessors",
+  );
+  const launchUtils = corpus.sources.find(
+    (item) => item.id === "raffel-2019-t5-launch-utils",
+  );
+  const checksumSnapshot = corpus.sources.find(
+    (item) => item.id === "raffel-2022-c4-input-checksums",
+  );
+  const currentC4 = corpus.sources.find(
+    (item) => item.id === "raffel-2026-tfds-c4-catalog",
+  );
+  const relativePosition = corpus.claims.find(
+    (item) => item.id === "raffel-2020-relative-position-bias",
+  );
+  const paperSentinel = corpus.claims.find(
+    (item) => item.id === "raffel-2020-sentinel-denoising-objective",
+  );
+  const codeSentinel = corpus.claims.find(
+    (item) => item.id === "raffel-2019-span-preprocessor-boundary",
+  );
+  const corpusClaim = corpus.claims.find(
+    (item) =>
+      item.id === "raffel-2020-c4-construction-and-launch-provenance",
+  );
+  const conflicts = corpus.claims.find(
+    (item) => item.id === "raffel-2020-internal-table-conflicts",
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(work?.chronology.orderingEventId, "raffel-2019-arxiv-v1-posted");
+  assert.equal(work?.versions.length, 5);
+  assert.equal(work?.canonicalVersionId, "raffel-2020-jmlr-version");
+  assert.deepEqual(jmlr?.bibliography.pages, ["1-67"]);
+  assert.equal(canonicalText?.pagination.scheme, "printed");
+  assert.match(latest?.notes ?? "", /fewer than three sentences/);
+  assert.match(latest?.notes ?? "", /fewer than five words/);
+  assert.deepEqual(launchTasks?.versionIds, ["raffel-2019-arxiv-v1-version"]);
+  assert.match(launchTasks?.accessNote ?? "", /c4\/en:1\.0\.0/);
+  assert.doesNotMatch(launchPreprocessors?.accessNote ?? "", /EOS handling/);
+  assert.deepEqual(launchUtils?.versionIds, ["raffel-2019-arxiv-v1-version"]);
+  assert.match(launchUtils?.accessNote ?? "", /Task\.preprocess_tokens/);
+  assert.match(launchUtils?.accessNote ?? "", /appends EOS=1/);
+  assert.deepEqual(checksumSnapshot?.versionIds, []);
+  assert.ok(checksumSnapshot?.supports.includes("version-boundary"));
+  assert.match(checksumSnapshot?.url ?? "", /generation=1657619879665857/);
+  assert.match(checksumSnapshot?.accessNote ?? "", /12 July 2022/);
+  assert.deepEqual(currentC4?.versionIds, []);
+  assert.ok(currentC4?.supports.includes("version-boundary"));
+  assert.match(relativePosition?.statement ?? "", /self-attention logit/);
+  assert.match(paperSentinel?.statement ?? "", /paper prose additionally requires/);
+  assert.match(codeSentinel?.statement ?? "", /required by the paper text/);
+  assert.ok(
+    codeSentinel?.evidence.some(
+      (item) => item.sourceId === "raffel-2019-t5-launch-utils",
+    ),
+  );
+  assert.match(corpusClaim?.statement ?? "", /CC-MAIN-2019-18/);
+  assert.match(conflicts?.statement ?? "", /82\.62\/18\.30\/79\.40/);
+  assert.match(conflicts?.statement ?? "", /28\.57/);
+  assert.match(conflicts?.statement ?? "", /28\.09/);
+  assert.deepEqual(
+    incoming.map((item) => item.id).sort(),
+    ["devlin-2018-to-raffel-2019", "vaswani-2017-to-raffel-2019"],
+  );
+  assert.ok(
+    !incoming
+      .find((item) => item.id === "devlin-2018-to-raffel-2019")
+      ?.claimIds.includes("devlin-2018-full-parameter-task-adaptation"),
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("launch-time TFDS C4 1.0.0"));
+  assert.ok(corpusFormat.includes("T5 is represented by arXiv versions 1–4"));
+  assert.ok(historicalScope.includes("The T5 family was checked on 2026-08-28"));
+});
+
+test("preserves BART versions, denoising results, rights, and RAG lineage", () => {
+  const workId =
+    "lewis-2019-bart-denoising-sequence-to-sequence-pretraining";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) => item.from.id === workId || item.to.id === workId,
+  );
+  const arxiv = work?.versions.find(
+    (item) => item.id === "bart-2019-arxiv-v1-version",
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "bart-2020-acl-version",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "bart-2020-acl-full-text",
+  );
+  const arxivLicense = corpus.sources.find(
+    (item) => item.id === "bart-2019-arxiv-license",
+  );
+  const fairseqLicense = corpus.sources.find(
+    (item) => item.id === "bart-2020-fairseq-license",
+  );
+  const aclRights = corpus.sources.find(
+    (item) => item.id === "acl-2016-plus-rights-policy",
+  );
+  const ragHybrid = corpus.claims.find(
+    (item) => item.id === "rag-2020-hybrid-dpr-bart-index",
+  );
+
+  assert.equal(workIndex(workId), 45);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.chronology.orderingEventId, "bart-2019-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2019-10-29", "2020-06-19"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    ["bart-2019-arxiv-v1-version", "bart-2020-acl-version"],
+  );
+  assert.equal(work?.canonicalVersionId, "bart-2020-acl-version");
+  assert.equal(arxiv?.authors.at(-2), "Ves Stoyanov");
+  assert.equal(canonical?.authors.at(-2), "Veselin Stoyanov");
+  assert.equal(work?.authors.at(-2), "Veselin Stoyanov");
+  assert.deepEqual(canonical?.bibliography.pages, ["7871-7880"]);
+  assert.ok(
+    canonical?.bibliography.identifiers.some(
+      (item) =>
+        item.type === "doi" &&
+        item.value === "10.18653/v1/2020.acl-main.703",
+    ),
+  );
+  assert.deepEqual(canonicalText?.pagination, {
+    scheme: "printed",
+    pageStart: 7871,
+    pageEnd: 7880,
+  });
+
+  assert.equal(claims.length, 16);
+  const versionBoundary = findClaim("bart-2019-version-and-proceedings-boundary");
+  for (const value of ["six-ROUGE", "3.5", "RoBERTaShare"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  assert.match(
+    versionBoundary?.evidence.find(
+      (item) => item.sourceId === "bart-2020-acl-full-text",
+    )?.support ?? "",
+    /already-present unsupported-claim example/,
+  );
+
+  const objective = findClaim("bart-2020-conditional-denoising-objective");
+  assert.match(objective?.statement ?? "", /complete original sequence/);
+  assert.match(objective?.statement ?? "", /every original position/);
+
+  const architecture = findClaim("bart-2020-transformer-architecture-and-scales");
+  for (const value of ["6+6", "12+12", "768", "1024", "10%"])
+    assert.ok(architecture?.statement.includes(value));
+
+  const noise = findClaim("bart-2020-composable-corruption-functions");
+  for (const value of [
+    "token masking",
+    "token deletion",
+    "text infilling",
+    "sentence permutation",
+    "document rotation",
+    "Poisson λ=3",
+    "zero-length",
+  ])
+    assert.ok(noise?.statement.includes(value));
+
+  const controlled = findClaim("bart-2020-controlled-objective-results");
+  assert.ok(controlled?.statement.includes("BERT Base reference 88.5/84.3"));
+  for (const value of [
+    "76.7/80.1/21.40/7.00/11.51/6.56",
+    "90.4/84.1/24.61/6.90/11.46/5.87",
+    "90.8/84.0/24.26/6.61/11.05/5.83",
+    "90.8/83.8/24.17/6.62/11.12/5.41",
+  ])
+    assert.ok(controlled?.statement.includes(value));
+  assert.match(
+    controlled?.limitations.join(" ") ?? "",
+    /uniquely best on CNN\/DailyMail.*tying infilling for best SQuAD F1/,
+  );
+  assert.equal(
+    findClaim("bart-2020-controlled-objective-study-design")?.evidence[0]?.locator
+      .pageStart,
+    7873,
+  );
+
+  const discriminative = findClaim(
+    "bart-2020-discriminative-understanding-results",
+  );
+  assert.match(discriminative?.statement ?? "", /For large models/);
+  assert.doesNotMatch(discriminative?.statement ?? "", /single-task|SST-2/);
+  for (const value of ["89.9/90.1", "96.6", "62.8", "88.8/94.6", "86.1/89.2"])
+    assert.ok(discriminative?.statement.includes(value));
+
+  const summarization = findClaim(
+    "bart-2020-summarization-results-and-version-baseline",
+  );
+  assert.equal(
+    summarization?.evidence[0]?.locator.section,
+    "5.3 Generation Tasks, Summarization",
+  );
+  for (const value of [
+    "44.16/21.28/40.90",
+    "45.14/22.27/37.25",
+    "38.81/16.50/31.27",
+    "41.45/18.79/33.90",
+  ])
+    assert.ok(summarization?.statement.includes(value));
+
+  const human = findClaim("bart-2020-xsum-human-evaluation");
+  for (const value of ["73%", "27%", "67%", "33%"])
+    assert.ok(human?.statement.includes(value));
+  assert.match(human?.statement ?? "", /does not state that the reference comparison is significant/);
+  assert.match(
+    human?.limitations.join(" ") ?? "",
+    /sample size|rater count|agreement|statistical test/i,
+  );
+
+  const generation = findClaim(
+    "bart-2020-other-generation-and-translation-results",
+  );
+  for (const value of ["20.72", "11.85", "30.6/6.2/24.3", "36.80", "36.29", "37.96"])
+    assert.ok(generation?.statement.includes(value));
+  assert.match(work?.limitations.join(" ") ?? "", /prose reports the gain as \+1\.1/);
+  assert.doesNotMatch(work?.limitations.join(" ") ?? "", /rounds the gain/);
+
+  const qualitative = findClaim("bart-2020-hallucination-and-task-limitations");
+  assert.match(qualitative?.statement ?? "", /hallucinating information unsupported/);
+
+  const release = findClaim("bart-2020-release-and-reproduction-boundary");
+  assert.match(release?.statement ?? "", /9 November 2019/);
+  assert.match(release?.statement ?? "", /beam four/);
+  assert.match(release?.statement ?? "", /beam six/);
+  assert.ok(
+    release?.evidence.some(
+      (item) => item.sourceId === "bart-2020-fairseq-paper-era-model",
+    ),
+  );
+  assert.ok(
+    release?.evidence.some((item) => item.sourceId === "bart-2020-acl-full-text"),
+  );
+
+  const artifacts = findClaim("bart-2020-artifact-data-and-rights-boundary");
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /CC BY 4\.0/);
+  assert.match(artifacts?.statement ?? "", /MIT/);
+  assert.match(artifacts?.statement ?? "", /cryptographic hashes/);
+
+  assert.deepEqual(arxivLicense?.versionIds, ["bart-2019-arxiv-v1-version"]);
+  assert.match(arxivLicense?.accessNote ?? "", /not a general public-reuse license/);
+  assert.match(fairseqLicense?.accessNote ?? "", /source code and pretrained models/);
+  assert.match(fairseqLicense?.accessNote ?? "", /do not license the articles/);
+  assert.match(
+    fairseqLicense?.accessNote ?? "",
+    /52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85/,
+  );
+  assert.ok(aclRights?.relatedWorkIds.includes(workId));
+  assert.ok(aclRights?.versionIds.includes("bart-2020-acl-version"));
+  assert.match(aclRights?.accessNote ?? "", /seven bound/);
+
+  const expectedEdges = new Map([
+    ["vaswani-2017-to-lewis-2019-bart", "builds-on"],
+    ["devlin-2018-to-lewis-2019-bart", "combines"],
+    ["radford-2018-to-lewis-2019-bart", "combines"],
+    ["radford-2019-to-lewis-2019-bart", "builds-on"],
+    ["liu-2019-to-lewis-2019-bart", "builds-on"],
+    ["lewis-2019-bart-to-lewis-2020-rag", "combines"],
+  ]);
+  assert.deepEqual(
+    relationships.map((item) => item.id).sort(),
+    [...expectedEdges.keys()].sort(),
+  );
+  for (const edge of relationships) {
+    assert.equal(edge.connectionType, expectedEdges.get(edge.id));
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+  }
+
+  const ragEdge = relationships.find(
+    (item) => item.id === "lewis-2019-bart-to-lewis-2020-rag",
+  );
+  assert.equal(ragEdge?.sourceEvidence[0]?.sourceId, "rag-2020-neurips-full-text");
+  assert.equal(ragEdge?.sourceEvidence[0]?.locator.pageStart, 1);
+  assert.equal(
+    ragEdge?.sourceEvidence[0]?.locator.section,
+    "1 Introduction; 2.3 Generator: BART; 2.4 Training",
+  );
+  assert.match(ragHybrid?.limitations.join(" ") ?? "", /qualified edge/);
+  assert.doesNotMatch(
+    ragHybrid?.limitations.join(" ") ?? "",
+    /BART remains a local substrate/,
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id ===
+          "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer" &&
+        item.to.id === workId,
+    ),
+    false,
+  );
+
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-lewis-2019-repair-text-then-reuse-the-model", "beginner"],
+      [
+        "expert-lewis-2019-objectives-adapters-evidence-and-provenance",
+        "expert",
+      ],
+    ],
+  );
+  assert.match(objectives[0]?.objective ?? "", /Corrupt|damaged/i);
+  assert.match(objectives[1]?.successCriterion ?? "", /Table 1/);
+  assert.match(objectives[1]?.successCriterion ?? "", /BART→RAG/);
+
+  assert.ok(readme.includes("Lewis et al.’s BART family"));
+  assert.ok(corpusFormat.includes("Lewis et al. 2019 is represented"));
+  assert.ok(
+    historicalScope.includes("The BART family was checked on 2026-09-05"),
+  );
+  assert.ok(historicalScope.includes("BART→RAG"));
+  assert.doesNotMatch(
+    `${corpusFormat}\n${historicalScope}`,
+    /BART remains (?:a )?(?:RAG-)?local substrate/,
+  );
+});
+
+test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () => {
+  const workId = "kaplan-2020-scaling-laws-neural-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const fullText = corpus.sources.find(
+    (item) => item.id === "kaplan-2020-arxiv-v1-full-text",
+  );
+  const sourcePackage = corpus.sources.find(
+    (item) => item.id === "kaplan-2020-arxiv-v1-source-package",
+  );
+  const family = corpus.claims.find(
+    (item) =>
+      item.id === "kaplan-2020-autoregressive-transformer-experimental-family",
+  );
+  const webtext2 = corpus.claims.find(
+    (item) =>
+      item.id ===
+      "kaplan-2020-webtext2-construction-tokenization-and-reserve",
+  );
+  const accounting = corpus.claims.find(
+    (item) =>
+      item.id === "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+  );
+  const jointFit = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-joint-model-data-overfitting-fit",
+  );
+  const criticalBatch = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-critical-batch-adjustment",
+  );
+  const axisFits = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-model-data-compute-axis-fits",
+  );
+  const allocation = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-compute-efficient-allocation",
+  );
+  const discrepancies = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-fit-normalization-discrepancies",
+  );
+  const limits = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-statistical-and-optimization-limits",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "kaplan-2020-artifact-data-and-rights-boundary",
+  );
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) =>
+      (item.from.kind === "work" && item.from.id === workId) ||
+      (item.to.kind === "work" && item.to.id === workId),
+  );
+  const expectedSourceIds = [
+    "kaplan-2020-arxiv-record",
+    "kaplan-2020-arxiv-v1-full-text",
+    "kaplan-2020-arxiv-license",
+    "kaplan-2020-openai-publication",
+    "kaplan-2020-arxiv-v1-source-package",
+  ];
+
+  assert.equal(workIndex(workId), 46);
+  assert.equal(work?.chronology.orderingEventId, "kaplan-2020-arxiv-v1-posted");
+  assert.equal(work?.chronology.events[0]?.date.value, "2020-01-23");
+  assert.equal(work?.versions.length, 1);
+  assert.equal(work?.canonicalVersionId, "kaplan-2020-arxiv-v1-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.versions[0]?.sourceIds, expectedSourceIds);
+  for (const sourceId of expectedSourceIds)
+    assert.deepEqual(
+      corpus.sources.find((item) => item.id === sourceId)?.versionIds,
+      ["kaplan-2020-arxiv-v1-version"],
+    );
+  assert.deepEqual(work?.authors, [
+    "Jared Kaplan",
+    "Sam McCandlish",
+    "Tom Henighan",
+    "Tom B. Brown",
+    "Benjamin Chess",
+    "Rewon Child",
+    "Scott Gray",
+    "Alec Radford",
+    "Jeffrey Wu",
+    "Dario Amodei",
+  ]);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 30,
+  });
+  assert.match(sourcePackage?.accessNote ?? "", /47-entry archive/);
+  assert.match(sourcePackage?.accessNote ?? "", /no executable experiment code/);
+  assert.equal(claims.length, 16);
+  assert.match(family?.statement ?? "", /768 to 1\.5 billion/);
+  assert.match(family?.statement ?? "", /22 million to 23 billion/);
+  assert.match(family?.statement ?? "", /1,024-token/);
+  assert.match(family?.statement ?? "", /50,257-unit/);
+  for (const value of [
+    "20.3 million",
+    "96 GB",
+    "16.2 billion",
+    "22.9 billion",
+    "660-million-token",
+    "January–October 2018",
+  ])
+    assert.ok(webtext2?.statement.includes(value));
+  assert.match(accounting?.statement ?? "", /C≈6NBS/);
+  assert.match(accounting?.statement ?? "", /vocabulary and positional embeddings/);
+  assert.equal(jointFit?.evidence[0]?.locator.figure, "9");
+  assert.equal(jointFit?.evidence[0]?.locator.pageEnd, 12);
+  assert.deepEqual(
+    criticalBatch?.evidence.map((item) => item.locator.figure),
+    ["10", "18"],
+  );
+  assert.equal(criticalBatch?.evidence[1]?.locator.pageStart, 24);
+  assert.equal(criticalBatch?.evidence[1]?.locator.pageEnd, 24);
+  for (const value of [
+    "α_N=0.076",
+    "8.8×10^13",
+    "α_D=0.095",
+    "5.4×10^13",
+    "α_C=0.057",
+    "1.6×10^7 PF-days",
+    "α_C^min=0.050",
+    "3.1×10^8 PF-days",
+  ])
+    assert.ok(axisFits?.statement.includes(value));
+  assert.equal(axisFits?.evidence[0]?.locator.table, "5");
+  for (const value of ["0.73", "0.24", "0.03", "0.27"])
+    assert.ok(allocation?.statement.includes(value));
+  assert.equal(allocation?.evidence[0]?.locator.table, "6");
+  assert.match(allocation?.limitations.join(" ") ?? "", /Table 6, not Table 5/);
+  for (const value of [
+    "0.050",
+    "0.054",
+    "0.052",
+    "1.6×10^7",
+    "2.0×10^7",
+    "3.1×10^8",
+    "2.3×10^8",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.equal(discrepancies?.directness, "editorial-inference");
+  assert.match(discrepancies?.limitations.join(" ") ?? "", /different roles/);
+  assert.match(limits?.statement ?? "", /one-layer models/);
+  assert.match(limits?.statement ?? "", /0\.02 loss variation/);
+  assert.match(limits?.statement ?? "", /0\.05/);
+  assert.match(limits?.statement ?? "", /10\^10 parameters/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /no immutable official code/);
+  assert.deepEqual(
+    relationships.map((item) => item.id),
+    [
+      "kaplan-2020-to-brown-2020",
+      "kaplan-2020-to-hoffmann-2022",
+      "kaplan-2020-to-fedus-2021-switch-transformers-capacity-axis",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Kaplan et al.’s scaling-law preprint"));
+  assert.ok(corpusFormat.includes("Kaplan et al. 2020 is a sole-version"));
+  assert.ok(historicalScope.includes("The Kaplan scaling-law preprint was checked on 2026-08-30"));
+});
+
+test("preserves ORQA versions, fixed-index learning, results, and REALM lineage", () => {
+  const workId =
+    "lee-2019-latent-retrieval-weakly-supervised-open-domain-question-answering";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = corpus.sources.find(
+    (item) => item.id === "orqa-2019-acl-full-text",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "orqa-2019-version-and-proceedings-boundary",
+  );
+  const latent = claims.find(
+    (item) => item.id === "orqa-2019-latent-answer-derivation-objective",
+  );
+  const freeze = claims.find(
+    (item) => item.id === "orqa-2019-fixed-document-index-and-query-update",
+  );
+  const evaluation = claims.find(
+    (item) => item.id === "orqa-2019-openqa-evaluation-protocol",
+  );
+  const results = claims.find(
+    (item) => item.id === "orqa-2019-openqa-results",
+  );
+  const masking = claims.find(
+    (item) => item.id === "orqa-2019-masking-rate-ablation",
+  );
+  const release = claims.find(
+    (item) => item.id === "orqa-2020-release-and-reproduction-boundary",
+  );
+  const edge = corpus.relationships.find(
+    (item) => item.id === "lee-2019-orqa-to-guu-2020-realm",
+  );
+  const ictIdea = corpus.ideas.find(
+    (item) => item.id === "inverse-cloze-retriever-pretraining",
+  );
+  const aclRights = corpus.sources.find(
+    (item) => item.id === "acl-2016-plus-rights-policy",
+  );
+  const beginnerObjective = objectives.find((item) => item.mode === "beginner");
+
+  assert.equal(workIndex(workId), 41);
+  assert.equal(work?.chronology.orderingEventId, "orqa-2019-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2019-06-01", "2019-06-06", "2019-06-27", "2019-07"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "orqa-2019-arxiv-v1-version",
+      "orqa-2019-arxiv-v2-version",
+      "orqa-2019-arxiv-v3-version",
+      "orqa-2019-acl-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "orqa-2019-acl-version");
+  assert.deepEqual(work?.authors, [
+    "Kenton Lee",
+    "Ming-Wei Chang",
+    "Kristina Toutanova",
+  ]);
+  assert.deepEqual(canonical?.pagination, {
+    scheme: "printed",
+    pageStart: 6086,
+    pageEnd: 6096,
+  });
+  assert.equal(claims.length, 14);
+  assert.match(versionBoundary?.statement ?? "", /canonical scientific body aligns with version 2/);
+  assert.match(versionBoundary?.statement ?? "", /78-paragraph\/34\.0/);
+  assert.ok(latent?.statement.includes("P′"));
+  assert.match(latent?.statement ?? "", /five retrieved blocks/);
+  assert.match(latent?.statement ?? "", /5,000 blocks/);
+  assert.match(freeze?.statement ?? "", /freezes the evidence encoder/);
+  assert.match(freeze?.statement ?? "", /without rebuilding document vectors/);
+  for (const value of [
+    "31.3/38.5/36.8/45.1/26.5",
+    "33.3/36.4/30.1/45.0/20.2",
+    "26.5/17.7/21.3/47.1/33.2",
+  ])
+    assert.ok(results?.statement.includes(value));
+  for (const value of ["25.0", "31.3", "21.7", "24.8"])
+    assert.ok(masking?.statement.includes(value));
+  assert.match(release?.statement ?? "", /6 March 2020/);
+  assert.match(release?.statement ?? "", /14 August/);
+  assert.match(release?.statement ?? "", /Natural Questions and WebQuestions fine-tuning/);
+  assert.match(release?.limitations.join(" ") ?? "", /five-dataset/);
+  assert.match(release?.limitations.join(" ") ?? "", /nonexistent module path/);
+  assert.ok(
+    evaluation?.evidence.some(
+      (item) => item.sourceId === "orqa-2020-partial-release-commit",
+    ),
+  );
+  assert.match(work?.limitations.join(" ") ?? "", /CuratedTREC preprocessing and evaluation/);
+  assert.match(
+    beginnerObjective?.objective ?? "",
+    /then follow a downstream QA example/,
+  );
+  assert.equal(work?.ideaIds.includes("retrieval-conditioned-latent-document-marginalization"), false);
+  assert.ok(ictIdea?.claimIds.includes("realm-2020-initialization-and-supervision-boundary"));
+  assert.equal(edge?.connectionType, "extends");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "qualified");
+  assert.equal(edge?.sourceEvidence[0]?.sourceId, "realm-2020-pmlr-full-text");
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("orqa-2019")));
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("realm-2020")));
+  assert.ok(aclRights?.relatedWorkIds.includes(workId));
+  assert.ok(aclRights?.versionIds.includes("orqa-2019-acl-version"));
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Lee, Chang, and Toutanova’s ORQA family"));
+  assert.ok(corpusFormat.includes("Lee, Chang, and Toutanova 2019 is represented"));
+  assert.ok(historicalScope.includes("The ORQA family was checked on 2026-09-03"));
+});
+
+test("preserves REALM versions, latent retrieval, index boundaries, and lineage", () => {
+  const workId =
+    "guu-2020-realm-retrieval-augmented-language-model-pre-training";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "realm-2020-pmlr-full-text",
+  );
+  const arxivV1 = corpus.sources.find(
+    (item) => item.id === "realm-2020-arxiv-v1-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "realm-2020-pmlr-supplement",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "realm-2020-version-and-proceedings-boundary",
+  );
+  const latent = claims.find(
+    (item) => item.id === "realm-2020-latent-document-objective",
+  );
+  const encoders = claims.find(
+    (item) => item.id === "realm-2020-dense-retriever-and-knowledge-encoder",
+  );
+  const freeze = claims.find(
+    (item) => item.id === "realm-2020-finetuning-index-freeze-boundary",
+  );
+  const results = claims.find(
+    (item) => item.id === "realm-2020-openqa-results",
+  );
+  const ablations = claims.find(
+    (item) => item.id === "realm-2020-ablation-results",
+  );
+  const update = claims.find(
+    (item) => item.id === "realm-2020-corpus-swap-and-retrieval-utility",
+  );
+  const release = claims.find(
+    (item) => item.id === "realm-2020-release-and-reproduction-boundary",
+  );
+  const bertEdge = corpus.relationships.find(
+    (item) => item.id === "devlin-2018-to-guu-2020-realm",
+  );
+
+  assert.equal(workIndex(workId), 47);
+  assert.equal(work?.canonicalVersionId, "realm-2020-icml-version");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-02-10", "2020-11-21"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    ["realm-2020-arxiv-v1-version", "realm-2020-icml-version"],
+  );
+  assert.deepEqual(work?.authors, [
+    "Kelvin Guu",
+    "Kenton Lee",
+    "Zora Tung",
+    "Panupong Pasupat",
+    "Ming-Wei Chang",
+  ]);
+  assert.deepEqual(main?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 10,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 2,
+  });
+  assert.deepEqual(arxivV1?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 12,
+  });
+  assert.equal(claims.length, 16);
+  assert.match(versionBoundary?.statement ?? "", /extended-ORQA row/);
+  assert.match(versionBoundary?.statement ?? "", /CC-News ablation row/);
+  assert.equal(
+    versionBoundary?.evidence.find(
+      (item) => item.sourceId === "realm-2020-arxiv-v1-full-text",
+    )?.locator.pageStart,
+    undefined,
+  );
+  assert.match(latent?.statement ?? "", /p\(y\|x\)/);
+  assert.equal(
+    latent?.evidence[0]?.locator.section,
+    "3.1. REALM’s generative process",
+  );
+  assert.match(latent?.limitations.join(" ") ?? "", /top-k/);
+  assert.match(encoders?.statement ?? "", /title-plus-body pair/);
+  assert.match(encoders?.statement ?? "", /selected passage body/);
+  assert.match(freeze?.statement ?? "", /freezes the document encoder/);
+  for (const value of ["39.2/40.2/46.8", "40.4/40.7/42.9", "330 million"])
+    assert.ok(results?.statement.includes(value));
+  for (const value of ["38.5/52.0", "30-times-staler", "28.7/15.1"])
+    assert.ok(ablations?.statement.includes(value));
+  assert.match(update?.statement ?? "", /Lawrence/);
+  assert.match(update?.limitations.join(" ") ?? "", /does not erase parametric memory/);
+  assert.match(release?.statement ?? "", /ScaNN-style retrieval/);
+  assert.match(release?.statement ?? "", /brute-force matrix multiplication/);
+  assert.equal(bertEdge?.connectionType, "combines");
+  assert.equal(bertEdge?.evidenceClass, "documented-influence");
+  assert.equal(bertEdge?.causalLanguage, "qualified");
+  assert.equal(
+    bertEdge?.sourceEvidence[0]?.locator.section,
+    "3.2. Model architecture; 3.4. Injecting inductive biases into pre-training",
+  );
+  assert.ok(bertEdge?.claimIds.some((id) => id.startsWith("devlin-2018")));
+  assert.ok(bertEdge?.claimIds.some((id) => id.startsWith("realm-2020")));
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Guu et al.’s REALM family"));
+  assert.ok(corpusFormat.includes("Guu et al. 2020 is represented"));
+  assert.ok(
+    historicalScope.includes("The REALM family was checked on 2026-09-02"),
+  );
+});
+
+test("preserves DPR versions, contrastive retrieval, index limits, and RAG lineage", () => {
+  const workId =
+    "karpukhin-2020-dense-passage-retrieval-open-domain-question-answering";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = corpus.sources.find(
+    (item) => item.id === "dpr-2020-emnlp-full-text",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "dpr-2020-version-and-proceedings-boundary",
+  );
+  const encoders = claims.find(
+    (item) => item.id === "dpr-2020-dual-encoder-scoring-and-offline-index",
+  );
+  const objective = claims.find(
+    (item) => item.id === "dpr-2020-supervised-retriever-objective-and-negatives",
+  );
+  const corpusClaim = claims.find(
+    (item) => item.id === "dpr-2020-corpus-and-positive-passage-construction",
+  );
+  const trainingBoundary = claims.find(
+    (item) => item.id === "dpr-2020-dataset-counts-and-training-boundary",
+  );
+  const retrieval = claims.find(
+    (item) => item.id === "dpr-2020-canonical-retrieval-test-results",
+  );
+  const negativeAblation = claims.find(
+    (item) => item.id === "dpr-2020-negative-training-ablation-results",
+  );
+  const appendixAblation = claims.find(
+    (item) => item.id === "dpr-2020-distant-supervision-and-loss-ablation-results",
+  );
+  const index = claims.find(
+    (item) => item.id === "dpr-2020-index-cost-and-implementation-boundary",
+  );
+  const qa = claims.find(
+    (item) => item.id === "dpr-2020-canonical-end-to-end-qa-results",
+  );
+  const joint = claims.find(
+    (item) => item.id === "dpr-2020-joint-training-and-index-freeze-boundary",
+  );
+  const sampleEfficiency = claims.find(
+    (item) => item.id === "dpr-2020-sample-efficiency-and-transfer-boundary",
+  );
+  const lexicalLimits = claims.find(
+    (item) => item.id === "dpr-2020-lexical-and-evaluation-limits",
+  );
+  const ragHybrid = corpus.claims.find(
+    (item) => item.id === "rag-2020-hybrid-dpr-bart-index",
+  );
+  const edge = corpus.relationships.find(
+    (item) => item.id === "karpukhin-2020-dpr-to-lewis-2020-rag",
+  );
+  const aclRights = corpus.sources.find(
+    (item) => item.id === "acl-2016-plus-rights-policy",
+  );
+
+  assert.equal(workIndex(workId), 48);
+  assert.equal(work?.chronology.orderingEventId, "dpr-2020-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-04-10", "2020-05-02", "2020-09-30", "2020-11"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "dpr-2020-arxiv-v1-version",
+      "dpr-2020-arxiv-v2-version",
+      "dpr-2020-arxiv-v3-version",
+      "dpr-2020-emnlp-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "dpr-2020-emnlp-version");
+  assert.equal(work?.versions[0]?.authors.includes("Patrick Lewis"), false);
+  assert.equal(work?.versions[0]?.authors.length, 7);
+  assert.equal(work?.authors.includes("Patrick Lewis"), true);
+  assert.deepEqual(canonical?.pagination, {
+    scheme: "printed",
+    pageStart: 6769,
+    pageEnd: 6781,
+  });
+  assert.equal(claims.length, 16);
+  for (const value of ["seven authors", "Patrick Lewis", "36.8", "39.8"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  for (const sourceId of ["dpr-2020-arxiv-v1-full-text", "dpr-2020-arxiv-v2-full-text"]) {
+    const section = versionBoundary?.evidence.find(
+      (item) => item.sourceId === sourceId,
+    )?.locator.section;
+    assert.match(section ?? "", /Table 3/);
+    assert.match(section ?? "", /Table 5/);
+  }
+  assert.match(encoders?.statement ?? "", /768-dimensional/);
+  assert.match(encoders?.statement ?? "", /offline FAISS index/);
+  assert.match(objective?.statement ?? "", /B×B/);
+  assert.match(objective?.statement ?? "", /127 gold plus 128 BM25/);
+  assert.match(corpusClaim?.statement ?? "", /21,015,324/);
+  assert.match(corpusClaim?.statement ?? "", /100-word passages/);
+  assert.deepEqual(trainingBoundary?.evidence[0]?.locator, {
+    label: "Dataset counts and main retriever schedule",
+    section: "4.2. Question Answering Datasets; 5. Experiments: Passage Retrieval",
+    pageStart: 6772,
+    pageEnd: 6773,
+    table: "1",
+  });
+  for (const value of [
+    "59.1/66.9/55.0/70.9/68.8",
+    "78.4/79.4/73.2/79.8/63.2",
+    "79.4/78.8/75.0/89.1/51.6",
+  ])
+    assert.ok(retrieval?.statement.includes(value));
+  for (const value of ["47.0/64.3/77.8", "65.0/77.3/84.4", "65.8/78.0/84.9"])
+    assert.ok(negativeAblation?.statement.includes(value));
+  for (const value of ["44.9/66.8/78.1/85.0", "42.2/66.0/78.1/84.9"])
+    assert.ok(appendixAblation?.statement.includes(value));
+  for (const value of ["995.0", "23.7", "8.8 hours", "8.5 hours", "IndexFlatIP"])
+    assert.ok(index?.statement.includes(value));
+  for (const value of [
+    "32.6/52.4/29.9/24.9/38.1",
+    "41.5/56.8/34.6/25.9/29.8",
+    "38.8/57.9/41.1/50.6/35.8",
+  ])
+    assert.ok(qa?.statement.includes(value));
+  assert.match(joint?.statement ?? "", /freezing the passage encoder/);
+  assert.match(joint?.statement ?? "", /1,600 candidates/);
+  assert.match(joint?.limitations.join(" ") ?? "", /not Table 4's 41.5/);
+  assert.equal(sampleEfficiency?.evidence[0]?.locator.pageStart, 6773);
+  assert.equal(sampleEfficiency?.evidence[0]?.locator.pageEnd, 6774);
+  assert.match(lexicalLimits?.statement ?? "", /authors conjecture/i);
+  assert.match(lexicalLimits?.statement ?? "", /500\+/);
+  assert.equal(edge?.connectionType, "combines");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "qualified");
+  assert.equal(edge?.sourceEvidence[0]?.sourceId, "rag-2020-neurips-full-text");
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("dpr-2020")));
+  assert.ok(edge?.claimIds.some((id) => id.startsWith("rag-2020")));
+  assert.equal(
+    edge?.claimIds.includes("dpr-2020-corpus-and-positive-passage-construction"),
+    false,
+  );
+  assert.match(ragHybrid?.limitations.join(" ") ?? "", /DPR is represented by a qualified edge/);
+  assert.ok(aclRights?.relatedWorkIds.includes(workId));
+  assert.ok(aclRights?.versionIds.includes("dpr-2020-emnlp-version"));
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Karpukhin et al.’s DPR family"));
+  assert.ok(corpusFormat.includes("Karpukhin et al. 2020 is represented"));
+  assert.ok(historicalScope.includes("The DPR family was checked on 2026-09-03"));
+  assert.ok(
+    historicalScope.includes(
+      "connect BERT-era foundations, the ORQA/DPR retrievers, and BART’s generator substrate to REALM and RAG",
+    ),
+  );
+});
+
+test("preserves RAG revisions, marginalization, results, and artifact boundaries", () => {
+  const workId =
+    "lewis-2020-retrieval-augmented-generation-knowledge-intensive-nlp-tasks";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "rag-2020-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "rag-2020-neurips-supplement",
+  );
+  const versionBoundary = claims.find(
+    (item) => item.id === "rag-2020-version-formula-and-result-boundary",
+  );
+  const token = claims.find(
+    (item) => item.id === "rag-2021-token-level-marginalization-correction",
+  );
+  const results = claims.find((item) => item.id === "rag-2020-openqa-results");
+  const protocol = claims.find(
+    (item) => item.id === "rag-2020-corpus-and-task-protocol",
+  );
+  const diversity = claims.find(
+    (item) => item.id === "rag-2020-diversity-results",
+  );
+  const human = claims.find(
+    (item) => item.id === "rag-2020-human-evaluation-integrity-boundary",
+  );
+  const hotSwap = claims.find(
+    (item) => item.id === "rag-2020-index-hot-swap-result",
+  );
+  const port = claims.find(
+    (item) => item.id === "rag-2020-implementation-port-boundary",
+  );
+  const collapse = claims.find(
+    (item) => item.id === "rag-2020-retrieval-count-null-and-collapse-limits",
+  );
+  const accounting = claims.find(
+    (item) => item.id === "rag-2020-parameter-compute-and-index-boundary",
+  );
+  const realmEdge = corpus.relationships.find(
+    (item) => item.id === "guu-2020-realm-to-lewis-2020-rag",
+  );
+
+  assert.equal(workIndex(workId), 49);
+  assert.equal(work?.canonicalVersionId, "rag-2020-neurips-version");
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "rag-2020-arxiv-v1-version",
+      "rag-2020-arxiv-v2-version",
+      "rag-2021-arxiv-v3-version",
+      "rag-2021-arxiv-v4-version",
+      "rag-2020-neurips-version",
+    ],
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-05-22", "2020", "2020-12-07", "2021-03-29", "2021-04-12"],
+  );
+  assert.equal(work?.authors.length, 12);
+  assert.equal(work?.authors[0], "Patrick Lewis");
+  assert.equal(work?.authors.at(-1), "Douwe Kiela");
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 16,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 17,
+    pageEnd: 19,
+  });
+  assert.equal(claims.length, 18);
+  assert.match(versionBoundary?.statement ?? "", /56\.1/);
+  assert.match(versionBoundary?.statement ?? "", /56\.8/);
+  assert.match(versionBoundary?.statement ?? "", /undefined z_i/);
+  assert.ok(
+    versionBoundary?.evidence.some(
+      (item) => item.sourceId === "rag-2020-arxiv-v2-full-text",
+    ),
+  );
+  assert.equal(token?.evidence[0]?.sourceId, "rag-2021-arxiv-v4-full-text");
+  assert.match(token?.limitations.join(" ") ?? "", /only v4/);
+  for (const value of ["44.1", "44.5", "56.8", "68.0", "52.2"])
+    assert.ok(results?.statement.includes(value));
+  assert.equal(
+    protocol?.evidence[1]?.locator.section,
+    "Appendices D–E; Appendix I Number of instances per dataset",
+  );
+  assert.equal(
+    diversity?.evidence[0]?.locator.section,
+    "4.5 Additional Results, Generation Diversity",
+  );
+  assert.match(results?.limitations.join(" ") ?? "", /standard-split RAG rows remain below/);
+  for (const value of ["452", "42.7%", "93.0%", "11.7%"])
+    assert.ok(human?.statement.includes(value));
+  assert.equal(human?.directness, "editorial-inference");
+  for (const value of ["82", "70%", "68%", "12%", "4%"])
+    assert.ok(hotSwap?.statement.includes(value));
+  assert.match(hotSwap?.limitations.join(" ") ?? "", /not evidence for general factual updating/);
+  assert.match(port?.statement ?? "", /Fairseq/);
+  assert.match(port?.statement ?? "", /Hugging Face Transformers/);
+  assert.match(port?.statement ?? "", /not the exact original experiment environment/);
+  assert.equal(
+    collapse?.evidence[1]?.locator.section,
+    "Appendix F Null Document Probabilities; Appendix H Retrieval Collapse",
+  );
+  assert.equal(
+    accounting?.evidence[1]?.locator.section,
+    "Appendix C Training setup Details; Appendix G Parameters",
+  );
+  assert.equal(
+    port?.evidence[0]?.locator.section,
+    "Appendix C Training setup Details",
+  );
+  assert.equal(realmEdge?.connectionType, "extends");
+  assert.equal(realmEdge?.evidenceClass, "documented-influence");
+  assert.equal(realmEdge?.causalLanguage, "qualified");
+  assert.ok(realmEdge?.claimIds.some((id) => id.startsWith("realm-2020")));
+  assert.ok(realmEdge?.claimIds.some((id) => id.startsWith("rag-2020") || id.startsWith("rag-2021")));
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.to.kind === "work" &&
+        item.to.id === workId &&
+        [
+          "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+          "raffel-2019-exploring-limits-transfer-learning-unified-text-to-text-transformer",
+        ].includes(item.from.id),
+    ),
+    false,
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Lewis et al.’s RAG family"));
+  assert.ok(corpusFormat.includes("Lewis et al. 2020 is represented"));
+  assert.ok(
+    historicalScope.includes("The RAG family was checked on 2026-09-02"),
+  );
+});
+
+test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage", () => {
+  const workId = "brown-2020-language-models-few-shot-learners";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "brown-2020-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "brown-2020-neurips-supplement",
+  );
+  const modelFamily = corpus.claims.find(
+    (item) => item.id === "brown-2020-model-configurations-and-175b",
+  );
+  const versionChronology = corpus.claims.find(
+    (item) => item.id === "brown-2020-version-and-model-chronology",
+  );
+  const mixture = corpus.claims.find(
+    (item) => item.id === "brown-2020-training-corpus-and-mixture",
+  );
+  const protocol = corpus.claims.find(
+    (item) => item.id === "brown-2020-zero-one-few-shot-definitions",
+  );
+  const contamination = corpus.claims.find(
+    (item) => item.id === "brown-2020-contamination-filtering-failure",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "brown-2020-artifact-and-reproducibility-boundary",
+  );
+  const discrepancies = corpus.claims.find(
+    (item) => item.id === "brown-2020-internal-reporting-discrepancies",
+  );
+  const transformerBoundary = corpus.claims.find(
+    (item) => item.id === "brown-2020-transformer-lineage-boundary",
+  );
+  const evaluationBoundary = corpus.claims.find(
+    (item) => item.id === "brown-2020-evaluation-scoring-and-split-boundary",
+  );
+  const kaplanEdge = incoming.find(
+    (item) => item.id === "kaplan-2020-to-brown-2020",
+  );
+  const gpt2Edge = incoming.find(
+    (item) => item.id === "radford-2019-to-brown-2020",
+  );
+  const expectedVersionIds = [
+    "brown-2020-arxiv-v1-version",
+    "brown-2020-arxiv-v2-version",
+    "brown-2020-arxiv-v3-version",
+    "brown-2020-arxiv-v4-version",
+    "brown-2020-neurips-version",
+  ];
+
+  assert.equal(workIndex(workId), 50);
+  assert.equal(workIndex("kaplan-2020-scaling-laws-neural-language-models"), 46);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.chronology.orderingEventId, "brown-2020-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2020-05-28", "2020-06-01", "2020-06-05", "2020-07-22", "2020"],
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.kind),
+    [
+      "preprint",
+      "manuscript-revised",
+      "manuscript-revised",
+      "manuscript-revised",
+      "proceedings-publication",
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "brown-2020-neurips-version");
+  assert.deepEqual(
+    work?.versions.find((item) => item.id === "brown-2020-neurips-version")
+      ?.bibliography.pages,
+    ["1877-1901"],
+  );
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 25,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 32,
+  });
+  assert.ok(!main?.accessNote.includes("locator pages 1877"));
+  assert.match(main?.accessNote ?? "", /not locator pages/);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "brown-2020-neurips-record",
+    "brown-2020-neurips-full-text",
+    "brown-2020-neurips-supplement",
+  ]);
+  for (const sourceId of work?.preferredSourceIds ?? [])
+    assert.deepEqual(
+      corpus.sources.find((item) => item.id === sourceId)?.versionIds,
+      ["brown-2020-neurips-version"],
+    );
+  for (const versionId of expectedVersionIds.slice(0, 3))
+    assert.deepEqual(
+      work?.versions
+        .find((item) => item.id === versionId)
+        ?.bibliography.identifiers.map((item) => item.type),
+      ["arxiv"],
+    );
+  assert.deepEqual(
+    work?.versions
+      .find((item) => item.id === "brown-2020-arxiv-v4-version")
+      ?.bibliography.identifiers.map((item) => item.type),
+    ["arxiv", "doi"],
+  );
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brown-2020-neurips-record")
+      ?.supports,
+    ["metadata"],
+  );
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brown-2020-arxiv-record")?.supports,
+    ["metadata"],
+  );
+  assert.deepEqual(supplement?.supports, ["full-text", "claim-location"]);
+
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds) {
+      assert.ok(expectedVersionIds.includes(versionId));
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+    }
+  }
+  for (const event of work?.chronology.events ?? []) {
+    for (const sourceId of event.sourceIds) {
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+    }
+  }
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brown-2020-model-card-september")
+      ?.versionIds,
+    [],
+  );
+  assert.deepEqual(
+    corpus.sources.find((item) => item.id === "brockman-2020-openai-api")
+      ?.supports,
+    ["version-boundary"],
+  );
+
+  assert.equal(work?.authors.length, 31);
+  assert.equal(claims.length, 27);
+  assert.deepEqual(
+    versionChronology?.evidence.slice(0, 4).map((item) => item.sourceId),
+    [
+      "brown-2020-arxiv-v1-full-text",
+      "brown-2020-arxiv-v2-full-text",
+      "brown-2020-arxiv-v3-full-text",
+      "brown-2020-arxiv-v4-full-text",
+    ],
+  );
+  for (const value of [
+    "125M/12/768/12×64/0.5M/6×10^-4",
+    "350M/24/1,024/16×64/0.5M/3×10^-4",
+    "760M/24/1,536/16×96/0.5M/2.5×10^-4",
+    "1.3B/24/2,048/24×128/1M/2×10^-4",
+    "2.7B/32/2,560/32×80/1M/1.6×10^-4",
+    "6.7B/32/4,096/32×128/2M/1.2×10^-4",
+    "13.0B/40/5,140/40×128/2M/1×10^-4",
+    "175.0B/96/12,288/96×128/3.2M/0.6×10^-4",
+    "300B tokens",
+    "2,048-token",
+  ])
+    assert.ok(modelFamily?.statement.includes(value));
+  for (const value of [
+    "410B/19B/12B/55B/3B",
+    "60%/22%/8%/8%/3%",
+    "0.44/2.9/1.9/0.43/3.4",
+    "101%",
+    "41 monthly shards",
+  ])
+    assert.ok(mixture?.statement.includes(value));
+  assert.match(protocol?.statement ?? "", /without updating model weights/);
+  assert.match(contamination?.statement ?? "", /bug/);
+  assert.match(contamination?.statement ?? "", /retraining was deemed infeasible/);
+  assert.match(artifacts?.statement ?? "", /485 generated-sample records/);
+  assert.match(artifacts?.statement ?? "", /no LICENSE/);
+  for (const value of ["5,140", "174,600M", "200B", "164 of 273", "8.64×10^19"])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.equal(
+    transformerBoundary?.evidence[0].locator.section,
+    "1 Introduction; 2.1 Model and Architectures; 7 Related Work",
+  );
+  assert.deepEqual(
+    evaluationBoundary?.evidence.map((item) => ({
+      section: item.locator.section,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      { section: "2.4 Evaluation", pageStart: 10, pageEnd: 10 },
+      {
+        section: "Appendix E Human Quality Assessment",
+        pageStart: 46,
+        pageEnd: 46,
+      },
+    ],
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    ["radford-2019-to-brown-2020", "kaplan-2020-to-brown-2020"],
+  );
+  assert.deepEqual(kaplanEdge?.claimIds, [
+    "kaplan-2020-compute-efficient-allocation",
+    "brown-2020-kaplan-scaling-guided-allocation",
+  ]);
+  assert.ok(!kaplanEdge?.claimIds.includes("brown-2020-kaplan-loss-trend-extension"));
+  assert.deepEqual(gpt2Edge?.claimIds, [
+    "radford-2019-gpt-continuity-and-model-changes",
+    "radford-2019-natural-language-task-conditioning",
+    "radford-2019-byte-level-bpe",
+    "brown-2020-gpt2-architecture-inheritance",
+    "brown-2020-gpt2-in-context-continuity",
+  ]);
+  assert.ok(!gpt2Edge?.claimIds.includes("brown-2020-transformer-lineage-boundary"));
+  for (const relationship of incoming)
+    for (const item of relationship.sourceEvidence)
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === item.sourceId)
+          ?.relatedWorkIds.includes(workId),
+      );
+  for (const item of claims)
+    for (const evidence of item.evidence)
+      assert.notEqual(
+        evidence.support,
+        "The cited primary-source passage, table, figure, or artifact directly bounds this statement.",
+      );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "model-scale-zero-shot-transfer")
+      ?.claimIds.some((claimId) => claimId.startsWith("brown-2020")),
+  );
+  assert.deepEqual(
+    corpus.ideas.find((item) => item.id === "scale-dependent-in-context-learning")
+      ?.claimIds,
+    [
+      "brown-2020-model-configurations-and-175b",
+      "brown-2020-headline-task-results",
+      "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+      "bigscience-2022-bloom-superglue-scaling-envelope",
+    ],
+  );
+  assert.ok(
+    corpus.ideas
+      .find((item) => item.id === "nonembedding-parameter-compute-accounting")
+      ?.claimIds.includes("brown-2020-kaplan-loss-trend-extension"),
+  );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "nonembedding-parameter-compute-accounting")
+      ?.claimIds.includes("brown-2020-model-configurations-and-175b"),
+  );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "alternating-dense-local-sparse-attention")
+      ?.claimIds.includes("brown-2020-context-tokenizer-and-packed-sequences"),
+  );
+  assert.ok(
+    !corpus.ideas
+      .find((item) => item.id === "compute-efficient-model-data-allocation")
+      ?.claimIds.includes("brown-2020-compute-and-energy-boundary"),
+  );
+  assert.deepEqual(
+    corpus.ideas.find((item) => item.id === "reported-compute-versus-measured-energy")
+      ?.claimIds,
+    [
+      "brown-2020-compute-and-energy-boundary",
+      "zhang-2022-opt-carbon-accounting-boundary",
+      "bigscience-2022-bloom-compute-energy-and-carbon-scopes",
+    ],
+  );
+  assert.deepEqual(
+    corpus.claims.find((item) => item.id === "brown-2020-compute-and-energy-boundary")
+      ?.ideaIds,
+    ["reported-compute-versus-measured-energy"],
+  );
+  assert.deepEqual(
+    objectives.map((item) => item.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.ok(readme.includes("Brown et al.’s GPT-3 family"));
+  assert.ok(corpusFormat.includes("Brown et al. 2020 is represented"));
+  assert.ok(historicalScope.includes("The GPT-3 family was checked on 2026-08-30"));
+});
+
+test("preserves Stiennon 2020 reward learning, release boundaries, and instruction lineage", () => {
+  const workId = "stiennon-2020-learning-to-summarize-human-feedback";
+  const ouyangWorkId =
+    "ouyang-2022-training-language-models-follow-instructions-human-feedback";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) =>
+      (item.from.kind === "work" && item.from.id === workId) ||
+      (item.to.kind === "work" && item.to.id === workId),
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "stiennon-2020-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "stiennon-2020-neurips-supplement",
+  );
+  const versionBoundary = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-version-release-and-loss-boundary",
+  );
+  const pipeline = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-comparison-reward-model-ppo-pipeline",
+  );
+  const rewardModel = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-pairwise-reward-model-objective",
+  );
+  const ppo = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-kl-regularized-ppo-and-value-function",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-tldr-preference-results",
+  );
+  const overoptimization = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-reward-model-scaling-and-overoptimization",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "stiennon-2020-artifact-data-and-rights-boundary",
+  );
+  const expectedVersionIds = [
+    "stiennon-2020-arxiv-v1-version",
+    "stiennon-2020-arxiv-v2-version",
+    "stiennon-2020-neurips-version",
+    "stiennon-2020-arxiv-v3-version",
+  ];
+  const expectedSourceIds = [
+    "stiennon-2020-arxiv-record",
+    "stiennon-2020-arxiv-v1-full-text",
+    "stiennon-2020-arxiv-v2-full-text",
+    "stiennon-2020-arxiv-v3-full-text",
+    "stiennon-2020-arxiv-license",
+    "stiennon-2020-arxiv-v1-source-package",
+    "stiennon-2020-arxiv-v2-source-package",
+    "stiennon-2020-arxiv-v3-source-package",
+    "stiennon-2020-neurips-record",
+    "stiennon-2020-neurips-full-text",
+    "stiennon-2020-neurips-supplement",
+    "stiennon-2020-openai-publication",
+    "stiennon-2020-initial-release-repository",
+    "stiennon-2020-feedback-dataset-release",
+    "stiennon-2020-release-license-clarification",
+  ];
+
+  assert.equal(workIndex(workId), 51);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.chronology.orderingEventId, "stiennon-2020-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2020-09-02", "day"],
+      ["2020-10-27", "day"],
+      ["2020", "year"],
+      ["2022-02-15", "day"],
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "stiennon-2020-neurips-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "stiennon-2020-neurips-record",
+    "stiennon-2020-neurips-full-text",
+    "stiennon-2020-neurips-supplement",
+  ]);
+  assert.deepEqual(
+    work?.versions.find((item) => item.id === work.canonicalVersionId)
+      ?.bibliography.pages,
+    ["3008-3021"],
+  );
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 14,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 15,
+    pageEnd: 45,
+  });
+  assert.match(
+    work?.versions.find((item) => item.id === "stiennon-2020-arxiv-v1-version")
+      ?.notes ?? "",
+    /human-feedback dataset cannot yet be released/,
+  );
+  assert.match(
+    work?.versions.find((item) => item.id === "stiennon-2020-arxiv-v3-version")
+      ?.notes ?? "",
+    /missing leading negative sign/,
+  );
+
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+
+  assert.equal(claims.length, 15);
+  assert.equal(versionBoundary?.directness, "editorial-inference");
+  assert.match(versionBoundary?.statement ?? "", /three arXiv revisions/);
+  assert.match(versionBoundary?.statement ?? "", /leading negative sign/);
+  assert.deepEqual(
+    versionBoundary?.evidence.map((item) => item.sourceId),
+    [
+      "stiennon-2020-arxiv-v1-full-text",
+      "stiennon-2020-arxiv-v2-full-text",
+      "stiennon-2020-neurips-record",
+      "stiennon-2020-neurips-full-text",
+      "stiennon-2020-arxiv-v3-full-text",
+    ],
+  );
+  assert.match(pipeline?.statement ?? "", /scalar reward model/);
+  assert.match(pipeline?.statement ?? "", /PPO/);
+  assert.match(rewardModel?.statement ?? "", /negative log sigmoid/);
+  assert.match(rewardModel?.statement ?? "", /mean zero/);
+  for (const value of ["gamma=1", "lambda=.95", "beta=.05", "one million episodes"])
+    assert.ok(ppo?.statement.includes(value));
+  assert.match(results?.statement ?? "", /61% raw preference versus 43%/);
+  assert.match(results?.statement ?? "", /12\.9B supervised policy/);
+  assert.match(overoptimization?.statement ?? "", /160M to 13B/);
+  assert.match(overoptimization?.statement ?? "", /anti-correlates/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /64,832 TL;DR comparisons/);
+  assert.match(artifacts?.statement ?? "", /6\.7B weights/);
+  assert.match(artifacts?.statement ?? "", /Modified MIT/);
+  assert.match(artifacts?.statement ?? "", /authorizes arXiv to distribute the article/);
+  assert.doesNotMatch(artifacts?.statement ?? "", /authorizes repository distribution/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+
+  assert.deepEqual(relationships.map((item) => item.id), [
+    "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+    "stiennon-2020-to-rafailov-2023-dpo-tldr-preference-substrate",
+  ]);
+  const edge = relationships.find(
+    (item) => item.id === "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+  );
+  assert.equal(edge?.to.id, ouyangWorkId);
+  assert.equal(edge?.connectionType, "extends");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "qualified");
+  assert.deepEqual(edge?.claimIds, [
+    "stiennon-2020-comparison-reward-model-ppo-pipeline",
+    "stiennon-2020-kl-regularized-ppo-and-value-function",
+    "ouyang-2022-sft-rm-ppo-pipeline",
+    "ouyang-2022-ranked-preference-reward-model",
+    "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+  ]);
+  assert.deepEqual(
+    edge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      {
+        sourceId: "ouyang-2022-neurips-full-text",
+        pageStart: 4,
+        pageEnd: 5,
+      },
+      {
+        sourceId: "ouyang-2022-neurips-full-text",
+        pageStart: 6,
+        pageEnd: 6,
+      },
+    ],
+  );
+  for (const evidence of edge?.sourceEvidence ?? [])
+    assert.ok(
+      corpus.sources
+        .find((source) => source.id === evidence.sourceId)
+        ?.relatedWorkIds.includes(ouyangWorkId),
+    );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-stiennon-2020-preferences-to-rewarded-summarization", "beginner"],
+      ["expert-stiennon-2020-rm-ppo-kl-and-evaluation-boundaries", "expert"],
+    ],
+  );
+});
+
+test("preserves FLAN versions, held-out clusters, ablations, and release boundaries", () => {
+  const workId = "wei-2021-finetuned-language-models-zero-shot-learners";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const canonical = work?.versions.find(
+    (item) => item.id === work?.canonicalVersionId,
+  );
+  const cameraReady = work?.versions.find(
+    (item) => item.id === "wei-2022-arxiv-v5-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "wei-2022-arxiv-v5-full-text",
+  );
+  const code = corpus.sources.find(
+    (item) => item.id === "wei-2021-flan-initial-code-snapshot",
+  );
+  const headline = claims.find(
+    (item) => item.id === "wei-2022-headline-zero-shot-results-and-comparator-boundary",
+  );
+  const scale = claims.find(
+    (item) => item.id === "wei-2022-scale-dependent-transfer-ablation",
+  );
+  const semantics = claims.find(
+    (item) => item.id === "wei-2022-instruction-semantics-ablation",
+  );
+  const artifacts = claims.find(
+    (item) => item.id === "wei-2021-code-model-data-and-rights-boundary",
+  );
+  const parallel = corpus.relationships.find(
+    (item) => item.id === "wei-2021-to-sanh-2021-concurrent-instruction-tuning",
+  );
+
+  assert.equal(workIndex(workId), 52);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2021-09-03", "day"],
+      ["2021-10-05", "day"],
+      ["2021-11-04", "day"],
+      ["2021-12-02", "day"],
+      ["2022-02-08", "day"],
+      ["2022", "year"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "wei-2021-arxiv-v1-version",
+      "wei-2021-arxiv-v2-version",
+      "wei-2021-arxiv-v3-version",
+      "wei-2021-arxiv-v4-version",
+      "wei-2022-arxiv-v5-version",
+      "wei-2022-iclr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "wei-2022-iclr-version");
+  assert.deepEqual(work?.preferredSourceIds, ["wei-2022-iclr-record"]);
+  assert.equal(canonical?.authors.length, 9);
+  assert.equal(cameraReady?.authors.length, 9);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 46,
+  });
+  assert.deepEqual(code?.versionIds, ["wei-2021-arxiv-v1-version"]);
+  assert.equal(work?.sourceIds.length, 11);
+  assert.equal(claims.length, 13);
+  assert.match(headline?.statement ?? "", /20 of 25/);
+  assert.match(headline?.limitations.join(" ") ?? "", /12 best-development-template wins/);
+  assert.match(scale?.statement ?? "", /hurts it at 8B and below/);
+  assert.match(semantics?.statement ?? "", /55\.2/);
+  assert.match(artifacts?.statement ?? "", /not the internal LaMDA-PT or 137B FLAN weights/);
+  assert.equal(parallel?.connectionType, "conceptual-parallel");
+  assert.equal(parallel?.evidenceClass, "editorial-synthesis");
+  assert.equal(parallel?.causalLanguage, "prohibited");
+  assert.deepEqual(
+    corpus.learningObjectives
+      .filter((item) => item.workIds.includes(workId))
+      .map((item) => item.id),
+    [
+      "beginner-wei-2021-instructions-task-holdouts-and-scale",
+      "expert-wei-2021-flan-mixture-evaluation-and-artifact-boundaries",
+    ],
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id === workId &&
+        item.to.id ===
+          "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+    ),
+    false,
+  );
+});
+
+test("preserves T0 authorship, prompt evaluation, mixture, and lineage boundaries", () => {
+  const workId =
+    "sanh-2021-multitask-prompted-training-enables-zero-shot-task-generalization";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const canonical = work?.versions.find(
+    (item) => item.id === work?.canonicalVersionId,
+  );
+  const cameraReady = work?.versions.find(
+    (item) => item.id === "sanh-2022-arxiv-v3-version",
+  );
+  const fullText = corpus.sources.find(
+    (item) => item.id === "sanh-2022-arxiv-v3-full-text",
+  );
+  const registry = corpus.sources.find(
+    (item) => item.id === "sanh-2022-t-zero-dataset-registry",
+  );
+  const authorship = claims.find(
+    (item) => item.id === "sanh-2021-version-authorship-and-canonical-boundary",
+  );
+  const variants = claims.find(
+    (item) => item.id === "sanh-2022-variant-mixtures-and-zero-shot-boundary",
+  );
+  const results = claims.find(
+    (item) => item.id === "sanh-2022-held-out-task-results",
+  );
+  const robustness = claims.find(
+    (item) => item.id === "sanh-2022-prompt-and-dataset-diversity-ablation",
+  );
+  const artifacts = claims.find(
+    (item) => item.id === "sanh-2022-artifact-mixture-and-rights-boundary",
+  );
+  const t5Edge = corpus.relationships.find(
+    (item) => item.id === "raffel-2019-to-sanh-2021-t5-plus-lm-substrate",
+  );
+
+  assert.equal(workIndex(workId), 53);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2021-10-15", "day"],
+      ["2021-12-13", "day"],
+      ["2022-03-17", "day"],
+      ["2022", "year"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "sanh-2021-arxiv-v1-version",
+      "sanh-2021-arxiv-v2-version",
+      "sanh-2022-arxiv-v3-version",
+      "sanh-2022-iclr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "sanh-2022-iclr-version");
+  assert.deepEqual(work?.preferredSourceIds, [
+    "sanh-2022-iclr-record",
+    "sanh-2022-official-citation",
+  ]);
+  assert.equal(canonical?.authors.length, 40);
+  assert.equal(cameraReady?.authors.length, 42);
+  assert.ok(cameraReady?.authors.includes("Michael McKenna"));
+  assert.ok(cameraReady?.authors.includes("Tali Bers"));
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 216,
+  });
+  assert.equal(work?.sourceIds.length, 16);
+  assert.equal(claims.length, 15);
+  assert.match(authorship?.statement ?? "", /list 40 and omit Michael McKenna and Tali Bers/);
+  assert.match(variants?.statement ?? "", /39, 49, and 55/);
+  assert.match(results?.statement ?? "", /Story Cloze 48\.85→94\.71/);
+  assert.match(robustness?.statement ?? "", /shrinks IQR on 7/);
+  assert.match(registry?.accessNote ?? "", /38 rows marked BASE and no TyDiQA/);
+  assert.match(artifacts?.uncertainties[0]?.note ?? "", /missing TyDiQA/);
+  assert.equal(t5Edge?.connectionType, "extends");
+  assert.equal(t5Edge?.evidenceClass, "documented-influence");
+  assert.equal(t5Edge?.causalLanguage, "qualified");
+  assert.deepEqual(
+    corpus.learningObjectives
+      .filter((item) => item.workIds.includes(workId))
+      .map((item) => item.id),
+    [
+      "beginner-sanh-2021-prompts-mixtures-and-robustness",
+      "expert-sanh-2021-t0-prompt-evaluation-and-release-boundaries",
+    ],
+  );
+  assert.equal(
+    corpus.relationships.some(
+      (item) =>
+        item.from.id === workId &&
+        item.to.id ===
+          "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+    ),
+    false,
+  );
+});
+
+test("preserves Gopher versions, scaling boundaries, and scoped Chinchilla lineage", () => {
+  const workId =
+    "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const relationships = corpus.relationships.filter(
+    (item) =>
+      (item.from.kind === "work" && item.from.id === workId) ||
+      (item.to.kind === "work" && item.to.id === workId),
+  );
+  const v1 = work?.versions.find(
+    (item) => item.id === "rae-2021-arxiv-v1-version",
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "rae-2022-arxiv-v2-version",
+  );
+  const v1Text = corpus.sources.find(
+    (item) => item.id === "rae-2021-arxiv-v1-full-text",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "rae-2022-arxiv-v2-full-text",
+  );
+  const v1SourcePackage = corpus.sources.find(
+    (item) => item.id === "rae-2021-arxiv-v1-source-package",
+  );
+  const canonicalSourcePackage = corpus.sources.find(
+    (item) => item.id === "rae-2022-arxiv-v2-source-package",
+  );
+  const arxivRecord = corpus.sources.find(
+    (item) => item.id === "rae-2021-arxiv-record",
+  );
+  const launchText = corpus.sources.find(
+    (item) => item.id === "rae-2021-deepmind-launch-full-text",
+  );
+  const launchPost = corpus.sources.find(
+    (item) => item.id === "rae-2021-deepmind-launch-post",
+  );
+  const license = corpus.sources.find(
+    (item) => item.id === "rae-2021-arxiv-license",
+  );
+  const versionBoundary = findClaim("rae-2021-gopher-version-boundary");
+  const architecture = findClaim("rae-2021-gopher-family-and-architecture");
+  const training = findClaim("rae-2021-gopher-training-recipe");
+  const mixture = findClaim("rae-2021-massivetext-composition-and-sampling");
+  const pipeline = findClaim(
+    "rae-2021-massivetext-filter-deduplicate-decontaminate",
+  );
+  const scale = findClaim(
+    "rae-2021-fixed-token-scale-sweep-and-nonuniform-gains",
+  );
+  const evaluation = findClaim("rae-2021-gopher-broad-evaluation-profile");
+  const deviation = findClaim("rae-2021-gopher-scaling-curve-deviation");
+  const context = findClaim("rae-2021-relative-position-context-extrapolation");
+  const safety = findClaim("rae-2021-scale-dependent-toxicity-and-bias");
+  const distributed = findClaim(
+    "rae-2021-gopher-distributed-training-and-compute",
+  );
+  const compute = findClaim("rae-2021-compute-and-carbon-accounting");
+  const availability = findClaim(
+    "rae-2021-model-data-and-replication-boundary",
+  );
+  const artifacts = findClaim("rae-2021-artifact-and-rights-boundary");
+  const decoderOnlyIdea = corpus.ideas.find(
+    (item) => item.id === "decoder-only-transformer-language-modeling",
+  );
+  const relativePositionIdea = corpus.ideas.find(
+    (item) => item.id === "relative-positional-self-attention",
+  );
+  const expectedVersionIds = [
+    "rae-2021-arxiv-v1-version",
+    "rae-2022-arxiv-v2-version",
+  ];
+  const expectedSourceIds = [
+    "rae-2021-arxiv-record",
+    "rae-2021-arxiv-v1-full-text",
+    "rae-2021-arxiv-v1-source-package",
+    "rae-2022-arxiv-v2-full-text",
+    "rae-2022-arxiv-v2-source-package",
+    "rae-2021-arxiv-license",
+    "rae-2021-deepmind-launch-full-text",
+    "rae-2021-deepmind-launch-post",
+  ];
+
+  assert.equal(workIndex(workId), 54);
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.chronology.orderingEventId, "rae-2021-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2021-12-08", "day"],
+      ["2022-01-21", "day"],
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "rae-2022-arxiv-v2-version");
+  assert.equal(work?.authors.length, 80);
+  assert.equal(v1?.authors.length, 80);
+  assert.equal(canonical?.authors.length, 80);
+  assert.deepEqual(work?.authors, canonical?.authors);
+  assert.deepEqual(work?.authors.slice(0, 4), [
+    "Jack W. Rae",
+    "Sebastian Borgeaud",
+    "Trevor Cai",
+    "Katie Millican",
+  ]);
+  assert.deepEqual(work?.authors.slice(-4), [
+    "Lorrayne Bennett",
+    "Demis Hassabis",
+    "Koray Kavukcuoglu",
+    "Geoffrey Irving",
+  ]);
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "rae-2021-arxiv-record",
+    "rae-2022-arxiv-v2-full-text",
+  ]);
+  assert.deepEqual(v1?.sourceIds, [
+    "rae-2021-arxiv-record",
+    "rae-2021-arxiv-v1-full-text",
+    "rae-2021-arxiv-v1-source-package",
+    "rae-2021-arxiv-license",
+    "rae-2021-deepmind-launch-full-text",
+  ]);
+  assert.deepEqual(canonical?.sourceIds, [
+    "rae-2021-arxiv-record",
+    "rae-2022-arxiv-v2-full-text",
+    "rae-2022-arxiv-v2-source-package",
+    "rae-2021-arxiv-license",
+  ]);
+  assert.deepEqual(v1Text?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 118,
+  });
+  assert.deepEqual(canonicalText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 120,
+  });
+  assert.match(v1SourcePackage?.accessNote ?? "", /290 entries/);
+  assert.match(canonicalSourcePackage?.accessNote ?? "", /292 entries/);
+  assert.match(
+    canonicalSourcePackage?.accessNote ?? "",
+    /no executable experiment package/,
+  );
+  assert.match(
+    arxivRecord?.accessNote ?? "",
+    /immutable PDFs establish the 118-page v1 and 120-page v2 counts/,
+  );
+  assert.deepEqual(launchText?.versionIds, ["rae-2021-arxiv-v1-version"]);
+  assert.match(launchText?.accessNote ?? "", /substantively equivalent to arXiv v1/);
+  assert.doesNotMatch(launchText?.title ?? "", /frozen/i);
+  assert.deepEqual(launchPost?.versionIds, []);
+  assert.ok(launchPost?.supports.includes("version-boundary"));
+  assert.deepEqual(license?.versionIds, expectedVersionIds);
+  assert.match(license?.accessNote ?? "", /do not supply a Creative Commons/);
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+  for (const evidence of versionBoundary?.evidence ?? []) {
+    if (
+      evidence.sourceId === "rae-2021-arxiv-v1-full-text" ||
+      evidence.sourceId === "rae-2022-arxiv-v2-full-text"
+    )
+      assert.ok(
+        evidence.locator.pageEnd - evidence.locator.pageStart <= 2,
+        `${evidence.locator.label} must use an exact local span`,
+      );
+  }
+
+  assert.equal(claims.length, 20);
+  for (const value of [
+    "44M, 117M, 417M, 1.4B, 7.1B, and nominal 280B",
+    "80 layers",
+    "128 heads",
+    "16,384",
+    "RMSNorm",
+    "relative positional encoding",
+    "32,000-item SentencePiece",
+  ])
+    assert.ok(architecture?.statement.includes(value));
+  assert.match(decoderOnlyIdea?.description ?? "", /a position representation/);
+  assert.doesNotMatch(decoderOnlyIdea?.description ?? "", /learned positions/);
+  assert.match(
+    relativePositionIdea?.description ?? "",
+    /with or without cached cross-segment states/,
+  );
+  for (const value of [
+    "300B tokens",
+    "2,048-token context",
+    "4×10^-5",
+    "1,500 warmup steps",
+    "3M to 6M tokens",
+    "bfloat16",
+  ])
+    assert.ok(training?.statement.includes(value));
+  for (const value of [
+    "MassiveWeb, books, C4, news, GitHub, and Wikipedia",
+    "506B, 560B, 182B, 676B, 422B, and 4B",
+    "48%, 27%, 10%, 10%, 3%, and 2%",
+    "2.35T",
+    "12.8%",
+  ])
+    assert.ok(mixture?.statement.includes(value));
+  assert.match(pipeline?.statement ?? "", /MinHash over 13-grams/);
+  assert.match(pipeline?.statement ?? "", /Jaccard similarity exceeds 0\.8/);
+  for (const value of ["16 of 152", "57", "79", "51.2%", "52.0%"])
+    assert.ok(scale?.statement.includes(value));
+  assert.match(evaluation?.statement ?? "", /100 of 124/);
+  assert.match(evaluation?.statement ?? "", /60\.0 five-shot average accuracy/);
+  assert.match(deviation?.statement ?? "", /Gopher may be under-trained/);
+  assert.match(deviation?.statement ?? "", /power law may bend/);
+  assert.ok(
+    context?.limitations.some(
+      (item) => item.includes("1,000 tokens") && item.includes("1,024"),
+    ),
+  );
+  assert.match(safety?.statement ?? "", /toxic-prompt continuations become more toxic/);
+  assert.match(safety?.statement ?? "", /unprompted samples per model remain low/);
+  assert.match(safety?.statement ?? "", /0\.76 AUC/);
+  assert.match(safety?.statement ?? "", /stereotype-conditioned gaps/);
+  for (const value of ["2.5 TiB", "4,096 chips", "17% rematerialization"])
+    assert.ok(distributed?.statement.includes(value));
+  for (const value of [
+    "6.31×10^23 FLOPs",
+    "33% rematerialization",
+    "4,096 TPUv3 chips",
+    "920 hours",
+    "380 net tCO2e",
+  ])
+    assert.ok(compute?.statement.includes(value));
+  assert.match(availability?.statement ?? "", /dataset will not be distributed outside DeepMind/);
+  assert.match(availability?.statement ?? "", /Gopher will not be public/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /no executable training\/evaluation code/);
+  assert.match(artifacts?.statement ?? "", /all rights reserved/);
+  assert.match(artifacts?.statement ?? "", /rather than a general reuse grant/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+  for (const item of claims)
+    for (const evidence of item.evidence)
+      assert.notEqual(
+        evidence.support,
+        "The cited primary-source passage, table, figure, or artifact directly bounds this statement.",
+      );
+
+  assert.deepEqual(
+    relationships.map((item) => item.id),
+    [
+      "radford-2019-to-rae-2021-gopher",
+      "dai-2019-to-rae-2021-gopher",
+      "rae-2021-gopher-to-hoffmann-2022",
+      "rae-2021-to-chowdhery-2022-palm-toxicity",
+    ],
+  );
+  const gpt2Edge = relationships.find(
+    (item) => item.id === "radford-2019-to-rae-2021-gopher",
+  );
+  const transformerXlEdge = relationships.find(
+    (item) => item.id === "dai-2019-to-rae-2021-gopher",
+  );
+  const chinchillaEdge = relationships.find(
+    (item) => item.id === "rae-2021-gopher-to-hoffmann-2022",
+  );
+  const palmToxicityEdge = relationships.find(
+    (item) => item.id === "rae-2021-to-chowdhery-2022-palm-toxicity",
+  );
+  assert.equal(gpt2Edge?.connectionType, "extends");
+  assert.equal(transformerXlEdge?.connectionType, "builds-on");
+  assert.equal(chinchillaEdge?.connectionType, "extends");
+  assert.equal(palmToxicityEdge?.connectionType, "builds-on");
+  assert.equal(gpt2Edge?.from.id, "radford-2019-language-models-unsupervised-multitask-learners");
+  assert.equal(
+    transformerXlEdge?.from.id,
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context",
+  );
+  assert.equal(
+    chinchillaEdge?.to.id,
+    "hoffmann-2022-training-compute-optimal-language-models",
+  );
+  for (const edge of relationships) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+    for (const evidence of edge.sourceEvidence)
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === evidence.sourceId)
+          ?.relatedWorkIds.includes(edge.to.id),
+      );
+  }
+  assert.deepEqual(gpt2Edge?.claimIds, [
+    "radford-2019-gpt-continuity-and-model-changes",
+    "rae-2021-gopher-family-and-architecture",
+  ]);
+  assert.deepEqual(transformerXlEdge?.claimIds, [
+    "dai-2019-relative-positional-attention",
+    "rae-2021-gopher-family-and-architecture",
+    "rae-2021-relative-position-context-extrapolation",
+  ]);
+  assert.deepEqual(
+    transformerXlEdge?.sourceEvidence.map((item) => [
+      item.locator.pageStart,
+      item.locator.pageEnd,
+    ]),
+    [
+      [6, 6],
+      [62, 64],
+    ],
+  );
+  assert.deepEqual(chinchillaEdge?.claimIds, [
+    "rae-2021-gopher-family-and-architecture",
+    "rae-2021-gopher-training-recipe",
+    "rae-2021-massivetext-composition-and-sampling",
+    "rae-2021-gopher-tokenizer-normalization-limitation",
+    "rae-2021-bfloat16-staleness-and-master-weight-fix",
+    "hoffmann-2022-chinchilla-gopher-compute-match",
+    "hoffmann-2022-chinchilla-architecture-and-training",
+    "hoffmann-2022-massivetext-mixture",
+  ]);
+  assert.deepEqual(
+    chinchillaEdge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      {
+        sourceId: "hoffmann-2022-neurips-full-text",
+        pageStart: 7,
+        pageEnd: 8,
+      },
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      [
+        "beginner-rae-2021-scale-a-model-without-hiding-the-boundaries",
+        "beginner",
+      ],
+      [
+        "expert-rae-2021-gopher-provenance-scaling-compute-and-lineage",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Rae et al.’s Gopher family begins"));
+  assert.ok(corpusFormat.includes("Rae et al. 2021/2022 is represented"));
+  assert.ok(
+    historicalScope.includes(
+      "Gopher adds two documented incoming edges and one outgoing Chinchilla edge",
+    ),
+  );
+  assert.ok(
+    historicalScope.includes(
+      "The Gopher family was checked on 2026-09-06",
+    ),
+  );
+});
+
+test("preserves Ouyang 2022 post-training versions, scoped results, and incoming lineage", () => {
+  const workId =
+    "ouyang-2022-training-language-models-follow-instructions-human-feedback";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "ouyang-2022-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "ouyang-2022-neurips-supplement",
+  );
+  const versionBoundary = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-version-and-deployment-boundary",
+  );
+  const pipeline = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-sft-rm-ppo-pipeline",
+  );
+  const gpt3 = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-gpt3-initialization-and-sft",
+  );
+  const rewardModel = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-ranked-preference-reward-model",
+  );
+  const ppo = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-kl-regularized-ppo-and-pretraining-mix",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-instructgpt-preference-results",
+  );
+  const regression = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-public-task-regression-and-ppo-ptx",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "ouyang-2022-artifact-data-and-rights-boundary",
+  );
+  const expectedVersionIds = [
+    "ouyang-2022-openai-preprint-version",
+    "ouyang-2022-arxiv-v1-version",
+    "ouyang-2022-neurips-version",
+  ];
+  const expectedSourceIds = [
+    "ouyang-2022-openai-publication",
+    "ouyang-2022-openai-preprint-full-text",
+    "ouyang-2022-arxiv-record",
+    "ouyang-2022-arxiv-v1-full-text",
+    "ouyang-2022-arxiv-license",
+    "ouyang-2022-arxiv-v1-source-package",
+    "ouyang-2022-neurips-record",
+    "ouyang-2022-neurips-full-text",
+    "ouyang-2022-neurips-supplement",
+    "ouyang-2022-release-repository",
+    "ouyang-2022-model-card",
+  ];
+
+  assert.equal(workIndex(workId), 55);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "ouyang-2022-openai-preprint-published",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2022-01-27", "day"],
+      ["2022-03-04", "day"],
+      ["2022-12-06", "day"],
+    ],
+  );
+  assert.deepEqual(work?.versions.map((item) => item.id), expectedVersionIds);
+  assert.equal(work?.canonicalVersionId, "ouyang-2022-neurips-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "ouyang-2022-neurips-record",
+    "ouyang-2022-neurips-full-text",
+    "ouyang-2022-neurips-supplement",
+  ]);
+  assert.deepEqual(
+    work?.versions.find((item) => item.id === work.canonicalVersionId)
+      ?.bibliography.pages,
+    ["27730-27744"],
+  );
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 15,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 16,
+    pageEnd: 62,
+  });
+  assert.match(
+    work?.versions.find((item) => item.id === "ouyang-2022-openai-preprint-version")
+      ?.notes ?? "",
+    /first verified public paper/,
+  );
+  assert.match(
+    work?.versions.find((item) => item.id === "ouyang-2022-arxiv-v1-version")
+      ?.notes ?? "",
+    /substantive reporting and citation corrections/,
+  );
+
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+
+  assert.equal(claims.length, 16);
+  assert.equal(versionBoundary?.directness, "editorial-inference");
+  assert.match(versionBoundary?.statement ?? "", /27 January 2022/);
+  assert.match(versionBoundary?.statement ?? "", /slightly different procedure/);
+  assert.match(pipeline?.statement ?? "", /supervised fine-tuning of GPT-3/);
+  assert.match(pipeline?.statement ?? "", /most ranked data/);
+  for (const value of ["1.3B", "6B", "175B", "16 epochs", "residual dropout .2"])
+    assert.ok(gpt3?.statement.includes(value));
+  assert.match(rewardModel?.statement ?? "", /K=4–9/);
+  assert.match(rewardModel?.statement ?? "", /One 6B reward model/);
+  for (const value of ["beta=.02", "gamma=27.8", "256,000 episodes", "batch 512"])
+    assert.ok(ppo?.statement.includes(value));
+  assert.match(ppo?.statement ?? "", /same 6B reward model/);
+  assert.match(ppo?.statement ?? "", /separate 6B value function initialized from it/);
+  assert.match(results?.statement ?? "", /85% ±3%/);
+  assert.match(results?.statement ?? "", /71% ±4%/);
+  assert.match(results?.statement ?? "", /not a universal-user result/);
+  assert.match(regression?.statement ?? "", /HellaSwag/);
+  assert.match(regression?.statement ?? "", /DROP, SQuADv2, and French-to-English translation/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /eight CSV files/);
+  assert.match(artifacts?.statement ?? "", /no InstructGPT weights/);
+  assert.match(artifacts?.statement ?? "", /sensitive information/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+
+  assert.deepEqual(incoming.map((item) => item.id), [
+    "stiennon-2020-to-ouyang-2022-instruction-rlhf-extension",
+    "brown-2020-to-ouyang-2022-gpt3-posttraining",
+  ]);
+  const stiennonEdge = incoming[0];
+  const brownEdge = incoming[1];
+  for (const edge of incoming) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.causalLanguage, "qualified");
+    for (const evidence of edge.sourceEvidence)
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === evidence.sourceId)
+          ?.relatedWorkIds.includes(workId),
+      );
+  }
+  assert.equal(stiennonEdge?.connectionType, "extends");
+  assert.equal(brownEdge?.connectionType, "extends");
+  assert.deepEqual(brownEdge?.claimIds, [
+    "brown-2020-model-configurations-and-175b",
+    "ouyang-2022-gpt3-initialization-and-sft",
+  ]);
+  assert.deepEqual(
+    brownEdge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      {
+        sourceId: "ouyang-2022-neurips-full-text",
+        pageStart: 5,
+        pageEnd: 6,
+      },
+      {
+        sourceId: "ouyang-2022-neurips-supplement",
+        pageStart: 30,
+        pageEnd: 30,
+      },
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-ouyang-2022-instructions-human-feedback-and-scope", "beginner"],
+      [
+        "expert-ouyang-2022-rlhf-prompt-data-evaluation-and-artifact-boundaries",
+        "expert",
+      ],
+    ],
+  );
+});
+
+test("preserves Chinchilla estimators, archival conflicts, and scoped incoming lineage", () => {
+  const workId = "hoffmann-2022-training-compute-optimal-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const arxiv = work?.versions.find(
+    (item) => item.id === "hoffmann-2022-arxiv-v1-version",
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "hoffmann-2022-neurips-version",
+  );
+  const main = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-neurips-full-text",
+  );
+  const supplement = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-neurips-supplement",
+  );
+  const sourcePackage = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-arxiv-v1-source-package",
+  );
+  const deepmind = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-deepmind-publication",
+  );
+  const rights = corpus.sources.find(
+    (item) => item.id === "hoffmann-2022-neurips-rights",
+  );
+  const accounting = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-fixed-compute-objective-and-accounting",
+  );
+  const family = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-training-family-and-three-approaches",
+  );
+  const schedules = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-schedule-horizon-dependence",
+  );
+  const estimates = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-balanced-scaling-estimates",
+  );
+  const parametric = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-parametric-loss-fit",
+  );
+  const crossDataset = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-cross-dataset-isoflop-check",
+  );
+  const challenge = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-kaplan-allocation-challenge",
+  );
+  const computeMatch = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-chinchilla-gopher-compute-match",
+  );
+  const mixture = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-massivetext-mixture",
+  );
+  const results = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-language-model-and-aggregate-results",
+  );
+  const discrepancies = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-reporting-discrepancies",
+  );
+  const artifacts = corpus.claims.find(
+    (item) => item.id === "hoffmann-2022-artifact-data-and-rights-boundary",
+  );
+  const expectedSourceIds = [
+    "hoffmann-2022-arxiv-record",
+    "hoffmann-2022-arxiv-v1-full-text",
+    "hoffmann-2022-arxiv-v1-source-package",
+    "hoffmann-2022-arxiv-license",
+    "hoffmann-2022-deepmind-publication",
+    "hoffmann-2022-neurips-record",
+    "hoffmann-2022-neurips-full-text",
+    "hoffmann-2022-neurips-supplement",
+    "hoffmann-2022-crossref-record",
+    "hoffmann-2022-neurips-rights",
+  ];
+
+  assert.equal(workIndex(workId), 56);
+  assert.equal(work?.chronology.orderingEventId, "hoffmann-2022-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2022-03-29", "day"],
+      ["2022", "year"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    ["hoffmann-2022-arxiv-v1-version", "hoffmann-2022-neurips-version"],
+  );
+  assert.equal(work?.canonicalVersionId, "hoffmann-2022-neurips-version");
+  assert.deepEqual(work?.sourceIds, expectedSourceIds);
+  assert.deepEqual(work?.preferredSourceIds, [
+    "hoffmann-2022-neurips-record",
+    "hoffmann-2022-neurips-full-text",
+    "hoffmann-2022-neurips-supplement",
+  ]);
+  assert.deepEqual(arxiv?.sourceIds, expectedSourceIds.slice(0, 4));
+  assert.deepEqual(canonical?.sourceIds, expectedSourceIds.slice(5, 9));
+  assert.deepEqual(arxiv?.authors.slice(-4), [
+    "Erich Elsen",
+    "Jack W. Rae",
+    "Oriol Vinyals",
+    "Laurent Sifre",
+  ]);
+  assert.deepEqual(canonical?.authors.slice(-4), [
+    "Erich Elsen",
+    "Oriol Vinyals",
+    "Jack W. Rae",
+    "Laurent Sifre",
+  ]);
+  assert.deepEqual(work?.authors, canonical?.authors);
+  assert.deepEqual(canonical?.bibliography.pages, ["30016-30030"]);
+  assert.deepEqual(main?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 15,
+  });
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 16,
+    pageEnd: 32,
+  });
+  assert.match(sourcePackage?.accessNote ?? "", /24-file archive/);
+  assert.match(sourcePackage?.accessNote ?? "", /no executable experiment code/);
+  assert.deepEqual(deepmind?.versionIds, []);
+  assert.deepEqual(deepmind?.supports, ["metadata", "version-boundary"]);
+  assert.match(deepmind?.accessNote ?? "", /1\.3T/);
+  assert.deepEqual(rights?.versionIds, []);
+  assert.ok(rights?.supports.includes("version-boundary"));
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+  for (const event of work?.chronology.events ?? [])
+    for (const sourceId of event.sourceIds)
+      assert.ok(
+        corpus.sources
+          .find((item) => item.id === sourceId)
+          ?.versionIds.includes(event.versionId),
+      );
+
+  assert.equal(claims.length, 20);
+  assert.match(accounting?.statement ?? "", /0\.99 to 1\.10/);
+  assert.match(accounting?.limitations.join(" ") ?? "", /serving demand/);
+  assert.match(family?.statement ?? "", /50 architectures/);
+  assert.match(family?.statement ?? "", /44M to 16\.183B/);
+  assert.match(family?.statement ?? "", /6×10\^18 to 3×10\^21/);
+  assert.match(schedules?.statement ?? "", /more than 25%/);
+  assert.match(schedules?.statement ?? "", /2\.488/);
+  assert.match(schedules?.statement ?? "", /0\.00257/);
+  for (const value of [
+    ".50/.50",
+    "(.488,.502)/(.501,.512)",
+    ".49/.51",
+    "(.462,.534)/(.483,.529)",
+    ".46/.54",
+    "(.454,.455)/(.542,.543)",
+  ])
+    assert.ok(estimates?.statement.includes(value));
+  for (const value of ["E=1.69", "A=406.4", "B=410.7", "α=.34", "β=.28"])
+    assert.ok(parametric?.statement.includes(value));
+  assert.match(parametric?.limitations.join(" ") ?? "", /omit the minus sign/);
+  assert.match(crossDataset?.statement ?? "", /C4 a\/b=.50\/.50/);
+  assert.match(crossDataset?.statement ?? "", /GitHub-code \.53\/.47/);
+  assert.match(challenge?.statement ?? "", /N_opt∝C\^\.73/);
+  assert.match(challenge?.statement ?? "", /2\.80B and 4\.74B/);
+  assert.match(challenge?.limitations.join(" ") ?? "", /non-embedding parameters/);
+  assert.match(computeMatch?.statement ?? "", /5\.76×10\^23/);
+  assert.match(computeMatch?.statement ?? "", /4\.67 times/);
+  assert.match(computeMatch?.statement ?? "", /no serving-latency/);
+  assert.match(mixture?.statement ?? "", /Wikipedia \.001TB\/6M\/1%\/3\.40/);
+  assert.match(results?.statement ?? "", /MMLU is 67\.6 versus 60\.0/);
+  assert.match(results?.statement ?? "", /worse on 4 of 62/);
+  for (const value of [
+    "1.26×10^24",
+    "1.26×10^25",
+    "4.41×10^24/4.2T",
+    "67.5",
+    "67.6",
+    "uniformly",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.equal(discrepancies?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /five TeX, BibTeX, or style files/);
+  assert.match(artifacts?.statement ?? "", /code and data are proprietary/);
+  assert.match(artifacts?.statement ?? "", /not a general reuse license/);
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+  for (const item of claims)
+    for (const evidence of item.evidence)
+      assert.notEqual(
+        evidence.support,
+        "The cited primary-source passage, table, figure, or artifact directly bounds this statement.",
+      );
+
+  assert.deepEqual(incoming.map((item) => item.id), [
+    "kaplan-2020-to-hoffmann-2022",
+    "rae-2021-gopher-to-hoffmann-2022",
+  ]);
+  const kaplanEdge = incoming.find(
+    (item) => item.id === "kaplan-2020-to-hoffmann-2022",
+  );
+  const gopherEdge = incoming.find(
+    (item) => item.id === "rae-2021-gopher-to-hoffmann-2022",
+  );
+  assert.equal(kaplanEdge?.connectionType, "challenges");
+  assert.equal(kaplanEdge?.evidenceClass, "documented-influence");
+  assert.equal(kaplanEdge?.causalLanguage, "qualified");
+  assert.deepEqual(kaplanEdge?.claimIds, [
+    "kaplan-2020-compute-efficient-allocation",
+    "kaplan-2020-training-sweep-and-procedure",
+    "kaplan-2020-nonembedding-parameter-and-compute-definitions",
+    "hoffmann-2022-kaplan-allocation-challenge",
+    "hoffmann-2022-fixed-compute-objective-and-accounting",
+  ]);
+  assert.deepEqual(
+    kaplanEdge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+      figure: item.locator.figure,
+      table: item.locator.table,
+    })),
+    [
+      {
+        sourceId: "hoffmann-2022-neurips-full-text",
+        pageStart: 2,
+        pageEnd: 7,
+        figure: undefined,
+        table: "2",
+      },
+      {
+        sourceId: "hoffmann-2022-neurips-supplement",
+        pageStart: 19,
+        pageEnd: 22,
+        figure: "A4",
+        table: "A5",
+      },
+    ],
+  );
+  assert.equal(gopherEdge?.connectionType, "extends");
+  assert.equal(gopherEdge?.evidenceClass, "documented-influence");
+  assert.equal(gopherEdge?.causalLanguage, "qualified");
+  assert.deepEqual(gopherEdge?.claimIds, [
+    "rae-2021-gopher-family-and-architecture",
+    "rae-2021-gopher-training-recipe",
+    "rae-2021-massivetext-composition-and-sampling",
+    "rae-2021-gopher-tokenizer-normalization-limitation",
+    "rae-2021-bfloat16-staleness-and-master-weight-fix",
+    "hoffmann-2022-chinchilla-gopher-compute-match",
+    "hoffmann-2022-chinchilla-architecture-and-training",
+    "hoffmann-2022-massivetext-mixture",
+  ]);
+  assert.deepEqual(
+    gopherEdge?.sourceEvidence.map((item) => ({
+      sourceId: item.sourceId,
+      pageStart: item.locator.pageStart,
+      pageEnd: item.locator.pageEnd,
+    })),
+    [
+      {
+        sourceId: "hoffmann-2022-neurips-full-text",
+        pageStart: 7,
+        pageEnd: 8,
+      },
+    ],
+  );
+  for (const edge of [kaplanEdge, gopherEdge])
+    for (const item of edge?.sourceEvidence ?? [])
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === item.sourceId)
+          ?.relatedWorkIds.includes(workId),
+      );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      ["beginner-hoffmann-2022-budget-balance-and-boundaries", "beginner"],
+      [
+        "expert-hoffmann-2022-three-estimators-validation-and-provenance",
+        "expert",
+      ],
+    ],
+  );
+  assert.equal(work?.ideaIds.length, 10);
+  for (const ideaId of work?.ideaIds ?? [])
+    assert.ok(
+      corpus.ideas
+        .find((item) => item.id === ideaId)
+        ?.claimIds.some((claimId) =>
+          claims.some((claim) => claim.id === claimId),
+        ),
+    );
+  assert.ok(readme.includes("Hoffmann et al.’s Chinchilla study"));
+  assert.ok(corpusFormat.includes("Hoffmann et al. 2022 is represented"));
+  assert.ok(
+    historicalScope.includes(
+      "The Hoffmann compute-optimal study was checked on 2026-08-31",
+    ),
+  );
+});
+
+test("preserves PaLM versions, systems evidence, evaluation bounds, and scoped lineage", () => {
+  const workId = "chowdhery-2022-palm-scaling-language-modeling-pathways";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "chowdhery-2023-jmlr-version",
+  );
+  const canonicalText = corpus.sources.find(
+    (item) => item.id === "chowdhery-2023-jmlr-full-text",
+  );
+  const v4Source = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-arxiv-v4-source-package",
+  );
+  const v3Text = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-arxiv-v3-full-text",
+  );
+  const scores = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-bigbench-score-artifacts",
+  );
+  const api = corpus.sources.find(
+    (item) => item.id === "chowdhery-2023-palm-api-announcement",
+  );
+  const launch = corpus.sources.find(
+    (item) => item.id === "chowdhery-2022-google-launch-post",
+  );
+  const versionBoundary = findClaim(
+    "chowdhery-2022-version-and-publication-boundary",
+  );
+  const architecture = findClaim(
+    "chowdhery-2022-palm-model-family-and-architecture",
+  );
+  const data = findClaim("chowdhery-2022-training-mixture-and-provenance");
+  const distributed = findClaim(
+    "chowdhery-2022-distributed-pathways-training",
+  );
+  const utilization = findClaim("chowdhery-2022-model-flops-utilization");
+  const training = findClaim(
+    "chowdhery-2022-training-objective-schedule-and-instability",
+  );
+  const english = findClaim("chowdhery-2022-english-evaluation-and-mmlu");
+  const discontinuity = findClaim(
+    "chowdhery-2022-operational-discontinuity-boundary",
+  );
+  const reasoning = findClaim("chowdhery-2022-chain-of-thought-reasoning");
+  const code = findClaim(
+    "chowdhery-2022-code-evaluation-and-palm-coder-boundary",
+  );
+  const memorization = findClaim(
+    "chowdhery-2022-exact-continuation-memorization",
+  );
+  const toxicity = findClaim("chowdhery-2022-realtoxicity-profile");
+  const compute = findClaim("chowdhery-2022-compute-and-carbon-accounting");
+  const continued = findClaim(
+    "chowdhery-2022-refreshed-data-continued-training",
+  );
+  const artifacts = findClaim(
+    "chowdhery-2022-artifact-and-rights-boundary",
+  );
+  const discrepancies = findClaim(
+    "chowdhery-2022-version-specific-reporting-discrepancies",
+  );
+
+  assert.equal(workIndex(workId), 57);
+  assert.equal(work?.artifactType, "journal-article");
+  assert.equal(work?.authors.length, 67);
+  assert.deepEqual(work?.authors.slice(0, 4), [
+    "Aakanksha Chowdhery",
+    "Sharan Narang",
+    "Jacob Devlin",
+    "Maarten Bosma",
+  ]);
+  assert.deepEqual(work?.authors.slice(-4), [
+    "Douglas Eck",
+    "Jeff Dean",
+    "Slav Petrov",
+    "Noah Fiedel",
+  ]);
+  assert.equal(work?.chronology.orderingEventId, "chowdhery-2022-arxiv-v1-posted");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => [item.date.value, item.date.precision]),
+    [
+      ["2022-04-05", "day"],
+      ["2022-04-07", "day"],
+      ["2022-04-19", "day"],
+      ["2022-09-29", "day"],
+      ["2022-10-05", "day"],
+      ["2023-08", "month"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "chowdhery-2022-arxiv-v1-version",
+      "chowdhery-2022-arxiv-v2-version",
+      "chowdhery-2022-arxiv-v3-version",
+      "chowdhery-2022-arxiv-v4-version",
+      "chowdhery-2022-arxiv-v5-version",
+      "chowdhery-2023-jmlr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "chowdhery-2023-jmlr-version");
+  assert.deepEqual(work?.preferredSourceIds, [
+    "chowdhery-2023-jmlr-record",
+    "chowdhery-2023-jmlr-full-text",
+  ]);
+  assert.equal(work?.sourceIds.length, 18);
+  assert.deepEqual(canonical?.authors, work?.authors);
+  assert.deepEqual(canonical?.bibliography.pages, ["1–113"]);
+  assert.equal(
+    canonical?.bibliography.identifiers.some((item) => item.type === "doi"),
+    false,
+  );
+  assert.deepEqual(canonicalText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 113,
+  });
+  assert.match(canonicalText?.accessNote ?? "", /9e59e21d8978858976a4b07/);
+  assert.match(v4Source?.accessNote ?? "", /1,514,475-byte archive/);
+  assert.match(v4Source?.accessNote ?? "", /78 files/);
+  assert.doesNotMatch(v4Source?.accessNote ?? "", /incomplete/);
+  assert.match(v3Text?.accessNote ?? "", /chain-of-thought attribution, protocol/);
+  assert.doesNotMatch(v3Text?.accessNote ?? "", /overlap/);
+  assert.deepEqual(scores?.versionIds, ["chowdhery-2022-arxiv-v3-version"]);
+  assert.match(scores?.accessNote ?? "", /489 JSON files/);
+  assert.match(scores?.accessNote ?? "", /163 BIG-bench tasks/);
+  assert.deepEqual(api?.versionIds, []);
+  assert.deepEqual(api?.supports, ["metadata", "version-boundary"]);
+  assert.match(api?.accessNote ?? "", /does not bind that service/);
+  assert.equal(
+    corpus.claims.some((claim) =>
+      claim.evidence.some(
+        (item) => item.sourceId === "chowdhery-2023-palm-api-announcement",
+      ),
+    ),
+    false,
+  );
+  assert.deepEqual(launch?.versionIds, []);
+  assert.deepEqual(launch?.supports, ["metadata", "version-boundary"]);
+  for (const source of corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  )) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+
+  assert.equal(claims.length, 25);
+  assert.match(versionBoundary?.statement ?? "", /five arXiv manuscripts/);
+  assert.match(versionBoundary?.statement ?? "", /canonical 113-page JMLR/);
+  assert.match(versionBoundary?.statement ?? "", /one-file source change/);
+  for (const value of [
+    "8.63B, 62.50B, and 540.35B",
+    "32/64/118 layers",
+    "SwiGLU",
+    "shared key/value projections",
+    "RoPE",
+    "no dense-kernel or layer-norm biases",
+    "about 15% faster",
+  ])
+    assert.ok(architecture?.statement.includes(value));
+  for (const value of [
+    "50% multilingual social-media conversations",
+    "27% multilingual filtered webpages",
+    "5% GitHub code",
+    "124 languages",
+    "196 GB",
+  ])
+    assert.ok(data?.statement.includes(value));
+  assert.match(data?.limitations.join(" ") ?? "", /non-code denominator/);
+  for (const value of [
+    "6,144",
+    "12-way model parallelism",
+    "256-way fully sharded data parallelism",
+    "corresponding host pair",
+    "81 Tbps",
+    "1.95 times",
+  ])
+    assert.ok(distributed?.statement.includes(value));
+  for (const value of ["238.3 thousand", "45.7%", "46.2%", "57.8%"])
+    assert.ok(utilization?.statement.includes(value));
+  assert.match(training?.statement ?? "", /causal next-token objective/);
+  assert.match(training?.limitations.join(" ") ?? "", /conventional negative sign/);
+  assert.match(training?.limitations.join(" ") ?? "", /step-to-batch mapping/);
+  assert.match(english?.statement ?? "", /24 tasks at one shot and 28 tasks/);
+  assert.match(english?.statement ?? "", /25.3, 53.7, and 69.3/);
+  assert.match(discontinuity?.statement ?? "", /13%, 25%, and 87%/);
+  assert.match(discontinuity?.statement ?? "", /\+50-point residual/);
+  assert.match(reasoning?.statement ?? "", /58% with chain-of-thought plus a calculator/);
+  assert.match(reasoning?.statement ?? "", /54% with chain-of-thought alone/);
+  assert.match(code?.statement ?? "", /8\.4B total exposures/);
+  assert.match(code?.statement ?? "", /7\.75B finetuning-data tokens/);
+  assert.match(code?.limitations.join(" ") ?? "", /code-only exposure/);
+  assert.match(memorization?.statement ?? "", /1.6% for PaLM 8B and 2.4%/);
+  assert.match(toxicity?.statement ?? "", /\.78\/\.81\/\.80/);
+  assert.match(compute?.statement ?? "", /2.56×10\^24/);
+  assert.match(compute?.statement ?? "", /271.43 tCO2e/);
+  assert.match(continued?.statement ?? "", /53.7→62.8/);
+  assert.match(continued?.limitations.join(" ") ?? "", /not uniformly higher/);
+  assert.equal(artifacts?.directness, "editorial-inference");
+  assert.match(artifacts?.statement ?? "", /489 PaLM BIG-bench/);
+  assert.match(artifacts?.statement ?? "", /no PaLM checkpoint/);
+  assert.doesNotMatch(artifacts?.statement ?? "", /API/);
+  assert.match(artifacts?.limitations.join(" ") ?? "", /unbound service boundary/);
+  const identityEvidence = findClaim(
+    "chowdhery-2022-bias-and-cooccurrence-boundary",
+  )?.evidence.find(
+    (item) => item.locator.label === "Identity-prompt sampling and cross-scale overlap",
+  );
+  assert.deepEqual(identityEvidence?.locator, {
+    label: "Identity-prompt sampling and cross-scale overlap",
+    section: "10.1.2 Toxicity and bias",
+    pageStart: 54,
+    pageEnd: 55,
+  });
+  const useRiskEvidence = findClaim(
+    "chowdhery-2022-model-dataset-and-use-boundary",
+  )?.evidence.find(
+    (item) => item.locator.label === "Research-use and application-risk boundaries",
+  );
+  assert.deepEqual(useRiskEvidence?.locator, {
+    label: "Research-use and application-risk boundaries",
+    section: "10.3 Limitations; 11 Societal Impact & Ethical Considerations",
+    pageStart: 58,
+    pageEnd: 61,
+  });
+  assert.deepEqual(
+    discrepancies?.evidence.find(
+      (item) => item.locator.label === "XSum main-table value",
+    )?.locator,
+    {
+      label: "XSum main-table value",
+      section: "6.6 Multilingual Natural Language Generation",
+      pageStart: 41,
+      pageEnd: 41,
+      table: "16",
+    },
+  );
+  assert.equal(discrepancies?.directness, "editorial-inference");
+  for (const value of [
+    "775.94624B",
+    "lone 56.36",
+    "83.6/88.7",
+    "83.4/88.0",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  for (const item of discrepancies?.evidence ?? [])
+    if (item.locator.pageStart && item.locator.pageEnd)
+      assert.ok(
+        item.locator.pageEnd - item.locator.pageStart <= 2,
+        `${item.locator.label} must use a local three-page-or-smaller span`,
+      );
+  for (const item of claims)
+    for (const ideaId of item.ideaIds)
+      assert.ok(
+        corpus.ideas
+          .find((idea) => idea.id === ideaId)
+          ?.claimIds.includes(item.id),
+      );
+
+  assert.deepEqual(
+    incoming.map((item) => [item.id, item.connectionType]),
+    [
+      ["vaswani-2017-to-chowdhery-2022-palm", "extends"],
+      ["brown-2020-to-chowdhery-2022-palm", "extends"],
+      ["rae-2021-to-chowdhery-2022-palm-toxicity", "builds-on"],
+      [
+        "hoffmann-2022-to-chowdhery-2022-palm-scaling-question",
+        "addresses",
+      ],
+    ],
+  );
+  for (const edge of incoming) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+    for (const item of edge.sourceEvidence) {
+      assert.equal(item.sourceId, "chowdhery-2023-jmlr-full-text");
+      assert.ok(
+        item.locator.pageEnd - item.locator.pageStart <= 3,
+        `${item.locator.label} must use a local four-page-or-smaller span`,
+      );
+    }
+  }
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode]),
+    [
+      [
+        "beginner-chowdhery-2022-scale-prompt-and-check-the-boundaries",
+        "beginner",
+      ],
+      [
+        "expert-chowdhery-2022-versions-systems-evaluation-and-provenance",
+        "expert",
+      ],
+    ],
+  );
+  assert.equal(work?.ideaIds.length, 23);
+  assert.ok(readme.includes("Chowdhery et al.’s PaLM family"));
+  assert.ok(corpusFormat.includes("Chowdhery et al. 2022/2023 is represented"));
+  assert.ok(
+    historicalScope.includes("The PaLM family was checked on 2026-09-07"),
+  );
+});
+
+test("preserves OPT versions, training incidents, tiered artifacts, and scoped lineage", () => {
+  const workId = "zhang-2022-opt-open-pre-trained-transformer-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "zhang-2022-opt-arxiv-v4-version",
+  );
+  const launch = findSource("zhang-2022-opt-meta-launch-post");
+  const logbook = findSource("zhang-2022-opt-logbook-snapshot");
+  const rawManifest = findSource(
+    "zhang-2022-opt-175b-raw-md5-manifest-commit",
+  );
+  const reshardManifest = findSource(
+    "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+  );
+  const training = findClaim("zhang-2022-opt-initialization-and-training-recipe");
+  const corpusClaim = findClaim(
+    "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+  );
+  const distributed = findClaim("zhang-2022-opt-distributed-training-efficiency");
+  const incidents = findClaim(
+    "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+  );
+  const promptEvaluation = findClaim(
+    "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+  );
+  const checkpoints = findClaim("zhang-2022-opt-checkpoint-release-staging");
+  const reconstruction = findClaim(
+    "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+  );
+  const rights = findClaim("zhang-2022-opt-paper-code-model-and-data-rights");
+  const discrepancies = findClaim(
+    "zhang-2022-opt-internal-reporting-discrepancies",
+  );
+  const artifactEvolution = findClaim(
+    "zhang-2022-opt-artifact-evolution-and-integrity",
+  );
+
+  assert.equal(workIndex(workId), 58);
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.authors.length, 19);
+  assert.deepEqual(work?.authors.slice(0, 3), [
+    "Susan Zhang",
+    "Stephen Roller",
+    "Naman Goyal",
+  ]);
+  assert.deepEqual(work?.authors.slice(-3), [
+    "Anjali Sridhar",
+    "Tianlu Wang",
+    "Luke Zettlemoyer",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022-05-02", "2022-05-03", "2022-05-05", "2022-06-21"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "zhang-2022-opt-arxiv-v1-version",
+      "zhang-2022-opt-arxiv-v2-version",
+      "zhang-2022-opt-arxiv-v3-version",
+      "zhang-2022-opt-arxiv-v4-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "zhang-2022-opt-arxiv-v4-version");
+  assert.deepEqual(work?.preferredSourceIds, [
+    "zhang-2022-opt-arxiv-record",
+    "zhang-2022-opt-arxiv-v4-full-text",
+  ]);
+  assert.equal(work?.sourceIds.length, 22);
+  assert.deepEqual(work?.sourceIds, [
+    "zhang-2022-opt-arxiv-record",
+    "zhang-2022-opt-arxiv-v1-full-text",
+    "zhang-2022-opt-arxiv-v2-full-text",
+    "zhang-2022-opt-arxiv-v3-full-text",
+    "zhang-2022-opt-arxiv-v4-full-text",
+    "zhang-2022-opt-arxiv-v1-source-package",
+    "zhang-2022-opt-arxiv-v2-source-package",
+    "zhang-2022-opt-arxiv-v3-source-package",
+    "zhang-2022-opt-arxiv-v4-source-package",
+    "zhang-2022-opt-cc-by-license",
+    "zhang-2022-opt-meta-launch-post",
+    "zhang-2022-opt-initial-metaseq-release",
+    "zhang-2022-opt-175b-access-snapshot",
+    "zhang-2022-opt-175b-raw-md5-manifest-commit",
+    "zhang-2022-opt-175b-reshard-md5-manifest-commit",
+    "zhang-2022-opt-model-license-snapshot",
+    "zhang-2022-opt-metaseq-mit-license",
+    "zhang-2022-opt-logbook-snapshot",
+    "zhang-2022-opt-66b-release-commit",
+    "zhang-2022-opt-logbook-regeneration-commit",
+    "zhang-2022-opt-consolidated-checkpoint-rerelease",
+    "zhang-2022-opt-checksum-revision-commit",
+  ]);
+  assert.equal(work?.ideaIds.length, 16);
+  assert.match(canonical?.notes ?? "", /eight while Table 1 now contains nine/);
+
+  const pdfHashes = {
+    v1: "d61aab59b02568b907722ecb1cd9dbab16391ad3f13f97aea73926ca64d640fb",
+    v2: "45192a2729d467a44f7d32f077e223c9602da294e8e89ed2d191e555b6413d96",
+    v3: "5a8d59ddd11da05acf491de7b7206bc56257c591869e06327d4955c4c0d1265c",
+    v4: "dc88168a2514e4c66a5a791cab6dfacae9bbd566a3d86a119add151f31484d87",
+  };
+  const sourcePackages = {
+    v1: ["72756bc0b35e62a10e3ff5ceded512a471c10e766b656b4f89ace80161199747", 41],
+    v2: ["1e8a5a734dca6e4d4048faf9aeefd335bb6e5ef601910a18e1ed09b716a0e0aa", 41],
+    v3: ["733edaa4532d2999ae9a11af11bb5da41499c14cc47b8fe4a508c7fd6e8e646f", 40],
+    v4: ["70fdc8868d8392bae94236c423aa73a4c14c2b2a42a8fc6db6c27d2653a9309e", 40],
+  };
+  for (const key of ["v1", "v2", "v3", "v4"]) {
+    const source = findSource(`zhang-2022-opt-arxiv-${key}-full-text`);
+    const sourcePackage = findSource(
+      `zhang-2022-opt-arxiv-${key}-source-package`,
+    );
+    assert.deepEqual(source?.pagination, {
+      scheme: "pdf-page",
+      pageStart: 1,
+      pageEnd: 30,
+    });
+    assert.match(source?.accessNote ?? "", /complete unfoliated 30-leaf PDF/);
+    assert.ok(source?.accessNote.includes(pdfHashes[key]));
+    assert.ok(sourcePackage?.accessNote.includes(sourcePackages[key][0]));
+    assert.ok(
+      sourcePackage?.accessNote.includes(`${sourcePackages[key][1]} files`),
+    );
+  }
+  assert.equal(sources.length, 22);
+  assert.deepEqual(launch?.versionIds, []);
+  assert.deepEqual(launch?.supports, ["metadata", "version-boundary"]);
+  assert.equal(
+    claims.some((claim) =>
+      claim.evidence.some((item) => item.sourceId === launch?.id),
+    ),
+    false,
+  );
+  assert.deepEqual(logbook?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 114,
+  });
+  assert.match(logbook?.accessNote ?? "", /5591564de6a1ba07/);
+  assert.match(rawManifest?.accessNote ?? "", /993-line CSV/);
+  assert.match(rawManifest?.accessNote ?? "", /992 raw OPT-175B/);
+  assert.match(reshardManifest?.accessNote ?? "", /eight derived OPT-175B/);
+  for (const id of [
+    "zhang-2022-opt-logbook-regeneration-commit",
+    "zhang-2022-opt-consolidated-checkpoint-rerelease",
+    "zhang-2022-opt-checksum-revision-commit",
+  ])
+    assert.deepEqual(findSource(id)?.versionIds, [
+      "zhang-2022-opt-arxiv-v4-version",
+    ]);
+  for (const source of sources) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+
+  assert.equal(claims.length, 20);
+  assert.deepEqual(
+    claims.map((item) => item.id),
+    [
+      "zhang-2022-opt-version-and-release-boundary",
+      "zhang-2022-opt-model-family-and-gpt3-replication",
+      "zhang-2022-opt-initialization-and-training-recipe",
+      "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+      "zhang-2022-opt-data-card-and-distribution-boundary",
+      "zhang-2022-opt-distributed-training-efficiency",
+      "zhang-2022-opt-instability-restarts-and-midflight-recovery",
+      "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+      "zhang-2022-opt-dialogue-evaluation-and-leakage-check",
+      "zhang-2022-opt-hate-speech-api-comparison",
+      "zhang-2022-opt-stereotype-benchmark-profile",
+      "zhang-2022-opt-realtoxicity-profile",
+      "zhang-2022-opt-dialogue-safety-profile",
+      "zhang-2022-opt-generation-instruction-and-use-limitations",
+      "zhang-2022-opt-checkpoint-release-staging",
+      "zhang-2022-opt-logbook-code-and-reconstruction-boundary",
+      "zhang-2022-opt-carbon-accounting-boundary",
+      "zhang-2022-opt-paper-code-model-and-data-rights",
+      "zhang-2022-opt-internal-reporting-discrepancies",
+      "zhang-2022-opt-artifact-evolution-and-integrity",
+    ],
+  );
+  assert.match(findClaim("zhang-2022-opt-model-family-and-gpt3-replication")?.statement ?? "", /125M, 350M, 1.3B, 2.7B, 6.7B, 13B, 30B, 66B, and 175B/);
+  for (const value of ["300B token exposures", "4.30×10^23", "1,024 A100s", "992-GPU"])
+    assert.ok(training?.statement.includes(value));
+  for (const value of ["180B-token", "MinHashLSH", "at least .95", "about 66%"])
+    assert.ok(corpusClaim?.statement.includes(value));
+  assert.match(
+    findClaim("zhang-2022-opt-data-card-and-distribution-boundary")?.statement ?? "",
+    /not distributed outside Meta at publication/,
+  );
+  for (const value of ["992", "147 TFLOP/s", "FP32 Adam", "FP16"])
+    assert.ok(distributed?.statement.includes(value));
+  for (const value of ["at least 35", "70-plus", "clipping reduced", "temporarily switched to SGD"])
+    assert.ok(incidents?.statement.includes(value));
+  assert.match(promptEvaluation?.statement ?? "", /average fourteen tasks/);
+  assert.match(
+    findClaim("zhang-2022-opt-dialogue-evaluation-and-leakage-check")?.limitations.join(" ") ?? "",
+    /not a comprehensive document, n-gram, semantic, or benchmark-contamination audit/,
+  );
+  assert.ok(
+    findClaim("zhang-2022-opt-hate-speech-api-comparison")?.statement.includes(
+      ".354/.759",
+    ),
+  );
+  assert.match(findClaim("zhang-2022-opt-stereotype-benchmark-profile")?.statement ?? "", /69.5 for OPT-175B/);
+  assert.match(findClaim("zhang-2022-opt-realtoxicity-profile")?.statement ?? "", /25 continuations of 20 tokens/);
+  assert.match(findClaim("zhang-2022-opt-dialogue-safety-profile")?.statement ?? "", /.567 Unsafe/);
+  for (const value of ["992 parameter files", "MD5 manifests", "eight 66B links", "request-only"])
+    assert.ok(checkpoints?.statement.includes(value));
+  assert.match(reconstruction?.statement ?? "", /one-line stub links/);
+  assert.match(reconstruction?.statement ?? "", /launch-day tree lacks/);
+  assert.match(findClaim("zhang-2022-opt-carbon-accounting-boundary")?.statement ?? "", /75 tCO2e/);
+  assert.match(findClaim("zhang-2022-opt-carbon-accounting-boundary")?.limitations.join(" ") ?? "", /Seventy-five divided by 500 is .15/);
+  assert.match(rights?.statement ?? "", /CC BY 4.0/);
+  assert.match(rights?.statement ?? "", /non-commercial research/);
+  for (const value of [
+    "eight models although Table 1 contains nine",
+    "1.2×10^-4",
+    "3×10^-5",
+    "250,000 tokens",
+    "some documents relate to people",
+    "underperforms GPT-3 on three tasks but names only",
+  ])
+    assert.ok(discrepancies?.statement.includes(value));
+  assert.match(discrepancies?.limitations.join(" ") ?? "", /not proof that the realized run used/);
+  for (const value of [
+    "six data-source label changes",
+    "consolidated object paths",
+    "sixteen consolidated-checkpoint checksum lines",
+    "two distinct shard filenames",
+  ])
+    assert.ok(artifactEvolution?.statement.includes(value));
+  assert.match(artifactEvolution?.limitations.join(" ") ?? "", /unresolved integrity-documentation ambiguity/);
+
+  assert.deepEqual(
+    incoming.map((item) => [item.id, item.connectionType]),
+    [
+      ["brown-2020-to-zhang-2022-opt", "extends"],
+      ["radford-2019-to-zhang-2022-opt-tokenizer", "builds-on"],
+      ["liu-2019-to-zhang-2022-opt-data-substrate", "builds-on"],
+      ["chowdhery-2022-to-zhang-2022-opt-toxicity-method", "builds-on"],
+    ],
+  );
+  for (const edge of incoming) {
+    assert.equal(edge.evidenceClass, "documented-influence");
+    assert.equal(edge.confidence, "high");
+    assert.equal(edge.causalLanguage, "qualified");
+    assert.ok(
+      edge.sourceEvidence.every(
+        (item) => item.sourceId === "zhang-2022-opt-arxiv-v4-full-text",
+      ),
+    );
+  }
+  assert.deepEqual(incoming[0].claimIds, [
+    "brown-2020-model-configurations-and-175b",
+    "brown-2020-optimizer-schedule-and-parallel-training",
+    "brown-2020-zero-one-few-shot-definitions",
+    "brown-2020-evaluation-demonstration-selection",
+    "zhang-2022-opt-model-family-and-gpt3-replication",
+    "zhang-2022-opt-initialization-and-training-recipe",
+    "zhang-2022-opt-zero-and-few-shot-evaluation-envelope",
+  ]);
+  assert.deepEqual(incoming[1].claimIds, [
+    "radford-2019-byte-level-bpe",
+    "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+  ]);
+  assert.deepEqual(incoming[2].claimIds, [
+    "liu-2019-pretraining-corpora",
+    "zhang-2022-opt-corpus-tokenizer-and-deduplication",
+  ]);
+  assert.deepEqual(incoming[3].claimIds, [
+    "chowdhery-2022-realtoxicity-profile",
+    "zhang-2022-opt-realtoxicity-profile",
+  ]);
+  for (const excluded of [
+    "vaswani-2017-attention-is-all-you-need",
+    "rae-2021-scaling-language-models-methods-analysis-insights-training-gopher",
+    "hoffmann-2022-training-compute-optimal-language-models",
+    "ouyang-2022-training-language-models-follow-instructions-human-feedback",
+  ])
+    assert.equal(incoming.some((item) => item.from.id === excluded), false);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      ["beginner-zhang-2022-unpack-open-model-access", "beginner", 12],
+      [
+        "expert-zhang-2022-audit-replication-training-release-and-rights",
+        "expert",
+        20,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Zhang et al.’s OPT family"));
+  assert.ok(corpusFormat.includes("Zhang et al. 2022 is represented"));
+  assert.ok(
+    historicalScope.includes("The OPT family was checked on 2026-09-09"),
+  );
+});
+
+test("preserves ROOTS count scopes, governance limits, and target-evidenced BLOOM lineage", () => {
+  const workId = "laurencon-2022-bigscience-roots-corpus";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const relationships = corpus.relationships.filter(
+    (item) => item.from.id === workId || item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const canonical = work?.versions.find(
+    (item) => item.id === "laurencon-2022-roots-neurips-version",
+  );
+  const mainText = findSource("laurencon-2022-roots-neurips-main-full-text");
+  const supplement = findSource("laurencon-2022-roots-neurips-supplement");
+  const arxivText = findSource("laurencon-2023-roots-arxiv-v1-full-text");
+  const sourcePackage = findSource(
+    "laurencon-2023-roots-arxiv-v1-source-package",
+  );
+  const counts = findClaim(
+    "laurencon-2022-roots-corpus-scale-and-count-scopes",
+  );
+  const github = findClaim(
+    "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+  );
+  const filtering = findClaim("laurencon-2022-roots-filter-removal-profile");
+  const dedup = findClaim("laurencon-2022-roots-oscar-deduplication");
+  const pii = findClaim("laurencon-2022-roots-implemented-pii-redaction");
+  const governance = findClaim(
+    "laurencon-2022-roots-governance-and-component-release",
+  );
+  const limitations = findClaim(
+    "laurencon-2022-roots-consent-privacy-and-representation-limits",
+  );
+  const rights = findClaim("laurencon-2022-roots-artifact-and-rights-boundary");
+
+  assert.equal(workIndex(workId), 59);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.authors.length, 54);
+  assert.deepEqual(work?.authors.slice(0, 3), [
+    "Hugo Laurençon",
+    "Lucile Saulnier",
+    "Thomas Wang",
+  ]);
+  assert.deepEqual(work?.authors.slice(-3), [
+    "Margaret Mitchell",
+    "Sasha Luccioni",
+    "Yacine Jernite",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022", "2023-03-07"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "laurencon-2022-roots-neurips-version",
+      "laurencon-2023-roots-arxiv-v1-version",
+    ],
+  );
+  assert.equal(
+    work?.canonicalVersionId,
+    "laurencon-2022-roots-neurips-version",
+  );
+  assert.deepEqual(canonical?.bibliography.pages, ["31809-31826"]);
+  assert.ok(
+    canonical?.bibliography.identifiers.some(
+      (item) =>
+        item.type === "doi" && item.value === "10.52202/068431-2306",
+    ),
+  );
+  assert.equal(work?.sourceIds.length, 9);
+  assert.equal(work?.ideaIds.length, 6);
+
+  assert.deepEqual(mainText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 18,
+  });
+  assert.match(mainText?.accessNote ?? "", /c20b7fea1bd9b067/);
+  assert.deepEqual(supplement?.pagination, {
+    scheme: "article",
+    pageStart: 19,
+    pageEnd: 35,
+  });
+  assert.match(supplement?.accessNote ?? "", /b7eda85989557100/);
+  assert.deepEqual(arxivText?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 36,
+  });
+  assert.match(arxivText?.accessNote ?? "", /dc62414caee7c365/);
+  assert.match(sourcePackage?.accessNote ?? "", /63b59c47ed9309c0/);
+  assert.match(sourcePackage?.accessNote ?? "", /106 files/);
+  for (const source of sources) {
+    assert.ok(work?.sourceIds.includes(source.id));
+    for (const versionId of source.versionIds)
+      assert.ok(
+        work?.versions
+          .find((item) => item.id === versionId)
+          ?.sourceIds.includes(source.id),
+      );
+  }
+
+  assert.equal(claims.length, 16);
+  assert.deepEqual(
+    claims.map((item) => item.id),
+    [
+      "laurencon-2022-roots-version-and-publication-boundary",
+      "laurencon-2022-roots-corpus-scale-and-count-scopes",
+      "laurencon-2022-roots-participatory-source-selection",
+      "laurencon-2022-roots-acquisition-and-final-selection",
+      "laurencon-2022-roots-github-code-filter-and-gpl-bug",
+      "laurencon-2022-roots-crowdsourced-cleaning-feedback-loop",
+      "laurencon-2022-roots-oscar-selection-and-filtering",
+      "laurencon-2022-roots-filter-removal-profile",
+      "laurencon-2022-roots-oscar-deduplication",
+      "laurencon-2022-roots-implemented-pii-redaction",
+      "laurencon-2022-roots-natural-and-code-distribution",
+      "laurencon-2022-roots-tokenizer-fertility-analysis",
+      "laurencon-2022-roots-governance-and-component-release",
+      "laurencon-2022-roots-consent-privacy-and-representation-limits",
+      "laurencon-2022-roots-artifact-and-rights-boundary",
+      "laurencon-2022-roots-reconstruction-boundary",
+    ],
+  );
+  for (const value of [
+    "252",
+    "539",
+    "147",
+    "517",
+    "485",
+    "498",
+  ])
+    assert.ok(counts?.statement.includes(value));
+  assert.match(
+    counts?.statement ?? "",
+    /46 natural languages and 13 programming/,
+  );
+  assert.match(github?.statement ?? "", /GPL-licensed repositories/);
+  assert.match(github?.statement ?? "", /preprocessing bug/);
+  for (const value of ["20.3%", "48.8%", "5.2%", "16.9%"])
+    assert.ok(filtering?.statement.includes(value));
+  for (const value of ["6-grams", "threshold 4", "0.7%", "6,000", "21.67%"])
+    assert.ok(dedup?.statement.includes(value));
+  for (const value of [
+    "KEY",
+    "EMAIL",
+    "USER",
+    "IP_ADDRESS",
+    "not operationalized",
+  ])
+    assert.ok(pii?.statement.includes(value));
+  assert.match(governance?.statement ?? "", /223 of 498/);
+  assert.match(governance?.statement ?? "", /preliminary and gated/);
+  assert.match(limitations?.statement ?? "", /consent and privacy/);
+  assert.match(limitations?.statement ?? "", /privileged voices/);
+  for (const value of ["CC BY 4.0", "Apache 2.0", "umbrella license"])
+    assert.ok(rights?.statement.includes(value));
+
+  assert.deepEqual(
+    relationships.map((item) => item.id),
+    ["laurencon-2022-roots-to-bigscience-2022-bloom-data"],
+  );
+  assert.match(relationships[0]?.rationale ?? "", /training-data role only/);
+  assert.deepEqual(
+    relationships[0]?.to,
+    {
+      kind: "work",
+      id: "bigscience-2022-bloom-open-access-multilingual-language-model",
+    },
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-laurencon-2022-follow-data-choices-not-one-number",
+        "beginner",
+        10,
+      ],
+      [
+        "expert-laurencon-2022-audit-roots-construction-governance-and-provenance",
+        "expert",
+        16,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Laurençon et al.’s ROOTS family"));
+  assert.ok(corpusFormat.includes("Laurençon et al. 2022/2023 is represented"));
+  assert.ok(
+    historicalScope.includes("The ROOTS family was checked on 2026-09-11"),
+  );
+  assert.ok(
+    currentEndpoint.includes("ROOTS and BLOOM now enter the corpus as distinct"),
+  );
+  assert.ok(currentEndpoint.includes("target-side data-substrate evidence"));
+});
+
+test("preserves BLOOM revisions, run conflicts, evaluation scope, artifacts, rights, and lineage", () => {
+  const workId =
+    "bigscience-2022-bloom-open-access-multilingual-language-model";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const dropout = findClaim("bigscience-2022-bloom-paper-code-dropout-conflict");
+  const tokens = findClaim(
+    "bigscience-2022-bloom-optimizer-schedule-and-token-extension",
+  );
+  const translation = findClaim(
+    "bigscience-2022-bloom-machine-translation-and-truncation",
+  );
+  const humaneval = findClaim("bigscience-2022-bloom-humaneval-code-results");
+  const bloomz = findClaim("bigscience-2022-bloomz-derivative-boundary");
+  const rights = findClaim("bigscience-2022-bloom-paper-code-model-data-rights");
+  const reconstruction = findClaim("bigscience-2022-bloom-reconstruction-boundary");
+  const currentCard = findSource(
+    "bigscience-2026-bloom-current-model-card-boundary",
+  );
+  const currentIntermediate = findSource(
+    "bigscience-2026-bloom-intermediate-repository-boundary",
+  );
+  const bloomzBoundary = findSource("muennighoff-2022-bloomz-arxiv-boundary");
+
+  assert.equal(workIndex(workId), 60);
+  assert.equal(work?.artifactType, "preprint");
+  assert.deepEqual(work?.authors, ["BigScience Workshop"]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022-11-09", "2022-12-11", "2023-03-13", "2023-06-27"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "bigscience-2022-bloom-arxiv-v1-version",
+      "bigscience-2022-bloom-arxiv-v2-version",
+      "bigscience-2022-bloom-arxiv-v3-version",
+      "bigscience-2022-bloom-arxiv-v4-version",
+    ],
+  );
+  assert.equal(
+    work?.canonicalVersionId,
+    "bigscience-2022-bloom-arxiv-v4-version",
+  );
+  assert.equal(work?.sourceIds.length, 19);
+  assert.equal(work?.ideaIds.length, 22);
+  assert.equal(claims.length, 23);
+
+  const pdfHashes = [
+    "3ef17485d9f1db85",
+    "fcee26a2ea9d5dbd",
+    "f13cdd7c94549f21",
+    "8033c3e611aaa120",
+  ];
+  const sourceHashes = [
+    "6dc1b207fed64ae8",
+    "1707f57040273326",
+    "8601de346dd62194",
+    "0d0cf52afa008ad0",
+  ];
+  for (const version of [1, 2, 3, 4]) {
+    const fullText = findSource(
+      `bigscience-2022-bloom-arxiv-v${version}-full-text`,
+    );
+    const sourcePackage = findSource(
+      `bigscience-2022-bloom-arxiv-v${version}-source-package`,
+    );
+    assert.deepEqual(fullText?.pagination, {
+      scheme: "pdf-page",
+      pageStart: 1,
+      pageEnd: version <= 2 ? 62 : 73,
+    });
+    assert.match(fullText?.accessNote ?? "", new RegExp(pdfHashes[version - 1]));
+    assert.match(
+      sourcePackage?.accessNote ?? "",
+      new RegExp(sourceHashes[version - 1]),
+    );
+  }
+  assert.match(work?.versions[1]?.notes ?? "", /Davut Emre Taşar/);
+  assert.match(work?.versions[1]?.notes ?? "", /Shachar Mirkin/);
+  assert.match(work?.versions[2]?.notes ?? "", /HELM/);
+  assert.match(work?.versions[3]?.notes ?? "", /DiaBLa Table 7/);
+
+  assert.match(tokens?.statement ?? "", /341B/);
+  assert.match(tokens?.statement ?? "", /366B/);
+  assert.match(tokens?.statement ?? "", /410B/);
+  assert.match(tokens?.statement ?? "", /25B repeated/);
+  assert.match(dropout?.statement ?? "", /no dropout/);
+  assert.match(dropout?.statement ?? "", /0\.1/);
+  assert.equal(dropout?.uncertainties[0]?.status, "disputed");
+  assert.match(dropout?.uncertainties[0]?.resolutionCondition ?? "", /runtime/);
+
+  for (const value of [
+    "21.96/34.22",
+    "26.79/35.42",
+    "1.96/13.95",
+    "11.48/25.80",
+    "5.7/12.1",
+    "37.6/41.4",
+    "38.5/41.6",
+  ])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of ["15.52%", "32.20%", "55.45%", "12.06%"])
+    assert.ok(humaneval?.statement.includes(value));
+  assert.match(bloomz?.statement ?? "", /83-dataset, 46-language, 16-task/);
+  assert.match(bloomz?.statement ?? "", /13B fine-tuning token exposures/);
+  for (const value of [
+    "CC BY 4.0",
+    "Apache 2.0",
+    "NVIDIA redistribution",
+    "thirteen behavioral restrictions",
+  ])
+    assert.ok(rights?.statement.includes(value));
+  assert.match(reconstruction?.statement ?? "", /byte-identical reconstruction/);
+
+  for (const boundary of [currentCard, currentIntermediate, bloomzBoundary]) {
+    assert.deepEqual(boundary?.versionIds, []);
+    assert.deepEqual(boundary?.supports, ["metadata", "version-boundary"]);
+    assert.equal(
+      claims.some((claim) =>
+        claim.evidence.some((item) => item.sourceId === boundary?.id),
+      ),
+      false,
+    );
+    assert.equal(
+      incoming.some((relationship) =>
+        relationship.sourceEvidence.some(
+          (item) => item.sourceId === boundary?.id,
+        ),
+      ),
+      false,
+    );
+  }
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    [
+      "vaswani-2017-to-bigscience-2022-bloom",
+      "radford-2018-to-bigscience-2022-bloom-decoder",
+      "laurencon-2022-roots-to-bigscience-2022-bloom-data",
+      "hoffmann-2022-to-bigscience-2022-bloom-token-extension",
+    ],
+  );
+  assert.ok(
+    incoming.every(
+      (item) =>
+        item.evidenceClass === "documented-influence" &&
+        item.causalLanguage === "qualified",
+    ),
+  );
+  assert.match(incoming[2]?.rationale ?? "", /training-data role only/);
+  assert.match(incoming[3]?.rationale ?? "", /does not claim/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-bigscience-2022-separate-model-results-and-release",
+        "beginner",
+        10,
+      ],
+      [
+        "expert-bigscience-2022-audit-four-revision-run-and-artifact-lineage",
+        "expert",
+        23,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("BigScience Workshop’s BLOOM family"));
+  assert.ok(corpusFormat.includes("BigScience Workshop’s BLOOM family"));
+  assert.ok(
+    historicalScope.includes("The BLOOM family was checked on 2026-09-12"),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: ROOTS and BLOOM"));
+});
+
+test("preserves ReAct revisions, environment protocols, result scope, code boundaries, rights, and lineage", () => {
+  const workId =
+    "yao-2022-react-synergizing-reasoning-acting-language-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+  const knowledge = findClaim("yao-2022-react-knowledge-task-main-results");
+  const alfworld = findClaim(
+    "yao-2022-react-alfworld-results-and-selection-boundary",
+  );
+  const webshop = findClaim(
+    "yao-2022-react-webshop-results-and-comparator-boundary",
+  );
+  const gpt3 = findClaim(
+    "yao-2023-react-gpt3-addendum-and-model-identity-boundary",
+  );
+  const publicCode = findClaim(
+    "yao-2023-react-public-code-scope-and-result-drift",
+  );
+  const trace = findClaim(
+    "yao-2022-react-reasoning-trace-interpretation-boundary",
+  );
+  const projectPage = findSource("yao-2022-react-project-page");
+  const code = findSource("yao-2023-react-prompting-code-snapshot");
+  const license = findSource("yao-2023-react-code-license");
+
+  assert.equal(workIndex(workId), 61);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.deepEqual(work?.authors, [
+    "Shunyu Yao",
+    "Jeffrey Zhao",
+    "Dian Yu",
+    "Nan Du",
+    "Izhak Shafran",
+    "Karthik Narasimhan",
+    "Yuan Cao",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2022-10-06", "2022-11-27", "2023-03-10", "2023"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "yao-2022-react-arxiv-v1-version",
+      "yao-2022-react-arxiv-v2-version",
+      "yao-2022-react-arxiv-v3-version",
+      "yao-2023-react-iclr-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "yao-2023-react-iclr-version");
+  assert.equal(work?.sourceIds.length, 13);
+  assert.equal(work?.ideaIds.length, 10);
+  assert.equal(claims.length, 20);
+
+  const pdfHashes = [
+    "6ec7c9ba12a5a746",
+    "4430bc2c4450bd25",
+    "f285b0971ae4a790",
+  ];
+  const sourceHashes = [
+    "7b393d07c85fa118",
+    "60870ace52fc1630",
+    "c81c6344ddae91fc",
+  ];
+  for (const version of [1, 2, 3]) {
+    const fullText = findSource(
+      `yao-2022-react-arxiv-v${version}-full-text`,
+    );
+    const sourcePackage = findSource(
+      `yao-2022-react-arxiv-v${version}-source-package`,
+    );
+    assert.deepEqual(fullText?.pagination, {
+      scheme: "article",
+      pageStart: 1,
+      pageEnd: version === 3 ? 33 : 31,
+    });
+    assert.match(fullText?.accessNote ?? "", new RegExp(pdfHashes[version - 1]));
+    assert.match(
+      sourcePackage?.accessNote ?? "",
+      new RegExp(sourceHashes[version - 1]),
+    );
+  }
+  assert.match(work?.versions[0]?.notes ?? "", /predates the project-code link/);
+  assert.match(work?.versions[1]?.notes ?? "", /unchanged from version 1/);
+  assert.match(work?.versions[2]?.notes ?? "", /adds GPT-3 results/);
+  assert.match(work?.versions[3]?.notes ?? "", /byte identity.*not asserted/);
+
+  for (const value of ["27.4", "60.9", "25.7", "58.9", "29.4", "56.3"])
+    assert.ok(knowledge?.statement.includes(value));
+  assert.match(alfworld?.statement ?? "", /57% average/);
+  assert.match(alfworld?.statement ?? "", /best trial of 71%/);
+  assert.match(alfworld?.statement ?? "", /best-of-six/);
+  for (const value of ["66.6", "40.0%", "1,012", "10,587"])
+    assert.ok(webshop?.statement.includes(value));
+  assert.match(gpt3?.statement ?? "", /text-davinci-002/);
+  assert.match(gpt3?.statement ?? "", /30.8/);
+  assert.match(gpt3?.statement ?? "", /78.4%/);
+  assert.match(publicCode?.statement ?? "", /does not contain PaLM code or weights/);
+  assert.equal(publicCode?.uncertainties[0]?.status, "disputed");
+  assert.match(trace?.statement ?? "", /does not test whether the strings faithfully/);
+
+  assert.deepEqual(projectPage?.versionIds, [
+    "yao-2022-react-arxiv-v2-version",
+    "yao-2022-react-arxiv-v3-version",
+    "yao-2023-react-iclr-version",
+  ]);
+  assert.deepEqual(code?.versionIds, [
+    "yao-2022-react-arxiv-v3-version",
+    "yao-2023-react-iclr-version",
+  ]);
+  assert.match(code?.accessNote ?? "", /text-davinci-002/);
+  assert.match(code?.accessNote ?? "", /no lockfile/);
+  assert.deepEqual(license?.versionIds, ["yao-2023-react-iclr-version"]);
+  assert.match(license?.accessNote ?? "", /30 March 2023/);
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    ["chowdhery-2022-palm-to-yao-2022-react-prompting-substrate"],
+  );
+  assert.equal(incoming[0]?.connectionType, "builds-on");
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.match(incoming[0]?.rationale ?? "", /frozen PaLM-540B/);
+  assert.match(incoming[0]?.rationale ?? "", /rights remain target-specific/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-yao-2022-trace-actions-and-environment-feedback",
+        "beginner",
+        10,
+      ],
+      [
+        "expert-yao-2022-audit-react-protocols-artifacts-and-lineage",
+        "expert",
+        20,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Yao et al.’s ReAct family"));
+  assert.ok(corpusFormat.includes("Yao et al. 2022/2023"));
+  assert.ok(
+    historicalScope.includes("The ReAct family was checked on 2026-09-14"),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: ReAct"));
+});
+
+test("preserves Toolformer versions, tool pipeline, scorer conflicts, release boundaries, and lineage", () => {
+  const workId =
+    "schick-2023-toolformer-language-models-teach-themselves-use-tools";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 62);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2023-02-09", "2023-12-15"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "schick-2023-toolformer-arxiv-v1-version",
+      "schick-2023-toolformer-neurips-version",
+    ],
+  );
+  assert.equal(work?.versions[0]?.authors.length, 8);
+  assert.ok(!work?.versions[0]?.authors.includes("Eric Hambro"));
+  assert.equal(work?.versions[1]?.authors.length, 9);
+  assert.ok(work?.versions[1]?.authors.includes("Eric Hambro"));
+  assert.deepEqual(work?.versions[1]?.bibliography.pages, ["68539-68551"]);
+  assert.equal(
+    work?.versions[1]?.bibliography.identifiers[0]?.value,
+    "10.52202/075280-2997",
+  );
+  assert.equal(work?.canonicalVersionId, "schick-2023-toolformer-neurips-version");
+  assert.equal(work?.sourceIds.length, 8);
+  assert.equal(work?.ideaIds.length, 10);
+  assert.equal(claims.length, 22);
+
+  assert.deepEqual(
+    findSource("schick-2023-toolformer-arxiv-v1-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 17 },
+  );
+  assert.deepEqual(
+    findSource("schick-2023-toolformer-neurips-main-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 13 },
+  );
+  assert.deepEqual(
+    findSource("schick-2023-toolformer-neurips-supplement")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 10 },
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-arxiv-v1-full-text")?.accessNote ?? "",
+    /6d7483d94653008e/,
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-arxiv-v1-source-package")?.accessNote ?? "",
+    /5139a320f266bd19.*no model.*training or inference code/,
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-neurips-main-full-text")?.accessNote ?? "",
+    /391845b5f4f7f5e7/,
+  );
+  assert.match(
+    findSource("schick-2023-toolformer-neurips-supplement")?.accessNote ?? "",
+    /a54b40a9e52cfe26/,
+  );
+
+  assert.match(
+    findClaim("schick-2023-toolformer-version-and-publication-boundary")
+      ?.statement ?? "",
+    /eight authors.*nine authors.*Eric Hambro.*LLaMA-v1 investigations/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-record-and-paper-tool-count-conflict")
+      ?.statement ?? "",
+    /two different search engines.*five tools instead/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-base-model-and-training-text-boundary")
+      ?.statement ?? "",
+    /6.7-billion-parameter.*subset of CCNet.*does not establish.*byte-identical/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-execution-and-future-token-loss-filter")
+      ?.statement ?? "",
+    /Lᵢ⁻−Lᵢ⁺.*τf.*1.0.*0.5/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-augmented-corpus-and-finetuning")
+      ?.statement ?? "",
+    /25,000.*1,024.*eight 40GB A100s/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-inference-and-rank-trigger")?.statement ??
+      "",
+    /top ten.*at most one API call/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-gptj-generation-gpt2-scoring-conflict")
+      ?.statement ?? "",
+    /GPT-J.*GPT-2.*no released implementation or run record resolves/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-llama-generation-and-count-boundary")
+      ?.statement ?? "",
+    /32,180.*25,000.*does not state/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-llama-tool-utility-results")?.statement ??
+      "",
+    /Atlas QA tool.*WikiSearch lowers.*401 examples.*no calculator calls/,
+  );
+  assert.match(
+    findClaim("schick-2023-toolformer-artifact-rights-and-safety-boundary")
+      ?.statement ?? "",
+    /no official Toolformer code.*checkpoint.*non-exclusive distribution rights.*does not evaluate state-changing APIs/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    ["brown-2020-to-schick-2023-toolformer-in-context-api-sampling"],
+  );
+  assert.equal(incoming[0]?.connectionType, "builds-on");
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.match(incoming[0]?.rationale ?? "", /in-context learning/);
+  assert.match(incoming[0]?.rationale ?? "", /GPT-3 is a comparator/);
+  assert.match(incoming[0]?.rationale ?? "", /no GPT-3 architecture.*right transfers/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      ["beginner-schick-2023-test-when-a-tool-helps", "beginner", 9],
+      [
+        "expert-schick-2023-audit-toolformer-training-execution-and-version-conflicts",
+        "expert",
+        22,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("Schick et al.’s Toolformer family"));
+  assert.ok(corpusFormat.includes("Schick et al. 2023"));
+  assert.ok(
+    historicalScope.includes("The Toolformer family was checked on 2026-09-15"),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: Toolformer"));
+});
+
+test("preserves Switch Transformer versions, sparse routing, result limits, artifact evolution, and lineage", () => {
+  const workId =
+    "fedus-2021-switch-transformers-scaling-trillion-parameter-models";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 63);
+  assert.equal(work?.artifactType, "journal-article");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2021-01-11", "2022-04", "2022-04-30", "2022-06-16"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "fedus-2021-switch-transformers-arxiv-v1-version",
+      "fedus-2022-switch-transformers-jmlr-version",
+      "fedus-2022-switch-transformers-arxiv-v2-version",
+      "fedus-2022-switch-transformers-arxiv-v3-version",
+    ],
+  );
+  assert.equal(
+    work?.canonicalVersionId,
+    "fedus-2022-switch-transformers-jmlr-version",
+  );
+  assert.deepEqual(work?.versions[1]?.bibliography.pages, ["1-39"]);
+  assert.equal(work?.sourceIds.length, 15);
+  assert.equal(work?.ideaIds.length, 13);
+  assert.equal(claims.length, 21);
+
+  const expectedArtifacts = [
+    ["fedus-2021-switch-transformers-arxiv-v1-full-text", "pdf-page", 31, "0dba4abc34422f49"],
+    ["fedus-2022-switch-transformers-arxiv-v2-full-text", "pdf-page", 40, "1ad840d21419f625"],
+    ["fedus-2022-switch-transformers-arxiv-v3-full-text", "pdf-page", 40, "f340f6ace31abf7d"],
+    ["fedus-2022-switch-transformers-jmlr-full-text", "printed", 39, "8831edca732dd939"],
+  ];
+  for (const [sourceId, scheme, pageEnd, hash] of expectedArtifacts) {
+    assert.deepEqual(findSource(sourceId)?.pagination, {
+      scheme,
+      pageStart: 1,
+      pageEnd,
+    });
+    assert.match(findSource(sourceId)?.accessNote ?? "", new RegExp(hash));
+  }
+  assert.match(
+    findSource("fedus-2021-switch-transformers-mesh-code-snapshot")
+      ?.accessNote ?? "",
+    /3755319.*does not bind a complete experiment configuration/,
+  );
+  assert.match(
+    findSource("fedus-2022-switch-transformers-t5x-checkpoint-registry")
+      ?.accessNote ?? "",
+    /six Base expert counts.*Large-128.*XXL-128.*C-2048 \(1\.6T\)/,
+  );
+
+  assert.match(
+    findClaim("fedus-2021-switch-transformers-version-boundary")?.statement ??
+      "",
+    /31-leaf.*JMLR 23\(120\):1–39.*v3.*corrects.*Table 9/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-top-one-routing")?.statement ??
+      "",
+    /softmax probabilities.*single highest-probability expert.*y=p_i\(x\)E_i\(x\)/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-capacity-overflow-and-drop")
+      ?.statement ?? "",
+    /static capacity.*skips expert computation.*below 1%/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-large-model-parameter-compute-table")
+      ?.statement ?? "",
+    /395B.*6\.3T.*1,571B.*890B.*headings are swapped/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-large-model-pretraining-and-stability")
+      ?.statement ?? "",
+    /Switch-C shows no observed instability.*Switch-XXL is sometimes unstable/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-artifact-evolution")?.statement ??
+      "",
+    /nine converted checkpoints.*T5X footnote two days later/,
+  );
+  assert.match(
+    findClaim("fedus-2022-switch-transformers-rights-and-reconstruction-boundary")
+      ?.statement ?? "",
+    /CC BY 4\.0.*Apache 2\.0.*do not merge into one license/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => item.id),
+    [
+      "raffel-2019-to-fedus-2021-switch-transformers-t5-substrate",
+      "kaplan-2020-to-fedus-2021-switch-transformers-capacity-axis",
+    ],
+  );
+  assert.ok(incoming.every((item) => item.evidenceClass === "documented-influence"));
+  assert.ok(incoming.every((item) => item.causalLanguage === "qualified"));
+  assert.match(incoming[0]?.rationale ?? "", /replaces selected feed-forward blocks/);
+  assert.match(incoming[1]?.rationale ?? "", /fourth design axis/);
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      ["beginner-fedus-2021-separate-capacity-from-work", "beginner", 7],
+      ["expert-fedus-2021-audit-switch-routing-scaling-and-release", "expert", 21],
+    ],
+  );
+  assert.ok(readme.includes("Fedus, Zoph, and Shazeer’s Switch Transformers family"));
+  assert.ok(corpusFormat.includes("Fedus et al. 2021/2022"));
+  assert.ok(
+    historicalScope.includes(
+      "The Switch Transformers family was checked on 2026-09-16",
+    ),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: Switch Transformers"));
+});
+
+test("preserves DeepSeek-R1 versions, RL stages, evaluation limits, artifacts, and lineage", () => {
+  const workId =
+    "deepseek-ai-2025-deepseek-r1-incentivizes-reasoning-reinforcement-learning";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 64);
+  assert.equal(work?.artifactType, "journal-article");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2025-01-20", "2025-01-22", "2025-09-17", "2026-01-04"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "deepseek-ai-2025-r1-github-report-version",
+      "deepseek-ai-2025-r1-arxiv-v1-version",
+      "deepseek-ai-2025-r1-nature-version",
+      "deepseek-ai-2026-r1-arxiv-v2-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "deepseek-ai-2025-r1-nature-version");
+  assert.equal(work?.sourceIds.length, 21);
+  assert.equal(work?.ideaIds.length, 13);
+  assert.equal(claims.length, 15);
+
+  assert.deepEqual(
+    findSource("deepseek-ai-2025-r1-nature-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 11 },
+  );
+  assert.match(
+    findSource("deepseek-ai-2025-r1-nature-full-text")?.accessNote ?? "",
+    /916fdaafc3b44143/,
+  );
+  assert.deepEqual(
+    findSource("deepseek-ai-2025-r1-nature-supplement")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 83 },
+  );
+  assert.deepEqual(
+    findSource("deepseek-ai-2025-r1-0528-release-note")?.versionIds,
+    [],
+  );
+  assert.ok(
+    findSource("deepseek-ai-2025-r1-0528-release-note")?.supports.includes(
+      "version-boundary",
+    ),
+  );
+
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-v3-base-and-pure-rl-boundary")
+      ?.statement ?? "",
+    /without an intervening supervised-fine-tuning stage.*14\.8 trillion tokens/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-grpo-objective")?.statement ?? "",
+    /standardizes each reward.*removes PPO's separately trained value model/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-multistage-pipeline")?.statement ?? "",
+    /600,000 reasoning and 200,000 non-reasoning.*mixed RL stage/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-stage-evaluation-boundary")?.statement ??
+      "",
+    /GPQA Diamond falls.*AlpacaEval rises/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-evaluation-and-contamination-boundary")
+      ?.statement ?? "",
+    /10-gram decontamination.*paraphrased test material may remain/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-negative-results-and-capacity-dependence")
+      ?.statement ?? "",
+    /7B dense and 16B MoE.*Process reward modeling.*MCTS/,
+  );
+  assert.match(
+    findClaim("deepseek-ai-2025-r1-artifact-rights-and-reconstruction-boundary")
+      ?.statement ?? "",
+    /documentation rather than training code.*do not collapse into one ‘open’ license/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => [item.id, item.connectionType]),
+    [["ouyang-2022-to-deepseek-r1-sft-first-rlhf-contrast", "challenges"]],
+  );
+  assert.equal(incoming[0]?.evidenceClass, "documented-influence");
+  assert.equal(incoming[0]?.causalLanguage, "qualified");
+  assert.match(incoming[0]?.rationale ?? "", /target-side contrast/);
+  assert.match(
+    incoming[0]?.rationale ?? "",
+    /R1's later production pipeline reintroduces SFT/,
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.id, item.mode, item.claimIds.length]),
+    [
+      [
+        "beginner-deepseek-r1-separate-zero-final-and-distilled-models",
+        "beginner",
+        6,
+      ],
+      [
+        "expert-deepseek-r1-audit-rl-reasoning-and-release-boundaries",
+        "expert",
+        15,
+      ],
+    ],
+  );
+  assert.ok(readme.includes("DeepSeek-AI’s R1 family"));
+  assert.ok(corpusFormat.includes("DeepSeek-AI 2025/2026"));
+  assert.ok(
+    historicalScope.includes(
+      "The DeepSeek-R1 family was checked on 2026-09-17",
+    ),
+  );
+  assert.ok(currentEndpoint.includes("Promoted endpoint: DeepSeek-R1"));
+});
+
+test("preserves DPO derivation assumptions, version boundaries, evaluations, artifacts, and lineage", () => {
+  const workId = "rafailov-2023-direct-preference-optimization";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((item) => item.workId === workId);
+  const findClaim = (id) => claims.find((item) => item.id === id);
+  const sources = corpus.sources.filter((item) =>
+    item.relatedWorkIds.includes(workId),
+  );
+  const findSource = (id) => sources.find((item) => item.id === id);
+  const incoming = corpus.relationships.filter(
+    (item) => item.to.kind === "work" && item.to.id === workId,
+  );
+  const objectives = corpus.learningObjectives.filter((item) =>
+    item.workIds.includes(workId),
+  );
+
+  assert.equal(workIndex(workId), 65);
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.deepEqual(
+    work?.chronology.events.map((item) => item.date.value),
+    ["2023-05-29", "2023-12-13", "2023-12-15", "2024-07-29"],
+  );
+  assert.deepEqual(
+    work?.versions.map((item) => item.id),
+    [
+      "rafailov-2023-dpo-arxiv-v1-version",
+      "rafailov-2023-dpo-arxiv-v2-version",
+      "rafailov-2023-dpo-neurips-version",
+      "rafailov-2024-dpo-arxiv-v3-version",
+    ],
+  );
+  assert.equal(work?.canonicalVersionId, "rafailov-2023-dpo-neurips-version");
+  assert.equal(work?.sourceIds.length, 15);
+  assert.equal(work?.ideaIds.length, 10);
+  assert.equal(claims.length, 17);
+
+  assert.deepEqual(
+    findSource("rafailov-2023-dpo-neurips-main-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 14 },
+  );
+  assert.deepEqual(
+    findSource("rafailov-2023-dpo-neurips-supplement")?.pagination,
+    { scheme: "article", pageStart: 15, pageEnd: 27 },
+  );
+  assert.match(work?.versions[0]?.notes ?? "", /prints Adam/);
+  assert.match(work?.versions[0]?.notes ?? "", /lacks the CNN\/DailyMail/);
+  assert.match(work?.versions[1]?.notes ?? "", /implicit reward parameterization/);
+  assert.match(work?.versions[1]?.notes ?? "", /RMSprop instead of Adam/);
+
+  assert.match(
+    findClaim("rafailov-2023-dpo-reward-equivalence-and-support-assumptions")
+      ?.statement ?? "",
+    /pi_ref\(y\|x\)>0 for every pair and beta>0/,
+  );
+  const optimizer = findClaim(
+    "rafailov-2023-dpo-hyperparameter-and-optimizer-boundary",
+  );
+  assert.match(optimizer?.statement ?? "", /Adam.*RMSprop/);
+  assert.ok(
+    work?.uncertainties.some(
+      (item) => item.status === "open" && /optimizer/i.test(item.note),
+    ),
+  );
+  assert.match(
+    findClaim("rafailov-2023-dpo-dialogue-protocol-and-comparator-boundary")
+      ?.statement ?? "",
+    /rough PPO-level proxy/,
+  );
+  assert.match(
+    findClaim("rafailov-2023-dpo-artifact-rights-and-reconstruction-boundary")
+      ?.statement ?? "",
+    /label-masking bug.*not the exact sentiment or TL;DR pipelines.*raw human or GPT-4 judgments/,
+  );
+
+  assert.deepEqual(
+    incoming.map((item) => [
+      item.id,
+      item.connectionType,
+      item.evidenceClass,
+      item.causalLanguage,
+    ]),
+    [
+      [
+        "stiennon-2020-to-rafailov-2023-dpo-tldr-preference-substrate",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "ouyang-2022-to-rafailov-2023-dpo-rm-ppo-contrast",
+        "challenges",
+        "documented-influence",
+        "qualified",
+      ],
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((item) => [item.mode, item.claimIds.length]),
+    [
+      ["beginner", 8],
+      ["expert", 17],
+    ],
+  );
+  assert.ok(readme.includes("Rafailov et al.’s DPO family"));
+  assert.ok(corpusFormat.includes("Rafailov et al. 2023/2024"));
+  assert.ok(
+    currentEndpoint.includes("Promoted endpoint: Direct Preference Optimization"),
+  );
 });
 
 test("accepts arXiv identifiers and rejects unknown identifier types", () => {
@@ -744,7 +5175,6 @@ test("retains the guarded Hinton 1986 distributed-representation branch", () => 
       .map((objective) => objective.mode),
   );
 
-  assert.equal(corpus.asOf, "2026-08-20");
   assert.equal(work?.artifactType, "conference-paper");
   assert.equal(work?.inclusion.status, "branch");
   assert.equal(work?.versions.length, 1);
@@ -4155,6 +8585,3496 @@ test("retains Sutskever 2014 with separate direct, rescoring, and version eviden
   assert.ok(objectives[0]?.successCriterion.includes("1000-best rescoring"));
   assert.ok(objectives[1]?.successCriterion.includes("380M proceedings"));
   assert.ok(objectives[1]?.successCriterion.includes("seven Table 2 rows"));
+});
+
+test("retains End-To-End Memory Networks with its historical title and evidence boundaries", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "sukhbaatar-2015-end-to-end-memory-networks",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const softRead = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-soft-memory-read",
+  );
+  const objective = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-end-to-end-objective",
+  );
+  const multiHop = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-multi-hop-update",
+  );
+  const tying = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-weight-tying",
+  );
+  const position = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-position-and-temporal-encoding",
+  );
+  const qaSetup = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-qa-setup",
+  );
+  const qa = claims.find((claim) => claim.id === "sukhbaatar-2015-qa-results");
+  const supplement = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-nonlinear-supplement-results",
+  );
+  const languageModel = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-language-model-results",
+  );
+  const hopBoundary = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-hop-trend-boundary",
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-version-identity-and-scope-boundary",
+  );
+  const scalingBoundary = claims.find(
+    (claim) => claim.id === "sukhbaatar-2015-evidence-and-scaling-boundary",
+  );
+  const transformerBoundary = corpus.claims.find(
+    (claim) => claim.id === "vaswani-2017-predecessor-and-scope-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(
+    work?.canonicalVersionId,
+    "sukhbaatar-2015-nips-version",
+  );
+  assert.equal(work?.versions.length, 6);
+  assert.deepEqual(work?.authors, [
+    "Sainbayar Sukhbaatar",
+    "Arthur Szlam",
+    "Jason Weston",
+    "Rob Fergus",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["sukhbaatar-2015-arxiv-v1-posted", "2015-03-31"],
+      ["sukhbaatar-2015-arxiv-v2-posted", "2015-04-03"],
+      ["sukhbaatar-2015-arxiv-v3-posted", "2015-04-12"],
+      ["sukhbaatar-2015-arxiv-v4-posted", "2015-06-08"],
+      ["sukhbaatar-2015-arxiv-v5-posted", "2015-11-24"],
+      ["sukhbaatar-2015-nips-proceedings", "2015"],
+    ],
+  );
+  for (const [eventId, timestamp] of [
+    ["sukhbaatar-2015-arxiv-v1-posted", "03:05:37 UTC"],
+    ["sukhbaatar-2015-arxiv-v2-posted", "02:23:20 UTC"],
+    ["sukhbaatar-2015-arxiv-v3-posted", "04:19:33 UTC"],
+    ["sukhbaatar-2015-arxiv-v4-posted", "21:42:20 UTC"],
+    ["sukhbaatar-2015-arxiv-v5-posted", "19:41:57 UTC"],
+  ]) {
+    const event = work?.chronology.events.find((item) => item.id === eventId);
+    assert.ok(event?.dateEvidence[0].locator.includes(timestamp));
+  }
+  for (const id of [
+    "sukhbaatar-2015-arxiv-v1-version",
+    "sukhbaatar-2015-arxiv-v2-version",
+    "sukhbaatar-2015-arxiv-v3-version",
+  ]) {
+    assert.equal(versions.get(id)?.title, "Weakly Supervised Memory Networks");
+  }
+  for (const id of [
+    "sukhbaatar-2015-arxiv-v4-version",
+    "sukhbaatar-2015-arxiv-v5-version",
+    "sukhbaatar-2015-nips-version",
+  ]) {
+    assert.equal(versions.get(id)?.title, "End-To-End Memory Networks");
+  }
+  assert.deepEqual(
+    versions.get("sukhbaatar-2015-nips-version")?.bibliography.pages,
+    ["2440-2448"],
+  );
+  assert.ok(
+    versions
+      .get("sukhbaatar-2015-arxiv-v5-version")
+      ?.bibliography.identifiers.some(
+        (identifier) => identifier.value === "10.48550/arXiv.1503.08895",
+      ),
+  );
+  assert.ok(
+    versions
+      .get("sukhbaatar-2015-nips-version")
+      ?.bibliography.identifiers.some(
+        (identifier) => identifier.value === "1446",
+      ),
+  );
+  assert.deepEqual(sources.get("sukhbaatar-2015-neurips-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 9,
+  });
+  assert.deepEqual(sources.get("sukhbaatar-2015-arxiv-v5-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 11,
+  });
+  assert.deepEqual(sources.get("sukhbaatar-2015-neurips-supplement")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 2,
+  });
+  assert.equal(
+    sources.get("sukhbaatar-2015-arxiv-v1-full-text")?.title,
+    "Weakly Supervised Memory Networks arXiv version 1 full text",
+  );
+  assert.ok(
+    sources.get("sukhbaatar-2015-neurips-reviews")?.supports.includes("metadata"),
+  );
+  assert.equal(
+    sources
+      .get("sukhbaatar-2015-neurips-reviews")
+      ?.supports.includes("claim-location"),
+    false,
+  );
+  for (const value of ["archived", "BSD", "patent-grant", "checkpoint"])
+    assert.ok(
+      sources
+        .get("sukhbaatar-2015-official-implementation")
+        ?.accessNote.includes(value),
+    );
+  assert.equal(claims.length, 15);
+  for (const value of [
+    "u = Bq",
+    "pᵢ = softmax(uᵀmᵢ)",
+    "o = Σᵢpᵢcᵢ",
+  ])
+    assert.ok(softRead?.statement.includes(value));
+  assert.equal(softRead?.evidence[0]?.locator.equation, "1–2");
+  assert.ok(objective?.statement.includes("softmax(W(o + u))"));
+  assert.equal(objective?.evidence[0]?.locator.equation, "3");
+  assert.ok(multiHop?.statement.includes("uᵏ⁺¹ = uᵏ + oᵏ"));
+  assert.equal(multiHop?.evidence[0]?.locator.equation, "4");
+  for (const value of ["Aᵏ⁺¹ = Cᵏ", "Wᵀ = Cᴷ", "B = A¹", "uᵏ⁺¹ = Huᵏ + oᵏ"])
+    assert.ok(tying?.statement.includes(value));
+  for (const value of [
+    "lₖⱼ = (1 − j/J) − (k/d)(1 − 2j/J)",
+    "T_A(i)",
+    "T_C(i)",
+    "10% empty memories",
+  ])
+    assert.ok(position?.statement.includes(value));
+  for (const value of ["bAbI version 1.1", "K = 3", "10%", "50 most recent"])
+    assert.ok(qaSetup?.statement.includes(value));
+  assert.deepEqual(
+    qaSetup?.evidence.map((item) => item.sourceId),
+    ["sukhbaatar-2015-neurips-full-text"],
+  );
+  for (const value of [
+    "6.7/4",
+    "51.3/20",
+    "40.2/18",
+    "25.1/15",
+    "20.3/13",
+    "16.3/12",
+    "13.9/11",
+    "25.8/17",
+    "15.6/11",
+    "13.3/11",
+    "12.4/11",
+    "15.2/10",
+  ])
+    assert.ok(qa?.statement.includes(value));
+  assert.ok(qa?.limitations.some((value) => value.includes("12.6")));
+  for (const value of [
+    "3.2/2",
+    "36.4/16",
+    "39.2/17",
+    "15.4/9",
+    "9.4/6",
+    "7.2/4",
+    "6.6/4",
+    "4.2/3",
+    "24.5/16",
+    "10.9/7",
+    "7.9/6",
+    "7.5/6",
+    "11.0/6",
+    "18,6",
+    "18.6",
+    "2.3%",
+  ])
+    assert.ok(supplement?.statement.includes(value));
+  assert.equal(supplement?.evidence[0]?.locator.table, "3");
+  assert.equal(supplement?.evidence[0]?.locator.pageStart, 10);
+  assert.equal(supplement?.evidence[1]?.locator.table, "1");
+  assert.equal(supplement?.evidence[1]?.locator.pageStart, 1);
+  assert.equal(
+    supplement?.evidence[1]?.locator.section,
+    "1 Results on 10k QA dataset",
+  );
+  for (const value of [
+    "129/115/115",
+    "118/111",
+    "150 hidden units",
+    "184/154/161",
+    "118/147",
+    "500 hidden units",
+    "seven hops",
+    "memory 200",
+    "memory 100",
+  ])
+    assert.ok(languageModel?.statement.includes(value));
+  assert.ok(
+    languageModel?.limitations
+      .join(" ")
+      .includes("ten random initializations"),
+  );
+  assert.ok(languageModel?.limitations.join(" ").includes("one run"));
+  assert.ok(hopBoundary?.statement.includes("not uniformly monotonic"));
+  assert.ok(versionBoundary?.statement.includes("already contains Appendices A and B"));
+  assert.ok(versionBoundary?.statement.includes("revises those appendices"));
+  assert.ok(scalingBoundary?.statement.includes("smooth lookup may not scale"));
+  assert.ok(
+    work?.limitations
+      .join(" ")
+      .includes("lowest training error"),
+  );
+  assert.ok(work?.limitations.join(" ").includes("two selection stages"));
+  assert.deepEqual(
+    objectives.map((item) => item.id),
+    [
+      "beginner-sukhbaatar-2015-soft-memory-hops",
+      "expert-sukhbaatar-2015-mechanism-and-evidence",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("two sequential hops"));
+  assert.ok(objectives[1]?.successCriterion.includes("equations 1–4"));
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => relationship.id),
+    ["bahdanau-2014-to-sukhbaatar-2015"],
+  );
+  assert.equal(incomingRelationships[0]?.connectionType, "extends");
+  assert.equal(
+    incomingRelationships[0]?.evidenceClass,
+    "documented-influence",
+  );
+  assert.equal(incomingRelationships[0]?.confidence, "high");
+  assert.equal(incomingRelationships[0]?.causalLanguage, "qualified");
+  assert.equal(transformerEdges.length, 0);
+  assert.ok(
+    transformerBoundary?.limitations
+      .join(" ")
+      .includes("absent from Transformer arXiv versions 1–4"),
+  );
+  assert.ok(transformerBoundary?.limitations.join(" ").includes("version 5"));
+});
+
+test("retains Luong attention with versioned formulas and controlled result endpoints", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "luong-pham-manning-2015-effective-attention-nmt",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const dataAndEvaluation = claims.find(
+    (claim) => claim.id === "luong-2015-data-and-evaluation",
+  );
+  const reversalBoundary = claims.find(
+    (claim) => claim.id === "luong-2015-sutskever-architecture-and-reversal",
+  );
+  const scoreFamily = claims.find(
+    (claim) => claim.id === "luong-2015-attention-score-family",
+  );
+  const englishGerman = claims.find(
+    (claim) => claim.id === "luong-2015-english-german-results",
+  );
+  const wmt15 = claims.find(
+    (claim) => claim.id === "luong-2015-wmt15-ensemble-result",
+  );
+  const alignment = claims.find(
+    (claim) => claim.id === "luong-2015-alignment-evaluation",
+  );
+  const germanEnglish = claims.find(
+    (claim) => claim.id === "luong-2015-german-english-results",
+  );
+  const architectureResults = claims.find(
+    (claim) => claim.id === "luong-2015-attention-architecture-results",
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "luong-2015-version-boundary",
+  );
+  const transformerBoundary = corpus.claims.find(
+    (claim) => claim.id === "vaswani-2017-predecessor-and-scope-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "luong-2015-emnlp-version");
+  assert.equal(work?.versions.length, 6);
+  assert.deepEqual(work?.authors, [
+    "Minh-Thang Luong",
+    "Hieu Pham",
+    "Christopher D. Manning",
+  ]);
+  const chronologyById = new Map(
+    work?.chronology.events.map((event) => [event.id, event]),
+  );
+  assert.equal(chronologyById.get("luong-2015-arxiv-v1-posted")?.date.value, "2015-08-17");
+  assert.equal(chronologyById.get("luong-2015-arxiv-v2-posted")?.date.value, "2015-08-18");
+  assert.equal(chronologyById.get("luong-2015-arxiv-v3-posted")?.date.value, "2015-08-19");
+  assert.equal(chronologyById.get("luong-2015-arxiv-v4-posted")?.date.value, "2015-08-29");
+  assert.equal(chronologyById.get("luong-2015-arxiv-v5-posted")?.date.value, "2015-09-20");
+  assert.equal(
+    chronologyById.get("luong-2015-arxiv-v5-posted")?.label,
+    "arXiv version 5 posted",
+  );
+  assert.equal(chronologyById.get("luong-2015-emnlp-proceedings")?.date.value, "2015-09");
+  assert.equal(
+    chronologyById.get("luong-2015-emnlp-proceedings")?.date.precision,
+    "month",
+  );
+  for (const [eventId, timestamp] of [
+    ["luong-2015-arxiv-v1-posted", "13:43:19 UTC"],
+    ["luong-2015-arxiv-v2-posted", "10:27:26 UTC"],
+    ["luong-2015-arxiv-v3-posted", "08:14:59 UTC"],
+    ["luong-2015-arxiv-v4-posted", "09:03:04 UTC"],
+    ["luong-2015-arxiv-v5-posted", "08:25:52 UTC"],
+  ])
+    assert.ok(
+      chronologyById
+        .get(eventId)
+        ?.dateEvidence[0].locator.includes(timestamp),
+    );
+  assert.ok(
+    work?.uncertainties[1]?.note.includes("September records overlap"),
+  );
+  assert.ok(
+    work?.uncertainties[1]?.note.includes(
+      "does not infer their within-month public order",
+    ),
+  );
+  assert.deepEqual(
+    versions.get("luong-2015-emnlp-version")?.bibliography.pages,
+    ["1412-1421"],
+  );
+  assert.ok(
+    versions
+      .get("luong-2015-arxiv-v5-version")
+      ?.bibliography.identifiers.some(
+        (identifier) => identifier.value === "10.48550/arXiv.1508.04025",
+      ),
+  );
+  assert.deepEqual(sources.get("luong-2015-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 1412,
+    pageEnd: 1421,
+  });
+  assert.deepEqual(sources.get("luong-2015-arxiv-v5-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 11,
+  });
+  assert.equal(claims.length, 17);
+  assert.ok(scoreFamily?.statement.includes("v_a^T tanh(W_a[h_t;h̄_s])"));
+  assert.ok(scoreFamily?.statement.includes("only in arXiv version 5"));
+  const correctedScoreEvidence = scoreFamily?.evidence.find(
+    (item) => item.sourceId === "luong-2015-arxiv-v5-full-text",
+  );
+  assert.equal(
+    correctedScoreEvidence?.locator.paragraph,
+    "Unnumbered score-family display",
+  );
+  assert.equal("equation" in correctedScoreEvidence.locator, false);
+  assert.ok(correctedScoreEvidence?.support.includes("equation 8"));
+  for (const value of ["tokenized BLEU", "NIST BLEU"])
+    assert.ok(dataAndEvaluation?.statement.includes(value));
+  assert.ok(
+    dataAndEvaluation?.limitations
+      .join(" ")
+      .includes("not interchangeable"),
+  );
+  assert.ok(reversalBoundary?.statement.includes("after an unreversed base row"));
+  assert.ok(
+    reversalBoundary?.statement.includes(
+      "attention comparison systems retain source-sequence reversal",
+    ),
+  );
+  for (const value of ["14.0", "19.0", "20.9", "23.0"])
+    assert.ok(englishGerman?.statement.includes(value));
+  assert.ok(englishGerman?.limitations.some((value) => value.includes("0.9 BLEU")));
+  for (const value of ["25.9", "eight-model", "unknown-word", "NIST"])
+    assert.ok(wmt15?.statement.includes(value));
+  for (const value of [
+    "508",
+    "forced reference decoding",
+    "one selected source link per target",
+    "0.34",
+    "0.32",
+    "one million",
+    "one-to-many",
+  ])
+    assert.ok(alignment?.statement.includes(value));
+  assert.equal(
+    alignment?.evidence[0]?.locator.section,
+    "5.4 Alignment Quality",
+  );
+  assert.ok(
+    alignment?.limitations
+      .join(" ")
+      .includes("poor correlation"),
+  );
+  assert.equal(
+    architectureResults?.evidence[0]?.locator.section,
+    "5.3 Choices of Attentional Architectures",
+  );
+  for (const value of ["24.9", "29.2", "27.6"])
+    assert.ok(germanEnglish?.statement.includes(value));
+  assert.ok(
+    germanEnglish?.limitations
+      .join(" ")
+      .includes("rejects a state-of-the-art claim"),
+  );
+  for (const value of ["p = 0.2", "D = 10", "Figure 7"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  assert.ok(versionBoundary?.statement.includes("separate eleven-page arXiv version 5"));
+  assert.equal(versionBoundary?.statement.includes("post-proceedings"), false);
+  assert.ok(
+    sources
+      .get("luong-2015-acl-rights-policy")
+      ?.accessNote.includes("CC BY-NC-SA 3.0"),
+  );
+  assert.ok(
+    sources
+      .get("luong-2015-acl-rights-policy")
+      ?.accessNote.includes("third-party"),
+  );
+  assert.ok(
+    sources
+      .get("luong-2015-arxiv-record")
+      ?.accessNote.includes("non-exclusive"),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.mode).sort(),
+    ["beginner", "expert"],
+  );
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => relationship.id).sort(),
+    ["bahdanau-2014-to-luong-2015", "sutskever-2014-to-luong-2015"],
+  );
+  assert.equal(transformerEdges.length, 0);
+  assert.ok(
+    transformerBoundary?.statement.includes(
+      "cites Luong et al. only within a group of efforts advancing recurrent",
+    ),
+  );
+  assert.ok(
+    transformerBoundary?.statement.includes(
+      "scaled-dot-product paragraph does not cite Luong",
+    ),
+  );
+  assert.equal(
+    transformerBoundary?.evidence[0]?.locator.section,
+    "1 Introduction; 2 Background",
+  );
+  assert.equal(
+    transformerBoundary?.evidence.find(
+      (item) =>
+        item.locator.section === "3.2.1 Scaled Dot-Product Attention",
+    )?.locator.section,
+    "3.2.1 Scaled Dot-Product Attention",
+  );
+});
+
+test("retains Cheng 2016 as a versioned recurrent intra-attention machine-reading branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "cheng-dong-lapata-2016-lstmn-machine-reading",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const memoryTape = claims.find(
+    (claim) => claim.id === "cheng-2016-lstmn-memory-tape",
+  );
+  const update = claims.find(
+    (claim) => claim.id === "cheng-2016-intra-attention-update",
+  );
+  const fusion = claims.find(
+    (claim) => claim.id === "cheng-2016-two-sequence-attention-fusion",
+  );
+  const languageModel = claims.find(
+    (claim) => claim.id === "cheng-2016-language-model-results",
+  );
+  const sentiment = claims.find(
+    (claim) => claim.id === "cheng-2016-sentiment-results",
+  );
+  const nli = claims.find(
+    (claim) => claim.id === "cheng-2016-nli-results",
+  );
+  const resultBoundary = claims.find(
+    (claim) => claim.id === "cheng-2016-version-result-boundary",
+  );
+  const equationBoundary = claims.find(
+    (claim) => claim.id === "cheng-2016-equation-version-boundary",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "cheng-2016-evidence-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.inclusion.status, "branch");
+  assert.equal(work?.canonicalVersionId, "cheng-2016-emnlp-version");
+  assert.equal(work?.versions.length, 8);
+  assert.deepEqual(work?.authors, [
+    "Jianpeng Cheng",
+    "Li Dong",
+    "Mirella Lapata",
+  ]);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "cheng-2016-arxiv-v1-posted",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.date.value,
+      event.date.precision,
+    ]),
+    [
+      ["cheng-2016-arxiv-v1-posted", "2016-01-25", "day"],
+      ["cheng-2016-arxiv-v2-posted", "2016-01-26", "day"],
+      ["cheng-2016-arxiv-v3-posted", "2016-02-01", "day"],
+      ["cheng-2016-arxiv-v4-posted", "2016-03-17", "day"],
+      ["cheng-2016-arxiv-v5-posted", "2016-04-07", "day"],
+      ["cheng-2016-arxiv-v6-posted", "2016-06-01", "day"],
+      ["cheng-2016-arxiv-v7-posted", "2016-09-20", "day"],
+      ["cheng-2016-emnlp-proceedings", "2016-11", "month"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("cheng-2016-emnlp-version")?.bibliography.pages,
+    ["551-561"],
+  );
+  assert.deepEqual(sources.get("cheng-2016-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 551,
+    pageEnd: 561,
+  });
+  assert.deepEqual(sources.get("cheng-2016-arxiv-v3-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 10,
+  });
+  assert.equal(sources.size, 12);
+  assert.equal(claims.length, 15);
+  for (const value of ["H_(t−1)", "C_(t−1)", "unspecified upper bound"])
+    assert.ok(memoryTape?.statement.includes(value));
+  for (const value of ["a_i^t", "W_h̃", "c_t = f_t ⊙ c̃_t", "h_t = o_t"])
+    assert.ok(update?.statement.includes(value));
+  for (const value of ["shallow fusion", "deep fusion", "r_t ⊙ α̃_t", "equations 11–16"])
+    assert.ok(
+      `${fusion?.statement} ${fusion?.evidence[0]?.support}`.includes(value),
+    );
+  for (const value of ["141", "129", "115", "108", "107", "109", "102"])
+    assert.ok(languageModel?.statement.includes(value));
+  for (const value of ["47.6/86.3", "47.9/87.0", "51.2/88.6"])
+    assert.ok(sentiment?.statement.includes(value));
+  for (const value of ["86.1/1.9M", "86.0/2.8M", "86.3/3.4M"])
+    assert.ok(nli?.statement.includes(value));
+  for (const value of [
+    "85.3/82.8",
+    "86.8/84.6",
+    "87.1/84.5",
+    "86.3/84.9",
+    "92.3",
+    "89.1",
+    "92.1",
+    "89.0",
+    "47.6/86.3",
+  ])
+    assert.ok(resultBoundary?.statement.includes(value));
+  for (const value of ["s_t", "c̃_(t−1)", "c̃_t", "equation 10"])
+    assert.ok(equationBoundary?.statement.includes(value));
+  assert.ok(evidenceBoundary?.statement.includes("no repeated seeds"));
+  assert.ok(work?.limitations.join(" ").includes("rather than a question-answering"));
+  assert.ok(sources.get("cheng-2016-paper-linked-code")?.accessNote.includes("HTTP 404"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-cheng-2016-follow-recurrent-intra-attention",
+      "expert-cheng-2016-equations-results-and-versions",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("not parallel Transformer"));
+  assert.ok(objectives[1]?.successCriterion.includes("later-omitted revision-only 89.x"));
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+    ]),
+    [
+      ["hochreiter-schmidhuber-1995-to-cheng-2016", "extends"],
+      ["sukhbaatar-2015-to-cheng-2016", "combines"],
+      ["bahdanau-2014-to-cheng-2016", "combines"],
+    ],
+  );
+  for (const relationship of incomingRelationships) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.every(
+        (item) => item.sourceId === "cheng-2016-acl-full-text",
+      ),
+    );
+  }
+  assert.equal(transformerEdges.length, 0);
+});
+
+test("retains Parikh 2016 as a versioned recurrence-free decomposable-attention branch", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "parikh-2016-decomposable-attention-nli",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const attend = claims.find(
+    (claim) => claim.id === "parikh-2016-attend-soft-alignment",
+  );
+  const compare = claims.find(
+    (claim) => claim.id === "parikh-2016-compare-and-aggregate",
+  );
+  const intra = claims.find(
+    (claim) => claim.id === "parikh-2016-distance-biased-intra-attention",
+  );
+  const objectiveBoundary = claims.find(
+    (claim) => claim.id === "parikh-2016-objective-and-printed-sign-boundary",
+  );
+  const complexity = claims.find(
+    (claim) => claim.id === "parikh-2016-complexity-and-parallelism",
+  );
+  const results = claims.find(
+    (claim) => claim.id === "parikh-2016-snli-results",
+  );
+  const classwise = claims.find(
+    (claim) => claim.id === "parikh-2016-classwise-development-results",
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "parikh-2016-version-boundary",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "parikh-2016-evidence-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "parikh-2016-emnlp-version");
+  assert.equal(work?.versions.length, 3);
+  assert.deepEqual(work?.authors, [
+    "Ankur P. Parikh",
+    "Oscar Täckström",
+    "Dipanjan Das",
+    "Jakob Uszkoreit",
+  ]);
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "parikh-2016-arxiv-v1-posted",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.date.value,
+      event.date.precision,
+    ]),
+    [
+      ["parikh-2016-arxiv-v1-posted", "2016-06-06", "day"],
+      ["parikh-2016-arxiv-v2-posted", "2016-09-25", "day"],
+      ["parikh-2016-emnlp-proceedings", "2016-11", "month"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("parikh-2016-emnlp-version")?.bibliography.pages,
+    ["2249-2255"],
+  );
+  assert.deepEqual(sources.get("parikh-2016-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 2249,
+    pageEnd: 2255,
+  });
+  assert.deepEqual(sources.get("parikh-2016-arxiv-v1-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 5,
+  });
+  assert.deepEqual(sources.get("parikh-2016-arxiv-v2-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 7,
+  });
+  for (const claim of claims) {
+    for (const evidence of claim.evidence) {
+      if (
+        [
+          "parikh-2016-arxiv-v1-full-text",
+          "parikh-2016-arxiv-v2-full-text",
+        ].includes(evidence.sourceId)
+      ) {
+        assert.doesNotMatch(evidence.locator.section ?? "", /^Complete\b/);
+      }
+    }
+  }
+  assert.equal(sources.size, 7);
+  assert.equal(claims.length, 16);
+  for (const value of ["F(ā_i)ᵀF(b̄_j)", "β_i", "α_j"])
+    assert.ok(attend?.statement.includes(value));
+  for (const value of ["v_(1,i)", "v_(2,j)", "Aggregate sums"])
+    assert.ok(compare?.statement.includes(value));
+  for (const value of ["F_intra", "d_(i−j)", "above 10", "[a_i,a′_i]"])
+    assert.ok(intra?.statement.includes(value));
+  assert.ok(objectiveBoundary?.statement.includes("without the conventional leading minus"));
+  assert.ok(objectiveBoundary?.uncertainties[0]?.status === "open");
+  assert.ok(
+    objectiveBoundary?.evidence
+      .filter((item) => item.sourceId.includes("arxiv"))
+      .every(
+        (item) =>
+          item.locator.paragraph ===
+          "Unnumbered loss display immediately following equation 5",
+      ),
+  );
+  for (const value of ["O(ℓd² + ℓ²d)", "ℓ < d", "below 80", "at least 300"])
+    assert.ok(complexity?.statement.includes(value));
+  for (const value of ["88.5/86.3/3.4M", "89.5/86.3/382K", "90.5/86.8/582K"])
+    assert.ok(results?.statement.includes(value));
+  for (const value of ["83.6/91.3/85.8", "83.7/92.1/86.7"])
+    assert.ok(classwise?.statement.includes(value));
+  for (const value of ["d_(i−j)", "d_(i−k)", "SPINN-NP", "SPINN-PI"])
+    assert.ok(versionBoundary?.statement.includes(value));
+  assert.ok(evidenceBoundary?.statement.includes("no component-removal study"));
+  assert.ok(work?.limitations.join(" ").includes("about 5.8 times smaller"));
+  assert.ok(work?.limitations.join(" ").includes("no measured latency"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-parikh-2016-attend-compare-aggregate",
+      "expert-parikh-2016-mechanism-complexity-and-versions",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("order-insensitive"));
+  assert.ok(objectives[1]?.successCriterion.includes("382K/86.3"));
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+    ]),
+    [
+      ["bahdanau-2014-to-parikh-2016", "extends"],
+      ["cheng-2016-to-parikh-2016", "builds-on"],
+    ],
+  );
+  for (const relationship of incomingRelationships) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.every(
+        (item) => item.sourceId === "parikh-2016-acl-full-text",
+      ),
+    );
+  }
+  assert.equal(transformerEdges.length, 0);
+});
+
+test("retains ByteNet as a versioned convolutional transduction branch", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "kalchbrenner-2016-neural-machine-translation-linear-time",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const masked = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-masked-dilated-convolutions",
+  );
+  const complexity = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-complexity-and-path-analysis",
+  );
+  const lmSetup = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-character-language-model-setup",
+  );
+  const translation = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-translation-results",
+  );
+  const inconsistency = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-canonical-result-inconsistency",
+  );
+  const versionMechanism = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-version-mechanism-boundary",
+  );
+  const versionResults = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-version-result-boundary",
+  );
+  const transformerBoundary = claims.find(
+    (claim) => claim.id === "kalchbrenner-2016-transformer-citation-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const transformerEdges = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" &&
+      relationship.from.id === work?.id &&
+      relationship.to.kind === "work" &&
+      relationship.to.id === "vaswani-2017-attention-is-all-you-need",
+  );
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.canonicalVersionId,
+    "kalchbrenner-2016-arxiv-v2-version",
+  );
+  assert.equal(work?.versions.length, 2);
+  assert.deepEqual(work?.authors, [
+    "Nal Kalchbrenner",
+    "Lasse Espeholt",
+    "Karen Simonyan",
+    "Aäron van den Oord",
+    "Alex Graves",
+    "Koray Kavukcuoglu",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["kalchbrenner-2016-arxiv-v1-posted", "2016-10-31"],
+      ["kalchbrenner-2016-arxiv-v2-posted", "2017-03-15"],
+    ],
+  );
+  assert.equal(
+    versions.get("kalchbrenner-2016-arxiv-v1-version")?.bibliography.venue,
+    "arXiv",
+  );
+  assert.deepEqual(
+    sources.get("kalchbrenner-2016-arxiv-v1-full-text")?.pagination,
+    { scheme: "article", pageStart: 1, pageEnd: 11 },
+  );
+  assert.deepEqual(
+    sources.get("kalchbrenner-2016-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 9 },
+  );
+  assert.equal(sources.size, 5);
+  assert.equal(
+    work?.preferredSourceIds.includes("vaswani-2017-neurips-full-text"),
+    false,
+  );
+  assert.deepEqual(sources.get("vaswani-2017-neurips-full-text")?.versionIds, [
+    "vaswani-2017-nips-version",
+  ]);
+  assert.equal(claims.length, 19);
+  for (const value of ["1, 2, 4, 8, and 16", "schedule resets"])
+    assert.ok(masked?.statement.includes(value));
+  for (const value of [
+    "c|S| + c|T|",
+    "c≈log d",
+    "autoregressive decoder generation",
+  ])
+    assert.ok(complexity?.statement.includes(value));
+  for (const value of [
+    "30 residual blocks",
+    "receptive field 315",
+    "500-character",
+  ])
+    assert.ok(lmSetup?.statement.includes(value));
+  assert.ok(
+    claims
+      .find(
+        (claim) =>
+          claim.id === "kalchbrenner-2016-character-language-model-results",
+      )
+      ?.statement.includes("bits per byte while the nearby prose"),
+  );
+  for (const value of ["23.75/26.26", "0.521/0.532"])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of ["22.85/25.53", "0.380/0.389", "23.75/26.26"])
+    assert.ok(inconsistency?.statement.includes(value));
+  assert.equal(inconsistency?.uncertainties[0]?.status, "open");
+  for (const value of [
+    "Sub-Batch Normalization",
+    "1.2|s|",
+    "layer normalization",
+  ])
+    assert.ok(versionMechanism?.statement.includes(value));
+  for (const value of ["1.33", "18.9/21.7", "1.31", "23.75/26.26"])
+    assert.ok(versionResults?.statement.includes(value));
+  for (const value of ["O(logₖ n)", "23.75 BLEU", "does not state"])
+    assert.ok(transformerBoundary?.statement.includes(value));
+  assert.ok(
+    transformerBoundary?.evidence.every(
+      (item) => item.sourceId === "vaswani-2017-neurips-full-text",
+    ),
+  );
+  for (const claimId of [
+    "kalchbrenner-2016-version-mechanism-boundary",
+    "kalchbrenner-2016-version-result-boundary",
+  ]) {
+    assert.deepEqual(
+      claims
+        .find((claim) => claim.id === claimId)
+        ?.evidence.map((item) => item.sourceId),
+      [
+        "kalchbrenner-2016-arxiv-v1-full-text",
+        "kalchbrenner-2016-arxiv-v2-full-text",
+      ],
+    );
+  }
+  assert.ok(
+    work?.limitations.join(" ").includes("generation remains autoregressive"),
+  );
+  assert.ok(work?.limitations.join(" ").includes("315-character"));
+  assert.ok(work?.limitations.join(" ").includes("internally inconsistent"));
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-kalchbrenner-2016-follow-dilated-convolution",
+      "expert-kalchbrenner-2016-architecture-complexity-and-versions",
+    ],
+  );
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+    ]),
+    [
+      ["cho-2014-to-kalchbrenner-2016", "extends"],
+      ["sutskever-2014-to-kalchbrenner-2016", "extends"],
+      ["bahdanau-2014-to-kalchbrenner-2016", "addresses"],
+    ],
+  );
+  for (const relationship of incomingRelationships) {
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+  }
+  assert.equal(incomingRelationships[0]?.causalLanguage, "qualified");
+  assert.equal(incomingRelationships[1]?.causalLanguage, "qualified");
+  assert.equal(incomingRelationships[2]?.causalLanguage, "prohibited");
+  assert.equal(transformerEdges.length, 0);
+});
+
+test("retains ConvS2S as a versioned convolutional attention branch", () => {
+  const workId =
+    "gehring-2017-convolutional-sequence-to-sequence-learning";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(
+    work?.versions.map((version) => [version.id, version]),
+  );
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(workId))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "gehring-2017-version-result-boundary",
+  );
+  const translation = claims.find(
+    (claim) => claim.id === "gehring-2017-translation-results",
+  );
+  const ensembles = claims.find(
+    (claim) => claim.id === "gehring-2017-ensemble-results",
+  );
+  const attention = claims.find(
+    (claim) => claim.id === "gehring-2017-layerwise-multi-step-attention",
+  );
+  const data = claims.find(
+    (claim) => claim.id === "gehring-2017-data-and-tokenization",
+  );
+  const speed = claims.find(
+    (claim) => claim.id === "gehring-2017-generation-speed-boundary",
+  );
+  const transformerBoundary = claims.find(
+    (claim) => claim.id === "gehring-2017-transformer-citation-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === workId,
+  );
+  const transformerEdge = corpus.relationships.find(
+    (relationship) => relationship.id === "gehring-2017-to-vaswani-2017",
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "gehring-2017-icml-version");
+  assert.deepEqual(work?.authors, [
+    "Jonas Gehring",
+    "Michael Auli",
+    "David Grangier",
+    "Denis Yarats",
+    "Yann N. Dauphin",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["gehring-2017-arxiv-v1-posted", "2017-05-08"],
+      ["gehring-2017-arxiv-v2-posted", "2017-05-12"],
+      ["gehring-2017-icml-proceedings", "2017-07-17"],
+      ["gehring-2017-arxiv-v3-posted", "2017-07-25"],
+    ],
+  );
+  const proceedingsEvent = work?.chronology.events.find(
+    (event) => event.id === "gehring-2017-icml-proceedings",
+  );
+  assert.equal(proceedingsEvent?.date.precision, "day");
+  assert.equal(
+    proceedingsEvent?.dateEvidence[0]?.sourceId,
+    "gehring-2017-pmlr-volume-record",
+  );
+  assert.equal(work?.versions.length, 4);
+  assert.deepEqual(
+    versions.get("gehring-2017-icml-version")?.bibliography.pages,
+    ["1243-1252"],
+  );
+  assert.deepEqual(sources.get("gehring-2017-pmlr-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 10,
+  });
+  assert.deepEqual(
+    sources.get("gehring-2017-pmlr-supplement")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 4 },
+  );
+  assert.deepEqual(sources.get("gehring-2017-arxiv-v2-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 15,
+  });
+  assert.equal(sources.size, 13);
+  assert.equal(
+    sources.get("gehring-2017-pmlr-volume-record")?.url,
+    "https://proceedings.mlr.press/v70/",
+  );
+  assert.equal(claims.length, 20);
+  for (const value of [
+    "dᵢˡ = W_dˡhᵢˡ + b_dˡ + gᵢ",
+    "cᵢˡ = Σⱼaᵢⱼˡ(zⱼᵘ + eⱼ)",
+    "fixed stack of source-attention hops",
+  ])
+    assert.ok(attention?.statement.includes(value));
+  for (const value of ["29.45", "30.02", "25.16", "40.51"])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of ["26.43", "41.44", "41.62", "English–French"])
+    assert.ok(ensembles?.statement.includes(value));
+  for (const value of [
+    "English–Romanian uses a joint source–target 40K BPE vocabulary",
+    "English–German uses 40K BPE types",
+    "English–French uses separate 40K-BPE source and target vocabularies",
+  ])
+    assert.ok(data?.statement.includes(value));
+  assert.ok(speed?.statement.includes("6,003-sentence English–French"));
+  assert.ok(speed?.statement.includes("newstest2012 and newstest2013"));
+  for (const value of [
+    "v1 reports 29.88 Romanian and 40.46 French with no ensembles",
+    "v2 adds 26.36 German and 41.29 French ensembles",
+    "v3 and PMLR update Romanian/French single results to 30.02/40.51",
+    "published prose resolves v3’s ambiguous dataset wording",
+  ])
+    assert.ok(versionBoundary?.statement.includes(value));
+  for (const value of [
+    "linear arbitrary-position path",
+    "names learned positional embeddings as an alternative",
+    "v2-era 25.16/40.46 single and 26.36/41.29 ensemble",
+    "Transformer v2 and the canonical proceedings paper later test",
+    "not adoption of ConvS2S’s convolution, GLU, or layerwise-hop architecture",
+  ])
+    assert.ok(transformerBoundary?.statement.includes(value));
+  assert.deepEqual(
+    transformerBoundary?.evidence.map((item) => item.sourceId),
+    [
+      "vaswani-2017-arxiv-v1-full-text",
+      "vaswani-2017-arxiv-v2-full-text",
+      "vaswani-2017-neurips-full-text",
+    ],
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-gehring-2017-follow-convolution-and-attention-hops",
+      "expert-gehring-2017-mechanism-results-and-versions",
+    ],
+  );
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.causalLanguage,
+    ]),
+    [
+      [
+        "bahdanau-2014-to-gehring-2017",
+        "extends",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "luong-2015-to-gehring-2017",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "sukhbaatar-2015-to-gehring-2017",
+        "conceptual-parallel",
+        "editorial-synthesis",
+        "prohibited",
+      ],
+    ],
+  );
+  assert.deepEqual(transformerEdge?.from, { kind: "work", id: workId });
+  assert.deepEqual(transformerEdge?.to, {
+    kind: "work",
+    id: "vaswani-2017-attention-is-all-you-need",
+  });
+  assert.equal(transformerEdge?.connectionType, "builds-on");
+  assert.equal(transformerEdge?.evidenceClass, "documented-influence");
+  assert.equal(transformerEdge?.causalLanguage, "qualified");
+  assert.ok(transformerEdge?.rationale.includes("excludes causal claims"));
+  assert.ok(
+    transformerEdge?.claimIds.includes(
+      "vaswani-2017-attention-routes-and-causal-mask",
+    ),
+  );
+  assert.equal(
+    transformerEdge?.claimIds.includes(
+      "gehring-2017-layerwise-multi-step-attention",
+    ),
+    false,
+  );
+  assert.deepEqual(
+    transformerEdge?.sourceEvidence.map((item) => item.sourceId),
+    [
+      "vaswani-2017-arxiv-v1-full-text",
+      "vaswani-2017-arxiv-v2-full-text",
+      "vaswani-2017-neurips-full-text",
+    ],
+  );
+  assert.ok(
+    work?.limitations.join(" ").includes("beam decoding remains left-to-right"),
+  );
+  assert.ok(work?.limitations.join(" ").includes("25 prior target words"));
+  assert.ok(work?.limitations.join(" ").includes("different GPU generations"));
+});
+
+test("retains the complete six-node Transformer convergence gate", () => {
+  const predecessorWorkIds = [
+    "sukhbaatar-2015-end-to-end-memory-networks",
+    "luong-pham-manning-2015-effective-attention-nmt",
+    "cheng-dong-lapata-2016-lstmn-machine-reading",
+    "parikh-2016-decomposable-attention-nli",
+    "kalchbrenner-2016-neural-machine-translation-linear-time",
+    "gehring-2017-convolutional-sequence-to-sequence-learning",
+  ];
+  const transformerWorkId = "vaswani-2017-attention-is-all-you-need";
+  const convergenceWorkIds = [...predecessorWorkIds, transformerWorkId];
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => convergenceWorkIds.includes(work.id))
+      .map((work) => work.id),
+    convergenceWorkIds,
+  );
+  for (const workId of predecessorWorkIds) {
+    assert.ok(corpus.works.some((work) => work.id === workId));
+  }
+  assert.deepEqual(
+    corpus.relationships
+      .filter(
+      (relationship) =>
+        relationship.to.kind === "work" &&
+        relationship.to.id === transformerWorkId,
+      )
+      .map((relationship) => relationship.id),
+    ["gehring-2017-to-vaswani-2017"],
+  );
+  assert.ok(historicalScope.includes("All six required predecessor nodes"));
+  assert.ok(historicalScope.includes("ByteNet"));
+  assert.ok(historicalScope.includes("ConvS2S"));
+  assert.ok(
+    historicalScope.includes("learned positional-embedding alternative"),
+  );
+  assert.ok(
+    historicalScope.includes(
+      "does not make ConvS2S the cause of core self-attention",
+    ),
+  );
+  assert.equal(
+    historicalScope.includes("Cheng and Parikh still require full treatment"),
+    false,
+  );
+});
+
+test("retains the Transformer as a canonical proceedings node with revision boundaries", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "vaswani-2017-attention-is-all-you-need",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const sources = new Map(
+    corpus.sources
+      .filter((source) => source.relatedWorkIds.includes(work?.id))
+      .map((source) => [source.id, source]),
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const predecessorBoundary = claims.find(
+    (claim) => claim.id === "vaswani-2017-predecessor-and-scope-boundary",
+  );
+  const complexity = claims.find(
+    (claim) => claim.id === "vaswani-2017-complexity-and-path-analysis",
+  );
+  const data = claims.find(
+    (claim) => claim.id === "vaswani-2017-data-and-tokenization",
+  );
+  const training = claims.find(
+    (claim) => claim.id === "vaswani-2017-training-regime",
+  );
+  const translation = claims.find(
+    (claim) => claim.id === "vaswani-2017-translation-results",
+  );
+  const variations = claims.find(
+    (claim) => claim.id === "vaswani-2017-model-variation-results",
+  );
+  const versionResults = claims.find(
+    (claim) => claim.id === "vaswani-2017-version-result-boundary",
+  );
+  const parsing = claims.find(
+    (claim) => claim.id === "vaswani-2017-arxiv-parsing-results",
+  );
+  const versionMechanism = claims.find(
+    (claim) => claim.id === "vaswani-2017-version-mechanism-boundary",
+  );
+  const reproducibility = claims.find(
+    (claim) => claim.id === "vaswani-2017-evidence-reproducibility-boundary",
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const incomingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.to.kind === "work" && relationship.to.id === work?.id,
+  );
+  const outgoingRelationships = corpus.relationships.filter(
+    (relationship) =>
+      relationship.from.kind === "work" && relationship.from.id === work?.id,
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "vaswani-2017-nips-version");
+  assert.equal(work?.versions.length, 8);
+  assert.deepEqual(work?.authors, [
+    "Ashish Vaswani",
+    "Noam Shazeer",
+    "Niki Parmar",
+    "Jakob Uszkoreit",
+    "Llion Jones",
+    "Aidan N. Gomez",
+    "Łukasz Kaiser",
+    "Illia Polosukhin",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["vaswani-2017-arxiv-v1-posted", "2017-06-12"],
+      ["vaswani-2017-arxiv-v2-posted", "2017-06-19"],
+      ["vaswani-2017-arxiv-v3-posted", "2017-06-20"],
+      ["vaswani-2017-arxiv-v4-posted", "2017-06-30"],
+      ["vaswani-2017-arxiv-v5-posted", "2017-12-06"],
+      ["vaswani-2017-nips-proceedings", "2017"],
+      ["vaswani-2017-arxiv-v6-posted", "2023-07-24"],
+      ["vaswani-2017-arxiv-v7-posted", "2023-08-02"],
+    ],
+  );
+  assert.equal(
+    work?.chronology.events.find(
+      (event) => event.id === "vaswani-2017-arxiv-v5-posted",
+    )?.label,
+    "arXiv version 5 posted",
+  );
+  assert.deepEqual(
+    versions.get("vaswani-2017-nips-version")?.bibliography.pages,
+    ["5998-6008"],
+  );
+  assert.deepEqual(sources.get("vaswani-2017-neurips-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 11,
+  });
+  assert.deepEqual(sources.get("vaswani-2017-arxiv-v2-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 16,
+  });
+  assert.equal(sources.size, 12);
+  assert.equal(claims.length, 18);
+  for (const value of [
+    "cites Luong et al. only within a group of efforts advancing recurrent",
+    "identifies Parikh et al. among the few attention cases not coupled to recurrence",
+    "includes Cheng in the prior self-/intra-attention task citation sequence",
+    "includes Parikh in the same sequence alongside textual entailment",
+    "cites End-To-End Memory Networks as recurrent attention",
+    "groups ByteNet with convolutional efforts",
+    "directly contrasts ConvS2S",
+    "tests its cited learned positional-embedding alternative",
+    "scaled-dot-product paragraph does not cite Luong",
+    "none of these contextual or contrastive citations states that the Transformer adopts",
+    "contextual and contrastive",
+  ])
+    assert.ok(
+      `${predecessorBoundary?.statement} ${predecessorBoundary?.limitations.join(" ")}`.includes(
+        value,
+      ),
+    );
+  assert.deepEqual(
+    predecessorBoundary?.evidence.map((item) => item.sourceId),
+    [
+      "vaswani-2017-neurips-full-text",
+      "vaswani-2017-neurips-full-text",
+      "vaswani-2017-neurips-full-text",
+      "vaswani-2017-arxiv-v1-full-text",
+      "vaswani-2017-arxiv-v2-full-text",
+      "vaswani-2017-arxiv-v3-full-text",
+      "vaswani-2017-arxiv-v4-full-text",
+      "vaswani-2017-arxiv-v5-full-text",
+      "vaswani-2017-arxiv-v6-full-text",
+      "vaswani-2017-arxiv-v7-full-text",
+      "vaswani-2017-neurips-full-text",
+    ],
+  );
+  assert.ok(
+    predecessorBoundary?.limitations
+      .join(" ")
+      .includes("absent from Transformer arXiv versions 1–4"),
+  );
+  assert.ok(
+    predecessorBoundary?.limitations
+      .join(" ")
+      .includes("first appears in version 5"),
+  );
+  for (const value of [
+    "full self-attention O(n²d) layer complexity, O(1) sequential operations, and O(1) maximum path length",
+    "recurrence O(nd²), O(n), and O(n)",
+    "convolution O(knd²), O(1), and O(logₖ n)",
+    "restricted self-attention O(rnd), O(1), and O(n/r)",
+    "O(n/k) depth for contiguous",
+    "O(logₖ n) for dilated",
+  ])
+    assert.ok(complexity?.statement.includes(value));
+  for (const value of [
+    "4.5 million",
+    "37,000",
+    "36 million",
+    "32,000",
+    "25,000 source",
+    "25,000 target",
+  ])
+    assert.ok(data?.statement.includes(value));
+  for (const value of [
+    "eight P100",
+    "0.4 seconds",
+    "100,000 steps or 12 hours",
+    "1.0 second",
+    "300,000 steps or 3.5 days",
+    "β₁ = 0.9",
+    "β₂ = 0.98",
+    "ε = 10⁻⁹",
+    "dmodel⁻⁰·⁵·min(step⁻⁰·⁵, step·warmup⁻¹·⁵)",
+    "4,000 warmup",
+    "both 0.1",
+    "dropout 0.3",
+    "English–French big run uses 0.1",
+  ])
+    assert.ok(training?.statement.includes(value));
+  assert.ok(
+    training?.limitations
+      .join(" ")
+      .includes("Versions 1–4 retain an attention-dropout definition"),
+  );
+  assert.ok(
+    training?.limitations
+      .join(" ")
+      .includes("versions 5–7 still refer to tuning attention dropout"),
+  );
+  for (const value of [
+    "On newstest2014",
+    "ByteNet 23.75",
+    "Deep-Att + PosUnk 39.2",
+    "GNMT + RL 24.6/39.92",
+    "ConvS2S 25.16/40.46",
+    "MoE 26.03/40.56",
+    "Deep-Att + PosUnk ensemble 40.4",
+    "GNMT + RL ensemble 26.30/41.16",
+    "ConvS2S ensemble 26.36/41.29",
+    "Transformer base 27.3/38.1",
+    "Transformer big 28.4/41.0",
+    "1.0×10²⁰",
+    "2.3×10¹⁹/1.4×10²⁰",
+    "9.6×10¹⁸/1.5×10²⁰",
+    "2.0×10¹⁹/1.2×10²⁰",
+    "8.0×10²⁰",
+    "1.8×10²⁰/1.1×10²¹",
+    "7.7×10¹⁹/1.2×10²¹",
+    "3.3×10¹⁸ base",
+    "2.3×10¹⁹ big",
+  ])
+    assert.ok(translation?.statement.includes(value));
+  for (const value of [
+    "last five ten-minute checkpoints",
+    "last twenty",
+    "beam size 4",
+    "length penalty 0.6",
+  ])
+    assert.ok(translation?.limitations.join(" ").includes(value));
+  for (const value of [
+    "input-plus-50 maximum output",
+    "early termination",
+    "development-set tuning",
+  ])
+    assert.ok(translation?.evidence[0].support.includes(value));
+  for (const value of [
+    "newstest2013 with beam decoding and no checkpoint averaging",
+    "base N = 6, dmodel = 512, dff = 2048, h = 8, dk = dv = 64, dropout 0.1, label smoothing 0.1, and 100K steps at 4.92 PPL/25.8 BLEU/65M",
+    "h = 1, 4, 16, 32 with dk = dv = 512, 128, 32, 16 at 5.29/24.9, 5.00/25.5, 4.91/25.8, and 5.01/25.4",
+    "dk = 16 and 32 at 5.16/25.1/58M and 5.01/25.4/60M, with dv = 64 inherited",
+    "N = 2, 4, 8 at 6.11/23.7/36M, 5.19/25.3/50M, and 4.88/25.5/80M",
+    "dmodel = 256 with dk = dv = 32 and dmodel = 1024 with dk = dv = 128 at 5.75/24.5/28M and 4.66/26.0/168M",
+    "dff = 1024 and 4096 at 5.12/25.4/53M and 4.75/26.2/90M",
+    "dropout 0 and 0.2 at 5.77/24.6 and 4.95/25.5",
+    "label smoothing 0 and 0.2 at 4.67/25.3 and 5.47/25.7",
+    "learned positions at 4.92/25.7",
+    "big N = 6, dmodel = 1024, dff = 4096, h = 16, dk = dv = 64, dropout 0.3, label smoothing 0.1, and 300K steps at 4.33/26.4/213M",
+  ])
+    assert.ok(variations?.statement.includes(value));
+  assert.ok(variations?.evidence[0].support.includes("per-wordpiece PPL"));
+  assert.ok(variations?.limitations.join(" ").includes("26.4 is a newstest2013 development result"));
+  assert.ok(variations?.limitations.join(" ").includes("28.4 newstest2014 test result"));
+  for (const value of [
+    "four-layer dmodel = 1024",
+    "40,000 WSJ",
+    "17 million",
+    "16,000- or 32,000-token",
+    "Only a small number of Section 22 experiments selected attention and residual dropout, learning rates, and beam size",
+    "all other parameters inherited from the English–German base model",
+    "beam 21",
+    "length penalty 0.3",
+    "input-plus-300",
+    "On WSJ Section 23",
+    "F1 rows",
+    "Vinyals and Kaiser et al. WSJ-only discriminative 88.3",
+    "Petrov et al. WSJ-only discriminative 90.4",
+    "Zhu et al. WSJ-only discriminative 90.4",
+    "Dyer et al. WSJ-only discriminative 91.7",
+    "Transformer WSJ-only discriminative 91.3",
+    "Zhu et al. semi-supervised 91.3",
+    "Huang and Harper semi-supervised 91.3",
+    "McClosky et al. semi-supervised 92.1",
+    "Vinyals and Kaiser et al. semi-supervised 92.1",
+    "Transformer semi-supervised 92.7",
+    "Luong et al. multi-task 93.0",
+    "Dyer et al. generative 93.3",
+  ])
+    assert.ok(parsing?.statement.includes(value));
+  assert.deepEqual(
+    parsing?.evidence.map((evidence) => evidence.sourceId),
+    ["vaswani-2017-arxiv-v7-full-text"],
+  );
+  assert.ok(parsing?.limitations.join(" ").includes("do not occur in the canonical proceedings PDF"));
+  assert.ok(parsing?.limitations.join(" ").includes("Versions 5–7 add the 93.0 Luong row"));
+  for (const value of [
+    "omits Wᴼ",
+    "base dff = 1024 in Table 3 despite 2048",
+    "base 4.92/25.8/65M/12h",
+    "AOP1 4.92/25.5/65M/16h",
+    "AOP2 4.86/25.9/65M/16h",
+    "AOP2 is hₚ = 16 in Table 5 but hₚ = 8 in prose",
+    "Version 4 and the proceedings remove that appendix",
+  ])
+    assert.ok(versionMechanism?.statement.includes(value));
+  for (const value of [
+    "Version 1 prints 41.0 BLEU and 3.5 days consistently",
+    "Version 2 prints 41.2/4.5 days in the abstract",
+    "41.17 in Section 6.1 with dff = 8192 and unshared source/target embeddings",
+    "41.0 in Table 2",
+    "3.5 days in the generic schedule",
+    "Version 3 restores 41.0/3.5 in the abstract but retains 41.17",
+    "Version 4 reconciles 41.0",
+    "Versions 5–7 print 41.8 in the abstract and Table 2 but 41.0 in Section 6.1",
+    "canonical proceedings text consistently prints 41.0 and 3.5 days",
+  ])
+    assert.ok(versionResults?.statement.includes(value));
+  assert.ok(
+    reproducibility?.statement.includes(
+      "released checkpoints or immutable checkpoint identifiers",
+    ),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-vaswani-2017-follow-attention-routes",
+      "expert-vaswani-2017-mechanism-results-and-versions",
+    ],
+  );
+  assert.ok(objectives[0]?.successCriterion.includes("future decoder positions"));
+  assert.ok(objectives[1]?.successCriterion.includes("proceedings 41.0"));
+  assert.deepEqual(
+    incomingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.causalLanguage,
+    ]),
+    [
+      [
+        "gehring-2017-to-vaswani-2017",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+    ],
+  );
+  assert.ok(
+    incomingRelationships[0]?.rationale.includes("excludes causal claims"),
+  );
+  assert.deepEqual(
+    outgoingRelationships.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.causalLanguage,
+    ]),
+    [
+      [
+        "vaswani-2017-to-radford-2018",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-devlin-2018",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-dai-2019",
+        "extends",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-radford-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-yang-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-liu-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-raffel-2019",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-lewis-2019-bart",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-chowdhery-2022-palm",
+        "extends",
+        "documented-influence",
+        "qualified",
+      ],
+      [
+        "vaswani-2017-to-bigscience-2022-bloom",
+        "builds-on",
+        "documented-influence",
+        "qualified",
+      ],
+    ],
+  );
+});
+
+test("retains ELMo as a four-version frozen contextual-feature bridge", () => {
+  const work = corpus.works.find(
+    (item) => item.id === "peters-2017-deep-contextualized-word-representations",
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(work?.id),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const objective = claims.find(
+    (claim) => claim.id === "peters-2017-bidirectional-lm-objectives",
+  );
+  const mixture = claims.find(
+    (claim) => claim.id === "peters-2017-task-specific-layer-mixture",
+  );
+  const results = claims.find(
+    (claim) => claim.id === "peters-2017-six-task-results",
+  );
+  const boundary = claims.find(
+    (claim) => claim.id === "peters-2017-version-boundary",
+  );
+  const domainAdaptation = claims.find(
+    (claim) => claim.id === "peters-2017-domain-adaptation",
+  );
+  const lstmEdge = corpus.relationships.find(
+    (relationship) =>
+      relationship.id === "hochreiter-schmidhuber-1995-to-peters-2017",
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "peters-2018-naacl-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [event.id, event.date.value]),
+    [
+      ["peters-2017-openreview-posted", "2017-10-27"],
+      ["peters-2018-arxiv-v1-posted", "2018-02-15"],
+      ["peters-2018-arxiv-v2-posted", "2018-03-22"],
+      ["peters-2018-naacl-proceedings", "2018-06"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.title]),
+    [
+      ["peters-2017-openreview-version", "Deep Contextualized Word Representations"],
+      ["peters-2018-arxiv-v1-version", "Deep contextualized word representations"],
+      ["peters-2018-arxiv-v2-version", "Deep contextualized word representations"],
+      ["peters-2018-naacl-version", "Deep Contextualized Word Representations"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.find((version) => version.id === work.canonicalVersionId)
+      ?.bibliography.pages,
+    ["2227-2237"],
+  );
+  assert.equal(sources.length, 10);
+  assert.equal(claims.length, 14);
+  assert.deepEqual(
+    new Set(objectives.map((item) => item.mode)),
+    new Set(["beginner", "expert"]),
+  );
+  assert.ok(objective?.statement.includes("forward language model"));
+  assert.ok(objective?.statement.includes("backward language model"));
+  assert.ok(objective?.limitations.join(" ").includes("not masked-language-model"));
+  assert.ok(mixture?.statement.includes("softmax-normalized scalar mixture"));
+  assert.ok(mixture?.statement.includes("L2 penalty"));
+  assert.ok(results?.statement.includes("SQuAD F1 81.1→85.8"));
+  assert.ok(results?.statement.includes("SST-5 accuracy 51.4→54.7±0.5"));
+  assert.deepEqual(
+    boundary?.evidence.map((item) => item.sourceId),
+    [
+      "peters-2017-openreview-full-text",
+      "peters-2018-arxiv-v1-full-text",
+      "peters-2018-arxiv-v2-full-text",
+      "peters-2018-naacl-full-text",
+    ],
+  );
+  assert.equal(
+    boundary?.evidence.find(
+      (item) => item.sourceId === "peters-2017-openreview-full-text",
+    )?.locator.table,
+    "1, 2, and 6",
+  );
+  assert.deepEqual(domainAdaptation?.evidence[0]?.locator, {
+    label: "Optional task-domain LM adaptation and downstream effect",
+    section: "A.1 Fine tuning biLM",
+    table: "8",
+  });
+  assert.equal(lstmEdge?.connectionType, "builds-on");
+  assert.equal(lstmEdge?.evidenceClass, "documented-influence");
+  assert.equal(lstmEdge?.causalLanguage, "qualified");
+});
+
+test("retains ULMFiT corrections without rewriting the canonical ACL article", () => {
+  const work = corpus.works.find(
+    (item) =>
+      item.id === "howard-ruder-2018-universal-language-model-fine-tuning",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === work?.id);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(work?.id),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(work?.id),
+  );
+  const boundary = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-version-boundary",
+  );
+  const schedule = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-corrected-stlr",
+  );
+  const transfer = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-three-stage-transfer",
+  );
+  const lowShot = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-low-shot-results",
+  );
+  const mainResults = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-main-results",
+  );
+  const ensemble = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-forward-backward-ensemble",
+  );
+  const pretrainingAblations = claims.find(
+    (claim) =>
+      claim.id === "howard-ruder-2018-pretraining-and-architecture-ablations",
+  );
+  const lmFineTuningAblation = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-lm-fine-tuning-ablation",
+  );
+  const classifierAblation = claims.find(
+    (claim) => claim.id === "howard-ruder-2018-classifier-ablation",
+  );
+  const beginnerObjective = objectives.find(
+    (objective) => objective.mode === "beginner",
+  );
+  const expertObjective = objectives.find(
+    (objective) => objective.mode === "expert",
+  );
+  const boundaryEvidence = new Map(
+    boundary?.evidence.map((item) => [item.sourceId, item]) ?? [],
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "howard-ruder-2018-acl-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => event.date.value),
+    [
+      "2018-01-18",
+      "2018-05-14",
+      "2018-05-15",
+      "2018-05-17",
+      "2018-05-23",
+      "2018-07",
+    ],
+  );
+  assert.equal(
+    versions.get("howard-ruder-2018-arxiv-v1-version")?.title,
+    "Fine-tuned Language Models for Text Classification",
+  );
+  assert.deepEqual(
+    versions.get("howard-ruder-2018-acl-version")?.bibliography.pages,
+    ["328-339"],
+  );
+  assert.ok(
+    versions
+      .get("howard-ruder-2018-acl-version")
+      ?.notes.includes("preserves version 2's 4.57"),
+  );
+  assert.equal(sources.length, 10);
+  assert.equal(claims.length, 15);
+  assert.deepEqual(
+    new Set(objectives.map((item) => item.mode)),
+    new Set(["beginner", "expert"]),
+  );
+  for (const value of [
+    "Version 1 is the nine-page",
+    "Version 3 corrects Table 7",
+    "version 4 corrects a reversed",
+    "version 5 corrects Equation 3",
+    "canonical ACL article preserves all three",
+  ])
+    assert.ok(boundary?.statement.includes(value));
+  assert.equal(
+    boundaryEvidence.get("howard-ruder-2018-arxiv-v1-full-text")?.locator
+      .section,
+    "Title; 4 Fine-tuned Language Models (FitLaM); 5 Experiments",
+  );
+  assert.equal(
+    boundaryEvidence.get("howard-ruder-2018-arxiv-v3-full-text")?.locator
+      .section,
+    "5 Analysis — Impact of classifier fine-tuning",
+  );
+  assert.equal(
+    boundaryEvidence.get("howard-ruder-2018-acl-full-text")?.locator.section,
+    "2 Related Work; 3.2 Target task LM fine-tuning; 5 Analysis — Impact of classifier fine-tuning",
+  );
+  assert.deepEqual(
+    schedule?.evidence.map((item) => item.sourceId),
+    [
+      "howard-ruder-2018-arxiv-v5-full-text",
+      "howard-ruder-2018-acl-full-text",
+    ],
+  );
+  assert.ok(schedule?.statement.includes("cut·(1/cut_frac−1)"));
+  assert.ok(schedule?.statement.includes("ACL denominator cut·(ratio−1)"));
+  assert.ok(transfer?.statement.includes("three stages"));
+  assert.ok(lowShot?.statement.includes("50,000 unlabeled IMDb"));
+  assert.ok(lowShot?.statement.includes("100,000 unlabeled AG"));
+  assert.equal(
+    lowShot?.evidence[0]?.locator.section,
+    "5 Analysis — Low-shot learning",
+  );
+  assert.equal(mainResults?.evidence[0]?.locator.section, "4.2 Results");
+  assert.equal(
+    ensemble?.evidence[0]?.locator.section,
+    "5 Analysis — Impact of bidirectionality",
+  );
+  assert.deepEqual(
+    {
+      section: pretrainingAblations?.evidence[0]?.locator.section,
+      pageStart: pretrainingAblations?.evidence[0]?.locator.pageStart,
+      pageEnd: pretrainingAblations?.evidence[0]?.locator.pageEnd,
+    },
+    {
+      section: "5 Analysis — Impact of pretraining; Impact of LM quality",
+      pageStart: 334,
+      pageEnd: 335,
+    },
+  );
+  assert.equal(
+    lmFineTuningAblation?.evidence[0]?.locator.section,
+    "5 Analysis — Impact of LM fine-tuning",
+  );
+  assert.equal(
+    classifierAblation?.evidence[0]?.locator.section,
+    "5 Analysis — Impact of classifier fine-tuning",
+  );
+  assert.ok(classifierAblation?.statement.startsWith("Corrected arXiv version 3"));
+  assert.ok(beginnerObjective?.objective.includes("contrast ELMo's frozen"));
+  assert.ok(beginnerObjective?.successCriterion.includes("shared with ELMo"));
+  assert.ok(expertObjective?.objective.includes("three post-v2 corrections"));
+});
+
+test("keeps the ELMo to ULMFiT transfer fork chronological and noncausal", () => {
+  const workIds = [
+    "vaswani-2017-attention-is-all-you-need",
+    "peters-2017-deep-contextualized-word-representations",
+    "howard-ruder-2018-universal-language-model-fine-tuning",
+  ];
+  const edge = corpus.relationships.find(
+    (relationship) => relationship.id === "peters-2017-to-howard-ruder-2018",
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => workIds.includes(work.id))
+      .map((work) => work.id),
+    workIds,
+  );
+  assert.deepEqual(edge?.from, {
+    kind: "work",
+    id: "peters-2017-deep-contextualized-word-representations",
+  });
+  assert.deepEqual(edge?.to, {
+    kind: "work",
+    id: "howard-ruder-2018-universal-language-model-fine-tuning",
+  });
+  assert.equal(edge?.connectionType, "addresses");
+  assert.equal(edge?.evidenceClass, "documented-influence");
+  assert.equal(edge?.causalLanguage, "prohibited");
+  assert.ok(edge?.claimIds.includes("peters-2017-frozen-feature-transfer"));
+  assert.ok(edge?.claimIds.includes("howard-ruder-2018-elmo-contrast"));
+  assert.ok(edge?.rationale.includes("Both methods can first adapt"));
+  assert.ok(edge?.rationale.includes("supervised fine-tuning"));
+  assert.ok(edge?.rationale.includes("not priority"));
+  assert.ok(edge?.rationale.includes("causation"));
+});
+
+test("retains the GPT preprint as causal Transformer pretraining and full-model transfer", () => {
+  const workId =
+    "radford-2018-improving-language-understanding-generative-pre-training";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const fullText = sources.find(
+    (source) => source.id === "radford-2018-openai-preprint-full-text",
+  );
+  const transfer = claims.find(
+    (claim) => claim.id === "radford-2018-two-stage-generative-transfer",
+  );
+  const architecture = claims.find(
+    (claim) => claim.id === "radford-2018-decoder-only-transformer-architecture",
+  );
+  const ablation = claims.find(
+    (claim) => claim.id === "radford-2018-ablation-results",
+  );
+  const layerTransfer = claims.find(
+    (claim) => claim.id === "radford-2018-layer-transfer-analysis",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "radford-2018-code-and-evidence-boundary",
+  );
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.canonicalVersionId,
+    "radford-2018-openai-preprint-version",
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [["radford-2018-openai-release", "preprint", "2018-06-11"]],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [
+      version.id,
+      version.kind,
+      version.bibliography.pages,
+      version.bibliography.identifiers,
+    ]),
+    [["radford-2018-openai-preprint-version", "preprint", [], []]],
+  );
+  assert.equal(sources.length, 4);
+  assert.equal(claims.length, 15);
+  assert.deepEqual(fullText?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 12,
+  });
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-radford-2018-pretrain-serialize-finetune",
+      "expert-radford-2018-objectives-transfer-and-evidence",
+    ],
+  );
+  assert.ok(transfer?.statement.includes("causal language-model likelihood L1"));
+  assert.ok(
+    transfer?.limitations.join(" ").includes("target-domain language-model"),
+  );
+  assert.ok(architecture?.statement.includes("twelve-layer decoder-only"));
+  assert.ok(ablation?.statement.includes("75.0 with four higher and four lower"));
+  assert.ok(layerTransfer?.statement.includes("up to 9%"));
+  assert.ok(
+    layerTransfer?.limitations
+      .join(" ")
+      .includes("percentage points or relative percent"),
+  );
+  assert.ok(
+    evidenceBoundary?.statement.includes("Preprint. Work in progress"),
+  );
+  assert.ok(
+    evidenceBoundary?.limitations.join(" ").includes("ROCStories only"),
+  );
+  assert.ok(
+    work?.significance.beginner.includes("boundary and delimiter-token embeddings"),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "expert")
+      ?.successCriterion.includes("split and aggregate columns"),
+  );
+});
+
+test("retains BERT version, objective, result, and implementation boundaries", () => {
+  const workId = "devlin-2018-bert-pre-training-deep-bidirectional-transformers";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "devlin-2018-version-boundary",
+  );
+  const maskedObjective = claims.find(
+    (claim) => claim.id === "devlin-2018-masked-language-model-objective",
+  );
+  const replacement = claims.find(
+    (claim) => claim.id === "devlin-2018-masking-replacement-procedure",
+  );
+  const nextSentence = claims.find(
+    (claim) => claim.id === "devlin-2018-next-sentence-prediction-objective",
+  );
+  const results = claims.find(
+    (claim) => claim.id === "devlin-2018-glue-results",
+  );
+  const squadV1 = claims.find(
+    (claim) => claim.id === "devlin-2018-squad-v1-results",
+  );
+  const squadV2 = claims.find(
+    (claim) => claim.id === "devlin-2018-squad-v2-results",
+  );
+  const ablation = claims.find(
+    (claim) => claim.id === "devlin-2018-pretraining-task-ablation",
+  );
+  const trainingStep = claims.find(
+    (claim) => claim.id === "devlin-2018-training-step-ablation",
+  );
+  const codeBoundary = claims.find(
+    (claim) => claim.id === "devlin-2018-code-and-evidence-boundary",
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "devlin-2019-naacl-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => event.date.value),
+    ["2018-10-11", "2019-05-24", "2019-06"],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [
+      ["devlin-2018-arxiv-v1-version", "preprint"],
+      ["devlin-2019-arxiv-v2-version", "preprint"],
+      ["devlin-2019-naacl-version", "proceedings"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("devlin-2019-naacl-version")?.bibliography.pages,
+    ["4171-4186"],
+  );
+  assert.deepEqual(
+    sourceMap.get("devlin-2018-arxiv-v1-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 14 },
+  );
+  assert.deepEqual(
+    sourceMap.get("devlin-2019-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 16 },
+  );
+  assert.deepEqual(
+    sourceMap.get("devlin-2019-naacl-full-text")?.pagination,
+    { scheme: "printed", pageStart: 4171, pageEnd: 4186 },
+  );
+  for (const claim of claims) {
+    for (const evidence of claim.evidence.filter((item) =>
+      [
+        "devlin-2018-arxiv-v1-full-text",
+        "devlin-2019-arxiv-v2-full-text",
+      ].includes(item.sourceId),
+    )) {
+      assert.equal("pageStart" in evidence.locator, false);
+      assert.equal("pageEnd" in evidence.locator, false);
+    }
+  }
+  assert.equal(sources.length, 7);
+  assert.equal(claims.length, 20);
+  assert.deepEqual(
+    objectives.map((objective) => objective.id),
+    [
+      "beginner-devlin-2018-mask-context-and-fine-tune",
+      "expert-devlin-2018-objectives-ablations-and-versions",
+    ],
+  );
+  assert.ok(versionBoundary?.statement.includes("materially different"));
+  assert.ok(
+    versions
+      .get("devlin-2018-arxiv-v1-version")
+      ?.notes.includes("no SQuAD 2.0 section"),
+  );
+  assert.ok(
+    versions
+      .get("devlin-2019-arxiv-v2-version")
+      ?.notes.includes("technically close to but not byte-identical"),
+  );
+  assert.ok(maskedObjective?.statement.includes("15% of WordPiece positions"));
+  assert.ok(replacement?.statement.includes("[MASK] 80%"));
+  assert.ok(nextSentence?.statement.includes("50% of examples"));
+  assert.ok(results?.statement.includes("82.1 mixed-metric average"));
+  assert.ok(results?.statement.includes("official GLUE score reported in prose is 80.5"));
+  assert.ok(squadV1?.statement.includes("seven-system ensemble plus TriviaQA"));
+  assert.ok(squadV2?.statement.includes("without TriviaQA data"));
+  assert.ok(ablation?.limitations.join(" ").includes("not a compute-matched"));
+  assert.ok(trainingStep?.statement.includes("almost 1.0% additional"));
+  assert.ok(
+    trainingStep?.limitations
+      .join(" ")
+      .includes("percentage points from relative percent"),
+  );
+  assert.ok(codeBoundary?.statement.includes("exact corpus snapshots"));
+  assert.ok(
+    sourceMap
+      .get("acl-2016-plus-rights-policy")
+      ?.versionIds.includes("devlin-2019-naacl-version"),
+  );
+});
+
+test("retains Transformer-XL authorship, locator, mechanism, and pedagogy boundaries", () => {
+  const workId =
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context";
+  const work = corpus.works.find((item) => item.id === workId);
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "dai-2019-version-boundary",
+  );
+  const recurrence = claims.find(
+    (claim) => claim.id === "dai-2019-segment-level-recurrence",
+  );
+  const relativeAttention = claims.find(
+    (claim) => claim.id === "dai-2019-relative-positional-attention",
+  );
+  const relativeShift = claims.find(
+    (claim) => claim.id === "dai-2019-relative-shift-computation",
+  );
+  const shortContextAblation = claims.find(
+    (claim) => claim.id === "dai-2019-short-context-recurrence-ablation",
+  );
+  const generatedText = claims.find(
+    (claim) => claim.id === "dai-2019-generated-text-boundary",
+  );
+  const codeBoundary = claims.find(
+    (claim) => claim.id === "dai-2019-code-and-evidence-boundary",
+  );
+  const expertObjective = objectives.find(
+    (objective) => objective.mode === "expert",
+  );
+  const canonicalAuthors = [
+    "Zihang Dai",
+    "Zhilin Yang",
+    "Yiming Yang",
+    "Jaime Carbonell",
+    "Quoc V. Le",
+    "Ruslan Salakhutdinov",
+  ];
+  const structuralSourceIds = new Set([
+    "dai-2019-arxiv-v1-full-text",
+    "dai-2019-arxiv-v2-full-text",
+    "dai-2019-arxiv-v3-full-text",
+    "dai-2019-acl-supplement",
+  ]);
+  const structuralEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter((evidence) =>
+      structuralSourceIds.has(evidence.sourceId),
+    ),
+  );
+  const printedEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "dai-2019-acl-full-text",
+    ),
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "dai-2019-acl-version");
+  assert.deepEqual(work?.authors, canonicalAuthors);
+  assert.deepEqual(
+    versions.get("dai-2019-arxiv-v1-version")?.authors,
+    [
+      "Zihang Dai",
+      "Zhilin Yang",
+      "Yiming Yang",
+      "William W. Cohen",
+      "Jaime Carbonell",
+      "Quoc V. Le",
+      "Ruslan Salakhutdinov",
+    ],
+  );
+  for (const versionId of [
+    "dai-2019-arxiv-v2-version",
+    "dai-2019-arxiv-v3-version",
+    "dai-2019-acl-version",
+  ]) {
+    assert.deepEqual(versions.get(versionId)?.authors, canonicalAuthors);
+  }
+  assert.ok(
+    versionBoundary?.statement.includes(
+      "v1 lists seven authors including William W. Cohen",
+    ),
+  );
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [
+      ["dai-2019-arxiv-v1-posted", "preprint", "2019-01-09"],
+      ["dai-2019-arxiv-v2-posted", "manuscript-revised", "2019-01-18"],
+      ["dai-2019-arxiv-v3-posted", "manuscript-revised", "2019-06-02"],
+      ["dai-2019-acl-proceedings", "proceedings-publication", "2019-07"],
+    ],
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-arxiv-v1-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-arxiv-v3-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 20 },
+  );
+  assert.deepEqual(
+    sourceMap.get("dai-2019-acl-supplement")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 9 },
+  );
+  assert.deepEqual(sourceMap.get("dai-2019-acl-full-text")?.pagination, {
+    scheme: "printed",
+    pageStart: 2978,
+    pageEnd: 2988,
+  });
+  assert.ok(structuralEvidence.length > 0);
+  for (const evidence of structuralEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "equation", "figure", "table"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  assert.ok(printedEvidence.length > 0);
+  for (const evidence of printedEvidence) {
+    assert.ok(evidence.locator.pageStart >= 2978);
+    assert.ok(evidence.locator.pageEnd <= 2988);
+  }
+  assert.ok(
+    recurrence?.statement.includes("detaches it from the gradient graph"),
+  );
+  assert.ok(relativeAttention?.statement.includes("four terms"));
+  assert.ok(relativeShift?.statement.includes("M+L unique relative-distance"));
+  assert.equal(
+    relativeShift?.evidence.find(
+      (evidence) => evidence.sourceId === "dai-2019-acl-supplement",
+    )?.locator.section,
+    "Appendix B Efficient Computation of the Attention with Relative Positional Embedding",
+  );
+  assert.ok(shortContextAblation?.statement.includes("400,000 training steps"));
+  assert.deepEqual(
+    generatedText?.evidence.map((evidence) => evidence.sourceId),
+    ["dai-2019-arxiv-v3-full-text", "dai-2019-acl-supplement"],
+  );
+  assert.ok(generatedText?.statement.includes("off-target"));
+  assert.ok(
+    sourceMap
+      .get("dai-2019-transformer-xl-code-snapshot")
+      ?.accessNote.includes("preliminary"),
+  );
+  assert.ok(codeBoundary?.statement.includes("checkpoint hashes"));
+  assert.ok(
+    expertObjective?.successCriterion.includes("not exactly reproducible"),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-dai-2019-carry-context-across-segments", "beginner"],
+      [
+        "expert-dai-2019-recurrence-relative-attention-and-evidence",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+});
+
+test("retains GPT-2 report, release, parameter-vocabulary, and pedagogy boundaries", () => {
+  const workId = "radford-2019-language-models-unsupervised-multitask-learners";
+  const work = corpus.works.find((item) => item.id === workId);
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const reportSource = sourceMap.get("radford-2019-openai-report-full-text");
+  const releaseDayCode = sourceMap.get(
+    "radford-2019-gpt2-release-day-code-snapshot",
+  );
+  const correctedCheckpoints = sourceMap.get(
+    "radford-2019-gpt2-corrected-checkpoint-snapshot",
+  );
+  const fullModelRelease = sourceMap.get(
+    "radford-2019-gpt2-full-model-release",
+  );
+  const modelConfigurations = claims.find(
+    (claim) => claim.id === "radford-2019-model-configurations-and-training",
+  );
+  const transferResults = claims.find(
+    (claim) => claim.id === "radford-2019-lambada-cbt-and-winograd-results",
+  );
+  const overlapAnalysis = claims.find(
+    (claim) => claim.id === "radford-2019-overlap-analysis",
+  );
+  const byteBpe = claims.find(
+    (claim) => claim.id === "radford-2019-byte-level-bpe",
+  );
+  const evidenceBoundary = claims.find(
+    (claim) => claim.id === "radford-2019-code-data-and-evidence-boundary",
+  );
+  const reportLabels = ["117M", "345M", "762M", "1542M"];
+  const checkpointLabels = ["124M", "355M", "774M", "1558M"];
+  const checkpointVocabulary = [
+    correctedCheckpoints?.accessNote,
+    fullModelRelease?.accessNote,
+  ].join(" ");
+  const laterReleaseSourceIds = [
+    "radford-2019-gpt2-six-month-follow-up",
+    "radford-2019-gpt2-corrected-checkpoint-snapshot",
+    "radford-2019-gpt2-full-model-release",
+    "solaiman-2019-release-strategies-v2-full-text",
+  ];
+
+  assert.equal(work?.artifactType, "technical-report");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(
+    work?.canonicalVersionId,
+    "radford-2019-openai-report-version",
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [["radford-2019-openai-report-version", "technical-report"]],
+  );
+  assert.equal(
+    work?.chronology.orderingEventId,
+    "radford-2019-openai-report-announced",
+  );
+  assert.ok(
+    work?.chronology.events.every(
+      (event) => event.versionId === "radford-2019-openai-report-version",
+    ),
+  );
+  assert.ok(
+    work?.versions[0]?.notes.includes(
+      "Later checkpoint releases and the separate Release Strategies report are not versions",
+    ),
+  );
+  assert.ok(releaseDayCode?.accessNote.includes("not a new report version"));
+  for (const sourceId of laterReleaseSourceIds) {
+    assert.deepEqual(sourceMap.get(sourceId)?.versionIds, []);
+    assert.equal(work?.versions[0]?.sourceIds.includes(sourceId), false);
+  }
+  assert.deepEqual(reportSource?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 24,
+  });
+  const reportEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "radford-2019-openai-report-full-text",
+    ),
+  );
+  assert.ok(reportEvidence.length > 0);
+  for (const evidence of reportEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "equation", "figure", "table"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  for (const label of reportLabels) {
+    assert.ok(modelConfigurations?.statement.includes(label));
+  }
+  for (const label of checkpointLabels) {
+    assert.equal(modelConfigurations?.statement.includes(label), false);
+    assert.ok(checkpointVocabulary.includes(label));
+  }
+  assert.ok(
+    work?.limitations.some(
+      (limitation) =>
+        reportLabels.every((label) => limitation.includes(label)) &&
+        checkpointLabels.every((label) => limitation.includes(label)),
+    ),
+  );
+  assert.ok(
+    work?.limitations.some(
+      (limitation) =>
+        limitation.includes("non-English pages") &&
+        limitation.includes("subreddit blocklist") &&
+        limitation.includes("must not be backdated"),
+    ),
+  );
+  assert.ok(transferResults?.statement.includes("ten candidate words"));
+  assert.ok(transferResults?.statement.includes("sentence remainder"));
+  assert.ok(transferResults?.statement.includes("stop-word filter"));
+  assert.ok(transferResults?.statement.includes("70.70% under partial scoring"));
+  assert.ok(overlapAnalysis?.statement.includes("six language-model datasets"));
+  assert.ok(overlapAnalysis?.statement.includes("test-set 8-grams"));
+  assert.equal(byteBpe?.statement.includes("mapped reversibly"), false);
+  assert.equal(
+    evidenceBoundary?.evidence[0]?.locator.section,
+    "7 Conclusion, footnote 5; complete report",
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-radford-2019-scale-and-zero-shot-transfer", "beginner"],
+      [
+        "expert-radford-2019-webtext-objectives-results-and-releases",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+});
+
+test("retains XLNet version, locator, result, confound, and pedagogy boundaries", () => {
+  const workId =
+    "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding";
+  const work = corpus.works.find((item) => item.id === workId);
+  const spanIdea = corpus.ideas.find(
+    (idea) => idea.id === "span-based-permutation-targets",
+  );
+  const versions = new Map(work?.versions.map((version) => [version.id, version]));
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const versionBoundary = claims.find(
+    (claim) => claim.id === "yang-2019-version-boundary",
+  );
+  const permutationObjective = claims.find(
+    (claim) => claim.id === "yang-2019-permutation-language-model-objective",
+  );
+  const twoStream = claims.find(
+    (claim) => claim.id === "yang-2019-target-aware-two-stream-attention",
+  );
+  const partialPrediction = claims.find(
+    (claim) => claim.id === "yang-2019-partial-permutation-prediction",
+  );
+  const spanSelection = claims.find(
+    (claim) => claim.id === "yang-2019-span-based-target-selection",
+  );
+  const inputConflict = claims.find(
+    (claim) => claim.id === "yang-2019-input-format-conflict",
+  );
+  const pretraining = claims.find(
+    (claim) => claim.id === "yang-2019-pretraining-data-and-compute",
+  );
+  const fairComparison = claims.find(
+    (claim) => claim.id === "yang-2019-fair-bert-comparison",
+  );
+  const componentAblation = claims.find(
+    (claim) => claim.id === "yang-2019-component-ablation",
+  );
+  const structuralSourceIds = new Set([
+    "yang-2019-arxiv-v1-full-text",
+    "yang-2020-arxiv-v2-full-text",
+    "yang-2019-neurips-supplement",
+  ]);
+  const structuralEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter((evidence) =>
+      structuralSourceIds.has(evidence.sourceId),
+    ),
+  );
+  const canonicalEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "yang-2019-neurips-full-text",
+    ),
+  );
+
+  assert.equal(work?.artifactType, "conference-paper");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "yang-2019-neurips-version");
+  assert.deepEqual(work?.authors, [
+    "Zhilin Yang",
+    "Zihang Dai",
+    "Yiming Yang",
+    "Jaime Carbonell",
+    "Ruslan Salakhutdinov",
+    "Quoc V. Le",
+  ]);
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [
+      ["yang-2019-arxiv-v1-posted", "preprint", "2019-06-19"],
+      ["yang-2019-neurips-proceedings", "proceedings-publication", "2019"],
+      ["yang-2020-arxiv-v2-posted", "manuscript-revised", "2020-01-02"],
+    ],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [version.id, version.kind]),
+    [
+      ["yang-2019-arxiv-v1-version", "preprint"],
+      ["yang-2019-neurips-version", "proceedings"],
+      ["yang-2020-arxiv-v2-version", "preprint"],
+    ],
+  );
+  assert.deepEqual(
+    versions.get("yang-2019-neurips-version")?.bibliography.pages,
+    ["5753-5763"],
+  );
+  assert.ok(
+    versions
+      .get("yang-2019-neurips-version")
+      ?.notes.includes(
+        "current NeurIPS record use Ruslan Salakhutdinov; Metadata.json's structured author is Russ Salakhutdinov; official BibTeX and PDF metadata use Russ R. Salakhutdinov",
+      ),
+  );
+  assert.deepEqual(
+    versions.get("yang-2019-arxiv-v1-version")?.sourceIds,
+    [
+      "yang-2019-arxiv-record",
+      "yang-2019-arxiv-v1-full-text",
+      "yang-2019-xlnet-initial-code-snapshot",
+    ],
+  );
+  assert.deepEqual(versions.get("yang-2019-neurips-version")?.sourceIds, [
+    "yang-2019-neurips-record",
+    "yang-2019-neurips-metadata",
+    "yang-2019-neurips-full-text",
+    "yang-2019-neurips-supplement",
+    "yang-2019-xlnet-final-code-snapshot",
+    "yang-2019-xlnet-pinned-apache-license",
+    "yang-2019-neurips-rights-policy",
+  ]);
+  assert.deepEqual(
+    versions.get("yang-2020-arxiv-v2-version")?.sourceIds,
+    ["yang-2019-arxiv-record", "yang-2020-arxiv-v2-full-text"],
+  );
+  assert.deepEqual(
+    sources.map((source) => [source.id, source.versionIds]),
+    [
+      [
+        "yang-2019-arxiv-record",
+        ["yang-2019-arxiv-v1-version", "yang-2020-arxiv-v2-version"],
+      ],
+      ["yang-2019-arxiv-v1-full-text", ["yang-2019-arxiv-v1-version"]],
+      ["yang-2020-arxiv-v2-full-text", ["yang-2020-arxiv-v2-version"]],
+      ["yang-2019-neurips-record", ["yang-2019-neurips-version"]],
+      ["yang-2019-neurips-metadata", ["yang-2019-neurips-version"]],
+      ["yang-2019-neurips-full-text", ["yang-2019-neurips-version"]],
+      ["yang-2019-neurips-supplement", ["yang-2019-neurips-version"]],
+      [
+        "yang-2019-xlnet-initial-code-snapshot",
+        ["yang-2019-arxiv-v1-version"],
+      ],
+      [
+        "yang-2019-xlnet-final-code-snapshot",
+        ["yang-2019-neurips-version"],
+      ],
+      [
+        "yang-2019-xlnet-pinned-apache-license",
+        ["yang-2019-neurips-version"],
+      ],
+      ["yang-2019-neurips-rights-policy", ["yang-2019-neurips-version"]],
+    ],
+  );
+  assert.equal(claims.length, 15);
+  assert.deepEqual(
+    sourceMap.get("yang-2019-arxiv-v1-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(
+    sourceMap.get("yang-2020-arxiv-v2-full-text")?.pagination,
+    { scheme: "pdf-page", pageStart: 1, pageEnd: 18 },
+  );
+  assert.deepEqual(sourceMap.get("yang-2019-neurips-full-text")?.pagination, {
+    scheme: "article",
+    pageStart: 1,
+    pageEnd: 11,
+  });
+  assert.deepEqual(sourceMap.get("yang-2019-neurips-supplement")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 7,
+  });
+  assert.ok(
+    sourceMap
+      .get("yang-2019-neurips-supplement")
+      ?.accessNote.includes(
+        "visibly continue printed article folios 12–18",
+      ),
+  );
+  assert.ok(structuralEvidence.length > 0);
+  for (const evidence of structuralEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "equation", "figure", "table"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  assert.ok(canonicalEvidence.length > 0);
+  for (const evidence of canonicalEvidence) {
+    assert.ok(evidence.locator.pageStart >= 1);
+    assert.ok(evidence.locator.pageEnd <= 11);
+  }
+  assert.deepEqual(
+    versionBoundary?.evidence.map((evidence) => evidence.sourceId),
+    [
+      "yang-2019-arxiv-v1-full-text",
+      "yang-2019-neurips-full-text",
+      "yang-2020-arxiv-v2-full-text",
+    ],
+  );
+  assert.ok(
+    permutationObjective?.statement.includes(
+      "token sequence and positional encodings remain in natural order",
+    ),
+  );
+  assert.ok(twoStream?.statement.includes("cannot attend to the target content"));
+  assert.ok(partialPrediction?.statement.includes("approximately a 1/K fraction"));
+  assert.equal(
+    spanIdea?.description,
+    "Select contiguous runs of positions as prediction targets inside a wider permutation context, sampling each target span's length while other factorization positions supply context.",
+  );
+  assert.deepEqual(
+    spanSelection?.evidence.find(
+      (evidence) => evidence.sourceId === "yang-2019-neurips-supplement",
+    ),
+    {
+      sourceId: "yang-2019-neurips-supplement",
+      locator: {
+        label: "Canonical pretraining hyperparameters",
+        section: "A.4.1 Pretraining",
+        table: "7",
+      },
+      support: "The supplement tabulates K=6 and associated large-model settings.",
+    },
+  );
+  assert.ok(
+    inputConflict?.statement.includes("places CLS last and left-pads"),
+  );
+  assert.deepEqual(
+    inputConflict?.evidence.map((evidence) => evidence.sourceId),
+    [
+      "yang-2019-neurips-full-text",
+      "yang-2019-arxiv-v1-full-text",
+      "yang-2019-xlnet-final-code-snapshot",
+    ],
+  );
+  assert.equal(
+    inputConflict?.evidence.at(-1)?.locator.section,
+    "classifier_utils.py lines 94–109 and 117–122; data_utils.py lines 480–487",
+  );
+  assert.ok(pretraining?.statement.includes("32.89 billion SentencePiece tokens"));
+  assert.ok(pretraining?.statement.includes("batch 8,192 on 512 TPU v3 chips"));
+  assert.ok(pretraining?.statement.includes("about 5.5 days and remains underfit"));
+  assert.deepEqual(
+    pretraining?.evidence.find(
+      (evidence) => evidence.sourceId === "yang-2019-neurips-supplement",
+    ),
+    {
+      sourceId: "yang-2019-neurips-supplement",
+      locator: {
+        label: "Canonical pretraining hyperparameter table",
+        section: "A.4.1 Pretraining",
+        table: "7",
+      },
+      support:
+        "Table 7 tabulates pretraining model and optimization settings; corpus sizes, hardware, duration, and the underfitting statement remain controlled by main-paper Section 3.1.",
+    },
+  );
+  assert.ok(
+    fairComparison?.statement.includes(
+      "SQuAD 2.0 EM/F1 82.8/85.5 versus 85.1/87.8",
+    ),
+  );
+  assert.ok(fairComparison?.statement.includes("RACE 75.1 versus 77.4"));
+  assert.ok(
+    fairComparison?.limitations
+      .join(" ")
+      .includes("oracle-like best-of-three envelope"),
+  );
+  assert.ok(componentAblation?.statement.includes("No row wins every column"));
+  assert.ok(componentAblation?.statement.includes("adding NSP slightly raises RACE"));
+  assert.ok(
+    componentAblation?.statement.includes(
+      "minus memory 65.55, 80.15/77.27, 85.32/85.05, 92.78",
+    ),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      ["beginner-yang-2019-permute-prediction-not-words", "beginner"],
+      [
+        "expert-yang-2019-objective-streams-memory-and-evidence",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "beginner")
+      ?.successCriterion.includes("factorization order"),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "expert")
+      ?.successCriterion.includes("Tables 1 and 6"),
+  );
+});
+
+test("retains RoBERTa source, result, confound, and pedagogy boundaries", () => {
+  const workId =
+    "liu-2019-roberta-robustly-optimized-bert-pretraining-approach";
+  const work = corpus.works.find((item) => item.id === workId);
+  const packingIdea = corpus.ideas.find(
+    (idea) => idea.id === "nsp-free-full-sentence-packing",
+  );
+  const claims = corpus.claims.filter((claim) => claim.workId === workId);
+  const sources = corpus.sources.filter((source) =>
+    source.relatedWorkIds.includes(workId),
+  );
+  const sourceMap = new Map(sources.map((source) => [source.id, source]));
+  const objectives = corpus.learningObjectives.filter((objective) =>
+    objective.workIds.includes(workId),
+  );
+  const scopeBoundary = claims.find(
+    (claim) => claim.id === "liu-2019-predecessor-and-scope-boundary",
+  );
+  const masking = claims.find(
+    (claim) => claim.id === "liu-2019-static-dynamic-masking-ablation",
+  );
+  const inputAndNsp = claims.find(
+    (claim) => claim.id === "liu-2019-input-format-and-nsp-ablation",
+  );
+  const batch = claims.find(
+    (claim) => claim.id === "liu-2019-large-batch-ablation",
+  );
+  const recipe = claims.find(
+    (claim) => claim.id === "liu-2019-aggregate-roberta-recipe",
+  );
+  const accumulation = claims.find(
+    (claim) => claim.id === "liu-2019-data-and-duration-accumulation",
+  );
+  const glue = claims.find((claim) => claim.id === "liu-2019-glue-results");
+  const squad = claims.find((claim) => claim.id === "liu-2019-squad-results");
+  const race = claims.find((claim) => claim.id === "liu-2019-race-results");
+  const releaseBoundary = claims.find(
+    (claim) => claim.id === "liu-2019-release-and-reconstruction-boundary",
+  );
+  const paperEvidence = claims.flatMap((claim) =>
+    claim.evidence.filter(
+      (evidence) => evidence.sourceId === "liu-2019-arxiv-v1-full-text",
+    ),
+  );
+  const sourceIds = [
+    "liu-2019-arxiv-record",
+    "liu-2019-arxiv-v1-full-text",
+    "liu-2019-fairseq-initial-roberta-snapshot",
+    "liu-2019-fairseq-initial-roberta-readme",
+    "liu-2019-fairseq-initial-rights",
+  ];
+
+  assert.equal(work?.artifactType, "preprint");
+  assert.equal(work?.inclusion.status, "core");
+  assert.equal(work?.canonicalVersionId, "liu-2019-arxiv-v1-version");
+  assert.deepEqual(
+    work?.chronology.events.map((event) => [
+      event.id,
+      event.kind,
+      event.date.value,
+    ]),
+    [["liu-2019-arxiv-v1-posted", "preprint", "2019-07-26"]],
+  );
+  assert.deepEqual(
+    work?.versions.map((version) => [
+      version.id,
+      version.kind,
+      version.bibliography.pages,
+      version.bibliography.identifiers.map((identifier) => identifier.value),
+    ]),
+    [
+      [
+        "liu-2019-arxiv-v1-version",
+        "preprint",
+        [],
+        ["1907.11692v1", "10.48550/arXiv.1907.11692"],
+      ],
+    ],
+  );
+  assert.deepEqual(work?.versions[0]?.sourceIds, sourceIds);
+  assert.deepEqual(sources.map((source) => source.id), sourceIds);
+  for (const source of sources) {
+    assert.deepEqual(source.versionIds, ["liu-2019-arxiv-v1-version"]);
+  }
+  assert.ok(
+    sourceMap
+      .get("liu-2019-fairseq-initial-rights")
+      ?.accessNote.includes(
+        "separate patent grant whose definition of Software is fairseq software",
+      ),
+  );
+  assert.equal(claims.length, 13);
+  assert.deepEqual(sourceMap.get("liu-2019-arxiv-v1-full-text")?.pagination, {
+    scheme: "pdf-page",
+    pageStart: 1,
+    pageEnd: 13,
+  });
+  assert.ok(paperEvidence.length > 0);
+  for (const evidence of paperEvidence) {
+    assert.equal("pageStart" in evidence.locator, false);
+    assert.equal("pageEnd" in evidence.locator, false);
+    assert.ok(
+      ["section", "table", "paragraph"].some(
+        (key) => key in evidence.locator,
+      ),
+    );
+  }
+  assert.ok(scopeBoundary?.statement.includes("BERT replication and optimization study"));
+  assert.ok(masking?.statement.includes("SQuAD 2.0 F1 78.3/78.7"));
+  assert.ok(masking?.statement.includes("MNLI-m 84.3/84.0"));
+  assert.ok(
+    masking?.limitations.join(" ").includes("not uniformly more accurate"),
+  );
+  assert.ok(
+    inputAndNsp?.statement.includes("Document-sentences is strongest overall"),
+  );
+  assert.ok(
+    inputAndNsp?.statement.includes("90.6/79.7, 84.7, 92.7, 65.6"),
+  );
+  assert.ok(inputAndNsp?.statement.includes("may cross document boundaries"));
+  assert.ok(
+    inputAndNsp?.limitations.join(" ").includes("does not isolate the loss alone"),
+  );
+  assert.ok(batch?.statement.includes("2K×125K gives 3.68, 85.2, 92.9"));
+  assert.ok(batch?.statement.includes("larger batches are not monotonically better"));
+  assert.ok(
+    batch?.limitations.join(" ").includes("partly an engineering choice"),
+  );
+  assert.ok(recipe?.statement.includes("FULL-SENTENCES packing without NSP"));
+  assert.ok(recipe?.statement.includes("at most 500K steps"));
+  assert.ok(
+    accumulation?.statement.includes(
+      "93.6/87.3→94.0/87.7→94.4/88.7→94.6/89.4",
+    ),
+  );
+  assert.ok(
+    accumulation?.statement.includes(
+      "BERT-Large comparator uses 13GB, batch 256, and one million steps",
+    ),
+  );
+  assert.ok(
+    accumulation?.statement.includes(
+      "SQuAD 90.9/81.8, MNLI 86.6, and SST-2 93.7",
+    ),
+  );
+  assert.ok(
+    accumulation?.limitations.join(" ").includes("not a factorial attribution study"),
+  );
+  assert.ok(glue?.statement.includes("ensemble of 5–7 models"));
+  assert.ok(glue?.statement.includes("and average 88.5"));
+  assert.ok(squad?.statement.includes("88.9 EM/94.6 F1"));
+  assert.ok(squad?.statement.includes("86.8/89.8"));
+  assert.ok(race?.statement.includes("83.2 overall, 86.5 middle, and 81.3 high"));
+  assert.ok(releaseBoundary?.statement.includes("initial pretraining documentation was incomplete"));
+  assert.ok(
+    releaseBoundary?.evidence
+      .find((evidence) => evidence.sourceId === "liu-2019-fairseq-initial-rights")
+      ?.support.includes("separate patent grant defines Software as fairseq software"),
+  );
+  assert.ok(
+    releaseBoundary?.limitations
+      .join(" ")
+      .includes("separate patent grant is software-scoped"),
+  );
+  assert.ok(
+    packingIdea?.description.includes("training blocks of at most 512 tokens"),
+  );
+  assert.deepEqual(
+    objectives.map((objective) => [objective.id, objective.mode]),
+    [
+      [
+        "beginner-liu-2019-training-recipe-not-new-architecture",
+        "beginner",
+      ],
+      [
+        "expert-liu-2019-ablations-scaling-and-evidence-boundaries",
+        "expert",
+      ],
+    ],
+  );
+  assert.ok(
+    objectives.every(
+      (objective) =>
+        objective.workIds.length === 1 && objective.workIds[0] === workId,
+    ),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "beginner")
+      ?.successCriterion.includes("cannot be assigned to one switch"),
+  );
+  assert.ok(
+    objectives
+      .find((objective) => objective.mode === "expert")
+      ?.successCriterion.includes("NSP/packing confound"),
+  );
+});
+
+test("keeps XLNet and RoBERTa convergence lineage evidence-scoped", () => {
+  const transformerId = "vaswani-2017-attention-is-all-you-need";
+  const bertId = "devlin-2018-bert-pre-training-deep-bidirectional-transformers";
+  const transformerXlId =
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context";
+  const gpt2Id = "radford-2019-language-models-unsupervised-multitask-learners";
+  const xlnetId =
+    "yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding";
+  const robertaId =
+    "liu-2019-roberta-robustly-optimized-bert-pretraining-approach";
+  const chronologicalWorkIds = [
+    bertId,
+    transformerXlId,
+    gpt2Id,
+    xlnetId,
+    robertaId,
+  ];
+  const expectedEdges = [
+    {
+      id: "dai-2019-to-yang-2019",
+      fromId: transformerXlId,
+      toId: xlnetId,
+      connectionType: "extends",
+      claimIds: [
+        "dai-2019-segment-level-recurrence",
+        "dai-2019-relative-positional-attention",
+        "yang-2019-transformer-xl-integration",
+        "yang-2019-permutation-language-model-objective",
+      ],
+      sourceId: "yang-2019-neurips-full-text",
+      locator: {
+        label: "Target-side Transformer-XL integration",
+        section: "1 Introduction; 2.4 Incorporating Ideas from Transformer-XL",
+        pageStart: 1,
+        pageEnd: 5,
+      },
+    },
+    {
+      id: "devlin-2018-to-yang-2019",
+      fromId: bertId,
+      toId: xlnetId,
+      connectionType: "addresses",
+      claimIds: [
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-masking-replacement-procedure",
+        "devlin-2018-full-parameter-task-adaptation",
+        "yang-2019-permutation-language-model-objective",
+        "yang-2019-fair-bert-comparison",
+      ],
+      sourceId: "yang-2019-neurips-full-text",
+      locator: {
+        label: "Target-side BERT critique, continuity, and comparison",
+        section:
+          "1 Introduction; 2.1 Background; 2.6 Discussion; 3.1 Pretraining and Implementation; 3.2 Fair Comparison with BERT",
+        pageStart: 1,
+        pageEnd: 7,
+        table: "1",
+      },
+    },
+    {
+      id: "vaswani-2017-to-yang-2019",
+      fromId: transformerId,
+      toId: xlnetId,
+      connectionType: "builds-on",
+      claimIds: [
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-positionwise-computation",
+        "yang-2019-target-aware-two-stream-attention",
+      ],
+      sourceId: "yang-2019-neurips-full-text",
+      locator: {
+        label: "Target-side Transformer attention reparameterization",
+        section: "2.1 Background; 2.3 Architecture",
+        pageStart: 2,
+        pageEnd: 5,
+        figure: "1",
+      },
+    },
+    {
+      id: "devlin-2018-to-liu-2019",
+      fromId: bertId,
+      toId: robertaId,
+      connectionType: "extends",
+      claimIds: [
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-masked-language-model-objective",
+        "devlin-2018-next-sentence-prediction-objective",
+        "devlin-2018-pretraining-optimization-and-length-schedule",
+        "devlin-2018-full-parameter-task-adaptation",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-static-dynamic-masking-ablation",
+        "liu-2019-input-format-and-nsp-ablation",
+      ],
+      sourceId: "liu-2019-arxiv-v1-full-text",
+      locator: {
+        label: "Target-side BERT replication and recipe changes",
+        section:
+          "1 Introduction; 2 Background; 4 Training Procedure Analysis; 5 RoBERTa",
+        table: "1–4",
+      },
+    },
+    {
+      id: "vaswani-2017-to-liu-2019",
+      fromId: transformerId,
+      toId: robertaId,
+      connectionType: "builds-on",
+      claimIds: [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "liu-2019-predecessor-and-scope-boundary",
+        "liu-2019-aggregate-roberta-recipe",
+      ],
+      sourceId: "liu-2019-arxiv-v1-full-text",
+      locator: {
+        label: "Target-side Transformer encoder continuity",
+        section: "2.2 Architecture; 5 RoBERTa",
+      },
+    },
+    {
+      id: "radford-2019-to-liu-2019",
+      fromId: gpt2Id,
+      toId: robertaId,
+      connectionType: "builds-on",
+      claimIds: [
+        "radford-2019-byte-level-bpe",
+        "liu-2019-byte-level-bpe-choice",
+      ],
+      sourceId: "liu-2019-arxiv-v1-full-text",
+      locator: {
+        label: "Target-side byte-level BPE inheritance",
+        section: "4.4 Text Encoding",
+      },
+    },
+  ];
+  const targetIds = new Set([xlnetId, robertaId]);
+  const relationships = corpus.relationships.filter((relationship) =>
+    targetIds.has(relationship.to.id),
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => chronologicalWorkIds.includes(work.id))
+      .map((work) => work.id),
+    chronologicalWorkIds,
+  );
+  assert.deepEqual(
+    relationships.map((relationship) => [
+      relationship.id,
+      relationship.from.kind,
+      relationship.from.id,
+      relationship.to.kind,
+      relationship.to.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.confidence,
+      relationship.causalLanguage,
+    ]),
+    expectedEdges.map((edge) => [
+      edge.id,
+      "work",
+      edge.fromId,
+      "work",
+      edge.toId,
+      edge.connectionType,
+      "documented-influence",
+      "high",
+      "qualified",
+    ]),
+  );
+  for (const [index, relationship] of relationships.entries()) {
+    const expected = expectedEdges[index];
+    assert.deepEqual(relationship.claimIds, expected.claimIds);
+    assert.deepEqual(
+      relationship.sourceEvidence.map((evidence) => [
+        evidence.sourceId,
+        evidence.locator,
+      ]),
+      [[expected.sourceId, expected.locator]],
+    );
+    assert.deepEqual(
+      new Set(
+        relationship.claimIds.map(
+          (claimId) =>
+            corpus.claims.find((claim) => claim.id === claimId)?.workId,
+        ),
+      ),
+      new Set([relationship.from.id, relationship.to.id]),
+    );
+    assert.ok(
+      corpus.sources
+        .find((source) => source.id === expected.sourceId)
+        ?.relatedWorkIds.includes(relationship.to.id),
+    );
+  }
+  assert.deepEqual(
+    corpus.relationships.filter(
+      (relationship) =>
+        relationship.from.id === xlnetId && relationship.to.id === robertaId,
+    ),
+    [],
+  );
+});
+
+test("keeps post-BERT Transformer-XL and GPT-2 lineage evidence-scoped", () => {
+  const bertId = "devlin-2018-bert-pre-training-deep-bidirectional-transformers";
+  const transformerId = "vaswani-2017-attention-is-all-you-need";
+  const gptId =
+    "radford-2018-improving-language-understanding-generative-pre-training";
+  const transformerXlId =
+    "dai-2019-transformer-xl-attentive-language-models-beyond-fixed-length-context";
+  const gpt2Id = "radford-2019-language-models-unsupervised-multitask-learners";
+  const chronologicalWorkIds = [bertId, transformerXlId, gpt2Id];
+  const expectedEdges = [
+    [
+      "vaswani-2017-to-dai-2019",
+      transformerId,
+      transformerXlId,
+      "extends",
+      "dai-2019-acl-full-text",
+    ],
+    [
+      "radford-2018-to-radford-2019",
+      gptId,
+      gpt2Id,
+      "extends",
+      "radford-2019-openai-report-full-text",
+    ],
+    [
+      "vaswani-2017-to-radford-2019",
+      transformerId,
+      gpt2Id,
+      "builds-on",
+      "radford-2019-openai-report-full-text",
+    ],
+  ];
+  const edges = expectedEdges.map(([id]) =>
+    corpus.relationships.find((relationship) => relationship.id === id),
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => chronologicalWorkIds.includes(work.id))
+      .map((work) => work.id),
+    chronologicalWorkIds,
+  );
+  assert.deepEqual(
+    edges.map((relationship) => [
+      relationship.id,
+      relationship.from.id,
+      relationship.to.id,
+      relationship.connectionType,
+    ]),
+    expectedEdges.map(([id, fromId, toId, connectionType]) => [
+      id,
+      fromId,
+      toId,
+      connectionType,
+    ]),
+  );
+  for (const [index, relationship] of edges.entries()) {
+    assert.ok(relationship);
+    assert.equal(relationship.evidenceClass, "documented-influence");
+    assert.equal(relationship.confidence, "high");
+    assert.equal(relationship.causalLanguage, "qualified");
+    assert.ok(
+      relationship.sourceEvidence.some(
+        (evidence) => evidence.sourceId === expectedEdges[index][4],
+      ),
+    );
+    assert.deepEqual(
+      new Set(
+        relationship.claimIds.map(
+          (claimId) =>
+            corpus.claims.find((claim) => claim.id === claimId)?.workId,
+        ),
+      ),
+      new Set([relationship.from.id, relationship.to.id]),
+    );
+    for (const evidence of relationship.sourceEvidence) {
+      assert.ok(
+        corpus.sources
+          .find((source) => source.id === evidence.sourceId)
+          ?.relatedWorkIds.includes(relationship.to.id),
+      );
+    }
+  }
+  assert.deepEqual(
+    corpus.relationships.filter(
+      (relationship) =>
+        relationship.from.id === transformerXlId &&
+        [bertId, gpt2Id].includes(relationship.to.id),
+    ),
+    [],
+  );
+});
+
+test("keeps the contextual-transfer to Transformer-pretraining lineage scoped", () => {
+  const workIds = [
+    "vaswani-2017-attention-is-all-you-need",
+    "peters-2017-deep-contextualized-word-representations",
+    "howard-ruder-2018-universal-language-model-fine-tuning",
+    "radford-2018-improving-language-understanding-generative-pre-training",
+    "devlin-2018-bert-pre-training-deep-bidirectional-transformers",
+  ];
+  const expectedEdges = [
+    [
+      "vaswani-2017-to-radford-2018",
+      "builds-on",
+      "documented-influence",
+      "high",
+      "qualified",
+      "radford-2018-openai-preprint-full-text",
+    ],
+    [
+      "peters-2017-to-radford-2018",
+      "addresses",
+      "documented-influence",
+      "high",
+      "prohibited",
+      "radford-2018-openai-preprint-full-text",
+    ],
+    [
+      "howard-ruder-2018-to-radford-2018",
+      "extends",
+      "documented-influence",
+      "high",
+      "qualified",
+      "radford-2018-openai-preprint-full-text",
+    ],
+    [
+      "vaswani-2017-to-devlin-2018",
+      "builds-on",
+      "documented-influence",
+      "high",
+      "qualified",
+      "devlin-2019-naacl-full-text",
+    ],
+    [
+      "radford-2018-to-devlin-2018",
+      "builds-on",
+      "documented-influence",
+      "high",
+      "qualified",
+      "devlin-2019-naacl-full-text",
+    ],
+    [
+      "peters-2017-to-devlin-2018",
+      "addresses",
+      "documented-influence",
+      "high",
+      "prohibited",
+      "devlin-2019-naacl-full-text",
+    ],
+  ];
+  const edgeIds = new Set(expectedEdges.map(([id]) => id));
+  const expectedClaimIds = new Map([
+    [
+      "vaswani-2017-to-radford-2018",
+      [
+        "vaswani-2017-attention-routes-and-causal-mask",
+        "vaswani-2017-multi-head-attention",
+        "vaswani-2017-positionwise-computation",
+        "radford-2018-decoder-only-transformer-architecture",
+        "radford-2018-transformer-antecedent-boundary",
+      ],
+    ],
+    [
+      "peters-2017-to-radford-2018",
+      [
+        "peters-2017-task-specific-layer-mixture",
+        "peters-2017-frozen-feature-transfer",
+        "radford-2018-task-aware-input-transformations",
+        "radford-2018-elmo-contrast",
+      ],
+    ],
+    [
+      "howard-ruder-2018-to-radford-2018",
+      [
+        "howard-ruder-2018-three-stage-transfer",
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-ulmfit-relationship",
+      ],
+    ],
+    [
+      "vaswani-2017-to-devlin-2018",
+      [
+        "vaswani-2017-encoder-decoder-architecture",
+        "vaswani-2017-multi-head-attention",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+      ],
+    ],
+    [
+      "radford-2018-to-devlin-2018",
+      [
+        "radford-2018-two-stage-generative-transfer",
+        "radford-2018-decoder-only-transformer-architecture",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation",
+      ],
+    ],
+    [
+      "peters-2017-to-devlin-2018",
+      [
+        "peters-2017-bidirectional-lm-objectives",
+        "peters-2017-contextual-representation-family",
+        "peters-2017-frozen-feature-transfer",
+        "devlin-2018-predecessor-and-scope-boundary",
+        "devlin-2018-transformer-encoder-and-model-scales",
+        "devlin-2018-full-parameter-task-adaptation",
+      ],
+    ],
+  ]);
+  const edges = corpus.relationships.filter((relationship) =>
+    edgeIds.has(relationship.id),
+  );
+
+  assert.deepEqual(
+    corpus.works
+      .filter((work) => workIds.includes(work.id))
+      .map((work) => work.id),
+    workIds,
+  );
+  assert.deepEqual(
+    edges.map((relationship) => [
+      relationship.id,
+      relationship.connectionType,
+      relationship.evidenceClass,
+      relationship.confidence,
+      relationship.causalLanguage,
+      ...new Set(
+        relationship.sourceEvidence.map((evidence) => evidence.sourceId),
+      ),
+    ]),
+    expectedEdges,
+  );
+  for (const relationship of edges) {
+    assert.deepEqual(
+      relationship.claimIds,
+      expectedClaimIds.get(relationship.id),
+    );
+    const endpointWorkIds = new Set(
+      relationship.claimIds.map(
+        (claimId) => corpus.claims.find((claim) => claim.id === claimId)?.workId,
+      ),
+    );
+    assert.ok(endpointWorkIds.has(relationship.from.id));
+    assert.ok(endpointWorkIds.has(relationship.to.id));
+  }
+  assert.ok(historicalScope.includes("Transformer pretraining fork"));
+  assert.ok(historicalScope.includes("target-documented comparison"));
+  assert.ok(historicalScope.includes("Every one of these edges includes target-side"));
 });
 
 test("keeps the 2014 encoder-decoder branches concurrent and noncausal", () => {

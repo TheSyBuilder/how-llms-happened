@@ -1,0 +1,36 @@
+---
+import type { JourneyOverview, Mode } from "../lib/site-data";
+
+interface Props {
+  journey: JourneyOverview;
+  currentSlug?: string;
+  mode?: Mode;
+  compact?: boolean;
+}
+
+const { journey, currentSlug, mode, compact = false } = Astro.props;
+---
+
+<ol class:list={["journey-map", { "journey-map--compact": compact }]} aria-label="Smoothing journey stages">
+  {journey.stages.map((stage) => {
+    const isCurrent = stage.slug === currentSlug;
+    const href = mode && stage.status === "built"
+      ? `/journeys/${journey.slug}/${mode}/${stage.slug}/`
+      : undefined;
+    return (
+      <li class:list={[{ "is-current": isCurrent, "is-planned": stage.status === "planned" }]}>
+        <span class="journey-index" aria-hidden="true">{String(stage.position).padStart(2, "0")}</span>
+        <div>
+          <p class="journey-date">{stage.work.chronologyDate.slice(0, 4)}</p>
+          {href ? (
+            <a href={href} aria-current={isCurrent ? "step" : undefined}>{stage.work.title}</a>
+          ) : (
+            <strong>{stage.work.title}</strong>
+          )}
+          {!compact && <p>{stage.contribution}</p>}
+          {stage.status === "planned" && <span class="status-label">Chapter queued</span>}
+        </div>
+      </li>
+    );
+  })}
+</ol>

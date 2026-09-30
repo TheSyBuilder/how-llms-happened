@@ -1,0 +1,55 @@
+---
+import "katex/dist/katex.min.css";
+import "../styles/global.css";
+
+import { getCorpusSummary } from "../lib/site-data";
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+}
+
+const { title, description, eyebrow = "LLM Lineage" } = Astro.props;
+const corpus = getCorpusSummary();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3efe5" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="LLM Lineage home">
+        <span class="brand-mark" aria-hidden="true">LL</span>
+        <span>
+          <strong>LLM Lineage</strong>
+          <small>{eyebrow}</small>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="/journeys/smoothing/">Learning journey</a>
+        <a href="/reference/works/katz-1987-sparse-data/">Katz source record</a>
+      </nav>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <strong>One factual corpus, two ways to learn.</strong>
+        <p>Historical claims remain attached to version-labelled evidence.</p>
+      </div>
+      <p class="corpus-stamp">
+        Corpus {corpus.schemaVersion} · {corpus.workCount} works · {corpus.claimCount} claims ·
+        checked through {corpus.asOf}
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,554 @@
+{
+  "$schema": "../../schemas/journey.schema.json",
+  "id": "recurrent-memory",
+  "slug": "recurrent-memory",
+  "title": "From carried state to gated word models",
+  "question": "What must a network carry, protect, reset, and expose to use earlier words?",
+  "estimatedMinutes": {
+    "beginner": 34,
+    "expert": 58
+  },
+  "stages": [
+    {
+      "slug": "elman-1988-1990",
+      "workId": "elman-1988-finding-structure-in-time",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-elman-1988-predictive-memory",
+        "expert": "expert-elman-1988-recurrent-state-and-evidence"
+      },
+      "contribution": {
+        "text": "Copy the previous hidden activation into context so the current representation depends on prior inputs.",
+        "claimIds": [
+          "elman-1990-simple-recurrent-context",
+          "elman-1990-task-dependent-memory"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-elman-carry",
+            "kind": "explanation",
+            "heading": "Carry a state, not a word list",
+            "body": "Elman's context units copy the previous hidden activation. The copied activation and current input jointly shape the next hidden state, so memory is part of ongoing processing rather than a separate fixed window.",
+            "claimIds": ["elman-1990-simple-recurrent-context", "elman-1990-task-dependent-memory"]
+          },
+          {
+            "id": "beginner-elman-same-token",
+            "kind": "prompt",
+            "heading": "Predict before revealing the trace",
+            "body": "Two histories end on the same abstract token. Decide whether their current states must match, then inspect the copied context and resulting state in the synthetic trace.",
+            "claimIds": ["elman-1990-contextual-token-representations"]
+          },
+          {
+            "id": "beginner-elman-prediction",
+            "kind": "explanation",
+            "heading": "Prediction pressure organizes state",
+            "body": "The article trains its networks to predict the next item and inspects how hidden activity reflects lexical and sequential regularities without supplied category labels.",
+            "claimIds": ["elman-1990-next-word-prediction-setup", "elman-1990-emergent-lexical-classes"]
+          },
+          {
+            "id": "beginner-elman-boundary",
+            "kind": "limitation",
+            "heading": "Carried state is not unlimited memory",
+            "body": "Repeated nonlinear updates can decay earlier information, and the displayed outputs are not a normalized next-word distribution. The trace shows history dependence, not long-context language competence.",
+            "claimIds": ["elman-1990-memory-boundary", "elman-1990-successor-likelihood-fit"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-elman-copy-versus-transform",
+            "kind": "equation",
+            "heading": "Separate the fixed copy from the learned transform",
+            "body": "The one-to-one hidden-to-context links have fixed weight 1.0; context-to-hidden and input-to-hidden paths remain trainable. The atlas teaching recurrence is a reconstruction, not a compact equation printed by Elman.",
+            "claimIds": ["elman-1990-jordan-attribution", "elman-1990-simple-recurrent-context"]
+          },
+          {
+            "id": "expert-elman-state-evidence",
+            "kind": "comparison",
+            "heading": "Audit types, tokens, and averaging",
+            "body": "Contextual token states can cluster by lexical regularity, but the article also checks the averaging artifact and a novel-word context test. Those inspections do not turn each coordinate into a stable semantic feature.",
+            "claimIds": ["elman-1990-emergent-lexical-classes", "elman-1990-contextual-token-representations", "elman-1990-clustering-artifact-check", "elman-1990-novel-word-context-test"]
+          },
+          {
+            "id": "expert-elman-output",
+            "kind": "result",
+            "heading": "Keep the output metric unnormalized",
+            "body": "The word experiment fits successor-likelihood vectors with squared error and reports RMS and cosine evidence. It does not define a vocabulary softmax or sentence likelihood.",
+            "claimIds": ["elman-1990-next-word-prediction-setup", "elman-1990-successor-likelihood-fit"]
+          },
+          {
+            "id": "expert-elman-credit-boundary",
+            "kind": "limitation",
+            "heading": "Forward recurrence is not full temporal credit",
+            "body": "The previous activation affects the next forward state, but current-step output error updates the trainable paths locally. Keep that training boundary and the paper's numerical and dynamical memory limits visible.",
+            "claimIds": ["elman-1990-simple-recurrent-context", "elman-1990-memory-boundary"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "hochreiter-schmidhuber-1995-1997",
+      "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-hochreiter-schmidhuber-1995-gated-memory",
+        "expert": "expert-hochreiter-schmidhuber-1995-mechanism-and-evidence"
+      },
+      "contribution": {
+        "text": "Protect a unit-weight recurrent cell path and learn separate controls for writing and exposing state.",
+        "claimIds": [
+          "hochreiter-schmidhuber-1997-constant-error-carousel",
+          "hochreiter-schmidhuber-1997-input-output-gates"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-lstm-credit-problem",
+            "kind": "comparison",
+            "heading": "A state can survive while its teaching signal fades",
+            "body": "An ordinary recurrent path repeatedly scales a backward teaching signal. The protected cell path isolates a unit local factor so the direct cell contribution does not decay or explode at every step.",
+            "claimIds": ["hochreiter-schmidhuber-1997-vanishing-exploding-error", "hochreiter-schmidhuber-1997-constant-error-carousel"]
+          },
+          {
+            "id": "beginner-lstm-write-expose",
+            "kind": "explanation",
+            "heading": "Write and expose are different decisions",
+            "body": "The input gate controls whether a candidate changes the protected state. The output gate controls whether that state affects the rest of the network.",
+            "claimIds": ["hochreiter-schmidhuber-1997-input-output-gates"]
+          },
+          {
+            "id": "beginner-lstm-original-boundary",
+            "kind": "limitation",
+            "heading": "The original cell has two gates",
+            "body": "This stage has input and output gates, a fixed self-loop, and no learned forget gate or cell-state-to-gate peepholes. Its long-delay evidence comes from synthetic tasks.",
+            "claimIds": ["hochreiter-schmidhuber-1997-long-lag-experimental-scope", "hochreiter-schmidhuber-1997-original-cell-domain-boundary"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-lstm-temporal-product",
+            "kind": "equation",
+            "heading": "Compare repeated temporal factors",
+            "body": "The paper's analysis writes distant error as a product of local temporal derivatives. The synthetic ledger shows only a scalar path term and never labels it the complete Jacobian or parameter gradient.",
+            "claimIds": ["hochreiter-schmidhuber-1997-vanishing-exploding-error"]
+          },
+          {
+            "id": "expert-lstm-cec",
+            "kind": "equation",
+            "heading": "Trace the constant-error carousel",
+            "body": "The source cell uses a linear internal state with a fixed unit self-connection; input and output gate activations scale access around that path. Source symbols and the neutral ledger remain side by side.",
+            "claimIds": ["hochreiter-schmidhuber-1997-constant-error-carousel", "hochreiter-schmidhuber-1997-input-output-gates"]
+          },
+          {
+            "id": "expert-lstm-truncation",
+            "kind": "equation",
+            "heading": "Mark every truncation boundary",
+            "body": "The efficient source algorithm preserves recurrent error inside cells while cutting specified outgoing paths from cells and gates. It is not exact full-gradient backpropagation through the complete network.",
+            "claimIds": ["hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm"]
+          },
+          {
+            "id": "expert-lstm-evidence",
+            "kind": "limitation",
+            "heading": "Keep mechanism and benchmark scope separate",
+            "body": "The long-lag experiments are synthetic and retain delayed-XOR, parity, counting, capacity, drift, cost, and parameter-overhead limitations. Later gates cannot be imported to repair those boundaries retroactively.",
+            "claimIds": ["hochreiter-schmidhuber-1997-long-lag-experimental-scope", "hochreiter-schmidhuber-1997-original-cell-domain-boundary"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "gers-1999-2000",
+      "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-gers-1999-adaptive-forgetting",
+        "expert": "expert-gers-1999-mechanism-versions-and-evidence"
+      },
+      "contribution": {
+        "text": "Replace the fixed state-retention self-weight with a learned forget gate for continual streams.",
+        "claimIds": [
+          "gers-2000-continual-state-drift-problem",
+          "gers-2000-forget-gate-mechanism"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-forget-drift",
+            "kind": "explanation",
+            "heading": "A protected accumulator still needs boundaries",
+            "body": "On an unsegmented stream, repeated additions can drive the original state away from a useful range. A fixed decay loses arbitrary-delay retention, while a teacher-supplied reset assumes known boundaries.",
+            "claimIds": ["gers-2000-continual-state-drift-problem"]
+          },
+          {
+            "id": "beginner-forget-presets",
+            "kind": "prompt",
+            "heading": "Predict retained activation",
+            "body": "Keep the previous state and candidate write fixed while choosing near-retain, gradual-decay, or near-reset. The gate changes activation retention, not the learned weights.",
+            "claimIds": ["gers-2000-forget-gate-mechanism"]
+          },
+          {
+            "id": "beginner-forget-evidence",
+            "kind": "result",
+            "heading": "Read learned reset inside its task",
+            "body": "The paper compares external and learned resets on continual embedded Reber grammar and tests a continual N-bit temporal-order task. These are synthetic sequence families, not language-model results.",
+            "claimIds": ["gers-2000-cerg-results", "gers-2000-cerg-self-reset-analysis", "gers-2000-cnto-results"]
+          },
+          {
+            "id": "beginner-forget-boundary",
+            "kind": "limitation",
+            "heading": "Do not confuse state reset with parameter forgetting",
+            "body": "The mechanism changes carried activation. It does not erase learned weights or establish a result about catastrophic forgetting, natural language, or unknown real-world boundaries.",
+            "claimIds": ["gers-2000-noncontinual-memory-control", "gers-2000-evidence-boundary"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-forget-recurrence",
+            "kind": "equation",
+            "heading": "Replace the unit self-weight",
+            "body": "Journal equations 6–7 multiply the previous cell state by the block-shared forget-gate activation before adding the input-gated candidate. The crosswalk preserves the source's scalar block notation.",
+            "claimIds": ["gers-2000-continual-state-drift-problem", "gers-2000-forget-gate-mechanism"]
+          },
+          {
+            "id": "expert-forget-learning",
+            "kind": "equation",
+            "heading": "Keep the journal eligibility trace version-bound",
+            "body": "Positive bias initializes near standard LSTM; the truncated trace carries through the forget gate and resets with state. The February report prints a different derivative term, so the displayed rule stays journal-bound.",
+            "claimIds": ["gers-2000-forget-gate-learning-and-complexity"]
+          },
+          {
+            "id": "expert-forget-protocol",
+            "kind": "result",
+            "heading": "Audit both continual protocols",
+            "body": "Keep the CERG protocol, external-reset comparison, learned self-reset behavior, noncontinual control, and CNTO results tied to their stated topologies, trial counts, and version differences.",
+            "claimIds": ["gers-2000-cerg-protocol", "gers-2000-cerg-results", "gers-2000-cerg-self-reset-analysis", "gers-2000-noncontinual-memory-control", "gers-2000-cnto-results"]
+          },
+          {
+            "id": "expert-forget-scope",
+            "kind": "limitation",
+            "heading": "Synthetic reset evidence stays synthetic",
+            "body": "The work provides no released code, learned parameters, uncertainty estimates, optimized topology study, or natural-language evaluation. Peepholes remain absent.",
+            "claimIds": ["gers-2000-evidence-boundary"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "gers-2002",
+      "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-gers-2002-peephole-timing",
+        "expert": "expert-gers-2002-peephole-mechanism-and-evidence"
+      },
+      "contribution": {
+        "text": "Let input, forget, and output gates inspect protected cell state through weighted peephole links.",
+        "claimIds": [
+          "gers-2002-peephole-motivation",
+          "gers-2002-peephole-mechanism"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-peephole-hidden-timer",
+            "kind": "explanation",
+            "heading": "A closed output can hide the timer",
+            "body": "Traditional gates can see exposed cell output, but a closed output gate hides the protected internal state. The 2002 extension gives each gate a direct weighted read of that state.",
+            "claimIds": ["gers-2002-peephole-motivation"]
+          },
+          {
+            "id": "beginner-peephole-order",
+            "kind": "prompt",
+            "heading": "Inspect, update, then inspect again",
+            "body": "Input and forget gates inspect the previous state; the cell updates; then the output gate inspects the new state. A peephole changes what a gate can see, not the meaning of the forget multiplier.",
+            "claimIds": ["gers-2002-forget-gate-antecedent", "gers-2002-peephole-mechanism"]
+          },
+          {
+            "id": "beginner-peephole-evidence",
+            "kind": "result",
+            "heading": "Timing evidence is narrower than language",
+            "body": "The paper studies measuring and generating delays with one-cell synthetic timing tasks, including an ablation after training. Those results do not establish language-model gains.",
+            "claimIds": ["gers-2002-gts-results-and-ablation", "gers-2002-pfg-results", "gers-2002-evidence-boundary"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-peephole-antecedent",
+            "kind": "lineage",
+            "heading": "Begin from the forget-gated baseline",
+            "body": "The 2002 paper explicitly inherits the 2000 forget-gate recurrence. Its new contribution is cell-state-to-gate visibility, not another retention operator.",
+            "claimIds": ["gers-2002-forget-gate-antecedent", "gers-2002-peephole-motivation"]
+          },
+          {
+            "id": "expert-peephole-equations",
+            "kind": "equation",
+            "heading": "Preserve equations 19–21 and update order",
+            "body": "Input and forget gate preactivations include weighted s_c(t−1); output-gate preactivation includes weighted s_c(t). The neutral fixture mirrors only that ordering and labels its numbers synthetic.",
+            "claimIds": ["gers-2002-peephole-mechanism"]
+          },
+          {
+            "id": "expert-peephole-learning",
+            "kind": "equation",
+            "heading": "Keep truncated learning separate",
+            "body": "Equations 22–26 add peephole partials and weight updates without propagating gate error back through those links into the constant-error carousel. Three added weights per cell do not mean zero overhead.",
+            "claimIds": ["gers-2002-peephole-learning-boundary"]
+          },
+          {
+            "id": "expert-peephole-results",
+            "kind": "result",
+            "heading": "Audit timing results and ablations",
+            "body": "Keep MSD, GTS, PFG, topology, threshold, and post-training-gate-removal evidence distinct. Removing a trained gate is not the same experiment as training without it.",
+            "claimIds": ["gers-2002-msd-results", "gers-2002-gts-results-and-ablation", "gers-2002-pfg-results", "gers-2002-evidence-boundary"]
+          },
+          {
+            "id": "expert-peephole-limits",
+            "kind": "limitation",
+            "heading": "Do not generalize a one-cell timer",
+            "body": "The source itself retains memory-capacity, solution-complexity, and truncation limits. The synthetic protocols have no ordinary-RNN control or natural-language benchmark.",
+            "claimIds": ["gers-2002-evidence-boundary", "gers-2002-lstm-limitations"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "mikolov-2010",
+      "workId": "mikolov-2010-recurrent-neural-language-model",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-mikolov-2010-recurrent-word-prediction",
+        "expert": "expert-mikolov-2010-model-and-evidence"
+      },
+      "contribution": {
+        "text": "Combine Elman-style recurrent state with a normalized next-word distribution at speech-recognition scale.",
+        "claimIds": [
+          "mikolov-2010-fixed-window-motivation",
+          "mikolov-2010-elman-recurrent-architecture"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-mikolov-convergence",
+            "kind": "comparison",
+            "heading": "Replace the explicit window with carried state",
+            "body": "Mikolov names Bengio's fixed input window as a limitation and combines the current word with the previous recurrent state before producing a normalized next-word distribution.",
+            "claimIds": ["mikolov-2010-fixed-window-motivation", "mikolov-2010-elman-recurrent-architecture"]
+          },
+          {
+            "id": "beginner-mikolov-adaptation",
+            "kind": "explanation",
+            "heading": "Separate model state from test-time learning",
+            "body": "The recurrent state updates on every token. Dynamic adaptation is a different mechanism that changes model parameters during evaluation.",
+            "claimIds": ["mikolov-2010-dynamic-adaptation"]
+          },
+          {
+            "id": "beginner-mikolov-results",
+            "kind": "result",
+            "heading": "Name every result component",
+            "body": "Reported gains can involve one recurrent model, model ensembles, count-model interpolation, or online adaptation. The page keeps those configurations explicit.",
+            "claimIds": ["mikolov-2010-wsj-scaling-results", "mikolov-2010-wsj-ensemble-results"]
+          },
+          {
+            "id": "beginner-mikolov-boundary",
+            "kind": "limitation",
+            "heading": "Recurrence does not guarantee long usable context",
+            "body": "The conclusion says truly long context was not captured. The main experiments also send credit backward only one temporal step even though forward state continues recurrently.",
+            "claimIds": ["mikolov-2010-long-context-and-evidence-boundary", "mikolov-2010-truncated-bptt-boundary"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-mikolov-equations",
+            "kind": "equation",
+            "heading": "Reconstruct equations 1–6",
+            "body": "Map the current one-hot word and previous state into x(t), update the sigmoid state s(t), and normalize y(t) over the next-word vocabulary. Preserve the paper's concatenation prose despite equation 1's printed plus sign.",
+            "claimIds": ["mikolov-2010-elman-recurrent-architecture", "mikolov-2010-training-objective"]
+          },
+          {
+            "id": "expert-mikolov-credit",
+            "kind": "comparison",
+            "heading": "Show forward recurrence and depth-one credit together",
+            "body": "The state recurrence can carry earlier activation while the reported training procedure propagates only current-step error. Neither row is evidence for the other.",
+            "claimIds": ["mikolov-2010-truncated-bptt-boundary", "mikolov-2010-long-context-and-evidence-boundary"]
+          },
+          {
+            "id": "expert-mikolov-output-details",
+            "kind": "equation",
+            "heading": "Keep rare-word and adaptation rules explicit",
+            "body": "Equation 7 allocates probability inside the rare-word class, while dynamic adaptation applies test-time stochastic-gradient updates. Both are outside the recurrent-memory fixture.",
+            "claimIds": ["mikolov-2010-rare-word-probability", "mikolov-2010-dynamic-adaptation", "mikolov-2010-training-cost-comparison"]
+          },
+          {
+            "id": "expert-mikolov-results",
+            "kind": "result",
+            "heading": "Audit every mixture and dataset boundary",
+            "body": "Keep WSJ scale, ensemble, cross-data, and RT05 rows separate, including off-table perplexity 112 and the 16.3 value followed by footnote 4. No interactive control spans them.",
+            "claimIds": ["mikolov-2010-wsj-evaluation-scope", "mikolov-2010-wsj-scaling-results", "mikolov-2010-wsj-ensemble-results", "mikolov-2010-wsj-cross-data-results", "mikolov-2010-rt05-evaluation-results"]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "sundermeyer-2012",
+      "workId": "sundermeyer-2012-lstm-language-model",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-sundermeyer-2012-gated-language-memory",
+        "expert": "expert-sundermeyer-2012-model-and-evidence"
+      },
+      "contribution": {
+        "text": "Join a composite input/output/forget/peephole cell to normalized word prediction while keeping count-model interpolation visible.",
+        "claimIds": [
+          "sundermeyer-2012-lstm-antecedent-and-variant",
+          "sundermeyer-2012-language-model-objective"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-sundermeyer-composite",
+            "kind": "lineage",
+            "heading": "Assemble a later composite cell",
+            "body": "The 2012 model combines the original protected cell and input/output gates with the later forget gate and later state-to-gate links. That composite must not be projected backward into 1997.",
+            "claimIds": ["sundermeyer-2012-lstm-antecedent-and-variant", "sundermeyer-2012-memory-cell-mechanism"]
+          },
+          {
+            "id": "beginner-sundermeyer-word-model",
+            "kind": "explanation",
+            "heading": "Turn gated state into next-word probability",
+            "body": "The paper contrasts fixed-order histories with a recurrent route, then maps a one-hot word input through recurrent memory to a normalized next-word softmax under a cross-entropy objective.",
+            "claimIds": ["sundermeyer-2012-full-history-motivation", "sundermeyer-2012-language-model-objective"]
+          },
+          {
+            "id": "beginner-sundermeyer-evidence",
+            "kind": "result",
+            "heading": "Longer available context is not always better",
+            "body": "The tested LSTM improves on the matched sigmoid recurrent baseline, but concatenating more sentences eventually worsens perplexity and output grouping trades quality against speed.",
+            "claimIds": ["sundermeyer-2012-rnn-lstm-perplexity", "sundermeyer-2012-long-context-results", "sundermeyer-2012-output-clustering-results"]
+          },
+          {
+            "id": "beginner-sundermeyer-mixture",
+            "kind": "limitation",
+            "heading": "The recognition result is a mixture result",
+            "body": "The French speech-recognition system interpolates the LSTM model with a much larger Kneser–Ney model. The 0.5- and 0.3-point changes are not standalone neural-model scores.",
+            "claimIds": ["sundermeyer-2012-french-wer-results", "sundermeyer-2012-conclusion-scope"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-sundermeyer-variant-audit",
+            "kind": "lineage",
+            "heading": "Assign each visible mechanism to its source",
+            "body": "The target collectively cites the two later modifications. Cross-source comparison resolves adaptive forgetting to reference 12 and weighted state-to-gate links to reference 13 without claiming equation-level identity.",
+            "claimIds": ["sundermeyer-2012-lstm-antecedent-and-variant", "sundermeyer-2012-memory-cell-mechanism"]
+          },
+          {
+            "id": "expert-sundermeyer-objective",
+            "kind": "equation",
+            "heading": "Reconstruct the word objective, not an omitted cell equation",
+            "body": "The paper specifies one-hot word input, softmax cross-entropy, optional projection, and class-factored output. Its cell section omits extensive equations, so a compact modern vector cell remains labelled reconstruction.",
+            "claimIds": ["sundermeyer-2012-full-history-motivation", "sundermeyer-2012-language-model-objective", "sundermeyer-2012-input-normalization", "sundermeyer-2012-projection-and-class-factorization"]
+          },
+          {
+            "id": "expert-sundermeyer-protocol",
+            "kind": "result",
+            "heading": "Preserve graph-only and corpus uncertainty",
+            "body": "Keep Penn Treebank and French splits, matched-parameter recurrent comparisons, projection, long-context, and output-clustering findings tied to their plotted or tabulated evidence.",
+            "claimIds": ["sundermeyer-2012-corpus-splits", "sundermeyer-2012-rnn-lstm-perplexity", "sundermeyer-2012-projection-results", "sundermeyer-2012-long-context-results", "sundermeyer-2012-output-clustering-results"]
+          },
+          {
+            "id": "expert-sundermeyer-asr",
+            "kind": "result",
+            "heading": "Separate LSTM, Kneser–Ney, and interpolation",
+            "body": "The 1,000-best French setup combines a 27-million-word LSTM with a Kneser–Ney model trained on more than four billion words. Both WER rows remain static and component-labelled.",
+            "claimIds": ["sundermeyer-2012-french-asr-setup", "sundermeyer-2012-french-wer-results"]
+          },
+          {
+            "id": "expert-sundermeyer-boundary",
+            "kind": "limitation",
+            "heading": "The four-page paper is not a run package",
+            "body": "Core comparisons are graph-only and lack uncertainty; the article omits optimizer, unrolling depth, seeds, and other settings needed for exact reconstruction. The conclusion remains correspondingly narrow.",
+            "claimIds": ["sundermeyer-2012-evidence-reproducibility-boundary", "sundermeyer-2012-conclusion-scope"]
+          }
+        ]
+      }
+    }
+  ],
+  "interludes": [
+    {
+      "id": "bengio-fixed-window-prerequisite",
+      "kind": "prerequisite",
+      "placement": "before",
+      "stageSlug": "mikolov-2010",
+      "title": "What the recurrent word model changes",
+      "workIds": ["bengio-2000-neural-probabilistic-language-model"],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-bengio-static-window",
+            "kind": "comparison",
+            "heading": "Static word rows inside a fixed window",
+            "body": "Bengio's evaluated model looks up one learned row for each of the previous n−1 word types, concatenates those rows, and uses a feed-forward network plus softmax. The rows do not change with token history, and the model is not recurrent.",
+            "claimIds": ["bengio-2003-fixed-window-factorization", "bengio-2003-feedforward-softmax-architecture"]
+          },
+          {
+            "id": "beginner-bengio-future-recurrence",
+            "kind": "limitation",
+            "heading": "Recurrence remains future work",
+            "body": "The framework permits recurrent implementations, but the main experiments use the finite feed-forward window. This panel supplies normalized neural word probability, not carried state.",
+            "claimIds": ["bengio-2003-recurrent-future-boundary"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-bengio-fixed-factorization",
+            "kind": "equation",
+            "heading": "Audit C, x, H, U, W, and y",
+            "body": "C supplies static word-feature rows; x concatenates n−1 rows; y = b + Wx + U tanh(d + Hx) supplies vocabulary scores before softmax. The direct path is optional and recurrence is absent from the evaluated form.",
+            "claimIds": ["bengio-2003-fixed-window-factorization", "bengio-2003-feedforward-softmax-architecture"]
+          },
+          {
+            "id": "expert-bengio-recurrent-boundary",
+            "kind": "limitation",
+            "heading": "Do not transfer Elman's recurrence through the citation",
+            "body": "Bengio cites learned distributed symbolic representations while keeping one static row per word and a fixed window. Recurrent and paragraph-level contexts remain proposed extensions.",
+            "claimIds": ["bengio-2003-recurrent-future-boundary"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "smoothing-to-sundermeyer-bridge",
+      "kind": "bridge",
+      "placement": "before",
+      "stageSlug": "sundermeyer-2012",
+      "title": "The count model remains in the reported system",
+      "relatedJourneyId": "smoothing",
+      "workIds": ["sundermeyer-2012-lstm-language-model"],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-smoothing-return",
+            "kind": "comparison",
+            "heading": "Return to Kneser–Ney before reading the WER row",
+            "body": "The completed smoothing journey explains the count model in the French recognition mixture. Sundermeyer's paper combines that model with the LSTM score; it does not report the recognition change as a replacement of smoothing.",
+            "claimIds": ["sundermeyer-2012-french-asr-setup", "sundermeyer-2012-french-wer-results"]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-smoothing-return",
+            "kind": "comparison",
+            "heading": "Keep component scale and interpolation explicit",
+            "body": "The French setup interpolates a 300-cell LSTM trained on 27 million in-domain words with a Kneser–Ney model trained on more than four billion words, then rescoring 1,000-best hypotheses. No synthetic control links their weights or corpora.",
+            "claimIds": ["sundermeyer-2012-french-asr-setup", "sundermeyer-2012-french-wer-results"]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/journey.schema.json",
+  "title": "LLM Lineage journey manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "slug", "title", "question", "estimatedMinutes", "stages"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string", "minLength": 1 },
+    "question": { "type": "string", "minLength": 1 },
+    "estimatedMinutes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["beginner", "expert"],
+      "properties": {
+        "beginner": { "type": "integer", "minimum": 1 },
+        "expert": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slug", "workId", "status", "objectiveIds", "contribution", "blocks"],
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "workId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "status": { "enum": ["built", "planned"] },
+          "objectiveIds": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["beginner", "expert"],
+            "properties": {
+              "beginner": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+              "expert": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+            }
+          },
+          "contribution": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["text", "claimIds"],
+            "properties": {
+              "text": { "type": "string", "minLength": 1 },
+              "claimIds": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+              }
+            }
+          },
+          "blocks": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["beginner", "expert"],
+            "properties": {
+              "beginner": { "$ref": "#/$defs/blocks" },
+              "expert": { "$ref": "#/$defs/blocks" }
+            }
+          }
+        }
+      }
+    },
+    "interludes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/interlude" }
+    }
+  },
+  "$defs": {
+    "interlude": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "placement", "stageSlug", "title", "workIds", "blocks"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "kind": { "enum": ["prerequisite", "bridge"] },
+        "placement": { "enum": ["before", "after"] },
+        "stageSlug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "relatedJourneyId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "workIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "blocks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["beginner", "expert"],
+          "properties": {
+            "beginner": { "$ref": "#/$defs/blocks" },
+            "expert": { "$ref": "#/$defs/blocks" }
+          }
+        }
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "heading", "body", "claimIds"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "kind": {
+            "enum": ["instruction", "prompt", "navigation", "explanation", "comparison", "equation", "result", "limitation", "lineage"]
+          },
+          "heading": { "type": "string", "minLength": 1 },
+          "body": { "type": "string", "minLength": 1 },
+          "claimIds": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+          }
+        }
+      }
+    }
+  }
+}

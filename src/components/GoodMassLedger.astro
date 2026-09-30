@@ -1,0 +1,106 @@
+---
+import type { GoodFixture, Mode } from "../lib/site-data";
+
+interface Props {
+  fixture: GoodFixture;
+  mode: Mode;
+}
+
+const { fixture, mode } = Astro.props;
+const groupedCounts = [...new Set(fixture.observedTypes.map((item) => item.count))]
+  .sort((left, right) => left - right)
+  .map((count) => ({
+    count,
+    types: fixture.observedTypes.filter((item) => item.count === count),
+  }));
+const percent = (value: number) => `${Math.round(value * 100)}%`;
+---
+
+<section class:list={["mass-ledger", `mass-ledger--${mode}`]} aria-labelledby="mass-ledger-title">
+  <header class="ledger-header">
+    <div>
+      <p class="kicker">{fixture.label}</p>
+      <h2 id="mass-ledger-title">Count what appeared once</h2>
+    </div>
+    <p class="ledger-folio">Fixture 01 · no paper result reproduced</p>
+  </header>
+
+  <div class="ledger-prompt">
+    <p><strong>Before calculating:</strong> with three one-time types among twelve observations, would you reserve closer to 5%, 25%, or 50% for unseen types?</p>
+  </div>
+
+  <div class="ledger-grid">
+    <div class="ledger-table-wrap">
+      <table>
+        <caption>Observed synthetic types and counts</caption>
+        <thead>
+          <tr><th scope="col">Type</th><th scope="col">Count</th><th scope="col">Class</th></tr>
+        </thead>
+        <tbody>
+          {fixture.observedTypes.map((item) => (
+            <tr class:list={[{ singleton: item.count === 1 }]}>
+              <th scope="row">{item.label}</th>
+              <td>{item.count}</td>
+              <td>{item.count === 1 ? "singleton" : "seen repeatedly"}</td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr><th scope="row">N · observations</th><td>{fixture.expected.sampleSize}</td><td>sample total</td></tr>
+          <tr><th scope="row">n₁ · singleton types</th><td>{fixture.expected.singletonTypes}</td><td>types, not tokens</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="mass-account" aria-label="Estimated represented and unseen probability mass">
+      <p class="account-label">Approximate probability ledger</p>
+      <div class="mass-bar" role="img" aria-label={`${percent(fixture.expected.representedMass)} represented mass and ${percent(fixture.expected.unseenMass)} unseen reserve`}>
+        <span class="mass-represented" style={`--mass: ${fixture.expected.representedMass}`}></span>
+        <span class="mass-unseen" style={`--mass: ${fixture.expected.unseenMass}`}></span>
+      </div>
+      <dl class="mass-values">
+        <div>
+          <dt><span class="swatch swatch--represented"></span> Represented</dt>
+          <dd>{percent(fixture.expected.representedMass)}</dd>
+        </div>
+        <div>
+          <dt><span class="swatch swatch--unseen"></span> Unseen reserve</dt>
+          <dd>{percent(fixture.expected.unseenMass)}</dd>
+        </div>
+        <div class="mass-total">
+          <dt>Total</dt>
+          <dd>100%</dd>
+        </div>
+      </dl>
+      <div class="ledger-calculation">
+        <p><span>Unseen mass</span><strong>n₁ / N = 3 / 12 = 0.25</strong></p>
+        <p><span>Represented mass</span><strong>1 − n₁ / N = 0.75</strong></p>
+      </div>
+    </div>
+  </div>
+
+  {mode === "expert" && (
+    <div class="frequency-register">
+      <h3>Frequency-of-frequencies register</h3>
+      <table>
+        <caption>How many types occur at each observed frequency</caption>
+        <thead><tr><th scope="col">r</th><th scope="col">nᵣ</th><th scope="col">Types</th></tr></thead>
+        <tbody>
+          {groupedCounts.map((group) => (
+            <tr>
+              <th scope="row">{group.count}</th>
+              <td>{group.types.length}</td>
+              <td>{group.types.map((item) => item.label).join(", ")}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="register-note">This raw toy sequence makes n₁/N inspectable. Good's adjusted-count relation requires the nᵣ sequence to be smoothed; the page does not substitute this sparse table for that procedure.</p>
+    </div>
+  )}
+
+  <details class="checkpoint">
+    <summary>Check the prediction</summary>
+    <p>The estimate is <strong>25%</strong>. Three types occur once in a sample of twelve, so n₁/N = 3/12. The important boundary is what the number does <em>not</em> decide: it does not tell a conditional language model which unseen continuation should receive that reserve.</p>
+  </details>
+</section>

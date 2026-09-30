@@ -1,0 +1,103 @@
+{
+  "$schema": "../../schemas/katz-fixture.schema.json",
+  "id": "katz-probability-mass",
+  "kind": "katz-probability-mass",
+  "label": "Synthetic example",
+  "description": "Reviewed toy conditional distributions for tracing Katz hard backoff without reproducing the paper's speech-recognition experiment.",
+  "representedClaimIds": [
+    "katz-1987-history-reserved-mass",
+    "katz-1987-lower-order-allocation",
+    "katz-1987-recursive-backoff",
+    "katz-1987-zero-estimate-gate",
+    "katz-1987-count-threshold"
+  ],
+  "scenarios": [
+    {
+      "id": "rare-continuation",
+      "label": "One frequent, one rare",
+      "description": "The frequent continuation is above k and keeps its raw count; the rarer continuation is discounted, creating a reserve for two unseen continuations.",
+      "prompt": "Which continuations receive probability from the lower-order distribution: the seen pair, the unseen pair, or all four?",
+      "modes": ["beginner", "expert"],
+      "history": "the model",
+      "historyCount": 10,
+      "cutoffK": 5,
+      "continuations": [
+        { "label": "learned", "higherOrderCount": 6, "discountedCount": 6, "lowerOrderProbability": 0.4 },
+        { "label": "failed", "higherOrderCount": 4, "discountedCount": 3, "lowerOrderProbability": 0.1 },
+        { "label": "improved", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.3 },
+        { "label": "today", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.2 }
+      ],
+      "expected": {
+        "branch": "observed-history",
+        "reservedMass": 0.1,
+        "eligibleLowerOrderMass": 0.5,
+        "alpha": 0.2,
+        "finalProbabilities": [
+          { "label": "learned", "probability": 0.6 },
+          { "label": "failed", "probability": 0.3 },
+          { "label": "improved", "probability": 0.06 },
+          { "label": "today", "probability": 0.04 }
+        ],
+        "total": 1
+      }
+    },
+    {
+      "id": "narrow-eligible-set",
+      "label": "Three seen, one unseen",
+      "description": "Several low counts are discounted, but only one continuation is eligible for backoff; alpha therefore rescales a small lower-order slice to fill the reserve.",
+      "prompt": "If only one continuation has a zero higher-order estimate, which row can receive the whole reserved pool?",
+      "modes": ["beginner", "expert"],
+      "history": "the system",
+      "historyCount": 8,
+      "cutoffK": 5,
+      "continuations": [
+        { "label": "runs", "higherOrderCount": 5, "discountedCount": 4.5, "lowerOrderProbability": 0.5 },
+        { "label": "learns", "higherOrderCount": 2, "discountedCount": 1, "lowerOrderProbability": 0.25 },
+        { "label": "fails", "higherOrderCount": 1, "discountedCount": 0.5, "lowerOrderProbability": 0.15 },
+        { "label": "adapts", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.1 }
+      ],
+      "expected": {
+        "branch": "observed-history",
+        "reservedMass": 0.25,
+        "eligibleLowerOrderMass": 0.1,
+        "alpha": 2.5,
+        "finalProbabilities": [
+          { "label": "runs", "probability": 0.5625 },
+          { "label": "learns", "probability": 0.125 },
+          { "label": "fails", "probability": 0.0625 },
+          { "label": "adapts", "probability": 0.25 }
+        ],
+        "total": 1
+      }
+    },
+    {
+      "id": "unseen-history",
+      "label": "History absent",
+      "description": "The complete conditioning history has zero count, so the estimator drops its oldest word and uses the already-defined lower-order distribution directly.",
+      "prompt": "When the conditioning history itself is unseen, does Katz compute a history-specific alpha or drop to the lower-order estimator?",
+      "modes": ["expert"],
+      "history": "when models adapt",
+      "historyCount": 0,
+      "cutoffK": 5,
+      "continuations": [
+        { "label": "quickly", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.45 },
+        { "label": "well", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.25 },
+        { "label": "online", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.2 },
+        { "label": "again", "higherOrderCount": 0, "discountedCount": 0, "lowerOrderProbability": 0.1 }
+      ],
+      "expected": {
+        "branch": "unseen-history",
+        "reservedMass": null,
+        "eligibleLowerOrderMass": 1,
+        "alpha": null,
+        "finalProbabilities": [
+          { "label": "quickly", "probability": 0.45 },
+          { "label": "well", "probability": 0.25 },
+          { "label": "online", "probability": 0.2 },
+          { "label": "again", "probability": 0.1 }
+        ],
+        "total": 1
+      }
+    }
+  ]
+}

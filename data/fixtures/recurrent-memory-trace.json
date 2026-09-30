@@ -1,0 +1,166 @@
+{
+  "$schema": "../../schemas/recurrent-memory-fixture.schema.json",
+  "id": "synthetic-recurrent-state-and-credit",
+  "kind": "recurrent-memory-trace",
+  "label": "Synthetic example",
+  "description": "Four reviewed scalar teaching traces isolate carried state, a protected local credit path, adaptive retention, and state-to-gate inspection. They reproduce no paper task, learned unit, parameter set, or empirical result.",
+  "representedClaimIds": [
+    "elman-1990-simple-recurrent-context",
+    "elman-1990-task-dependent-memory",
+    "elman-1990-contextual-token-representations",
+    "elman-1990-memory-boundary",
+    "hochreiter-schmidhuber-1997-vanishing-exploding-error",
+    "hochreiter-schmidhuber-1997-constant-error-carousel",
+    "hochreiter-schmidhuber-1997-input-output-gates",
+    "hochreiter-schmidhuber-1997-local-truncated-gradient-algorithm",
+    "hochreiter-schmidhuber-1997-original-cell-domain-boundary",
+    "gers-2000-continual-state-drift-problem",
+    "gers-2000-forget-gate-mechanism",
+    "gers-2000-forget-gate-learning-and-complexity",
+    "gers-2000-evidence-boundary",
+    "gers-2002-forget-gate-antecedent",
+    "gers-2002-peephole-motivation",
+    "gers-2002-peephole-mechanism",
+    "gers-2002-peephole-learning-boundary",
+    "gers-2002-evidence-boundary"
+  ],
+  "representedObjectiveIds": [
+    "beginner-elman-1988-predictive-memory",
+    "expert-elman-1988-recurrent-state-and-evidence",
+    "beginner-hochreiter-schmidhuber-1995-gated-memory",
+    "expert-hochreiter-schmidhuber-1995-mechanism-and-evidence",
+    "beginner-gers-1999-adaptive-forgetting",
+    "expert-gers-1999-mechanism-versions-and-evidence",
+    "beginner-gers-2002-peephole-timing",
+    "expert-gers-2002-peephole-mechanism-and-evidence"
+  ],
+  "scenarios": [
+    {
+      "id": "same-token-two-histories",
+      "kind": "elman-history-contrast",
+      "label": "Same token, different carried state",
+      "description": "Two abstract token histories end on the same token. A neutral scalar recurrence makes the different copied contexts inspectable without assigning a meaning to the coordinate or reproducing Elman's trained network.",
+      "prompt": "Before revealing the final column, will the shared token produce the same state after both histories?",
+      "modes": ["beginner", "expert"],
+      "sourceStage": "elman-1988-1990",
+      "activeStep": 2,
+      "initialState": 0.5,
+      "inputWeight": 1.1,
+      "recurrentWeight": 0.8,
+      "bias": -0.35,
+      "histories": [
+        { "id": "history-a", "label": "History A", "tokens": ["A", "B", "turn"], "inputs": [0.8, -0.4, 0.25] },
+        { "id": "history-b", "label": "History B", "tokens": ["C", "D", "turn"], "inputs": [-0.7, 0.6, 0.25] }
+      ],
+      "expected": {
+        "histories": [
+          { "id": "history-a", "states": [0.7170752854929726, 0.4461250188050347, 0.5700119762565691] },
+          { "id": "history-b", "states": [0.32739298293223956, 0.6392047923585145, 0.6073922649040893] }
+        ]
+      }
+    },
+    {
+      "id": "protected-credit-path",
+      "kind": "original-cell-credit",
+      "label": "Protected local path",
+      "description": "An original input/output-gated teaching cell carries state on a unit self-loop while a separate ordinary credit row multiplies four authored local factors. The protected row is only the scoped direct cell path, not a complete Jacobian or gradient.",
+      "prompt": "Which row describes forward activation, and which row describes a backward teaching path?",
+      "modes": ["beginner", "expert"],
+      "sourceStage": "hochreiter-schmidhuber-1995-1997",
+      "initialState": 0.4,
+      "ordinaryLocalFactors": [0.6, 0.6, 0.6, 0.6],
+      "protectedLocalFactors": [1, 1, 1, 1],
+      "steps": [
+        { "token": "mark", "candidate": 0.3, "inputGate": 1, "outputGate": 0 },
+        { "token": "wait-1", "candidate": -0.2, "inputGate": 0, "outputGate": 0 },
+        { "token": "wait-2", "candidate": 0.4, "inputGate": 0, "outputGate": 0 },
+        { "token": "read", "candidate": 0, "inputGate": 0, "outputGate": 1 }
+      ],
+      "expected": {
+        "steps": [
+          { "previousState": 0.4, "writtenContribution": 0.3, "state": 0.7, "exposedOutput": 0 },
+          { "previousState": 0.7, "writtenContribution": 0, "state": 0.7, "exposedOutput": 0 },
+          { "previousState": 0.7, "writtenContribution": 0, "state": 0.7, "exposedOutput": 0 },
+          { "previousState": 0.7, "writtenContribution": 0, "state": 0.7, "exposedOutput": 0.6043677771171636 }
+        ],
+        "credit": [
+          { "distanceFromTarget": 0, "ordinaryPath": 1, "protectedPath": 1 },
+          { "distanceFromTarget": 1, "ordinaryPath": 0.6, "protectedPath": 1 },
+          { "distanceFromTarget": 2, "ordinaryPath": 0.36, "protectedPath": 1 },
+          { "distanceFromTarget": 3, "ordinaryPath": 0.216, "protectedPath": 1 },
+          { "distanceFromTarget": 4, "ordinaryPath": 0.1296, "protectedPath": 1 }
+        ]
+      }
+    },
+    {
+      "id": "unmarked-boundary",
+      "kind": "forget-retention",
+      "label": "One write, three retention presets",
+      "description": "The previous activation and input-gated write remain fixed. Only the authored forget-gate preset changes, isolating retention from writing and from learned parameters.",
+      "prompt": "Which preset keeps most of the previous activation before the same write is added?",
+      "modes": ["beginner", "expert"],
+      "sourceStage": "gers-1999-2000",
+      "previousState": 0.8,
+      "candidate": 0.25,
+      "inputGate": 0.8,
+      "presets": [
+        { "id": "near-retain", "label": "Near retain", "forgetGate": 0.9 },
+        { "id": "gradual-decay", "label": "Gradual decay", "forgetGate": 0.5 },
+        { "id": "near-reset", "label": "Near reset", "forgetGate": 0.1 }
+      ],
+      "expected": {
+        "inputGatedWrite": 0.2,
+        "presets": [
+          { "id": "near-retain", "retainedContribution": 0.7200000000000001, "resultingState": 0.9200000000000002 },
+          { "id": "gradual-decay", "retainedContribution": 0.4, "resultingState": 0.6000000000000001 },
+          { "id": "near-reset", "retainedContribution": 0.08000000000000002, "resultingState": 0.28 }
+        ]
+      }
+    },
+    {
+      "id": "hidden-timer",
+      "kind": "peephole-inspection",
+      "label": "State-to-gate inspection order",
+      "description": "The comparison holds external gate inputs and the candidate fixed. Peepholes add weighted state terms to gate decisions; they do not add a second retention multiplier or reproduce a trained timer.",
+      "prompt": "Which gates inspect the previous state, and which gate waits for the updated state?",
+      "modes": ["beginner", "expert"],
+      "sourceStage": "gers-2002",
+      "parameters": {
+        "previousState": 0.6,
+        "candidate": 0.4,
+        "inputExternal": -0.2,
+        "forgetExternal": 0.4,
+        "outputExternal": -0.3,
+        "inputPeepholeWeight": 0.5,
+        "forgetPeepholeWeight": -0.25,
+        "outputPeepholeWeight": 0.75
+      },
+      "expected": {
+        "withoutPeepholes": {
+          "inputInspectedState": null,
+          "forgetInspectedState": null,
+          "outputInspectedState": null,
+          "inputGate": 0.45016600268752216,
+          "forgetGate": 0.598687660112452,
+          "inputGatedWrite": 0.18006640107500888,
+          "retainedContribution": 0.3592125960674712,
+          "state": 0.5392789971424801,
+          "outputGate": 0.425557483188341,
+          "exposedOutput": 0.20956237827242177
+        },
+        "withPeepholes": {
+          "inputInspectedState": 0.6,
+          "forgetInspectedState": 0.6,
+          "outputInspectedState": 0.5472975755230548,
+          "inputGate": 0.5249791874789399,
+          "forgetGate": 0.5621765008857981,
+          "inputGatedWrite": 0.20999167499157598,
+          "retainedContribution": 0.33730590053147885,
+          "state": 0.5472975755230548,
+          "outputGate": 0.5275902410966593,
+          "exposedOutput": 0.26299954665831127
+        }
+      }
+    }
+  ]
+}

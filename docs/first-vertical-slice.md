@@ -1,13 +1,13 @@
 # First vertical slice
 
-The future first vertical slice is reserved for the classical smoothing sequence:
+The first vertical slice covers the classical smoothing sequence:
 
 1. I. J. Good’s 1953 frequency-of-frequencies treatment as a short context and attribution prelude.
 2. Katz’s 1987 recursive backoff estimator as the first full paper experience.
 3. Kneser and Ney’s 1995 context-diversity fallback distribution.
 4. Chen and Goodman’s 1998 expanded study of interpolation and count-dependent discounts, with the 1999 journal article retained as a companion version.
 
-This is a scope decision, not permission to begin interface implementation. Every interaction still has to pass the project’s [interaction gate](editorial-method.md#interaction-gate), and the beginner and expert paths still need a product-architecture review.
+This is the selected scope for the first implementation milestone. The slice’s [interaction language](interaction-language.md) passes the project’s [interaction gate](editorial-method.md#interaction-gate) with two accepted briefs, and its [product architecture](product-architecture.md) now defines the complete beginner and expert journeys, evidence system, visual roles, content boundary, technical approach, and implementation gates.
 
 ## Why this sequence goes first
 
@@ -28,15 +28,14 @@ The recurrent-memory sequence is not rejected. Its carried state, temporal credi
 
 Starting with smoothing therefore reduces simultaneous factual, pedagogical, and interface variables while still exercising the atlas’s core requirements: distinct beginner and expert paths, source-level evidence, equations, uncertainty, and a cause-and-effect interaction whose value must be demonstrated.
 
-## Remaining gates
+## Implementation gate
 
-No interaction has been accepted by this decision. Before implementation, the selected slice still requires:
+The interaction review accepts a probability-mass ledger and a context-coverage lens. It also rejects an empirical-result scrubber, an unrestricted smoothing formula playground, and automatic probability-flow animation. The product architecture requires implementation to preserve:
 
-- an inspiration audit and a written necessity test against prose and static diagrams;
-- exact claim and learning-objective anchors for every accepted interaction;
-- beginner and expert behavior that differs in pedagogy and controls, not only text density;
-- keyboard, screen-reader, reduced-motion, mobile, and performance acceptance criteria;
-- misconception safeguards, especially for Good–Turing attribution, hard backoff versus interpolation, and original versus modified Kneser–Ney;
-- a final reduced instructional claim set that preserves the papers’ empirical limits.
+- separate, shareable beginner and expert routes around the same claim IDs;
+- build-time evidence binding and mode-neutral work records;
+- the warm technical ledger visual system and source-inspection behavior;
+- static narrative, evidence, and before/after treatments when JavaScript is unavailable;
+- keyboard, screen-reader, reduced-motion, mobile, performance, rights, and factual gates before the slice expands.
 
-If the interaction audit cannot demonstrate educational value beyond a clear static treatment, the interaction should be rejected without reopening the factual corpus. The slice choice may be revisited for new evidence, a correction, or another clearly recorded editorial reason, including an unresolvable product constraint or a documented failure of the interaction and architecture gates.
+M4 passes at specification level, and M5 now implements the complete four-stage slice. The static Astro build uses schema-validated journey and fixture inputs, a strict build-time corpus adapter, distinct beginner and expert paths, and mode-neutral work records for all four works. The Katz probability-mass ledger exposes reserved mass, eligible lower-order support, α, the zero-estimate gate, cutoff behavior, and unseen-history recursion. The Kneser–Ney context-coverage lens holds raw frequency fixed while changing predecessor diversity, computes both distinct-context and singleton-event fallback ratios, and keeps reserve size separate from its allocation. The Chen–Goodman workbench then keeps interpolation visible while switching between one shared discount and the later D₁/D₂/D₃₊ rule; its fixed count-of-counts reconstruction, hard-backoff comparison, and bounded empirical evidence remain separately labelled. All interactions use reviewed synthetic data and pure calculation engines. Corpus, adapter, engine, type, static-build, link, anchor, payload, JavaScript-off, keyboard, reduced-motion, desktop/mobile accessibility, performance, and rendered layout checks pass for the complete slice. The slice choice, architecture, or an accepted interaction may still be revisited for new evidence, a correction, failed learner testing, or another clearly recorded editorial reason, including an unresolvable product constraint.

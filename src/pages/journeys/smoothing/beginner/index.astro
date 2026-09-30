@@ -1,0 +1,50 @@
+---
+import JourneyMap from "../../../../components/JourneyMap.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getJourneyOverview, getStageView } from "../../../../lib/site-data";
+
+const journey = getJourneyOverview();
+const firstStage = getStageView("beginner", "good-1953");
+---
+
+<BaseLayout
+  title="Beginner path: the smoothing story — LLM Lineage"
+  description="An intuition-led path through unseen mass, backoff, context diversity, and later interpolation."
+  eyebrow="Beginner path"
+>
+  <div class="shell breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/journeys/smoothing/">Smoothing</a><span aria-hidden="true">/</span>
+    <span aria-current="page">Beginner</span>
+  </div>
+  <section class="journey-hero">
+    <p class="eyebrow">Beginner path · about {journey.estimatedMinutes.beginner} minutes</p>
+    <h1>Follow where the probability goes.</h1>
+    <p>
+      You will work with counts, make a prediction before each reveal, and separate four ideas that are often compressed into the single word “smoothing.”
+    </p>
+    <div class="hero-actions">
+      <a class="button" href="/journeys/smoothing/beginner/good-1953/">Start with Good in 1953 <span aria-hidden="true">→</span></a>
+      <a class="button button--quiet" href="/journeys/smoothing/expert/">See the expert path</a>
+    </div>
+  </section>
+
+  <section class="shell reference-grid">
+    <div>
+      <p class="eyebrow">What you need</p>
+      <ul class="mt-3">
+        {firstStage.objective.prerequisites.map((item) => <li>{item}</li>)}
+      </ul>
+      <details class="evidence-details mt-4">
+        <summary><span class="evidence-mark" aria-hidden="true">?</span> Optional probability primer</summary>
+        <div class="evidence-body">
+          <p>A probability distribution divides one whole unit of mass among possible outcomes. “Seen” means an outcome appeared in the sample; “unseen” means it did not. An unseen outcome is not necessarily impossible.</p>
+        </div>
+      </details>
+    </div>
+    <div>
+      <p class="eyebrow">Your route</p>
+      <div class="mt-3"><JourneyMap journey={journey} mode="beginner" compact /></div>
+    </div>
+  </section>
+</BaseLayout>

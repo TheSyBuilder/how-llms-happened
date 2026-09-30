@@ -1,0 +1,62 @@
+---
+import JourneyMap from "../components/JourneyMap.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCorpusSummary, getJourneyOverview } from "../lib/site-data";
+
+const journey = getJourneyOverview();
+const corpus = getCorpusSummary();
+---
+
+<BaseLayout
+  title="LLM Lineage — the research path to modern language models"
+  description="A source-backed, interactive history of the papers and ideas that led to modern language models."
+  eyebrow="Research atlas"
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">The research path, not the mythology</p>
+      <h1>How language models learned to handle the unknown.</h1>
+      <p>
+        Follow one mechanism from population statistics to conditional language modeling. Learn it with intuition or audit it through equations, versions, and source-located claims.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="/journeys/smoothing/">Learn the smoothing story <span aria-hidden="true">→</span></a>
+        <a class="button button--quiet" href="/reference/works/good-1953-population-frequencies/">Inspect the first source</a>
+      </div>
+    </div>
+
+    <aside class="hero-ledger" aria-label="First learning sequence">
+      <header><strong>First sequence</strong><span>1953—1999</span></header>
+      <ol>
+        {journey.stages.map((stage) => (
+          <li>
+            <time datetime={stage.work.chronologyDate}>{stage.work.chronologyDate.slice(0, 4)}</time>
+            <span>{stage.work.authors[0]}</span>
+            <small>{stage.position === 1 ? "available" : "record ready"}</small>
+          </li>
+        ))}
+      </ol>
+    </aside>
+  </section>
+
+  <section class="shell proof-strip" aria-label="Corpus proof points">
+    <div><strong>{corpus.workCount}</strong><p>version-aware works in the shared corpus</p></div>
+    <div><strong>{corpus.claimCount}</strong><p>atomic claims with evidence locators</p></div>
+    <div><strong>2 paths</strong><p>distinct beginner and expert learning tasks</p></div>
+  </section>
+
+  <section class="shell section-intro">
+    <div>
+      <p class="eyebrow">Why begin here?</p>
+      <h2>Before neural networks, there was a probability problem.</h2>
+    </div>
+    <p>
+      A language model cannot assign all its confidence to what it has already seen. The first journey traces how researchers estimated a reserve for the unseen, decided when to fall back, changed the fallback signal, and later combined evidence across orders.
+    </p>
+  </section>
+
+  <section class="shell" aria-labelledby="sequence-heading">
+    <h2 id="sequence-heading" class="eyebrow">The four-stage sequence</h2>
+    <JourneyMap journey={journey} />
+  </section>
+</BaseLayout>

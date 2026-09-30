@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/katz-fixture.schema.json",
+  "title": "LLM Lineage synthetic Katz probability-mass fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "id", "kind", "label", "description", "representedClaimIds", "scenarios"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "kind": { "const": "katz-probability-mass" },
+    "label": { "const": "Synthetic example" },
+    "description": { "type": "string", "minLength": 1 },
+    "representedClaimIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/scenario" }
+    }
+  },
+  "$defs": {
+    "mode": { "enum": ["beginner", "expert"] },
+    "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "nullableNumber": { "type": ["number", "null"], "minimum": 0 },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "description", "prompt", "modes", "history", "historyCount", "cutoffK", "continuations", "expected"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 1 },
+        "prompt": { "type": "string", "minLength": 1 },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/mode" }
+        },
+        "history": { "type": "string", "minLength": 1 },
+        "historyCount": { "type": "integer", "minimum": 0 },
+        "cutoffK": { "type": "integer", "minimum": 1 },
+        "continuations": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "higherOrderCount", "discountedCount", "lowerOrderProbability"],
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "higherOrderCount": { "type": "integer", "minimum": 0 },
+              "discountedCount": { "type": "number", "minimum": 0 },
+              "lowerOrderProbability": { "$ref": "#/$defs/probability" }
+            }
+          }
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["branch", "reservedMass", "eligibleLowerOrderMass", "alpha", "finalProbabilities", "total"],
+          "properties": {
+            "branch": { "enum": ["observed-history", "unseen-history"] },
+            "reservedMass": { "$ref": "#/$defs/nullableNumber" },
+            "eligibleLowerOrderMass": { "$ref": "#/$defs/probability" },
+            "alpha": { "$ref": "#/$defs/nullableNumber" },
+            "finalProbabilities": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "probability"],
+                "properties": {
+                  "label": { "type": "string", "minLength": 1 },
+                  "probability": { "$ref": "#/$defs/probability" }
+                }
+              }
+            },
+            "total": { "const": 1 }
+          }
+        }
+      }
+    }
+  }
+}

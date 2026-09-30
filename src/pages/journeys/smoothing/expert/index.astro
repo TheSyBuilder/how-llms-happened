@@ -1,0 +1,47 @@
+---
+import JourneyMap from "../../../../components/JourneyMap.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getJourneyOverview, getStageView } from "../../../../lib/site-data";
+
+const journey = getJourneyOverview();
+const firstStage = getStageView("expert", "good-1953");
+---
+
+<BaseLayout
+  title="Expert path: the smoothing story — LLM Lineage"
+  description="An evidence- and equation-led reconstruction of classical language-model smoothing."
+  eyebrow="Expert path"
+>
+  <div class="shell breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/journeys/smoothing/">Smoothing</a><span aria-hidden="true">/</span>
+    <span aria-current="page">Expert</span>
+  </div>
+  <section class="journey-hero">
+    <p class="eyebrow">Expert path · about {journey.estimatedMinutes.expert} minutes</p>
+    <h1>Audit which estimator component changed.</h1>
+    <p>
+      Reconstruct each source-bound operator, normalization term, assumption, and evidence envelope. Later interpolation never leaks backward into the original backoff stages.
+    </p>
+    <div class="hero-actions">
+      <a class="button" href="/journeys/smoothing/expert/good-1953/">Begin the reconstruction <span aria-hidden="true">→</span></a>
+      <a class="button button--quiet" href="/journeys/smoothing/beginner/">See the beginner path</a>
+    </div>
+  </section>
+
+  <section class="shell reference-grid">
+    <div>
+      <p class="eyebrow">Notation contract</p>
+      <p class="mt-3">Symbols stay source-specific. Good's n₁/N is not Katz's history-conditioned reserve; Katz's α is not the same operator as Kneser and Ney's fallback normalization.</p>
+      <h2 class="mt-4">Prerequisites</h2>
+      <ul class="mt-3">
+        {firstStage.objective.prerequisites.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Evidence map</p>
+      <div class="mt-3"><JourneyMap journey={journey} mode="expert" compact /></div>
+      <p class="provenance-note mt-4">Every equation and historical statement resolves to the same mode-neutral corpus record used by the beginner path.</p>
+    </div>
+  </section>
+</BaseLayout>

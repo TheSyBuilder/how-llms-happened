@@ -1,0 +1,460 @@
+{
+  "$schema": "../../schemas/journey.schema.json",
+  "id": "smoothing",
+  "slug": "smoothing",
+  "title": "The smoothing story",
+  "question": "Where should probability go when the exact phrase is rare or missing?",
+  "estimatedMinutes": {
+    "beginner": 24,
+    "expert": 42
+  },
+  "stages": [
+    {
+      "slug": "good-1953",
+      "workId": "good-1953-population-frequencies",
+      "status": "built",
+      "objectiveIds": {
+        "beginner": "beginner-good-1953-unseen-mass",
+        "expert": "expert-good-1953-frequency-estimator"
+      },
+      "contribution": {
+        "text": "Use the frequency of rare types to estimate how much probability may belong to unseen types.",
+        "claimIds": [
+          "good-1953-frequency-of-frequencies",
+          "good-1953-unseen-mass"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-good-signal",
+            "kind": "explanation",
+            "heading": "Rare events carry a signal",
+            "body": "Good's article asks what low-frequency observations reveal about a larger population. Types seen exactly once supply evidence that some probability still belongs to types absent from the sample.",
+            "claimIds": [
+              "good-1953-frequency-of-frequencies",
+              "good-1953-unseen-mass"
+            ]
+          },
+          {
+            "id": "beginner-good-boundary",
+            "kind": "limitation",
+            "heading": "A reserve, not yet a routing rule",
+            "body": "This estimate concerns population-level unseen mass. It does not yet say how a conditional language model should divide that reserve after a particular history.",
+            "claimIds": [
+              "good-1953-unseen-mass"
+            ]
+          },
+          {
+            "id": "beginner-good-credit",
+            "kind": "explanation",
+            "heading": "The attribution matters",
+            "body": "Good explicitly credits A. M. Turing for the central adjusted-count formula and for a large share of the work behind it.",
+            "claimIds": [
+              "good-1953-turing-attribution"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-good-estimator",
+            "kind": "equation",
+            "heading": "Adjusted counts from frequencies of frequencies",
+            "body": "For n_r types observed r times, Good relates the expected frequency of one such type to r*/N, with r* approximately (r + 1)n_(r+1)/n_r after smoothing the n_r sequence.",
+            "claimIds": [
+              "good-1953-frequency-of-frequencies"
+            ]
+          },
+          {
+            "id": "expert-good-mass",
+            "kind": "equation",
+            "heading": "The complementary mass identity",
+            "body": "The represented population receives approximate mass 1 - n_1/N, leaving n_1/N for a previously unseen species on the next draw.",
+            "claimIds": [
+              "good-1953-unseen-mass"
+            ]
+          },
+          {
+            "id": "expert-good-boundary",
+            "kind": "limitation",
+            "heading": "Scope and attribution boundary",
+            "body": "The result is approximate, its count-of-counts sequence is smoothed, its setup is population estimation rather than conditional backoff, and Good explicitly attributes the central formula to Turing.",
+            "claimIds": [
+              "good-1953-frequency-of-frequencies",
+              "good-1953-turing-attribution",
+              "good-1953-unseen-mass"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "katz-1987",
+      "workId": "katz-1987-sparse-data",
+      "status": "built",
+      "objectiveIds": {
+        "beginner": "beginner-katz-1987-backoff",
+        "expert": "expert-katz-1987-estimator"
+      },
+      "contribution": {
+        "text": "Reserve mass inside a conditional history and route it through a zero-estimate backoff gate.",
+        "claimIds": [
+          "katz-1987-history-reserved-mass",
+          "katz-1987-zero-estimate-gate"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-katz-scale-change",
+            "kind": "comparison",
+            "heading": "Move the reserve inside one history",
+            "body": "The corpus-level n₁/N total and Katz's history-specific reserve are different quantities. For one observed history, Katz discounts its seen continuations and defines the remaining conditional mass as β̃.",
+            "claimIds": [
+              "katz-1987-global-unseen-mass",
+              "katz-1987-history-reserved-mass"
+            ]
+          },
+          {
+            "id": "beginner-katz-zero-gate",
+            "kind": "explanation",
+            "heading": "Keep a nonzero estimate; back off from zero",
+            "body": "A continuation with a nonzero discounted higher-order estimate keeps that estimate. Only a zero higher-order estimate opens the gate to an α-scaled lower-order probability.",
+            "claimIds": [
+              "katz-1987-lower-order-allocation",
+              "katz-1987-zero-estimate-gate"
+            ]
+          },
+          {
+            "id": "beginner-katz-recursion",
+            "kind": "explanation",
+            "heading": "If the history is missing, shorten it",
+            "body": "When the conditioning history itself has zero count, Katz drops its oldest word and directly uses the already-defined lower-order estimator.",
+            "claimIds": [
+              "katz-1987-recursive-backoff"
+            ]
+          },
+          {
+            "id": "beginner-katz-boundary",
+            "kind": "limitation",
+            "heading": "Hard backoff is not interpolation",
+            "body": "This source-bound Katz stage does not mix lower-order evidence into every seen continuation. Katz also locates the article's contribution in nonlinear backoff, not in the inherited Turing formulas.",
+            "claimIds": [
+              "katz-1987-zero-estimate-gate",
+              "katz-1987-novelty-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-katz-discount",
+            "kind": "equation",
+            "heading": "Separate inherited adjusted counts from Katz's cutoff correction",
+            "body": "Katz adopts Turing's adjusted count and discount notation, then leaves counts above k undiscounted and modifies the coefficients from one through k so the removed mass remains n₁/N.",
+            "claimIds": [
+              "katz-1987-turing-adjusted-count",
+              "katz-1987-discounting-definition",
+              "katz-1987-count-threshold",
+              "katz-1987-low-count-renormalization"
+            ]
+          },
+          {
+            "id": "expert-katz-normalizer",
+            "kind": "equation",
+            "heading": "Derive β̃, the eligible set, and α",
+            "body": "For an observed history, β̃ is one minus the seen estimates. α divides that reserve by lower-order probability only over continuations whose higher-order estimate is zero; it is a normalizer and need not be bounded by one.",
+            "claimIds": [
+              "katz-1987-history-reserved-mass",
+              "katz-1987-lower-order-allocation",
+              "katz-1987-zero-estimate-gate"
+            ]
+          },
+          {
+            "id": "expert-katz-recursion",
+            "kind": "equation",
+            "heading": "Distinguish zero continuation estimates from a zero-count history",
+            "body": "The combined estimator applies α-scaled lower-order probability to an eligible continuation inside an observed history. A zero-count history instead drops its oldest word and uses the lower-order estimator directly.",
+            "claimIds": [
+              "katz-1987-recursive-backoff",
+              "katz-1987-zero-estimate-gate"
+            ]
+          },
+          {
+            "id": "expert-katz-result",
+            "kind": "result",
+            "heading": "Keep the reported comparison inside its evidence envelope",
+            "body": "Table I reports a one-point perplexity difference from Jelinek–Mercer in both displayed rows, using about 750,000 training words and a 100-sentence test. The article supplies no uncertainty or enough detail for reproduction.",
+            "claimIds": [
+              "katz-1987-perplexity-comparison"
+            ]
+          },
+          {
+            "id": "expert-katz-boundary",
+            "kind": "limitation",
+            "heading": "Practical settings are reports, not universal laws",
+            "body": "The paper recommends k around five without a displayed sensitivity analysis and reports a d₁ = 0 space-saving variant under narrowly described experiments. Neither statement makes singleton removal generally lossless.",
+            "claimIds": [
+              "katz-1987-practical-k",
+              "katz-1987-singleton-space-variant",
+              "katz-1987-singleton-performance-report"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "kneser-ney-1995",
+      "workId": "kneser-ney-1995-improved-backing-off",
+      "status": "built",
+      "objectiveIds": {
+        "beginner": "beginner-kneser-ney-1995-context-diversity",
+        "expert": "expert-kneser-ney-1995-estimator"
+      },
+      "contribution": {
+        "text": "Allocate fallback mass with evidence about how widely a continuation appears across predecessor contexts.",
+        "claimIds": [
+          "kneser-ney-1995-context-diversity",
+          "kneser-ney-1995-singleton-distribution"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-kneser-motivation",
+            "kind": "explanation",
+            "heading": "Frequency can hide a narrow habit",
+            "body": "A continuation may be frequent because it repeats inside a few fixed phrases. The paper's dollars example motivates asking how many different detailed contexts a word completes before using it as evidence for an unseen phrase.",
+            "claimIds": [
+              "kneser-ney-1995-standard-backoff-bias"
+            ]
+          },
+          {
+            "id": "beginner-kneser-two-jobs",
+            "kind": "comparison",
+            "heading": "Keep reserving mass separate from allocating it",
+            "body": "The seen-event estimate and its discount determine what remains for zero-count events. Kneser and Ney leave the fallback distribution free, so a different statistic can decide which unseen continuations receive that mass.",
+            "claimIds": [
+              "kneser-ney-1995-backoff-form",
+              "kneser-ney-1995-free-backoff-distribution"
+            ]
+          },
+          {
+            "id": "beginner-kneser-contexts",
+            "kind": "explanation",
+            "heading": "Count distinct contexts, not repeated tokens",
+            "body": "The distinct-context fallback counts whether a continuation appeared after each compatible detailed history. Repeats within the same predecessor do not increase that continuation's numerator.",
+            "claimIds": [
+              "kneser-ney-1995-context-diversity"
+            ]
+          },
+          {
+            "id": "beginner-kneser-boundary",
+            "kind": "limitation",
+            "heading": "This is the original hard-backoff stage",
+            "body": "The 1995 equation applies the fallback distribution when the detailed event has zero count. It does not yet add continuation evidence to every seen event, and it does not introduce separate count-one, count-two, and count-three-or-more discounts.",
+            "claimIds": [
+              "kneser-ney-1995-backoff-form",
+              "kneser-ney-1995-context-diversity"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-kneser-piecewise",
+            "kind": "equation",
+            "heading": "Read α, β, and γ in their 1995 roles",
+            "body": "For N(h,w) > 0, α(w|h) is the seen-event estimate. For N(h,w) = 0, γ(h) normalizes the free fallback distribution β(w|ĥ). These symbols do not carry Katz's earlier meanings.",
+            "claimIds": [
+              "kneser-ney-1995-backoff-form",
+              "kneser-ney-1995-free-backoff-distribution"
+            ]
+          },
+          {
+            "id": "expert-kneser-marginal",
+            "kind": "equation",
+            "heading": "The marginal-constraint path is approximate",
+            "body": "The derivation asks the detailed joint model to recover a specified coarser marginal, then obtains normalized equation (7) only after treating equation (6)'s denominator as constant with respect to the predicted word.",
+            "claimIds": [
+              "kneser-ney-1995-marginal-constraint"
+            ]
+          },
+          {
+            "id": "expert-kneser-distinct",
+            "kind": "equation",
+            "heading": "Absolute discounting exposes a distinct-context ratio",
+            "body": "Under one absolute discount with 0 < d < 1 and the stated nested-history assumptions, equations (11)–(13) reduce β to a normalized count of compatible detailed histories where the continuation appeared at least once.",
+            "claimIds": [
+              "kneser-ney-1995-absolute-discount",
+              "kneser-ney-1995-context-diversity"
+            ]
+          },
+          {
+            "id": "expert-kneser-singletons",
+            "kind": "equation",
+            "heading": "Leave-one-out yields a related singleton ratio",
+            "body": "The separate leave-one-out route normalizes compatible detailed-history events observed exactly once. Its second summation is also treated as constant with respect to the predicted word, so equation (20) remains an approximation.",
+            "claimIds": [
+              "kneser-ney-1995-singleton-distribution"
+            ]
+          },
+          {
+            "id": "expert-kneser-results",
+            "kind": "result",
+            "heading": "Keep the reported gains inside their tested systems",
+            "body": "The displayed WSJ and Verbmobil comparisons favor the proposed fallback distributions under trigram-centered, incompletely specified setups. Table 1 reports no repeated runs or uncertainty, and Table 2's matched ARPA comparison does not identify the baseline smoothing algorithm.",
+            "claimIds": [
+              "kneser-ney-1995-dataset-and-evaluation-scope",
+              "kneser-ney-1995-estimator-setup",
+              "kneser-ney-1995-table-one-results",
+              "kneser-ney-1995-arpa-comparison"
+            ]
+          },
+          {
+            "id": "expert-kneser-cost-boundary",
+            "kind": "limitation",
+            "heading": "Do not turn an author report into a benchmark",
+            "body": "The paper calls the proposed distributions model-independent and says they add virtually no or no computational cost, but it provides no runtime, build-time, memory, or scaling measurements. Additional smoothing of the fallback distributions is also left unspecified.",
+            "claimIds": [
+              "kneser-ney-1995-estimator-setup",
+              "kneser-ney-1995-cost-claim"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "chen-goodman-1998",
+      "workId": "chen-goodman-1998-empirical-smoothing",
+      "status": "built",
+      "objectiveIds": {
+        "beginner": "beginner-chen-goodman-1998-two-levers",
+        "expert": "expert-chen-goodman-1998-modified-estimator"
+      },
+      "contribution": {
+        "text": "Interpolate lower-order evidence and separate discount tiers inside a later modified implementation.",
+        "claimIds": [
+          "chen-goodman-1998-interpolated-form",
+          "chen-goodman-1998-three-discount-form"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-chen-interpolation",
+            "kind": "comparison",
+            "heading": "Open the lower-order route for every continuation",
+            "body": "The 1995 hard-backoff form uses its continuation distribution after a zero higher-order count. Chen and Goodman's later interpolated form adds a scaled lower-order term even when the longer phrase already has a nonzero count.",
+            "claimIds": [
+              "chen-goodman-1998-interpolated-form",
+              "chen-goodman-1998-continuation-distribution"
+            ]
+          },
+          {
+            "id": "beginner-chen-discount-tiers",
+            "kind": "explanation",
+            "heading": "Use the count to choose the discount tier",
+            "body": "The modified estimator uses D₁ for a count of one, D₂ for a count of two, and one shared D₃₊ for every count of three or more. A zero count receives no higher-order discount because it has no retained higher-order term.",
+            "claimIds": [
+              "chen-goodman-1998-three-discount-form"
+            ]
+          },
+          {
+            "id": "beginner-chen-two-levers",
+            "kind": "comparison",
+            "heading": "Do not bundle two different changes",
+            "body": "Interpolation decides whether lower-order evidence can reach seen events. The discount rule decides how much mass each seen count gives up. The report evaluates both a three-discount interpolated implementation and a hard-backoff counterpart, so the two choices must remain separately visible.",
+            "claimIds": [
+              "chen-goodman-1998-implementation-variants",
+              "chen-goodman-1998-interpolation-comparison"
+            ]
+          },
+          {
+            "id": "beginner-chen-results",
+            "kind": "result",
+            "heading": "The tested gains stay inside the tested family",
+            "body": "Within the authors' recursively smoothed implementations, the three-discount variant beats the matched single-discount variant across the displayed WSJ/NAB curves, and interpolation beats its hard-backoff counterpart across the displayed WSJ/NAB and Broadcast News curves. These are bounded implementation comparisons, not universal laws.",
+            "claimIds": [
+              "chen-goodman-1998-multi-discount-comparison",
+              "chen-goodman-1998-interpolation-comparison"
+            ]
+          },
+          {
+            "id": "beginner-chen-boundary",
+            "kind": "limitation",
+            "heading": "This later stage does not rewrite the 1995 paper",
+            "body": "The continuation statistic comes from Kneser and Ney, while all-event interpolation and the D₁/D₂/D₃₊ form belong to this separately dated report. Its evidence concerns count-based English word n-grams, not neural language models.",
+            "claimIds": [
+              "chen-goodman-1998-continuation-distribution",
+              "chen-goodman-1998-evaluation-scope"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-chen-interpolation",
+            "kind": "equation",
+            "heading": "Replace the zero-count gate with an additive lower-order term",
+            "body": "Report equation (22) adds max(c(h,w) − D, 0)/c(h) to λ(h)pKN(w|h′) for every continuation. Equations (21)–(23) retain the normalized distinct-predecessor continuation distribution and generalize it recursively.",
+            "claimIds": [
+              "chen-goodman-1998-interpolated-form",
+              "chen-goodman-1998-continuation-distribution",
+              "chen-goodman-1998-recursive-lower-orders"
+            ]
+          },
+          {
+            "id": "expert-chen-discounts",
+            "kind": "equation",
+            "heading": "Reconstruct D₁, D₂, D₃₊, and λ",
+            "body": "The modified form selects one of three discounts from the observed count and returns their total removed mass through λ. The fixed variant estimates those discounts from n₁ through n₄; the paper leaves some degenerate count-of-counts cases unspecified.",
+            "claimIds": [
+              "chen-goodman-1998-three-discount-form",
+              "chen-goodman-1998-fixed-discount-estimates"
+            ]
+          },
+          {
+            "id": "expert-chen-variants",
+            "kind": "comparison",
+            "heading": "Name the implementation before comparing it",
+            "body": "The held-out kneser-ney-mod implementation uses three tuned discounts per order; kneser-ney-mod-fix uses the count-estimated equation; and kneser-ney-mod-backoff changes the interpolation branch. The evaluated baseline also recursively smooths lower orders and tunes a separate discount at each order.",
+            "claimIds": [
+              "chen-goodman-1998-recursive-lower-orders",
+              "chen-goodman-1998-implementation-variants"
+            ]
+          },
+          {
+            "id": "expert-chen-experiments",
+            "kind": "result",
+            "heading": "Audit the controlled comparisons",
+            "body": "The report measures test cross-entropy across four English corpora, training sizes, and bigram/trigram conditions. Its matched curves favor three discounts over one and interpolation over hard backoff within the stated implementation family; held-out tuning also beats the fixed estimates in the displayed WSJ/NAB conditions, often by a small gap on larger data.",
+            "claimIds": [
+              "chen-goodman-1998-evaluation-scope",
+              "chen-goodman-1998-multi-discount-comparison",
+              "chen-goodman-1998-interpolation-comparison",
+              "chen-goodman-1998-heldout-fixed-comparison"
+            ]
+          },
+          {
+            "id": "expert-chen-diagnostic",
+            "kind": "result",
+            "heading": "Treat the tier pattern as an empirical diagnostic",
+            "body": "The ideal average discount rises sharply at the smallest counts and then levels off. Separate D₁ and D₂ values better follow that pattern, while the reported gain from further splits above count two is marginal; this does not prove universal optimality.",
+            "claimIds": [
+              "chen-goodman-1998-count-diagnostic"
+            ]
+          },
+          {
+            "id": "expert-chen-boundary",
+            "kind": "limitation",
+            "heading": "Preserve attribution and reproducibility limits",
+            "body": "The continuation distribution is credited to Kneser and Ney, the fixed three-discount equations to Klaus Ries through personal communication, and the journal notes independent two-discount work. The report provides no packaged code, splits, or models for exact reproduction.",
+            "claimIds": [
+              "chen-goodman-1998-continuation-distribution",
+              "chen-goodman-1998-fixed-discount-estimates",
+              "chen-goodman-1998-evaluation-scope"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
