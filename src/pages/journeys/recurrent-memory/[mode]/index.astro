@@ -1,0 +1,28 @@
+---
+import JourneyMap from "../../../../components/JourneyMap.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { getJourneyOverview, getStageView } from "../../../../lib/site-data";
+export function getStaticPaths() { return ["beginner", "expert"].map((mode) => ({ params: { mode } })); }
+const mode = Astro.params.mode;
+if (mode !== "beginner" && mode !== "expert") throw new Error("Invalid recurrent mode.");
+const beginner = mode === "beginner";
+const journey = getJourneyOverview("recurrent-memory");
+const first = getStageView(mode, "elman-1988-1990", "recurrent-memory");
+---
+
+<BaseLayout title={`${beginner ? "Beginner" : "Expert"} path: recurrent memory — LLM Lineage`} description="Preview the source-dated recurrent-memory path and its first available chapter." eyebrow={`${mode} path`}>
+  <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/recurrent-memory/">Recurrent memory</a><span aria-hidden="true">/</span><span aria-current="page">{mode}</span></div>
+  <section class="journey-hero">
+    <p class="eyebrow">{mode} path · first chapter available</p>
+    <h1>{beginner ? "Read the present through what came before." : "Audit which recurrent path changed."}</h1>
+    <p class="mt-4">{beginner ? "Make a prediction, compare two complete traces, and explain why the shared token gets different states. Later chapters will separate carrying, protecting, resetting, exposing, and inspecting memory." : "Reconstruct the fixed-copy and learned-transform roles, separate forward recurrence from temporal credit, and read the experiment within its source version. Later cells will receive their own dated mechanism inventories."}</p>
+    <div class="hero-actions"><a class="button" href={`/journeys/recurrent-memory/${mode}/elman-1988-1990/`}>Start with Elman · 1988/1990 <span aria-hidden="true">→</span></a><a class="button button--quiet" href={`/journeys/recurrent-memory/${beginner ? "expert" : "beginner"}/`}>See the {beginner ? "expert" : "beginner"} path</a></div>
+  </section>
+  <section class="shell reference-grid">
+    <div>
+      <p class="eyebrow">What you need</p><ul class="mt-3">{first.objective.prerequisites.map((item) => <li>{item}</li>)}</ul>
+      <details class="evidence-details mt-4"><summary><span class="evidence-mark" aria-hidden="true">?</span>{beginner ? "What is a hidden state?" : "Teaching notation contract"}</summary><div class="evidence-body"><p>{beginner ? "A hidden state is a collection of internal activation values. This chapter reduces it to one number so you can follow an update. A running summary is a useful analogy, but the values are repeatedly transformed: they do not store a recoverable list of earlier words." : "The scalar sigmoid recurrence is an atlas reconstruction. Elman describes the architecture in prose and Figure 2; source terminology stays beside the teaching notation. A fixed context copy is not a protected additive cell-state path."}</p></div></details>
+    </div>
+    <div><p class="eyebrow">Your route</p><div class="mt-3"><JourneyMap journey={journey} mode={mode} compact /></div><p class="provenance-note mt-4">The Bengio probability-model prerequisite and the return to smoothing belong to later chapters and remain queued.</p></div>
+  </section>
+</BaseLayout>

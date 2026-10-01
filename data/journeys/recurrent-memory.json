@@ -12,7 +12,7 @@
     {
       "slug": "elman-1988-1990",
       "workId": "elman-1988-finding-structure-in-time",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-elman-1988-predictive-memory",
         "expert": "expert-elman-1988-recurrent-state-and-evidence"

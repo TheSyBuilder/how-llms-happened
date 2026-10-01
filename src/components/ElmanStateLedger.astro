@@ -1,0 +1,81 @@
+---
+import { calculateElmanScenario, type ElmanScenario } from "../lib/recurrent-memory-engine";
+import type { Mode } from "../lib/site-data";
+
+interface Props { scenario: ElmanScenario; mode: Mode }
+const { scenario, mode } = Astro.props;
+const traces = calculateElmanScenario(scenario);
+const decimals = mode === "beginner" ? 3 : 6;
+const format = (value: number) => value.toFixed(decimals);
+const histories = scenario.histories.map((history, index) => {
+  const trace = traces[index];
+  if (trace === undefined) throw new Error(`Missing trace for ${history.id}.`);
+  const contexts = [scenario.initialState, ...trace.states.slice(0, -1)];
+  return { ...history, states: trace.states, contexts };
+});
+const finalA = histories[0]?.states[scenario.activeStep];
+const finalB = histories[1]?.states[scenario.activeStep];
+if (finalA === undefined || finalB === undefined) throw new Error("Missing shared-token states.");
+---
+
+<section class:list={["mass-ledger recurrent-ledger", `recurrent-ledger--${mode}`]} aria-labelledby="state-ledger-heading">
+  <header class="ledger-header">
+    <div><p class="eyebrow">Synthetic example · forward state</p><h2 id="state-ledger-heading">Same token, different history</h2></div>
+    <p class="ledger-folio">Elman · 1990 mechanism<br />Earlier report · 1988</p>
+  </header>
+  <div class="ledger-prompt">
+    <p><strong>Predict first.</strong> Both histories end on <code>turn</code>. Must their final states match?</p>
+  </div>
+  <div class="trace-intro">
+    <p>Read each history from left to right. Both start at {scenario.initialState}; the same weights are used at every step. “Copied context” is exactly the previous state. The new state combines that copy with the current input.</p>
+    <p class="provenance-note mt-3">The tokens, scalar inputs, and weights are authored teaching values. This is not Elman’s trained network, an empirical result, or a word-probability table. The coordinate has no assigned meaning.</p>
+  </div>
+
+  {histories.map((history) => (
+    <section class="trace-history" aria-labelledby={`${history.id}-heading`}>
+      <h3 id={`${history.id}-heading`}>{history.label} <span class="trace-sequence">{history.tokens.join(" → ")}</span></h3>
+      <table class="trace-table">
+        <caption>{history.label}: complete forward-state trace · values rounded to {decimals} decimals</caption>
+        <thead><tr><th scope="col">Read in order</th>{history.tokens.map((_, step) => <th scope="col">Step {step + 1}</th>)}</tr></thead>
+        <tbody>
+          <tr><th scope="row">Current token</th>{history.tokens.map((token, step) => <td class:list={[{ "shared-token": step === scenario.activeStep }]}><strong>{token}</strong></td>)}</tr>
+          {mode === "expert" && <tr><th scope="row">Scalar input x</th>{history.inputs.map((input) => <td>{input}</td>)}</tr>}
+          <tr><th scope="row">Copied context</th>{history.contexts.map((context) => <td>{format(context)}</td>)}</tr>
+          <tr class="trace-result"><th scope="row">Resulting state</th>{history.states.map((state) => <td>{format(state)}</td>)}</tr>
+        </tbody>
+      </table>
+      {mode === "expert" && (
+        <details class="trace-arithmetic">
+          <summary>Reconstruct {history.label} term by term</summary>
+          <table class="trace-table mt-3">
+            <caption>{history.label}: scalar teaching calculation before the sigmoid</caption>
+            <thead><tr><th scope="col">Term</th>{history.tokens.map((_, step) => <th scope="col">Step {step + 1}</th>)}</tr></thead>
+            <tbody>
+              <tr><th scope="row">Input × {scenario.inputWeight}</th>{history.inputs.map((input) => <td>{format(input * scenario.inputWeight)}</td>)}</tr>
+              <tr><th scope="row">Context × {scenario.recurrentWeight}</th>{history.contexts.map((context) => <td>{format(context * scenario.recurrentWeight)}</td>)}</tr>
+              <tr><th scope="row">Bias</th>{history.tokens.map(() => <td>{scenario.bias}</td>)}</tr>
+              <tr><th scope="row">Sum before σ</th>{history.inputs.map((input, step) => <td>{format(input * scenario.inputWeight + scenario.recurrentWeight * (history.contexts[step] ?? scenario.initialState) + scenario.bias)}</td>)}</tr>
+            </tbody>
+          </table>
+          <p class="mt-3">Apply σ to the unrounded sum to obtain the resulting state above. Display rounding never feeds the next update.</p>
+        </details>
+      )}
+    </section>
+  ))}
+
+  <div class="trace-comparison" id="shared-token-comparison">
+    <p class="eyebrow">The controlled comparison · step 3</p>
+    <h3 class="mt-3">The current input matches. The context does not.</h3>
+    {mode === "beginner" && <p class="mt-3">A window containing only the current token would present <code>turn</code> in both cases. Here, earlier inputs also affect the update through the carried state. A longer fixed window would explicitly supply more recent items; a carried state transforms their influence instead of keeping a literal list.</p>}
+    <dl class="trace-final-values mt-3">
+      <div><dt>History A · turn</dt><dd>{format(finalA)}</dd></div>
+      <div><dt>History B · turn</dt><dd>{format(finalB)}</dd></div>
+    </dl>
+    <details class="prediction-reveal mt-3">
+      <summary>Check the prediction</summary>
+      <p>They differ in this example. At the shared token, the input is {scenario.histories[0].inputs[scenario.activeStep]} in both histories and the weights have not changed. Different copied contexts produce different final states. History dependence does not require every pair of histories to produce distinct states.</p>
+      <p class="mt-3"><strong>Explain the cause:</strong> what stayed fixed, and which input to the update changed?</p>
+    </details>
+    <p class="provenance-note mt-3">This ledger traces forward activation only. It does not show a backward teaching signal, a protected cell, gates, or unlimited memory.</p>
+  </div>
+</section>

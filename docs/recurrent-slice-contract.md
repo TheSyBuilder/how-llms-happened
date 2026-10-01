@@ -4,7 +4,7 @@
 
 This artifact closes the design-and-data gate for the second vertical slice. It defines the complete teaching inventory, preserves source-specific notation, fixes the Bengio prerequisite and smoothing bridge, and supplies schema-validated synthetic traces plus separate beginner and expert manifests.
 
-It does **not** add a route, control, diagram, or empirical simulator. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
+The shared journey shell and complete static Elman chapter now implement the first increment of this contract. The remaining stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
 
 The machine-readable contract is split across:
 
@@ -216,7 +216,7 @@ Source inspection uses the existing mode-neutral work records. Stage pages may o
 
 ## Automated and rendered acceptance plan
 
-Before a recurrent route changes from `planned` to `built`, all of the following must pass:
+Static routes must pass the data, source, mode, static-render, accessibility, responsive, and visual gates below before changing from `planned` to `built`. Cursor behavior, committed-update timing, and the moderated static-versus-interactive comparison apply before shipping an optional client enhancement. The complete static treatment is the comparison baseline:
 
 1. JSON Schema rejects unknown fields and variant leakage; semantic validation rejects duplicate stages, claims from undeclared works, and fixture objectives outside the four interactive works.
 2. Mutation tests reject a forget field or peephole field in the original-cell scenario, a non-unit protected factor, reordered retention presets, a changed active token, identical same-token final states, and incorrect previous/current-state peephole reads.
@@ -232,4 +232,4 @@ Before a recurrent route changes from `planned` to `built`, all of the following
 
 ## Implementation sequence
 
-The first implementation increment should build the shared recurrent journey shell and the Elman stage in both modes. It should render the complete static same-token trace before adding hydration. The original-cell, forget-gate, peephole, Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until each preceding source-dated boundary has passed its own static, accessibility, responsive, and visual review.
+The first implementation increment builds the shared recurrent journey shell and Elman in both modes. Its complete static same-token trace, checkpoint answer, source inspection, and scalar arithmetic are available without JavaScript. The original 1995/1997 LSTM static state-and-credit treatment is next; hydration remains deferred under the conditional-prototype rule. The original-cell, forget-gate, peephole, Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until each preceding source-dated boundary has passed its own static, accessibility, responsive, and visual review.

@@ -67,3 +67,9 @@ Empirical results remain static and source-conditioned. The interface must not o
 The [recurrent-memory slice contract](recurrent-slice-contract.md) closes the remaining design-and-data gate. It supplies the complete claim and objective inventory, source-notation crosswalk, exact Bengio prerequisite, smoothing bridge, a sub-8-KiB schema-validated fixture with reviewed expected traces, separate mode manifests, static fallback requirements, and variant-leakage, accessibility, responsive, payload, and rendered-quality tests.
 
 No route or interactive control was added while closing the gate. Implementation may now begin with the shared recurrent journey shell and Elman in both modes. The complete no-JavaScript same-token treatment must land before hydration, and the other stages plus both static interludes remain planned until each source-dated boundary passes equivalent review. The attention, contextual-transfer, retrieval, and post-training branches remain valid later candidates; their deferral is a sequencing decision, not an importance judgment.
+
+## First implementation increment
+
+The shared recurrent journey chooser and two mode previews now lead to Elman 1988/1990. Beginner mode predicts the effect of two histories on one shared token; expert mode additionally reconstructs the scalar update and inspects training, averaging, and experiment boundaries. Both display complete engine-computed forward traces, a native checkpoint answer, version-bound source inspection, and one ten-claim work record without client JavaScript.
+
+The context copy is fixed at weight 1.0; the trainable context-to-hidden path is separate. The scalar recurrence is a teaching reconstruction, and the lexical output evidence remains unnormalized. No later gate, bridge panel, empirical control, or hydrated cursor is available. The next increment is the original LSTM static forward-state and separately scoped credit treatment.

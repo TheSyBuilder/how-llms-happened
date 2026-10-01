@@ -1,7 +1,7 @@
 ---
 import EvidenceDetails from "../../../components/EvidenceDetails.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getBuiltReferenceWorkIds, getWorkReference } from "../../../lib/site-data";
+import { getBuiltReferenceWorkIds, getWorkLearningRoutes, getWorkReference } from "../../../lib/site-data";
 
 export function getStaticPaths() {
   return getBuiltReferenceWorkIds().map((workId) => ({ params: { workId } }));
@@ -12,7 +12,7 @@ if (workId === undefined) {
   throw new Error("Missing reference work id.");
 }
 const record = getWorkReference(workId);
-const stageSlug = workId === "good-1953-population-frequencies" ? "good-1953" : "katz-1987";
+const learningRoutes = getWorkLearningRoutes(workId);
 ---
 
 <BaseLayout
@@ -32,8 +32,8 @@ const stageSlug = workId === "good-1953-population-frequencies" ? "good-1953" : 
       <h1>{record.work.title}</h1>
       <p class="citation">{record.work.citation}</p>
       <div class="hero-actions">
-        <a class="button" href={`/journeys/smoothing/beginner/${stageSlug}/`}>Learn with intuition</a>
-        <a class="button button--quiet" href={`/journeys/smoothing/expert/${stageSlug}/`}>Audit the estimator</a>
+        <a class="button" href={learningRoutes.beginner.href}>Learn with intuition</a>
+        <a class="button button--quiet" href={learningRoutes.expert.href}>{learningRoutes.expert.label}</a>
       </div>
     </header>
 

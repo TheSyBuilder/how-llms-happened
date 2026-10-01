@@ -19,6 +19,7 @@ import {
   validateKneserScenario,
 } from "./kneser-ney-engine.ts";
 import {
+  type ElmanScenario,
   type RecurrentFixture,
   validateRecurrentFixture,
 } from "./recurrent-memory-engine.ts";
@@ -293,6 +294,7 @@ export type StageView = {
   katzFixture?: KatzFixture;
   kneserFixture?: KneserFixture;
   chenFixture?: ChenFixture;
+  elmanScenario?: ElmanScenario;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -780,11 +782,20 @@ function evidenceView(claim: Claim): EvidenceView {
   };
 }
 
-function stageRoute(mode: Mode, slug: string): string {
-  return `/journeys/${manifest.slug}/${mode}/${slug}/`;
+export type JourneyId = "smoothing" | "recurrent-memory";
+
+function journeyManifest(id: JourneyId): JourneyManifest {
+  if (id === "smoothing") return manifest;
+  if (id === "recurrent-memory") return recurrentManifest;
+  throw new Error(`Unknown journey: ${id}`);
 }
 
-export function getJourneyOverview(): JourneyOverview {
+function stageRoute(mode: Mode, slug: string, journey: JourneyManifest): string {
+  return `/journeys/${journey.slug}/${mode}/${slug}/`;
+}
+
+export function getJourneyOverview(journeyId: JourneyId = "smoothing"): JourneyOverview {
+  const manifest = journeyManifest(journeyId);
   return {
     id: manifest.id,
     slug: manifest.slug,
@@ -801,7 +812,8 @@ export function getJourneyOverview(): JourneyOverview {
   };
 }
 
-export function getBuiltStagePaths(): Array<{ params: { mode: Mode; stage: string } }> {
+export function getBuiltStagePaths(journeyId: JourneyId = "smoothing"): Array<{ params: { mode: Mode; stage: string } }> {
+  const manifest = journeyManifest(journeyId);
   return manifest.stages
     .filter((stage) => stage.status === "built")
     .flatMap((stage) =>
@@ -811,7 +823,8 @@ export function getBuiltStagePaths(): Array<{ params: { mode: Mode; stage: strin
     );
 }
 
-export function getStageView(mode: Mode, slug: string): StageView {
+export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "smoothing"): StageView {
+  const manifest = journeyManifest(journeyId);
   const position = manifest.stages.findIndex((item) => item.slug === slug);
   if (position < 0) {
     throw new Error(`Unknown journey stage: ${slug}`);
@@ -842,11 +855,19 @@ export function getStageView(mode: Mode, slug: string): StageView {
   const previousStage = manifest.stages[position - 1];
   const nextStage = manifest.stages[position + 1];
   const previous = previousStage?.status === "built"
-    ? { href: stageRoute(mode, previousStage.slug), label: previousStage.slug }
+    ? { href: stageRoute(mode, previousStage.slug, manifest), label: previousStage.slug }
     : undefined;
   const next = nextStage?.status === "built"
-    ? { href: stageRoute(mode, nextStage.slug), label: nextStage.slug }
+    ? { href: stageRoute(mode, nextStage.slug, manifest), label: nextStage.slug }
     : undefined;
+  const elmanScenario = stage.slug === "elman-1988-1990"
+    ? recurrentFixture.scenarios.find(
+      (scenario): scenario is ElmanScenario => scenario.kind === "elman-history-contrast",
+    )
+    : undefined;
+  if (stage.slug === "elman-1988-1990" && elmanScenario === undefined) {
+    throw new Error("Elman is missing its reviewed history contrast.");
+  }
 
   return {
     journeyId: manifest.id,
@@ -864,10 +885,11 @@ export function getStageView(mode: Mode, slug: string): StageView {
     ...(stage.slug === "katz-1987" ? { katzFixture } : {}),
     ...(stage.slug === "kneser-ney-1995" ? { kneserFixture } : {}),
     ...(stage.slug === "chen-goodman-1998" ? { chenFixture } : {}),
+    ...(elmanScenario === undefined ? {} : { elmanScenario }),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {
-      href: stageRoute(mode === "beginner" ? "expert" : "beginner", stage.slug),
+      href: stageRoute(mode === "beginner" ? "expert" : "beginner", stage.slug, manifest),
       label: mode === "beginner" ? "Open the expert reconstruction" : "Open the beginner explanation",
     },
   };
@@ -890,9 +912,22 @@ export function getWorkReference(workId: string): WorkReferenceView {
 }
 
 export function getBuiltReferenceWorkIds(): string[] {
-  return manifest.stages
+  return [...new Set([manifest, recurrentManifest].flatMap((journey) => journey.stages
     .filter((stage) => stage.status === "built")
-    .map((stage) => stage.workId);
+    .map((stage) => stage.workId)))];
+}
+
+export function getWorkLearningRoutes(workId: string): Record<Mode, RouteRef> {
+  for (const journey of [manifest, recurrentManifest]) {
+    const stage = journey.stages.find((item) => item.workId === workId && item.status === "built");
+    if (stage !== undefined) {
+      return {
+        beginner: { href: stageRoute("beginner", stage.slug, journey), label: "Learn with intuition" },
+        expert: { href: stageRoute("expert", stage.slug, journey), label: "Audit the mechanism" },
+      };
+    }
+  }
+  throw new Error(`No built learning route for work: ${workId}`);
 }
 
 export function getFixtureForTests(): GoodFixture {

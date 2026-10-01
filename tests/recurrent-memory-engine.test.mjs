@@ -108,7 +108,7 @@ test("the fixture schema rejects a later gate inserted into the original cell", 
   assert.ok(validate.errors.some((error) => error.keyword === "unevaluatedProperties"));
 });
 
-test("the planned journey keeps two pedagogy paths, two static interludes, and no built routes", () => {
+test("the recurrent journey builds only Elman and preserves two pedagogy paths and static interludes", () => {
   const manifest = getRecurrentManifestForTests();
   assert.deepEqual(
     manifest.stages.map((stage) => stage.slug),
@@ -121,7 +121,7 @@ test("the planned journey keeps two pedagogy paths, two static interludes, and n
       "sundermeyer-2012",
     ],
   );
-  assert.ok(manifest.stages.every((stage) => stage.status === "planned"));
+  assert.deepEqual(manifest.stages.map((stage) => stage.status), ["built", "planned", "planned", "planned", "planned", "planned"]);
   assert.ok(manifest.stages.every((stage) => stage.objectiveIds.beginner !== stage.objectiveIds.expert));
   assert.ok(manifest.stages.every((stage) => {
     const beginner = stage.blocks.beginner.map((block) => block.id);

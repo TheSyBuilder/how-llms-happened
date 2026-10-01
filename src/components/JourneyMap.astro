@@ -11,7 +11,7 @@ interface Props {
 const { journey, currentSlug, mode, compact = false } = Astro.props;
 ---
 
-<ol class:list={["journey-map", { "journey-map--compact": compact }]} aria-label="Smoothing journey stages">
+<ol class:list={["journey-map", { "journey-map--compact": compact }]} aria-label={`${journey.title} stages`}>
   {journey.stages.map((stage) => {
     const isCurrent = stage.slug === currentSlug;
     const href = mode && stage.status === "built"
