@@ -90,7 +90,7 @@
     {
       "slug": "hochreiter-schmidhuber-1995-1997",
       "workId": "hochreiter-schmidhuber-1995-long-short-term-memory",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-hochreiter-schmidhuber-1995-gated-memory",
         "expert": "expert-hochreiter-schmidhuber-1995-mechanism-and-evidence"

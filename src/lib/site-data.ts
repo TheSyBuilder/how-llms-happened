@@ -20,6 +20,7 @@ import {
 } from "./kneser-ney-engine.ts";
 import {
   type ElmanScenario,
+  type OriginalCellScenario,
   type RecurrentFixture,
   validateRecurrentFixture,
 } from "./recurrent-memory-engine.ts";
@@ -295,6 +296,7 @@ export type StageView = {
   kneserFixture?: KneserFixture;
   chenFixture?: ChenFixture;
   elmanScenario?: ElmanScenario;
+  originalCellScenario?: OriginalCellScenario;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -868,6 +870,14 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
   if (stage.slug === "elman-1988-1990" && elmanScenario === undefined) {
     throw new Error("Elman is missing its reviewed history contrast.");
   }
+  const originalCellScenario = stage.slug === "hochreiter-schmidhuber-1995-1997"
+    ? recurrentFixture.scenarios.find(
+      (scenario): scenario is OriginalCellScenario => scenario.kind === "original-cell-credit",
+    )
+    : undefined;
+  if (stage.slug === "hochreiter-schmidhuber-1995-1997" && originalCellScenario === undefined) {
+    throw new Error("Original LSTM is missing its reviewed state-and-credit trace.");
+  }
 
   return {
     journeyId: manifest.id,
@@ -886,6 +896,7 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     ...(stage.slug === "kneser-ney-1995" ? { kneserFixture } : {}),
     ...(stage.slug === "chen-goodman-1998" ? { chenFixture } : {}),
     ...(elmanScenario === undefined ? {} : { elmanScenario }),
+    ...(originalCellScenario === undefined ? {} : { originalCellScenario }),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {

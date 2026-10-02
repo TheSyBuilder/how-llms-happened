@@ -1,0 +1,90 @@
+---
+import { renderToString } from "katex";
+import EvidenceDetails from "./EvidenceDetails.astro";
+import JourneyMap from "./JourneyMap.astro";
+import ModeSwitch from "./ModeSwitch.astro";
+import OriginalCellLedger from "./OriginalCellLedger.astro";
+import { getJourneyOverview, type StageView } from "../lib/site-data";
+interface Props { view: StageView }
+const { view } = Astro.props;
+const { mode } = view;
+const scenario = view.originalCellScenario;
+if (scenario === undefined) throw new Error("Original LSTM is missing its reviewed scenario.");
+const journey = getJourneyOverview("recurrent-memory");
+const claim = (suffix: string) => {
+  const evidence = view.evidence.find((item) => item.claimId === `hochreiter-schmidhuber-1997-${suffix}`);
+  if (evidence === undefined) throw new Error(`Missing original-cell evidence: ${suffix}`);
+  return evidence;
+};
+const math = (tex: string) => renderToString(tex, { displayMode: true, output: "htmlAndMathml", throwOnError: true });
+const state = math(String.raw`s_{c_j}(t)=s_{c_j}(t-1)+y^{\mathrm{in}_j}(t)g(\mathrm{net}_{c_j}(t))`);
+const output = math(String.raw`y^{c_j}(t)=y^{\mathrm{out}_j}(t)h(s_{c_j}(t))`);
+const functions = math(String.raw`h(x)=\frac{2}{1+e^{-x}}-1=\tanh(x/2)`);
+const candidate = math(String.raw`g(x)=\frac{4}{1+e^{-x}}-2`);
+const path = math(String.raw`P(q)=\prod_{r=1}^{q}a_r,\qquad P(0)=1`);
+const direct = math(String.raw`\left.\frac{\partial s_{c_j}(t)}{\partial s_{c_j}(t-1)}\right|_{\mathrm{direct}}=1`);
+const truncation = math(String.raw`\frac{\partial\mathrm{net}_z(t)}{\partial y^u(t-1)}\approx_{\mathrm{tr}}0,\quad z\in\{c_j,\mathrm{in}_j,\mathrm{out}_j\}`);
+const results = [
+  { p: "1,000", mean: "49,000" }, { p: "500", mean: "49,000" },
+  { p: "200", mean: "75,000" }, { p: "100", mean: "135,000" }, { p: "50", mean: "203,000" },
+];
+---
+
+<article class="stage-shell">
+  <div class="stage-reading">
+    <ModeSwitch activeMode={mode} alternateHref={view.alternateMode.href} />
+    <header class="stage-header">
+      <p class="stage-number">Stage 2 of 6 · report 1995 · journal 1997</p>
+      <h1>{mode === "beginner" ? "Can a hidden state still carry a teaching signal?" : "Which credit path stays constant?"}</h1>
+      <p class="stage-question">{view.contribution}</p>
+      <dl class="stage-meta"><div><dt>Work</dt><dd>{view.work.title} · {view.work.authors.join(", ")}</dd></div><div><dt>Display source</dt><dd>{view.canonicalVersion.label}</dd></div><div><dt>Chronology</dt><dd>Report: 21 August 1995; revised report: December 1996; journal: 15 November 1997</dd></div><div><dt>Scope</dt><dd>Input/output-gated cell · fixed unit self-loop</dd></div></dl>
+    </header>
+    <section class="objective-band" aria-labelledby="objective-heading"><h2 id="objective-heading">Your task</h2><p>{view.objective.objective}</p><details><summary>Success criterion</summary><p>{view.objective.successCriterion}</p></details></section>
+    <section class="reading-block" aria-labelledby="original-inventory">
+      <p class="kicker">Mechanism inventory · 1997</p><h2 id="original-inventory">Carry, write, expose.</h2>
+      <ol class="copy-path"><li><strong>Carry</strong><span>Previous cell state → current cell state. Linear self-loop, fixed weight 1.0.</span></li><li><strong>Write</strong><span>Candidate × input gate → addition to the carried state.</span></li><li><strong>Expose</strong><span>Transformed state × output gate → cell output.</span></li></ol>
+      <p class="mt-3">{mode === "beginner" ? "A state is what the network carries forward. Credit is how a later training error can guide earlier changes. Keeping one value available and preserving a teaching route are related, but different, jobs." : "Elman’s fixed context copy precedes a trainable nonlinear transform. This cell instead has a direct additive state route with unit derivative. That route does not describe the total recurrent Jacobian."}</p>
+      <EvidenceDetails evidence={claim("constant-error-carousel")} /><EvidenceDetails evidence={claim("input-output-gates")} />
+    </section>
+    {mode === "expert" && <section class="reading-block" aria-labelledby="source-equations">
+      <p class="kicker">Source notation · author-layout p. 7</p><h2 id="source-equations">Separate the state and output equations.</h2>
+      <div class="equation-panel" role="region" aria-label="Original-cell source equations" tabindex="0"><div set:html={state} /><div set:html={output} /></div>
+      <p>In the ledger, “candidate” stands for g(net), “input gate” for y in, and “output gate” for y out. The fixed self-loop carries s; it is not a trainable retention coefficient. Gate and candidate net inputs are weighted sums of previous unit outputs, not direct reads of the internal cell state.</p>
+      <details class="trace-arithmetic"><summary>Audit the source-to-teaching crosswalk</summary>
+        <p class="mt-3">Appendix A.1, author-layout p. 24, equations 3–5 uses a logistic gate and the functions below. The teaching fixture instead supplies the already transformed candidate, uses idealized 0/1 gates, starts at s₀ = 0.4 rather than the source’s zero, and chooses tanh(s) for output scaling. It demonstrates the access pattern, not the source experiment’s exact activations.</p>
+        <div class="equation-panel mt-3" role="region" aria-label="Source experiment functions" tabindex="0"><div set:html={functions} /><div set:html={candidate} /></div>
+        <p>The source h is tanh(x/2), so it would expose about 0.336376 at state 0.7 with an idealized open gate. The ledger’s tanh(0.7) is 0.604368. These values must not be substituted for one another.</p>
+      </details>
+    </section>}
+    {view.blocks.map((block) => <section class="reading-block" aria-labelledby={block.id}><p class="kicker">{block.kind}</p><h2 id={block.id}>{block.heading}</h2><p>{block.body}</p>{block.evidence.map((evidence) => <EvidenceDetails evidence={evidence} />)}</section>)}
+    {mode === "expert" && <section class="reading-block" aria-labelledby="path-scope">
+      <p class="kicker">Backward scope · author-layout pp. 3–9, 24–25</p><h2 id="path-scope">Mark the protected route and the cuts.</h2>
+      <div class="equation-panel" role="region" aria-label="Scoped path-factor equations" tabindex="0"><div set:html={path} /><div set:html={direct} /></div>
+      <p>P(q) is atlas notation for one scalar path product, not the source’s full network error recurrence. The direct factor holds with the gated write path treated separately under the source’s truncation.</p>
+      <ol class="credit-boundaries mt-4"><li><strong>Entry · scaled</strong><span>Error arriving via cell output is scaled by the output gate and h′.</span></li><li><strong>Cell loop · preserved</strong><span>The direct internal route has unit factors through previous states.</span></li><li><strong>Exit · scaled, then cut</strong><span>Via candidate input, input gate and g′ scale credit. Incoming weights can update; propagation to their originating units stops.</span></li><li><strong>Gate inputs · cut</strong><span>Gate weights can update locally. Credit through gate net inputs to earlier unit outputs also stops.</span></li></ol>
+      <div class="equation-panel mt-4" role="region" aria-label="Source truncation rule" tabindex="0"><div set:html={truncation} /></div>
+      <p class="provenance-note">Appendix A.1, author-layout pp. 24–25: approximate recurrent derivatives are replaced by zero at cell and gate net inputs. Forward connections still exist and their weights remain trainable. This cut is neither removal of the forward paths nor exact full-gradient BPTT.</p>
+      <EvidenceDetails evidence={claim("local-truncated-gradient-algorithm")} />
+    </section>}
+  </div>
+  <aside class="stage-workbench stage-workbench--long" aria-label="Static original-cell state and scoped credit comparison"><OriginalCellLedger scenario={scenario} mode={mode} /></aside>
+  <div class="stage-conclusion">
+    <section class="reading-block" aria-labelledby="synthetic-evidence">
+      <p class="kicker">Static evidence · Task 2c · Table 3</p><h2 id="synthetic-evidence">A 1,001-step lag, within a synthetic task.</h2>
+      <p>Two-class trigger-and-distractor sequences receive classification error only at sequence ends. For q = 1,000, the minimum lag is q + 1 = 1,001 steps. The source reports 20 trials for each tested (p, q) pair.</p>
+      {mode === "beginner" ? <p class="mt-3">With 1,000 available distractor symbols, the mean number of training-sequence presentations to success was 49,000. This is evidence for that generated task, not a finding that the model remembers 1,001 words of natural language. The four-step ledger above is a separate teaching example.</p> : <>
+        <table class="trace-table experiment-table mt-4"><caption>Table 3’s five q = 1,000 rows · 20 trials per pair · author-layout p. 15</caption><thead><tr><th scope="col">p · available distractor symbols</th><th scope="col">Mean training-sequence presentations to success</th></tr></thead><tbody>{results.map((row) => <tr><th scope="row">{row.p}</th><td>{row.mean}</td></tr>)}</tbody></table>
+        <p class="provenance-note mt-3">The table reports means, not a printed 20/20 success numerator, confidence intervals, or hardware-normalized runtime. Changing p also changes the input and weight counts. The source’s competitor statement is bounded to its setup; it is not a modern matched implementation comparison.</p>
+      </>}
+      <p class="provenance-note mt-3">All page locators here refer to the 32-page author-layout journal reading copy. They do not map to the journal’s pp. 1735–1780. The 1995 report and December 1996 revision remain separate versions.</p>
+      <EvidenceDetails evidence={claim("long-lag-experimental-scope")} />
+    </section>
+    <section class="reading-block" aria-labelledby="original-limits">
+      <p class="kicker">Boundary · protected path, bounded claims</p><h2 id="original-limits">Protection is not perfect recall.</h2>
+      <p>{mode === "beginner" ? "A gate still has to learn when to write or expose. New writes can interfere with stored activation. A unit loop alone does not solve every delayed dependency, store a literal word list, or make memory unlimited." : "The discussion retains strongly delayed XOR, parity, precise counting, limited capacity, parameter overhead, and state-drift difficulties. The efficient truncated rule sacrifices full-gradient credit. Repeated one-signed writes can move state into a region where h′ is small even while the direct loop’s factor stays 1."}</p>
+      <p class="mt-3">The original architecture has input and output gates. A learned forget gate and cell-state-to-gate peepholes belong to the later chapters. Speech, time-series, and music are proposed applications here; the reported experiments are artificial sequences.</p>
+      <EvidenceDetails evidence={claim("original-cell-domain-boundary")} /><a class="claim-link" href={`/reference/works/${view.work.id}/`}>Inspect the complete six-claim work record</a>
+    </section>
+    <nav class="reading-block" aria-label="Recurrent journey progression"><p class="kicker">Next distinction · chapter queued</p><h2>Learn when to reset · 1999/2000</h2><p>The next chapter introduces a learned multiplier on the carried cell state. It will separate adaptive retention from writing, exposure, and parameter changes.</p><p class="provenance-note mt-3">Four later chapters and both bridge panels remain queued.</p><p class="mt-4"><a class="claim-link" href={view.previous!.href}>Revisit Elman’s carried state</a></p><p class="mt-3"><a class="claim-link" href={`/journeys/recurrent-memory/${mode}/`}>Return to the {mode} route map</a></p><div class="mt-4"><JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact /></div></nav>
+  </div>
+</article>

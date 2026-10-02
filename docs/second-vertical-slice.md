@@ -72,4 +72,12 @@ No route or interactive control was added while closing the gate. Implementation
 
 The shared recurrent journey chooser and two mode previews now lead to Elman 1988/1990. Beginner mode predicts the effect of two histories on one shared token; expert mode additionally reconstructs the scalar update and inspects training, averaging, and experiment boundaries. Both display complete engine-computed forward traces, a native checkpoint answer, version-bound source inspection, and one ten-claim work record without client JavaScript.
 
-The context copy is fixed at weight 1.0; the trainable context-to-hidden path is separate. The scalar recurrence is a teaching reconstruction, and the lexical output evidence remains unnormalized. No later gate, bridge panel, empirical control, or hydrated cursor is available. The next increment is the original LSTM static forward-state and separately scoped credit treatment.
+The context copy is fixed at weight 1.0; the trainable context-to-hidden path is separate. The scalar recurrence is a teaching reconstruction, and the lexical output evidence remains unnormalized. The Elman chapter contains no gated cell, bridge panel, empirical control, or hydrated cursor. It now links to the original LSTM static forward-state and separately scoped credit treatment below.
+
+## Original-cell static chapter
+
+Both modes now continue from Elman to the original 1995/1997 LSTM cell. A complete forward ledger separates carried state, candidate, input-gated write, resulting state, output gate, and exposed output. A separate backward ledger compares authored scalar path factors without presenting them as a full gradient or derivatives from the forward fixture. Native checkpoints ask whether hiding a state erases it and whether unit factors guarantee every gradient.
+
+The expert path reconstructs the source state/output equations, marks entry and exit scaling plus every represented cell/gate truncation boundary, and audits all five promoted thousand-step Table 3 rows. The source-to-teaching crosswalk records idealized gate endpoints, supplied candidates, a populated initial state, and the source’s `tanh(x/2)` output function versus the fixture’s `tanh(x)`. The [1997 author-layout reading copy](https://ml.jku.at/publications/older/2604.pdf) was rechecked on 2 October 2026 at internal pp. 6–9, 14–15, and 24–25; those locators remain distinct from journal folios.
+
+Both modes retain source/version inspection and a six-claim work record without client JavaScript. Four later stages and both interludes remain planned. Static accessibility and rendered checks do not establish a learning advantage; the conditional cursor still requires the complete static comparison and moderated learner evidence.

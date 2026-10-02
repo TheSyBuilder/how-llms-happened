@@ -4,7 +4,7 @@
 
 This artifact closes the design-and-data gate for the second vertical slice. It defines the complete teaching inventory, preserves source-specific notation, fixes the Bengio prerequisite and smoothing bridge, and supplies schema-validated synthetic traces plus separate beginner and expert manifests.
 
-The shared journey shell and complete static Elman chapter now implement the first increment of this contract. The remaining stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
+The shared journey shell, complete static Elman chapter, and original 1995/1997 LSTM chapter implement the first two stages of this contract. Four later stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
 
 The machine-readable contract is split across:
 
@@ -147,7 +147,7 @@ The fixture is 8,051 bytes, below the 8 KiB limit. Every value is finite, labell
 
 ### Ordinary versus protected credit
 
-- The forward cell starts at `0.4`, writes `0.3`, hides the state for two steps, and exposes `tanh(0.7)=0.604368` on the final step.
+- The forward cell starts at `0.4`, writes `0.3`, hides the state for two steps, and exposes `tanh(0.7)=0.604368` on the final step. This populated initial state, supplied candidates, and idealized 0/1 gate endpoints are teaching choices. The source starts at zero and uses logistic gates. Its Appendix A.1 output function is `h(x)=2/(1+exp(−x))−1=tanh(x/2)`, distinct from the fixture’s `tanh(x)`; the expert crosswalk displays both values at state `0.7`.
 - The original cell has input and output gates only. A forget field, peephole field, or state-to-gate field is a build failure.
 - The separate ordinary credit row multiplies four `0.6` factors, producing `1`, `0.6`, `0.36`, `0.216`, and `0.1296` from target distance zero through four.
 - The protected direct-path row multiplies four unit factors and remains `1`. The label says “scoped direct cell path,” not “the gradient.”

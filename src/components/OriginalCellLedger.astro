@@ -1,0 +1,66 @@
+---
+import { calculateOriginalCellScenario, type OriginalCellScenario } from "../lib/recurrent-memory-engine";
+import type { Mode } from "../lib/site-data";
+interface Props { scenario: OriginalCellScenario; mode: Mode }
+const { scenario, mode } = Astro.props;
+if (scenario.id !== "protected-credit-path" || scenario.steps.length !== 4) {
+  throw new Error("The original-cell chapter requires its reviewed four-step scenario.");
+}
+const trace = calculateOriginalCellScenario(scenario);
+const decimals = mode === "beginner" ? 3 : 6;
+const format = (value: number) => value.toFixed(decimals);
+const pairs = [trace.steps.slice(0, 2), trace.steps.slice(2, 4)];
+---
+
+<section class:list={["mass-ledger recurrent-ledger original-cell-ledger", `recurrent-ledger--${mode}`]} aria-labelledby="original-ledger-heading">
+  <header class="ledger-header">
+    <div><p class="eyebrow">Synthetic example · two separate traces</p><h2 id="original-ledger-heading">Carry state. Trace credit.</h2></div>
+    <p class="ledger-folio">Original cell · 1997<br />Earlier report · 1995</p>
+  </header>
+  <div class="ledger-prompt"><p><strong>Predict first.</strong> The output gate is closed at <code>wait-2</code>. Is the internal state also zero?</p></div>
+  <div class="trace-intro">
+    <p>{mode === "beginner" ? "Think of an internal note with separate controls for adding to it and showing it. Hiding the note does not erase it. The carried value, the new write, and the exposed output have different jobs." : "The forward trace computes state and output from authored gate activations. The credit table below independently compares scalar path products. Its factors are not derivatives measured from this forward trace."}</p>
+    <p class="provenance-note mt-3">Authored tokens, candidate values, and gates; no training or weight changes. Gates 0 and 1 are idealized closed/open endpoints, not finite sigmoid outputs. The initial state {scenario.initialState} represents an already populated cell; the source starts a sequence at zero. The teaching output uses tanh(state).</p>
+  </div>
+  <section class="trace-history" aria-labelledby="forward-trace-heading">
+    <p class="eyebrow">01 · forward activation · steps 1 → 4</p><h3 id="forward-trace-heading" class="mt-3">Write once, hide, then expose.</h3>
+    <p class="mt-3">Each step carries the previous state with fixed multiplier 1.0, then adds candidate × input gate. The output gate scales a transformed copy of the resulting state.</p>
+    {pairs.map((steps, pairIndex) => (
+      <table class="trace-table original-forward-table mt-4">
+        <caption>Forward state · steps {pairIndex * 2 + 1}–{pairIndex * 2 + 2} · {decimals} decimals</caption>
+        <thead><tr><th scope="col">Read in order</th>{steps.map((step, index) => <th scope="col">Step {pairIndex * 2 + index + 1}<span class="trace-sequence">{step.token}</span></th>)}</tr></thead>
+        <tbody>
+          <tr><th scope="row">Carried state × 1.0</th>{steps.map((step) => <td>{format(step.previousState)}</td>)}</tr>
+          <tr><th scope="row">Candidate</th>{steps.map((step) => <td>{format(step.candidate)}</td>)}</tr>
+          <tr><th scope="row">Input gate · write</th>{steps.map((step) => <td>{step.inputGate} · {step.inputGate === 0 ? "closed" : "open"}</td>)}</tr>
+          <tr><th scope="row">Added write</th>{steps.map((step) => <td>{format(step.writtenContribution)}</td>)}</tr>
+          <tr class="trace-result"><th scope="row">Resulting state</th>{steps.map((step) => <td>{format(step.state)}</td>)}</tr>
+          <tr><th scope="row">Output gate · expose</th>{steps.map((step) => <td>{step.outputGate} · {step.outputGate === 0 ? "closed" : "open"}</td>)}</tr>
+          <tr><th scope="row">Exposed output</th>{steps.map((step) => <td>{format(step.exposedOutput)}</td>)}</tr>
+        </tbody>
+      </table>
+    ))}
+    <details class="prediction-reveal mt-4">
+      <summary>Check the hidden-state prediction</summary>
+      <p>At wait-2, the state is {format(trace.steps[2]!.state)} and the exposed output is {format(trace.steps[2]!.exposedOutput)}. Closing the output gate hides the state; it does not erase it. The closed input gate adds zero even though the candidate is {scenario.steps[2]!.candidate}.</p>
+      <p class="mt-3">At read, opening the output gate exposes tanh(0.7) = {format(trace.steps[3]!.exposedOutput)}. The internal state stays 0.7. An output is neither the state itself nor a word probability.</p>
+    </details>
+  </section>
+  <section class="trace-history credit-ledger" aria-labelledby="credit-trace-heading">
+    <p class="eyebrow">02 · backward path factors · distance 0 → 4</p><h3 id="credit-trace-heading" class="mt-3">How much of one path factor remains?</h3>
+    <p class="mt-3">{mode === "beginner" ? "Training uses a later error to guide earlier changes. Along a single ordinary path, repeated scaling can weaken that teaching signal. Start at a reference factor of 1 and multiply by 0.6 for every step back. Compare a protected route that multiplies by 1 each time." : "Normalize a single path term to 1 at target distance zero. Each ordinary local factor is 0.6; each protected direct-cell factor is 1. The product omits entry/exit derivatives, all other paths, summed errors, and parameter sensitivities."}</p>
+    <table class="trace-table credit-table mt-4">
+      <caption>Backward credit comparison · authored local factors · {decimals} decimals</caption>
+      <thead><tr><th scope="col">Steps back from target</th><th scope="col">Ordinary path · × 0.6</th><th scope="col">Direct cell path · × 1</th></tr></thead>
+      <tbody>{trace.credit.map((point) => <tr><th scope="row">{point.distanceFromTarget}{point.distanceFromTarget === 0 ? " · target" : ""}</th><td>{format(point.ordinaryPath)}</td><td class="protected-factor">{format(point.protectedPath)}</td></tr>)}</tbody>
+    </table>
+    {mode === "expert" && <details class="trace-arithmetic"><summary>Reconstruct the four-step product</summary><p class="mt-3">Ordinary: 0.6 × 0.6 × 0.6 × 0.6 = 0.129600. Protected: 1 × 1 × 1 × 1 = 1.000000. The first row is a normalized reference, not a measured loss derivative. Products greater than one can instead grow; this fixture demonstrates only decay.</p></details>}
+    <details class="prediction-reveal mt-4">
+      <summary>Check the state-versus-credit distinction</summary>
+      <p>The forward table carries activation. The backward table compares scoped path factors. A unit factor on the direct cell loop does not make the full network gradient equal to 1, guarantee that gates learn, or establish unlimited usable memory.</p>
+      <p class="mt-3"><strong>Explain the cause:</strong> which operation changes stored activation, and which repeated factor affects the backward path?</p>
+    </details>
+    <p class="provenance-note mt-3">Scoped direct cell path only. The source’s efficient rule truncates other recurrent routes; the expert treatment marks those cuts separately.</p>
+  </section>
+  <div class="trace-comparison"><p class="eyebrow">Mechanism boundary · original cell</p><p class="mt-3">Input gate: write. Output gate: expose. Self-loop: fixed 1.0. No learned forget gate or peephole in this stage. The note analogy describes access to a scalar activation, not a literal stored sentence or perfect recall.</p></div>
+</section>
