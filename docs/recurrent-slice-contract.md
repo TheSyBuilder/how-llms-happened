@@ -4,7 +4,7 @@
 
 This artifact closes the design-and-data gate for the second vertical slice. It defines the complete teaching inventory, preserves source-specific notation, fixes the Bengio prerequisite and smoothing bridge, and supplies schema-validated synthetic traces plus separate beginner and expert manifests.
 
-The shared journey shell, complete static Elman chapter, and original 1995/1997 LSTM chapter implement the first two stages of this contract. Four later stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
+The shared journey shell, complete static Elman chapter, original 1995/1997 LSTM chapter, and 1999/2000 forget-gate retention chapter implement the first three stages of this contract. Three later stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
 
 The machine-readable contract is split across:
 
@@ -48,8 +48,8 @@ Canonical display source: the 2000 *Neural Computation* article, using the autho
 
 - `gers-2000-continual-state-drift-problem` — accumulation, saturation, fixed-decay, and teacher-reset limits, journal pp. 4–5.
 - `gers-2000-forget-gate-mechanism` — block-shared forget activation multiplying previous state before the input-gated write, journal p. 5, equations 6–7 and Figure 1.
-- `gers-2000-forget-gate-learning-and-complexity` — initialization, journal eligibility recurrence, state/trace reset, and complexity, journal pp. 5–8, equations 11, 17, and 20.
-- `gers-2000-evidence-boundary` — two synthetic continual task families and unevaluated real-world proposals, journal p. 17.
+- `gers-2000-forget-gate-learning-and-complexity` — initialization, journal eligibility recurrence, state/trace reset, and complexity, journal internal pp. 5–9, equations 11, 17, and 20.
+- `gers-2000-evidence-boundary` — two synthetic continual task families and unevaluated real-world proposals, journal pp. 15–16.
 - Objectives: `beginner-gers-1999-adaptive-forgetting` and `expert-gers-1999-mechanism-versions-and-evidence`.
 
 The three presets change only the authored forget activation. Previous state, candidate, and input gate stay fixed. “Forgetting” always means activation-state retention or reset; it never means erasing learned parameters.
@@ -121,14 +121,14 @@ The neutral ledger uses prose roles so one row can remain stable while the histo
 
 | Neutral ledger role | Elman 1990 | Hochreiter–Schmidhuber 1997 | Gers et al. 2000 | Gers et al. 2002 | UI and fixture boundary |
 |---|---|---|---|---|---|
-| Current external input | input units at time `t`; no compact recurrence equation is printed | source activations entering `net_cj(t)` and gate net inputs | source activations entering `z_cj^v(t)` and gate inputs | ordinary source term `Σ_m w_lm y_m(t−1)` | `inputs[]` or external gate terms are authored scalar teaching values, not learned embeddings or paper parameters. |
+| Current external input | input units at time `t`; no compact recurrence equation is printed | source activations entering `net_cj(t)` and gate net inputs | source activations entering `net_cj^v(t)` and gate inputs | ordinary source term `Σ_m w_lm y_m(t−1)` | `inputs[]` or external gate terms are authored scalar teaching values, not learned embeddings or paper parameters. |
 | Copied recurrent context | context units receive the previous hidden activations through fixed one-to-one weight-1.0 links | not the cell state; Elman’s copied context is a different architecture | not the forget-gated cell state | not a peephole | The Elman trace labels `copied context = prior state` separately from the trainable recurrent transform. |
-| Candidate write | no separately gated candidate | `g(net_cj(t))` | `g(z_cj^v(t))` | traditional cell input retained in equations 1 and 4 | Fixture `candidate` is already the bounded candidate value; it is not a raw net input. |
-| Input gate | absent | `y_inj(t)=f_inj(net_inj(t))` | `y_inj(t)=f_inj(z_inj(t))` | `y_inj(t)` with a peephole term from `s_cj^v(t−1)` in equation 19 | Display verb: **write**. |
+| Candidate write | no separately gated candidate | `g(net_cj(t))` | `g(net_cj^v(t))` | traditional cell input retained in equations 1 and 4 | Fixture `candidate` is already the bounded candidate value; it is not a raw net input. |
+| Input gate | absent | `y_inj(t)=f_inj(net_inj(t))` | `y_inj(t)=f_inj(net_inj(t))` | `y_inj(t)` with a peephole term from `s_cj^v(t−1)` in equation 19 | Display verb: **write**. |
 | Retained state | ordinary hidden state is recomputed through learned paths | `s_cj(t−1)` returns through the fixed 1.0 CEC connection | `y_ϕj(t)s_cj^v(t−1)` in equations 6–7 | the inherited forget-gated term in equation 4 | `retained contribution`; it is absent as an independently controlled operation in the original cell. |
-| Updated cell state | hidden activation/context copy rather than an additive protected cell | `s_cj(t)=s_cj(t−1)+y_inj(t)g(net_cj(t))` | `s_cj^v(t)=y_ϕj(t)s_cj^v(t−1)+y_inj(t)g(z_cj^v(t))` | updated by traditional equation 4 after input and forget gates | `state`; the original fixture structurally lacks forget and peephole fields. |
+| Updated cell state | hidden activation/context copy rather than an additive protected cell | `s_cj(t)=s_cj(t−1)+y_inj(t)g(net_cj(t))` | `s_cj^v(t)=y_ϕj(t)s_cj^v(t−1)+y_inj(t)g(net_cj^v(t))` | updated by traditional equation 4 after input and forget gates | `state`; the original fixture structurally lacks forget and peephole fields. |
 | Output gate and exposed output | output layer activation; not a normalized word distribution in the selected experiment | `y_outj(t)` and `y_cj(t)=y_outj(t)h(s_cj(t))` | same source roles with the extended state recurrence | `y_outj(t)` reads `s_cj^v(t)` through equation 21, then the cell output follows equations 5 and 7 | Display verbs: **expose** and `exposed output`. |
-| Forget gate | absent | absent | `y_ϕj(t)=f_ϕj(z_ϕj(t))`; replaces fixed retention | inherited baseline and receives a previous-state peephole in equation 20 | Display verbs: **retain/reset**. Never call it parameter forgetting. |
+| Forget gate | absent | absent | `y_ϕj(t)=f_ϕj(net_ϕj(t))`; replaces fixed retention | inherited baseline and receives a previous-state peephole in equation 20 | Display verbs: **retain/reset**. Never call it parameter forgetting. |
 | Peephole read | absent | absent | absent | weighted previous-state terms enter input and forget gates; a weighted updated-state term enters the output gate | Display verb: **inspect**. It changes a gate input or decision, not the definition of retention. |
 | Backward credit | current-step local error update; no full BPTT through copied history | ordinary products of temporal derivatives versus the direct unit local CEC path; source-defined truncation outside the protected route | eligibility traces recur through `y_ϕj(t)` with journal-specific equations | truncated partials and no gate-error propagation back through peepholes into the CEC | The backward ledger has its own row position, labels, and table. It never shares an unlabeled line with forward state. |
 
@@ -232,4 +232,12 @@ Static routes must pass the data, source, mode, static-render, accessibility, re
 
 ## Implementation sequence
 
-The first implementation increment builds the shared recurrent journey shell and Elman in both modes. Its complete static same-token trace, checkpoint answer, source inspection, and scalar arithmetic are available without JavaScript. The original 1995/1997 LSTM static state-and-credit treatment is next; hydration remains deferred under the conditional-prototype rule. The original-cell, forget-gate, peephole, Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until each preceding source-dated boundary has passed its own static, accessibility, responsive, and visual review.
+The shared recurrent shell, Elman same-token trace, original-cell state/credit comparison, and forget-gate retention alternatives are implemented in both modes. Each has a complete static treatment with source inspection and native checkpoints. The next increment is the 2002 peephole comparison. Peephole, Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until their source-dated boundaries pass equivalent review. Hydration remains deferred under the conditional-prototype rule.
+
+## Implemented forget-gate treatment
+
+The 1999/2000 chapter adds three complete static alternatives for one forward update. Native preset links let the learner inspect each independently; the fixed previous state, candidate, input gate, and write are labelled above the tables. Beginner checkpoints ask why near-reset leaves nonzero activation and why no parameter is erased. Expert mode reconstructs journal equations 6–7, 17, and 20, then audits the separate CERG and CNTO criteria, all promoted result values, selected-network reset traces, noncontinual control, and report/proceedings/journal differences.
+
+The journal notation uses `net` for gate and candidate preactivations. Complexity extends onto internal p. 9; the conclusion is on internal pp. 15–16. The main CERG retains B/E grammar symbols and omits externally imposed segmentation/reset; the marker-removal variant is described separately and supplies no replacement Table 2 rates. The corpus locators and protocol caveat preserve these boundaries.
+
+Three later stages and both interludes remain planned. This static comparison contains no trained gate, exposed-output calculation, backward-credit simulation, or client code. It is the baseline for any later learner comparison, not evidence that a client interaction improves learning.

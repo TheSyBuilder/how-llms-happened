@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-09-20",
+  "asOf": "2026-10-04",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -25913,7 +25913,7 @@
       ],
       "title": "ARIS institutional record for Technical Report IDSIA-01-99",
       "url": "https://aris.supsi.ch/handle/123456789/18532",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-04",
       "sourceClass": "official-record",
       "authority": "institutional-repository",
       "versionIds": [
@@ -25931,7 +25931,7 @@
       ],
       "title": "Author-hosted PostScript of Technical Report IDSIA-01-99",
       "url": "https://sferics.idsia.ch/pub/juergen/FgGates-TechRep.ps.gz",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-04",
       "sourceClass": "primary-full-text",
       "authority": "author",
       "versionIds": [
@@ -25995,7 +25995,7 @@
       ],
       "title": "Felix Gers institutional bibliography",
       "url": "https://prof.bht-berlin.de/gers/publikationen",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-04",
       "sourceClass": "official-record",
       "authority": "author",
       "versionIds": [
@@ -26049,7 +26049,7 @@
       ],
       "title": "Author-hosted complete text of the Neural Computation Learning to Forget article",
       "url": "https://sferics.idsia.ch/pub/juergen/FgGates-NC.pdf",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-04",
       "sourceClass": "primary-full-text",
       "authority": "author",
       "versionIds": [
@@ -44339,7 +44339,7 @@
         "This is an architectural failure analysis demonstrated on the paper’s synthetic continual tasks, not a measurement of drift in natural-language models."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-forget-gate-mechanism",
@@ -44370,7 +44370,7 @@
         "The recurrence is stated in the paper’s block-shared scalar notation and should not be silently replaced by a later vectorized implementation."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-forget-gate-learning-and-complexity",
@@ -44379,7 +44379,7 @@
         "gated-recurrent-memory-access",
         "adaptive-recurrent-state-retention"
       ],
-      "statement": "Positive forget-gate bias initializes the extension near standard LSTM; its truncated eligibility trace carries the previous trace through the current gate and adds a term proportional to the previous state, and gate closure resets both state and that trace. The authors retain constant time per weight per step and sequence-length-independent storage, while adding gate weights.",
+      "statement": "Positive forget-gate bias initializes the extension near standard LSTM; its truncated eligibility trace carries the previous trace through the current gate and adds a term proportional to the previous state, and the zero-gate limit removes their carried components. The authors retain constant time per weight per step and sequence-length-independent storage, while adding gate weights.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -44389,7 +44389,7 @@
             "label": "Forget-gate initialization, learning rule, reset, and complexity",
             "section": "3 Solution: Forget Gates; 3.1 Forward Pass of Extended LSTM with Forget Gates; 3.2 Backward Pass of Extended LSTM with Forget Gates; 3.3 Complexity",
             "pageStart": 5,
-            "pageEnd": 8,
+            "pageEnd": 9,
             "equation": "11, 17, 20",
             "paragraph": "Initialization, eligibility reset, and section 3.3 complexity"
           },
@@ -44397,10 +44397,11 @@
         }
       ],
       "limitations": [
-        "The author-hosted February technical-report build prints a different term in the corresponding derivative; this claim is deliberately bound to the journal equations."
+        "The author-hosted February technical-report build prints a different term in the corresponding derivative; this claim is deliberately bound to the journal equations.",
+        "Removing carried state and eligibility terms is distinct from zeroing the updated state or every current-step sensitivity: a new input-gated write and its derivative can remain. No learned parameter is erased by a forward activation reset."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-cerg-protocol",
@@ -44408,7 +44409,7 @@
       "ideaIds": [
         "adaptive-recurrent-state-retention"
       ],
-      "statement": "The continual embedded-Reber experiment concatenates strings without boundary markers or external state resets, uses seven input and seven output units plus four two-cell memory blocks and 424 adjustable weights, trains 100 independently initialized networks for at most 30,000 streams, and calls a solution perfect only after ten 100,000-symbol test streams are predicted correctly.",
+      "statement": "The continual embedded-Reber experiment concatenates strings without externally imposed segmentation or intermediate state resets, uses seven input and seven output units plus four two-cell memory blocks and 424 adjustable weights, trains 100 independently initialized networks for at most 30,000 streams, and calls a solution perfect only after ten 100,000-symbol test streams are predicted correctly.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -44425,10 +44426,11 @@
         }
       ],
       "limitations": [
-        "The technical report and ICANN paper say 375 adjustable weights and a different minimum grammar lag; those values are not merged into this journal-bound protocol claim."
+        "The technical report and ICANN paper say 375 adjustable weights and a different minimum grammar lag; those values are not merged into this journal-bound protocol claim.",
+        "The main CERG retains the grammar’s B/E symbols. The separately described marker-removal variant has a qualitative success statement, not the Table 2 success rates."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-cerg-results",
@@ -44456,7 +44458,7 @@
         "The table reports percentages over 100 runs but no confidence intervals or formal significance analysis, and the fixed-decay row represents a selected setting rather than a broad sweep."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-cerg-self-reset-analysis",
@@ -44484,7 +44486,7 @@
         "The mechanistic trace is an analysis of selected learned networks, not a distributional summary across all 100 runs."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-noncontinual-memory-control",
@@ -44512,7 +44514,7 @@
         "The no-regression observation is limited to the authors’ tested synthetic tasks and is not a general guarantee that adaptive forgetting is harmless."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-cnto-results",
@@ -44540,7 +44542,7 @@
         "The technical report has the same 24% and 37% perfect rates but much larger mean training counts; this claim uses the journal Table 3 only."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2000-evidence-boundary",
@@ -44548,7 +44550,7 @@
       "ideaIds": [
         "adaptive-recurrent-state-retention"
       ],
-      "statement": "The evidence supports learned state reset on two synthetic continual sequence families under the paper’s topology and training rules; real-world continual prediction, hierarchical decomposition, boundary cues, and broader applications remain proposals rather than evaluated results.",
+      "statement": "The evidence supports learned state reset on two synthetic continual sequence families under the paper’s topology and training rules; real-world continual prediction, hierarchical decomposition and broader applications remain proposals rather than evaluated results.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -44557,18 +44559,18 @@
           "locator": {
             "label": "Scope and proposed extensions",
             "section": "5 Conclusion",
-            "pageStart": 17,
-            "pageEnd": 17,
-            "paragraph": "Summary, harder variants, and future applications"
+            "pageStart": 15,
+            "pageEnd": 16,
+            "paragraph": "Summary, decomposition, and future applications"
           },
-          "support": "Summarizes the two benchmark families and frames harder boundary cues, decomposition, and applications as future work."
+          "support": "Summarizes the two benchmark families and frames hierarchical decomposition and broader applications as future work."
         }
       ],
       "limitations": [
         "The paper supplies no code, learned parameters, confidence intervals, significance tests, optimized topology study, or natural-language experiment."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-04"
     },
     {
       "id": "gers-2002-forget-gate-antecedent",
@@ -77361,7 +77363,7 @@
     {
       "id": "beginner-gers-1999-adaptive-forgetting",
       "mode": "beginner",
-      "objective": "See why an original LSTM cell can drift on a boundary-free stream, manipulate the retain/reset effect of a forget gate, and connect learned resets to the two synthetic continual experiments without treating forgetting as loss of learned parameters.",
+      "objective": "See why an original LSTM cell can drift on an unsegmented continual stream, compare the retain/reset effect of a forget gate, and connect learned resets to the two synthetic continual experiments without treating forgetting as loss of learned parameters.",
       "workIds": [
         "gers-schmidhuber-cummins-1999-learning-to-forget"
       ],

@@ -161,7 +161,7 @@
     {
       "slug": "gers-1999-2000",
       "workId": "gers-schmidhuber-cummins-1999-learning-to-forget",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-gers-1999-adaptive-forgetting",
         "expert": "expert-gers-1999-mechanism-versions-and-evidence"
@@ -186,14 +186,14 @@
             "id": "beginner-forget-presets",
             "kind": "prompt",
             "heading": "Predict retained activation",
-            "body": "Keep the previous state and candidate write fixed while choosing near-retain, gradual-decay, or near-reset. The gate changes activation retention, not the learned weights.",
+            "body": "Keep the previous state and input-gated write fixed while comparing near-retain, gradual-decay, and near-reset. The gate changes activation retention, not the learned weights.",
             "claimIds": ["gers-2000-forget-gate-mechanism"]
           },
           {
             "id": "beginner-forget-evidence",
             "kind": "result",
             "heading": "Read learned reset inside its task",
-            "body": "The paper compares external and learned resets on continual embedded Reber grammar and tests a continual N-bit temporal-order task. These are synthetic sequence families, not language-model results.",
+            "body": "The paper compares external and learned resets on continual embedded Reber grammar and tests a continual noisy temporal-order task. These are synthetic sequence families, not language-model results.",
             "claimIds": ["gers-2000-cerg-results", "gers-2000-cerg-self-reset-analysis", "gers-2000-cnto-results"]
           },
           {

@@ -20,6 +20,7 @@ import {
 } from "./kneser-ney-engine.ts";
 import {
   type ElmanScenario,
+  type ForgetScenario,
   type OriginalCellScenario,
   type RecurrentFixture,
   validateRecurrentFixture,
@@ -297,6 +298,7 @@ export type StageView = {
   chenFixture?: ChenFixture;
   elmanScenario?: ElmanScenario;
   originalCellScenario?: OriginalCellScenario;
+  forgetScenario?: ForgetScenario;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -878,6 +880,14 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
   if (stage.slug === "hochreiter-schmidhuber-1995-1997" && originalCellScenario === undefined) {
     throw new Error("Original LSTM is missing its reviewed state-and-credit trace.");
   }
+  const forgetScenario = stage.slug === "gers-1999-2000"
+    ? recurrentFixture.scenarios.find(
+      (scenario): scenario is ForgetScenario => scenario.kind === "forget-retention",
+    )
+    : undefined;
+  if (stage.slug === "gers-1999-2000" && forgetScenario === undefined) {
+    throw new Error("The forget-gate stage is missing its reviewed retention comparison.");
+  }
 
   return {
     journeyId: manifest.id,
@@ -897,6 +907,7 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     ...(stage.slug === "chen-goodman-1998" ? { chenFixture } : {}),
     ...(elmanScenario === undefined ? {} : { elmanScenario }),
     ...(originalCellScenario === undefined ? {} : { originalCellScenario }),
+    ...(forgetScenario === undefined ? {} : { forgetScenario }),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {

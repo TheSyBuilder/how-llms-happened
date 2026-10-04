@@ -1,21 +1,24 @@
 ---
 import ElmanChapter from "../../../../components/ElmanChapter.astro";
 import OriginalLstmChapter from "../../../../components/OriginalLstmChapter.astro";
+import ForgetGateChapter from "../../../../components/ForgetGateChapter.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { getBuiltStagePaths, getStageView } from "../../../../lib/site-data";
 export function getStaticPaths() { return getBuiltStagePaths("recurrent-memory"); }
 const mode = Astro.params.mode;
 const slug = Astro.params.stage;
-if ((mode !== "beginner" && mode !== "expert") || (slug !== "elman-1988-1990" && slug !== "hochreiter-schmidhuber-1995-1997")) throw new Error("No recurrent stage treatment defined.");
+if ((mode !== "beginner" && mode !== "expert") || (slug !== "elman-1988-1990" && slug !== "hochreiter-schmidhuber-1995-1997" && slug !== "gers-1999-2000")) throw new Error("No recurrent stage treatment defined.");
 const view = getStageView(mode, slug, "recurrent-memory");
 const elman = slug === "elman-1988-1990";
-const label = elman ? "Elman 1988/1990" : "Original LSTM 1995/1997";
+const original = slug === "hochreiter-schmidhuber-1995-1997";
+const label = elman ? "Elman 1988/1990" : original ? "Original LSTM 1995/1997" : "Forget gates 1999/2000";
 const description = elman
   ? "Elman's context copy, history-dependent hidden state, local training boundary, and source-dated lexical evidence."
-  : "The original LSTM's fixed unit self-loop, writing and exposure gates, scoped backward credit, and synthetic-task evidence.";
+  : original ? "The original LSTM's fixed unit self-loop, writing and exposure gates, scoped backward credit, and synthetic-task evidence."
+  : "Adaptive retention with a fixed write, journal eligibility equations, and version-bound synthetic continual prediction evidence.";
 ---
 
 <BaseLayout title={`${mode === "beginner" ? "Beginner" : "Expert"}: ${label} — LLM Lineage`} description={description} eyebrow={`${mode} journey`}>
   <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/recurrent-memory/">Recurrent memory</a><span aria-hidden="true">/</span><a href={`/journeys/recurrent-memory/${mode}/`}>{mode}</a><span aria-hidden="true">/</span><span aria-current="page">{label}</span></div>
-  {elman ? <ElmanChapter view={view} /> : <OriginalLstmChapter view={view} />}
+  {elman ? <ElmanChapter view={view} /> : original ? <OriginalLstmChapter view={view} /> : <ForgetGateChapter view={view} />}
 </BaseLayout>

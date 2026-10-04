@@ -10,12 +10,12 @@ const journey = getJourneyOverview("recurrent-memory");
 const first = getStageView(mode, "elman-1988-1990", "recurrent-memory");
 ---
 
-<BaseLayout title={`${beginner ? "Beginner" : "Expert"} path: recurrent memory — LLM Lineage`} description="Preview the source-dated recurrent-memory path through carried state and the original gated cell." eyebrow={`${mode} path`}>
+<BaseLayout title={`${beginner ? "Beginner" : "Expert"} path: recurrent memory — LLM Lineage`} description="Preview the source-dated recurrent-memory path through carried state, the original gated cell, and adaptive retention." eyebrow={`${mode} path`}>
   <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/recurrent-memory/">Recurrent memory</a><span aria-hidden="true">/</span><span aria-current="page">{mode}</span></div>
   <section class="journey-hero">
-    <p class="eyebrow">{mode} path · first two chapters available</p>
+    <p class="eyebrow">{mode} path · first three chapters available</p>
     <h1>{beginner ? "Read the present through what came before." : "Audit which recurrent path changed."}</h1>
-    <p class="mt-4">{beginner ? "Compare a shared token after two histories, then predict what survives when a cell's output gate is closed. Follow separate traces for carried activation and a backward teaching path. Later chapters introduce resetting and inspecting state." : "Reconstruct the fixed-copy and learned-transform roles, then audit the original cell's additive state path, input/output gates, and local truncation. Keep the source functions and synthetic-task evidence separate from the teaching fixture."}</p>
+    <p class="mt-4">{beginner ? "Compare a shared token after two histories, then predict what survives when a cell's output gate is closed. Follow separate traces for carried activation and a backward teaching path. Then compare three retention presets with one fixed write. A later chapter adds state inspection." : "Reconstruct the fixed-copy and learned-transform roles, then audit the original cell's additive state path, input/output gates, and local truncation. Reconstruct the later forget-gate recurrence and journal eligibility rule while keeping source functions and synthetic-task evidence separate from teaching values."}</p>
     <div class="hero-actions"><a class="button" href={`/journeys/recurrent-memory/${mode}/elman-1988-1990/`}>Start with Elman · 1988/1990 <span aria-hidden="true">→</span></a><a class="button button--quiet" href={`/journeys/recurrent-memory/${beginner ? "expert" : "beginner"}/`}>See the {beginner ? "expert" : "beginner"} path</a></div>
   </section>
   <section class="shell reference-grid">

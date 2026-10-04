@@ -7273,6 +7273,17 @@ test("retains the version-bound forget-gate bridge and journal results", () => {
   );
   assert.ok(objectives[1]?.successCriterion.includes("Table 2 and Table 3"));
   assert.ok(objectives[1]?.successCriterion.includes("424-weight"));
+  const protocol = corpus.claims.find((claim) => claim.id === "gers-2000-cerg-protocol");
+  assert.match(protocol.statement, /without externally imposed segmentation or intermediate state resets/);
+  assert.doesNotMatch(protocol.statement, /without boundary markers/);
+  assert.ok(protocol.limitations.some((note) => note.includes("B/E") && note.includes("not the Table 2")));
+  const learning = corpus.claims.find((claim) => claim.id === "gers-2000-forget-gate-learning-and-complexity");
+  const scope = corpus.claims.find((claim) => claim.id === "gers-2000-evidence-boundary");
+  assert.match(learning.statement, /zero-gate limit removes their carried components/);
+  assert.equal(learning.evidence[0].locator.pageEnd, 9);
+  assert.equal(scope.evidence[0].locator.pageStart, 15);
+  assert.equal(scope.evidence[0].locator.pageEnd, 16);
+  assert.doesNotMatch(scope.statement, /boundary cues/);
 });
 
 test("retains the peephole timing evidence without promoting the deleted DOI", () => {

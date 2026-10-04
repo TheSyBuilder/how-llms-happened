@@ -8,12 +8,15 @@ const record = "/reference/works/elman-1988-finding-structure-in-time/";
 const originalBeginner = `${base}beginner/hochreiter-schmidhuber-1995-1997/`;
 const originalExpert = `${base}expert/hochreiter-schmidhuber-1995-1997/`;
 const originalRecord = "/reference/works/hochreiter-schmidhuber-1995-long-short-term-memory/";
-const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord];
+const forgetBeginner = `${base}beginner/gers-1999-2000/`;
+const forgetExpert = `${base}expert/gers-1999-2000/`;
+const forgetRecord = "/reference/works/gers-schmidhuber-cummins-1999-learning-to-forget/";
+const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord];
 
-test("the recurrent chooser exposes two chapters while later chapters stay queued", async ({ page }) => {
+test("the recurrent chooser exposes three chapters while later chapters stay queued", async ({ page }) => {
   await page.goto(base);
   await page.getByRole("link", { name: "Preview the beginner path" }).click();
-  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(4);
+  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(3);
   await page.getByRole("link", { name: /Start with Elman/ }).click();
   await expect(page).toHaveURL(new RegExp(`${beginner}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Can the same word leave a different state?");
@@ -204,4 +207,114 @@ test("graphics-hidden and reduced-motion views preserve both original-cell trace
   await expect(page.getByRole("table", { name: /Forward state · steps 3–4/ })).toContainText("0.604");
   await expect(page.getByRole("table", { name: /Backward credit comparison/ })).toContainText("0.130");
   await expect(page.getByText(/No learned forget gate or peephole in this stage/)).toBeVisible();
+});
+
+test("progression and mode switching preserve the forget-gate stage", async ({ page }) => {
+  await page.goto(originalBeginner);
+  await page.getByRole("link", { name: /Continue to adaptive retention/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${forgetBeginner}$`));
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("What survives when a cell learns to reset?");
+  await page.getByRole("link", { name: /Switch to expert/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${forgetExpert}$`));
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Which term does a forget gate change?");
+  await page.getByRole("link", { name: "Revisit the original LSTM cell" }).click();
+  await expect(page).toHaveURL(new RegExp(`${originalExpert}$`));
+});
+
+test("all retention alternatives and answers remain complete without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  for (const path of [forgetBeginner, forgetExpert]) {
+    const precise = path === forgetExpert;
+    await page.goto(path);
+    for (const [label, retained, state] of [["Near retain", "0.72", "0.92"], ["Gradual decay", "0.4", "0.6"], ["Near reset", "0.08", "0.28"]]) {
+      const table = page.getByRole("table", { name: new RegExp(`${label} · one forward update`) });
+      const format = (value: string) => Number(value).toFixed(precise ? 6 : 3);
+      await expect(table.getByRole("row", { name: /Retained old state/ })).toContainText(format(retained));
+      await expect(table.getByRole("row", { name: /Same new write/ })).toContainText(format("0.2"));
+      await expect(table.getByRole("row", { name: /Resulting state/ })).toContainText(format(state));
+    }
+    await page.getByText("Check the retention prediction", { exact: true }).click();
+    await expect(page.getByText(/Near reset therefore produces/)).toContainText(precise ? "0.280000, not zero" : "0.280, not zero");
+    await page.getByText("Check the activation-versus-parameters distinction", { exact: true }).click();
+    await expect(page.locator(".prediction-reveal").getByText(/does not erase learned weights/)).toBeVisible();
+    await expect(page.getByText(/They are not three successive steps/)).toBeVisible();
+    await expect(page.locator("script, input, select, button, astro-island")).toHaveCount(0);
+  }
+  await context.close();
+});
+
+test("retention inspection and source equations work from the keyboard", async ({ page }) => {
+  await page.goto(forgetExpert);
+  const preset = page.getByRole("navigation", { name: "Inspect a retention preset" }).getByRole("link", { name: "Near reset", exact: true });
+  await preset.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(new RegExp(`${forgetExpert}#retention-near-reset$`));
+  for (const label of ["Check the retention prediction", "Check the activation-versus-parameters distinction", "Audit initialization and computational scope"]) {
+    const summary = page.getByText(label, { exact: true });
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(summary.locator("..")).toHaveAttribute("open", "");
+  }
+  for (const label of ["Journal forget-gate forward equations", "Journal forget-weight eligibility recurrence", "Journal shared-gate weight update"]) {
+    const region = page.getByRole("region", { name: label });
+    await region.focus();
+    await expect(region).toBeFocused();
+    if (await region.evaluate((element) => element.scrollWidth > element.clientWidth)) {
+      await page.keyboard.press("ArrowRight");
+      await expect.poll(() => region.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
+    }
+  }
+  const evidence = page.locator(".evidence-details > summary").first();
+  await evidence.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".evidence-details[open] .source-row a").first()).toBeVisible();
+});
+
+test("the forget-gate audit preserves journal rules and version boundaries", async ({ page }) => {
+  await page.goto(forgetExpert);
+  await expect(page.getByRole("region", { name: "Journal forget-gate forward equations" }).locator("math")).toHaveCount(2);
+  await expect(page.getByRole("region", { name: "Journal forget-weight eligibility recurrence" }).locator("math")).toHaveCount(1);
+  await expect(page.getByText(/Near zero attenuates them; it does not guarantee exact reset/)).toBeVisible();
+  await expect(page.getByText(/previous cell state/).first()).toBeVisible();
+  await expect(page.getByText(/Each cell keeps its own sensitivity/)).toBeVisible();
+  await expect(page.getByText(/Earlier accounts report 375 weights; the journal reports 424/)).toBeVisible();
+  await expect(page.getByText(/24 February build/)).toBeVisible();
+  await expect(page.getByText(/grammar still contains B\/E symbols/)).toBeVisible();
+  await expect(page.getByText(/They do not map to published pp. 2451–2471/)).toBeVisible();
+  await expect(page.getByText(/No cell-state-to-gate peephole in this stage/)).toBeVisible();
+});
+
+test("the continual result ledgers and nine-claim record preserve experimental scope", async ({ page }) => {
+  await page.goto(forgetExpert);
+  const cerg = page.getByRole("table", { name: /Journal Table 2 · perfect/ });
+  for (const [label, values] of [["Standard · external reset", "74% 7,441"], ["Standard · no reset", "0% —"], ["Fixed state decay · 0.9", "0% —"], ["Learned forget gate", "18% 18,889"], ["Forget gate + learning-rate decay", "62% 14,087"]]) {
+    await expect(cerg.getByRole("row", { name: `${label} ${values}`, exact: true })).toBeVisible();
+  }
+  const good = page.getByRole("table", { name: /Journal Table 2 · good/ });
+  await expect(good.getByRole("row", { name: "Learned forget gate 29%", exact: true })).toBeVisible();
+  await expect(good.getByRole("row", { name: "Forget gate + learning-rate decay 6%", exact: true })).toBeVisible();
+  const cnto = page.getByRole("table", { name: /Journal Table 3 · perfect/ });
+  for (const [label, values] of [["Standard · no reset", "0% —"], ["Learned forget gate", "24% 18,077"], ["Forget gate + learning-rate decay", "37% 22,654"]]) {
+    await expect(cnto.getByRole("row", { name: `${label} ${values}`, exact: true })).toBeVisible();
+  }
+  const partial = page.getByRole("table", { name: /Journal Table 3 · mean error-free/ });
+  for (const value of ["4.6", "12.2", "11.8"]) await expect(partial.getByRole("cell", { name: value, exact: true })).toBeVisible();
+  await expect(page.locator("#forget-cnto").locator("..").getByText(/1,000 successive correct sequences in each of ten/).first()).toBeVisible();
+  await page.getByRole("link", { name: /Inspect the complete nine-claim/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${forgetRecord}$`));
+  await expect(page.locator(".claim-record")).toHaveCount(9);
+  await page.getByRole("link", { name: "Audit the mechanism" }).click();
+  await expect(page).toHaveURL(new RegExp(`${forgetExpert}$`));
+});
+
+test("graphics-hidden and reduced-motion views preserve all retention alternatives", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(forgetBeginner);
+  await page.addStyleTag({ content: "svg, canvas, [aria-hidden='true'] { display: none !important; } * { background-image: none !important; }" });
+  for (const [label, state] of [["Near retain", "0.920"], ["Gradual decay", "0.600"], ["Near reset", "0.280"]]) {
+    await expect(page.getByRole("table", { name: new RegExp(`${label} · one forward update`) }).getByRole("row", { name: /Resulting state/ })).toContainText(state);
+  }
+  await page.getByText("Check the activation-versus-parameters distinction", { exact: true }).click();
+  await expect(page.getByText(/The carried activation changes/)).toBeVisible();
 });
