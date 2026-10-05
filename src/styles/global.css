@@ -493,6 +493,14 @@
   .experiment-table th:first-child { width: 45%; }
   .preset-index { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; }
   .preset-index a { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 650; }
+  .inspection-table th:first-child { width: 65%; }
+  .inspection-table td { overflow-wrap: anywhere; }
+  .inspection-results th:first-child { width: 42%; }
+  .peephole-evidence { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 5.5rem); }
+  .peephole-evidence > section { min-width: 0; }
+  .peephole-evidence .inspection-learning, .peephole-evidence .inspection-protocol, .peephole-evidence > nav { grid-column: 1 / -1; }
+  .peephole-evidence .inspection-learning > p, .peephole-evidence .inspection-protocol > p { max-width: 72ch; }
+  @media (max-width: 1024px) { .peephole-evidence { grid-template-columns: 1fr; } }
   .retention-table th:first-child, .retention-secondary th:first-child { width: 65%; }
   .retention-results th:first-child { width: 45%; }
   .retention-invariants { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
@@ -517,6 +525,8 @@
     .original-cell-ledger .original-forward-table .trace-sequence { font-size: 0.76rem; }
     .forget-retention-ledger .retention-table th:first-child, .retention-secondary th:first-child { width: 65%; }
     .retention-results th:first-child { width: 45%; }
+    .peephole-ledger .inspection-table th:first-child { width: 65%; }
+    .inspection-results th:first-child { width: 42%; }
   }
 }
 

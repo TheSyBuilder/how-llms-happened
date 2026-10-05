@@ -11,12 +11,15 @@ const originalRecord = "/reference/works/hochreiter-schmidhuber-1995-long-short-
 const forgetBeginner = `${base}beginner/gers-1999-2000/`;
 const forgetExpert = `${base}expert/gers-1999-2000/`;
 const forgetRecord = "/reference/works/gers-schmidhuber-cummins-1999-learning-to-forget/";
-const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord];
+const peepholeBeginner = `${base}beginner/gers-2002/`;
+const peepholeExpert = `${base}expert/gers-2002/`;
+const peepholeRecord = "/reference/works/gers-schraudolph-schmidhuber-2002-precise-timing/";
+const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord, peepholeBeginner, peepholeExpert, peepholeRecord];
 
-test("the recurrent chooser exposes three chapters while later chapters stay queued", async ({ page }) => {
+test("the recurrent chooser exposes four chapters while later chapters stay queued", async ({ page }) => {
   await page.goto(base);
   await page.getByRole("link", { name: "Preview the beginner path" }).click();
-  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(3);
+  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(2);
   await page.getByRole("link", { name: /Start with Elman/ }).click();
   await expect(page).toHaveURL(new RegExp(`${beginner}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Can the same word leave a different state?");
@@ -317,4 +320,115 @@ test("graphics-hidden and reduced-motion views preserve all retention alternativ
   }
   await page.getByText("Check the activation-versus-parameters distinction", { exact: true }).click();
   await expect(page.getByText(/The carried activation changes/)).toBeVisible();
+});
+
+test("peephole progression and mode switching preserve state inspection", async ({ page }) => {
+  await page.goto(forgetBeginner);
+  await page.getByRole("link", { name: /Continue to state inspection/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${peepholeBeginner}$`));
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("How can a gate see a hidden timer?");
+  await page.getByRole("link", { name: /Switch to expert/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${peepholeExpert}$`));
+  await expect(page.getByRole("heading", { name: "A forward read does not imply full backward flow." })).toBeVisible();
+  await expect(page.locator("input, select, button, astro-island")).toHaveCount(0);
+});
+
+test("both peephole alternatives preserve exact read order without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  for (const path of [peepholeBeginner, peepholeExpert]) {
+    await page.goto(path);
+    const precise = path === peepholeExpert;
+    const enabled = page.getByRole("table", { name: /With state inspection · ordered forward update/ });
+    const disabled = page.getByRole("table", { name: /Without state inspection · ordered forward update/ });
+    for (const row of ["1. Input gate reads", "2. Forget gate reads"]) {
+      await expect(enabled.getByRole("row", { name: new RegExp(row) })).toContainText(precise ? "0.600000" : "0.600");
+      await expect(disabled.getByRole("row", { name: new RegExp(row) })).toContainText("No direct read");
+    }
+    await expect(enabled.getByRole("row", { name: /Updated state/ })).toContainText(precise ? "0.547298" : "0.547");
+    await expect(enabled.getByRole("row", { name: /4. Output gate reads/ })).toContainText(precise ? "0.547298" : "0.547");
+    await expect(enabled.getByRole("row", { name: /Output gate activation/ })).toContainText(precise ? "0.527590" : "0.528");
+    await expect(enabled.getByRole("row", { name: /Fixture output|Exposed output/ })).toContainText(precise ? "0.263000" : "0.263");
+    await expect(disabled.getByRole("row", { name: /Updated state/ })).toContainText(precise ? "0.539279" : "0.539");
+    await expect(disabled.getByRole("row", { name: /Fixture output|Exposed output/ })).toContainText(precise ? "0.209562" : "0.210");
+    await page.getByText("Check the previous-versus-updated read", { exact: true }).click();
+    await expect(page.getByText(/Using 0.6 for all three reads would change the output decision/)).toBeVisible();
+    if (precise) {
+      await page.getByText("Audit enabled state terms", { exact: true }).click();
+      const arithmetic = page.getByRole("table", { name: /With state inspection · gate preactivation arithmetic/ });
+      for (const [term, value] of [["Input preactivation", "0.100000"], ["Forget preactivation", "0.250000"], ["Output state term", "0.410473"], ["Output preactivation", "0.110473"]]) {
+        await expect(arithmetic.getByRole("row", { name: `${term} ${value}`, exact: true })).toBeVisible();
+      }
+    }
+  }
+  await context.close();
+});
+
+test("native peephole checkpoints and source equations work from the keyboard", async ({ page }) => {
+  await page.goto(peepholeExpert);
+  const checkpoint = page.getByText("Check inspection versus retention", { exact: true });
+  await checkpoint.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByText(/The new write also changes because its input gate changes/)).toBeVisible();
+  const jump = page.getByRole("link", { name: "With state inspection", exact: true });
+  await jump.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/#with-peepholes$/);
+  await page.setViewportSize({ width: 320, height: 640 });
+  const equations = page.getByRole("region", { name: "JMLR peephole input and forget partials" });
+  await equations.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect.poll(() => equations.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
+  const evidence = page.locator(".evidence-details > summary").first();
+  await evidence.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".evidence-details[open] .source-row a").first()).toBeVisible();
+});
+
+test("peephole source and teaching boundaries stay beside the comparison", async ({ page }) => {
+  await page.goto(peepholeExpert);
+  await expect(page.getByRole("region", { name: "JMLR peephole forward equations" }).locator("math")).toHaveCount(3);
+  await expect(page.getByRole("region", { name: "JMLR peephole input and forget partials" }).locator("math")).toHaveCount(2);
+  await expect(page.getByRole("region", { name: "JMLR peephole weight updates" }).locator("math")).toHaveCount(2);
+  await expect(page.getByText(/The 2002 paper removes that squashing/)).toBeVisible();
+  await expect(page.getByText(/Gate errors update incoming weights but do not propagate backward/)).toBeVisible();
+  await expect(page.getByText(/neither of its computed output gates is fully closed/)).toBeVisible();
+  await expect(page.getByText(/“No direct read” means no peephole/)).toBeVisible();
+  await expect(page.getByText(/Publication controls timeline order/)).toBeVisible();
+});
+
+test("all promoted timing rates and the ablation retain their ten-run scope", async ({ page }) => {
+  await page.goto(peepholeExpert);
+  const nmsd = page.getByRole("table", { name: /JMLR Table 1 · NMSD/ });
+  for (const [f, values] of [[10, "100% 100%"], [20, "100% 100%"], [30, "100% 80%"], [40, "20% 70%"], [50, "0% 10%"]]) {
+    await expect(nmsd.getByRole("row", { name: `F=${f} · {0,1} ${values}`, exact: true })).toBeVisible();
+  }
+  const msd = page.getByRole("table", { name: /JMLR Table 1 · continual MSD/ });
+  await expect(msd.getByRole("row", { name: "F=10 · {0,1} 10% 20%", exact: true })).toBeVisible();
+  await expect(msd.getByRole("row", { name: "F=10 · {0,1,2} 20% 60%", exact: true })).toBeVisible();
+  const gts = page.getByRole("table", { name: /JMLR Figure 7 · GTS/ });
+  for (const [condition, value] of [["F=10 · {0}", "100%"], ["F=20 · {0}", "100%"], ["F=30 · {0}", "80%"], ["F=40 · {0}", "100%"], ["F=50 · {0}", "100%"], ["F=10 · {0,1}", "50%"], ["F=10 · {0,1,2}", "30%"]]) {
+    await expect(gts.getByRole("row", { name: `${condition} ${value}`, exact: true })).toBeVisible();
+  }
+  const pfg = page.getByRole("table", { name: /JMLR Table 3 · PFG/ });
+  for (const [condition, values] of [["Cosine · F=10", "90% 100%"], ["Cosine · F=25", "0% 60%"], ["Triangle · F=10", "0% 100%"], ["Triangle · F=25", "0% 50%"], ["Rectangle · F=10", "0% 80%"], ["Rectangle · F=25", "0% 20%"]]) {
+    await expect(pfg.getByRole("row", { name: `${condition} ${values}`, exact: true })).toBeVisible();
+  }
+  await expect(page.getByText(/^The authors find no clear statistical advantage overall/)).toBeVisible();
+  await expect(page.getByText(/fixing the forget gate open while preserving learned weights/)).toBeVisible();
+  await page.getByRole("link", { name: /Inspect the complete nine-claim/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${peepholeRecord}$`));
+  await expect(page.locator(".claim-record")).toHaveCount(9);
+  await page.getByRole("link", { name: "Audit the mechanism" }).click();
+  await expect(page).toHaveURL(new RegExp(`${peepholeExpert}$`));
+});
+
+test("graphics-hidden and reduced-motion views preserve state-inspection causes", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(peepholeBeginner);
+  await page.addStyleTag({ content: "svg, canvas, [aria-hidden='true'] { display: none !important; } * { background-image: none !important; }" });
+  await expect(page.getByRole("table", { name: /With state inspection · ordered forward update/ }).getByRole("row", { name: /4. Output gate reads/ })).toContainText("0.547");
+  await page.getByText("Check inspection versus retention", { exact: true }).click();
+  await expect(page.getByText(/The positive input-state term increases the input gate/)).toBeVisible();
+  await expect(page.getByText(/The 2002 paper removes that squashing/)).toBeVisible();
 });

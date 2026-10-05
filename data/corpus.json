@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-10-04",
+  "asOf": "2026-10-05",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -26074,7 +26074,7 @@
       ],
       "title": "JMLR record for Learning Precise Timing with LSTM Recurrent Networks",
       "url": "https://www.jmlr.org/papers/v3/gers02a.html",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-05",
       "sourceClass": "publisher-record",
       "authority": "publisher",
       "versionIds": [
@@ -26093,7 +26093,7 @@
       ],
       "title": "Official JMLR full text of Learning Precise Timing with LSTM Recurrent Networks",
       "url": "https://www.jmlr.org/papers/volume3/gers02a/gers02a.pdf",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-05",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -26119,7 +26119,7 @@
       ],
       "title": "Crossref deleted-record tombstone for legacy DOI 10.1162/153244303768966139",
       "url": "https://api.crossref.org/works/10.1162%2F153244303768966139",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-05",
       "sourceClass": "official-record",
       "authority": "institutional-host",
       "versionIds": [],
@@ -44600,7 +44600,7 @@
         "The edge preserves the paper’s own attribution and does not assign the forget gate to the original 1997 cell."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-peephole-motivation",
@@ -44629,7 +44629,7 @@
         "The motivation concerns visibility of protected state to gates; it is distinct from whether the forget gate retains or resets that state."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-peephole-mechanism",
@@ -44659,7 +44659,7 @@
         "Gates are shared across cells within a block, and every block state can feed each gate; this exact topology should not be flattened into an unspecified modern LSTM."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-peephole-learning-boundary",
@@ -44679,16 +44679,27 @@
             "pageStart": 123,
             "pageEnd": 123,
             "equation": "22–26",
-            "paragraph": "Complexity and error-propagation discussion"
+            "paragraph": "Peephole partials, weight updates, and sequence-length-independent storage"
           },
-          "support": "Provides the five update equations, three-weights-per-cell count, locality claim, and explicit gate-error truncation."
+          "support": "Provides the five update equations, three-weights-per-cell count, and locality/sequence-length-independent storage claim."
+        },
+        {
+          "sourceId": "gers-2002-jmlr-full-text",
+          "locator": {
+            "label": "Gate-error truncation across peepholes",
+            "section": "3. Extending LSTM with Peephole Connections",
+            "pageStart": 121,
+            "pageEnd": 121,
+            "paragraph": "Peephole connections"
+          },
+          "support": "Explicitly states that no error signals are propagated from gates through peepholes back into the constant-error carousel; the added weight rules are separate from full recurrent error flow."
         }
       ],
       "limitations": [
         "The constant asymptotic cost does not mean zero overhead, and the truncated procedure is not full backpropagation through every peephole path."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-msd-results",
@@ -44716,7 +44727,7 @@
         "The result pattern does not support a universal claim that peepholes outperform the forget-gated baseline, and the abstract’s spacing wording is not silently reconciled with the experimental recurrence."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-gts-results-and-ablation",
@@ -44745,7 +44756,7 @@
         "The successful post-training ablation uses a learned negative self-recurrence reset and does not show that the forget gate was unnecessary for discovering the solution."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-pfg-results",
@@ -44774,7 +44785,7 @@
         "The networks have no external input or teacher forcing, use ten runs and thresholded success, and the paper’s stricter cosine experiment shows that lower error can require much longer training."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-evidence-boundary",
@@ -44802,7 +44813,7 @@
         "The architectural result is historically important, but these experiments are not direct evidence about language-model quality, scaling, or linguistic competence."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "gers-2002-lstm-limitations",
@@ -44830,7 +44841,7 @@
         "These are the authors’ stated boundaries and proposals, not later empirical tests of modular, stacked, or language-scale LSTM systems."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-05"
     },
     {
       "id": "sundermeyer-2012-full-history-motivation",

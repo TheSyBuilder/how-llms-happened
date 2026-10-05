@@ -1,0 +1,136 @@
+---
+import { renderToString } from "katex";
+import EvidenceDetails from "./EvidenceDetails.astro";
+import PeepholeInspectionLedger from "./PeepholeInspectionLedger.astro";
+import JourneyMap from "./JourneyMap.astro";
+import ModeSwitch from "./ModeSwitch.astro";
+import { getJourneyOverview, type StageView } from "../lib/site-data";
+interface Props { view: StageView }
+const { view } = Astro.props;
+const { mode } = view;
+const scenario = view.peepholeScenario;
+if (scenario === undefined) throw new Error("Peepholes are missing their reviewed scenario.");
+const expert = mode === "expert";
+const journey = getJourneyOverview("recurrent-memory");
+const claim = (suffix: string) => {
+  const evidence = view.evidence.find((item) => item.claimId === `gers-2002-${suffix}`);
+  if (evidence === undefined) throw new Error(`Missing peephole evidence: ${suffix}`);
+  return evidence;
+};
+const math = (tex: string) => renderToString(tex, { displayMode: true, output: "htmlAndMathml", throwOnError: true });
+const input = math(String.raw`\begin{aligned}y_{\mathrm{in}_j}(t)&=f_{\mathrm{in}_j}(z_{\mathrm{in}_j}(t))\\z_{\mathrm{in}_j}(t)&=\sum_m w_{\mathrm{in}_j m}y_m(t-1)+\sum_{v=1}^{S_j}w_{\mathrm{in}_j c_j^v}s_{c_j^v}(t-1)\end{aligned}`);
+const forget = math(String.raw`\begin{aligned}y_{\varphi_j}(t)&=f_{\varphi_j}(z_{\varphi_j}(t))\\z_{\varphi_j}(t)&=\sum_m w_{\varphi_j m}y_m(t-1)+\sum_{v=1}^{S_j}w_{\varphi_j c_j^v}s_{c_j^v}(t-1)\end{aligned}`);
+const output = math(String.raw`\begin{aligned}y_{\mathrm{out}_j}(t)&=f_{\mathrm{out}_j}(z_{\mathrm{out}_j}(t))\\z_{\mathrm{out}_j}(t)&=\sum_m w_{\mathrm{out}_j m}y_m(t-1)+\sum_{v=1}^{S_j}w_{\mathrm{out}_j c_j^v}s_{c_j^v}(t)\end{aligned}`);
+const state = math(String.raw`\begin{aligned}s_{c_j^v}(t)&=y_{\varphi_j}(t)s_{c_j^v}(t-1)+y_{\mathrm{in}_j}(t)g(z_{c_j^v}(t))\\y_{c_j^v}(t)&=y_{\mathrm{out}_j}(t)s_{c_j^v}(t)\end{aligned}`);
+const partialDefinition = math(String.raw`P_a^{v,v'}(t)=\frac{\partial s_{c_j^v}(t)}{\partial w_{a_j c_j^{v'}}},\quad a\in\{\mathrm{in},\varphi\}`);
+const partials = math(String.raw`P_{\mathrm{in}}^{v,v'}(t)\overset{\mathrm{tr}}{=}P_{\mathrm{in}}^{v,v'}(t-1)y_{\varphi_j}(t)+g(z_{c_j^v}(t))f'_{\mathrm{in}_j}(z_{\mathrm{in}_j}(t))s_{c_j^{v'}}(t-1)`);
+const forgetPartial = math(String.raw`P_{\varphi}^{v,v'}(t)\overset{\mathrm{tr}}{=}P_{\varphi}^{v,v'}(t-1)y_{\varphi_j}(t)+s_{c_j^v}(t-1)f'_{\varphi_j}(z_{\varphi_j}(t))s_{c_j^{v'}}(t-1)`);
+const outputUpdate = math(String.raw`\Delta w_{\mathrm{out}_j c_j^v}(t)=\alpha\delta_{\mathrm{out}_j}(t)s_{c_j^v}(t)`);
+const inputUpdates = math(String.raw`\Delta w_{a_j c_j^{v'}}(t)=\alpha\sum_{v=1}^{S_j}e_{s_{c_j^v}}(t)P_a^{v,v'}(t),\quad a\in\{\mathrm{in},\varphi\}`);
+const nmsd = [
+  { condition: "F=10 · {0,1}", baseline: "100%", peephole: "100%" },
+  { condition: "F=20 · {0,1}", baseline: "100%", peephole: "100%" },
+  { condition: "F=30 · {0,1}", baseline: "100%", peephole: "80%" },
+  { condition: "F=40 · {0,1}", baseline: "20%", peephole: "70%" },
+  { condition: "F=50 · {0,1}", baseline: "0%", peephole: "10%" },
+];
+const msd = [
+  { condition: "F=10 · {0,1}", baseline: "10%", peephole: "20%" },
+  { condition: "F=10 · {0,1,2}", baseline: "20%", peephole: "60%" },
+];
+const gts = [
+  { condition: "F=10 · {0}", peephole: "100%" },
+  { condition: "F=20 · {0}", peephole: "100%" },
+  { condition: "F=30 · {0}", peephole: "80%" },
+  { condition: "F=40 · {0}", peephole: "100%" },
+  { condition: "F=50 · {0}", peephole: "100%" },
+  { condition: "F=10 · {0,1}", peephole: "50%" },
+  { condition: "F=10 · {0,1,2}", peephole: "30%" },
+];
+const pfg = [
+  { condition: "Cosine · F=10", baseline: "90%", peephole: "100%" },
+  { condition: "Cosine · F=25", baseline: "0%", peephole: "60%" },
+  { condition: "Triangle · F=10", baseline: "0%", peephole: "100%" },
+  { condition: "Triangle · F=25", baseline: "0%", peephole: "50%" },
+  { condition: "Rectangle · F=10", baseline: "0%", peephole: "80%" },
+  { condition: "Rectangle · F=25", baseline: "0%", peephole: "20%" },
+];
+---
+
+<article class="stage-shell peephole-stage">
+  <div class="stage-reading">
+    <ModeSwitch activeMode={mode} alternateHref={view.alternateMode.href} />
+    <header class="stage-header">
+      <p class="stage-number">Stage 4 of 6 · JMLR · August 2002</p>
+      <h1>{expert ? "Which state does each gate inspect?" : "How can a gate see a hidden timer?"}</h1>
+      <p class="stage-question">{view.contribution}</p>
+      <dl class="stage-meta"><div><dt>Work</dt><dd>{view.work.title} · {view.work.authors.join(", ")}</dd></div><div><dt>Display source</dt><dd>{view.canonicalVersion.label} · printed pp. 115–143</dd></div><div><dt>Chronology</dt><dd>Submitted May 2001; revised March 2002; published August 2002. Publication controls timeline order.</dd></div><div><dt>Scope</dt><dd>State visibility for gates · inherited forget-gated retention</dd></div></dl>
+    </header>
+    <section class="objective-band" aria-labelledby="objective-heading"><h2 id="objective-heading">Your task</h2><p>{view.objective.objective}</p><details><summary>Success criterion</summary><p>{view.objective.successCriterion}</p></details></section>
+    <section class="reading-block" aria-labelledby="inspection-inventory">
+      <p class="kicker">Mechanism inventory · state visibility</p><h2 id="inspection-inventory">Inspect, retain and write, then expose.</h2>
+      <ol class="copy-path"><li><strong>Inspect old state</strong><span>Input and forget gates add weighted reads of the previous cell state to their decisions.</span></li><li><strong>Update state</strong><span>The inherited forget gate retains part of the old activation; the input gate scales the new write.</span></li><li><strong>Inspect new state</strong><span>The output gate reads the updated activation before deciding how much to expose.</span></li></ol>
+      <p class="mt-3">{expert ? "The new links feed gate preactivations. They do not replace the 2000 state recurrence. Each block shares gates; all of its cells can feed each gate through separate weights. The one-cell fixture reduces those sums to one term per gate." : "Imagine a timer behind a shutter. Closing the shutter can hide the timer’s reading without stopping it. A direct read lets the shutter’s controller decide when to open. This analogy concerns access to an internal value; a cell is not always a literal clock."}</p>
+      <p class="mt-3">A fully closed output gate would expose zero while internal state can remain nonzero. The comparison beside this explanation isolates the read order; neither of its computed output gates is fully closed.</p><EvidenceDetails evidence={claim("peephole-motivation")} />
+    </section>
+    {expert && <section class="reading-block" aria-labelledby="inspection-equations">
+      <p class="kicker">Source equations 19–21 · printed p. 122</p><h2 id="inspection-equations">Previous state twice. Current state once.</h2>
+      <div class="equation-panel" role="region" aria-label="JMLR peephole forward equations" tabindex="0"><div set:html={input} /><div set:html={forget} /><div set:html={output} /></div>
+      <p>j indexes a block, v a cell, S j its cell count, and m a source unit. The first sum covers the other gate inputs; the second adds direct state reads. For an external input unit, the source uses its current input at t in place of y m(t−1). The gate functions f are logistic.</p>
+      <p class="mt-3">The source refines update timing further when recurrent gate connections are present: input gate, forget gate, cell input/state, then output gate/output. The fixture omits those additional gate recurrences and holds the first sums fixed. It still preserves previous-state input/forget reads and the current-state output read.</p><EvidenceDetails evidence={claim("peephole-mechanism")} />
+      <div class="equation-panel mt-3" role="region" aria-label="JMLR inherited state and unsquashed cell output" tabindex="0"><div set:html={state} /></div>
+      <p><strong>Equations 4–5, pp. 118–119:</strong> this article removes output-state squashing h. Its experiments also use identity g for the cell input (p. 125). The fixture supplies candidate 0.4 directly and uses tanh only at output, so its final exposed-output values cannot be read as a reproduction of equation 5. Cell output is also separate from the network’s final output unit.</p><EvidenceDetails evidence={claim("forget-gate-antecedent")} />
+    </section>}
+    {view.blocks.map((block) => <section class="reading-block" aria-labelledby={block.id}><p class="kicker">{block.kind}</p><h2 id={block.id}>{block.heading}</h2><p>{block.body}</p>{block.evidence.map((evidence) => <EvidenceDetails evidence={evidence} />)}</section>)}
+  </div>
+  <aside class="stage-workbench stage-workbench--long" aria-label="Static previous-state and updated-state inspection comparison"><PeepholeInspectionLedger scenario={scenario} mode={mode} /></aside>
+  <div class="stage-conclusion peephole-evidence">
+    {expert && <section class="reading-block inspection-learning" aria-labelledby="inspection-credit">
+      <p class="kicker">Source equations 22–26 · printed p. 123</p><h2 id="inspection-credit">A forward read does not imply full backward flow.</h2>
+      <p>Define P as the sensitivity of cell v’s state to a peephole weight from source cell v′ to the shared input or forget gate, with block j fixed. The following uses these aliases for the source’s truncated partials; it is not a simulated credit trace.</p><div class="equation-panel mt-3" role="region" aria-label="Peephole partial notation definition" tabindex="0"><div set:html={partialDefinition} /></div><p class="mt-3">Input and forget gate sensitivities remain separate.</p>
+      <div class="equation-panel mt-3" role="region" aria-label="JMLR peephole input and forget partials" tabindex="0"><div set:html={partials} /><div set:html={forgetPartial} /></div>
+      <p>The source initializes these partials to zero. Each carried partial is multiplied by the forget activation. Each new sensitivity uses the previous state of the source cell v′; the forget rule also uses the previous state of receiving cell v.</p>
+      <div class="equation-panel mt-3" role="region" aria-label="JMLR peephole weight updates" tabindex="0"><div set:html={outputUpdate} /><div set:html={inputUpdates} /></div>
+      <p>In the combined input/forget update, P a selects the corresponding partial above. e s is the cell’s internal state error, δ out the shared output-gate delta, and α the learning rate. Input/forget updates sum over affected cells; the output peephole uses current state directly.</p>
+      <p class="mt-3">Gate errors update incoming weights but do not propagate backward through peepholes into the constant-error carousel. The “tr” equality marks this truncation. Three extra weights per cell and storage independent of sequence length do not mean zero overhead, constant whole-model cost, or full BPTT through every gate path.</p><EvidenceDetails evidence={claim("peephole-learning-boundary")} />
+    </section>}
+    <section class="reading-block inspection-protocol" aria-labelledby="inspection-protocol">
+      <p class="kicker">Static evidence · three synthetic timing families</p><h2 id="inspection-protocol">One cell, ten runs, explicit thresholds.</h2>
+      <p>The tested network has one memory block with one cell, 14 ordinary weights and three added peepholes. Its baseline already has a forget gate. The paper compares this baseline with peepholes; the result tables contain no ordinary-RNN control and no natural-language benchmark.</p>
+      {expert ? <>
+        <p class="mt-3">Gates and cell state start at zero at each stream beginning. Biases to input/forget/output gates start at 0, −2, +2; other weights are uniform in [−0.1, 0.1]. Learning rate is 10⁻⁵. Momentum is roughly tuned by task: 0.999 GTS, 0.99 PFG/NMSD, and 0.9999 MSD.</p>
+        <p class="mt-3">Binary-target correctness requires absolute error &lt; 0.49; PFG uses &lt; 0.3. Streams stop at the first error or at 100 successive periods in training, 1,000 in testing. Training stops at criterion or 10⁷ streams (10⁸ for MSD/NMSD). Testing follows each training stream with frozen weights. GTS and continual MSD require ten successful test streams for stability across stream beginnings.</p>
+      </> : <p class="mt-3">Success means meeting the paper’s task-specific error threshold on long generated streams. Ten independent training runs make each 10% equal one run. The teaching numbers above are separate from these trained systems; a higher gate activation in the fixture is not experimental improvement.</p>}
+      <EvidenceDetails evidence={claim("evidence-boundary")} />
+    </section>
+    <section class="reading-block" aria-labelledby="inspection-msd">
+      <p class="kicker">Static evidence · measuring spike delays</p><h2 id="inspection-msd">Some timing tasks work without peepholes.</h2>
+      <p>NMSD ends after the second spike; MSD is continual. The interval is F + I(n), with an offset drawn from the displayed set. Keep the recurrence’s interval convention separate from the abstract’s informal spacing example.</p>
+      {expert ? <>
+        <table class="trace-table inspection-results mt-4"><caption>JMLR Table 1 · NMSD success over ten runs · p. 126</caption><thead><tr><th scope="col">Interval condition</th><th scope="col">Without peepholes</th><th scope="col">With peepholes</th></tr></thead><tbody>{nmsd.map((row) => <tr><th scope="row">{row.condition}</th><td>{row.baseline}</td><td>{row.peephole}</td></tr>)}</tbody></table>
+        <table class="trace-table inspection-results mt-4"><caption>JMLR Table 1 · continual MSD success over ten runs</caption><thead><tr><th scope="col">Interval condition</th><th scope="col">Without peepholes</th><th scope="col">With peepholes</th></tr></thead><tbody>{msd.map((row) => <tr><th scope="row">{row.condition}</th><td>{row.baseline}</td><td>{row.peephole}</td></tr>)}</tbody></table>
+        <p class="provenance-note mt-3">These are all seven promoted success-rate pairs from Table 1, not its training-duration columns or the different output-function experiment in Table 2. A 0% row records failure under this training protocol; it is not proof of impossibility.</p>
+      </> : <p class="mt-3">At minimum interval 30, the noncontinual task succeeds in all ten runs without peepholes and eight with them. At interval 40, the counts are two and seven. A direct state read does not guarantee a better result.</p>}
+      <p class="mt-3">The authors find no clear statistical advantage overall for peepholes on MSD. Gates without direct reads can exploit exposed output when the output gate remains open; the selected solutions illustrate different strategies.</p><EvidenceDetails evidence={claim("msd-results")} />
+    </section>
+    <section class="reading-block" aria-labelledby="inspection-gts">
+      <p class="kicker">Static evidence · generating timed spikes</p><h2 id="inspection-gts">Generating a spike needs a different strategy.</h2>
+      <p>GTS reverses the roles: an input supplies the delay and the network generates the spike train. No tested network without peepholes reaches criterion in the reported runs.</p>
+      {expert ? <table class="trace-table inspection-table mt-4"><caption>JMLR Figure 7 · GTS peephole success over ten runs · p. 131</caption><thead><tr><th scope="col">Interval condition</th><th scope="col">With peepholes</th></tr></thead><tbody>{gts.map((row) => <tr><th scope="row">{row.condition}</th><td>{row.peephole}</td></tr>)}</tbody></table> : <p class="mt-3">With a fixed offset of zero, peephole models succeed in ten of ten runs at interval 50. Allowing variable offsets makes the task harder: at interval 10, five of ten runs succeed for offsets 0/1, and three for 0/1/2.</p>}
+      <p class="mt-3">In one trained F=50 solution, fixing the forget gate open while preserving learned weights allows quick relearning. That solution uses a negative cell self-recurrence for reset. Training from scratch without the forget gate never succeeds in the reported trials. This ablation does not establish that the gate was unnecessary during learning.</p><EvidenceDetails evidence={claim("gts-results-and-ablation")} />
+    </section>
+    <section class="reading-block" aria-labelledby="inspection-pfg">
+      <p class="kicker">Static evidence · periodic functions without input</p><h2 id="inspection-pfg">A waveform is a separate test.</h2>
+      <p>PFG supplies targets but no external input or teacher forcing. The output unit uses an identity function. F is the number of samples per period. “Perfect” refers to the thresholded stability criterion, not zero waveform error.</p>
+      {expert ? <table class="trace-table inspection-results mt-4"><caption>JMLR Table 3 · PFG success over ten runs · p. 134</caption><thead><tr><th scope="col">Function and period</th><th scope="col">Without peepholes</th><th scope="col">With peepholes</th></tr></thead><tbody>{pfg.map((row) => <tr><th scope="row">{row.condition}</th><td>{row.baseline}</td><td>{row.peephole}</td></tr>)}</tbody></table> : <p class="mt-3">At period 10, the cosine succeeds in nine of ten baseline runs and all ten with peepholes. For the triangle and rectangle, no baseline run succeeds; with peepholes, ten and eight do. These are waveform results, not word-prediction scores.</p>}
+      <p class="mt-3">Without a forget gate, no tested network produces more than two successive periods. A stricter cosine-error experiment also takes substantially longer to train. Meeting one threshold does not establish a general accuracy or efficiency advantage.</p><EvidenceDetails evidence={claim("pfg-results")} />
+    </section>
+    <section class="reading-block" aria-labelledby="inspection-limits">
+      <p class="kicker">Boundary · capacity, learning and chronology</p><h2 id="inspection-limits">Access to state does not make memory unlimited.</h2>
+      <p>The authors retain finite memory-block capacity, unresolved modularization, difficulty learning nontrivial stacks/queues, limited gate recurrence under truncation, extended noisy-trigger difficulties, and initialization far from a stable phase-specific trajectory. These are the paper’s stated boundaries and proposals, not universal findings about later language models.</p><EvidenceDetails evidence={claim("lstm-limitations")} />
+      <p class="mt-3">One official JMLR version controls this chapter. Its title page says submitted 5/01, revised 3/02, published 8/02; the timeline orders it by August 2002. Printed folios 115–143 supply the locators. The deleted legacy DOI is excluded from active citation metadata. The article is linked rather than redistributed.</p>
+      <a class="claim-link mt-3" href={`/reference/works/${view.work.id}/`}>Inspect the complete nine-claim work record</a>
+    </section>
+    <nav class="reading-block" aria-label="Recurrent journey progression"><p class="kicker">Next distinction · chapter queued</p><h2>Predict a normalized word distribution · 2010</h2><p>The next chapter returns to Elman recurrence and asks how carried state becomes a word-language model. The protected-cell branch joins word modeling later; the map does not assert that the 2010 system uses this peephole cell.</p><p class="provenance-note mt-3">Two later chapters and both bridge panels remain queued.</p><p class="mt-4"><a class="claim-link" href={view.previous!.href}>Revisit adaptive retention</a></p><p class="mt-3"><a class="claim-link" href={`/journeys/recurrent-memory/${mode}/`}>Return to the {mode} route map</a></p><div class="mt-4"><JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact /></div></nav>
+  </div>
+</article>

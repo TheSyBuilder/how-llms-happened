@@ -1,0 +1,58 @@
+---
+import { calculatePeepholeVariant, type PeepholeScenario } from "../lib/recurrent-memory-engine";
+import type { Mode } from "../lib/site-data";
+interface Props { scenario: PeepholeScenario; mode: Mode }
+const { scenario, mode } = Astro.props;
+if (scenario.id !== "hidden-timer") throw new Error("Peepholes require the reviewed state-inspection fixture.");
+const p = scenario.parameters;
+const decimals = mode === "beginner" ? 3 : 6;
+const format = (value: number) => value.toFixed(decimals);
+const variants = [false, true].map((enabled) => ({
+  enabled,
+  id: enabled ? "with-peepholes" : "without-peepholes",
+  label: enabled ? "With state inspection" : "Without state inspection",
+  trace: calculatePeepholeVariant(p, enabled),
+}));
+const inspected = variants[1]!.trace;
+---
+
+<section class:list={["mass-ledger recurrent-ledger peephole-ledger", `recurrent-ledger--${mode}`]} aria-labelledby="inspection-ledger-heading">
+  <header class="ledger-header"><div><p class="eyebrow">Synthetic example · one forward update</p><h2 id="inspection-ledger-heading">Read old state. Update. Read new state.</h2></div><p class="ledger-folio">State-to-gate links<br />JMLR · 2002</p></header>
+  <div class="ledger-prompt"><p><strong>Predict first.</strong> {scenario.prompt} Will adding a state read always open a gate further?</p></div>
+  <div class="trace-intro">
+    <p>{mode === "beginner" ? "Compare two alternatives for the same moment. The same old state and candidate enter both. Only the direct state reads into the three gate decisions change." : "A controlled forward comparison keeps non-peephole preactivation totals and the candidate fixed. Disabling the state terms defines the baseline; enabling them does not add another retention multiplier."}</p>
+    <dl class="retention-invariants mt-3"><div><dt>Previous state</dt><dd>{p.previousState}</dd></div><div><dt>Candidate</dt><dd>{p.candidate}</dd></div><div><dt>Other gate inputs · in / forget / out</dt><dd>{p.inputExternal} / {p.forgetExternal} / {p.outputExternal}</dd></div><div><dt>State-read weights · in / forget / out</dt><dd>{p.inputPeepholeWeight} / {p.forgetPeepholeWeight} / {p.outputPeepholeWeight}</dd></div></dl>
+    <p class="provenance-note mt-3">Authored values, not learned weights, elapsed-time measurements, or paper results. The incoming 0.6 is a populated teaching state; the source initializes streams at zero. “Other gate inputs” summarizes all non-peephole terms and stays fixed across this comparison.</p>
+    <p class="provenance-note mt-3"><strong>Output crosswalk.</strong> {mode === "beginner" ? "This teaching example compresses state with a squashing function (tanh) before the output gate scales it." : "This fixture exposes output gate × tanh(state)."} The 2002 paper removes that squashing and uses output gate × state (equation 5, pp. 118–119). The fixture teaches the read order; its final output is not the paper’s output equation.</p>
+    <nav class="preset-index mt-3" aria-label="Inspect a state-read alternative">{variants.map((variant) => <a href={`#${variant.id}`}>{variant.label}</a>)}</nav>
+  </div>
+  {variants.map(({ enabled, id, label, trace }, index) => <section class="trace-history" aria-labelledby={id}>
+    <p class="eyebrow">Alternative {index + 1} of 2 · same incoming state</p><h3 id={id} class="mt-3">{label}</h3>
+    <table class="trace-table inspection-table mt-3"><caption>{label} · ordered forward update · {decimals} decimals</caption><thead><tr><th scope="col">Read in order</th><th scope="col">Value</th></tr></thead><tbody>
+      <tr><th scope="row">1. Input gate reads</th><td>{trace.inputInspectedState === null ? "No direct read" : format(trace.inputInspectedState)}</td></tr>
+      <tr><th scope="row">Input gate activation</th><td>{format(trace.inputGate)}</td></tr>
+      <tr><th scope="row">2. Forget gate reads</th><td>{trace.forgetInspectedState === null ? "No direct read" : format(trace.forgetInspectedState)}</td></tr>
+      <tr><th scope="row">Forget gate activation</th><td>{format(trace.forgetGate)}</td></tr>
+      <tr><th scope="row">3. Retained old state</th><td>{format(trace.retainedContribution)}</td></tr>
+      <tr><th scope="row">New write</th><td>{format(trace.inputGatedWrite)}</td></tr>
+      <tr class="trace-result"><th scope="row">Updated state · retained + write</th><td>{format(trace.state)}</td></tr>
+      <tr><th scope="row">4. Output gate reads</th><td>{trace.outputInspectedState === null ? "No direct read" : format(trace.outputInspectedState)}</td></tr>
+      <tr><th scope="row">Output gate activation</th><td>{format(trace.outputGate)}</td></tr>
+      <tr><th scope="row">{mode === "beginner" ? "Exposed output · teaching rule" : "Fixture output · tanh crosswalk above"}</th><td>{format(trace.exposedOutput)}</td></tr>
+    </tbody></table>
+    {mode === "expert" && <details class="trace-arithmetic mt-3"><summary>Audit {enabled ? "enabled" : "disabled"} state terms</summary>
+      <p class="mt-3">Each gate applies σ(z) = 1 / (1 + exp(−z)). A state-read weight multiplies a state before addition to z; it is not itself a gate activation.</p>
+      <table class="trace-table inspection-table mt-3"><caption>{label} · gate preactivation arithmetic</caption><thead><tr><th scope="col">Term</th><th scope="col">Value</th></tr></thead><tbody>
+        <tr><th scope="row">Input state term</th><td>{format(enabled ? p.inputPeepholeWeight * p.previousState : 0)}</td></tr><tr><th scope="row">Input preactivation</th><td>{format(p.inputExternal + (enabled ? p.inputPeepholeWeight * p.previousState : 0))}</td></tr>
+        <tr><th scope="row">Forget state term</th><td>{format(enabled ? p.forgetPeepholeWeight * p.previousState : 0)}</td></tr><tr><th scope="row">Forget preactivation</th><td>{format(p.forgetExternal + (enabled ? p.forgetPeepholeWeight * p.previousState : 0))}</td></tr>
+        <tr><th scope="row">Output state term</th><td>{format(enabled ? p.outputPeepholeWeight * trace.state : 0)}</td></tr><tr><th scope="row">Output preactivation</th><td>{format(p.outputExternal + (enabled ? p.outputPeepholeWeight * trace.state : 0))}</td></tr>
+      </tbody></table>
+      <p class="mt-3">State = {format(trace.forgetGate)} × {p.previousState} + {format(trace.inputGate)} × {p.candidate} = {format(trace.state)} (rounded display). Recurrent gate-to-gate paths and learning are outside this calculation.</p>
+    </details>}
+  </section>)}
+  <div class="trace-history">
+    <details class="prediction-reveal"><summary>Check the previous-versus-updated read</summary><p>The input and forget gates read {format(p.previousState)}. Retention plus the new write produces {format(inspected.state)}. Only then does the output gate read {format(inspected.state)}. Using 0.6 for all three reads would change the output decision.</p><p class="mt-3"><strong>Explain the order:</strong> why must the output gate wait for the state update?</p></details>
+    <details class="prediction-reveal mt-4"><summary>Check inspection versus retention</summary><p>The positive input-state term increases the input gate; the negative forget-state term decreases the forget gate. A peephole can raise or lower a decision, depending on its weight and the state. The forget-gate activation still supplies the retained-state multiplier.</p><p class="mt-3">The new write also changes because its input gate changes. These alternatives do not hold the write fixed, unlike the previous chapter. Inspecting state does not erase parameters or demonstrate a trained timer or backward credit.</p></details>
+  </div>
+  <div class="trace-comparison"><p class="eyebrow">Mechanism boundary · direct state read</p><p class="mt-3">The baseline still retains cell activation and can receive exposed cell output. “No direct read” means no peephole; it does not mean no recurrent information. Both alternatives are complete forward calculations, not training experiments.</p></div>
+</section>

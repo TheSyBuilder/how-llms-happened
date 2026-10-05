@@ -4,7 +4,7 @@
 
 This artifact closes the design-and-data gate for the second vertical slice. It defines the complete teaching inventory, preserves source-specific notation, fixes the Bengio prerequisite and smoothing bridge, and supplies schema-validated synthetic traces plus separate beginner and expert manifests.
 
-The shared journey shell, complete static Elman chapter, original 1995/1997 LSTM chapter, and 1999/2000 forget-gate retention chapter implement the first three stages of this contract. Three later stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
+The shared journey shell, complete static Elman chapter, original 1995/1997 LSTM chapter, 1999/2000 forget-gate retention chapter, and 2002 peephole inspection chapter implement the first four stages of this contract. Two later stages and both interludes are planned. No recurrent client interaction is shipped. The four interactive traces remain conditional prototypes under the rejection rule in the [interaction brief](recurrent-memory-interaction.md): if a complete static treatment teaches the activation/credit, forget/peephole, and original/composite distinctions as well or better, the client interaction is removed.
 
 The machine-readable contract is split across:
 
@@ -232,7 +232,7 @@ Static routes must pass the data, source, mode, static-render, accessibility, re
 
 ## Implementation sequence
 
-The shared recurrent shell, Elman same-token trace, original-cell state/credit comparison, and forget-gate retention alternatives are implemented in both modes. Each has a complete static treatment with source inspection and native checkpoints. The next increment is the 2002 peephole comparison. Peephole, Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until their source-dated boundaries pass equivalent review. Hydration remains deferred under the conditional-prototype rule.
+The shared recurrent shell, Elman same-token trace, original-cell state/credit comparison, forget-gate retention alternatives, and peephole state-inspection alternatives are implemented in both modes. Each has a complete static treatment with source inspection and native checkpoints. The next increment is Mikolov’s 2010 word-model chapter with its Bengio prerequisite. Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until their source-dated boundaries pass equivalent review. Hydration remains deferred under the conditional-prototype rule.
 
 ## Implemented forget-gate treatment
 
@@ -240,4 +240,14 @@ The 1999/2000 chapter adds three complete static alternatives for one forward up
 
 The journal notation uses `net` for gate and candidate preactivations. Complexity extends onto internal p. 9; the conclusion is on internal pp. 15–16. The main CERG retains B/E grammar symbols and omits externally imposed segmentation/reset; the marker-removal variant is described separately and supplies no replacement Table 2 rates. The corpus locators and protocol caveat preserve these boundaries.
 
-Three later stages and both interludes remain planned. This static comparison contains no trained gate, exposed-output calculation, backward-credit simulation, or client code. It is the baseline for any later learner comparison, not evidence that a client interaction improves learning.
+Two later stages and both interludes remain planned. This static comparison contains no trained gate, exposed-output calculation, backward-credit simulation, or client code. It is the baseline for any later learner comparison, not evidence that a client interaction improves learning.
+
+## Implemented state-inspection treatment
+
+The 2002 chapter renders both complete alternatives from `hidden-timer`. Previous state, candidate, other gate preactivation totals, and peephole weights stay fixed; only the direct state terms are enabled or disabled. Input/forget reads use the previous state; the output read uses the updated state. Unlike the preceding retention fixture, the new write changes because its input gate changes.
+
+Beginner mode predicts the update order and explains the effect of signed state-read weights through two native checkpoints. Expert mode adds six-decimal arithmetic, source equations 19–21, the inherited state/output equations, and equations 22–26 using defined partial aliases. Gate-error truncation remains separate from the forward read. The teaching fixture uses tanh at cell output; the source removes output-state squashing. This crosswalk is visible above both alternatives and beside the source equations. The populated state, authored weights, absent training, and omitted gate recurrences are explicit.
+
+Static evidence preserves all promoted Table 1, Figure 7, and Table 3 success rates, the ten-run denominator and protocol, no-clear-MSD-advantage finding, trained-gate-removal versus from-scratch distinction, and capacity/initialization limits. It does not turn these rates into a simulator or import unbound training-duration columns. The nine-claim source record uses printed JMLR folios and August 2002 chronology.
+
+Two word-model chapters and both interludes remain planned. Native links/disclosures, complete no-JavaScript tables, named focusable equation scrolling, reduced-motion and graphics-hidden parity, 320/640 reflow, and zero client JavaScript remain the implementation gates. A targeted source recheck does not renew the present-day endpoint survey.

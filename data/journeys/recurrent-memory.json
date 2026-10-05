@@ -239,7 +239,7 @@
     {
       "slug": "gers-2002",
       "workId": "gers-schraudolph-schmidhuber-2002-precise-timing",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-gers-2002-peephole-timing",
         "expert": "expert-gers-2002-peephole-mechanism-and-evidence"
@@ -272,7 +272,14 @@
             "kind": "result",
             "heading": "Timing evidence is narrower than language",
             "body": "The paper studies measuring and generating delays with one-cell synthetic timing tasks, including an ablation after training. Those results do not establish language-model gains.",
-            "claimIds": ["gers-2002-gts-results-and-ablation", "gers-2002-pfg-results", "gers-2002-evidence-boundary"]
+            "claimIds": ["gers-2002-gts-results-and-ablation", "gers-2002-pfg-results", "gers-2002-evidence-boundary", "gers-2002-msd-results"]
+          },
+          {
+            "id": "beginner-peephole-limits",
+            "kind": "limitation",
+            "heading": "Reading a timer does not remove capacity limits",
+            "body": "Direct state reads help gates inspect hidden activation. The paper still identifies limits in capacity, gate learning, noisy triggers, and initialization; its results are not word-language-model evidence.",
+            "claimIds": ["gers-2002-lstm-limitations"]
           }
         ],
         "expert": [

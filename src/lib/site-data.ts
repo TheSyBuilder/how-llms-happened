@@ -22,6 +22,7 @@ import {
   type ElmanScenario,
   type ForgetScenario,
   type OriginalCellScenario,
+  type PeepholeScenario,
   type RecurrentFixture,
   validateRecurrentFixture,
 } from "./recurrent-memory-engine.ts";
@@ -299,6 +300,7 @@ export type StageView = {
   elmanScenario?: ElmanScenario;
   originalCellScenario?: OriginalCellScenario;
   forgetScenario?: ForgetScenario;
+  peepholeScenario?: PeepholeScenario;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -888,6 +890,14 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
   if (stage.slug === "gers-1999-2000" && forgetScenario === undefined) {
     throw new Error("The forget-gate stage is missing its reviewed retention comparison.");
   }
+  const peepholeScenario = stage.slug === "gers-2002"
+    ? recurrentFixture.scenarios.find(
+      (scenario): scenario is PeepholeScenario => scenario.kind === "peephole-inspection",
+    )
+    : undefined;
+  if (stage.slug === "gers-2002" && peepholeScenario === undefined) {
+    throw new Error("Peepholes are missing their reviewed state-inspection comparison.");
+  }
 
   return {
     journeyId: manifest.id,
@@ -908,6 +918,7 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     ...(elmanScenario === undefined ? {} : { elmanScenario }),
     ...(originalCellScenario === undefined ? {} : { originalCellScenario }),
     ...(forgetScenario === undefined ? {} : { forgetScenario }),
+    ...(peepholeScenario === undefined ? {} : { peepholeScenario }),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {
