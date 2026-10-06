@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-10-05",
+  "asOf": "2026-10-06",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -25447,7 +25447,7 @@
       ],
       "title": "Official NeurIPS record for the conference paper",
       "url": "https://proceedings.neurips.cc/paper_files/paper/2000/hash/728f206c2a01bf572b5940d7d9a8fa4c-Abstract.html",
-      "accessDate": "2026-07-31",
+      "accessDate": "2026-10-06",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
@@ -25526,7 +25526,7 @@
       ],
       "title": "Official JMLR record for the journal article",
       "url": "https://www.jmlr.org/papers/v3/bengio03a.html",
-      "accessDate": "2026-07-31",
+      "accessDate": "2026-10-06",
       "sourceClass": "publisher-record",
       "authority": "publisher",
       "versionIds": [
@@ -25544,7 +25544,7 @@
       ],
       "title": "Official JMLR full text of the journal article",
       "url": "https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf",
-      "accessDate": "2026-07-31",
+      "accessDate": "2026-10-06",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -25852,7 +25852,7 @@
       ],
       "title": "ISCA Archive record for Recurrent neural network based language model",
       "url": "https://www.isca-archive.org/interspeech_2010/mikolov10_interspeech.html",
-      "accessDate": "2026-08-08",
+      "accessDate": "2026-10-06",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
@@ -25870,7 +25870,7 @@
       ],
       "title": "ISCA Archive index for Interspeech 2010",
       "url": "https://www.isca-archive.org/interspeech_2010/",
-      "accessDate": "2026-08-08",
+      "accessDate": "2026-10-06",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
@@ -25888,7 +25888,7 @@
       ],
       "title": "Official full text of Recurrent neural network based language model",
       "url": "https://www.isca-archive.org/interspeech_2010/mikolov10_interspeech.pdf",
-      "accessDate": "2026-08-08",
+      "accessDate": "2026-10-06",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -42912,7 +42912,7 @@
         "The fixed-window experiment must not be rendered as a recurrent model or as evidence of learned unbounded context."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-31"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "bengio-2003-feedforward-softmax-architecture",
@@ -42942,7 +42942,7 @@
         "The direct input-to-output path is optional, and the paper does not provide a controlled result isolating it from hidden-layer size and training duration."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-31"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "bengio-2003-penalized-likelihood-training",
@@ -43272,7 +43272,7 @@
         "The paper is not experimental evidence for a recurrent neural language model or paragraph-scale memory."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-07-31"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "bengio-2003-polysemy-limit",
@@ -43695,7 +43695,7 @@
         "The motivation does not establish that the recurrent model retains useful information over arbitrary distances; the conclusion states that truly long context was not captured."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-elman-recurrent-architecture",
@@ -43739,7 +43739,7 @@
         "The edge to Elman is restricted to recurrent context-state architecture; it does not transfer Elman’s generated corpus, unnormalized outputs, or lexical-clustering claims."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-training-objective",
@@ -43770,7 +43770,7 @@
         "The paper supplies no random seed, repeated-run variability, optimizer code, or complete numerical-reproducibility recipe."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-truncated-bptt-boundary",
@@ -43799,7 +43799,7 @@
         "A recurrent forward state must not be mistaken for full temporal credit assignment during training."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-dynamic-adaptation",
@@ -43838,7 +43838,7 @@
         "The procedure updates on test text and therefore depends on the evaluation protocol and sequence order; it is not a static-model comparison."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-rare-word-probability",
@@ -43866,7 +43866,7 @@
         "The method does not learn different conditional probabilities among word types merged into the rare bucket."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-training-cost-comparison",
@@ -43894,7 +43894,7 @@
         "The comparison is quoted across different implementations and does not control processor count, hardware, code, stopping rule, or software optimization; it is descriptive rather than a reproducible speed benchmark."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-wsj-evaluation-scope",
@@ -43924,7 +43924,7 @@
         "The paper does not supply confidence intervals, significance tests, or repeated rescoring runs."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-wsj-scaling-results",
@@ -43953,7 +43953,7 @@
         "Each combined row is a 0.75/0.25 recurrent/count mixture, not the recurrent model alone, and recurrent hidden size and rare-word threshold change at the largest data size."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-wsj-ensemble-results",
@@ -43996,7 +43996,7 @@
         "The prose does not fully specify the component weights or exact run composition of the off-table 112 system."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-wsj-cross-data-results",
@@ -44028,7 +44028,7 @@
         "The dynamic evaluation value is 16.3 followed by superscript footnote 4, not 16.34; the paper says nonconsecutive evaluation sentences are probably why the dynamic row is worse than the 15.5% static row."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-rt05-evaluation-results",
@@ -44059,7 +44059,7 @@
         "The best 24.1%-to-22.8% change is about 5.4% relative and comes from a three-model recurrent ensemble interpolated with RT09, not one recurrent model."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "mikolov-2010-long-context-and-evidence-boundary",
@@ -44090,7 +44090,7 @@
         "The paper’s language of significant improvement is preserved as ordinary prose and not interpreted as a statistical-significance claim."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-08"
+      "checkedDate": "2026-10-06"
     },
     {
       "id": "hochreiter-schmidhuber-1997-vanishing-exploding-error",

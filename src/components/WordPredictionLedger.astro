@@ -1,0 +1,54 @@
+---
+import type { Mode } from "../lib/site-data";
+interface Props { mode: Mode }
+const { mode } = Astro.props;
+const expert = mode === "expert";
+const decimals = expert ? 6 : 3;
+const format = (value: number) => value.toFixed(decimals);
+const words = ["alpha", "beta", "gamma"];
+const masses = [2, 1, 1];
+const total = masses.reduce((sum, value) => sum + value, 0);
+const probabilities = masses.map((value) => value / total);
+---
+
+<section class:list={["mass-ledger recurrent-ledger word-ledger", `recurrent-ledger--${mode}`]} aria-labelledby="word-ledger-heading">
+  <header class="ledger-header"><div><p class="eyebrow">Static mechanism ledger · 2010</p><h2 id="word-ledger-heading">Carry forward. Predict. Learn locally.</h2></div><p class="ledger-folio">Elman recurrence<br />Word softmax</p></header>
+  <div class="trace-intro">
+    <h3>1. Move one word forward</h3>
+    <ol class="copy-path" aria-label="Recurrent word prediction path">
+      <li><strong>Read</strong><span>Join the current one-hot word w(t) with the saved state s(t−1). Earlier words may have affected that saved state.</span></li>
+      <li><strong>Update</strong><span>Learned input/recurrent weights and a sigmoid produce the current state s(t).</span></li>
+      <li><strong>Predict</strong><span>Output weights turn s(t) into scores. Softmax produces y(t), the distribution for the next word, w(t+1).</span></li>
+      <li><strong>Carry</strong><span>Save s(t) as the context input for the next update. This model has no LSTM cell, gates, or peepholes.</span></li>
+    </ol>
+    <p class="provenance-note mt-3">This is a source-equation map, not a trained trace. The earlier scalar and gated-cell fixtures are not used here.</p>
+  </div>
+  <div class="trace-history">
+    <h3>2. Share one unit of probability</h3>
+    <p class="mt-3">{expert ? "An output-only teaching example has three abstract word types and supplied scores ln(2), 0, 0. Their exponentials are 2, 1, 1. Divide each by the same total, 4." : "Imagine three possible next words: alpha, beta, and gamma. After converting scores into positive amounts, this teaching example assigns them 2, 1, and 1. Divide each by the shared total, 4, to get its share of the prediction."}</p>
+    <p class="provenance-note mt-3">Authored scores, not outputs computed from a recurrent state or paper results. The example has no rare-word bucket, training, adaptation, or empirical comparison.</p>
+    <table class="trace-table word-probabilities mt-3"><caption>Synthetic next-word normalization · {decimals} decimals</caption><thead><tr><th scope="col">Word</th><th scope="col">{expert ? "Exp(score)" : "Amount"}</th><th scope="col">Probability</th></tr></thead><tbody>
+      {words.map((word, index) => <tr><th scope="row">{word}</th><td>{masses[index]}</td><td>{format(probabilities[index]!)}</td></tr>)}
+      <tr class="trace-result"><th scope="row">Total</th><td>{total}</td><td>{format(1)}</td></tr>
+    </tbody></table>
+    <div class="ledger-prompt mt-3"><p><strong>Predict first.</strong> If beta is observed next, was alpha’s larger probability a guarantee? What has to sum to one: the scores or the probabilities?</p></div>
+    <details class="prediction-reveal mt-3"><summary>Check the normalized prediction</summary><p>The probabilities sum to one. Scores need not. Alpha receives half the probability, but beta can still be observed. A normalized distribution is a prediction over alternatives, not a promise or evidence of a good language model.</p></details>
+    {expert && <details class="trace-arithmetic mt-3"><summary>Audit the current-target error</summary>
+      <p class="mt-3">For target beta, desired = (0, 1, 0). Source equation 6 gives error = desired − y; it is an output error vector, not the scalar cross-entropy loss or the full parameter gradient.</p>
+      <table class="trace-table word-probabilities mt-3"><caption>Synthetic beta target · equation 6 sign convention</caption><thead><tr><th scope="col">Word</th><th scope="col">Desired</th><th scope="col">Error</th></tr></thead><tbody>{words.map((word, index) => <tr><th scope="row">{word}</th><td>{index === 1 ? 1 : 0}</td><td>{format((index === 1 ? 1 : 0) - probabilities[index]!)}</td></tr>)}</tbody></table>
+      <p class="mt-3">The derived one-token loss is −ln(0.25) = {format(-Math.log(0.25))} nats. For this softmax/cross-entropy pair, the score derivative is y − desired, the negative of the paper’s error convention. No weight update is simulated.</p>
+    </details>}
+  </div>
+  <div class="trace-history credit-ledger">
+    <h3>3. Mark the current-step credit boundary</h3>
+    <p class="mt-3">The main experiments use temporal depth one. Saved state affects the prediction, but the current target’s error does not continue through the computation that made that saved state.</p>
+    <ul class="credit-boundaries" aria-label="Forward recurrence and current-step credit">
+      <li><strong>Forward · state continues</strong><span>Earlier words → saved s(t−1) → current s(t) → next-word y(t).</span></li>
+      <li><strong>Backward · current weights learn</strong><span>Current target error reaches the output weights and current hidden update, including weights multiplying saved s(t−1).</span></li>
+      <li><strong>Backward · earlier computation stops</strong><span>Treat s(t−1) as a supplied input for this update. Do not propagate this target’s error through earlier recurrent updates.</span></li>
+    </ul>
+    <div class="ledger-prompt mt-3"><p><strong>Explain the boundary.</strong> Can an earlier word affect today’s prediction even when today’s target does not send credit into its earlier computation?</p></div>
+    <details class="prediction-reveal mt-3"><summary>Check forward state versus backward credit</summary><p>Yes. Reading the saved activation preserves a forward dependence; cutting the earlier computation limits backward credit. The recurrent weights still learn from the saved activation in the current update. Neither unlimited usable memory nor full BPTT follows from carrying state.</p></details>
+  </div>
+  <div class="trace-comparison"><p class="eyebrow">Separate mechanism · dynamic adaptation</p><p class="mt-3">Static evaluation updates activation while keeping weights fixed. Dynamic evaluation also changes weights using observed test text. Repeated state updates alone are not adaptation.</p></div>
+</section>

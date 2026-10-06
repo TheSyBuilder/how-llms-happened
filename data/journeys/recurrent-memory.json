@@ -324,7 +324,7 @@
     {
       "slug": "mikolov-2010",
       "workId": "mikolov-2010-recurrent-neural-language-model",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-mikolov-2010-recurrent-word-prediction",
         "expert": "expert-mikolov-2010-model-and-evidence"

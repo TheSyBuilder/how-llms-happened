@@ -14,12 +14,16 @@ const forgetRecord = "/reference/works/gers-schmidhuber-cummins-1999-learning-to
 const peepholeBeginner = `${base}beginner/gers-2002/`;
 const peepholeExpert = `${base}expert/gers-2002/`;
 const peepholeRecord = "/reference/works/gers-schraudolph-schmidhuber-2002-precise-timing/";
-const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord, peepholeBeginner, peepholeExpert, peepholeRecord];
+const wordBeginner = `${base}beginner/mikolov-2010/`;
+const wordExpert = `${base}expert/mikolov-2010/`;
+const wordRecord = "/reference/works/mikolov-2010-recurrent-neural-language-model/";
+const bengioRecord = "/reference/works/bengio-2000-neural-probabilistic-language-model/";
+const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord, peepholeBeginner, peepholeExpert, peepholeRecord, wordBeginner, wordExpert, wordRecord, bengioRecord];
 
-test("the recurrent chooser exposes four chapters while later chapters stay queued", async ({ page }) => {
+test("the recurrent chooser exposes five chapters while the final chapter stays queued", async ({ page }) => {
   await page.goto(base);
   await page.getByRole("link", { name: "Preview the beginner path" }).click();
-  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(2);
+  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(1);
   await page.getByRole("link", { name: /Start with Elman/ }).click();
   await expect(page).toHaveURL(new RegExp(`${beginner}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Can the same word leave a different state?");
@@ -431,4 +435,127 @@ test("graphics-hidden and reduced-motion views preserve state-inspection causes"
   await page.getByText("Check inspection versus retention", { exact: true }).click();
   await expect(page.getByText(/The positive input-state term increases the input gate/)).toBeVisible();
   await expect(page.getByText(/The 2002 paper removes that squashing/)).toBeVisible();
+});
+
+test("word-model progression, mode switching, and prerequisite records preserve their targets", async ({ page }) => {
+  await page.goto(peepholeBeginner);
+  await page.getByRole("link", { name: /Continue to recurrent word prediction/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${wordBeginner}$`));
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("How does carried state become a word prediction?");
+  await page.getByRole("link", { name: /Switch to expert/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${wordExpert}$`));
+  await page.getByRole("link", { name: /Inspect Bengio’s versioned work record/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${bengioRecord}$`));
+  await expect(page.locator(".claim-record")).toHaveCount(24);
+  await page.getByRole("link", { name: "Audit the prerequisite" }).click();
+  await expect(page).toHaveURL(new RegExp(`${wordExpert}#bengio-fixed-window-prerequisite$`));
+  await expect(page.getByRole("heading", { name: "What the recurrent word model changes" })).toBeVisible();
+  await page.getByRole("link", { name: /Inspect the complete thirteen-claim/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${wordRecord}$`));
+  await expect(page.locator(".claim-record")).toHaveCount(13);
+  await page.getByRole("link", { name: "Audit the mechanism" }).click();
+  await expect(page).toHaveURL(new RegExp(`${wordExpert}$`));
+});
+
+test("normalized prediction and local-credit answers remain complete without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  for (const path of [wordBeginner, wordExpert]) {
+    const precise = path === wordExpert;
+    await page.goto(path);
+    const table = page.getByRole("table", { name: /Synthetic next-word normalization/ });
+    for (const [word, mass, p] of [["alpha", "2", "0.5"], ["beta", "1", "0.25"], ["gamma", "1", "0.25"], ["Total", "4", "1"]]) {
+      await expect(table.getByRole("row", { name: `${word} ${mass} ${Number(p).toFixed(precise ? 6 : 3)}`, exact: true })).toBeVisible();
+    }
+    await page.getByText("Check the normalized prediction", { exact: true }).click();
+    await expect(page.getByText(/Alpha receives half the probability, but beta can still be observed/)).toBeVisible();
+    await page.getByText("Check forward state versus backward credit", { exact: true }).click();
+    await expect(page.getByText(/The recurrent weights still learn from the saved activation/)).toBeVisible();
+    await expect(page.getByRole("list", { name: "Bengio fixed-window prediction path" }).getByRole("listitem")).toHaveCount(4);
+    await expect(page.getByText(/This model has no LSTM cell, gates, or peepholes/)).toBeVisible();
+    await expect(page.locator("script, input, select, button, astro-island")).toHaveCount(0);
+    if (precise) {
+      await page.getByText("Audit the current-target error", { exact: true }).click();
+      const error = page.getByRole("table", { name: /Synthetic beta target/ });
+      for (const [word, desired, value] of [["alpha", 0, "-0.500000"], ["beta", 1, "0.750000"], ["gamma", 0, "-0.250000"]]) {
+        await expect(error.getByRole("row", { name: `${word} ${desired} ${value}`, exact: true })).toBeVisible();
+      }
+      await expect(page.getByText(/1.386294 nats/)).toBeVisible();
+    }
+  }
+  await context.close();
+});
+
+test("word-model source notation and keyboard inspection preserve probability and credit boundaries", async ({ page }) => {
+  await page.goto(wordExpert);
+  await expect(page.getByText(/Here y denotes scores/)).toBeVisible();
+  await expect(page.getByText(/joined, not added elementwise/)).toBeVisible();
+  await expect(page.getByText(/C rare counts merged word types, not their occurrences/)).toBeVisible();
+  await expect(page.getByText(/normally at learning rate 0.1/)).toBeVisible();
+  for (const label of ["Check the normalized prediction", "Check forward state versus backward credit", "Audit the current-target error"]) {
+    const summary = page.getByText(label, { exact: true });
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(summary.locator("..")).toHaveAttribute("open", "");
+  }
+  await page.setViewportSize({ width: 320, height: 640 });
+  for (const label of ["Bengio lookup and score equations", "Bengio normalized next-word probability", "Mikolov printed input equation", "Mikolov hidden and output equations", "Mikolov current-target error equation", "Mikolov rare-word probability equation"]) {
+    const region = page.getByRole("region", { name: label });
+    await expect(region.locator("math")).not.toHaveCount(0);
+    await region.focus();
+    await expect(region).toBeFocused();
+    if (await region.evaluate((element) => element.scrollWidth > element.clientWidth)) {
+      await page.keyboard.press("ArrowRight");
+      await expect.poll(() => region.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
+    }
+  }
+  const evidence = page.locator(".word-prerequisite .evidence-details > summary").first();
+  await evidence.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".word-prerequisite .evidence-details[open] .source-row a").first()).toBeVisible();
+});
+
+test("WSJ scaling and ensemble tables retain all source values and system components", async ({ page }) => {
+  await page.goto(wordExpert);
+  const scalingPpl = page.getByRole("table", { name: /Table 1 · held-out perplexity/ });
+  const scalingWer = page.getByRole("table", { name: /Table 1 · development WER/ });
+  for (const [label, ppl, wer] of [["200,000 · 90/2", "336 271", "16.4% 15.4%"], ["1 million · 90/2", "287 225", "15.1% 14.0%"], ["6.4 million · 250/5", "221 156", "13.5% 11.7%"]]) {
+    await expect(scalingPpl.getByRole("row", { name: `${label} ${ppl}`, exact: true })).toBeVisible();
+    await expect(scalingWer.getByRole("row", { name: `${label} ${wer}`, exact: true })).toBeVisible();
+  }
+  const ppl = page.getByRole("table", { name: /Table 2 · held-out perplexity/ });
+  const wer = page.getByRole("table", { name: /Table 2 · development WER/ });
+  for (const [label, p, w] of [["KN5 baseline", "— 221", "— 13.5%"], ["RNN 60/20", "229 186", "13.2% 12.6%"], ["RNN 90/10", "202 173", "12.8% 12.2%"], ["RNN 250/5", "173 155", "12.3% 11.7%"], ["RNN 250/2", "176 156", "12.0% 11.9%"], ["RNN 400/10", "171 152", "12.5% 12.1%"], ["Three RNNs · static", "151 143", "11.6% 11.3%"], ["Three RNNs · dynamic", "128 121", "11.3% 11.1%"]]) {
+    await expect(ppl.getByRole("row", { name: `${label} ${p}`, exact: true })).toBeVisible();
+    await expect(wer.getByRole("row", { name: `${label} ${w}`, exact: true })).toBeVisible();
+  }
+  await expect(page.getByText(/0.75 RNN probability \+ 0.25 KN5 probability/)).toBeVisible();
+  await expect(page.getByText(/exact component weights\/run composition are not fully specified/)).toBeVisible();
+});
+
+test("cross-data and RT05 tables preserve footnote four and mixed-data results", async ({ page }) => {
+  await page.goto(wordExpert);
+  const cross = page.getByRole("table", { name: /Table 3 · WSJ/ });
+  for (const [label, values] of [["Lattice 1-best", "12.9% 18.4%"], ["KN5 · 37M", "12.2% 17.2%"], ["Discriminative LM [8] · 37M", "11.5% 16.9%"], ["Joint LM [9] · 70M", "— 16.7%"], ["Three static RNNs + KN5 · 37M", "11.0% 15.5%"], ["Three dynamic RNNs + KN5 · 37M", "10.7% 16.3% · note 4"]]) {
+    await expect(cross.getByRole("row", { name: `${label} ${values}`, exact: true })).toBeVisible();
+  }
+  await expect(page.getByText(/proposed explanation, not a controlled order ablation/)).toBeVisible();
+  const rt = page.getByRole("table", { name: /Table 4 · RT05/ });
+  for (const [label, values] of [["RT05 LM", "24.5% —"], ["RT09 LM baseline", "24.1% —"], ["KN5 · in-domain", "25.7% —"], ["RNN 500/10 · in-domain", "24.2% 24.1%"], ["RNN 500/10 + RT09", "23.3% 23.2%"], ["RNN 800/10 · in-domain", "24.3% 23.8%"], ["RNN 800/10 + RT09", "23.4% 23.1%"], ["RNN 1000/5 · in-domain", "24.2% 23.7%"], ["RNN 1000/5 + RT09", "23.4% 22.9%"], ["Three RNNs + RT09", "23.3% 22.8%"]]) {
+    await expect(rt.getByRole("row", { name: `${label} ${values}`, exact: true })).toBeVisible();
+  }
+  await expect(page.locator("#word-model-rt05").locator("..").getByText(/more than 1.3 billion words/).first()).toBeVisible();
+  await expect(page.getByText(/not asserted as a fully specified RT05 interpolation recipe/)).toBeVisible();
+  await expect(page.getByText(/main training uses temporal depth one/)).toBeVisible();
+});
+
+test("graphics-hidden and reduced-motion word prediction retains both learning distinctions", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(wordBeginner);
+  await page.addStyleTag({ content: "svg, canvas, [aria-hidden='true'] { display: none !important; } * { background-image: none !important; }" });
+  await expect(page.getByRole("table", { name: /Synthetic next-word normalization/ }).getByRole("row", { name: "Total 4 1.000", exact: true })).toBeVisible();
+  await expect(page.getByRole("list", { name: "Forward recurrence and current-step credit" }).getByText(/earlier computation stops/)).toBeVisible();
+  await page.getByText("Check forward state versus backward credit", { exact: true }).click();
+  await expect(page.getByText(/cutting the earlier computation limits backward credit/)).toBeVisible();
+  await expect(page.getByText(/A fixed word row does not make the whole feed-forward prediction context independent/)).toBeVisible();
 });

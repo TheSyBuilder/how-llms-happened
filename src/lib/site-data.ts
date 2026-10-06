@@ -276,6 +276,10 @@ export type ResolvedBlock = ManifestBlock & {
   evidence: EvidenceView[];
 };
 
+export type ResolvedInterlude = Omit<JourneyInterlude, "blocks"> & {
+  blocks: ResolvedBlock[];
+};
+
 export type RouteRef = {
   href: string;
   label: string;
@@ -290,6 +294,7 @@ export type StageView = {
   objective: ObjectiveView;
   contribution: string;
   blocks: ResolvedBlock[];
+  interludes: ResolvedInterlude[];
   limitations: string[];
   uncertainties: string[];
   evidence: EvidenceView[];
@@ -850,13 +855,23 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     ...block,
     evidence: block.claimIds.map((id) => evidenceView(required(indexes.claims, id, "block claim"))),
   }));
+  // Source coverage stays shared while each mode chooses its own teaching blocks.
   const evidence = [
     ...new Set([
-      ...objective.claimIds,
+      ...(["beginner", "expert"] as const).flatMap((mode) => required(indexes.objectives, stage.objectiveIds[mode], "stage objective").claimIds),
       ...stage.contribution.claimIds,
-      ...blocks.flatMap((block) => block.claimIds),
+      ...(["beginner", "expert"] as const).flatMap((mode) => stage.blocks[mode].flatMap((block) => block.claimIds)),
     ]),
   ].map((id) => evidenceView(required(indexes.claims, id, "stage evidence")));
+  const interludes = (manifest.interludes ?? [])
+    .filter((interlude) => interlude.stageSlug === stage.slug)
+    .map((interlude) => ({
+      ...interlude,
+      blocks: interlude.blocks[mode].map((block) => ({
+        ...block,
+        evidence: block.claimIds.map((id) => evidenceView(required(indexes.claims, id, "interlude claim"))),
+      })),
+    }));
 
   const previousStage = manifest.stages[position - 1];
   const nextStage = manifest.stages[position + 1];
@@ -908,6 +923,7 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     objective,
     contribution: stage.contribution.text,
     blocks,
+    interludes,
     limitations: work.limitations,
     uncertainties: work.uncertainties.map((item) => item.note),
     evidence,
@@ -945,9 +961,12 @@ export function getWorkReference(workId: string): WorkReferenceView {
 }
 
 export function getBuiltReferenceWorkIds(): string[] {
-  return [...new Set([manifest, recurrentManifest].flatMap((journey) => journey.stages
-    .filter((stage) => stage.status === "built")
-    .map((stage) => stage.workId)))];
+  return [...new Set([manifest, recurrentManifest].flatMap((journey) => {
+    const built = journey.stages.filter((stage) => stage.status === "built");
+    const interludes = (journey.interludes ?? [])
+      .filter((interlude) => built.some((stage) => stage.slug === interlude.stageSlug));
+    return [...built.map((stage) => stage.workId), ...interludes.flatMap((interlude) => interlude.workIds)];
+  }))];
 }
 
 export function getWorkLearningRoutes(workId: string): Record<Mode, RouteRef> {
@@ -957,6 +976,14 @@ export function getWorkLearningRoutes(workId: string): Record<Mode, RouteRef> {
       return {
         beginner: { href: stageRoute("beginner", stage.slug, journey), label: "Learn with intuition" },
         expert: { href: stageRoute("expert", stage.slug, journey), label: "Audit the mechanism" },
+      };
+    }
+    const interlude = journey.interludes?.find((item) => item.workIds.includes(workId)
+      && journey.stages.some((stage) => stage.slug === item.stageSlug && stage.status === "built"));
+    if (interlude !== undefined) {
+      return {
+        beginner: { href: `${stageRoute("beginner", interlude.stageSlug, journey)}#${interlude.id}`, label: "Learn with intuition" },
+        expert: { href: `${stageRoute("expert", interlude.stageSlug, journey)}#${interlude.id}`, label: "Audit the prerequisite" },
       };
     }
   }
