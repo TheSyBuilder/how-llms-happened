@@ -232,7 +232,7 @@ Static routes must pass the data, source, mode, static-render, accessibility, re
 
 ## Implementation sequence
 
-The shared recurrent shell, Elman same-token trace, original-cell state/credit comparison, forget-gate retention alternatives, and peephole state-inspection alternatives are implemented in both modes. Each has a complete static treatment with source inspection and native checkpoints. The next increment is Mikolov’s 2010 word-model chapter with its Bengio prerequisite. Mikolov, Sundermeyer, Bengio-prerequisite, and smoothing-bridge treatments remain `planned` until their source-dated boundaries pass equivalent review. Hydration remains deferred under the conditional-prototype rule.
+The shared shell and all six source-dated stages are implemented in both modes, including the separately resolved Bengio prerequisite and the final smoothing return. Every chapter has a complete static treatment with source inspection and native checkpoints. Mikolov’s word-probability example remains output-only; Sundermeyer’s composite-cell inventory and empirical comparisons remain static. No recurrent client enhancement is shipped. Hydration remains deferred under the conditional-prototype rule and requires a moderated comparison with this complete static baseline.
 
 ## Implemented forget-gate treatment
 

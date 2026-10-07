@@ -504,6 +504,22 @@
   .word-model-protocol > p, .word-model-limits > p { max-width: 72ch; }
   .word-result-table th:first-child { width: 48%; }
   .word-probabilities th:first-child { width: 30%; }
+  .composite-inventory { list-style: none; padding: 0; margin: 0; }
+  .composite-inventory li { padding: var(--space-4); border-bottom: 1px solid var(--rule); }
+  .composite-inventory h3 { margin-top: var(--space-2); }
+  .composite-stage .stage-meta > div:last-child { grid-column: 1 / -1; }
+  .composite-evidence { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 5.5rem); }
+  .composite-evidence > section { min-width: 0; }
+  .composite-evidence .smoothing-return, .composite-evidence .composite-input, .composite-evidence .composite-french, .composite-evidence .composite-limits, .composite-evidence > nav { grid-column: 1 / -1; }
+  .composite-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 5.5rem); }
+  .composite-methods > div { min-width: 0; }
+  .smoothing-return > p, .composite-french > p, .composite-french > details, .composite-limits > p { max-width: 72ch; }
+  .composite-french .composite-wer-table { max-width: 44rem; }
+  .smoothing-return .retention-invariants dd { font-family: var(--sans); }
+  .composite-size-table th:first-child { width: 65%; }
+  .composite-split-table th:first-child { width: 38%; }
+  .composite-wer-table th:first-child { width: 48%; }
+  @media (max-width: 1024px) { .composite-evidence, .composite-methods { grid-template-columns: 1fr; } .composite-methods { row-gap: var(--space-4); } }
   .table-note-ref { display: block; font: 0.75rem/1.4 var(--sans); color: var(--ink-soft); }
   @media (max-width: 1024px) { .word-model-evidence, .word-mode-blocks--beginner { grid-template-columns: 1fr; } }
   .peephole-evidence { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 5.5rem); }
@@ -539,6 +555,10 @@
     .inspection-results th:first-child { width: 42%; }
     .word-model-stage .word-result-table th:first-child { width: 48%; }
     .word-ledger .word-probabilities th:first-child { width: 30%; }
+    .composite-stage .composite-size-table th:first-child { width: 65%; }
+    .composite-stage .composite-split-table th:first-child { width: 38%; }
+    .composite-stage .composite-wer-table th:first-child { width: 48%; }
+    .composite-inventory li { padding: var(--space-3); }
   }
 }
 

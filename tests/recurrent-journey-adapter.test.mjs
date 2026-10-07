@@ -8,7 +8,7 @@ import {
   getWorkLearningRoutes,
 } from "../src/lib/site-data.ts";
 
-test("the recurrent journey exposes five source-dated chapters in both modes", () => {
+test("the recurrent journey exposes six source-dated chapters in both modes", () => {
   assert.equal(getJourneyOverview("recurrent-memory").stages.length, 6);
   assert.deepEqual(getBuiltStagePaths("recurrent-memory"), [
     { params: { mode: "beginner", stage: "elman-1988-1990" } },
@@ -21,10 +21,10 @@ test("the recurrent journey exposes five source-dated chapters in both modes", (
     { params: { mode: "expert", stage: "gers-2002" } },
     { params: { mode: "beginner", stage: "mikolov-2010" } },
     { params: { mode: "expert", stage: "mikolov-2010" } },
+    { params: { mode: "beginner", stage: "sundermeyer-2012" } },
+    { params: { mode: "expert", stage: "sundermeyer-2012" } },
   ]);
-  for (const slug of getJourneyOverview("recurrent-memory").stages.slice(5).map((stage) => stage.slug)) {
-    assert.throws(() => getStageView("beginner", slug, "recurrent-memory"), /not built yet/);
-  }
+  assert.ok(getJourneyOverview("recurrent-memory").stages.every((stage) => stage.status === "built"));
   assert.throws(() => getStageView("expert", "elman-1988-1990"), /Unknown journey stage/);
 });
 
@@ -51,7 +51,7 @@ test("Elman shares factual identity while mode tasks and source bindings differ"
 
 test("every built work links back to its own chapter and journey", () => {
   const workIds = getBuiltReferenceWorkIds();
-  assert.equal(workIds.length, 10);
+  assert.equal(workIds.length, 11);
   for (const journeyId of ["smoothing", "recurrent-memory"]) {
     for (const stage of getJourneyOverview(journeyId).stages.filter((item) => item.status === "built")) {
       const routes = getWorkLearningRoutes(stage.work.id);
@@ -158,7 +158,7 @@ test("Mikolov resolves only its source claims and the separately scoped Bengio p
   assert.notDeepEqual(beginner.blocks.map((block) => block.id), expert.blocks.map((block) => block.id));
   for (const view of [beginner, expert]) {
     assert.equal(view.previous.href, `/journeys/recurrent-memory/${view.mode}/gers-2002/`);
-    assert.equal(view.next, undefined);
+    assert.equal(view.next.href, `/journeys/recurrent-memory/${view.mode}/sundermeyer-2012/`);
     assert.equal(view.interludes.length, 1);
     const prerequisite = view.interludes[0];
     assert.equal(prerequisite.id, "bengio-fixed-window-prerequisite");
@@ -172,7 +172,7 @@ test("Mikolov resolves only its source claims and the separately scoped Bengio p
   assert.notDeepEqual(beginner.interludes[0].blocks.map((block) => block.id), expert.interludes[0].blocks.map((block) => block.id));
 });
 
-test("prerequisite references return to the owner stage while a planned bridge stays unavailable", () => {
+test("prerequisite references return to the owner stage and the final chapter owns its smoothing return", () => {
   const workId = "bengio-2000-neural-probabilistic-language-model";
   assert.ok(getBuiltReferenceWorkIds().includes(workId));
   const routes = getWorkLearningRoutes(workId);
@@ -182,8 +182,8 @@ test("prerequisite references return to the owner stage while a planned bridge s
       assert.deepEqual(getStageView(mode, stage.slug, "recurrent-memory").interludes, []);
     }
   }
-  assert.ok(!getBuiltReferenceWorkIds().includes("sundermeyer-2012-lstm-language-model"));
-  assert.throws(() => getWorkLearningRoutes("sundermeyer-2012-lstm-language-model"), /No built learning route/);
+  const finalRoutes = getWorkLearningRoutes("sundermeyer-2012-lstm-language-model");
+  for (const mode of ["beginner", "expert"]) assert.equal(finalRoutes[mode].href, `/journeys/recurrent-memory/${mode}/sundermeyer-2012/`);
 });
 
 test("only the state-inspection chapter receives the reviewed peephole comparison", () => {
@@ -195,5 +195,44 @@ test("only the state-inspection chapter receives the reviewed peephole compariso
   }
   for (const stage of getJourneyOverview("recurrent-memory").stages.slice(0, 3)) {
     assert.equal(getStageView("expert", stage.slug, "recurrent-memory").peepholeScenario, undefined);
+  }
+});
+
+test("the composite chapter preserves fifteen source claims without receiving an earlier numeric cell", () => {
+  const beginner = getStageView("beginner", "sundermeyer-2012", "recurrent-memory");
+  const expert = getStageView("expert", "sundermeyer-2012", "recurrent-memory");
+  assert.equal(beginner.work.id, expert.work.id);
+  assert.equal(expert.canonicalVersion.id, "sundermeyer-2012-interspeech-version");
+  assert.equal(expert.evidence.length, 15);
+  assert.ok(expert.evidence.every((claim) => claim.workId === expert.work.id
+    && claim.sources.some((source) => source.sourceId === "sundermeyer-2012-isca-full-text")));
+  const attribution = expert.evidence.find((claim) => claim.claimId === "sundermeyer-2012-lstm-antecedent-and-variant");
+  assert.equal(attribution.directness, "editorial-inference");
+  assert.deepEqual([...new Set(attribution.sources.map((source) => source.sourceId))].sort(), [
+    "gers-1999-icann-full-text", "gers-2002-jmlr-full-text", "sundermeyer-2012-isca-full-text",
+  ]);
+  assert.notEqual(beginner.objective.id, expert.objective.id);
+  assert.notDeepEqual(beginner.blocks.map((block) => block.id), expert.blocks.map((block) => block.id));
+  for (const view of [beginner, expert]) {
+    assert.equal(view.previous.href, `/journeys/recurrent-memory/${view.mode}/mikolov-2010/`);
+    assert.equal(view.next, undefined);
+    assert.equal(view.alternateMode.href, `/journeys/recurrent-memory/${view.mode === "beginner" ? "expert" : "beginner"}/sundermeyer-2012/`);
+    for (const key of ["elmanScenario", "originalCellScenario", "forgetScenario", "peepholeScenario", "goodFixture", "katzFixture", "kneserFixture", "chenFixture"]) assert.equal(view[key], undefined);
+  }
+});
+
+test("the static smoothing return binds only the target's setup and mixture claims", () => {
+  for (const mode of ["beginner", "expert"]) {
+    const view = getStageView(mode, "sundermeyer-2012", "recurrent-memory");
+    assert.equal(view.interludes.length, 1);
+    const bridge = view.interludes[0];
+    assert.equal(bridge.id, "smoothing-to-sundermeyer-bridge");
+    assert.equal(bridge.relatedJourneyId, "smoothing");
+    assert.equal(bridge.placement, "before");
+    assert.deepEqual([...new Set(bridge.blocks.flatMap((block) => block.claimIds))].sort(), [
+      "sundermeyer-2012-french-asr-setup", "sundermeyer-2012-french-wer-results",
+    ]);
+    assert.ok(bridge.blocks.every((block) => block.evidence.every((claim) => claim.workId === view.work.id)));
+    assert.ok(bridge.blocks.every((block) => block.evidence.every((claim) => claim.sources.every((source) => source.sourceId === "sundermeyer-2012-isca-full-text"))));
   }
 });

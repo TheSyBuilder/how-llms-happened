@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-10-06",
+  "asOf": "2026-10-07",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -25951,7 +25951,7 @@
       ],
       "title": "Author-hosted full text of the ICANN’99 Learning to Forget paper",
       "url": "https://sferics.idsia.ch/pub/juergen/icann99.ps.gz",
-      "accessDate": "2026-08-10",
+      "accessDate": "2026-10-07",
       "sourceClass": "primary-full-text",
       "authority": "author",
       "versionIds": [
@@ -26093,7 +26093,7 @@
       ],
       "title": "Official JMLR full text of Learning Precise Timing with LSTM Recurrent Networks",
       "url": "https://www.jmlr.org/papers/volume3/gers02a/gers02a.pdf",
-      "accessDate": "2026-10-05",
+      "accessDate": "2026-10-07",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -26158,7 +26158,7 @@
       ],
       "title": "ISCA Archive record for LSTM Neural Networks for Language Modeling",
       "url": "https://www.isca-archive.org/interspeech_2012/sundermeyer12_interspeech.html",
-      "accessDate": "2026-08-09",
+      "accessDate": "2026-10-07",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
@@ -26176,7 +26176,7 @@
       ],
       "title": "ISCA Archive index for Interspeech 2012",
       "url": "https://www.isca-archive.org/interspeech_2012/",
-      "accessDate": "2026-08-09",
+      "accessDate": "2026-10-07",
       "sourceClass": "official-record",
       "authority": "publisher",
       "versionIds": [
@@ -26194,7 +26194,7 @@
       ],
       "title": "Official full text of LSTM Neural Networks for Language Modeling",
       "url": "https://www.isca-archive.org/interspeech_2012/sundermeyer12_interspeech.pdf",
-      "accessDate": "2026-08-09",
+      "accessDate": "2026-10-07",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -44871,7 +44871,7 @@
         "Removing an explicit window does not establish that a trained state preserves useful information across arbitrary distances."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-lstm-antecedent-and-variant",
@@ -44942,7 +44942,7 @@
           "note": "The collective references can be mapped at mechanism level because the complete 1999 source explicitly adds the forget gate and the complete 2002 source explicitly builds on that gate while adding named peephole connections."
         }
       ],
-      "checkedDate": "2026-08-10"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-memory-cell-mechanism",
@@ -44954,7 +44954,7 @@
         "adaptive-recurrent-state-retention",
         "cell-state-to-gate-feedback"
       ],
-      "statement": "At each step, the cell combines a gated candidate update with the previous cell state scaled by a forget gate, then exposes a transformed state through an output gate; gate activations are logistic values between zero and one, and additional links connect cell state to the gates.",
+      "statement": "At each step, the cell combines a gated candidate update with the previous cell state scaled by a forget gate, and uses an output gate plus an activation to control the exposed output; gate activations are logistic values between zero and one, and additional links connect cell state to the gates.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -44971,10 +44971,11 @@
         }
       ],
       "limitations": [
-        "Section 2 explicitly omits the extensive LSTM equations; a compact modern vector equation would be a reconstruction rather than text printed in this paper, so the corpus follows the prose and Figure 1."
+        "Section 2 explicitly omits the extensive LSTM equations; a compact modern vector equation would be a reconstruction rather than text printed in this paper, so the corpus follows the prose and Figure 1.",
+        "The prose places output scaling before the final activation. A common output-gate-after-tanh formula is not asserted as this paper’s literal equation."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-language-model-objective",
@@ -45005,7 +45006,7 @@
         "The paper omits optimizer, learning rate, initialization, batching, temporal-unrolling depth, epoch count, and stopping details."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-input-normalization",
@@ -45033,7 +45034,7 @@
         "No convergence curve, normalization formula, matched training budget, or repeated-run analysis is supplied."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-projection-and-class-factorization",
@@ -45064,7 +45065,7 @@
         "The paper does not specify the word-to-class assignment algorithm, class-frequency criterion, or projection initialization."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-corpus-splits",
@@ -45092,7 +45093,7 @@
         "Penn Treebank has no development-2 split in the table; French development-1 tunes neural models and development-2 tunes language-model scaling."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-rnn-lstm-perplexity",
@@ -45124,7 +45125,7 @@
         "The comparison does not control architecture parameterization beyond the two cited size matches and reports no confidence interval or repeated seed."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-projection-results",
@@ -45155,7 +45156,7 @@
         "Exact plotted perplexities are not tabulated, and the paper gives no repeated-run variability or matched optimization details."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-long-context-results",
@@ -45187,7 +45188,7 @@
         "Sentence concatenation tests retained state across a constructed sequence; it does not demonstrate robust arbitrary-distance memory."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-output-clustering-results",
@@ -45219,7 +45220,7 @@
         "The graph suggests a speed increase on the order of twenty times at favorable class counts, but no numeric table, hardware, wall-clock duration, or latency measure is reported, so the corpus does not treat that visual estimate as an exact result."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-french-asr-setup",
@@ -45248,7 +45249,7 @@
         "The paper does not report an LSTM-only French result, a French sigmoid-recurrent baseline, interpolation weights, a complete acoustic-system specification, or complete preprocessing and out-of-vocabulary handling. It does identify cross-adaptation, multilayer-perceptron features, and discriminative training."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-french-wer-results",
@@ -45279,7 +45280,7 @@
         "Because only the mixture is evaluated, the result cannot isolate the LSTM distribution’s independent recognition contribution."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-evidence-reproducibility-boundary",
@@ -45310,7 +45311,7 @@
         "Absence is established only for the inspected four-page proceedings version; supplementary artifacts or private experiment records were not assumed."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "sundermeyer-2012-conclusion-scope",
@@ -45353,7 +45354,7 @@
         "The approximate perplexity statement refers to this paper’s sigmoid baseline, not a reproduced Mikolov 2010 result, and the speech result is an interpolation result rather than a standalone LSTM score."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-09"
+      "checkedDate": "2026-10-07"
     },
     {
       "id": "graves-2013-recurrent-sequence-generation-objective",

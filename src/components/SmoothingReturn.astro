@@ -1,0 +1,21 @@
+---
+import EvidenceDetails from "./EvidenceDetails.astro";
+import type { Mode, ResolvedInterlude } from "../lib/site-data";
+interface Props { interlude: ResolvedInterlude; mode: Mode }
+const { interlude, mode } = Astro.props;
+if (interlude.id !== "smoothing-to-sundermeyer-bridge") throw new Error("Unexpected smoothing return.");
+---
+
+<section class="reading-block smoothing-return" id={interlude.id} aria-labelledby="smoothing-return-heading">
+  <p class="kicker">Return to journey 01 · before the recognition result</p>
+  <h2 id="smoothing-return-heading">The count model remains in the system.</h2>
+  {interlude.blocks.map((block) => <div class="mt-3" id={block.id}><h3>{block.heading}</h3><p class="mt-3">{block.body}</p></div>)}
+  <dl class="retention-invariants mt-4">
+    <div><dt>LSTM component</dt><dd>300 cells · 27 million in-domain words</dd></div>
+    <div><dt>Kneser–Ney component</dt><dd>4-gram · over 4 billion words</dd></div>
+  </dl>
+  <p class="mt-4">The recognizer supplies 1,000 candidate hypotheses per list. The interpolated language-model score helps rescore them. These components have different training corpora; the paper gives no LSTM-only recognition row or interpolation weights.</p>
+  {mode === "expert" && <p class="mt-3">The named Kneser–Ney component does not establish that this experiment used Chen–Goodman’s particular discount formula.</p>}
+  <a class="claim-link mt-3" href={`/journeys/smoothing/${mode}/kneser-ney-1995/`}>Revisit Kneser–Ney in {mode} mode</a>
+  {interlude.blocks.flatMap((block) => block.evidence).map((evidence) => <EvidenceDetails evidence={evidence} />)}
+</section>

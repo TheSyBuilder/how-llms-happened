@@ -402,7 +402,7 @@
     {
       "slug": "sundermeyer-2012",
       "workId": "sundermeyer-2012-lstm-language-model",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-sundermeyer-2012-gated-language-memory",
         "expert": "expert-sundermeyer-2012-model-and-evidence"
@@ -457,7 +457,7 @@
             "id": "expert-sundermeyer-objective",
             "kind": "equation",
             "heading": "Reconstruct the word objective, not an omitted cell equation",
-            "body": "The paper specifies one-hot word input, softmax cross-entropy, optional projection, and class-factored output. Its cell section omits extensive equations, so a compact modern vector cell remains labelled reconstruction.",
+            "body": "The paper specifies one-hot word input, softmax cross-entropy, optional projection, and class-factored output. Its cell section omits extensive equations, so this chapter keeps a source-dated mechanism inventory rather than replacing them with a modern vector cell.",
             "claimIds": ["sundermeyer-2012-full-history-motivation", "sundermeyer-2012-language-model-objective", "sundermeyer-2012-input-normalization", "sundermeyer-2012-projection-and-class-factorization"]
           },
           {

@@ -1,0 +1,135 @@
+---
+import { renderToString } from "katex";
+import EvidenceDetails from "./EvidenceDetails.astro";
+import JourneyMap from "./JourneyMap.astro";
+import ModeSwitch from "./ModeSwitch.astro";
+import SmoothingReturn from "./SmoothingReturn.astro";
+import { getJourneyOverview, type StageView } from "../lib/site-data";
+interface Props { view: StageView }
+const { view } = Astro.props;
+const { mode } = view;
+const expert = mode === "expert";
+const journey = getJourneyOverview("recurrent-memory");
+const bridge = view.interludes.find((item) => item.id === "smoothing-to-sundermeyer-bridge");
+if (bridge === undefined) throw new Error("Sundermeyer is missing its smoothing return.");
+const claim = (suffix: string) => {
+  const evidence = view.evidence.find((item) => item.claimId === `sundermeyer-2012-${suffix}`);
+  if (evidence === undefined) throw new Error(`Missing composite word-model evidence: ${suffix}`);
+  return evidence;
+};
+const math = (tex: string) => renderToString(tex, { displayMode: true, output: "htmlAndMathml", throwOnError: true });
+const prefix = math(String.raw`p(w_1^N)=\prod_{m=1}^{N}p(w_m\mid w_1^{m-1})`);
+const scores = math(String.raw`a_i=\sum_{j=1}^{J}\omega_{ij}b_j,\qquad i=1,\ldots,V`);
+const objective = math(String.raw`\begin{aligned}p_i&=\frac{e^{a_i}}{\sum_{k=1}^{V}e^{a_k}}\\\mathcal L&=-\sum_{m=1}^{N}\log p(w_m\mid w_1^{m-1})\end{aligned}`);
+const classes = math(String.raw`\begin{aligned}p(w_m\mid w_1^{m-1})={}&p(w_m\mid c(w_m),w_1^{m-1})\\&\cdot p(c(w_m)\mid w_1^{m-1})\end{aligned}`);
+const lineage = [
+  { date: "1995/1997", label: "Write and expose", slug: "hochreiter-schmidhuber-1995-1997", source: "Original LSTM · reference 11", meaning: "The protected additive path plus input and output gates belongs to the original cell." },
+  { date: "1999/2000", label: "Retain or forget", slug: "gers-1999-2000", source: "Adaptive forgetting · reference 12", meaning: "A learned gate scales the previous state. This is a later change to the unit self-weight." },
+  { date: "2002", label: "Inspect cell state", slug: "gers-2002", source: "State-to-gate links · reference 13", meaning: "Weighted cell-state reads inform the gates. Inspection is distinct from retaining state." },
+];
+const parameters = [
+  { model: "LSTM · 150 cells", count: "7.6 M" },
+  { model: "Sigmoid · 150 units", count: "3.0 M" },
+  { model: "Sigmoid · 350 units", count: "7.1 M" },
+];
+const splits = [
+  { split: "Train", ptb: "930 K", french: "27 M" },
+  { split: "Dev1", ptb: "74 K", french: "46 K" },
+  { split: "Dev2", ptb: "—", french: "36 K" },
+  { split: "Test", ptb: "82 K", french: "35 K" },
+  { split: "Vocabulary", ptb: "10 K", french: "170 K" },
+];
+---
+
+<article class="stage-shell composite-stage">
+  <div class="stage-reading">
+    <ModeSwitch activeMode={mode} alternateHref={view.alternateMode.href} />
+    <header class="stage-header">
+      <p class="stage-number">Stage 6 of 6 · Interspeech · September 2012</p>
+      <h1>{expert ? "Which cell, objective, and system produced the result?" : "What changes when a word model uses gated memory?"}</h1>
+      <p class="stage-deck">{expert ? "Resolve the composite cell’s source history, reconstruct the word objective, and audit graph-only comparisons beside the component-labelled recognition system." : "Join the memory mechanisms you have followed to next-word prediction. Then check what the experiments show about longer context and a system that still uses a count model."}</p>
+      <dl class="stage-meta"><div><dt>Source</dt><dd>{view.canonicalVersion.label}</dd></div><div><dt>Your task</dt><dd>{view.objective.objective}</dd></div><div><dt>Success</dt><dd>{view.objective.successCriterion}</dd></div></dl>
+    </header>
+    <section class="reading-block" aria-labelledby="composite-prefix">
+      <p class="kicker">Two branches meet · word prediction and protected memory</p><h2 id="composite-prefix">A full prefix is a goal, not a stored word list.</h2>
+      <p>The chain rule conditions each word on all preceding words. A fixed-window model explicitly limits that history; a recurrent model carries a changing internal state. Sundermeyer, Schlüter, and Ney test an LSTM word model rather than Mikolov’s sigmoid recurrent layer.</p>
+      <p class="mt-3">Removing the fixed input window does not guarantee that training preserves every useful detail. The state is transformed at each word, and the long-context experiments below remain essential evidence.</p><EvidenceDetails evidence={claim("full-history-motivation")} />
+      <a class="claim-link mt-3" href={view.previous!.href}>Revisit recurrent word prediction · 2010</a>
+    </section>
+  </div>
+  <aside class="stage-workbench stage-workbench--long" aria-label="Source-dated composite-cell inventory">
+    <div class="recurrent-ledger">
+      <header class="trace-intro"><p class="kicker">Source-dated inventory · Figure 1 and references 11–13</p><h2>A 2012 cell has more than one origin.</h2><p class="mt-3">Read the mechanism and its date together. The original chapter, later retention chapter, and state-inspection chapter explain different contributions.</p></header>
+      <ol class="composite-inventory" aria-label="Dated cell mechanisms">
+        {lineage.map((item) => <li><p class="kicker">{item.date}</p><h3>{item.label}</h3><p class="mt-3">{item.meaning}</p><a class="claim-link mt-3" href={`/journeys/recurrent-memory/${mode}/${item.slug}/`}>{item.source}</a></li>)}
+      </ol>
+      <div class="trace-comparison">
+        <p class="provenance-note">The 2012 paper cites the two modifications collectively. Assigning the forget gate to reference 12 and the state-to-gate links to reference 13 is an editorial comparison with the earlier primary texts. It does not establish identical equations or update order.</p>
+        <details class="prediction-reveal mt-3"><summary>{expert ? "Check the source-attribution inference" : "Check which gate came later"}</summary><div class="prediction-answer"><p>{expert ? "The original cell supplies input/output gating; later papers supply adaptive forgetting and peephole inspection. The target does not name peepholes or reproduce their learning rules. Its incomplete reference 12 is resolved by the original ICANN title page and author records." : "The forget gate and state-to-gate links are later additions. A diagram that places all of them in the 1997 cell would erase two distinct steps in this history."}</p></div></details>
+        <EvidenceDetails evidence={claim("lstm-antecedent-and-variant")} />
+      </div>
+    </div>
+  </aside>
+  <div class="stage-conclusion composite-evidence">
+    <section class="reading-block" aria-labelledby="composite-cell">
+      <p class="kicker">Cell mechanism · section 2 · printed p. 195</p><h2 id="composite-cell">Write, retain, expose, and inspect stay separate.</h2>
+      <p>The input gate scales the candidate; the forget gate scales the prior state before it is added. The output gate controls exposure, while cell-state links inform gate decisions. Logistic gate activations lie between zero and one.</p>
+      <p class="mt-3">This paper explicitly omits the extensive cell equations. Its prose describes output scaling followed by an activation; Figure 1 is compact. We keep the mechanism inventory rather than substitute a modern vector equation or import the 2002 read order.</p>
+      {expert && <p class="mt-3">The source uses a i for input activation, b i for output, and b ι / b φ / b ω for gates. Follow named input, forget, and output roles rather than the inconsistent enumeration of factors in the prose. Footnote 1 says the cited 2005 account’s gates do not receive the preceding hidden layer’s activations, unlike this version.</p>}
+      <EvidenceDetails evidence={claim("memory-cell-mechanism")} />
+    </section>
+    <section class="reading-block" aria-labelledby="composite-objective">
+      <p class="kicker">Word objective · section 3 · printed p. 195</p><h2 id="composite-objective">The next-word target remains a probability.</h2>
+      <p>A one-hot input marks the current word type. Recurrent LSTM state supplies information for vocabulary scores; softmax turns those scores into probabilities summing to one. Cross-entropy training rewards probability assigned to the observed next words.</p>
+      <p class="mt-3">The memory architecture changes how information is carried. It does not turn a probability into a certain answer or change the task into retrieving every earlier word.</p>
+      {expert && <><div class="equation-panel mt-3" role="region" aria-label="Sundermeyer printed prefix and output-score equations" tabindex="0"><div set:html={prefix} /><div set:html={scores} /></div><p>The prefix product is printed on p. 194; the score sum is printed on p. 195. J is last-hidden-layer size, V vocabulary size, and ω ij an output weight. The following softmax and negative-log-likelihood notation expands the source’s stated objective; these are teaching equations, not numbered formulas from the paper.</p><div class="equation-panel mt-3" role="region" aria-label="Expanded softmax and word loss teaching equations" tabindex="0"><div set:html={objective} /></div></>}
+      <EvidenceDetails evidence={claim("language-model-objective")} />
+    </section>
+    {expert && <section class="reading-block composite-input" aria-labelledby="composite-input">
+      <p class="kicker">Input and projection audit</p><h2 id="composite-input">A common preprocessing rule did not help here.</h2>
+      <div class="composite-methods mt-3"><div><h3>Input normalization</h3><p class="mt-3">One-hot coordinates already share the range [0, 1]. The authors’ normalization attempt slowed convergence; they suggest full whitening but call it impractical at vocabulary scale. No convergence curve or matched-budget normalization trial is supplied.</p><EvidenceDetails evidence={claim("input-normalization")} /></div><div><h3>Optional projection</h3><p class="mt-3">Figure 2 permits a linear or sigmoid projection before recurrent LSTM state. It is optional: the plain-LSTM baseline omits it. The article gives no projection initialization, complete optimization recipe, or word-to-class assignment algorithm.</p><EvidenceDetails evidence={claim("projection-and-class-factorization")} /></div></div>
+    </section>}
+    <section class="reading-block" aria-labelledby="composite-comparison">
+      <p class="kicker">Treebank · Figure 3(a) · printed pp. 196–197</p><h2 id="composite-comparison">Similar unit counts conceal different model sizes.</h2>
+      <p>The authors summarize perplexity as about 8% lower than their tested sigmoid recurrent baseline. This measures word probability on the reported task; it is not an 8% word-error-rate reduction or a reproduction of Mikolov’s 2010 scores.</p>
+      {expert ? <table class="trace-table composite-size-table mt-3"><caption>Printed parameter counts · no projection layer</caption><thead><tr><th scope="col">Model</th><th scope="col">Parameters</th></tr></thead><tbody>{parameters.map((row) => <tr><th scope="row">{row.model}</th><td>{row.count}</td></tr>)}</tbody></table> : <p class="mt-3">At 150 hidden units, LSTM uses 7.6 million parameters and the sigmoid model 3.0 million. Increasing the sigmoid model to 350 units brings it to 7.1 million parameters but gives no material improvement in the reported comparison.</p>}
+      <p class="mt-3">The paper describes training times as similar in order, without a controlled throughput table. Exact perplexity points are not tabulated; no error bars or repeated-seed estimates accompany Figure 3.</p><EvidenceDetails evidence={claim("rnn-lstm-perplexity")} />
+    </section>
+    <section class="reading-block composite-context" aria-labelledby="composite-context">
+      <p class="kicker">Projection and context · Figure 3(b–c)</p><h2 id="composite-context">More available context can worsen prediction.</h2>
+      <p>With single sentences, neither tested projection lowers perplexity below plain LSTM. Concatenating consecutive sentences changes the result: one to two sentences gives a small plain-LSTM gain, but sufficiently long sequences worsen perplexity. Linear projection gives the best reported long-sequence behavior among the tested paths.</p>
+      <p class="mt-3">The paper calls about 21 words the average sentence length. That is not a hard maximum. Sentence concatenation varies input-sequence length; the article does not specify temporal-unrolling depth.</p>
+      <p class="mt-3">The authors suggest that vocabulary difficulty explains the reversal. This is a hypothesis, not a controlled causal test. Their prose also describes a sigmoid-projection gain that the plotted one-to-two-sentence curve does not support; we retain the discrepancy.</p>
+      <details class="prediction-reveal mt-3"><summary>{expert ? "Check the long-context evidence boundary" : "Check the longer-context prediction"}</summary><div class="prediction-answer"><p>{expert ? "Sequence-length evidence cannot establish the omitted credit horizon. Figure 3(c) does not tabulate exact points or identify the evaluation split, and prose/plot disagreement remains unresolved. It supports a bounded comparison, not robust arbitrary-distance memory." : "A model may accept more history and still assign worse next-word probabilities. Longer available context is a capability of the input path; useful learned memory has to be tested. The plotted reversal prevents a promise of unlimited memory."}</p></div></details>
+      <EvidenceDetails evidence={claim("projection-results")} /><EvidenceDetails evidence={claim("long-context-results")} />
+    </section>
+    <section class="reading-block" aria-labelledby="composite-classes">
+      <p class="kicker">Output classes · Figure 3(d) · 200 cells, no projection</p><h2 id="composite-classes">Grouping output words changes the cost.</h2>
+      <p>A fixed partition groups vocabulary words into classes. The model predicts a class, then the word within that class. This differs from Mikolov’s rare bucket: class factoring preserves a separate within-class word probability instead of dividing one bucket equally.</p>
+      {expert && <><div class="equation-panel mt-3" role="region" aria-label="Sundermeyer printed class-factored probability" tabindex="0"><div set:html={classes} /></div><p>c(w m) is the unique class containing word w m. The two normalized factors form a word distribution over a disjoint vocabulary partition. The printed factorization appears on p. 195; it is not a rare-word allocation rule.</p><p class="mt-3">The balanced-cost heuristic favors roughly √V classes, but unequal class sizes change the practical optimum. The paper cites earlier class methods; it does not specify its complete assignment procedure.</p><EvidenceDetails evidence={claim("projection-and-class-factorization")} /></>}
+      <p class="mt-3">The reported quality change is moderate, with a large speed gain. Figure 3(d) gives no numeric point table, hardware, elapsed training time, or latency measurement; we do not turn its curve into an exact speed claim.</p><EvidenceDetails evidence={claim("output-clustering-results")} />
+    </section>
+    {expert && <section class="reading-block" aria-labelledby="composite-splits">
+      <p class="kicker">Table 1 · printed p. 196</p><h2 id="composite-splits">Keep the two corpora and split roles distinct.</h2>
+      <table class="trace-table composite-split-table mt-3"><caption>Table 1 · running words; final row is vocabulary types</caption><thead><tr><th scope="col">Split</th><th scope="col">Treebank</th><th scope="col">French</th></tr></thead><tbody>{splits.map((row) => <tr><th scope="row">{row.split}</th><td>{row.ptb}</td><td>{row.french}</td></tr>)}</tbody></table>
+      <p class="mt-3">K means thousand and M million. Dev1 validates neural training; French dev2 tunes language-model scale. Treebank has no dev2 entry. The article never says whether Figure 3 plots development or test perplexity.</p><EvidenceDetails evidence={claim("corpus-splits")} />
+    </section>}
+    <SmoothingReturn interlude={bridge} mode={mode} />
+    <section class="reading-block composite-french" aria-labelledby="composite-french">
+      <p class="kicker">Table 2 · Quaero French · 2011 evaluation</p><h2 id="composite-french">Read the recognition rows as complete systems.</h2>
+      <p>The broadcast-conversational and podcast task uses 1,000-best rescoring. The recognition system includes cross-adaptation, multilayer-perceptron acoustic features, and discriminative training. Lower word error rate means fewer recognition errors in that condition.</p>
+      <table class="trace-table composite-wer-table mt-3"><caption>Table 2 · French word error rate</caption><thead><tr><th scope="col">System</th><th scope="col">Dev2</th><th scope="col">Test</th></tr></thead><tbody><tr><th scope="row">KN 4-gram</th><td>19.7%</td><td>17.6%</td></tr><tr class="trace-result"><th scope="row">KN 4-gram + LSTM</th><td>19.2%</td><td>17.3%</td></tr></tbody></table>
+      <p class="mt-3">The absolute changes are 0.5 and 0.3 percentage points. {expert ? "Dividing each change by its baseline gives about 2.54% and 1.70% relative reductions. These percentages are derived arithmetic, not extra reported measurements." : "A percentage-point change subtracts the two displayed rates; it is different from a relative percent change."}</p>
+      <details class="prediction-reveal mt-3"><summary>{expert ? "Check the mixture arithmetic and missing control" : "Check what the recognition result proves"}</summary><div class="prediction-answer"><p>{expert ? "(19.7−19.2)/19.7 ≈ 2.54%; (17.6−17.3)/17.6 ≈ 1.70%. Both compare the count baseline with its LSTM mixture. There is no LSTM-only row, French sigmoid-RNN control, uncertainty estimate, or significance test to isolate an independent neural recognition effect." : "The combined system improves on the count-model baseline in both displayed rows. It does not show what LSTM alone would score, and it does not show that smoothing was replaced."}</p></div></details>
+      <EvidenceDetails evidence={claim("french-asr-setup")} /><EvidenceDetails evidence={claim("french-wer-results")} />
+    </section>
+    <section class="reading-block composite-limits" aria-labelledby="composite-limits">
+      <p class="kicker">Conclusion · scope and reproducibility</p><h2 id="composite-limits">The evidence closes a sequence, not every memory question.</h2>
+      <p>This four-page paper connects a later composite cell with normalized word prediction, a class-factorization tradeoff, and count-model interpolation. Its conclusion leaves differences in speech-recognition quality for future investigation.</p>
+      <p class="mt-3">Graph-only comparisons lack numeric point tables, split identity, confidence intervals, significance tests, seeds, and repeated-run summaries. Optimizer, learning rate, initialization, batching, unrolling depth, epoch count, and stopping rules are omitted. No control here implies a reproducible training run or an empirical sweep.</p>
+      <p class="mt-3">September 2012 is the verified conference month; an exact presentation day is not established.</p><EvidenceDetails evidence={claim("evidence-reproducibility-boundary")} /><EvidenceDetails evidence={claim("conclusion-scope")} />
+      <a class="claim-link mt-3" href={`/reference/works/${view.work.id}/`}>Inspect the complete fifteen-claim work record</a>
+    </section>
+    <nav class="reading-block" aria-label="Recurrent journey progression"><p class="kicker">Six stages · two branches · a later convergence</p><h2>Follow the distinctions back through the sequence.</h2><p>Carried activation, protected credit, learned retention, state inspection, and word probability answer different questions. The 2012 result combines their history without assigning every mechanism to one paper.</p><p class="mt-4"><a class="claim-link" href={view.previous!.href}>Revisit recurrent word prediction</a></p><p class="mt-3"><a class="claim-link" href={`/journeys/recurrent-memory/${mode}/`}>Return to the {mode} route map</a></p><div class="mt-4"><JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact /></div></nav>
+  </div>
+</article>

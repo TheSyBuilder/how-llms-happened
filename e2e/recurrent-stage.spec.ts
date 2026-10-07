@@ -18,12 +18,96 @@ const wordBeginner = `${base}beginner/mikolov-2010/`;
 const wordExpert = `${base}expert/mikolov-2010/`;
 const wordRecord = "/reference/works/mikolov-2010-recurrent-neural-language-model/";
 const bengioRecord = "/reference/works/bengio-2000-neural-probabilistic-language-model/";
-const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord, peepholeBeginner, peepholeExpert, peepholeRecord, wordBeginner, wordExpert, wordRecord, bengioRecord];
+const compositeBeginner = `${base}beginner/sundermeyer-2012/`;
+const compositeExpert = `${base}expert/sundermeyer-2012/`;
+const compositeRecord = "/reference/works/sundermeyer-2012-lstm-language-model/";
+const allRoutes = [base, `${base}beginner/`, `${base}expert/`, beginner, expert, record, originalBeginner, originalExpert, originalRecord, forgetBeginner, forgetExpert, forgetRecord, peepholeBeginner, peepholeExpert, peepholeRecord, wordBeginner, wordExpert, wordRecord, bengioRecord, compositeBeginner, compositeExpert, compositeRecord];
 
-test("the recurrent chooser exposes five chapters while the final chapter stays queued", async ({ page }) => {
+test("the final word-model chapter and mixture remain complete without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  for (const path of [compositeBeginner, compositeExpert]) {
+    await page.goto(path);
+    await expect(page.getByRole("list", { name: "Dated cell mechanisms" })).toContainText("1995/1997");
+    await expect(page.getByRole("list", { name: "Dated cell mechanisms" })).toContainText("1999/2000");
+    await expect(page.getByRole("list", { name: "Dated cell mechanisms" })).toContainText("2002");
+    const table = page.getByRole("table", { name: "Table 2 · French word error rate" });
+    await expect(table.getByRole("row", { name: "KN 4-gram 19.7% 17.6%", exact: true })).toBeVisible();
+    await expect(table.getByRole("row", { name: "KN 4-gram + LSTM 19.2% 17.3%", exact: true })).toBeVisible();
+    await expect(page.locator("#smoothing-to-sundermeyer-bridge")).toContainText("over 4 billion words");
+    await expect(page.locator("#smoothing-to-sundermeyer-bridge")).toContainText("27 million in-domain words");
+    const summaries = page.locator(".prediction-reveal > summary");
+    for (const summary of await summaries.all()) await summary.click();
+    await expect(page.locator(".prediction-reveal[open]")).toHaveCount(3);
+    await expect(page.locator("input, select, button, astro-island, canvas")).toHaveCount(0);
+  }
+  await context.close();
+});
+
+test("composite progression, mode switching and smoothing return preserve destination identity", async ({ page }) => {
+  await page.goto(wordBeginner);
+  await page.getByRole("link", { name: /Continue to the LSTM word model/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${compositeBeginner}$`));
+  await page.getByRole("link", { name: /Switch to expert/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${compositeExpert}$`));
+  await page.getByRole("link", { name: "Revisit Kneser–Ney in expert mode" }).click();
+  await expect(page).toHaveURL(/\/journeys\/smoothing\/expert\/kneser-ney-1995\/$/);
+  await page.goto(compositeRecord);
+  await expect(page.locator(".claim-record")).toHaveCount(15);
+  await page.getByRole("link", { name: "Audit the mechanism" }).click();
+  await expect(page).toHaveURL(new RegExp(`${compositeExpert}$`));
+});
+
+test("composite native checkpoints, evidence and equations work from the keyboard", async ({ page }) => {
+  await page.goto(compositeExpert);
+  for (const summary of await page.locator(".prediction-reveal > summary").all()) {
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(summary.locator("..")).toHaveAttribute("open", "");
+  }
+  await expect(page.getByText(/Sequence-length evidence cannot establish the omitted credit horizon/)).toBeVisible();
+  await expect(page.getByText(/2.54%;/)).toBeVisible();
+  const evidence = page.locator(".evidence-details > summary").first();
+  await evidence.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".evidence-details[open] .source-row a").first()).toBeVisible();
+  await page.setViewportSize({ width: 320, height: 800 });
+  const equation = page.getByRole("region", { name: "Sundermeyer printed class-factored probability" });
+  await equation.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect.poll(() => equation.evaluate((node) => node.scrollLeft)).toBeGreaterThan(0);
+});
+
+test("the composite expert audit preserves graph and recipe uncertainty", async ({ page }) => {
+  await page.goto(compositeExpert);
+  await expect(page.getByRole("table", { name: /Printed parameter counts/ })).toContainText("7.6 M");
+  await expect(page.getByRole("table", { name: /Printed parameter counts/ })).toContainText("7.1 M");
+  await expect(page.getByRole("table", { name: /Table 1 · running words/ })).toContainText("930 K");
+  await expect(page.getByRole("table", { name: /Table 1 · running words/ }).getByRole("row", { name: "Dev2 — 36 K", exact: true })).toBeVisible();
+  await expect(page.getByText(/article never says whether Figure 3 plots development or test/)).toBeVisible();
+  await expect(page.getByText(/these are teaching equations, not numbered formulas/)).toBeVisible();
+  await expect(page.getByText(/prose describes output scaling followed by an activation/)).toBeVisible();
+  await expect(page.getByText(/plotted one-to-two-sentence curve does not support/)).toBeVisible();
+  await expect(page.getByText(/Optimizer, learning rate, initialization, batching, unrolling depth/)).toBeVisible();
+  await expect(page.getByRole("region", { name: "Sundermeyer printed class-factored probability" })).toBeVisible();
+});
+
+test("graphics-hidden and reduced motion preserve composite provenance and mixture evidence", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(compositeBeginner);
+  await page.addStyleTag({ content: "svg, canvas, [aria-hidden='true'] { display: none !important; } * { background-image: none !important; }" });
+  await expect(page.getByRole("list", { name: "Dated cell mechanisms" })).toContainText("State-to-gate links");
+  await page.getByText("Check which gate came later", { exact: true }).click();
+  await expect(page.getByText(/forget gate and state-to-gate links are later additions/)).toBeVisible();
+  await expect(page.getByRole("table", { name: "Table 2 · French word error rate" })).toContainText("19.2%");
+  await page.getByText("Check what the recognition result proves", { exact: true }).click();
+  await expect(page.getByText(/does not show that smoothing was replaced/)).toBeVisible();
+});
+
+test("the recurrent chooser exposes the complete six-chapter sequence", async ({ page }) => {
   await page.goto(base);
   await page.getByRole("link", { name: "Preview the beginner path" }).click();
-  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(1);
+  await expect(page.getByRole("list", { name: /From carried state/ }).getByText("Chapter queued")).toHaveCount(0);
   await page.getByRole("link", { name: /Start with Elman/ }).click();
   await expect(page).toHaveURL(new RegExp(`${beginner}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Can the same word leave a different state?");
