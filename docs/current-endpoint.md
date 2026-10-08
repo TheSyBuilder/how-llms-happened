@@ -4,6 +4,8 @@ The structured corpus currently reaches from 2022–2023 branches into a bounded
 
 This review records endpoint decisions without treating candidate status as inclusion. A candidate enters the corpus only after its paper versions, claims, limitations, artifacts, rights, and lineage relationships pass the same evidence rules as the existing works.
 
+The full nine-lane coverage decision below is dated 20 September 2026. Later targeted claim checks and the corpus's `asOf` date do not renew that field-wide review. The latest admitted work's ordering event is the January 2025 DeepSeek-R1 report; its later article and January 2026 manuscript revision remain versions of that work. The [atlas overview brief](atlas-overview.md) therefore specifies a selected 1913–2025 history with later revisions, rather than completeness through the latest verification date.
+
 ## Promoted endpoint: ROOTS and BLOOM
 
 The paired audit promotes ROOTS and BLOOM as distinct objects: one data-governance branch and one model, training, evaluation, artifact, and release branch. BLOOM enters on its own claim-level record rather than by association. Its target paper now supplies target-side data-substrate evidence for one narrow ROOTS→BLOOM relationship; governance, mechanisms, evaluations, artifacts, and rights do not transfer across it.
