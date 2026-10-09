@@ -1,6 +1,6 @@
 # Atlas overview: chronology and qualified relationships
 
-**Status:** accepted for a bounded static-first implementation. This brief extends the existing journeys; the overview is not implemented yet. Acceptance of the design does not establish measured learning benefit or complete present-day coverage.
+**Status:** static overview implemented. The chooser, beginner and expert catalogues, and shared relationship/source register extend the existing journeys. Static acceptance does not establish measured learning benefit or complete present-day coverage; spatial and filtering enhancements remain conditional.
 
 The overview must help a reader answer three questions: where does a work sit in the selected history, what does a recorded relationship actually establish, and what can I learn or inspect here today? It draws from the [shared corpus](../data/corpus.json), [editorial method](editorial-method.md), [historical boundary](historical-scope.md), and [existing visual system](product-architecture.md). It must make multiple branches legible without suggesting that the field followed one inevitable path.
 
@@ -22,7 +22,7 @@ These are a 2026-10-08 readiness audit of the checked-in data and route adapter.
 
 ### Coverage boundary
 
-Use the visible wording **“Selected research history, 1913–2025”**, followed by **“Includes later revisions; coverage is selective and expanding.”** The last admitted ordering event is the January 2025 DeepSeek-R1 report. The work also has a September 2025 canonical article and January 2026 manuscript revision. The [arXiv record](https://arxiv.org/abs/2501.12948), checked on 2026-10-08, still lists version 2 dated 4 January 2026. This is a targeted version check, not a renewed field survey.
+Use the visible wording **“Selected research history, 1913–2025”**, followed by **“Includes later revisions; coverage is selective and expanding.”** The last admitted ordering event is the January 2025 DeepSeek-R1 report. The work also has a September 2025 canonical article and January 2026 manuscript revision. The [arXiv record](https://arxiv.org/abs/2501.12948), rechecked on 2026-10-09, still lists version 2 dated 4 January 2026. This is a targeted version check, not a renewed field survey.
 
 Keep three dates conceptually separate: the work's ordering event, the dates of its versions, and the corpus's latest targeted verification date. The corpus `asOf` value must never be presented as “complete through” that date. The [endpoint review](current-endpoint.md) records the nine-lane coverage decision and exclusions; the overview links it beside its scope statement. New works require the existing research protocol, not a moving “today” marker or automatically imported release feed.
 
@@ -53,7 +53,7 @@ The structural anchor is the project's existing warm technical ledger: ordered r
 
 ## Information architecture and chronology
 
-Add `/atlas/` as a small mode chooser and `/atlas/beginner/` and `/atlas/expert/` as separate static routes. The home page keeps its two completed journeys and adds an atlas entry once implemented. Journey and source pages may return to the relevant work anchor. This brief does not add routes, search services, accounts, or deployment.
+Use `/atlas/` as a small mode chooser, `/atlas/beginner/` and `/atlas/expert/` as separate static catalogues, and `/atlas/evidence/` as the mode-neutral relationship and source register. The home page keeps its two completed journeys and adds an atlas entry. Journey and reference pages return to the relevant work anchor. No search service, account or deployment is required.
 
 Both modes include all 66 work identities and full date labels in a native HTML catalogue. Group by the printed ordering year and sort year groups numerically. Inside a year, order month/day records only by their established components. Equal dates or overlapping month-level dates share a labelled group whose internal reading order follows the corpus, without a priority claim. Year-only events occupy a separate **“Month and day not established”** group in that year; their position does not assert order against its finer-dated events. Never sort a year-precision event as though it occurred on 1 January. The dataset's insertion order is not a global chronology: Switch appears late in the file but belongs before the other selected 2021 works, and DPO belongs in 2023 before R1.
 
@@ -72,7 +72,7 @@ If a future view uses fine date placement, month and year values must be represe
 | `getBuiltReferenceWorkIds()` includes the work | **Reference available**; link to the generated work reference. |
 | No generated reference route exists | **Corpus record**; inspect an inline record with claims and primary-source links. |
 
-“Corpus record” is a usable evidence destination, not a placeholder. Its native disclosure contains identity, canonical version, significance, limitations, uncertainty, and source-bound claims. No “Read chapter” control appears without a real route. Both corpus-only and rendered-reference works expose incident relationship evidence inline, because today's reference pages display relationship rationale but do not yet resolve each relationship's source locators. The atlas must not inherit that reduced evidence projection.
+“Corpus record” is a usable evidence destination, not a placeholder. Its native disclosure contains identity, canonical version, significance, limitations, uncertainty, and source-bound claims. No “Read chapter” control appears without a real route. Both corpus-only and rendered-reference works expose incident relationship identities and all three semantic fields inline, with ordinary links to the complete shared evidence record. Today's reference pages also link to that record; their narrower relationship summary is not used as the atlas evidence projection.
 
 ## Relationship semantics and evidence contract
 
@@ -84,9 +84,9 @@ Three independent fields govern presentation:
 
 A solid line denotes documented evidence, a dotted line inherited mechanism, and a dashed line editorial synthesis; each has the full text label. An arrowhead is allowed only for `qualified` relationships and is captioned as a scoped recorded connection, never universal causation. A `prohibited` connection has no causal arrowhead, even when documented. Its detail preserves stored `from` and `to` as **record orientation**, alongside the explicit causal restriction. The line pattern never encodes confidence or scientific importance.
 
-The full relationship detail contains both work identities, relationship ID, all three fields, confidence, rationale, bound claim statements and links, every `sourceEvidence` URL and locator/support statement, and all uncertainties with resolution conditions where supplied. Preserve these fields in the atlas adapter; the current `Relationship` view type omits source evidence and uncertainties. Linking only a generic bibliography or prose rationale fails acceptance.
+The full relationship detail contains both work identities, relationship ID, all three fields, confidence, rationale, bound claim statements and links, every `sourceEvidence` URL and locator/support statement, and all uncertainties with resolution conditions where supplied. The atlas adapter retains these fields from the validated record; the narrower reference-page summary links to the complete evidence view. Linking only a generic bibliography or prose rationale fails acceptance.
 
-Show only the selected work's incident relationships in the optional spatial view, with one node per neighbor and parallel records retained separately in the list. No implied edges connect neighbors. The complete 109-record relationship index remains available as native text disclosures. Do not recursively expand or present a shortest path as inherited influence: qualified evidence is local and cannot be composed automatically. An absent recorded edge is an absence in this corpus, not evidence that no influence existed.
+Show only the selected work's incident relationships in the optional spatial view, with one node per neighbor and parallel records retained separately in the list. No implied edges connect neighbors. The complete 109-record relationship index remains available as native text disclosures on the shared evidence route. Do not recursively expand or present a shortest path as inherited influence: qualified evidence is local and cannot be composed automatically. An absent recorded edge is an absence in this corpus, not evidence that no influence existed.
 
 ### Grounded inspection cases
 
@@ -152,7 +152,7 @@ Build a separate atlas projection over the validated corpus and both journey man
 | Evidence | Every relationship retains all three independent fields, source locators/support, claim bindings, confidence, and uncertainties. The four grounded cases pass source inspection. No transitive claim is emitted. |
 | Availability | Ten chapter destinations, one prerequisite, and eleven reference routes resolve; corpus-only works have usable inline records and no dead chapter/reference links. Counts derive from manifests and generated paths. |
 | Modes | Beginner orientation questions and prediction/explanation tasks differ from expert crosswalk and evidence audit. Both modes reach the same identities and evidence; switching preserves the work. |
-| Static access | All 66 works and 109 relations are inspectable with JavaScript disabled. Native disclosure, anchor, source, journey, print, and graphics-hidden access retain the represented information. |
+| Static access | All 66 works and 109 relations are inspectable across the linked catalogue and evidence routes with JavaScript disabled. Native disclosure, anchor, source, journey, print, and graphics-hidden access retain the represented information. |
 | Accessibility | Keyboard-only tasks, logical headings/disclosures, visible unobscured focus, labelled controls, axe checks with evidence expanded, 200% zoom, and color removal pass. Prefer 44 CSS-pixel controls; at minimum meet the applicable 24 CSS-pixel target/spacing rule. |
 | Responsive and visual | Render at 1440, 768, 640, and 320 CSS pixels. Titles, date notes, IDs, source URLs, and relation labels wrap; no essential page-level horizontal scroll. Review catalogue, selected/high-degree work, expanded evidence, and no-match state where applicable. |
 | Performance | First release adds zero atlas client JavaScript; each atlas mode page stays below 512 KiB gzip HTML, with source details deduplicated through a linked source register where needed. Any later enhancement adds at most 24 KiB gzip including its dependencies, requires no remote model/data service, and updates within 50 ms on the existing representative mobile profile. No hidden raw corpus bundle. |
@@ -166,4 +166,10 @@ Accessibility references: [WAI complex-image alternatives](https://www.w3.org/WA
 2. Render and inspect the complete static release at the specified sizes and states; run source, keyboard, no-JavaScript, accessibility, link, and payload checks. Integrate the home and journey return links only with working destinations.
 3. Evaluate a small local-neighborhood prototype and expert evidence lens against the static release. Add either enhancement only after its own acceptance gates pass. A complete static overview is a valid product outcome.
 
-The next implementation increment is step 1. The recurrent cursor remains independently gated by its [existing interaction brief](recurrent-memory-interaction.md); an atlas enhancement does not waive that requirement.
+### Static release and payload decision
+
+Both catalogues retain all 66 work identities and 969 source-bound claims. Every ordering event retains its full date evidence, calendar and notes; a native crosswalk preserves chronology and version identities. Canonical bibliography and notes remain inline, while other versions link to their source records. The adapter retains every original corpus object without dropping noncanonical fields.
+
+Repeating the complete 109-record relationship index and 602-record source register in both mode pages exceeded the 512 KiB compressed HTML gate (about 703 kB per mode). A shared, mode-neutral evidence route removes that duplication. Each work still lists all incident record IDs through links, with connection type, evidence class and causal permission visible. Relationship details retain every locator/support statement, bound claim statement, confidence and uncertainty. Context links return to either learning mode; native links into a collapsed claim open its enclosing corpus record without JavaScript. This is a static information-architecture adjustment, not a relaxation of evidence coverage.
+
+The first two build steps are complete. The next increment is the bounded neighborhood prototype and comparison protocol in step 3; no spatial or filter enhancement is shipped by this release. The recurrent cursor remains independently gated by its [existing interaction brief](recurrent-memory-interaction.md); an atlas enhancement does not waive that requirement.

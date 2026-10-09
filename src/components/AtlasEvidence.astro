@@ -1,0 +1,21 @@
+---
+import type { ClaimEvidence } from "../lib/site-data";
+interface Props { evidence: ClaimEvidence[] }
+const { evidence } = Astro.props;
+---
+<ol class="atlas-evidence-list">
+  {evidence.map((entry) => (
+    <li>
+      <p><strong>{entry.locator.label}</strong></p>
+      <p class="atlas-small">{[
+        entry.locator.section && `Section: ${entry.locator.section}`,
+        entry.locator.equation && `Equation: ${entry.locator.equation}`,
+        entry.locator.table && `Table: ${entry.locator.table}`,
+        entry.locator.paragraph && `Passage: ${entry.locator.paragraph}`,
+        entry.locator.pageStart !== undefined && `Pages: ${entry.locator.pageStart}–${entry.locator.pageEnd ?? entry.locator.pageStart}`,
+      ].filter(Boolean).join(" · ")}</p>
+      <p>{entry.support}</p>
+      <a href={`/atlas/evidence/#source-${entry.sourceId}`}>Source and access notes · {entry.sourceId}</a>
+    </li>
+  ))}
+</ol>

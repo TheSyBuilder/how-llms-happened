@@ -1,0 +1,52 @@
+---
+import AtlasWork from "../../components/AtlasWork.astro";
+import ModeSwitch from "../../components/ModeSwitch.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAtlas, authorSummary } from "../../lib/atlas-data";
+import type { Mode } from "../../lib/site-data";
+export function getStaticPaths() { return ["beginner", "expert"].map((mode) => ({ params: { mode } })); }
+const mode = Astro.params.mode as Mode;
+const alternate = mode === "beginner" ? "expert" : "beginner";
+const atlas = getAtlas();
+const cases = [
+  { id: "markov-1913-to-shannon-1948", workId: "markov-1913-onegin", heading: "Where does this history begin?", prompt: "Predict: does measuring dependence in literary text establish that Shannon borrowed this study?", answer: "It provides an empirical prologue, but the reviewed evidence does not document direct influence. Shannon supplies the main stochastic-source opening. The bridge is editorial and causal language is prohibited." },
+  { id: "elman-1988-to-mikolov-2010", workId: "elman-1988-finding-structure-in-time", heading: "What does a carried state contribute?", prompt: "Explain: which part of Elman’s network does the later word model inherit, and which parts must be checked separately?", answer: "The named architecture and citation support copied state and context dependence. They do not transfer the training procedure, data or results. Elman is ordered by an April 1988 report, while its canonical article is from March 1990." },
+  { id: "graves-2013-to-bahdanau-2014", workId: "graves-2013-generating-sequences-recurrent-neural-networks", heading: "Can a documented comparison prove influence?", prompt: "Predict: if a paper directly compares a mechanism, can we say it was derived from that mechanism?", answer: "The technical comparison is documented, including the monotonic-window restriction. That evidence does not establish derivation or inspiration. Documented-influence is the stored evidence class; causal language is still prohibited." },
+  { id: "cho-2014-to-sutskever-2014", workId: "cho-2014-rnn-encoder-decoder", heading: "Did one encoder–decoder paper cause the other?", prompt: "Predict: do June and September posting dates settle who conceived the idea first?", answer: "Posting order is established, but version-1 parallel-development evidence preserves a separate conception-order question. Editorial direction does not establish priority or a direct derivation." },
+];
+const relationsById = new Map(atlas.relationships.map((relation) => [relation.record.id, relation]));
+---
+<BaseLayout title={`${mode === "beginner" ? "Beginner" : "Expert"} research atlas — LLM Lineage`} description="A complete static catalogue of selected research works and source-bound connections, preserving chronology, uncertainty and availability." eyebrow={`${mode} atlas`}>
+  <div class="shell breadcrumb"><a href="/atlas/">Atlas</a><span aria-hidden="true">/</span><span aria-current="page">{mode}</span></div>
+  <header class:list={["shell", "atlas-hero", { "atlas-hero--expert": mode === "expert" }]}>
+    <p class="eyebrow">Selected research history, 1913–2025</p>
+    <h1>{mode === "beginner" ? "Follow the ideas. Question the connections." : "A catalogue of works. An audit of connections."}</h1>
+    <p>{mode === "beginner" ? "Begin with one question, then find the work and inspect what the evidence permits you to say. The selected catalogue stays within reach." : "Compare ordering events with canonical identities; inspect each connection’s evidential basis, causal permission and source scope independently."}</p>
+    <p class="atlas-small">Includes later revisions; coverage is selective and expanding. <a href="https://github.com/TheSyBuilder/how-llms-happened/blob/main/docs/current-endpoint.md">Coverage and exclusions</a>.</p>
+    <ModeSwitch activeMode={mode} alternateHref={`/atlas/${alternate}/`} />
+    <nav class="atlas-section-nav" aria-label="Atlas sections"><a href="#catalogue">{atlas.counts.works} works</a><a href="/atlas/evidence/#relationships">{atlas.counts.relationships} relationships</a><a href="#inspection-cases">{mode === "beginner" ? "Orientation questions" : "Audit cases"}</a><a href="/atlas/evidence/#sources">Source register</a></nav>
+  </header>
+  {mode === "beginner" && <section class="shell atlas-cases" id="inspection-cases" aria-labelledby="cases-heading"><p class="eyebrow">Orient · predict · inspect</p><h2 id="cases-heading">Four questions to carry into the catalogue.</h2><div class="atlas-case-grid">{cases.map((item, index) => <article><p class="eyebrow">0{index + 1}</p><h3>{item.heading}</h3><p>{item.prompt}</p><details class="atlas-disclosure"><summary>Reveal the bounded explanation</summary><div class="atlas-detail-body"><p>{item.answer}</p><a href={`/atlas/evidence/#relation-${item.id}`}>Inspect the relationship evidence</a></div></details><a class="atlas-case-action" href={`#work-${item.workId}`}>Find the work in the catalogue →</a></article>)}</div></section>}
+  <section class="shell atlas-catalogue" aria-labelledby="catalogue-heading" id="catalogue">
+    <div class="atlas-section-heading"><p class="eyebrow">The selected corpus</p><h2 id="catalogue-heading">{atlas.counts.works} works, grouped by year.</h2><p>Rows are grouped by year; spacing does not measure elapsed time. Reading order does not establish research priority. Year-only events have a separate unresolved group.</p></div>
+    <nav class="atlas-year-nav" aria-label="Jump to ordering year">{atlas.years.map((entry) => <a href={`#year-${entry.year}`}>{entry.year}</a>)}</nav>
+    <div class="atlas-availability-key"><strong>What is available here</strong><p>{atlas.counts.chapters} chapters · {atlas.counts.prerequisites} prerequisite · {atlas.counts.references} separate references · {atlas.counts.corpusOnly} inline-only corpus records.</p><p>Core, branch, prologue and context describe inclusion, not scientific rank or chapter status. Work-level mode links preserve your place.</p></div>
+    {atlas.years.map((entry) => <>
+      {entry.gapBefore && <p class="atlas-gap">{entry.gapBefore.start}{entry.gapBefore.start !== entry.gapBefore.end && `–${entry.gapBefore.end}`} · No selected works in this interval.</p>}
+      <section class="atlas-year" aria-labelledby={`year-${entry.year}`}><h2 id={`year-${entry.year}`} class="atlas-year-heading">{entry.year}</h2>
+        {entry.groups.map((group) => <div class:list={["atlas-date-group", { "atlas-date-group--unresolved": group.unresolved }]}>
+          {(group.unresolved || group.works.length > 1) && <p class="atlas-group-note">{group.label}</p>}
+          {group.works.map((work) => <AtlasWork work={work} mode={mode}>
+            {work.relationshipIds.length === 0 ? <p>No incident relationships are recorded for this work in the selected corpus.</p> : <ul class="atlas-incident-list">{work.relationshipIds.map((id) => {
+              const relation = relationsById.get(id)!;
+              const other = relation.from.record.id === work.record.id ? relation.to : relation.from;
+              return <li><a href={`/atlas/evidence/#relation-${id}`}>{authorSummary(other.record.authors)} · {other.record.title}</a><small>{relation.record.connectionType} · {relation.record.evidenceClass} · causal language {relation.record.causalLanguage}</small></li>;
+            })}</ul>}
+          </AtlasWork>)}
+        </div>)}
+      </section>
+    </>)}
+  </section>
+  {mode === "expert" && <section class="shell atlas-cases" id="inspection-cases" aria-labelledby="cases-heading"><p class="eyebrow">Event · locator · scope</p><h2 id="cases-heading">Four cross-checks for the evidence contract.</h2><p>Verify the ordering event, read the bound source locator, then decide what causal wording is permitted. Check uncertainty separately from confidence.</p><ol class="atlas-audit-cases">{cases.map((item) => <li><h3>{item.heading}</h3><p>{item.answer}</p><a href={`#work-${item.workId}`}>Audit event and version</a><a href={`/atlas/evidence/#relation-${item.id}`}>Audit relationship and locator</a></li>)}</ol></section>}
+
+</BaseLayout>

@@ -32,21 +32,24 @@ export type StageStatus = "built" | "planned";
 
 type UnknownRecord = Record<string, unknown>;
 
-type DateValue = {
+export type DateValue = {
   value: string;
   precision: "day" | "month" | "year";
   calendar: string;
+  note?: string;
 };
 
-type ChronologyEvent = {
+export type ChronologyEvent = {
   id: string;
   kind: string;
   label: string;
   date: DateValue;
   versionId?: string;
+  dateEvidence: Array<{ sourceId: string; precision: DateValue["precision"]; locator: string }>;
+  sourceIds: string[];
 };
 
-type Version = {
+export type Version = {
   id: string;
   title: string;
   authors: string[];
@@ -57,7 +60,7 @@ type Version = {
   notes?: string;
 };
 
-type Work = {
+export type Work = {
   id: string;
   title: string;
   authors: string[];
@@ -81,7 +84,7 @@ type Work = {
   uncertainties: Array<{ status: string; note: string; resolutionCondition?: string }>;
 };
 
-type Source = {
+export type Source = {
   id: string;
   relatedWorkIds: string[];
   title: string;
@@ -93,7 +96,7 @@ type Source = {
   accessNote: string;
 };
 
-type Locator = {
+export type Locator = {
   label: string;
   section?: string;
   pageStart?: number;
@@ -103,13 +106,13 @@ type Locator = {
   paragraph?: string;
 };
 
-type ClaimEvidence = {
+export type ClaimEvidence = {
   sourceId: string;
   locator: Locator;
   support: string;
 };
 
-type Claim = {
+export type Claim = {
   id: string;
   workId: string;
   ideaIds: string[];
@@ -133,7 +136,7 @@ type LearningObjective = {
   successCriterion: string;
 };
 
-type Relationship = {
+export type Relationship = {
   id: string;
   from: { kind: string; id: string };
   to: { kind: string; id: string };
@@ -143,6 +146,8 @@ type Relationship = {
   rationale: string;
   claimIds: string[];
   causalLanguage: string;
+  sourceEvidence: ClaimEvidence[];
+  uncertainties: Array<{ status: string; note: string; resolutionCondition?: string }>;
 };
 
 type Idea = {
@@ -154,7 +159,7 @@ type Idea = {
   uncertainties: Array<{ status: string; note: string }>;
 };
 
-type Corpus = {
+export type Corpus = {
   title: string;
   schemaVersion: string;
   asOf: string;
@@ -1028,4 +1033,9 @@ export function getCorpusSummary(): {
     claimCount: corpus.claims.length,
     sourceCount: corpus.sources.length,
   };
+}
+
+/** The atlas preserves the validated records rather than reusing the journey's narrower views. */
+export function getValidatedCorpus(): Corpus {
+  return corpus;
 }

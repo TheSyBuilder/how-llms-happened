@@ -6,6 +6,7 @@ import PeepholeChapter from "../../../../components/PeepholeChapter.astro";
 import MikolovChapter from "../../../../components/MikolovChapter.astro";
 import ForgetGateChapter from "../../../../components/ForgetGateChapter.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { atlasHref } from "../../../../lib/atlas-data";
 import { getBuiltStagePaths, getStageView } from "../../../../lib/site-data";
 export function getStaticPaths() { return getBuiltStagePaths("recurrent-memory"); }
 const mode = Astro.params.mode;
@@ -29,5 +30,6 @@ const description = elman
 
 <BaseLayout title={`${mode === "beginner" ? "Beginner" : "Expert"}: ${label} — LLM Lineage`} description={description} eyebrow={`${mode} journey`}>
   <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/recurrent-memory/">Recurrent memory</a><span aria-hidden="true">/</span><a href={`/journeys/recurrent-memory/${mode}/`}>{mode}</a><span aria-hidden="true">/</span><span aria-current="page">{label}</span></div>
+  <div class="shell"><a class="atlas-return" href={atlasHref(mode, view.work.id)}>Locate this work in the {mode} atlas</a></div>
   {elman ? <ElmanChapter view={view} /> : original ? <OriginalLstmChapter view={view} /> : retention ? <ForgetGateChapter view={view} /> : peephole ? <PeepholeChapter view={view} /> : wordModel ? <MikolovChapter view={view} /> : <SundermeyerChapter view={view} />}
 </BaseLayout>

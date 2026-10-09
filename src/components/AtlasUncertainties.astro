@@ -1,0 +1,8 @@
+---
+interface Props { items: Array<{ status: string; note: string; resolutionCondition?: string }> }
+const { items } = Astro.props;
+---
+{items.length > 0 && <div class="atlas-uncertainties">
+  <strong>Uncertainty and interpretation</strong>
+  {items.map((item) => <div><p><strong>{item.status}</strong> · {item.note}</p>{item.resolutionCondition && <p class="atlas-small">Resolution condition: {item.resolutionCondition}</p>}</div>)}
+</div>}

@@ -9,6 +9,7 @@ import KatzMassLedger from "../../../../components/KatzMassLedger";
 import KneserContextLens from "../../../../components/KneserContextLens";
 import ModeSwitch from "../../../../components/ModeSwitch.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { atlasHref } from "../../../../lib/atlas-data";
 import {
   getBuiltStagePaths,
   getJourneyOverview,
@@ -132,6 +133,7 @@ const chenFixedEquation = renderToString(
     <a href="/journeys/smoothing/">Smoothing</a><span aria-hidden="true">/</span>
     <a href={`/journeys/smoothing/${mode}/`}>{mode}</a><span aria-hidden="true">/</span>
     <span aria-current="page">{view.work.authors[0]} {view.work.chronologyDate.slice(0, 4)}</span>
+    <a href={atlasHref(mode, view.work.id)}>Locate this work in the atlas</a>
   </div>
 
   <article class="stage-shell">

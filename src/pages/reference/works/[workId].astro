@@ -34,6 +34,7 @@ const learningRoutes = getWorkLearningRoutes(workId);
       <div class="hero-actions">
         <a class="button" href={learningRoutes.beginner.href}>Learn with intuition</a>
         <a class="button button--quiet" href={learningRoutes.expert.href}>{learningRoutes.expert.label}</a>
+        <a href={`/atlas/expert/#work-${workId}`}>Locate this work in the atlas</a>
       </div>
     </header>
 
@@ -90,9 +91,10 @@ const learningRoutes = getWorkLearningRoutes(workId);
       <div>
         {record.relationships.map((relationship) => (
           <article>
-            <h3>{relationship.from.id} → {relationship.to.id}</h3>
+            <h3>{relationship.from.id} / {relationship.to.id}</h3>
             <p class="record-meta"><span>{relationship.connectionType}</span><span>{relationship.evidenceClass}</span><span>{relationship.confidence}</span></p>
             <p class="mt-3">{relationship.rationale}</p>
+            <p>Causal language: {relationship.causalLanguage}. <a href={`/atlas/evidence/#relation-${relationship.id}`}>Inspect full relationship evidence</a></p>
           </article>
         ))}
       </div>

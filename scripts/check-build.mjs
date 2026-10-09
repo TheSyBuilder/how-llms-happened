@@ -48,6 +48,15 @@ const files = walk(distRoot);
 const htmlFiles = files.filter((path) => path.endsWith(".html"));
 const failures = [];
 const routes = [];
+const corpus = JSON.parse(readFileSync(resolve("data/corpus.json"), "utf8"));
+const documentCache = new Map();
+function documentAnchors(path) {
+  if (!documentCache.has(path)) {
+    const html = readFileSync(path, "utf8");
+    documentCache.set(path, new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1])));
+  }
+  return documentCache.get(path);
+}
 
 for (const htmlPath of htmlFiles) {
   const html = readFileSync(htmlPath, "utf8");
@@ -81,21 +90,33 @@ for (const htmlPath of htmlFiles) {
     failures.push(`${route} ships ${compressedClientBytes} compressed client bytes; budget is 40960.`);
   }
 
-  const anchors = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+  const anchors = new Set(ids);
+  if (anchors.size !== ids.length) failures.push(`${route} contains duplicate element IDs.`);
+  const compressedHtmlBytes = gzipSync(html).byteLength;
+  if (/^\/atlas\//.test(route)) {
+    if (compressedClientBytes !== 0) failures.push(`${route} must ship zero atlas client JavaScript.`);
+    if (compressedHtmlBytes > 512 * 1024) failures.push(`${route} exceeds the 512 KiB compressed HTML budget.`);
+    if (route === "/atlas/beginner/" || route === "/atlas/expert/") {
+      if ((html.match(/\sdata-work-id="/g) ?? []).length !== corpus.works.length) failures.push(`${route} omits or duplicates corpus works.`);
+      for (const claim of corpus.claims) if (!anchors.has(`claim-${claim.id}`)) failures.push(`${route} omits claim ${claim.id}.`);
+    }
+    if (route === "/atlas/evidence/") {
+      for (const relation of corpus.relationships) if (!anchors.has(`relation-${relation.id}`)) failures.push(`${route} omits relationship ${relation.id}.`);
+      for (const source of corpus.sources) if (!anchors.has(`source-${source.id}`)) failures.push(`${route} omits source ${source.id}.`);
+    }
+  }
   for (const match of html.matchAll(/\shref="([^"]+)"/g)) {
     const href = match[1];
-    if (!href.startsWith("/")) continue;
-    const url = new URL(href, "https://local.invalid");
+    if (!href.startsWith("/") && !href.startsWith("#")) continue;
+    const url = new URL(href, `https://local.invalid${route}`);
     const targetPath = fileForPathname(url.pathname);
     if (!existsSync(targetPath)) {
       failures.push(`${route} links to missing ${url.pathname}.`);
       continue;
     }
     if (url.hash !== "") {
-      const targetHtml = targetPath === htmlPath ? html : readFileSync(targetPath, "utf8");
-      const targetAnchors = targetPath === htmlPath
-        ? anchors
-        : new Set([...targetHtml.matchAll(/\sid="([^"]+)"/g)].map((anchorMatch) => anchorMatch[1]));
+      const targetAnchors = targetPath === htmlPath ? anchors : documentAnchors(targetPath);
       const id = decodeURIComponent(url.hash.slice(1));
       if (!targetAnchors.has(id)) failures.push(`${route} links to missing anchor ${href}.`);
     }
@@ -103,6 +124,7 @@ for (const htmlPath of htmlFiles) {
 
   routes.push({
     route,
+    compressedHtmlBytes,
     compressedClientBytes,
     scriptCount: scriptSources.length + inlineScripts.length,
     clientAssetCount: assetPaths.size,

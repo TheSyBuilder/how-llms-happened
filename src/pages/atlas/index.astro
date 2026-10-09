@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAtlas } from "../../lib/atlas-data";
+const atlas = getAtlas();
+---
+<BaseLayout title="Research atlas — LLM Lineage" description="Orient yourself in the selected history of language-model research, with precise dates and inspectable relationship evidence." eyebrow="Research atlas">
+  <section class="shell atlas-hero">
+    <p class="eyebrow">Selected research history, 1913–2025</p>
+    <h1>A history with more than one path.</h1>
+    <p>From dependence in literary text to learned representations, attention, retrieval and post-training. Find a work, understand its place, and inspect what connects it to another.</p>
+    <p class="atlas-small">Includes later revisions; coverage is selective and expanding. <a href="https://github.com/TheSyBuilder/how-llms-happened/blob/main/docs/current-endpoint.md">Read the coverage boundary</a>.</p>
+    <div class="atlas-stats"><div><strong>{atlas.counts.works}</strong><span>selected works</span></div><div><strong>{atlas.counts.relationships}</strong><span>relationship records</span></div><div><strong>{atlas.counts.chapters}</strong><span>chapters in two modes</span></div></div>
+  </section>
+  <section class="shell atlas-mode-options" aria-label="Choose your atlas path">
+    <article><p class="eyebrow">Beginner · orientation</p><h2>Start with a question.</h2><p>Why begin before the Transformer? What does recurrent state contribute? Does an earlier date establish influence? Predict, then inspect four grounded cases alongside the complete catalogue.</p><a class="button" href="/atlas/beginner/">Explore the beginner atlas →</a></article>
+    <article><p class="eyebrow">Expert · evidence audit</p><h2>Check the recorded connection.</h2><p>Crosswalk ordering events and canonical versions. Inspect independent relationship fields, exact source locators, claim bindings and unresolved interpretations across the same corpus.</p><a class="button button--quiet" href="/atlas/expert/">Open the expert atlas →</a></article>
+  </section>
+  <section class="shell atlas-scope"><h2>Evidence and lessons have different availability.</h2><p>{atlas.counts.chapters} complete chapters and {atlas.counts.prerequisites} prerequisite are available in both modes. {atlas.counts.references} works have separate reference pages; the other {atlas.counts.corpusOnly} have usable inline corpus records. Every work and relationship remains inspectable without JavaScript.</p><p>Chronological adjacency does not assert influence. Roles describe editorial scope; dates retain their original precision.</p></section>
+</BaseLayout>

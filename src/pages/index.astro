@@ -32,7 +32,7 @@ const corpus = getCorpusSummary();
           <li>
             <time datetime={stage.work.chronologyDate}>{stage.work.chronologyDate.slice(0, 4)}</time>
             <span>{stage.work.authors[0]}</span>
-            <small>{stage.position === 1 ? "available" : "record ready"}</small>
+            <small>{stage.status === "built" ? "chapter available" : "record ready"}</small>
           </li>
         ))}
       </ol>
@@ -43,6 +43,11 @@ const corpus = getCorpusSummary();
     <div><strong>{corpus.workCount}</strong><p>version-aware works in the shared corpus</p></div>
     <div><strong>{corpus.claimCount}</strong><p>atomic claims with evidence locators</p></div>
     <div><strong>2 paths</strong><p>distinct beginner and expert learning tasks</p></div>
+  </section>
+
+  <section class="shell section-intro" aria-labelledby="atlas-entry">
+    <div><p class="eyebrow">Selected research history, 1913–2025</p><h2 id="atlas-entry">See the branches. Inspect the connections.</h2></div>
+    <div><p>Find all {corpus.workCount} works in a dated catalogue, from the literary-text prologue to modern post-training. Beginner questions guide orientation; expert records expose chronology, source locators and causal limits. Includes later revisions; coverage is selective and expanding.</p><a class="button mt-4" href="/atlas/">Explore the research atlas <span aria-hidden="true">→</span></a></div>
   </section>
 
   <section class="shell section-intro">

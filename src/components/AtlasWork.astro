@@ -1,0 +1,82 @@
+---
+import AtlasEvidence from "./AtlasEvidence.astro";
+import AtlasUncertainties from "./AtlasUncertainties.astro";
+import { atlasHref, authorSummary, type AtlasWork } from "../lib/atlas-data";
+import type { Mode } from "../lib/site-data";
+interface Props { work: AtlasWork; mode: Mode }
+const { work, mode } = Astro.props;
+const { record, orderingEvent, canonicalVersion, availability } = work;
+const alternate = mode === "beginner" ? "expert" : "beginner";
+---
+<article class="atlas-work" id={`work-${record.id}`} data-work-id={record.id}>
+  <div class="atlas-date">
+    <time datetime={orderingEvent.date.value}>{orderingEvent.date.value}</time>
+    <span>{orderingEvent.kind.replaceAll("-", " ")}</span>
+    <span>{orderingEvent.date.precision} precision</span>
+  </div>
+  <div class="atlas-work-content">
+    <p class="eyebrow">{record.inclusion.status} · {authorSummary(record.authors)}</p>
+    <h3>{record.title}</h3>
+    <p class="atlas-significance">{record.significance[mode]}</p>
+    {record.inclusion.status === "prologue" && <p class="atlas-boundary">Prologue: empirical dependence in literary text. This is a boundary of the selected story, with no documented direct path to Shannon.</p>}
+    {record.id === "shannon-1948-communication" && <p class="atlas-boundary">Main opening: a general stochastic-source framework for communication, preceding neural language models.</p>}
+    <p class="atlas-small">Canonical version: {canonicalVersion.label}. The ordering event above may belong to an earlier version.</p>
+    <div class="atlas-destinations">
+      {availability.learning && <a href={availability.learning.routes[mode].href}>{availability.learning.kind === "chapter" ? "Chapter available" : "Prerequisite available"} <span aria-hidden="true">↗</span></a>}
+      {availability.referenceHref && <a href={availability.referenceHref}>Reference available</a>}
+      <a href={atlasHref(alternate, record.id)}>This work in {alternate} mode</a>
+    </div>
+    <details class="atlas-disclosure atlas-record" id={`record-${record.id}`}>
+      <summary>{availability.referenceHref ? "Inspect corpus evidence" : "Corpus record"} · {work.claims.length} claims</summary>
+      <div class="atlas-detail-body">
+        <p class="claim-id">{record.id}</p>
+        <p>{record.displayCitation}</p>
+        <p>{record.inclusion.rationale} Inclusion confidence: {record.inclusion.confidence}.</p>
+        <details class="atlas-disclosure">
+          <summary>Ordering event, dates and versions</summary>
+          <div class="atlas-detail-body">
+            <p>Ordering event: <code>{orderingEvent.id}</code>. Canonical identity: <code>{canonicalVersion.id}</code>.</p>
+            <p>Dates are preserved at their established precision; an article date does not replace an earlier ordering event.</p>
+            {record.chronology.events.map((event) => <div class="atlas-event">
+              <p><strong>{event.date.value} · {event.label}</strong></p>
+              <p class="atlas-small">{event.id} · {event.kind} · {event.date.precision} precision · calendar: {event.date.calendar}</p>
+              {event.date.note && <p>{event.date.note}</p>}
+              {event.versionId && <p class="atlas-small">Version: {event.versionId}</p>}
+              <ul>{event.dateEvidence.map((entry) => <li><a href={`/atlas/evidence/#source-${entry.sourceId}`}>{entry.sourceId}</a> · {entry.precision} · {entry.locator}</li>)}</ul>
+              <p class="atlas-small">Event sources: {event.sourceIds.map((id) => <a class="atlas-inline-source" href={`/atlas/evidence/#source-${id}`}>{id}</a>)}</p>
+            </div>)}
+            {record.versions.map((version) => <div class="atlas-event">
+              <p><strong>{version.label}</strong> · {version.kind}</p>
+              <p>{version.title}</p><p>{version.authors.join(", ")}</p>
+              {version.id === canonicalVersion.id && <p>{version.bibliography.citation}</p>}
+              <p class="claim-id">{version.id}{version.id === canonicalVersion.id && " · canonical"}</p>
+              {version.notes && version.id === canonicalVersion.id && <p>{version.notes}</p>}
+              <p class="atlas-small">Version sources: {version.sourceIds.map((id) => <a class="atlas-inline-source" href={`/atlas/evidence/#source-${id}`}>{id}</a>)}</p>
+            </div>)}
+          </div>
+        </details>
+        <div class="atlas-boundary"><strong>Limitations</strong><ul>{record.limitations.map((item) => <li>{item}</li>)}</ul></div>
+        <AtlasUncertainties items={record.uncertainties} />
+        <p class="atlas-small">Preferred sources: {record.preferredSourceIds.map((id) => <a class="atlas-inline-source" href={`/atlas/evidence/#source-${id}`}>{id}</a>)}</p>
+        {work.claims.map((claim) => <details class="atlas-disclosure atlas-claim" id={`claim-${claim.id}`}>
+          <summary>{claim.statement}</summary>
+          <div class="atlas-detail-body">
+            <p class="claim-id">{claim.id}</p>
+            <p class="atlas-small">{claim.directness} · {claim.confidence} confidence · checked {claim.checkedDate}</p>
+            <AtlasEvidence evidence={claim.evidence} />
+            {claim.limitations.length > 0 && <div class="atlas-boundary"><strong>Claim limits</strong><ul>{claim.limitations.map((item) => <li>{item}</li>)}</ul></div>}
+            <AtlasUncertainties items={claim.uncertainties} />
+          </div>
+        </details>)}
+      </div>
+    </details>
+    <details class="atlas-disclosure atlas-incident">
+      <summary>{work.relationshipIds.length} incident relationship{work.relationshipIds.length === 1 ? "" : "s"} · inspect the evidence</summary>
+      <div class="atlas-detail-body">
+        <slot />
+        <p class="atlas-small">Only recorded incident connections appear here. Absent connections do not establish absence of influence; connections cannot be composed into transitive claims.</p>
+      </div>
+    </details>
+    <a class="atlas-return" href="#catalogue">Return to catalogue navigation ↑</a>
+  </div>
+</article>
