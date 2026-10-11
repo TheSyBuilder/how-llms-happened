@@ -1,0 +1,56 @@
+---
+import AtlasDateCrosswalk from "./AtlasDateCrosswalk.astro";
+import AtlasRelationship from "./AtlasRelationship.astro";
+import { atlasHref, authorSummary, type AtlasNeighborhood } from "../lib/atlas-data";
+import type { Mode } from "../lib/site-data";
+interface Props { neighborhood: AtlasNeighborhood; caseKey: string; targetId: string; mode: Mode }
+const { neighborhood, caseKey, targetId, mode } = Astro.props;
+const { focus, neighbors, relationships, counts } = neighborhood;
+const relationLabel = (id: string) => `R${relationships.findIndex((relation) => relation.record.id === id) + 1}`;
+const step = 100;
+const height = Math.max(220, neighbors.length * step + 70);
+const center = height / 2;
+const rowY = (index: number) => neighbors.length === 1 ? center : 60 + index * step;
+const markerId = `arrow-${caseKey}`;
+---
+<div class="neighborhood-scope"><strong>{counts.incident} incident records · {counts.neighbors} distinct neighbors</strong><p>{counts.outside} records outside this neighborhood. Positions do not encode time, importance or similarity. No neighbor-to-neighbor links or transitive paths are shown.</p></div>
+{neighbors.length > 0 && <details class="atlas-disclosure neighborhood-diagram">
+  <summary>Show the optional local connection diagram</summary>
+  <figure>
+    <svg viewBox={`0 0 900 ${height}`} aria-hidden="true" focusable="false" class="neighborhood-svg">
+      <defs><marker id={markerId} viewBox="0 -4 8 8" refX="7" refY="0" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,-4 L8,0 L0,4" fill="none" stroke="currentColor" stroke-width="1.4" /></marker></defs>
+      {neighbors.flatMap((neighbor, index) => neighbor.relationships.map((relation, parallelIndex) => {
+        const offset = (parallelIndex - (neighbor.relationships.length - 1) / 2) * 30;
+        const qualified = relation.record.causalLanguage === "qualified";
+        const fromFocus = relation.from.record.id === focus.record.id;
+        return <g><path class:list={["neighborhood-edge", `neighborhood-edge--${relation.record.evidenceClass}`]} data-diagram-relation={relation.record.id} data-causal-language={relation.record.causalLanguage} d={`M248,${center} C340,${center + offset} 350,${rowY(index) + offset} 452,${rowY(index)}`} marker-start={qualified && !fromFocus ? `url(#${markerId})` : undefined} marker-end={qualified && fromFocus ? `url(#${markerId})` : undefined} /><text x="379" y={0.15625 * center + 0.84375 * rowY(index) + 0.5625 * offset - 9} class="neighborhood-svg-record">{relationLabel(relation.record.id)}</text></g>;
+      }))}
+      <g data-diagram-node={focus.record.id}>
+        <circle cx="240" cy={center} r="7" />
+        <text x="20" y={center - 40} class="neighborhood-svg-note">SELECTED WORK</text>
+        <text x="20" y={center - 13}>{authorSummary(focus.record.authors)}</text>
+        <text x="20" y={center + 13} class="neighborhood-svg-note">{focus.orderingEvent.date.value}</text>
+      </g>
+      {neighbors.map((neighbor, index) => <g data-diagram-node={neighbor.work.record.id}>
+        <circle cx="460" cy={rowY(index)} r="7" />
+        <text x="485" y={rowY(index) - 6}>{authorSummary(neighbor.work.record.authors)}</text>
+        <text x="485" y={rowY(index) + 20} class="neighborhood-svg-note">{neighbor.work.orderingEvent.date.value} · {neighbor.work.orderingEvent.date.precision} precision</text>
+        <text x="485" y={rowY(index) + 43} class="neighborhood-svg-note">{neighbor.relationships.map((relation) => relationLabel(relation.record.id)).join(" / ")} · see the matching records below</text>
+      </g>)}
+    </svg>
+    <figcaption><p>Local view of {authorSummary(focus.record.authors)} and {counts.neighbors} incident neighbors. <a href={`#neighbors-${caseKey}`}>The complete text equivalent follows below.</a></p><p>Solid: documented-influence · dotted: inherited-mechanism · dashed: editorial-synthesis. Arrowheads show only qualified record orientation within its stated scope; prohibited records have none. R-numbers identify the matching local records below.</p></figcaption>
+  </figure>
+</details>}
+<div class="neighborhood-list" id={`neighbors-${caseKey}`}>
+  <h3>Complete incident list</h3>
+  <p class="atlas-small">Neighbor order follows the corpus record order. It does not establish chronology or priority. An absent recorded edge does not establish absence of influence.</p>
+  {neighbors.length === 0 ? <p>No incident relationships are recorded for this work in the selected corpus.</p> : <ol class="neighborhood-neighbors">{neighbors.map((neighbor) => <li data-neighbor-id={neighbor.work.record.id}>
+    <h4><a href={atlasHref(mode, neighbor.work.record.id)}>{neighbor.work.record.title}</a></h4>
+    <p class="atlas-small">{authorSummary(neighbor.work.record.authors)} · {neighbor.relationships.length} incident record{neighbor.relationships.length === 1 ? "" : "s"}</p>
+    <AtlasDateCrosswalk work={neighbor.work} />
+    {neighbor.relationships.map((relation) => <div class:list={["neighborhood-record", { "neighborhood-record--target": relation.record.id === targetId }]}>
+      <p class="neighborhood-record-label"><span class="claim-id">{relationLabel(relation.record.id)}</span> · {relation.record.id === targetId ? "Study this connection" : "Adjacent connection"}</p>
+      <AtlasRelationship relation={relation} idPrefix={`case-${caseKey}-relation`} indexHref="/atlas/evidence/#relationships" />
+    </div>)}
+  </li>)}</ol>}
+</div>

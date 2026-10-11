@@ -2,11 +2,11 @@
 import AtlasEvidence from "./AtlasEvidence.astro";
 import AtlasUncertainties from "./AtlasUncertainties.astro";
 import { authorSummary, type AtlasRelation } from "../lib/atlas-data";
-interface Props { relation: AtlasRelation }
-const { relation } = Astro.props;
+interface Props { relation: AtlasRelation; idPrefix?: string; indexHref?: string }
+const { relation, idPrefix = "relation", indexHref = "#relationships" } = Astro.props;
 const { record, from, to } = relation;
 ---
-<article class="atlas-relation" id={`relation-${record.id}`} data-evidence-class={record.evidenceClass} data-causal-language={record.causalLanguage}>
+<article class="atlas-relation" id={`${idPrefix}-${record.id}`} data-relation-id={record.id} data-evidence-class={record.evidenceClass} data-causal-language={record.causalLanguage}>
   <details class="atlas-disclosure">
     <summary>
       <span class:list={["atlas-line", `atlas-line--${record.evidenceClass}`]} aria-hidden="true"></span>
@@ -27,7 +27,7 @@ const { record, from, to } = relation;
       <AtlasEvidence evidence={record.sourceEvidence} />
       <div class="atlas-bound-claims"><strong>Bound claim statements</strong><ul>{relation.claims.map((claim) => <li><a href={`/atlas/expert/#claim-${claim.id}`}>{claim.statement}</a><small class="claim-id">{claim.id}</small></li>)}</ul></div>
       <AtlasUncertainties items={record.uncertainties} />
-      <a href="#relationships">Return to relationship index ↑</a>
+      <a href={indexHref}>Return to relationship index ↑</a>
     </div>
   </details>
 </article>

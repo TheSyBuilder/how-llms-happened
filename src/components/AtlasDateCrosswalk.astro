@@ -1,0 +1,26 @@
+---
+import type { AtlasWork } from "../lib/atlas-data";
+interface Props { work: AtlasWork }
+const { work } = Astro.props;
+const { orderingEvent: event, canonicalVersion: version } = work;
+const canonicalEvents = work.record.chronology.events.filter((entry) => entry.versionId === version.id);
+---
+<div class="neighborhood-dates">
+  <dl>
+    <div><dt>Ordering event</dt><dd><strong>{event.date.value}</strong> · {event.label}<small>{event.date.precision} precision · calendar: {event.date.calendar}</small></dd></div>
+    <div><dt>Canonical version</dt><dd>{version.label}<small>{canonicalEvents.length > 0 ? canonicalEvents.map((entry) => `${entry.date.value} · ${entry.label}`).join("; ") : "No separately dated canonical event is recorded."}</small></dd></div>
+  </dl>
+  <details class="atlas-disclosure neighborhood-date-evidence">
+    <summary>Inspect date evidence and version identity</summary>
+    <div class="atlas-detail-body">
+      <p class="claim-id">Ordering event: {event.id}</p>
+      {event.date.note && <p>{event.date.note}</p>}
+      <ul>{event.dateEvidence.map((entry) => <li><a href={`/atlas/evidence/#source-${entry.sourceId}`}>{entry.sourceId}</a> · {entry.precision} precision · {entry.locator}</li>)}</ul>
+      <p class="claim-id">Canonical version: {version.id}</p>
+      <p>{version.bibliography.citation}</p>
+      {version.notes && <p>{version.notes}</p>}
+      {canonicalEvents.filter((entry) => entry.id !== event.id).map((entry) => <div class="atlas-event"><p><strong>{entry.date.value} · {entry.label}</strong></p><p class="atlas-small">{entry.date.precision} precision · calendar: {entry.date.calendar}</p>{entry.date.note && <p>{entry.date.note}</p>}<ul>{entry.dateEvidence.map((evidence) => <li><a href={`/atlas/evidence/#source-${evidence.sourceId}`}>{evidence.sourceId}</a> · {evidence.precision} · {evidence.locator}</li>)}</ul></div>)}
+      <p class="atlas-small">Version sources: {version.sourceIds.map((id) => <a class="atlas-inline-source" href={`/atlas/evidence/#source-${id}`}>{id}</a>)}</p>
+    </div>
+  </details>
+</div>

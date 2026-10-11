@@ -41,7 +41,7 @@ The stage slugs are `good-1953`, `katz-1987`, `kneser-ney-1995`, and `chen-goodm
 
 The first build does not need a complete graph explorer, global search, accounts, saved notes, or a complete-corpus timeline. Those features would widen the product before the first learning sequence has been tested. The home page may show the four selected nodes and the project’s broader coverage, but it must not imply that the first slice is the full atlas.
 
-With both the smoothing and recurrent-memory journeys implemented, the [atlas overview](atlas-overview.md) now provides a static full-corpus catalogue with distinct orientation and evidence-audit paths, plus a shared relationship/source register. Its brief preserves the visual system and defines precise chronology, relationship, availability, and coverage semantics. A global force-directed explorer remains outside that bounded build.
+With both the smoothing and recurrent-memory journeys implemented, the [atlas overview](atlas-overview.md) now provides a static full-corpus catalogue with distinct orientation and evidence-audit paths, plus a shared relationship/source register. Its brief preserves the visual system and defines precise chronology, relationship, availability, and coverage semantics. A [bounded neighborhood prototype](atlas-neighborhood-comparison.md) adds optional desktop diagrams and complete incident lists for four sourced comparison studies; promotion requires learner evidence. A global force-directed explorer remains outside that bounded build.
 
 ### Page anatomy
 

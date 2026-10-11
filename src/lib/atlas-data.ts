@@ -119,6 +119,32 @@ export function projectAtlas(corpus: Corpus, destinations: Map<string, AtlasAvai
 export type Atlas = ReturnType<typeof projectAtlas>;
 export type AtlasRelation = Atlas["relationships"][number];
 
+/** A one-hop view: distinct neighbors retain every incident record, including parallels. */
+export function projectAtlasNeighborhood(atlas: Atlas, workId: string) {
+  const focus = required(atlas.byId.get(workId), `${workId} neighborhood work`);
+  const relationships = atlas.relationships.filter(({ record }) => record.from.id === workId || record.to.id === workId);
+  const neighbors = new Map<string, { work: AtlasWork; relationships: AtlasRelation[] }>();
+  for (const relation of relationships) {
+    const other = relation.from.record.id === workId ? relation.to : relation.from;
+    if (other.record.id === workId) throw new Error(`Self-connection ${relation.record.id} needs a separate neighborhood treatment.`);
+    const entry = neighbors.get(other.record.id) ?? { work: other, relationships: [] };
+    entry.relationships.push(relation);
+    neighbors.set(other.record.id, entry);
+  }
+  return {
+    focus,
+    relationships,
+    neighbors: [...neighbors.values()],
+    counts: {
+      incident: relationships.length,
+      neighbors: neighbors.size,
+      outside: atlas.relationships.length - relationships.length,
+    },
+  };
+}
+
+export type AtlasNeighborhood = ReturnType<typeof projectAtlasNeighborhood>;
+
 export function getAtlas(): Atlas {
   const chapters = new Set(["smoothing", "recurrent-memory"].flatMap((id) =>
     getJourneyOverview(id as "smoothing" | "recurrent-memory").stages.filter((stage) => stage.status === "built").map((stage) => stage.work.id),
