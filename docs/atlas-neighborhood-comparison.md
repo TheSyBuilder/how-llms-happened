@@ -2,6 +2,8 @@
 
 **Status:** bounded static prototype for evaluation. `/atlas/cases/beginner/` and `/atlas/cases/expert/` colocate four existing inspection cases with complete incident lists and optional SVG diagrams. The catalogue remains the baseline. No learner comparison has been conducted; the diagram is not required navigation and no learning benefit is claimed.
 
+The expert [evidence-lens companion](atlas-evidence-lens-comparison.md) compares precomputed subsets over the same four neighborhoods, with complete incident evidence. It defines independent field intersections and count scopes before any client filtering; its acceptance does not promote the diagram.
+
 This implements the next prototype step in the [atlas overview brief](atlas-overview.md). It changes no corpus claim, date, relationship or availability. All factual answers below are drawn from that brief's four grounded records and their bound primary evidence.
 
 ## Design and interaction contract

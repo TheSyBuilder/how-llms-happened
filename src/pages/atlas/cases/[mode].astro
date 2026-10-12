@@ -32,6 +32,6 @@ const cases = atlasCases.map((item) => ({ ...item, neighborhood: projectAtlasNei
       {mode === "beginner" ? <details class="atlas-disclosure neighborhood-answer"><summary>Reveal the bounded explanation</summary><div class="atlas-detail-body"><p>{item.answer}</p><a href={`#case-${item.key}-relation-${item.id}`}>Inspect the study connection</a></div></details> : <a href={`#case-${item.key}-relation-${item.id}`}>Locate the relationship and source locators</a>}
     </div>
     <AtlasNeighborhood neighborhood={item.neighborhood} caseKey={item.key} targetId={item.id} mode={mode} />
-    <div class="neighborhood-return"><a href={atlasCaseHref(alternate, item.key)}>Continue this study in {alternate} mode</a><a href={`/atlas/${mode}/#work-${item.workId}`}>Return to this work in the catalogue</a><a href="#main-content">Return to study navigation ↑</a></div>
+    <div class="neighborhood-return"><a href={atlasCaseHref(alternate, item.key)}>Continue this study in {alternate} mode</a>{mode === "expert" && <a href={`/atlas/lenses/#lens-case-${item.key}`}>Compare evidence lenses for this study</a>}<a href={`/atlas/${mode}/#work-${item.workId}`}>Return to this work in the catalogue</a><a href="#main-content">Return to study navigation ↑</a></div>
   </section>)}
 </BaseLayout>

@@ -43,6 +43,8 @@ The first build does not need a complete graph explorer, global search, accounts
 
 With both the smoothing and recurrent-memory journeys implemented, the [atlas overview](atlas-overview.md) now provides a static full-corpus catalogue with distinct orientation and evidence-audit paths, plus a shared relationship/source register. Its brief preserves the visual system and defines precise chronology, relationship, availability, and coverage semantics. A [bounded neighborhood prototype](atlas-neighborhood-comparison.md) adds optional desktop diagrams and complete incident lists for four sourced comparison studies; promotion requires learner evidence. A global force-directed explorer remains outside that bounded build.
 
+The expert [evidence-lens companion](atlas-evidence-lens-comparison.md) provides a complete static intersection comparator over those studies. It preserves record identity, explains every excluded field and distinguishes incident matches from outside and global counts. Beginner study tasks remain predictions and bounded explanations; the expert companion asks for field reconstruction, count accounting and source audits. Client filtering requires its own comparison and state/accessibility gates.
+
 ### Page anatomy
 
 Every journey stage follows the same orienting frame while allowing mode-specific pedagogy:

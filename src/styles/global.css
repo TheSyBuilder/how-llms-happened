@@ -713,7 +713,43 @@
   .neighborhood-record .atlas-detail-body { background: var(--paper-raised); }
   .neighborhood-return { display: flex; flex-wrap: wrap; gap: 0 var(--space-4); border-top: 1px solid var(--rule); margin-top: var(--space-5); padding-top: var(--space-3); }
   .neighborhood-return a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: var(--step--1); }
+  .lens-reading-key { max-width: 68rem; padding-bottom: var(--space-5); }
+  .lens-reading-key h2 { margin-bottom: var(--space-4); }
+  .lens-reading-key > p { margin-top: var(--space-4); }
+  .lens-hero h1 { max-width: 23ch; }
+  .lens-counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); padding-block: var(--space-3); border-block: 1px solid var(--rule); }
+  .lens-counts dt { font-size: var(--step--1); color: var(--ink-soft); }
+  .lens-counts dd { font-family: var(--mono); font-size: var(--step-2); line-height: 1.3; margin-top: var(--space-2); }
+  .lens-counts small { display: block; font: var(--step--1)/1.5 var(--sans); color: var(--ink-soft); }
+  .lens-scope { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: var(--space-5); }
+  .lens-comparison, .lens-detail { scroll-margin-top: var(--space-3); }
+  .lens-table { table-layout: fixed; }
+  .lens-name-column { width: 49%; }
+  .lens-table th, .lens-table td { overflow-wrap: anywhere; }
+  .lens-table th:not(:first-child), .lens-table td { text-align: right; }
+  .lens-table th[scope="row"] { font-weight: 500; }
+  .lens-table th a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+  .lens-table td { font-family: var(--mono); font-size: var(--step-1); }
+  .lens-table td span { display: block; font-size: var(--step--1); color: var(--ink-soft); }
+  .lens-comparison > p { margin-top: var(--space-3); }
+  .lens-comparators { margin-top: var(--space-5); }
+  .lens-detail > summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+  .lens-detail > summary::before { content: "+"; }
+  .lens-detail[open] > summary::before { content: "−"; }
+  .lens-detail > summary > span { flex: 1; }
+  .lens-detail > summary > small { color: var(--ink-soft); font-family: var(--mono); font-weight: 400; }
+  .lens-detail:target { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .lens-constraints { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lens-result-list h4, .lens-empty h4 { font-size: var(--step-0); margin-bottom: var(--space-2); }
+  .lens-result-list > ul > li { padding-block: var(--space-2); }
+  .lens-result-list small { display: block; color: var(--ink-soft); }
+  .lens-result-list li a, .lens-outside li a, .lens-empty a { display: inline-flex; align-items: center; min-height: 2.75rem; overflow-wrap: anywhere; }
+  .lens-outside li a { font-family: var(--mono); font-size: var(--step--1); }
+  .lens-empty > p + p { margin-top: var(--space-2); }
+  .lens-full-evidence { margin-top: var(--space-6); scroll-margin-top: var(--space-3); }
+  .lens-full-evidence > p { margin-top: var(--space-3); }
   @media (max-width: 48rem) {
+    .lens-counts { grid-template-columns: 1fr 1fr; }
     .neighborhood-diagram { display: none; }
     .neighborhood-dates dl { grid-template-columns: 1fr; }
     .neighborhood-record { padding: var(--space-2); }
@@ -723,10 +759,18 @@
     .atlas-date span { margin: 0; }
     .atlas-evidence-key { grid-template-columns: 1fr; }
     .atlas-fields { grid-template-columns: 1fr 1fr; }
+    .lens-constraints { grid-template-columns: 1fr; }
     .atlas-case-grid, .atlas-mode-options { grid-template-columns: 1fr; gap: var(--space-4); }
     .atlas-mode-options article + article { border-top: 1px solid var(--rule); }
   }
   @media (max-width: 34rem) {
+    .lens-table th, .lens-table td { padding-inline: 0.25rem; font-size: var(--step--1); }
+    .lens-name-column { width: 42%; }
+    .lens-table td { font-size: var(--step-1); }
+    .lens-table th[scope="col"] { font-size: 0.72rem; }
+    .lens-detail > summary { flex-wrap: wrap; gap: var(--space-2); }
+    .lens-detail > summary > small { width: 100%; padding-left: var(--space-4); }
+    .lens-counts { grid-template-columns: 1fr; }
     .atlas-hero { padding-block: var(--space-5); }
     .atlas-hero h1 { font-size: var(--step-3); }
     .atlas-detail-body { padding: var(--space-3) var(--space-2); }
