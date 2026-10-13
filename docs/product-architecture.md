@@ -47,6 +47,8 @@ The expert [evidence-lens companion](atlas-evidence-lens-comparison.md) provides
 
 ### Page anatomy
 
+The planned [third journey](third-vertical-slice.md) reuses this frame for four encoder–decoder and recurrent-attention works. Its beginner predictions and expert operation/version audits share corpus facts while taking different prerequisite paths. The [alignment brief](alignment-interaction.md) requires complete static comparisons and a source/fixture contract before routes; its optional target-step cursor requires separate learner evidence.
+
 Every journey stage follows the same orienting frame while allowing mode-specific pedagogy:
 
 1. a breadcrumb, mode label, and stage position;
