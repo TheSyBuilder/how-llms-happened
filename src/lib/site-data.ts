@@ -4,6 +4,8 @@ import { resolve } from "node:path";
 import Ajv2020, { type AnySchema, type ErrorObject } from "ajv/dist/2020.js";
 
 import { validateCorpus } from "../../scripts/lib/validate-corpus.mjs";
+import { validateAlignmentContract } from "./alignment-contract.ts";
+import type { AlignmentFixture } from "./alignment-engine.ts";
 import {
   calculateChenScenario,
   type ChenFixture,
@@ -682,25 +684,32 @@ const rawKatzFixtureSchema = readJson("schemas/katz-fixture.schema.json");
 const rawKneserFixtureSchema = readJson("schemas/kneser-ney-fixture.schema.json");
 const rawChenFixtureSchema = readJson("schemas/chen-goodman-fixture.schema.json");
 const rawRecurrentFixtureSchema = readJson("schemas/recurrent-memory-fixture.schema.json");
+const rawAlignmentFixtureSchema = readJson("schemas/alignment-fixture.schema.json");
 const rawManifest = readJson("data/journeys/smoothing.json");
 const rawRecurrentManifest = readJson("data/journeys/recurrent-memory.json");
+const rawAlignmentManifest = readJson("data/journeys/encoder-decoder-alignment.json");
 const rawFixture = readJson("data/fixtures/good-singleton-reserve.json");
 const rawKatzFixture = readJson("data/fixtures/katz-probability-mass.json");
 const rawKneserFixture = readJson("data/fixtures/kneser-ney-context-coverage.json");
 const rawChenFixture = readJson("data/fixtures/chen-goodman-interpolation-discounts.json");
 const rawRecurrentFixture = readJson("data/fixtures/recurrent-memory-trace.json");
+const rawAlignmentFixture = readJson("data/fixtures/encoder-decoder-alignment.json");
 const journeyValidator = ajv.compile(rawJourneySchema as AnySchema);
 const fixtureValidator = ajv.compile(rawFixtureSchema as AnySchema);
 const katzFixtureValidator = ajv.compile(rawKatzFixtureSchema as AnySchema);
 const kneserFixtureValidator = ajv.compile(rawKneserFixtureSchema as AnySchema);
 const chenFixtureValidator = ajv.compile(rawChenFixtureSchema as AnySchema);
 const recurrentFixtureValidator = ajv.compile(rawRecurrentFixtureSchema as AnySchema);
+const alignmentFixtureValidator = ajv.compile(rawAlignmentFixtureSchema as AnySchema);
 
 if (!journeyValidator(rawManifest)) {
   throw new Error(`Journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
 }
 if (!journeyValidator(rawRecurrentManifest)) {
   throw new Error(`Recurrent journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
+}
+if (!journeyValidator(rawAlignmentManifest)) {
+  throw new Error(`Alignment journey schema failed: ${formatSchemaErrors(journeyValidator.errors)}`);
 }
 if (!fixtureValidator(rawFixture)) {
   throw new Error(`Fixture schema failed: ${formatSchemaErrors(fixtureValidator.errors)}`);
@@ -717,16 +726,26 @@ if (!chenFixtureValidator(rawChenFixture)) {
 if (!recurrentFixtureValidator(rawRecurrentFixture)) {
   throw new Error(`Recurrent fixture schema failed: ${formatSchemaErrors(recurrentFixtureValidator.errors)}`);
 }
+if (!alignmentFixtureValidator(rawAlignmentFixture)) {
+  throw new Error(`Alignment fixture schema failed: ${formatSchemaErrors(alignmentFixtureValidator.errors)}`);
+}
 
 const manifest = rawManifest as JourneyManifest;
 const recurrentManifest = rawRecurrentManifest as JourneyManifest;
+const alignmentManifest = rawAlignmentManifest as JourneyManifest;
 const goodFixture = rawFixture as GoodFixture;
 const katzFixture = rawKatzFixture as KatzFixture;
 const kneserFixture = rawKneserFixture as KneserFixture;
 const chenFixture = rawChenFixture as ChenFixture;
 const recurrentFixture = rawRecurrentFixture as RecurrentFixture;
+const alignmentFixture = rawAlignmentFixture as AlignmentFixture;
 validateManifest(manifest, indexes);
 validateManifest(recurrentManifest, indexes);
+validateManifest(alignmentManifest, indexes);
+validateAlignmentContract(corpus, alignmentManifest, alignmentFixture);
+if (Buffer.byteLength(readFileSync(resolve(process.cwd(), "data/fixtures/encoder-decoder-alignment.json"), "utf8")) > 12 * 1024) {
+  throw new Error("Alignment fixture must stay at or below 12 KiB.");
+}
 validateFixture(goodFixture, indexes);
 validateKatzFixture(katzFixture, indexes);
 validateKneserFixture(kneserFixture, indexes);
@@ -798,11 +817,12 @@ function evidenceView(claim: Claim): EvidenceView {
   };
 }
 
-export type JourneyId = "smoothing" | "recurrent-memory";
+export type JourneyId = "smoothing" | "recurrent-memory" | "encoder-decoder-alignment";
 
 function journeyManifest(id: JourneyId): JourneyManifest {
   if (id === "smoothing") return manifest;
   if (id === "recurrent-memory") return recurrentManifest;
+  if (id === "encoder-decoder-alignment") return alignmentManifest;
   throw new Error(`Unknown journey: ${id}`);
 }
 
@@ -966,7 +986,7 @@ export function getWorkReference(workId: string): WorkReferenceView {
 }
 
 export function getBuiltReferenceWorkIds(): string[] {
-  return [...new Set([manifest, recurrentManifest].flatMap((journey) => {
+  return [...new Set([manifest, recurrentManifest, alignmentManifest].flatMap((journey) => {
     const built = journey.stages.filter((stage) => stage.status === "built");
     const interludes = (journey.interludes ?? [])
       .filter((interlude) => built.some((stage) => stage.slug === interlude.stageSlug));
@@ -975,7 +995,7 @@ export function getBuiltReferenceWorkIds(): string[] {
 }
 
 export function getWorkLearningRoutes(workId: string): Record<Mode, RouteRef> {
-  for (const journey of [manifest, recurrentManifest]) {
+  for (const journey of [manifest, recurrentManifest, alignmentManifest]) {
     const stage = journey.stages.find((item) => item.workId === workId && item.status === "built");
     if (stage !== undefined) {
       return {

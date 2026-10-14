@@ -1,0 +1,706 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/alignment-fixture.schema.json",
+  "title": "Source-scoped encoder-decoder alignment teaching arithmetic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "label",
+    "provenance",
+    "description",
+    "modes",
+    "bindings",
+    "scenarios"
+  ],
+  "properties": {
+    "id": {
+      "const": "synthetic-encoder-decoder-alignment"
+    },
+    "kind": {
+      "const": "alignment-arithmetic"
+    },
+    "label": {
+      "const": "Synthetic example"
+    },
+    "provenance": {
+      "const": "authored-arithmetic"
+    },
+    "description": {
+      "$ref": "#/$defs/text"
+    },
+    "modes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "beginner",
+          "expert"
+        ]
+      },
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/binding"
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/conditional"
+          },
+          {
+            "$ref": "#/$defs/reset"
+          },
+          {
+            "$ref": "#/$defs/reversal"
+          },
+          {
+            "$ref": "#/$defs/read"
+          }
+        ]
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "number": {
+      "type": "number"
+    },
+    "vector": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/number"
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "two": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "one": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/number"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "matrix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/vector"
+      },
+      "minItems": 1,
+      "maxItems": 2
+    },
+    "twoMatrix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/two"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "prefix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "minItems": 0,
+      "maxItems": 6
+    },
+    "ids": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "claimIds",
+        "sourceIds",
+        "versionIds",
+        "scope"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "claimIds": {
+          "$ref": "#/$defs/ids"
+        },
+        "sourceIds": {
+          "$ref": "#/$defs/ids"
+        },
+        "versionIds": {
+          "$ref": "#/$defs/ids"
+        },
+        "scope": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "conditionalResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probabilities",
+        "selectedProbabilities",
+        "sequenceProbability",
+        "negativeLogLikelihood"
+      ],
+      "properties": {
+        "probabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/vector"
+          },
+          "minItems": 1
+        },
+        "selectedProbabilities": {
+          "$ref": "#/$defs/vector"
+        },
+        "sequenceProbability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "negativeLogLikelihood": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "resetResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recurrentTerm",
+        "preactivation",
+        "candidate",
+        "oldContribution",
+        "candidateContribution",
+        "state"
+      ],
+      "properties": {
+        "recurrentTerm": {
+          "$ref": "#/$defs/two"
+        },
+        "preactivation": {
+          "$ref": "#/$defs/two"
+        },
+        "candidate": {
+          "$ref": "#/$defs/two"
+        },
+        "oldContribution": {
+          "$ref": "#/$defs/two"
+        },
+        "candidateContribution": {
+          "$ref": "#/$defs/two"
+        },
+        "state": {
+          "$ref": "#/$defs/two"
+        }
+      }
+    },
+    "reversalResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "forwardOrder",
+        "reversedOrder",
+        "targetOrder",
+        "forwardGaps",
+        "reversedGaps",
+        "forwardMean",
+        "reversedMean"
+      ],
+      "properties": {
+        "forwardOrder": {
+          "$ref": "#/$defs/strings"
+        },
+        "reversedOrder": {
+          "$ref": "#/$defs/strings"
+        },
+        "targetOrder": {
+          "$ref": "#/$defs/strings"
+        },
+        "forwardGaps": {
+          "$ref": "#/$defs/vector"
+        },
+        "reversedGaps": {
+          "$ref": "#/$defs/vector"
+        },
+        "forwardMean": {
+          "$ref": "#/$defs/number"
+        },
+        "reversedMean": {
+          "$ref": "#/$defs/number"
+        }
+      }
+    },
+    "readResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "queryProjection",
+        "annotationProjections",
+        "preactivations",
+        "activations",
+        "energies",
+        "energyMaximum",
+        "shiftedExponentials",
+        "normalizer",
+        "weights",
+        "contributions",
+        "context"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "queryProjection": {
+          "$ref": "#/$defs/two"
+        },
+        "annotationProjections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/two"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "preactivations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/two"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "activations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/two"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "energies": {
+          "$ref": "#/$defs/vector"
+        },
+        "energyMaximum": {
+          "$ref": "#/$defs/number"
+        },
+        "shiftedExponentials": {
+          "$ref": "#/$defs/vector"
+        },
+        "normalizer": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "weights": {
+          "$ref": "#/$defs/vector"
+        },
+        "contributions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/two"
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "context": {
+          "$ref": "#/$defs/two"
+        }
+      }
+    },
+    "conditional": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceStage",
+        "bindingId",
+        "description",
+        "kind",
+        "sourceTokens",
+        "sourceSummary",
+        "vocabulary",
+        "eos",
+        "observedTarget",
+        "steps",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceStage": {
+          "$ref": "#/$defs/id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "const": "conditional-output"
+        },
+        "sourceTokens": {
+          "$ref": "#/$defs/strings"
+        },
+        "sourceSummary": {
+          "$ref": "#/$defs/two"
+        },
+        "vocabulary": {
+          "$ref": "#/$defs/strings"
+        },
+        "eos": {
+          "const": "<eos>"
+        },
+        "observedTarget": {
+          "$ref": "#/$defs/strings"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prefix",
+              "logits"
+            ],
+            "properties": {
+              "prefix": {
+                "$ref": "#/$defs/prefix"
+              },
+              "logits": {
+                "$ref": "#/$defs/vector"
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "expected": {
+          "$ref": "#/$defs/conditionalResult"
+        }
+      }
+    },
+    "reset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceStage",
+        "bindingId",
+        "description",
+        "kind",
+        "previousState",
+        "externalTerm",
+        "recurrentMatrix",
+        "resetLogits",
+        "updateLogits",
+        "gateConvention",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceStage": {
+          "$ref": "#/$defs/id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "const": "cho-reset"
+        },
+        "previousState": {
+          "$ref": "#/$defs/two"
+        },
+        "externalTerm": {
+          "$ref": "#/$defs/two"
+        },
+        "recurrentMatrix": {
+          "$ref": "#/$defs/twoMatrix"
+        },
+        "resetLogits": {
+          "$ref": "#/$defs/two"
+        },
+        "updateLogits": {
+          "$ref": "#/$defs/two"
+        },
+        "gateConvention": {
+          "const": "z-weights-old-state"
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reset",
+            "update",
+            "main",
+            "attachment"
+          ],
+          "properties": {
+            "reset": {
+              "$ref": "#/$defs/two"
+            },
+            "update": {
+              "$ref": "#/$defs/two"
+            },
+            "main": {
+              "$ref": "#/$defs/resetResult"
+            },
+            "attachment": {
+              "$ref": "#/$defs/resetResult"
+            }
+          }
+        }
+      }
+    },
+    "reversal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceStage",
+        "bindingId",
+        "description",
+        "kind",
+        "sourceTokens",
+        "targetTokens",
+        "eos",
+        "eosConvention",
+        "pairs",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceStage": {
+          "$ref": "#/$defs/id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "const": "source-reversal"
+        },
+        "sourceTokens": {
+          "$ref": "#/$defs/strings"
+        },
+        "targetTokens": {
+          "$ref": "#/$defs/strings"
+        },
+        "eos": {
+          "const": "<eos>"
+        },
+        "eosConvention": {
+          "const": "one-source-eos-slot"
+        },
+        "pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sourceIndex",
+              "targetIndex"
+            ],
+            "properties": {
+              "sourceIndex": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "targetIndex": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "expected": {
+          "$ref": "#/$defs/reversalResult"
+        }
+      }
+    },
+    "read": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceStage",
+        "bindingId",
+        "description",
+        "kind",
+        "case",
+        "stateProvenance",
+        "normalizationAxis",
+        "annotations",
+        "steps",
+        "queryMatrix",
+        "annotationMatrix",
+        "scoreVector",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "sourceStage": {
+          "$ref": "#/$defs/id"
+        },
+        "bindingId": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "$ref": "#/$defs/text"
+        },
+        "kind": {
+          "const": "bahdanau-read"
+        },
+        "case": {
+          "enum": [
+            "changing-query",
+            "equal-energies",
+            "identical-annotations"
+          ]
+        },
+        "stateProvenance": {
+          "const": "supplied-prior-states"
+        },
+        "normalizationAxis": {
+          "const": "source-positions"
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "token",
+              "forward",
+              "backward"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "token": {
+                "$ref": "#/$defs/text"
+              },
+              "forward": {
+                "$ref": "#/$defs/one"
+              },
+              "backward": {
+                "$ref": "#/$defs/one"
+              }
+            }
+          },
+          "minItems": 1,
+          "maxItems": 6
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "prefix",
+              "priorState"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "prefix": {
+                "$ref": "#/$defs/prefix"
+              },
+              "priorState": {
+                "$ref": "#/$defs/one"
+              }
+            }
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "queryMatrix": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/one"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "annotationMatrix": {
+          "$ref": "#/$defs/twoMatrix"
+        },
+        "scoreVector": {
+          "$ref": "#/$defs/two"
+        },
+        "expected": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/readResult"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,668 @@
+{
+  "$schema": "../../schemas/journey.schema.json",
+  "id": "encoder-decoder-alignment",
+  "slug": "encoder-decoder-alignment",
+  "title": "From one source summary to learned alignment",
+  "question": "What source information can the decoder use for its next target word?",
+  "estimatedMinutes": {
+    "beginner": 30,
+    "expert": 55
+  },
+  "stages": [
+    {
+      "slug": "cho-2014",
+      "workId": "cho-2014-rnn-encoder-decoder",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-cho-2014-encode-score-and-gate",
+        "expert": "expert-cho-2014-versions-objective-and-evidence"
+      },
+      "contribution": {
+        "text": "Use one source summary to condition a phrase score and inspect the reset/update recurrence.",
+        "claimIds": [
+          "cho-2014-fixed-vector-architecture",
+          "cho-2014-reset-update-gates"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-cho-summary",
+            "kind": "explanation",
+            "heading": "One source summary, many target predictions",
+            "body": "The encoder finishes reading the source before the decoder uses its single summary. Source and target lengths may differ; fixed refers to vector width, not a fixed number of words.",
+            "claimIds": [
+              "cho-2014-fixed-vector-architecture"
+            ]
+          },
+          {
+            "id": "beginner-cho-score",
+            "kind": "prompt",
+            "heading": "Score a supplied phrase or generate a new one?",
+            "body": "Predict which use the experiment tests, then follow the supplied target prefix and EOS probability. The reported translator adds a neural phrase-pair score to an existing phrase table.",
+            "claimIds": [
+              "cho-2014-conditional-objective",
+              "cho-2014-generation-and-scoring",
+              "cho-2014-phrase-table-integration"
+            ]
+          },
+          {
+            "id": "beginner-cho-gates",
+            "kind": "comparison",
+            "heading": "Ignore before mixing; carry after mixing",
+            "body": "Inspect the authored reset and update values. Reset changes the candidate use of prior state; in this paper z weights the old state. The main equation and attachment put reset on different sides of a matrix.",
+            "claimIds": [
+              "cho-2014-reset-update-gates",
+              "cho-2014-reset-equation-version-boundary"
+            ]
+          },
+          {
+            "id": "beginner-cho-results",
+            "kind": "result",
+            "heading": "Name every ingredient in the gain",
+            "body": "The baseline test BLEU is 33.30; adding the phrase score gives 33.87. The best 34.64 row also adds a separate language model. An unknown-word penalty is a separate intervention.",
+            "claimIds": [
+              "cho-2014-bleu-results",
+              "cho-2014-unknown-word-boundary"
+            ]
+          },
+          {
+            "id": "beginner-cho-limits",
+            "kind": "limitation",
+            "heading": "A summary constraint is not a measured length failure",
+            "body": "No sentence-length experiment or controlled gate ablation is reported. Selected phrase samples and projected vectors are qualitative inspections.",
+            "claimIds": [
+              "cho-2014-fixed-vector-evidence-boundary",
+              "cho-2014-ungated-evidence-boundary",
+              "cho-2014-qualitative-evidence"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-cho-objective",
+            "kind": "equation",
+            "heading": "Reconstruct the conditional score",
+            "body": "Separate the source summary, target-prefix vocabulary softmax, conditional sequence product and mean log-likelihood. Generation and phrase-table scoring use the same conditional model in different pipelines.",
+            "claimIds": [
+              "cho-2014-fixed-vector-architecture",
+              "cho-2014-conditional-objective",
+              "cho-2014-generation-and-scoring"
+            ]
+          },
+          {
+            "id": "expert-cho-reset-crosswalk",
+            "kind": "comparison",
+            "heading": "Audit reset placement and z convention",
+            "body": "Use main Eqs. 5–8 for the archival calculation, and show the attachment alternative separately. The non-diagonal fixture makes reset-before-matrix and reset-after-matrix visibly different; it cannot determine which expression the reported run used.",
+            "claimIds": [
+              "cho-2014-reset-update-gates",
+              "cho-2014-reset-equation-version-boundary"
+            ]
+          },
+          {
+            "id": "expert-cho-conditions",
+            "kind": "explanation",
+            "heading": "Bind sampling, dimensions and optimization to their sources",
+            "body": "Keep unique-pair sampling, shortlist and split roles, main-paper dimensions, conflicting attachment embeddings, initialization and Adadelta settings visible. Missing seeds and runtime details stay missing.",
+            "claimIds": [
+              "cho-2014-phrase-table-integration",
+              "cho-2014-data-and-vocabulary",
+              "cho-2014-architecture-condition",
+              "cho-2014-training-condition"
+            ]
+          },
+          {
+            "id": "expert-cho-table",
+            "kind": "result",
+            "heading": "Read the complete four-row canonical table",
+            "body": "Retain all development/test rows, the separate continuous-space language model, and the aggregate UNK versus particular-word distinction. The earlier preprint table is not substituted.",
+            "claimIds": [
+              "cho-2014-bleu-results",
+              "cho-2014-unknown-word-boundary"
+            ]
+          },
+          {
+            "id": "expert-cho-evidence",
+            "kind": "limitation",
+            "heading": "Separate architecture from causal evidence",
+            "body": "The ungated observation has no controlled protocol, the samples and t-SNE plots have no quantitative representation test, and this phrase-table experiment does not prove a sentence-length bottleneck.",
+            "claimIds": [
+              "cho-2014-ungated-evidence-boundary",
+              "cho-2014-qualitative-evidence",
+              "cho-2014-fixed-vector-evidence-boundary"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "sutskever-2014",
+      "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-sutskever-2014-reverse-then-translate",
+        "expert": "expert-sutskever-2014-factorization-scale-and-results"
+      },
+      "contribution": {
+        "text": "Initialize a deep recurrent word model from a source summary and compare source order and decoding pipelines.",
+        "claimIds": [
+          "sutskever-2014-fixed-vector-factorization",
+          "sutskever-2014-reversal-intervention"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-sutskever-conditioned",
+            "kind": "explanation",
+            "heading": "Start a word model from the source",
+            "body": "A separate encoder summarizes the source; a deep LSTM decoder then predicts target words and an end symbol. The cited Graves formulation is a later gated cell, not the original 1997 cell alone.",
+            "claimIds": [
+              "sutskever-2014-fixed-vector-factorization",
+              "sutskever-2014-deep-two-lstm-architecture",
+              "sutskever-2014-graves-lstm-formulation"
+            ]
+          },
+          {
+            "id": "beginner-sutskever-reversal",
+            "kind": "prompt",
+            "heading": "Which pairs get closer after reversal?",
+            "body": "Keep original source identities and ordinary target order. Count early and late temporal gaps before comparing their means; the proposed explanation is incomplete and the distances are not measured gradients.",
+            "claimIds": [
+              "sutskever-2014-reversal-intervention",
+              "sutskever-2014-reversal-explanation-boundary"
+            ]
+          },
+          {
+            "id": "beginner-sutskever-pipelines",
+            "kind": "comparison",
+            "heading": "Generate candidates or rerank a supplied list",
+            "body": "Direct beam decoding and phrase-system 1,000-best rescoring have different candidate sources. The 34.81 and 36.5 headlines each use five reversed-source models in those separate pipelines.",
+            "claimIds": [
+              "sutskever-2014-beam-and-rescoring",
+              "sutskever-2014-direct-results",
+              "sutskever-2014-rescoring-results"
+            ]
+          },
+          {
+            "id": "beginner-sutskever-parallel",
+            "kind": "lineage",
+            "heading": "Parallel designs are not an influence arrow",
+            "body": "The first manuscript says the system was developed in parallel with Cho. Teaching Cho first does not establish private development order or a causal lineage.",
+            "claimIds": [
+              "sutskever-2014-cho-concurrency"
+            ]
+          },
+          {
+            "id": "beginner-sutskever-limits",
+            "kind": "limitation",
+            "heading": "Successful fixed summaries still have bounded evidence",
+            "body": "Length curves describe this test; phrase projections are qualitative. The strongest results include ensembling, vocabulary limits and approximate search.",
+            "claimIds": [
+              "sutskever-2014-long-sentence-boundary",
+              "sutskever-2014-representation-evidence",
+              "sutskever-2014-evidence-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-sutskever-formulation",
+            "kind": "equation",
+            "heading": "Factor an EOS-terminated conditional sequence",
+            "body": "Bind the four-layer encoder/decoder to the named Graves formulation. Likelihood on observed prefixes, generation on model prefixes and approximate search are different operations.",
+            "claimIds": [
+              "sutskever-2014-graves-lstm-formulation",
+              "sutskever-2014-fixed-vector-factorization",
+              "sutskever-2014-deep-two-lstm-architecture"
+            ]
+          },
+          {
+            "id": "expert-sutskever-scale",
+            "kind": "comparison",
+            "heading": "Keep parameter counts version-bound",
+            "body": "Read the selected corpus, vocabularies, training and parallelism conditions. Proceedings and v1–v2 report 380 million parameters; v3 reports 384 million and adds a state characterization.",
+            "claimIds": [
+              "sutskever-2014-data-and-vocabulary",
+              "sutskever-2014-training-and-scale",
+              "sutskever-2014-version-parameter-boundary"
+            ]
+          },
+          {
+            "id": "expert-sutskever-distance",
+            "kind": "equation",
+            "heading": "Count gaps without turning them into gradients",
+            "body": "Under the fixture EOS convention derive forward and reversed gaps per original source identity. Keep the unchanged mean and changing early/late gaps together, with the prose/table score discrepancy.",
+            "claimIds": [
+              "sutskever-2014-reversal-intervention",
+              "sutskever-2014-reversal-explanation-boundary"
+            ]
+          },
+          {
+            "id": "expert-sutskever-ledgers",
+            "kind": "result",
+            "heading": "Audit both complete result pipelines",
+            "body": "Retain beam sizes, number of models, source order, candidate-system identity, score averaging and oracle scope in both tables. Do not difference scores from unmatched pipeline conditions.",
+            "claimIds": [
+              "sutskever-2014-beam-and-rescoring",
+              "sutskever-2014-direct-results",
+              "sutskever-2014-rescoring-results"
+            ]
+          },
+          {
+            "id": "expert-sutskever-history",
+            "kind": "lineage",
+            "heading": "Read the parallel-development statement in v1",
+            "body": "The canonical proceedings citation omits the explicit parallel wording. The editorial Cho comparison permits no causal claim.",
+            "claimIds": [
+              "sutskever-2014-cho-concurrency"
+            ]
+          },
+          {
+            "id": "expert-sutskever-boundaries",
+            "kind": "limitation",
+            "heading": "Audit length, projections and missing controls",
+            "body": "The length plot lacks a matched unreversed curve and numeric bins; PCA lacks a systematic representation test. No matched full component ablation or uncertainty estimate is supplied.",
+            "claimIds": [
+              "sutskever-2014-long-sentence-boundary",
+              "sutskever-2014-representation-evidence",
+              "sutskever-2014-evidence-boundary"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "bahdanau-2014-2015",
+      "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-bahdanau-2014-follow-the-focus",
+        "expert": "expert-bahdanau-2014-attention-objective-and-evidence"
+      },
+      "contribution": {
+        "text": "Compute a decoder-conditioned weighted source read at each target step.",
+        "claimIds": [
+          "bahdanau-2014-soft-attention-context",
+          "bahdanau-2014-bidirectional-annotations"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-bahdanau-question",
+            "kind": "explanation",
+            "heading": "Replace one shared summary with a new source read",
+            "body": "The fixed-vector bottleneck is a conjecture. This extension computes a weighted context at each step; each context still has fixed width.",
+            "claimIds": [
+              "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+              "bahdanau-2014-cho-framework-extension"
+            ]
+          },
+          {
+            "id": "beginner-bahdanau-read",
+            "kind": "prompt",
+            "heading": "What stays fixed when the target step changes?",
+            "body": "Hold the supplied bidirectional annotation bank fixed and change the authored prior decoder state. Trace energies, source weights and coordinate contributions. Equal scores and identical annotations test when a new step need not change the read.",
+            "claimIds": [
+              "bahdanau-2014-soft-attention-context",
+              "bahdanau-2014-bidirectional-annotations",
+              "bahdanau-2014-global-attention-cost"
+            ]
+          },
+          {
+            "id": "beginner-bahdanau-probability",
+            "kind": "comparison",
+            "heading": "A source weight is not a target-word probability",
+            "body": "Source softmax distributes weight over source positions; a separate vocabulary softmax predicts a target word. Joint training uses translation loss, not supplied gold word alignments. The fixture does not train or translate.",
+            "claimIds": [
+              "bahdanau-2014-conditional-objective",
+              "bahdanau-2014-differentiable-soft-alignment",
+              "bahdanau-2014-soft-alignment-interpretation-boundary"
+            ]
+          },
+          {
+            "id": "beginner-bahdanau-evidence",
+            "kind": "result",
+            "heading": "Compare named test conditions",
+            "body": "Keep All and No UNK columns and the longer-trained starred run separate. Attention, bidirectionality and capacity change together; length trends cannot isolate compression as the cause.",
+            "claimIds": [
+              "bahdanau-2014-bleu-results",
+              "bahdanau-2014-length-results",
+              "bahdanau-2014-unknown-word-boundary",
+              "bahdanau-2014-evidence-boundary"
+            ]
+          },
+          {
+            "id": "beginner-bahdanau-comparison",
+            "kind": "lineage",
+            "heading": "Reordering differs from a forward-moving handwriting window",
+            "body": "Graves is a named comparison, not a causal derivation. Early manuscripts also cite each other across the Sutskever and Bahdanau branches; public posting dates cannot establish private development order.",
+            "claimIds": [
+              "bahdanau-2014-graves-monotonic-window-comparison",
+              "bahdanau-2014-sutskever-cross-citation-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-bahdanau-read",
+            "kind": "equation",
+            "heading": "Reconstruct energy, source denominator and context",
+            "body": "Use the accepted v5 additive scorer with supplied states and concatenated forward/backward annotations. Show projected terms, tanh activations, stable exponentials, source normalizer and signed context contributions.",
+            "claimIds": [
+              "bahdanau-2014-conditional-objective",
+              "bahdanau-2014-soft-attention-context",
+              "bahdanau-2014-differentiable-soft-alignment",
+              "bahdanau-2014-bidirectional-annotations",
+              "bahdanau-2014-global-attention-cost"
+            ]
+          },
+          {
+            "id": "expert-bahdanau-order",
+            "kind": "comparison",
+            "heading": "Keep stable main-text order and conflicting appendices separate",
+            "body": "Prior state precedes the read, then the updated state precedes output. Preserve the v5/v6/v7 decoder-index and matrix conflicts and the opposite Cho z convention; no hybrid gate-level decoder is evaluated.",
+            "claimIds": [
+              "bahdanau-2014-cho-framework-extension",
+              "bahdanau-2014-equation-version-boundary"
+            ]
+          },
+          {
+            "id": "expert-bahdanau-conditions",
+            "kind": "explanation",
+            "heading": "Audit capacity, shortlist and training time",
+            "body": "Retain the selected data, split roles, encoder direction counts, hidden dimensions, training caps, all five training durations and approximate beam search.",
+            "claimIds": [
+              "bahdanau-2014-data-and-vocabulary",
+              "bahdanau-2014-architecture-condition",
+              "bahdanau-2014-training-condition",
+              "bahdanau-2014-beam-search-boundary"
+            ]
+          },
+          {
+            "id": "expert-bahdanau-results",
+            "kind": "result",
+            "heading": "Read both BLEU conditions without causal compression claims",
+            "body": "Keep all six All/No UNK rows and the longer-trained run. Length plots are descriptive and capacity changes with the mechanism; rare words remain unresolved.",
+            "claimIds": [
+              "bahdanau-2014-fixed-vector-bottleneck-hypothesis",
+              "bahdanau-2014-bleu-results",
+              "bahdanau-2014-length-results",
+              "bahdanau-2014-unknown-word-boundary"
+            ]
+          },
+          {
+            "id": "expert-bahdanau-history",
+            "kind": "lineage",
+            "heading": "Audit comparison and reciprocal manuscript awareness",
+            "body": "Inspect the version-specific Graves and Sutskever passages. A monotonic unnormalized handwriting window differs from source-softmax translation reads; neither chronology nor comparison establishes a causal edge.",
+            "claimIds": [
+              "bahdanau-2014-graves-monotonic-window-comparison",
+              "bahdanau-2014-sutskever-cross-citation-boundary"
+            ]
+          },
+          {
+            "id": "expert-bahdanau-interpretation",
+            "kind": "limitation",
+            "heading": "A heatmap does not validate an alignment posterior",
+            "body": "The paper supplies qualitative attention matrices without a quantitative alignment benchmark or matched component-only ablations. The synthetic read demonstrates arithmetic only.",
+            "claimIds": [
+              "bahdanau-2014-soft-alignment-interpretation-boundary",
+              "bahdanau-2014-evidence-boundary"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "luong-2015",
+      "workId": "luong-pham-manning-2015-effective-attention-nmt",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-luong-2015-global-local-and-history",
+        "expert": "expert-luong-2015-scores-windows-and-evidence"
+      },
+      "contribution": {
+        "text": "Compare current-state attention, source support and attentional input feeding.",
+        "claimIds": [
+          "luong-2015-global-attention",
+          "luong-2015-local-attention",
+          "luong-2015-input-feeding"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-luong-support",
+            "kind": "comparison",
+            "heading": "Read all positions or a neighborhood",
+            "body": "The stacked-LSTM decoder scores from its current state. Global attention reads every source state; local attention restricts support. Static support diagrams show what a window can omit without inventing unresolved numerical weights.",
+            "claimIds": [
+              "luong-2015-conditional-nmt-architecture",
+              "luong-2015-global-attention",
+              "luong-2015-local-attention"
+            ]
+          },
+          {
+            "id": "beginner-luong-history",
+            "kind": "prompt",
+            "heading": "Where does the previous attentional summary go?",
+            "body": "Trace the previous attentional vector into the next target input. It supplies history but does not certify which words have been translated.",
+            "claimIds": [
+              "luong-2015-input-feeding"
+            ]
+          },
+          {
+            "id": "beginner-luong-lineage",
+            "kind": "lineage",
+            "heading": "Name the inherited recipe and the attention extension",
+            "body": "Luong cites the stacked-LSTM/reversal recipe and Bahdanau-style soft alignment separately; their qualified relations carry different mechanisms.",
+            "claimIds": [
+              "luong-2015-bahdanau-extension",
+              "luong-2015-sutskever-architecture-and-reversal"
+            ]
+          },
+          {
+            "id": "beginner-luong-results",
+            "kind": "result",
+            "heading": "A result ladder changes several ingredients",
+            "body": "The 14.0 to 19.0 path changes attention, score, locality and input feeding. Unknown replacement and eight-model ensembling are separate additions.",
+            "claimIds": [
+              "luong-2015-english-german-results",
+              "luong-2015-evidence-boundary"
+            ]
+          },
+          {
+            "id": "beginner-luong-metrics",
+            "kind": "limitation",
+            "heading": "Translation quality and extracted alignment are different tests",
+            "body": "The alignment protocol has different data and link-extraction conditions. Lower alignment error need not mean better translation or a more faithful explanation.",
+            "claimIds": [
+              "luong-2015-alignment-evaluation"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-luong-timing",
+            "kind": "equation",
+            "heading": "Score from the current decoder state",
+            "body": "Reconstruct the current-state global path and previous-attentional-vector input feeding. Keep its LSTM/reversal recipe distinct from the Bahdanau extension.",
+            "claimIds": [
+              "luong-2015-conditional-nmt-architecture",
+              "luong-2015-global-attention",
+              "luong-2015-input-feeding",
+              "luong-2015-bahdanau-extension",
+              "luong-2015-sutskever-architecture-and-reversal"
+            ]
+          },
+          {
+            "id": "expert-luong-forms",
+            "kind": "comparison",
+            "heading": "Audit score shapes, windows and later corrections",
+            "body": "Keep location, unscaled dot, general and v5-corrected concat separate. Local-m and local-p remain static source operations; Gaussian multiplication does not license an implicit final normalization.",
+            "claimIds": [
+              "luong-2015-attention-score-family",
+              "luong-2015-local-attention",
+              "luong-2015-version-boundary"
+            ]
+          },
+          {
+            "id": "expert-luong-conditions",
+            "kind": "explanation",
+            "heading": "Bind metrics and hyperparameters to the version",
+            "body": "Retain language direction, filtering, vocabulary, training regime and tokenized versus NIST BLEU. Dropout p and D occur only in the later revision.",
+            "claimIds": [
+              "luong-2015-data-and-evaluation",
+              "luong-2015-training-regime"
+            ]
+          },
+          {
+            "id": "expert-luong-tables",
+            "kind": "result",
+            "heading": "Read all component and architecture tables",
+            "body": "Keep English–German and German–English ladders, WMT15 ensemble, unknown replacement, incomplete score/scope sweep and failed/no-BLEU cells separate.",
+            "claimIds": [
+              "luong-2015-english-german-results",
+              "luong-2015-wmt15-ensemble-result",
+              "luong-2015-german-english-results",
+              "luong-2015-attention-architecture-results"
+            ]
+          },
+          {
+            "id": "expert-luong-boundaries",
+            "kind": "limitation",
+            "heading": "Audit descriptive length and alignment evidence",
+            "body": "Length plots lack numeric bins and matched controls. AER uses forced reference decoding and selected links under unmatched training conditions; incomplete factorial controls limit causal rankings.",
+            "claimIds": [
+              "luong-2015-long-sentence-boundary",
+              "luong-2015-alignment-evaluation",
+              "luong-2015-evidence-boundary"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "interludes": [
+    {
+      "id": "conditional-sequence-prerequisite",
+      "kind": "bridge",
+      "placement": "before",
+      "stageSlug": "cho-2014",
+      "title": "From word probability to a source-conditioned sequence",
+      "relatedJourneyId": "recurrent-memory",
+      "workIds": [
+        "mikolov-2010-recurrent-neural-language-model",
+        "cho-2014-rnn-encoder-decoder"
+      ],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-alignment-word-return",
+            "kind": "comparison",
+            "heading": "Add the source to the prediction question",
+            "body": "Return to recurrent next-word softmax, then supply a source–target pair and a possibly different-length EOS-terminated target. The next distribution depends on source summary and target prefix.",
+            "claimIds": [
+              "mikolov-2010-elman-recurrent-architecture",
+              "cho-2014-fixed-vector-architecture",
+              "cho-2014-conditional-objective"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-alignment-likelihood-return",
+            "kind": "equation",
+            "heading": "Separate normalization, likelihood and search",
+            "body": "Vocabulary normalization occurs at each prefix. Conditional sequence likelihood multiplies observed-target factors including EOS; generation uses its own prefixes and search is approximate. The authored output fixture evaluates no recurrent decoder.",
+            "claimIds": [
+              "mikolov-2010-elman-recurrent-architecture",
+              "cho-2014-conditional-objective",
+              "cho-2014-generation-and-scoring"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "graves-formulation-prerequisite",
+      "kind": "prerequisite",
+      "placement": "before",
+      "stageSlug": "sutskever-2014",
+      "title": "The cited Graves LSTM formulation",
+      "workIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks",
+        "sutskever-vinyals-le-2014-sequence-to-sequence"
+      ],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-graves-cell-inventory",
+            "kind": "comparison",
+            "heading": "Keep the later cell separate from the original",
+            "body": "The cited formulation has input, forget and output gates and state-to-gate connections. This source bridge introduces no handwriting window into the translator.",
+            "claimIds": [
+              "graves-2013-lstm-formulation",
+              "sutskever-2014-graves-lstm-formulation"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-graves-cell-crosswalk",
+            "kind": "equation",
+            "heading": "Read the formulation and training boundary",
+            "body": "Graves v5 Eqs. 7–11 read previous cell state for input/forget gates and updated state for output, with diagonal state-to-gate weights and full BPTT. Citation does not establish every implementation detail of the target.",
+            "claimIds": [
+              "graves-2013-lstm-formulation",
+              "sutskever-2014-graves-lstm-formulation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "graves-window-comparison",
+      "kind": "prerequisite",
+      "placement": "before",
+      "stageSlug": "bahdanau-2014-2015",
+      "title": "A monotonic handwriting window is a comparison",
+      "workIds": [
+        "graves-2013-generating-sequences-recurrent-neural-networks",
+        "bahdanau-cho-bengio-2014-neural-machine-translation"
+      ],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-graves-window-direction",
+            "kind": "comparison",
+            "heading": "A forward-moving window cannot arbitrarily reorder",
+            "body": "Positive location increments move handwriting windows forward. Their unnormalized character weights differ from translation source-softmax weights, and the named comparison permits no causal derivation.",
+            "claimIds": [
+              "graves-2013-monotonic-window-mechanism",
+              "graves-2013-window-terminology-boundary",
+              "bahdanau-2014-graves-monotonic-window-comparison"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-graves-window-boundary",
+            "kind": "comparison",
+            "heading": "Preserve window normalization and version scope",
+            "body": "Read Graves v5 window mechanism and earlier formula corrections separately. The translation paper compares the monotonicity limit; this bridge calculates neither handwriting output nor a local-p translation window.",
+            "claimIds": [
+              "graves-2013-monotonic-window-mechanism",
+              "graves-2013-window-equation-version-boundary",
+              "graves-2013-window-terminology-boundary",
+              "bahdanau-2014-graves-monotonic-window-comparison"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

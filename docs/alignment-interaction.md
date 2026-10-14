@@ -6,6 +6,8 @@ The [third teaching slice](third-vertical-slice.md) needs a complete static expl
 
 The cursor belongs to Bahdanau's source read. Cho's scoring system, Sutskever's reversal/rescoring and Luong's score/window/input-feeding comparisons remain static. A generic attention playground would erase important differences in timing, state construction and experimental scope.
 
+The [slice contract](alignment-slice-contract.md) supplies the reviewed static inputs, independent expected values, complete claim inventory and version guards. This closes the calculation gate without implementing or promoting a cursor.
+
 ## Reference audit
 
 These references inform explanatory patterns, not scientific claims about the four historical systems. Their public explanatory text and first-party project records were accessed on 13 October 2026. No code, model outputs, figures or visual identity are reused.
