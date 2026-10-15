@@ -1,0 +1,52 @@
+---
+import { calculateConditionalOutput, stableSoftmax, type ConditionalOutput } from "../lib/alignment-engine";
+import type { Mode } from "../lib/site-data";
+interface Props { scenario: ConditionalOutput; mode: Mode }
+const { scenario, mode } = Astro.props;
+const result = calculateConditionalOutput(scenario);
+const decimals = mode === "beginner" ? 3 : 6;
+const f = (value: number) => value.toFixed(decimals);
+---
+<section class="mass-ledger alignment-ledger" aria-labelledby="phrase-score-heading">
+  <header class="ledger-header"><div><p class="eyebrow">Synthetic example · supplied output scores</p><h2 id="phrase-score-heading">One source, three predictions</h2></div><p class="ledger-folio">Cho et al.<br />2014</p></header>
+  <div class="ledger-prompt"><p><strong>{mode === "beginner" ? "Predict first." : "Reconstruct first."}</strong> {mode === "beginner" ? "Is the probability of the whole target 0.6, or must the end symbol count too?" : "Recover the EOS-terminated likelihood from the supplied logits. Which axis normalizes, and is the sequence loss length-averaged?"}</p></div>
+  <div class="trace-intro">
+    <p>Source: <code>{scenario.sourceTokens.join(" → ")} → {scenario.eos}</code>. Supplied summary c: <code>[{scenario.sourceSummary.join(", ")}]</code>. Supplied target: <code>{scenario.observedTarget.join(" → ")}</code>.</p>
+    <p class="provenance-note mt-3">All tokens, scores and summary values are authored teaching inputs. The source summary and output scores are supplied independently; these numbers do not calculate an encoder or a recurrent decoder. The coordinates have no assigned linguistic meaning. This is a probability calculation, not a trained translation.</p>
+  </div>
+  <div class="trace-history">
+    <table class="trace-table alignment-probabilities">
+      <caption>Synthetic conditional target probabilities · {decimals} decimals</caption>
+      <thead><tr><th scope="col">At each prefix</th>{scenario.steps.map((_, i) => <th scope="col">Step {i + 1}</th>)}</tr></thead>
+      <tbody>
+        <tr><th scope="row">Target prefix</th>{scenario.steps.map((step) => <td>{step.prefix.join(", ") || "empty"}</td>)}</tr>
+        {scenario.vocabulary.map((token, v) => <tr><th scope="row">P({token})</th>{result.probabilities.map((row) => <td>{f(row[v]!)}</td>)}</tr>)}
+        <tr><th scope="row">Vocabulary total</th>{result.probabilities.map((row) => <td>{f(row.reduce((sum, p) => sum + p, 0))}</td>)}</tr>
+        <tr><th scope="row">Observed next</th>{scenario.observedTarget.map((token) => <td><strong>{token}</strong></td>)}</tr>
+        <tr class="trace-result"><th scope="row">Selected factor</th>{result.selectedProbabilities.map((p) => <td>{f(p)}</td>)}</tr>
+      </tbody>
+    </table>
+    <p class="mt-3">Each column is a different prediction question. Its vocabulary probabilities sum to one. The selected factors across columns need not sum to one.</p>
+    <details class="trace-arithmetic"><summary>Inspect all supplied logits and normalizers</summary>
+      <p class="mt-3">A logit is an unnormalized output score. Subtracting the largest score before exponentiating preserves the softmax probabilities and avoids unnecessarily large exponentials.</p>
+      {scenario.steps.map((step, index) => {
+        const normalized = stableSoftmax(step.logits);
+        return <>
+          <table class="trace-table alignment-logits mt-3"><caption>Step {index + 1} · supplied scores and shifted exponentials</caption>
+            <thead><tr><th scope="col">Token</th><th scope="col">Logit</th><th scope="col">exp(ℓ − max)</th></tr></thead>
+            <tbody>{scenario.vocabulary.map((token, v) => <tr><th scope="row">{token}</th><td>{f(step.logits[v]!)}</td><td>{f(normalized.exponentials[v]!)}</td></tr>)}</tbody>
+          </table>
+          <p class="alignment-normalizer">Maximum {f(normalized.maximum)}; sum of shifted exponentials {f(normalized.normalizer)}. Divide each shifted exponential by that sum.</p>
+        </>;
+      })}
+    </details>
+  </div>
+  <div class="trace-comparison">
+    <p class="eyebrow">Complete target · EOS included</p><p class="alignment-product">0.6 × 0.6 × 0.8 = <strong>{f(result.sequenceProbability)}</strong></p>
+    {mode === "expert" && <p>Negative log-likelihood: <strong>{f(result.negativeLogLikelihood)} nats</strong> for this one supplied target, without length averaging. It is the negative sum of the logs of the three selected factors.</p>}
+    <details class="prediction-reveal mt-3"><summary>Check the phrase score</summary>
+      <p>The complete target receives probability 0.288. The value 0.6 describes only one selected next-token event. EOS contributes 0.8; leaving it out would score an unfinished prefix, with product 0.36.</p>
+      <p class="mt-3">The experiment scores existing phrase pairs and adds that score to a larger translator. Computing this product does not generate a sentence or demonstrate translation quality.</p>
+    </details>
+  </div>
+</section>

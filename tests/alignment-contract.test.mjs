@@ -10,7 +10,7 @@ const corpus = read("../data/corpus.json");
 const manifest = read("../data/journeys/encoder-decoder-alignment.json");
 const fixture = read("../data/fixtures/encoder-decoder-alignment.json");
 
-test("the planned manifest binds all 65 claims, 21 versions and eight distinct mode objectives", () => {
+test("the manifest binds all 65 claims, 21 versions and eight distinct mode objectives", () => {
   const validate = new Ajv2020({ allErrors: true, strict: true }).compile(read("../schemas/journey.schema.json"));
   assert.ok(validate(manifest), JSON.stringify(validate.errors));
   validateAlignmentContract(corpus, manifest, fixture);
@@ -29,10 +29,27 @@ test("the planned manifest binds all 65 claims, 21 versions and eight distinct m
   }
 });
 
-test("all alignment destinations stay unavailable until a stage is built", () => {
+test("only the reviewed Cho chapter becomes available in both modes and the source register", () => {
   assert.equal(getJourneyOverview("encoder-decoder-alignment").stages.length, 4);
-  assert.deepEqual(getBuiltStagePaths("encoder-decoder-alignment"), []);
-  for (const stage of manifest.stages) {
+  assert.deepEqual(getBuiltStagePaths("encoder-decoder-alignment"), [
+    { params: { mode: "beginner", stage: "cho-2014" } },
+    { params: { mode: "expert", stage: "cho-2014" } },
+  ]);
+  const cho = manifest.stages[0];
+  assert.equal(cho.status, "built");
+  assert.ok(getBuiltReferenceWorkIds().includes(cho.workId));
+  for (const mode of ["beginner", "expert"]) {
+    const view = getStageView(mode, cho.slug, manifest.id);
+    assert.equal(view.evidence.length, 14);
+    assert.deepEqual(view.conditionalOutput, fixture.scenarios.find((item) => item.kind === "conditional-output"));
+    assert.deepEqual(view.choReset, fixture.scenarios.find((item) => item.kind === "cho-reset"));
+    assert.deepEqual(view.interludes.map((item) => item.id), ["conditional-sequence-prerequisite"]);
+    assert.equal(view.next, undefined);
+    assert.equal(view.alternateMode.href, `/journeys/${manifest.id}/${mode === "beginner" ? "expert" : "beginner"}/cho-2014/`);
+    assert.equal(getWorkLearningRoutes(cho.workId)[mode].href, `/journeys/${manifest.id}/${mode}/cho-2014/`);
+  }
+  assert.match(getWorkLearningRoutes("mikolov-2010-recurrent-neural-language-model").expert.href, /recurrent-memory\/expert\/mikolov-2010\/$/);
+  for (const stage of manifest.stages.slice(1)) {
     assert.equal(stage.status, "planned");
     assert.ok(!getBuiltReferenceWorkIds().includes(stage.workId));
     for (const mode of ["beginner", "expert"]) assert.throws(() => getStageView(mode, stage.slug, manifest.id), /not built yet/);

@@ -146,8 +146,8 @@ export function projectAtlasNeighborhood(atlas: Atlas, workId: string) {
 export type AtlasNeighborhood = ReturnType<typeof projectAtlasNeighborhood>;
 
 export function getAtlas(): Atlas {
-  const chapters = new Set(["smoothing", "recurrent-memory"].flatMap((id) =>
-    getJourneyOverview(id as "smoothing" | "recurrent-memory").stages.filter((stage) => stage.status === "built").map((stage) => stage.work.id),
+  const chapters = new Set((["smoothing", "recurrent-memory", "encoder-decoder-alignment"] as const).flatMap((id) =>
+    getJourneyOverview(id).stages.filter((stage) => stage.status === "built").map((stage) => stage.work.id),
   ));
   const destinations = new Map<string, AtlasAvailability>(getBuiltReferenceWorkIds().map((id) => [id, {
     referenceHref: `/reference/works/${id}/`,

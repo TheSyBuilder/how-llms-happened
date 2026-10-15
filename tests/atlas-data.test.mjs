@@ -72,12 +72,12 @@ test("relationship fields, full source locators and qualifications remain indepe
 });
 
 test("availability follows generated routes, with prerequisites distinct from complete chapters", () => {
-  assert.equal(atlas.counts.chapters, 10);
+  assert.equal(atlas.counts.chapters, 11);
   assert.equal(atlas.counts.prerequisites, 1);
-  assert.equal(atlas.counts.references, 11);
-  assert.equal(atlas.counts.corpusOnly, 55);
+  assert.equal(atlas.counts.references, 12);
+  assert.equal(atlas.counts.corpusOnly, 54);
   assert.deepEqual(atlas.works.filter((work) => work.availability.referenceHref).map((work) => work.record.id).sort(), getBuiltReferenceWorkIds().sort());
-  const rendered = ["smoothing", "recurrent-memory"].flatMap((id) => getBuiltStagePaths(id).map(({ params }) => `/journeys/${id}/${params.mode}/${params.stage}/`));
+  const rendered = ["smoothing", "recurrent-memory", "encoder-decoder-alignment"].flatMap((id) => getBuiltStagePaths(id).map(({ params }) => `/journeys/${id}/${params.mode}/${params.stage}/`));
   for (const work of atlas.works) {
     if (work.availability.learning?.kind === "chapter") for (const route of Object.values(work.availability.learning.routes)) assert.ok(rendered.includes(route.href));
     if (!work.availability.referenceHref) {

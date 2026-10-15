@@ -94,6 +94,10 @@ for (const htmlPath of htmlFiles) {
   const anchors = new Set(ids);
   if (anchors.size !== ids.length) failures.push(`${route} contains duplicate element IDs.`);
   const compressedHtmlBytes = gzipSync(html).byteLength;
+  if (/^\/journeys\/encoder-decoder-alignment\//.test(route)) {
+    if (compressedClientBytes !== 0) failures.push(`${route} must retain the complete static alignment treatment without client JavaScript.`);
+    if (compressedHtmlBytes > 512 * 1024) failures.push(`${route} exceeds the 512 KiB compressed HTML budget.`);
+  }
   if (/^\/atlas\//.test(route)) {
     if (compressedClientBytes !== 0) failures.push(`${route} must ship zero atlas client JavaScript.`);
     if (compressedHtmlBytes > 512 * 1024) failures.push(`${route} exceeds the 512 KiB compressed HTML budget.`);

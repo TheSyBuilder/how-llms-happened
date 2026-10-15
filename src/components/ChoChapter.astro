@@ -1,0 +1,101 @@
+---
+import { renderToString } from "katex";
+import ChoResetLedger from "./ChoResetLedger.astro";
+import ChoScoreLedger from "./ChoScoreLedger.astro";
+import ConditionalSequencePrerequisite from "./ConditionalSequencePrerequisite.astro";
+import EvidenceDetails from "./EvidenceDetails.astro";
+import JourneyMap from "./JourneyMap.astro";
+import ModeSwitch from "./ModeSwitch.astro";
+import { getJourneyOverview, type StageView } from "../lib/site-data";
+interface Props { view: StageView }
+const { view } = Astro.props;
+const { mode } = view;
+const expert = mode === "expert";
+if (view.conditionalOutput === undefined || view.choReset === undefined) throw new Error("Cho needs both reviewed arithmetic examples.");
+const journey = getJourneyOverview("encoder-decoder-alignment");
+const claim = (id: string) => {
+  const evidence = view.evidence.find((item) => item.claimId === `cho-2014-${id}`);
+  if (evidence === undefined) throw new Error(`Missing Cho evidence: ${id}`);
+  return evidence;
+};
+const math = (value: string) => renderToString(value, { displayMode: true, output: "htmlAndMathml", throwOnError: true });
+const results = [
+  ["Baseline", "30.64", "33.30"],
+  ["Baseline + RNN", "31.20", "33.87"],
+  ["Baseline + CSLM + RNN", "31.48", "34.64"],
+  ["Baseline + CSLM + RNN + WP", "31.50", "34.54"],
+];
+---
+<article class="stage-shell alignment-stage">
+  <div class="stage-reading">
+    <ModeSwitch activeMode={mode} alternateHref={view.alternateMode.href} />
+    <header class="stage-header">
+      <p class="stage-number">Stage 1 of 4 · first preprint June 2014 · proceedings October 2014</p>
+      <h1>{expert ? "Which conditional score—and which reset equation?" : "How can one phrase become a score for another?"}</h1>
+      <p class="stage-question">{view.contribution}</p>
+      <dl class="stage-meta">
+        <div><dt>Work</dt><dd>{view.work.title} · Cho et al.</dd></div>
+        <div><dt>Display source</dt><dd>{view.canonicalVersion.label}</dd></div>
+        <div><dt>Scope</dt><dd>Fixed source summary · gated recurrence · phrase-table feature</dd></div>
+      </dl>
+    </header>
+    <section class="objective-band" aria-labelledby="objective-heading"><h2 id="objective-heading">Your task</h2><p>{view.objective.objective}</p><details><summary>Success criterion</summary><p>{view.objective.successCriterion}</p></details></section>
+    <nav class="preset-index mt-4" aria-label="Cho chapter sections"><a href="#conditional-sequence-prerequisite">Prerequisite</a><a href="#phrase-score-heading">Target score</a><a href="#cho-reset-heading">Gate comparison</a><a href="#cho-results">Paper results</a></nav>
+    <ConditionalSequencePrerequisite view={view} />
+    <section class="reading-block" aria-labelledby="cho-summary-heading"><p class="kicker">Architecture · source interface</p><h2 id="cho-summary-heading">One summary, reused at every target step.</h2>
+      <p>The encoder reads a variable-length source through its end symbol. The decoder then uses one source summary c together with its evolving target-side state. “Fixed” describes the vector’s width, not the number of source or target words. There is no step-specific read over individual source positions in this architecture.</p>
+      <p class="mt-3">The main text describes the final state as the summary. Attachment §1.1 explicitly transforms the terminal encoder state as c = tanh(Vh). Both expose one vector; the output ledger supplies that vector directly and does not calculate either encoder.</p>
+      <EvidenceDetails evidence={claim("fixed-vector-architecture")} />
+    </section>
+    <section class="reading-block" aria-labelledby="cho-use-heading"><p class="kicker">Pipeline distinction</p><h2 id="cho-use-heading">A scorer inside a larger translator.</h2>
+      <ol class="copy-path" aria-label="Evaluated phrase-table scoring path"><li><strong>Train</strong><span>Learn conditional probabilities from unique phrase pairs, omitting their corpus-frequency weighting.</span></li><li><strong>Score</strong><span>Evaluate an existing source–target phrase pair from the phrase table.</span></li><li><strong>Combine</strong><span>Add its neural score as one feature in the conventional translator’s tuned log-linear model.</span></li></ol>
+      <p class="mt-3">The same conditional model can generate target phrases. Replacing the phrase table through repeated generation is proposed future work. The reported quantitative test uses the scoring path above; the larger system still contains frequency-based translation features.</p>
+      <EvidenceDetails evidence={claim("generation-and-scoring")} /><EvidenceDetails evidence={claim("phrase-table-integration")} />
+    </section>
+    {expert ? <section class="reading-block" aria-labelledby="cho-equations"><p class="kicker">Source crosswalk · printed p. 1726</p><h2 id="cho-equations">Keep reset placement and z’s role explicit.</h2>
+      <div class="equation-panel" role="region" aria-label="Cho main gate and state equations" tabindex="0">
+        <div set:html={math(String.raw`r=\sigma(W_rx+U_rh_{t-1}),\quad z=\sigma(W_zx+U_zh_{t-1})`)} />
+        <div set:html={math(String.raw`\widetilde h_t=\phi(Wx+U(r\odot h_{t-1}))`)} />
+        <div set:html={math(String.raw`h_t=z\odot h_{t-1}+(1-z)\odot\widetilde h_t`)} />
+      </div>
+      <p>This vector rendering preserves main Eqs. 5–8; the evaluated candidate activation is tanh. σ is the logistic sigmoid and ⊙ multiplies coordinates. Source gate equations omit biases. The ledger supplies already-combined gate logits and an external input/bias term; it evaluates one encoder update, without a decoder-context term.</p>
+      <div class="equation-panel" role="region" aria-label="Cho attachment encoder alternative" tabindex="0"><div set:html={math(String.raw`\widetilde h_t^{\mathrm{attachment}}=\tanh(We(x_t)+r\odot(Uh_{t-1}))`)} /></div>
+      <p>The attachment encoder places r after U. Its decoder has additional source-conditioning terms; those are not spliced into this encoder comparison. The experiment artifacts inspected do not settle which reset expression ran.</p>
+      <EvidenceDetails evidence={claim("reset-update-gates")} /><EvidenceDetails evidence={claim("reset-equation-version-boundary")} />
+    </section> : <section class="reading-block" aria-labelledby="cho-gate-intuition"><p class="kicker">Two different controls</p><h2 id="cho-gate-intuition">Prepare a candidate, then decide what to carry.</h2><p>Reset changes how the candidate uses the previous state. Update mixes the old state with that candidate. In this paper, a larger z gives the old state more weight. Neither control is an instruction to delete a particular word.</p><p class="mt-3">The authors describe an LSTM motivation, but this unit has no separate LSTM cell. The two printed reset placements disagree; inspect both numerical alternatives in the gate ledger.</p><EvidenceDetails evidence={claim("reset-update-gates")} /><EvidenceDetails evidence={claim("reset-equation-version-boundary")} /></section>}
+  </div>
+  <aside class="stage-workbench stage-workbench--long alignment-workbench" aria-label="Static conditional-score and reset comparisons"><ChoScoreLedger scenario={view.conditionalOutput} mode={mode} /><ChoResetLedger scenario={view.choReset} mode={mode} /></aside>
+  <div class="alignment-evidence">
+    {expert && <>
+      <section class="reading-block" aria-labelledby="cho-version-heading"><p class="kicker">Version audit</p><h2 id="cho-version-heading">One work, several consequential revisions.</h2>
+        <dl class="alignment-version-list"><div><dt>arXiv v1 · June 3, 2014</dt><dd>Six authors; earlier result table and reset placement. Its numbers are not substituted for the proceedings.</dd></div><div><dt>arXiv v2 · July 24, 2014</dt><dd>Still six authors; revised experimental and supplementary material.</dd></div><div><dt>arXiv v3 · September 3, 2014</dt><dd>Adds Bahdanau as fourth author and moves reset inside U in the main candidate equation.</dd></div><div><dt>EMNLP · October 2014</dt><dd>Seven-author canonical main paper. The official attachment retains the different reset placement and source embedding width.</dd></div></dl>
+        <p class="provenance-note mt-3">The conference ran October 25–29; this record does not establish a presentation day. Teaching order does not establish sole invention or private development order.</p>
+        <a class="claim-link" href="https://arxiv.org/abs/1406.1078" rel="noreferrer">Inspect the manuscript’s submission history</a>
+      </section>
+      <section class="reading-block" aria-labelledby="cho-recipe-heading"><p class="kicker">Experimental envelope · pp. 1728–1729</p><h2 id="cho-recipe-heading">Dimensions are part of the claim.</h2>
+        <ul><li>Encoder and decoder: 1,000 gated hidden units each; tanh candidate.</li><li>Main: rank-100 input/output factorizations, described as 100-dimensional word embeddings. Attachment §1.1: 500-dimensional source embeddings. The discrepancy remains unresolved.</li><li>Decoder output: 500 maxout units, each pooling two inputs. The simplified vocabulary logits are not a reproduction of this network.</li><li>Gaussian weight initialization: mean zero, standard deviation 0.01; recurrent matrices instead use left singular vectors of Gaussian samples.</li><li>Adadelta: ε = 10⁻⁶, ρ = 0.95; batches of 64 randomly selected phrase pairs; about three days’ training.</li></ul>
+        <p class="provenance-note mt-3">Hardware, epoch count, convergence rule, pair count, seeds and repeated-run variation are not reported. The main/attachment disagreement cannot be resolved by the teaching arithmetic.</p>
+        <EvidenceDetails evidence={claim("architecture-condition")} /><EvidenceDetails evidence={claim("training-condition")} />
+      </section>
+    </>}
+    <section class="reading-block alignment-result-section" aria-labelledby="cho-results"><p class="kicker">Static paper evidence · canonical Table 1, p. 1729</p><h2 id="cho-results">Keep every system component in the result.</h2>
+      <p>{expert ? "WMT’14 English–French, one reference. The development/tuning material is newstest2012/2013; newstest2014 is the test. All rows include the conventional phrase-based baseline. Scores are BLEU as reported, without a confidence interval or significance test." : "These scores evaluate complete translation systems. BLEU compares system text with reference text; these values are not word probabilities. All four systems include a conventional phrase-based translator. Read the extra ingredients before attributing a gain."}</p>
+      <table class="trace-table alignment-results mt-4"><caption>Canonical Table 1 · development and test BLEU</caption><thead><tr><th scope="col">Complete system</th><th scope="col">Dev</th><th scope="col">Test</th></tr></thead><tbody>{results.map(([label, dev, test]) => <tr><th scope="row">{label}</th><td>{dev}</td><td>{test}</td></tr>)}</tbody></table>
+      <p class="mt-3">RNN is the added encoder–decoder phrase score; CSLM is a separate continuous-space target language model; WP is a tuned unknown-word count penalty. Adding RNN changes test BLEU from 33.30 to 33.87. The best test row, 34.64, includes CSLM as well. Adding WP improves the development score but lowers the test score to 34.54.</p>
+      <details class="prediction-reveal mt-4"><summary>Check what the BLEU gain establishes</summary><p>The 0.57-point difference compares the baseline with the system adding the phrase score. It does not measure a standalone neural sentence translator, isolate either gate, or show that a fixed summary fails on long sentences. The 34.64 result also depends on a separate language model.</p></details>
+      <EvidenceDetails evidence={claim("bleu-results")} />
+    </section>
+    <section class="reading-block" aria-labelledby="cho-vocabulary-heading"><p class="kicker">Data and vocabulary · pp. 1728, 1730</p><h2 id="cho-vocabulary-heading">One unknown token stands for many words.</h2>
+      <p>Both neural vocabularies contain 15,000 words, covering about 93% of the selected data. All excluded words map to one UNK symbol. Its probability aggregates those word types; it is not the probability of a particular excluded word. The count penalty changes the combined system score without identifying that missing word.</p>
+      {expert && <p class="mt-3">Data selection retains 418 million of over 2 billion words for target language modeling and 348 million of 850 million for encoder–decoder training. Reported counts refer to French words after tokenization. newstest2012/2013 support selection and MERT weight tuning; newstest2014 is the single-reference test. Unique-pair neural sampling omits corpus frequency, while the existing translation model retains frequency information.</p>}
+      <EvidenceDetails evidence={claim("data-and-vocabulary")} /><EvidenceDetails evidence={claim("unknown-word-boundary")} />
+    </section>
+    <section class="reading-block alignment-boundaries" aria-labelledby="cho-limits-heading"><p class="kicker">Evidence boundary</p><h2 id="cho-limits-heading">Separate an architectural limit from an observed failure.</h2>
+      <p>The decoder has one source summary. This paper supplies no length-stratified experiment establishing a sentence-length failure. Its preliminary ordinary-tanh observation has no controlled protocol, table or repeated runs that isolate a gate’s effect.</p>
+      <p class="mt-3">Selected phrase pairs and generated samples are qualitative inspections: the display keeps five high-scoring outcomes from 50 samples. Word and phrase t-SNE projections supply no human evaluation, cluster metric or held-out representation test. The main phrase plot says 5,000 points; the attachment plot says 1,000. Neither is quantitative evidence of translation quality.</p>
+      <EvidenceDetails evidence={claim("ungated-evidence-boundary")} /><EvidenceDetails evidence={claim("qualitative-evidence")} /><EvidenceDetails evidence={claim("fixed-vector-evidence-boundary")} />
+      <a class="claim-link" href={`/reference/works/${view.work.id}/`}>Inspect the complete fourteen-claim work record</a>
+    </section>
+    <nav class="reading-block alignment-progression" aria-label="Alignment journey progression"><p class="kicker">Next distinction · chapter queued</p><h2>A source summary can also initialize direct generation.</h2><p>Sutskever et al. will contrast direct sentence generation with rescoring, source reversal with temporal gaps, and parallel development with causal influence. That chapter and both Graves prerequisite panels remain queued, along with Bahdanau and Luong. Their source records remain available in the atlas.</p><p class="mt-3"><a href={`/atlas/${mode}/#work-sutskever-vinyals-le-2014-sequence-to-sequence`}>Inspect Sutskever’s inline corpus record</a></p><a class="button button--quiet mt-4" href={`/journeys/encoder-decoder-alignment/${mode}/`}>Return to the {mode} route map</a><div class="mt-4"><JourneyMap journey={journey} currentSlug={view.stage.slug} mode={mode} compact /></div></nav>
+  </div>
+</article>

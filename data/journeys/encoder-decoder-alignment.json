@@ -12,7 +12,7 @@
     {
       "slug": "cho-2014",
       "workId": "cho-2014-rnn-encoder-decoder",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-cho-2014-encode-score-and-gate",
         "expert": "expert-cho-2014-versions-objective-and-evidence"

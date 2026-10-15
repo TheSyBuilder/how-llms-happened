@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-10-07",
+  "asOf": "2026-10-15",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -26573,7 +26573,7 @@
       ],
       "title": "Official ACL full text of Learning Phrase Representations using RNN Encoder–Decoder",
       "url": "https://aclanthology.org/D14-1179.pdf",
-      "accessDate": "2026-08-12",
+      "accessDate": "2026-10-15",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -26598,7 +26598,7 @@
       ],
       "title": "Official ACL architecture and representation attachment",
       "url": "https://aclanthology.org/attachments/D14-1179.Attachment.pdf",
-      "accessDate": "2026-08-12",
+      "accessDate": "2026-10-15",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -46031,7 +46031,7 @@
       "ideaIds": [
         "fixed-vector-neural-sequence-transduction"
       ],
-      "statement": "The encoder reads a variable-length source sequence through an end symbol and turns its final hidden state into one fixed-dimensional summary c; a separate recurrent decoder conditions on c and its preceding target symbols to produce a possibly different-length target sequence.",
+      "statement": "The main paper describes an encoder reading a variable-length source through an end symbol into one fixed-dimensional summary c; attachment §1.1 explicitly transforms the terminal encoder state as c = tanh(Vh). A separate recurrent decoder conditions on c and preceding target symbols to produce a possibly different-length target sequence.",
       "directness": "direct",
       "confidence": "high",
       "evidence": [
@@ -46045,13 +46045,22 @@
             "figure": "1"
           },
           "support": "Defines the source summary c after EOS and conditions decoder state and output on c."
+        },
+        {
+          "sourceId": "cho-2014-acl-attachment",
+          "locator": {
+            "label": "Terminal encoder state to summary, attachment §1.1",
+            "section": "1.1 Encoder",
+            "equation": "c = tanh(Vh at the final source step)"
+          },
+          "support": "Specifies a learned tanh projection of the terminal encoder state into the one-vector source summary."
         }
       ],
       "limitations": [
         "Fixed describes c’s dimensionality rather than a limit on source or target token count; the decoder does not revisit individual encoder states."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-12"
+      "checkedDate": "2026-10-15"
     },
     {
       "id": "cho-2014-conditional-objective",
@@ -46191,7 +46200,7 @@
           "sourceId": "cho-2014-acl-attachment",
           "locator": {
             "label": "Older attachment reset placement",
-            "section": "A.1 Encoder",
+            "section": "1.1 Encoder",
             "equation": "Encoder candidate-state equation"
           },
           "support": "Prints the reset coordinate outside the recurrent matrix output, exposing the inconsistency."
@@ -46207,7 +46216,7 @@
           "resolutionCondition": "Contemporaneous code, experiment logs, or an author clarification would be required."
         }
       ],
-      "checkedDate": "2026-08-12"
+      "checkedDate": "2026-10-15"
     },
     {
       "id": "cho-2014-phrase-table-integration",
@@ -46291,7 +46300,7 @@
           "sourceId": "cho-2014-acl-attachment",
           "locator": {
             "label": "Attachment embedding discrepancy",
-            "section": "A.1 Encoder",
+            "section": "1.1 Encoder",
             "paragraph": "Opening embedding dimension"
           },
           "support": "The attachment instead says 500-dimensional source embeddings, which is preserved as an internal discrepancy."
@@ -46307,7 +46316,7 @@
           "resolutionCondition": "Contemporaneous code, logs, or author clarification would be required."
         }
       ],
-      "checkedDate": "2026-08-12"
+      "checkedDate": "2026-10-15"
     },
     {
       "id": "cho-2014-training-condition",

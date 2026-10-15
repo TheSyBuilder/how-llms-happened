@@ -1,0 +1,32 @@
+---
+import { renderToString } from "katex";
+import EvidenceDetails from "./EvidenceDetails.astro";
+import type { StageView } from "../lib/site-data";
+interface Props { view: StageView }
+const { view } = Astro.props;
+const bridge = view.interludes.find((item) => item.id === "conditional-sequence-prerequisite");
+if (bridge === undefined) throw new Error("Cho needs its conditional-sequence prerequisite.");
+const math = (value: string) => renderToString(value, { displayMode: true, output: "htmlAndMathml", throwOnError: true });
+---
+<section class="reading-block alignment-prerequisite" id={bridge.id} aria-labelledby="conditional-prerequisite-heading">
+  <p class="kicker">Prerequisite · return to word prediction</p>
+  <h2 id="conditional-prerequisite-heading">{view.mode === "beginner" ? "Add a source to the next-word question." : "Separate normalization, likelihood and search."}</h2>
+  <p>A recurrent word model predicts the next word from preceding words. Here, the decoder also uses a summary of a separate source sequence. A prefix is the target sequence already supplied before the word being scored. EOS marks the end of a sequence.</p>
+  <ol class="copy-path" aria-label="Conditional sequence prediction path">
+    <li><strong>Encode</strong><span>Read the source through EOS; expose one fixed-width summary c. Source and target word counts may differ.</span></li>
+    <li><strong>Predict</strong><span>For each target prefix, distribute probability over the target vocabulary using c and the decoder state.</span></li>
+    <li><strong>Score</strong><span>Multiply the probabilities assigned to a supplied target sequence, including its final EOS.</span></li>
+  </ol>
+  <p class="mt-3">Think of c as a repeatedly transformed note about the source. The analogy does not imply a literal word list, perfect recall, or a recoverable copy. Its width stays fixed as the source grows.</p>
+  {view.mode === "expert" && <>
+    <div class="equation-panel" role="region" aria-label="Conditional probability and sequence objective" tabindex="0">
+      <div set:html={math(String.raw`p_t(k)=\frac{\exp(\ell_{t,k})}{\sum_{v\in V}\exp(\ell_{t,v})}`)} />
+      <div set:html={math(String.raw`p_\theta(y\mid x)=\prod_{t=1}^{T'}p_\theta(y_t\mid y_{<t},c(x))`)} />
+      <div set:html={math(String.raw`\max_\theta\frac{1}{N}\sum_{n=1}^{N}\log p_\theta(y_n\mid x_n)`)} />
+    </div>
+    <p>These compact teaching equations connect Cho’s vocabulary softmax and sequence product in §2.1, its source-conditioned decoder in §2.2, and mean log-likelihood in Eq. 4. Here T′ includes target EOS; ℓ denotes supplied vocabulary scores. The paper’s decoder updates its state from prior state, prior target symbol and c. The output-only ledger below calculates none of those recurrent updates.</p>
+    <p class="mt-3">Scoring uses the observed target prefixes. Generation feeds back selected target words; search for a high-scoring sequence is a further operation. The ledger performs no generation, search, training or translation.</p>
+  </>}
+  <a class="claim-link" href={`/journeys/recurrent-memory/${view.mode}/mikolov-2010/`}>Revisit recurrent word prediction in {view.mode} mode</a>
+  {bridge.blocks.flatMap((block) => block.evidence).map((evidence) => <EvidenceDetails evidence={evidence} />)}
+</section>

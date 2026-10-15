@@ -1,6 +1,6 @@
 # Encoder-decoder alignment slice contract
 
-The [third slice](third-vertical-slice.md) now has a complete planned [journey manifest](../data/journeys/encoder-decoder-alignment.json), a closed [fixture schema](../schemas/alignment-fixture.schema.json), six reviewed [arithmetic examples](../data/fixtures/encoder-decoder-alignment.json), and a pure [calculation engine](../src/lib/alignment-engine.ts). This closes the source/data gate. All four chapters remain planned; no learning or reference route is advertised as built.
+The [third slice](third-vertical-slice.md) now has a complete [journey manifest](../data/journeys/encoder-decoder-alignment.json), a closed [fixture schema](../schemas/alignment-fixture.schema.json), six reviewed [arithmetic examples](../data/fixtures/encoder-decoder-alignment.json), and a pure [calculation engine](../src/lib/alignment-engine.ts). This closes the source/data gate. Cho is now available in both modes, with a complete fourteen-claim reference. The other three chapters and both Graves bridges remain planned.
 
 ## Coverage and pedagogy
 
@@ -206,3 +206,12 @@ The following tables use the current corpus evidence locators. Full statements, 
 | `luong-2015-evidence-boundary` | `expert-luong-boundaries` | Experimental setup, results, and analysis scope, printed pp. 1416–1420 |
 
 Operation and formulation sources were inspected on 14 October 2026 for this contract. Existing corpus claim/source dates remain unchanged: this review did not re-audit every experiment, every revision or the current endpoint.
+
+
+## First chapter implementation
+
+The chooser and separate mode previews lead to Cho’s static chapter. Beginner tasks predict a phrase score, explain reset versus carry, and identify the evaluated system. Expert tasks reconstruct logits/normalizers and both reset placements, compare source revisions and dimensions, and audit all experimental conditions. Both retain every synthetic input and computed term through native disclosures, both reset alternatives, all four development/test BLEU rows, and the complete work reference. The conditional prerequisite returns to Mikolov in the same mode; the existing Mikolov work reference keeps its own chapter destination. Later stages receive no generated chapter or dedicated reference. Atlas availability follows the built manifest.
+
+The attachment locators for the reset and embedding discrepancies were corrected to §1.1 Encoder after a targeted primary-source recheck on 15 October 2026. The source-summary claim also gains the attachment’s terminal-state projection, so three claim dates and two source access dates are renewed. The corpus `asOf` is the upper bound of targeted checks; it does not renew the remaining claims or the endpoint survey.
+
+The chapter adds no hydration. Build audits enforce zero alignment client JavaScript and a 512 KiB compressed HTML ceiling. Browser acceptance covers static calculations with JavaScript disabled, native checkpoint/evidence activation, keyboard equation scrolling, all six new routes with disclosures expanded under axe, graphics-hidden/reduced-motion/forced-colors, closed-disclosure print, and 1440/768/640/320 reflow including numeric cells. These technical checks do not establish a learner advantage or replace a human screen-reader study.
