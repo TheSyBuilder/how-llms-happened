@@ -12,7 +12,7 @@ test("chooser, stage modes, records and atlas returns preserve destination ident
   await page.goto("/");
   await page.getByRole("link", { name: /Explore source summaries and alignment/ }).click();
   await page.getByRole("link", { name: "Preview the beginner path" }).click();
-  await expect(page.getByText("Chapter queued", { exact: true })).toHaveCount(3);
+  await expect(page.getByText("Chapter queued", { exact: true })).toHaveCount(2);
   await page.getByRole("link", { name: /Start with Cho et al/ }).click();
   await expect(page).toHaveURL(new RegExp(`${beginner}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("How can one phrase become a score for another?");
@@ -72,7 +72,7 @@ test("canonical results retain every component and both split values", async ({ 
   await expect(page.getByText(/main phrase plot says 5,000 points/)).toBeVisible();
   await expect(page.getByRole("region", { name: "Conditional probability and sequence objective" }).locator("math")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "One work, several consequential revisions." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Inspect Sutskever’s inline corpus record/ })).toHaveAttribute("href", /\/atlas\/expert\/#work-sutskever/);
+  await expect(page.getByRole("link", { name: /Continue to Sutskever in expert mode/ })).toHaveAttribute("href", /\/expert\/sutskever-2014\/$/);
 });
 
 test("native checkpoints, evidence and equation scrolling work with the keyboard", async ({ page }) => {

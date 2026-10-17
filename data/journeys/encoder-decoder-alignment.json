@@ -139,7 +139,7 @@
     {
       "slug": "sutskever-2014",
       "workId": "sutskever-vinyals-le-2014-sequence-to-sequence",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-sutskever-2014-reverse-then-translate",
         "expert": "expert-sutskever-2014-factorization-scale-and-results"

@@ -1,16 +1,19 @@
 ---
 import ChoChapter from "../../../../components/ChoChapter.astro";
+import SutskeverChapter from "../../../../components/SutskeverChapter.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { atlasHref } from "../../../../lib/atlas-data";
 import { getBuiltStagePaths, getStageView } from "../../../../lib/site-data";
 export function getStaticPaths() { return getBuiltStagePaths("encoder-decoder-alignment"); }
 const mode = Astro.params.mode;
 const slug = Astro.params.stage;
-if ((mode !== "beginner" && mode !== "expert") || slug !== "cho-2014") throw new Error("No alignment stage treatment defined.");
+if ((mode !== "beginner" && mode !== "expert") || (slug !== "cho-2014" && slug !== "sutskever-2014")) throw new Error("No alignment stage treatment defined.");
 const view = getStageView(mode, slug, "encoder-decoder-alignment");
+const cho = slug === "cho-2014";
+const label = cho ? "Cho encoder–decoder 2014" : "Sutskever sequence-to-sequence 2014";
 ---
-<BaseLayout title={`${mode === "beginner" ? "Beginner" : "Expert"}: Cho encoder–decoder 2014 — LLM Lineage`} description="Conditional phrase scoring, source-dated reset equations and component-labelled translation evidence." eyebrow={`${mode} journey`}>
-  <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/encoder-decoder-alignment/">Source summaries and alignment</a><span aria-hidden="true">/</span><a href={`/journeys/encoder-decoder-alignment/${mode}/`}>{mode}</a><span aria-hidden="true">/</span><span aria-current="page">Cho 2014</span></div>
+<BaseLayout title={`${mode === "beginner" ? "Beginner" : "Expert"}: ${label} — LLM Lineage`} description={cho ? "Conditional phrase scoring, source-dated reset equations and component-labelled translation evidence." : "Source reversal, the cited LSTM formulation and complete direct-generation versus rescoring evidence."} eyebrow={`${mode} journey`}>
+  <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/encoder-decoder-alignment/">Source summaries and alignment</a><span aria-hidden="true">/</span><a href={`/journeys/encoder-decoder-alignment/${mode}/`}>{mode}</a><span aria-hidden="true">/</span><span aria-current="page">{cho ? "Cho" : "Sutskever"} 2014</span></div>
   <div class="shell"><a class="atlas-return" href={atlasHref(mode, view.work.id)}>Locate this work in the {mode} atlas</a></div>
-  <ChoChapter view={view} />
+  {cho ? <ChoChapter view={view} /> : <SutskeverChapter view={view} />}
 </BaseLayout>

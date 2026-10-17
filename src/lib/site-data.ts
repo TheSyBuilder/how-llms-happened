@@ -5,7 +5,7 @@ import Ajv2020, { type AnySchema, type ErrorObject } from "ajv/dist/2020.js";
 
 import { validateCorpus } from "../../scripts/lib/validate-corpus.mjs";
 import { validateAlignmentContract } from "./alignment-contract.ts";
-import type { AlignmentFixture, ChoReset, ConditionalOutput } from "./alignment-engine.ts";
+import type { AlignmentFixture, ChoReset, ConditionalOutput, SourceReversal } from "./alignment-engine.ts";
 import {
   calculateChenScenario,
   type ChenFixture,
@@ -315,6 +315,7 @@ export type StageView = {
   peepholeScenario?: PeepholeScenario;
   conditionalOutput?: ConditionalOutput;
   choReset?: ChoReset;
+  sourceReversal?: SourceReversal;
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -965,6 +966,9 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     ...(stage.slug === "cho-2014" ? {
       conditionalOutput: alignmentFixture.scenarios.find((item): item is ConditionalOutput => item.kind === "conditional-output")!,
       choReset: alignmentFixture.scenarios.find((item): item is ChoReset => item.kind === "cho-reset")!,
+    } : {}),
+    ...(stage.slug === "sutskever-2014" ? {
+      sourceReversal: alignmentFixture.scenarios.find((item): item is SourceReversal => item.kind === "source-reversal")!,
     } : {}),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),

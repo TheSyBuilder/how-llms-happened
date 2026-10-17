@@ -29,11 +29,13 @@ test("the manifest binds all 65 claims, 21 versions and eight distinct mode obje
   }
 });
 
-test("only the reviewed Cho chapter becomes available in both modes and the source register", () => {
+test("the reviewed Cho and Sutskever chapters become available in both modes and the source register", () => {
   assert.equal(getJourneyOverview("encoder-decoder-alignment").stages.length, 4);
   assert.deepEqual(getBuiltStagePaths("encoder-decoder-alignment"), [
     { params: { mode: "beginner", stage: "cho-2014" } },
     { params: { mode: "expert", stage: "cho-2014" } },
+    { params: { mode: "beginner", stage: "sutskever-2014" } },
+    { params: { mode: "expert", stage: "sutskever-2014" } },
   ]);
   const cho = manifest.stages[0];
   assert.equal(cho.status, "built");
@@ -44,18 +46,28 @@ test("only the reviewed Cho chapter becomes available in both modes and the sour
     assert.deepEqual(view.conditionalOutput, fixture.scenarios.find((item) => item.kind === "conditional-output"));
     assert.deepEqual(view.choReset, fixture.scenarios.find((item) => item.kind === "cho-reset"));
     assert.deepEqual(view.interludes.map((item) => item.id), ["conditional-sequence-prerequisite"]);
-    assert.equal(view.next, undefined);
+    assert.equal(view.next.href, `/journeys/${manifest.id}/${mode}/sutskever-2014/`);
     assert.equal(view.alternateMode.href, `/journeys/${manifest.id}/${mode === "beginner" ? "expert" : "beginner"}/cho-2014/`);
     assert.equal(getWorkLearningRoutes(cho.workId)[mode].href, `/journeys/${manifest.id}/${mode}/cho-2014/`);
   }
   assert.match(getWorkLearningRoutes("mikolov-2010-recurrent-neural-language-model").expert.href, /recurrent-memory\/expert\/mikolov-2010\/$/);
-  for (const stage of manifest.stages.slice(1)) {
+  for (const stage of manifest.stages.slice(2)) {
     assert.equal(stage.status, "planned");
     assert.ok(!getBuiltReferenceWorkIds().includes(stage.workId));
     for (const mode of ["beginner", "expert"]) assert.throws(() => getStageView(mode, stage.slug, manifest.id), /not built yet/);
     assert.throws(() => getWorkLearningRoutes(stage.workId), /No built learning route/);
   }
-  assert.ok(!getBuiltReferenceWorkIds().includes("graves-2013-generating-sequences-recurrent-neural-networks"));
+  assert.ok(getBuiltReferenceWorkIds().includes("graves-2013-generating-sequences-recurrent-neural-networks"));
+  for (const mode of ["beginner", "expert"]) {
+    const view = getStageView(mode, "sutskever-2014", manifest.id);
+    assert.equal(view.evidence.length, 15);
+    assert.deepEqual(view.sourceReversal, fixture.scenarios.find((item) => item.kind === "source-reversal"));
+    assert.deepEqual(view.interludes.map((item) => item.id), ["graves-formulation-prerequisite"]);
+    assert.equal(view.previous.href, `/journeys/${manifest.id}/${mode}/cho-2014/`);
+    assert.equal(view.next, undefined);
+    assert.equal(getWorkLearningRoutes(view.work.id)[mode].href, `/journeys/${manifest.id}/${mode}/sutskever-2014/`);
+    assert.equal(getWorkLearningRoutes("graves-2013-generating-sequences-recurrent-neural-networks")[mode].href, `/journeys/${manifest.id}/${mode}/sutskever-2014/#graves-formulation-prerequisite`);
+  }
 });
 
 test("conditional and Graves bridges retain separate source scopes and owning stages", () => {
