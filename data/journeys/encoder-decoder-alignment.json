@@ -276,7 +276,7 @@
     {
       "slug": "bahdanau-2014-2015",
       "workId": "bahdanau-cho-bengio-2014-neural-machine-translation",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-bahdanau-2014-follow-the-focus",
         "expert": "expert-bahdanau-2014-attention-objective-and-evidence"

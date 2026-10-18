@@ -5,7 +5,7 @@ import Ajv2020, { type AnySchema, type ErrorObject } from "ajv/dist/2020.js";
 
 import { validateCorpus } from "../../scripts/lib/validate-corpus.mjs";
 import { validateAlignmentContract } from "./alignment-contract.ts";
-import type { AlignmentFixture, ChoReset, ConditionalOutput, SourceReversal } from "./alignment-engine.ts";
+import type { AlignmentFixture, BahdanauRead, ChoReset, ConditionalOutput, SourceReversal } from "./alignment-engine.ts";
 import {
   calculateChenScenario,
   type ChenFixture,
@@ -316,6 +316,7 @@ export type StageView = {
   conditionalOutput?: ConditionalOutput;
   choReset?: ChoReset;
   sourceReversal?: SourceReversal;
+  bahdanauReads?: BahdanauRead[];
   previous?: RouteRef;
   next?: RouteRef;
   alternateMode: RouteRef;
@@ -970,6 +971,9 @@ export function getStageView(mode: Mode, slug: string, journeyId: JourneyId = "s
     ...(stage.slug === "sutskever-2014" ? {
       sourceReversal: alignmentFixture.scenarios.find((item): item is SourceReversal => item.kind === "source-reversal")!,
     } : {}),
+    ...(stage.slug === "bahdanau-2014-2015" ? {
+      bahdanauReads: alignmentFixture.scenarios.filter((item): item is BahdanauRead => item.kind === "bahdanau-read"),
+    } : {}),
     ...(previous === undefined ? {} : { previous }),
     ...(next === undefined ? {} : { next }),
     alternateMode: {
@@ -1023,6 +1027,21 @@ export function getWorkLearningRoutes(workId: string): Record<Mode, RouteRef> {
     }
   }
   throw new Error(`No built learning route for work: ${workId}`);
+}
+
+export function getAdditionalWorkLearningContexts(workId: string): Array<{ id: string; title: string; routes: Record<Mode, RouteRef> }> {
+  const primary = getWorkLearningRoutes(workId);
+  return [manifest, recurrentManifest, alignmentManifest].flatMap((journey) => (journey.interludes ?? [])
+    .filter((item) => item.workIds.includes(workId)
+      && journey.stages.some((stage) => stage.slug === item.stageSlug && stage.status === "built" && stage.workId !== workId)
+      && `${stageRoute("beginner", item.stageSlug, journey)}#${item.id}` !== primary.beginner.href)
+    .map((item) => ({
+      id: item.id, title: item.title,
+      routes: {
+        beginner: { href: `${stageRoute("beginner", item.stageSlug, journey)}#${item.id}`, label: `Beginner explanation: ${item.title}` },
+        expert: { href: `${stageRoute("expert", item.stageSlug, journey)}#${item.id}`, label: `Expert reconstruction: ${item.title}` },
+      },
+    })));
 }
 
 export function getFixtureForTests(): GoodFixture {

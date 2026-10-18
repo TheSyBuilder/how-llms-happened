@@ -795,6 +795,13 @@
 
 @layer components {
   .alignment-workbench > .mass-ledger + .mass-ledger { margin-top: var(--space-5); }
+  .attention-shares th:first-child { width: 24%; }
+  .attention-share-bar { display: block; height: 0.3rem; background: var(--rule); margin-top: 0.35rem; }
+  .attention-share-bar > span { display: block; height: 100%; background: var(--rust); }
+  .alignment-raw-data { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.75rem; line-height: 1.5; margin-block: var(--space-3); }
+  .bahdanau-safeguards { align-items: start; gap: var(--space-5); }
+  .bahdanau-conclusion { grid-column: 1 / -1; }
+  .bahdanau-results td { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .alignment-evidence { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 5.5rem); }
   .alignment-evidence > section { min-width: 0; }
   .alignment-result-section, .alignment-boundaries, .alignment-progression { grid-column: 1 / -1; }

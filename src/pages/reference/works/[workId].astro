@@ -1,7 +1,7 @@
 ---
 import EvidenceDetails from "../../../components/EvidenceDetails.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { getBuiltReferenceWorkIds, getWorkLearningRoutes, getWorkReference } from "../../../lib/site-data";
+import { getAdditionalWorkLearningContexts, getBuiltReferenceWorkIds, getWorkLearningRoutes, getWorkReference } from "../../../lib/site-data";
 
 export function getStaticPaths() {
   return getBuiltReferenceWorkIds().map((workId) => ({ params: { workId } }));
@@ -13,6 +13,7 @@ if (workId === undefined) {
 }
 const record = getWorkReference(workId);
 const learningRoutes = getWorkLearningRoutes(workId);
+const contexts = getAdditionalWorkLearningContexts(workId);
 ---
 
 <BaseLayout
@@ -37,6 +38,8 @@ const learningRoutes = getWorkLearningRoutes(workId);
         <a href={`/atlas/expert/#work-${workId}`}>Locate this work in the atlas</a>
       </div>
     </header>
+
+    {contexts.length > 0 && <nav class="reference-section" aria-label="Additional learning contexts"><h2>Continue the source comparison</h2>{contexts.map((context) => <div class="mt-3"><p>{context.title}</p><p><a href={context.routes.beginner.href} aria-label={context.routes.beginner.label}>Beginner explanation</a> · <a href={context.routes.expert.href} aria-label={context.routes.expert.label}>Expert reconstruction</a></p></div>)}</nav>}
 
     <section class="reference-section reference-grid" aria-labelledby="identity-heading">
       <div><p class="eyebrow">Identity</p><h2 id="identity-heading" class="mt-3">Canonical record</h2></div>

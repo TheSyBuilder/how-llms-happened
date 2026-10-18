@@ -51,7 +51,7 @@ test("Elman shares factual identity while mode tasks and source bindings differ"
 
 test("every built work links back to its own chapter and journey", () => {
   const workIds = getBuiltReferenceWorkIds();
-  assert.equal(workIds.length, 14);
+  assert.equal(workIds.length, 15);
   for (const journeyId of ["smoothing", "recurrent-memory", "encoder-decoder-alignment"]) {
     for (const stage of getJourneyOverview(journeyId).stages.filter((item) => item.status === "built")) {
       const routes = getWorkLearningRoutes(stage.work.id);

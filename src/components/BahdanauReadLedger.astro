@@ -1,0 +1,43 @@
+---
+import { calculateBahdanauRead, type BahdanauRead } from "../lib/alignment-engine";
+import type { Mode } from "../lib/site-data";
+interface Props { scenario: BahdanauRead; mode: Mode }
+const { scenario, mode } = Astro.props;
+const reads = calculateBahdanauRead(scenario);
+const decimals = mode === "beginner" ? 3 : 6;
+const f = (n: number) => (Math.abs(n) < 0.5 * 10 ** -decimals ? 0 : n).toFixed(decimals);
+const pair = (v: number[]) => `[${v.map(f).join(", ")}]`;
+const main = scenario.case === "changing-query";
+const title = main ? "Same source. A different read." : scenario.case === "equal-energies" ? "Equal energies give equal shares." : "Identical annotations keep the context fixed.";
+const headingId = `${scenario.id}-heading`;
+const caseLabel = main ? "Changing prior state" : scenario.case === "equal-energies" ? "Equal energies" : "Identical annotations";
+---
+<section class="mass-ledger alignment-ledger bahdanau-ledger" aria-labelledby={headingId} data-read-case={scenario.case}>
+  <header class="ledger-header"><div><p class="eyebrow">Synthetic example · {main ? "two supplied states" : "safeguard"}</p><h2 id={headingId}>{title}</h2></div><p class="ledger-folio">v5 source read<br />Source positions</p></header>
+  <div class="ledger-prompt"><p><strong>{mode === "beginner" ? "Predict first." : "Reconstruct first."}</strong> {main ? (mode === "beginner" ? "If the source stays fixed, which quantities can change when the decoder’s prior state changes?" : "Recover A’s energy, the source denominator and the first context coordinate at each supplied state.") : scenario.case === "equal-energies" ? "Can different prior states still produce the same context? Here only the score-output vector becomes zero." : "Can the context change when every source annotation is identical? Here every annotation is [0.4, −0.2]."}</p></div>
+  <div class="trace-intro"><p>{scenario.description}</p><p class="provenance-note mt-3">The source tokens, prefixes, states, matrices and annotations are authored inputs. X is a supplied prefix label, not a generated prediction. No encoder, recurrent state update, output-word softmax or training run is evaluated. Coordinates stand in for contextual encoder states, not isolated word embeddings.</p></div>
+  <div class="trace-history">
+    <table class="trace-table alignment-coordinates"><caption>{caseLabel} · unchanged annotation bank</caption><thead><tr><th scope="col">Source position</th><th scope="col">Forward</th><th scope="col">Backward</th></tr></thead><tbody>{scenario.annotations.map((a) => <tr><th scope="row">{a.token}</th><td>{f(a.forward[0]!)}</td><td>{f(a.backward[0]!)}</td></tr>)}</tbody></table>
+    <p class="mt-3">Each annotation concatenates its forward and backward coordinates. Each read has two coordinates, however many source positions the bank contains.</p>
+    <details class="trace-arithmetic mt-3"><summary>Inspect {caseLabel.toLowerCase()} scorer inputs and shapes</summary><p class="mt-3">The prior state has width 1. Wₐ is 2 × 1; Uₐ is 2 × 2; vₐ has width 2. The scorer uses tanh after adding the projected state and annotation, then a dot product with vₐ. These small shapes are teaching choices, not historical model dimensions.</p><dl class="stage-meta mt-3"><div><dt>Wₐ rows</dt><dd>{scenario.queryMatrix.map(pair).join("; ")}</dd></div><div><dt>Uₐ rows</dt><dd>{scenario.annotationMatrix.map(pair).join("; ")}</dd></div><div><dt>vₐ</dt><dd>{pair(scenario.scoreVector)}</dd></div></dl></details>
+  </div>
+  {reads.map((read, index) => {
+    const step = scenario.steps[index]!;
+    return <section class="trace-history" aria-labelledby={`${scenario.id}-${read.id}`}>
+      <p class="kicker">Read {index + 1} · supplied prior state {pair(step.priorState)}</p><h3 id={`${scenario.id}-${read.id}`}>Prefix: {step.prefix.length === 0 ? "empty" : step.prefix.join(" ")}</h3>
+      <table class="trace-table attention-shares"><caption>{caseLabel} · read {index + 1} · source energies and weights</caption><thead><tr><th scope="col">Source</th><th scope="col">Energy e</th><th scope="col">Weight α</th></tr></thead><tbody>{scenario.annotations.map((a, j) => <tr><th scope="row">{a.token}</th><td>{f(read.energies[j]!)}</td><td><span>{f(read.weights[j]!)}</span><span class="attention-share-bar" aria-hidden="true"><span style={`width:${read.weights[j]! * 100}%`}></span></span></td></tr>)}</tbody></table>
+      <p class="alignment-normalizer">Weights sum to 1 before rounding. The denominator includes A, B and C for this read; no target-vocabulary item enters it.</p>
+      <table class="trace-table alignment-coordinates mt-3"><caption>{caseLabel} · read {index + 1} · signed weighted contributions</caption><thead><tr><th scope="col">α × annotation</th><th scope="col">Coord. 1</th><th scope="col">Coord. 2</th></tr></thead><tbody>{scenario.annotations.map((a, j) => <tr><th scope="row">{a.token}</th>{read.contributions[j]!.map((v) => <td>{f(v)}</td>)}</tr>)}<tr class="trace-result"><th scope="row">Sum → context</th>{read.context.map((v) => <td>{f(v)}</td>)}</tr></tbody></table>
+      <p class="mt-3">A negative coordinate contribution comes from a negative annotation coordinate. The weights themselves are nonnegative.</p>
+      <details class="trace-arithmetic mt-3"><summary>Inspect {caseLabel.toLowerCase()} read {index + 1} calculation</summary>
+        <p class="mt-3">Projected prior state Wₐsᵢ₋₁: {pair(read.queryProjection)}. Maximum energy m = {f(read.energyMaximum)}. Subtracting m before exponentiation preserves the softmax weights and avoids unnecessary numerical overflow.</p>
+        <table class="trace-table alignment-coordinates mt-3"><caption>{caseLabel} · read {index + 1} · complete scorer terms</caption><thead><tr><th scope="col">Term by source</th><th scope="col">Coord. 1</th><th scope="col">Coord. 2</th></tr></thead><tbody>{scenario.annotations.flatMap((a, j) => [[`${a.token} · Uₐh`, read.annotationProjections[j]!], [`${a.token} · + Wₐs`, read.preactivations[j]!], [`${a.token} · tanh`, read.activations[j]!]].map(([label, values]) => <tr><th scope="row">{label}</th>{(values as number[]).map((v) => <td>{f(v)}</td>)}</tr>))}</tbody></table>
+        <table class="trace-table mt-3"><caption>{caseLabel} · read {index + 1} · stable source softmax</caption><thead><tr><th scope="col">Source</th><th scope="col">exp(e − m)</th></tr></thead><tbody>{scenario.annotations.map((a, j) => <tr><th scope="row">{a.token}</th><td>{f(read.shiftedExponentials[j]!)}</td></tr>)}<tr class="trace-result"><th scope="row">Sum → denominator</th><td>{f(read.normalizer)}</td></tr></tbody></table>
+        <p class="mt-3">Divide each shifted exponential by {f(read.normalizer)} to obtain its weight. Multiply that weight by both coordinates of its annotation, then sum coordinatewise. Display rounding never feeds a later operation.</p>
+      </details>
+    </section>;
+  })}
+  <div class="trace-comparison"><details class="prediction-reveal"><summary>Check {caseLabel.toLowerCase()} prediction</summary><p>{main ? "The annotation bank and scorer parameters stay fixed. The projected prior state, energies, source weights and context are recomputed. C remains the highest-weight position in both reads here, even though its share falls; a different step need not change the top position." : scenario.case === "equal-energies" ? "With vₐ = [0, 0], all energies are zero. Each of the three positions receives 1/3 at both steps, and both contexts are the arithmetic mean [0.3, 1/6]. Different query projections need not produce different weights." : "All three annotations project identically. Their energies are equal within each read, so all weights are 1/3. The energies can change between reads, but the context remains [0.4, −0.2]. Differing weights must not be fabricated for this scorer."}</p><p class="mt-3">Neither a large weight nor a changed context proves a correct word alignment. These reads evaluate arithmetic only.</p></details>
+    <details class="trace-arithmetic mt-3"><summary>Inspect {caseLabel.toLowerCase()} original inputs and unrounded expected outputs</summary><pre class="alignment-raw-data">{JSON.stringify(scenario, null, 2)}</pre><p>The expected values use independent arithmetic. Calculations retain full precision; only the displayed ledgers are rounded.</p></details>
+  </div>
+</section>

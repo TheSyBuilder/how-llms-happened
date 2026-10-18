@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import Ajv2020 from "ajv/dist/2020.js";
 import { ALIGNMENT_WORK_IDS, validateAlignmentContract } from "../src/lib/alignment-contract.ts";
-import { getBuiltReferenceWorkIds, getBuiltStagePaths, getJourneyOverview, getStageView, getWorkLearningRoutes } from "../src/lib/site-data.ts";
+import { getAdditionalWorkLearningContexts, getBuiltReferenceWorkIds, getBuiltStagePaths, getJourneyOverview, getStageView, getWorkLearningRoutes } from "../src/lib/site-data.ts";
 
 const read = (path) => JSON.parse(readFileSync(new URL(path, import.meta.url), "utf8"));
 const corpus = read("../data/corpus.json");
@@ -29,13 +29,15 @@ test("the manifest binds all 65 claims, 21 versions and eight distinct mode obje
   }
 });
 
-test("the reviewed Cho and Sutskever chapters become available in both modes and the source register", () => {
+test("the reviewed Cho, Sutskever and Bahdanau chapters become available with their own fixtures and source records", () => {
   assert.equal(getJourneyOverview("encoder-decoder-alignment").stages.length, 4);
   assert.deepEqual(getBuiltStagePaths("encoder-decoder-alignment"), [
     { params: { mode: "beginner", stage: "cho-2014" } },
     { params: { mode: "expert", stage: "cho-2014" } },
     { params: { mode: "beginner", stage: "sutskever-2014" } },
     { params: { mode: "expert", stage: "sutskever-2014" } },
+    { params: { mode: "beginner", stage: "bahdanau-2014-2015" } },
+    { params: { mode: "expert", stage: "bahdanau-2014-2015" } },
   ]);
   const cho = manifest.stages[0];
   assert.equal(cho.status, "built");
@@ -51,7 +53,7 @@ test("the reviewed Cho and Sutskever chapters become available in both modes and
     assert.equal(getWorkLearningRoutes(cho.workId)[mode].href, `/journeys/${manifest.id}/${mode}/cho-2014/`);
   }
   assert.match(getWorkLearningRoutes("mikolov-2010-recurrent-neural-language-model").expert.href, /recurrent-memory\/expert\/mikolov-2010\/$/);
-  for (const stage of manifest.stages.slice(2)) {
+  for (const stage of manifest.stages.slice(3)) {
     assert.equal(stage.status, "planned");
     assert.ok(!getBuiltReferenceWorkIds().includes(stage.workId));
     for (const mode of ["beginner", "expert"]) assert.throws(() => getStageView(mode, stage.slug, manifest.id), /not built yet/);
@@ -64,9 +66,28 @@ test("the reviewed Cho and Sutskever chapters become available in both modes and
     assert.deepEqual(view.sourceReversal, fixture.scenarios.find((item) => item.kind === "source-reversal"));
     assert.deepEqual(view.interludes.map((item) => item.id), ["graves-formulation-prerequisite"]);
     assert.equal(view.previous.href, `/journeys/${manifest.id}/${mode}/cho-2014/`);
-    assert.equal(view.next, undefined);
+    assert.equal(view.next.href, `/journeys/${manifest.id}/${mode}/bahdanau-2014-2015/`);
     assert.equal(getWorkLearningRoutes(view.work.id)[mode].href, `/journeys/${manifest.id}/${mode}/sutskever-2014/`);
     assert.equal(getWorkLearningRoutes("graves-2013-generating-sequences-recurrent-neural-networks")[mode].href, `/journeys/${manifest.id}/${mode}/sutskever-2014/#graves-formulation-prerequisite`);
+  }
+});
+
+test("Bahdanau keeps all claims, both read safeguards and the separate Graves comparison in each mode", () => {
+  const workId = ALIGNMENT_WORK_IDS[2];
+  assert.ok(getBuiltReferenceWorkIds().includes(workId));
+  const contexts = getAdditionalWorkLearningContexts("graves-2013-generating-sequences-recurrent-neural-networks");
+  assert.deepEqual(contexts.map((item) => item.id), ["graves-window-comparison"]);
+  for (const mode of ["beginner", "expert"]) {
+    const view = getStageView(mode, "bahdanau-2014-2015", manifest.id);
+    assert.equal(view.evidence.length, 19);
+    assert.deepEqual(view.bahdanauReads, fixture.scenarios.filter((item) => item.kind === "bahdanau-read"));
+    assert.deepEqual(view.bahdanauReads.map((item) => item.case), ["changing-query", "equal-energies", "identical-annotations"]);
+    assert.equal(view.sourceReversal, undefined);
+    assert.deepEqual(view.interludes.map((item) => item.id), ["graves-window-comparison"]);
+    assert.equal(view.previous.href, `/journeys/${manifest.id}/${mode}/sutskever-2014/`);
+    assert.equal(view.next, undefined);
+    assert.equal(getWorkLearningRoutes(workId)[mode].href, `/journeys/${manifest.id}/${mode}/bahdanau-2014-2015/`);
+    assert.equal(contexts[0].routes[mode].href, `/journeys/${manifest.id}/${mode}/bahdanau-2014-2015/#graves-window-comparison`);
   }
 });
 
