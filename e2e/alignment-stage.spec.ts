@@ -12,7 +12,7 @@ test("chooser, stage modes, records and atlas returns preserve destination ident
   await page.goto("/");
   await page.getByRole("link", { name: /Explore source summaries and alignment/ }).click();
   await page.getByRole("link", { name: "Preview the beginner path" }).click();
-  await expect(page.getByText("Chapter queued", { exact: true })).toHaveCount(1);
+  await expect(page.getByText("Chapter queued", { exact: true })).toHaveCount(0);
   await page.getByRole("link", { name: /Start with Cho et al/ }).click();
   await expect(page).toHaveURL(new RegExp(`${beginner}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("How can one phrase become a score for another?");

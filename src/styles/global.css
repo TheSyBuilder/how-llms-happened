@@ -801,6 +801,15 @@
   .alignment-raw-data { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.75rem; line-height: 1.5; margin-block: var(--space-3); }
   .bahdanau-safeguards { align-items: start; gap: var(--space-5); }
   .bahdanau-conclusion { grid-column: 1 / -1; }
+  .luong-conclusion { grid-column: 1 / -1; }
+  .luong-support-rule { border-top: 1px solid var(--rule); padding-top: var(--space-4); margin-top: var(--space-4); }
+  .luong-support-rule h3 { margin-bottom: var(--space-3); }
+  .luong-rule { font-family: var(--mono); font-size: var(--step--1); margin-top: var(--space-3); color: var(--blue); }
+  .luong-results { max-width: 62rem; }
+  .luong-results th:first-child { width: 66%; }
+  .luong-sweep th:first-child { width: 40%; }
+  .luong-results td, .luong-sweep td { font-family: var(--mono); white-space: nowrap; }
+  .luong-gain { display: block; color: var(--ink-soft); }
   .bahdanau-results td { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .alignment-evidence { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 5.5rem); }
   .alignment-evidence > section { min-width: 0; }

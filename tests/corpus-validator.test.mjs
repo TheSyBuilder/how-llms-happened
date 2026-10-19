@@ -9039,6 +9039,11 @@ test("retains Luong attention with versioned formulas and controlled result endp
   assert.ok(englishGerman?.limitations.some((value) => value.includes("0.9 BLEU")));
   for (const value of ["25.9", "eight-model", "unknown-word", "NIST"])
     assert.ok(wmt15?.statement.includes(value));
+  assert.equal(wmt15?.evidence[0]?.locator.pageStart, 1417);
+  assert.equal(wmt15?.evidence[0]?.locator.pageEnd, 1417);
+  assert.ok(dataAndEvaluation?.limitations.some((value) => value.includes("does not separately identify its BLEU script or test filename")));
+  assert.ok(architectureResults?.limitations.some((value) => value.includes("displayed endpoints differ by 1.6")));
+  assert.ok(alignment?.limitations.some((value) => value.includes("predicted target word for location scoring") && value.includes("preceding input word for content scoring")));
   for (const value of [
     "508",
     "forced reference decoding",

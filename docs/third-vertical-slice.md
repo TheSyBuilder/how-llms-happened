@@ -6,7 +6,7 @@ The third journey will explain how next-word prediction becomes source-condition
 
 Teaching order is Cho, Sutskever, Bahdanau, then Luong. This is an editorial prerequisite order. The public posting order is Cho on 3 June 2014, Bahdanau on 1 September, Sutskever on 10 September, and Luong on 17 August 2015. Posting dates do not establish private development order. The first Sutskever manuscript explicitly describes parallel development with Cho. [Cho record](https://arxiv.org/abs/1406.1078), [Bahdanau record](https://arxiv.org/abs/1409.0473), [Sutskever version 1](https://arxiv.org/pdf/1409.3215v1), [Luong record](https://arxiv.org/abs/1508.04025).
 
-This decision establishes scope and pedagogy. All four works have inline atlas records and a complete manifest and reviewed arithmetic in the [source/fixture contract](alignment-slice-contract.md). Cho now has beginner/expert teaching routes, the conditional prerequisite and a fourteen-claim dedicated work page; the later three stages and two Graves bridges remain queued. The [alignment interaction brief](alignment-interaction.md) defines the static treatment and one conditional enhancement.
+This decision establishes scope and pedagogy. All four works have inline atlas records and a complete manifest and reviewed arithmetic in the [source/fixture contract](alignment-slice-contract.md). All four stages now have beginner/expert teaching routes and complete dedicated work records. The conditional prerequisite and both Graves bridges are built. Numerical local-p remains outside the admitted fixtures. The [alignment interaction brief](alignment-interaction.md) defines the static treatment and one conditional enhancement.
 
 ## Candidate comparison
 

@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-10-15",
+  "asOf": "2026-10-19",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -27451,7 +27451,7 @@
       ],
       "title": "Effective Approaches to Attention-based Neural Machine Translation arXiv version 5 full text",
       "url": "https://arxiv.org/pdf/1508.04025v5",
-      "accessDate": "2026-08-22",
+      "accessDate": "2026-10-19",
       "sourceClass": "primary-full-text",
       "authority": "institutional-repository",
       "versionIds": [
@@ -27494,7 +27494,7 @@
       ],
       "title": "Official ACL full text of Effective Approaches to Attention-based Neural Machine Translation",
       "url": "https://aclanthology.org/D15-1166.pdf",
-      "accessDate": "2026-08-22",
+      "accessDate": "2026-10-19",
       "sourceClass": "primary-full-text",
       "authority": "publisher",
       "versionIds": [
@@ -48290,10 +48290,11 @@
       ],
       "limitations": [
         "Tokenized multi-bleu and NIST mteval scores are not interchangeable, so results from Tables 1 and 2 should not be directly differenced.",
-        "Sentence filtering and fixed vocabularies narrow the length and rare-word regime represented by the reported scores."
+        "Sentence filtering and fixed vocabularies narrow the length and rare-word regime represented by the reported scores.",
+        "The WMT’15 German-to-English Table 3 caption refers to Table 1 but does not separately identify its BLEU script or test filename; the setup names both scripts. Preserve its reported table condition instead of inferring cross-table metric equivalence."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-22"
+      "checkedDate": "2026-10-19"
     },
     {
       "id": "luong-2015-training-regime",
@@ -48379,10 +48380,10 @@
         {
           "sourceId": "luong-2015-acl-full-text",
           "locator": {
-            "label": "WMT’15 NIST BLEU comparison, printed p. 1418",
+            "label": "WMT’15 NIST BLEU comparison, printed p. 1417",
             "section": "4.2 English-German Results",
-            "pageStart": 1418,
-            "pageEnd": 1418,
+            "pageStart": 1417,
+            "pageEnd": 1417,
             "table": "2"
           },
           "support": "The table and adjacent prose identify the metric, ensemble, unknown replacement, score, and comparator."
@@ -48393,7 +48394,7 @@
         "It uses NIST BLEU and cannot be directly compared with the tokenized BLEU sequence in Table 1."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-22"
+      "checkedDate": "2026-10-19"
     },
     {
       "id": "luong-2015-german-english-results",
@@ -48451,10 +48452,11 @@
       ],
       "limitations": [
         "Limited resources prevented a complete factorial comparison, so untested cells and failed local-m/dot runs block broad score-function rankings.",
-        "Unknown replacement changes the reported endpoint and is not an attention component."
+        "Unknown replacement changes the reported endpoint and is not an attention component.",
+        "The local-p/dot row prints 18.0 before and 19.6 after unknown replacement but labels the gain +1.9; the displayed endpoints differ by 1.6. This discrepancy is retained without selecting a replacement value."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-22"
+      "checkedDate": "2026-10-19"
     },
     {
       "id": "luong-2015-long-sentence-boundary",
@@ -48510,10 +48512,11 @@
       ],
       "limitations": [
         "The Berkeley comparison is not controlled for training data or one-to-many link extraction.",
+        "Proceedings footnote 14 assigns the current alignment vector to the predicted target word for location scoring but to the preceding input word for content scoring; link extraction must retain that timing convention.",
         "The authors note poor correlation between alignment and translation scores, so lower AER is not interchangeable with better BLEU or explanation quality."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-22"
+      "checkedDate": "2026-10-19"
     },
     {
       "id": "luong-2015-version-boundary",

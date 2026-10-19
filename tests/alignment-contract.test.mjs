@@ -29,7 +29,7 @@ test("the manifest binds all 65 claims, 21 versions and eight distinct mode obje
   }
 });
 
-test("the reviewed Cho, Sutskever and Bahdanau chapters become available with their own fixtures and source records", () => {
+test("all four reviewed alignment chapters expose their source records and owning routes", () => {
   assert.equal(getJourneyOverview("encoder-decoder-alignment").stages.length, 4);
   assert.deepEqual(getBuiltStagePaths("encoder-decoder-alignment"), [
     { params: { mode: "beginner", stage: "cho-2014" } },
@@ -38,6 +38,8 @@ test("the reviewed Cho, Sutskever and Bahdanau chapters become available with th
     { params: { mode: "expert", stage: "sutskever-2014" } },
     { params: { mode: "beginner", stage: "bahdanau-2014-2015" } },
     { params: { mode: "expert", stage: "bahdanau-2014-2015" } },
+    { params: { mode: "beginner", stage: "luong-2015" } },
+    { params: { mode: "expert", stage: "luong-2015" } },
   ]);
   const cho = manifest.stages[0];
   assert.equal(cho.status, "built");
@@ -53,12 +55,6 @@ test("the reviewed Cho, Sutskever and Bahdanau chapters become available with th
     assert.equal(getWorkLearningRoutes(cho.workId)[mode].href, `/journeys/${manifest.id}/${mode}/cho-2014/`);
   }
   assert.match(getWorkLearningRoutes("mikolov-2010-recurrent-neural-language-model").expert.href, /recurrent-memory\/expert\/mikolov-2010\/$/);
-  for (const stage of manifest.stages.slice(3)) {
-    assert.equal(stage.status, "planned");
-    assert.ok(!getBuiltReferenceWorkIds().includes(stage.workId));
-    for (const mode of ["beginner", "expert"]) assert.throws(() => getStageView(mode, stage.slug, manifest.id), /not built yet/);
-    assert.throws(() => getWorkLearningRoutes(stage.workId), /No built learning route/);
-  }
   assert.ok(getBuiltReferenceWorkIds().includes("graves-2013-generating-sequences-recurrent-neural-networks"));
   for (const mode of ["beginner", "expert"]) {
     const view = getStageView(mode, "sutskever-2014", manifest.id);
@@ -85,7 +81,7 @@ test("Bahdanau keeps all claims, both read safeguards and the separate Graves co
     assert.equal(view.sourceReversal, undefined);
     assert.deepEqual(view.interludes.map((item) => item.id), ["graves-window-comparison"]);
     assert.equal(view.previous.href, `/journeys/${manifest.id}/${mode}/sutskever-2014/`);
-    assert.equal(view.next, undefined);
+    assert.equal(view.next.href, `/journeys/${manifest.id}/${mode}/luong-2015/`);
     assert.equal(getWorkLearningRoutes(workId)[mode].href, `/journeys/${manifest.id}/${mode}/bahdanau-2014-2015/`);
     assert.equal(contexts[0].routes[mode].href, `/journeys/${manifest.id}/${mode}/bahdanau-2014-2015/#graves-window-comparison`);
   }
@@ -106,6 +102,26 @@ test("conditional and Graves bridges retain separate source scopes and owning st
   const formulationClaims = manifest.interludes[1].blocks.expert.flatMap((block) => block.claimIds);
   assert.ok(formulationClaims.includes("sutskever-2014-graves-lstm-formulation"));
   assert.ok(!formulationClaims.includes("graves-2013-monotonic-window-mechanism"));
+});
+
+test("Luong exposes the full claim inventory and final-stage returns without borrowing a numerical fixture", () => {
+  const stage = manifest.stages[3];
+  assert.equal(stage.status, "built");
+  assert.ok(getBuiltReferenceWorkIds().includes(stage.workId));
+  const expected = corpus.claims.filter((claim) => claim.workId === stage.workId).map((claim) => claim.id).sort();
+  assert.equal(expected.length, 17);
+  for (const mode of ["beginner", "expert"]) {
+    const view = getStageView(mode, stage.slug, manifest.id);
+    assert.deepEqual(view.evidence.map((e) => e.claimId).sort(), expected);
+    assert.deepEqual(view.interludes, []);
+    assert.equal(view.bahdanauReads, undefined);
+    assert.equal(view.sourceReversal, undefined);
+    assert.equal(view.previous.href, `/journeys/${manifest.id}/${mode}/bahdanau-2014-2015/`);
+    assert.equal(view.next, undefined);
+    assert.equal(view.alternateMode.href, `/journeys/${manifest.id}/${mode === "beginner" ? "expert" : "beginner"}/luong-2015/`);
+    assert.equal(getWorkLearningRoutes(stage.workId)[mode].href, `/journeys/${manifest.id}/${mode}/luong-2015/`);
+  }
+  assert.ok(!fixture.scenarios.some((scenario) => scenario.sourceStage === stage.slug));
 });
 
 test("teaching order neither rewrites posting order nor creates a causal parallel edge", () => {

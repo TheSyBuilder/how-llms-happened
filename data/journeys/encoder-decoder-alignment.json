@@ -419,7 +419,7 @@
     {
       "slug": "luong-2015",
       "workId": "luong-pham-manning-2015-effective-attention-nmt",
-      "status": "planned",
+      "status": "built",
       "objectiveIds": {
         "beginner": "beginner-luong-2015-global-local-and-history",
         "expert": "expert-luong-2015-scores-windows-and-evidence"
