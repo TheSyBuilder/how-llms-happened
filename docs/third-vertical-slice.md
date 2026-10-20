@@ -22,7 +22,7 @@ Counts derive from the admitted [corpus](../data/corpus.json), including target-
 
 The two-work Cho/Bahdanau alternative is smaller but omits the successful fixed-vector direct-translation branch and leaves Luong's LSTM substrate unexplained. A three-work treatment ending at Bahdanau supplies the key retrieval idea, but Luong adds a bounded test of what changes when source coverage, score choice and alignment history differ. The four-work sequence therefore earns its extra scope through explicit learner tasks.
 
-The broader ten-work attention/convergence candidate in the [second-slice comparison](second-vertical-slice.md#readiness-comparison) remains deferred. External-memory hops, intra-attention, recurrence-free comparison, convolutions, positional representations and the Transformer each introduce a new learning job. They should enter later slices through their own evidence rather than turn this journey into a compressed list of predecessors.
+The broader ten-work attention/convergence candidate in the [second-slice comparison](second-vertical-slice.md#readiness-comparison) is now subdivided. The planned [fourth slice](fourth-vertical-slice.md) selects Parikh, ByteNet, ConvS2S and the Transformer with bounded Cheng and external-memory comparisons. Its separate source/fixture gate keeps those learning jobs outside this completed alignment journey.
 
 ## Prerequisite bridge
 
