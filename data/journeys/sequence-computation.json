@@ -1,0 +1,525 @@
+{
+  "$schema": "../../schemas/journey.schema.json",
+  "id": "sequence-computation",
+  "slug": "sequence-computation",
+  "title": "Sequence computation without recurrence",
+  "question": "Which positions contribute, how do they contribute, and what still waits for an earlier step?",
+  "estimatedMinutes": {
+    "beginner": 50,
+    "expert": 95
+  },
+  "stages": [
+    {
+      "slug": "parikh-2016",
+      "workId": "parikh-2016-decomposable-attention-nli",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-parikh-2016-attend-compare-aggregate",
+        "expert": "expert-parikh-2016-mechanism-complexity-and-versions"
+      },
+      "contribution": {
+        "text": "Follow two sentence-pair reads into a class decision.",
+        "claimIds": [
+          "parikh-2016-attend-soft-alignment",
+          "parikh-2016-compare-and-aggregate"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-parikh-2016-read",
+            "kind": "prompt",
+            "heading": "Predict each direction before reading",
+            "body": "For each token, predict which other-sentence vectors contribute. Follow the two distinct denominators into a local comparison and a class score.",
+            "claimIds": [
+              "parikh-2016-attend-soft-alignment",
+              "parikh-2016-compare-and-aggregate"
+            ]
+          },
+          {
+            "id": "beginner-parikh-2016-order",
+            "kind": "comparison",
+            "heading": "Reorder the same representations",
+            "body": "Explain why vanilla class scores survive either within-sentence permutation. Contrast fixed word vectors with distance-informed representations and the recurrent prerequisite.",
+            "claimIds": [
+              "parikh-2016-vanilla-word-order-boundary",
+              "parikh-2016-distance-biased-intra-attention",
+              "parikh-2016-cheng-intra-attention-adaptation"
+            ]
+          },
+          {
+            "id": "beginner-parikh-2016-evidence",
+            "kind": "result",
+            "heading": "Check what an example can establish",
+            "body": "Classify the reported errors and compare the two model rows without attributing a capacity-changing gain solely to order information.",
+            "claimIds": [
+              "parikh-2016-snli-results",
+              "parikh-2016-intra-attention-ablation-boundary",
+              "parikh-2016-error-analysis",
+              "parikh-2016-evidence-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-parikh-2016-mechanism",
+            "kind": "equation",
+            "heading": "Reconstruct both directional reads",
+            "body": "Derive both normalizers, shared local comparisons and separate sums; then prove within-sentence permutation invariance for fixed vanilla representations.",
+            "claimIds": [
+              "parikh-2016-attend-soft-alignment",
+              "parikh-2016-compare-and-aggregate",
+              "parikh-2016-vanilla-word-order-boundary"
+            ]
+          },
+          {
+            "id": "expert-parikh-2016-order",
+            "kind": "comparison",
+            "heading": "Audit optional order information",
+            "body": "Use the corrected distance denominator; distinguish parallel all-position reads from the recurrent Cheng tape and retain the printed objective sign.",
+            "claimIds": [
+              "parikh-2016-objective-and-printed-sign-boundary",
+              "parikh-2016-distance-biased-intra-attention",
+              "parikh-2016-bahdanau-attention-adaptation",
+              "parikh-2016-cheng-intra-attention-adaptation"
+            ]
+          },
+          {
+            "id": "expert-parikh-2016-conditions",
+            "kind": "equation",
+            "heading": "State complexity and experiment conditions",
+            "body": "Retain both work terms and the length/dimension assumption; separate preprocessing, optimization and model selection from the authored arithmetic.",
+            "claimIds": [
+              "parikh-2016-complexity-and-parallelism",
+              "parikh-2016-data-and-representation",
+              "parikh-2016-training-regime"
+            ]
+          },
+          {
+            "id": "expert-parikh-2016-evidence",
+            "kind": "result",
+            "heading": "Audit classification evidence and versions",
+            "body": "Keep every accuracy and classwise row, unmatched capacity, qualitative errors and revision differences in a source-bound ledger.",
+            "claimIds": [
+              "parikh-2016-snli-results",
+              "parikh-2016-classwise-development-results",
+              "parikh-2016-intra-attention-ablation-boundary",
+              "parikh-2016-error-analysis",
+              "parikh-2016-version-boundary",
+              "parikh-2016-evidence-boundary"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "bytenet-2016",
+      "workId": "kalchbrenner-2016-neural-machine-translation-linear-time",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-kalchbrenner-2016-follow-dilated-convolution",
+        "expert": "expert-kalchbrenner-2016-architecture-complexity-and-versions"
+      },
+      "contribution": {
+        "text": "Trace finite convolutional reach and source columns while decoding to EOS.",
+        "claimIds": [
+          "kalchbrenner-2016-masked-dilated-convolutions",
+          "kalchbrenner-2016-resolution-preserving-stacking",
+          "kalchbrenner-2016-dynamic-unfolding"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-bytenet-2016-reach",
+            "kind": "prompt",
+            "heading": "Predict which prefix positions can contribute",
+            "body": "Follow source columns and masked target positions through explicit dilation offsets. Explain why one reset does not erase earlier context.",
+            "claimIds": [
+              "kalchbrenner-2016-conditional-translation-objective",
+              "kalchbrenner-2016-resolution-preserving-stacking",
+              "kalchbrenner-2016-masked-dilated-convolutions",
+              "kalchbrenner-2016-complexity-and-path-analysis"
+            ]
+          },
+          {
+            "id": "beginner-bytenet-2016-stop",
+            "kind": "comparison",
+            "heading": "Continue beyond the width estimate",
+            "body": "Contrast estimated encoder width with EOS stopping and training parallelism with sequential generation.",
+            "claimIds": [
+              "kalchbrenner-2016-dynamic-unfolding",
+              "kalchbrenner-2016-masked-dilated-convolutions"
+            ]
+          },
+          {
+            "id": "beginner-bytenet-2016-evidence",
+            "kind": "limitation",
+            "heading": "Keep a gradient picture separate from a read",
+            "body": "Identify units and conditions in the reported results. A gradient sensitivity example is not an attention distribution or an isolated speed measurement.",
+            "claimIds": [
+              "kalchbrenner-2016-translation-results",
+              "kalchbrenner-2016-gradient-alignment-visualization-boundary",
+              "kalchbrenner-2016-evidence-reproducibility-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-bytenet-2016-architecture",
+            "kind": "equation",
+            "heading": "Separate source width from stopping",
+            "body": "Derive conditional factorization, stacked source interface, width estimate and EOS stopping. Do not invent integer rounding.",
+            "claimIds": [
+              "kalchbrenner-2016-conditional-translation-objective",
+              "kalchbrenner-2016-resolution-preserving-stacking",
+              "kalchbrenner-2016-dynamic-unfolding"
+            ]
+          },
+          {
+            "id": "expert-bytenet-2016-reach",
+            "kind": "equation",
+            "heading": "Enumerate paths across a dilation reset",
+            "body": "List exact offsets, masks, residual and normalization operations before computing a span. Keep finite depth separate from asymptotic path arguments.",
+            "claimIds": [
+              "kalchbrenner-2016-masked-dilated-convolutions",
+              "kalchbrenner-2016-residual-normalization",
+              "kalchbrenner-2016-complexity-and-path-analysis"
+            ]
+          },
+          {
+            "id": "expert-bytenet-2016-history",
+            "kind": "lineage",
+            "heading": "Read each qualified relationship",
+            "body": "Separate named recurrent generalization, convolutional antecedents and the Transformer citation context; teaching adjacency adds no adoption edge.",
+            "claimIds": [
+              "kalchbrenner-2016-rnn-encoder-decoder-generalization",
+              "kalchbrenner-2016-convolutional-antecedent-boundary",
+              "kalchbrenner-2016-transformer-citation-boundary"
+            ]
+          },
+          {
+            "id": "expert-bytenet-2016-evidence",
+            "kind": "result",
+            "heading": "Retain units, revisions and all results",
+            "body": "Preserve both tasks, decoding, complete tables, the canonical inconsistency, qualitative gradient maps and reproducibility limits.",
+            "claimIds": [
+              "kalchbrenner-2016-character-language-model-setup",
+              "kalchbrenner-2016-character-language-model-results",
+              "kalchbrenner-2016-translation-setup",
+              "kalchbrenner-2016-decoding-regime",
+              "kalchbrenner-2016-translation-results",
+              "kalchbrenner-2016-canonical-result-inconsistency",
+              "kalchbrenner-2016-gradient-alignment-visualization-boundary",
+              "kalchbrenner-2016-version-mechanism-boundary",
+              "kalchbrenner-2016-version-result-boundary",
+              "kalchbrenner-2016-evidence-reproducibility-boundary"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "convs2s-2017",
+      "workId": "gehring-2017-convolutional-sequence-to-sequence-learning",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-gehring-2017-follow-convolution-and-attention-hops",
+        "expert": "expert-gehring-2017-mechanism-results-and-versions"
+      },
+      "contribution": {
+        "text": "Separate local convolutional reach from successive global source reads.",
+        "claimIds": [
+          "gehring-2017-gated-convolutional-blocks",
+          "gehring-2017-layerwise-multi-step-attention"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-convs2s-2017-window",
+            "kind": "prompt",
+            "heading": "Grow a local window through layers",
+            "body": "Predict available positions after one and two convolutions; explain how a GLU differs from a recurrent memory gate.",
+            "claimIds": [
+              "gehring-2017-gated-convolutional-blocks",
+              "gehring-2017-causal-decoder-and-parallelism"
+            ]
+          },
+          {
+            "id": "beginner-convs2s-2017-read",
+            "kind": "comparison",
+            "heading": "Read the source again before predicting",
+            "body": "Follow a supplied layer state into a source read, then distinguish the next layer from the next target token.",
+            "claimIds": [
+              "gehring-2017-layerwise-multi-step-attention",
+              "gehring-2017-attention-antecedent-boundary"
+            ]
+          },
+          {
+            "id": "beginner-convs2s-2017-position",
+            "kind": "result",
+            "heading": "Separate position inputs from evidence",
+            "body": "Explain where order enters, then interpret position and attention ablations under their actual conditions.",
+            "claimIds": [
+              "gehring-2017-learned-position-embeddings",
+              "gehring-2017-position-ablation",
+              "gehring-2017-attention-layer-ablation"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-convs2s-2017-block",
+            "kind": "equation",
+            "heading": "Reconstruct the convolutional block",
+            "body": "Crosswalk token/position embeddings, GLU, residual path, causal crop, normalization and initialization before interpreting depth.",
+            "claimIds": [
+              "gehring-2017-conditional-translation-objective",
+              "gehring-2017-learned-position-embeddings",
+              "gehring-2017-gated-convolutional-blocks",
+              "gehring-2017-causal-decoder-and-parallelism",
+              "gehring-2017-normalization-and-initialization"
+            ]
+          },
+          {
+            "id": "expert-convs2s-2017-read",
+            "kind": "equation",
+            "heading": "Keep layer queries, keys and values distinct",
+            "body": "Reconstruct each layer query and its source-normalized read. Retain the bounded memory-hop analogy without transferring topology.",
+            "claimIds": [
+              "gehring-2017-layerwise-multi-step-attention",
+              "gehring-2017-attention-antecedent-boundary"
+            ]
+          },
+          {
+            "id": "expert-convs2s-2017-conditions",
+            "kind": "equation",
+            "heading": "Record units and decoding conditions",
+            "body": "Retain data, tokenization, optimization and decoding separately from arithmetic and speed comparisons.",
+            "claimIds": [
+              "gehring-2017-data-and-tokenization",
+              "gehring-2017-training-and-decoding"
+            ]
+          },
+          {
+            "id": "expert-convs2s-2017-evidence",
+            "kind": "result",
+            "heading": "Audit tables, ablations and version imports",
+            "body": "Retain complete translation, ensemble, speed, position, attention, depth and summarization rows. Keep selected maps and earlier Transformer comparators version-bound.",
+            "claimIds": [
+              "gehring-2017-translation-results",
+              "gehring-2017-ensemble-results",
+              "gehring-2017-generation-speed-boundary",
+              "gehring-2017-position-ablation",
+              "gehring-2017-attention-layer-ablation",
+              "gehring-2017-depth-and-kernel-results",
+              "gehring-2017-summarization-results",
+              "gehring-2017-attention-visualization-boundary",
+              "gehring-2017-version-result-boundary",
+              "gehring-2017-transformer-citation-boundary",
+              "gehring-2017-reproducibility-and-rights-boundary"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "transformer-2017",
+      "workId": "vaswani-2017-attention-is-all-you-need",
+      "status": "planned",
+      "objectiveIds": {
+        "beginner": "beginner-vaswani-2017-follow-attention-routes",
+        "expert": "expert-vaswani-2017-mechanism-results-and-versions"
+      },
+      "contribution": {
+        "text": "Follow projected reads, shifted prediction and position signals in the original Transformer.",
+        "claimIds": [
+          "vaswani-2017-attention-routes-and-causal-mask",
+          "vaswani-2017-multi-head-attention",
+          "vaswani-2017-positional-encoding"
+        ]
+      },
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-transformer-2017-routes",
+            "kind": "prompt",
+            "heading": "Predict the available inputs for each read",
+            "body": "Name source and shifted-target tokens, then identify which positions each of the three routes can read. Separate allowed access from a large weight.",
+            "claimIds": [
+              "vaswani-2017-predecessor-and-scope-boundary",
+              "vaswani-2017-encoder-decoder-architecture",
+              "vaswani-2017-scaled-dot-product-attention",
+              "vaswani-2017-attention-routes-and-causal-mask"
+            ]
+          },
+          {
+            "id": "beginner-transformer-2017-heads",
+            "kind": "explanation",
+            "heading": "Follow two heads through the rest of the block",
+            "body": "Trace different projections, concatenation and output projection; retain feed-forward, residual and normalization operations around the read.",
+            "claimIds": [
+              "vaswani-2017-multi-head-attention",
+              "vaswani-2017-positionwise-computation"
+            ]
+          },
+          {
+            "id": "beginner-transformer-2017-position",
+            "kind": "comparison",
+            "heading": "Explain where order enters",
+            "body": "Compare permuting complete representations with moving tokens under fixed positions. Separate parallel training from autoregressive generation and short paths from measured speed.",
+            "claimIds": [
+              "vaswani-2017-positional-encoding",
+              "vaswani-2017-complexity-and-path-analysis"
+            ]
+          },
+          {
+            "id": "beginner-transformer-2017-evidence",
+            "kind": "result",
+            "heading": "Qualify a reported result and a selected map",
+            "body": "Compare canonical translation rows under their conditions. A selected attention map supplies no measured causal explanation.",
+            "claimIds": [
+              "vaswani-2017-translation-results",
+              "vaswani-2017-attention-visualization-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-transformer-2017-routes",
+            "kind": "equation",
+            "heading": "Derive route origins and masks",
+            "body": "Reconstruct scaled dot products, projected heads and output projection in all three routes; retain shifted inputs and the complete post-normalized encoder/decoder block.",
+            "claimIds": [
+              "vaswani-2017-predecessor-and-scope-boundary",
+              "vaswani-2017-encoder-decoder-architecture",
+              "vaswani-2017-scaled-dot-product-attention",
+              "vaswani-2017-multi-head-attention",
+              "vaswani-2017-attention-routes-and-causal-mask",
+              "vaswani-2017-positionwise-computation",
+              "vaswani-2017-embedding-and-output-normalization"
+            ]
+          },
+          {
+            "id": "expert-transformer-2017-positions",
+            "kind": "comparison",
+            "heading": "Separate order, paths and sequential depth",
+            "body": "Derive sinusoidal channels and permutation behavior with explicit conditions; retain Table 1 assumptions rather than substituting wall-clock claims.",
+            "claimIds": [
+              "vaswani-2017-positional-encoding",
+              "vaswani-2017-complexity-and-path-analysis"
+            ]
+          },
+          {
+            "id": "expert-transformer-2017-conditions",
+            "kind": "equation",
+            "heading": "Audit data, training and decoding",
+            "body": "Retain tokenization, batch and hardware conditions and revision-specific regularization.",
+            "claimIds": [
+              "vaswani-2017-data-and-tokenization",
+              "vaswani-2017-training-regime"
+            ]
+          },
+          {
+            "id": "expert-transformer-2017-evidence",
+            "kind": "result",
+            "heading": "Preserve canonical and arXiv evidence separately",
+            "body": "Retain all canonical results and ablations; keep parsing, selected maps, head-equation differences and conflicting results in their source versions.",
+            "claimIds": [
+              "vaswani-2017-translation-results",
+              "vaswani-2017-model-variation-results",
+              "vaswani-2017-arxiv-parsing-results",
+              "vaswani-2017-attention-visualization-boundary",
+              "vaswani-2017-version-mechanism-boundary",
+              "vaswani-2017-version-result-boundary",
+              "vaswani-2017-evidence-reproducibility-boundary"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "interludes": [
+    {
+      "id": "cheng-recurrent-read",
+      "kind": "prerequisite",
+      "placement": "before",
+      "stageSlug": "parikh-2016",
+      "title": "A read inside a recurrent tape update",
+      "workIds": [
+        "cheng-dong-lapata-2016-lstmn-machine-reading",
+        "parikh-2016-decomposable-attention-nli"
+      ],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-cheng-tape-comparison",
+            "kind": "comparison",
+            "heading": "Predict what has been written so far",
+            "body": "Identify the earlier tape entries a recurrent step can read; contrast this with an all-token feed-forward sentence read.",
+            "claimIds": [
+              "cheng-2016-lstmn-memory-tape",
+              "cheng-2016-intra-attention-update",
+              "parikh-2016-cheng-intra-attention-adaptation"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-cheng-tape-comparison",
+            "kind": "comparison",
+            "heading": "Crosswalk prior hidden/cell tapes and parallel reads",
+            "body": "Retain paired hidden/cell retrieval within a sequential gated update. Concept adaptation transfers neither Cheng equations nor the full deep-fusion architecture.",
+            "claimIds": [
+              "cheng-2016-lstmn-memory-tape",
+              "cheng-2016-intra-attention-update",
+              "parikh-2016-cheng-intra-attention-adaptation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "memory-hop-comparison",
+      "kind": "prerequisite",
+      "placement": "before",
+      "stageSlug": "convs2s-2017",
+      "title": "Several reads before one output",
+      "workIds": [
+        "sukhbaatar-2015-end-to-end-memory-networks",
+        "gehring-2017-convolutional-sequence-to-sequence-learning"
+      ],
+      "blocks": {
+        "beginner": [
+          {
+            "id": "beginner-memory-hop-comparison",
+            "kind": "comparison",
+            "heading": "Count reads before the answer",
+            "body": "Follow a supplied query, read and internal update; distinguish another read from generating another output token.",
+            "claimIds": [
+              "sukhbaatar-2015-soft-memory-read",
+              "sukhbaatar-2015-multi-hop-update",
+              "sukhbaatar-2015-weight-tying",
+              "gehring-2017-attention-antecedent-boundary"
+            ]
+          }
+        ],
+        "expert": [
+          {
+            "id": "expert-memory-hop-comparison",
+            "kind": "comparison",
+            "heading": "Keep residual and learned-map hop variants separate",
+            "body": "Compare residual u+o with the separately tied Hu+o update. The ConvS2S analogy permits no topology or QA-result inheritance.",
+            "claimIds": [
+              "sukhbaatar-2015-soft-memory-read",
+              "sukhbaatar-2015-multi-hop-update",
+              "sukhbaatar-2015-weight-tying",
+              "gehring-2017-attention-antecedent-boundary"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

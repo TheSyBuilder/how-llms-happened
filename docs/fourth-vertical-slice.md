@@ -4,7 +4,7 @@
 
 The next journey will ask: **Which positions can contribute to a representation, how do they contribute, and which computations still depend on an earlier step?** Select four full stages: Parikh et al. 2016, ByteNet 2016/2017, ConvS2S 2017, and Vaswani et al. 2017. Use Sukhbaatar et al. 2015 and Cheng–Dong–Lapata 2016 as two bounded prerequisite comparisons. Their complete teaching chapters remain deferred.
 
-This is an editorial learning sequence across classification and translation branches. It is not a four-paper influence chain. All stages and comparisons are **planned**; this specification adds no routes, fixtures or controls. The [interaction brief](sequence-computation-interaction.md) requires complete static explanations before one optional attention-route lens can be evaluated.
+This is an editorial learning sequence across classification and translation branches. It is not a four-paper influence chain. All stages and comparisons are **planned**. The [source/arithmetic contract](sequence-slice-contract.md) assigns the complete teaching inventory and admits the first Parikh calculation family; the other calculation gates remain pending. No routes or controls are implemented. The [interaction brief](sequence-computation-interaction.md) requires complete static explanations before one optional attention-route lens can be evaluated.
 
 The [alignment journey](third-vertical-slice.md) already supplies conditional prediction, weighted source reads and recurrent decoder timing. The new slice distinguishes those reads from attention within a sequence, convolutional communication, and the Transformer's three attention routes. It ends at the original encoder–decoder Transformer; later decoder-only pretraining and modern positional variants require another slice.
 
@@ -75,7 +75,9 @@ These are requirements for future chapter authoring, not new experiments or reco
 
 The targeted passages, chronology records and interaction references were accessed on 20 October 2026. Existing corpus sources, claim checked dates and `asOf` remain unchanged: this selection review does not constitute full claim-level revalidation. It also does not renew the [current-endpoint review](current-endpoint.md) or make a present-day completeness claim.
 
-## Source/fixture contract required next
+## Source/fixture contract gates
+
+The [contract](sequence-slice-contract.md) and planned manifest now complete claim/objective ownership, prerequisite/reference scope and the operation crosswalk. Parikh's bidirectional read, shared Compare/Aggregate calculation, permutation checks and corrected short-distance intra-attention are verified. ByteNet, ConvS2S and Transformer numerical families remain pending. The following gates apply to the complete slice:
 
 Before implementing a route, complete these gates:
 

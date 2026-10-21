@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/parikh-fixture.schema.json",
+  "title": "Corrected Parikh forward teaching arithmetic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "provenance",
+    "scope",
+    "variant",
+    "binding",
+    "a",
+    "b",
+    "f",
+    "g",
+    "h",
+    "output",
+    "expected",
+    "intra"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "const": "synthetic-parikh-attention"
+    },
+    "provenance": {
+      "const": "authored-arithmetic"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant": {
+      "const": "corrected-proceedings"
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "versionId",
+        "sourceId",
+        "claimIds"
+      ],
+      "properties": {
+        "versionId": {
+          "const": "parikh-2016-emnlp-version"
+        },
+        "sourceId": {
+          "const": "parikh-2016-acl-full-text"
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "parikh-2016-attend-soft-alignment",
+              "parikh-2016-compare-and-aggregate",
+              "parikh-2016-vanilla-word-order-boundary",
+              "parikh-2016-distance-biased-intra-attention",
+              "parikh-2016-version-boundary"
+            ]
+          },
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true
+        }
+      }
+    },
+    "a": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/token"
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "b": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/token"
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "f": {
+      "$ref": "#/$defs/network"
+    },
+    "g": {
+      "$ref": "#/$defs/network"
+    },
+    "h": {
+      "$ref": "#/$defs/network"
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weights",
+        "bias"
+      ],
+      "properties": {
+        "weights": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/vector"
+          }
+        },
+        "bias": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "expected": {
+      "$ref": "#/$defs/result"
+    },
+    "intra": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "f",
+        "distanceBias",
+        "expected"
+      ],
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/token"
+          },
+          "minItems": 1,
+          "maxItems": 10
+        },
+        "f": {
+          "$ref": "#/$defs/network"
+        },
+        "distanceBias": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 19,
+          "additionalProperties": false,
+          "patternProperties": {
+            "^-?[0-9]+$": {
+              "type": "number"
+            }
+          }
+        },
+        "expected": {
+          "$ref": "#/$defs/intraResult"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "vector": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "matrix": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/vector"
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weights",
+        "bias"
+      ],
+      "properties": {
+        "weights": {
+          "$ref": "#/$defs/matrix"
+        },
+        "bias": {
+          "$ref": "#/$defs/vector"
+        }
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "token",
+        "vector"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vector": {
+          "$ref": "#/$defs/vector"
+        }
+      }
+    },
+    "network": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/layer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "networkRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input",
+        "layers",
+        "output"
+      ],
+      "properties": {
+        "input": {
+          "$ref": "#/$defs/vector"
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "affine",
+              "activation"
+            ],
+            "properties": {
+              "affine": {
+                "$ref": "#/$defs/vector"
+              },
+              "activation": {
+                "$ref": "#/$defs/vector"
+              }
+            }
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "output": {
+          "$ref": "#/$defs/vector"
+        }
+      }
+    },
+    "read": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scores",
+        "maximum",
+        "exponentials",
+        "normalizer",
+        "weights",
+        "contributions",
+        "context"
+      ],
+      "properties": {
+        "scores": {
+          "$ref": "#/$defs/vector"
+        },
+        "maximum": {
+          "type": "number"
+        },
+        "exponentials": {
+          "$ref": "#/$defs/vector"
+        },
+        "normalizer": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "contributions": {
+          "$ref": "#/$defs/matrix"
+        },
+        "context": {
+          "$ref": "#/$defs/vector"
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projectionA",
+        "projectionB",
+        "scores",
+        "beta",
+        "alpha",
+        "comparisonA",
+        "comparisonB",
+        "sumA",
+        "sumB",
+        "classifier",
+        "classScores"
+      ],
+      "properties": {
+        "projectionA": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/networkRow"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "projectionB": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/networkRow"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "scores": {
+          "$ref": "#/$defs/matrix"
+        },
+        "beta": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/read"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "alpha": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/read"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "comparisonA": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/networkRow"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "comparisonB": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/networkRow"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "sumA": {
+          "$ref": "#/$defs/vector"
+        },
+        "sumB": {
+          "$ref": "#/$defs/vector"
+        },
+        "classifier": {
+          "$ref": "#/$defs/networkRow"
+        },
+        "classScores": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "intraResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projections",
+        "pairScores",
+        "biasedScores",
+        "reads",
+        "representations"
+      ],
+      "properties": {
+        "projections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/networkRow"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "pairScores": {
+          "$ref": "#/$defs/matrix"
+        },
+        "biasedScores": {
+          "$ref": "#/$defs/matrix"
+        },
+        "reads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/read"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "representations": {
+          "$ref": "#/$defs/matrix"
+        }
+      }
+    }
+  }
+}
