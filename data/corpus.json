@@ -4,7 +4,7 @@
   "corpusId": "llm-lineage",
   "title": "LLM Lineage research corpus",
   "description": "A source-backed corpus of the works and ideas needed to explain the development of modern large language models.",
-  "asOf": "2026-10-19",
+  "asOf": "2026-10-22",
   "orderingPolicy": {
     "description": "A work is ordered by the explicitly referenced chronology event in chronology.orderingEventId; display dates never infer day precision from month- or year-level records.",
     "tieBreak": "When ordering events are equal, preserve editorial sequence and disclose concurrency rather than imply priority."
@@ -27984,7 +27984,7 @@
       ],
       "title": "Neural Machine Translation in Linear Time, arXiv version 1 full text",
       "url": "https://arxiv.org/pdf/1610.10099v1",
-      "accessDate": "2026-08-23",
+      "accessDate": "2026-10-22",
       "sourceClass": "primary-full-text",
       "authority": "institutional-repository",
       "versionIds": [
@@ -28000,7 +28000,7 @@
         "pageStart": 1,
         "pageEnd": 11
       },
-      "accessNote": "The complete 11-page first revision was rendered and compared with version 2. Its visible pp. 1–11 control locators; it uses source-width unfolding with a zero current encoder column beyond the source, Sub-Batch Normalization, translation-input character n-gram bags, and the earlier model configurations and results."
+      "accessNote": "The complete 11-page first revision was rendered and compared with version 2. Its visible pp. 1–11 control locators; it uses source-width unfolding with a zero current encoder column beyond the source, Sub-Batch Normalization, translation-input character n-gram bags, and the earlier model configurations and results. Targeted mechanism review on 22 October 2026 checked decoder input shift, unfolding, dilation and residual blocks; the version-1 normalization and n-gram section numbers were corrected in the mechanism-boundary claim. This is not a new complete experiment or endpoint audit."
     },
     {
       "id": "kalchbrenner-2016-arxiv-v2-full-text",
@@ -28009,7 +28009,7 @@
       ],
       "title": "Neural Machine Translation in Linear Time, arXiv version 2 full text",
       "url": "https://arxiv.org/pdf/1610.10099v2",
-      "accessDate": "2026-08-23",
+      "accessDate": "2026-10-22",
       "sourceClass": "primary-full-text",
       "authority": "institutional-repository",
       "versionIds": [
@@ -28025,7 +28025,7 @@
         "pageStart": 1,
         "pageEnd": 9
       },
-      "accessNote": "The complete canonical revision has nine unfoliated PDF leaves, so evidence uses structural anchors rather than numeric page locators. It introduces the estimated 1.2|s| encoder width, layer normalization, deeper experiments, improved tables, and unresolved introductory-versus-tabular result conflicts."
+      "accessNote": "The complete canonical revision has nine unfoliated PDF leaves, so evidence uses structural anchors rather than numeric page locators. It introduces the estimated 1.2|s| encoder width, layer normalization, deeper experiments, improved tables, and unresolved introductory-versus-tabular result conflicts. Targeted mechanism review on 22 October 2026 checked decoder input shift, unfolding, dilation and residual blocks; the version-1 normalization and n-gram section numbers were corrected in the mechanism-boundary claim. This is not a new complete experiment or endpoint audit."
     },
     {
       "id": "kalchbrenner-2016-google-research-record",
@@ -50128,7 +50128,7 @@
           "sourceId": "kalchbrenner-2016-arxiv-v1-full-text",
           "locator": {
             "label": "First-revision unfolding, normalization, and inputs",
-            "section": "3.1 Dynamic Unfolding; 3.4 Sub-Batch Normalization; 3.5 Bag of Character n-Grams",
+            "section": "3.1 Dynamic Unfolding; 3.5 Sub-Batch Normalization; 3.6 Bag of Character n-Grams",
             "pageStart": 3,
             "pageEnd": 5
           },
@@ -50148,7 +50148,7 @@
         "Absence in version 2 is recorded as an omission from that text, not proof that every underlying experiment implementation removed every unmentioned feature."
       ],
       "uncertainties": [],
-      "checkedDate": "2026-08-23"
+      "checkedDate": "2026-10-22"
     },
     {
       "id": "kalchbrenner-2016-version-result-boundary",

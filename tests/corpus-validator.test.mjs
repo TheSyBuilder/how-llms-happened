@@ -9587,6 +9587,10 @@ test("retains ByteNet as a versioned convolutional transduction branch", () => {
     assert.ok(versionMechanism?.statement.includes(value));
   for (const value of ["1.33", "18.9/21.7", "1.31", "23.75/26.26"])
     assert.ok(versionResults?.statement.includes(value));
+  assert.equal(
+    versionMechanism?.evidence.find((item) => item.sourceId === "kalchbrenner-2016-arxiv-v1-full-text")?.locator.section,
+    "3.1 Dynamic Unfolding; 3.5 Sub-Batch Normalization; 3.6 Bag of Character n-Grams",
+  );
   for (const value of ["O(logₖ n)", "23.75 BLEU", "does not state"])
     assert.ok(transformerBoundary?.statement.includes(value));
   assert.ok(

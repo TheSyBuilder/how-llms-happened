@@ -1,8 +1,10 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import journeySchema from "../../schemas/journey.schema.json" with { type: "json" };
 import fixtureSchema from "../../schemas/parikh-fixture.schema.json" with { type: "json" };
+import byteNetSchema from "../../schemas/bytenet-fixture.schema.json" with { type: "json" };
 import type { Corpus, JourneyManifest } from "./site-data.ts";
 import { validateParikhExpected, type ParikhFixture } from "./parikh-engine.ts";
+import { validateByteNetExpected, type ByteNetFixture } from "./bytenet-engine.ts";
 
 export const SEQUENCE_WORK_IDS = [
   "parikh-2016-decomposable-attention-nli",
@@ -28,6 +30,7 @@ const OPERATION_CLAIMS = [
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const journeyShape = ajv.compile(journeySchema);
 const fixtureShape = ajv.compile(fixtureSchema);
+const byteNetShape = ajv.compile(byteNetSchema);
 
 function inventory(actual: string[], expected: string[], label: string): void {
   if (JSON.stringify([...actual].sort()) !== JSON.stringify([...expected].sort())) {
@@ -54,7 +57,7 @@ export function getSequenceSourcePlan(corpus: Corpus) {
   return { references, relationships };
 }
 
-export function validateSequenceContract(corpus: Corpus, manifest: JourneyManifest, fixture: ParikhFixture): void {
+export function validateSequenceContract(corpus: Corpus, manifest: JourneyManifest, fixture: ParikhFixture, byteNetFixture: ByteNetFixture): void {
   if (!journeyShape(manifest)) throw new Error(`Sequence manifest shape: ${ajv.errorsText(journeyShape.errors)}`);
   if (!fixtureShape(fixture)) throw new Error(`Parikh fixture shape: ${ajv.errorsText(fixtureShape.errors)}`);
   if (manifest.id !== "sequence-computation" || manifest.slug !== manifest.id
@@ -106,5 +109,25 @@ export function validateSequenceContract(corpus: Corpus, manifest: JourneyManife
   }
   if (fixture.a.length !== 2 || fixture.b.length !== 3) throw new Error("Retain the asymmetric rectangular comparison.");
   validateParikhExpected(fixture);
+  validateByteNetContract(corpus, byteNetFixture);
   getSequenceSourcePlan(corpus);
+}
+
+/** Both revisions remain evidence-bound; only the v2 structural convention is executed. */
+export function validateByteNetContract(corpus: Corpus, fixture: ByteNetFixture): void {
+  if (!byteNetShape(fixture)) throw new Error(`ByteNet fixture shape: ${ajv.errorsText(byteNetShape.errors)}`);
+  const work = corpus.works.find((item) => item.id === SEQUENCE_WORK_IDS[1]);
+  if (!work) throw new Error("Missing ByteNet source work.");
+  for (const binding of [fixture.binding, fixture.contrast]) {
+    const version = work.versions.find((item) => item.id === binding.versionId);
+    const source = corpus.sources.find((item) => item.id === binding.sourceId);
+    if (!version || !source || !work.sourceIds.includes(source.id)
+      || !version.sourceIds.includes(source.id) || !source.versionIds.includes(version.id)) throw new Error("ByteNet source and version must agree reciprocally.");
+    for (const id of binding.claimIds) {
+      const claim = corpus.claims.find((item) => item.id === id);
+      if (!claim || claim.workId !== work.id || !claim.evidence.some((item) => item.sourceId === source.id)) throw new Error("ByteNet operation and revision claims need owning-source evidence.");
+    }
+  }
+  if (fixture.sourceLength !== 5 || fixture.encoderWidth !== 6 || fixture.decoderWidth !== 9) throw new Error("Retain the five-token, extended-source and longer-target comparison.");
+  validateByteNetExpected(fixture);
 }

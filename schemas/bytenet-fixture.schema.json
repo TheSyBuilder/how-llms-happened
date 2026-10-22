@@ -1,0 +1,542 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/bytenet-fixture.schema.json",
+  "title": "ByteNet v2 structural access and unfolding teaching fixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "provenance",
+    "scope",
+    "variant",
+    "binding",
+    "contrast",
+    "conventions",
+    "dilations",
+    "sourceLength",
+    "encoderWidth",
+    "decoderWidth",
+    "expected",
+    "unfolding"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "const": "synthetic-bytenet-reach"
+    },
+    "provenance": {
+      "const": "authored-arithmetic"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant": {
+      "const": "arxiv-v2-topology"
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "versionId",
+        "sourceId",
+        "claimIds"
+      ],
+      "properties": {
+        "versionId": {
+          "const": "kalchbrenner-2016-arxiv-v2-version"
+        },
+        "sourceId": {
+          "const": "kalchbrenner-2016-arxiv-v2-full-text"
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "kalchbrenner-2016-resolution-preserving-stacking",
+              "kalchbrenner-2016-dynamic-unfolding",
+              "kalchbrenner-2016-masked-dilated-convolutions",
+              "kalchbrenner-2016-residual-normalization",
+              "kalchbrenner-2016-conditional-translation-objective",
+              "kalchbrenner-2016-version-mechanism-boundary",
+              "kalchbrenner-2016-version-result-boundary"
+            ]
+          },
+          "minItems": 7,
+          "maxItems": 7,
+          "uniqueItems": true
+        }
+      }
+    },
+    "contrast": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "versionId",
+        "sourceId",
+        "claimIds"
+      ],
+      "properties": {
+        "versionId": {
+          "const": "kalchbrenner-2016-arxiv-v1-version"
+        },
+        "sourceId": {
+          "const": "kalchbrenner-2016-arxiv-v1-full-text"
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "kalchbrenner-2016-version-mechanism-boundary",
+              "kalchbrenner-2016-version-result-boundary"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        }
+      }
+    },
+    "conventions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kernelSize",
+        "encoderOffsets",
+        "decoderOffsets",
+        "boundary",
+        "sourcePadding",
+        "inputShift",
+        "sourceInjection",
+        "block"
+      ],
+      "properties": {
+        "kernelSize": {
+          "const": 3
+        },
+        "encoderOffsets": {
+          "const": [
+            -1,
+            0,
+            1
+          ]
+        },
+        "decoderOffsets": {
+          "const": [
+            -2,
+            -1,
+            0
+          ]
+        },
+        "boundary": {
+          "const": "zero-outside-each-layer"
+        },
+        "sourcePadding": {
+          "const": "explicit-input-slot"
+        },
+        "inputShift": {
+          "const": "row-r-reads-t-r-predicts-t-r-plus-1"
+        },
+        "sourceInjection": {
+          "const": "aligned-at-decoder-base"
+        },
+        "block": {
+          "const": "relu-translation-topology"
+        }
+      }
+    },
+    "dilations": {
+      "const": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        1
+      ]
+    },
+    "sourceLength": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 64
+    },
+    "encoderWidth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 64
+    },
+    "decoderWidth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 64
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encoder",
+        "decoder",
+        "sourceReads"
+      ],
+      "properties": {
+        "encoder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "decoder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/layer"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "sourceReads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRead"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      }
+    },
+    "unfolding": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unfolding"
+      },
+      "minItems": 5,
+      "maxItems": 5
+    }
+  },
+  "$defs": {
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "position",
+        "predecessors",
+        "zeroPadding",
+        "inputSlots"
+      ],
+      "properties": {
+        "position": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "predecessors": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 128
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        },
+        "zeroPadding": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": -128,
+            "maximum": 128
+          },
+          "minItems": 0,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "inputSlots": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 128
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        }
+      }
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dilation",
+        "offsets",
+        "infiniteOffsets",
+        "span",
+        "rows"
+      ],
+      "properties": {
+        "dilation": {
+          "enum": [
+            1,
+            2,
+            4,
+            8,
+            16
+          ]
+        },
+        "offsets": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": -32,
+            "maximum": 16
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true
+        },
+        "infiniteOffsets": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": -128,
+            "maximum": 128
+          },
+          "minItems": 1,
+          "maxItems": 129,
+          "uniqueItems": true
+        },
+        "span": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 129
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/row"
+          },
+          "minItems": 1,
+          "maxItems": 64
+        }
+      }
+    },
+    "sourceRead": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row",
+        "inputIndex",
+        "predictedIndex",
+        "alignedEncoderColumn",
+        "reachableEncoderColumns",
+        "sourceTokenSlots",
+        "sourcePaddingSlots"
+      ],
+      "properties": {
+        "row": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "inputIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "predictedIndex": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "alignedEncoderColumn": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reachableEncoderColumns": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 128
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        },
+        "sourceTokenSlots": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 128
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        },
+        "sourcePaddingSlots": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 128
+          },
+          "minItems": 0,
+          "maxItems": 128,
+          "uniqueItems": true
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row",
+        "inputIndex",
+        "predictedIndex",
+        "inputToken",
+        "outputToken",
+        "alignedEncoderColumn",
+        "stop"
+      ],
+      "properties": {
+        "row": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "inputIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 128
+        },
+        "predictedIndex": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "inputToken": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outputToken": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alignedEncoderColumn": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stop": {
+          "type": "boolean"
+        }
+      }
+    },
+    "unfoldingResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "estimate",
+        "status",
+        "steps"
+      ],
+      "properties": {
+        "estimate": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 128
+        },
+        "status": {
+          "enum": [
+            "eos",
+            "incomplete",
+            "unresolved-width"
+          ]
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          },
+          "minItems": 0,
+          "maxItems": 64
+        }
+      }
+    },
+    "unfolding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceLength",
+        "factor",
+        "intercept",
+        "representationWidth",
+        "generated",
+        "expected"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceLength": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "factor": {
+          "const": 1.2
+        },
+        "intercept": {
+          "const": 0
+        },
+        "representationWidth": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 128
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "generated": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0,
+          "maxItems": 64
+        },
+        "expected": {
+          "$ref": "#/$defs/unfoldingResult"
+        }
+      }
+    }
+  }
+}

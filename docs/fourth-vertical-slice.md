@@ -77,7 +77,7 @@ The targeted passages, chronology records and interaction references were access
 
 ## Source/fixture contract gates
 
-The [contract](sequence-slice-contract.md) and planned manifest now complete claim/objective ownership, prerequisite/reference scope and the operation crosswalk. Parikh's bidirectional read, shared Compare/Aggregate calculation, permutation checks and corrected short-distance intra-attention are verified. ByteNet, ConvS2S and Transformer numerical families remain pending. The following gates apply to the complete slice:
+The [contract](sequence-slice-contract.md) and planned manifest now complete claim/objective ownership, prerequisite/reference scope and the operation crosswalk. Parikh's bidirectional read, shared Compare/Aggregate calculation, permutation checks and corrected short-distance intra-attention are verified. The [ByteNet ledger](bytenet-topology.md) verifies finite structural access, the dilation reset, explicit shift/padding conventions and width/EOS cases. ConvS2S and Transformer calculation families remain pending. The following gates apply to the complete slice:
 
 Before implementing a route, complete these gates:
 
