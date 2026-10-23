@@ -1,0 +1,1154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://llm-lineage.local/schemas/convs2s-fixture.schema.json",
+  "title": "ConvS2S paper operations and pinned Lua comparison",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "provenance",
+    "scope",
+    "variant",
+    "binding",
+    "contrast",
+    "implementation",
+    "conventions",
+    "source",
+    "target",
+    "layers",
+    "paperStates",
+    "gradientInputs",
+    "expected"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "id": {
+      "const": "synthetic-convs2s-layers"
+    },
+    "provenance": {
+      "const": "authored-arithmetic"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant": {
+      "const": "paper-equations-and-pinned-lua-comparison"
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "versionId",
+        "sourceId",
+        "claimIds"
+      ],
+      "properties": {
+        "versionId": {
+          "const": "gehring-2017-icml-version"
+        },
+        "sourceId": {
+          "const": "gehring-2017-pmlr-full-text"
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "gehring-2017-learned-position-embeddings",
+              "gehring-2017-gated-convolutional-blocks",
+              "gehring-2017-causal-decoder-and-parallelism",
+              "gehring-2017-layerwise-multi-step-attention",
+              "gehring-2017-normalization-and-initialization",
+              "gehring-2017-version-result-boundary"
+            ]
+          },
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true
+        }
+      }
+    },
+    "contrast": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "versionId",
+        "sourceId",
+        "claimIds"
+      ],
+      "properties": {
+        "versionId": {
+          "const": "gehring-2017-arxiv-v2-version"
+        },
+        "sourceId": {
+          "const": "gehring-2017-arxiv-v2-full-text"
+        },
+        "claimIds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "gehring-2017-version-result-boundary"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "revision",
+        "modelPath",
+        "narrowRepository",
+        "narrowRevision",
+        "narrowPath"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/facebookresearch/fairseq-lua"
+        },
+        "revision": {
+          "const": "7a6fff0f3647c6a4c8c59b4253004c4761eb11b3"
+        },
+        "modelPath": {
+          "const": "fairseq/models/fconv_model.lua"
+        },
+        "narrowRepository": {
+          "const": "https://github.com/torch/nn"
+        },
+        "narrowRevision": {
+          "const": "5efb612f312ea8d3996251ab9f45472ea90485c8"
+        },
+        "narrowPath": {
+          "const": "Narrow.lua"
+        }
+      }
+    },
+    "conventions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kernelSize",
+        "depth",
+        "inputShift",
+        "boundary",
+        "stackOrder",
+        "paperRead",
+        "sourceBank",
+        "embeddingProjection"
+      ],
+      "properties": {
+        "kernelSize": {
+          "const": 3
+        },
+        "depth": {
+          "const": 2
+        },
+        "inputShift": {
+          "const": "row-r-reads-BOS-or-y-r-predicts-y-r-plus-1"
+        },
+        "boundary": {
+          "const": "zero-outside-each-layer"
+        },
+        "stackOrder": {
+          "const": "pinned-lua-glu-attention-residual"
+        },
+        "paperRead": {
+          "const": "supplied-state-equations-1-2-plus-section-3-4"
+        },
+        "sourceBank": {
+          "const": "all-valid-no-padding"
+        },
+        "embeddingProjection": {
+          "const": "identity-target-map-supplied-projected-source-keys"
+        }
+      }
+    },
+    "source": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "word",
+          "position",
+          "key"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "word": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "key": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "target": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "token",
+          "word",
+          "position"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "token": {
+            "type": "string",
+            "minLength": 1
+          },
+          "word": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 16
+    },
+    "layers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "convolution",
+          "query",
+          "context"
+        ],
+        "properties": {
+          "convolution": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "weights",
+              "bias"
+            ],
+            "properties": {
+              "weights": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 6,
+                  "maxItems": 6
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "bias": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              }
+            }
+          },
+          "query": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "weights",
+              "bias"
+            ],
+            "properties": {
+              "weights": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "bias": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          },
+          "context": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "weights",
+              "bias"
+            ],
+            "properties": {
+              "weights": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "bias": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        }
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "paperStates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "state",
+          "embeddingRow",
+          "projection"
+        ],
+        "properties": {
+          "state": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "embeddingRow": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 32
+          },
+          "projection": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "weights",
+              "bias"
+            ],
+            "properties": {
+              "weights": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "bias": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        }
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "gradientInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parameters",
+        "embeddings"
+      ],
+      "properties": {
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "embeddings": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceEmbeddings",
+        "targetEmbeddings",
+        "paperValues",
+        "luaValues",
+        "crop",
+        "encoderReach",
+        "decoderReach",
+        "paperReads",
+        "luaLayers",
+        "gradient"
+      ],
+      "properties": {
+        "sourceEmbeddings": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "targetEmbeddings": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "paperValues": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "luaValues": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "crop": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "paddedLength",
+            "convolutionLength",
+            "literalPaperLength",
+            "luaLength",
+            "removedLuaRows"
+          ],
+          "properties": {
+            "paddedLength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "convolutionLength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "literalPaperLength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "luaLength": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 32
+            },
+            "removedLuaRows": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 32
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        },
+        "encoderReach": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "offsets",
+              "span",
+              "rows"
+            ],
+            "properties": {
+              "offsets": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": -32,
+                  "maximum": 32
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "span": {
+                "enum": [
+                  3,
+                  5
+                ]
+              },
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "row",
+                    "predecessors",
+                    "zeroPadding",
+                    "inputSlots"
+                  ],
+                  "properties": {
+                    "row": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 32
+                    },
+                    "predecessors": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 32
+                      },
+                      "minItems": 1,
+                      "maxItems": 3
+                    },
+                    "zeroPadding": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": -32,
+                        "maximum": 32
+                      },
+                      "minItems": 0,
+                      "maxItems": 2
+                    },
+                    "inputSlots": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 32
+                      },
+                      "minItems": 1,
+                      "maxItems": 16
+                    }
+                  }
+                },
+                "minItems": 1,
+                "maxItems": 16
+              }
+            }
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "decoderReach": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "offsets",
+              "span",
+              "rows"
+            ],
+            "properties": {
+              "offsets": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": -32,
+                  "maximum": 32
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "span": {
+                "enum": [
+                  3,
+                  5
+                ]
+              },
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "row",
+                    "predecessors",
+                    "zeroPadding",
+                    "inputSlots"
+                  ],
+                  "properties": {
+                    "row": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 32
+                    },
+                    "predecessors": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 32
+                      },
+                      "minItems": 1,
+                      "maxItems": 3
+                    },
+                    "zeroPadding": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": -32,
+                        "maximum": 32
+                      },
+                      "minItems": 0,
+                      "maxItems": 2
+                    },
+                    "inputSlots": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 32
+                      },
+                      "minItems": 1,
+                      "maxItems": 16
+                    }
+                  }
+                },
+                "minItems": 1,
+                "maxItems": 16
+              }
+            }
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "paperReads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/read"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "luaLayers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rows"
+            ],
+            "properties": {
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "row",
+                    "predictedIndex",
+                    "predecessors",
+                    "zeroPadding",
+                    "window",
+                    "convolution",
+                    "a",
+                    "b",
+                    "gates",
+                    "glu",
+                    "read",
+                    "contextProjection",
+                    "attentionSum",
+                    "attentionResidual",
+                    "residualSum",
+                    "output"
+                  ],
+                  "properties": {
+                    "row": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 32
+                    },
+                    "predictedIndex": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 32
+                    },
+                    "predecessors": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 32
+                      },
+                      "minItems": 1,
+                      "maxItems": 3
+                    },
+                    "zeroPadding": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": -32,
+                        "maximum": 32
+                      },
+                      "minItems": 0,
+                      "maxItems": 2
+                    },
+                    "window": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 6,
+                      "maxItems": 6
+                    },
+                    "convolution": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "terms",
+                        "bias",
+                        "output"
+                      ],
+                      "properties": {
+                        "terms": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 6,
+                            "maxItems": 6
+                          },
+                          "minItems": 4,
+                          "maxItems": 4
+                        },
+                        "bias": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          },
+                          "minItems": 4,
+                          "maxItems": 4
+                        },
+                        "output": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          },
+                          "minItems": 4,
+                          "maxItems": 4
+                        }
+                      }
+                    },
+                    "a": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "b": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "gates": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "glu": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "read": {
+                      "$ref": "#/$defs/read"
+                    },
+                    "contextProjection": {
+                      "$ref": "#/$defs/affine2"
+                    },
+                    "attentionSum": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "attentionResidual": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "residualSum": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "output": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
+                  }
+                },
+                "minItems": 1,
+                "maxItems": 16
+              }
+            }
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "gradient": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "moduleCount",
+            "paperModuleCount",
+            "luaParameterScale",
+            "parameterInput",
+            "parameterOutput",
+            "embeddingInput",
+            "embeddingOutput",
+            "forwardScale"
+          ],
+          "properties": {
+            "moduleCount": {
+              "const": 2
+            },
+            "paperModuleCount": {
+              "const": 2
+            },
+            "luaParameterScale": {
+              "const": 0.25
+            },
+            "parameterInput": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "parameterOutput": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "embeddingInput": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "embeddingOutput": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "forwardScale": {
+              "const": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "affine2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "terms",
+        "bias",
+        "output"
+      ],
+      "properties": {
+        "terms": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "bias": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "read": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projection",
+        "querySum",
+        "query",
+        "scoreTerms",
+        "scores",
+        "maximum",
+        "exponentials",
+        "normalizer",
+        "weights",
+        "contributions",
+        "context",
+        "contextScale",
+        "scaledContext"
+      ],
+      "properties": {
+        "projection": {
+          "$ref": "#/$defs/affine2"
+        },
+        "querySum": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "query": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "scoreTerms": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "scores": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "maximum": {
+          "type": "number"
+        },
+        "exponentials": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "normalizer": {
+          "type": "number"
+        },
+        "weights": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "contributions": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "contextScale": {
+          "type": "number"
+        },
+        "scaledContext": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}

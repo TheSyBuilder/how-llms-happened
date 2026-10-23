@@ -9,9 +9,10 @@ const corpus = read("../data/corpus.json");
 const manifest = read("../data/journeys/sequence-computation.json");
 const fixture = read("../data/fixtures/parikh-attention.json");
 const byteNetFixture = read("../data/fixtures/bytenet-reach.json");
+const convS2SFixture = read("../data/fixtures/convs2s-layers.json");
 
 test("four planned mode paths assign every stage claim once and retain eight distinct objectives", () => {
-  validateSequenceContract(corpus, manifest, fixture, byteNetFixture);
+  validateSequenceContract(corpus, manifest, fixture, byteNetFixture, convS2SFixture);
   assert.equal(manifest.stages.flatMap((s) => s.blocks.expert.flatMap((b) => b.claimIds)).length, 73);
   assert.equal(new Set(manifest.stages.flatMap((s) => Object.values(s.objectiveIds))).size, 8);
   const plan = getSequenceSourcePlan(corpus);
@@ -79,7 +80,7 @@ test("omissions, foreign claims, wrong mode, duplicate ownership and premature b
     (m) => { m.interludes[0].workIds.pop(); },
     (m) => { m.stages[1].blocks.expert[0].id = m.stages[0].blocks.expert[0].id; },
     (m) => { m.interludes[0].hiddenNotes = "unexpected"; },
-  ]) { const m = structuredClone(manifest); mutate(m); assert.throws(() => validateSequenceContract(corpus, m, fixture, byteNetFixture)); }
+  ]) { const m = structuredClone(manifest); mutate(m); assert.throws(() => validateSequenceContract(corpus, m, fixture, byteNetFixture, convS2SFixture)); }
 });
 
 test("closed source/variant/ledger shapes reject swapped provenance and unexplained fields", () => {
@@ -93,8 +94,8 @@ test("closed source/variant/ledger shapes reject swapped provenance and unexplai
     (f) => { f.expected.classScores = []; },
     (f) => { f.output.weights.pop(); f.output.bias.pop(); f.expected.classScores.pop(); },
     (f) => { f.intra.distanceBias["bucket-policy"] = 0; },
-  ]) { const f = structuredClone(fixture); mutate(f); assert.throws(() => validateSequenceContract(corpus, manifest, f, byteNetFixture)); }
+  ]) { const f = structuredClone(fixture); mutate(f); assert.throws(() => validateSequenceContract(corpus, manifest, f, byteNetFixture, convS2SFixture)); }
   const broken = structuredClone(corpus);
   broken.sources.find((s) => s.id === fixture.binding.sourceId).versionIds = [];
-  assert.throws(() => validateSequenceContract(broken, manifest, fixture, byteNetFixture), /reciprocally/);
+  assert.throws(() => validateSequenceContract(broken, manifest, fixture, byteNetFixture, convS2SFixture), /reciprocally/);
 });

@@ -2,9 +2,11 @@ import Ajv2020 from "ajv/dist/2020.js";
 import journeySchema from "../../schemas/journey.schema.json" with { type: "json" };
 import fixtureSchema from "../../schemas/parikh-fixture.schema.json" with { type: "json" };
 import byteNetSchema from "../../schemas/bytenet-fixture.schema.json" with { type: "json" };
+import convS2SSchema from "../../schemas/convs2s-fixture.schema.json" with { type: "json" };
 import type { Corpus, JourneyManifest } from "./site-data.ts";
 import { validateParikhExpected, type ParikhFixture } from "./parikh-engine.ts";
 import { validateByteNetExpected, type ByteNetFixture } from "./bytenet-engine.ts";
+import { validateConvS2SExpected, type ConvS2SFixture } from "./convs2s-engine.ts";
 
 export const SEQUENCE_WORK_IDS = [
   "parikh-2016-decomposable-attention-nli",
@@ -31,6 +33,7 @@ const ajv = new Ajv2020({ allErrors: true, strict: true });
 const journeyShape = ajv.compile(journeySchema);
 const fixtureShape = ajv.compile(fixtureSchema);
 const byteNetShape = ajv.compile(byteNetSchema);
+const convS2SShape = ajv.compile(convS2SSchema);
 
 function inventory(actual: string[], expected: string[], label: string): void {
   if (JSON.stringify([...actual].sort()) !== JSON.stringify([...expected].sort())) {
@@ -57,7 +60,7 @@ export function getSequenceSourcePlan(corpus: Corpus) {
   return { references, relationships };
 }
 
-export function validateSequenceContract(corpus: Corpus, manifest: JourneyManifest, fixture: ParikhFixture, byteNetFixture: ByteNetFixture): void {
+export function validateSequenceContract(corpus: Corpus, manifest: JourneyManifest, fixture: ParikhFixture, byteNetFixture: ByteNetFixture, convS2SFixture: ConvS2SFixture): void {
   if (!journeyShape(manifest)) throw new Error(`Sequence manifest shape: ${ajv.errorsText(journeyShape.errors)}`);
   if (!fixtureShape(fixture)) throw new Error(`Parikh fixture shape: ${ajv.errorsText(fixtureShape.errors)}`);
   if (manifest.id !== "sequence-computation" || manifest.slug !== manifest.id
@@ -110,7 +113,27 @@ export function validateSequenceContract(corpus: Corpus, manifest: JourneyManife
   if (fixture.a.length !== 2 || fixture.b.length !== 3) throw new Error("Retain the asymmetric rectangular comparison.");
   validateParikhExpected(fixture);
   validateByteNetContract(corpus, byteNetFixture);
+  validateConvS2SContract(corpus, convS2SFixture);
   getSequenceSourcePlan(corpus);
+}
+
+/** Published equations and an immutable implementation comparison retain separate identities. */
+export function validateConvS2SContract(corpus: Corpus, fixture: ConvS2SFixture): void {
+  if (!convS2SShape(fixture)) throw new Error(`ConvS2S fixture shape: ${ajv.errorsText(convS2SShape.errors)}`);
+  const work = corpus.works.find((item) => item.id === SEQUENCE_WORK_IDS[2]);
+  if (!work) throw new Error("Missing ConvS2S source work.");
+  for (const binding of [fixture.binding, fixture.contrast]) {
+    const version = work.versions.find((item) => item.id === binding.versionId);
+    const source = corpus.sources.find((item) => item.id === binding.sourceId);
+    if (!version || !source || !work.sourceIds.includes(source.id)
+      || !version.sourceIds.includes(source.id) || !source.versionIds.includes(version.id)) throw new Error("ConvS2S source and version must agree reciprocally.");
+    for (const id of binding.claimIds) {
+      const claim = corpus.claims.find((item) => item.id === id);
+      if (!claim || claim.workId !== work.id || !claim.evidence.some((item) => item.sourceId === source.id)) throw new Error("ConvS2S operations and revision boundary need owning-source evidence.");
+    }
+  }
+  if (fixture.source.length !== 3 || fixture.target.length !== 4) throw new Error("Retain three valid source slots and four shifted target rows.");
+  validateConvS2SExpected(fixture);
 }
 
 /** Both revisions remain evidence-bound; only the v2 structural convention is executed. */

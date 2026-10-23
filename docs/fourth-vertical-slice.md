@@ -4,7 +4,7 @@
 
 The next journey will ask: **Which positions can contribute to a representation, how do they contribute, and which computations still depend on an earlier step?** Select four full stages: Parikh et al. 2016, ByteNet 2016/2017, ConvS2S 2017, and Vaswani et al. 2017. Use Sukhbaatar et al. 2015 and Cheng–Dong–Lapata 2016 as two bounded prerequisite comparisons. Their complete teaching chapters remain deferred.
 
-This is an editorial learning sequence across classification and translation branches. It is not a four-paper influence chain. All stages and comparisons are **planned**. The [source/arithmetic contract](sequence-slice-contract.md) assigns the complete teaching inventory and admits the first Parikh calculation family; the other calculation gates remain pending. No routes or controls are implemented. The [interaction brief](sequence-computation-interaction.md) requires complete static explanations before one optional attention-route lens can be evaluated.
+This is an editorial learning sequence across classification and translation branches. It is not a four-paper influence chain. All stages and comparisons are **planned**. The [source/arithmetic contract](sequence-slice-contract.md) assigns the complete teaching inventory and admits Parikh arithmetic, ByteNet structural access and ConvS2S layer reads; the Transformer calculation gate remains pending. No routes or controls are implemented. The [interaction brief](sequence-computation-interaction.md) requires complete static explanations before one optional attention-route lens can be evaluated.
 
 The [alignment journey](third-vertical-slice.md) already supplies conditional prediction, weighted source reads and recurrent decoder timing. The new slice distinguishes those reads from attention within a sequence, convolutional communication, and the Transformer's three attention routes. It ends at the original encoder–decoder Transformer; later decoder-only pretraining and modern positional variants require another slice.
 
@@ -77,7 +77,7 @@ The targeted passages, chronology records and interaction references were access
 
 ## Source/fixture contract gates
 
-The [contract](sequence-slice-contract.md) and planned manifest now complete claim/objective ownership, prerequisite/reference scope and the operation crosswalk. Parikh's bidirectional read, shared Compare/Aggregate calculation, permutation checks and corrected short-distance intra-attention are verified. The [ByteNet ledger](bytenet-topology.md) verifies finite structural access, the dilation reset, explicit shift/padding conventions and width/EOS cases. ConvS2S and Transformer calculation families remain pending. The following gates apply to the complete slice:
+The [contract](sequence-slice-contract.md) and planned manifest now complete claim/objective ownership, prerequisite/reference scope and the operation crosswalk. Parikh's bidirectional read, shared Compare/Aggregate calculation, permutation checks and corrected short-distance intra-attention are verified. The [ByteNet ledger](bytenet-topology.md) verifies finite structural access, the dilation reset, explicit shift/padding conventions and width/EOS cases. The [ConvS2S ledger](convs2s-calculations.md) verifies paper-equation reads and an explicitly separate pinned-Lua two-layer comparison, retaining crop and normalization boundaries. The Transformer calculation family remains pending. The following gates apply to the complete slice:
 
 Before implementing a route, complete these gates:
 
