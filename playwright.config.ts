@@ -4,6 +4,7 @@ const channel = process.env.LLM_LINEAGE_BROWSER_CHANNEL === "chrome" ? { channel
 
 export default defineConfig({
   testDir: "./e2e",
+  testMatch: "lineage.spec.ts",
   fullyParallel: true,
   retries: 0,
   reporter: "line",

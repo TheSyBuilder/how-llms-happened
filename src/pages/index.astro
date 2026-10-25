@@ -1,76 +1,25 @@
 ---
-import JourneyMap from "../components/JourneyMap.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCorpusSummary, getJourneyOverview } from "../lib/site-data";
-
-const journey = getJourneyOverview();
-const corpus = getCorpusSummary();
+import LineageLayout from "../layouts/LineageLayout.astro";
+import { timeline, chapters, chapterHref } from "../lib/chapters";
+const live = chapters.filter(chapter => chapter.status === "live");
 ---
-
-<BaseLayout
-  title="LLM Lineage — the research path to modern language models"
-  description="A source-backed, interactive history of the papers and ideas that led to modern language models."
-  eyebrow="Research atlas"
->
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">The research path, not the mythology</p>
-      <h1>How language models learned to handle the unknown.</h1>
-      <p>
-        Follow one mechanism from population statistics to conditional language modeling. Learn it with intuition or audit it through equations, versions, and source-located claims.
-      </p>
-      <div class="hero-actions">
-        <a class="button" href="/journeys/smoothing/">Learn the smoothing story <span aria-hidden="true">→</span></a>
-        <a class="button button--quiet" href="/reference/works/good-1953-population-frequencies/">Inspect the first source</a>
-      </div>
-    </div>
-
-    <aside class="hero-ledger" aria-label="First learning sequence">
-      <header><strong>First sequence</strong><span>1953—1999</span></header>
-      <ol>
-        {journey.stages.map((stage) => (
-          <li>
-            <time datetime={stage.work.chronologyDate}>{stage.work.chronologyDate.slice(0, 4)}</time>
-            <span>{stage.work.authors[0]}</span>
-            <small>{stage.status === "built" ? "chapter available" : "record ready"}</small>
-          </li>
-        ))}
+<LineageLayout title="LLM Lineage — how language models happened" description="From letter counts to language models: an interactive timeline of the ideas that changed how computers work with words.">
+  <section class="timeline-intro page-width">
+    <p class="eyebrow">1913 → today · an interactive history</p>
+    <h1>Big ideas.<br />One <span>word</span> at a time.</h1>
+    <div class="intro-bottom"><p>How did counting letters turn into a machine you can talk to? Follow the turning points. Play with the ideas. Tell the story yourself.</p><a class="primary-link" href="/chapters/transformer/">Start with the Transformer <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="timeline-section" id="timeline" aria-labelledby="timeline-heading">
+    <div class="timeline-heading page-width"><div><p class="eyebrow">The story so far</p><h2 id="timeline-heading">Follow the thread.</h2></div><p>{live.length} chapter live · {chapters.length} turning points<br /><span>Scroll across to travel through time →</span></p></div>
+    <div class="timeline-strip" tabindex="0" aria-label="Chapter timeline, scroll horizontally with arrow keys">
+      <ol class="timeline-cards">
+        {timeline.map((chapter, i) => <li id={chapter.slug} class:list={["timeline-card", { "is-live": chapter.status === "live" }]}>
+          <div class="timeline-date"><time>{chapter.year}</time><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span></div>
+          <a href={chapterHref(chapter.slug)}><span class="chapter-status">{chapter.status === "live" ? "● Live · play now" : "Coming soon"}</span><h3>{chapter.title}</h3><p>{chapter.hook}</p><span class="card-arrow" aria-hidden="true">↗</span></a>
+        </li>)}
       </ol>
-    </aside>
-  </section>
-
-  <section class="shell proof-strip" aria-label="Corpus proof points">
-    <div><strong>{corpus.workCount}</strong><p>version-aware works in the shared corpus</p></div>
-    <div><strong>{corpus.claimCount}</strong><p>atomic claims with evidence locators</p></div>
-    <div><strong>2 paths</strong><p>distinct beginner and expert learning tasks</p></div>
-  </section>
-
-  <section class="shell section-intro" aria-labelledby="atlas-entry">
-    <div><p class="eyebrow">Selected research history, 1913–2025</p><h2 id="atlas-entry">See the branches. Inspect the connections.</h2></div>
-    <div><p>Find all {corpus.workCount} works in a dated catalogue, from the literary-text prologue to modern post-training. Beginner questions guide orientation; expert records expose chronology, source locators and causal limits. Includes later revisions; coverage is selective and expanding.</p><a class="button mt-4" href="/atlas/">Explore the research atlas <span aria-hidden="true">→</span></a></div>
-  </section>
-
-  <section class="shell section-intro">
-    <div>
-      <p class="eyebrow">Why begin here?</p>
-      <h2>Before neural networks, there was a probability problem.</h2>
     </div>
-    <p>
-      A language model cannot assign all its confidence to what it has already seen. The first journey traces how researchers estimated a reserve for the unseen, decided when to fall back, changed the fallback signal, and later combined evidence across orders.
-    </p>
+    <div class="timeline-bottom page-width"><span>Small experiments, right in your browser.</span><a href="/chapters/transformer/">Jump to the live chapter →</a></div>
   </section>
-
-  <section class="shell" aria-labelledby="sequence-heading">
-    <h2 id="sequence-heading" class="eyebrow">The four-stage sequence</h2>
-    <JourneyMap journey={journey} />
-  </section>
-
-  <section class="shell section-intro" aria-labelledby="recurrent-entry">
-    <div><p class="eyebrow">Journey 02 · recurrent memory</p><h2 id="recurrent-entry">What can a network carry from one word to the next?</h2></div>
-    <div><p>Compare one token after two histories, then follow the original LSTM cell’s separate state and credit traces. Inspect learned retention and the later state-to-gate reads. Return to Elman’s branch to see how carried state becomes normalized word prediction, with current-step credit and component-labelled results. Finish with the later composite cell’s source history, context evidence, and count-model mixture.</p><a class="button mt-4" href="/journeys/recurrent-memory/">Explore recurrent memory <span aria-hidden="true">→</span></a></div>
-  </section>
-  <section class="shell section-intro" aria-labelledby="alignment-entry">
-    <div><p class="eyebrow">Journey 03 · source summaries and alignment</p><h2 id="alignment-entry">How does a source phrase change the next-word question?</h2></div>
-    <div><p>Start with Cho’s encoder–decoder: score an EOS-terminated target, compare reset placement and inspect the complete translation-system result. Continue with Sutskever’s deep LSTM: inspect source reversal and separate direct generation from list rescoring. Continue with Bahdanau’s learned alignment: compare two reads over the same source, inspect source normalization and audit the result conditions. Finish with Luong’s current-state scoring, global/local source support and input feeding. All four chapters are available in both modes.</p><a class="button mt-4" href="/journeys/encoder-decoder-alignment/">Explore source summaries and alignment <span aria-hidden="true">→</span></a></div>
-  </section>
-</BaseLayout>
+  <section class="reading-note page-width"><p class="eyebrow">No prerequisites. Just curiosity.</p><h2>Understand the idea.<br />Then get your hands on it.</h2><p>Each chapter starts with a question, explains the breakthrough, and gives you a tiny toy to try. Open “Go deeper” for the math, or “Sources” to read the original work.</p></section>
+</LineageLayout>

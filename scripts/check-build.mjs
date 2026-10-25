@@ -61,6 +61,12 @@ function documentAnchors(path) {
 for (const htmlPath of htmlFiles) {
   const html = readFileSync(htmlPath, "utf8");
   const route = routeForFile(htmlPath);
+  const redirect = html.match(/http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"/i);
+  if (redirect) {
+    const target = fileForPathname(new URL(redirect[1], "https://local.invalid").pathname);
+    if (!existsSync(target)) failures.push(`${route} redirects to a missing page.`);
+    continue;
+  }
   const mainCount = (html.match(/<main\b/g) ?? []).length;
   const headingCount = (html.match(/<h1\b/g) ?? []).length;
   if (mainCount !== 1) failures.push(`${route} has ${mainCount} main landmarks.`);

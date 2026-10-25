@@ -1,23 +1,6 @@
 ---
-import ChoChapter from "../../../../components/ChoChapter.astro";
-import SutskeverChapter from "../../../../components/SutskeverChapter.astro";
-import LuongChapter from "../../../../components/LuongChapter.astro";
-import BahdanauChapter from "../../../../components/BahdanauChapter.astro";
-import BaseLayout from "../../../../layouts/BaseLayout.astro";
-import { atlasHref } from "../../../../lib/atlas-data";
-import { getBuiltStagePaths, getStageView } from "../../../../lib/site-data";
+import { legacyDestination } from "../../../../lib/chapters";
+import { getBuiltStagePaths } from "../../../../lib/site-data";
 export function getStaticPaths() { return getBuiltStagePaths("encoder-decoder-alignment"); }
-const mode = Astro.params.mode;
-const slug = Astro.params.stage;
-if ((mode !== "beginner" && mode !== "expert") || (slug !== "cho-2014" && slug !== "sutskever-2014" && slug !== "bahdanau-2014-2015" && slug !== "luong-2015")) throw new Error("No alignment stage treatment defined.");
-const view = getStageView(mode, slug, "encoder-decoder-alignment");
-const cho = slug === "cho-2014";
-const sutskever = slug === "sutskever-2014";
-const bahdanau = slug === "bahdanau-2014-2015";
-const label = cho ? "Cho encoder–decoder 2014" : sutskever ? "Sutskever sequence-to-sequence 2014" : bahdanau ? "Bahdanau learned alignment 2014/2015" : "Luong global and local attention 2015";
+return Astro.redirect(legacyDestination(Astro.url.pathname), 301);
 ---
-<BaseLayout title={`${mode === "beginner" ? "Beginner" : "Expert"}: ${label} — LLM Lineage`} description={cho ? "Conditional phrase scoring, source-dated reset equations and component-labelled translation evidence." : sutskever ? "Source reversal, the cited LSTM formulation and complete direct-generation versus rescoring evidence." : bahdanau ? "Source-position weighting, complete static arithmetic, the Graves window comparison and qualified translation evidence." : "Current-state attention, global/local source support, input feeding and complete version-scoped translation evidence."} eyebrow={`${mode} journey`}>
-  <div class="shell breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journeys/encoder-decoder-alignment/">Source summaries and alignment</a><span aria-hidden="true">/</span><a href={`/journeys/encoder-decoder-alignment/${mode}/`}>{mode}</a><span aria-hidden="true">/</span><span aria-current="page">{cho ? "Cho 2014" : sutskever ? "Sutskever 2014" : bahdanau ? "Bahdanau 2014/2015" : "Luong 2015"}</span></div>
-  <div class="shell"><a class="atlas-return" href={atlasHref(mode, view.work.id)}>Locate this work in the {mode} atlas</a></div>
-  {cho ? <ChoChapter view={view} /> : sutskever ? <SutskeverChapter view={view} /> : bahdanau ? <BahdanauChapter view={view} /> : <LuongChapter view={view} />}
-</BaseLayout>

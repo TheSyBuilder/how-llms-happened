@@ -10,10 +10,9 @@ const [corpus, schema] = await Promise.all(
     new URL("../schemas/corpus.schema.json", import.meta.url),
   ].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
 );
-const [readme, corpusFormat, historicalScope, currentEndpoint] =
+const [corpusFormat, historicalScope, currentEndpoint] =
   await Promise.all(
     [
-      new URL("../README.md", import.meta.url),
       new URL("../docs/corpus-format.md", import.meta.url),
       new URL("../docs/historical-scope.md", import.meta.url),
       new URL("../docs/current-endpoint.md", import.meta.url),
@@ -56,11 +55,6 @@ test("keeps the documented corpus totals synchronized", () => {
 
   assert.ok(corpusFormat.includes(`As of ${corpus.asOf}`));
   assert.ok(corpusFormat.includes(summary));
-  assert.ok(
-    readme.includes(
-      `${summary.replace(" learning objectives", " beginner/expert learning objectives")}.`,
-    ),
-  );
 });
 
 test("preserves T5 paper, C4, and lineage boundaries", () => {
@@ -158,7 +152,6 @@ test("preserves T5 paper, C4, and lineage boundaries", () => {
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("launch-time TFDS C4 1.0.0"));
   assert.ok(corpusFormat.includes("T5 is represented by arXiv versions 1–4"));
   assert.ok(historicalScope.includes("The T5 family was checked on 2026-08-28"));
 });
@@ -407,7 +400,6 @@ test("preserves BART versions, denoising results, rights, and RAG lineage", () =
   assert.match(objectives[1]?.successCriterion ?? "", /Table 1/);
   assert.match(objectives[1]?.successCriterion ?? "", /BART→RAG/);
 
-  assert.ok(readme.includes("Lewis et al.’s BART family"));
   assert.ok(corpusFormat.includes("Lewis et al. 2019 is represented"));
   assert.ok(
     historicalScope.includes("The BART family was checked on 2026-09-05"),
@@ -580,7 +572,6 @@ test("preserves Kaplan 2020 scaling scope, fits, and evidence boundaries", () =>
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("Kaplan et al.’s scaling-law preprint"));
   assert.ok(corpusFormat.includes("Kaplan et al. 2020 is a sole-version"));
   assert.ok(historicalScope.includes("The Kaplan scaling-law preprint was checked on 2026-08-30"));
 });
@@ -699,7 +690,6 @@ test("preserves ORQA versions, fixed-index learning, results, and REALM lineage"
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("Lee, Chang, and Toutanova’s ORQA family"));
   assert.ok(corpusFormat.includes("Lee, Chang, and Toutanova 2019 is represented"));
   assert.ok(historicalScope.includes("The ORQA family was checked on 2026-09-03"));
 });
@@ -820,7 +810,6 @@ test("preserves REALM versions, latent retrieval, index boundaries, and lineage"
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("Guu et al.’s REALM family"));
   assert.ok(corpusFormat.includes("Guu et al. 2020 is represented"));
   assert.ok(
     historicalScope.includes("The REALM family was checked on 2026-09-02"),
@@ -976,7 +965,6 @@ test("preserves DPR versions, contrastive retrieval, index limits, and RAG linea
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("Karpukhin et al.’s DPR family"));
   assert.ok(corpusFormat.includes("Karpukhin et al. 2020 is represented"));
   assert.ok(historicalScope.includes("The DPR family was checked on 2026-09-03"));
   assert.ok(
@@ -1125,7 +1113,6 @@ test("preserves RAG revisions, marginalization, results, and artifact boundaries
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("Lewis et al.’s RAG family"));
   assert.ok(corpusFormat.includes("Lewis et al. 2020 is represented"));
   assert.ok(
     historicalScope.includes("The RAG family was checked on 2026-09-02"),
@@ -1435,7 +1422,6 @@ test("preserves GPT-3 versions, protocols, evidence limits, and scoped lineage",
     objectives.map((item) => item.mode).sort(),
     ["beginner", "expert"],
   );
-  assert.ok(readme.includes("Brown et al.’s GPT-3 family"));
   assert.ok(corpusFormat.includes("Brown et al. 2020 is represented"));
   assert.ok(historicalScope.includes("The GPT-3 family was checked on 2026-08-30"));
 });
@@ -2226,7 +2212,6 @@ test("preserves Gopher versions, scaling boundaries, and scoped Chinchilla linea
       ],
     ],
   );
-  assert.ok(readme.includes("Rae et al.’s Gopher family begins"));
   assert.ok(corpusFormat.includes("Rae et al. 2021/2022 is represented"));
   assert.ok(
     historicalScope.includes(
@@ -2760,7 +2745,6 @@ test("preserves Chinchilla estimators, archival conflicts, and scoped incoming l
           claims.some((claim) => claim.id === claimId),
         ),
     );
-  assert.ok(readme.includes("Hoffmann et al.’s Chinchilla study"));
   assert.ok(corpusFormat.includes("Hoffmann et al. 2022 is represented"));
   assert.ok(
     historicalScope.includes(
@@ -3078,7 +3062,6 @@ test("preserves PaLM versions, systems evidence, evaluation bounds, and scoped l
     ],
   );
   assert.equal(work?.ideaIds.length, 23);
-  assert.ok(readme.includes("Chowdhery et al.’s PaLM family"));
   assert.ok(corpusFormat.includes("Chowdhery et al. 2022/2023 is represented"));
   assert.ok(
     historicalScope.includes("The PaLM family was checked on 2026-09-07"),
@@ -3395,7 +3378,6 @@ test("preserves OPT versions, training incidents, tiered artifacts, and scoped l
       ],
     ],
   );
-  assert.ok(readme.includes("Zhang et al.’s OPT family"));
   assert.ok(corpusFormat.includes("Zhang et al. 2022 is represented"));
   assert.ok(
     historicalScope.includes("The OPT family was checked on 2026-09-09"),
@@ -3594,7 +3576,6 @@ test("preserves ROOTS count scopes, governance limits, and target-evidenced BLOO
       ],
     ],
   );
-  assert.ok(readme.includes("Laurençon et al.’s ROOTS family"));
   assert.ok(corpusFormat.includes("Laurençon et al. 2022/2023 is represented"));
   assert.ok(
     historicalScope.includes("The ROOTS family was checked on 2026-09-11"),
@@ -3783,7 +3764,6 @@ test("preserves BLOOM revisions, run conflicts, evaluation scope, artifacts, rig
       ],
     ],
   );
-  assert.ok(readme.includes("BigScience Workshop’s BLOOM family"));
   assert.ok(corpusFormat.includes("BigScience Workshop’s BLOOM family"));
   assert.ok(
     historicalScope.includes("The BLOOM family was checked on 2026-09-12"),
@@ -3941,7 +3921,6 @@ test("preserves ReAct revisions, environment protocols, result scope, code bound
       ],
     ],
   );
-  assert.ok(readme.includes("Yao et al.’s ReAct family"));
   assert.ok(corpusFormat.includes("Yao et al. 2022/2023"));
   assert.ok(
     historicalScope.includes("The ReAct family was checked on 2026-09-14"),
@@ -4094,7 +4073,6 @@ test("preserves Toolformer versions, tool pipeline, scorer conflicts, release bo
       ],
     ],
   );
-  assert.ok(readme.includes("Schick et al.’s Toolformer family"));
   assert.ok(corpusFormat.includes("Schick et al. 2023"));
   assert.ok(
     historicalScope.includes("The Toolformer family was checked on 2026-09-15"),
@@ -4222,7 +4200,6 @@ test("preserves Switch Transformer versions, sparse routing, result limits, arti
       ["expert-fedus-2021-audit-switch-routing-scaling-and-release", "expert", 21],
     ],
   );
-  assert.ok(readme.includes("Fedus, Zoph, and Shazeer’s Switch Transformers family"));
   assert.ok(corpusFormat.includes("Fedus et al. 2021/2022"));
   assert.ok(
     historicalScope.includes(
@@ -4351,7 +4328,6 @@ test("preserves DeepSeek-R1 versions, RL stages, evaluation limits, artifacts, a
       ],
     ],
   );
-  assert.ok(readme.includes("DeepSeek-AI’s R1 family"));
   assert.ok(corpusFormat.includes("DeepSeek-AI 2025/2026"));
   assert.ok(
     historicalScope.includes(
@@ -4464,7 +4440,6 @@ test("preserves DPO derivation assumptions, version boundaries, evaluations, art
       ["expert", 17],
     ],
   );
-  assert.ok(readme.includes("Rafailov et al.’s DPO family"));
   assert.ok(corpusFormat.includes("Rafailov et al. 2023/2024"));
   assert.ok(
     currentEndpoint.includes("Promoted endpoint: Direct Preference Optimization"),

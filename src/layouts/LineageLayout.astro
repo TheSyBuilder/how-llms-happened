@@ -1,0 +1,24 @@
+---
+import "../styles/lineage.css";
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f4ed" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="LLM Lineage home"><span class="brand-mark" aria-hidden="true">L<span>L</span></span><strong>LLM Lineage</strong></a>
+      <nav aria-label="Main navigation"><a href="/#timeline">The timeline <span aria-hidden="true">↗</span></a></nav>
+    </header>
+    <main id="main-content"><slot /></main>
+    <footer class="site-footer"><a class="brand" href="/">LLM Lineage</a><p>Big ideas. Small experiments. A history you can play with.</p><a href="/#timeline">Back to the timeline ↑</a></footer>
+  </body>
+</html>
