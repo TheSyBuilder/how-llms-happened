@@ -400,7 +400,8 @@ figcaption {
   margin-top: 12px;
 }
 .attention-toy,
-.pretraining-toy {
+.pretraining-toy,
+.bert-toy {
   margin-top: 30px;
   padding: 28px;
   background: var(--surface);
@@ -421,7 +422,8 @@ figcaption {
   letter-spacing: 0.03em;
 }
 .attention-toy > p,
-.pretraining-toy > p {
+.pretraining-toy > p,
+.bert-toy > p {
   font-size: 15px;
   margin-top: 16px;
   color: var(--muted);
@@ -570,7 +572,8 @@ input[type="checkbox"] {
   font-weight: 700;
 }
 .attention-toy .toy-footnote,
-.pretraining-toy .toy-footnote {
+.pretraining-toy .toy-footnote,
+.bert-toy .toy-footnote {
   font-size: 12px;
   line-height: 1.55;
 }
@@ -752,6 +755,129 @@ input[type="checkbox"] {
   border: 1px solid var(--ink);
   border-radius: 6px;
 }
+.context-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-block: 24px;
+}
+.bert-diagram svg {
+  max-width: 480px;
+  margin-inline: auto;
+}
+.context-switch {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.clue-select {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.clue-select select {
+  min-height: 44px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+.masked-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px 12px;
+  padding: 24px 12px;
+  border-block: 1px solid var(--line);
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.5;
+  text-align: center;
+}
+.masked-sentence strong {
+  background: var(--accent);
+  padding-inline: 8px;
+}
+.hidden-clue {
+  color: var(--muted);
+  border-bottom: 1px dashed currentColor;
+}
+.bert-toy .context-count {
+  font-size: 13px;
+  margin-block: 16px 22px;
+}
+.completion-bars {
+  display: grid;
+  gap: 14px;
+}
+.completion-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 42px;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+}
+.completion-row output {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.completion-track {
+  height: 25px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.completion-track > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-right: 1px solid var(--deep);
+  transition: width 0.2s;
+}
+.toy-corpus {
+  font-size: 13px;
+  margin-top: 22px;
+}
+.toy-corpus summary {
+  min-height: 44px;
+  padding-block: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.toy-corpus ul {
+  padding: 12px 0;
+  margin: 0;
+  list-style: none;
+}
+.toy-corpus li {
+  padding: 5px 8px;
+}
+.toy-corpus .matches-context {
+  background: var(--paper);
+}
+.matches-context strong {
+  text-decoration: underline;
+  text-decoration-color: var(--deep);
+  text-underline-offset: 3px;
+}
+.toy-corpus > p {
+  color: var(--muted);
+  font-size: 12px;
+}
 .next-chapter span {
   font-size: 13px;
 }
@@ -913,8 +1039,22 @@ input[type="checkbox"] {
     padding: 16px 10px;
   }
   .attention-toy,
-  .pretraining-toy {
+  .pretraining-toy,
+  .bert-toy {
     padding: 18px 12px;
+  }
+  .context-controls {
+    gap: 12px;
+  }
+  .context-switch {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .clue-select {
+    margin-top: 0;
+  }
+  .completion-row {
+    gap: 10px;
   }
   .transfer-comparison {
     gap: 12px;

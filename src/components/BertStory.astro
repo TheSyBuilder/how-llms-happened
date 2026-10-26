@@ -1,0 +1,74 @@
+---
+import BertToy from "./BertToy";
+import { sourceLink, paperLink } from "../lib/chapters";
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p>
+  <h2>The answer can come later.</h2>
+  <p>“The metal ___ crossed the sky.” Stop at the blank and you have only part of the clue. Read the rest and “plane” becomes a good guess. Understanding a word can depend on what follows it.</p>
+  <p>GPT-1’s reading exercise predicted the next piece of text using only earlier pieces. That suits writing a continuation. For tasks like finding an answer inside a passage, a model can use the whole passage. How could learning from text prepare it to read in both directions at once?</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p>
+  <h2>Hide a word.<br />Read around it.</h2>
+  <p><strong>BERT</strong> arrived in 2018 with a fill-in-the-blank exercise. Hide some text, then predict what belonged there. This is <strong>masked language modelling</strong>: learning to recover selected pieces of text from a partly hidden input. The original text supplies the answers.</p>
+  <p>BERT uses a Transformer <strong>encoder</strong>—a network that builds a representation of an input. Its <strong>attention</strong>, the mechanism for mixing information between positions, lets left and right context meet throughout the network. Hiding the answer matters: if every word could see itself during ordinary word prediction, it could simply copy.</p>
+  <p>The original BERT also practised deciding whether two text spans followed each other. These reading exercises are <strong>pretraining</strong>: learning before a particular job. <strong>Fine-tuning</strong> means updating the model with examples of that job. BERT adapted its whole network plus a small new output layer to locate answers or categorise sentences.</p>
+  <figure class="idea-diagram bert-diagram">
+    <svg viewBox="0 0 400 450" role="img" aria-labelledby="bert-title bert-desc">
+      <title id="bert-title">Clues from both sides meet at the blank</title>
+      <desc id="bert-desc">The metal and crossed the sky feed a hidden position inside one BERT reader. It predicts the missing word plane. This sentence is an illustration.</desc>
+      <defs><marker id="bert-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="currentColor" /></marker></defs>
+      <g fill="currentColor" text-anchor="middle" font-size="20"><text x="95" y="28">left clue</text><text x="305" y="28">right clue</text></g>
+      <g class="diagram-node"><rect x="10" y="45" width="170" height="75" rx="6" /><rect x="220" y="45" width="170" height="75" rx="6" /><rect x="10" y="170" width="380" height="170" rx="6" /></g>
+      <g fill="currentColor" text-anchor="middle" font-size="26"><text x="95" y="91">The metal</text><text x="305" y="77">crossed</text><text x="305" y="105">the sky.</text><text x="200" y="204">BERT reader</text><text x="200" y="316" font-size="22">both sides meet</text></g>
+      <rect x="125" y="230" width="150" height="56" rx="6" fill="var(--paper)" stroke="var(--line)" /><text x="200" y="266" fill="currentColor" text-anchor="middle" font-size="26">[MASK]</text>
+      <g fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#bert-arrow)"><path d="M95 124V245H118" /><path d="M305 124V245H282" /><path d="M200 344V381" /></g>
+      <rect x="125" y="389" width="150" height="56" rx="6" fill="var(--accent)" stroke="currentColor" /><text x="200" y="425" fill="currentColor" text-anchor="middle" font-size="28">plane</text>
+    </svg>
+    <figcaption>A made-up sentence, one hidden word, two directions of context. The missing word is the training answer.</figcaption>
+  </figure>
+  <aside class="chapter-companions"><h3>Also in this chapter</h3><p><a href={paperLink("liu-2019-roberta-robustly-optimized-bert-pretraining-approach")}>RoBERTa · Liu et al. · 2019</a> — improve the training recipe while keeping a BERT-style reader.<br /><a href={paperLink("yang-2019-xlnet-generalized-autoregressive-pretraining-language-understanding")}>XLNet · Yang et al. · 2019</a> — vary the prediction order to learn from both sides without inserting a mask symbol.</p></aside>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p>
+  <h2>Give the gap another clue.</h2>
+  <p>Try “metal” with “sky,” then “lake.” What happens with “little” instead?</p>
+  <noscript><p>Enable JavaScript to try the toy. In this invented set, “metal” leaves plane or boat; “sky” leaves bird or plane. Together they leave plane.</p></noscript>
+  <BertToy client:load />
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p>
+  <h2>A reusable reader.</h2>
+  <p>BERT showed that reading with both sides of context could prepare one architecture for many language tasks. The same pretrained starting point could be adapted to classify sentences, label words, or locate answers.</p>
+  <p>Next, we return to models that write forward. GPT-2 explored how much a larger next-word predictor could do through the text placed before its answer.</p>
+  <a class="next-chapter" href="/chapters/gpt-2/"><span>Next · 2019</span><strong>GPT-2 and zero-shot ↗</strong><span>Can a task be hidden inside a piece of text?</span></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>Masking, architecture, results & limits</span></summary>
+  <div class="disclosure-body">
+    <h3>What gets predicted?</h3>
+    <p>A token is a piece of text. BERT uses WordPiece tokens, which can split a word into smaller pieces. It selects 15% of token positions as prediction targets. Of these selected positions, 80% become <code>[MASK]</code>, 10% receive a random token, and 10% stay unchanged. The target is always the original token. This reduces reliance on a mask symbol that is absent during ordinary task use.</p>
+    <p>For selected positions M and corrupted input x̃, the masked-token loss is <code>L = −Σᵢ∈M log P(xᵢ | x̃)</code>. Minimising it rewards the original tokens. The loss applies at selected positions; it does not define a left-to-right probability for a complete sentence. Multiple hidden positions are predicted separately from their shared corrupted input.</p>
+    <h3>One input, a shared reader</h3>
+    <p>The input combines token, position, and text-span embeddings—learned lists of numbers. <code>[CLS]</code> is a special leading token used for classification; <code>[SEP]</code> marks span boundaries. The two spans attend to each other inside one encoder. BERT Base has 12 layers, 768-dimensional states, 12 attention heads (separate learned reads), and 110 million parameters (adjustable numbers). BERT Large has 24 layers, 1,024-dimensional states, 16 heads, and 340 million parameters.</p>
+    <p>Pretraining uses BooksCorpus and English Wikipedia. Its second loss classifies span pairs: half contain an actual continuation, half a randomly sampled span. This is next-sentence prediction, not generation of the next sentence. Fine-tuning updates all pretrained parameters and a task-specific output; different tasks use separate copies.</p>
+    <h3>What the results showed</h3>
+    <p>Table 1 reports BERT Large at 86.7% accuracy on the matched MultiNLI test set, versus 82.1% for the listed OpenAI GPT baseline. MultiNLI asks whether a second sentence is supported, contradicted, or left undecided by the first. These are reported system results with different training setups, rather than an isolated test of attention direction.</p>
+    <p>BERT’s original objective trains a reader, not a left-to-right text generator. It still needs labelled examples for the paper’s task adaptation. Hidden text can be ambiguous; success on these benchmarks does not establish reliable reasoning or factual answers.</p>
+    <h3>Two follow-ups</h3>
+    <p>RoBERTa changes the training recipe: more data and training, larger batches, fresh masks, longer text sequences, and removal of next-sentence prediction. Its improvements show the importance of the recipe as a whole. XLNet instead varies which positions are predicted before others. The written sentence stays in order; the prediction order changes. A separate query representation identifies the target position without revealing its token.</p>
+    <h3>How the toy works</h3>
+    <p>The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>Original papers, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink("devlin-2019-naacl-full-text")}>Devlin et al. · BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a><p>Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 4: reading directions.</p></li>
+    <li><a href={sourceLink("devlin-2018-arxiv-record")}>BERT · original preprint record (2018)</a><p>First posted October 11, 2018; the conference paper appeared in 2019.</p></li>
+    <li><a href={sourceLink("liu-2019-arxiv-v1-full-text")}>Liu et al. · RoBERTa (2019)</a><p>Sections 3–5: training recipe, fresh masking, input packing without next-sentence prediction, batches, data, and duration. The gains combine changes.</p></li>
+    <li><a href={sourceLink("yang-2019-neurips-full-text")}>Yang et al. · XLNet (2019)</a><p>Sections 2.1–2.3: permutation of prediction order, unchanged written order, bidirectional context, and two-stream attention without mask-token corruption.</p></li>
+    <li><a href={sourceLink("radford-2019-openai-report-full-text")}>Radford et al. · Language Models are Unsupervised Multitask Learners (2019)</a><p>Sections 1–3: next-token training, scale, and conditioning on text for tasks, the bridge to GPT-2.</p></li>
+  </ol><p>The opening sentence, diagram, and eight toy sentences are invented illustrations. Percentages in the toy describe only its sentence counts.</p></div>
+</details>

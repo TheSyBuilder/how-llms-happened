@@ -75,7 +75,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
-  await page.goto("/chapters/bert/");
+  await page.goto("/chapters/gpt-2/");
   await expect(
     page.getByText("This part of the story is on its way"),
   ).toBeVisible();
@@ -91,8 +91,8 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("2 chapters live · 30 turning points")).toBeVisible();
-  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await expect(page.getByText("3 chapters live · 30 turning points")).toBeVisible();
+  await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
   const toy = page.locator(".pretraining-toy");
@@ -155,5 +155,92 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole("link", { name: "Next · 2018 BERT" }).click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
+  expect(errors).toEqual([]);
+});
+
+test("BERT combines left and right clues with mouse, touch, and keyboard", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto("/");
+  await expect(page.getByText("3 chapters live · 30 turning points")).toBeVisible();
+  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await expect(page).toHaveURL(/\/chapters\/bert\//);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("bert-hero.png") });
+  await page.locator(".bert-diagram").screenshot({ path: testInfo.outputPath("bert-diagram.png") });
+  const toy = page.locator(".bert-toy");
+  const left = page.getByRole("checkbox", { name: "Left context", exact: true });
+  const right = page.getByRole("checkbox", { name: "Right context", exact: true });
+  const leftClue = page.getByRole("combobox", { name: "Left clue", exact: true });
+  const rightClue = page.getByRole("combobox", { name: "Right clue", exact: true });
+  await expect(page.getByTestId("completion-plane")).toHaveText("50%");
+  await expect(page.getByTestId("completion-boat")).toHaveText("50%");
+  if (testInfo.project.name === "mobile-chromium") {
+    await right.tap();
+  } else {
+    await right.click();
+  }
+  await expect(page.getByTestId("completion-plane")).toHaveText("100%");
+  await expect(page.getByTestId("context-count")).toHaveText("1 of 8 sentences match the visible clues.");
+  await page.waitForTimeout(250);
+  await toy.screenshot({ path: testInfo.outputPath("bert-both-clues.png") });
+  await rightClue.focus();
+  await page.keyboard.press("l");
+  await page.keyboard.press("Enter");
+  await expect(rightClue).toHaveValue("lake");
+  await expect(page.getByTestId("completion-boat")).toHaveText("100%");
+  await leftClue.focus();
+  await page.keyboard.press("l");
+  await page.keyboard.press("Enter");
+  await expect(leftClue).toHaveValue("little");
+  await expect(page.getByTestId("completion-boat")).toHaveText("50%");
+  await expect(page.getByTestId("completion-fish")).toHaveText("50%");
+  await expect(toy.getByText("2 words still fit.")).toBeVisible();
+  await page.waitForTimeout(250);
+  await toy.screenshot({ path: testInfo.outputPath("bert-ambiguous.png") });
+  await right.focus();
+  await page.keyboard.press("Space");
+  await left.focus();
+  await page.keyboard.press("Space");
+  await expect(left).not.toBeChecked();
+  await expect(right).not.toBeChecked();
+  for (const word of ["bird", "plane", "boat", "fish"]) {
+    await expect(page.getByTestId(`completion-${word}`)).toHaveText("25%");
+  }
+  await page.getByText("See the eight toy sentences", { exact: true }).click();
+  await expect(toy.locator("li")).toHaveCount(8);
+  await expect(toy.locator(".matches-context")).toHaveCount(8);
+  if (testInfo.project.name === "mobile-chromium") {
+    await left.tap();
+    await right.tap();
+    await leftClue.tap();
+  } else {
+    await left.click();
+    await right.click();
+    await leftClue.click();
+  }
+  await page.keyboard.press("h");
+  await page.keyboard.press("Enter");
+  await expect(leftClue).toHaveValue("hungry");
+  await expect(page.getByTestId("completion-fish")).toHaveText("100%");
+  await expect(toy.locator(".matches-context")).toHaveCount(1);
+  await page.getByText("See the eight toy sentences", { exact: true }).click();
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(toy.locator(".completion-track > span").first()).toHaveCSS("transition-duration", "0s");
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("bert.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+  expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+  for (const id of ["deeper", "sources"]) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute("open", "");
+    await page.locator(`#${id} summary`).click();
+  }
+  await expect(page.getByRole("heading", { name: "What gets predicted?" })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath("bert-expanded.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("link", { name: "Next · 2019 GPT-2 and zero-shot" }).click();
+  await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
   expect(errors).toEqual([]);
 });
