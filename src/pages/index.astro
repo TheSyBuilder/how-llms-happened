@@ -10,7 +10,7 @@ const live = chapters.filter(chapter => chapter.status === "live");
     <div class="intro-bottom"><p>How did counting letters turn into a machine you can talk to? Follow the turning points. Play with the ideas. Tell the story yourself.</p><a class="primary-link" href="/chapters/transformer/">Start with the Transformer <span aria-hidden="true">↗</span></a></div>
   </section>
   <section class="timeline-section" id="timeline" aria-labelledby="timeline-heading">
-    <div class="timeline-heading page-width"><div><p class="eyebrow">The story so far</p><h2 id="timeline-heading">Follow the thread.</h2></div><p>{live.length} chapter live · {chapters.length} turning points<br /><span>Scroll across to travel through time →</span></p></div>
+    <div class="timeline-heading page-width"><div><p class="eyebrow">The story so far</p><h2 id="timeline-heading">Follow the thread.</h2></div><p>{live.length} {live.length === 1 ? "chapter" : "chapters"} live · {chapters.length} turning points<br /><span>Scroll across to travel through time →</span></p></div>
     <div class="timeline-strip" tabindex="0" aria-label="Chapter timeline, scroll horizontally with arrow keys">
       <ol class="timeline-cards">
         {timeline.map((chapter, i) => <li id={chapter.slug} class:list={["timeline-card", { "is-live": chapter.status === "live" }]}>
@@ -19,7 +19,7 @@ const live = chapters.filter(chapter => chapter.status === "live");
         </li>)}
       </ol>
     </div>
-    <div class="timeline-bottom page-width"><span>Small experiments, right in your browser.</span><a href="/chapters/transformer/">Jump to the live chapter →</a></div>
+    <div class="timeline-bottom page-width"><span>Small experiments, right in your browser.</span><a href={chapterHref(live[live.length - 1]!.slug)}>Jump to the latest chapter →</a></div>
   </section>
   <section class="reading-note page-width"><p class="eyebrow">No prerequisites. Just curiosity.</p><h2>Understand the idea.<br />Then get your hands on it.</h2><p>Each chapter starts with a question, explains the breakthrough, and gives you a tiny toy to try. Open “Go deeper” for the math, or “Sources” to read the original work.</p></section>
 </LineageLayout>

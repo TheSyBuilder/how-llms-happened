@@ -75,7 +75,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
-  await page.goto("/chapters/pretraining/");
+  await page.goto("/chapters/bert/");
   await expect(
     page.getByText("This part of the story is on its way"),
   ).toBeVisible();
@@ -83,5 +83,77 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
     "/journeys/encoder-decoder-alignment/expert/bahdanau-2014-2015/",
   );
   await expect(page).toHaveURL(/\/chapters\/attention\//);
+  expect(errors).toEqual([]);
+});
+
+test("pretraining transfers reading patterns with mouse, touch, and keyboard", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto("/");
+  await expect(page.getByText("2 chapters live · 30 turning points")).toBeVisible();
+  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await expect(page).toHaveURL(/\/chapters\/pretraining\//);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  const toy = page.locator(".pretraining-toy");
+  await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("pretraining-hero.png") });
+  await page.locator(".transfer-diagram").screenshot({ path: testInfo.outputPath("pretraining-diagram.png") });
+  const slider = page.getByRole("slider", { name: "Add labelled reviews" });
+  const negativeReview = page.getByRole("radio", { name: "awful", exact: true });
+  const pretrained = page.getByTestId("pretrained-probability");
+  const scratch = page.getByTestId("scratch-probability");
+  await toy.scrollIntoViewIfNeeded();
+  await expect(page.getByTestId("review-seen")).toHaveText("“splendid” has no review label.");
+  expect(parseInt((await pretrained.textContent())!)).toBeGreaterThan(90);
+  expect(parseInt((await scratch.textContent())!)).toBeLessThan(60);
+  await toy.screenshot({ path: testInfo.outputPath("pretraining-two-labels.png") });
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await expect(pretrained).toHaveText("50%");
+  await expect(scratch).toHaveText("50%");
+  await page.keyboard.press("ArrowRight");
+  await expect(slider).toHaveValue("2");
+  await page.getByRole("radio", { name: "splendid", exact: true }).focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(negativeReview).toBeChecked();
+  expect(parseInt((await pretrained.textContent())!)).toBeLessThan(10);
+  if (testInfo.project.name === "mobile-chromium") {
+    await page.getByRole("radio", { name: "splendid", exact: true }).tap();
+  } else {
+    await page.getByRole("radio", { name: "splendid", exact: true }).click();
+  }
+  await slider.scrollIntoViewIfNeeded();
+  const box = await slider.boundingBox();
+  if (testInfo.project.name === "mobile-chromium") {
+    await page.touchscreen.tap(box!.x + box!.width - 5, box!.y + box!.height / 2);
+    await page.getByText("See all eight reading sentences").tap();
+  } else {
+    await page.mouse.click(box!.x + box!.width - 5, box!.y + box!.height / 2);
+    await page.getByText("See all eight reading sentences").click();
+  }
+  await expect(slider).toHaveValue("8");
+  await expect(page.getByTestId("review-seen")).toHaveText("“splendid” has a review label.");
+  expect(parseInt((await scratch.textContent())!)).toBeGreaterThan(90);
+  await expect(page.getByText("The terrible film made us sigh.", { exact: true })).toBeVisible();
+  await page.getByText("See all eight reading sentences").click();
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await page.keyboard.press("ArrowRight");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(toy.locator(".prediction-track > span").first()).toHaveCSS("transition-duration", "0s");
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("pretraining.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const bodyWords = await page.locator(".chapter-hero, .story-section").allTextContents();
+  expect(bodyWords.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+  for (const id of ["deeper", "sources"]) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute("open", "");
+    await page.locator(`#${id} summary`).click();
+  }
+  await expect(page.getByRole("heading", { name: "GPT-1: reuse and update the network" })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath("pretraining-expanded.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("link", { name: "Next · 2018 BERT" }).click();
+  await expect(page).toHaveURL(/\/chapters\/bert\//);
   expect(errors).toEqual([]);
 });

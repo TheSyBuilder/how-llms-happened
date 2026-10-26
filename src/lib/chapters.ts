@@ -307,7 +307,7 @@ export const chapters: Chapter[] = entries.map(
     anchor: resolveWork(anchor),
     related: related.map(resolveWork),
     toy,
-    status: slug === "transformer" ? "live" : "planned",
+    status: ["transformer", "pretraining"].includes(slug) ? "live" : "planned",
   }),
 );
 export const timeline = [...chapters].sort((a, b) => a.year - b.year);

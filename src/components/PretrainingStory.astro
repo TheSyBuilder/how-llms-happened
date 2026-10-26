@@ -1,0 +1,72 @@
+---
+import PretrainingToy from "./PretrainingToy";
+import { sourceLink, paperLink } from "../lib/chapters";
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p>
+  <h2>Why start from zero?</h2>
+  <p>A <strong>label</strong> is an answer attached to an example, such as “positive” on a film review. Labels take work to collect; ordinary text is easier to find. Could reading give a model a head start?</p>
+  <p>Earlier systems reused word representations—lists of numbers describing words. Now the opportunity was to reuse a whole <strong>language model</strong>: a model that learns to predict text from context.</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p>
+  <h2>Read first. Specialise second.</h2>
+  <p><strong>Pretraining</strong> is learning before a particular task. Predicting words supplies its own answers: the text tells you what comes next. <strong>Fine-tuning</strong> then updates the model using task examples. Think of reading widely before learning a new job.</p>
+  <p>Three projects carried reading forward differently. <strong>ELMo</strong> supplied context-sensitive representations: “bank” could look different beside “river” and “money.” <strong>ULMFiT</strong> adapted a model that processed words one at a time, first to the task’s unlabelled text, then to labels, changing its layers carefully.</p>
+  <p><strong>GPT-1</strong> used a Transformer—a network where words exchange information through attention. It predicted the next chunk of text in books using earlier text, then adapted the network with a small task-specific output. The starting point was now an entire pretrained Transformer.</p>
+  <figure class="idea-diagram transfer-diagram">
+    <svg viewBox="0 0 640 440" role="img" aria-labelledby="transfer-title transfer-desc">
+      <title id="transfer-title">One reading stage, different jobs</title>
+      <desc id="transfer-desc">Unlabelled text trains a shared starting model. Separate copies are fine-tuned with labels for reviews or questions. Each copy keeps and adapts what reading taught it.</desc>
+      <defs><marker id="transfer-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="currentColor" /></marker></defs>
+      <g class="diagram-node"><rect x="150" y="16" width="340" height="70" rx="8" /><rect x="150" y="146" width="340" height="88" rx="8" /><rect x="20" y="320" width="280" height="88" rx="8" /><rect x="340" y="320" width="280" height="88" rx="8" /></g>
+      <rect x="150" y="146" width="340" height="88" rx="8" fill="var(--accent)" stroke="currentColor" />
+      <g fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#transfer-arrow)"><path d="M320 90V138" /><path d="M280 238 160 312" /><path d="M360 238 480 312" /></g>
+      <g fill="currentColor" text-anchor="middle" font-size="25"><text x="320" y="59">Unlabelled text</text><text x="320" y="183">Model after reading</text><text x="320" y="214" font-size="19">a reusable start</text><text x="160" y="358">Review model</text><text x="160" y="389" font-size="19">+ review labels</text><text x="480" y="358">Question model</text><text x="480" y="389" font-size="19">+ question labels</text></g>
+      <g fill="currentColor" font-size="18"><text x="338" y="120">pretrain</text><text x="47" y="274">fine-tune</text><text x="485" y="274">fine-tune</text></g>
+    </svg>
+    <figcaption>Fine-tuning adapts a copy for each job. ELMo kept the language model fixed and reused its representations.</figcaption>
+  </figure>
+  <aside class="chapter-companions"><h3>Also in this chapter</h3><p><a href={paperLink("peters-2017-deep-contextualized-word-representations")}>ELMo · Peters et al.</a> — reuse representations that change with context.<br /><a href={paperLink("howard-ruder-2018-universal-language-model-fine-tuning")}>ULMFiT · Howard & Ruder</a> — adapt a model in stages.</p></aside>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p>
+  <h2>Two labels.<br />More than two words.</h2>
+  <p>Try zero labels, then two, then eight. When does reading help most?</p>
+  <noscript><p>Enable JavaScript to try the toy. Reading groups adjectives by the words that follow them. A few review labels can then teach a rating for a whole group.</p></noscript>
+  <PretrainingToy client:load />
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p>
+  <h2>Reading became reusable.</h2>
+  <p>Predicting language could prepare a model for other tasks. Pretraining learns from text; fine-tuning teaches a particular job.</p>
+  <p>Next, BERT changed the reading exercise: a Transformer could use context on both sides of a missing word.</p>
+  <a class="next-chapter" href="/chapters/bert/"><span>Next · 2018</span><strong>BERT ↗</strong><span>What can a missing word teach a model?</span></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>Objectives, transfer routes, results & limits</span></summary>
+  <div class="disclosure-body">
+    <h3>GPT-1: reuse and update the network</h3>
+    <p>Its pretraining objective maximises <code>Σₜ log P(xₜ | x₁, …, xₜ₋₁; θ)</code>: give the observed next token high probability. A token is a chunk of text; θ denotes learned parameters. Fine-tuning maximises labelled-answer likelihood, usually with an additional weighted language-model objective. All pretrained layers are updated.</p>
+    <p>The model has 12 Transformer decoder layers (which predict text using earlier positions), 768-dimensional states, and 12 attention heads (separate learned reads). It trained on BooksCorpus. Table 3 reports 86.5% Story Cloze accuracy versus 77.6% for the listed previous best. Story Cloze asks a model to choose a story’s ending. The study spans 12 English benchmarks; transfer does not establish general conversational ability.</p>
+    <h3>ELMo: reuse features</h3>
+    <p>Two recurrent networks, which process words one at a time, predict words from earlier or later context. Each position’s representation combines their internal states. During supervised task training, the language-model weights stay fixed; a task learns a weighted mixture of its layers, scaled by a learned number: <code>ELMoₖ = γ Σⱼ sⱼ hₖ,ⱼ</code>. The mixture weights s sum to one.</p>
+    <p>Table 1 reports SQuAD question-answering test F1 of 85.8 for the baseline plus ELMo versus 81.1 for the baseline. F1 balances answer precision and recall. Reusing features still requires a task model and labelled training.</p>
+    <h3>ULMFiT: adapt in stages</h3>
+    <p>A three-layer LSTM—a recurrent network whose gates control what memory to keep and change—first learns general language, then adapts to unlabelled target text, then learns classification. Lower layers use smaller learning rates (update sizes); layers are gradually unfrozen (allowed to change). The learning rate rises briefly, then falls.</p>
+    <p>Table 2 reports 4.6% test error on IMDb film-review ratings. That result averages separate forward and backward classifiers—models that assign categories. The experiments cover six English classification datasets. Transfer can fail when the reading and the task differ, and careless updates can erase useful earlier learning.</p>
+    <h3>What the toy actually trains</h3>
+    <p>Each adjective has one learned number e. A prediction is <code>sigmoid(w × e + b)</code>; sigmoid maps its input to a value between zero and one. Reading updates e, w, and b to predict “smile” versus “sigh.” Fine-tuning replaces the output with a fresh rating output, then updates it and the adjective numbers using the selected labels. Both stages use 100 passes over their tiny data.</p>
+    <p>The comparison uses identical initial adjective numbers and identical label training. Unlabelled adjectives keep their reading patterns. This omits attention, word order, contextual representations, and realistic data; it illustrates transfer, not any paper’s implementation.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>Original papers, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink("radford-2018-openai-preprint-full-text")}>Radford et al. · Improving Language Understanding by Generative Pre-Training</a><p>Sections 1–3: text, labels, earlier word representations, pretraining, fine-tuning, and task inputs. Section 4.1: architecture and corpus. Table 3: Story Cloze. Section 4.2: benchmark scope.</p></li>
+    <li><a href={sourceLink("radford-2018-openai-announcement")}>OpenAI · Improving language understanding with unsupervised learning (2018)</a><p>The June 11, 2018 release and the model commonly called GPT-1.</p></li>
+    <li><a href={sourceLink("peters-2018-naacl-full-text")}>Peters et al. · Deep Contextualized Word Representations (2018)</a><p>Sections 1–3: context-dependent representations, two language-model directions, frozen weights, and task mixtures. Section 4 and Table 1: tasks and SQuAD results.</p></li>
+    <li><a href={sourceLink("howard-ruder-2018-acl-full-text")}>Howard & Ruder · Universal Language Model Fine-tuning for Text Classification (2018)</a><p>Sections 2–3 and Figure 1: three stages, layerwise rates, scheduling, and unfreezing. Section 4 and Table 2: evaluation and IMDb error. Section 5: adapting with limited labels and forgetting.</p></li>
+    <li><a href={paperLink("devlin-2018-bert-pre-training-deep-bidirectional-transformers")}>Devlin et al. · BERT</a><p>Abstract and Section 3.1: using both sides of context to predict masked words, the bridge to the next chapter.</p></li>
+  </ol><p>The reading-before-a-job analogy, bank examples, diagram, and toy sentences are illustrations. Toy predictions come from the tiny model in this page.</p></div>
+</details>

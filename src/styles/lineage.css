@@ -399,7 +399,8 @@ figcaption {
   color: var(--muted);
   margin-top: 12px;
 }
-.attention-toy {
+.attention-toy,
+.pretraining-toy {
   margin-top: 30px;
   padding: 28px;
   background: var(--surface);
@@ -419,7 +420,8 @@ figcaption {
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
-.attention-toy > p {
+.attention-toy > p,
+.pretraining-toy > p {
   font-size: 15px;
   margin-top: 16px;
   color: var(--muted);
@@ -567,9 +569,177 @@ input[type="checkbox"] {
   font-family: monospace;
   font-weight: 700;
 }
-.attention-toy .toy-footnote {
+.attention-toy .toy-footnote,
+.pretraining-toy .toy-footnote {
   font-size: 12px;
   line-height: 1.55;
+}
+.chapter-companions {
+  margin-top: 28px;
+  font-size: 15px;
+}
+.chapter-companions h3 {
+  font-size: 21px;
+  margin-bottom: 14px;
+}
+.transfer-diagram svg {
+  max-width: 600px;
+  margin-inline: auto;
+}
+.reading-sample {
+  margin-block: 26px;
+  padding: 20px;
+  background: var(--paper);
+  border-left: 3px solid var(--deep);
+  font-size: 14px;
+}
+.reading-sample h3 {
+  font-family: var(--body);
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+.reading-sample strong {
+  background: var(--accent);
+  padding-inline: 3px;
+}
+.reading-sample details {
+  margin-block: 12px;
+}
+.reading-sample summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding-block: 10px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.reading-sample ul {
+  padding-left: 20px;
+}
+.reading-note-small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.review-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 18px 26px;
+  font-size: 12px;
+}
+.review-labels span {
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.review-picker {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.review-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.review-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.review-options input {
+  margin: 0;
+  accent-color: var(--deep);
+}
+.review-options label:has(:checked) {
+  border-color: var(--ink);
+  background: var(--accent);
+}
+.pretraining-toy .selected-review {
+  font-size: 22px;
+  font-family: var(--display);
+  color: var(--ink);
+}
+.screen-reader-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.pretraining-toy .review-seen {
+  font-size: 13px;
+  margin-block: 10px 18px;
+}
+.transfer-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.transfer-prediction {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.transfer-prediction h4 {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.prediction-number {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.prediction-number output {
+  font-family: var(--display);
+  font-size: clamp(32px, 6vw, 58px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+.prediction-number span,
+.transfer-prediction > p {
+  font-size: 12px;
+  color: var(--muted);
+}
+.prediction-track {
+  height: 22px;
+  margin-block: 15px 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  position: relative;
+}
+.prediction-track > span {
+  display: block;
+  height: 100%;
+  background: var(--muted);
+  transition: width 0.2s;
+}
+.has-head-start .prediction-track > span {
+  background: var(--accent);
+  border-right: 1px solid var(--deep);
+}
+.prediction-track > i {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+  border-left: 1px dashed var(--ink);
 }
 .next-chapter {
   display: flex;
@@ -742,8 +912,24 @@ input[type="checkbox"] {
   .idea-diagram {
     padding: 16px 10px;
   }
-  .attention-toy {
+  .attention-toy,
+  .pretraining-toy {
     padding: 18px 12px;
+  }
+  .transfer-comparison {
+    gap: 12px;
+  }
+  .review-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .transfer-diagram text {
+    font-size: 32px;
+  }
+  .transfer-prediction h4 {
+    min-height: 40px;
+  }
+  .reading-sample {
+    padding: 15px 12px;
   }
   .toy-topline {
     align-items: start;
