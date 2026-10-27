@@ -1,0 +1,71 @@
+---
+import Gpt2Toy from "./Gpt2Toy";
+import { sourceLink } from "../lib/chapters";
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p>
+  <h2>Must every job need<br />another training set?</h2>
+  <p>GPT-1 and BERT offered a useful recipe: learn from text first, then adapt to a job with labelled examples. <strong>Fine-tuning</strong> means updating a model’s adjustable numbers for that job. Want another task? Prepare another set of examples and train again.</p>
+  <p>But ordinary writing already contains questions and answers, translations, and summaries. Could learning to continue that writing also teach a model something about those jobs?</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p>
+  <h2>The task can be text.</h2>
+  <p>In 2019, GPT-2 explored this possibility with a larger Transformer trained on WebText, a collection of web pages. Its exercise stayed simple: predict the next <strong>token</strong>, a piece of text, using the tokens before it.</p>
+  <p>A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>—“too long; didn’t read”—and a summary becomes a plausible continuation. Supply a passage and a question ending in <code>A:</code>, and an answer can come next. The model’s numbers stay fixed; the prompt changes what comes next.</p>
+  <p>This is <strong>zero-shot transfer</strong>: trying a task without training the model on a labelled dataset for that task. GPT-2 showed signs of several abilities this way, but its summaries could confuse details and its answers could be shallow. Continuing convincingly is not the same as answering correctly.</p>
+  <figure class="idea-diagram gpt2-diagram">
+    <svg viewBox="0 0 400 435" role="img" aria-labelledby="gpt2-title gpt2-desc">
+      <title id="gpt2-title">A task cue becomes part of the input</title>
+      <desc id="gpt2-desc">A made-up passage about Mira and a lost cat ends with TL;DR:. A frozen GPT-2 model predicts a continuation. The illustrated summary is Mira took a lost cat home.</desc>
+      <defs><marker id="gpt2-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="currentColor" /></marker></defs>
+      <g class="diagram-node"><rect x="10" y="10" width="380" height="140" rx="6" /><rect x="55" y="207" width="290" height="82" rx="6" /></g>
+      <g fill="currentColor" text-anchor="middle" font-size="24"><text x="200" y="44">Mira found a lost cat.</text><text x="200" y="76">She brought it home.</text></g>
+      <rect x="125" y="95" width="150" height="41" fill="var(--accent)" rx="4" /><text x="200" y="124" text-anchor="middle" fill="currentColor" font-size="25">TL;DR:</text>
+      <g fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#gpt2-arrow)"><path d="M200 154V198" /><path d="M200 293V337" /></g>
+      <g fill="currentColor" text-anchor="middle"><text x="200" y="240" font-size="28">GPT-2</text><text x="200" y="271" font-size="21">numbers stay fixed</text></g>
+      <rect x="10" y="347" width="380" height="78" rx="6" fill="var(--accent)" stroke="currentColor" /><g fill="currentColor" font-size="25" text-anchor="middle"><text x="200" y="380">Mira took a lost cat</text><text x="200" y="412">home.</text></g>
+    </svg>
+    <figcaption>A made-up example of the setup. The cue belongs to the prompt; the summary is a continuation. This is not an actual GPT-2 output.</figcaption>
+  </figure>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p>
+  <h2>Same passage.<br />Change the invitation.</h2>
+  <p>Switch from continuing the story to summarising it. Then remove the cue. What tells the toy which kind of text should come next?</p>
+  <noscript><p>Enable JavaScript to try the toy. Its fixed snippets pair “Then” with story continuations, “TL;DR:” with summaries, and a question with answers.</p></noscript>
+  <Gpt2Toy client:load />
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p>
+  <h2>A prompt becomes an interface.</h2>
+  <p>GPT-2 made a compelling case for testing a pretrained writer on different tasks through text alone. A summary and an answer could use the same model, with no new output layer or fine-tuning step.</p>
+  <p>Larger models generally improved across several of the report’s tasks. That raises the next question: how predictably does more model, more data, or more training improve a language model?</p>
+  <a class="next-chapter" href="/chapters/scaling-laws/"><span>Next · 2020</span><strong>Scaling laws ↗</strong><span>What changes when we make a language model bigger?</span></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>Objective, architecture, results & limits</span></summary>
+  <div class="disclosure-body">
+    <h3>One training objective, many prompts</h3>
+    <p>For tokens x₁ through xₜ, training minimises <code>L = −Σₜ log Pθ(xₜ | x₁, …, xₜ₋₁)</code>. The adjustable model parameters θ change during training. During these task evaluations, θ stays fixed. The prompt supplies context to the same next-token distribution. Generating a whole answer repeats that prediction, appending each chosen token before predicting the next.</p>
+    <p>The report’s zero-shot setting means no task-specific parameter updates. Some evaluations still use example pairs in the prompt, including translation and open-domain question answering. Reading comprehension includes conversation history. Prompt formatting, candidate scoring, and decoding choices also affect results.</p>
+    <h3>A larger forward-reading Transformer</h3>
+    <p>GPT-2 uses a decoder-style Transformer: attention can read earlier positions but cannot peek at future tokens. The largest model has roughly 1.5 billion parameters, 48 layers, and 1,600-dimensional internal states. Its context holds 1,024 tokens. A byte-based subword vocabulary contains 50,257 tokens; words can span multiple tokens.</p>
+    <p>Compared with GPT-1, layer normalisation moves before each attention or feed-forward sub-block, with another normalisation at the end. Normalisation rescales internal activations. WebText contains slightly over eight million documents and 40 GB of text, extracted from web pages linked on Reddit, then cleaned and deduplicated. It is not a collection of Reddit comments.</p>
+    <h3>What worked, and what did not?</h3>
+    <p>On the CoQA reading-comprehension development set, GPT-2 scored 55 F1 without training on its question–answer pairs. F1 here measures overlap between predicted and reference answers. The report contrasts this with a supervised BERT system nearing 89 F1, and observes that GPT-2 sometimes relies on simple cues such as returning a name for a “who” question.</p>
+    <p>For summarisation, the authors appended <code>TL;DR:</code>, sampled 100 tokens while choosing among the two most likely next tokens, and kept the first three sentences. Table 4 reports an average ROUGE score of 21.40, versus 20.98 for three randomly selected article sentences and 15.03 without the hint. ROUGE measures textual overlap with reference summaries. The hint helps, but the result is still weak.</p>
+    <p>Training text and test passages can overlap; avoiding task-specific training does not guarantee unseen content. Larger models broadly improved several tasks, but not every score rose at every size. These experiments do not establish dependable instruction following or factual accuracy.</p>
+    <h3>What the toy leaves out</h3>
+    <p>The six invented snippets share one passage. The toy matches an edited cue to a fixed table, ignoring case and extra whitespace; an empty cue allows all six. The bars count available snippets by format. “Try another” cycles through them. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>Original papers, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink("radford-2019-openai-report-full-text")}>Radford et al. · Language Models are Unsupervised Multitask Learners</a><p>Sections 1–2: task transfer, text conditioning, and the next-token objective. Sections 2.1–2.3 and Table 2: WebText, tokenisation, architecture, and scale. Section 3.5: CoQA setup, 55 F1, comparison, and shallow heuristics. Section 3.6 and Table 4: summary cue, sampling, ROUGE scores, and errors. Sections 3.7–3.8: example pairs in prompts. Section 4: training/test overlap. Figures 1 and 4: scale and performance.</p></li>
+    <li><a href={sourceLink("radford-2019-openai-announcement")}>OpenAI · Better language models and their implications · February 14, 2019</a><p>The public introduction of GPT-2, its approximate size, next-word training, and early task abilities and limitations.</p></li>
+    <li><a href={sourceLink("radford-2018-openai-preprint-full-text")}>Radford et al. · Improving Language Understanding by Generative Pre-Training</a><p>Sections 2–3: pretraining followed by supervised task fine-tuning, the earlier recipe.</p></li>
+    <li><a href={sourceLink("devlin-2019-naacl-full-text")}>Devlin et al. · BERT</a><p>Sections 3.1–3.2: pretraining and task-specific fine-tuning.</p></li>
+  </ol><p>The Mira passage, diagram continuation, and six toy snippets are invented illustrations. Toy counts describe the fixed table, not GPT-2’s probabilities or results.</p></div>
+</details>

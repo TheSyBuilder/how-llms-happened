@@ -401,7 +401,8 @@ figcaption {
 }
 .attention-toy,
 .pretraining-toy,
-.bert-toy {
+.bert-toy,
+.gpt2-toy {
   margin-top: 30px;
   padding: 28px;
   background: var(--surface);
@@ -423,7 +424,8 @@ figcaption {
 }
 .attention-toy > p,
 .pretraining-toy > p,
-.bert-toy > p {
+.bert-toy > p,
+.gpt2-toy > p {
   font-size: 15px;
   margin-top: 16px;
   color: var(--muted);
@@ -573,7 +575,8 @@ input[type="checkbox"] {
 }
 .attention-toy .toy-footnote,
 .pretraining-toy .toy-footnote,
-.bert-toy .toy-footnote {
+.bert-toy .toy-footnote,
+.gpt2-toy .toy-footnote {
   font-size: 12px;
   line-height: 1.55;
 }
@@ -764,6 +767,121 @@ input[type="checkbox"] {
 .bert-diagram svg {
   max-width: 480px;
   margin-inline: auto;
+}
+.gpt2-diagram svg {
+  max-width: 480px;
+  margin-inline: auto;
+}
+.prompt-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 24px;
+}
+.prompt-presets button,
+.another-continuation {
+  min-height: 44px;
+  padding: 9px 14px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.prompt-presets button[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--ink);
+}
+.prompt-paper,
+.continuation-paper {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.prompt-paper {
+  background: var(--paper);
+}
+.prompt-paper > p {
+  margin-top: 12px;
+  font-size: 19px;
+}
+.prompt-paper label {
+  display: block;
+  margin-top: 22px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.prompt-paper input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 9px;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 16px;
+}
+.prompt-paper #cue-help {
+  font-size: 12px;
+  color: var(--muted);
+}
+.prompt-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-block: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.prompt-flow span {
+  font-size: 23px;
+  color: var(--deep);
+}
+.continuation-paper {
+  border-color: var(--ink);
+}
+.continuation-text {
+  margin-top: 12px;
+  font-family: var(--display);
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.35;
+  min-height: 2.7em;
+  overflow-wrap: anywhere;
+}
+.continuation-note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.another-continuation {
+  margin-block: 16px 24px;
+}
+.another-continuation:disabled {
+  cursor: default;
+  color: var(--muted);
+}
+.format-shares {
+  display: grid;
+  gap: 12px;
+}
+.format-row {
+  display: grid;
+  grid-template-columns: 65px 1fr 30px;
+  gap: 12px;
+  align-items: center;
+  font-size: 13px;
+}
+.format-row output {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.gpt2-toy .toy-corpus li {
+  overflow-wrap: anywhere;
 }
 .context-switch {
   display: flex;
@@ -1040,7 +1158,8 @@ input[type="checkbox"] {
   }
   .attention-toy,
   .pretraining-toy,
-  .bert-toy {
+  .bert-toy,
+  .gpt2-toy {
     padding: 18px 12px;
   }
   .context-controls {
