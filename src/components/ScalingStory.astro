@@ -1,0 +1,72 @@
+---
+import ScalingToy from "./ScalingToy";
+import { sourceLink } from "../lib/chapters";
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p>
+  <h2>A bigger bet.<br />But how much better?</h2>
+  <p>GPT-2’s larger models generally did better on several tasks. But “make it bigger” leaves a practical question: how much improvement should you expect before spending the time and computing power?</p>
+  <p>A model has <strong>parameters</strong>: the adjustable numbers it learns during training. More parameters, more text, and more computation all cost something. Which one is holding progress back?</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p>
+  <h2>Progress has a shape.</h2>
+  <p>In 2020, Jared Kaplan and colleagues measured language models across many sizes and training budgets. They tracked <strong>loss</strong>: a score that penalises a model for assigning low probability to the next piece of real text. Lower is better.</p>
+  <p>They found smooth <strong>power laws</strong>: multiplying a resource by the same factor gives a similar proportional reduction in loss, when the other resources are sufficient. Think “each doubling shaves off another fraction,” rather than “each extra parameter helps equally.”</p>
+  <p>The catch is the bottleneck. A larger model cannot make up indefinitely for too little text; more text cannot make a small model infinitely capable. Their fits turned these tradeoffs into estimates researchers could use to plan larger training runs. These were measured patterns, not laws of nature.</p>
+  <figure class="idea-diagram scaling-diagram">
+    <svg viewBox="0 0 400 390" role="img" aria-labelledby="scaling-title scaling-desc">
+      <title id="scaling-title">Three resources shape a language model’s loss</title>
+      <desc id="scaling-desc">Model size, text, and training compute feed into next-token learning. Its predictions are scored on held-out text. A resource can become a bottleneck when the others increase.</desc>
+      <defs><marker id="scaling-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10Z" fill="currentColor" /></marker></defs>
+      <g class="diagram-node"><rect x="10" y="10" width="380" height="56" rx="5" /><rect x="10" y="80" width="380" height="56" rx="5" /><rect x="10" y="150" width="380" height="56" rx="5" /></g>
+      <g fill="currentColor" font-size="25"><text x="30" y="46">Model size</text><text x="30" y="116">Text to learn from</text><text x="30" y="186">Training compute</text></g>
+      <g fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#scaling-arrow)"><path d="M350 66V235" /><path d="M310 136V235" /><path d="M270 206V235" /></g>
+      <rect x="10" y="244" width="380" height="64" rx="5" fill="var(--accent)" stroke="currentColor" /><text x="200" y="285" text-anchor="middle" fill="currentColor" font-size="27">Learn to predict text</text>
+      <path d="M200 312V342" stroke="currentColor" stroke-width="2" marker-end="url(#scaling-arrow)" /><text x="200" y="378" text-anchor="middle" fill="currentColor" font-size="24">Score on held-out text ↓</text>
+    </svg>
+    <figcaption>Held-out text is text set aside from training. The test asks whether better predictions carry over beyond the examples the model learned from.</figcaption>
+  </figure>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p>
+  <h2>One budget.<br />Two hungry resources.</h2>
+  <p>Try buying the biggest model. Then try the smallest. Somewhere between them, this toy gets a better score. What changes when you can spend more?</p>
+  <noscript><p>Enable JavaScript to move the slider. At a fixed budget, this illustration trades a larger model for fewer text units; neither extreme gives its lowest score.</p></noscript>
+  <ScalingToy client:load />
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p>
+  <h2>A way to plan the leap.</h2>
+  <p>Scaling laws made it possible to estimate how a larger training run might improve text prediction. Kaplan’s analysis favoured larger models stopped well before their loss had finished improving, rather than smaller models trained to completion.</p>
+  <p>Better next-token scores do not guarantee better reasoning or truthful answers. The next chapter asks a different question: what can a much larger model do with just a few examples in its prompt?</p>
+  <a class="next-chapter" href="/chapters/gpt-3/"><span>Next · 2020</span><strong>GPT-3 and in-context learning ↗</strong><span>Can examples in a prompt teach a new pattern?</span></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>Power laws, compute & limits</span></summary>
+  <div class="disclosure-body">
+    <h3>What was measured?</h3>
+    <p>The main experiments used decoder-only Transformers trained to predict the next token—a piece of text—from earlier tokens, chiefly on WebText2. Loss is average cross-entropy in nats: <code>L = −mean(log P(actual next token | previous tokens))</code>, using natural logarithms. It measures prediction, not the fraction of answers that are correct.</p>
+    <h3>A power law, in symbols</h3>
+    <p>The separate fits have the form <code>L(X) = (Xc / X)^α</code>. X is the resource, Xc a fitted scale, and α the exponent controlling how quickly loss falls. Table 5 gives α = 0.076 for non-embedding parameter count, 0.095 for dataset tokens, and 0.050 for minimum estimated training compute after adjusting for batch size. A batch is the group of tokens used in one parameter update.</p>
+    <p>These are different experiments: the other resources must not be the limiting factor. For example, the parameter fit assumes enough data and training. Doubling parameters in that regime multiplies loss by about 0.95. It does not add five percentage points of accuracy. The fitted scales depend on the dataset and tokenisation.</p>
+    <h3>What should the budget buy?</h3>
+    <p>The paper estimates training operations as <code>C ≈ 6NBS</code>: N non-embedding parameters, B tokens per batch, S update steps. “Non-embedding” excludes the tables that represent tokens and positions. This approximation omits smaller costs and a context-dependent attention term.</p>
+    <p>Table 6 estimates <code>Nopt ∝ Cmin^0.73</code> and, assuming one pass through the data, <code>Dopt ∝ Cmin^0.27</code>. Cmin is estimated minimum compute in the small-batch limit; it is not elapsed time or hardware cost. The finding favours growing the model faster than its training text. It does not say to hold the data fixed forever.</p>
+    <h3>A useful pattern has limits</h3>
+    <p>The paper explicitly expects its extrapolated trends to break down and does not show that every downstream task improves with loss. In 2022, <a href="/chapters/chinchilla/">Chinchilla</a> revisited the allocation question and found a more even scaling of model size and training tokens. A fitted exponent depends on the experiments behind it.</p>
+    <aside class="chapter-companions"><h3>Also in this chapter</h3><p><a href={sourceLink("rae-2021-arxiv-record")}>Gopher (2021)</a> studied a family reaching 280 billion parameters; benefits from scale varied across tasks, with less progress in logical and mathematical reasoning. <a href={sourceLink("chowdhery-2022-arxiv-record")}>PaLM (2022)</a> extended the exploration to 540 billion parameters and reported gains across many language benchmarks.</p></aside>
+    <h3>Inside the toy</h3>
+    <p>For model units m and text units d, the invented score is <code>1 + m^(−0.3) + d^(−0.7)</code>, with <code>d = budget / m</code>. These constants are chosen for illustration. The curve samples 61 allocations; the slider advances in equal ratios of model size. No training data, real model, paper fit, or actual accuracy measurement is involved.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>Original papers, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink("kaplan-2020-arxiv-v1-full-text")}>Kaplan et al. · Scaling Laws for Neural Language Models · 2020</a><p>Sections 1–3 and Figure 1: smooth loss trends, bottlenecks, power laws, Transformer experiments, WebText2, and held-out evaluation. Sections 1.3 and 2.1: loss units, parameters, and compute estimate. Table 5: separate fitted exponents and scales. Section 6, Table 6, and Appendix B: resource allocation and stopping before convergence. Section 6.3 and Appendix C: extrapolation limits and the gap between loss and useful task performance.</p></li>
+    <li><a href={sourceLink("radford-2019-openai-report-full-text")}>Radford et al. · Language Models are Unsupervised Multitask Learners · 2019</a><p>Figures 1 and 4 and Section 3: the earlier GPT-2 model-size comparisons and task results motivating the opening question.</p></li>
+    <li><a href={sourceLink("rae-2021-arxiv-v1-full-text")}>Rae et al. · Scaling Language Models: Methods, Analysis & Insights from Training Gopher · 2021</a><p>Abstract, Sections 3–4: the 280-billion-parameter model and differences in scaling benefits across tasks.</p></li>
+    <li><a href={sourceLink("chowdhery-2022-arxiv-v1-full-text")}>Chowdhery et al. · PaLM: Scaling Language Modeling with Pathways · 2022</a><p>Abstract, Sections 2 and 6: the 540-billion-parameter Transformer and its language-task evaluations.</p></li>
+    <li><a href={sourceLink("hoffmann-2022-neurips-full-text")}>Hoffmann et al. · Training Compute-Optimal Large Language Models · 2022</a><p>Abstract and Section 3: the later study of model/data allocation and its more balanced scaling recommendation.</p></li>
+  </ol><p>The diagram is a conceptual illustration. The toy’s formula, units, curve, and scores are invented to explain a resource tradeoff.</p></div>
+</details>

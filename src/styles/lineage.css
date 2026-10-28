@@ -402,7 +402,8 @@ figcaption {
 .attention-toy,
 .pretraining-toy,
 .bert-toy,
-.gpt2-toy {
+.gpt2-toy,
+.scaling-toy {
   margin-top: 30px;
   padding: 28px;
   background: var(--surface);
@@ -425,7 +426,8 @@ figcaption {
 .attention-toy > p,
 .pretraining-toy > p,
 .bert-toy > p,
-.gpt2-toy > p {
+.gpt2-toy > p,
+.scaling-toy > p {
   font-size: 15px;
   margin-top: 16px;
   color: var(--muted);
@@ -576,7 +578,8 @@ input[type="checkbox"] {
 .attention-toy .toy-footnote,
 .pretraining-toy .toy-footnote,
 .bert-toy .toy-footnote,
-.gpt2-toy .toy-footnote {
+.gpt2-toy .toy-footnote,
+.scaling-toy .toy-footnote {
   font-size: 12px;
   line-height: 1.55;
 }
@@ -771,6 +774,88 @@ input[type="checkbox"] {
 .gpt2-diagram svg {
   max-width: 480px;
   margin-inline: auto;
+}
+.scaling-diagram svg {
+  max-width: 440px;
+  margin-inline: auto;
+}
+.budget-picker {
+  border: 0;
+  margin: 24px 0;
+  padding: 0;
+  font-size: 14px;
+}
+.budget-picker legend {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.budget-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.budget-options label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  cursor: pointer;
+}
+.budget-options label:has(:checked) {
+  background: var(--accent);
+  border-color: var(--ink);
+}
+.budget-options input {
+  accent-color: var(--deep);
+  margin: 0;
+}
+.scaling-chart {
+  max-width: 520px;
+  margin: 22px auto 18px;
+}
+.scaling-chart svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.scaling-grid {
+  stroke: var(--line);
+  fill: none;
+}
+.scaling-guide {
+  fill: none;
+  stroke: var(--muted);
+  stroke-dasharray: 4 4;
+}
+.scaling-dot {
+  transition: cx 0.15s, cy 0.15s;
+}
+.scaling-readout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  border-block: 1px solid var(--line);
+  padding-block: 16px;
+}
+.scaling-readout > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.scaling-readout span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.scaling-readout output {
+  font-family: var(--display);
+  font-size: clamp(25px, 4vw, 38px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
 }
 .prompt-presets {
   display: flex;
@@ -1159,7 +1244,8 @@ input[type="checkbox"] {
   .attention-toy,
   .pretraining-toy,
   .bert-toy,
-  .gpt2-toy {
+  .gpt2-toy,
+  .scaling-toy {
     padding: 18px 12px;
   }
   .context-controls {

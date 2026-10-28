@@ -1,5 +1,80 @@
 import { expect, test } from "@playwright/test";
 
+test("scaling laws trades model size for text with mouse, touch, and keyboard", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto("/");
+  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
+  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("scaling-hero.png") });
+  await page.locator(".scaling-diagram").screenshot({ path: testInfo.outputPath("scaling-diagram.png") });
+  const toy = page.locator(".scaling-toy");
+  const slider = page.getByRole("slider", { name: "Model size" });
+  const model = page.getByTestId("model-units");
+  const text = page.getByTestId("text-units");
+  const loss = page.getByTestId("scaling-loss");
+  await toy.scrollIntoViewIfNeeded();
+  await expect(model).toHaveText("8.0");
+  await expect(text).toHaveText("32.0");
+  await toy.screenshot({ path: testInfo.outputPath("scaling-default.png") });
+  await slider.focus();
+  await page.keyboard.press("End");
+  await expect(model).toHaveText("64.0");
+  await expect(text).toHaveText("4.0");
+  const largeLoss = Number(await loss.textContent());
+  await expect(slider).toHaveAttribute("aria-valuetext", /64.0 model units; 4.0 text units/);
+  await page.keyboard.press("Home");
+  await expect(model).toHaveText("1.0");
+  const smallLoss = Number(await loss.textContent());
+  const box = await slider.boundingBox();
+  if (testInfo.project.name === "mobile-chromium") {
+    await page.touchscreen.tap(box!.x + box!.width * 0.73, box!.y + box!.height / 2);
+  } else {
+    await page.mouse.click(box!.x + box!.width * 0.73, box!.y + box!.height / 2);
+  }
+  const middleLoss = Number(await loss.textContent());
+  expect(middleLoss).toBeLessThan(smallLoss);
+  expect(middleLoss).toBeLessThan(largeLoss);
+  await toy.screenshot({ path: testInfo.outputPath("scaling-allocation.png") });
+  const oldCurve = await page.getByTestId("scaling-curve").getAttribute("d");
+  const moreBudget = page.getByRole("radio", { name: "1,024", exact: true });
+  if (testInfo.project.name === "mobile-chromium") await moreBudget.tap();
+  else await moreBudget.click();
+  await expect(moreBudget).toBeChecked();
+  expect(Number(await loss.textContent())).toBeLessThan(middleLoss);
+  await expect(page.getByTestId("scaling-curve")).not.toHaveAttribute("d", oldCurve!);
+  await moreBudget.focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(page.getByRole("radio", { name: "256", exact: true })).toBeChecked();
+  await expect(loss).toHaveText(middleLoss.toFixed(2));
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".scaling-dot")).toHaveCSS("transition-duration", "0s");
+  await slider.focus();
+  await page.keyboard.press("End");
+  await toy.screenshot({ path: testInfo.outputPath("scaling-large-model.png") });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("scaling.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+  expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+  for (const id of ["deeper", "sources"]) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute("open", "");
+    await page.locator(`#${id} summary`).focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator(`#${id}`)).toHaveAttribute("open", "");
+  }
+  await expect(page.getByRole("heading", { name: "A power law, in symbols" })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath("scaling-expanded.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("link", { name: "Next · 2020 GPT-3 and in-context learning" }).click();
+  await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
+  expect(errors).toEqual([]);
+});
+
 test("timeline, chapter, toy, and old bookmarks work", async ({
   page,
 }, testInfo) => {
@@ -75,7 +150,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
-  await page.goto("/chapters/scaling-laws/");
+  await page.goto("/chapters/gpt-3/");
   await expect(
     page.getByText("This part of the story is on its way"),
   ).toBeVisible();
@@ -91,7 +166,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("4 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -163,7 +238,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("4 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -250,9 +325,9 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("4 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
-  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
   await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("gpt2-hero.png") });
