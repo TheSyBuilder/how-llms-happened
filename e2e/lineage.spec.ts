@@ -5,9 +5,9 @@ test("scaling laws trades model size for text with mouse, touch, and keyboard", 
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
-  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await page.locator("#scaling-laws > a").click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
   await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("scaling-hero.png") });
@@ -150,7 +150,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
-  await page.goto("/chapters/gpt-3/");
+  await page.goto("/chapters/retrieval/");
   await expect(
     page.getByText("This part of the story is on its way"),
   ).toBeVisible();
@@ -166,7 +166,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -238,7 +238,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -325,7 +325,7 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("5 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
   await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
@@ -395,5 +395,98 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole("link", { name: "Next · 2020 Scaling laws" }).click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
+  expect(errors).toEqual([]);
+});
+
+test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto("/");
+  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);
+  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("gpt3-hero.png") });
+  await page.locator(".gpt3-diagram").screenshot({ path: testInfo.outputPath("gpt3-diagram.png") });
+  const toy = page.locator(".gpt3-toy");
+  const slider = page.getByRole("slider", { name: "Examples in the prompt" });
+  const count = page.getByTestId("fitting-count");
+  const answer = page.getByTestId("pattern-answer");
+  await toy.scrollIntoViewIfNeeded();
+  await expect(slider).toHaveValue("1");
+  await expect(count).toHaveText("4 of 4 fit");
+  await expect(answer).toHaveText("Several answers fit");
+  await toy.screenshot({ path: testInfo.outputPath("gpt3-ambiguous.png") });
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await expect(page.getByText("No demonstrations yet.", { exact: true })).toBeVisible();
+  await expect(slider).toHaveAttribute("aria-valuetext", "0 examples; No examples; 4 rules fit");
+  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("ArrowRight");
+  await expect(count).toHaveText("1 of 4 fit");
+  await expect(answer).toHaveText("gold blue");
+  await expect(page.getByTestId("rule-swap")).toHaveClass("rule-fits");
+  await expect(page.locator(".pattern-rules .rule-out")).toHaveCount(3);
+  await toy.screenshot({ path: testInfo.outputPath("gpt3-few-shot.png") });
+  const setB = page.getByRole("radio", { name: "Set B", exact: true });
+  if (testInfo.project.name === "mobile-chromium") await setB.tap();
+  else await setB.click();
+  await expect(answer).toHaveText("blue blue");
+  await expect(page.getByTestId("rule-first")).toHaveClass("rule-fits");
+  await setB.focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(answer).toHaveText("gold blue");
+  await slider.scrollIntoViewIfNeeded();
+  const box = await slider.boundingBox();
+  if (testInfo.project.name === "mobile-chromium") {
+    await page.touchscreen.tap(box!.x + box!.width - 5, box!.y + box!.height / 2);
+  } else {
+    await page.mouse.click(box!.x + box!.width - 5, box!.y + box!.height / 2);
+  }
+  await expect(slider).toHaveValue("3");
+  await expect(answer).toHaveText("gold blue");
+  const conflict = page.getByRole("checkbox", { name: "Give example 3 a conflicting answer" });
+  if (testInfo.project.name === "mobile-chromium") await conflict.tap();
+  else await conflict.click();
+  await expect(count).toHaveText("0 of 4 fit");
+  await expect(answer).toHaveText("No rule fits");
+  await toy.screenshot({ path: testInfo.outputPath("gpt3-conflict.png") });
+  await conflict.focus();
+  await page.keyboard.press("Space");
+  await expect(answer).toHaveText("gold blue");
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await expect(answer).toHaveText("Several answers fit");
+  await conflict.focus();
+  await page.keyboard.press("Space");
+  await expect(slider).toHaveValue("3");
+  await expect(answer).toHaveText("No rule fits");
+  await conflict.uncheck();
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.getByTestId("rule-swap")).toHaveCSS("transition-duration", "0s");
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await expect(count).toHaveText("4 of 4 fit");
+  await page.keyboard.press("End");
+  await expect(answer).toHaveText("gold blue");
+  const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+  expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("gpt3.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  for (const id of ["deeper", "sources"]) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute("open", "");
+    await page.locator(`#${id} summary`).focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator(`#${id}`)).toHaveAttribute("open", "");
+  }
+  await expect(page.getByRole("heading", { name: "Conditioning is different from training" })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath("gpt3-expanded.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("link", { name: "Next · 2020 Look it up" }).click();
+  await expect(page).toHaveURL(/\/chapters\/retrieval\//);
+  await expect(page.getByText("This part of the story is on its way")).toBeVisible();
   expect(errors).toEqual([]);
 });
