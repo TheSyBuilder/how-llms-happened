@@ -1,0 +1,81 @@
+---
+import RetrievalToy from "./RetrievalToy";
+import { sourceLink } from "../lib/chapters";
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p>
+  <h2>A good memory<br />isn’t a library.</h2>
+  <p>A language model stores some facts in its <strong>parameters</strong>, the numbers learned during training. But you cannot simply open those numbers, find an outdated fact, and replace one sentence. And a fluent answer does not tell you where the information came from.</p>
+  <p>Think of answering a question from memory versus looking something up. Could a model do the second before it starts writing?</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p>
+  <h2>Look first.<br />Then write.</h2>
+  <p>In 2020, Patrick Lewis and colleagues introduced <strong>retrieval-augmented generation</strong>, or RAG: generating text with help from retrieved passages. Their system paired a <strong>retriever</strong>, which finds relevant text, with a <strong>generator</strong>, which writes an answer using the question and that text.</p>
+  <p>The library was Wikipedia. To search it, the retriever represented questions and passages as <strong>vectors</strong>: lists of numbers used to score how well they match. The generator was BART, a model already trained to read input text and produce new text. Training adjusted the question-searching and writing parts together.</p>
+  <p>This created two places to keep knowledge: the learned parameters and an external library. You could replace the library without retraining the model. But finding a passage was no guarantee that it was correct, or that the answer would follow it.</p>
+  <figure class="idea-diagram retrieval-diagram">
+    <svg viewBox="0 0 400 485" role="img" aria-labelledby="retrieval-title retrieval-desc">
+      <title id="retrieval-title">A question takes a detour through a library</title>
+      <desc id="retrieval-desc">An invented museum question goes to a retriever, which selects a passage saying Moss Museum opens at ten. The question and passage both reach the generator, which writes the answer. The library can change independently of the model.</desc>
+      <defs><marker id="retrieval-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10Z" fill="currentColor" /></marker></defs>
+      <rect x="10" y="5" width="380" height="70" rx="5" fill="var(--paper)" stroke="var(--line)" />
+      <g text-anchor="middle" fill="currentColor" font-size="23"><text x="200" y="34">When does</text><text x="200" y="61">Moss Museum open?</text></g>
+      <g fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#retrieval-arrow)"><path d="M175 80V111" /><path d="M350 80V365H320" /><path d="M175 174V210" /><path d="M175 284V323" /><path d="M175 393V430" /></g>
+      <rect x="25" y="121" width="290" height="48" rx="4" fill="var(--ink)" /><text x="170" y="153" text-anchor="middle" fill="var(--surface)" font-size="24">Retriever · search library</text>
+      <rect x="35" y="220" width="290" height="70" rx="4" fill="var(--accent)" /><g fill="currentColor" text-anchor="middle" font-size="23"><text x="180" y="248">Moss Museum</text><text x="180" y="276">opens at 10:00.</text></g>
+      <text x="385" y="211" text-anchor="middle" font-size="18" fill="var(--muted)" transform="rotate(90 385 211)">Question travels too</text>
+      <rect x="25" y="338" width="290" height="55" rx="4" fill="var(--ink)" /><text x="170" y="373" text-anchor="middle" fill="var(--surface)" font-size="24">Generator · write answer</text>
+      <text x="175" y="468" text-anchor="middle" fill="currentColor" font-size="29">It opens at 10:00.</text>
+    </svg>
+    <figcaption>Simplified flow, invented example. The original RAG combines predictions across several passages; it does not just copy one sentence.</figcaption>
+  </figure>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p>
+  <h2>Change the source.<br />Change the answer.</h2>
+  <p>Edit a notice, exclude a source, or let the reader see more passages. Watch what reaches the answer.</p>
+  <noscript><p>Enable JavaScript to edit the library. The toy retrieves a museum notice and reads its opening time; changing the notice changes the template answer.</p></noscript>
+  <RetrievalToy client:load />
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p>
+  <h2>Knowledge gets<br />a door you can open.</h2>
+  <p>RAG extended learned retrieval into a system that could generate answers. Its external passages made some information inspectable and replaceable. The paper tested question answering, question generation, and fact checking.</p>
+  <p>Finding information leaves another question: how do you teach a model to give the kind of answer people actually want? Next, human demonstrations and comparisons become training signals.</p>
+  <aside class="chapter-companions"><h3>Also in this chapter</h3><p><strong>ORQA (2019)</strong> learned to retrieve and extract answers from question–answer pairs. <strong>REALM (2020)</strong> used retrieval during initial training to predict hidden words. <strong>DPR (2020)</strong> trained question and passage vectors for search; RAG used it to initialise its retriever.</p></aside>
+  <a class="next-chapter" href="/chapters/human-feedback/"><span>Next · 2022</span><strong>Learning from human feedback ↗</strong><span>How can people teach a model what a good answer feels like?</span></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>Two memories, two ways to mix passages</span></summary>
+  <div class="disclosure-body">
+    <h3>Retrieval is a learned match</h3>
+    <p>DPR uses separate BERT encoders to turn a question x and passage z into vectors q(x) and d(z). Their dot product—multiplying corresponding entries and adding them—scores the match: <code>pη(z | x) ∝ exp(d(z) · q(x))</code>. η denotes retriever parameters. Passage vectors are computed ahead of time and stored in a searchable index. This can find matches beyond shared words; the toy only counts shared words.</p>
+    <h3>One passage per answer, or per token?</h3>
+    <p>A token is a piece of text. Let y be an answer, y&lt;t its earlier tokens, K the retrieved passages, and θ the generator parameters. <strong>RAG-Sequence</strong> keeps one passage for the entire answer within each possibility, then sums the possibilities:</p>
+    <p><code>P(y | x) ≈ Σz∈K pη(z | x) ∏t pθ(yt | x, z, y&lt;t)</code></p>
+    <p><strong>RAG-Token</strong> mixes passage-conditioned predictions at each token, allowing different passages to contribute along the answer:</p>
+    <p><code>P(y | x) ≈ ∏t Σz∈K pη(z | x) pθ(yt | x, z, y&lt;t)</code></p>
+    <p>Both retrieve the candidate set from the input question. RAG-Token does not run a new search at every generated token. These sums are called marginalisation: combining possibilities instead of deciding one passage must be the source.</p>
+    <h3>What was trained?</h3>
+    <p>The system combined a DPR retriever with BART-large, a 400-million-parameter encoder–decoder Transformer. During RAG fine-tuning, or training for a task, the question encoder and generator were updated using input–answer pairs; the passage encoder and index stayed fixed. The index contained about 21 million 100-word Wikipedia passages. The reader saw each passage concatenated with the question.</p>
+    <h3>A result, and an update experiment</h3>
+    <p>Table 1 reports 44.5% exact match for RAG-Sequence on the Natural Questions test set, compared with 41.5% for the DPR question-answering system. Exact match checks whether the generated answer matches an accepted reference after normalisation. These are scores for that task, not general factual accuracy.</p>
+    <p>The authors also swapped Wikipedia indices from 2016 and 2018 and asked about 82 world leaders who had changed. The matching-year indices gave 70% and 68% correct answers respectively. This small test shows that replacing external knowledge can change answers without retraining; it does not establish reliable updating of every fact.</p>
+    <h3>What retrieval cannot promise</h3>
+    <p>Search can miss useful evidence. A retrieved passage can be outdated or misleading. The generator can still produce unsupported text, and attaching a passage does not prove an answer follows from it. The paper’s task results and limited update experiment do not establish universal factuality or deletion of knowledge from model parameters.</p>
+    <h3>Inside the toy</h3>
+    <p>The selected place’s words are matched against each included passage. Positive matches are sorted by word count, with alphabetical passage IDs breaking ties. The top one or two go to a fixed sentence reader, which recognises “Place opens at HH:MM.” It uses a 24-hour clock and ignores other sentences. One distinct time produces a template answer, no times produces a missing-evidence message, and different times produce a conflict. This deliberately cautious reader is an illustration, not RAG’s generator.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>Original papers, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink("rag-2020-neurips-full-text")}>Lewis et al. · Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks · 2020</a><p>Introduction and Figure 1: learned knowledge, updating and provenance problems, external memory, and the retrieve–generate design. Sections 2.1–2.4: both passage mixtures, DPR, BART-large, concatenated inputs, and which components are trained. Section 3: the Wikipedia index and evaluated tasks. Table 1: Natural Questions test results. Section 4.5: the 82-leader index-swap experiment. Discussion and Broader Impact: interpretation, misuse and limits.</p></li>
+    <li><a href={sourceLink("rag-2021-arxiv-v4-full-text")}>Lewis et al. · Full paper and appendices</a><p>Section 2.1 supplies the two passage-mixture equations written above. Sections 2.5 and 4.5 explain decoding, the fixed candidate set and the limits of the update example.</p></li>
+    <li><a href={sourceLink("orqa-2019-acl-full-text")}>Lee, Chang & Toutanova · Latent Retrieval for Weakly Supervised Open Domain Question Answering · 2019</a><p>Abstract and Sections 2–3: learning retrieval and an extractive answer reader using question–answer pairs, after an inverse-cloze warm-up.</p></li>
+    <li><a href={sourceLink("realm-2020-pmlr-full-text")}>Guu et al. · REALM: Retrieval-Augmented Language Model Pre-Training · 2020</a><p>Introduction and Sections 2–3: retrieving documents during pretraining, learning from masked-word prediction, and the role of external knowledge.</p></li>
+    <li><a href={sourceLink("dpr-2020-emnlp-full-text")}>Karpukhin et al. · Dense Passage Retrieval for Open-Domain Question Answering · 2020</a><p>Introduction and Section 3: separate question and passage encoders, dot-product matching, passage indexing, and matching beyond shared words. Lewis et al. Section 2.2 identifies DPR as RAG’s starting retriever.</p></li>
+    <li><a href={sourceLink("ouyang-2022-openai-preprint-full-text")}>Ouyang et al. · Training language models to follow instructions with human feedback · 2022</a><p>Introduction and Figure 2: the next chapter’s distinction between predicting text and following user intent, using demonstrations and comparisons to improve behaviour.</p></li>
+  </ol><p>The diagram, places, notices, times and template answers are invented teaching examples. They are not model outputs or paper results.</p></div>
+</details>

@@ -1,11 +1,110 @@
 import { expect, test } from "@playwright/test";
 
+test("retrieval reads an editable library with mouse, touch, and keyboard", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  await page.goto("/");
+  await expect(page.getByText("7 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.locator("#retrieval")).toHaveClass(/is-live/);
+  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await expect(page).toHaveURL(/\/chapters\/retrieval\//);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("retrieval-hero.png") });
+  await page.locator(".retrieval-diagram").screenshot({ path: testInfo.outputPath("retrieval-diagram.png") });
+  const toy = page.locator(".retrieval-toy");
+  const answer = page.getByTestId("retrieval-answer");
+  const notice = page.getByRole("textbox", { name: "A · Museum notice" });
+  const garden = page.getByRole("textbox", { name: "C · Garden note" });
+  const include = page.getByRole("checkbox", { name: "Include A", exact: true });
+  const slider = page.getByRole("slider", { name: "Passages to read" });
+  await toy.scrollIntoViewIfNeeded();
+  await expect(answer).toHaveText("Moss Museum opens at 10:00.");
+  await expect(page.getByTestId("retrieved-a")).toHaveText("Read #1");
+  await expect(page.getByTestId("retrieved-c")).toHaveText("Not read");
+  await toy.screenshot({ path: testInfo.outputPath("retrieval-default.png") });
+  if (testInfo.project.name === "mobile-chromium") await notice.tap();
+  else await notice.click();
+  await page.keyboard.press("ControlOrMeta+A");
+  await page.keyboard.type("Moss Museum opens at 12:00.");
+  await expect(answer).toHaveText("Moss Museum opens at 12:00.");
+  await expect(answer).toBeInViewport();
+  await page.screenshot({ path: testInfo.outputPath("retrieval-editing.png") });
+  await page.getByRole("link", { name: "A · 12:00" }).click();
+  await expect(notice).toBeFocused();
+  if (testInfo.project.name === "mobile-chromium") await include.tap();
+  else await include.click();
+  await expect(answer).toHaveText("No opening time found.");
+  await expect(page.getByTestId("retrieved-c")).toHaveText("Read #1");
+  await toy.screenshot({ path: testInfo.outputPath("retrieval-missing.png") });
+  await include.focus();
+  await page.keyboard.press("Space");
+  await expect(answer).toHaveText("Moss Museum opens at 12:00.");
+  await garden.fill("Moss Museum opens at 03:00.");
+  await expect(answer).toBeInViewport();
+  await slider.scrollIntoViewIfNeeded();
+  const box = await slider.boundingBox();
+  if (testInfo.project.name === "mobile-chromium") await page.touchscreen.tap(box!.x + box!.width - 5, box!.y + box!.height / 2);
+  else await page.mouse.click(box!.x + box!.width - 5, box!.y + box!.height / 2);
+  await expect(slider).toHaveValue("2");
+  await expect(answer).toHaveText("Sources disagree.");
+  await expect(page.getByTestId("retrieval-evidence")).toHaveText("Different times in: A · 12:00, C · 03:00");
+  await toy.screenshot({ path: testInfo.outputPath("retrieval-conflict.png") });
+  await slider.focus();
+  await page.keyboard.press("Home");
+  await expect(answer).toHaveText("Moss Museum opens at 12:00.");
+  await page.keyboard.press("End");
+  await expect(answer).toHaveText("Sources disagree.");
+  const cafe = page.getByRole("radio", { name: "Fern Cafe", exact: true });
+  if (testInfo.project.name === "mobile-chromium") await cafe.tap();
+  else await cafe.click();
+  await expect(answer).toHaveText("Fern Cafe opens at 08:00.");
+  await expect(page.getByTestId("retrieved-b")).toHaveText("Read #1");
+  await cafe.focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect(answer).toHaveText("Sources disagree.");
+  await page.getByRole("button", { name: "Reset library" }).focus();
+  await page.keyboard.press("Enter");
+  await expect(answer).toHaveText("Moss Museum opens at 10:00.");
+  await expect(notice).toHaveValue("Moss Museum opens at 10:00.");
+  await expect(slider).toHaveValue("1");
+  await expect(include).toBeChecked();
+  await notice.fill("");
+  await garden.fill("");
+  await expect(answer).toHaveText("No opening time found.");
+  await expect(page.getByTestId("retrieval-evidence")).toHaveText("No matching passage reached the reader.");
+  await page.getByRole("button", { name: "Reset library" }).click();
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".retrieval-score > span").first()).toHaveCSS("transition-duration", "0s");
+  const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+  expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("retrieval.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  for (const id of ["deeper", "sources"]) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute("open", "");
+    await page.locator(`#${id} summary`).focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator(`#${id}`)).toHaveAttribute("open", "");
+  }
+  await expect(page.getByRole("heading", { name: "One passage per answer, or per token?" })).toBeVisible();
+  await page.locator("#deeper .disclosure-body").screenshot({ path: testInfo.outputPath("retrieval-technical.png") });
+  await page.locator("#sources .disclosure-body").screenshot({ path: testInfo.outputPath("retrieval-sources.png") });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("retrieval-expanded.png"), fullPage: true });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("link", { name: /Next · 2022 Learning from human feedback/ }).click();
+  await expect(page).toHaveURL(/\/chapters\/human-feedback\//);
+  await expect(page.getByText("This part of the story is on its way")).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("scaling laws trades model size for text with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("7 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
   await page.locator("#scaling-laws > a").click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
@@ -150,7 +249,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
-  await page.goto("/chapters/retrieval/");
+  await page.goto("/chapters/human-feedback/");
   await expect(
     page.getByText("This part of the story is on its way"),
   ).toBeVisible();
@@ -166,7 +265,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("7 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -238,7 +337,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("7 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -325,7 +424,7 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("7 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
   await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
@@ -403,9 +502,9 @@ test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ p
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("6 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("7 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);
-  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await page.locator("#gpt-3 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
   await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("gpt3-hero.png") });
@@ -487,6 +586,6 @@ test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ p
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole("link", { name: "Next · 2020 Look it up" }).click();
   await expect(page).toHaveURL(/\/chapters\/retrieval\//);
-  await expect(page.getByText("This part of the story is on its way")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Look it up", exact: true })).toBeVisible();
   expect(errors).toEqual([]);
 });
