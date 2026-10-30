@@ -405,7 +405,8 @@ figcaption {
 .gpt2-toy,
 .scaling-toy,
 .gpt3-toy,
-.retrieval-toy {
+.retrieval-toy,
+.feedback-toy {
   margin-top: 30px;
   padding: 28px;
   background: var(--surface);
@@ -431,7 +432,8 @@ figcaption {
 .gpt2-toy > p,
 .scaling-toy > p,
 .gpt3-toy > p,
-.retrieval-toy > p {
+.retrieval-toy > p,
+.feedback-toy > p {
   font-size: 15px;
   margin-top: 16px;
   color: var(--muted);
@@ -1311,7 +1313,8 @@ input[type="checkbox"] {
   .gpt2-toy,
   .scaling-toy,
   .gpt3-toy,
-  .retrieval-toy {
+  .retrieval-toy,
+  .feedback-toy {
     padding: 18px 12px;
   }
   .context-controls {
@@ -1398,4 +1401,44 @@ input[type="checkbox"] {
     animation: none !important;
     transition: none !important;
   }
+}
+
+.feedback-diagram svg { max-width: 440px; margin-inline: auto; }
+.feedback-comparisons { margin-top: 24px; display: grid; gap: 22px; }
+.feedback-pair { border: 0; padding: 0; margin: 0; min-width: 0; }
+.feedback-pair legend { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.feedback-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.feedback-options label { display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--line); border-radius: 4px; cursor: pointer; font-size: 15px; line-height: 1.5; transition: background-color .18s; }
+.feedback-options label:has(:checked) { background: var(--accent); border-color: var(--ink); }
+.feedback-choice { display: flex; align-items: center; gap: 10px; }
+.feedback-choice input { margin: 0; accent-color: var(--deep); width: 18px; height: 18px; }
+.feedback-options small { margin-top: auto; font-size: 11px; color: var(--muted); }
+.feedback-options label:has(:checked) small { color: var(--ink); }
+.feedback-workbench { margin-block: 24px 32px; }
+.feedback-learning { position: sticky; top: 8px; z-index: 1; background: var(--surface); box-shadow: 0 8px 0 var(--surface); padding-block: 14px; border-block: 1px solid var(--line); }
+.feedback-learning > strong { font-family: var(--display); font-size: 22px; letter-spacing: -.03em; }
+.feedback-learning p, .feedback-sampler > p { font-size: 13px; margin-block: 8px 18px; color: var(--muted); }
+.feedback-weights { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 13px; }
+.feedback-weights span { display: flex; align-items: baseline; gap: 14px; }
+.feedback-weights output { font-family: var(--display); color: var(--deep); font-size: 26px; font-variant-numeric: tabular-nums; }
+.feedback-sampler h3 { font-size: 25px; }
+.feedback-candidates { padding: 0; margin: 22px 0; list-style: none; }
+.feedback-candidates li { padding-block: 16px; border-top: 1px solid var(--line); }
+.feedback-candidate-heading { display: flex; align-items: baseline; gap: 18px; font-size: 12px; }
+.feedback-candidate-heading strong { font-family: var(--display); font-size: 22px; }
+.feedback-candidate-heading > span { color: var(--muted); }
+.feedback-candidate-heading output { margin-left: auto; font-family: var(--display); font-size: 25px; font-variant-numeric: tabular-nums; }
+.feedback-candidates p { font-size: 15px; margin-block: 6px; }
+.feedback-candidates small { display: block; font-size: 11px; color: var(--muted); }
+.feedback-track { margin-top: 12px; height: 13px; background: var(--paper); border: 1px solid var(--line); }
+.feedback-track > span { display: block; height: 100%; background: var(--accent); border-right: 1px solid var(--deep); transition: width .18s; }
+.feedback-toy .feedback-catch { padding: 14px; background: var(--paper); color: var(--ink); border-left: 3px solid var(--ink); }
+@media (max-width: 700px) {
+  .feedback-options { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .feedback-options label { padding: 14px 12px; }
+  .feedback-learning > strong { font-size: 21px; }
+  .feedback-weights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .feedback-weights span { flex-direction: column; gap: 0; }
+  .feedback-learning p { margin-bottom: 8px; font-size: 11px; }
+  .feedback-candidate-heading { gap: 10px; }
 }
