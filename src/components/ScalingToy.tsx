@@ -54,7 +54,7 @@ export default function ScalingToy() {
         <div><span>Toy loss ↓</span><output data-testid="scaling-loss">{point.loss.toFixed(2)}</output></div>
       </div>
       <p id="scaling-help">Solid: selected budget. Dashed: the other budgets. Budget = model × text. More budget moves the whole curve; a bigger model alone moves you along it.</p>
-      <p class="toy-footnote">No model is trained here. The 61 curve points use an invented formula in arbitrary units, not Kaplan’s fitted laws or a prediction of real performance.</p>
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">No model is trained here. The 61 curve points use an invented formula in arbitrary units, not Kaplan’s fitted laws or a prediction of real performance.</p></details>
     </div>
   );
 }

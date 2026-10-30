@@ -3,4 +3,4 @@ import { discoveries } from '../lib/discoveries';
 const {slug}=Astro.props;
 const discovery=discoveries[slug];
 ---
-{discovery && <aside class="discovery"><p class="eyebrow">Your experiment</p><p>{discovery.try}</p><details><summary>A hint, if you want one</summary><p>{discovery.notice}</p></details></aside>}
+{discovery && <aside class="discovery"><details><summary>Try a challenge <span aria-hidden="true">+</span></summary><p>{discovery.try}</p><p class="discovery-hint">{discovery.notice}</p></details></aside>}

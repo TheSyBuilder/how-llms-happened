@@ -1,15 +1,16 @@
 ---
-import FirstExperiment from "../components/FirstExperiment";
+import LineageStage from "../components/LineageStage";
+import ResearchGlyph from "../components/ResearchGlyph";
 import LineageLayout from "../layouts/LineageLayout.astro";
-import { timeline, chapters, chapterHref } from "../lib/chapters";
+import { timeline, chapters, chapterHref, chapterPaper } from "../lib/chapters";
 const live = chapters.filter(chapter => chapter.status === "live");
+const picks=[['transformer','Look closer'],['bert','Read both ways'],['gpt-3','Learn from examples'],['retrieval','Find the evidence'],['human-feedback','Learn a preference'],['reasoning','Try another path']];
+const stops=picks.map(([slug,verb])=>{const c=chapters.find(c=>c.slug===slug)!;const p=chapterPaper(c.anchor)!;return {slug:c.slug,title:c.title,year:c.year,paper:p.title,url:p.url,verb:verb!};});
 ---
 <LineageLayout title="LLM Lineage — how language models happened" description="From letter counts to language models: an interactive timeline of the ideas that changed how computers work with words.">
-  <section class="timeline-intro page-width home-opening">
-    <div class="opening-copy"><p class="eyebrow">1913 → today · a history you can play</p><h1>How did we<br/>get to <span>this?</span></h1><p class="opening-description">A machine that finishes your sentence. Answers a question. Follows a thought.<br/>Meet the ideas that made it happen—by trying them yourself.</p><a class="primary-link" href="/chapters/transformer/">Start with the Transformer ↗</a><p class="opening-footnote">{live.length} playable chapters · tiny experiments · original sources</p></div>
-    <FirstExperiment client:load />
-  </section>
-  <section class="entry-points page-width" aria-label="Choose a starting point"><div><p class="eyebrow">Follow your curiosity</p><h2>Three good rabbit holes.</h2></div><div class="entry-links"><a href="/chapters/transformer/#play"><span>01 / INSIDE THE MODEL</span><strong>What is attention actually doing?</strong><p>Steer where a word looks. Watch its information change.</p><b aria-hidden="true">↗</b></a><a href="/chapters/human-feedback/#play"><span>02 / THE SURPRISING BIT</span><strong>Can a better score make a worse answer?</strong><p>Teach a preference. Discover what the scorer missed.</p><b aria-hidden="true">↗</b></a><a href="/chapters/reasoning/#play"><span>03 / THE NEXT QUESTION</span><strong>Does thinking longer always help?</strong><p>Spend a search budget. See when another attempt matters.</p><b aria-hidden="true">↗</b></a></div></section>
+  <div class="stage-wrap page-width"><LineageStage stops={stops} client:load /></div>
+  <section class="game-library page-width" id="experiments" aria-labelledby="library-title"><div class="library-heading"><div><p class="eyebrow">Open a paper. Play the idea.</p><h2 id="library-title">Your research playground.</h2></div><button data-open-explorer>Find an experiment <span aria-hidden="true">↗</span></button></div>
+  <div class="game-grid">{live.map((c,i)=>{const p=chapterPaper(c.anchor)!;return <article class="game-entry"><a href={`/chapters/${c.slug}/#play`} class="game-entry-main"><span class="game-entry-meta">{String(i+1).padStart(2,'0')} <time>{c.year}</time></span><ResearchGlyph kind={c.slug}/><h3>{c.title}</h3><span class="game-entry-play">Play experiment ↗</span></a><a class="game-paper-link" target="_blank" rel="noopener noreferrer" href={p.url} aria-label={`Read original paper: ${p.title}`}>Paper ↗</a></article>})}</div></section>
   <section class="timeline-section" id="timeline" aria-labelledby="timeline-heading">
     <div class="timeline-heading page-width"><div><p class="eyebrow">The story so far</p><h2 id="timeline-heading">Follow the thread.</h2></div><p>{live.length} {live.length === 1 ? "chapter" : "chapters"} live · {chapters.length} turning points<br /><span>Scroll across to travel through time →</span></p></div>
     <nav class="era-jumps page-width" aria-label="Jump along the timeline"><span>Jump to</span><button data-era="next-letter">The beginnings</button><button data-era="transformer">2017 · Transformers</button><button data-era="gpt-3">2020 · Scaling up</button><button data-era="reasoning">2025 · Reasoning</button></nav>
@@ -23,7 +24,6 @@ const live = chapters.filter(chapter => chapter.status === "live");
     </div>
     <div class="timeline-bottom page-width"><span>Small experiments, right in your browser.</span><a href={chapterHref(live[live.length - 1]!.slug)}>Jump to the latest chapter →</a></div>
   </section>
-  <section class="reading-note page-width"><p class="eyebrow">No prerequisites. Just curiosity.</p><h2>Understand the idea.<br />Then get your hands on it.</h2><p>Each chapter starts with a question, explains the breakthrough, and gives you a tiny toy to try. Open “Go deeper” for the math, or “Sources” to read the original work.</p></section>
 </LineageLayout>
 
 <script>

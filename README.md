@@ -4,7 +4,7 @@
 
 An interactive history of language models. Change the input, watch the mechanism, and leave with an idea you can explain to a friend.
 
-![The opening experiment: reveal a clue and watch the possible words change](public/preview.png)
+![LLM Lineage: explore a thread of research ideas, then jump into a game](public/preview.png)
 
 ## A few things to try
 
@@ -25,7 +25,7 @@ npm run dev
 
 Open the local address printed by Astro. This repository contains the site source; a public hosted version has not yet been configured.
 
-Each chapter has a small browser experiment, an invitation to investigate, and a takeaway. The math, architecture details, results, limitations and primary sources sit in collapsed sections. Toys are labeled illustrations: some use tiny learned models, others use explicit rules. They do not run the large models described by the papers.
+Choose a turning point on the landing page, or open **Explore** to search all experiments and their original papers. Each game has **Play**, **Story**, and **Math & sources** views; switching views preserves your experiment. Challenges and toy details stay tucked away until you want them. The full story includes the explanation, diagram and takeaway, with architecture details, results, limitations and primary sources in collapsed sections. Toys are labeled illustrations: some use tiny learned models, others use explicit rules. They do not run the large models described by the papers.
 
 ## Make it better
 

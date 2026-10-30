@@ -140,11 +140,11 @@ export default function AttentionToy() {
           </p>
         )}
       </div>
-      <p class="toy-footnote">
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">
         This toy illustrates one attention head. Real queries, keys, and values
         are learned vectors; this slider’s directions and value numbers are
         chosen just to make the mechanism visible.
-      </p>
+      </p></details>
     </div>
   );
 }

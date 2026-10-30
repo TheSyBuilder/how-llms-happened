@@ -52,7 +52,7 @@ export default function BertToy() {
         <span class="screen-reader-only">{result.matches.length} matching sentences. {result.predictions.map(({ word, probability }) => `${word}: ${Math.round(probability * 100)} percent`).join(". ")}.</span>
       </div>
       <details class="toy-corpus"><summary>See the eight toy sentences</summary><ul>{missingWordExamples.map((example) => <li class={result.matches.includes(example) ? "matches-context" : ""} key={`${example.left}-${example.word}`}><span aria-hidden="true">{result.matches.includes(example) ? "●" : "○"}</span> The {example.left} <strong>{example.word}</strong> crossed the {example.right}.</li>)}</ul><p>Filled dots mark sentences matching the visible clues.</p></details>
-      <p class="toy-footnote">These percentages count matching sentences. This toy has no neural network and learns no English. BERT learns patterns from text; it does not look up exact matches in this list.</p>
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">These percentages count matching sentences. This toy has no neural network and learns no English. BERT learns patterns from text; it does not look up exact matches in this list.</p></details>
     </div>
   );
 }

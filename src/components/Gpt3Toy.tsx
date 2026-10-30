@@ -61,7 +61,7 @@ export default function Gpt3Toy() {
         })}</ul>
       </div>
       <p id="examples-help">One example can leave the task ambiguous. Two different pairs reveal it here. A conflicting example can break it.</p>
-      <p class="toy-footnote">This is a rule filter, not GPT-3. It has no neural network or training. Real models predict text rather than crossing rules off a list.</p>
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">This is a rule filter, not GPT-3. It has no neural network or training. Real models predict text rather than crossing rules off a list.</p></details>
     </div>
   );
 }

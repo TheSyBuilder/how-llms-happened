@@ -92,6 +92,6 @@ export default function HumanFeedbackToy() {
     </div>
     <p class="feedback-catch">A and C always tie. This scorer sees style, not truth. Chasing its score cannot fix that.</p>
     <button class="another-continuation" onClick={() => { setChoices([null, null]); setStrength(2); }}>Reset comparisons</button>
-    <p class="toy-footnote">Two hand-labelled traits, a learned scorer, and three fixed answers. Bars show selection chances, not correctness. Only the scorer is trained here.</p>
+    <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">Two hand-labelled traits, a learned scorer, and three fixed answers. Bars show selection chances, not correctness. Only the scorer is trained here.</p></details>
   </div>;
 }

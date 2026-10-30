@@ -112,7 +112,7 @@ export default function PretrainingToy() {
         <strong>{labelCount === 0 ? "Reading alone does not name the ratings." : labelled ? "Both learners have been taught this word’s rating." : "A label can reach a word it never taught directly."}</strong>
         <p>{labelCount === 0 ? "Both rating outputs start at 50%. Add two labels to connect reading to ratings." : labelled ? "Try a word without a label, or remove some labels to see what carries over." : "Reading grouped adjectives by the sentence’s last word. Fine-tuning connects those groups to ratings; the learner from scratch has no reading pattern to use."}</p>
       </div>
-      <p class="toy-footnote">These percentages are toy outputs, not paper results or reliable confidence estimates. The model has one learned number per adjective and one output. It learns this tiny pattern, not English. Reading costs extra training.</p>
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">These percentages are toy outputs, not paper results or reliable confidence estimates. The model has one learned number per adjective and one output. It learns this tiny pattern, not English. Reading costs extra training.</p></details>
     </div>
   );
 }

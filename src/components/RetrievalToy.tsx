@@ -69,7 +69,7 @@ export default function RetrievalToy() {
       </div>
       <details class="toy-corpus"><summary>Try breaking the evidence</summary><p>Exclude A: a matching garden note cannot answer. Or write “Moss Museum opens at 03:00.” in C, then read two passages: the sources disagree. A plausible match can still be wrong.</p></details>
       <button class="another-continuation" onClick={() => { setPassages(library.map(passage => ({ ...passage }))); setSubject(questions[0]!); setCount(1); }}>Reset library</button>
-      <p class="toy-footnote">Keyword search, then a fixed template: “Place opens at HH:MM.” Ties use A–B–C order. This is not a neural retriever or a language model. Real RAG can still invent an answer; this toy declines missing or conflicting evidence.</p>
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">Keyword search, then a fixed template: “Place opens at HH:MM.” Ties use A–B–C order. This is not a neural retriever or a language model. Real RAG can still invent an answer; this toy declines missing or conflicting evidence.</p></details>
     </div>
   );
 }

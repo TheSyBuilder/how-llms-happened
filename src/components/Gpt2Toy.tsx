@@ -59,7 +59,7 @@ export default function Gpt2Toy() {
         {result.formats.map(({ format, count, share }) => <div class="format-row" key={format}><span>{format}</span><div class="completion-track" aria-hidden="true"><span style={{ width: `${share * 100}%` }} /></div><output data-testid={`format-${format.toLowerCase()}`} aria-label={`${format}: ${count} of ${result.matches.length} matches`}>{result.matches.length ? `${count}/${result.matches.length}` : "—"}</output></div>)}
       </div>
       <details class="toy-corpus"><summary>See the six fixed snippets</summary><ul>{continuationSnippets.map((snippet) => <li key={snippet.text}><code>{snippet.cue}</code> → {snippet.text}</li>)}</ul></details>
-      <p class="toy-footnote">An illustration, not GPT-2: this is a hand-written lookup, not a neural network. It matches cues, not meaning, and cannot read a new passage. Real GPT-2 predicts tokens using learned patterns.</p>
+      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">An illustration, not GPT-2: this is a hand-written lookup, not a neural network. It matches cues, not meaning, and cannot read a new passage. Real GPT-2 predicts tokens using learned patterns.</p></details>
     </div>
   );
 }

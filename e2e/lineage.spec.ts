@@ -188,7 +188,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
     path: testInfo.outputPath("timeline.png"),
     fullPage: true,
   });
-  await page.getByRole("link", { name: "Start with the Transformer" }).click();
+  await page.getByRole("link", { name: "Play The Transformer" }).click();
   await expect(
     page.getByRole("heading", { name: "The Transformer", exact: true }),
   ).toBeVisible();
@@ -245,7 +245,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   ).toBe(true);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(slider).toBeEnabled();
-  await page.locator("#deeper summary").click();
+  await page.getByRole("link", { name: "Math & sources", exact: true }).click();
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
@@ -819,15 +819,17 @@ for (const chapter of ['chinchilla','open-models','mixture-of-experts','tools-an
 test('first visit offers a discovery, timeline shortcuts, and an honest repository link',async({page},info)=>{
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/');await expect(page.locator('astro-island')).not.toHaveAttribute('ssr','');
- const teaser=page.locator('.first-experiment');
- await expect(teaser.locator('.candidate-in')).toHaveCount(2);
- const sky=page.getByRole('button',{name:'In the sky'});
- if(info.project.name==='mobile-chromium') await sky.tap();else await sky.click();
- await expect(teaser.locator('.candidate-in')).toContainText('plane');
- await page.getByRole('button',{name:'On the lake'}).focus();await page.keyboard.press('Enter');
- await expect(teaser.locator('.candidate-in')).toContainText('boat');
- await page.getByRole('button',{name:'Hide clue'}).click();await expect(teaser.locator('.candidate-in')).toHaveCount(2);
- await page.locator('.home-opening').screenshot({animations:'disabled',path:info.outputPath('home-opening.png')});
+ const stage=page.locator('.lineage-stage');
+ const bert=stage.getByRole('button',{name:/2018 BERT/});
+ if(info.project.name==='mobile-chromium') await bert.tap();else await bert.click();
+ await expect(stage.locator('.stage-object')).toHaveAttribute('data-selected','bert');
+ await expect(stage.locator('.stage-play')).toHaveAttribute('href','/chapters/bert/#play');
+ await stage.getByRole('button',{name:/2025 Reasoning models/}).focus();await page.keyboard.press('Enter');
+ await expect(stage.locator('.stage-object')).toHaveAttribute('data-selected','reasoning');
+ await stage.getByRole('button',{name:/2017 The Transformer/}).click();
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await expect(stage.locator('.object-art')).toHaveCSS('animation-name','none');
+ await stage.screenshot({animations:'disabled',path:info.outputPath('home-opening.png')});
  await page.screenshot({path:info.outputPath('home-revised.png'),fullPage:true});
  await page.getByRole('button',{name:'2017 · Transformers'}).click();
  await expect(page.locator('#transformer')).toBeInViewport();
@@ -846,5 +848,46 @@ test('first visit offers a discovery, timeline shortcuts, and an honest reposito
  await page.getByRole('button',{name:'Reset experiment'}).click();await expect(page.locator('.training-counter')).toContainText('0 gradient updates');
  await page.getByRole('button',{name:'Copy experiment link'}).click();await expect(page.locator('.share-status')).not.toBeEmpty();
  await expect(page.locator('.share-status')).toHaveAttribute('role','status');
+ expect(errors).toEqual([]);
+});
+
+
+test('game switcher and progressive reading keep research one step away',async({page},info)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ await page.goto('/');
+ const open=page.getByRole('button',{name:/^Explore/});
+ if(info.project.name==='mobile-chromium')await open.tap();else await open.click();
+ const dialog=page.getByRole('dialog',{name:'Pick your next idea.'});
+ await expect(dialog).toBeVisible();
+ const search=page.getByRole('searchbox',{name:'Search experiments and papers'});await expect(search).toBeFocused();
+ await search.fill('nothing matches');await expect(page.locator('.switcher-empty')).toBeVisible();
+ await search.fill('BERT');await expect(dialog.locator('li:visible')).toHaveCount(1);
+ await expect(dialog.getByRole('link',{name:/Original paper:/})).toHaveAttribute('href',/^https:\/\//);
+ await dialog.screenshot({path:info.outputPath('switcher.png')});
+ await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(open).toBeFocused();
+ await page.keyboard.press('ControlOrMeta+k');await expect(dialog).toBeVisible();await search.fill('BERT');
+ await dialog.locator('.switcher-game').filter({hasText:'BERT'}).click();
+ await expect(page).toHaveURL('/chapters/bert/#play');
+ await expect(page.locator('.chapter-page')).toHaveAttribute('data-view','play');
+ await expect(page.locator('#problem')).not.toBeVisible();
+ await expect(page.locator('#idea')).not.toBeVisible();
+ await expect(page.locator('.bert-toy')).toBeVisible();
+ await expect(page.locator('.toy-method')).not.toHaveAttribute('open','');
+ await page.getByRole('checkbox',{name:'Right context'}).check();
+ await expect(page.getByTestId('completion-plane')).toHaveText('100%');
+ await expect(page.locator('.nav-paper')).toHaveAttribute('target','_blank');
+ await page.screenshot({path:info.outputPath('focused-game.png'),fullPage:true,animations:'disabled'});
+ await page.getByRole('link',{name:'Story',exact:true}).click();await expect(page.locator('#problem')).toBeVisible();
+ await page.getByRole('link',{name:'Math & sources',exact:true}).click();
+ await expect(page.locator('#deeper')).toBeVisible();await expect(page.locator('#deeper')).toHaveAttribute('open','');
+ await expect(page.locator('#play')).not.toBeVisible();
+ await page.getByRole('link',{name:'Play',exact:true}).click();
+ await expect(page.getByTestId('completion-plane')).toHaveText('100%');
+ await page.goBack();await expect(page.locator('.chapter-page')).toHaveAttribute('data-view','reference');
+ await page.goForward();await expect(page.locator('.chapter-page')).toHaveAttribute('data-view','play');
+ await page.getByRole('link',{name:/Next experiment:/}).click();await expect(page).toHaveURL('/chapters/gpt-2/#play');
+ await page.getByRole('button',{name:/Switch experiment/}).click();await expect(page.getByRole('dialog')).toBeVisible();
+ await page.getByRole('button',{name:'Close experiments'}).click();
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  expect(errors).toEqual([]);
 });

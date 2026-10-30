@@ -1,5 +1,7 @@
 ---
 import "../styles/lineage.css";
+import "../styles/playground.css";
+import ExperimentSwitcher from "../components/ExperimentSwitcher.astro";
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 ---
@@ -17,8 +19,9 @@ const { title, description } = Astro.props;
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="LLM Lineage home"><span class="brand-mark" aria-hidden="true">L<span>L</span></span><strong>LLM Lineage</strong></a>
-      <nav aria-label="Main navigation"><a class="repo-link" href="https://github.com/TheSyBuilder/how-llms-happened">GitHub ↗</a><a href="/#timeline">The timeline <span aria-hidden="true">↗</span></a></nav>
+      <nav aria-label="Main navigation"><button class="nav-experiments" data-open-explorer>Explore <span aria-hidden="true">⌘ K</span></button><a class="repo-link" href="https://github.com/TheSyBuilder/how-llms-happened">GitHub ↗</a><a href="/#timeline">The timeline <span aria-hidden="true">↗</span></a></nav>
     </header>
+    <ExperimentSwitcher />
     <main id="main-content"><slot /></main>
     <footer class="site-footer"><a class="brand" href="/">LLM Lineage</a><p>Big ideas. Small experiments. A history you can play with.</p><a href="/#timeline">Back to the timeline ↑</a></footer>
   </body>

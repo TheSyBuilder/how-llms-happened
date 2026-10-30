@@ -21,6 +21,6 @@ export default function VisionToy() {
     <div class="toy-controls"><label for="visible-rows">Rows visible to the reader <output for="visible-rows">{sendImage ? rows : 0} / 3</output></label><input id="visible-rows" type="range" min="1" max="3" value={rows} disabled={!sendImage} onInput={e => setRows(Number(e.currentTarget.value))} /></div>
     <div class="vision-received"><span>Reader’s picture · only the supplied cells</span><div class="received-grid" aria-label="Received image">{shapes.map((circle, i) => <span>{i < result.visible ? (circle ? "●" : "■") : "?"}</span>)}</div></div>
     <button class="another-continuation" onClick={() => { setShapes(initialShapes); setSendImage(false); setRows(3); }}>Reset picture</button>
-    <p class="toy-footnote">A rule counts known shapes; it does not interpret pixels. No GPT-4 runs here. The cautious range is our teaching rule, not a promise about a real model’s answers.</p>
+    <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">A rule counts known shapes; it does not interpret pixels. No GPT-4 runs here. The cautious range is our teaching rule, not a promise about a real model’s answers.</p></details>
   </div>;
 }

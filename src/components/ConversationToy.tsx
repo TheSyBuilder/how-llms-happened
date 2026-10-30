@@ -23,6 +23,6 @@ export default function ConversationToy() {
     <div class="toy-controls"><label for="history-count">Messages kept <output for="history-count">{count} / 4</output></label><input id="history-count" type="range" min="0" max="4" value={count} onInput={e => setCount(Number(e.currentTarget.value))} /></div>
     <p class="context-window-caption">What reaches the reader ↓ <span>{count} of 4 messages</span></p><ol class="conversation-turns">{turns.map((turn, i) => <li class={i < 4 - count ? "turn-dropped" : "turn-kept"}><small>{turn.role} · {i < 4 - count ? "outside context" : "sent to reader"}</small><p>{turn.text}</p></li>)}</ol>
     <button class="another-continuation" onClick={() => { setCity("Kyoto"); setCorrection(true); setCount(4); }}>Reset conversation</button>
-    <p class="toy-footnote">A fixed rule reads the latest explicit destination in a kept user message. No language model runs here. This illustrates context, not ChatGPT’s memory system.</p>
+    <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">A fixed rule reads the latest explicit destination in a kept user message. No language model runs here. This illustrates context, not ChatGPT’s memory system.</p></details>
   </div>;
 }
