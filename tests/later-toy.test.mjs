@@ -4,8 +4,10 @@ import {createRequire} from 'node:module';
 import test from 'node:test';
 import ts from 'typescript';
 const {outputText}=ts.transpileModule(readFileSync(new URL('../src/components/LaterToy.tsx',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,jsxImportSource:'preact'}});
-const api={};new Function('require','exports',outputText)(createRequire(import.meta.url),api);
+const api={};new Function('require','exports',outputText)((id)=>id==='./ExperimentVisual'?{default:()=>null}:createRequire(import.meta.url)(id),api);
 test('fixed compute has a balanced minimum and storage grows with precision',()=>{assert.equal(api.allocation(4).tokens,25);assert.ok(api.allocation(10).loss<api.allocation(1).loss);assert.ok(api.allocation(10).loss<api.allocation(25).loss);assert.equal(api.weightGB(7,16),14);assert.equal(api.weightGB(7,4),3.5);});
 test('crowding causes overflow while capacity and distribution can relieve it',()=>{assert.equal(api.routes(false,2).filter(r=>r.accepted).length,6);assert.equal(api.routes(true,2).filter(r=>r.accepted).length,4);assert.equal(api.routes(true,4).filter(r=>r.accepted).length,6);});
 test('DPO pair loss rewards the preferred odds and remains finite at extremes',()=>{assert.equal(api.preference(0).probability,.5);assert.ok(api.preference(4).loss<api.preference(0).loss);assert.ok(api.preference(-4).loss>api.preference(0).loss);assert.ok(Number.isFinite(api.preference(-4).loss));});
 test('additional candidates can find a solution but do not guarantee one',()=>{assert.ok(!api.candidates.slice(0,1).some(c=>c.value===10));assert.ok(api.candidates.slice(0,2).some(c=>c.value===10));assert.ok(!api.candidates.some(c=>c.value===11));});
+
+test('one preference update lowers the pair loss and respects the display bound',()=>{for(const z of [-4,-1,0,2])assert.ok(api.preference(api.preferenceStep(z)).loss<api.preference(z).loss);assert.equal(api.preferenceStep(4),4);});

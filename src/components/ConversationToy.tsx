@@ -21,7 +21,7 @@ export default function ConversationToy() {
     <label class="chapter-select">First destination<select value={city} onChange={e => setCity(e.currentTarget.value)}><option>Kyoto</option><option>Lima</option><option>Paris</option></select></label>
     <label class="chapter-toggle"><input type="checkbox" checked={correction} onChange={e => setCorrection(e.currentTarget.checked)} />Change my mind to Oslo</label>
     <div class="toy-controls"><label for="history-count">Messages kept <output for="history-count">{count} / 4</output></label><input id="history-count" type="range" min="0" max="4" value={count} onInput={e => setCount(Number(e.currentTarget.value))} /></div>
-    <ol class="conversation-turns">{turns.map((turn, i) => <li class={i < 4 - count ? "turn-dropped" : "turn-kept"}><small>{turn.role} · {i < 4 - count ? "outside context" : "sent to reader"}</small><p>{turn.text}</p></li>)}</ol>
+    <p class="context-window-caption">What reaches the reader ↓ <span>{count} of 4 messages</span></p><ol class="conversation-turns">{turns.map((turn, i) => <li class={i < 4 - count ? "turn-dropped" : "turn-kept"}><small>{turn.role} · {i < 4 - count ? "outside context" : "sent to reader"}</small><p>{turn.text}</p></li>)}</ol>
     <button class="another-continuation" onClick={() => { setCity("Kyoto"); setCorrection(true); setCount(4); }}>Reset conversation</button>
     <p class="toy-footnote">A fixed rule reads the latest explicit destination in a kept user message. No language model runs here. This illustrates context, not ChatGPT’s memory system.</p>
   </div>;

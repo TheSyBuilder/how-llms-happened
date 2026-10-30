@@ -1,4 +1,5 @@
 ---
+import Discovery from "./Discovery.astro";
 import Gpt3Toy from "./Gpt3Toy";
 import { sourceLink } from "../lib/chapters";
 ---
@@ -32,7 +33,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Same rules.<br />Different prompt.</h2>
+  <h2>Same rules.<br />Different prompt.</h2><Discovery slug="gpt-3" />
   <p>Can you tell the intended pattern from one example? Move the slider to add more clues.</p>
   <noscript><p>Enable JavaScript to change the prompt. “red red → red red” fits all four toy rules. Adding “red blue → blue red” identifies the swap rule.</p></noscript>
   <Gpt3Toy client:load />

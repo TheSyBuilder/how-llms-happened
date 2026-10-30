@@ -1,4 +1,5 @@
 ---
+import Discovery from "./Discovery.astro";
 import RetrievalToy from "./RetrievalToy";
 import { sourceLink } from "../lib/chapters";
 ---
@@ -33,7 +34,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Change the source.<br />Change the answer.</h2>
+  <h2>Change the source.<br />Change the answer.</h2><Discovery slug="retrieval" />
   <p>Edit a notice, exclude a source, or let the reader see more passages. Watch what reaches the answer.</p>
   <noscript><p>Enable JavaScript to edit the library. The toy retrieves a museum notice and reads its opening time; changing the notice changes the template answer.</p></noscript>
   <RetrievalToy client:load />

@@ -1,0 +1,67 @@
+---
+const {kind}=Astro.props;
+const captions:Record<string,string>={
+chinchilla:'Equal area, different allocations. A fixed training budget can buy a small model with more reading, or a large one with less.',
+'open-models':'A service gives you outputs. A weights release also gives you learned numbers to load and study on your own hardware.',
+'mixture-of-experts':'Three tokens take different routes through one sparse layer. Each token uses one expert here; all experts still exist.',
+'dpo':'The chosen and rejected answers meet in one comparison against a fixed reference. Training changes the model, not the reference.',
+'chain-of-thought':'An intermediate subtotal separates two operations. Each step gives you something concrete to inspect.',
+reasoning:'More answer-time effort can explore more candidates. A check distinguishes a promising path from a dead end.',
+ 'tools-and-agents':'An action leaves the model, a tool returns an observation, and the next decision uses that observation.'};
+---
+<figure class="idea-diagram tailored-diagram">
+<svg viewBox="0 0 480 300" role="img" aria-label={captions[kind]}>
+{kind==='chinchilla' && <>
+ <text x="20" y="28">Same area = same toy compute</text>
+ <rect x="35" y="60" width="80" height="160" class="diagram-fill"/><rect x="195" y="140" width="160" height="80" class="diagram-fill"/>
+ <path d="M25 50V230H135M185 130V230H375" class="diagram-line"/>
+ <text x="75" y="255" text-anchor="middle">Small model</text><text x="275" y="255" text-anchor="middle">Larger model</text>
+ <text x="75" y="110" text-anchor="middle">More</text><text x="75" y="137" text-anchor="middle">reading</text>
+ <text x="275" y="175" text-anchor="middle">Less reading</text>
+ <path d="M140 160H180M172 153L180 160L172 167" class="diagram-line"/>
+</>}
+{kind==='open-models' && <>
+ <text x="20" y="30">Two kinds of access</text>
+ <rect x="20" y="65" width="190" height="95" class="diagram-outline"/><text x="115" y="105" text-anchor="middle">Ask a service</text><text x="115" y="137" text-anchor="middle">Question → answer</text>
+ <rect x="250" y="65" width="210" height="95" class="diagram-fill"/><text x="355" y="105" text-anchor="middle">Have the weights</text><text x="355" y="137" text-anchor="middle">0.3  −0.8  1.2 …</text>
+ <path d="M355 165V205M347 197L355 205L363 197" class="diagram-line"/>
+ <path d="M255 215H455V270H255ZM245 277H465" class="diagram-line"/><text x="355" y="248" text-anchor="middle">Run · study · adapt</text>
+</>}
+{kind==='mixture-of-experts' && <>
+ {[70,240,410].map((x,i)=><g><circle cx={x} cy="45" r="25" class="diagram-outline"/><text x={x} y="52" text-anchor="middle">{i+1}</text></g>)}
+ <path d="M70 72L240 115L70 210M240 72V210M410 72L240 115L410 210" class="diagram-route"/>
+ <rect x="160" y="97" width="160" height="42" class="diagram-fill"/><text x="240" y="125" text-anchor="middle">Learned router</text>
+ {[70,240,410].map((x,i)=><g><rect x={x-56} y="215" width="112" height="58" class="diagram-outline"/><text x={x} y="251" text-anchor="middle">Expert {'ABC'[i]}</text></g>)}
+</>}
+{kind==='tools-and-agents' && <>
+ <rect x="25" y="50" width="175" height="82" class="diagram-fill"/><text x="112" y="85" text-anchor="middle">Choose next</text><text x="112" y="112" text-anchor="middle">action</text>
+ <rect x="300" y="50" width="155" height="82" class="diagram-outline"/><text x="377" y="99" text-anchor="middle">Tool</text>
+ <path d="M205 90H290M282 82L290 90L282 98M377 140V220H112V140M104 148L112 140L120 148" class="diagram-route"/>
+ <text x="248" y="65" text-anchor="middle">call</text>
+ <rect x="175" y="194" width="170" height="52" class="diagram-outline"/><text x="260" y="227" text-anchor="middle">Observation: $4</text>
+ <text x="240" y="286" text-anchor="middle">New evidence changes the next step.</text>
+</>}
+{kind==='dpo' && <>
+ <rect x="20" y="25" width="200" height="60" class="diagram-fill"/><text x="120" y="62" text-anchor="middle">Chosen answer</text>
+ <rect x="260" y="25" width="200" height="60" class="diagram-outline"/><text x="360" y="62" text-anchor="middle">Rejected answer</text>
+ <path d="M120 90V130H240M360 90V130H240V165" class="diagram-line"/>
+ <text x="240" y="193" text-anchor="middle">How did the relative odds change?</text>
+ <path d="M60 230H420" class="diagram-line"/><circle cx="240" cy="230" r="8" class="diagram-outline"/><circle cx="350" cy="230" r="12" class="diagram-fill"/>
+ <text x="240" y="270" text-anchor="middle">Reference</text><text x="370" y="296" text-anchor="middle">Updated model</text>
+</>}
+{kind==='chain-of-thought' && <>
+ <text x="240" y="30" text-anchor="middle">3 notebooks · $4 each · $3 delivery</text>
+ {[65,125,185].map(x=><g><rect x={x} y="63" width="40" height="55" class="diagram-fill"/><path d={`M${x+9} 63V118`} class="diagram-line"/></g>)}
+ <text x="280" y="99">3 × $4 = $12</text>
+ <path d="M240 130V172M232 164L240 172L248 164" class="diagram-line"/>
+ <rect x="80" y="185" width="320" height="60" class="diagram-outline"/><text x="240" y="222" text-anchor="middle">$12 + $3 delivery = $15</text>
+ <text x="240" y="280" text-anchor="middle">The subtotal is a place to check.</text>
+</>}
+{kind==='reasoning' && <>
+ <path d="M240 50L115 125L60 225M115 125L195 225M240 50L365 125L300 225M365 125L425 225" class="diagram-line"/>
+ <path d="M240 50L115 125L195 225" class="diagram-route"/>
+ {[{x:240,y:40,t:'2'},{x:115,y:125,t:'5'},{x:365,y:125,t:'4'},{x:60,y:225,t:'8'},{x:195,y:225,t:'10 ✓'},{x:300,y:225,t:'7'},{x:425,y:225,t:'8'}].map(n=><g><rect x={n.x-28} y={n.y-22} width="56" height="44" class={n.t==='10 ✓'?'diagram-fill':'diagram-outline'}/><text x={n.x} y={n.y+7} text-anchor="middle">{n.t}</text></g>)}
+ <text x="145" y="70">+3</text><text x="315" y="70">×2</text><text x="170" y="175">×2</text>
+ <text x="240" y="286" text-anchor="middle">Target 10: check paths, not just guesses.</text>
+</>}
+</svg><figcaption>{captions[kind]} These are teaching illustrations.</figcaption></figure>

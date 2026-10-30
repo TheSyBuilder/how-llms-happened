@@ -1,4 +1,5 @@
 ---
+import Discovery from "./Discovery.astro";
 import BertToy from "./BertToy";
 import { sourceLink, paperLink } from "../lib/chapters";
 ---
@@ -32,7 +33,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Give the gap another clue.</h2>
+  <h2>Give the gap another clue.</h2><Discovery slug="bert" />
   <p>Try “metal” with “sky,” then “lake.” What happens with “little” instead?</p>
   <noscript><p>Enable JavaScript to try the toy. In this invented set, “metal” leaves plane or boat; “sky” leaves bird or plane. Together they leave plane.</p></noscript>
   <BertToy client:load />

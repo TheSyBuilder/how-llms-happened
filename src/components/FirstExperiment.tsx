@@ -1,0 +1,7 @@
+import {useState} from 'preact/hooks';
+import {countCompletions} from './BertToy';
+export default function FirstExperiment(){
+ const [right,setRight]=useState<string|null>(null);
+ const result=countCompletions('metal',right);
+ return <div class="first-experiment"><div class="visual-caption"><span>START HERE · 20 SECONDS</span><span>Toy</span></div><h2>One more clue.<br/>A different answer.</h2><p class="first-sentence">The metal <span class="word-gap">?</span><br/>crossed the <strong>{right??'…'}</strong>.</p><div class="first-candidates" aria-live="polite">{['plane','boat'].map(word=><span class={result.predictions.find(p=>p.word===word)!.count>0?'candidate-in':'candidate-out'}>{word} <small>{result.predictions.find(p=>p.word===word)!.count>0?'fits':'ruled out'}</small></span>)}</div><p class="first-invitation">Give it the missing clue:</p><div class="first-actions">{['sky','lake'].map(clue=><button aria-pressed={right===clue} onClick={()=>setRight(clue)}>{clue==='sky'?'In the sky':'On the lake'}</button>)}<button class="hide-clue" onClick={()=>setRight(null)}>Hide clue</button></div><p class="first-explanation">{right?'The clue after the gap helps decide what belongs inside it.':'Without the right-hand clue, both answers fit our tiny sentence set.'}</p><a href="/chapters/bert/#play">That’s the intuition behind BERT’s task ↗</a><p class="first-footnote">A rule-based illustration, not a language model.</p></div>;
+}

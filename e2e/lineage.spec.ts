@@ -805,7 +805,7 @@ for (const chapter of ['chinchilla','open-models','mixture-of-experts','tools-an
    await page.getByRole('checkbox').focus();await page.keyboard.press('Space');await expect(page.getByRole('checkbox')).not.toBeChecked();
   }
   if(chapter==='open-models'){await page.getByRole('combobox').selectOption('4');await expect(answer).toContainText('weights fit');}
-  await page.locator('.later-toy').screenshot({path:info.outputPath(`${chapter}-toy.png`)});
+  await page.locator('.later-toy').screenshot({animations:'disabled',path:info.outputPath(`${chapter}-toy.png`)});
   await page.getByRole('button',{name:'Reset experiment'}).focus();await page.keyboard.press('Enter');
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.screenshot({path:info.outputPath(`${chapter}-full.png`),fullPage:true});
@@ -815,3 +815,36 @@ for (const chapter of ['chinchilla','open-models','mixture-of-experts','tools-an
   expect(errors).toEqual([]);
  });
 }
+
+test('first visit offers a discovery, timeline shortcuts, and an honest repository link',async({page},info)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('/');await expect(page.locator('astro-island')).not.toHaveAttribute('ssr','');
+ const teaser=page.locator('.first-experiment');
+ await expect(teaser.locator('.candidate-in')).toHaveCount(2);
+ const sky=page.getByRole('button',{name:'In the sky'});
+ if(info.project.name==='mobile-chromium') await sky.tap();else await sky.click();
+ await expect(teaser.locator('.candidate-in')).toContainText('plane');
+ await page.getByRole('button',{name:'On the lake'}).focus();await page.keyboard.press('Enter');
+ await expect(teaser.locator('.candidate-in')).toContainText('boat');
+ await page.getByRole('button',{name:'Hide clue'}).click();await expect(teaser.locator('.candidate-in')).toHaveCount(2);
+ await page.locator('.home-opening').screenshot({animations:'disabled',path:info.outputPath('home-opening.png')});
+ await page.screenshot({path:info.outputPath('home-revised.png'),fullPage:true});
+ await page.getByRole('button',{name:'2017 · Transformers'}).click();
+ await expect(page.locator('#transformer')).toBeInViewport();
+ await expect(page.locator('.repo-link')).toHaveAttribute('href','https://github.com/TheSyBuilder/how-llms-happened');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.goto('/chapters/dpo/');await expect(page.locator('astro-island')).not.toHaveAttribute('ssr','');
+ await expect(page.locator('.discovery details')).not.toHaveAttribute('open','');
+ await page.locator('.discovery summary').click();await expect(page.locator('.discovery details')).toHaveAttribute('open','');
+ const before=await page.getByTestId('experiment-answer').textContent();
+ const teach=page.getByRole('button',{name:'Teach the preferred answer'});
+ if(info.project.name==='mobile-chromium')await teach.tap();else await teach.click();
+ await expect(page.locator('.training-counter')).toContainText('1 gradient updates');
+ expect(await page.getByTestId('experiment-answer').textContent()).not.toEqual(before);
+ await teach.focus();await page.keyboard.press('Enter');await expect(page.locator('.training-counter')).toContainText('2 gradient updates');
+ await page.locator('.later-toy').screenshot({animations:'disabled',path:info.outputPath('dpo-learning.png')});
+ await page.getByRole('button',{name:'Reset experiment'}).click();await expect(page.locator('.training-counter')).toContainText('0 gradient updates');
+ await page.getByRole('button',{name:'Copy experiment link'}).click();await expect(page.locator('.share-status')).not.toBeEmpty();
+ await expect(page.locator('.share-status')).toHaveAttribute('role','status');
+ expect(errors).toEqual([]);
+});

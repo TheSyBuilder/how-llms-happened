@@ -1,4 +1,5 @@
 ---
+import Discovery from "./Discovery.astro";
 import HumanFeedbackToy from "./HumanFeedbackToy";
 import { sourceLink, paperLink } from "../lib/chapters";
 ---
@@ -31,7 +32,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Teach a taste.<br />Spot a blind spot.</h2>
+  <h2>Teach a taste.<br />Spot a blind spot.</h2><Discovery slug="human-feedback" />
   <noscript><p>Enable JavaScript to compare answers. The toy learns a preference for length and wording, but cannot judge truth.</p></noscript>
   <HumanFeedbackToy client:load />
 </section>

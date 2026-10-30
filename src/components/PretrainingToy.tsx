@@ -93,6 +93,7 @@ export default function PretrainingToy() {
         <details><summary>See all eight reading sentences</summary><ul>{readingSentences.map((sentence) => <li>{sentence}</li>)}</ul></details>
         <p class="reading-note-small">The reading task: use the adjective to predict the last word, “smile” or “sigh.” Words used alike acquire similar internal numbers.</p>
       </div>
+      <div class="learned-map" aria-label="Word positions learned from reading"><div class="visual-caption"><strong>WHAT READING CHANGED</strong><span>One learned number per word</span></div>{words.map((item,i)=><div class={item===word?'map-selected':''}><span>{item}</span><div class="embedding-track"><i class="embedding-start" style={{left:`${50+initialEmbeddings[i]!*12}%`}}/><i class="embedding-learned" style={{left:`${Math.max(4,Math.min(96,50+pretrained.afterReading[i]!*12))}%`}}/></div></div>)}<p>Hollow dots: before reading. Filled dots: after reading. Words used alike move together.</p></div>
       <fieldset class="review-picker"><legend>2. Try a review</legend><div class="review-options">{words.map((option) => <label><input type="radio" name="review-word" value={option} checked={word === option} onChange={() => setWord(option)} /><span>{option}</span></label>)}</div></fieldset>
       <p class="selected-review">“{/^[aeiou]/.test(word) ? "An" : "A"} {word} film.”</p>
       <p class="review-seen" data-testid="review-seen">{labelled ? `“${word}” has a review label.` : `“${word}” has no review label.`}</p>

@@ -1,4 +1,5 @@
 ---
+import Discovery from "./Discovery.astro";
 import ScalingToy from "./ScalingToy";
 import { sourceLink } from "../lib/chapters";
 ---
@@ -30,7 +31,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>One budget.<br />Two hungry resources.</h2>
+  <h2>One budget.<br />Two hungry resources.</h2><Discovery slug="scaling-laws" />
   <p>Try buying the biggest model. Then try the smallest. Somewhere between them, this toy gets a better score. What changes when you can spend more?</p>
   <noscript><p>Enable JavaScript to move the slider. At a fixed budget, this illustration trades a larger model for fewer text units; neither extreme gives its lowest score.</p></noscript>
   <ScalingToy client:load />

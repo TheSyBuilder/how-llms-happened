@@ -41,7 +41,7 @@ export default function AttentionToy() {
         <span class="eyebrow">A tiny attention playground</span>
         <span class="toy-label">Toy · hand-chosen numbers</span>
       </div>
-      <p>Pick the word doing the looking. Then change what it looks for.</p>
+      <p>Pick where the query sits, then steer it toward actions or things. This toy keeps the query direction when you pick another word.</p>
       <fieldset class="token-picker">
         <legend>1. Which word is looking?</legend>
         <div class="tokens">
