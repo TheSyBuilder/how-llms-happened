@@ -1,6 +1,8 @@
 ---
 import "../styles/lineage.css";
 import "../styles/playground.css";
+import CuriosityDrawers from "../components/CuriosityDrawers.astro";
+import "../styles/curiosity.css";
 import ExperimentSwitcher from "../components/ExperimentSwitcher.astro";
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
@@ -22,7 +24,8 @@ const { title, description } = Astro.props;
       <nav aria-label="Main navigation"><button class="nav-experiments" data-open-explorer>Explore <span aria-hidden="true">⌘ K</span></button><a class="repo-link" href="https://github.com/TheSyBuilder/how-llms-happened">GitHub ↗</a><a href="/#timeline">The timeline <span aria-hidden="true">↗</span></a></nav>
     </header>
     <ExperimentSwitcher />
+    <CuriosityDrawers />
     <main id="main-content"><slot /></main>
-    <footer class="site-footer"><a class="brand" href="/">LLM Lineage</a><p>Big ideas. Small experiments. A history you can play with.</p><a href="/#timeline">Back to the timeline ↑</a></footer>
+    <footer class="site-footer"><a class="brand" href="/">LLM Lineage</a><div><p>Big ideas. Small experiments. A history you can play with.</p><button class="curiosity-invitation" data-curiosity="tokens">One more token?</button></div><a href="/#timeline">Back to the timeline ↑</a></footer>
   </body>
 </html>

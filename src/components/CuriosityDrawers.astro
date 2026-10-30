@@ -1,0 +1,130 @@
+---
+import { sourceLink } from '../lib/chapters';
+---
+<dialog class="curiosity-dialog" aria-labelledby="curiosity-title">
+  <div class="curiosity-top"><span class="eyebrow" id="curiosity-number">A little discovery</span><button class="curiosity-close" aria-label="Close discovery">×</button></div>
+  <h2 id="curiosity-title">One more token?</h2>
+  <section data-drawer="tokens">
+    <p class="curiosity-intro">A token is one piece of text. Here, it’s a word or a full stop. Choose the next piece—or let the odds decide.</p>
+    <div class="sentence-ticket"><span class="ticket-caption">A toy sentence machine</span><p class="secret-sentence" aria-live="polite" aria-atomic="true"></p><span class="ticket-count">0 / 6 tokens</span></div>
+    <div class="token-candidates" role="group" aria-label="Choose the next token"></div>
+    <div class="secret-temperature"><span>Temperature</span><div role="group" aria-label="Sampling temperature"><button data-temperature="0.4" aria-pressed="false">Cool</button><button data-temperature="1" aria-pressed="true">Warm</button><button data-temperature="1.6" aria-pressed="false">Hot</button></div></div>
+    <p class="temperature-note">Hotter spreads the chances more evenly.</p>
+    <div class="curiosity-actions"><button class="sample-token">Draw a token ↗</button><button class="restart-tokens">Start again</button></div>
+    <p class="curiosity-small">Toy · handwritten odds, one word at a time. No language model runs here.</p>
+    <a class="curiosity-source" href="/chapters/gpt-2/#play">Keep pulling this thread: GPT-2 →</a>
+  </section>
+  <section data-drawer="1913" hidden>
+    <p class="curiosity-intro">Markov studied vowel/consonant patterns in <em>Eugene Onegin</em> in 1913. Give his idea a tiny text.</p>
+    <label class="secret-label" for="capsule-text">Your tiny text</label><input id="capsule-text" maxlength="40" value="banana" spellcheck="false" autocomplete="off" />
+    <div class="capsule-examples"><span>Try</span><button data-example="banana">banana</button><button data-example="queue">queue</button><button data-example="abracadabra">abracadabra</button></div>
+    <div class="letter-tape" aria-label="Letters classified as vowels and consonants"></div>
+    <button class="see-pattern" aria-pressed="false">See the pattern</button>
+    <div class="letter-odds" aria-live="polite"></div>
+    <p class="curiosity-small">Toy · English a–z only; a, e, i, o, u are vowels. Spaces and punctuation are skipped. These are your counts, not Markov’s results.</p>
+    <a class="curiosity-source" href={sourceLink('markov-2006-open-translation')} target="_blank" rel="noopener noreferrer">Open the time capsule: Markov’s paper ↗</a>
+  </section>
+</dialog>
+<script>
+import {letterPattern, nextTokenOdds, sampleToken} from './curiosity-toys.mjs';
+const dialog = document.querySelector<HTMLDialogElement>('.curiosity-dialog')!;
+const title = dialog.querySelector<HTMLElement>('#curiosity-title')!;
+const number = dialog.querySelector<HTMLElement>('#curiosity-number')!;
+const sentence = dialog.querySelector<HTMLElement>('.secret-sentence')!;
+const candidates = dialog.querySelector<HTMLElement>('.token-candidates')!;
+const draw = dialog.querySelector<HTMLButtonElement>('.sample-token')!;
+const input = dialog.querySelector<HTMLInputElement>('#capsule-text')!;
+const tape = dialog.querySelector<HTMLElement>('.letter-tape')!;
+const counts = dialog.querySelector<HTMLElement>('.letter-odds')!;
+const pattern = dialog.querySelector<HTMLButtonElement>('.see-pattern')!;
+let opener: HTMLElement | null = null;
+let words: string[] = [];
+let temperature = 1;
+let showPattern = false;
+
+function renderSentence() {
+  sentence.replaceChildren();
+  if (!words.length) sentence.textContent = 'Every sentence starts somewhere…';
+  words.forEach((word, index) => {
+    const piece = document.createElement('span');
+    piece.textContent = `${index && word !== '.' ? ' ' : ''}${word}`;
+    if (index === words.length - 1) piece.className = 'token-arrives';
+    sentence.append(piece);
+  });
+  dialog.querySelector('.ticket-count')!.textContent = `${words.length} / 6 tokens`;
+}
+function renderCandidates() {
+  candidates.replaceChildren();
+  const choices = nextTokenOdds(words.length, temperature);
+  for (const choice of choices) {
+    const button = document.createElement('button');
+    button.className = 'secret-token';
+    button.style.setProperty('--chance', `${choice.probability * 100}%`);
+    button.append(document.createTextNode(choice.word));
+    const odds = document.createElement('small');
+    odds.textContent = `${choice.probability === 1 ? "" : "≈"}${Math.round(choice.probability * 100)}%`;
+    button.append(odds);
+    button.addEventListener('click', () => { appendToken(choice.word); draw.focus(); });
+    candidates.append(button);
+  }
+  draw.textContent = choices.length ? 'Draw a token ↗' : 'Make another ↺';
+  if (!choices.length) candidates.textContent = 'A tiny machine. A surprisingly strange bedtime story.';
+}
+function appendToken(word: string) { words.push(word); renderSentence(); renderCandidates(); }
+draw.addEventListener('click', () => {
+  if (words.length === 6) {words = []; renderSentence(); renderCandidates(); return;}
+  appendToken(sampleToken(nextTokenOdds(words.length, temperature))!);
+});
+dialog.querySelector('.restart-tokens')!.addEventListener('click', () => {words = []; renderSentence(); renderCandidates();});
+for (const button of dialog.querySelectorAll<HTMLButtonElement>('[data-temperature]')) {
+  button.addEventListener('click', () => {
+    temperature = Number(button.dataset.temperature);
+    for (const option of dialog.querySelectorAll('[data-temperature]')) option.setAttribute('aria-pressed', String(option === button));
+    renderCandidates();
+  });
+}
+function renderLetters() {
+  const {letters, following} = letterPattern(input.value);
+  tape.replaceChildren();
+  for (const {letter, kind} of letters) {
+    const tile = document.createElement('span');
+    tile.className = kind === 'V' ? 'letter-vowel' : 'letter-consonant';
+    tile.textContent = showPattern ? kind : letter;
+    tile.setAttribute('aria-label', `${letter}: ${kind === 'V' ? 'vowel' : 'consonant'}`);
+    tape.append(tile);
+  }
+  if (!letters.length) tape.textContent = 'Add a few English letters to start the tape.';
+  counts.replaceChildren();
+  for (const kind of ['V', 'C'] as const) {
+    const row = document.createElement('p');
+    const label = document.createElement('span');
+    label.textContent = `Vowel after ${kind === 'V' ? 'vowel' : 'consonant'}`;
+    const value = document.createElement('strong');
+    const result = following[kind];
+    value.textContent = result.total ? `${result.vowels} / ${result.total}` : 'No pairs yet';
+    row.append(label, value); counts.append(row);
+  }
+}
+input.addEventListener('input', renderLetters);
+for (const button of dialog.querySelectorAll<HTMLButtonElement>('[data-example]')) button.addEventListener('click', () => {input.value = button.dataset.example!; renderLetters();});
+pattern.addEventListener('click', () => {showPattern = !showPattern; pattern.setAttribute('aria-pressed', String(showPattern)); pattern.textContent = showPattern ? 'See the letters' : 'See the pattern'; renderLetters();});
+document.addEventListener('click', event => {
+  const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-curiosity]');
+  if (!trigger) return;
+  opener = trigger;
+  const mode = trigger.dataset.curiosity;
+  for (const panel of dialog.querySelectorAll<HTMLElement>('[data-drawer]')) panel.hidden = panel.dataset.drawer !== mode;
+  title.textContent = mode === '1913' ? 'Before chat, there were letters.' : 'One more token?';
+  number.textContent = mode === '1913' ? 'A time capsule / 1913' : 'You found the sentence machine';
+  renderSentence(); renderCandidates(); renderLetters();
+  dialog.showModal(); document.body.classList.add('curiosity-is-open');
+  dialog.querySelector<HTMLButtonElement>('.curiosity-close')!.focus();
+});
+dialog.querySelector('.curiosity-close')!.addEventListener('click', () => dialog.close());
+dialog.addEventListener('close', () => {document.body.classList.remove('curiosity-is-open'); opener?.focus();});
+dialog.addEventListener('click', event => {
+  if (event.target !== dialog) return;
+  const r = dialog.getBoundingClientRect();
+  if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
+});
+</script>

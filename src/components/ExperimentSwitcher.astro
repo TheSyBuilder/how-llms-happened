@@ -17,7 +17,7 @@ const empty=dialog.querySelector<HTMLElement>('.switcher-empty')!;
 let opener:HTMLElement|null=null;
 const filter=()=>{let count=0;for(const row of rows){const matches=row.dataset.search!.includes(search.value.trim().toLowerCase());row.hidden=!matches;if(matches)count++;}empty.hidden=count>0;};
 document.addEventListener('click',e=>{const target=(e.target as HTMLElement).closest<HTMLElement>('[data-open-explorer]');if(target){opener=target;search.value='';filter();dialog.showModal();document.body.classList.add('switcher-is-open');search.focus();}});
-document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();if(dialog.open){dialog.close();return;}opener=document.activeElement as HTMLElement;search.value='';filter();dialog.showModal();document.body.classList.add('switcher-is-open');search.focus();}});
+document.addEventListener('keydown',e=>{if(document.querySelector('.curiosity-dialog[open]'))return;if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();if(dialog.open){dialog.close();return;}opener=document.activeElement as HTMLElement;search.value='';filter();dialog.showModal();document.body.classList.add('switcher-is-open');search.focus();}});
 const close=()=>dialog.close();
 dialog.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();close();}});
 dialog.querySelector('.close-switcher')!.addEventListener('click',close);
