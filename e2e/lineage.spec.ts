@@ -5,7 +5,7 @@ test("retrieval reads an editable library with mouse, touch, and keyboard", asyn
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#retrieval")).toHaveClass(/is-live/);
   await page.locator("#retrieval > a").click();
   await expect(page).toHaveURL(/\/chapters\/retrieval\//);
@@ -104,7 +104,7 @@ test("scaling laws trades model size for text with mouse, touch, and keyboard", 
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
   await page.locator("#scaling-laws > a").click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
@@ -249,7 +249,7 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   await expect(
     page.getByRole("heading", { name: "One attention head" }),
   ).toBeVisible();
-  await page.goto("/chapters/chatgpt/");
+  await page.goto("/chapters/chinchilla/");
   await expect(
     page.getByText("This part of the story is on its way"),
   ).toBeVisible();
@@ -265,7 +265,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -337,7 +337,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -424,7 +424,7 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
   await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
@@ -502,7 +502,7 @@ test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ p
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);
   await page.locator("#gpt-3 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
@@ -595,9 +595,9 @@ test("human comparisons teach a scorer with mouse, touch, and keyboard", async (
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("8 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#human-feedback")).toHaveClass(/is-live/);
-  await page.getByRole("link", { name: "Jump to the latest chapter" }).click();
+  await page.locator("#human-feedback > a").click();
   await expect(page).toHaveURL(/\/chapters\/human-feedback\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
   await page.locator(".chapter-hero").screenshot({ path: testInfo.outputPath("feedback-hero.png") });
@@ -686,6 +686,89 @@ test("human comparisons teach a scorer with mouse, touch, and keyboard", async (
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole("link", { name: /Next · 2022 The ChatGPT moment/ }).click();
   await expect(page).toHaveURL(/\/chapters\/chatgpt\//);
-  await expect(page.getByText("This part of the story is on its way")).toBeVisible();
+  await expect(page.locator(".conversation-toy")).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+for (const chapter of ["chatgpt", "gpt-4"]) {
+  test(`${chapter} teaches input context with mouse touch and keyboard`, async ({ page }, testInfo) => {
+    const errors: string[] = [];
+    page.on("pageerror", e => errors.push(e.message));
+    page.on("console", m => { if(m.type() === "error") errors.push(m.text()); });
+    await page.goto("/");
+    await expect(page.getByText("10 chapters live · 30 turning points")).toBeVisible();
+    await expect(page.locator(`#${chapter}`)).toHaveClass(/is-live/);
+    if(chapter === "gpt-4") await page.getByRole("link", {name:"Jump to the latest chapter"}).click();
+    else await page.locator(`#${chapter} > a`).click();
+    await expect(page).toHaveURL(`/chapters/${chapter}/`);
+    await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+    await page.locator(".chapter-hero").screenshot({path:testInfo.outputPath(`${chapter}-hero.png`)});
+    await page.locator(".idea-diagram").screenshot({path:testInfo.outputPath(`${chapter}-diagram.png`)});
+    const toy = page.locator(chapter === "chatgpt" ? ".conversation-toy" : ".vision-toy");
+    const activate = async (locator: ReturnType<typeof page.getByRole>) => {
+      if(testInfo.project.name === "mobile-chromium") await locator.tap(); else await locator.click();
+    };
+    await toy.screenshot({style: ".chapter-answer { position: static !important; }",path:testInfo.outputPath(`${chapter}-default.png`)});
+    const slider = page.getByRole("slider");
+    if(chapter === "chatgpt") {
+      const answer=page.getByTestId("conversation-answer");
+      await expect(answer).toHaveText("We’re visiting Oslo.");
+      await activate(page.getByRole("checkbox"));
+      await page.getByRole("combobox").selectOption("Lima");
+      await expect(answer).toHaveText("We’re visiting Lima.");
+      await expect(answer).toBeInViewport();
+      await slider.focus(); await page.keyboard.press("Home");
+      await expect(answer).toHaveText("Which city did you mean?");
+      await expect(page.locator(".turn-dropped")).toHaveCount(4);
+      await toy.screenshot({style: ".chapter-answer { position: static !important; }",path:testInfo.outputPath(`${chapter}-missing.png`)});
+      await page.keyboard.press("End");
+      await expect(answer).toHaveText("We’re visiting Lima.");
+      await page.getByRole("checkbox").focus(); await page.keyboard.press("Space");
+      await expect(answer).toHaveText("We’re visiting Oslo.");
+    } else {
+      const answer=page.getByTestId("vision-answer");
+      await expect(answer).toHaveText("I need the picture to count.");
+      await expect(slider).toBeDisabled();
+      await activate(page.getByRole("button", {name:/Cell 1:/}));
+      await expect(answer).toHaveText("I need the picture to count.");
+      await activate(page.getByRole("checkbox"));
+      await expect(answer).toHaveText("3 circles.");
+      await expect(answer).toBeInViewport();
+      await page.getByRole("button", {name:/Cell 1:/}).focus(); await page.keyboard.press("Enter");
+      await expect(answer).toHaveText("4 circles.");
+      await slider.focus(); await page.keyboard.press("Home");
+      await expect(answer).toHaveText("2–8 circles possible.");
+      await activate(page.getByRole("button", {name:/Cell 9:/}));
+      await expect(answer).toHaveText("2–8 circles possible.");
+      await toy.screenshot({style: ".chapter-answer { position: static !important; }",path:testInfo.outputPath(`${chapter}-partial.png`)});
+      await slider.focus(); await page.keyboard.press("End");
+      await expect(answer).toHaveText("3 circles.");
+    }
+    await slider.scrollIntoViewIfNeeded();
+    const box=await slider.boundingBox();
+    if(testInfo.project.name === "mobile-chromium") await page.touchscreen.tap(box!.x+box!.width*.5,box!.y+box!.height/2);
+    else await page.mouse.click(box!.x+box!.width*.5,box!.y+box!.height/2);
+    await expect(slider).toHaveValue("2");
+    await page.screenshot({path:testInfo.outputPath(`${chapter}-interacting.png`)});
+    await toy.screenshot({style: ".chapter-answer { position: static !important; }",path:testInfo.outputPath(`${chapter}-changed.png`)});
+    await page.getByRole("button",{name:/Reset/}).focus(); await page.keyboard.press("Enter");
+    if(chapter === "chatgpt") await expect(page.getByTestId("conversation-answer")).toHaveText("We’re visiting Oslo.");
+    else await expect(page.getByTestId("vision-answer")).toHaveText("I need the picture to count.");
+    await page.emulateMedia({reducedMotion:"reduce"});
+    if(chapter === "chatgpt") await expect(page.locator(".conversation-turns li").first()).toHaveCSS("transition-duration","0s");
+    const words=await page.locator(".chapter-hero, .story-section").allTextContents();
+    expect(words.join(" ").split(/\s+/).length).toBeLessThan(800);
+    await page.evaluate(()=>window.scrollTo(0,0));
+    await page.screenshot({path:testInfo.outputPath(`${chapter}-full.png`),fullPage:true});
+    for(const id of ["deeper","sources"]) {
+      await expect(page.locator(`#${id}`)).not.toHaveAttribute("open", "");
+      await page.locator(`#${id} summary`).focus(); await page.keyboard.press("Enter");
+      await expect(page.locator(`#${id}`)).toHaveAttribute("open", "");
+      await page.locator(`#${id} .disclosure-body`).screenshot({path:testInfo.outputPath(`${chapter}-${id}.png`)});
+    }
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    await page.locator(".next-chapter").click();
+    await expect(page).toHaveURL(`/chapters/${chapter === "chatgpt" ? "gpt-4" : "chinchilla"}/`);
+    expect(errors).toEqual([]);
+  });
+}
