@@ -1,0 +1,14 @@
+---
+import { chapters, chapterPaper, type Chapter } from '../lib/chapters';
+import { laterStories } from '../lib/later-stories';
+import LaterToy from './LaterToy';
+const { chapter } = Astro.props as { chapter: Chapter };
+const story = laterStories[chapter.slug]!;
+const next = chapters[chapters.findIndex(c => c.slug === chapter.slug) + 1]!;
+---
+<section class="story-section" id="problem"><p class="eyebrow">01 / The problem before</p><h2>{story.headline}</h2><p>{story.problem}</p></section>
+<section class="story-section" id="idea"><p class="eyebrow">02 / The big idea</p><h2>{story.diagram[1]}</h2>{story.idea.map(p => <p>{p}</p>)}<figure class="idea-diagram"><svg viewBox="0 0 420 300" role="img" aria-label={story.diagram.join(' → ')}>{story.diagram.map((label,i) => <g><rect x="10" y={i*104+4} width="400" height="70" rx="6" fill={i===1?'var(--accent)':'var(--paper)'} stroke="var(--line)"/><text x="210" y={i*104+46} text-anchor="middle" font-size="23" fill="currentColor">{label}</text>{i<2 && <text x="210" y={i*104+99} text-anchor="middle" font-size="25" fill="currentColor">↓</text>}</g>)}</svg><figcaption>A simplified sketch of the idea.</figcaption></figure></section>
+<section class="story-section toy-section" id="play"><p class="eyebrow">03 / Play with it</p><h2>{story.play}</h2><noscript>Enable JavaScript to use this toy.</noscript><LaterToy kind={chapter.slug} client:load /></section>
+<section class="story-section" id="mattered"><p class="eyebrow">04 / Why it mattered</p><h2>Carry the idea forward.</h2><p>{story.mattered}</p><a class="next-chapter" href={`/chapters/${next.slug}/`}><span>Next · {next.year}</span><strong>{next.title} ↗</strong><span>{next.hook}</span></a></section>
+<details class="chapter-disclosure" id="deeper"><summary>Go deeper <span>{story.deeperTitle}</span></summary><div class="disclosure-body"><h3>{story.deeperTitle}</h3><p>{story.deeper}</p></div></details>
+<details class="chapter-disclosure" id="sources"><summary>Sources <span>Papers and further reading</span></summary><div class="disclosure-body"><p>{story.sourceNote}</p><ol class="source-list">{[chapter.anchor,...chapter.related].map(id=>{const p=chapterPaper(id)!;return <li><a href={p.url}>{p.title} ↗</a></li>})}</ol>{chapter.related.length>0 && <p>Also in this chapter: the related works listed above.</p>}<p>All controls, numbers and diagrams in the toy are teaching illustrations, not measured model outputs.</p></div></details>

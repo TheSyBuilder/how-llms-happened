@@ -1473,3 +1473,17 @@ input[type="checkbox"] {
 .received-grid { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; font-size: 28px; max-width: 230px; margin: 12px auto 0; }
 
 .conversation-toy .chapter-answer, .vision-toy .chapter-answer { position: sticky; top: 8px; z-index: 1; background: var(--surface); box-shadow: 0 8px 0 var(--surface); }
+
+.later-toy .chapter-answer { background:var(--surface); }
+.experiment-bar { margin-block:18px; font-size:14px; }
+.experiment-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.experiment-actions button { min-height:48px; padding:12px 18px; background:var(--accent); color:var(--ink); border:1px solid var(--line); font:inherit; cursor:pointer; }
+.expert-queues { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.expert-queues > div { border-top:2px solid var(--ink); padding-top:12px; }
+.expert-queues span { display:block; margin-top:10px; padding:10px; font-size:13px; }
+.token-accepted { background:var(--accent); }
+.token-overflow { border:1px dashed var(--muted); }
+.experiment-steps p { padding:15px; border-left:3px solid var(--deep); }
+.search-paths { font-variant-numeric:tabular-nums; line-height:2; }
+@media(max-width:500px) { .expert-queues { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .later-toy .feedback-track > span { transition:none; } }
