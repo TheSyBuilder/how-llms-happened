@@ -1,11 +1,97 @@
 import { expect, test } from "@playwright/test";
 
+test('current systems combine evidence, tools and effort with mouse, touch and keyboard', async ({page}, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  await page.goto('/');
+  await expect(page.getByText('18 chapters live · 30 turning points')).toBeVisible();
+  await expect(page.locator('#now')).toHaveClass(/is-live/);
+  await page.locator('#now > a').click();
+  await expect(page).toHaveURL('/chapters/now/');
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr', '');
+  await page.locator('.chapter-hero').screenshot({path:info.outputPath('now-hero.png')});
+  await page.locator('.now-diagram').screenshot({path:info.outputPath('now-diagram.png')});
+  const toy = page.locator('.now-toy');
+  const answer = page.getByTestId('delivery-answer');
+  const notes = page.getByRole('slider', {name:'Notes to send'});
+  const budget = page.getByRole('slider', {name:'Routes to try'});
+  const lookup = page.getByRole('checkbox', {name:'Fetch gate status'});
+  const gate = page.getByRole('checkbox', {name:'Close the gate'});
+  const activate = async (element: ReturnType<typeof page.getByRole>) => {
+    if(info.project.name === 'mobile-chromium') await element.tap(); else await element.click();
+  };
+  await expect(answer).toHaveText('Address missing.');
+  await budget.focus(); await page.keyboard.press('End');
+  await expect(answer).toHaveText('Address missing.');
+  await expect(page.locator('.note-missing')).toHaveCount(1);
+  await notes.scrollIntoViewIfNeeded();
+  const box = await notes.boundingBox();
+  if(info.project.name === 'mobile-chromium') await page.touchscreen.tap(box!.x + box!.width - 4, box!.y + box!.height / 2);
+  else await page.mouse.click(box!.x + box!.width - 4, box!.y + box!.height / 2);
+  await expect(notes).toHaveValue('3');
+  await expect(answer).toHaveText('Old map. Closed gate.');
+  await toy.screenshot({path:info.outputPath('now-stale-map.png'), animations:'disabled'});
+  await budget.focus(); await page.keyboard.press('Home');
+  await expect(answer).toHaveText('Old map. Closed gate.');
+  await activate(lookup);
+  await expect(answer).toHaveText('No route found yet.');
+  await expect(answer).toBeInViewport();
+  await expect(page.getByTestId('gate-observation')).toHaveText('Tool returns: gate closed.');
+  await budget.focus(); await page.keyboard.press('ArrowRight');
+  await expect(answer).toHaveText('No route found yet.');
+  await page.keyboard.press('ArrowRight');
+  await expect(answer).toHaveText('Delivered in 6 minutes.');
+  await expect(answer).toBeInViewport();
+  await expect.poll(async () => {
+    const budgetBounds = await budget.locator('..').boundingBox();
+    const statusBounds = await page.locator('.now-result').boundingBox();
+    return budgetBounds!.y - statusBounds!.y - statusBounds!.height;
+  }).toBeGreaterThanOrEqual(0);
+  await page.getByText('Inside this attempt', {exact:false}).click();
+  await expect(page.locator('.now-attempts')).toContainText('Gate is closed');
+  await expect(page.locator('.now-attempts')).toContainText('Wrong destination');
+  await expect(page.locator('.now-attempts')).toContainText('Checks: 3');
+  await toy.screenshot({path:info.outputPath('now-delivered.png'), animations:'disabled'});
+  await activate(gate);
+  await expect(answer).toHaveText('Delivered in 4 minutes.');
+  await gate.focus(); await page.keyboard.press('Space');
+  await expect(answer).toHaveText('Delivered in 6 minutes.');
+  await lookup.focus(); await page.keyboard.press('Space');
+  await expect(answer).toHaveText('Old map. Closed gate.');
+  await page.getByRole('button', {name:'Reset delivery'}).focus(); await page.keyboard.press('Enter');
+  await expect(notes).toHaveValue('2'); await expect(budget).toHaveValue('1');
+  await expect(gate).toBeChecked(); await expect(lookup).not.toBeChecked();
+  await expect(answer).toHaveText('Address missing.');
+  await notes.focus(); await page.keyboard.press('End');
+  await page.getByRole('link', {name:'Play',exact:true}).click();
+  await expect(answer).toHaveText('Old map. Closed gate.');
+  await page.screenshot({path:info.outputPath('now-play.png'), fullPage:true, animations:'disabled'});
+  await page.getByRole('link', {name:'Story',exact:true}).click();
+  for(const id of ['deeper','sources']) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute('open','');
+    await page.locator(`#${id} summary`).focus(); await page.keyboard.press('Enter');
+  }
+  const sourceLinks = page.locator('#sources .source-list a');
+  for(const href of await sourceLinks.evaluateAll(links => links.map(link => link.getAttribute('href')))) expect(href).toMatch(/^https:\/\//);
+  const words = await page.locator('.chapter-hero, .story-section').allTextContents();
+  expect(words.join(' ').trim().split(/\s+/).length).toBeLessThan(800);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(page.locator('.now-chosen-road')).toHaveCSS('animation-name','none');
+  await expect(page.locator('.now-notes li').first()).toHaveCSS('transition-duration','0s');
+  await page.screenshot({path:info.outputPath('now-story.png'), fullPage:true, animations:'disabled'});
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole('link', {name:/Next · 2016 Racing to drop recurrence/}).click();
+  await expect(page).toHaveURL('/chapters/drop-recurrence/');
+  expect(errors).toEqual([]);
+});
+
 test("retrieval reads an editable library with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#retrieval")).toHaveClass(/is-live/);
   await page.locator("#retrieval > a").click();
   await expect(page).toHaveURL(/\/chapters\/retrieval\//);
@@ -104,7 +190,7 @@ test("scaling laws trades model size for text with mouse, touch, and keyboard", 
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
   await page.locator("#scaling-laws > a").click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
@@ -265,7 +351,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -337,7 +423,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -424,7 +510,7 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
   await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
@@ -502,7 +588,7 @@ test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ p
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);
   await page.locator("#gpt-3 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
@@ -595,7 +681,7 @@ test("human comparisons teach a scorer with mouse, touch, and keyboard", async (
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#human-feedback")).toHaveClass(/is-live/);
   await page.locator("#human-feedback > a").click();
   await expect(page).toHaveURL(/\/chapters\/human-feedback\//);
@@ -696,7 +782,7 @@ for (const chapter of ["chatgpt", "gpt-4"]) {
     page.on("pageerror", e => errors.push(e.message));
     page.on("console", m => { if(m.type() === "error") errors.push(m.text()); });
     await page.goto("/");
-    await expect(page.getByText("17 chapters live · 30 turning points")).toBeVisible();
+    await expect(page.getByText("18 chapters live · 30 turning points")).toBeVisible();
     await expect(page.locator(`#${chapter}`)).toHaveClass(/is-live/);
     await page.locator(`#${chapter} > a`).click();
     await expect(page).toHaveURL(`/chapters/${chapter}/`);

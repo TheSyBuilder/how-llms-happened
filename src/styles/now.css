@@ -1,0 +1,58 @@
+.now-toy { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: clamp(16px, 4vw, 32px); margin-top: 26px; }
+.now-toy .toy-topline > span:last-child { font-size: 11px; color: var(--muted); }
+.now-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.now-range { display: grid; grid-template-columns: 1fr auto; gap: 12px; font-size: 14px; }
+.now-range output { font-variant-numeric: tabular-nums; color: var(--deep); font-weight: 700; }
+.now-range input { grid-column: 1 / -1; width: 100%; margin: 0; min-height: 44px; accent-color: var(--deep); cursor: pointer; }
+.now-toy :is(input, button, summary) { scroll-margin-top: 170px; scroll-margin-bottom: 24px; }
+.now-notes { padding: 0; margin: 18px 0 24px; list-style: none; display: grid; gap: 8px; }
+.now-notes li { padding: 10px 14px; display: grid; grid-template-columns: 62px 1fr; align-items: baseline; gap: 8px; border: 1px solid var(--line); border-radius: 4px; font-size: 15px; transition: background-color .18s, color .18s; }
+.now-notes li > span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.note-received { background: var(--accent); }
+.note-missing { background: var(--paper); color: var(--muted); }
+.now-toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.now-toggles label { display: flex; gap: 10px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 5px; cursor: pointer; font-size: 14px; }
+.now-toggles input { width: 18px; height: 18px; accent-color: var(--deep); flex-shrink: 0; }
+.now-toggles small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.now-observation { font-size: 13px; margin-top: 16px; padding: 12px 14px; background: var(--paper); border-left: 3px solid var(--ink); }
+.now-map { margin-top: 22px; }
+.now-map svg { width: 100%; max-width: 530px; margin-inline: auto; display: block; overflow: visible; }
+.now-roads { fill: none; stroke: var(--line); stroke-width: 4; }
+.now-chosen-road { fill: none; stroke: var(--deep); stroke-width: 6; stroke-linejoin: round; animation: route-arrives .25s ease-out; }
+.now-map circle { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.now-map text { font-family: var(--body); font-size: 18px; fill: var(--ink); }
+.now-map .now-gate-closed { fill: var(--ink); }
+.now-barrier { fill: none; stroke: var(--paper); stroke-width: 2; }
+.now-map .now-parcel { fill: var(--accent); stroke: var(--ink); stroke-width: 2; }
+.now-map figcaption { color: var(--muted); font-size: 12px; margin-top: 10px; line-height: 1.5; }
+.now-result { position: sticky; top: 8px; z-index: 1; background: var(--surface); box-shadow: 0 8px 0 var(--surface); margin-block: 18px 24px; border-block: 1px solid var(--line); padding-block: 14px; }
+.now-result > span { color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .1em; font-weight: 700; }
+.now-result output { display: block; font-family: var(--display); font-size: clamp(26px, 4vw, 36px); line-height: 1.2; letter-spacing: -.04em; margin-block: 10px; }
+.now-result p { font-size: 15px; line-height: 1.6; }
+.now-result[data-state="delivered"] { border-color: var(--deep); }
+.now-attempts { margin-bottom: 12px; }
+.now-attempts summary { display: flex; justify-content: space-between; gap: 10px; }
+.now-attempts summary > span { font-size: 11px; color: var(--muted); }
+.now-attempts p { font-size: 12px; margin-block: 14px; }
+.now-attempts ol { padding-left: 20px; font-size: 13px; }
+.now-attempts li { padding-block: 8px; }
+.now-attempts li > span, .now-attempts li > strong { display: block; }
+.now-attempts li > strong { font-size: 12px; color: var(--deep); }
+.now-diagram svg { max-width: 560px; margin: auto; }
+.now-diagram text { font-family: var(--body); font-size: 19px; }
+@keyframes route-arrives { from { opacity: .25; } to { opacity: 1; } }
+@media (max-width: 500px) {
+  .now-result { padding-block: 10px; margin-bottom: 18px; }
+  .now-result output { font-size: 22px; margin-block: 5px; }
+  .now-result p { font-size: 12px; line-height: 1.5; }
+  .now-result > span { font-size: 9px; }
+  .now-controls { grid-template-columns: 1fr; gap: 14px; }
+  .now-toggles { grid-template-columns: 1fr; gap: 8px; }
+  .now-notes li { grid-template-columns: 48px 1fr; font-size: 13px; padding: 10px; }
+  .now-notes li > span { font-size: 9px; }
+  .now-map text { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .now-chosen-road { animation: none; }
+  .now-notes li { transition: none; }
+}

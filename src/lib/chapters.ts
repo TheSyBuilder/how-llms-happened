@@ -169,10 +169,10 @@ const entries: [string, string, number, string, string, string[], string][] = [
     "now",
     "Where we are now",
     2026,
-    "Which ideas are coming together next?",
+    "What does a useful model need around it?",
     "deepseek-v4-1",
     ["deepseek-v4", "claude-opus-5-5", "gemini-3-1"],
-    "Explore tradeoffs among context, compute, and tools.",
+    "Send the right notes, fetch a gate status and try routes in a tiny delivery planner.",
   ],
   [
     "drop-recurrence",
@@ -307,7 +307,7 @@ export const chapters: Chapter[] = entries.map(
     anchor: resolveWork(anchor),
     related: related.map(resolveWork),
     toy,
-    status: ["transformer", "pretraining", "bert", "gpt-2", "scaling-laws", "gpt-3", "retrieval", "human-feedback", "chatgpt", "gpt-4", "chinchilla", "open-models", "mixture-of-experts", "tools-and-agents", "dpo", "chain-of-thought", "reasoning"].includes(slug) ? "live" : "planned",
+    status: ["transformer", "pretraining", "bert", "gpt-2", "scaling-laws", "gpt-3", "retrieval", "human-feedback", "chatgpt", "gpt-4", "chinchilla", "open-models", "mixture-of-experts", "tools-and-agents", "dpo", "chain-of-thought", "reasoning", "now"].includes(slug) ? "live" : "planned",
   }),
 );
 export const timeline = [...chapters].sort((a, b) => a.year - b.year);
