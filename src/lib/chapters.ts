@@ -81,7 +81,7 @@ const entries: [string, string, number, string, string, string[], string][] = [
     2022,
     "How can people teach a model what a good answer feels like?",
     "ouyang-2022",
-    ["stiennon-2020", "wei-2021", "sanh-2021"],
+    ["stiennon-2020", "wei-2021", "sanh-2021", "constitutional-ai"],
     "Rank responses and change a toy preference score.",
   ],
   [
@@ -117,7 +117,7 @@ const entries: [string, string, number, string, string, string[], string][] = [
     2023,
     "What becomes possible when you can run the model yourself?",
     "llama",
-    ["zhang-2022", "bigscience-2022", "laurencon-2022"],
+    ["zhang-2022", "bigscience-2022", "laurencon-2022", "lora"],
     "Fit toy models into a memory budget.",
   ],
   [
@@ -171,7 +171,7 @@ const entries: [string, string, number, string, string, string[], string][] = [
     2026,
     "What does a useful model need around it?",
     "deepseek-v4-1",
-    ["deepseek-v4", "claude-opus-5-5", "gemini-3-1"],
+    ["deepseek-v4", "claude-opus-5-5", "gemini-3-8", "gpt-6-astra", "flash-attention", "mamba"],
     "Send the right notes, fetch a gate status and try routes in a tiny delivery planner.",
   ],
   [

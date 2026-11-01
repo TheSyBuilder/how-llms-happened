@@ -62,4 +62,40 @@ export const addedPapers = [
     title: "Gemini 3.1 Pro",
     url: "https://deepmind.google/models/model-cards/gemini-3-1-pro",
   },
+  {
+    id: "gpt-6-astra",
+    year: 2026,
+    title: "GPT-6 Astra: A new generation of intelligence",
+    url: "https://openai.com/index/gpt-6-astra/",
+  },
+  {
+    id: "gemini-3-8",
+    year: 2026,
+    title: "Gemini 3.8 Flash",
+    url: "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+  },
+  {
+    id: "flash-attention",
+    year: 2022,
+    title: "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+    url: "https://arxiv.org/abs/2205.14135",
+  },
+  {
+    id: "mamba",
+    year: 2023,
+    title: "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+    url: "https://arxiv.org/abs/2312.00752",
+  },
+  {
+    id: "lora",
+    year: 2021,
+    title: "LoRA: Low-Rank Adaptation of Large Language Models",
+    url: "https://arxiv.org/abs/2106.09685",
+  },
+  {
+    id: "constitutional-ai",
+    year: 2022,
+    title: "Constitutional AI: Harmlessness from AI Feedback",
+    url: "https://arxiv.org/abs/2212.08073",
+  },
 ];

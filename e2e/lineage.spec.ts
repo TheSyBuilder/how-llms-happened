@@ -1028,3 +1028,63 @@ test('hidden discoveries reward curiosity without interrupting the story', async
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  expect(errors).toEqual([]);
 });
+
+test('timeline stays oriented across scrubbing, scrolling and the final chapters', async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/#timeline');
+  const slider = page.getByRole('slider', { name: 'Chapter in timeline' });
+  const previous = page.getByRole('button', { name: 'Previous turning point', exact: true });
+  const next = page.getByRole('button', { name: 'Next turning point', exact: true });
+  const title = page.locator('[data-timeline-title]');
+  const strip = page.locator('.timeline-strip');
+  const activate = async (element: ReturnType<typeof page.getByRole>) => {
+    if (info.project.name === 'mobile-chromium') await element.tap(); else await element.click();
+  };
+  await expect(previous).toBeDisabled();
+  await expect(slider).toHaveValue('1');
+  await expect(title).toHaveText('Guessing the next letter');
+  await activate(page.getByRole('button', { name: '2026 · Today' }));
+  await expect(slider).toHaveValue('30');
+  await expect(next).toBeDisabled();
+  await expect(page.locator('#now')).toBeInViewport();
+  // The final few cards must each be reachable, including on wide screens.
+  await activate(previous);
+  await expect(title).toHaveText('Reasoning models');
+  await expect(slider).toHaveValue('29');
+  await activate(previous);
+  await expect(slider).toHaveValue('28');
+  await activate(next);
+  await expect(slider).toHaveValue('29');
+  await slider.focus(); await page.keyboard.press('End');
+  await expect(slider).toHaveAttribute('aria-valuetext', '2026: Where we are now, 30 of 30');
+  await page.keyboard.press('Home');
+  await expect(slider).toHaveValue('1');
+  await slider.scrollIntoViewIfNeeded();
+  const box = await slider.boundingBox();
+  if (info.project.name === 'mobile-chromium') await page.touchscreen.tap(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  else await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  expect(Number(await slider.inputValue())).toBeGreaterThan(10);
+  expect(Number(await slider.inputValue())).toBeLessThan(20);
+  await strip.focus(); await page.keyboard.press('End');
+  await expect(title).toHaveText('Where we are now');
+  await page.keyboard.press('ArrowLeft');
+  await expect(title).toHaveText('Reasoning models');
+  await page.keyboard.press('Home');
+  await expect(title).toHaveText('Guessing the next letter');
+  // A native scroll gesture must also update the scrubber and its label.
+  await strip.evaluate(el => el.scrollTo({ left: 765, behavior: 'instant' }));
+  await expect(slider).not.toHaveValue('1');
+  await activate(page.getByRole('button', { name: '2017 · Transformers' }));
+  await expect(title).toHaveText('The Transformer');
+  await expect(page.locator('#transformer')).toBeInViewport();
+  await page.locator('.timeline-section').screenshot({ path: info.outputPath('timeline-navigator.png'), animations: 'disabled' });
+  await page.locator('#transformer > a').click();
+  await page.getByRole('link', { name: '← The timeline' }).click();
+  await expect(page.locator('#transformer')).toBeInViewport();
+  await expect(title).toHaveText('The Transformer');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+});
