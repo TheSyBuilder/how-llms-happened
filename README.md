@@ -8,6 +8,7 @@ An interactive history of language models. Change the input, watch the mechanism
 
 ## A few things to try
 
+- **Letters to memory:** build a letter press, make room for unseen words, mix sound with context, move a word vector, and operate an LSTM memory vault.
 - **Dropping recurrence:** send a clue across eight positions. Compare local windows, widening windows and direct attention.
 - **BERT:** reveal the clue after a missing word. Watch two possible answers become one.
 - **Pretraining:** teach two review labels, then try a word that has never had a label. See what prior reading transfers.
@@ -16,7 +17,7 @@ An interactive history of language models. Change the input, watch the mechanism
 - **Where we are now:** assemble a delivery planner. Learn why more attempts cannot recover missing evidence.
 - **Reasoning:** spend another attempt on a puzzle. Discover both the benefit and the limit of extra computation.
 
-There are **19 implemented chapters** across a timeline of 30 turning points: Transformer, pretraining, BERT, GPT-2, scaling laws, GPT-3, retrieval, human feedback, ChatGPT, GPT-4, Chinchilla, open models, mixture of experts, tools, DPO, chain-of-thought, reasoning models, the current synthesis of context, tools and computation, and the race to replace recurrence. Remaining chapters are marked coming soon.
+There are **25 implemented chapters** across a timeline of 30 turning points: Transformer, pretraining, BERT, GPT-2, scaling laws, GPT-3, retrieval, human feedback, ChatGPT, GPT-4, Chinchilla, open models, mixture of experts, tools, DPO, chain-of-thought, reasoning models, the current synthesis of context, tools and computation, the race to replace recurrence, letter prediction, smoothing, statistical speech decoding, word vectors, Elman’s recurrent network, and LSTM memory. Remaining chapters are marked coming soon.
 
 ## Run it
 

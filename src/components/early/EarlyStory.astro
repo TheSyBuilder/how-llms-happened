@@ -1,0 +1,24 @@
+---
+import {earlyStories} from '../../lib/early-stories';
+import {sourceLink,chapterPaper,chapters} from '../../lib/chapters';
+import Discovery from '../Discovery.astro';
+import EarlyDiagram from './EarlyDiagram.astro';
+import LetterToy from './LetterToy';
+import ZeroToy from './ZeroToy';
+import SpeechToy from './SpeechToy';
+import VectorToy from './VectorToy';
+import ElmanToy from './ElmanToy';
+import GateToy from './GateToy';
+import '../../styles/early.css';
+const {slug}=Astro.props;
+const story=earlyStories[slug]!;
+const nextLive=chapters.find(c=>c.slug===story.next)?.status==='live';
+---
+<section class="story-section" id="problem"><p class="eyebrow">01 / The problem before</p><h2>{story.problemTitle}</h2>{story.problem.map(p=><p set:html={p}/>)}</section>
+<section class="story-section" id="idea"><p class="eyebrow">02 / The big idea</p><h2>{story.ideaTitle}</h2>{story.idea.map(p=><p set:html={p}/>)}<EarlyDiagram slug={slug} caption={story.diagram}/></section>
+<section class="story-section toy-section" id="play"><p class="eyebrow">03 / Play with it</p><h2>{story.playTitle}</h2><Discovery slug={slug}/><p>{story.invitation}</p><noscript><p>Enable JavaScript to change the controls. The explanation, diagram, equations and sources remain available below.</p></noscript>
+{slug==='next-letter' ? <LetterToy client:load/> : slug==='zero-counts' ? <ZeroToy client:load/> : slug==='speech' ? <SpeechToy client:load/> : slug==='word-vectors' ? <VectorToy client:load/> : slug==='elman' ? <ElmanToy client:load/> : <GateToy client:load/>}
+</section>
+<section class="story-section" id="mattered"><p class="eyebrow">04 / Why it mattered</p><h2>{story.matteredTitle}</h2>{story.mattered.map(p=><p set:html={p}/>)}{story.companions && <aside class="chapter-companions"><h3>Also in this chapter</h3><p>{story.companions}</p></aside>}<a class="next-chapter" href={`/chapters/${story.next}/`}><span>Next · {story.nextYear}{!nextLive && ' · Coming soon'}</span><strong>{story.nextTitle} ↗</strong></a></section>
+<details class="chapter-disclosure" id="deeper"><summary>Go deeper <span>Mechanism, evidence and limits</span></summary><div class="disclosure-body">{story.deeper.map(item=><><h3>{item.title}</h3><p>{item.text}</p></>)}</div></details>
+<details class="chapter-disclosure" id="sources"><summary>Sources <span>Original work, with a reading guide</span></summary><div class="disclosure-body"><ol class="source-list">{story.sources.map(source=><li><a href={source.id==='word2vec' ? chapterPaper('word2vec')!.url : sourceLink(source.id)}>{source.title}</a><p>{source.guide}</p></li>)}</ol><p>The interactive examples and diagrams are invented teaching illustrations. Their numbers are not paper measurements.</p></div></details>

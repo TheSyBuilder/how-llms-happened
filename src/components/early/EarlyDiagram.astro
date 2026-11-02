@@ -1,0 +1,33 @@
+---
+const {slug,caption}=Astro.props;
+---
+<figure class="idea-diagram early-diagram"><svg viewBox="0 0 480 320" role="img" aria-label={caption}>
+{slug==='next-letter' && <>
+ <path d="M125 135Q240 15 355 135M355 185Q240 305 125 185" class="early-line"/><path d="M343 120L355 135L354 116M138 201L125 185L126 204" class="early-line"/>
+ <circle cx="100" cy="160" r="47" fill="var(--accent)"/><circle cx="380" cy="160" r="47" fill="var(--accent)"/>
+ <text x="100" y="168" text-anchor="middle">A</text><text x="380" y="168" text-anchor="middle">B</text><text x="240" y="65" text-anchor="middle">Always B next</text><text x="240" y="270" text-anchor="middle">Always A next</text>
+</>}
+{slug==='zero-counts' && <>
+ <text x="25" y="45">One budget. Still 100%.</text><rect x="25" y="85" width="344" height="100" fill="var(--accent)"/><rect x="369" y="85" width="86" height="100" fill="var(--ink)"/>
+ <text x="185" y="140" text-anchor="middle">80% · seen</text><text x="410" y="220" text-anchor="middle">20%</text><path d="M410 190V200" class="early-line"/><text x="260" y="275">Room for unseen →</text>
+</>}
+{slug==='speech' && <>
+ <rect x="20" y="30" width="200" height="85" rx="5" fill="var(--paper)" stroke="var(--line)"/><rect x="260" y="30" width="200" height="85" rx="5" fill="var(--accent)"/>
+ <text x="120" y="65" text-anchor="middle">Sound</text><text x="120" y="95" text-anchor="middle">likelihood</text><text x="360" y="65" text-anchor="middle">Language</text><text x="360" y="95" text-anchor="middle">prior</text>
+ <path d="M120 120L240 185L360 120M240 205V245" class="early-line"/><circle cx="240" cy="190" r="25" fill="var(--ink)"/><text x="240" y="198" text-anchor="middle" style="fill:var(--paper)">×</text><text x="240" y="285" text-anchor="middle">Choose a candidate</text>
+</>}
+{slug==='word-vectors' && <>
+ <path d="M45 25V270H450" class="early-line"/><path d="M45 270L315 70M45 270L350 95M45 270L140 65" class="vector-ray"/>
+ <circle cx="315" cy="70" r="13" fill="var(--accent)"/><circle cx="350" cy="95" r="13" fill="var(--accent)"/><circle cx="140" cy="65" r="10" fill="var(--ink)"/>
+ <text x="300" y="45">cat</text><text x="365" y="103">dog</text><text x="115" y="40">road</text><text x="85" y="306">Compare directions, not word IDs</text>
+</>}
+{slug==='elman' && <>
+ <rect x="20" y="65" width="130" height="65" rx="4" fill="var(--paper)" stroke="var(--line)"/><rect x="175" y="65" width="130" height="65" rx="4" fill="var(--accent)"/><rect x="330" y="65" width="130" height="65" rx="4" fill="var(--paper)" stroke="var(--line)"/>
+ <text x="85" y="105" text-anchor="middle">Input</text><text x="240" y="105" text-anchor="middle">Hidden</text><text x="395" y="105" text-anchor="middle">Prediction</text><path d="M150 98H175M305 98H330M240 135V240H100V155H205V135" class="early-line"/>
+ <text x="240" y="275" text-anchor="middle">Copy back for the next word</text><text x="255" y="200">Context</text>
+</>}
+{slug==='lstm' && <>
+ <text x="20" y="35">Stored memory</text><path d="M25 90H455" class="early-line"/><rect x="85" y="65" width="85" height="50" rx="4" fill="var(--accent)"/><text x="127" y="96" text-anchor="middle">Keep</text><circle cx="260" cy="90" r="25" fill="var(--accent)"/><text x="260" y="97" text-anchor="middle">+</text><text x="360" y="45">New memory</text>
+ <path d="M260 240V115M370 95V200H455" class="early-line"/><rect x="218" y="175" width="84" height="50" rx="4" fill="var(--accent)"/><text x="260" y="207" text-anchor="middle">Write</text><rect x="330" y="175" width="85" height="50" rx="4" fill="var(--paper)" stroke="var(--ink)"/><text x="372" y="207" text-anchor="middle">Reveal</text><text x="260" y="280" text-anchor="middle">Incoming candidate</text><text x="420" y="250" text-anchor="middle" class="tiny-text">Output</text>
+</>}
+</svg><figcaption>{caption}</figcaption></figure>
