@@ -307,7 +307,7 @@ export const chapters: Chapter[] = entries.map(
     anchor: resolveWork(anchor),
     related: related.map(resolveWork),
     toy,
-    status: ["transformer", "pretraining", "bert", "gpt-2", "scaling-laws", "gpt-3", "retrieval", "human-feedback", "chatgpt", "gpt-4", "chinchilla", "open-models", "mixture-of-experts", "tools-and-agents", "dpo", "chain-of-thought", "reasoning", "now"].includes(slug) ? "live" : "planned",
+    status: ["transformer", "pretraining", "bert", "gpt-2", "scaling-laws", "gpt-3", "retrieval", "human-feedback", "chatgpt", "gpt-4", "chinchilla", "open-models", "mixture-of-experts", "tools-and-agents", "dpo", "chain-of-thought", "reasoning", "now", "drop-recurrence"].includes(slug) ? "live" : "planned",
   }),
 );
 export const timeline = [...chapters].sort((a, b) => a.year - b.year);

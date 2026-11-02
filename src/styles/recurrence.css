@@ -1,0 +1,46 @@
+.recurrence-toy { margin-top: 28px; padding: clamp(16px, 4vw, 28px); background: var(--surface); border: 1px solid var(--ink); border-radius: 8px; box-shadow: 5px 5px 0 var(--accent); }
+.signal-routes { padding: 0; border: 0; margin: 22px 0; min-width: 0; }
+.signal-routes legend { font-size: 14px; margin-bottom: 10px; }
+.signal-routes > div { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.signal-routes button { border: 1px solid var(--line); border-radius: 4px; background: var(--paper); padding: 12px 8px; font-size: 13px; line-height: 1.4; cursor: pointer; min-height: 48px; transition: background-color .18s; }
+.signal-routes button[aria-pressed=true] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.signal-result { border-block: 1px solid var(--line); padding-block: 18px; }
+.signal-result[data-arrived=true] { border-color: var(--deep); }
+.signal-result output { display: block; font-family: var(--display); font-size: clamp(23px, 4vw, 34px); line-height: 1.15; letter-spacing: -.04em; }
+.signal-result p { font-size: 14px; line-height: 1.6; margin-top: 10px; }
+.signal-slider { margin-top: 18px; }
+.signal-slider label { display: flex; justify-content: space-between; font-size: 14px; }
+.signal-slider output { font-weight: 700; font-variant-numeric: tabular-nums; }
+.signal-slider input { width: 100%; min-height: 44px; margin: 0; accent-color: var(--deep); cursor: pointer; }
+.signal-actions { display: flex; gap: 12px; justify-content: space-between; }
+.signal-actions button { background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 10px 14px; min-height: 44px; font-size: 13px; cursor: pointer; }
+.signal-actions button:first-child { background: var(--accent); border-color: var(--accent); }
+.signal-actions button:disabled { opacity: .45; cursor: default; }
+.signal-network { margin-top: 20px; }
+.signal-network svg { display: block; width: 100%; }
+.signal-network text { fill: var(--ink); font-family: var(--body); font-size: 17px; }
+.signal-network .signal-svg-heading { font-size: 18px; font-weight: 700; }
+.signal-wire { fill: none; stroke: var(--line); stroke-width: 1; }
+.signal-wire.carries { stroke: var(--deep); stroke-width: 2.5; animation: signal-arrival .22s ease-out; }
+.signal-node { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; transition: fill .18s; }
+.signal-node.lit { fill: var(--accent); stroke: var(--deep); }
+.signal-key { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); border: 1px solid var(--deep); }
+.signal-network figcaption { font-size: 12px; }
+.signal-footnote { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 18px; }
+.recurrence-diagram svg { max-width: 530px; margin: auto; }
+.recurrence-diagram text { font-family: var(--body); font-size: 20px; fill: var(--ink); }
+@keyframes signal-arrival { from { opacity: .1; } to { opacity: 1; } }
+@media (max-width: 540px) {
+  .signal-routes > div { grid-template-columns: 1fr 1fr; }
+  .signal-result output { font-size: 23px; }
+  .signal-result p { font-size: 12px; }
+  .signal-actions { gap: 8px; }
+  .signal-actions button { font-size: 12px; padding: 10px; }
+  .signal-network { margin-inline: -6px; }
+  .signal-network text { font-size: 22px; }
+  .signal-network .signal-svg-heading { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signal-wire.carries { animation: none; }
+  .signal-node, .signal-routes button { transition: none; }
+}
