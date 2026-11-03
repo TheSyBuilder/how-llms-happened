@@ -1,0 +1,32 @@
+.neural-lessons { margin-bottom:8px; }
+.neural-step-count { font-size:12px; color:var(--muted); }
+.neural-transfer-board { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:24px; }
+.neural-word { min-width:0; padding:16px; border:1px solid var(--line); border-radius:5px; background:var(--paper); }
+.neural-word.neural-unseen { border:2px solid var(--deep); padding:15px; }
+.neural-word h3 { font:32px/1.2 var(--display); margin:0 0 18px; letter-spacing:-.04em; }
+.neural-word h3 span { font-size:20px; color:var(--muted); }
+.neural-count,.neural-prediction { display:grid; gap:7px; }
+.neural-count { border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:14px; }
+.neural-word span,.neural-word small { font-size:11px; }
+.neural-word strong { font-size:13px; line-height:1.4; }
+.neural-word output { font-size:17px; font-weight:600; font-variant-numeric:tabular-nums; }
+.neural-word small { color:var(--muted); }
+.neural-probability { height:17px; overflow:hidden; background:var(--ink); border-radius:3px; }
+.neural-probability > span { display:block; height:100%; background:var(--accent); transition:width .22s ease-out; }
+.neural-inside { border-top:1px solid var(--line); padding-top:16px; font-size:12px; }
+.neural-inside summary { cursor:pointer; min-height:32px; font-weight:600; }
+.neural-inside p { font-size:12px; line-height:1.65; }
+.neural-inside ul { padding-left:18px; font:12px/1.7 monospace; }
+.neural-diagram svg { display:block; width:100%; max-width:480px; margin:auto; }
+.neural-diagram text { fill:var(--ink); font:23px var(--body); }
+.neural-diagram .neural-diagram-note { font-size:19px; }
+.neural-diagram-box { fill:var(--paper); stroke:var(--line); stroke-width:1.5; }
+@media(max-width:540px) {
+  .neural-transfer-board { grid-template-columns:1fr; gap:10px; }
+  .neural-word { display:grid; grid-template-columns:1fr 1.15fr; gap:10px 16px; }
+  .neural-word h3 { grid-column:1/-1; margin-bottom:4px; font-size:27px; }
+  .neural-count { margin:0; padding:0; border:0; align-content:start; }
+  .neural-word output { font-size:15px; }
+  .neural-toy .early-label { flex-wrap:wrap; gap:4px; }
+}
+@media(prefers-reduced-motion:reduce) { .neural-probability > span { transition:none; } }

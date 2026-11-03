@@ -1,0 +1,71 @@
+---
+import Discovery from './Discovery.astro';
+import NeuralLanguageToy from './NeuralLanguageToy';
+import {sourceLink} from '../lib/chapters';
+import '../styles/early.css';
+import '../styles/neural-language.css';
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p><h2>You cannot count every sentence.</h2>
+  <p>Suppose your reading contains “the cat sleeps” but never “the dog sleeps.” A table of exact word sequences treats those as separate cases. More reading helps, yet possible combinations multiply much faster than the examples.</p>
+  <p>Smoothing—reserving probability for unseen combinations—keeps the second sentence possible. But can learning about cats help with dogs, rather than merely leaving room for them?</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p><h2>Make a prediction from a place.</h2>
+  <p>In their 2003 paper, Yoshua Bengio and colleagues learned word representations and a next-word predictor together. A <strong>word vector</strong> is a short list of numbers locating a word in a learned space. Words used in similar ways can acquire nearby vectors.</p>
+  <p>The model looks up vectors for a fixed window of previous words, joins them, and sends them through a <strong>neural network</strong>: layers of learned, weighted calculations. A <strong>softmax</strong> converts the resulting scores into probabilities that add to one. Training increases the probability of the next word actually seen, adjusting both the vectors and the predictor.</p>
+  <p>This creates a bridge between examples. When two contexts have similar representations, the same predictor can give them similar next-word probabilities. Similarity is learned for prediction; it does not guarantee that every nearby word is interchangeable.</p>
+  <figure class="idea-diagram neural-diagram">
+    <svg viewBox="0 0 480 390" role="img" aria-labelledby="neural-diagram-title neural-diagram-desc">
+      <title id="neural-diagram-title">Words share a vector table and a predictor</title>
+      <desc id="neural-diagram-desc">The words the and cat retrieve vectors from the same table. Joined vectors enter a neural network, then become next-word probabilities. Training adjusts the table and the network together.</desc>
+      <g class="neural-diagram-box"><rect x="45" y="20" width="150" height="52" rx="5"/><rect x="285" y="20" width="150" height="52" rx="5"/></g>
+      <g text-anchor="middle"><text x="120" y="54">the</text><text x="360" y="54">cat</text></g>
+      <path d="M120 72V105M360 72V105M120 160V190H360V160M240 190V220M240 280V315" class="early-line"/>
+      <rect x="45" y="105" width="390" height="55" rx="5" fill="var(--accent)"/><text x="240" y="140" text-anchor="middle">One shared vector table</text>
+      <rect x="100" y="220" width="280" height="60" rx="5" class="neural-diagram-box"/><text x="240" y="258" text-anchor="middle">Neural predictor</text>
+      <g text-anchor="middle"><text x="240" y="340">sleeps · runs · eats · …</text><text x="240" y="375" class="neural-diagram-note">Train the table and predictor together</text></g>
+    </svg>
+    <figcaption>A fixed window enters one shared system. The output is a probability for every vocabulary word; training changes both stages.</figcaption>
+  </figure>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p><h2>Teach a cat.<br/>Surprise a dog.</h2>
+  <Discovery slug="neural-language-model"/>
+  <p>Teach each example a few times. Watch dog’s prediction, then move its vector toward car. Dog never receives a lesson of its own.</p>
+  <noscript><p>Enable JavaScript to train this tiny model. Its starting predictions are equal; the count lookup has no examples.</p></noscript>
+  <NeuralLanguageToy client:load/>
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p><h2>Learning could travel.</h2>
+  <p>The paper showed that learning reusable word features together with a predictor could improve next-word prediction beyond the count models it tested. Neural language modeling already had earlier examples; the contribution included making this shared approach work at larger scale.</p>
+  <p>A fixed window still leaves older words outside the model’s view. The next chapter asks what happens when the predictor carries a running memory instead.</p>
+  <aside class="chapter-companions"><h3>Also in this chapter</h3><p>Bengio &amp; Bengio on neural joint distributions; Xu &amp; Rudnicky on neural language models; Schwenk &amp; Gauvain on bringing continuous word representations into speech recognition.</p></aside>
+  <a class="next-chapter" href="/chapters/rnn-language-model/"><span>Next · 2010 · Coming soon</span><strong>Mikolov’s RNN language model ↗</strong></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>Architecture, learning, results &amp; limits</span></summary>
+  <div class="disclosure-body">
+    <h3>A fixed window, a shared lookup</h3>
+    <p>Let C be the word-vector table and x the concatenation of the previous n−1 words’ vectors, with each position occupying a separate block. The same table C supplies every position. In the paper’s notation, x = [C(wₜ₋₁), C(wₜ₋₂), …, C(wₜ₋ₙ₊₁)].</p>
+    <p><code>y = b + Wx + U tanh(d + Hx)</code><br/><code>P(wₜ = i | context) = exp(yᵢ) / Σⱼ exp(yⱼ)</code></p>
+    <p>H maps the joined vectors into a hidden layer; tanh is a bounded, nonlinear activation. U maps that layer to vocabulary scores. b and d are biases, or learned offsets. W is an optional direct path from the word features to the scores. A feed-forward network computes an output from the current input without a recurrent state.</p>
+    <h3>How the vectors learn</h3>
+    <p>The objective maximizes the sum of log probabilities of observed next words, with a weight penalty. Backpropagation passes the prediction gradient through the network to the context words’ rows of C. Rows for words absent from that context do not receive that example’s input-vector update. The shared predictor still changes their future predictions.</p>
+    <h3>What the experiments found</h3>
+    <p>Perplexity measures how much probability a model assigns to held-out text; lower is better on the same test. In Table 1’s Brown corpus comparison, the best listed count models score 312. The selected neural configuration scores 276 alone and 252 when mixed equally with an interpolated trigram, a count model using up to two previous words. Another neural configuration scores 268 alone; the paper’s lowest validation perplexity selects the mixture with test score 252.</p>
+    <p>On AP News, Table 2 reports 109 for the neural/trigram mixture and 117 for the best listed count baseline. These results concern next-word prediction, rather than conversation or factual reliability.</p>
+    <h3>What remained difficult</h3>
+    <p>The evaluated model keeps a fixed context window and one input vector per word, even when a word has several meanings. Computing scores across the full vocabulary is expensive. The toy removes the hidden layer, uses one context word and two outputs, and starts with invented vectors. Its learned numbers are not the paper’s measurements.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>Original work, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink('bengio-2003-jmlr-record')}>Bengio, Ducharme, Vincent &amp; Jauvin · A Neural Probabilistic Language Model (2003)</a><p>Official JMLR record: title, authors and February 2003 publication.</p></li>
+    <li><a href={sourceLink('bengio-2003-jmlr-full-text')}>Read the paper</a><p>Introduction and §1.1: sparse combinations, smoothing and generalization through similar word features. §1.2: earlier work and the large-scale contribution. §2 and Figure 1: shared lookup, fixed context, equations and joint training. §3: vocabulary computation cost. §4, Tables 1–2: corpus comparisons, validation selection and mixtures. §5.2: multiple meanings.</p></li>
+    <li><a href={sourceLink('bengio-bengio-2000-idiap-journal-record')}>Bengio &amp; Bengio · Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks (2000)</a><p>Earlier neural modeling of joint distributions, discussed in the main paper’s §1.2.</p></li>
+    <li><a href={sourceLink('xu-rudnicky-2000-isca-record')}>Xu &amp; Rudnicky · Can Artificial Neural Networks Learn Language Models? (2000)</a><p>Independent neural language-model study, also discussed in §1.2.</p></li>
+    <li><a href={sourceLink('schwenk-gauvain-2002-author-full-text')}>Schwenk &amp; Gauvain · Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition (2002)</a><p>§§1–2: continuous representations and shared projection. §2: a frequent-word shortlist with a backoff model for other words. This is the speech-recognition branch named above.</p></li>
+  </ol><p>The cat, dog and car examples, diagram and toy numbers are teaching illustrations.</p></div>
+</details>
