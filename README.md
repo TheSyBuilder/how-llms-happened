@@ -18,7 +18,7 @@ An interactive history of language models. Change the input, watch the mechanism
 - **Where we are now:** assemble a delivery planner. Learn why more attempts cannot recover missing evidence.
 - **Reasoning:** spend another attempt on a puzzle. Discover both the benefit and the limit of extra computation.
 
-There are **26 implemented chapters** across a timeline of 30 turning points: Transformer, pretraining, BERT, GPT-2, scaling laws, GPT-3, retrieval, human feedback, ChatGPT, GPT-4, Chinchilla, open models, mixture of experts, tools, DPO, chain-of-thought, reasoning models, the current synthesis of context, tools and computation, the race to replace recurrence, letter prediction, smoothing, statistical speech decoding, word vectors, Elman’s recurrent network, LSTM memory, and Bengio’s neural language model. Remaining chapters are marked coming soon.
+There are **27 implemented chapters** across a timeline of 30 turning points: Transformer, pretraining, BERT, GPT-2, scaling laws, GPT-3, retrieval, human feedback, ChatGPT, GPT-4, Chinchilla, open models, mixture of experts, tools, DPO, chain-of-thought, reasoning models, the current synthesis of context, tools and computation, the race to replace recurrence, letter prediction, smoothing, statistical speech decoding, word vectors, Elman’s recurrent network, LSTM memory, Bengio’s neural language model, and Mikolov’s recurrent language model. Remaining chapters are marked coming soon.
 
 ## Run it
 

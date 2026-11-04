@@ -1,5 +1,84 @@
 import { expect, test } from "@playwright/test";
 
+test('recurrent word predictions retain a fading clue beyond a fixed window on all inputs', async ({page}, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  const activate = async (el: ReturnType<typeof page.getByRole>) => {
+    if (info.project.name === 'mobile-chromium') await el.tap(); else await el.click();
+  };
+  await page.goto('/#rnn-language-model');
+  await expect(page.locator('#rnn-language-model')).toHaveClass(/is-live/);
+  await page.locator('#rnn-language-model > a').click();
+  await expect(page).toHaveURL('/chapters/rnn-language-model/');
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr', '');
+  await page.locator('.chapter-hero').screenshot({path:info.outputPath('rnn-hero.png'), animations:'disabled'});
+  await page.locator('.rnn-diagram').screenshot({path:info.outputPath('rnn-diagram.png'), animations:'disabled'});
+  const toy = page.locator('.rnn-toy');
+  const answer = page.getByTestId('rnn-conclusion');
+  const fixed = page.getByTestId('window-chance');
+  const running = page.getByTestId('running-chance');
+  const position = page.getByRole('slider', {name:'Words read'});
+  const next = page.getByRole('button', {name:'Read next word', exact:true});
+  const reset = page.getByRole('button', {name:'Reset reader', exact:true});
+  const longer = page.getByRole('checkbox', {name:'Add six words before “to the bank”'});
+  await expect(position).toHaveValue('6'); await expect(fixed).toHaveText('50.0%');
+  expect(parseFloat((await running.textContent())!)).toBeGreaterThan(50);
+  const initialChance = parseFloat((await running.textContent())!);
+  await toy.screenshot({path:info.outputPath('rnn-same-ending.png'), animations:'disabled'});
+  await activate(reset);
+  await expect(position).toHaveValue('0'); await expect(running).toHaveText('50.0%');
+  await expect(answer).toHaveText('Neither reader has a clue yet.');
+  await activate(next); await next.focus(); await page.keyboard.press('Enter');
+  await expect(position).toHaveValue('2');
+  await expect(answer).toHaveText('Both readers still have the clue.');
+  await next.focus(); await page.keyboard.press('Enter');
+  expect(parseFloat((await fixed.textContent())!)).toBeGreaterThan(50);
+  await page.keyboard.press('Enter'); await expect(position).toHaveValue('4');
+  await expect(fixed).toHaveText('50.0%');
+  await expect(answer).toHaveText('The window forgot. The state still differs.');
+  await activate(page.getByRole('button', {name:'Read to the end', exact:true}));
+  await expect(position).toHaveValue('6'); await expect(next).toBeDisabled();
+  await activate(longer);
+  await expect(position).toHaveValue('12'); await expect(fixed).toHaveText('50.0%');
+  const fadedChance = parseFloat((await running.textContent())!);
+  expect(fadedChance).toBeGreaterThan(50); expect(fadedChance).toBeLessThan(initialChance);
+  await toy.screenshot({path:info.outputPath('rnn-fading.png'), animations:'disabled'});
+  await longer.focus(); await page.keyboard.press('Space');
+  await expect(position).toHaveValue('6');
+  await position.focus(); await page.keyboard.press('Home');
+  await expect(running).toHaveText('50.0%');
+  await page.keyboard.press('ArrowRight'); await expect(position).toHaveValue('1');
+  await position.scrollIntoViewIfNeeded(); const box = await position.boundingBox();
+  if (info.project.name === 'mobile-chromium') await page.touchscreen.tap(box!.x + box!.width - 4, box!.y + box!.height / 2);
+  else await page.mouse.click(box!.x + box!.width - 4, box!.y + box!.height / 2);
+  await expect(position).toHaveValue('6'); await expect(running).toBeInViewport();
+  await page.getByText('Inside this toy', {exact:true}).focus(); await page.keyboard.press('Enter');
+  await expect(page.locator('.rnn-inside')).toHaveAttribute('open', '');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(page.locator('.rnn-probability > span').first()).toHaveCSS('transition-duration', '0s');
+  await reset.focus(); await page.keyboard.press('Enter');
+  await expect(position).toHaveValue('0'); await expect(longer).not.toBeChecked();
+  await page.getByText('Inside this toy', {exact:true}).click();
+  const words = await page.locator('.chapter-hero,.story-section').allTextContents();
+  expect(words.join(' ').trim().split(/\s+/).length).toBeLessThan(800);
+  await page.getByRole('link', {name:'Play',exact:true}).click();
+  await expect(page.locator('#problem')).not.toBeVisible(); await expect(toy).toBeVisible();
+  await page.screenshot({path:info.outputPath('rnn-play.png'), fullPage:true, animations:'disabled'});
+  await page.getByRole('link', {name:'Story',exact:true}).click();
+  await expect(page.locator('#problem')).toBeVisible();
+  for (const id of ['deeper', 'sources']) {
+    await expect(page.locator(`#${id}`)).not.toHaveAttribute('open', '');
+    await page.locator(`#${id} summary`).focus(); await page.keyboard.press('Enter');
+    await expect(page.locator(`#${id}`)).toHaveAttribute('open', '');
+  }
+  await page.locator('#deeper').screenshot({path:info.outputPath('rnn-deeper.png'), animations:'disabled'});
+  expect(await page.locator('#sources a').evaluateAll(links => links.every(a => a.getAttribute('href')?.startsWith('https://')))).toBe(true);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect(page.getByRole('link', {name:/Next · 2013/})).toHaveAttribute('href', '/chapters/graves/');
+  expect(errors).toEqual([]);
+});
+
 test('neural language learning transfers between contexts on mouse, touch and keyboard', async ({page}, info) => {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
@@ -72,7 +151,7 @@ test('current systems combine evidence, tools and effort with mouse, touch and k
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
   await page.goto('/');
-  await expect(page.getByText('26 chapters live · 30 turning points')).toBeVisible();
+  await expect(page.getByText('27 chapters live · 30 turning points')).toBeVisible();
   await expect(page.locator('#now')).toHaveClass(/is-live/);
   await page.locator('#now > a').click();
   await expect(page).toHaveURL('/chapters/now/');
@@ -158,7 +237,7 @@ test("retrieval reads an editable library with mouse, touch, and keyboard", asyn
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#retrieval")).toHaveClass(/is-live/);
   await page.locator("#retrieval > a").click();
   await expect(page).toHaveURL(/\/chapters\/retrieval\//);
@@ -257,7 +336,7 @@ test("scaling laws trades model size for text with mouse, touch, and keyboard", 
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
   await page.locator("#scaling-laws > a").click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
@@ -418,7 +497,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -490,7 +569,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -577,7 +656,7 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
   await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
@@ -655,7 +734,7 @@ test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ p
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);
   await page.locator("#gpt-3 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
@@ -748,7 +827,7 @@ test("human comparisons teach a scorer with mouse, touch, and keyboard", async (
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#human-feedback")).toHaveClass(/is-live/);
   await page.locator("#human-feedback > a").click();
   await expect(page).toHaveURL(/\/chapters\/human-feedback\//);
@@ -849,7 +928,7 @@ for (const chapter of ["chatgpt", "gpt-4"]) {
     page.on("pageerror", e => errors.push(e.message));
     page.on("console", m => { if(m.type() === "error") errors.push(m.text()); });
     await page.goto("/");
-    await expect(page.getByText("26 chapters live · 30 turning points")).toBeVisible();
+    await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
     await expect(page.locator(`#${chapter}`)).toHaveClass(/is-live/);
     await page.locator(`#${chapter} > a`).click();
     await expect(page).toHaveURL(`/chapters/${chapter}/`);
@@ -1164,7 +1243,7 @@ test('recurrence alternatives carry a clue with mouse, touch and keyboard', asyn
     if (info.project.name === 'mobile-chromium') await element.tap(); else await element.click();
   };
   await page.goto('/#drop-recurrence');
-  await expect(page.getByText('26 chapters live · 30 turning points')).toBeVisible();
+  await expect(page.getByText('27 chapters live · 30 turning points')).toBeVisible();
   await expect(page.locator('#drop-recurrence')).toHaveClass(/is-live/);
   await page.locator('#drop-recurrence > a').click();
   await expect(page).toHaveURL('/chapters/drop-recurrence/');

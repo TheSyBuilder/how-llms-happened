@@ -1,0 +1,70 @@
+---
+import Discovery from './Discovery.astro';
+import RnnLanguageToy from './RnnLanguageToy';
+import {sourceLink} from '../lib/chapters';
+import '../styles/early.css';
+import '../styles/rnn-language.css';
+---
+<section class="story-section" id="problem">
+  <p class="eyebrow">01 / The problem before</p><h2>The clue fell out of the window.</h2>
+  <p>Imagine reading about a river, then reaching “we walked to the bank.” The earlier topic helps you guess what comes next. A predictor that sees only the last three words gets “to the bank” either way.</p>
+  <p>Bengio’s neural language model learned useful relationships between words, but still took a fixed number of preceding words as input. Making that window wider does not remove its edge. Could a model carry something forward instead?</p>
+</section>
+<section class="story-section" id="idea">
+  <p class="eyebrow">02 / The big idea</p><h2>Read a word.<br/>Update a memory.</h2>
+  <p>In 2010, Tomáš Mikolov and colleagues used a simple recurrent network for next-word prediction. <strong>Recurrent</strong> means that a calculation feeds its result into the next step. Their model uses the Elman network’s loop.</p>
+  <p>At each step, the current word and the previous <strong>hidden state</strong>—a small list of numbers summarizing earlier input—produce a new state. The model turns that state into probabilities for the next word. Reading another word updates the same state with the same learned weights.</p>
+  <p>There is no hard rule that the fourth-oldest word must disappear. Its effect can survive in the state. But a running summary is not a transcript: it can blur, overwrite or lose a clue. Removing a fixed window does not create unlimited memory.</p>
+  <figure class="idea-diagram rnn-diagram">
+    <svg viewBox="0 0 480 380" role="img" aria-labelledby="rnn-diagram-title rnn-diagram-desc">
+      <title id="rnn-diagram-title">A word and a previous state make the next prediction</title>
+      <desc id="rnn-diagram-desc">The current word and the previous hidden state enter a shared update. The new state produces next-word probabilities and is carried forward for the following word.</desc>
+      <g fill="var(--paper)" stroke="var(--line)"><rect x="20" y="20" width="185" height="60" rx="5"/><rect x="260" y="20" width="200" height="60" rx="5"/><rect x="105" y="135" width="270" height="65" rx="5"/></g>
+      <g text-anchor="middle"><text x="112" y="57">Current word</text><text x="360" y="57">Previous state</text><text x="240" y="175">One shared update</text></g>
+      <path d="M112 80V110H210V135M360 80V110H270V135M240 200V240M240 300V330" class="early-line"/>
+      <path d="M375 270H450V105H400V80M391 92L400 80L409 92" class="early-line"/>
+      <rect x="105" y="240" width="270" height="60" rx="5" fill="var(--accent)"/><text x="240" y="277" text-anchor="middle">New state</text>
+      <g text-anchor="middle"><text x="240" y="355">Next-word probabilities</text><text x="419" y="322" class="rnn-diagram-small">Carry to</text><text x="419" y="343" class="rnn-diagram-small">next step</text></g>
+    </svg>
+    <figcaption>One update, reused at every word. The new state both makes a prediction and becomes the next step’s memory.</figcaption>
+  </figure>
+</section>
+<section class="story-section toy-section" id="play">
+  <p class="eyebrow">03 / Play with it</p><h2>Same bank.<br/>Different next word.</h2>
+  <Discovery slug="rnn-language-model"/>
+  <p>These two invented word streams differ only in their first word. Scrub back, read forward, then add six words. Does the clue survive?</p>
+  <noscript><p>Enable JavaScript to scrub through the two histories and compare next-word probabilities.</p></noscript>
+  <RnnLanguageToy client:load/>
+</section>
+<section class="story-section" id="mattered">
+  <p class="eyebrow">04 / Why it mattered</p><h2>The past could shape the next guess.</h2>
+  <p>The paper brought recurrent word prediction into speech-recognition experiments. Combining recurrent models with a count-based language model improved recognition in the reported tests. A running state was useful, even though it did not solve long memory.</p>
+  <p>So far, we have supplied every word the model reads. What happens if we let it choose the next symbol, then read its own choice? That is the next chapter’s experiment.</p>
+  <a class="next-chapter" href="/chapters/graves/"><span>Next · 2013 · Coming soon</span><strong>Graves generates text ↗</strong></a>
+</section>
+<details class="chapter-disclosure" id="deeper">
+  <summary>Go deeper <span>The recurrence, training, results &amp; limits</span></summary>
+  <div class="disclosure-body">
+    <h3>From one word to a distribution</h3>
+    <p>A one-hot vector wₜ identifies the current word: one entry is 1 and all others are 0. Split the paper’s concatenated input weights into word weights A and recurrent weights R. Its equations 1–5 become:</p>
+    <p><code>sₜ = sigmoid(Awₜ + Rsₜ₋₁)</code><br/><code>P(wₜ₊₁ = k) = softmax(Bsₜ)ₖ</code></p>
+    <p>The sigmoid, 1 / (1 + exp(−z)), keeps each state unit between 0 and 1. Softmax exponentiates vocabulary scores and divides each by their sum, giving probabilities that add to one. The same matrices A, R and B serve every time step. The toy adds a fixed offset in its state update and uses just two state units and two output words.</p>
+    <h3>Remembering versus learning</h3>
+    <p>Reading changes the state. Training changes the weights to increase the probability of the observed next word, using cross-entropy loss and stochastic gradient descent. In the paper’s main method, the gradient stops after one time step: truncated backpropagation through time with depth one. A state can carry information farther than the training gradient travels.</p>
+    <p>The paper also evaluates dynamic models, which continue updating weights while processing test data. That adaptation is separate from carrying a state through a sequence. The browser toy changes state only.</p>
+    <h3>What the speech experiments found</h3>
+    <p>Table 2 uses 6.4 million training words for the Wall Street Journal development comparison. Perplexity measures next-word surprise; lower is better on the same text. Word error rate counts recognition substitutions, deletions and insertions per reference word.</p>
+    <table class="rnn-result-table"><caption>Selected Table 2 results</caption><thead><tr><th scope="col">Model</th><th scope="col">Perplexity</th><th scope="col">Word error</th></tr></thead><tbody><tr><th scope="row">Count baseline</th><td>221</td><td>13.5%</td></tr><tr><th scope="row">One RNN (250/5)</th><td>173</td><td>12.3%</td></tr><tr><th scope="row">That RNN + counts</th><td>155</td><td>11.7%</td></tr><tr><th scope="row">3 dynamic RNNs + counts</th><td>121</td><td>11.1%</td></tr></tbody></table>
+    <p>The baseline is a modified Kneser–Ney five-gram, a smoothed count model using up to four preceding words. “250/5” means 250 hidden units with words occurring fewer than five times grouped into a rare token. Combined models use 75% recurrent probability and 25% count-model probability. The best row here includes three networks and test-time weight updates.</p>
+    <h3>Where memory still failed</h3>
+    <p>The authors conclude that the simple recurrent network did not capture truly long context. A cache, which tracks recent word use, still added useful information. Vocabulary-wide prediction and training were costly. The toy’s hand-set topic clues demonstrate a mechanism, not learned language understanding or the paper’s performance.</p>
+  </div>
+</details>
+<details class="chapter-disclosure" id="sources">
+  <summary>Sources <span>The original paper, with a reading guide</span></summary>
+  <div class="disclosure-body"><ol class="source-list">
+    <li><a href={sourceLink('mikolov-2010-isca-record')}>Mikolov, Karafiát, Burget, Černocký &amp; Khudanpur · Recurrent neural network based language model (2010)</a><p>Official ISCA record: title, authors, publication year and speech-recognition application.</p></li>
+    <li><a href={sourceLink('mikolov-2010-isca-full-text')}>Read the four-page paper</a><p>§2, pp. 1045–1046 and Figure 1: Bengio’s fixed-window predecessor, named Elman architecture, copied state, equations 1–6, next-word probabilities, weight learning and dynamic adaptation. §2.1: rare-word grouping. §3 and Table 2, p. 1047: data size, model names, mixture weights and every result above. §5, p. 1048: long-context limits, complementary cache and further training work.</p></li>
+    <li><a href={sourceLink('bengio-2003-jmlr-full-text')}>Bengio et al. · A Neural Probabilistic Language Model (2003)</a><p>§2 and Figure 1: fixed-window word-vector inputs and the neural next-word predictor.</p></li>
+  </ol><p>The river/loan word streams, diagram, three-word window, toy weights and probabilities are teaching illustrations.</p></div>
+</details>

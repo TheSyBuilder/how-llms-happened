@@ -1,0 +1,43 @@
+.rnn-verdict { padding:20px; background:var(--ink); color:var(--paper); border-radius:5px; }
+.rnn-verdict > strong { display:block; font:clamp(24px,4vw,35px)/1.15 var(--display); letter-spacing:-.04em; }
+.rnn-verdict > p { font-size:12px; margin:14px 0; }
+.rnn-comparison { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.rnn-comparison > div { display:grid; gap:8px; padding-top:12px; border-top:1px solid var(--muted); }
+.rnn-comparison span { font-size:12px; }
+.rnn-comparison output { font:clamp(29px,5vw,46px)/1 var(--display); font-variant-numeric:tabular-nums; }
+.rnn-comparison > div:last-child output { color:var(--accent); }
+.rnn-actions { margin-top:4px; }
+.rnn-histories { display:grid; gap:12px; margin-top:20px; }
+.rnn-history { padding:16px; background:var(--paper); border:1px solid var(--line); border-radius:4px; }
+.rnn-word-strip { display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin:0 0 18px; font:17px/1.6 var(--display); }
+.rnn-word-strip span { padding:0 4px; border-radius:2px; transition:background-color .15s; }
+.rnn-word-strip b { font-weight:400; }
+.rnn-in-window { background:var(--accent); }
+.rnn-unread { opacity:.35; }
+.rnn-outside { color:var(--muted); }
+.rnn-current { outline:1px solid var(--ink); outline-offset:1px; }
+.rnn-distribution { display:flex; justify-content:space-between; gap:12px; font-size:12px; font-variant-numeric:tabular-nums; }
+.rnn-distribution output { font-weight:600; }
+.rnn-probability { height:14px; background:var(--ink); overflow:hidden; border-radius:2px; margin-top:8px; }
+.rnn-probability > span { display:block; height:100%; background:var(--accent); transition:width .2s ease-out; }
+.rnn-inside { border-top:1px solid var(--line); padding-top:16px; }
+.rnn-inside summary { min-height:32px; cursor:pointer; font-size:13px; font-weight:600; }
+.rnn-inside p { font-size:12px; line-height:1.7; }
+.rnn-diagram svg { display:block; width:100%; max-width:480px; margin:auto; }
+.rnn-diagram text { fill:var(--ink); font:20px var(--body); }
+.rnn-diagram .rnn-diagram-small { font-size:16px; }
+.rnn-result-table { width:100%; border-collapse:collapse; margin-block:18px; font-size:13px; }
+.rnn-result-table th,.rnn-result-table td { text-align:left; padding:10px 8px; border-bottom:1px solid var(--line); }
+.rnn-result-table th:first-child,.rnn-result-table td:first-child { padding-left:0; }
+@media(max-width:540px) {
+  .rnn-verdict { padding:16px; }
+  .rnn-verdict > strong { font-size:25px; }
+  .rnn-comparison { gap:10px; }
+  .rnn-comparison span { font-size:11px; }
+  .rnn-comparison output { font-size:32px; }
+  .rnn-history { padding:12px; }
+  .rnn-word-strip { font-size:16px; }
+  .rnn-result-table { font-size:12px; }
+  .rnn-result-table th,.rnn-result-table td { padding-right:4px; padding-left:4px; }
+}
+@media(prefers-reduced-motion:reduce) { .rnn-probability > span,.rnn-word-strip span { transition:none; } }
