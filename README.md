@@ -1,43 +1,91 @@
 # LLM Lineage
 
-**How did counting letters turn into a machine you can talk to?**
+**English** · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
 
-An interactive history of language models. Change the input, watch the mechanism, and leave with an idea you can explain to a friend.
+### How did counting letters turn into a machine you can talk to?
 
-![LLM Lineage: explore a thread of research ideas, then jump into a game](public/preview.png)
+A history of language models you can play with. Change a word. Hide a clue. Give a model a memory. Watch what happens.
 
-## A few things to try
+**30 playable chapters · 1913–2026 · Tiny experiments, real ideas**
 
-- **Letters to memory:** build a letter press, make room for unseen words, mix sound with context, move a word vector, and operate an LSTM memory vault.
-- **Neural language modeling:** teach cat and car, then watch an untaught dog borrow their predictions through a shared network.
-- **Dropping recurrence:** send a clue across eight positions. Compare local windows, widening windows and direct attention.
-- **BERT:** reveal the clue after a missing word. Watch two possible answers become one.
-- **Pretraining:** teach two review labels, then try a word that has never had a label. See what prior reading transfers.
-- **Human feedback:** teach a preference for clear, short answers. Discover why a confidently wrong answer can earn the same score.
-- **Mixture of experts:** crowd one expert while others have room. Find out why spare capacity is not enough.
-- **Where we are now:** assemble a delivery planner. Learn why more attempts cannot recover missing evidence.
-- **Reasoning:** spend another attempt on a puzzle. Discover both the benefit and the limit of extra computation.
+![The LLM Lineage playground: choose a turning point and jump into its experiment](docs/images/playground.png)
 
-There are **30 implemented chapters** across a timeline of 30 turning points: Transformer, pretraining, BERT, GPT-2, scaling laws, GPT-3, retrieval, human feedback, ChatGPT, GPT-4, Chinchilla, open models, mixture of experts, tools, DPO, chain-of-thought, reasoning models, the current synthesis of context, tools and computation, the race to replace recurrence, letter prediction, smoothing, statistical speech decoding, word vectors, Elman’s recurrent network, LSTM memory, Bengio’s neural language model, Mikolov’s recurrent language model, Graves’s sequence generation, sequence-to-sequence, and attention. All 30 chapters are playable.
+Start with curiosity. Each chapter gives you one idea, something to try, and a story you can tell a friend afterward. No machine-learning background needed to begin.
 
-## Run it
+## One word changes everything
+
+Keep **metal**. Change **sky** to **lake**. Which word belongs in the gap now?
+
+| A clue from the sky | A clue from the lake |
+| --- | --- |
+| ![BERT toy: metal and sky leave plane as the only match](docs/images/bert-sky.png) | ![BERT toy: changing sky to lake makes boat the only match](docs/images/bert-lake.png) |
+| **plane** fits. | Now **boat** fits. |
+
+That is the starting idea behind the BERT chapter: words after a gap can help, too. These screenshots show an illustration with eight invented sentences, not a running BERT model. The percentages count matches in that tiny set.
+
+## Pick your first “oh, I get it”
+
+| Try this | Then ask yourself |
+| --- | --- |
+| **Guess the next letter.** Print a few letters, then switch memory off. | Do the same numbers of A and B always make the same pattern? |
+| **Give words a map.** Move “bank” from river words toward money words. | Which neighbours change? |
+| **Open the memory drawer.** Protect, hide and replace a stored number. | Is hiding the same as forgetting? |
+| **Let words share clues.** In the Transformer toy, hide future words. | Can the first word peek at the ending? |
+| **Teach by choosing.** Prefer the short, clear answer. | Can an answer sound helpful and still be wrong? |
+| **Build a delivery helper.** Give it notes, a map and time to try routes. | Can more trying fix an old map? |
+
+The home page suggests three gentle starting games. **Explore** lets you search all 30 experiments and find their original papers.
+
+<details>
+<summary><strong>Take a peek on a phone</strong></summary>
+
+<br />
+<img src="docs/images/letter-press-mobile.png" width="320" alt="The letter-guessing game on a phone, with a memory switch, chance bars and a large Print next letter button" />
+
+The controls work with touch, a mouse or a keyboard. Motion respects your reduced-motion setting.
+
+</details>
+
+## Play first. Go deeper when you want.
+
+Every chapter starts with an everyday explanation and a **Try this first** prompt. Make a guess, change something, then open **What’s going on?** to connect the result to the idea.
+
+- **Play** puts the experiment in front of you.
+- **Story** explains the problem, the breakthrough and what it made possible, with a diagram and a takeaway.
+- **Math & sources** opens the equations, architecture, results, limitations and original research.
+
+Switching views keeps your experiment's state. Short introductions also have a **Listen to the idea** button when your browser supports reading aloud.
+
+The story runs from early letter counts through memory, word vectors, attention and the Transformer, then on to ChatGPT, retrieval, tools and reasoning. Each chapter is a turning point, with an anchor paper and related reading.
+
+**The experiments are small teaching toys.** Some learn from tiny datasets; others use hand-written rules. They run in your browser and make one mechanism visible. The chapter explains how the real research goes further.
+
+## Run it on your computer
+
+You need **Node.js 22.12+** and **npm 9.6.5+**. Clone the repository, then run:
 
 ```sh
+git clone https://github.com/TheSyBuilder/how-llms-happened.git
+cd how-llms-happened
 npm install
 npm run dev
 ```
 
-Open the local address printed by Astro. This repository contains the site source; a public hosted version has not yet been configured.
+Open the local address printed in the terminal. All 30 chapters are implemented; a public hosted version has not yet been configured.
 
-Choose a turning point on the landing page, or open **Explore** to search all experiments and their original papers. Each game has **Play**, **Story**, and **Math & sources** views; switching views preserves your experiment. Challenges and toy details stay tucked away until you want them. The full story includes the explanation, diagram and takeaway, with architecture details, results, limitations and primary sources in collapsed sections. Toys are labeled illustrations: some use tiny learned models, others use explicit rules. They do not run the large models described by the papers.
+These three README editions describe the same project. The website and the screenshots are currently in English.
 
-## Make it better
+<details>
+<summary><strong>For contributors: code and checks</strong></summary>
 
-If an experiment made an idea click, a star helps others find the project. If it did not, [open an issue](https://github.com/TheSyBuilder/how-llms-happened/issues) with the chapter, what you tried, and where the explanation lost you. Corrections with primary sources and clearer teaching examples are welcome.
+Built with **Astro + Preact**, with SVG diagrams and small browser experiments.
 
-Built with Astro and Preact. Chapter metadata is in `src/lib/chapters.ts`; paper facts and links come from `data/corpus.json` and `src/lib/chapter-papers.ts`.
-
-## Check
+| Looking for… | Start here |
+| --- | --- |
+| Chapter order and metadata | [`src/lib/chapters.ts`](src/lib/chapters.ts) |
+| Everyday introductions and first actions | [`src/lib/first-steps.ts`](src/lib/first-steps.ts) |
+| Stories and interactive toys | [`src/components/`](src/components/) |
+| Paper facts and links | [`data/corpus.json`](data/corpus.json), [`src/lib/chapter-papers.ts`](src/lib/chapter-papers.ts) |
 
 ```sh
 npm run check
@@ -46,4 +94,12 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser suite exercises mouse, touch and keyboard controls at desktop and narrow phone widths, checks redirects and console errors, and saves screenshots for visual review. Respect for reduced motion and accessible native controls are part of the experiments.
+The browser checks cover desktop and narrow phone layouts, mouse/touch/keyboard interactions, redirects and console errors. They also save screenshots for visual review.
+
+</details>
+
+## Help the next person understand
+
+Found a moment that made the idea click? Share it. Got stuck? [Open an issue](https://github.com/TheSyBuilder/how-llms-happened/issues) with the chapter, what you tried and where we lost you. Clearer examples and corrections backed by original sources are welcome.
+
+If you enjoyed the playground, a **star** helps other curious people find it.
