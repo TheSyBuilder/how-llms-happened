@@ -1,0 +1,27 @@
+---
+const {slug,caption}=Astro.props;
+---
+<figure class="idea-diagram sequence-diagram"><svg viewBox="0 0 500 340" role="img" aria-labelledby={`${slug}-diagram-title`}>
+<title id={`${slug}-diagram-title`}>{caption}</title>
+{slug==='graves'? <>
+  <rect x="30" y="35" width="180" height="65" rx="5" class="diagram-box"/><text x="120" y="75" text-anchor="middle">Read symbol</text>
+  <rect x="285" y="35" width="185" height="65" rx="5" class="diagram-highlight"/><text x="377" y="75" text-anchor="middle">Update memory</text>
+  <path d="M210 67H285M377 100V170M285 205H210M120 170V100" class="early-line"/><path d="M270 58L285 67L270 76M368 155L377 170L386 155M225 196L210 205L225 214M111 115L120 100L129 115" class="early-line"/>
+  <rect x="285" y="170" width="185" height="65" rx="5" class="diagram-box"/><text x="377" y="210" text-anchor="middle">Next: t, r, …</text>
+  <rect x="30" y="170" width="180" height="65" rx="5" class="diagram-highlight"/><text x="120" y="210" text-anchor="middle">Sample “t”</text>
+  <text x="250" y="295" text-anchor="middle">… then read “t” and go around again</text>
+</> : slug==='sequence-to-sequence' ? <>
+  <text x="250" y="30" text-anchor="middle">red · fox · runs</text>
+  <path d="M250 45V75M250 130V165M250 215V245M250 295V315" class="early-line"/>
+  <rect x="100" y="75" width="300" height="55" rx="5" class="diagram-box"/><text x="250" y="110" text-anchor="middle">Encoder reads</text>
+  <rect x="145" y="165" width="210" height="50" rx="5" class="diagram-highlight"/><text x="250" y="197" text-anchor="middle">One summary</text>
+  <rect x="100" y="245" width="300" height="50" rx="5" class="diagram-box"/><text x="250" y="277" text-anchor="middle">Decoder writes</text>
+  <text x="250" y="335" text-anchor="middle">le · renard · rouge · court · END</text>
+</> : <>
+  <text x="250" y="27" text-anchor="middle" class="diagram-small">Source representations</text>
+  <g class="early-line"><path d="M80 110V230M250 110L420 230M420 110L250 230"/></g>
+  {[['the',80],['red',250],['fox',420]].map(([word,x])=><g><rect x={Number(x)-65} y="50" width="130" height="60" rx="5" class="diagram-highlight"/><text x={x} y="88" text-anchor="middle">{word}</text></g>)}
+  {[['le',80],['renard',250],['rouge',420]].map(([word,x])=><g><rect x={Number(x)-65} y="230" width="130" height="60" rx="5" class="diagram-box"/><text x={x} y="268" text-anchor="middle">{word}</text></g>)}
+  <text x="250" y="325" text-anchor="middle" class="diagram-small">Output words · one fresh read per step</text>
+</>}
+</svg><figcaption>{caption}</figcaption></figure>

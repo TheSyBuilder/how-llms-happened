@@ -1,5 +1,74 @@
 import { expect, test } from "@playwright/test";
 
+for (const slug of ['graves','sequence-to-sequence','attention']) {
+ test(`${slug} completes the story with a working mouse touch and keyboard toy`,async({page},info)=>{
+  const errors:string[]=[];
+  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  const activate=async(el:ReturnType<typeof page.getByRole>)=>{if(info.project.name==='mobile-chromium')await el.tap();else await el.click();};
+  await page.goto(`/#${slug}`);await expect(page.locator(`#${slug}`)).toHaveClass(/is-live/);
+  await page.locator(`#${slug} > a`).click();await expect(page).toHaveURL(`/chapters/${slug}/`);
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr','');
+  await page.locator('.chapter-hero').screenshot({path:info.outputPath(`${slug}-hero.png`),animations:'disabled'});
+  await page.locator('.sequence-diagram').screenshot({path:info.outputPath(`${slug}-diagram.png`),animations:'disabled'});
+  const toy=page.locator('.early-toy');
+  await toy.screenshot({path:info.outputPath(`${slug}-initial.png`),animations:'disabled'});
+  if(slug==='graves') {
+    const sample=page.getByRole('button',{name:'Sample one character',exact:true});
+    const reset=page.getByRole('button',{name:'Restart same draw sequence',exact:true});
+    const text=page.locator('.generation-paper');const initial=await text.textContent();
+    await activate(sample);await expect(page.locator('.sequence-status')).toContainText('1 / 80');
+    expect(await text.textContent()).not.toEqual(initial);
+    await sample.focus();await page.keyboard.press('Enter');await expect(page.locator('.sequence-status')).toContainText('2 / 80');
+    await activate(page.getByRole('button',{name:'Sample twelve',exact:true}));await expect(page.locator('.sequence-status')).toContainText('14 / 80');
+    const temperature=page.getByRole('slider',{name:'Temperature'});await temperature.focus();await page.keyboard.press('Home');
+    await activate(reset);const concentrated=parseFloat((await page.locator('.character-chances output').first().textContent())!);expect(concentrated).toBeGreaterThan(95);
+    await temperature.focus();await page.keyboard.press('End');await expect(temperature).toHaveValue('2');
+    expect(parseFloat((await page.locator('.character-chances output').first().textContent())!)).toBeLessThan(concentrated);
+    await activate(page.getByRole('button',{name:'Sample twelve',exact:true}));
+    await reset.focus();await page.keyboard.press('Enter');await expect(text).toHaveText(initial!);
+  } else if(slug==='sequence-to-sequence') {
+    const next=page.getByRole('button',{name:'Next step',exact:true});
+    await activate(next);await expect(page.locator('.summary-vector')).toContainText('colour1');
+    await next.focus();await page.keyboard.press('Enter');await expect(page.locator('.summary-vector')).toContainText('animal1');
+    await page.keyboard.press('Enter');await expect(page.getByTestId('decoded-message')).toHaveText('…');
+    await page.keyboard.press('Enter');await expect(page.getByTestId('decoded-message')).toHaveText('le');
+    const slider=page.getByRole('slider',{name:'Read and write'});await slider.focus();await page.keyboard.press('End');
+    await expect(page.getByTestId('decoded-message')).toHaveText('le renard rouge court');await expect(page.locator('.sequence-end')).toHaveText('END');await expect(next).toBeDisabled();
+    const erase=page.getByRole('checkbox',{name:'Erase colour from the summary'});await activate(erase);await expect(page.getByTestId('decoded-message')).toHaveText('le renard ? court');await expect(page.getByTestId('decoded-message')).toBeInViewport();
+    await erase.focus();await page.keyboard.press('Space');await expect(page.getByTestId('decoded-message')).toHaveText('le renard rouge court');
+    await activate(page.getByRole('button',{name:'blue cat sleeps',exact:true}));await expect(slider).toHaveValue('0');
+    await slider.focus();await page.keyboard.press('End');await expect(page.getByTestId('decoded-message')).toHaveText('le chat bleu dort');
+    await page.getByRole('button',{name:'Reset message',exact:true}).focus();await page.keyboard.press('Enter');await expect(slider).toHaveValue('0');await expect(erase).not.toBeChecked();
+  } else {
+    const result=page.getByTestId('source-read-result');await expect(result).toHaveText('Strongest read: fox');
+    await activate(page.getByRole('button',{name:/Colour/}));await expect(result).toHaveText('Strongest read: red');
+    const slider=page.getByRole('slider',{name:'Focus strength'});await slider.focus();await page.keyboard.press('Home');await expect(result).toHaveText('No clear preference');
+    await page.keyboard.press('End');await expect(result).toHaveText('Strongest read: red');
+    const hide=page.getByRole('checkbox',{name:'Hide “red” from the read'});await activate(hide);await expect(result).toHaveText('No clear preference');await expect(page.locator('.summary-vector')).toContainText('colour0.00');
+    await hide.focus();await page.keyboard.press('Space');await expect(result).toHaveText('Strongest read: red');
+    await page.getByRole('button',{name:'Reset attention',exact:true}).focus();await page.keyboard.press('Enter');await expect(result).toHaveText('Strongest read: fox');await expect(slider).toHaveValue('3');
+  }
+  const slider=toy.getByRole('slider');await slider.scrollIntoViewIfNeeded();const box=await slider.boundingBox();
+  if(info.project.name==='mobile-chromium')await page.touchscreen.tap(box!.x+box!.width-4,box!.y+box!.height/2);else await page.mouse.click(box!.x+box!.width-4,box!.y+box!.height/2);
+  await expect(slider).toHaveValue((await slider.getAttribute('max'))!);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  if(slug==='graves')await expect(toy.locator('.early-bar > span').first()).toHaveCSS('transition-duration','0s');
+  if(slug==='attention')await expect(toy.locator('.source-read-diagram path').first()).toHaveCSS('transition-duration','0s');
+  await toy.screenshot({path:info.outputPath(`${slug}-changed.png`),animations:'disabled'});
+  await page.getByText('Inside this toy',{exact:true}).focus();await page.keyboard.press('Enter');await expect(page.locator('.sequence-inside')).toHaveAttribute('open','');
+  const count=await page.locator('.chapter-hero,.story-section').allTextContents();expect(count.join(' ').trim().split(/\s+/).length).toBeLessThan(800);
+  await page.getByRole('link',{name:'Play',exact:true}).click();await expect(page.locator('#problem')).not.toBeVisible();await expect(toy).toBeVisible();
+  await page.screenshot({path:info.outputPath(`${slug}-play.png`),fullPage:true,animations:'disabled'});
+  await page.getByRole('link',{name:'Story',exact:true}).click();await expect(page.locator('#problem')).toBeVisible();
+  for(const id of ['deeper','sources']) {await expect(page.locator(`#${id}`)).not.toHaveAttribute('open','');await page.locator(`#${id} summary`).focus();await page.keyboard.press('Enter');await expect(page.locator(`#${id}`)).toHaveAttribute('open','');}
+  await page.locator('#deeper').screenshot({path:info.outputPath(`${slug}-deeper.png`),animations:'disabled'});
+  expect(await page.locator('#sources a').evaluateAll(links=>links.every(a=>a.getAttribute('href')?.startsWith('https://')))).toBe(true);
+  const nextSlug=slug==='graves'?'sequence-to-sequence':slug==='sequence-to-sequence'?'attention':'transformer';
+  await expect(page.locator('.next-chapter')).toHaveAttribute('href',`/chapters/${nextSlug}/`);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
+ });
+}
+
 test('recurrent word predictions retain a fading clue beyond a fixed window on all inputs', async ({page}, info) => {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
@@ -151,7 +220,7 @@ test('current systems combine evidence, tools and effort with mouse, touch and k
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
   await page.goto('/');
-  await expect(page.getByText('27 chapters live · 30 turning points')).toBeVisible();
+  await expect(page.getByText('30 chapters live · 30 turning points')).toBeVisible();
   await expect(page.locator('#now')).toHaveClass(/is-live/);
   await page.locator('#now > a').click();
   await expect(page).toHaveURL('/chapters/now/');
@@ -237,7 +306,7 @@ test("retrieval reads an editable library with mouse, touch, and keyboard", asyn
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#retrieval")).toHaveClass(/is-live/);
   await page.locator("#retrieval > a").click();
   await expect(page).toHaveURL(/\/chapters\/retrieval\//);
@@ -336,7 +405,7 @@ test("scaling laws trades model size for text with mouse, touch, and keyboard", 
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#scaling-laws")).toHaveClass(/is-live/);
   await page.locator("#scaling-laws > a").click();
   await expect(page).toHaveURL(/\/chapters\/scaling-laws\//);
@@ -497,7 +566,7 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await page.goto("/chapters/pretraining/");
   await expect(page).toHaveURL(/\/chapters\/pretraining\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -569,7 +638,7 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await page.locator("#bert a").click();
   await expect(page).toHaveURL(/\/chapters\/bert\//);
   await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
@@ -656,7 +725,7 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-2")).toHaveClass(/is-live/);
   await page.locator("#gpt-2 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-2\//);
@@ -734,7 +803,7 @@ test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ p
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);
   await page.locator("#gpt-3 > a").click();
   await expect(page).toHaveURL(/\/chapters\/gpt-3\//);
@@ -827,7 +896,7 @@ test("human comparisons teach a scorer with mouse, touch, and keyboard", async (
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto("/");
-  await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+  await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#human-feedback")).toHaveClass(/is-live/);
   await page.locator("#human-feedback > a").click();
   await expect(page).toHaveURL(/\/chapters\/human-feedback\//);
@@ -928,7 +997,7 @@ for (const chapter of ["chatgpt", "gpt-4"]) {
     page.on("pageerror", e => errors.push(e.message));
     page.on("console", m => { if(m.type() === "error") errors.push(m.text()); });
     await page.goto("/");
-    await expect(page.getByText("27 chapters live · 30 turning points")).toBeVisible();
+    await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
     await expect(page.locator(`#${chapter}`)).toHaveClass(/is-live/);
     await page.locator(`#${chapter} > a`).click();
     await expect(page).toHaveURL(`/chapters/${chapter}/`);
@@ -1243,7 +1312,7 @@ test('recurrence alternatives carry a clue with mouse, touch and keyboard', asyn
     if (info.project.name === 'mobile-chromium') await element.tap(); else await element.click();
   };
   await page.goto('/#drop-recurrence');
-  await expect(page.getByText('27 chapters live · 30 turning points')).toBeVisible();
+  await expect(page.getByText('30 chapters live · 30 turning points')).toBeVisible();
   await expect(page.locator('#drop-recurrence')).toHaveClass(/is-live/);
   await page.locator('#drop-recurrence > a').click();
   await expect(page).toHaveURL('/chapters/drop-recurrence/');
