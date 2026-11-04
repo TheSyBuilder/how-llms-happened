@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 export const initialShapes = [true, false, true, false, true, false, false, false, true];
 export function countVisibleCircles(shapes: boolean[], image: boolean, rows: number) {

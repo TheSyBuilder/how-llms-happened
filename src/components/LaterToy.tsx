@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import ExperimentVisual from "./ExperimentVisual";
 import { useState } from 'preact/hooks';
 export const allocation = (n:number) => ({tokens:100/n, loss:1/Math.sqrt(n)+1/Math.sqrt(100/n)});

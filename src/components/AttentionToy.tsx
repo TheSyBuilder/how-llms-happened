@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 
 // Deliberately hand-chosen vectors: this is a toy, not a trained language model.

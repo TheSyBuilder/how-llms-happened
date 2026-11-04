@@ -5,21 +5,22 @@ const step=firstSteps[slug];
 ---
 {step && <div class="first-look"><p>{step.idea}</p><div><a href="#play">Try the little game →</a><button type="button" class="listen-idea" hidden>Listen to the idea</button></div><span class="listen-status" role="status"></span></div>}
 <script>
+import {t} from "../i18n/core";
 if ('speechSynthesis' in window) {
  for(const button of document.querySelectorAll<HTMLButtonElement>('.listen-idea')) {
   let activeSpeech: SpeechSynthesisUtterance | null=null;
   button.hidden=false;
   button.addEventListener('click',()=>{
    const status=button.closest('.first-look')!.querySelector('.listen-status')!;
-   if(button.dataset.speaking==='yes'){activeSpeech=null;speechSynthesis.cancel();button.dataset.speaking='no';button.textContent='Listen to the idea';status.textContent='Stopped.';return;}
+   if(button.dataset.speaking==='yes'){activeSpeech=null;speechSynthesis.cancel();button.dataset.speaking='no';button.textContent=t('Listen to the idea');status.textContent=t('Stopped.');return;}
    speechSynthesis.cancel();
    const speech=new SpeechSynthesisUtterance(button.closest('.first-look')!.querySelector('p')!.textContent!);
-   speech.lang='en';speech.rate=.85;
-   const finish=()=>{button.dataset.speaking='no';button.textContent='Listen to the idea';};
-   speech.onend=()=>{if(activeSpeech!==speech)return;activeSpeech=null;finish();status.textContent='Finished.';};
-   speech.onerror=()=>{if(activeSpeech!==speech)return;activeSpeech=null;finish();status.textContent='Reading aloud is unavailable. You can read the idea above.';};
+   speech.lang=document.documentElement.lang==='ar'?'ar-SA':document.documentElement.lang;speech.rate=.85;
+   const finish=()=>{button.dataset.speaking='no';button.textContent=t('Listen to the idea');};
+   speech.onend=()=>{if(activeSpeech!==speech)return;activeSpeech=null;finish();status.textContent=t('Finished.');};
+   speech.onerror=()=>{if(activeSpeech!==speech)return;activeSpeech=null;finish();status.textContent=t('Reading aloud is unavailable. You can read the idea above.');};
    activeSpeech=speech;
-   button.dataset.speaking='yes';button.textContent='Stop reading';status.textContent='Reading the short idea.';speechSynthesis.speak(speech);
+   button.dataset.speaking='yes';button.textContent=t('Stop reading');status.textContent=t('Reading the short idea.');speechSynthesis.speak(speech);
   });
  }
  window.addEventListener('pagehide',()=>speechSynthesis.cancel());

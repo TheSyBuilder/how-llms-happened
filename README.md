@@ -73,7 +73,7 @@ npm run dev
 
 Open the local address printed in the terminal. All 30 chapters are implemented; a public hosted version has not yet been configured.
 
-These three README editions describe the same project. The website and the screenshots are currently in English.
+The whole website is available in **English, 简体中文 and العربية**. Switch languages in the top bar; your chapter stays open. Chinese uses everyday explanations, and Arabic uses a conversational Saudi voice with right-to-left layouts. The screenshots below show the English edition.
 
 <details>
 <summary><strong>For contributors: code and checks</strong></summary>

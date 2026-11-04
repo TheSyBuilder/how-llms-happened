@@ -8,7 +8,7 @@
 
 **30 个可玩的章节 · 1913—2026 · 用小实验，弄懂大想法**
 
-![LLM Lineage 首页：选择一个历史转折点，进入对应的互动实验](docs/images/playground.png)
+![LLM Lineage 首页：选择一个历史转折点，进入对应的互动实验](docs/images/playground-zh.png)
 
 带着好奇心来就行。每章讲清一个想法，让你亲手做个小实验，最后能用自己的话讲给朋友听。没学过机器学习，也可以从这里开始。
 
@@ -18,7 +18,7 @@
 
 | 线索是「天空」 | 线索变成「湖泊」 |
 | --- | --- |
-| ![BERT 小实验：metal 和 sky 两条线索只留下 plane 这个答案](docs/images/bert-sky.png) | ![BERT 小实验：把 sky 换成 lake，答案就变成了 boat](docs/images/bert-lake.png) |
+| ![BERT 小实验：metal 和 sky 两条线索只留下 plane 这个答案](docs/images/bert-sky-zh.png) | ![BERT 小实验：把 sky 换成 lake，答案就变成了 boat](docs/images/bert-lake-zh.png) |
 | **plane（飞机）** 符合线索。 | 现在是 **boat（船）**。 |
 
 BERT 这一章就从这里讲起：猜一个缺失的词，后面的文字也能帮忙。图里是用八个自编句子做的小演示，并没有运行真正的 BERT；这里的百分比来自句子计数，不是 BERT 的预测概率。
@@ -40,7 +40,7 @@ BERT 这一章就从这里讲起：猜一个缺失的词，后面的文字也能
 <summary><strong>看看手机上的样子</strong></summary>
 
 <br />
-<img src="docs/images/letter-press-mobile.png" width="320" alt="手机上的字母预测游戏：有记忆开关、概率条和醒目的打印按钮" />
+<img src="docs/images/letter-press-mobile-zh.png" width="320" alt="手机上的字母预测游戏：有记忆开关、概率条和醒目的打印按钮" />
 
 触屏、鼠标、键盘都能操作。如果你开启了系统的「减少动态效果」，页面也会相应减少动画。
 
@@ -73,7 +73,7 @@ npm run dev
 
 打开终端显示的本地地址即可。30 个章节均已完成，目前还没有配置公开访问的网站。
 
-这三份 README 是同一项目的不同语言介绍。网站内容和截图目前仍为英文。
+整个网站支持**英语、简体中文和阿拉伯语**，包括全部 30 章和互动实验。点击顶部的语言选项即可切换，当前章节会保留。阿拉伯语采用自然的沙特口语表达和从右到左的排版。截图展示的是中文版。
 
 <details>
 <summary><strong>想参与开发？代码和检查命令在这里</strong></summary>

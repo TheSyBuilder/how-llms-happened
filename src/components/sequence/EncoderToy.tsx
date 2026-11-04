@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import {useState} from 'preact/hooks';
 export type Message = 'fox' | 'cat';
 export type Summary = [number,number,number];

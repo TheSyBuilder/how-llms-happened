@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 
 export type Passage = { id: string; title: string; text: string; enabled: boolean };

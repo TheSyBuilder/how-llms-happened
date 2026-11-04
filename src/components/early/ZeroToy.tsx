@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import { useState } from 'preact/hooks';
 export const drinks = ['tea','coffee','cocoa','juice','water'];
 export function reserveOdds(reserve: number, broad: boolean) { return [.6 * (1-reserve), .3 * (1-reserve), .1 * (1-reserve), reserve * (broad ? .2 : .5), reserve * (broad ? .8 : .5)]; }

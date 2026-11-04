@@ -1134,7 +1134,7 @@ test('first visit offers a discovery, timeline shortcuts, and an honest reposito
  await page.screenshot({path:info.outputPath('home-revised.png'),fullPage:true});
  await page.getByRole('button',{name:'2017 · Transformers'}).click();
  await expect(page.locator('#transformer')).toBeInViewport();
- await expect(page.locator('.repo-link')).toHaveAttribute('href','https://github.com/TheSyBuilder/how-llms-happened');
+ await expect(page.locator('.repo-link')).toHaveAttribute('href','https://github.com/TheSyBuilder');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.goto('/chapters/dpo/');await expect(page.locator('astro-island')).not.toHaveAttribute('ssr','');
  await expect(page.locator('.discovery details')).not.toHaveAttribute('open','');
@@ -1480,3 +1480,51 @@ test('read aloud can start and stop without hiding the written idea',async({page
  expect(await page.evaluate(()=>(window as unknown as {spoken:string}).spoken)).toBe(await page.locator('.first-look > p').textContent());
  await page.keyboard.press('Enter');await expect(listen).toBeVisible();await expect(page.locator('.listen-status')).toHaveText('Stopped.');
 });
+
+for(const locale of ['zh','ar']) {
+ test(`${locale} chapters preserve navigation, translations and responsive toys`,async({page},info)=>{
+  test.setTimeout(150_000);
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.goto(`/${locale}/`);
+  await expect(page.locator('html')).toHaveAttribute('lang',locale==='ar'?'ar':'zh-CN');
+  await expect(page.locator('html')).toHaveAttribute('dir',locale==='ar'?'rtl':'ltr');
+  await expect(page.locator('.repo-link')).toHaveAttribute('href','https://github.com/TheSyBuilder');
+  await expect(page.locator('a[href="https://x.com/TheSyBuilder"]')).toBeVisible();
+  const urls=await page.locator('.timeline-card > a').evaluateAll(a=>a.map(n=>n.getAttribute('href')!));
+  expect(urls.length).toBe(30);
+  await page.screenshot({path:info.outputPath(`${locale}-home.png`),animations:'disabled'});
+  for(const url of urls){
+   await page.goto(url);
+   await expect(page.locator('astro-island').first()).not.toHaveAttribute('ssr','');
+   const slug=url.split('/').filter(Boolean).at(-1)!;
+   expect(await page.locator('.first-look p').innerText()).toMatch(locale==='ar'?/[\u0600-\u06ff]/:/[\u3400-\u9fff]/);
+   await page.locator('.chapter-hero').screenshot({path:info.outputPath(`${locale}-${slug}-story.png`),animations:'disabled'});
+   const diagram=page.locator('.story-section figure').first();
+   if(await diagram.count())await diagram.screenshot({path:info.outputPath(`${locale}-${slug}-diagram.png`),animations:'disabled'});
+   await page.locator('.chapter-nav a[href="#play"]').click();
+   await expect(page.locator('#problem')).not.toBeVisible();
+   const toy=page.locator('#play astro-island');await expect(toy).toBeVisible();
+   const toggle=toy.locator('input[type=checkbox]:enabled').first();if(await toggle.count()){await toggle.focus();await page.keyboard.press('Space');}
+   const range=toy.locator('input[type="range"]:enabled').first();
+   if(await range.count()){
+    await range.focus();await page.keyboard.press('End');await expect(range).toHaveValue((await range.getAttribute('max'))!);
+    await page.keyboard.press('Home');await expect(range).toHaveValue(String(Number((await range.getAttribute('min'))??'0')));
+   }
+   for(const select of await toy.locator('select').all()){const values=await select.locator('option').evaluateAll(options=>options.map(o=>(o as HTMLOptionElement).value));if(values.length){await select.selectOption(values.at(-1)!);await expect(select).toHaveValue(values.at(-1)!);}}
+   const button=toy.locator('button:enabled').first();
+   if(await button.count()){if(info.project.name==='mobile-chromium')await button.tap();else await button.click();await button.focus();await page.keyboard.press('Enter');}
+   await toy.locator(':scope > div').first().screenshot({path:info.outputPath(`${locale}-${slug}-toy.png`),animations:'disabled'});
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${locale}/${slug} overflows`).toBe(true);
+   for(const href of await page.locator('a.next-chapter').evaluateAll(a=>a.map(n=>n.getAttribute('href'))))expect(href).toMatch(new RegExp(`^/${locale}/chapters/`));
+  }
+  expect(errors).toEqual([]);
+ });
+ test(`${locale} conversation updates stay translated and language switches keep the current view`,async({page})=>{
+  await page.goto(`/${locale}/chapters/chatgpt/#play`);
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr','');
+  const range=page.locator('#history-count');await range.focus();await page.keyboard.press('Home');
+  await expect(page.getByTestId('conversation-answer')).toHaveText(locale==='ar'?'أي مدينة تقصد؟':'你指的是哪座城市？');
+  await page.locator('[data-language="en"]').click();
+  await expect(page).toHaveURL('/chapters/chatgpt/#play');await expect(page.locator('#problem')).not.toBeVisible();
+ });
+}

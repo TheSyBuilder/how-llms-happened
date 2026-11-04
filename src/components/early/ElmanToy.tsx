@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import { useState } from 'preact/hooks';
 export const readerTail=['bank','near','the','old','bridge'];
 export function readHistory(sign: number, count: number, copy: boolean) {

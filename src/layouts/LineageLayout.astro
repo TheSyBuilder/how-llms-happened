@@ -4,11 +4,14 @@ import "../styles/playground.css";
 import CuriosityDrawers from "../components/CuriosityDrawers.astro";
 import "../styles/curiosity.css";
 import ExperimentSwitcher from "../components/ExperimentSwitcher.astro";
+import {localeFromPath,localePath,basePath} from "../i18n/core";
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
+const locale=localeFromPath(Astro.url.pathname);
+const path=basePath(Astro.url.pathname);
 ---
 <!doctype html>
-<html lang="en">
+<html lang={locale==='zh'?'zh-CN':locale} dir={locale==='ar'?'rtl':'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -21,7 +24,8 @@ const { title, description } = Astro.props;
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="LLM Lineage home"><span class="brand-mark" aria-hidden="true">L<span>L</span></span><strong>LLM Lineage</strong></a>
-      <nav aria-label="Main navigation"><button class="nav-experiments" data-open-explorer>Explore <span aria-hidden="true">⌘ K</span></button><a class="repo-link" href="https://github.com/TheSyBuilder/how-llms-happened">GitHub ↗</a><a href="/#timeline">The timeline <span aria-hidden="true">↗</span></a></nav>
+      <nav aria-label="Main navigation"><button class="nav-experiments" data-open-explorer>Explore <span aria-hidden="true">⌘ K</span></button><a class="repo-link" href="https://github.com/TheSyBuilder" aria-label="GitHub profile">GitHub ↗</a><a class="social-link" href="https://x.com/TheSyBuilder" aria-label="X profile">X ↗</a><a href="/#timeline">The timeline <span aria-hidden="true">↗</span></a></nav>
+      <nav class="language-switch" aria-label="Language">{[["en","English"],["zh","中文"],["ar","العربية"]].map(([code,label])=><a data-language={code} lang={code==='zh'?'zh-CN':code} href={localePath(path,code as 'en'|'zh'|'ar')} aria-current={locale===code?'page':undefined}>{label}</a>)}</nav>
     </header>
     <ExperimentSwitcher />
     <CuriosityDrawers />
@@ -29,3 +33,7 @@ const { title, description } = Astro.props;
     <footer class="site-footer"><a class="brand" href="/">LLM Lineage</a><div><p>Big ideas. Small experiments. A history you can play with.</p><button class="curiosity-invitation" data-curiosity="tokens">One more token?</button></div><a href="/#timeline">Back to the timeline ↑</a></footer>
   </body>
 </html>
+
+<script>
+for(const link of document.querySelectorAll<HTMLAnchorElement>('[data-language]'))link.addEventListener('click',()=>{const target=new URL(link.href);target.hash=location.hash;link.href=target.href;});
+</script>

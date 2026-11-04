@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import {useState} from 'preact/hooks';
 export const sourceWords = ['the','red','fox'];
 export const targetSteps = [{label:'Article',word:'le',source:0},{label:'Animal',word:'renard',source:2},{label:'Colour',word:'rouge',source:1}];

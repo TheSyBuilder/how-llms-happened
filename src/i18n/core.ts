@@ -1,0 +1,30 @@
+export type Locale = 'en' | 'zh' | 'ar';
+export type Messages = Record<string,string>;
+export function localeFromPath(path:string):Locale {return /^\/ar(?:\/|$)/.test(path)?'ar':/^\/zh(?:\/|$)/.test(path)?'zh':'en';}
+export function basePath(path:string) {return path.replace(/^\/(?:zh|ar)(?=\/|$)/,'')||'/';}
+export function localePath(path:string,locale:Locale):string {
+ if(!path.startsWith('/')||path.startsWith('//')||/^\/(?:_astro|favicon|preview)/.test(path))return path;
+ const base=basePath(path);return locale==='en'?base:`/${locale}${base}`;
+}
+export const normalize=(value:string)=>value.replace(/\s+/g,' ').trim();
+export function translator(messages:Messages) {
+ messages=Object.fromEntries(Object.entries(messages).map(([key,value])=>[normalize(key),value]));
+ const templates=Object.entries(messages).filter(([key])=>/\{\d+\}/.test(key)).map(([key,value])=>{
+  const slots:number[]=[];const parts=key.split(/(\{\d+\})/g);const pattern=parts.map(part=>/^\{\d+\}$/.test(part)?(slots.push(Number(part.slice(1,-1))),'(.+?)'):part.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('');
+  return {regex:new RegExp(`^${pattern}$`),slots,value};
+ });
+ return (source:string):string=>{
+  const key=normalize(source);if(!key)return source;
+  let value=messages[key];
+  if(value===undefined)for(const template of templates){const match=key.match(template.regex);if(match){const values:Record<number,string>={};template.slots.forEach((slot,i)=>values[slot]=messages[normalize(match[i+1]!)]??match[i+1]!);value=template.value.replace(/\{(\d+)\}/g,(_,slot)=>values[Number(slot)]??'');break;}}
+  if(value===undefined)return source;
+  return (source.match(/^\s*/)?.[0]??'')+value+(source.match(/\s*$/)?.[0]??'');
+ };
+}
+let browserTranslate:ReturnType<typeof translator>|undefined;
+export function t(source:string):string {
+ if(typeof document==='undefined'||document.documentElement.lang==='en')return source;
+ if(!browserTranslate){const data=document.getElementById('locale-messages')?.textContent;browserTranslate=translator(data?JSON.parse(data):{});}
+ return browserTranslate(source);
+}
+export function currentLocale():Locale {return typeof document==='undefined'?'en':localeFromPath(location.pathname);}

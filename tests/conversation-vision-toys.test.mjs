@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { createRequire } from "node:module";
+import { createRequire } from "./helpers/component-require.mjs";
 import test from "node:test";
 import ts from "typescript";
 function load(name) {

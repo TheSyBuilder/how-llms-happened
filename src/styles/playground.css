@@ -162,3 +162,42 @@
 .game-original-title { font-size:13px; color:var(--muted); margin-bottom:12px; }
 .early-small,.toy-footnote,.toy-method { font-size:14px; }
 @media(max-width:700px) { .gentle-start > div {grid-template-columns:1fr;gap:10px;} .first-look {padding:16px;} .first-look p {font-size:18px;} .game-original-title {font-size:12px;} }
+
+/* Language navigation and scripts with different reading directions. */
+.site-header { flex-wrap:wrap; gap:14px 24px; }
+.language-switch { margin-inline-start:auto; display:flex; gap:6px; }
+.language-switch a { font-size:13px; padding:8px; min-height:40px; display:inline-flex; align-items:center; text-decoration:none; border-radius:5px; }
+.language-switch a[aria-current=page] { background:var(--accent);color:var(--ink); }
+:lang(zh-CN) { --body:"PingFang SC","Microsoft YaHei",sans-serif; --display:"PingFang SC","Microsoft YaHei",sans-serif; }
+:lang(ar) { --body:Tahoma,Arial,sans-serif; --display:Tahoma,Arial,sans-serif; }
+html[dir=rtl] body { line-height:1.9; }
+html[dir=rtl] .eyebrow,html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3 { letter-spacing:0; }
+html[dir=rtl] .first-look { border-left:0;border-right:4px solid var(--accent);border-radius:6px 0 0 6px; }
+html[dir=rtl] .chapter-nav .nav-paper {margin-left:0;margin-right:auto;}
+html[dir=rtl] .brand-mark,html[dir=rtl] svg,html[dir=rtl] input[type=range],html[dir=rtl] code,html[dir=rtl] pre,html[dir=rtl] .katex,html[dir=rtl] .timeline-strip,html[dir=rtl] .timeline-scrubber,html[dir=rtl] .thread-stops {direction:ltr;unicode-bidi:isolate;}
+html[dir=rtl] .timeline-card {direction:rtl;}
+html[dir=rtl] svg text {font-family:Tahoma,Arial,sans-serif;}
+html[dir=rtl] .game-paper-link {right:auto;left:0;}
+html[dir=rtl] .game-entry {text-align:start;}
+html[dir=rtl] .switcher-game b {margin-left:0;margin-right:auto;}
+.example-language-note {font-size:14px;color:var(--muted);margin:12px 0 20px;}
+@media(max-width:700px){
+ .site-header {padding:16px;gap:8px 12px;}
+ .site-header>nav:not(.language-switch) {margin-inline-start:auto;gap:14px;}
+ .site-header .language-switch {width:100%;justify-content:center;margin:0;gap:12px;}
+ .site-header .brand strong {font-size:16px;}
+ .site-header .social-link,.site-header .repo-link {font-size:13px;display:inline;}
+ :lang(ar) .chapter-hero h1 {font-size:32px;line-height:1.4;}
+ :lang(ar) .stage-copy h1 {font-size:38px;line-height:1.4;}
+ :lang(zh-CN) .stage-copy h1 {font-size:38px;line-height:1.3;}
+ .language-switch a {min-height:44px;}
+}
+/* Preserve the order of original-language examples and mathematical flows inside RTL pages. */
+html[dir=rtl] :is(.rnn-word-strip,.reader-words,.encoder-source,.sequence-output,.generation-paper,.toy-corpus,.gate-equation,.gate-preview,.tokens,.token-picker,.weight-grid,.masked-sentence,.prompt-paper textarea,.continuation-text,.pattern-query,.pattern-prompt pre,.letter-machine textarea,.letter-tape-output) {direction:ltr;unicode-bidi:isolate;}
+html[dir=rtl] output {unicode-bidi:plaintext;}
+html[dir=rtl] .neural-word h4 {direction:ltr;unicode-bidi:isolate;}
+html[dir=rtl] :is(.context-controls,.range-ends,.early-ends) {direction:ltr;}
+html[dir=rtl] :is(.context-controls,.range-ends,.early-ends)>* {direction:rtl;}
+html[dir=rtl] :is(.object-index,.game-entry-meta,.game-dock button>span,.sequence-status) {direction:ltr;unicode-bidi:isolate;}
+:lang(zh-CN) .stage-copy h1 {font-size:clamp(35px,5.5vw,66px);line-height:1.3;}
+html[dir=rtl] #letter-text {direction:ltr;unicode-bidi:isolate;}

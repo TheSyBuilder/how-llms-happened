@@ -1,0 +1,6 @@
+---
+import ChapterPage from '../../chapters/[slug].astro';
+import {chapters} from '../../../lib/chapters';
+export function getStaticPaths(){return ['zh','ar'].flatMap(lang=>chapters.map(chapter=>({params:{lang,slug:chapter.slug},props:{chapter}})));}
+---
+<ChapterPage chapter={Astro.props.chapter} />

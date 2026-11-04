@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 
 type Pair = readonly [string, string];

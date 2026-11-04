@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 
 export const trainingBudgets = [64, 256, 1024];

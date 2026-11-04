@@ -1,3 +1,4 @@
+import {t} from '../i18n/core';
 export function setupTimeline() {
   const strip = document.querySelector<HTMLElement>('.timeline-strip')!;
   const navigator = document.querySelector<HTMLElement>('.timeline-navigator')!;
@@ -18,7 +19,7 @@ export function setupTimeline() {
     const year = card.querySelector('time')!.textContent!;
     const title = card.querySelector('h3')!.textContent!;
     slider.value = String(index + 1);
-    slider.setAttribute('aria-valuetext', `${year}: ${title}, ${index + 1} of ${cards.length}`);
+    slider.setAttribute('aria-valuetext', t(`${year}: ${title}, ${index + 1} of ${cards.length}`));
     navigator.querySelector('[data-timeline-year]')!.textContent = year;
     navigator.querySelector('[data-timeline-title]')!.textContent = title;
     navigator.querySelector('[data-timeline-count]')!.textContent = `${String(index + 1).padStart(2, '0')} / ${cards.length}`;

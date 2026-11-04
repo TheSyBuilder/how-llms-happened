@@ -1,0 +1,5 @@
+---
+import Home from '../index.astro';
+export function getStaticPaths(){return ['zh','ar'].map(lang=>({params:{lang}}));}
+---
+<Home />

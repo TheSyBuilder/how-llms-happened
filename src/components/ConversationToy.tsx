@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 export type Turn = { role: "You" | "Assistant"; text: string; destination?: string };
 export function conversation(city: string, correction: boolean): Turn[] {

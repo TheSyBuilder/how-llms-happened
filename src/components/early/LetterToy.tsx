@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import { useState } from 'preact/hooks';
 export function letterOdds(text: string, last: string, remember: boolean) {
   const letters = text.toUpperCase().replace(/[^AB]/g, '');

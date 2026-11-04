@@ -29,6 +29,7 @@
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
     "@types/node": "^24.10.0",
+    "linkedom": "^0.18.15",
     "typescript": "^6.0.3"
   }
 }

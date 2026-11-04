@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import { useState } from 'preact/hooks';
 export const mapWords = [{word:'shore',x:.95,y:.15},{word:'raft',x:.8,y:.05},{word:'loan',x:.1,y:.95},{word:'coin',x:.25,y:.8}];
 export function nearestWords(x: number,y: number) { return mapWords.map(item=>({...item,similarity:(x*item.x+y*item.y)/(Math.hypot(x,y)*Math.hypot(item.x,item.y))})).sort((a,b)=>b.similarity-a.similarity); }

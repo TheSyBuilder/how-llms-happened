@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useState } from "preact/hooks";
 
 // Invented examples for a context-filtering illustration, not a trained model.

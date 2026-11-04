@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import { useState } from 'preact/hooks';
 export function gatedCell(previous: number, candidate: number, forget: number, input: number, output: number) {const kept=forget*previous,written=input*candidate,cell=kept+written;return {kept,written,cell,visible:output*Math.tanh(cell)};}
 export default function GateToy() {

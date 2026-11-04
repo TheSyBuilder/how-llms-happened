@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import { useState } from 'preact/hooks';
 export function decodeCream(sound: number, prior: number, useLanguage: boolean) {
   const likelihood = [sound / 100, 1 - sound / 100];

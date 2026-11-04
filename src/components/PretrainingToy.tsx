@@ -1,3 +1,4 @@
+import '../i18n/preact';
 import { useMemo, useState } from "preact/hooks";
 
 // Invented sentences. Pretraining sees the next word, never a review rating.

@@ -26,6 +26,7 @@ import { sourceLink } from '../lib/chapters';
   </section>
 </dialog>
 <script>
+import {t} from "../i18n/core";
 import {letterPattern, nextTokenOdds, sampleToken} from './curiosity-toys.mjs';
 const dialog = document.querySelector<HTMLDialogElement>('.curiosity-dialog')!;
 const title = dialog.querySelector<HTMLElement>('#curiosity-title')!;
@@ -44,14 +45,14 @@ let showPattern = false;
 
 function renderSentence() {
   sentence.replaceChildren();
-  if (!words.length) sentence.textContent = 'Every sentence starts somewhere…';
+  if (!words.length) sentence.textContent = t('Every sentence starts somewhere…');
   words.forEach((word, index) => {
     const piece = document.createElement('span');
-    piece.textContent = `${index && word !== '.' ? ' ' : ''}${word}`;
+    piece.textContent = t(`${index && word !== '.' ? ' ' : ''}${word}`);
     if (index === words.length - 1) piece.className = 'token-arrives';
     sentence.append(piece);
   });
-  dialog.querySelector('.ticket-count')!.textContent = `${words.length} / 6 tokens`;
+  dialog.querySelector('.ticket-count')!.textContent = t(`${words.length} / 6 tokens`);
 }
 function renderCandidates() {
   candidates.replaceChildren();
@@ -62,13 +63,13 @@ function renderCandidates() {
     button.style.setProperty('--chance', `${choice.probability * 100}%`);
     button.append(document.createTextNode(choice.word));
     const odds = document.createElement('small');
-    odds.textContent = `${choice.probability === 1 ? "" : "≈"}${Math.round(choice.probability * 100)}%`;
+    odds.textContent = t(`${choice.probability === 1 ? "" : "≈"}${Math.round(choice.probability * 100)}%`);
     button.append(odds);
     button.addEventListener('click', () => { appendToken(choice.word); draw.focus(); });
     candidates.append(button);
   }
-  draw.textContent = choices.length ? 'Draw a token ↗' : 'Make another ↺';
-  if (!choices.length) candidates.textContent = 'A tiny machine. A surprisingly strange bedtime story.';
+  draw.textContent = t(choices.length ? 'Draw a token ↗' : 'Make another ↺');
+  if (!choices.length) candidates.textContent = t('A tiny machine. A surprisingly strange bedtime story.');
 }
 function appendToken(word: string) { words.push(word); renderSentence(); renderCandidates(); }
 draw.addEventListener('click', () => {
@@ -89,33 +90,33 @@ function renderLetters() {
   for (const {letter, kind} of letters) {
     const tile = document.createElement('span');
     tile.className = kind === 'V' ? 'letter-vowel' : 'letter-consonant';
-    tile.textContent = showPattern ? kind : letter;
-    tile.setAttribute('aria-label', `${letter}: ${kind === 'V' ? 'vowel' : 'consonant'}`);
+    tile.textContent = t(showPattern ? kind : letter);
+    tile.setAttribute('aria-label', t(`${letter}: ${kind === 'V' ? 'vowel' : 'consonant'}`));
     tape.append(tile);
   }
-  if (!letters.length) tape.textContent = 'Add a few English letters to start the tape.';
+  if (!letters.length) tape.textContent = t('Add a few English letters to start the tape.');
   counts.replaceChildren();
   for (const kind of ['V', 'C'] as const) {
     const row = document.createElement('p');
     const label = document.createElement('span');
-    label.textContent = `Vowel after ${kind === 'V' ? 'vowel' : 'consonant'}`;
+    label.textContent = t(`Vowel after ${kind === 'V' ? 'vowel' : 'consonant'}`);
     const value = document.createElement('strong');
     const result = following[kind];
-    value.textContent = result.total ? `${result.vowels} / ${result.total}` : 'No pairs yet';
+    value.textContent = t(result.total ? `${result.vowels} / ${result.total}` : 'No pairs yet');
     row.append(label, value); counts.append(row);
   }
 }
 input.addEventListener('input', renderLetters);
 for (const button of dialog.querySelectorAll<HTMLButtonElement>('[data-example]')) button.addEventListener('click', () => {input.value = button.dataset.example!; renderLetters();});
-pattern.addEventListener('click', () => {showPattern = !showPattern; pattern.setAttribute('aria-pressed', String(showPattern)); pattern.textContent = showPattern ? 'See the letters' : 'See the pattern'; renderLetters();});
+pattern.addEventListener('click', () => {showPattern = !showPattern; pattern.setAttribute('aria-pressed', String(showPattern)); pattern.textContent = t(showPattern ? 'See the letters' : 'See the pattern'); renderLetters();});
 document.addEventListener('click', event => {
   const trigger = (event.target as HTMLElement).closest<HTMLElement>('[data-curiosity]');
   if (!trigger) return;
   opener = trigger;
   const mode = trigger.dataset.curiosity;
   for (const panel of dialog.querySelectorAll<HTMLElement>('[data-drawer]')) panel.hidden = panel.dataset.drawer !== mode;
-  title.textContent = mode === '1913' ? 'Before chat, there were letters.' : 'One more token?';
-  number.textContent = mode === '1913' ? 'A time capsule / 1913' : 'You found the sentence machine';
+  title.textContent = t(mode === '1913' ? 'Before chat, there were letters.' : 'One more token?');
+  number.textContent = t(mode === '1913' ? 'A time capsule / 1913' : 'You found the sentence machine');
   renderSentence(); renderCandidates(); renderLetters();
   dialog.showModal(); document.body.classList.add('curiosity-is-open');
   dialog.querySelector<HTMLButtonElement>('.curiosity-close')!.focus();

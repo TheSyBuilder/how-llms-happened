@@ -1,3 +1,4 @@
+import '../../i18n/preact';
 import {useState} from 'preact/hooks';
 
 export const toyText = 'the cat sat. the cat slept. the cat ran. the car rolled. the dog ran. the dog slept. ';
