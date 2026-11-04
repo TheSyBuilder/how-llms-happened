@@ -6,13 +6,13 @@ import { sourceLink } from "../lib/chapters";
 <section class="story-section" id="problem">
   <p class="eyebrow">01 / The problem before</p>
   <h2>A good memory<br />isn’t a library.</h2>
-  <p>A language model stores some facts in its <strong>parameters</strong>, the numbers learned during training. But you cannot simply open those numbers, find an outdated fact, and replace one sentence. And a fluent answer does not tell you where the information came from.</p>
-  <p>Think of answering a question from memory versus looking something up. Could a model do the second before it starts writing?</p>
+  <p>A model keeps learned patterns in its <strong>parameters</strong>: numbers changed during training. Updating a fact inside those numbers is harder than replacing a library notice.</p>
+  <p>Could a model look something up before answering?</p>
 </section>
 <section class="story-section" id="idea">
   <p class="eyebrow">02 / The big idea</p>
   <h2>Look first.<br />Then write.</h2>
-  <p>In 2020, Patrick Lewis and colleagues introduced <strong>retrieval-augmented generation</strong>, or RAG: generating text with help from retrieved passages. Their system paired a <strong>retriever</strong>, which finds relevant text, with a <strong>generator</strong>, which writes an answer using the question and that text.</p>
+  <p>Patrick Lewis and colleagues introduced <strong>retrieval-augmented generation</strong>, or RAG, in 2020. A <strong>retriever</strong> finds useful text. A <strong>generator</strong> uses it to write an answer.</p>
   <p>The library was Wikipedia. To search it, the retriever represented questions and passages as <strong>vectors</strong>: lists of numbers used to score how well they match. The generator was BART, a model already trained to read input text and produce new text. Training adjusted the question-searching and writing parts together.</p>
   <p>This created two places to keep knowledge: the learned parameters and an external library. You could replace the library without retraining the model. But finding a passage was no guarantee that it was correct, or that the answer would follow it.</p>
   <figure class="idea-diagram retrieval-diagram">

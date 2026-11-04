@@ -134,3 +134,31 @@
 .switcher-list { overflow:auto; min-height:0; overscroll-behavior:contain; }
 .chapter-nav .nav-paper { margin-left:auto; font-size:12px; }
 @media(max-width:380px) { .chapter-nav a { padding-inline:7px; font-size:11px; } .chapter-nav .nav-paper { font-size:11px; } }
+
+/* A short, approachable first layer before the paper details. */
+.first-look { max-width:670px; margin:24px 0; padding:20px 24px; border-left:4px solid var(--accent); background:var(--surface); border-radius:0 6px 6px 0; }
+.first-look p { font-size:20px; line-height:1.65; }
+.first-look > div { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:12px; }
+.first-look a,.listen-idea { font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
+.listen-idea { background:none; border:1px solid var(--line); border-radius:5px; padding:8px 12px; color:var(--ink); cursor:pointer; }
+.listen-idea[hidden] { display:none; }
+.listen-status { display:block; font-size:13px; }
+.chapter-page[data-view=reference] .first-look {display:none;}
+.chapter-page[data-view=play] .first-look { margin-block:15px; padding:12px 18px; }
+.chapter-page[data-view=play] .first-look p {font-size:16px;}
+.chapter-page[data-view=play] .first-look a {display:none;}
+.discovery .first-move { font-size:17px; line-height:1.6; margin:0; }
+.first-move strong { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--deep); margin-bottom:5px; }
+.discovery .wonder-question { font-size:16px; margin-top:12px; font-weight:600; }
+.discovery summary { font-size:15px; }
+.discovery .discovery-hint {font-size:16px;line-height:1.6;}
+.gentle-start { padding-block:35px; }
+.gentle-start h2 { font-size:clamp(28px,4vw,42px); margin-block:12px; }
+.gentle-start > p:not(.eyebrow) { max-width:650px; font-size:17px; }
+.gentle-start > div { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px; }
+.gentle-start a { padding:20px; border:1px solid var(--line); border-radius:7px; background:var(--surface); text-decoration:none; font-family:var(--display); font-size:21px; }
+.gentle-start a:hover { border-color:var(--deep); }
+.gentle-start a span { display:block; margin-top:10px; font:14px var(--body); color:var(--deep); }
+.game-original-title { font-size:13px; color:var(--muted); margin-bottom:12px; }
+.early-small,.toy-footnote,.toy-method { font-size:14px; }
+@media(max-width:700px) { .gentle-start > div {grid-template-columns:1fr;gap:10px;} .first-look {padding:16px;} .first-look p {font-size:18px;} .game-original-title {font-size:12px;} }

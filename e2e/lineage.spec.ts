@@ -1444,3 +1444,39 @@ for(const slug of ['next-letter','zero-counts','speech','word-vectors','elman','
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
  });
 }
+
+test('all chapters offer a plain first idea, visible first move and optional answer',async({page},info)=>{
+ test.setTimeout(120_000);
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ await page.goto('/');
+ const links=await page.locator('.timeline-card > a').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')!));
+ expect(links).toHaveLength(30);
+ await expect(page.getByRole('region',{name:'Easy places to start'})).toBeVisible();
+ await page.locator('.gentle-start').screenshot({path:info.outputPath('easy-start.png')});
+ for(const link of links){
+  await page.goto(link+'#play');
+  await expect(page.locator('.first-look > p')).toBeVisible();
+  await expect(page.locator('.first-move')).toBeVisible();
+  await expect(page.locator('.wonder-question')).toBeVisible();
+  await expect(page.locator('.discovery details')).not.toHaveAttribute('open','');
+  await page.locator('.discovery summary').focus();await page.keyboard.press('Enter');
+  await expect(page.locator('.discovery-hint')).toBeVisible();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  const slug=link.split('/')[2];
+  await page.locator('.chapter-hero').screenshot({path:info.outputPath(`${slug}-first-look.png`),animations:'disabled'});
+ }
+ expect(errors).toEqual([]);
+});
+
+test('read aloud can start and stop without hiding the written idea',async({page})=>{
+ await page.addInitScript(()=>{
+  let active:SpeechSynthesisUtterance|undefined;
+  Object.defineProperty(window,'speechSynthesis',{value:{cancel(){const stopped=active;active=undefined;setTimeout(()=>stopped?.dispatchEvent(new Event('error')),0);},speak(speech:SpeechSynthesisUtterance){active=speech;(window as unknown as {spoken:string}).spoken=speech.text;}}});
+ });
+ await page.goto('/chapters/next-letter/');
+ const listen=page.getByRole('button',{name:'Listen to the idea',exact:true});
+ await listen.focus();await page.keyboard.press('Enter');
+ await expect(page.getByRole('button',{name:'Stop reading',exact:true})).toBeVisible();
+ expect(await page.evaluate(()=>(window as unknown as {spoken:string}).spoken)).toBe(await page.locator('.first-look > p').textContent());
+ await page.keyboard.press('Enter');await expect(listen).toBeVisible();await expect(page.locator('.listen-status')).toHaveText('Stopped.');
+});

@@ -1,6 +1,6 @@
 ---
-import { discoveries } from '../lib/discoveries';
+import { firstSteps } from '../lib/first-steps';
 const {slug}=Astro.props;
-const discovery=discoveries[slug];
+const step=firstSteps[slug];
 ---
-{discovery && <aside class="discovery"><details><summary>Try a challenge <span aria-hidden="true">+</span></summary><p>{discovery.try}</p><p class="discovery-hint">{discovery.notice}</p></details></aside>}
+{step && <aside class="discovery"><p class="first-move"><strong>Try this first</strong> {step.action}</p><p class="wonder-question">{step.question}</p><details><summary>What’s going on? <span aria-hidden="true">+</span></summary><p class="discovery-hint">{step.answer}</p></details></aside>}

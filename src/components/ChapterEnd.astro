@@ -1,9 +1,9 @@
 ---
-import { discoveries } from '../lib/discoveries';
+import { firstSteps } from '../lib/first-steps';
 const {slug}=Astro.props;
-const discovery=discoveries[slug];
+const discovery=firstSteps[slug];
 ---
-{discovery && <section class="chapter-end" aria-label="Take the idea with you"><p class="eyebrow">Tell a friend</p><p>{discovery.takeaway}</p><div><button class="share-experiment" type="button">Copy experiment link</button><a href="https://github.com/TheSyBuilder/how-llms-happened">Enjoyed this? Star on GitHub ↗</a></div><span class="share-status" role="status"></span></section>}
+{discovery && <section class="chapter-end" aria-label="Take the idea with you"><p class="eyebrow">Tell a friend</p><p>{discovery.idea}</p><div><button class="share-experiment" type="button">Copy experiment link</button><a href="https://github.com/TheSyBuilder/how-llms-happened">Enjoyed this? Star on GitHub ↗</a></div><span class="share-status" role="status"></span></section>}
 <script>
 for(const button of document.querySelectorAll<HTMLButtonElement>('.share-experiment')) button.addEventListener('click',async()=>{
  const url=new URL(location.href);url.hash='play';

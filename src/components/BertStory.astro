@@ -7,13 +7,13 @@ import { sourceLink, paperLink } from "../lib/chapters";
   <p class="eyebrow">01 / The problem before</p>
   <h2>The answer can come later.</h2>
   <p>“The metal ___ crossed the sky.” Stop at the blank and you have only part of the clue. Read the rest and “plane” becomes a good guess. Understanding a word can depend on what follows it.</p>
-  <p>GPT-1’s reading exercise predicted the next piece of text using only earlier pieces. That suits writing a continuation. For tasks like finding an answer inside a passage, a model can use the whole passage. How could learning from text prepare it to read in both directions at once?</p>
+  <p>GPT-1 guessed what came next. But when filling a gap, why ignore the words after it? BERT practised using both sides.</p>
 </section>
 <section class="story-section" id="idea">
   <p class="eyebrow">02 / The big idea</p>
   <h2>Hide a word.<br />Read around it.</h2>
   <p><strong>BERT</strong> arrived in 2018 with a fill-in-the-blank exercise. Hide some text, then predict what belonged there. This is <strong>masked language modelling</strong>: learning to recover selected pieces of text from a partly hidden input. The original text supplies the answers.</p>
-  <p>BERT uses a Transformer <strong>encoder</strong>—a network that builds a representation of an input. Its <strong>attention</strong>, the mechanism for mixing information between positions, lets left and right context meet throughout the network. Hiding the answer matters: if every word could see itself during ordinary word prediction, it could simply copy.</p>
+  <p>BERT’s <strong>encoder</strong> turns the input into useful numbers. <strong>Attention</strong> lets words share clues from either side of the gap. The answer must be hidden, or the model could just copy it.</p>
   <p>The original BERT also practised deciding whether two text spans followed each other. These reading exercises are <strong>pretraining</strong>: learning before a particular job. <strong>Fine-tuning</strong> means updating the model with examples of that job. BERT adapted its whole network plus a small new output layer to locate answers or categorise sentences.</p>
   <figure class="idea-diagram bert-diagram">
     <svg viewBox="0 0 400 450" role="img" aria-labelledby="bert-title bert-desc">

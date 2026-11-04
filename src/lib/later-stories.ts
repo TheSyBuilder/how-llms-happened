@@ -19,7 +19,7 @@ export const laterStories: Record<string, {headline:string; problem:string; idea
   },
   "open-models": {
     "headline": "Get the weights. Make it yours.",
-    "problem": "An API lets you ask a model questions. It does not necessarily let you inspect or change its weights: the learned numbers inside the network. Reproducing training from scratch can be expensive.",
+    "problem": "Using a model through a website is one thing. Running it yourself is another. For that, you need its weights—the numbers it learned during training. Making your own from scratch can cost a lot.",
     "idea": [
       "Releasing model weights lets other researchers run, study and adapt an existing model. LLaMA (2023) presented models from 7 to 65 billion parameters trained using publicly available datasets.",
       "Access comes in degrees. A weights release, a dataset release and permission for a particular use are separate questions. OPT and BLOOM belong in this story too; “open” does not mean every release has identical terms."
@@ -37,7 +37,7 @@ export const laterStories: Record<string, {headline:string; problem:string; idea
   },
   "mixture-of-experts": {
     "headline": "A bigger team. A smaller shift.",
-    "problem": "In a dense network, each token uses the same blocks of parameters. Adding capacity can make every token more expensive to process. Could we keep more capacity available without using all of it every time?",
+    "problem": "Must every part of a model work on every piece of text? What if it could send each piece to just one of several helpers?",
     "idea": [
       "A mixture of experts replaces some network blocks with several alternatives. A router chooses which expert, a small neural network, will process each token. Switch Transformers (2021) simplified this to one selected expert per token.",
       "These experts learn; they are not manually assigned subjects such as history or maths. Routing must also share work sensibly. If everyone queues for the same expert, some capacity sits idle while another expert overflows."
@@ -73,7 +73,7 @@ export const laterStories: Record<string, {headline:string; problem:string; idea
   },
   "dpo": {
     "headline": "Teach the comparison directly.",
-    "problem": "Human-feedback training can involve several moving parts: collect comparisons, fit a reward model, then optimize the language model against it. Can we use the comparisons more directly?",
+    "problem": "Suppose people choose the clearer of two answers. Can the model learn straight from that choice, with fewer steps in between?",
     "idea": [
       "Direct Preference Optimization (DPO, 2023) trains on a preferred and a rejected answer. It compares how much the model favors each answer relative to a fixed reference model, then adjusts the model using a single training objective.",
       "The reference is the starting point used to measure the change. A preference says which answer people chose; it is not proof that the answer is true. Better comparisons still matter."

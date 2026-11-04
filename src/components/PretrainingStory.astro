@@ -6,14 +6,14 @@ import { sourceLink, paperLink } from "../lib/chapters";
 <section class="story-section" id="problem">
   <p class="eyebrow">01 / The problem before</p>
   <h2>Why start from zero?</h2>
-  <p>A <strong>label</strong> is an answer attached to an example, such as “positive” on a film review. Labels take work to collect; ordinary text is easier to find. Could reading give a model a head start?</p>
-  <p>Earlier systems reused word representations—lists of numbers describing words. Now the opportunity was to reuse a whole <strong>language model</strong>: a model that learns to predict text from context.</p>
+  <p>A <strong>label</strong> is an answer attached to an example: “positive” on a happy film review. Collecting answers takes work. Could reading first help?</p>
+  <p>A <strong>language model</strong> learns to guess text from earlier clues. Researchers wanted to reuse what it had learned.</p>
 </section>
 <section class="story-section" id="idea">
   <p class="eyebrow">02 / The big idea</p>
   <h2>Read first. Specialise second.</h2>
   <p><strong>Pretraining</strong> is learning before a particular task. Predicting words supplies its own answers: the text tells you what comes next. <strong>Fine-tuning</strong> then updates the model using task examples. Think of reading widely before learning a new job.</p>
-  <p>Three projects carried reading forward differently. <strong>ELMo</strong> supplied context-sensitive representations: “bank” could look different beside “river” and “money.” <strong>ULMFiT</strong> adapted a model that processed words one at a time, first to the task’s unlabelled text, then to labels, changing its layers carefully.</p>
+  <p>Three projects tried this. <strong>ELMo</strong> supplied context-sensitive representations: “bank” could look different beside “river” and “money.” <strong>ULMFiT</strong> adapted a model that processed words one at a time, first to the task’s unlabelled text, then to labels, changing its layers carefully.</p>
   <p><strong>GPT-1</strong> used a Transformer—a network where words exchange information through attention. It predicted the next chunk of text in books using earlier text, then adapted the network with a small task-specific output. The starting point was now an entire pretrained Transformer.</p>
   <figure class="idea-diagram transfer-diagram">
     <svg viewBox="0 0 640 440" role="img" aria-labelledby="transfer-title transfer-desc">
