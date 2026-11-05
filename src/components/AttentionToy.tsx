@@ -15,18 +15,21 @@ const values = [0, 1, 0, 0, 0, 1];
 
 export function attend(direction: number, position: number, causal: boolean) {
   const q: [number, number] = [direction / 100, 1 - direction / 100];
-  const scores = keys.map((k, i) =>
-    causal && i > position
-      ? -Infinity
-      : (q[0] * k[0] + q[1] * k[1]) / Math.sqrt(2),
-  );
+  const matches = keys.map(k => (q[0] * k[0] + q[1] * k[1]) / Math.sqrt(2));
+  const scores = matches.map((match, i) => causal && i > position ? -Infinity : match);
   const peak = Math.max(...scores);
   const exp = scores.map((score) => Math.exp(score - peak));
   const sum = exp.reduce((a, b) => a + b, 0);
   const weights = exp.map((value) => value / sum);
+  const contributions = weights.map((weight, i) => weight * values[i]!);
+  const largest = Math.max(...weights);
   return {
+    query: q,
+    matches,
     weights,
-    mixture: weights.reduce((sum, weight, i) => sum + weight * values[i]!, 0),
+    contributions,
+    strongestPositions: weights.flatMap((weight, i) => Math.abs(weight - largest) < 1e-12 ? [i] : []),
+    mixture: contributions.reduce((sum, contribution) => sum + contribution, 0),
   };
 }
 
@@ -34,8 +37,10 @@ export default function AttentionToy() {
   const [direction, setDirection] = useState(80);
   const [position, setPosition] = useState(2);
   const [causal, setCausal] = useState(false);
-  const { weights, mixture } = attend(direction, position, causal);
-  const winner = words[weights.indexOf(Math.max(...weights))];
+  const [inspected, setInspected] = useState(1);
+  const { query, matches, weights, contributions, strongestPositions, mixture } = attend(direction, position, causal);
+  const winner = words[strongestPositions[0]!];
+  const hidden = causal && inspected > position;
   return (
     <div class="attention-toy">
       <div class="toy-topline">
@@ -127,7 +132,11 @@ export default function AttentionToy() {
         ))}
       </div>
       <div class="toy-result" role="status" aria-live="polite">
-        <strong>“{winner}” gets the biggest share.</strong>
+        <strong data-testid="attention-winner">
+          {strongestPositions.length === 1
+            ? `“${winner}” gets the biggest share.`
+            : `${strongestPositions.length} words tie for the biggest share.`}
+        </strong>
         <p>
           The read mixes value numbers: cat and mat carry 1; the others carry 0.
           Its output is{" "}
@@ -141,6 +150,49 @@ export default function AttentionToy() {
           </p>
         )}
       </div>
+      <details class="toy-method attention-inspector">
+        <summary>Follow the numbers</summary>
+        <label class="attention-inspect-label" for="inspect-word">
+          Follow one word
+          <select id="inspect-word" value={inspected} onChange={event => setInspected(Number(event.currentTarget.value))}>
+            {words.map((word, i) => <option value={i}>{`${word}, word ${i + 1}`}</option>)}
+          </select>
+        </label>
+        <ol class="attention-read-steps">
+          <li>
+            <h4>1. Match query to key</h4>
+            <div>
+              <div class="attention-vectors">
+                <span>Query <output dir="ltr">[{query.map(n => n.toFixed(2)).join(", ")}]</output></span>
+                <span>Key <output dir="ltr">[{keys[inspected]!.join(", ")}]</output></span>
+              </div>
+              <p class="attention-arithmetic" dir="ltr">
+                ({query[0].toFixed(2)} × {keys[inspected]![0]} + {query[1].toFixed(2)} × {keys[inspected]![1]}) / √2 = <output data-testid="inspected-match">{matches[inspected]!.toFixed(3)}</output>
+              </p>
+            </div>
+          </li>
+          <li>
+            <h4>2. Give it a share</h4>
+            <div>
+              <output class="attention-step-number" data-testid="inspected-weight">{(weights[inspected]! * 100).toFixed(1)}%</output>
+              <p>{hidden ? "This word is hidden. Its match is excluded before shares are calculated." : "Softmax compares all allowed matches and makes their shares add up to 100%."}</p>
+            </div>
+          </li>
+          <li>
+            <h4>3. Mix the values</h4>
+            <div>
+              <p>Share × value = contribution</p>
+              <p class="attention-arithmetic" dir="ltr">{weights[inspected]!.toFixed(3)} × {values[inspected]} = <output data-testid="inspected-contribution">{contributions[inspected]!.toFixed(3)}</output></p>
+              <p>Add every word’s contribution to get the read.</p>
+              <div class="attention-contributions" dir="ltr">
+                {words.map((word, i) => <span><b>{word}</b><output>{contributions[i]!.toFixed(3)}</output></span>)}
+              </div>
+              <p class="attention-total">Read <output data-testid="inspected-total">{mixture.toFixed(3)}</output></p>
+              <p class="toy-footnote">Displayed numbers are rounded.</p>
+            </div>
+          </li>
+        </ol>
+      </details>
       <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">
         This toy illustrates one attention head. Real queries, keys, and values
         are learned vectors; this slider’s directions and value numbers are

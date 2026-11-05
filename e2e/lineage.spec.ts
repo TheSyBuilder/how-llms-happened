@@ -561,6 +561,72 @@ test("timeline, chapter, toy, and old bookmarks work", async ({
   expect(errors).toEqual([]);
 });
 
+for (const locale of ['en', 'zh', 'ar']) {
+ test(`${locale} Transformer explains word contributions and tied reads`, async ({page}, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  const activate = async (el: ReturnType<typeof page.getByRole>) => {
+   if (info.project.name === 'mobile-chromium') await el.tap(); else await el.click();
+  };
+  const prefix = locale === 'en' ? '' : `/${locale}`;
+  await page.goto(`${prefix}/chapters/transformer/`);
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr', '');
+  const inspector = page.locator('.attention-inspector');
+  await expect(inspector).not.toHaveAttribute('open', '');
+  const words = await page.locator('.chapter-hero,.story-section').allTextContents();
+  if (locale === 'en') expect(words.join(' ').trim().split(/\s+/).length).toBeLessThan(800);
+  await inspector.locator('summary').focus(); await page.keyboard.press('Enter');
+  await expect(inspector).toHaveAttribute('open', '');
+  await expect(page.getByTestId('inspected-match')).toHaveText('1.131');
+  await page.locator('#inspect-word').selectOption('5');
+  await page.locator('#inspect-word').focus();
+  // Native select type-ahead works in both desktop and mobile browser contexts.
+  await page.keyboard.press('c');
+  await expect(page.locator('#inspect-word')).toHaveValue('1');
+  await expect(page.getByTestId('inspected-match')).toHaveText('1.131');
+  await page.locator('#inspect-word').selectOption('5');
+  await expect(page.getByTestId('inspected-match')).toHaveText('0.566');
+  const initial = await page.getByTestId('inspected-contribution').textContent();
+  const slider = page.locator('#query-direction');
+  await slider.focus(); await page.keyboard.press('Home');
+  expect(await page.getByTestId('inspected-contribution').textContent()).not.toEqual(initial);
+  for (let i = 0; i < 50; i++) await page.keyboard.press('ArrowRight');
+  await expect(slider).toHaveValue('50');
+  await expect(page.getByTestId('attention-winner')).toHaveText(locale === 'en' ? '2 words tie for the biggest share.' : locale === 'zh' ? '有 2 个词并列获得最大份额。' : 'فيه 2 كلمات متساوية في أكبر حصة.');
+  expect(await inspector.evaluate(el => {
+   const bounds = el.getBoundingClientRect();
+   return [...el.querySelectorAll('.attention-read-steps p, .attention-read-steps output')].every(node => {
+    const box = node.getBoundingClientRect();
+    return box.left >= bounds.left - 1 && box.right <= bounds.right + 1;
+   });
+  })).toBe(true);
+  await inspector.screenshot({path:info.outputPath(`${locale}-attention-read.png`), animations:'disabled'});
+  await activate(page.locator('.token-picker button').first());
+  const mask = page.locator('.mask-toggle input');
+  await activate(mask);
+  await expect(page.getByTestId('inspected-weight')).toHaveText('0.0%');
+  await expect(page.getByTestId('inspected-contribution')).toHaveText('0.000');
+  await expect(page.getByTestId('inspected-total')).toHaveText('0.000');
+  await expect(inspector.locator('.attention-read-steps > li').nth(1)).toContainText(locale === 'en' ? 'This word is hidden.' : locale === 'zh' ? '这个词已被隐藏' : 'هالكلمة مخفية');
+  await inspector.screenshot({path:info.outputPath(`${locale}-attention-hidden.png`), animations:'disabled'});
+  await mask.focus(); await page.keyboard.press('Space');
+  await expect(page.getByTestId('inspected-total')).not.toHaveText('0.000');
+  await expect(page.getByTestId('inspected-total')).toHaveText((await page.getByTestId('mixture').textContent())!);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(page.locator('.weight-track > span').first()).toHaveCSS('transition-duration', '0s');
+  if (locale !== 'en') {
+   await expect(inspector).not.toContainText('Follow the numbers');
+   await expect(inspector).not.toContainText('Give it a share');
+  }
+  await page.locator('.attention-toy').screenshot({path:info.outputPath(`${locale}-attention-toy.png`), animations:'disabled'});
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.locator('#sources summary').focus(); await page.keyboard.press('Enter');
+  await expect(page.locator('#sources a[href="https://arxiv.org/pdf/1706.03762v7"]')).toBeVisible();
+  expect(errors).toEqual([]);
+ });
+}
+
 test("pretraining transfers reading patterns with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
@@ -1510,6 +1576,7 @@ for(const locale of ['zh','ar']) {
     await range.focus();await page.keyboard.press('End');await expect(range).toHaveValue((await range.getAttribute('max'))!);
     await page.keyboard.press('Home');await expect(range).toHaveValue(String(Number((await range.getAttribute('min'))??'0')));
    }
+   for(const summary of await toy.locator('details:has(select):not([open]) > summary').all()){await summary.focus();await page.keyboard.press('Enter');}
    for(const select of await toy.locator('select').all()){const values=await select.locator('option').evaluateAll(options=>options.map(o=>(o as HTMLOptionElement).value));if(values.length){await select.selectOption(values.at(-1)!);await expect(select).toHaveValue(values.at(-1)!);}}
    const button=toy.locator('button:enabled').first();
    if(await button.count()){if(info.project.name==='mobile-chromium')await button.tap();else await button.click();await button.focus();await page.keyboard.press('Enter');}
