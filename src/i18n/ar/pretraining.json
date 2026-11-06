@@ -154,6 +154,18 @@
     "% positive; read, then fine-tune": "% إيجابي؛ القراءة ثم الضبط الدقيق",
     "% positive.": "% إيجابي.",
     "negative": "سلبي",
-    "Leans negative": "يميل للسلبي"
+    "Leans negative": "يميل للسلبي",
+    "Try zero labels, then two. Change splendid’s reading clue to “sigh.” Does reading still help?": "جرّب بدون تصنيفات، ثم أضف تصنيفين. غيّر نهاية جملة splendid إلى “sigh”. هل القراءة للحين تفيد؟",
+    "Two tiny learners, identical starts and review labels. Only one reads first.": "متعلّمان صغيران، نفس البداية ونفس تصنيفات التقييم. واحد بس يقرأ أول.",
+    "Reading predicts “smile” or “sigh” from the adjective. Words used alike acquire similar numbers.": "القراءة تتوقّع “smile” أو “sigh” من الصفة. الكلمات ذات الاستخدام المتشابه تتعلّم أرقامًا متقاربة.",
+    "Change this word’s reading clue": "غيّر نهاية جملة هالكلمة",
+    "Change its sentence ending. Both learners keep the same review labels.": "غيّر نهاية الجملة. تصنيفات التقييم تبقى نفسها عند المتعلّمين.",
+    "Reading ending for {0}": "نهاية جملة {0} في القراءة",
+    "Restore all reading clues": "رجّع جمل القراءة مثل أول",
+    "A changed reading clue can change the rating.": "تغيير جملة القراءة ممكن يغيّر التقييم.",
+    "The toy reuses this word’s new reading group. A head start can carry a misleading clue into a new job.": "التجربة تستخدم المجموعة اللي انتقلت لها الكلمة بعد القراءة. التعلّم السابق ممكن ينقل نمطًا مضللًا للمهمة الجديدة.",
+    "Reading grouped adjectives by their endings. Fine-tuning connects groups to ratings. Try changing a reading clue.": "القراءة جمّعت الصفات حسب نهاية الجملة. الضبط الدقيق يربط المجموعات بالتقييمات. جرّب تغيّر نهاية جملة.",
+    "Toy percentages are not paper results or reliable confidence estimates. Each adjective has one learned number. The model learns this pattern, not English. Reading costs extra training.": "النسب في التجربة مو نتائج أوراق ولا تقديرات ثقة موثوقة. لكل صفة رقم متعلّم واحد. النموذج يتعلّم هالنمط، مو الإنجليزية. والقراءة تحتاج تدريبًا إضافيًا.",
+    "Changing a reading clue retrains the reading stage from the same starting numbers, then repeats fine-tuning. Review labels stay fixed. An unlabelled adjective can inherit a misleading pattern; adding its review label lets fine-tuning update that adjective directly.": "إذا غيّرت جملة القراءة، نعيد تدريب مرحلة القراءة من نفس أرقام البداية، ثم نكرر الضبط الدقيق. تصنيفات التقييم ما تتغيّر. الصفة اللي ما لها تصنيف ممكن تأخذ نمطًا مضللًا؛ وإذا أضفت تصنيفها، يقدر الضبط الدقيق يحدّث رقمها مباشرة."
   }
 }

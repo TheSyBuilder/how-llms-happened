@@ -33,7 +33,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
   <h2>Two labels.<br />More than two words.</h2><Discovery slug="pretraining" />
-  <p>Try zero labels, then two, then eight. When does reading help most?</p>
+  <p>Try zero labels, then two. Change splendid’s reading clue to “sigh.” Does reading still help?</p>
   <noscript><p>Enable JavaScript to try the toy. Reading groups adjectives by the words that follow them. A few review labels can then teach a rating for a whole group.</p></noscript>
   <PretrainingToy client:load />
 </section>
@@ -59,6 +59,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
     <h3>What the toy actually trains</h3>
     <p>Each adjective has one learned number e. A prediction is <code>sigmoid(w × e + b)</code>; sigmoid maps its input to a value between zero and one. Reading updates e, w, and b to predict “smile” versus “sigh.” Fine-tuning replaces the output with a fresh rating output, then updates it and the adjective numbers using the selected labels. Both stages use 100 passes over their tiny data.</p>
     <p>The comparison uses identical initial adjective numbers and identical label training. Unlabelled adjectives keep their reading patterns. This omits attention, word order, contextual representations, and realistic data; it illustrates transfer, not any paper’s implementation.</p>
+    <p>Changing a reading clue retrains the reading stage from the same starting numbers, then repeats fine-tuning. Review labels stay fixed. An unlabelled adjective can inherit a misleading pattern; adding its review label lets fine-tuning update that adjective directly.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">

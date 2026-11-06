@@ -699,6 +699,71 @@ test("pretraining transfers reading patterns with mouse, touch, and keyboard", a
   expect(errors).toEqual([]);
 });
 
+for (const locale of ["en", "zh", "ar"]) {
+ test(`${locale} pretraining can transfer a misleading clue and recover with a label`, async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  const activate = async (element: ReturnType<typeof page.locator>) => {
+   if (info.project.name === "mobile-chromium") await element.tap(); else await element.click();
+  };
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  await page.goto(`${prefix}/chapters/pretraining/`);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  await page.locator(".chapter-hero").screenshot({ path: info.outputPath(`${locale}-pretraining-story.png`) });
+  await page.locator(".transfer-diagram").screenshot({ path: info.outputPath(`${locale}-pretraining-diagram.png`) });
+  await page.locator('.chapter-nav a[href="#play"]').click();
+  const editor = page.locator(".reading-editor");
+  const reset = page.locator(".reading-reset");
+  const scratch = page.getByTestId("scratch-probability");
+  const pretrained = page.getByTestId("pretrained-probability");
+  const initialScratch = await scratch.textContent();
+  const initialPretrained = await pretrained.textContent();
+  await expect(editor).not.toHaveAttribute("open", "");
+  await editor.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(reset).toBeDisabled();
+  await expect(editor.locator("summary")).toHaveText(locale === "ar" ? "غيّر نهاية جملة هالكلمة" : locale === "zh" ? "改变这个词的阅读线索" : "Change this word’s reading clue");
+  await activate(editor.locator('input[value="sigh"]'));
+  await expect(page.getByTestId("reading-sentence")).toHaveText("The splendid film made us sigh.");
+  expect(parseInt((await pretrained.textContent())!)).toBeLessThan(10);
+  await expect(scratch).toHaveText(initialScratch!);
+  await expect(page.locator(".toy-result strong")).toHaveText(locale === "ar" ? "تغيير جملة القراءة ممكن يغيّر التقييم." : locale === "zh" ? "阅读线索变了，评价也可能跟着变。" : "A changed reading clue can change the rating.");
+  await activate(page.locator(".reading-sample summary"));
+  await expect(page.locator(".reading-sample li").nth(2)).toHaveText("The splendid film made us sigh.");
+  await activate(page.locator(".reading-sample summary"));
+  await page.locator(".transfer-experiment").screenshot({ path: info.outputPath(`${locale}-pretraining-misleading.png`) });
+  const slider = page.locator("#review-count");
+  await slider.focus(); await page.keyboard.press("Home");
+  await expect(pretrained).toHaveText("50%"); await expect(scratch).toHaveText("50%");
+  for (let i = 0; i < 3; i++) await page.keyboard.press("ArrowRight");
+  await expect(slider).toHaveValue("6");
+  expect(parseInt((await pretrained.textContent())!)).toBeGreaterThan(90);
+  await page.locator(".transfer-experiment").screenshot({ path: info.outputPath(`${locale}-pretraining-corrected.png`) });
+  await slider.focus(); await page.keyboard.press("Home"); await page.keyboard.press("ArrowRight");
+  await reset.focus(); await page.keyboard.press("Enter");
+  await expect(reset).toBeDisabled(); await expect(pretrained).toHaveText(initialPretrained!);
+  const smile = editor.locator('input[value="smile"]');
+  await smile.focus(); await page.keyboard.press("ArrowRight");
+  await expect(editor.locator('input[value="sigh"]')).toBeChecked();
+  expect(parseInt((await pretrained.textContent())!)).toBeLessThan(10);
+  await activate(page.locator('input[name="review-word"][value="awful"]'));
+  await expect(page.getByTestId("reading-sentence")).toHaveText("The awful film made us sigh.");
+  await activate(smile);
+  await activate(page.locator('input[name="review-word"][value="splendid"]'));
+  await expect(page.getByTestId("reading-sentence")).toHaveText("The splendid film made us sigh.");
+  await activate(reset); await expect(pretrained).toHaveText(initialPretrained!);
+  await activate(page.locator('input[name="review-word"][value="awful"]'));
+  await expect(page.getByTestId("reading-sentence")).toHaveText("The awful film made us sigh.");
+  await activate(page.locator('input[name="review-word"][value="splendid"]'));
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".prediction-track > span").first()).toHaveCSS("transition-duration", "0s");
+  await page.locator(".pretraining-toy").screenshot({ path: info.outputPath(`${locale}-pretraining-play.png`) });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+ });
+}
+
 test("BERT combines left and right clues with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));

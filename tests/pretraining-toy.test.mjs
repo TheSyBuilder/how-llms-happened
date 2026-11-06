@@ -10,7 +10,7 @@ const { outputText } = ts.transpileModule(source, {
 });
 const compiled = {};
 new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { learnReviews, reviews } = compiled;
+const { learnReviews, reviews, defaultReadingEndings } = compiled;
 const probability = (learner, word) => learner.predictions.find((entry) => entry.word === word).positive;
 
 test("reading alone does not assign review labels", () => {
@@ -40,4 +40,17 @@ test("both learners can learn the full labelled set without leaking between runs
     assert.deepEqual(learnReviews(2, readFirst), learnReviews(2, readFirst));
     assert.ok(learnReviews(0, readFirst).predictions.every((entry) => entry.positive === 0.5));
   }
+});
+
+test("a misleading reading clue transfers until a review label teaches that word directly", () => {
+  const endings = [...defaultReadingEndings];
+  endings[2] = "sigh"; // splendid now reads like the negative examples, but keeps its positive review label.
+  const before = [...endings];
+  assert.ok(probability(learnReviews(2, true, endings), "splendid") < 0.1);
+  assert.ok(probability(learnReviews(6, true, endings), "splendid") > 0.9);
+  assert.deepEqual(learnReviews(2, false, endings), learnReviews(2, false));
+  assert.ok(learnReviews(0, true, endings).predictions.every((entry) => entry.positive === 0.5));
+  assert.deepEqual(endings, before, "training must not mutate the reader's sentence edits");
+  assert.equal(defaultReadingEndings[2], "smile", "restoring the default must recover the original reading");
+  assert.ok(probability(learnReviews(2, true), "splendid") > 0.9);
 });

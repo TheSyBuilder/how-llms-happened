@@ -154,6 +154,18 @@
     "% positive; read, then fine-tune": "% 正面；先阅读再微调",
     "% positive.": "% 正面。",
     "negative": "负面",
-    "Leans negative": "偏向负面"
+    "Leans negative": "偏向负面",
+    "Try zero labels, then two. Change splendid’s reading clue to “sigh.” Does reading still help?": "先试零个标签，再试两个。把 splendid 在阅读中的线索改成“sigh”。先阅读还会有帮助吗？",
+    "Two tiny learners, identical starts and review labels. Only one reads first.": "两个小学习者，初始数值和影评标签都相同，只有一个先阅读。",
+    "Reading predicts “smile” or “sigh” from the adjective. Words used alike acquire similar numbers.": "阅读时，根据形容词预测“smile”或“sigh”。用法相似的词会学到相近的数值。",
+    "Change this word’s reading clue": "改变这个词的阅读线索",
+    "Change its sentence ending. Both learners keep the same review labels.": "改变它的句尾词。两个学习者使用的影评标签保持不变。",
+    "Reading ending for {0}": "{0} 在阅读中的句尾词",
+    "Restore all reading clues": "还原全部阅读线索",
+    "A changed reading clue can change the rating.": "阅读线索变了，评价也可能跟着变。",
+    "The toy reuses this word’s new reading group. A head start can carry a misleading clue into a new job.": "演示会复用这个词新学到的分组。预先学到的线索，也可能误导新任务。",
+    "Reading grouped adjectives by their endings. Fine-tuning connects groups to ratings. Try changing a reading clue.": "阅读按句尾词把形容词分组，微调再把这些组和评价联系起来。试着改变一个阅读线索。",
+    "Toy percentages are not paper results or reliable confidence estimates. Each adjective has one learned number. The model learns this pattern, not English. Reading costs extra training.": "演示中的百分比不是论文结果，也不是可靠的置信度估计。每个形容词学习一个数值。模型学到的是这个模式，不是英语。阅读需要额外训练。",
+    "Changing a reading clue retrains the reading stage from the same starting numbers, then repeats fine-tuning. Review labels stay fixed. An unlabelled adjective can inherit a misleading pattern; adding its review label lets fine-tuning update that adjective directly.": "改变阅读线索后，模型会从相同的初始数值重新训练阅读阶段，再重新微调。影评标签保持不变。没有标签的形容词可能沿用一个误导性的模式；给它添加影评标签后，微调就能直接更新这个词的数值。"
   }
 }
