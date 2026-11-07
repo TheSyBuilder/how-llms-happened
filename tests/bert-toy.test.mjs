@@ -10,7 +10,7 @@ const { outputText } = ts.transpileModule(source, {
 });
 const compiled = {};
 new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { countCompletions } = compiled;
+const { countCompletions, compareContexts } = compiled;
 const possible = (left, right) => countCompletions(left, right).predictions.filter((entry) => entry.count > 0).map((entry) => entry.word);
 
 test("left and right clues jointly distinguish words that either side leaves ambiguous", () => {
@@ -37,4 +37,21 @@ test("all supported clue choices have matches and conserve the displayed shares"
       assert.equal(result.predictions.reduce((sum, entry) => sum + entry.probability, 0), 1);
     }
   }
+});
+
+test("changing a right clue leaves the left-only guesses fixed while changing the combined guess", () => {
+  const sky = compareContexts("metal", "sky");
+  const lake = compareContexts("metal", "lake");
+  assert.deepEqual(sky.left, lake.left);
+  assert.equal(sky.both.predictions.find(entry => entry.word === "plane").probability, 1);
+  assert.equal(lake.both.predictions.find(entry => entry.word === "boat").probability, 1);
+  assert.deepEqual(compareContexts("hungry", "sky").right, sky.right);
+});
+
+test("the comparison keeps ambiguity when both clues still allow two answers", () => {
+  const views = compareContexts("little", "sky");
+  assert.equal(views.left.matches.length, 4);
+  assert.equal(views.right.matches.length, 4);
+  assert.equal(views.both.matches.length, 2);
+  assert.deepEqual(views.both.predictions.filter(entry => entry.probability > 0).map(entry => [entry.word, entry.probability]), [["bird", 0.5], ["plane", 0.5]]);
 });

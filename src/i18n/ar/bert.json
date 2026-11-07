@@ -48,7 +48,6 @@
     "Give the gap another clue.": "أضف معلومة ثانية للفراغ.",
     "Does the best guess change?": "هل تغيّر أفضل توقّع؟",
     "Yes. A clue after the gap can matter just as much as a clue before it.": "إيه. المعلومة اللي بعد الفراغ ممكن تفيد قد اللي قبله.",
-    "Try “metal” with “sky,” then “lake.” What happens with “little” instead?": "جرّب “metal” مع “sky”، ثم مع “lake”. وش يصير إذا اخترت “little” بدلها؟",
     "Enable JavaScript to try the toy. In this invented set, “metal” leaves plane or boat; “sky” leaves bird or plane. Together they leave plane.": "فعّل JavaScript للتجربة. في هالجمل، “metal” تخلي plane أو boat ممكنة، و“sky” تخلي bird أو plane. ومع بعض ما يبقى إلا plane.",
     "The clues around the gap": "المعلومات حول الفراغ",
     "Toy · eight invented sentences": "تجربة توضيحية · ثمان جمل كتبناها",
@@ -98,8 +97,6 @@
     "Two follow-ups": "بحثان لاحقان",
     "RoBERTa changes the training recipe: more data and training, larger batches, fresh masks, longer text sequences, and removal of next-sentence prediction. Its improvements show the importance of the recipe as a whole. XLNet instead varies which positions are predicted before others. The written sentence stays in order; the prediction order changes. A separate query representation identifies the target position without revealing its token.": "غيّر RoBERTa وصفة التدريب: بيانات وتدريب أكثر، ودفعات أكبر، وأقنعة متجددة، وتسلسلات أطول، وإزالة توقّع الجملة التالية. التحسن يوضح أهمية الوصفة كلها. أما XLNet فيغيّر ترتيب توقّع المواقع، مع إبقاء الجملة مكتوبة بترتيبها. تمثيل استعلام منفصل يحدد الموقع المستهدف بدون كشف رمزه.",
     "How the toy works": "كيف تشتغل التجربة؟",
-    "The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.": "التجربة تحتفظ بالجمل اللي تطابق عبارتها اليسرى أو اليمنى المعلومات الظاهرة، ثم تعد الكلمات الممكنة في الوسط. الشريط يوضح حصة الكلمة من الجمل المطابقة. ما تتدرّب أي معلمات هنا؛ التجربة توضح جمع السياق، بدون تمثيلات BERT المتعلّمة أو انتباهه أو تقسيم رموزه أو تدريبه.",
-    "Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 4: reading directions.": "المقدمة والقسم 3: GPT واتجاه السياق وبنية المرمّز والأحجام وإعادة الاستخدام. القسمان 3.1–3.2 والملحق A.1: خسارة الرموز المحجوبة وWordPiece وخيارات الاستبدال والمدخلات المزدوجة وتوقّع الجملة التالية والبيانات والضبط الكامل. القسم 4.1 والجدول 1: مهمة MultiNLI ودقة الاختبار. الشكل 4: اتجاهات القراءة.",
     "First posted October 11, 2018; the conference paper appeared in 2019.": "نُشرت أول مرة في 11 أكتوبر 2018، وظهرت ورقة المؤتمر في 2019.",
     "Sections 3–5: training recipe, fresh masking, input packing without next-sentence prediction, batches, data, and duration. The gains combine changes.": "الأقسام 3–5: وصفة التدريب والأقنعة المتجددة وتجميع المدخلات بدون توقّع الجملة التالية والدفعات والبيانات والمدة. التحسن يجمع عدة تغييرات.",
     "Sections 2.1–2.3: permutation of prediction order, unchanged written order, bidirectional context, and two-stream attention without mask-token corruption.": "الأقسام 2.1–2.3: تبديل ترتيب التوقّع مع ثبات ترتيب النص والسياق ثنائي الاتجاه والانتباه بمسارين بدون إفساد المدخل برمز حجب.",
@@ -132,6 +129,17 @@
     "Both sides help, but a missing word can still have more than one plausible answer.": "الجهتان تساعدان، لكن الفراغ ممكن يظل له أكثر من إجابة معقولة.",
     "{0}: {1} of {2} matches": "{0}: ‏{1} من أصل {2} مطابقات",
     "matching sentences.": "جمل مطابقة.",
-    "{0}: {1} percent": "{0}: ‏{1} بالمئة"
+    "{0}: {1} percent": "{0}: ‏{1} بالمئة",
+    "Compare the three views": "قارن طرق القراءة الثلاث",
+    "Change a clue above. Watch which columns change. Tap a heading to use that view.": "غيّر دليل فوق وشف أي أعمدة تتغيّر. اضغط عنوان العمود عشان تستخدم هالطريقة.",
+    "Shares in the same eight toy sentences": "النسب من نفس الجمل الثمان في التجربة",
+    "Word": "الكلمة",
+    "Left only": "اليسار فقط",
+    "Right only": "اليمين فقط",
+    "Both sides": "الجهتان",
+    "A left-only guess cannot use words after the gap. BERT can use both sides. These columns count toy sentences, not model scores.": "التوقّع من اليسار فقط ما يقدر يستفيد من الكلمات بعد الفراغ. BERT يقدر يستخدم الجهتين. الأعمدة تحسب الجمل في التجربة، وما تمثّل درجات نموذج.",
+    "Try “metal” with “sky,” then “lake.” What happens with “little” instead? Open the comparison to keep all three views on screen.": "جرّب “metal” مع “sky”، ثم مع “lake”. وش يصير لو غيّرت إلى “little”؟ افتح المقارنة عشان تشوف طرق القراءة الثلاث مع بعض.",
+    "The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. The comparison counts the same sentences three ways: left only, right only, and both sides. Its heading buttons set the visible clues. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.": "التجربة تحتفظ بالجمل اللي تطابق عبارتها اليسرى أو اليمنى المعلومات الظاهرة، ثم تعد الكلمات الممكنة في الوسط. الشريط يوضح حصة الكلمة من الجمل المطابقة. المقارنة تحسب نفس الجمل بثلاث طرق: اليسار فقط، واليمين فقط، والجهتان مع بعض. أزرار العناوين تغيّر الأدلة الظاهرة. ما تتدرّب أي معلمات هنا؛ التجربة توضح جمع السياق، بدون تمثيلات BERT المتعلّمة أو انتباهه أو تقسيم رموزه أو تدريبه.",
+    "Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 3 and Appendix A.4: reading directions.": "المقدمة والقسم 3: GPT واتجاه السياق وبنية المرمّز والأحجام وإعادة الاستخدام. القسمان 3.1–3.2 والملحق A.1: خسارة الرموز المحجوبة وWordPiece وخيارات الاستبدال والمدخلات المزدوجة وتوقّع الجملة التالية والبيانات والضبط الكامل. القسم 4.1 والجدول 1: مهمة MultiNLI ودقة الاختبار. الشكل 3 والملحق A.4: اتجاهات القراءة."
   }
 }

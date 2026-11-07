@@ -48,7 +48,6 @@
     "Give the gap another clue.": "再给空白一条线索。",
     "Does the best guess change?": "最合适的猜测变了吗？",
     "Yes. A clue after the gap can matter just as much as a clue before it.": "会。空缺后面的线索，和前面的线索一样重要。",
-    "Try “metal” with “sky,” then “lake.” What happens with “little” instead?": "先试“metal”配“sky”，再换成“lake”。如果把“metal”换成“little”呢？",
     "Enable JavaScript to try the toy. In this invented set, “metal” leaves plane or boat; “sky” leaves bird or plane. Together they leave plane.": "启用 JavaScript 即可操作。在这组自编句子里，“metal”留下 plane 或 boat，“sky”留下 bird 或 plane，两条线索一起就只剩 plane。",
     "The clues around the gap": "空缺周围的线索",
     "Toy · eight invented sentences": "教学演示 · 八个自编句子",
@@ -98,8 +97,6 @@
     "Two follow-ups": "两项后续工作",
     "RoBERTa changes the training recipe: more data and training, larger batches, fresh masks, longer text sequences, and removal of next-sentence prediction. Its improvements show the importance of the recipe as a whole. XLNet instead varies which positions are predicted before others. The written sentence stays in order; the prediction order changes. A separate query representation identifies the target position without revealing its token.": "RoBERTa 调整训练方法：更多数据和训练、更大批次、不断变化的遮罩、更长序列，并移除下一句预测。改进说明整套训练方法很重要。XLNet 则改变各位置的预测先后；句子本身不重排，只改变预测顺序。独立的查询表示标明目标位置，同时不泄露该位置的词元。",
     "How the toy works": "演示是怎样运作的",
-    "The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.": "演示保留左侧和／或右侧短语与已显示线索完全相同的句子，再统计中间可能出现的词。每根条表示该词在匹配句子中的比例。这里不训练任何参数，只展示如何结合语境，省略了 BERT 学到的表示、注意力、分词和训练。",
-    "Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 4: reading directions.": "引言和第 3 节：GPT、语境方向、编码器结构、模型规模与复用。第 3.1–3.2 节及附录 A.1：掩码词元损失、WordPiece、替换选择、成对输入、下一句预测、语料与全模型微调。第 4.1 节及表 1：MultiNLI 任务与测试准确率。图 4：阅读方向。",
     "First posted October 11, 2018; the conference paper appeared in 2019.": "首次发布于 2018 年 10 月 11 日，会议论文发表于 2019 年。",
     "Sections 3–5: training recipe, fresh masking, input packing without next-sentence prediction, batches, data, and duration. The gains combine changes.": "第 3–5 节：训练方法、动态遮罩、去掉下一句预测后的输入打包、批次、数据和时长。提升来自多项变化的组合。",
     "Sections 2.1–2.3: permutation of prediction order, unchanged written order, bidirectional context, and two-stream attention without mask-token corruption.": "第 2.1–2.3 节：排列预测顺序、保持原文顺序、双向语境，以及不靠掩码破坏输入的双流注意力。",
@@ -132,6 +129,17 @@
     "Both sides help, but a missing word can still have more than one plausible answer.": "两边都有帮助，但空缺仍可能有多个合理答案。",
     "{0}: {1} of {2} matches": "{0}：{2} 个匹配中有 {1} 个",
     "matching sentences.": "个匹配句子。",
-    "{0}: {1} percent": "{0}：百分之 {1}"
+    "{0}: {1} percent": "{0}：百分之 {1}",
+    "Compare the three views": "对比三种读法",
+    "Change a clue above. Watch which columns change. Tap a heading to use that view.": "改变上面的线索，看看哪些列会变化。点按表头，就能切换到那种读法。",
+    "Shares in the same eight toy sentences": "同一组八个示例句子中的占比",
+    "Word": "词",
+    "Left only": "只看左侧",
+    "Right only": "只看右侧",
+    "Both sides": "同时看两侧",
+    "A left-only guess cannot use words after the gap. BERT can use both sides. These columns count toy sentences, not model scores.": "只看左侧时，猜测用不到空缺后面的词。BERT 可以利用两侧语境。表中统计的是示例句子，不是模型得分。",
+    "Try “metal” with “sky,” then “lake.” What happens with “little” instead? Open the comparison to keep all three views on screen.": "先试“metal”配“sky”，再换成“lake”。如果把“metal”换成“little”呢？展开对比，就能同时看到三种读法。",
+    "The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. The comparison counts the same sentences three ways: left only, right only, and both sides. Its heading buttons set the visible clues. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.": "演示保留左侧和／或右侧短语与已显示线索完全相同的句子，再统计中间可能出现的词。每根条表示该词在匹配句子中的比例。对比表用同一组句子，分别统计只看左侧、只看右侧和同时看两侧的结果。表头按钮可以切换显示哪些线索。这里不训练任何参数，只展示如何结合语境，省略了 BERT 学到的表示、注意力、分词和训练。",
+    "Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 3 and Appendix A.4: reading directions.": "引言和第 3 节：GPT、语境方向、编码器结构、模型规模与复用。第 3.1–3.2 节及附录 A.1：掩码词元损失、WordPiece、替换选择、成对输入、下一句预测、语料与全模型微调。第 4.1 节及表 1：MultiNLI 任务与测试准确率。图 3 及附录 A.4：阅读方向。"
   }
 }

@@ -851,6 +851,69 @@ test("BERT combines left and right clues with mouse, touch, and keyboard", async
   expect(errors).toEqual([]);
 });
 
+for (const locale of ["en", "zh", "ar"]) {
+ test(`${locale} BERT compares reading directions without leaking a hidden clue`, async ({ page }, info) => {
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  const activate = async (element: ReturnType<typeof page.locator>) => {
+   if (info.project.name === "mobile-chromium") await element.tap(); else await element.click();
+  };
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  await page.goto(`${prefix}/chapters/bert/`);
+  await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+  await page.locator(".chapter-hero").screenshot({ path: info.outputPath(`${locale}-bert-story.png`) });
+  await page.locator(".bert-diagram").screenshot({ path: info.outputPath(`${locale}-bert-diagram.png`) });
+  await activate(page.locator('.chapter-nav a[href="#play"]'));
+  const comparison = page.locator(".context-comparison");
+  const summary = comparison.locator("summary");
+  const views = comparison.getByRole("button");
+  await expect(comparison).not.toHaveAttribute("open", "");
+  await summary.focus(); await page.keyboard.press("Enter");
+  await expect(summary).toHaveText(locale === "ar" ? "قارن طرق القراءة الثلاث" : locale === "zh" ? "对比三种读法" : "Compare the three views");
+  await expect(views.nth(0)).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByTestId("compare-left-plane")).toHaveText("50%");
+  await expect(page.getByTestId("compare-right-plane")).toHaveText("50%");
+  await expect(page.getByTestId("compare-both-plane")).toHaveText("100%");
+  await activate(views.nth(2));
+  await expect(page.getByTestId("completion-plane")).toHaveText("100%");
+  await expect(page.locator('.context-switch input').nth(0)).toBeChecked();
+  await expect(page.locator('.context-switch input').nth(1)).toBeChecked();
+  await page.locator("#right-clue").selectOption("lake");
+  await expect(page.getByTestId("compare-left-plane")).toHaveText("50%");
+  await expect(page.getByTestId("compare-right-plane")).toHaveText("0%");
+  await expect(page.getByTestId("compare-both-boat")).toHaveText("100%");
+  await expect(page.getByTestId("completion-boat")).toHaveText("100%");
+  await page.locator(".bert-toy").screenshot({ path: info.outputPath(`${locale}-bert-lake.png`), animations: "disabled" });
+  await views.nth(0).focus(); await page.keyboard.press("Enter");
+  await expect(views.nth(0)).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByTestId("completion-plane")).toHaveText("50%");
+  await expect(page.locator('.context-switch input').nth(1)).not.toBeChecked();
+  await activate(views.nth(1));
+  await expect(page.locator('.context-switch input').nth(0)).not.toBeChecked();
+  await expect(page.getByTestId("completion-fish")).toHaveText("50%");
+  await page.locator("#left-clue").selectOption("little");
+  await expect(page.getByTestId("compare-right-fish")).toHaveText("50%");
+  await expect(page.getByTestId("compare-left-fish")).toHaveText("25%");
+  await activate(views.nth(2));
+  await expect(page.getByTestId("completion-boat")).toHaveText("50%");
+  await expect(page.getByTestId("completion-fish")).toHaveText("50%");
+  await page.locator(".context-switch input").nth(0).focus(); await page.keyboard.press("Space");
+  await page.locator(".context-switch input").nth(1).focus(); await page.keyboard.press("Space");
+  for (const view of await views.all()) await expect(view).toHaveAttribute("aria-pressed", "false");
+  await expect(page.getByTestId("completion-fish")).toHaveText("25%");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(comparison.locator(".context-share-track > span").first()).toHaveCSS("transition-duration", "0s");
+  await views.nth(2).focus(); await page.keyboard.press("Space");
+  await expect(views.nth(2)).toHaveAttribute("aria-pressed", "true");
+  await page.locator(".bert-toy").screenshot({ path: info.outputPath(`${locale}-bert-ambiguous.png`) });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await activate(summary); await activate(summary);
+  await expect(views.nth(2)).toHaveAttribute("aria-pressed", "true");
+  expect(errors).toEqual([]);
+ });
+}
+
 test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));

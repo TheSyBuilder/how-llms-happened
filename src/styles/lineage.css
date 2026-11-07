@@ -1073,6 +1073,63 @@ input[type="checkbox"] {
   border-right: 1px solid var(--deep);
   transition: width 0.2s;
 }
+.context-comparison > p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-block: 8px 16px;
+}
+.context-comparison table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  color: var(--ink);
+  font-size: 13px;
+}
+.context-comparison caption {
+  text-align: start;
+  padding-bottom: 12px;
+  font-size: 12px;
+}
+.context-comparison th:first-child {
+  width: 20%;
+}
+.context-comparison th,
+.context-comparison td {
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+  text-align: start;
+}
+.context-comparison button {
+  width: 100%;
+  min-height: 48px;
+  padding: 6px 4px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.context-comparison button[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--accent);
+  font-weight: 700;
+}
+.context-share {
+  display: grid;
+  gap: 5px;
+  text-align: center;
+}
+.context-share-track {
+  height: 5px;
+  background: var(--paper);
+}
+.context-share-track > span {
+  display: block;
+  height: 100%;
+  background: var(--deep);
+  transition: width 0.2s;
+}
 .toy-corpus {
   font-size: 13px;
   margin-top: 22px;

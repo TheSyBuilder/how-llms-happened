@@ -27,12 +27,27 @@ export function countCompletions(left: string | null, right: string | null) {
   };
 }
 
+export function compareContexts(left: string, right: string) {
+  return {
+    left: countCompletions(left, null),
+    right: countCompletions(null, right),
+    both: countCompletions(left, right),
+  };
+}
+
+const contextViews = [
+  { id: "left", label: "Left only", showLeft: true, showRight: false },
+  { id: "right", label: "Right only", showLeft: false, showRight: true },
+  { id: "both", label: "Both sides", showLeft: true, showRight: true },
+] as const;
+
 export default function BertToy() {
   const [left, setLeft] = useState("metal");
   const [right, setRight] = useState("sky");
   const [showLeft, setShowLeft] = useState(true);
   const [showRight, setShowRight] = useState(false);
   const result = countCompletions(showLeft ? left : null, showRight ? right : null);
+  const comparison = compareContexts(left, right);
   const possible = result.predictions.filter((prediction) => prediction.count > 0).map((prediction) => prediction.word);
   return (
     <div class="bert-toy">
@@ -52,6 +67,19 @@ export default function BertToy() {
         <p>{!showLeft && !showRight ? "No clues: all four words have the same share." : showLeft && showRight ? possible.length === 1 ? "The two clues work together. Neither side alone singles out this word." : "Both sides help, but a missing word can still have more than one plausible answer." : "One side narrows the possibilities. Reveal the other side to combine the clues."}</p>
         <span class="screen-reader-only">{result.matches.length} matching sentences. {result.predictions.map(({ word, probability }) => `${word}: ${Math.round(probability * 100)} percent`).join(". ")}.</span>
       </div>
+      <details class="context-comparison toy-method">
+        <summary>Compare the three views</summary>
+        <p>Change a clue above. Watch which columns change. Tap a heading to use that view.</p>
+        <table>
+          <caption>Shares in the same eight toy sentences</caption>
+          <thead><tr><th scope="col">Word</th>{contextViews.map((view) => <th scope="col" key={view.id}><button type="button" aria-pressed={showLeft === view.showLeft && showRight === view.showRight} onClick={() => { setShowLeft(view.showLeft); setShowRight(view.showRight); }}><span aria-hidden="true">{showLeft === view.showLeft && showRight === view.showRight ? "✓ " : ""}</span>{view.label}</button></th>)}</tr></thead>
+          <tbody>{missingWords.map((word, index) => <tr key={word}><th scope="row"><span lang="en" dir="ltr">{word}</span></th>{contextViews.map((view) => {
+            const { probability } = comparison[view.id].predictions[index]!;
+            return <td key={view.id} data-testid={`compare-${view.id}-${word}`}><div class="context-share"><span class="context-share-track" aria-hidden="true"><span style={{ width: `${probability * 100}%` }} /></span><output>{Math.round(probability * 100)}%</output></div></td>;
+          })}</tr>)}</tbody>
+        </table>
+        <p>A left-only guess cannot use words after the gap. BERT can use both sides. These columns count toy sentences, not model scores.</p>
+      </details>
       <details class="toy-corpus"><summary>See the eight toy sentences</summary><ul>{missingWordExamples.map((example) => <li class={result.matches.includes(example) ? "matches-context" : ""} key={`${example.left}-${example.word}`}><span aria-hidden="true">{result.matches.includes(example) ? "●" : "○"}</span> The {example.left} <strong>{example.word}</strong> crossed the {example.right}.</li>)}</ul><p>Filled dots mark sentences matching the visible clues.</p></details>
       <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">These percentages count matching sentences. This toy has no neural network and learns no English. BERT learns patterns from text; it does not look up exact matches in this list.</p></details>
     </div>

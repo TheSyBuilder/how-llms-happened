@@ -34,7 +34,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
   <h2>Give the gap another clue.</h2><Discovery slug="bert" />
-  <p>Try “metal” with “sky,” then “lake.” What happens with “little” instead?</p>
+  <p>Try “metal” with “sky,” then “lake.” What happens with “little” instead? Open the comparison to keep all three views on screen.</p>
   <noscript><p>Enable JavaScript to try the toy. In this invented set, “metal” leaves plane or boat; “sky” leaves bird or plane. Together they leave plane.</p></noscript>
   <BertToy client:load />
 </section>
@@ -60,13 +60,13 @@ import { sourceLink, paperLink } from "../lib/chapters";
     <h3>Two follow-ups</h3>
     <p>RoBERTa changes the training recipe: more data and training, larger batches, fresh masks, longer text sequences, and removal of next-sentence prediction. Its improvements show the importance of the recipe as a whole. XLNet instead varies which positions are predicted before others. The written sentence stays in order; the prediction order changes. A separate query representation identifies the target position without revealing its token.</p>
     <h3>How the toy works</h3>
-    <p>The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.</p>
+    <p>The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. The comparison counts the same sentences three ways: left only, right only, and both sides. Its heading buttons set the visible clues. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
   <summary>Sources <span>Original papers, with a reading guide</span></summary>
   <div class="disclosure-body"><ol class="source-list">
-    <li><a href={sourceLink("devlin-2019-naacl-full-text")}>Devlin et al. · BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a><p>Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 4: reading directions.</p></li>
+    <li><a href={sourceLink("devlin-2019-naacl-full-text")}>Devlin et al. · BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a><p>Introduction and Section 3: GPT, context direction, encoder architecture, model sizes, and reuse. Sections 3.1–3.2 and Appendix A.1: masked-token loss, WordPiece, replacement choices, paired inputs, next-sentence prediction, corpora, and full-model fine-tuning. Section 4.1 and Table 1: MultiNLI task and test accuracies. Figure 3 and Appendix A.4: reading directions.</p></li>
     <li><a href={sourceLink("devlin-2018-arxiv-record")}>BERT · original preprint record (2018)</a><p>First posted October 11, 2018; the conference paper appeared in 2019.</p></li>
     <li><a href={sourceLink("liu-2019-arxiv-v1-full-text")}>Liu et al. · RoBERTa (2019)</a><p>Sections 3–5: training recipe, fresh masking, input packing without next-sentence prediction, batches, data, and duration. The gains combine changes.</p></li>
     <li><a href={sourceLink("yang-2019-neurips-full-text")}>Yang et al. · XLNet (2019)</a><p>Sections 2.1–2.3: permutation of prediction order, unchanged written order, bidirectional context, and two-stream attention without mask-token corruption.</p></li>
