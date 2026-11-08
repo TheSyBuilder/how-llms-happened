@@ -171,7 +171,7 @@ const entries: [string, string, number, string, string, string[], string][] = [
     2026,
     "What does a useful model need around it?",
     "deepseek-v4-1",
-    ["deepseek-v4", "claude-opus-5-5", "gemini-3-8", "gpt-6-astra", "flash-attention", "mamba"],
+    ["deepseek-v4", "claude-opus-5-5", "gemini-4-argon", "gpt-6-astra", "flash-attention", "mamba"],
     "Send the right notes, fetch a gate status and try routes in a tiny delivery planner.",
   ],
   [

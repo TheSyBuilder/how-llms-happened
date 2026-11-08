@@ -1723,3 +1723,84 @@ for(const locale of ['zh','ar']) {
   await expect(page).toHaveURL('/chapters/chatgpt/#play');await expect(page.locator('#problem')).not.toBeVisible();
  });
 }
+
+for (const locale of ['en', 'zh', 'ar']) {
+ test(`${locale} GPT-2 builds a continuation one word at a time`, async ({page}, info) => {
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  const activate = async (el: ReturnType<typeof page.locator>) => {
+   if (info.project.name === 'mobile-chromium') await el.tap(); else await el.click();
+  };
+  const prefix = locale === 'en' ? '' : `/${locale}`;
+  await page.goto(`${prefix}/chapters/gpt-2/`);
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr', '');
+  await page.locator('.chapter-hero').screenshot({path:info.outputPath(`${locale}-gpt2-hero.png`)});
+  await page.locator('.gpt2-diagram').screenshot({path:info.outputPath(`${locale}-gpt2-diagram.png`)});
+  await activate(page.locator('.chapter-nav a[href="#play"]'));
+  const presets = page.locator('.prompt-presets button');
+  await activate(presets.nth(3));
+  const builder = page.locator('.word-builder');
+  const summary = builder.locator('summary');
+  await summary.focus(); await page.keyboard.press('Enter');
+  await expect(summary).toHaveText(locale === 'ar' ? 'ركّب التكملة كلمة كلمة' : locale === 'zh' ? '逐词拼出一段续写' : 'Build a continuation word by word');
+  const choice = (word: string) => builder.locator('.word-options button').filter({has:page.locator('code', {hasText:new RegExp(`^${word}$`)})});
+  await expect(choice('Mira')).toContainText('3/6');
+  await activate(choice('Mira'));
+  await expect(page.getByTestId('written-words')).toHaveText('Mira');
+  await expect(choice('made')).toBeFocused();
+  await expect(choice('took')).toContainText('1/3');
+  await builder.screenshot({path:info.outputPath(`${locale}-gpt2-choices.png`),animations:'disabled'});
+  await choice('took').focus(); await page.keyboard.press('Enter');
+  await expect(page.getByTestId('written-words')).toHaveText('Mira took');
+  await expect(choice('a')).toBeFocused();
+  await page.keyboard.press('Space');
+  await expect(page.getByTestId('written-words')).toHaveText('Mira took a');
+  const undo = builder.locator('.word-undo');
+  await activate(undo);
+  await expect(page.getByTestId('written-words')).toHaveText('Mira took');
+  await activate(presets.nth(1));
+  await expect(page.getByTestId('written-words')).toHaveText('…');
+  await expect(choice('Mira')).toContainText('1/2');
+  await activate(choice('A'));
+  await page.locator('.gpt2-toy').screenshot({path:info.outputPath(`${locale}-gpt2-builder.png`),animations:'disabled'});
+  for (const word of ['lost','cat','found','a','home','with','Mira.']) {
+   await activate(choice(word.replace('.', '\\.')));
+  }
+  await expect(page.getByTestId('written-words')).toHaveText('A lost cat found a home with Mira.');
+  await expect(undo).toBeFocused();
+  await expect(builder.locator('.word-options button')).toHaveCount(0);
+  await expect(builder.locator('.word-written')).toContainText(locale === 'ar' ? 'اكتمل المقطع.' : locale === 'zh' ? '这段文本已完成。' : 'Snippet complete.');
+  await undo.focus(); await page.keyboard.press('Enter');
+  await expect(choice('Mira\\.')).toBeFocused();
+  await activate(builder.locator('.word-actions button').nth(1));
+  await expect(page.getByTestId('written-words')).toHaveText('…');
+  await page.locator('#prompt-ending').fill('In a nutshell:');
+  await expect(builder.locator('.word-options button')).toHaveCount(0);
+  await expect(undo).toBeDisabled();
+  await activate(presets.nth(2));
+  await activate(choice('Mira\\.'));
+  await expect(page.getByTestId('written-words')).toHaveText('Mira.');
+  await activate(summary); await activate(summary);
+  await expect(page.getByTestId('written-words')).toHaveText('Mira.');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(page.locator('.completion-track > span').first()).toHaveCSS('transition-duration','0s');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+ });
+ test(`${locale} current chapter links the Gemini 4 Argon model card`, async ({page}, info) => {
+  const prefix = locale === 'en' ? '' : `/${locale}`;
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+  await page.goto(`${prefix}/chapters/now/`);
+  await expect(page.locator('astro-island')).not.toHaveAttribute('ssr', '');
+  await expect(page.locator('#idea')).toContainText('Gemini 4 Argon');
+  await expect(page.locator('#idea')).not.toContainText('Gemini 3.8');
+  await page.locator('#idea').screenshot({path:info.outputPath(`${locale}-now-idea.png`)});
+  await page.locator('#sources summary').click();
+  await expect(page.locator('#sources a[href$="Gemini-4-Argon-Model-Card.pdf"]')).toContainText('Gemini 4 Argon');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+ });
+}

@@ -10,7 +10,7 @@ const { outputText } = ts.transpileModule(source, {
 });
 const compiled = {};
 new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { matchContinuations, continuationSnippets } = compiled;
+const { matchContinuations, continuationSnippets, nextWordChoices } = compiled;
 
 test("a prompt cue narrows the same frozen snippets to a task format", () => {
   const original = structuredClone(continuationSnippets);
@@ -37,4 +37,30 @@ test("unfamiliar and partial cues produce no invented answer or invalid shares",
     assert.deepEqual(result.matches, []);
     assert.ok(result.formats.every((entry) => entry.count === 0 && entry.share === 0));
   }
+});
+
+test("next words depend on both the cue and the words already written", () => {
+  assert.deepEqual(nextWordChoices("", []).choices, [
+    { word: "the", count: 1 }, { word: "Mira", count: 3 },
+    { word: "A", count: 1 }, { word: "Mira.", count: 1 },
+  ]);
+  assert.deepEqual(nextWordChoices("", ["Mira"]).choices, [
+    { word: "made", count: 1 }, { word: "took", count: 1 }, { word: "found", count: 1 },
+  ]);
+  assert.deepEqual(nextWordChoices("TL;DR:", ["Mira"]), { count: 1, choices: [{ word: "took", count: 1 }] });
+  assert.deepEqual(nextWordChoices("Then", ["Mira"]), { count: 1, choices: [{ word: "made", count: 1 }] });
+});
+
+test("every builder path ends at a fixed snippet and impossible prefixes stay empty", () => {
+  for (const snippet of continuationSnippets) {
+    const words = snippet.text.split(" ");
+    for (let index = 0; index < words.length; index++) {
+      const step = nextWordChoices(snippet.cue, words.slice(0, index));
+      assert.ok(step.choices.some(({ word }) => word === words[index]));
+      assert.equal(step.choices.reduce((sum, choice) => sum + choice.count, 0), step.count);
+    }
+    assert.deepEqual(nextWordChoices(snippet.cue, words), { count: 1, choices: [] });
+  }
+  assert.deepEqual(nextWordChoices("In a nutshell:", []), { count: 0, choices: [] });
+  assert.deepEqual(nextWordChoices("Then", ["Mira."]), { count: 0, choices: [] });
 });

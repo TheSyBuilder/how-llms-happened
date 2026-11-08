@@ -1,5 +1,5 @@
 import '../i18n/preact';
-import { useState } from "preact/hooks";
+import { useLayoutEffect, useRef, useState } from "preact/hooks";
 
 export const toyPassage = "Mira found a lost cat. She brought it home.";
 export const promptEndings = [
@@ -29,12 +29,34 @@ export function matchContinuations(cue: string) {
   };
 }
 
+export function nextWordChoices(cue: string, words: string[]) {
+  const matches = matchContinuations(cue).matches
+    .map((snippet) => snippet.text.split(" "))
+    .filter((snippet) => words.every((word, index) => snippet[index] === word));
+  const counts = new Map<string, number>();
+  for (const snippet of matches) {
+    const word = snippet[words.length];
+    if (word !== undefined) counts.set(word, (counts.get(word) ?? 0) + 1);
+  }
+  return { count: matches.length, choices: [...counts].map(([word, count]) => ({ word, count })) };
+}
+
 export default function Gpt2Toy() {
   const [cue, setCue] = useState("Then");
   const [sample, setSample] = useState(0);
+  const [words, setWords] = useState<string[]>([]);
+  const builder = useRef<HTMLDetailsElement>(null);
+  const focusChoice = useRef(false);
+  const next = nextWordChoices(cue, words);
+  useLayoutEffect(() => {
+    if (!focusChoice.current) return;
+    focusChoice.current = false;
+    builder.current?.querySelector<HTMLButtonElement>(".word-options button, .word-undo")?.focus();
+  }, [words]);
   const result = matchContinuations(cue);
   const selected = result.matches.length ? result.matches[sample % result.matches.length] : undefined;
-  const changeCue = (value: string) => { setCue(value); setSample(0); };
+  const changeCue = (value: string) => { setCue(value); setSample(0); setWords([]); };
+  const writeWords = (value: string[]) => { focusChoice.current = true; setWords(value); };
   return (
     <div class="gpt2-toy">
       <div class="toy-topline"><span class="eyebrow">One passage. Different jobs.</span><span class="toy-label">Toy · six fixed snippets</span></div>
@@ -46,7 +68,7 @@ export default function Gpt2Toy() {
       <div class="prompt-paper">
         <span class="eyebrow">Prompt</span>
         <p>{toyPassage}</p>
-        <label for="prompt-ending">Prompt ending · edit it<input id="prompt-ending" type="text" value={cue} maxLength={120} spellcheck={false} autoComplete="off" placeholder="Try TL;DR:" onInput={(event) => changeCue(event.currentTarget.value)} aria-describedby="cue-help" /></label>
+        <label for="prompt-ending">Prompt ending · edit it<input id="prompt-ending" dir="ltr" type="text" value={cue} maxLength={120} spellcheck={false} autoComplete="off" placeholder="Try TL;DR:" onInput={(event) => changeCue(event.currentTarget.value)} aria-describedby="cue-help" /></label>
         <p id="cue-help">Try “In a nutshell:” too. Can this lookup recognise a new cue?</p>
       </div>
       <div class="prompt-flow" aria-hidden="true"><span>↓</span> same fixed table <span>↓</span></div>
@@ -59,6 +81,25 @@ export default function Gpt2Toy() {
       <div class="format-shares" aria-label="Toy matches by format">
         {result.formats.map(({ format, count, share }) => <div class="format-row" key={format}><span>{format}</span><div class="completion-track" aria-hidden="true"><span style={{ width: `${share * 100}%` }} /></div><output data-testid={`format-${format.toLowerCase()}`} aria-label={`${format}: ${count} of ${result.matches.length} matches`}>{result.matches.length ? `${count}/${result.matches.length}` : "—"}</output></div>)}
       </div>
+      <details class="word-builder" ref={builder}>
+        <summary>Build a continuation word by word</summary>
+        <p>Pick a word. It joins the prompt, narrowing the next choices. Counts come from the six snippets, not GPT-2.</p>
+        <div class="word-written" role="status" aria-live="polite" aria-atomic="true">
+          <span class="eyebrow">Your continuation</span>
+          <p data-testid="written-words" dir="ltr">{words.length ? words.map((word, index) => <span key={index}>{index ? " " : ""}{word}</span>) : "…"}</p>
+          <span>{next.count === 0 ? "No matching cue." : next.choices.length ? `Matching snippets: ${next.count}` : "Snippet complete."}</span>
+        </div>
+        <div class="word-options" role="group" aria-label="Choose the next word" dir="ltr">
+          {next.choices.map(({ word, count }) => <button type="button" key={word} onClick={() => writeWords([...words, word])}>
+            <code>{word}</code><span>{count}/{next.count}</span>
+          </button>)}
+        </div>
+        <div class="word-actions">
+          <button class="word-undo" type="button" disabled={!words.length} onClick={() => writeWords(words.slice(0, -1))}>Undo word</button>
+          <button type="button" disabled={!words.length} onClick={() => writeWords([])}>Start over</button>
+        </div>
+        <p class="toy-footnote">Real GPT-2 predicts tokens, which may be parts of words, and can compose new text.</p>
+      </details>
       <details class="toy-corpus"><summary>See the six fixed snippets</summary><ul>{continuationSnippets.map((snippet) => <li key={snippet.text}><code>{snippet.cue}</code> → {snippet.text}</li>)}</ul></details>
       <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">An illustration, not GPT-2: this is a hand-written lookup, not a neural network. It matches cues, not meaning, and cannot read a new passage. Real GPT-2 predicts tokens using learned patterns.</p></details>
     </div>

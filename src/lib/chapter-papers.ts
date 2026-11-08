@@ -1,6 +1,12 @@
 // Primary sources for turning points beyond the original research collection.
 export const addedPapers = [
   {
+    id: "gemini-4-argon",
+    year: 2026,
+    title: "Gemini 4 Argon model card",
+    url: "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Argon-Model-Card.pdf",
+  },
+  {
     id: "word2vec",
     year: 2013,
     title: "Efficient Estimation of Word Representations in Vector Space",

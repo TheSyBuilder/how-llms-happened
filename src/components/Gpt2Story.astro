@@ -13,7 +13,7 @@ import { sourceLink } from "../lib/chapters";
   <p class="eyebrow">02 / The big idea</p>
   <h2>The task can be text.</h2>
   <p>In 2019, GPT-2 explored this possibility with a larger Transformer trained on WebText, a collection of web pages. Its exercise stayed simple: predict the next <strong>token</strong>, a piece of text, using the tokens before it.</p>
-  <p>A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>—“too long; didn’t read”—and a summary becomes a plausible continuation. Supply a passage and a question ending in <code>A:</code>, and an answer can come next. The model’s numbers stay fixed; the prompt changes what comes next.</p>
+  <p>A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>, short for “too long; didn’t read”, and a summary can follow. End a question with <code>A:</code>, and an answer can follow. The model’s numbers stay fixed.</p>
   <p>This is <strong>zero-shot transfer</strong>: trying a task without training the model on a labelled dataset for that task. GPT-2 showed signs of several abilities this way, but its summaries could confuse details and its answers could be shallow. Continuing convincingly is not the same as answering correctly.</p>
   <figure class="idea-diagram gpt2-diagram">
     <svg viewBox="0 0 400 435" role="img" aria-labelledby="gpt2-title gpt2-desc">
@@ -58,7 +58,7 @@ import { sourceLink } from "../lib/chapters";
     <p>For summarisation, the authors appended <code>TL;DR:</code>, sampled 100 tokens while choosing among the two most likely next tokens, and kept the first three sentences. Table 4 reports an average ROUGE score of 21.40, versus 20.98 for three randomly selected article sentences and 15.03 without the hint. ROUGE measures textual overlap with reference summaries. The hint helps, but the result is still weak.</p>
     <p>Training text and test passages can overlap; avoiding task-specific training does not guarantee unseen content. Larger models broadly improved several tasks, but not every score rose at every size. These experiments do not establish dependable instruction following or factual accuracy.</p>
     <h3>What the toy leaves out</h3>
-    <p>The six invented snippets share one passage. The toy matches an edited cue to a fixed table, ignoring case and extra whitespace; an empty cue allows all six. The bars count available snippets by format. “Try another” cycles through them. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.</p>
+    <p>The six invented snippets share one passage. The toy matches an edited cue to a fixed table, ignoring case and extra whitespace; an empty cue allows all six. The bars count available snippets by format. “Try another” cycles through them. The word builder keeps snippets beginning with your chosen words, then counts their next words. Undo widens those choices again. It splits at spaces, keeping punctuation attached. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">

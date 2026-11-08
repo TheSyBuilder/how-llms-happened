@@ -3,13 +3,13 @@
     "Must every job need<br>another training set?": "每换一份工作，<br>都得再准备训练数据吗？",
     "GPT-1 and BERT offered a useful recipe: learn from text first, then adapt to a job with labelled examples. <strong>Fine-tuning</strong> means updating a model’s adjustable numbers for that job. Want another task? Prepare another set of examples and train again.": "GPT-1 和 BERT 提供了一套实用方法：先从文本中学习，再用带标签的例子适应某项任务。<strong>微调</strong>就是为这项任务调整模型内部的数值。想换一项任务？再准备一批例子，再训练一次。",
     "In 2019, GPT-2 explored this possibility with a larger Transformer trained on WebText, a collection of web pages. Its exercise stayed simple: predict the next <strong>token</strong>, a piece of text, using the tokens before it.": "2019 年，GPT-2 用一个更大的 Transformer 探索了这种可能性。它在 WebText 这个网页文本集合上训练，练习依旧很简单：根据前面的文本片段，预测下一个<strong>词元</strong>，也就是一小段文本。",
-    "A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>—“too long; didn’t read”—and a summary becomes a plausible continuation. Supply a passage and a question ending in <code>A:</code>, and an answer can come next. The model’s numbers stay fixed; the prompt changes what comes next.": "<strong>提示词</strong>就是让模型续写之前给它的文本。在文章末尾加上 <code>TL;DR:</code>——“太长了，没读”——后面接一段摘要就很合理。给出一段文章和一个问题，再以 <code>A:</code> 结尾，后面就可以接答案。模型内部的数值没有变，改变后续内容的是提示词。",
     "This is <strong>zero-shot transfer</strong>: trying a task without training the model on a labelled dataset for that task. GPT-2 showed signs of several abilities this way, but its summaries could confuse details and its answers could be shallow. Continuing convincingly is not the same as answering correctly.": "这叫<strong>零样本迁移</strong>：没有用某项任务的标注数据训练模型，就直接让它试做这项任务。GPT-2 由此展现了多种能力的苗头，但摘要可能混淆细节，回答也可能很肤浅。续写得像那么回事，不等于答得正确。",
     "Same passage.<br>Change the invitation.": "同一段故事。<br>换一种开场提示。",
     "<strong>Try this first</strong> Switch from Continue to Summarise.": "<strong>先试这个</strong> 从“续写”切换到“总结”。",
     "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Objective, architecture, results &amp; limits</span>": "继续深入 <span>目标、结构、结果与局限</span>",
-    "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>"
+    "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>",
+    "A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>, short for “too long; didn’t read”, and a summary can follow. End a question with <code>A:</code>, and an answer can follow. The model’s numbers stay fixed.": "<strong>提示词</strong>就是让模型续写之前给它的文本。在文章末尾加上 <code>TL;DR:</code>，也就是“太长了，没读”的缩写，后面就可以接摘要。问题末尾加上 <code>A:</code>，后面就可以接答案。模型内部的数值保持不变。"
   },
   "text": {
     "← The timeline": "← 时间线",
@@ -88,7 +88,6 @@
     ", sampled 100 tokens while choosing among the two most likely next tokens, and kept the first three sentences. Table 4 reports an average ROUGE score of 21.40, versus 20.98 for three randomly selected article sentences and 15.03 without the hint. ROUGE measures textual overlap with reference summaries. The hint helps, but the result is still weak.": "，每一步只从最可能的两个词元中采样，共采样 100 个词元，再保留前三句话。表 4 中，平均 ROUGE 得分为 21.40；随机抽取文章三句话为 20.98，不加提示则为 15.03。ROUGE 衡量与参考摘要的文本重合程度。提示有帮助，但结果仍然不够好。",
     "Training text and test passages can overlap; avoiding task-specific training does not guarantee unseen content. Larger models broadly improved several tasks, but not every score rose at every size. These experiments do not establish dependable instruction following or factual accuracy.": "训练文本可能与测试文章重合；没有针对任务训练，并不保证内容从未见过。更大模型在多项任务上总体更好，但并非每个分数都随每次扩容上升。这些实验不能证明模型能可靠地遵循指令或保证事实正确。",
     "What the toy leaves out": "演示省略了什么",
-    "The six invented snippets share one passage. The toy matches an edited cue to a fixed table, ignoring case and extra whitespace; an empty cue allows all six. The bars count available snippets by format. “Try another” cycles through them. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.": "六段虚构文本共用同一篇短文。演示把修改后的提示与固定表匹配，忽略大小写和多余空格；空提示允许全部六段。柱形显示每种格式可用的短句数量。“换一个”会依次切换。这里没有训练，查找表也无法推广到新的提示或短文。GPT-2 则从文本学习词元预测，并逐个词元组成续写内容。",
     "Sections 1–2: task transfer, text conditioning, and the next-token objective. Sections 2.1–2.3 and Table 2: WebText, tokenisation, architecture, and scale. Section 3.5: CoQA setup, 55 F1, comparison, and shallow heuristics. Section 3.6 and Table 4: summary cue, sampling, ROUGE scores, and errors. Sections 3.7–3.8: example pairs in prompts. Section 4: training/test overlap. Figures 1 and 4: scale and performance.": "第 1–2 节：任务迁移、文本条件与下词元预测目标。第 2.1–2.3 节及表 2：WebText、分词、架构与规模。第 3.5 节：CoQA 设置、55 F1、比较与浅层启发式。第 3.6 节及表 4：摘要提示、采样、ROUGE 分数与错误。第 3.7–3.8 节：提示中的示例对。第 4 节：训练与测试重合。图 1、4：规模与性能。",
     "The public introduction of GPT-2, its approximate size, next-word training, and early task abilities and limitations.": "GPT-2 的公开介绍：大致规模、预测下一个词的训练方式，以及早期任务能力和局限。",
     "Sections 2–3: pretraining followed by supervised task fine-tuning, the earlier recipe.": "第 2–3 节：早期的流程——先预训练，再用监督学习微调任务。",
@@ -123,6 +122,16 @@
     "Mira made a little bed for it.": "Mira 给它做了个小床。",
     "Mira took a lost cat home.": "Mira 把一只走失的猫带回了家。",
     "A lost cat found a home with Mira.": "一只走失的猫在 Mira 那里找到了家。",
-    "Mira found it.": "是 Mira 发现的。"
+    "Mira found it.": "是 Mira 发现的。",
+    "Build a continuation word by word": "逐词拼出一段续写",
+    "Pick a word. It joins the prompt, narrowing the next choices. Counts come from the six snippets, not GPT-2.": "选一个词。它会加入提示词，缩小下一步的选择范围。数量来自这六段文本，不是 GPT-2。",
+    "Your continuation": "你拼出的续写",
+    "Snippet complete.": "这段文本已完成。",
+    "Choose the next word": "选择下一个词",
+    "Undo word": "撤回一个词",
+    "Start over": "从头开始",
+    "Real GPT-2 predicts tokens, which may be parts of words, and can compose new text.": "真正的 GPT-2 预测的是词元，可能只是词的一部分，也能组合出新的文本。",
+    "The six invented snippets share one passage. The toy matches an edited cue to a fixed table, ignoring case and extra whitespace; an empty cue allows all six. The bars count available snippets by format. “Try another” cycles through them. The word builder keeps snippets beginning with your chosen words, then counts their next words. Undo widens those choices again. It splits at spaces, keeping punctuation attached. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.": "六段虚构文本共用同一段短文。演示把修改后的提示与固定表匹配，忽略大小写和多余空白；空提示允许全部六段。条形图按格式统计可用文本，“换一个”依次轮换。逐词拼接会保留以你所选词语开头的文本，再统计它们的下一个词。撤回一个词会重新扩大选择范围。演示按空格切词，标点保留在词上。这里没有训练，表格也无法推广到新提示或新短文。GPT-2 则从文本中学会预测词元，再逐个词元组合出续写。",
+    "Matching snippets: {0}": "匹配的文本：{0} 段"
   }
 }
