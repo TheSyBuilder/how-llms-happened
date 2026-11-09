@@ -2,6 +2,8 @@
 
 **English** · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
 
+**[Play LLM Lineage](https://thesybuilder.github.io/how-llms-happened/)**
+
 ### How did counting letters turn into a machine you can talk to?
 
 A history of language models you can play with. Change a word. Hide a clue. Give a model a memory. Watch what happens.

@@ -1,10 +1,19 @@
+declare const __SITE_BASE__: string;
+export const siteBase = typeof __SITE_BASE__ === 'string' ? __SITE_BASE__ : '';
+export function stripSiteBase(path:string) {
+ return siteBase && (path === siteBase || path.startsWith(`${siteBase}/`)) ? path.slice(siteBase.length) || '/' : path;
+}
+export function withSiteBase(path:string) {
+ if (!path.startsWith('/') || path.startsWith('//')) return path;
+ return siteBase + stripSiteBase(path);
+}
 export type Locale = 'en' | 'zh' | 'ar';
 export type Messages = Record<string,string>;
-export function localeFromPath(path:string):Locale {return /^\/ar(?:\/|$)/.test(path)?'ar':/^\/zh(?:\/|$)/.test(path)?'zh':'en';}
-export function basePath(path:string) {return path.replace(/^\/(?:zh|ar)(?=\/|$)/,'')||'/';}
+export function localeFromPath(path:string):Locale {path=stripSiteBase(path);return /^\/ar(?:\/|$)/.test(path)?'ar':/^\/zh(?:\/|$)/.test(path)?'zh':'en';}
+export function basePath(path:string) {return stripSiteBase(path).replace(/^\/(?:zh|ar)(?=\/|$)/,'')||'/';}
 export function localePath(path:string,locale:Locale):string {
  if(!path.startsWith('/')||path.startsWith('//')||/^\/(?:_astro|favicon|preview)/.test(path))return path;
- const base=basePath(path);return locale==='en'?base:`/${locale}${base}`;
+ const base=basePath(path);return withSiteBase(locale==='en'?base:`/${locale}${base}`);
 }
 export const normalize=(value:string)=>value.replace(/\s+/g,' ').trim();
 export function translator(messages:Messages) {

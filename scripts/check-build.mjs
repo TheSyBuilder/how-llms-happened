@@ -5,6 +5,7 @@ import { dirname, extname, join, relative, resolve } from "node:path";
 import { gzipSync } from "node:zlib";
 
 const distRoot = resolve("dist");
+const base = (process.env.SITE_BASE || "").replace(/\/$/, "");
 
 function walk(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -21,6 +22,7 @@ function routeForFile(path) {
 }
 
 function fileForPathname(pathname) {
+  if (base && pathname.startsWith(`${base}/`)) pathname = pathname.slice(base.length);
   const clean = decodeURIComponent(pathname).replace(/^\/+/, "");
   if (clean === "") return join(distRoot, "index.html");
   const direct = join(distRoot, clean);

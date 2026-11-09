@@ -15,7 +15,12 @@ const mimeTypes = new Map([
 ]);
 
 createServer((request, response) => {
-  const pathname = decodeURIComponent(new URL(request.url ?? "/", "http://127.0.0.1").pathname);
+  let pathname = decodeURIComponent(new URL(request.url ?? "/", "http://127.0.0.1").pathname);
+  const base = (process.env.SITE_BASE || "").replace(/\/$/, "");
+  if (base) {
+    if (!pathname.startsWith(`${base}/`)) { response.writeHead(404).end("Not found"); return; }
+    pathname = pathname.slice(base.length);
+  }
   const relativePath = normalize(pathname).replace(/^[/\\]+/, "");
   let path = join(root, relativePath);
   if (!path.startsWith(`${root}${sep}`) && path !== root) {

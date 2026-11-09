@@ -16,3 +16,11 @@ test('translated results retain variable values and surrounding spacing',()=>{
  assert.equal(t(' Read? '),' نقرأ؟ ');
  assert.equal(t('untranslated data'),'untranslated data');
 });
+test('project hosting preserves locale, hashes and external destinations',()=>{
+ const hosted={};new Function('__SITE_BASE__','exports',outputText)('/how-llms-happened',hosted);
+ assert.equal(hosted.localeFromPath('/how-llms-happened/ar/chapters/bert/'),'ar');
+ assert.equal(hosted.localePath('/how-llms-happened/ar/chapters/bert/#play','zh'),'/how-llms-happened/zh/chapters/bert/#play');
+ assert.equal(hosted.localePath('/chapters/bert/','en'),'/how-llms-happened/chapters/bert/');
+ assert.equal(hosted.withSiteBase('/how-llms-happened/'),'/how-llms-happened/');
+ for(const path of ['https://arxiv.org/a','#play','//example.org'])assert.equal(hosted.withSiteBase(path),path);
+});

@@ -2,6 +2,8 @@
 
 [English](README.md) · **简体中文** · [العربية](README.ar.md)
 
+**[打开互动网站](https://thesybuilder.github.io/how-llms-happened/zh/)**
+
 ### 从数一数字母，到能和人聊天，中间发生了什么？
 
 这是一部可以动手玩的语言模型发展史。换个词，藏起一条线索，给模型一点记忆，看看结果会怎么变。

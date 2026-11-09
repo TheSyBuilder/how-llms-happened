@@ -4,8 +4,10 @@ import {t,currentLocale,localePath} from './core';
 const previous=options.vnode;
 options.vnode=vnode=>{
  previous?.(vnode);
- if(currentLocale()==='en'||typeof vnode.type!=='string')return;
+ if(typeof vnode.type!=='string')return;
  const props=vnode.props as Record<string,unknown>;
+ if(typeof props.href==='string')props.href=localePath(props.href,currentLocale());
+ if(currentLocale()==='en')return;
  // Translated option labels must not change the values used by toy logic.
  if(vnode.type==='option'&&props.value===undefined&&typeof props.children==='string')props.value=props.children;
  const children=(value:unknown):unknown=>{
