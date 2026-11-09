@@ -475,6 +475,90 @@ test("scaling laws trades model size for text with mouse, touch, and keyboard", 
   expect(errors).toEqual([]);
 });
 
+for (const locale of ["en", "zh", "ar"]) {
+  test(`${locale} scaling laws reveals penalties and compares saved allocations`, async ({ page }, info) => {
+    const errors: string[] = [];
+    page.on("pageerror", error => errors.push(error.message));
+    page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+    const activate = async (element: ReturnType<typeof page.locator>) => {
+      if (info.project.name === "mobile-chromium") await element.tap(); else await element.click();
+    };
+    const prefix = locale === "en" ? "" : `/${locale}`;
+    await page.goto(`${prefix}/chapters/scaling-laws/`);
+    await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+    await page.locator(".chapter-hero").screenshot({ path: info.outputPath(`${locale}-scaling-hero.png`) });
+    await page.locator(".scaling-diagram").screenshot({ path: info.outputPath(`${locale}-scaling-diagram.png`) });
+    await activate(page.locator('.chapter-nav a[href="#play"]'));
+    const toy = page.locator(".scaling-toy");
+    const inspector = page.locator(".scaling-inspector");
+    const summary = inspector.locator("summary");
+    await expect(inspector).not.toHaveAttribute("open", "");
+    await summary.focus(); await page.keyboard.press("Enter");
+    await expect(summary).toHaveText(locale === "zh" ? "这个分数是怎么来的？" : locale === "ar" ? "وش يدخل في هالدرجة؟" : "What makes this score?");
+    const slider = page.locator("#model-size");
+    const modelPenalty = page.getByTestId("model-penalty");
+    const textPenalty = page.getByTestId("text-penalty");
+    await expect(modelPenalty).toHaveText("0.54");
+    await expect(textPenalty).toHaveText("0.09");
+    const save = inspector.locator(".allocation-actions button").nth(0);
+    const clear = inspector.locator(".allocation-actions button").nth(1);
+    await expect(clear).toBeDisabled();
+    await activate(save);
+    await expect(page.getByTestId("saved-model")).toHaveText("8.0");
+    await expect(page.getByTestId("saved-text")).toHaveText("32.0");
+    await expect(page.getByTestId("saved-loss")).toHaveText("1.62");
+    const ring = page.locator(".scaling-saved-dot");
+    const ringX = await ring.getAttribute("cx");
+    const ringY = await ring.getAttribute("cy");
+    const difference = page.getByTestId("allocation-difference");
+    const same = locale === "zh" ? "四舍五入后的分数相同。" : locale === "ar" ? "نفس الدرجة بعد التقريب." : "Same rounded score.";
+    await expect(difference).toHaveText(same);
+    await slider.focus(); await page.keyboard.press("Home");
+    await expect(modelPenalty).toHaveText("1.00");
+    await expect(textPenalty).toHaveText("0.02");
+    await expect(difference).toHaveText(locale === "zh" ? "演示损失比已存方案高 0.40。" : locale === "ar" ? "خسارة التجربة أعلى من المحفوظة بـ 0.40." : "Toy loss is 0.40 higher than saved.");
+    await toy.screenshot({ path: info.outputPath(`${locale}-scaling-small.png`), animations: "disabled" });
+    await page.keyboard.press("End");
+    await expect(modelPenalty).toHaveText("0.29");
+    await expect(textPenalty).toHaveText("0.38");
+    await expect(page.getByTestId("saved-model")).toHaveText("8.0");
+    await expect(ring).toHaveAttribute("cx", ringX!);
+    await expect(ring).toHaveAttribute("cy", ringY!);
+    await toy.screenshot({ path: info.outputPath(`${locale}-scaling-large.png`), animations: "disabled" });
+    await slider.scrollIntoViewIfNeeded();
+    const box = await slider.boundingBox();
+    if (info.project.name === "mobile-chromium") await page.touchscreen.tap(box!.x + box!.width * .73, box!.y + box!.height / 2);
+    else await page.mouse.click(box!.x + box!.width * .73, box!.y + box!.height / 2);
+    expect(Number(await page.getByTestId("scaling-loss").textContent())).toBeLessThan(1.62);
+    await activate(toy.locator('input[value="1024"]'));
+    await expect(inspector.locator(".allocation-comparison > p").first()).toContainText("256");
+    await expect(page.getByTestId("saved-loss")).toHaveText("1.62");
+    await expect(ring).toHaveAttribute("cy", ringY!);
+    const improvement = (1.62 - Number(await page.getByTestId("scaling-loss").textContent())).toFixed(2);
+    await expect(difference).toHaveText(locale === "zh" ? `演示损失比已存方案低 ${improvement}。` : locale === "ar" ? `خسارة التجربة أقل من المحفوظة بـ ${improvement}.` : `Toy loss is ${improvement} lower than saved.`);
+    await toy.screenshot({ path: info.outputPath(`${locale}-scaling-comparison.png`), animations: "disabled" });
+    await save.focus(); await page.keyboard.press("Space");
+    await expect(difference).toHaveText(same);
+    await expect(inspector.locator(".allocation-comparison > p").first()).toContainText("1,024");
+    await expect(page.getByTestId("saved-model")).toHaveText(await page.getByTestId("model-units").textContent() ?? "");
+    await activate(summary); await activate(summary);
+    await expect(page.getByTestId("saved-model")).toBeVisible();
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(inspector.locator(".penalty-track > span").first()).toHaveCSS("transition-duration", "0s");
+    await expect(page.locator(".scaling-dot")).toHaveCSS("transition-duration", "0s");
+    if (locale === "en") {
+      const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+      expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await activate(clear);
+    await expect(ring).toHaveCount(0);
+    await expect(page.locator(".allocation-comparison")).toHaveCount(0);
+    await expect(clear).toBeDisabled();
+    expect(errors).toEqual([]);
+  });
+}
+
 test("timeline, chapter, toy, and old bookmarks work", async ({
   page,
 }, testInfo) => {

@@ -52,3 +52,28 @@ test("a bigger budget buys more text and a lower score at the same model size", 
     assert.ok(large.loss < small.loss);
   }
 });
+
+test("the two toy penalties pull in opposite directions within a fixed budget", () => {
+  for (const budget of trainingBudgets) {
+    const points = scalingCurve(budget);
+    for (let i = 0; i < points.length; i++) {
+      const point = points[i];
+      assert.ok(point.modelPenalty > 0 && point.modelPenalty <= 1);
+      assert.ok(point.textPenalty > 0 && point.textPenalty <= 1);
+      assert.equal(point.loss, 1 + point.modelPenalty + point.textPenalty);
+      if (i > 0) {
+        assert.ok(point.modelPenalty < points[i - 1].modelPenalty);
+        assert.ok(point.textPenalty > points[i - 1].textPenalty);
+      }
+    }
+  }
+});
+
+test("more budget relieves the text shortage while leaving model shortage unchanged", () => {
+  for (const step of [0, 30, 60]) {
+    const small = scalingPoint(64, step);
+    const large = scalingPoint(1024, step);
+    assert.equal(small.modelPenalty, large.modelPenalty);
+    assert.ok(large.textPenalty < small.textPenalty);
+  }
+});

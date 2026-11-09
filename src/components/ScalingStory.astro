@@ -6,15 +6,15 @@ import { sourceLink } from "../lib/chapters";
 <section class="story-section" id="problem">
   <p class="eyebrow">01 / The problem before</p>
   <h2>A bigger bet.<br />But how much better?</h2>
-  <p>GPT-2’s larger models generally did better on several tasks. But “make it bigger” leaves a practical question: how much improvement should you expect before spending the time and computing power?</p>
+  <p>GPT-2’s larger models generally did better on several tasks. How much improvement should you expect before spending more time and computing power?</p>
   <p>A model has <strong>parameters</strong>: the adjustable numbers it learns during training. More parameters, more text, and more computation all cost something. Which one is holding progress back?</p>
 </section>
 <section class="story-section" id="idea">
   <p class="eyebrow">02 / The big idea</p>
   <h2>Progress has a shape.</h2>
   <p>In 2020, Jared Kaplan and colleagues measured language models across many sizes and training budgets. They tracked <strong>loss</strong>: a score that penalises a model for assigning low probability to the next piece of real text. Lower is better.</p>
-  <p>They found smooth <strong>power laws</strong>: multiplying a resource by the same factor gives a similar proportional reduction in loss, when the other resources are sufficient. Think “each doubling shaves off another fraction,” rather than “each extra parameter helps equally.”</p>
-  <p>The catch is the bottleneck. A larger model cannot make up indefinitely for too little text; more text cannot make a small model infinitely capable. Their fits turned these tradeoffs into estimates researchers could use to plan larger training runs. These were measured patterns, not laws of nature.</p>
+  <p>They found smooth <strong>power laws</strong>: when other resources are sufficient, multiplying one resource by the same factor gives a similar proportional reduction in loss. Each doubling shaves off another fraction.</p>
+  <p>A resource can become a bottleneck. A larger model cannot indefinitely make up for too little text. Their fits helped researchers estimate improvements before larger training runs. These were measured patterns, not laws of nature.</p>
   <figure class="idea-diagram scaling-diagram">
     <svg viewBox="0 0 400 390" role="img" aria-labelledby="scaling-title scaling-desc">
       <title id="scaling-title">Three resources shape a language model’s loss</title>
@@ -32,15 +32,15 @@ import { sourceLink } from "../lib/chapters";
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
   <h2>One budget.<br />Two hungry resources.</h2><Discovery slug="scaling-laws" />
-  <p>Try buying the biggest model. Then try the smallest. Somewhere between them, this toy gets a better score. What changes when you can spend more?</p>
+  <p>Try the biggest model, then the smallest. Somewhere between them, this toy scores better. What changes with more budget?</p>
   <noscript><p>Enable JavaScript to move the slider. At a fixed budget, this illustration trades a larger model for fewer text units; neither extreme gives its lowest score.</p></noscript>
   <ScalingToy client:load />
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>A way to plan the leap.</h2>
-  <p>Scaling laws made it possible to estimate how a larger training run might improve text prediction. Kaplan’s analysis favoured larger models stopped well before their loss had finished improving, rather than smaller models trained to completion.</p>
-  <p>Better next-token scores do not guarantee better reasoning or truthful answers. The next chapter asks a different question: what can a much larger model do with just a few examples in its prompt?</p>
+  <p>Scaling laws helped researchers estimate how a larger training run might improve text prediction. Kaplan’s analysis favoured larger models stopped early, before their loss had finished improving, over smaller models trained to completion.</p>
+  <p>Better next-token scores do not guarantee better reasoning or truthful answers. The next chapter asks what a much larger model can do with a few examples in its prompt.</p>
   <a class="next-chapter" href="/chapters/gpt-3/"><span>Next · 2020</span><strong>GPT-3 and in-context learning ↗</strong><span>Can examples in a prompt teach a new pattern?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
