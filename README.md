@@ -6,13 +6,15 @@
 
 ### How did counting letters turn into a machine you can talk to?
 
-A history of language models you can play with. Change a word. Hide a clue. Give a model a memory. Watch what happens.
+LLM Lineage is an interactive history of the ideas that made large language models possible. Follow 30 turning points from Markov's letter counts in 1913 to modern systems that hold conversations, use tools and work through problems.
+
+Every chapter gives you an idea to play with. Change a word to see how context changes a prediction. Decide what a network remembers. Spend a training budget and discover why bigger doesn't always mean better. Small experiments run right in your browser, alongside visual explanations and the original research.
 
 **30 playable chapters · 1913–2026 · Tiny experiments, real ideas**
 
 ![The LLM Lineage playground: choose a turning point and jump into its experiment](docs/images/playground.png)
 
-Start with curiosity. Each chapter gives you one idea, something to try, and a story you can tell a friend afterward. No machine-learning background needed to begin.
+No machine-learning background needed. Start with a question that interests you, try the experiment, and leave with an idea you can explain to a friend. The equations and research details are there whenever you want to go further.
 
 ## One word changes everything
 
@@ -73,7 +75,7 @@ npm install
 npm run dev
 ```
 
-Open the local address printed in the terminal. All 30 chapters are implemented; a public hosted version has not yet been configured.
+Open the local address printed in the terminal, or [explore all 30 chapters online](https://thesybuilder.github.io/how-llms-happened/).
 
 The whole website is available in **English, 简体中文 and العربية**. Switch languages in the top bar; your chapter stays open. Chinese uses everyday explanations, and Arabic uses a conversational Saudi voice with right-to-left layouts. The screenshots below show the English edition.
 
