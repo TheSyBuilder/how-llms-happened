@@ -6,15 +6,15 @@ import { sourceLink } from "../lib/chapters";
 <section class="story-section" id="problem">
   <p class="eyebrow">01 / The problem before</p>
   <h2>A new task.<br />Another training run?</h2>
-  <p>Pretraining gave models a useful head start. But adapting one to a task usually meant collecting labelled examples and <strong>fine-tuning</strong>: updating its learned numbers for that task.</p>
-  <p>GPT-2 had explored doing tasks through text prompts alone. Could a much larger model go further if you showed it a few examples of what you wanted, right before asking?</p>
+  <p>Pretraining gave models a head start. A new task usually still needed labelled examples and <strong>fine-tuning</strong>, updating the model's learned numbers for that task.</p>
+  <p>GPT-2 had explored doing tasks through text prompts. Could a larger model go further with a few examples of what you wanted?</p>
 </section>
 <section class="story-section" id="idea">
   <p class="eyebrow">02 / The big idea</p>
   <h2>The examples are<br />part of the question.</h2>
-  <p>In 2020, Tom Brown and colleagues introduced GPT-3, a language model with 175 billion <strong>parameters</strong>: the adjustable numbers learned during training. Like GPT-2, it predicted the next <strong>token</strong>, a piece of text, from the text before it.</p>
+  <p>In 2020, Tom Brown and colleagues introduced GPT-3 with 175 billion <strong>parameters</strong>, the adjustable numbers learned during training. Like GPT-2, it predicted the next <strong>token</strong>, a piece of text, from earlier text.</p>
   <p>To ask for a translation, put a few word pairs in the <strong>prompt</strong>, the text given to the model. Then leave the next pair unfinished. This is <strong>in-context learning</strong>: using examples inside the prompt to guide the answer, without updating the model’s parameters.</p>
-  <p><strong>Zero-shot</strong> means no demonstrations; <strong>one-shot</strong> means one; <strong>few-shot</strong> means several. Across the paper’s task collection, larger models often gained more from examples. But examples did not help every task, and a useful prompt was still part of the work.</p>
+  <p><strong>Zero-shot</strong> means no demonstrations; <strong>one-shot</strong> means one; <strong>few-shot</strong> means several. Larger models often gained more from examples across the paper's tasks. Examples did not help every task, and prompt wording mattered.</p>
   <figure class="idea-diagram gpt3-diagram">
     <svg viewBox="0 0 400 440" role="img" aria-labelledby="gpt3-title gpt3-desc">
       <title id="gpt3-title">Examples guide a model without changing its parameters</title>
@@ -41,8 +41,8 @@ import { sourceLink } from "../lib/chapters";
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>Show what you mean.</h2>
-  <p>GPT-3 made a stronger case for adapting a single language model through text. Translation, question answering, and other tasks could be specified with examples, without a separate fine-tuning run for each one.</p>
-  <p>Examples can show an answer’s format without supplying the facts it needs. Another approach explored in 2020 was to retrieve passages for a model to read. That is the next chapter’s question.</p>
+  <p>GPT-3 showed how examples could specify translation, question answering, and other tasks for one model, without a separate fine-tuning run for each.</p>
+  <p>Examples can show an answer's format without supplying its facts. Another approach explored in 2020 was to retrieve passages for a model to read. Let's try that next.</p>
   <a class="next-chapter" href="/chapters/retrieval/"><span>Next · 2020</span><strong>Look it up ↗</strong><span>What if a model could read a source before answering?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
@@ -60,7 +60,7 @@ import { sourceLink } from "../lib/chapters";
     <p>Results varied with the task and prompt. Table 3.1’s one-shot LAMBADA result was worse than its zero-shot result, even though few-shot improved it. The model still struggled with some comparisons and reading-comprehension tasks, and could repeat itself, contradict itself, or lose coherence in long text.</p>
     <p>Some benchmark material overlapped the training data; a filtering bug prevented complete removal. The authors analysed cleaner subsets, but this cannot prove the absence of memorisation. The paper also documented stereotypes in generated text. A useful few-shot answer does not establish truthfulness, fairness, or dependable reasoning.</p>
     <h3>Inside the toy</h3>
-    <p>The four functions keep a pair in order, swap it, repeat its first word, or repeat its last word. The toy retains only functions matching every visible example, then applies them to a new pair. One repeated-word example cannot distinguish them. A mixed pair can; contradictory examples can leave none. Set A demonstrates swapping; set B demonstrates repeating the first word. The toy illustrates how examples specify a task, not GPT-3’s internal mechanism.</p>
+    <p>The four functions keep a pair in order, swap it, repeat its first word, or repeat its last word. Only functions matching every visible example survive. A repeated-word example cannot distinguish them; one mixed pair can. Set A demonstrates swapping; set B demonstrates repeating the first word. The editor replaces row 1 in either set, and each rule names the rows it disagrees with. An answer using a word absent from the input fits none of these rules, even without contradictory examples. This illustrates how examples specify a task, not GPT-3's internal mechanism.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">

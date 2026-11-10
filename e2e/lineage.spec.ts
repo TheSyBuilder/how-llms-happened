@@ -1076,10 +1076,106 @@ test("GPT-2 changes tasks through a prompt with mouse, touch, and keyboard", asy
   expect(errors).toEqual([]);
 });
 
+for (const locale of ["en", "zh", "ar"]) {
+  test(`${locale} GPT-3 lets readers write a distinguishing example`, async ({ page }, info) => {
+    const errors: string[] = [];
+    page.on("pageerror", error => errors.push(error.message));
+    page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+    await page.route("https://fonts.googleapis.com/**", route => route.fulfill({ contentType: "text/css", body: "" }));
+    const activate = async (element: ReturnType<typeof page.locator>) => {
+      if (info.project.name === "mobile-chromium") await element.tap(); else await element.click();
+    };
+    await page.goto(`${locale === "en" ? "" : `/${locale}`}/chapters/gpt-3/`);
+    await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+    await page.locator(".chapter-hero").screenshot({ path: info.outputPath(`${locale}-gpt3-hero.png`) });
+    await page.locator(".gpt3-diagram").screenshot({ path: info.outputPath(`${locale}-gpt3-diagram.png`) });
+    await activate(page.locator('.chapter-nav a[href="#play"]'));
+    const toy = page.locator(".gpt3-toy");
+    const editor = toy.locator(".pattern-editor");
+    const summary = editor.locator("summary");
+    await summary.focus(); await page.keyboard.press("Enter");
+    await expect(summary).toHaveText(locale === "zh" ? "一个例子够不够？" : locale === "ar" ? "هل يكفي مثال واحد؟" : "Can one example be enough?");
+    const input = editor.locator("select");
+    for (let i = 0; i < 4; i++) await expect(input.nth(i)).toBeDisabled();
+    const useMine = editor.getByRole("checkbox");
+    const slider = toy.getByRole("slider");
+    const answer = page.getByTestId("pattern-answer");
+    const count = page.getByTestId("fitting-count");
+    const one = locale === "zh" ? "4 条中有 1 条符合" : locale === "ar" ? "1 من أصل 4 تناسب" : "1 of 4 fit";
+    const none = locale === "zh" ? "没有规则符合" : locale === "ar" ? "ما فيه قاعدة تناسب" : "No rule fits";
+    const ambiguous = locale === "zh" ? "有多个答案符合" : locale === "ar" ? "أكثر من إجابة تناسب" : "Several answers fit";
+    await activate(useMine);
+    await expect(slider).toHaveValue("1");
+    await expect(answer).toHaveText("gold blue");
+    await expect(page.getByTestId("written-fit-count")).toHaveText(one);
+    await expect(page.getByTestId("rule-keep").locator("small")).toHaveText(locale === "zh" ? "与此行不符： 1" : locale === "ar" ? "تخالف الصف 1" : "Disagrees with row 1");
+    await expect(input.nth(0)).toHaveAccessibleName(locale === "zh" ? "输入的第 1 个词" : locale === "ar" ? "كلمة المدخل 1" : "Input word 1");
+    for (const [left, right, rule, continuation] of [
+      ["red", "red", "first", "blue blue"],
+      ["blue", "blue", "last", "gold gold"],
+      ["red", "blue", "keep", "blue gold"],
+    ]) {
+      await input.nth(2).selectOption(left);
+      await input.nth(3).selectOption(right);
+      await expect(answer).toHaveText(continuation);
+      await expect(page.getByTestId(`rule-${rule}`)).toHaveClass("rule-fits");
+      await expect(count).toHaveText(one);
+    }
+    // Repeating the input word makes the same single demonstration ambiguous again.
+    await input.nth(1).selectOption("red");
+    await input.nth(3).selectOption("red");
+    await expect(answer).toHaveText(ambiguous);
+    await expect(toy.locator(".pattern-rules .rule-fits")).toHaveCount(4);
+    await input.nth(1).focus(); await page.keyboard.press("b"); await page.keyboard.press("Tab");
+    await expect(input.nth(1)).toHaveValue("blue");
+    await expect(answer).toHaveText("blue blue");
+    await toy.screenshot({ path: info.outputPath(`${locale}-gpt3-written.png`), animations: "disabled" });
+    // An unsupported answer need not contradict another row to rule out the bank.
+    await input.nth(2).selectOption("gold"); await input.nth(3).selectOption("gold");
+    await expect(answer).toHaveText(none);
+    await expect(toy.locator(".pattern-rules .rule-out")).toHaveCount(4);
+    await input.nth(2).selectOption("red"); await input.nth(3).selectOption("red");
+    await slider.focus(); await page.keyboard.press("End");
+    await expect(answer).toHaveText(none);
+    await expect(page.getByTestId("rule-swap").locator("small")).toContainText("1");
+    await expect(page.getByTestId("rule-first").locator("small")).toContainText("2, 3");
+    await expect(page.getByTestId("rule-first").locator("bdi")).toHaveAttribute("dir", "ltr");
+    await toy.screenshot({ path: info.outputPath(`${locale}-gpt3-disagreement.png`), animations: "disabled" });
+    await activate(toy.locator('input[value="first"]'));
+    await expect(answer).toHaveText("blue blue");
+    await expect(page.getByTestId("written-fit-count")).toHaveText(one);
+    await slider.focus(); await page.keyboard.press("Home");
+    await expect(answer).toHaveText(ambiguous);
+    await expect(editor.locator(".pattern-editor-note")).toHaveText(locale === "zh" ? "示例数量为零时，你写的行会隐藏。加回一个，就能再次使用。" : locale === "ar" ? "مثالك مخفي لما يكون عدد الأمثلة صفر. أضف مثالًا عشان تستخدمه من جديد." : "Your row is hidden at zero examples. Add one to use it again.");
+    await page.keyboard.press("ArrowRight");
+    await expect(answer).toHaveText("blue blue");
+    await activate(summary); await activate(summary);
+    await expect(input.nth(2)).toHaveValue("red");
+    await useMine.focus(); await page.keyboard.press("Space");
+    await expect(answer).toHaveText(ambiguous);
+    await expect(toy.locator(".pattern-written-label")).toHaveCount(0);
+    await slider.focus(); await page.keyboard.press("Home");
+    await activate(useMine);
+    await expect(slider).toHaveValue("1");
+    await expect(answer).toHaveText("blue blue");
+    await expect(toy.locator(".pattern-prompt li code").first()).toHaveAttribute("dir", "ltr");
+    await expect(input.nth(0)).toHaveCSS("direction", "ltr");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(page.getByTestId("rule-first")).toHaveCSS("transition-duration", "0s");
+    if (locale === "en") {
+      const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+      expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect(errors).toEqual([]);
+  });
+}
+
 test("GPT-3 examples specify a task with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  await page.route("https://fonts.googleapis.com/**", route => route.fulfill({ contentType: "text/css", body: "" }));
   await page.goto("/");
   await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#gpt-3")).toHaveClass(/is-live/);

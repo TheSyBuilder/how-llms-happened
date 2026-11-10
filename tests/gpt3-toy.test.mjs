@@ -10,7 +10,7 @@ const { outputText } = ts.transpileModule(source, {
 });
 const compiled = {};
 new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { patternRules, promptExamples, fittingRules } = compiled;
+const { patternRules, promptExamples, fittingRules, mismatchingRows } = compiled;
 
 test("an ambiguous example leaves multiple continuations until a distinguishing pair arrives", () => {
   for (const set of ["swap", "first"]) {
@@ -36,4 +36,23 @@ test("contradictory demonstrations leave no valid rule rather than inventing an 
     assert.equal(fittingRules(promptExamples(set, 3, true)).length, 0);
     assert.equal(fittingRules(promptExamples(set, 2, true)).length, 1);
   }
+});
+
+test("one distinguishing example can specify any of the four rules", () => {
+  for (const rule of patternRules) {
+    const input = ["red", "blue"];
+    assert.deepEqual(fittingRules([{ input, output: rule.apply(input) }]).map(fit => fit.id), [rule.id]);
+  }
+  assert.equal(fittingRules([{ input: ["red", "red"], output: ["red", "red"] }]).length, 4);
+  assert.equal(fittingRules([{ input: ["red", "blue"], output: ["gold", "gold"] }]).length, 0);
+});
+
+test("disagreement rows identify conflicting evidence without changing the examples", () => {
+  const examples = promptExamples("swap", 3, true);
+  examples[0] = { input: ["red", "blue"], output: ["red", "red"] };
+  const snapshot = structuredClone(examples);
+  assert.deepEqual(mismatchingRows(patternRules.find(rule => rule.id === "swap"), examples), [1, 3]);
+  assert.deepEqual(mismatchingRows(patternRules.find(rule => rule.id === "first"), examples), [2, 3]);
+  assert.deepEqual(mismatchingRows(patternRules[0], []), []);
+  assert.deepEqual(examples, snapshot);
 });
