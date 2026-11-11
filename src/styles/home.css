@@ -24,19 +24,23 @@
 .spine-count { padding:8px 16px; background:var(--paper); border:2px solid var(--ink); border-radius:var(--radius-pill); font:700 16px/1.2 var(--display); font-variant-numeric:tabular-nums; white-space:nowrap; }
 .spine-scroll { --stop:36px; --label:74px; max-inline-size:1440px; margin-inline:auto; padding:4px var(--space) 14px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-padding-inline:var(--space); scrollbar-width:thin; }
 .spine, .spine-stops { margin:0; padding:0; list-style:none; }
-.spine { --era-min:132px; display:flex; inline-size:max(100%, var(--min)); }
-.spine-era { display:grid; grid-template-columns:minmax(0, 1fr); grid-template-rows:auto 1fr; flex:var(--stops) 0 max(calc(var(--stops) * var(--stop)), var(--era-min)); min-inline-size:0; }
+/* Its own stacking context: stops (z-index:1) paint over every era's line segment, including the next era's at a join. */
+.spine { display:flex; inline-size:max(100%, calc(var(--count) * var(--stop))); isolation:isolate; }
+/* Width follows the stop count only, so stops are evenly spaced; a long pill spills into the neighbouring era instead. */
+.spine-era { display:grid; grid-template-columns:minmax(0, 1fr); grid-template-rows:auto 1fr; flex:var(--stops) 0 calc(var(--stops) * var(--stop)); min-inline-size:0; }
 .spine-era-label { display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding-block-end:10px; padding-inline-end:8px; font:600 14px/1.2 var(--display); color:var(--muted); font-variant-numeric:tabular-nums; }
 .spine-era-label strong { padding:3px 10px; background:var(--era); color:var(--on-accent); border:2px solid var(--ink); border-radius:var(--radius-pill); font-weight:700; white-space:nowrap; }
+.spine-era-label span { white-space:nowrap; }
 .spine-era:last-child .spine-era-label { align-items:flex-end; padding-inline-end:0; }
 .spine-stops { position:relative; display:flex; }
 /* The line itself sits on the middle row of every stop. */
 .spine-stops::before { content:""; position:absolute; inset-inline:0; inset-block-start:calc(var(--label) + 16px); block-size:12px; background:var(--era); border-block:2px solid var(--ink); }
 .spine-era:first-child .spine-stops::before { border-inline-start:2px solid var(--ink); border-start-start-radius:8px; border-end-start-radius:8px; }
 .spine-era:last-child .spine-stops::before { border-inline-end:2px solid var(--ink); border-start-end-radius:8px; border-end-end-radius:8px; }
-.spine-stop { position:relative; flex:1 1 0; min-inline-size:var(--stop); }
-/* Only the dot and the label take the pointer, so a label that spills over a neighbour still opens its own stop. */
-.spine-stop a { display:grid; grid-template-rows:var(--label) 44px var(--label); justify-items:center; color:inherit; text-decoration:none; pointer-events:none; }
+/* Only the dot and the label take the pointer (not the <li> or <a> boxes), so a label that spills over a neighbour still opens its own stop. */
+.spine-stop { position:relative; z-index:1; flex:1 1 0; min-inline-size:var(--stop); pointer-events:none; }
+/* One column as wide as the stop: the dot sits at its centre and a wider label overflows evenly on both sides. */
+.spine-stop a { display:grid; grid-template-columns:minmax(0, 1fr); grid-template-rows:var(--label) 44px var(--label); justify-items:center; color:inherit; text-decoration:none; pointer-events:none; }
 .spine-stop a:focus-visible { outline:none; }
 .stop-dot { grid-row:2; display:grid; place-items:center; inline-size:44px; block-size:44px; pointer-events:auto; }
 .stop-check { display:grid; place-items:center; inline-size:22px; block-size:22px; background:var(--surface); color:transparent; border:3px solid var(--ink); border-radius:50%; font:700 13px/1 var(--display); transition:transform 120ms ease; }
@@ -44,10 +48,11 @@
 .spine-stop.is-done .stop-check { inline-size:28px; block-size:28px; background:var(--accent); color:var(--on-accent); }
 .spine-stop a:hover .stop-check { transform:scale(1.2); }
 .spine-stop a:focus-visible .stop-check { outline:3px solid var(--deep); outline-offset:3px; }
-.stop-label { grid-row:1; align-self:end; display:grid; gap:1px; inline-size:calc(2 * var(--stop) - 6px); padding-block:2px; text-align:center; pointer-events:auto; }
+/* Two cells wide less a 4px gap, so labels on the same side never touch; a word longer than that breaks instead of being clipped. */
+.stop-label { grid-row:1; align-self:end; display:grid; gap:1px; inline-size:calc(200% - 4px); padding-block:2px; text-align:center; pointer-events:auto; }
 .spine-stop.is-below .stop-label { grid-row:3; align-self:start; }
 .stop-label time { font:700 14px/1.2 var(--display); font-variant-numeric:tabular-nums; }
-.stop-title { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; color:var(--muted); font-size:12px; line-height:1.25; }
+.stop-title { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden; overflow-wrap:anywhere; color:var(--muted); font-size:12px; line-height:1.25; }
 .spine-stop a:hover .stop-title, .spine-stop a:focus-visible .stop-title { color:var(--ink); text-decoration:underline; text-decoration-color:var(--deep); text-underline-offset:3px; }
 .spine-stop:not(.is-done) .stop-done { display:none; }
 

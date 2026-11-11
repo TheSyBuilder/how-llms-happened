@@ -3,7 +3,7 @@
 import {chapterMeta} from '../../lib/chapter-meta';
 import {eraGroups} from './eras';
 // The line is at least as wide as its stops; on wide screens it stretches to fill the page.
-const widths=`--count:${chapterMeta.length};--min:calc(${eraGroups.map(group=>`max(${group.stops.length} * var(--stop), var(--era-min))`).join(' + ')})`;
+const widths=`--count:${chapterMeta.length}`;
 ---
 <section class="spine-section" id="timeline" aria-labelledby="spine-title">
   <div class="spine-head page-width">
