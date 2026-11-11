@@ -1,93 +1,161 @@
 import '../i18n/preact';
-import { useState } from "preact/hooks";
+import '../styles/games/gpt-3.css';
+import { useLayoutEffect, useRef, useState } from "preact/hooks";
+import GoalBar from "./game/GoalBar";
+import ResultCard, { type GameResult } from "./game/ResultCard";
+import { markPlayed } from "../lib/progress";
 
-type Pair = readonly [string, string];
-export type Example = { input: Pair; output: Pair };
-export const patternRules = [
-  { id: "keep", label: "Keep the order", apply: ([a, b]: Pair): Pair => [a, b] },
-  { id: "swap", label: "Swap the pair", apply: ([a, b]: Pair): Pair => [b, a] },
-  { id: "first", label: "Repeat the first", apply: ([a]: Pair): Pair => [a, a] },
-  { id: "last", label: "Repeat the last", apply: ([, b]: Pair): Pair => [b, b] },
+type Words = readonly string[];
+export type Example = { input: Words; output: Words };
+export type Rule = { id: string; label: string; apply: (words: Words) => Words };
+export const pairRules: Rule[] = [
+  { id: "keep", label: "Keep the order", apply: ([a, b]) => [a!, b!] },
+  { id: "swap", label: "Swap the pair", apply: ([a, b]) => [b!, a!] },
+  { id: "first", label: "Repeat the first", apply: ([a]) => [a!, a!] },
+  { id: "last", label: "Repeat the last", apply: ([, b]) => [b!, b!] },
 ];
-export function promptExamples(set: "swap" | "first", count: number, conflict = false): Example[] {
-  const inputs: Pair[] = [["red", "red"], ["red", "blue"], ["gold", "red"]];
-  const rule = patternRules.find(rule => rule.id === set)!;
-  return inputs.slice(0, count).map((input, i) => ({
-    input,
-    output: conflict && i === 2 ? input : rule.apply(input),
-  }));
+// Every order of three words.
+export const tripleRules: Rule[] = [
+  { id: "keep3", label: "Keep the order", apply: ([a, b, c]) => [a!, b!, c!] },
+  { id: "reverse", label: "Reverse", apply: ([a, b, c]) => [c!, b!, a!] },
+  { id: "rotate", label: "Move the first to the end", apply: ([a, b, c]) => [b!, c!, a!] },
+  { id: "rotateBack", label: "Move the last to the front", apply: ([a, b, c]) => [c!, a!, b!] },
+  { id: "swapFront", label: "Swap the first two", apply: ([a, b, c]) => [b!, a!, c!] },
+  { id: "swapBack", label: "Swap the last two", apply: ([a, b, c]) => [a!, c!, b!] },
+];
+const same = (a: Words, b: Words) => a.length === b.length && a.every((word, i) => word === b[i]);
+export function mismatchingRows(rule: Rule, examples: readonly Example[]) {
+  return examples.flatMap((example, i) => same(rule.apply(example.input), example.output) ? [] : [i + 1]);
 }
-export function mismatchingRows(rule: typeof patternRules[number], examples: Example[]) {
-  return examples.flatMap((example, i) =>
-    rule.apply(example.input).every((word, j) => word === example.output[j]) ? [] : [i + 1],
-  );
+export function fittingRules(examples: readonly Example[], bank: readonly Rule[] = pairRules) {
+  return bank.filter((rule) => mismatchingRows(rule, examples).length === 0);
 }
-export function fittingRules(examples: Example[]) {
-  return patternRules.filter(rule => mismatchingRows(rule, examples).length === 0);
+
+export type Puzzle = { bank: Rule[]; rule: string; examples: Example[]; query: Words };
+const ex = (input: string, output: string): Example => ({ input: input.split(" "), output: output.split(" ") });
+// Five puzzles that get harder: pairs first, then every order of three words.
+export const puzzles: Puzzle[] = [
+  { bank: pairRules, rule: "swap", query: ["sun", "moon"], examples: [ex("cat cat", "cat cat"), ex("cat dog", "dog cat")] },
+  { bank: pairRules, rule: "first", query: ["red", "blue"], examples: [ex("gold gold", "gold gold"), ex("gold red", "gold gold")] },
+  { bank: tripleRules, rule: "reverse", query: ["red", "green", "blue"], examples: [ex("sun moon sun", "sun moon sun"), ex("one two three", "three two one")] },
+  { bank: tripleRules, rule: "rotate", query: ["red", "green", "blue"], examples: [ex("dog dog dog", "dog dog dog"), ex("dog dog cat", "dog cat dog"), ex("sun moon star", "moon star sun")] },
+  { bank: tripleRules, rule: "swapFront", query: ["one", "two", "three"], examples: [ex("cat cat cat", "cat cat cat"), ex("cat cat dog", "cat cat dog"), ex("red green blue", "green red blue")] },
+];
+export const answerOf = (puzzle: Puzzle) => puzzle.bank.find((rule) => rule.id === puzzle.rule)!.apply(puzzle.query).join(" ");
+// The possible answers: what each rule in the bank would say, without repeats.
+export const choicesFor = (puzzle: Puzzle) => [...new Set(puzzle.bank.map((rule) => rule.apply(puzzle.query).join(" ")))];
+// The rule filter answers once every rule that still fits agrees on the new input.
+export function filterNeeds(puzzle: Puzzle) {
+  for (let count = 1; count <= puzzle.examples.length; count++) {
+    const answers = new Set(fittingRules(puzzle.examples.slice(0, count), puzzle.bank).map((rule) => rule.apply(puzzle.query).join(" ")));
+    if (answers.size === 1) return count;
+  }
+  return Infinity;
 }
-const pairText = (pair: Pair) => pair.join(" ");
-const query: Pair = ["blue", "gold"];
+// Answering right with fewer examples than the filter needed scores more; a tie scores 1; wrong scores 0.
+export const puzzlePoints = (shown: number, needed: number, correct: boolean) => correct ? Math.max(1, needed - shown + 1) : 0;
+export const maxPoints = puzzles.reduce((sum, puzzle) => sum + filterNeeds(puzzle), 0);
+export function gpt3Stars(points: number): 0 | 1 | 2 | 3 {
+  return points >= 8 ? 3 : points >= 5 ? 2 : points >= 2 ? 1 : 0;
+}
+export function longestStreak(results: readonly boolean[]) {
+  let best = 0, run = 0;
+  for (const correct of results) { run = correct ? run + 1 : 0; best = Math.max(best, run); }
+  return best;
+}
+
+type Answer = { choice: string; shown: number; needed: number; points: number };
 
 export default function Gpt3Toy() {
-  const [count, setCount] = useState(1);
-  const [set, setSet] = useState<"swap" | "first">("swap");
-  const [conflict, setConflict] = useState(false);
-  const [useWritten, setUseWritten] = useState(false);
-  const [written, setWritten] = useState<Example>({ input: ["red", "blue"], output: ["blue", "red"] });
-  const examples = promptExamples(set, count, conflict);
-  if (useWritten && count > 0) examples[0] = written;
-  const fits = fittingRules(examples);
-  const mode = count === 0 ? "No examples" : count === 1 ? "One-shot" : "Few-shot";
-  const answer = fits.length === 1 ? pairText(fits[0]!.apply(query)) : fits.length === 0 ? "No rule fits" : "Several answers fit";
+  const [index, setIndex] = useState(0);
+  const [shown, setShown] = useState(1);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [announce, setAnnounce] = useState("");
+  const played = useRef(false);
+  const nextButton = useRef<HTMLButtonElement>(null);
+  const puzzle = puzzles[index];
+  const answer = answers[index];
+  const finished = index >= puzzles.length;
+  const needed = puzzle ? filterNeeds(puzzle) : 0;
+  const points = answers.reduce((sum, a) => sum + a.points, 0);
+  const results = answers.map((a) => a.points > 0);
+  let streak = 0;
+  for (const correct of results) streak = correct ? streak + 1 : 0;
+  useLayoutEffect(() => { if (answer) nextButton.current?.focus(); }, [answer]);
+
+  const touch = () => { if (!played.current) { played.current = true; markPlayed("gpt-3"); } };
+  const more = () => {
+    if (!puzzle || answer || shown >= needed) return;
+    touch();
+    setShown(shown + 1);
+    setAnnounce(shown + 1 >= needed ? "Example added. The filter now has its answer." : "Example added.");
+  };
+  const pick = (choice: string) => {
+    if (!puzzle || answer) return;
+    touch();
+    const correct = choice === answerOf(puzzle);
+    const earned = puzzlePoints(shown, needed, correct);
+    setAnswers([...answers, { choice, shown, needed, points: earned }]);
+    setAnnounce(!correct ? `Wrong. The rule gives ${answerOf(puzzle)}. Streak reset.` : shown < needed ? `Right, ${needed - shown} examples before the filter. ${earned} points.` : `Right, a tie with the filter. 1 point.`);
+  };
+  const advance = () => { setIndex(index + 1); setShown(1); setAnnounce(""); };
+  const replay = () => { setIndex(0); setShown(1); setAnswers([]); setAnnounce(""); };
+
+  const beats = answers.filter((a) => a.points > 0 && a.shown < a.needed).length;
+  const best = longestStreak(results);
+  const result: GameResult = {
+    slug: "gpt-3",
+    headline: `I beat the rule filter on ${beats} of 5 puzzles, with a streak of ${best}.`,
+    detail: "Each new example crossed rules off. GPT-3 also took its task from examples in the prompt, without changing its weights, and ambiguous examples left it guessing too.",
+    score: { value: points, max: maxPoints, label: "Points" },
+    stars: gpt3Stars(points),
+    shareText: `I beat the in-context rule filter on ${beats} of 5 puzzles (streak ${best}). Can you spot the rule from fewer examples?`,
+  };
+
   return (
-    <div class="gpt3-toy">
-      <div class="toy-topline"><strong>Teach by showing.</strong><span class="toy-label">Toy · four fixed rules</span></div>
-      <p>Change the examples. The four rules stay fixed.</p>
-      <fieldset class="example-picker">
-        <legend>Demonstrations to show</legend>
-        <div class="example-options">{(["swap", "first"] as const).map((value, i) => <label key={value}><input type="radio" name="example-set" value={value} checked={set === value} onChange={() => setSet(value)} />Set {i === 0 ? "A" : "B"}</label>)}</div>
-      </fieldset>
-      <div class="toy-controls">
-        <label for="example-count">Examples in the prompt <output for="example-count">{count} · {mode}</output></label>
-        <input id="example-count" type="range" min="0" max="3" step="1" value={count} aria-describedby="examples-help" aria-valuetext={`${count} examples; ${mode}; ${fits.length} rules fit`} onInput={event => setCount(Number(event.currentTarget.value))} />
-        <div class="range-ends"><span>0 · no examples</span><span>3 · few-shot</span></div>
-      </div>
-      <div class="pattern-prompt" aria-label="Toy prompt">
-        <p class="pattern-label">Continue the pattern</p>
-        <ol aria-label="Examples in this prompt">{examples.map((example, i) => <li key={i} class={conflict && i === 2 ? "conflicting-example" : ""}><span class="pattern-row-number" aria-hidden="true">{i + 1}</span><code dir="ltr">{pairText(example.input)} <span aria-hidden="true">→</span><span class="screen-reader-only">becomes</span> <strong>{pairText(example.output)}</strong></code>{useWritten && i === 0 && <span class="pattern-written-label">Yours</span>}</li>)}</ol>
-        {count === 0 && <p class="empty-prompt">No demonstrations yet.</p>}
-        <p class="pattern-query"><code dir="ltr">{pairText(query)} → <strong>?</strong></code></p>
-      </div>
-      <details class="pattern-editor">
-        <summary>Can one example be enough?</summary>
-        <p>Try two different input words. Change the answer to teach another rule.</p>
-        <label class="pattern-conflict"><input type="checkbox" checked={useWritten} onChange={event => { setUseWritten(event.currentTarget.checked); if (event.currentTarget.checked && count === 0) setCount(1); }} />Replace row 1 with mine</label>
-        <div class="pattern-word-fields">
-          {(["input", "output"] as const).map(side => <fieldset disabled={!useWritten} key={side}>
-            <legend>{side === "input" ? "Input words" : "Shown answer"}</legend>
-            <div>{([0, 1] as const).map(position => <label key={position}>
-              <span>{position === 0 ? "First word" : "Second word"}</span>
-              <select aria-label={`${side === "input" ? "Input" : "Answer"} word ${position + 1}`} value={written[side][position]} onChange={event => {
-                const pair: [string, string] = [...written[side]];
-                pair[position] = event.currentTarget.value;
-                setWritten({ ...written, [side]: pair });
-              }}>{["red", "blue", "gold"].map(word => <option key={word} value={word}>{word}</option>)}</select>
-            </label>)}</div>
-          </fieldset>)}
-        </div>
-        <p class="pattern-editor-note" role="status" aria-atomic="true">{!useWritten ? "Untick to restore the original row." : count === 0 ? "Your row is hidden at zero examples. Add one to use it again." : <><code dir="ltr">{pairText(written.input)} → {pairText(written.output)}</code><output data-testid="written-fit-count">{`${fits.length} of 4 fit`}</output></>}</p>
-      </details>
-      <label class="pattern-conflict"><input type="checkbox" checked={conflict} onChange={event => { setConflict(event.currentTarget.checked); if (event.currentTarget.checked) setCount(3); }} />Give example 3 a conflicting answer</label>
-      <div class="pattern-results" aria-live="polite" aria-atomic="true">
-        <div class="pattern-answer"><span>Continuation</span><output data-testid="pattern-answer" dir={fits.length === 1 ? "ltr" : undefined}>{answer}</output><p data-testid="pattern-explanation">{fits.length === 0 ? "No rule in this bank explains every row. Check which rows disagree below." : fits.length === 1 ? "One rule fits every example and answers the new pair." : count === 0 ? "Without examples, all four rules are possible." : "A repeated word hides the difference. Try two different input words."}</p></div>
-        <p class="pattern-label">Fixed rule bank · <output data-testid="fitting-count">{fits.length} of 4 fit</output></p>
-        <ul class="pattern-rules">{patternRules.map(rule => {
-          const misses = mismatchingRows(rule, examples);
-          return <li key={rule.id} class={misses.length === 0 ? "rule-fits" : "rule-out"} data-testid={`rule-${rule.id}`}><span><strong>{rule.label}</strong><small>{misses.length === 0 ? "Fits prompt" : <><span>{misses.length === 1 ? "Disagrees with row" : "Disagrees with rows"}</span>{" "}<bdi dir="ltr">{misses.join(", ")}</bdi></>}</small></span><code dir="ltr">{pairText(rule.apply(query))}</code></li>;
-        })}</ul>
-      </div>
-      <p id="examples-help">Useful clues matter more than the number of examples in this toy.</p>
-      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">This is a rule filter, not GPT-3. It has no neural network or training. Real models predict text rather than crossing rules off a list.</p></details>
+    <div class="gpt3-toy g3-game">
+      <GoalBar
+        goal="Name the answer for the new input before the rule filter can."
+        status={finished ? `Best streak: ${best}` : `Puzzle ${index + 1} / 5 · streak ${streak}`}
+        score={{ value: points, max: maxPoints, label: "Points" }}
+      />
+      <p class="screen-reader-only" role="status">{announce}</p>
+      {finished || !puzzle ? (
+        <ResultCard result={result} onReplay={replay} />
+      ) : (
+        <>
+          <div class="g3-prompt" dir="ltr">
+            <ol aria-label="Examples in this prompt">
+              {puzzle.examples.slice(0, shown).map((e) => <li><code>{e.input.join(" ")}</code> <span aria-hidden="true">→</span><span class="screen-reader-only"> becomes </span> <code><strong>{e.output.join(" ")}</strong></code></li>)}
+            </ol>
+            <p class="g3-query"><code>{puzzle.query.join(" ")}</code> <span aria-hidden="true">→</span> <strong>?</strong></p>
+          </div>
+          {!answer && <div class="g3-more">
+            <button type="button" class="game-btn" disabled={shown >= needed} onClick={more}>Show another example</button>
+            <p>{shown >= needed ? "The filter has its answer now. Match it to tie, for 1 point." : `Answer now for ${puzzlePoints(shown, needed, true)} points.`}</p>
+          </div>}
+          <div class="game-choices g3-choices" role="group" aria-label="Your answer" dir="ltr">
+            {choicesFor(puzzle).map((choice) => (
+              <button type="button" disabled={!!answer}
+                class={answer ? (choice === answerOf(puzzle) ? "is-right" : choice === answer.choice ? "is-wrong" : undefined) : undefined}
+                aria-pressed={answer ? answer.choice === choice : undefined}
+                onClick={() => pick(choice)}>{choice}</button>
+            ))}
+          </div>
+          {answer && (
+            <div class="g3-summary">
+              <p><strong>{answer.points === 0 ? "Wrong. Streak reset." : answer.shown < answer.needed ? `You beat the filter by ${answer.needed - answer.shown}: ${answer.points} points.` : "A tie with the filter: 1 point."}</strong></p>
+              <p>{`The filter needed ${answer.needed} examples to be sure. Rules still fitting after each example:`} <span dir="ltr">{[puzzle.bank.length, ...puzzle.examples.slice(0, answer.needed).map((_, i) => fittingRules(puzzle.examples.slice(0, i + 1), puzzle.bank).length)].join(" → ")}</span></p>
+              <ul class="g3-rules">{puzzle.bank.map((rule) => {
+                const out = mismatchingRows(rule, puzzle.examples.slice(0, answer.needed)).length > 0;
+                return <li class={out ? "is-out" : "is-in"}><span>{rule.label}</span> <small>{out ? "Ruled out" : "Fits"}</small> <code dir="ltr">{rule.apply(puzzle.query).join(" ")}</code></li>;
+              })}</ul>
+              <button type="button" class="game-btn is-primary" ref={nextButton} onClick={advance}>{index + 1 < puzzles.length ? "Next puzzle" : "See your result"}</button>
+            </div>
+          )}
+        </>
+      )}
+      <p class="toy-note">A rule filter with a fixed list of patterns, not GPT-3.</p>
     </div>
   );
 }

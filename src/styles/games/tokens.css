@@ -1,0 +1,54 @@
+/* "How many tokens is your name?": GPT-2 token chips and three challenges. Tokens only; logical properties for RTL. */
+.tok-game { --era:var(--era-attention); --tok-0:var(--era-attention); --tok-1:var(--era-counting); --tok-2:var(--era-memory); --tok-3:var(--era-scale); --tok-4:var(--era-chat); display:grid; grid-template-columns:minmax(0, 1fr); gap:16px; color:var(--ink); }
+.tok-game .goal-bar { margin-block-end:0; }
+.tok-loading, .tok-error { margin:0; padding:10px 14px; border:2px dashed var(--line); border-radius:var(--radius); color:var(--muted); }
+.tok-error { border-color:var(--bad); color:var(--bad); }
+
+.tok-name { display:grid; gap:10px; padding:clamp(16px, 4vw, 28px); background:var(--surface); border:2px solid var(--ink); border-block-start:8px solid var(--era); border-radius:var(--radius); box-shadow:var(--shadow-hard); }
+.tok-name h3 { margin:0; font:700 clamp(26px, 6vw, 42px)/1.05 var(--display); letter-spacing:-.025em; }
+.tok-label { color:var(--muted); font-size:14px; }
+.tok-input { inline-size:100%; min-block-size:48px; padding:8px 14px; background:var(--paper); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius-pill); font:600 19px/1.2 var(--display); }
+.tok-input:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.tok-name .tok-input { font-size:clamp(20px, 5vw, 26px); }
+.tok-count { display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 8px; margin:0; font:700 20px/1.1 var(--display); }
+.tok-count b { font-size:clamp(44px, 11vw, 72px); line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+.tok-count span { color:var(--muted); font:400 14px/1.2 var(--body); }
+.tok-finish { justify-self:start; }
+
+.tok-chips { display:flex; flex-wrap:wrap; gap:6px; min-block-size:0; margin:0; padding:0; list-style:none; }
+.tok-chips:empty { display:none; }
+.tok-chip { display:inline-grid; justify-items:center; gap:2px; padding:5px 9px 4px; background:var(--tok); color:var(--on-accent); border:2px solid var(--ink); border-radius:8px; animation:tok-pop 160ms ease-out; }
+.tok-text { font:600 18px/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; white-space:pre; }
+.tok-id { font:700 11px/1.1 var(--display); font-variant-numeric:tabular-nums; opacity:.8; }
+.tok-chip.is-partial { background:var(--paper); color:var(--ink); border-style:dashed; }
+.tok-chip.is-partial .tok-text { font-size:13px; }
+
+.tok-challenges { display:grid; gap:12px; margin:0; padding:0; list-style:none; }
+.tok-challenge { display:grid; gap:10px; padding:16px; background:var(--surface); border:2px solid var(--line); border-radius:var(--radius); }
+.tok-challenge.is-done { border-color:var(--ink); box-shadow:inset 6px 0 0 var(--good); }
+[dir="rtl"] .tok-challenge.is-done { box-shadow:inset -6px 0 0 var(--good); }
+.tok-challenge h3 { display:flex; align-items:flex-start; gap:10px; margin:0; font:700 19px/1.3 var(--display); }
+.tok-tick { display:inline-grid; place-items:center; flex:none; inline-size:30px; block-size:30px; border:2px solid var(--ink); border-radius:50%; font:700 15px/1 var(--display); }
+.is-done .tok-tick { background:var(--good); border-color:var(--good); color:var(--surface); }
+.tok-hint, .tok-note { margin:0; color:var(--muted); font-size:15px; line-height:1.45; }
+.tok-note:empty { display:none; }
+.tok-row { display:flex; gap:8px; }
+.tok-row .tok-input { flex:1; min-inline-size:0; }
+.tok-board { display:grid; gap:4px; margin:0; padding:0; list-style:none; counter-reset:tok; }
+.tok-board li { display:flex; align-items:center; gap:10px; padding:6px 12px; background:var(--paper); border:1px solid var(--line); border-radius:8px; counter-increment:tok; }
+.tok-board li::before { content:counter(tok); color:var(--muted); font:700 13px/1 var(--display); }
+.tok-board span { flex:1; font-family:ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; overflow-wrap:anywhere; }
+.tok-board b { font-family:var(--display); font-variant-numeric:tabular-nums; }
+.tok-record { margin:0; font-weight:600; }
+.tok-choices { grid-template-columns:repeat(4, minmax(0, 1fr)); margin-block:0; }
+.tok-reveal { display:grid; gap:10px; }
+.tok-reveal > p { margin:0; line-height:1.5; }
+.tok-sees { display:grid; gap:6px; }
+.tok-sees > span { color:var(--muted); font:700 12px/1.2 var(--display); letter-spacing:.06em; text-transform:uppercase; }
+.tok-letters { display:flex; flex-wrap:wrap; gap:4px; margin:0; padding:0; list-style:none; }
+.tok-letters li { display:inline-grid; place-items:center; inline-size:32px; block-size:38px; background:var(--paper); border:2px solid var(--line); border-radius:6px; font:600 18px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.tok-letters li.is-r { background:var(--accent); color:var(--on-accent); border-color:var(--ink); }
+
+@keyframes tok-pop { from { opacity:0; transform:scale(.9); } }
+@media (max-width: 480px) { .tok-challenge { padding:12px; } .tok-challenge h3 { font-size:17px; } .tok-letters li { inline-size:28px; } }
+@media (prefers-reduced-motion: reduce) { .tok-chip { animation:none; } }

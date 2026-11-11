@@ -18,7 +18,7 @@ import { sourceLink } from '../lib/chapters';
     <p class="curiosity-intro">Markov studied vowel/consonant patterns in <em>Eugene Onegin</em> in 1913. Give his idea a tiny text.</p>
     <label class="secret-label" for="capsule-text">Your tiny text</label><input id="capsule-text" maxlength="40" value="banana" spellcheck="false" autocomplete="off" />
     <div class="capsule-examples"><span>Try</span><button data-example="banana">banana</button><button data-example="queue">queue</button><button data-example="abracadabra">abracadabra</button></div>
-    <div class="letter-tape" aria-label="Letters classified as vowels and consonants"></div>
+    <div class="letter-tape" role="img" aria-label="Letters classified as vowels and consonants"></div>
     <button class="see-pattern" aria-pressed="false">See the pattern</button>
     <div class="letter-odds" aria-live="polite"></div>
     <p class="curiosity-small">Toy · English a–z only; a, e, i, o, u are vowels. Spaces and punctuation are skipped. These are your counts, not Markov’s results.</p>
@@ -26,7 +26,7 @@ import { sourceLink } from '../lib/chapters';
   </section>
 </dialog>
 <script>
-import {t} from "../i18n/core";
+import {currentLocale, t} from "../i18n/core";
 import {letterPattern, nextTokenOdds, sampleToken} from './curiosity-toys.mjs';
 const dialog = document.querySelector<HTMLDialogElement>('.curiosity-dialog')!;
 const title = dialog.querySelector<HTMLElement>('#curiosity-title')!;
@@ -91,10 +91,13 @@ function renderLetters() {
     const tile = document.createElement('span');
     tile.className = kind === 'V' ? 'letter-vowel' : 'letter-consonant';
     tile.textContent = t(showPattern ? kind : letter);
-    tile.setAttribute('aria-label', t(`${letter}: ${kind === 'V' ? 'vowel' : 'consonant'}`));
     tape.append(tile);
   }
   if (!letters.length) tape.textContent = t('Add a few English letters to start the tape.');
+  // One label for the whole tape, so a screen reader gets a single stop instead of one per tile.
+  const [comma, colon] = {zh: ['；', '：'], ar: ['، ', ': '], en: [', ', ': ']}[currentLocale()];
+  const described = letters.map(({letter, kind}: {letter: string; kind: string}) => t(`${letter}: ${kind === 'V' ? 'vowel' : 'consonant'}`)).join(comma);
+  tape.setAttribute('aria-label', `${t('Letters classified as vowels and consonants')}${colon}${described || tape.textContent}`);
   counts.replaceChildren();
   for (const kind of ['V', 'C'] as const) {
     const row = document.createElement('p');

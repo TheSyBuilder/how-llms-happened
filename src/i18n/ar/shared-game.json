@@ -1,0 +1,25 @@
+{
+  "rich": {},
+  "text": {
+    "Goal": "الهدف",
+    "Share on X": "شارك على X",
+    "Copy link": "انسخ الرابط",
+    "Save image": "احفظ الصورة",
+    "Play again": "العب مرة ثانية",
+    "Saving image…": "جاري تجهيز الصورة…",
+    "Image saved.": "انحفظت الصورة.",
+    "Image shared.": "انشاركت الصورة.",
+    "Could not make the image.": "ما قدرنا نسوي الصورة.",
+    "Link copied.": "انتسخ الرابط.",
+    "Could not copy the link.": "ما قدرنا ننسخ الرابط.",
+    "{0} of {1} stars": "{0} من {1} نجوم",
+    "Next: {0} · {1}": "التالي: {0} · {1}",
+    "LLM Lineage · How LLMs happened": "LLM Lineage · كيف بدأت النماذج اللغوية",
+    "Counting": "العدّ",
+    "Memory": "الذاكرة",
+    "Attention": "الانتباه",
+    "Scale": "التوسّع",
+    "Chat": "المحادثة",
+    "Reasoning & agents": "الاستدلال والوكلاء"
+  }
+}

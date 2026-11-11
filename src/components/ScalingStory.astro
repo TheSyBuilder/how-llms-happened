@@ -31,17 +31,16 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>One budget.<br />Two hungry resources.</h2><Discovery slug="scaling-laws" />
-  <p>Try the biggest model, then the smallest. Somewhere between them, this toy scores better. What changes with more budget?</p>
-  <noscript><p>Enable JavaScript to move the slider. At a fixed budget, this illustration trades a larger model for fewer text units; neither extreme gives its lowest score.</p></noscript>
+  <h2>Find the<br />sweet spot.</h2><Discovery slug="scaling-laws" />
+  <p>Three budgets, one hidden curve each. Spend the budget on a bigger model or on more text, drop your guess, then see how close you came. Earlier curves stay on the chart as clues.</p>
+  <noscript><p>Enable JavaScript to play. At a fixed budget, this illustration trades a larger model for fewer text units; neither extreme gives its lowest score, and the best size grows with the budget.</p></noscript>
   <ScalingToy client:load />
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>A way to plan the leap.</h2>
   <p>Scaling laws helped researchers estimate how a larger training run might improve text prediction. Kaplan’s analysis favoured larger models stopped early, before their loss had finished improving, over smaller models trained to completion.</p>
-  <p>Better next-token scores do not guarantee better reasoning or truthful answers. The next chapter asks what a much larger model can do with a few examples in its prompt.</p>
-  <a class="next-chapter" href="/chapters/gpt-3/"><span>Next · 2020</span><strong>GPT-3 and in-context learning ↗</strong><span>Can examples in a prompt teach a new pattern?</span></a>
+  <p>Better next-token scores do not guarantee better reasoning or truthful answers. The next chapter asks what a model can do when it looks facts up before answering.</p>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Power laws, compute & limits</span></summary>
@@ -58,7 +57,7 @@ import { sourceLink } from "../lib/chapters";
     <p>The paper explicitly expects its extrapolated trends to break down and does not show that every downstream task improves with loss. In 2022, <a href="/chapters/chinchilla/">Chinchilla</a> revisited the allocation question and found a more even scaling of model size and training tokens. A fitted exponent depends on the experiments behind it.</p>
     <aside class="chapter-companions"><h3>Also in this chapter</h3><p><a href={sourceLink("rae-2021-arxiv-record")}>Gopher (2021)</a> studied a family reaching 280 billion parameters; benefits from scale varied across tasks, with less progress in logical and mathematical reasoning. <a href={sourceLink("chowdhery-2022-arxiv-record")}>PaLM (2022)</a> extended the exploration to 540 billion parameters and reported gains across many language benchmarks.</p></aside>
     <h3>Inside the toy</h3>
-    <p>For model units m and text units d, the invented score is <code>1 + m^(−0.3) + d^(−0.7)</code>, with <code>d = budget / m</code>. These constants are chosen for illustration. The curve samples 61 allocations; the slider advances in equal ratios of model size. No training data, real model, paper fit, or actual accuracy measurement is involved.</p>
+    <p>For model units m and text units d, the invented score is <code>1 + m^(−0.3) + d^(−0.7)</code>, with <code>d = budget / m</code>. These constants are chosen for illustration. The curve samples 61 allocations; the slider advances in equal ratios of model size. A guess scores 100 points on the lowest point, 5 fewer per slider step away from it, and nothing beyond 4× off. No training data, real model, paper fit, or actual accuracy measurement is involved.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">

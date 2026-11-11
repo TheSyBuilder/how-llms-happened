@@ -31,17 +31,15 @@ import '../styles/recurrence.css';
   </figure>
 </section>
 <section class="story-section toy-section" id="play">
-  <p class="eyebrow">03 / Play with it</p><h2>Get the clue<br />across the sentence.</h2><Discovery slug="drop-recurrence" />
-  <p>A clue starts at word 1. Change the connections and add hops until word 8 can receive it.</p>
-  <noscript><p>Enable JavaScript to change the connections. In this toy, the clue reaches word 8 after seven local or recurrent hops, three widening hops, or one direct attention hop.</p></noscript>
+  <p class="eyebrow">03 / Play with it</p><h2>Place<br />your bet.</h2><Discovery slug="drop-recurrence" />
+  <p>Four races, from 8 to 64 words. Before each one, bet which wiring gets word 1’s message to the last word first. Fewer steps help, but every step has to fit through the same chip.</p>
+  <noscript><p>Enable JavaScript to race. In this game, attention wins the 8- and 16-word races in one step; at 32 and 64 words its all-pairs reads grow so large that the widening convolution stack arrives first.</p></noscript>
   <RecurrenceToy client:load />
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p><h2>The queue<br />was a choice.</h2>
   <p>These systems showed that useful sentence processing could work without recurrent state chains. The Transformer paper explicitly compared convolution’s paths with attention’s direct connections, then made self-attention—attention within one sequence—its central mixing operation. <a href="/chapters/transformer/">Try that next step ↗</a></p>
   <aside class="chapter-companions"><h3>Also in this chapter</h3><p>Parikh’s decomposable attention and ByteNet take the two alternative routes above. Earlier, <strong>End-To-End Memory Networks (2015)</strong> made repeated attention reads over stored inputs; <strong>Cheng, Dong and Lapata (2016)</strong> combined attention with a recurrent reader. Attention and recurrence could coexist.</p></aside>
-  <p>Next we rewind to the beginning: before neural networks, what could counting letter pairs tell us?</p>
-  <a class="next-chapter" href="/chapters/next-letter/"><span>Next · 1913</span><strong>Guessing the next letter ↗</strong><span>How much can the last letter tell us about the next?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper"><summary>Go deeper <span>Windows, alignment and generation</span></summary><div class="disclosure-body">
   <h3>ConvS2S: gates and positions</h3>
@@ -53,8 +51,8 @@ import '../styles/recurrence.css';
   <p>For word vectors aᵢ and bⱼ from two sentences, a shared feed-forward network F gives scores <code>eᵢⱼ = F(aᵢ)ᵀF(bⱼ)</code>. A softmax turns scores into positive weights summing to one. Weighted reads align the sentences; another network compares each word with its aligned read, then pooled comparisons yield a classification. The base model ignores sentence order. An optional attention step within each sentence adds limited order information. Table 1 reports 86.3% and 86.8% SNLI test accuracy respectively; this is a sentence-pair classification task, not text generation.</p>
   <h3>Parallel training, sequential generation</h3>
   <p>During training, the expected earlier output words are already known. Masked convolutions hide later words, letting positions be trained together without exposing the answer. During generation, the next input includes the word just produced, so prediction still proceeds in sequence. Full attention also scores every pair of positions: for n positions that is n² scores per head. Shorter dependency paths can cost more connections.</p>
-  <h3>What the signal toy leaves out</h3>
-  <p>Word 1 starts with a Boolean clue. A node lights up if any connected node in the previous hop carried it. Local and dilated windows read left, centre and right, like an input-reading stack. The recurrent option instead passes one state rightward. The graph shows the most recent update; recurrence shows its growing chain. It does not compute embeddings, learned weights, gates, translation quality or elapsed time. The fixed eight-position example illustrates connectivity, not a ranking of architectures.</p>
+  <h3>What the race leaves out</h3>
+  <p>A step is one dependent update: the chain passes one state rightward, each convolution layer reads three positions with ByteNet’s widening spacing, and attention reads every pair once. A tick is one round of up to 128 reads, so a step with more reads takes more ticks. The race counts reads and waiting, not embedding sizes, learned weights, gates or translation quality. Real hardware does far more work per tick, which moves the crossover; the trade between short paths and total work stays.</p>
 </div></details>
 <details class="chapter-disclosure" id="sources"><summary>Sources <span>Original papers, with a reading guide</span></summary><div class="disclosure-body"><ol class="source-list">
   <li><a href={sourceLink('gehring-2017-pmlr-full-text')}>Gehring et al. · Convolutional Sequence to Sequence Learning · 2017</a><p>Introduction and Sections 2–3: recurrence’s queue, parallel windows, encoder and decoder, positions, gated linear units, residual connections and layerwise attention. Section 3.1: context growth and masked decoder training. Table 1: single-model English–French BLEU. The PMLR record linked above supplies the publication year.</p></li>
@@ -63,4 +61,4 @@ import '../styles/recurrence.css';
   <li><a href={sourceLink('sukhbaatar-2015-neurips-full-text')}>Sukhbaatar et al. · End-To-End Memory Networks · 2015</a><p>Abstract and Section 2: differentiable attention reads over stored inputs, repeated memory hops and a recurrent query update.</p></li>
   <li><a href={sourceLink('cheng-2016-acl-full-text')}>Cheng, Dong &amp; Lapata · Long Short-Term Memory-Networks for Machine Reading · 2016</a><p>Abstract and Section 3: a left-to-right recurrent reader using attention over earlier memory states. The heading gives the publication year.</p></li>
   <li><a href={sourceLink('vaswani-2017-neurips-full-text')}>Vaswani et al. · Attention Is All You Need · 2017</a><p>Sections 1–2: sequential constraints and the explicit comparison with ByteNet, ConvS2S and earlier attention models. Sections 3–4 and Table 1: self-attention, short paths, quadratic pair scoring and parallel position computation. Decoder masking and the output probability factorization explain why ordinary generation remains sequential.</p></li>
-</ol><p>The drawings and eight-position signal are invented teaching illustrations. Hop counts and colours describe the toy’s connections, not measured paper results.</p></div></details>
+</ol><p>The drawings and the race are invented teaching illustrations. Step and tick counts describe the toy’s accounting, not measured paper results.</p></div></details>

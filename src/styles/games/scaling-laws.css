@@ -1,0 +1,25 @@
+/* Scaling laws · Find the sweet spot. Tokens only; logical properties. */
+.sl-rule { margin: 0 0 6px; color: var(--muted); font-size: 15px; }
+.sl-chart { margin-block: 4px 8px; }
+.sl-chart svg { direction: ltr; }
+.sl-fog { fill: var(--paper); stroke: var(--line); stroke-dasharray: 6 6; }
+.sl-fog-label { fill: var(--muted); font-family: var(--display); letter-spacing: .04em; paint-order: stroke; stroke: var(--paper); stroke-width: 8px; stroke-linejoin: round; }
+.sl-curve { stroke-dasharray: 1; stroke-dashoffset: 0; animation: sl-draw 300ms ease-out; }
+.sl-guess-line { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 3 4; }
+.sl-guess-marker { fill: var(--accent); stroke: var(--ink); stroke-width: 2; }
+.sl-best { animation: sl-pop 260ms ease-out; transform-box: fill-box; transform-origin: center; }
+.sl-controls input[type="range"] { min-block-size: 44px; }
+.sl-controls > label { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 600; }
+.sl-controls .range-ends { gap: 8px; }
+.sl-split { margin: 6px 0 0; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; text-align: center; direction: ltr; }
+.sl-drop { margin-block-start: 14px; }
+.sl-reveal { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-start: 14px; padding: 12px 14px; background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius, 12px); }
+.sl-reveal p { flex: 1 1 240px; margin: 0; }
+.sl-recap { display: grid; gap: 6px; margin: 0 0 4px; padding: 0; list-style: none; }
+.sl-recap li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; padding: 8px 12px; border: 2px solid var(--line); border-radius: var(--radius, 12px); font-variant-numeric: tabular-nums; }
+@keyframes sl-draw { from { stroke-dashoffset: 1; } }
+@keyframes sl-pop { from { transform: scale(.4); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .sl-curve, .sl-best { animation: none; } }
+.sl-final path { stroke: var(--deep); }
+.sl-final-0 path { stroke: var(--muted); }
+.sl-final-1 path { stroke-dasharray: 8 5; }

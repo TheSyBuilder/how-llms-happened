@@ -34,18 +34,17 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Change the source.<br />Change the answer.</h2><Discovery slug="retrieval" />
-  <p>Edit a notice, exclude a source, or let the reader see more passages. Watch what reaches the answer.</p>
-  <noscript><p>Enable JavaScript to edit the library. The toy retrieves a museum notice and reads its opening time; changing the notice changes the template answer.</p></noscript>
+  <h2>Poison<br />the library.</h2><Discovery slug="retrieval" />
+  <p>The reader trusts whatever the search hands it. Plant a page that makes it give the wrong opening time with full confidence, in as few edits as you can. Then switch sides and win the true answer back.</p>
+  <noscript><p>Enable JavaScript to edit the library. The toy searches five pages for the question’s words and reads an opening time from the top two.</p></noscript>
   <RetrievalToy client:load />
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>Knowledge gets<br />a door you can open.</h2>
   <p>RAG combined learned retrieval with answer generation. External passages made some information inspectable and replaceable. The paper tested answering questions, generating questions, and checking facts.</p>
-  <p>How do you teach a model to give the kind of answer people want? Next, human demonstrations and comparisons become training signals.</p>
+  <p>What can a model learn from a few examples placed in its prompt? Next, GPT-3 picks up a new task without any retraining.</p>
   <aside class="chapter-companions"><h3>Also in this chapter</h3><p><strong>ORQA (2019)</strong> learned retrieval and answer extraction from question-answer pairs. <strong>REALM (2020)</strong> retrieved text during pretraining to predict hidden words. <strong>DPR (2020)</strong> supplied RAG's starting retriever.</p></aside>
-  <a class="next-chapter" href="/chapters/human-feedback/"><span>Next · 2022</span><strong>Learning from human feedback ↗</strong><span>How can people teach a model what a good answer feels like?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Two memories, two ways to mix passages</span></summary>
@@ -66,8 +65,8 @@ import { sourceLink } from "../lib/chapters";
     <h3>What retrieval cannot promise</h3>
     <p>Search can miss useful evidence. A retrieved passage can be outdated or misleading. The generator can still produce unsupported text, and attaching a passage does not prove an answer follows from it. The paper’s task results and limited update experiment do not establish universal factuality or deletion of knowledge from model parameters.</p>
     <h3>Inside the toy</h3>
-    <p>The search inspector lets you change the search words while the reader still answers the selected place’s question. It counts distinct English words, ignoring case, punctuation and repeats. Excluded passages appear last and cannot be read. Changing the place or resetting the library restores the place name as the search. Closing the inspector keeps your edits. Unlike this keyword toy, RAG searches with learned vectors.</p>
-    <p>The search words are matched against each included passage. Positive matches are sorted by word count, with alphabetical passage IDs breaking ties. The top one or two go to a fixed sentence reader, which recognises “Place opens at HH:MM.” It uses a 24-hour clock and ignores other sentences. One distinct time produces a template answer, no times produces a missing-evidence message, and different times produce a conflict. This deliberately cautious reader is an illustration, not RAG’s generator.</p>
+    <p>The question’s distinct English words (when, does, moss, museum, open) are matched against each page, ignoring case, punctuation and repeats. A page earns one point per shared word; ties go to the earlier letter. The top two pages go to a fixed sentence reader, which recognises “Place opens at time.” in forms such as 9:00, 10.30 or 9am and ignores other sentences.</p>
+    <p>One distinct time produces an answer, no times produce a missing-evidence message, and different times produce a conflict. So a planted page fools the reader only if it out-matches the official notice and pushes it out of the top two. Copying the question’s words into a fake page resembles a tactic studied in poisoning attacks on real retrieval systems. This deliberately cautious reader is an illustration, not RAG’s generator, and RAG searches with learned vectors rather than shared words.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
@@ -78,6 +77,6 @@ import { sourceLink } from "../lib/chapters";
     <li><a href={sourceLink("orqa-2019-acl-full-text")}>Lee, Chang & Toutanova · Latent Retrieval for Weakly Supervised Open Domain Question Answering · 2019</a><p>Abstract and Sections 2–3: learning retrieval and an extractive answer reader using question–answer pairs, after an inverse-cloze warm-up.</p></li>
     <li><a href={sourceLink("realm-2020-pmlr-full-text")}>Guu et al. · REALM: Retrieval-Augmented Language Model Pre-Training · 2020</a><p>Introduction and Sections 2–3: retrieving documents during pretraining, learning from masked-word prediction, and the role of external knowledge.</p></li>
     <li><a href={sourceLink("dpr-2020-emnlp-full-text")}>Karpukhin et al. · Dense Passage Retrieval for Open-Domain Question Answering · 2020</a><p>Introduction and Section 3: separate question and passage encoders, dot-product matching, passage indexing, and matching beyond shared words. Lewis et al. Section 2.2 identifies DPR as RAG’s starting retriever.</p></li>
-    <li><a href={sourceLink("ouyang-2022-openai-preprint-full-text")}>Ouyang et al. · Training language models to follow instructions with human feedback · 2022</a><p>Introduction and Figure 2: the next chapter’s distinction between predicting text and following user intent, using demonstrations and comparisons to improve behaviour.</p></li>
+    <li><a href={sourceLink("ouyang-2022-openai-preprint-full-text")}>Ouyang et al. · Training language models to follow instructions with human feedback · 2022</a><p>Introduction and Figure 2: a later chapter’s distinction between predicting text and following user intent, using demonstrations and comparisons to improve behaviour.</p></li>
   </ol><p>The diagram, places, notices, times and template answers are invented teaching examples. They are not model outputs or paper results.</p></div>
 </details>

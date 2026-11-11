@@ -1,14 +1,25 @@
 ---
 import { firstSteps } from '../lib/first-steps';
-const {slug}=Astro.props;
+import { localeFromPath, localePath } from '../i18n/core';
+interface Props { slug: string; title: string; hook: string; }
+const {slug,title,hook}=Astro.props;
 const discovery=firstSteps[slug];
+// The script rebuilds this from the page (translated title, current address); this is the no-JS fallback.
+const playUrl=`${new URL(Astro.site ?? 'https://thesybuilder.github.io').origin}${localePath(`/chapters/${slug}/`,localeFromPath(Astro.url.pathname))}#play`;
+const intent=(text:string,url:string)=>`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
 ---
-{discovery && <section class="chapter-end" aria-label="Take the idea with you"><p class="eyebrow">Tell a friend</p><p>{discovery.idea}</p><div><button class="share-experiment" type="button">Copy experiment link</button><a href="https://github.com/TheSyBuilder/how-llms-happened">Enjoyed this? Star on GitHub ↗</a></div><span class="share-status" role="status"></span></section>}
+{discovery && <section class="chapter-end" aria-label="Take the idea with you"><p class="eyebrow">Tell a friend</p><p>{discovery.idea}</p><div class="share-actions"><button class="share-experiment" type="button">Copy experiment link</button><a class="share-x" href={intent(`${title} — ${hook}`,playUrl)} target="_blank" rel="noopener noreferrer">Share on X</a><a class="share-star" href="https://github.com/TheSyBuilder/how-llms-happened">Enjoyed this? Star on GitHub ↗</a></div><span class="share-status" role="status"></span></section>}
 <script>
 import {t} from "../i18n/core";
+const playUrl=()=>{const url=new URL(location.href);url.hash='play';return url.href;};
+for(const section of document.querySelectorAll<HTMLElement>('.chapter-end')){
+ const share=section.querySelector<HTMLAnchorElement>('.share-x');
+ const title=document.querySelector('.chapter-hero h1')?.textContent?.trim(),hook=document.querySelector('.chapter-hero .chapter-hook')?.textContent?.trim();
+ if(share&&title&&hook)share.href=`https://x.com/intent/post?text=${encodeURIComponent(`${title} — ${hook}`)}&url=${encodeURIComponent(playUrl())}`;
+}
 for(const button of document.querySelectorAll<HTMLButtonElement>('.share-experiment')) button.addEventListener('click',async()=>{
- const url=new URL(location.href);url.hash='play';
+ const url=playUrl();
  const status=button.closest('.chapter-end')!.querySelector('.share-status')!;
- try{await navigator.clipboard.writeText(url.href);status.textContent=t('Experiment link copied.');}catch{status.textContent=t(`Copy this link: ${url.href}`);}
+ try{await navigator.clipboard.writeText(url);status.textContent=t('Experiment link copied.');}catch{status.textContent=t(`Copy this link: ${url}`);}
 });
 </script>

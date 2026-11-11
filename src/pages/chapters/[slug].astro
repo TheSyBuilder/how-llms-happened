@@ -22,36 +22,48 @@ import Gpt4Story from "../../components/Gpt4Story.astro";
 import HumanFeedbackStory from "../../components/HumanFeedbackStory.astro";
 import RecurrenceStory from "../../components/RecurrenceStory.astro";
 import NowStory from "../../components/NowStory.astro";
+import ElizaStory from "../../components/eliza/ElizaStory.astro";
+import TokensStory from "../../components/tokens/TokensStory.astro";
 import { chapters, chapterPaper, chapterHref } from "../../lib/chapters";
 export function getStaticPaths() { return chapters.map(chapter => ({ params: { slug: chapter.slug }, props: { chapter } })); }
 const { chapter } = Astro.props;
 const paper = chapterPaper(chapter.anchor)!;
 const playable=chapters.filter(c=>c.status==='live');
 const index=playable.findIndex(c=>c.slug===chapter.slug);
-const previous=playable[(index-1+playable.length)%playable.length]!;
-const next=playable[(index+1)%playable.length]!;
+// Reading order comes from `chapters`; the dock stops at both ends instead of wrapping.
+const previous=index>0?playable[index-1]:undefined;
+const next=playable[index+1];
 ---
-<LineageLayout title={`${chapter.title} — LLM Lineage`} description={chapter.hook}>
-  <article class:list={["chapter-page", { "is-coming": chapter.status !== "live" }]}>
-    <header class="chapter-hero page-width"><a class="back-link" href={`/#${chapter.slug}`}>← The timeline</a><p class="eyebrow">{chapter.year} / {chapter.status === "live" ? "Live chapter" : "Coming soon"}</p><h1>{chapter.title}</h1><p class="chapter-hook">{chapter.hook}</p><FirstLook slug={chapter.slug} /><a class="paper-credit" href={paper.url}>{paper.title} ↗</a>{chapter.status === "live" && <nav class="chapter-nav" aria-label="In this chapter"><a href="#play" data-chapter-view="play">Play</a><a href="#problem" data-chapter-view="story">Story</a><a href="#deeper" data-chapter-view="reference">Math &amp; sources</a><a class="nav-paper" href={paper.url} target="_blank" rel="noopener noreferrer" aria-label={`Original paper: ${paper.title}`}>Paper ↗</a></nav>}</header>
-    <div class="story-width">{chapter.slug === "transformer" ? <TransformerStory /> : chapter.slug === "pretraining" ? <PretrainingStory /> : chapter.slug === "bert" ? <BertStory /> : chapter.slug === "gpt-2" ? <Gpt2Story /> : chapter.slug === "scaling-laws" ? <ScalingStory /> : chapter.slug === "gpt-3" ? <Gpt3Story /> : chapter.slug === "retrieval" ? <RetrievalStory /> : chapter.slug === "human-feedback" ? <HumanFeedbackStory /> : chapter.slug === "chatgpt" ? <ChatgptStory /> : chapter.slug === "gpt-4" ? <Gpt4Story /> : chapter.slug === "now" ? <NowStory /> : chapter.slug === "drop-recurrence" ? <RecurrenceStory /> : chapter.slug === "neural-language-model" ? <NeuralLanguageStory /> : chapter.slug === "rnn-language-model" ? <RnnLanguageStory /> : sequenceStories[chapter.slug] ? <SequenceStory slug={chapter.slug} /> : earlyStories[chapter.slug] ? <EarlyStory slug={chapter.slug} /> : laterStories[chapter.slug] ? <LaterStory chapter={chapter} /> : <section class="coming-soon"><p class="eyebrow">This part of the story is on its way</p><h2>A question worth playing with.</h2><p>This chapter will explore: {chapter.toy.charAt(0).toLowerCase() + chapter.toy.slice(1)}</p><p>While it takes shape, try the attention playground in the first live chapter.</p><a class="primary-link" href={chapterHref("transformer")}>Play with the Transformer ↗</a>{chapter.related.length > 0 && <details class="chapter-disclosure"><summary>Also in this chapter</summary><ul class="source-list">{chapter.related.map(id => { const work = chapterPaper(id)!; return <li><a href={work.url}>{work.title} ↗</a></li>; })}</ul></details>}</section>}{chapter.status === "live" && <ChapterEnd slug={chapter.slug} />}</div>
-    {chapter.status === 'live' && <nav class="game-dock" aria-label="Switch experiments"><a href={`/chapters/${previous.slug}/#play`} aria-label={`Previous experiment: ${previous.title}`}>← <span>Previous</span></a><button data-open-explorer><span>{String(index+1).padStart(2,'0')} / {playable.length}</span> Switch experiment <b aria-hidden="true">⌄</b></button><a href={`/chapters/${next.slug}/#play`} aria-label={`Next experiment: ${next.title}`}><span>Next</span> →</a></nav>}
+<LineageLayout title={`${chapter.title} — LLM Lineage`} description={chapter.hook} image={`/og/${chapter.slug}.png`}>
+  <article class:list={["chapter-page", { "is-coming": chapter.status !== "live" }]} data-view={chapter.status === "live" ? "play" : undefined}>
+    <header class="chapter-hero page-width"><a class="back-link" href={`/#${chapter.slug}`}><span class="dir-arrow" aria-hidden="true">←</span> The timeline</a><p class="eyebrow">{chapter.year} / {chapter.status === "live" ? "Live chapter" : "Coming soon"}</p><h1>{chapter.title}</h1><p class="chapter-hook">{chapter.hook}</p><FirstLook slug={chapter.slug} /><a class="paper-credit" href={paper.url}>{paper.title} ↗</a>{chapter.status === "live" && <nav class="chapter-nav" aria-label="In this chapter"><a href="#play" data-chapter-view="play">Play</a><a href="#problem" data-chapter-view="story">Story</a><a href="#deeper" data-chapter-view="reference">Math &amp; sources</a><a class="nav-paper" href={paper.url} target="_blank" rel="noopener noreferrer" aria-label={`Original paper: ${paper.title}`}>Paper ↗</a></nav>}</header>
+    <div class="story-width">{chapter.slug === "eliza" ? <ElizaStory /> : chapter.slug === "tokens" ? <TokensStory /> : chapter.slug === "transformer" ? <TransformerStory /> : chapter.slug === "pretraining" ? <PretrainingStory /> : chapter.slug === "bert" ? <BertStory /> : chapter.slug === "gpt-2" ? <Gpt2Story /> : chapter.slug === "scaling-laws" ? <ScalingStory /> : chapter.slug === "gpt-3" ? <Gpt3Story /> : chapter.slug === "retrieval" ? <RetrievalStory /> : chapter.slug === "human-feedback" ? <HumanFeedbackStory /> : chapter.slug === "chatgpt" ? <ChatgptStory /> : chapter.slug === "gpt-4" ? <Gpt4Story /> : chapter.slug === "now" ? <NowStory /> : chapter.slug === "drop-recurrence" ? <RecurrenceStory /> : chapter.slug === "neural-language-model" ? <NeuralLanguageStory /> : chapter.slug === "rnn-language-model" ? <RnnLanguageStory /> : sequenceStories[chapter.slug] ? <SequenceStory slug={chapter.slug} /> : earlyStories[chapter.slug] ? <EarlyStory slug={chapter.slug} /> : laterStories[chapter.slug] ? <LaterStory chapter={chapter} /> : <section class="coming-soon"><p class="eyebrow">This part of the story is on its way</p><h2>A question worth playing with.</h2><p>This chapter will explore: {chapter.toy.charAt(0).toLowerCase() + chapter.toy.slice(1)}</p><p>While it takes shape, try the attention playground in the first live chapter.</p><a class="primary-link" href={chapterHref("transformer")}>Play with the Transformer ↗</a>{chapter.related.length > 0 && <details class="chapter-disclosure"><summary>Also in this chapter</summary><ul class="source-list">{chapter.related.map(id => { const work = chapterPaper(id)!; return <li><a href={work.url}>{work.title} ↗</a></li>; })}</ul></details>}</section>}{chapter.status === "live" && <ChapterEnd slug={chapter.slug} title={chapter.title} hook={chapter.hook} />}</div>
+    {chapter.status === 'live' && <nav class="game-dock" aria-label="Switch experiments">{previous ? <a class="dock-previous" href={`/chapters/${previous.slug}/#play`} aria-label={`Previous experiment: ${previous.title}`}><span class="dir-arrow" aria-hidden="true">←</span><span class="dock-full">{previous.year} · <span>{previous.title}</span></span><span class="dock-short" aria-hidden="true">{previous.year}</span></a> : <span class="dock-spacer" aria-hidden="true"></span>}<button data-open-explorer><span>{String(index+1).padStart(2,'0')} / {playable.length}</span> Switch experiment <b aria-hidden="true">⌄</b></button>{next ? <a class="dock-next" href={`/chapters/${next.slug}/#play`} aria-label={`Next experiment: ${next.title}`}><span class="dock-full"><span class="dock-next-label">Next</span>{next.year} · <span>{next.title}</span></span><span class="dock-short" aria-hidden="true">{next.year}</span><span class="dir-arrow" aria-hidden="true">→</span></a> : <a class="dock-next" href="/" aria-label="Back to the start"><span class="dock-full">Back to the start</span><span class="dock-short" aria-hidden="true">↺</span></a>}</nav>}
   </article>
 </LineageLayout>
 
 <script>
 const article=document.querySelector<HTMLElement>('.chapter-page')!;
+const hashTarget=()=>{try{return location.hash?document.getElementById(decodeURIComponent(location.hash.slice(1))):null;}catch{return null;}};
+// No hash and #play open the game; #deeper, #sources or an id inside them open the reference;
+// an id inside a story section opens the story; any other hash, such as a game's own anchors, keeps the view.
+function viewFor(hash:string,target:HTMLElement|null):string{
+ if(!hash||hash==='#play')return 'play';
+ if(hash==='#deeper'||hash==='#sources'||target?.closest('#deeper,#sources'))return 'reference';
+ const section=target?.closest('.story-section');
+ return section&&section.id!=='play'?'story':article.dataset.view??'play';
+}
 function syncChapterView(){
- const hash=location.hash;
- const view=hash==='#play'?'play':hash==='#deeper'||hash==='#sources'?'reference':'story';
+ const target=hashTarget();
+ const view=viewFor(location.hash,target);
  article.dataset.view=view;
  for(const link of article.querySelectorAll<HTMLElement>('[data-chapter-view]')){
   if(link.dataset.chapterView===view)link.setAttribute('aria-current','true');else link.removeAttribute('aria-current');
  }
- if(view==='reference'){
-  const target=document.querySelector<HTMLDetailsElement>(hash);if(target)target.open=true;
- }
+ if(view==='reference'){const details=target?.closest<HTMLDetailsElement>('details');if(details)details.open=true;}
+ return view;
 }
-syncChapterView();
-window.addEventListener('hashchange',()=>{syncChapterView();requestAnimationFrame(()=>{if(article.dataset.view!=='story')window.scrollTo({top:0,behavior:'instant'});});});
+// The target was hidden when the browser tried to scroll to it, so scroll once the story is shown.
+if(article.dataset.view&&syncChapterView()==='story')requestAnimationFrame(()=>hashTarget()?.scrollIntoView());
+window.addEventListener('hashchange',()=>{if(!article.dataset.view)return;const before=article.dataset.view;const view=syncChapterView();if(view===before)return;requestAnimationFrame(()=>{if(view==='story')hashTarget()?.scrollIntoView();else window.scrollTo({top:0,behavior:'instant'});});});
 </script>

@@ -1,0 +1,28 @@
+/* GPT-2 · Prompt golf. Tokens only; logical properties; prompt text stays LTR. */
+.g2-prompt, .g2-output { position: relative; margin-block: 0 12px; padding: 26px 14px 14px; border: 2px solid var(--ink); border-radius: var(--radius, 12px); font-size: 18px; line-height: 1.6; direction: ltr; unicode-bidi: isolate; text-align: left; }
+.g2-prompt { background: var(--paper); }
+.g2-output { background: var(--surface); border-style: dashed; transition: background-color 200ms ease; }
+.g2-output.is-hit { background: color-mix(in srgb, var(--accent) 35%, var(--surface)); border-style: solid; }
+.g2-prompt p, .g2-output p { margin: 0; }
+.g2-prompt .g2-examples { margin-block-end: 6px; }
+.g2-tag { position: absolute; inset-block-start: 6px; inset-inline-start: 14px; color: var(--muted); font: 700 11px/1 var(--display); letter-spacing: .06em; text-transform: uppercase; }
+.g2-cue { padding: 1px 6px; background: var(--accent); color: var(--on-accent); border-radius: 6px; font-family: ui-monospace, monospace; font-size: .9em; }
+.g2-caret { color: var(--muted); }
+.g2-help { margin: 4px 0 10px; color: var(--muted); font-size: 14px; }
+.g2-deck { display: flex; flex-wrap: wrap; gap: 8px; direction: ltr; }
+.g2-deck button { min-block-size: 48px; min-inline-size: 56px; padding: 8px 14px; background: var(--surface); color: var(--ink); border: 2px solid var(--ink); border-radius: 10px; cursor: pointer; transition: transform 120ms ease, box-shadow 120ms ease; }
+.g2-deck button code { font-size: 17px; background: none; color: inherit; }
+.g2-deck button:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.g2-deck button:disabled { opacity: .45; cursor: default; }
+.g2-actions, .g2-holed { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-start: 12px; }
+.g2-holed p { flex: 1 1 200px; margin: 0; }
+.g2-scorecard { inline-size: 100%; margin-block-end: 8px; border-collapse: collapse; font-size: 15px; }
+.g2-scorecard caption { text-align: start; font: 600 16px var(--display); margin-block-end: 6px; }
+.g2-scorecard th, .g2-scorecard td { padding: 6px 8px; border-block-end: 1px solid var(--line); text-align: start; }
+.g2-scorecard thead th { color: var(--muted); font-size: 13px; }
+.g2-scorecard td { font-variant-numeric: tabular-nums; }
+.g2-challenge-heading { margin-block: 40px 0; font: 700 clamp(22px, 4vw, 30px)/1.2 var(--display); }
+@media (prefers-reduced-motion: reduce) {
+  .g2-output, .g2-deck button { transition: none; }
+  .g2-deck button:hover:not(:disabled) { transform: none; box-shadow: none; }
+}

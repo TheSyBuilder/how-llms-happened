@@ -1,28 +1,62 @@
 import '../../i18n/preact';
-import { useState } from 'preact/hooks';
-export function letterOdds(text: string, last: string, remember: boolean) {
-  const letters = text.toUpperCase().replace(/[^AB]/g, '');
-  const counts = [0, 0];
-  for (let i = 0; i < letters.length; i++) if (!remember || (i > 0 && letters[i - 1] === last)) counts[letters[i] === 'A' ? 0 : 1]!++;
-  const total = counts[0]! + counts[1]!;
-  return { counts, total, probabilities: counts.map(n => total ? n / total : 0) };
-}
-export default function LetterToy() {
-  const [text, setText] = useState('ABABABAB');
-  const [remember, setRemember] = useState(true);
-  const [tape, setTape] = useState('A');
-  const odds = letterOdds(text, tape.at(-1)!, remember);
-  const reset = () => { setText('ABABABAB'); setRemember(true); setTape('A'); };
-  return <div class="early-toy letter-machine">
-    <div class="toy-topline"><span class="eyebrow">The two-letter press</span><span class="toy-label">Toy · A and B only</span></div>
-    <label class="early-label" for="letter-text">Training strip</label><input id="letter-text" maxLength={48} value={text} onInput={e => { setText(e.currentTarget.value); setTape('A'); }} aria-describedby="letter-filter" />
-    <p id="letter-filter" class="early-small">Only A and B are counted. Each edit starts a fresh tape.</p>
-    <div class="early-buttons"><button onClick={() => { setText('ABABABAB'); setTape('A'); }}>Alternating</button><button onClick={() => { setText('AAAABBBB'); setTape('A'); }}>In clusters</button></div>
-    <label class="early-toggle"><input type="checkbox" checked={remember} onChange={e => setRemember(e.currentTarget.checked)} /> Remember the last letter</label>
-    <div class="letter-tape-output" aria-label="Printed letters">{Array.from(tape).map((letter,i) => <span key={i} class={i === tape.length - 1 ? 'fresh-letter' : ''}>{letter}</span>)}</div>
-    <div class="early-result" role="status"><strong>{odds.total ? `Next draw ${remember ? `after ${tape.at(-1)}` : 'from all letters'}` : 'No observations for this choice.'}</strong><p>{odds.total ? `A: ${Math.round(odds.probabilities[0]! * 100)}% · B: ${Math.round(odds.probabilities[1]! * 100)}%` : 'Change the training strip or switch off memory.'}</p></div>
-    <div class="letter-odds-bars">{['A','B'].map((label,i) => <div><b>{label}</b><div class="early-bar"><span style={{width:`${odds.probabilities[i]! * 100}%`}} /></div><span>{odds.counts[i]} counts</span></div>)}</div>
-    <div class="early-buttons"><button class="early-primary" disabled={!odds.total || tape.length >= 24} onClick={() => setTape(tape + (Math.random() < odds.probabilities[0]! ? 'A' : 'B'))}>Print next letter</button><button onClick={reset}>Reset press</button></div>
-    <p class="early-small">Each click draws from the displayed chances. The tape stops at 24 letters. These invented strips are not Markov’s text or Shannon’s samples.</p>
-  </div>;
+import '../../styles/games/next-letter.css';
+import {useEffect,useRef,useState} from 'preact/hooks';
+import GoalBar from '../game/GoalBar';
+import ResultCard,{type GameResult} from '../game/ResultCard';
+import {markPlayed} from '../../lib/progress';
+import {ROUNDS,contexts,keyPress,letterStars,predictNext,tallyPairs,type Press} from './letter-game';
+type Move={press:Press;guess:Press};
+const slug='next-letter';
+export default function LetterToy(){
+ const [moves,setMoves]=useState<Move[]>([]);
+ const root=useRef<HTMLDivElement>(null),firstKey=useRef<HTMLButtonElement>(null),played=useRef(false);
+ const history=moves.map(m=>m.press),done=moves.length>=ROUNDS;
+ const hits=moves.filter(m=>m.press===m.guess).length,pct=moves.length?Math.round(hits/moves.length*100):0;
+ const press=(p:Press)=>{
+  if(!played.current){played.current=true;markPlayed(slug);}
+  // The guess is computed from earlier presses only, before this press is recorded.
+  setMoves(list=>list.length>=ROUNDS?list:[...list,{press:p,guess:predictNext(list.map(m=>m.press)).guess}]);
+ };
+ useEffect(()=>{
+  const onKey=(e:KeyboardEvent)=>{
+   if(e.metaKey||e.ctrlKey||e.altKey)return;
+   const target=e.target as HTMLElement|null;
+   if(target?.closest('input,textarea,select,[contenteditable]'))return;
+   const active=document.activeElement;
+   if(active&&active!==document.body&&!root.current?.contains(active))return;
+   const p=keyPress(e.key);if(!p||!root.current?.querySelector('.markov-keys'))return;
+   e.preventDefault();press(p);
+  };
+  window.addEventListener('keydown',onKey);return ()=>window.removeEventListener('keydown',onKey);
+ },[]);
+ const replay=()=>{setMoves([]);requestAnimationFrame(()=>firstKey.current?.focus());};
+ const last=moves.at(-1),tally=tallyPairs(history);
+ const nextContext=history.length>=2?history.slice(-2).join(''):'';
+ const result:GameResult={slug,headline:`It predicted you ${pct}% of the time.`,detail:`It counted what followed each pair of your presses and caught ${hits} of ${ROUNDS}.`,score:{value:hits,max:ROUNDS,label:'Caught'},stars:letterStars(hits/ROUNDS),shareText:`A 1913 idea predicted my "random" choices ${pct}% of the time.`};
+ const status=last?`${last.press===last.guess?'Caught':'Escaped'} · ${hits} of ${moves.length} predicted`:'Press A or B to start.';
+ return <div class="markov-game" ref={root}>
+  <GoalBar goal="Press A or B 30 times. Keep its hit rate at 55% or lower." status={status}/>
+  {done?<ResultCard result={result} onReplay={replay}/>:<>
+   <div class="markov-stage">
+    <div class={`markov-reveal${last?(last.press===last.guess?' is-caught':' is-escaped'):''}`} key={moves.length}>
+     {last?<><span>{`You pressed ${last.press} · It guessed ${last.guess}`}</span><strong>{last.press===last.guess?'Caught':'Escaped'}</strong></>:<><span>Its guess is sealed before every press.</span><strong>Ready</strong></>}
+    </div>
+    <div class="markov-tally" aria-hidden="true"><span><b>{hits}</b> caught</span><span><b>{moves.length-hits}</b> escaped</span><span><b dir="ltr">{pct}%</b> predicted</span></div>
+   </div>
+   <div class="markov-keys" dir="ltr" role="group" aria-label="Your choice">
+    <button type="button" ref={firstKey} class="markov-key" onClick={()=>press('A')} aria-keyshortcuts="A ArrowLeft">A</button>
+    <button type="button" class="markov-key" onClick={()=>press('B')} aria-keyshortcuts="B ArrowRight">B</button>
+   </div>
+   <p class="markov-hint">Keys: A or ←, B or →</p>
+  </>}
+  <ol class="markov-tiles" dir="ltr" aria-label={`${moves.length} of ${ROUNDS} presses`}>
+   {Array.from({length:ROUNDS},(_,i)=>{const m=moves[i];return <li key={i} class={m?(m.press===m.guess?'is-caught':'is-escaped'):''} aria-hidden="true">{m?.press??''}</li>;})}
+  </ol>
+  <div class="markov-counts">
+   <p class="markov-counts-title">What it has counted</p>
+   <ul dir="ltr">{contexts.map(c=><li key={c} class={c===nextContext&&!done?'is-next':''}><span>After {c}</span><span>A ×{tally[c]![0]}</span><span>B ×{tally[c]![1]}</span></li>)}</ul>
+   {!done&&<p class="markov-next">{nextContext&&tally[nextContext]![0]!==tally[nextContext]![1]?`Its next guess is sealed, using what followed ${nextContext}.`:history.length?'A tie or no record yet, so it backs off to a shorter clue.':'No clues yet, so it starts with a default guess.'}</p>}
+  </div>
+  <p class="toy-note">The predictor is only these four tallies, the same kind of count Markov made by hand.</p>
+ </div>;
 }

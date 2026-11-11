@@ -1,5 +1,9 @@
 import '../i18n/preact';
-import { useMemo, useState } from "preact/hooks";
+import '../styles/games/pretraining.css';
+import { useMemo, useRef, useState } from "preact/hooks";
+import GoalBar from "./game/GoalBar";
+import ResultCard, { type GameResult } from "./game/ResultCard";
+import { markPlayed } from "../lib/progress";
 
 // Invented sentences. Pretraining sees the next word, never a review rating.
 export const readingSentences = [
@@ -22,14 +26,16 @@ export const reviews = [
   { word: "excellent", positive: 1 },
   { word: "terrible", positive: 0 },
 ];
-const words = readingSentences.map((sentence) => sentence.split(" ")[1]!);
+export const words = readingSentences.map((sentence) => sentence.split(" ")[1]!);
 type ReadingEnding = "smile" | "sigh";
 export const defaultReadingEndings: ReadingEnding[] = readingSentences.map((sentence) => sentence.endsWith("smile.") ? "smile" : "sigh");
 const sigmoid = (value: number) => 1 / (1 + Math.exp(-value));
+const isPositive = (word: string) => reviews.find((review) => review.word === word)!.positive;
 // A fixed, small initialization gives both learners exactly the same start.
 const initialEmbeddings = [0.03, -0.07, -0.04, 0.06, 0.08, 0.02, -0.08, -0.01];
 
-export function learnReviews(labelCount: number, readFirst: boolean, readingEndings: readonly ReadingEnding[] = defaultReadingEndings) {
+// Train on the labelled words in the order they were handed out.
+export function learnFromLabels(labelled: readonly string[], readFirst: boolean, readingEndings: readonly ReadingEnding[] = defaultReadingEndings) {
   const embeddings = [...initialEmbeddings];
   let weight = 0.2;
   let bias = 0;
@@ -49,11 +55,10 @@ export function learnReviews(labelCount: number, readFirst: boolean, readingEndi
   // Replace the next-word output with a new rating output; adapt the embeddings too.
   weight = 0;
   bias = 0;
-  const labels = reviews.slice(0, labelCount);
   for (let epoch = 0; epoch < 100; epoch++) {
-    for (const review of labels) {
-      const i = words.indexOf(review.word);
-      const error = sigmoid(weight * embeddings[i]! + bias) - review.positive;
+    for (const word of labelled) {
+      const i = words.indexOf(word);
+      const error = sigmoid(weight * embeddings[i]! + bias) - isPositive(word);
       const previousWeight = weight;
       weight -= 0.15 * error * embeddings[i]!;
       bias -= 0.15 * error;
@@ -67,68 +72,118 @@ export function learnReviews(labelCount: number, readFirst: boolean, readingEndi
   };
 }
 
-function Prediction({ title, probability, readFirst }: { title: string; probability: number; readFirst: boolean }) {
-  const percent = Math.round(probability * 100);
+export function learnReviews(labelCount: number, readFirst: boolean, readingEndings: readonly ReadingEnding[] = defaultReadingEndings) {
+  return learnFromLabels(reviews.slice(0, labelCount).map((review) => review.word), readFirst, readingEndings);
+}
+
+// A learner "gets" a review when it is at least 80% sure of the right rating.
+export const SURE = 0.8;
+export type Verdict = "right" | "wrong" | "unsure";
+export function verdict(word: string, positive: number): Verdict {
+  const sureness = isPositive(word) ? positive : 1 - positive;
+  return sureness >= SURE ? "right" : sureness <= 1 - SURE ? "wrong" : "unsure";
+}
+export const allRight = (learner: ReturnType<typeof learnFromLabels>) => learner.predictions.every(({ word, positive }) => verdict(word, positive) === "right");
+
+// One reading sentence is flipped: a misleading clue the head start carries into the new job.
+export function misleadingEndings(misled: number): ReadingEnding[] {
+  return defaultReadingEndings.map((ending, i) => i === misled ? (ending === "smile" ? "sigh" : "smile") : ending);
+}
+
+// Labels a learner needs when the given order is continued with the remaining words.
+export function labelsNeeded(order: readonly string[], readFirst: boolean, readingEndings: readonly ReadingEnding[]) {
+  const full = [...order, ...words.filter((word) => !order.includes(word))];
+  for (let count = 0; count <= full.length; count++) {
+    if (allRight(learnFromLabels(full.slice(0, count), readFirst, readingEndings))) return count;
+  }
+  return Infinity;
+}
+
+export function pretrainingStars(labels: number): 0 | 1 | 2 | 3 {
+  return labels <= 3 ? 3 : labels === 4 ? 2 : labels <= 6 ? 1 : 0;
+}
+
+function Learner({ title, learner, id }: { title: string; learner: ReturnType<typeof learnFromLabels>; id: string }) {
+  const right = learner.predictions.filter(({ word, positive }) => verdict(word, positive) === "right").length;
   return (
-    <div class={`transfer-prediction${readFirst ? " has-head-start" : ""}`}>
-      <h4>{title}</h4>
-      <div class="prediction-number"><output data-testid={readFirst ? "pretrained-probability" : "scratch-probability"}>{percent}%</output><span>positive</span></div>
-      <div class="prediction-track" aria-hidden="true"><span style={{ width: `${probability * 100}%` }} /><i /></div>
-      <p>{percent >= 60 ? "Leans positive" : percent <= 40 ? "Leans negative" : "Near a coin flip"}</p>
-    </div>
+    <section class={`pt-learner${right === words.length ? " is-done" : ""}`} aria-labelledby={id}>
+      <h3 id={id}>{title} <span class="pt-count" dir="ltr">{`${right}/8`}</span></h3>
+      <ul dir="ltr">
+        {learner.predictions.map(({ word, positive }) => {
+          const v = verdict(word, positive);
+          return <li class={`pt-chip is-${v}`}><span aria-hidden="true">{v === "right" ? "✓" : v === "wrong" ? "✗" : "?"}</span> {word} <small>{`${Math.round(positive * 100)}% positive`}</small></li>;
+        })}
+      </ul>
+    </section>
   );
 }
 
 export default function PretrainingToy() {
-  const [labelCount, setLabelCount] = useState(2);
-  const [word, setWord] = useState("splendid");
-  const [readingEndings, setReadingEndings] = useState<ReadingEnding[]>([...defaultReadingEndings]);
-  const scratch = useMemo(() => learnReviews(labelCount, false), [labelCount]);
-  const pretrained = useMemo(() => learnReviews(labelCount, true, readingEndings), [labelCount, readingEndings]);
-  const selected = words.indexOf(word);
-  const labelled = reviews.slice(0, labelCount).some((review) => review.word === word);
-  const edited = readingEndings[selected] !== defaultReadingEndings[selected];
-  const anyEdited = readingEndings.some((ending, i) => ending !== defaultReadingEndings[i]);
-  const sentences = words.map((item, i) => `The ${item} film made us ${readingEndings[i]}.`);
+  // The first game flips "splendid" so server render and hydration agree; replays draw a new one.
+  const [misled, setMisled] = useState(2);
+  const [labelled, setLabelled] = useState<string[]>([]);
+  const [announce, setAnnounce] = useState("");
+  const played = useRef(false);
+  const endings = useMemo(() => misleadingEndings(misled), [misled]);
+  const scratch = useMemo(() => learnFromLabels(labelled, false), [labelled]);
+  const pretrained = useMemo(() => learnFromLabels(labelled, true, endings), [labelled, endings]);
+  const finished = labelled.length > 0 && allRight(pretrained);
+  const scratchNeeded = useMemo(() => finished ? labelsNeeded(labelled, false, endings) : 0, [finished, labelled, endings]);
+  const count = (learner: ReturnType<typeof learnFromLabels>) => learner.predictions.filter(({ word, positive }) => verdict(word, positive) === "right").length;
+
+  const give = (word: string) => {
+    if (finished || labelled.includes(word)) return;
+    if (!played.current) { played.current = true; markPlayed("pretraining"); }
+    const next = [...labelled, word];
+    setLabelled(next);
+    const read = learnFromLabels(next, true, endings), fresh = learnFromLabels(next, false);
+    setAnnounce(`${word}: ${isPositive(word) ? "positive" : "negative"}. Read first: ${count(read)} of 8 right. From scratch: ${count(fresh)} of 8 right.`);
+  };
+  const replay = () => {
+    setMisled((current) => (current + 1 + Math.floor(Math.random() * 7)) % 8);
+    setLabelled([]);
+    setAnnounce("");
+  };
+  const n = labelled.length;
+  const result: GameResult = {
+    slug: "pretraining",
+    headline: `I taught it with ${n} labels; from scratch it needed ${scratchNeeded}.`,
+    detail: "Reading grouped the adjectives by how their sentences ended. One label per group named the groups; the misleading sentence needed a label of its own.",
+    score: { value: n, label: "Labels" },
+    stars: pretrainingStars(n),
+    shareText: `I taught a pre-read learner film reviews with ${n} labels. From scratch it needed ${scratchNeeded}.`,
+  };
+
   return (
-    <div class="pretraining-toy">
-      <div class="toy-topline"><span class="eyebrow">Give a learner a head start</span><span class="toy-label">Toy · eight invented sentences</span></div>
-      <p>Two tiny learners, identical starts and review labels. Only one reads first.</p>
-      <div class="reading-sample">
-        <h3>1. Read without review labels</h3>
-        <p dir="ltr">{[0, 2, 1].map((i) => <span class="reading-example">{`The ${words[i]} film made us `}<strong>{readingEndings[i]}.</strong></span>)}</p>
-        <details><summary>See all eight reading sentences</summary><ul dir="ltr">{sentences.map((sentence) => <li>{sentence}</li>)}</ul></details>
-        <p class="reading-note-small">Reading predicts “smile” or “sigh” from the adjective. Words used alike acquire similar numbers.</p>
+    <div class="pretraining-toy pt-game">
+      <GoalBar goal="Hand out as few labels as you can until the pre-read learner gets all 8 reviews right." status={`Labels handed out: ${n}`} score={{ value: n, label: "Labels" }} />
+      <p class="screen-reader-only" role="status">{announce}</p>
+      <div class="pt-reading">
+        <h3>What the pre-read learner read first</h3>
+        <p>No ratings, just next words. One of these sentences is misleading.</p>
+        <ul dir="ltr">{words.map((word, i) => <li class={finished && i === misled ? "pt-misled" : undefined}>{`The ${word} film made us `}<strong>{`${endings[i]}.`}</strong>{finished && i === misled && <em>{" ← misleading"}</em>}</li>)}</ul>
       </div>
-      <div class="learned-map" aria-label="Word positions learned from reading"><div class="visual-caption"><strong>WHAT READING CHANGED</strong><span>One learned number per word</span></div>{words.map((item,i)=><div class={item===word?'map-selected':''}><span>{item}</span><div class="embedding-track"><i class="embedding-start" style={{left:`${50+initialEmbeddings[i]!*12}%`}}/><i class="embedding-learned" style={{left:`${Math.max(4,Math.min(96,50+pretrained.afterReading[i]!*12))}%`}}/></div></div>)}<p>Hollow dots: before reading. Filled dots: after reading. Words used alike move together.</p></div>
-      <fieldset class="review-picker"><legend>2. Try a review</legend><div class="review-options">{words.map((option) => <label><input type="radio" name="review-word" value={option} checked={word === option} onChange={() => setWord(option)} /><span>{option}</span></label>)}</div></fieldset>
-      <p class="selected-review">“{/^[aeiou]/.test(word) ? "An" : "A"} {word} film.”</p>
-      <p class="review-seen" data-testid="review-seen">{labelled ? `“${word}” has a review label.` : `“${word}” has no review label.`}</p>
-      <div class="toy-controls">
-        <label for="review-count">3. Add labelled reviews <output for="review-count">{labelCount} of 8</output></label>
-        <input id="review-count" type="range" min="0" max="8" step="2" value={labelCount} onInput={(event) => setLabelCount(Number(event.currentTarget.value))} aria-valuetext={`${labelCount} labelled reviews out of 8`} />
-        <div class="range-ends"><span>No labels</span><span>Every word labelled</span></div>
-        <div class="review-labels" aria-label="Labels given to both learners">{labelCount === 0 ? <span>No ratings supplied yet.</span> : reviews.slice(0, labelCount).map((review) => <span>{review.word} → {review.positive ? "positive" : "negative"}</span>)}</div>
-      </div>
-      <div class="transfer-experiment">
-        <details class="reading-editor">
-          <summary>Change this word’s reading clue</summary>
-          <p>Change its sentence ending. Both learners keep the same review labels.</p>
-          <p class="reading-edited-sentence" dir="ltr" data-testid="reading-sentence">{sentences[selected]}</p>
-          <fieldset class="review-picker"><legend>{`Reading ending for ${word}`}</legend><div class="reading-ending-options">{(["smile", "sigh"] as const).map((ending) => <label><input type="radio" name="reading-ending" value={ending} checked={readingEndings[selected] === ending} onChange={() => setReadingEndings((current) => current.map((value, i) => i === selected ? ending : value))} /><span lang="en" dir="ltr">{ending}</span></label>)}</div></fieldset>
-          <button type="button" class="reading-reset" disabled={!anyEdited} onClick={() => setReadingEndings([...defaultReadingEndings])}>Restore all reading clues</button>
-        </details>
-        <div class="transfer-comparison">
-          <Prediction title="From scratch" probability={scratch.predictions[selected]!.positive} readFirst={false} />
-          <Prediction title="Read, then fine-tune" probability={pretrained.predictions[selected]!.positive} readFirst={true} />
+      {finished ? (
+        <ResultCard result={result} onReplay={replay} />
+      ) : (
+        <div class="pt-labels">
+          <h3>Tap a review to hand over its label</h3>
+          <div class="game-choices" role="group" aria-label="Reviews to label" dir="ltr">
+            {reviews.map(({ word, positive }) => {
+              const given = labelled.includes(word);
+              return <button type="button" class={given ? (positive ? "pt-pos" : "pt-neg") : undefined} aria-pressed={given} disabled={given} onClick={() => give(word)}>
+                {word}{given && <small>{positive ? " → positive" : " → negative"}</small>}
+              </button>;
+            })}
+          </div>
         </div>
-        <div class="toy-result" role="status" aria-live="polite">
-          <span class="screen-reader-only">For {word}: from scratch {Math.round(scratch.predictions[selected]!.positive * 100)}% positive; read, then fine-tune {Math.round(pretrained.predictions[selected]!.positive * 100)}% positive.</span>
-          <strong>{labelCount === 0 ? "Reading alone does not name the ratings." : labelled ? "Both learners have been taught this word’s rating." : edited ? "A changed reading clue can change the rating." : "A label can reach a word it never taught directly."}</strong>
-          <p>{labelCount === 0 ? "Both rating outputs start at 50%. Add two labels to connect reading to ratings." : labelled ? "Try a word without a label, or remove some labels to see what carries over." : edited ? "The toy reuses this word’s new reading group. A head start can carry a misleading clue into a new job." : "Reading grouped adjectives by their endings. Fine-tuning connects groups to ratings. Try changing a reading clue."}</p>
-        </div>
+      )}
+      <div class="pt-learners">
+        <Learner title="From scratch" learner={scratch} id="pt-scratch" />
+        <Learner title="Read first" learner={pretrained} id="pt-read" />
       </div>
-      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">Toy percentages are not paper results or reliable confidence estimates. Each adjective has one learned number. The model learns this pattern, not English. Reading costs extra training.</p></details>
+      <p class="pt-key">✓ at least 80% sure and right · ✗ sure but wrong · ? not sure yet</p>
+      <p class="toy-note">A tiny learner with one number per word and eight invented sentences, not GPT-1.</p>
     </div>
   );
 }

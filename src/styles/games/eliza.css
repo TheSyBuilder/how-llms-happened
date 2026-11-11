@@ -1,0 +1,61 @@
+/* "Break ELIZA": a 1966 terminal chat plus the fast-forward comparison. Tokens only; logical properties for RTL. */
+.eliza-game { --era:var(--era-counting); display:grid; grid-template-columns:minmax(0, 1fr); gap:16px; color:var(--ink); }
+.eliza-game .goal-bar { margin-block-end:0; }
+.eliza-sr { position:absolute; inline-size:1px; block-size:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+
+.eliza-tells { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap:8px; margin:0; padding:0; list-style:none; }
+.eliza-tells li { display:flex; align-items:flex-start; gap:10px; padding:8px 12px; background:var(--surface); border:2px solid var(--line); border-radius:var(--radius); }
+.eliza-tells li.is-caught { border-color:var(--ink); background:var(--era); color:var(--on-accent); }
+.eliza-tell-mark { display:inline-grid; place-items:center; flex:none; inline-size:26px; block-size:26px; margin-block-start:9px; border:2px solid currentColor; border-radius:50%; font:700 15px/1 var(--display); }
+.eliza-tells details { flex:1; min-inline-size:0; }
+.eliza-tells summary { display:flex; align-items:center; min-block-size:44px; font:700 16px/1.2 var(--display); cursor:pointer; }
+.eliza-tells summary::marker { content:''; }
+.eliza-tells summary::after { content:'?'; display:inline-grid; place-items:center; margin-inline-start:auto; inline-size:24px; block-size:24px; border:1px solid currentColor; border-radius:50%; font-size:13px; opacity:.7; }
+.eliza-tells details[open] summary::after { content:'–'; }
+.eliza-tells details p { margin:0 0 8px; font-size:14px; line-height:1.45; }
+
+.eliza-terminal { display:grid; grid-template-columns:minmax(0, 1fr); min-inline-size:0; gap:12px; padding:clamp(12px, 3vw, 20px); background:var(--surface); border:2px solid var(--ink); border-block-start:8px solid var(--era); border-radius:var(--radius); box-shadow:var(--shadow-hard); }
+.eliza-log { max-block-size:min(56vh, 460px); min-block-size:180px; min-inline-size:0; padding:4px 2px; overflow-x:hidden; overflow-y:auto; overscroll-behavior:contain; }
+.eliza-lines { display:grid; grid-template-columns:minmax(0, 1fr); align-content:start; gap:12px; margin:0; padding:0; list-style:none; }
+.eliza-line { display:grid; gap:4px; min-inline-size:0; max-inline-size:88%; animation:eliza-in 180ms ease-out; }
+.eliza-line.is-you { justify-self:end; justify-items:end; }
+.eliza-who { color:var(--muted); font:700 12px/1.2 var(--display); letter-spacing:.06em; text-transform:uppercase; }
+.eliza-text { margin:0; padding:10px 14px; border:2px solid var(--ink); border-radius:var(--radius); font:500 17px/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; overflow-wrap:anywhere; word-break:break-word; }
+.is-eliza .eliza-text { background:var(--paper); }
+.is-you .eliza-text { background:var(--accent); color:var(--on-accent); }
+.eliza-how { margin:0; color:var(--muted); font-size:13px; line-height:1.4; }
+.eliza-caught { margin:0; padding:6px 10px; border-inline-start:4px solid var(--era); background:var(--paper); font-size:14px; font-weight:600; line-height:1.4; }
+.eliza-caught q { font-family:ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+.eliza-form { display:flex; gap:8px; }
+.eliza-form input { flex:1; min-inline-size:0; min-block-size:48px; padding:8px 14px; background:var(--paper); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius-pill); font:500 17px/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.eliza-form input:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.eliza-suggest { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.eliza-suggest > span { color:var(--muted); font:700 13px/1 var(--display); text-transform:uppercase; letter-spacing:.06em; }
+.eliza-suggest .game-btn { max-inline-size:100%; padding-inline:14px; font-size:15px; white-space:normal; }
+.eliza-suggest, .eliza-form, .eliza-presets { min-inline-size:0; }
+.eliza-how, .eliza-caught { overflow-wrap:anywhere; }
+.eliza-terminal .result-card { margin-block:4px 0; box-shadow:none; }
+
+.eliza-ff { display:grid; gap:12px; margin-block-start:12px; }
+.eliza-ff h2 { margin:0; font:700 clamp(24px, 5vw, 34px)/1.1 var(--display); letter-spacing:-.02em; }
+.eliza-ff > p { margin:0; color:var(--muted); }
+.eliza-presets { display:flex; flex-wrap:wrap; gap:8px; }
+.eliza-presets button { min-block-size:44px; padding:8px 14px; background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius-pill); font:600 15px/1.25 var(--display); text-align:start; cursor:pointer; }
+.eliza-presets button[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
+.eliza-presets button:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.eliza-compare { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap:12px; }
+.eliza-card { display:grid; align-content:start; gap:8px; margin:0; padding:14px 16px; background:var(--surface); border:2px solid var(--ink); border-radius:var(--radius); }
+.eliza-card figcaption { display:grid; gap:2px; }
+.eliza-card figcaption b { font:700 18px/1.2 var(--display); }
+.eliza-card figcaption span { color:var(--muted); font-size:13px; }
+.eliza-card > p { margin:0; font-size:17px; line-height:1.45; }
+.eliza-card.is-1966 { border-block-start:6px solid var(--era-counting); }
+.eliza-card.is-1966 > p:first-of-type { font-family:ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.eliza-card.is-2026 { border-block-start:6px solid var(--era-agents); }
+.eliza-card .eliza-how { font-size:13px; }
+
+@keyframes eliza-in { from { opacity:0; transform:translateY(4px); } }
+@media (max-width: 480px) { .eliza-line { max-inline-size:100%; } .eliza-text { font-size:16px; } }
+@media (prefers-reduced-motion: reduce) { .eliza-line { animation:none; } }
+.eliza-log:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }

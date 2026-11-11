@@ -33,9 +33,9 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Give the gap another clue.</h2><Discovery slug="bert" />
-  <p>Try “metal” with “sky,” then “lake.” What happens with “little” instead? Open the comparison to keep all three views on screen.</p>
-  <noscript><p>Enable JavaScript to try the toy. In this invented set, “metal” leaves plane or boat; “sky” leaves bird or plane. Together they leave plane.</p></noscript>
+  <h2>Guess the [MASK].</h2><Discovery slug="bert" />
+  <p>Five hidden words. Reveal clues from the left or the right of the gap, and guess whenever you are sure. Fewer clues, more points.</p>
+  <noscript><p>Enable JavaScript to play. In “The metal ___ flew over the clouds.”, “metal” leaves plane or boat and “flew over” leaves bird or plane. Together they leave plane.</p></noscript>
   <BertToy client:load />
 </section>
 <section class="story-section" id="mattered">
@@ -43,7 +43,6 @@ import { sourceLink, paperLink } from "../lib/chapters";
   <h2>A reusable reader.</h2>
   <p>BERT showed that reading with both sides of context could prepare one architecture for many language tasks. The same pretrained starting point could be adapted to classify sentences, label words, or locate answers.</p>
   <p>Next, we return to models that write forward. GPT-2 explored how much a larger next-word predictor could do through the text placed before its answer.</p>
-  <a class="next-chapter" href="/chapters/gpt-2/"><span>Next · 2019</span><strong>GPT-2 and zero-shot ↗</strong><span>Can a task be hidden inside a piece of text?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Masking, architecture, results & limits</span></summary>
@@ -60,7 +59,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
     <h3>Two follow-ups</h3>
     <p>RoBERTa changes the training recipe: more data and training, larger batches, fresh masks, longer text sequences, and removal of next-sentence prediction. Its improvements show the importance of the recipe as a whole. XLNet instead varies which positions are predicted before others. The written sentence stays in order; the prediction order changes. A separate query representation identifies the target position without revealing its token.</p>
     <h3>How the toy works</h3>
-    <p>The toy keeps sentences whose left and/or right phrase exactly matches the revealed clues, then counts the possible middle words. A bar is a word’s share of those matches. The comparison counts the same sentences three ways: left only, right only, and both sides. Its heading buttons set the visible clues. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.</p>
+    <p>Each round’s clues come from a hand-written table: a clue lists the words it leaves possible, and a word survives only if every revealed clue allows it. After each round, the left-only reader applies just the clues before the gap; the both-ways reader applies all of them. No parameters are trained. It illustrates combining context, omitting BERT’s learned representations, attention, tokenisation, and training.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
@@ -71,5 +70,5 @@ import { sourceLink, paperLink } from "../lib/chapters";
     <li><a href={sourceLink("liu-2019-arxiv-v1-full-text")}>Liu et al. · RoBERTa (2019)</a><p>Sections 3–5: training recipe, fresh masking, input packing without next-sentence prediction, batches, data, and duration. The gains combine changes.</p></li>
     <li><a href={sourceLink("yang-2019-neurips-full-text")}>Yang et al. · XLNet (2019)</a><p>Sections 2.1–2.3: permutation of prediction order, unchanged written order, bidirectional context, and two-stream attention without mask-token corruption.</p></li>
     <li><a href={sourceLink("radford-2019-openai-report-full-text")}>Radford et al. · Language Models are Unsupervised Multitask Learners (2019)</a><p>Sections 1–3: next-token training, scale, and conditioning on text for tasks, the bridge to GPT-2.</p></li>
-  </ol><p>The opening sentence, diagram, and eight toy sentences are invented illustrations. Percentages in the toy describe only its sentence counts.</p></div>
+  </ol><p>The opening sentence, diagram, and game sentences are invented illustrations. The game’s points describe only its clue table.</p></div>
 </details>

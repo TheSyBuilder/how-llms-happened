@@ -1,7 +1,7 @@
 ---
 import Discovery from './Discovery.astro';
 import NeuralLanguageToy from './NeuralLanguageToy';
-import {sourceLink} from '../lib/chapters';
+import {sourceLink,paperLink} from '../lib/chapters';
 import '../styles/early.css';
 import '../styles/neural-language.css';
 ---
@@ -30,18 +30,17 @@ import '../styles/neural-language.css';
   </figure>
 </section>
 <section class="story-section toy-section" id="play">
-  <p class="eyebrow">03 / Play with it</p><h2>Teach a cat.<br/>Surprise a dog.</h2>
+  <p class="eyebrow">03 / Play with it</p><h2>Teach a cat.<br/>Will dog change?</h2>
   <Discovery slug="neural-language-model"/>
-  <p>Teach each example a few times. Watch dog’s prediction, then move its vector toward car. Dog never receives a lesson of its own.</p>
-  <noscript><p>Enable JavaScript to train this tiny model. Its starting predictions are equal; the count lookup has no examples.</p></noscript>
+  <p>Six lessons, one sentence each. Before a lesson runs, call which other words will change their guess. Dog never gets a lesson of its own, so watch what it borrows.</p>
+  <noscript><p>Enable JavaScript to play. Every word starts at an even chance of “sat”; a lesson moves the words that share features with the word being taught.</p></noscript>
   <NeuralLanguageToy client:load/>
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p><h2>Learning could travel.</h2>
   <p>The paper showed that learning reusable word features together with a predictor could improve next-word prediction beyond the count models it tested. Neural language modeling already had earlier examples; the contribution included making this shared approach work at larger scale.</p>
-  <p>A fixed window still leaves older words outside the model’s view. The next chapter asks what happens when the predictor carries a running memory instead.</p>
+  <p>A fixed window still leaves older words outside the model’s view. The next step was a predictor that carries a running memory instead.</p>
   <aside class="chapter-companions"><h3>Also in this chapter</h3><p>Bengio &amp; Bengio on neural joint distributions; Xu &amp; Rudnicky on neural language models; Schwenk &amp; Gauvain on bringing continuous word representations into speech recognition.</p></aside>
-  <a class="next-chapter" href="/chapters/rnn-language-model/"><span>Next · 2010</span><strong>Mikolov’s RNN language model ↗</strong></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Architecture, learning, results &amp; limits</span></summary>
@@ -56,7 +55,7 @@ import '../styles/neural-language.css';
     <p>Perplexity measures how much probability a model assigns to held-out text; lower is better on the same test. In Table 1’s Brown corpus comparison, the best listed count models score 312. The selected neural configuration scores 276 alone and 252 when mixed equally with an interpolated trigram, a count model using up to two previous words. Another neural configuration scores 268 alone; the paper’s lowest validation perplexity selects the mixture with test score 252.</p>
     <p>On AP News, Table 2 reports 109 for the neural/trigram mixture and 117 for the best listed count baseline. These results concern next-word prediction, rather than conversation or factual reliability.</p>
     <h3>What remained difficult</h3>
-    <p>The evaluated model keeps a fixed context window and one input vector per word, even when a word has several meanings. Computing scores across the full vocabulary is expensive. The toy removes the hidden layer, uses one context word and two outputs, and starts with invented vectors. Its learned numbers are not the paper’s measurements.</p>
+    <p>The evaluated model keeps a fixed context window and one input vector per word, even when a word has several meanings. Computing scores across the full vocabulary is expensive. The game removes the hidden layer, uses one context word and two outputs, and keeps five hand-placed vectors fixed so that only the shared predictor learns. Its numbers are not the paper’s measurements.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
@@ -64,8 +63,9 @@ import '../styles/neural-language.css';
   <div class="disclosure-body"><ol class="source-list">
     <li><a href={sourceLink('bengio-2003-jmlr-record')}>Bengio, Ducharme, Vincent &amp; Jauvin · A Neural Probabilistic Language Model (2003)</a><p>Official JMLR record: title, authors and February 2003 publication.</p></li>
     <li><a href={sourceLink('bengio-2003-jmlr-full-text')}>Read the paper</a><p>Introduction and §1.1: sparse combinations, smoothing and generalization through similar word features. §1.2: earlier work and the large-scale contribution. §2 and Figure 1: shared lookup, fixed context, equations and joint training. §3: vocabulary computation cost. §4, Tables 1–2: corpus comparisons, validation selection and mixtures. §5.2: multiple meanings.</p></li>
+    <li><a href={paperLink('rumelhart-hinton-williams-1986')}>Rumelhart, Hinton &amp; Williams · Learning representations by back-propagating errors (1986)</a><p>Nature 323: backpropagation, the gradient method that lets a prediction error adjust every weight that produced it. The paper also shows hidden units learning distributed representations, the idea behind training word vectors and a predictor together.</p></li>
     <li><a href={sourceLink('bengio-bengio-2000-idiap-journal-record')}>Bengio &amp; Bengio · Taking on the Curse of Dimensionality in Joint Distributions Using Neural Networks (2000)</a><p>Earlier neural modeling of joint distributions, discussed in the main paper’s §1.2.</p></li>
     <li><a href={sourceLink('xu-rudnicky-2000-isca-record')}>Xu &amp; Rudnicky · Can Artificial Neural Networks Learn Language Models? (2000)</a><p>Independent neural language-model study, also discussed in §1.2.</p></li>
     <li><a href={sourceLink('schwenk-gauvain-2002-author-full-text')}>Schwenk &amp; Gauvain · Connectionist Language Modeling for Large Vocabulary Continuous Speech Recognition (2002)</a><p>§§1–2: continuous representations and shared projection. §2: a frequent-word shortlist with a backoff model for other words. This is the speech-recognition branch named above.</p></li>
-  </ol><p>The cat, dog and car examples, diagram and toy numbers are teaching illustrations.</p></div>
+  </ol><p>The cat, dog, horse, bike and car examples, diagram and game numbers are teaching illustrations.</p></div>
 </details>

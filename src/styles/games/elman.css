@@ -1,0 +1,28 @@
+/* elman: "How long does a clue last?" */
+.elman-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.elman-setup { margin:0 0 14px; font-size:16px; }
+.elman-setup b { font-family:var(--display); }
+.elman-words { display:grid; grid-template-columns:repeat(auto-fill, minmax(58px, 1fr)); gap:6px; margin:0 0 14px; padding:0; list-style:none; }
+.elman-words li { display:grid; grid-template-rows:auto 40px; gap:4px; padding:6px 4px 4px; background:var(--paper); border:2px solid var(--line); border-radius:8px; text-align:center; }
+.elman-words li span { overflow:hidden; font:600 14px/1.2 var(--display); text-overflow:ellipsis; white-space:nowrap; }
+.elman-words li i { align-self:end; justify-self:center; display:block; inline-size:60%; block-size:calc(clamp(0, var(--value, 0), 1) * 100%); background:var(--muted); border-radius:3px 3px 0 0; transition:block-size 200ms ease; }
+.elman-words li.is-clue { background:var(--accent); color:var(--on-accent, var(--ink)); border-color:var(--ink); }
+.elman-words li.is-clue i { background:var(--on-accent, var(--ink)); }
+.elman-words li.is-kept { border-color:var(--ink); }
+.elman-words li.is-kept i { background:var(--good, var(--deep)); }
+.elman-words li.is-lost { border-style:dashed; }
+.elman-words li.is-lost i { background:var(--bad, var(--muted)); }
+.elman-words li.is-unread span { color:var(--muted); }
+.elman-game .game-meter-track { position:relative; }
+/* The 60% line: the meter runs from a 50% coin flip to 100%, so 60% sits a fifth of the way along. */
+.elman-game .game-meter-track::after { content:''; position:absolute; inset-block:0; inset-inline-start:20%; inline-size:2px; background:var(--ink); }
+.elman-line { margin:6px 0 14px; color:var(--muted); font-size:14px; }
+.elman-bet { display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; }
+.elman-bet-label { flex:1 1 100%; font:700 15px/1.3 var(--display); }
+.elman-stepper { display:inline-flex; align-items:center; gap:8px; }
+.elman-stepper .game-btn { inline-size:52px; padding:0; font-size:24px; }
+.elman-stepper output { min-inline-size:2.2ch; font:700 34px/1 var(--display); font-variant-numeric:tabular-nums; text-align:center; }
+.elman-verdict { min-block-size:1.3em; margin:14px 0 10px; font:700 clamp(19px, 4.5vw, 24px)/1.3 var(--display); }
+.elman-verdict:empty { min-block-size:0; margin:0; }
+.elman-game .result-card { margin-block:0 16px; }
+@media (prefers-reduced-motion:reduce) { .elman-words li i { transition:none; } }

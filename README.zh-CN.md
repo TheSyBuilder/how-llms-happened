@@ -1,72 +1,55 @@
-# LLM Lineage · 大语言模型是怎么走到今天的？
+# 大语言模型是怎么来的
 
 [English](README.md) · **简体中文** · [العربية](README.ar.md)
 
-**[打开互动网站](https://thesybuilder.github.io/how-llms-happened/zh/)**
+**[在浏览器里直接玩 →](https://thesybuilder.github.io/how-llms-happened/zh/)**
 
-### 从数一数字母，到能和人聊天，中间发生了什么？
+### 从数字母开始，怎么就变成了能和你聊天的机器？
 
-LLM Lineage 用可以亲手操作的小实验，讲述大语言模型背后的想法。沿着 30 个转折点，从 1913 年马尔可夫对字母的统计，一路走到今天能对话、使用工具、逐步解题的模型。
+LLM Lineage 用 32 个浏览器小游戏讲大语言模型的历史：从 1913 年马尔可夫数普希金诗里的元音，一直讲到 2026 年的智能体。每个游戏都基于一篇真实的论文，都有一个目标，玩完还能拿到一张可以分享的成绩卡。
 
-每一章，都有一个想法等你试试看。换一个词，观察上下文如何改变预测；决定网络该记住什么；分配训练预算，看看为什么模型更大未必更好。小实验直接在浏览器里运行，旁边配有图解和原始研究，方便你边玩边理解。
+**32 个小游戏 · 1913 → 2026 · 不需要机器学习基础 · English、简体中文、العربية**
 
-**30 个可玩的章节 · 1913—2026 · 用小实验，弄懂大想法**
+![首页：标题旁边是“你比 GPT-2 聪明吗？”挑战，下面是按时代排开的时间线](docs/images/home.png)
 
-![LLM Lineage 首页：选择一个历史转折点，进入对应的互动实验](docs/images/playground-zh.png)
+## 先来个挑战
 
-没学过机器学习也没关系。从一个感兴趣的问题开始，做个实验，再把弄懂的想法讲给朋友听。想继续深究时，公式和研究细节也都在。
+首页一打开就是 **你比 GPT-2 聪明吗？** 一共十句话，每句从四个选项里挑出真正的下一个词，要赶在计时结束前选好。GPT-2 small 的答案是用真正的 1.24 亿参数模型提前录好的，所以你对手就是它当时真实的选择。页面上没有任何模型在实时运行。
 
-## 只换一个词，答案就变了
+接着从时间线里挑一个游戏。几个我们最喜欢的：
 
-保留 **metal（金属的）**，把 **sky（天空）** 换成 **lake（湖泊）**。这次，空白处该填什么？
+| 游戏 | 年份 | 讲的是什么 |
+| --- | --- | --- |
+| **你能做到随机吗？** 按 A 或 B 三十次，看一个 1913 年的计数小把戏能不能猜中你。 | 1913 | 马尔可夫链 |
+| **拆穿 ELIZA。** 抓住第一个聊天机器人的三种破绽。 | 1966 | 模式匹配和 ELIZA 效应 |
+| **最近的词。** 每日谜题：靠真实词向量的接近度找出秘密词。 | 2013 | 词嵌入 |
+| **你的名字值几个词元？** 随便输入点什么，看真实的 GPT-2 词元一个个冒出来。 | 2016 | 字节对编码（BPE） |
+| **注意力谜题。** 用尽量少的步数，决定一个词去“听”哪些词。 | 2017 | Transformer |
+| **训练一个评判员。** 教出一个奖励模型，再看它给一句自信的假话打出和真话一样高的分。 | 2022 | 从人类反馈中学习 |
+| **我的笔记本跑得动吗？** 找出你的内存装得下的最大开放模型。 | 2023 | 开放权重和量化 |
+| **凑出目标数。** 先解几道数字谜题，再看推理模型探索出来的搜索树。 | 2024 | 靠搜索来推理 |
 
-| 线索是「天空」 | 线索变成「湖泊」 |
-| --- | --- |
-| ![BERT 小实验：metal 和 sky 两条线索只留下 plane 这个答案](docs/images/bert-sky-zh.png) | ![BERT 小实验：把 sky 换成 lake，答案就变成了 boat](docs/images/bert-lake-zh.png) |
-| **plane（飞机）** 符合线索。 | 现在是 **boat（船）**。 |
+每一章都从它的游戏开始。**故事** 讲当时的问题、想出来的办法，以及它改变了什么。**数学与资料** 里有公式和原始论文的链接。
 
-BERT 这一章就从这里讲起：猜一个缺失的词，后面的文字也能帮忙。图里是用八个自编句子做的小演示，并没有运行真正的 BERT；这里的百分比来自句子计数，不是 BERT 的预测概率。
-
-## 先挑一个，让你「原来如此」的小实验
-
-| 动手试试 | 再想一想 |
-| --- | --- |
-| **猜下一个字母。** 打印几个字母，再关掉记忆。 | A 和 B 的数量一样，排列规律就一定一样吗？ |
-| **给词语画张地图。** 把「bank」从河流相关的词旁边，移到金融相关的词旁边。 | 它的邻居变了吗？ |
-| **打开记忆抽屉。** 保留、隐藏，再替换里面的数字。 | 藏起来，和忘掉，是一回事吗？ |
-| **让词语互相找线索。** 在 Transformer 实验里，遮住后面的词。 | 第一个词还能偷看结尾吗？ |
-| **用选择来教模型。** 多选几次简短、清楚的回答。 | 听着有道理，就一定说对了吗？ |
-| **组装一个配送小助手。** 给它信息、地图和尝试路线的时间。 | 地图过时了，多试几次就有用吗？ |
-
-首页推荐了三个容易上手的小游戏。打开 **Explore（探索）**，还能搜索全部 30 个实验，找到对应的原始论文。
+![玩完一局“你能做到随机吗？”：成绩卡上写着“It predicted you 50% of the time.”，下面有分享到 X、复制链接、保存图片和再玩一次的按钮](docs/images/result-card.png)
 
 <details>
-<summary><strong>看看手机上的样子</strong></summary>
+<summary><strong>这些游戏有多“真”？</strong></summary>
 
 <br />
-<img src="docs/images/letter-press-mobile-zh.png" width="320" alt="手机上的字母预测游戏：有记忆开关、概率条和醒目的打印按钮" />
 
-触屏、鼠标、键盘都能操作。如果你开启了系统的「减少动态效果」，页面也会相应减少动画。
+这些游戏是小型教学模型，专门让一种机制看得见。大多数只从很小的数据集里学习，或者用手写的规则，每个游戏下面都有一行字说明这一点。凡是用到真实模型数据的地方，数据都是真的：
+
+- **GPT-2 挑战：** GPT-2 small（1.24 亿参数）给出的下一个词概率，2026 年 11 月 11 日用 transformers.js 录制（[`scripts/record-gpt2.mjs`](scripts/record-gpt2.mjs)）。
+- **词元：** GPT-2 的字节级 BPE 词表和合并规则，和参考分词器对照检查过。
+- **最近的词：** GloVe 6B 50 维词向量，截取了大约 5,000 个常用词。
+- **我的笔记本跑得动吗？：** 参数量来自每个模型的官方说明卡。
 
 </details>
 
-## 先玩起来，想深究时再往下看
+## 在自己电脑上运行
 
-每章先用日常例子解释想法，再给出 **Try this first（先试这一步）**。猜一猜，改一改，然后打开 **What’s going on?（这是怎么回事？）**，把眼前的变化和背后的道理连起来。
-
-- **Play（动手玩）**：直接进入互动实验。
-- **Story（读故事）**：看看当时遇到了什么难题、新想法解决了什么，又为后来的发展打开了哪扇门。配有示意图和一句话总结。
-- **Math & sources（数学与资料）**：想继续钻研，就看公式、模型结构、实验结果、局限和原始论文。
-
-切换视图时，实验状态会保留。浏览器支持朗读的话，还可以点 **Listen to the idea（听听这个想法）**，听开头的简短介绍。
-
-故事从早期的字母统计出发，经过记忆、词向量、注意力和 Transformer，再走到 ChatGPT、检索、工具调用与推理。每章围绕一个关键转折点展开，并附上代表论文和延伸阅读。
-
-**这里的实验都是帮助理解的小模型或小演示。** 有的从少量数据中学习，有的按预先写好的规则运行。它们在浏览器里把一个机制展示出来；真正的研究做了什么、还有哪些不同，章节里会接着讲。
-
-## 在自己的电脑上运行
-
-先准备好 **Node.js 22.12+** 和 **npm 9.6.5+**，然后在终端运行：
+需要 **Node.js 22.12+** 和 **npm 9.6.5+**。
 
 ```sh
 git clone https://github.com/TheSyBuilder/how-llms-happened.git
@@ -75,21 +58,29 @@ npm install
 npm run dev
 ```
 
-打开终端显示的本地地址即可，也可以[直接在线体验全部 30 个章节](https://thesybuilder.github.io/how-llms-happened/zh/)。
-
-整个网站支持**英语、简体中文和阿拉伯语**，包括全部 30 章和互动实验。点击顶部的语言选项即可切换，当前章节会保留。阿拉伯语采用自然的沙特口语表达和从右到左的排版。截图展示的是中文版。
+网站支持浅色和深色模式，最窄能在 320 px 宽的手机上用，触屏、鼠标、键盘都能操作。阿拉伯语页面是从右到左排版的。
 
 <details>
-<summary><strong>想参与开发？代码和检查命令在这里</strong></summary>
+<summary><strong>在手机上</strong></summary>
 
-项目使用 **Astro + Preact**，配合 SVG 示意图和浏览器里的小实验。
+<br />
+<img src="docs/images/home-mobile.png" width="320" alt="手机上的首页（深色模式）：先是标题，下面是 GPT-2 挑战和四个答案按钮" />
 
-| 想找什么 | 从这里开始 |
+</details>
+
+<details>
+<summary><strong>给贡献者：代码和检查</strong></summary>
+
+用 **Astro + Preact** 搭建。设计规范和游戏组件约定写在 [`docs/launch-redesign.md`](docs/launch-redesign.md)。
+
+| 想找…… | 从这里看起 |
 | --- | --- |
-| 章节顺序和基本信息 | [`src/lib/chapters.ts`](src/lib/chapters.ts) |
-| 日常例子和第一步操作提示 | [`src/lib/first-steps.ts`](src/lib/first-steps.ts) |
-| 故事正文和互动实验 | [`src/components/`](src/components/) |
-| 论文信息与链接 | [`data/corpus.json`](data/corpus.json)、[`src/lib/chapter-papers.ts`](src/lib/chapter-papers.ts) |
+| 章节顺序、年份和时代 | [`src/lib/chapter-meta.ts`](src/lib/chapter-meta.ts)、[`src/lib/chapters.ts`](src/lib/chapters.ts) |
+| 游戏名称和第一步提示 | [`src/lib/first-steps.ts`](src/lib/first-steps.ts) |
+| 共用的目标栏、成绩卡和进度 | [`src/components/game/`](src/components/game/)、[`src/lib/progress.ts`](src/lib/progress.ts) |
+| 游戏和故事 | [`src/components/`](src/components/) |
+| 论文信息和链接 | [`data/corpus.json`](data/corpus.json)、[`src/lib/chapter-papers.ts`](src/lib/chapter-papers.ts) |
+| 翻译 | [`src/i18n/`](src/i18n/) |
 
 ```sh
 npm run check
@@ -98,12 +89,16 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-浏览器测试覆盖桌面和窄屏手机布局、鼠标／触屏／键盘操作、旧链接跳转以及控制台错误，也会保存截图，方便检查页面效果。
+`npm run build` 还会给每一章生成一张 1200 × 630 的分享图（`/og/<slug>.png`），并检查链接、锚点和每个页面的体积预算。
 
 </details>
 
-## 帮下一个读者少绕一点弯
+## 致谢
 
-哪个实验让你突然懂了？分享给朋友吧。哪里没讲明白？欢迎[提个 issue](https://github.com/TheSyBuilder/how-llms-happened/issues)，告诉我们是哪一章、你试了什么、在哪一步卡住了。更贴切的例子，以及附有原始资料的纠错，都很欢迎。
+数据：GPT-2 权重和分词器文件来自 OpenAI（MIT 许可证）；GloVe 词向量来自 Pennington、Socher 和 Manning（Public Domain Dedication and License）；ENABLE 词表（公有领域）。字体：Space Grotesk 和 DM Sans（SIL Open Font License）。每一章都附有它所依据的论文链接。
 
-如果你喜欢这个项目，点个 **Star**，让更多好奇的人找到它。
+## 帮下一个人看懂
+
+有哪个瞬间让你一下子明白了某个想法，或者哪个游戏把你搞糊涂了？[开一个 issue](https://github.com/TheSyBuilder/how-llms-happened/issues)，写上是哪一章、你试了什么。欢迎附上原始出处来纠错。
+
+如果你玩得开心，点个 **Star**，能让更多好奇的人找到它。

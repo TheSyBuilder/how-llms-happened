@@ -14,7 +14,7 @@
 .signal-slider input { width: 100%; min-height: 44px; margin: 0; accent-color: var(--deep); cursor: pointer; }
 .signal-actions { display: flex; gap: 12px; justify-content: space-between; }
 .signal-actions button { background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 10px 14px; min-height: 44px; font-size: 13px; cursor: pointer; }
-.signal-actions button:first-child { background: var(--accent); border-color: var(--accent); }
+.signal-actions button:first-child { background: var(--accent); border-color: var(--accent); color:var(--on-accent); }
 .signal-actions button:disabled { opacity: .45; cursor: default; }
 .signal-network { margin-top: 20px; }
 .signal-network svg { display: block; width: 100%; }

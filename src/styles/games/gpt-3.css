@@ -1,0 +1,26 @@
+/* GPT-3 · Beat the model. Tokens only; logical properties; examples stay LTR. */
+.g3-prompt { margin-block: 4px 14px; padding: 14px; background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius, 12px); direction: ltr; unicode-bidi: isolate; text-align: left; }
+.g3-prompt ol { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.g3-prompt li { animation: g3-in 200ms ease-out; }
+.g3-prompt code { font-size: 18px; background: none; color: var(--ink); }
+.g3-query { margin: 10px 0 0; padding-block-start: 10px; border-block-start: 1px dashed var(--line); }
+.g3-query strong { display: inline-block; min-inline-size: 2ch; padding: 0 8px; background: var(--accent); color: var(--on-accent); border-radius: 6px; }
+.g3-more { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.g3-more p { margin: 0; color: var(--muted); font-size: 14px; }
+.g3-choices > button { font-family: ui-monospace, monospace; font-size: 17px; }
+.g3-summary { display: grid; gap: 8px; animation: g3-in 220ms ease-out; }
+.g3-summary p { margin: 0; }
+.g3-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.g3-rules li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.g3-rules li small { color: var(--muted); }
+.g3-rules li code { margin-inline-start: auto; background: none; color: inherit; }
+.g3-rules li.is-out { color: var(--muted); text-decoration: line-through; }
+.g3-rules li.is-in { border: 2px solid var(--ink); font-weight: 600; }
+.g3-summary > .game-btn { justify-self: start; }
+@keyframes g3-in { from { opacity: 0; transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .g3-prompt li, .g3-summary { animation: none; } }
+.g3-game .g3-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 560px) {
+  .g3-game .g3-choices { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .g3-game .g3-choices:has(> :nth-child(5)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

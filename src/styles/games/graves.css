@@ -1,0 +1,23 @@
+/* "Your bot says…": train a character model on your own text, then dial temperature. Tokens only; logical properties. */
+.graves-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.graves-label { display:flex; justify-content:space-between; gap:10px; margin-block-end:8px; font:600 16px/1.3 var(--display); }
+.graves-label output { font-variant-numeric:tabular-nums; }
+.graves-game textarea { box-sizing:border-box; display:block; inline-size:100%; min-block-size:180px; padding:12px; background:var(--paper); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); font:16px/1.5 var(--body); resize:vertical; }
+.graves-game textarea:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.graves-count { margin-block:6px 12px; color:var(--muted); font-size:14px; }
+.graves-actions { display:flex; flex-wrap:wrap; gap:10px; margin-block:12px; }
+.graves-stats { display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px; margin-block:0 14px; color:var(--muted); font-size:15px; }
+.graves-link { min-block-size:44px; padding:0 4px; background:none; color:var(--ink); border:0; font:600 15px/1 var(--display); text-decoration:underline; text-decoration-thickness:2px; cursor:pointer; }
+.graves-link:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.graves-range { display:block; inline-size:100%; min-block-size:44px; margin:0; accent-color:var(--deep); cursor:pointer; }
+.graves-ends { display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:13px; }
+.graves-hint { margin-block:10px 0; color:var(--muted); font-size:14px; }
+.graves-paper { min-block-size:96px; margin-block-start:8px; padding:14px 16px; background:var(--paper); border:2px solid var(--ink); border-radius:var(--radius, 12px); }
+.graves-line { margin:0; font:600 clamp(19px, 4.6vw, 24px)/1.4 var(--display); overflow-wrap:anywhere; }
+.graves-line mark { padding-inline:2px; background:transparent; color:var(--bad); text-decoration:underline wavy; text-decoration-thickness:2px; text-underline-offset:4px; }
+.graves-verdict { margin-block:8px 0; font-weight:600; }
+.graves-empty { margin:0; color:var(--muted); }
+.graves-history { display:grid; gap:6px; margin-block:12px 0; padding:0; list-style:none; color:var(--muted); font-size:14px; }
+.graves-history li { display:flex; gap:8px; align-items:baseline; overflow-wrap:anywhere; }
+.graves-history li > span:first-child { flex:none; font-variant-numeric:tabular-nums; }
+.graves-history b { margin-inline-start:auto; color:var(--ink); }

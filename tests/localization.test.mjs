@@ -24,3 +24,18 @@ test('project hosting preserves locale, hashes and external destinations',()=>{
  assert.equal(hosted.withSiteBase('/how-llms-happened/'),'/how-llms-happened/');
  for(const path of ['https://arxiv.org/a','#play','//example.org'])assert.equal(hosted.withSiteBase(path),path);
 });
+test('templates match most specific first, whatever their catalog order',()=>{
+ const t=api.translator({'Par {0}':'标准杆 {0}','Par {0} · best {1}':'标准杆 {0} · 最佳 {1}'});
+ assert.equal(t('Par 3 · best 2'),'标准杆 3 · 最佳 2');
+ assert.equal(t('Par 4'),'标准杆 4');
+});
+test('the client catalog keeps island and runtime strings and drops static-only ones',()=>{
+ const used=[];const t=api.translator({'Story paragraph.':'故事。','Play again':'再玩一次','Score {0}':'得分 {0}','Hidden until play':'玩后才出现','Counting':'计数'},key=>used.push(key));
+ t('Story paragraph.');t('Score Counting');
+ assert.deepEqual(used,['Story paragraph.','Score {0}','Counting']);
+ const story='A story paragraph long enough to count as static copy, not a label.';
+ const applied=new Set([story,'Play again','Counting']),island=new Set(['Play again']);
+ assert.deepEqual(Object.keys(api.clientMessages({[story]:'故事。','Play again':'再玩一次','Hidden until play':'玩后才出现','Counting':'计数'},applied,island)),['Play again','Hidden until play','Counting']);
+ assert.deepEqual(Object.keys(api.clientMessages({[story]:'故事。'},applied,island)),[]);
+ assert.deepEqual(Object.keys(api.clientMessages({[story]:'故事。'},applied,island,new Set([story]))),[story]);
+});

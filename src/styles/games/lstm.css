@@ -1,0 +1,36 @@
+/* lstm: "Vault keeper." */
+.vault-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.vault-brief { margin:0 0 12px; font-size:16px; }
+.vault-board { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.vault-incoming, .vault-cell { display:grid; align-content:center; justify-items:center; gap:4px; min-block-size:132px; padding:12px; border:2px solid var(--ink); border-radius:var(--radius, 12px); text-align:center; }
+.vault-incoming { background:var(--paper); animation:vault-arrive 180ms ease-out; }
+.vault-incoming span, .vault-cell > span:first-child { color:var(--muted); font:700 13px/1.2 var(--display); letter-spacing:.06em; text-transform:uppercase; }
+.vault-incoming strong, .vault-cell strong { font:700 clamp(44px, 12vw, 64px)/1 var(--display); font-variant-numeric:tabular-nums; }
+.vault-incoming.is-code, .vault-incoming.is-new-code { background:var(--accent); color:var(--on-accent, var(--ink)); }
+.vault-incoming.is-code span, .vault-incoming.is-new-code span { color:inherit; }
+.vault-incoming.is-noise strong { color:var(--muted); }
+.vault-cell { background:var(--ink); color:var(--surface); }
+.vault-cell > span:first-child { color:inherit; opacity:.8; }
+.vault-math { font-size:13px; font-variant-numeric:tabular-nums; opacity:.85; }
+.vault-board .game-timer { position:absolute; inset-block-start:-14px; inset-inline-end:10px; background:var(--surface); }
+.vault-board .game-timer.is-low { background:var(--bad, var(--surface)); color:var(--surface); }
+.vault-gates { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; margin-block:16px 6px; }
+.vault-gate { display:grid; gap:4px; justify-items:center; min-block-size:76px; padding:8px 6px; background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); cursor:pointer; touch-action:manipulation; }
+.vault-gate b { font:700 20px/1.1 var(--display); }
+.vault-gate span { color:var(--muted); font-size:12px; line-height:1.3; }
+.vault-gate[aria-pressed="true"] { background:var(--accent); color:var(--on-accent, var(--ink)); box-shadow:inset 0 0 0 2px var(--ink); }
+.vault-gate[aria-pressed="true"] span { color:inherit; }
+.vault-gate.is-read:not(:disabled) { background:var(--good, var(--accent)); color:var(--surface); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.vault-gate.is-read:not(:disabled) span { color:inherit; }
+.vault-gate:disabled { opacity:.5; cursor:default; }
+.vault-gate:focus-visible { outline:3px solid var(--deep); outline-offset:3px; }
+.vault-keys { margin:0; color:var(--muted); font-size:13px; text-align:center; }
+.vault-verdict { min-block-size:1.3em; margin:12px 0; font:700 clamp(19px, 4.5vw, 24px)/1.3 var(--display); }
+.vault-log { display:flex; flex-wrap:wrap; gap:6px; margin:14px 0 0; padding:0; list-style:none; }
+.vault-log li { display:grid; justify-items:center; min-inline-size:40px; padding:4px 6px; border:2px solid var(--line); border-radius:8px; font-size:12px; font-variant-numeric:tabular-nums; }
+.vault-log li b { font:700 18px/1.1 var(--display); }
+.vault-log li.is-code, .vault-log li.is-new-code { border-color:var(--ink); background:var(--paper); }
+.vault-game .result-card { margin-block:0 16px; }
+@keyframes vault-arrive { from { transform:translateY(-8px); opacity:.3; } }
+@media (max-width:380px) { .vault-gate b { font-size:17px; } .vault-gate span { font-size:11px; } }
+@media (prefers-reduced-motion:reduce) { .vault-incoming { animation:none; } }

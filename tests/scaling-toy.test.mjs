@@ -9,8 +9,10 @@ const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: "preact" },
 });
 const compiled = {};
-new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { scalingPoint, scalingCurve, trainingBudgets } = compiled;
+const base = createRequire(import.meta.url);
+// The game kit and stylesheets are browser-only; the curve and scoring do not need them.
+new Function("require", "exports", outputText)((id) => /\.css$|\/game\/|\/lib\/progress$/.test(id) ? {} : base(id), compiled);
+const { scalingPoint, scalingCurve, trainingBudgets, bestStep, guessPoints, offBy, scalingStars, START_STEP } = compiled;
 
 test("buying a larger toy model reduces available text under the same budget", () => {
   for (const budget of trainingBudgets) {
@@ -76,4 +78,27 @@ test("more budget relieves the text shortage while leaving model shortage unchan
     assert.equal(small.modelPenalty, large.modelPenalty);
     assert.ok(large.textPenalty < small.textPenalty);
   }
+});
+
+test("the hidden sweet spot moves to bigger models as the budget grows", () => {
+  const best = trainingBudgets.map(bestStep);
+  assert.deepEqual(best, [30, 44, 58]);
+  for (const [i, budget] of trainingBudgets.entries()) {
+    const curve = scalingCurve(budget);
+    assert.ok(curve.every((p) => p.loss >= curve[best[i]].loss));
+    assert.ok(Math.abs(best[i] - START_STEP) >= 20, "the slider never starts near the answer");
+  }
+  // Each 4x budget multiplies the best size by 2^(14/10), about 2.6x.
+  assert.ok(Math.abs(offBy(best[1], best[0]) - 2.64) < 0.01);
+});
+
+test("guesses score by distance in doublings, and three stars need near misses on every budget", () => {
+  assert.equal(guessPoints(30, 30), 100);
+  assert.equal(guessPoints(40, 30), 50);
+  assert.equal(guessPoints(20, 30), 50);
+  assert.equal(guessPoints(50, 30), 0);
+  assert.equal(guessPoints(0, 58), 0);
+  assert.equal(offBy(40, 30), 2);
+  assert.equal(offBy(30, 30), 1);
+  assert.deepEqual([300, 220, 219, 160, 80, 79].map(scalingStars), [3, 3, 2, 2, 1, 0]);
 });

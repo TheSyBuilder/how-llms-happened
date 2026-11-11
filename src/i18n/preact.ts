@@ -7,7 +7,13 @@ options.vnode=vnode=>{
  if(typeof vnode.type!=='string')return;
  const props=vnode.props as Record<string,unknown>;
  if(typeof props.href==='string')props.href=localePath(props.href,currentLocale());
+ // `translate={false}` marks user-typed or example text. render-to-string drops false attributes, so SSR writes
+ // translate="no" (server.ts skips it); the browser takes the boolean DOM property, which also renders as "no".
+ const keep=props.translate===false||props.translate==='no';
+ if(keep)props.translate=typeof document==='undefined'?'no':false;
  if(currentLocale()==='en')return;
+ // The hook sees one vnode: it skips this element's own strings and attributes, not its descendants.
+ if(keep)return;
  // Translated option labels must not change the values used by toy logic.
  if(vnode.type==='option'&&props.value===undefined&&typeof props.children==='string')props.value=props.children;
  const children=(value:unknown):unknown=>{

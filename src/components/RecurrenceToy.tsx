@@ -1,70 +1,110 @@
 import '../i18n/preact';
-import { useState } from 'preact/hooks';
+import '../styles/games/drop-recurrence.css';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import GoalBar from './game/GoalBar';
+import ResultCard, { type GameResult } from './game/ResultCard';
+import { markPlayed } from '../lib/progress';
 
-type Route = 'recurrent' | 'local' | 'dilated' | 'attention';
-export const signalRoutes: { id: Route; name: string; rule: string; arrival: number }[] = [
-  { id: 'recurrent', name: 'One by one', rule: 'A running state passes to the next position.', arrival: 7 },
-  { id: 'local', name: 'Local windows', rule: 'Each position reads itself and its two neighbours.', arrival: 7 },
-  { id: 'dilated', name: 'Widening windows', rule: 'Spacing cycles through 1, 2, 4, 8, 16.', arrival: 3 },
-  { id: 'attention', name: 'Direct attention', rule: 'Each position can read every input position.', arrival: 1 },
+export type Wiring = 'chain' | 'conv' | 'attention';
+export const wirings: { id: Wiring; name: string; rule: string }[] = [
+  { id: 'chain', name: 'Recurrent chain', rule: 'Each state waits for the one before it.' },
+  { id: 'conv', name: 'Convolution stack', rule: 'Every position reads three neighbours; spacing widens 1, 2, 4, 8, 16 per layer.' },
+  { id: 'attention', name: 'All-pairs attention', rule: 'Every position reads every position in one step.' },
 ];
+/** Reads the chip can do at once. A step with more reads than this takes several ticks. */
+export const readsPerTick = 128;
+export const raceLengths = [8, 16, 32, 64];
+const spacing = (layer: number) => 2 ** ((layer - 1) % 5);
 
-// Connectivity only: a lit node can receive the clue. No learned weights run here.
-export function spreadSignal(route: Route, hops: number) {
-  let reached = Array.from({ length: 8 }, (_, i) => i === 0);
-  let before = [...reached];
-  let edges: { from: number; to: number; carries: boolean }[] = [];
-  for (let step = 1; step <= hops; step++) {
-    before = [...reached];
-    edges = [];
-    if (route === 'recurrent') {
-      edges.push({ from: step - 1, to: step, carries: before[step - 1]! });
-      reached = before.map((value, i) => value || (i === step && before[step - 1]!));
-    } else {
-      const gap = route === 'dilated' ? 2 ** ((step - 1) % 5) : 1;
-      reached = before.map((_, to) => {
-        const inputs = route === 'attention' ? Array.from({ length: 8 }, (_, i) => i) : [to - gap, to, to + gap].filter(i => i >= 0 && i < 8);
-        inputs.forEach(from => edges.push({ from, to, carries: before[from]! }));
-        return inputs.some(from => before[from]);
-      });
-    }
-  }
-  return { reached, before, edges };
+/** Dependent steps from word 1 to word n, and the reads each step needs across the whole sentence. */
+export function plan(wiring: Wiring, n: number) {
+  if (wiring === 'chain') return { steps: n - 1, reads: 2 };
+  if (wiring === 'attention') return { steps: 1, reads: n * n };
+  let steps = 0, reach = 0;
+  while (reach < n - 1) reach += spacing(++steps);
+  return { steps, reads: 3 * n };
+}
+export const ticksPerStep = (wiring: Wiring, n: number) => Math.ceil(plan(wiring, n).reads / readsPerTick);
+export const finishTick = (wiring: Wiring, n: number) => plan(wiring, n).steps * ticksPerStep(wiring, n);
+/** Furthest word (1-based) that has heard from word 1 after a number of ticks. */
+export function reachAt(wiring: Wiring, n: number, tick: number) {
+  const done = Math.floor(Math.max(0, tick) / ticksPerStep(wiring, n));
+  if (wiring === 'chain') return Math.min(n, 1 + done);
+  if (wiring === 'attention') return done >= 1 ? n : 1;
+  let reach = 1;
+  for (let layer = 1; layer <= done; layer++) reach += spacing(layer);
+  return Math.min(n, reach);
+}
+export function winners(n: number): Wiring[] {
+  const best = Math.min(...wirings.map(w => finishTick(w.id, n)));
+  return wirings.filter(w => finishTick(w.id, n) === best).map(w => w.id);
+}
+export function raceStars(correct: number): 0 | 1 | 2 | 3 {
+  return correct >= 4 ? 3 : correct === 3 ? 2 : correct === 2 ? 1 : 0;
 }
 
+const reduced = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nameOf = (id: Wiring) => wirings.find(w => w.id === id)!.name;
+
 export default function RecurrenceToy() {
-  const [route, setRoute] = useState<Route>('local');
-  const [hops, setHops] = useState(1);
-  const { reached, before, edges } = spreadSignal(route, hops);
-  const current = signalRoutes.find(item => item.id === route)!;
-  const arrived = reached[7];
-  const x = (i: number) => 45 + i * 65;
-  return <div class="recurrence-toy">
-    <div class="toy-topline"><span class="eyebrow">Pass a clue</span><span class="toy-label">Toy · eight positions</span></div>
-    <fieldset class="signal-routes"><legend>Choose the connections</legend><div>{signalRoutes.map(item => <button type="button" aria-pressed={route === item.id} onClick={() => setRoute(item.id)}>{item.name}</button>)}</div></fieldset>
-    <div class="signal-result" role="status" aria-live="polite" data-arrived={arrived ? 'true' : 'false'}>
-      <output data-testid="signal-answer">{arrived ? 'Word 8 has the clue.' : 'Word 8 is still out of reach.'}</output>
-      <p><strong>{reached.filter(Boolean).length} / 8</strong> positions can receive the clue. This route first reaches word 8 after <strong>{current.arrival} {current.arrival === 1 ? 'hop' : 'hops'}</strong>.</p>
-    </div>
-    <div class="signal-slider"><label for="signal-hops">Dependent hops <output for="signal-hops">{hops}</output></label><input id="signal-hops" type="range" min="0" max="7" step="1" value={hops} onInput={event => setHops(Number(event.currentTarget.value))} /><div class="signal-actions"><button type="button" disabled={hops === 7} onClick={() => setHops(hops + 1)}>One more hop →</button><button type="button" onClick={() => { setRoute('local'); setHops(1); }}>Reset signal</button></div></div>
-    <figure class="signal-network">
-      <svg viewBox="0 0 545 255" role="img" aria-label={`${current.name}, ${hops} hops. The clue can reach positions ${reached.flatMap((yes, i) => yes ? [i + 1] : []).join(', ')}.`}>
-        <text x="16" y="22" class="signal-svg-heading">{hops === 0 ? 'Start: a clue at word 1' : route === 'recurrent' ? 'One new state depends on the last' : 'All eight positions update together'}</text>
-        {route === 'recurrent' ? <>
-          {Array.from({ length: 7 }, (_, i) => <path d={`M${x(i) + 17} 115H${x(i + 1) - 17}`} class={i < hops ? 'signal-wire carries' : 'signal-wire'} />)}
-          {reached.map((lit, i) => <g><circle cx={x(i)} cy="115" r="17" class={lit ? 'signal-node lit' : 'signal-node'} /><text x={x(i)} y="121" text-anchor="middle">{i + 1}</text></g>)}
-          <text x="16" y="195">Running state →</text>
-          <text x="16" y="222">Each new position waits for the previous one.</text>
-        </> : <>
-          <text x="16" y="51">{hops === 0 ? 'Input' : `Before hop ${hops}`}</text>
-          {edges.map(edge => <path key={`${route}-${hops}-${edge.from}-${edge.to}`} d={`M${x(edge.from)} 92L${x(edge.to)} 164`} class={edge.carries ? 'signal-wire carries' : 'signal-wire'} />)}
-          {before.map((lit, i) => <g><circle cx={x(i)} cy="78" r="15" class={lit ? 'signal-node lit' : 'signal-node'} /><text x={x(i)} y="84" text-anchor="middle">{i + 1}</text></g>)}
-          {reached.map((lit, i) => <g><circle cx={x(i)} cy="180" r="15" class={lit ? 'signal-node lit' : 'signal-node'} /><text x={x(i)} y="186" text-anchor="middle">{i + 1}</text></g>)}
-          <text x="16" y="225">{hops === 0 ? 'No mixing yet' : `After hop ${hops}`}{route === 'dilated' && hops > 0 ? ` · spacing ${2 ** ((hops - 1) % 5)}` : ''}</text>
-        </>}
-      </svg>
-      <figcaption><span class="signal-key" aria-hidden="true" /> Green = a path from the clue. {current.rule}</figcaption>
-    </figure>
-    <p class="signal-footnote">One hop is one dependent update, not a unit of time. Colours show possible influence, not learned meaning. This illustrates reading known input; generating new words still takes successive predictions.</p>
+  const [race, setRace] = useState(0);
+  const [bet, setBet] = useState<Wiring | null>(null);
+  const [tick, setTick] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [done, setDone] = useState(false);
+  const played = useRef(false);
+  const n = raceLengths[race]!;
+  const won = winners(n);
+  const end = Math.min(...wirings.map(w => finishTick(w.id, n)));
+  const over = bet !== null && tick >= end;
+  const last = race === raceLengths.length - 1;
+
+  useEffect(() => {
+    if (bet === null || tick >= end) return undefined;
+    if (reduced()) { setTick(end); return undefined; }
+    const timer = setTimeout(() => setTick(t => t + 1), Math.max(50, Math.round(1400 / end)));
+    return () => clearTimeout(timer);
+  }, [bet, tick, end]);
+
+  const place = (id: Wiring) => {
+    if (bet) return;
+    if (!played.current) { played.current = true; markPlayed('drop-recurrence'); }
+    setBet(id); setTick(0); if (won.includes(id)) setCorrect(c => c + 1);
+  };
+  const next = () => { if (last) { setDone(true); return; } setRace(r => r + 1); setBet(null); setTick(0); };
+  const replay = () => { setRace(0); setBet(null); setTick(0); setCorrect(0); setDone(false); };
+  const stars = raceStars(correct);
+  const result: GameResult = {
+    slug: 'drop-recurrence',
+    headline: `I called ${correct} of ${raceLengths.length} races between recurrence, convolution and attention.`,
+    detail: 'Attention takes one step but its reads grow with the square of the length; a widening convolution needs a few more steps of cheaper work. The chain always waits in line.',
+    score: { value: correct, max: raceLengths.length, label: 'Bets won' },
+    stars,
+    shareText: `I called ${correct}/${raceLengths.length} races between an RNN, a convolution stack and attention. Which wiring gets word 1 to the last word first?`,
+  };
+
+  return <div class="race-game">
+    <GoalBar goal="Bet on the wiring that gets word 1’s message to the last word first." status={done ? 'Finished' : `Race ${race + 1} / ${raceLengths.length} · ${n} words`} score={{ value: correct, max: raceLengths.length, label: 'Bets won' }} />
+    {done ? <ResultCard result={result} onReplay={replay} /> : <>
+      <p class="race-budget">{`${n} words. The chip does ${readsPerTick} reads per tick; a step that needs more reads takes more ticks.`}</p>
+      <div class="race-lanes">
+        {wirings.map(w => {
+          const p = plan(w.id, n), finish = finishTick(w.id, n), reach = reachAt(w.id, n, bet ? tick : 0);
+          const arrived = bet !== null && tick >= finish;
+          return <section class={`race-lane ${over && won.includes(w.id) ? 'is-winner' : ''} ${bet === w.id ? 'is-bet' : ''}`} key={w.id} aria-label={w.name}>
+            <h3>{w.name}{bet === w.id && <span class="race-badge">Your bet</span>}</h3>
+            <p class="race-plan">{`Steps: ${p.steps} · reads per step: ${p.reads} · ticks per step: ${ticksPerStep(w.id, n)}`}</p>
+            <div class="race-track" aria-hidden="true"><span class="race-fill" style={`--value:${(reach - 1) / (n - 1)}`} /></div>
+            <p class="race-time">{over ? (arrived ? `Arrived at tick ${finish}` : `Word ${reach} of ${n} · would arrive at tick ${finish}`) : bet ? `Word ${reach} of ${n}` : w.rule}</p>
+          </section>;
+        })}
+      </div>
+      {bet === null
+        ? <div class="game-choices race-bets" role="group" aria-label="Place your bet">{wirings.map(w => <button type="button" key={w.id} onClick={() => place(w.id)}>{w.name}</button>)}</div>
+        : <p class="race-clock"><span class="game-timer" role="timer">{`tick ${tick}`}</span></p>}
+      <p class="race-feedback" aria-live="polite">{over ? `${won.map(nameOf).join(' + ')} ${won.length > 1 ? 'tie' : 'wins'} at tick ${end}. ${won.includes(bet!) ? 'Bet won.' : 'Bet lost.'}` : ''}</p>
+      {over && <div class="race-actions"><button type="button" class="game-btn is-primary" onClick={next}>{last ? 'See my score' : 'Next race'}</button></div>}
+      <p class="toy-note">Toy accounting: one tick is one round of up to {readsPerTick} reads. It shows how path length and total work trade off, not measured speeds.</p>
+    </>}
   </div>;
 }

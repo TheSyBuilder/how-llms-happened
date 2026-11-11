@@ -63,22 +63,10 @@ export const addedPapers = [
     url: "https://www.anthropic.com/claude-opus-5-5",
   },
   {
-    id: "gemini-3-1",
-    year: 2026,
-    title: "Gemini 3.1 Pro",
-    url: "https://deepmind.google/models/model-cards/gemini-3-1-pro",
-  },
-  {
     id: "gpt-6-astra",
     year: 2026,
     title: "GPT-6 Astra: A new generation of intelligence",
     url: "https://openai.com/index/gpt-6-astra/",
-  },
-  {
-    id: "gemini-3-8",
-    year: 2026,
-    title: "Gemini 3.8 Flash",
-    url: "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
   },
   {
     id: "flash-attention",
@@ -103,5 +91,53 @@ export const addedPapers = [
     year: 2022,
     title: "Constitutional AI: Harmlessness from AI Feedback",
     url: "https://arxiv.org/abs/2212.08073",
+  },
+  {
+    id: "rumelhart-hinton-williams-1986",
+    year: 1986,
+    title: "Learning representations by back-propagating errors",
+    url: "https://www.nature.com/articles/323533a0",
+  },
+  {
+    id: "jacobs-1991",
+    year: 1991,
+    title: "Adaptive Mixtures of Local Experts",
+    url: "https://doi.org/10.1162/neco.1991.3.1.79",
+  },
+  {
+    id: "shazeer-2017",
+    year: 2017,
+    title: "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+    url: "https://arxiv.org/abs/1701.06538",
+  },
+  {
+    id: "mixtral",
+    year: 2024,
+    title: "Mixtral of Experts",
+    url: "https://arxiv.org/abs/2401.04088",
+  },
+  {
+    id: "weizenbaum-1966",
+    year: 1966,
+    title: "ELIZA—A Computer Program for the Study of Natural Language Communication between Man and Machine",
+    url: "https://doi.org/10.1145/365153.365168",
+  },
+  {
+    id: "turing-1950",
+    year: 1950,
+    title: "Computing Machinery and Intelligence",
+    url: "https://doi.org/10.1093/mind/LIX.236.433",
+  },
+  {
+    id: "sennrich-2016",
+    year: 2016,
+    title: "Neural Machine Translation of Rare Words with Subword Units",
+    url: "https://arxiv.org/abs/1508.07909",
+  },
+  {
+    id: "gage-1994",
+    year: 1994,
+    title: "A New Algorithm for Data Compression",
+    url: "https://jacobfilipp.com/DrDobbs/articles/CUJ/1994/9402/gage/gage.htm",
   },
 ];

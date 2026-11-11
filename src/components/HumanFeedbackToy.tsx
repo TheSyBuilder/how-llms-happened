@@ -1,98 +1,177 @@
 import '../i18n/preact';
-import { useState } from "preact/hooks";
+import '../styles/games/human-feedback.css';
+import { useEffect, useRef, useState } from "preact/hooks";
+import GoalBar from "./game/GoalBar";
+import ResultCard, { type GameResult } from "./game/ResultCard";
+import { markPlayed } from "../lib/progress";
 
-type Features = readonly [number, number];
-type Answer = { text: string; features: Features; note: string };
+// The judge sees three hand-labelled traits of each answer: short, everyday words, true.
+export type Features = readonly [number, number, number];
+export type Answer = { text: string; features: Features };
+export type Pair = { prompt: string; a: Answer; b: Answer };
 export type Choice = "a" | "b" | null;
-export const comparisons: { title: string; a: Answer; b: Answer }[] = [
-  {
-    title: "1 · Which length works better?",
-    a: { text: "Cloud drops get heavy and fall as rain.", features: [1, 1], note: "Short · everyday words" },
-    b: { text: "Cloud drops get so heavy that the air can no longer hold them up, and then they fall to the ground as rain.", features: [0, 1], note: "Long · everyday words" },
-  },
-  {
-    title: "2 · Which wording works better?",
-    a: { text: "Cloud drops get heavy and fall as rain.", features: [1, 1], note: "Short · everyday words" },
-    b: { text: "Rain is liquid precipitation from atmospheric condensation.", features: [1, 0], note: "Short · technical words" },
-  },
+export const traits = ["Short", "Everyday words", "True"] as const;
+
+const shortEveryTrue = [1, 1, 1] as const;
+// Step 1: both rain answers in each pair are true, so truth never varies.
+export const comparisons: Pair[] = [
+  { prompt: "Explain rain to a child.", a: { text: "Cloud drops get heavy and fall as rain.", features: shortEveryTrue }, b: { text: "Cloud drops get so heavy that the air can no longer hold them up, and then they fall to the ground as rain.", features: [0, 1, 1] } },
+  { prompt: "Explain rain to a child.", a: { text: "Cloud drops get heavy and fall as rain.", features: shortEveryTrue }, b: { text: "Rain is liquid precipitation from atmospheric condensation.", features: [1, 0, 1] } },
 ];
 export const candidates: Answer[] = [
-  { text: "Snow is frozen water falling as flakes.", features: [1, 1], note: "Short · everyday words" },
-  { text: "Snow consists of ice crystals aggregated into flakes that precipitate from atmospheric clouds.", features: [0, 0], note: "Long · technical words" },
-  { text: "Snow is tiny pieces of the Moon falling down.", features: [1, 1], note: "Deliberately false · same features as A" },
+  { text: "Snow is frozen water falling as flakes.", features: shortEveryTrue },
+  { text: "Snow consists of ice crystals aggregated into flakes that precipitate from atmospheric clouds.", features: [0, 0, 1] },
+  { text: "Snow is tiny pieces of the Moon falling down.", features: [1, 1, 0] },
 ];
-export const rewardScore = (weights: Features, features: Features) => weights[0] * features[0] + weights[1] * features[1];
+// Step 2: eight comparisons to choose from. In each, a is the answer a careful teacher prefers.
+export const deck: Pair[] = [
+  { prompt: "Why do leaves fall in autumn?", a: { text: "Trees drop leaves to save water in winter.", features: shortEveryTrue }, b: { text: "Leaves detach because autumnal gravitational intensification exceeds petiole tensile strength.", features: [0, 0, 0] } },
+  { prompt: "Why is the sea salty?", a: { text: "Rivers wash salt from rocks into the sea.", features: shortEveryTrue }, b: { text: "Marine salinity originates from fish excreting crystalline sodium compounds throughout their lifespans.", features: [0, 0, 0] } },
+  { prompt: "What makes thunder?", a: { text: "Lightning heats the air so fast it booms.", features: shortEveryTrue }, b: { text: "Lightning heats the air around it so quickly that the air bursts outwards, and we hear that as a big boom.", features: [0, 1, 1] } },
+  { prompt: "Why do we see rainbows?", a: { text: "Raindrops split sunlight into colours.", features: shortEveryTrue }, b: { text: "Raindrops refract and disperse sunlight into a spectrum.", features: [1, 0, 1] } },
+  { prompt: "Where does the Sun go at night?", a: { text: "Earth turns, so our side faces away.", features: shortEveryTrue }, b: { text: "The Sun sleeps behind the hills.", features: [1, 1, 0] } },
+  { prompt: "Why does the Moon change shape?", a: { text: "It doesn’t really. As the Moon travels around Earth, we see different amounts of the side that the Sun lights up.", features: [0, 1, 1] }, b: { text: "Clouds hide part of the Moon.", features: [1, 1, 0] } },
+  { prompt: "Why does ice float?", a: { text: "Ice is less dense than liquid water.", features: [1, 0, 1] }, b: { text: "Ice floats because it is cold.", features: [1, 1, 0] } },
+  { prompt: "Why is the sky blue?", a: { text: "Air molecules scatter shorter blue wavelengths of sunlight much more strongly than longer red ones.", features: [0, 0, 1] }, b: { text: "The sky reflects the blue sea.", features: [1, 1, 0] } },
+];
+// Hidden test: a is always the answer people prefer (truth first, then clarity).
+export const testSet: Pair[] = [
+  { prompt: "What is a shadow?", a: { text: "A shadow is where something blocks the light.", features: shortEveryTrue }, b: { text: "Shadows are residual photonic imprints that objects emit after prolonged illumination.", features: [0, 0, 0] } },
+  { prompt: "What is snow?", a: { text: "Snow is frozen water falling as flakes.", features: shortEveryTrue }, b: { text: "Snow is tiny pieces of the Moon falling down.", features: [1, 1, 0] } },
+  { prompt: "How do plants grow?", a: { text: "Photosynthesis converts carbon dioxide and water into glucose using captured light energy.", features: [0, 0, 1] }, b: { text: "Roots absorb pre-assembled wood molecules from soil, which supply the entirety of plant biomass.", features: [0, 0, 0] } },
+  { prompt: "Why do boats float?", a: { text: "A boat pushes water out of the way, and the water pushes back up with enough force to hold the boat up.", features: [0, 1, 1] }, b: { text: "Boats are lighter than air.", features: [1, 1, 0] } },
+  { prompt: "Why do onions make you cry?", a: { text: "Cut onions release a sulfur compound that irritates eyes.", features: [1, 0, 1] }, b: { text: "Onions squirt juice into your eyes.", features: [1, 1, 0] } },
+  { prompt: "Why do we have seasons?", a: { text: "Earth’s tilted axis changes the angle and duration of sunlight each hemisphere receives through the year.", features: [0, 0, 1] }, b: { text: "Earth gets closer to the Sun in summer.", features: [1, 1, 0] } },
+  { prompt: "What is wind?", a: { text: "Wind is moving air.", features: shortEveryTrue }, b: { text: "Wind is what we call air when it moves from one place to another, often because some places are warmer than others.", features: [0, 1, 1] } },
+  { prompt: "Why is grass green?", a: { text: "Grass has a green colouring that soaks up sunlight.", features: shortEveryTrue }, b: { text: "Grass contains chlorophyll, which absorbs red and blue light.", features: [1, 0, 1] } },
+];
+export const BUDGET = 4;
 
-export function learnPreferences(choices: Choice[]): [number, number] {
-  const weights: [number, number] = [0, 0];
-  const labelled = comparisons.flatMap((pair, i) => {
-    const choice = choices[i];
-    if (!choice) return [];
-    const winner = pair[choice].features;
-    const loser = pair[choice === "a" ? "b" : "a"].features;
-    return [[winner[0] - loser[0], winner[1] - loser[1]] as Features];
-  });
-  if (labelled.length === 0) return weights;
-  // Fit a tiny pairwise logistic scorer from scratch whenever a choice changes.
+export const rewardScore = (weights: Features, features: Features) => weights[0] * features[0] + weights[1] * features[1] + weights[2] * features[2];
+export const difference = (pair: Pair, choice: "a" | "b"): Features => {
+  const [win, lose] = choice === "a" ? [pair.a, pair.b] : [pair.b, pair.a];
+  return [win.features[0] - lose.features[0], win.features[1] - lose.features[1], win.features[2] - lose.features[2]];
+};
+
+// A tiny pairwise logistic judge, fitted from zero on the chosen comparisons.
+export function fitJudge(differences: Features[]): [number, number, number] {
+  const weights: [number, number, number] = [0, 0, 0];
+  if (differences.length === 0) return weights;
   for (let step = 0; step < 100; step++) {
-    const gradient: [number, number] = [0, 0];
-    for (const difference of labelled) {
-      const error = 1 / (1 + Math.exp(rewardScore(weights, difference)));
-      for (const j of [0, 1] as const) gradient[j] += error * difference[j] / labelled.length;
+    const gradient = [0, 0, 0];
+    for (const d of differences) {
+      const error = 1 / (1 + Math.exp(rewardScore(weights, d)));
+      for (const j of [0, 1, 2] as const) gradient[j]! += error * d[j] / differences.length;
     }
-    for (const j of [0, 1] as const) weights[j] += 0.2 * (gradient[j] - 0.1 * weights[j]);
+    for (const j of [0, 1, 2] as const) weights[j] += 0.2 * (gradient[j]! - 0.1 * weights[j]);
   }
   return weights;
 }
+export const learnPreferences = (choices: Choice[]) => fitJudge(comparisons.flatMap((pair, i) => choices[i] ? [difference(pair, choices[i]!)] : []));
 
-export function responseProbabilities(weights: Features, strength: number) {
-  const logits = candidates.map(answer => strength * rewardScore(weights, answer.features));
-  const max = Math.max(...logits);
-  const masses = logits.map(value => Math.exp(value - max));
-  const total = masses.reduce((sum, value) => sum + value, 0);
-  return masses.map(value => value / total);
+export type Verdict = "right" | "wrong" | "tie";
+export function testJudge(weights: Features): Verdict[] {
+  return testSet.map(pair => {
+    const margin = rewardScore(weights, pair.a.features) - rewardScore(weights, pair.b.features);
+    return Math.abs(margin) < 1e-9 ? "tie" : margin > 0 ? "right" : "wrong";
+  });
+}
+export const testScore = (weights: Features) => testJudge(weights).filter(v => v === "right").length;
+export const judgeStars = (score: number): 0 | 1 | 2 | 3 => score >= 8 ? 3 : score === 7 ? 2 : score >= 5 ? 1 : 0;
+export function feedbackResult(score: number, firstScore: number): GameResult {
+  return {
+    slug: "human-feedback",
+    headline: `My judge picked right ${score} / ${testSet.length} times.`,
+    detail: `Your first judge, trained in two clicks, rated the Moon answer as high as the truth and scored ${firstScore} / ${testSet.length}.`,
+    score: { value: score, max: testSet.length, label: "Hidden test" },
+    stars: judgeStars(score),
+    shareText: `I trained an AI judge with 4 comparisons and it picked right ${score}/${testSet.length} times. My first judge rated “snow is pieces of the Moon” as highly as the truth.`,
+  };
+}
+
+// Separate strings so each trait word is translated on its own.
+const tags = (features: Features) => [features[0] ? "Short" : "Long", " · ", features[1] ? "Everyday" : "Technical", " · ", features[2] ? "True" : "False"];
+const signed = (value: number) => `${value >= 0 ? "+" : "−"}${Math.abs(value).toFixed(2)}`;
+
+function JudgeMeters({ weights }: { weights: Features }) {
+  return <div class="hf-judge" aria-live="polite" aria-atomic="true">
+    <strong>What your judge cares about</strong>
+    {traits.map((trait, i) => <div class={`game-meter${weights[i]! < 0 ? " is-bad" : weights[i]! > 0 ? " is-good" : ""}`} key={trait}>
+      <span class="game-meter-label"><span>{trait}</span> <b dir="ltr">{signed(weights[i]!)}</b></span>
+      <span class="game-meter-track" aria-hidden="true"><span class="game-meter-fill" style={`--value:${Math.min(1, Math.abs(weights[i]!) / 2)}`} /></span>
+    </div>)}
+  </div>;
+}
+
+function AnswerButton({ answer, picked, disabled, onPick }: { answer: Answer; picked: boolean; disabled: boolean; onPick: () => void }) {
+  return <button type="button" class="hf-answer" aria-pressed={picked} disabled={disabled} onClick={onPick}>
+    <span>{answer.text}</span><small>{tags(answer.features)}</small>
+  </button>;
 }
 
 export default function HumanFeedbackToy() {
   const [choices, setChoices] = useState<Choice[]>([null, null]);
-  const [strength, setStrength] = useState(2);
-  const weights = learnPreferences(choices);
-  const probabilities = responseProbabilities(weights, strength);
-  const count = choices.filter(Boolean).length;
-  const signed = (value: number) => `${value >= 0 ? "+" : ""}${value.toFixed(2)}`;
-  return <div class="feedback-toy">
-    <div class="toy-topline"><strong>Be the comparison teacher.</strong><span class="toy-label">Toy · invented answers</span></div>
-    <p>Prompt: “Explain rain to a child.” Pick one answer in each pair; change your mind anytime.</p>
-    <div class="feedback-workbench">
-    <div class="feedback-learning" role="status" aria-atomic="true">
-      <strong>Your learned scorer</strong>
-      <p>{count}/2 comparisons · how much each trait counts</p>
-      <div class="feedback-weights"><span>Short answers <output data-testid="short-weight">{signed(weights[0])}</output></span><span>Everyday words <output data-testid="everyday-weight">{signed(weights[1])}</output></span></div>
-    </div>
-    <div class="feedback-comparisons">{comparisons.map((pair, i) => <fieldset class="feedback-pair" key={i}>
-      <legend>{pair.title}</legend>
-      <div class="feedback-options">{(["a", "b"] as const).map(key => <label key={key}>
-        <span class="feedback-choice"><input type="radio" name={`feedback-pair-${i}`} checked={choices[i] === key} onChange={() => setChoices(current => current.map((choice, j) => j === i ? key : choice))} /><strong>Prefer {key.toUpperCase()}</strong></span>
-        <span>{pair[key].text}</span><small>{pair[key].note}</small>
-      </label>)}</div>
-    </fieldset>)}</div>
-    </div>
-    <div class="feedback-sampler">
-      <h3>Now let a sampler follow that score.</h3>
-      <p>New prompt: “Explain snow to a child.” The sampler chooses among these fixed answers; each starts equally likely.</p>
-      <div class="toy-controls">
-        <label for="reward-strength">Chase the score <output for="reward-strength">{strength}</output></label>
-        <input id="reward-strength" type="range" min="0" max="5" step="1" value={strength} aria-valuetext={`${strength}: ${strength === 0 ? "ignore scores" : "favour higher scores"}`} onInput={event => setStrength(Number(event.currentTarget.value))} />
-        <div class="range-ends"><span>0 · ignore it</span><span>5 · chase it</span></div>
-      </div>
-      <ol class="feedback-candidates" aria-label="Toy answer selection probabilities">{candidates.map((answer, i) => <li key={i}>
-        <div class="feedback-candidate-heading"><strong>{String.fromCharCode(65 + i)}</strong><span>Score {rewardScore(weights, answer.features).toFixed(2)}</span><output data-testid={`feedback-probability-${i}`} aria-label={`Answer ${String.fromCharCode(65 + i)} selection probability`}>{(100 * probabilities[i]!).toFixed(1)}%</output></div>
-        <p>{answer.text}</p><small>{answer.note}</small>
-        <div class="feedback-track" aria-hidden="true"><span style={{ width: `${100 * probabilities[i]!}%` }} /></div>
-      </li>)}</ol>
-    </div>
-    <p class="feedback-catch">A and C always tie. This scorer sees style, not truth. Chasing its score cannot fix that.</p>
-    <button class="another-continuation" onClick={() => { setChoices([null, null]); setStrength(2); }}>Reset comparisons</button>
-    <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">Two hand-labelled traits, a learned scorer, and three fixed answers. Bars show selection chances, not correctness. Only the scorer is trained here.</p></details>
+  const [phase, setPhase] = useState<"reveal" | "challenge" | "tested">("reveal");
+  const [taught, setTaught] = useState<{ card: number; choice: "a" | "b" }[]>([]);
+  const [result, setResult] = useState<GameResult | null>(null);
+  const played = useRef(false);
+  const touch = () => { if (!played.current) { played.current = true; markPlayed("human-feedback"); } };
+  const first = learnPreferences(choices);
+  const firstScore = testScore(first);
+  const weights = fitJudge(taught.map(t => difference(deck[t.card]!, t.choice)));
+  const verdicts = testJudge(weights);
+  const score = verdicts.filter(v => v === "right").length;
+  const revealed = choices.every(Boolean);
+  const reveal = useRef<HTMLElement>(null);
+  // Bring the reveal into view once both picks are in; it appears below the pairs.
+  useEffect(() => { if (revealed) reveal.current?.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }, [revealed]);
+  const restart = () => { setChoices([null, null]); setTaught([]); setResult(null); setPhase("reveal"); };
+  const teach = (card: number, choice: "a" | "b") => { touch(); setTaught(current => current.some(t => t.card === card) ? current.map(t => t.card === card ? { card, choice } : t) : current.length < BUDGET ? [...current, { card, choice }] : current); };
+  const goal = phase === "reveal" ? "Train a judge in 2 clicks: pick the better answer in each pair." : "Teach the judge to prefer truth over style. You get 4 comparisons.";
+  const status = phase === "reveal" ? `${choices.filter(Boolean).length} / 2 picked` : `Comparisons: ${taught.length} / ${BUDGET}`;
+  return <div class="hf-game">
+    <GoalBar goal={goal} status={status} />
+    {phase === "reveal" && <>
+      <div class="hf-pairs">{comparisons.map((pair, i) => <fieldset class="hf-pair" key={i}>
+        <legend>{`Pair ${i + 1}`} · {pair.prompt}</legend>
+        <div class="hf-options">{(["a", "b"] as const).map(key => <AnswerButton key={key} answer={pair[key]} picked={choices[i] === key} disabled={false} onPick={() => { touch(); setChoices(current => current.map((c, j) => j === i ? key : c)); }} />)}</div>
+      </fieldset>)}</div>
+      {revealed && <section class="hf-reveal" ref={reveal} aria-labelledby="hf-reveal-title">
+        <h3 id="hf-reveal-title">Your judge rates the Moon answer as highly as the truth.</h3>
+        <p>New prompt: “Explain snow to a child.” Its scores:</p>
+        <ol class="hf-scores">{candidates.map((answer, i) => <li key={i} class={i === 2 ? "is-lie" : i === 0 ? "is-twin" : ""}>
+          <span>{answer.text}</span><small>{tags(answer.features)}</small><b dir="ltr">{rewardScore(first, answer.features).toFixed(2)}</b>
+        </li>)}</ol>
+        <p>Every rain answer was true, so truth never varied and the judge learned nothing about it. On the hidden test this judge scores <b dir="ltr">{`${firstScore} / ${testSet.length}`}</b>.</p>
+        <button type="button" class="game-btn is-primary" onClick={() => setPhase("challenge")}>Now fix the judge</button>
+      </section>}
+    </>}
+    {phase !== "reveal" && <>
+      <JudgeMeters weights={weights} />
+      {phase === "challenge" && <>
+        <p class="hf-hint">Tap the better answer to teach a comparison. Tap the other one to change your mind.</p>
+        <div class="hf-deck">{deck.map((pair, card) => {
+          const pick = taught.find(t => t.card === card)?.choice;
+          const full = taught.length >= BUDGET && !pick;
+          return <fieldset class={`hf-pair${pick ? " is-taught" : ""}`} key={card}>
+            <legend>{pair.prompt}</legend>
+            <div class="hf-options">{(card % 2 ? ["b", "a"] as const : ["a", "b"] as const).map(key => <AnswerButton key={key} answer={pair[key]} picked={pick === key} disabled={full} onPick={() => teach(card, key)} />)}</div>
+            {pick && <button type="button" class="hf-undo" onClick={() => setTaught(current => current.filter(t => t.card !== card))}>Remove</button>}
+          </fieldset>;
+        })}</div>
+        <button type="button" class="game-btn is-primary hf-test" disabled={taught.length < BUDGET} onClick={() => { setResult(feedbackResult(score, firstScore)); setPhase("tested"); }}>Test the judge</button>
+      </>}
+      {phase === "tested" && result && <>
+        <ResultCard result={result} onReplay={restart} />
+        <h3 class="hf-test-title">The hidden test</h3>
+        <ol class="hf-results">{testSet.map((pair, i) => <li key={i} data-verdict={verdicts[i]}>
+          <strong>{verdicts[i] === "right" ? "Picked the better answer" : verdicts[i] === "tie" ? "Couldn’t tell them apart" : "Picked the worse answer"}</strong>
+          <span>{pair.prompt}</span>
+          <span class="hf-better">{pair.a.text}</span>
+          <span class="hf-worse">{pair.b.text}</span>
+        </li>)}</ol>
+      </>}
+    </>}
+    <p class="toy-note">A toy judge that sees three hand-labelled traits, not the words themselves. Real reward models read text.</p>
   </div>;
 }

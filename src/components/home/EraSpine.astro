@@ -1,0 +1,29 @@
+---
+// One line from 1913 to today: era bands, one stop per chapter. Progress marks come from the home page script.
+import {chapterMeta} from '../../lib/chapter-meta';
+import {eraGroups} from './eras';
+// The line is at least as wide as its stops; on wide screens it stretches to fill the page.
+const widths=`--count:${chapterMeta.length};--min:calc(${eraGroups.map(group=>`max(${group.stops.length} * var(--stop), var(--era-min))`).join(' + ')})`;
+---
+<section class="spine-section" id="timeline" aria-labelledby="spine-title">
+  <div class="spine-head page-width">
+    <h2 id="spine-title">The whole story, one line.</h2>
+    <p class="spine-count" data-progress-count>{`You've played 0 / ${chapterMeta.length}`}</p>
+  </div>
+  <div class="spine-scroll">
+    <ol class="spine" style={widths}>
+      {eraGroups.map(group => <li class="spine-era" style={`--era:var(--era-${group.id});--stops:${group.stops.length}`}>
+        <div class="spine-era-label"><strong>{group.label}</strong><span>{group.years}</span></div>
+        <ol class="spine-stops">
+          {group.stops.map(stop => <li class:list={["spine-stop", stop.number % 2 ? "is-above" : "is-below"]} data-progress={stop.slug}>
+            <a href={`/chapters/${stop.slug}/#play`} title={stop.title}>
+              <span class="stop-dot" aria-hidden="true"><span class="stop-check">✓</span></span>
+              <span class="stop-label"><time>{stop.year}</time><span class="stop-title">{stop.title}</span></span>
+              <span class="screen-reader-only stop-done">Completed</span>
+            </a>
+          </li>)}
+        </ol>
+      </li>)}
+    </ol>
+  </div>
+</section>

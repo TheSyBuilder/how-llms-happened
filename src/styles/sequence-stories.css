@@ -1,8 +1,8 @@
 .sequence-status { font-size:13px; margin-block:14px; }
 .sequence-status > span { display:block; color:var(--muted); margin-top:5px; }
 .generation-paper { background:var(--ink); color:var(--paper); border-radius:5px; padding:22px; min-height:120px; font:clamp(23px,4vw,32px)/1.6 monospace; overflow-wrap:anywhere; white-space:pre-wrap; }
-.generation-paper b { background:var(--accent); color:var(--ink); font-weight:400; }
-.generation-cursor { color:var(--accent); }
+.generation-paper b { background:var(--accent); color:var(--on-accent); font-weight:400; }
+.generation-cursor { color:var(--ink-accent); }
 .character-chances { margin-block:20px; }
 .character-chances > div { display:grid; grid-template-columns:48px 1fr 62px; align-items:center; gap:12px; margin-top:12px; font-size:13px; }
 .character-chances output { text-align:right; font-variant-numeric:tabular-nums; }
@@ -12,10 +12,10 @@
 .sequence-output { background:var(--ink); color:var(--paper); padding:22px; border-radius:5px; }
 .sequence-output > span { font-size:12px; display:block; margin-bottom:10px; }
 .sequence-output > strong { display:block; font:clamp(25px,4vw,36px)/1.25 var(--display); letter-spacing:-.03em; }
-.sequence-end { display:inline-block; font:11px var(--body); margin-top:12px; padding:4px 8px; background:var(--accent); color:var(--ink); border-radius:3px; }
+.sequence-end { display:inline-block; font:11px var(--body); margin-top:12px; padding:4px 8px; background:var(--accent); color:var(--on-accent); border-radius:3px; }
 .encoder-source { display:flex; flex-wrap:wrap; gap:8px; margin-block:20px; }
 .encoder-source span { padding:8px 12px; border:1px solid var(--line); border-radius:4px; opacity:.4; font-family:var(--display); }
-.encoder-source .has-read { opacity:1; background:var(--accent); }
+.encoder-source .has-read { opacity:1; background:var(--accent); color:var(--on-accent); }
 .summary-vector { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-block:16px; }
 .summary-vector > div { display:grid; text-align:center; gap:8px; padding:12px 6px; border:1px solid var(--line); background:var(--paper); border-radius:4px; }
 .summary-vector span { font-size:11px; }

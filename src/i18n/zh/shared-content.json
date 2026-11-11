@@ -1,0 +1,14 @@
+{
+  "static": true,
+  "rich": {},
+  "text": {
+    "OpenAI’s o1 thought before it answered. Can more thinking time make an answer better?": "OpenAI 的 o1 会先思考再回答。多花些思考时间，答案会更好吗？",
+    "The idea is older than Switch: Jacobs, Jordan, Nowlan and Hinton trained a gate to pick among expert networks in 1991, and Shazeer and colleagues put thousands of sparsely gated experts into a language model in 2017. Recent open models such as Mixtral (2024) still use it, sending each token to two of eight experts.": "这个想法比 Switch 早得多：1991 年，Jacobs、Jordan、Nowlan 和 Hinton 训练了一个门控网络，在多个专家网络之间做选择；2017 年，Shazeer 等人把数千个稀疏门控专家放进了语言模型。Mixtral（2024）等近期开放模型仍在使用这种做法，让每个 token 在八个专家中选用两个。",
+    "The useful question became “How much training will this model get?” Smaller, well-trained models are also cheaper to run. Next, a model learns to call tools partway through an answer.": "于是更有用的问题变成：“这个模型会接受多少训练？”充分训练的小模型运行起来也更便宜。下一章，模型学会在回答中途调用工具。",
+    "A downloadable model makes experimentation less dependent on an API. Memory remains a practical constraint. Next, GPT-4 shows a model reading pictures as well as text.": "模型可以下载，就能减少实验对 API 的依赖。但内存仍是现实限制。下一章，GPT-4 让模型既能读文字，也能看图片。",
+    "Sparse activation separates total capacity from work per token. It still has storage and communication costs. Next, people teach a model which answers they prefer.": "稀疏激活把总容量和每个 token 的计算量分开，但存储与通信开销仍然存在。下一章，人们开始教模型分辨自己更喜欢哪些回答。",
+    "This gives a language interface a way to gather information and act on it. Toolformer explored training models to insert useful API calls. Next, a language model reaches the public as a conversation.": "语言界面因此能收集信息，并据此行动。Toolformer 探索了训练模型插入有用的 API 调用。下一章，语言模型以对话的形式走向大众。",
+    "DPO simplifies the training procedure by removing the separately fitted reward model and the reinforcement-learning sampling loop during this training stage. The next chapter trains a model to spend more computation before it answers.": "在这个训练阶段，DPO 不再需要单独拟合的奖励模型，也不再需要强化学习的采样循环，因此简化了流程。下一章训练模型在回答前投入更多计算。",
+    "Intermediate text creates space to break a problem into parts. It can also contain mistakes. The next chapter returns to training budgets: how large a model should be for the text it reads.": "中间文字为拆解问题提供了空间，但这些文字也可能出错。下一章回到训练预算：模型该有多大，才配得上它读的文本量？"
+  }
+}

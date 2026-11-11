@@ -1,0 +1,27 @@
+/* GPT-4 · What's in the picture? Tokens only; logical properties for RTL. */
+.vision-game { margin-block-start:24px; }
+.vision-board { display:grid; grid-template-columns:minmax(0, 360px) minmax(0, 1fr); gap:20px; align-items:start; }
+.vision-picture { position:relative; margin:0; }
+.vision-picture svg, .vision-tiles { display:block; inline-size:100%; aspect-ratio:1; border-radius:var(--radius); }
+.vision-picture svg { border:2px solid var(--ink); }
+.vision-tiles { position:absolute; inset-block-start:0; inset-inline-start:0; display:grid; grid-template-columns:repeat(3, 1fr); grid-template-rows:repeat(3, 1fr); padding:2px; direction:ltr; }
+.vision-tile { display:grid; place-items:center; min-block-size:44px; min-inline-size:44px; margin:0; padding:0; background:var(--ink); color:var(--surface); border:2px solid var(--paper); font:700 26px/1 var(--display); cursor:pointer; transition:opacity 200ms ease, background-color 120ms ease; }
+.vision-tile:first-child { border-start-start-radius:10px; }
+.vision-tile:nth-child(3) { border-start-end-radius:10px; }
+.vision-tile:nth-child(7) { border-end-start-radius:10px; }
+.vision-tile:last-child { border-end-end-radius:10px; }
+button.vision-tile:hover { background:var(--deep); }
+button.vision-tile:focus-visible { outline:3px solid var(--accent); outline-offset:-5px; }
+.vision-tile.is-open { background:transparent; border-color:transparent; cursor:default; }
+.vision-picture figcaption { margin-block-start:8px; font-size:15px; }
+.vision-picture figcaption > span { color:var(--muted); font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+.vision-side { display:grid; gap:8px; }
+.vision-side .game-choices { grid-template-columns:repeat(2, minmax(0, 1fr)); margin-block:8px; }
+.vision-verdict { display:grid; gap:10px; }
+.vision-you { font:700 20px/1.3 var(--display); }
+.vision-you b { color:var(--good); }
+.vision-text-model { padding:10px 12px; background:var(--paper); border:2px dashed var(--ink); border-radius:10px; font-size:15px; }
+.vision-text-model > span { display:block; color:var(--muted); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+.vision-verdict .game-btn { justify-self:start; }
+@media (max-width: 640px) { .vision-board { grid-template-columns:minmax(0, 1fr); } .vision-picture { max-inline-size:360px; } }
+@media (prefers-reduced-motion: reduce) { .vision-tile { transition:none; } }

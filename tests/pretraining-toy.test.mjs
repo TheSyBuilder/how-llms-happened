@@ -9,8 +9,10 @@ const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: "preact" },
 });
 const compiled = {};
-new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { learnReviews, reviews, defaultReadingEndings } = compiled;
+const base = createRequire(import.meta.url);
+// The game kit and stylesheets are browser-only; the learners do not need them.
+new Function("require", "exports", outputText)((id) => /\.css$|\/game\/|\/lib\/progress$/.test(id) ? {} : base(id), compiled);
+const { learnReviews, learnFromLabels, reviews, defaultReadingEndings, words, misleadingEndings, allRight, verdict, labelsNeeded, pretrainingStars } = compiled;
 const probability = (learner, word) => learner.predictions.find((entry) => entry.word === word).positive;
 
 test("reading alone does not assign review labels", () => {
@@ -53,4 +55,34 @@ test("a misleading reading clue transfers until a review label teaches that word
   assert.deepEqual(endings, before, "training must not mutate the reader's sentence edits");
   assert.equal(defaultReadingEndings[2], "smile", "restoring the default must recover the original reading");
   assert.ok(probability(learnReviews(2, true), "splendid") > 0.9);
+});
+
+test("with one misleading sentence, the misled word plus one label per group teaches the reader every review", () => {
+  for (let misled = 0; misled < 8; misled++) {
+    const endings = misleadingEndings(misled);
+    assert.equal(endings.filter((ending, i) => ending !== defaultReadingEndings[i]).length, 1);
+    const word = words[misled];
+    const positive = words.find((w, i) => i !== misled && reviews.find((r) => r.word === w).positive);
+    const negative = words.find((w, i) => i !== misled && !reviews.find((r) => r.word === w).positive);
+    assert.ok(allRight(learnFromLabels([word, positive, negative], true, endings)), word);
+    // The reader carries the misleading clue: without its label, the misled word is confidently wrong.
+    const reader = learnFromLabels([positive, negative], true, endings);
+    assert.equal(verdict(word, reader.predictions[misled].positive), "wrong");
+    assert.ok(allRight(learnFromLabels(words, true, endings)));
+    // From scratch nothing transfers: every review needs its own label, whatever the order.
+    assert.equal(labelsNeeded([], false, endings), 8);
+    assert.equal(labelsNeeded([word, positive, negative], false, endings), 8);
+  }
+});
+
+test("labels in click order match the fixed-order trainer and never count as right without teaching", () => {
+  assert.deepEqual(learnFromLabels(reviews.slice(0, 4).map((r) => r.word), true), learnReviews(4, true));
+  assert.ok(!allRight(learnFromLabels([], true)));
+  assert.equal(verdict("splendid", 0.5), "unsure");
+  assert.equal(verdict("splendid", 0.85), "right");
+  assert.equal(verdict("awful", 0.85), "wrong");
+});
+
+test("stars reward the fewest labels", () => {
+  assert.deepEqual([2, 3, 4, 5, 6, 7, 8].map(pretrainingStars), [3, 3, 2, 1, 1, 0, 0]);
 });

@@ -1,0 +1,22 @@
+{
+  "static": true,
+  "rich": {},
+  "text": {
+    "ELIZA, the first chatbot": "ELIZA：第一个聊天机器人",
+    "Words into tokens": "把词切成词元",
+    "Can a few pattern rules make a program feel like it understands you?": "几条模式规则，能让程序看起来懂你吗？",
+    "How does a model read a word it has never seen?": "模型怎么读一个从没见过的词？",
+    "Chat with a 1966 pattern-matching therapist and catch its three tells.": "和 1966 年靠模式匹配的“心理治疗师”聊天，抓住它露馅的三种破绽。",
+    "Split any text into real GPT-2 tokens and beat three token challenges.": "把任意文字切成真实的 GPT-2 词元，完成三个词元挑战。",
+    "Catch ELIZA out": "让 ELIZA 露馅",
+    "Say “I feel tired” and a friend asks why. ELIZA asked too, without knowing what tired means. It spotted words and swapped “I” for “you”.": "你说“我好累”，朋友会问为什么。ELIZA 也会问，可它根本不知道“累”是什么意思。它只是找关键词，再把“我”换成“你”。",
+    "Type “I feel angry at you.”": "输入 “I feel angry at you.”",
+    "Did ELIZA get the grammar right?": "ELIZA 的语法对吗？",
+    "No. It swaps every “you” for “I”, so it says “angry at I”. It follows word rules, not meaning.": "不对。它把每个 “you” 都换成 “I”，于是说出 “angry at I”。它照着词的规则走，不管意思。",
+    "How many tokens is your name?": "你的名字值几个词元？",
+    "A model does not read letters. It reads chunks called tokens. A common word can be one chunk; a rare name can take several.": "模型不是一个字母一个字母地读，而是按叫作“词元”的小块来读。常见的词可能只占一块，少见的名字可能要好几块。",
+    "Type your name. Then type a space in front of it.": "输入你的名字，再在前面加一个空格。",
+    "Does the space change the tokens?": "空格会改变词元吗？",
+    "Often, yes. GPT-2 learned “ word” with its space as its own chunk, because that is how words appear mid-sentence.": "经常会。GPT-2 把带空格的 “ word” 当成单独的一块来学，因为词在句子中间就是这样出现的。"
+  }
+}

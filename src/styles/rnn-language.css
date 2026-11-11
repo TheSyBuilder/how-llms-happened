@@ -5,14 +5,14 @@
 .rnn-comparison > div { display:grid; gap:8px; padding-top:12px; border-top:1px solid var(--muted); }
 .rnn-comparison span { font-size:12px; }
 .rnn-comparison output { font:clamp(29px,5vw,46px)/1 var(--display); font-variant-numeric:tabular-nums; }
-.rnn-comparison > div:last-child output { color:var(--accent); }
+.rnn-comparison > div:last-child output { color:var(--ink-accent); }
 .rnn-actions { margin-top:4px; }
 .rnn-histories { display:grid; gap:12px; margin-top:20px; }
 .rnn-history { padding:16px; background:var(--paper); border:1px solid var(--line); border-radius:4px; }
 .rnn-word-strip { display:flex; flex-wrap:wrap; gap:5px; align-items:center; margin:0 0 18px; font:17px/1.6 var(--display); }
 .rnn-word-strip span { padding:0 4px; border-radius:2px; transition:background-color .15s; }
 .rnn-word-strip b { font-weight:400; }
-.rnn-in-window { background:var(--accent); }
+.rnn-in-window { background:var(--accent); color:var(--on-accent); }
 .rnn-unread { opacity:.35; }
 .rnn-outside { color:var(--muted); }
 .rnn-current { outline:1px solid var(--ink); outline-offset:1px; }

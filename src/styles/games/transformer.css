@@ -1,0 +1,37 @@
+/* Transformer · Attention puzzles. Tokens only; logical properties; English words stay LTR in .tf-board. */
+.tf-game .goal-bar { margin-block-end: 16px; }
+.tf-board { direction: ltr; unicode-bidi: isolate; }
+.tf-board .token-picker { margin-block: 8px 0; }
+.tf-board .tokens { gap: 6px; }
+.tf-board .tokens button { min-block-size: 48px; color: var(--ink); }
+.tf-board .tokens button[aria-pressed="true"] { color: var(--on-accent); }
+.tf-board .tokens button.tf-target { outline: 2px dashed var(--deep); outline-offset: 2px; }
+.tf-arcs { block-size: auto; aspect-ratio: 600 / 110; margin-block-start: 10px; }
+.weight-cell.tf-target > span { text-decoration: underline 2px var(--deep); text-underline-offset: 4px; }
+.tf-controls { display: grid; gap: 10px; margin-block-start: 18px; }
+.tf-dial-label { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 600; }
+.tf-dial-label output { color: var(--deep); }
+.tf-controls input[type="range"] { min-block-size: 44px; }
+.tf-mask { justify-self: start; }
+.tf-read { margin-block-start: 6px; }
+.tf-actions, .tf-solved { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block-start: 18px; }
+.tf-solved { padding: 12px 14px; border: 2px solid var(--ink); border-radius: var(--radius, 12px); background: var(--paper); animation: tf-pop 200ms ease-out; }
+.tf-solved-line { flex: 1 1 240px; margin: 0; }
+.tf-stars { font-size: 20px; letter-spacing: .06em; }
+.tf-winner { margin-block-start: 12px; color: var(--muted); font-size: 14px; }
+.tf-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0 0 4px; padding: 0; list-style: none; }
+.tf-gallery li { display: grid; gap: 4px; padding: 10px; background: var(--paper); border: 2px solid var(--ink); border-radius: var(--radius, 12px); color: var(--ink); }
+.tf-gallery li:first-child { grid-column: 1 / -1; }
+.tf-gallery li > span { font-size: 13px; color: var(--muted); }
+.tf-thumb-arcs { block-size: auto; aspect-ratio: 600 / 155; margin: 0; }
+@media (min-width: 640px) { .tf-gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@keyframes tf-pop { from { opacity: 0; transform: translateY(4px); } }
+@media (max-width: 480px) {
+  .tf-board .tokens { grid-template-columns: repeat(3, 1fr); }
+  .tf-board .weight-grid { gap: 4px; }
+  .tf-board .weight-cell { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tf-solved { animation: none; }
+  .tf-game .attention-arcs path, .tf-game .weight-track > span { transition: none; }
+}

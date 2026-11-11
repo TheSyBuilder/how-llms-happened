@@ -7,6 +7,7 @@ export function units(root) {
  for(const node of root.querySelectorAll('p,h1,h2,h3,h4,figcaption,summary,li')) {
   if(node.closest(skip)||node.closest('astro-island')||node.querySelector('p,h1,h2,h3,h4,ul,ol,button,input,select,astro-island,svg,details')||node.querySelector('a[href^="http"]'))continue;
   const key=normalize(node.innerHTML);
+  // Prose around a single <code> (mostly formulas) is catalogued as plain text pieces, not as one rich unit.
   if(!hasWords(node.textContent)||!key.includes('<')||!node.textContent.trim()||node.children.length===1&&node.firstElementChild?.tagName==='CODE')continue;
   rich.push({node,key});for(const child of node.querySelectorAll('*'))covered.add(child);covered.add(node);
  }

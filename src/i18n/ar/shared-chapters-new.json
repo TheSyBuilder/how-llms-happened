@@ -1,0 +1,22 @@
+{
+  "static": true,
+  "rich": {},
+  "text": {
+    "ELIZA, the first chatbot": "إليزا، أول روبوت محادثة",
+    "Words into tokens": "من الكلمات إلى الرموز",
+    "Can a few pattern rules make a program feel like it understands you?": "هل تكفي بضع قواعد لمطابقة الأنماط لتجعل برنامجًا يبدو كأنه يفهمك؟",
+    "How does a model read a word it has never seen?": "كيف يقرأ النموذج كلمة لم يرها من قبل؟",
+    "Chat with a 1966 pattern-matching therapist and catch its three tells.": "تحدّث مع «معالج» من عام 1966 يعمل بمطابقة الأنماط، واكشف علاماته الثلاث.",
+    "Split any text into real GPT-2 tokens and beat three token challenges.": "قسّم أي نص إلى رموز GPT-2 حقيقية واجتز ثلاثة تحديات.",
+    "Catch ELIZA out": "اكشف إليزا",
+    "Say “I feel tired” and a friend asks why. ELIZA asked too, without knowing what tired means. It spotted words and swapped “I” for “you”.": "قل «أنا متعب» وسيسألك صديقك عن السبب. إليزا كانت تسأل أيضًا، دون أن تعرف معنى التعب. كانت تلتقط الكلمات وتبدّل «أنا» بـ«أنت».",
+    "Type “I feel angry at you.”": "اكتب ‎“I feel angry at you.”‎",
+    "Did ELIZA get the grammar right?": "هل أصابت إليزا في القواعد؟",
+    "No. It swaps every “you” for “I”, so it says “angry at I”. It follows word rules, not meaning.": "لا. فهي تبدّل كل ‎“you”‎ بـ‎“I”‎، فتقول ‎“angry at I”‎. إنها تتبع قواعد الكلمات لا المعنى.",
+    "How many tokens is your name?": "كم رمزًا يكلّف اسمك؟",
+    "A model does not read letters. It reads chunks called tokens. A common word can be one chunk; a rare name can take several.": "النموذج لا يقرأ الحروف، بل يقرأ قطعًا تسمى الرموز. قد تكون الكلمة الشائعة قطعة واحدة، وقد يحتاج اسم نادر إلى عدة قطع.",
+    "Type your name. Then type a space in front of it.": "اكتب اسمك، ثم أضف مسافة قبله.",
+    "Does the space change the tokens?": "هل تغيّر المسافة الرموز؟",
+    "Often, yes. GPT-2 learned “ word” with its space as its own chunk, because that is how words appear mid-sentence.": "غالبًا نعم. تعلّم GPT-2 الكلمة مع المسافة التي قبلها قطعةً مستقلة، لأن الكلمات تأتي هكذا في وسط الجملة."
+  }
+}

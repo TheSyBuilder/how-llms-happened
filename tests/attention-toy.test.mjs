@@ -16,11 +16,13 @@ const { outputText } = ts.transpileModule(source, {
   },
 });
 const compiled = {};
+const base = createRequire(import.meta.url);
+// The game kit and stylesheets are browser-only; the pure puzzle logic does not need them.
 new Function("require", "exports", outputText)(
-  createRequire(import.meta.url),
+  (id) => /\.css$|\/game\/|\/lib\/progress$/.test(id) ? {} : base(id),
   compiled,
 );
-const { attend } = compiled;
+const { attend, puzzles, fewestMoves, bestMoves, isSolved, puzzleStars, attentionStars, attentionHeadline, attentionShare, DIAL_STEP } = compiled;
 
 test("changing the query changes the strongest read and the mixed output", () => {
   const actions = attend(0, 2, false);
@@ -63,4 +65,47 @@ test("word contributions explain the read and exclude hidden values", () => {
   // Hiding a word excludes its match; it does not change its key or query.
   assert.deepEqual(masked.matches, open.matches);
   assert.deepEqual(masked.query, [1, 0]);
+});
+
+test("every puzzle starts unsolved, is solvable on the dial, and has a known fewest-moves answer", () => {
+  assert.equal(puzzles.length, 5);
+  assert.deepEqual(bestMoves, [2, 4, 4, 5, 4]);
+  for (const puzzle of puzzles) {
+    assert.equal(isSolved(puzzle, puzzle.start), false);
+    assert.equal(puzzle.start.direction % DIAL_STEP, 0);
+    assert.equal(fewestMoves(puzzle), bestMoves[puzzles.indexOf(puzzle)]);
+  }
+});
+
+test("puzzle goals follow the attention read, including the causal mask", () => {
+  const [future, onSat, satCat, readOn, theCat] = puzzles;
+  assert.ok(isSolved(future, { position: 0, direction: 60, causal: true }));
+  assert.ok(!isSolved(future, { position: 0, direction: 60, causal: false }));
+  assert.ok(isSolved(onSat, { position: 3, direction: 40, causal: false }));
+  assert.ok(!isSolved(onSat, { position: 3, direction: 60, causal: false }));
+  // 60% on "cat" needs both a things-seeking query and the mask; neither alone is enough.
+  assert.ok(isSolved(satCat, { position: 2, direction: 100, causal: true }));
+  assert.ok(!isSolved(satCat, { position: 2, direction: 100, causal: false }));
+  assert.ok(!isSolved(satCat, { position: 2, direction: 80, causal: true }));
+  assert.ok(isSolved(readOn, { position: 3, direction: 80, causal: false }));
+  assert.ok(!isSolved(readOn, { position: 3, direction: 80, causal: true }));
+  assert.ok(isSolved(theCat, { position: 4, direction: 100, causal: true }));
+  assert.ok(!isSolved(theCat, { position: 4, direction: 100, causal: false }));
+});
+
+test("stars reward the fewest moves and a skip caps the run", () => {
+  assert.equal(puzzleStars(4, 4), 3);
+  assert.equal(puzzleStars(6, 4), 2);
+  assert.equal(puzzleStars(7, 4), 1);
+  assert.equal(puzzleStars(null, 4), 0);
+  const perfect = bestMoves.map((best) => ({ moves: best, best }));
+  assert.equal(attentionStars(perfect), 3);
+  assert.equal(attentionStars(perfect.map((r, i) => i < 2 ? { ...r, moves: r.best + 1 } : r)), 3);
+  assert.equal(attentionStars(perfect.map((r) => ({ ...r, moves: r.best + 1 }))), 2);
+  assert.equal(attentionStars(perfect.map((r) => ({ ...r, moves: r.best + 2 }))), 1);
+  assert.equal(attentionStars(perfect.map((r, i) => i === 0 ? { ...r, moves: null } : r)), 1);
+  assert.equal(attentionStars(perfect.map((r) => ({ ...r, moves: null }))), 0);
+  assert.equal(attentionHeadline(perfect), "All 5 attention puzzles in 19 moves, the fewest possible.");
+  assert.equal(attentionHeadline(perfect.map((r) => ({ ...r, moves: r.best + 1 }))), "5 attention puzzles in 24 moves, 5 over the best.");
+  assert.match(attentionShare(perfect), /in 19 moves\. The fewest possible is 19\./);
 });

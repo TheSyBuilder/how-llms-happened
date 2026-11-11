@@ -1,0 +1,42 @@
+/* "Draw the alignment": link English to French, then see the attention heatmap. Tokens only; logical properties. */
+.att-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.att-help { min-block-size:1.5em; margin-block:0 12px; color:var(--muted); }
+/* Row pitch must match the component: 44px buttons + 12px gap = 56px. */
+.att-board { display:grid; grid-template-columns:minmax(0, 1fr) minmax(36px, .55fr) minmax(0, 1fr); align-items:start; }
+.att-column { display:grid; gap:12px; }
+.att-word { box-sizing:border-box; block-size:44px; min-inline-size:0; padding:0 8px; overflow:hidden; background:var(--paper); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius-pill, 999px); font:600 16px/1 var(--display); white-space:nowrap; text-overflow:ellipsis; cursor:pointer; transition:transform 120ms ease, box-shadow 120ms ease; }
+.att-word:hover:not(:disabled) { transform:translate(-2px, -2px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.att-word:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.att-word.is-linked { background:var(--surface); border-style:solid; box-shadow:inset 0 0 0 2px var(--deep); }
+.att-word[aria-pressed="true"] { background:var(--accent); color:var(--on-accent, var(--ink)); }
+.att-word:disabled { cursor:default; }
+.att-lines { display:block; inline-size:100%; overflow:visible; }
+.att-lines line { vector-effect:non-scaling-stroke; stroke-linecap:round; }
+.att-mine { stroke:var(--ink); stroke-width:3px; stroke-dasharray:6 5; }
+.att-mine.is-hit { stroke:var(--good); stroke-dasharray:none; }
+.att-mine.is-miss { stroke:var(--bad); }
+.att-model { stroke:var(--deep); }
+.att-links { display:flex; flex-wrap:wrap; gap:6px; margin-block:14px 0; padding:0; list-style:none; }
+.att-chip { min-block-size:44px; padding:4px 12px; background:var(--paper); color:var(--ink); border:2px solid var(--line); border-radius:var(--radius-pill, 999px); font:500 14px/1.2 var(--body); cursor:pointer; }
+.att-chip:hover:not(:disabled) { border-color:var(--ink); }
+.att-chip:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+.att-chip.is-hit { border-color:var(--good); }
+.att-chip.is-miss { border-color:var(--bad); text-decoration:line-through; }
+.att-chip:disabled { cursor:default; }
+.att-heatmap { margin:18px 0 0; animation:att-in 200ms ease-out; }
+.att-heatmap figcaption { margin-block-end:8px; color:var(--muted); font-size:14px; }
+.att-grid { display:grid; grid-template-columns:minmax(64px, auto) repeat(var(--cols), minmax(0, 1fr)); gap:2px; max-inline-size:520px; font-size:13px; }
+/* Vertical labels: in vertical-rl the inline axis is vertical, so inline-size sets the label's height. */
+.att-col { min-inline-size:72px; min-block-size:0; padding-inline-start:4px; writing-mode:vertical-rl; transform:rotate(180deg); text-align:start; overflow:hidden; white-space:nowrap; justify-self:center; }
+.att-row { display:flex; align-items:center; justify-content:flex-end; padding-inline-end:6px; overflow:hidden; white-space:nowrap; }
+.att-cell { aspect-ratio:1; min-inline-size:0; background:color-mix(in srgb, var(--deep) calc(var(--w) * 100%), var(--paper)); border-radius:3px; }
+.att-cell.is-mine { box-shadow:inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--surface); }
+.att-feedback { min-block-size:1.5em; margin-block:12px 0; font-weight:600; }
+.att-actions { display:flex; flex-wrap:wrap; gap:10px; margin-block-start:10px; }
+@keyframes att-in { from { opacity:0; } }
+@media (max-width: 400px) { .att-word { font-size:14px; padding-inline:5px; } }
+@media (prefers-reduced-motion: reduce) {
+ .att-heatmap { animation:none; }
+ .att-word { transition:none; }
+ .att-word:hover:not(:disabled) { transform:none; }
+}

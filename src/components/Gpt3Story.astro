@@ -33,9 +33,9 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Same rules.<br />Different prompt.</h2><Discovery slug="gpt-3" />
-  <p>Can you tell the intended pattern from one example? Move the slider to add more clues.</p>
-  <noscript><p>Enable JavaScript to change the prompt. “red red → red red” fits all four toy rules. Adding “red blue → blue red” identifies the swap rule.</p></noscript>
+  <h2>Beat the model.</h2><Discovery slug="gpt-3" />
+  <p>Five guess-the-rule puzzles that get harder. The rule filter waits until the examples leave only one answer. Answer before it does for more points, and keep your streak alive.</p>
+  <noscript><p>Enable JavaScript to play. “cat cat → cat cat” fits all four pair rules. Adding “cat dog → dog cat” identifies the swap rule.</p></noscript>
   <Gpt3Toy client:load />
 </section>
 <section class="story-section" id="mattered">
@@ -43,7 +43,6 @@ import { sourceLink } from "../lib/chapters";
   <h2>Show what you mean.</h2>
   <p>GPT-3 showed how examples could specify translation, question answering, and other tasks for one model, without a separate fine-tuning run for each.</p>
   <p>Examples can show an answer's format without supplying its facts. Another approach explored in 2020 was to retrieve passages for a model to read. Let's try that next.</p>
-  <a class="next-chapter" href="/chapters/retrieval/"><span>Next · 2020</span><strong>Look it up ↗</strong><span>What if a model could read a source before answering?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Frozen weights, scale & limits</span></summary>
@@ -60,7 +59,7 @@ import { sourceLink } from "../lib/chapters";
     <p>Results varied with the task and prompt. Table 3.1’s one-shot LAMBADA result was worse than its zero-shot result, even though few-shot improved it. The model still struggled with some comparisons and reading-comprehension tasks, and could repeat itself, contradict itself, or lose coherence in long text.</p>
     <p>Some benchmark material overlapped the training data; a filtering bug prevented complete removal. The authors analysed cleaner subsets, but this cannot prove the absence of memorisation. The paper also documented stereotypes in generated text. A useful few-shot answer does not establish truthfulness, fairness, or dependable reasoning.</p>
     <h3>Inside the toy</h3>
-    <p>The four functions keep a pair in order, swap it, repeat its first word, or repeat its last word. Only functions matching every visible example survive. A repeated-word example cannot distinguish them; one mixed pair can. Set A demonstrates swapping; set B demonstrates repeating the first word. The editor replaces row 1 in either set, and each rule names the rows it disagrees with. An answer using a word absent from the input fits none of these rules, even without contradictory examples. This illustrates how examples specify a task, not GPT-3's internal mechanism.</p>
+    <p>Pair puzzles use four functions: keep a pair in order, swap it, repeat its first word, or repeat its last word. Three-word puzzles use the six possible orders of three words. Only functions matching every visible example survive, and the filter answers once all survivors agree on the new input. Repeated-word examples cannot tell some functions apart; mixed words can. Answering right before the filter scores one point per example you did not need, plus one; matching it scores one. This illustrates how examples specify a task, not GPT-3's internal mechanism.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
@@ -69,6 +68,6 @@ import { sourceLink } from "../lib/chapters";
     <li><a href={sourceLink("brown-2020-neurips-full-text")}>Brown et al. · Language Models are Few-Shot Learners · 2020</a><p>Introduction and Section 2: the fine-tuning problem, GPT-2 connection, zero/one/few-shot definitions, demonstrations, fixed parameters, and token prediction. Figure 1.1: aggregate task performance across sizes. Sections 2.1–2.4: architecture, datasets, context length, and evaluation. Tables 3.1–3.2 and Section 3.2: LAMBADA and TriviaQA results. Sections 4–5 and 7.2: training-data overlap, limitations, and bias.</p></li>
     <li><a href={sourceLink("brown-2020-arxiv-v4-full-text")}>Brown et al. · Full paper and appendices</a><p>Section 2, Figure 2.1, and Table 2.1: conditioning versus parameter updates, eight model sizes, 300 billion training tokens, and the 2,048-token window. Sections 3.2 and 5 and Appendix G: closed-book evaluation, the interpretation of in-context learning, and task phrasing and scoring. The equation above is standard autoregressive factorisation applied to this prompting setup.</p></li>
     <li><a href={sourceLink("radford-2019-openai-report-full-text")}>Radford et al. · Language Models are Unsupervised Multitask Learners · 2019</a><p>Sections 2–3: the earlier GPT-2 exploration of tasks specified through text, rather than task-specific fine-tuning.</p></li>
-    <li><a href={sourceLink("rag-2020-neurips-full-text")}>Lewis et al. · Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks · 2020</a><p>Introduction and Section 2: the parallel approach of retrieving passages and conditioning a generator on them, motivating the next chapter.</p></li>
+    <li><a href={sourceLink("rag-2020-neurips-full-text")}>Lewis et al. · Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks · 2020</a><p>Introduction and Section 2: the parallel approach of retrieving passages and conditioning a generator on them, covered in the previous chapter.</p></li>
   </ol><p>The translation diagram and colour-word puzzle are invented illustrations. Their outputs are not GPT-3 samples or measured paper results.</p></div>
 </details>

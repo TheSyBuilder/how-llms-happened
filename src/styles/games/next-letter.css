@@ -1,0 +1,33 @@
+/* next-letter: "Can you be random?" */
+.markov-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.markov-stage { display:grid; grid-template-columns:minmax(0, 1.4fr) minmax(0, 1fr); gap:12px; }
+.markov-reveal { display:grid; align-content:center; gap:4px; min-block-size:112px; padding:14px 16px; background:var(--paper); border:2px solid var(--ink); border-radius:var(--radius, 12px); animation:markov-pop 160ms ease-out; }
+.markov-reveal span { color:var(--muted); font-size:15px; }
+.markov-reveal span b { color:var(--ink); font-family:var(--display); }
+.markov-reveal strong { font:700 clamp(30px, 7vw, 44px)/1.05 var(--display); letter-spacing:-.03em; }
+.markov-reveal.is-caught { background:var(--bad, var(--paper)); color:var(--surface); }
+.markov-reveal.is-escaped { background:var(--good, var(--paper)); color:var(--surface); }
+.markov-reveal.is-caught span, .markov-reveal.is-escaped span, .markov-reveal.is-caught span b, .markov-reveal.is-escaped span b { color:inherit; }
+.markov-tally { display:grid; gap:4px; align-content:center; padding:10px 14px; border:2px solid var(--ink); border-radius:var(--radius, 12px); font-size:14px; }
+.markov-tally b { display:inline-block; min-inline-size:2.2ch; font:700 22px/1.2 var(--display); font-variant-numeric:tabular-nums; }
+.markov-keys { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-block:16px 6px; }
+.markov-key { min-block-size:96px; background:var(--accent); color:var(--on-accent, var(--ink)); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); font:700 48px/1 var(--display); cursor:pointer; touch-action:manipulation; transition:transform 80ms ease, box-shadow 80ms ease; }
+.markov-key:active { transform:translate(3px, 3px); box-shadow:1px 1px 0 var(--ink); }
+.markov-key:focus-visible { outline:3px solid var(--deep); outline-offset:3px; }
+.markov-hint { margin:0; color:var(--muted); font-size:13px; text-align:center; }
+.markov-tiles { display:grid; grid-template-columns:repeat(15, minmax(0, 1fr)); gap:4px; margin-block:16px; padding:0; list-style:none; }
+.markov-tiles li { display:grid; place-items:center; aspect-ratio:1; min-inline-size:0; border:2px dashed var(--line); border-radius:6px; font:700 clamp(11px, 2.6vw, 16px)/1 var(--display); }
+.markov-tiles li.is-caught, .markov-tiles li.is-escaped { border-style:solid; border-color:var(--ink); color:var(--surface); animation:markov-pop 140ms ease-out; }
+.markov-tiles li.is-caught { background:var(--bad, var(--line)); }
+.markov-tiles li.is-escaped { background:var(--good, var(--accent)); }
+.markov-counts { padding:12px 14px; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius, 12px); }
+.markov-counts-title { margin:0 0 8px; font:700 14px/1.3 var(--display); }
+.markov-counts ul { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:6px; margin:0; padding:0; list-style:none; }
+.markov-counts li { display:flex; flex-wrap:wrap; gap:2px 16px; padding:6px 10px; border:2px solid transparent; border-radius:8px; font-size:14px; font-variant-numeric:tabular-nums; }
+.markov-counts li span:first-child { min-inline-size:5.5em; font-weight:700; }
+.markov-counts li.is-next { border-color:var(--ink); background:var(--surface); }
+.markov-next { margin:8px 0 0; color:var(--muted); font-size:14px; }
+.markov-game .result-card { margin-block:0 16px; }
+@keyframes markov-pop { from { transform:scale(.9); opacity:.4; } }
+@media (max-width:560px) { .markov-stage { grid-template-columns:1fr; } .markov-tally { grid-template-columns:repeat(3, auto); justify-content:space-between; } .markov-tiles { grid-template-columns:repeat(10, minmax(0, 1fr)); } .markov-counts ul { grid-template-columns:1fr; } }
+@media (prefers-reduced-motion:reduce) { .markov-reveal, .markov-tiles li { animation:none !important; } .markov-key { transition:none; } .markov-key:active { transform:none; } }

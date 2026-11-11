@@ -30,17 +30,16 @@ import '../styles/rnn-language.css';
   </figure>
 </section>
 <section class="story-section toy-section" id="play">
-  <p class="eyebrow">03 / Play with it</p><h2>Same bank.<br/>Different next word.</h2>
+  <p class="eyebrow">03 / Play with it</p><h2>Beat<br/>the window.</h2>
   <Discovery slug="rnn-language-model"/>
-  <p>These two invented word streams differ only in their first word. Scrub back, read forward, then add six words. Does the clue survive?</p>
-  <noscript><p>Enable JavaScript to scrub through the two histories and compare next-word probabilities.</p></noscript>
+  <p>Build a sentence that ends in “bank”. A fixed-window reader sees only the last few words; a running memory reads them all. Push the clue just past the window’s edge, in as few words as you can, and the two readers disagree.</p>
+  <noscript><p>Enable JavaScript to play. In the game, “river we walked to the bank” keeps the clue for the running memory but not for a three-word window.</p></noscript>
   <RnnLanguageToy client:load/>
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p><h2>The past could shape the next guess.</h2>
   <p>The paper brought recurrent word prediction into speech-recognition experiments. Combining recurrent models with a count-based language model improved recognition in the reported tests. A running state was useful, even though it did not solve long memory.</p>
-  <p>So far, we have supplied every word the model reads. What happens if we let it choose the next symbol, then read its own choice? That is the next chapter’s experiment.</p>
-  <a class="next-chapter" href="/chapters/graves/"><span>Next · 2013</span><strong>Graves generates text ↗</strong></a>
+  <p>So far, we have supplied every word the model reads. What happens if we let it choose the next symbol, then read its own choice? Graves tried exactly that in 2013.</p>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>The recurrence, training, results &amp; limits</span></summary>
@@ -66,5 +65,5 @@ import '../styles/rnn-language.css';
     <li><a href={sourceLink('mikolov-2010-isca-record')}>Mikolov, Karafiát, Burget, Černocký &amp; Khudanpur · Recurrent neural network based language model (2010)</a><p>Official ISCA record: title, authors, publication year and speech-recognition application.</p></li>
     <li><a href={sourceLink('mikolov-2010-isca-full-text')}>Read the four-page paper</a><p>§2, pp. 1045–1046 and Figure 1: Bengio’s fixed-window predecessor, named Elman architecture, copied state, equations 1–6, next-word probabilities, weight learning and dynamic adaptation. §2.1: rare-word grouping. §3 and Table 2, p. 1047: data size, model names, mixture weights and every result above. §5, p. 1048: long-context limits, complementary cache and further training work.</p></li>
     <li><a href={sourceLink('bengio-2003-jmlr-full-text')}>Bengio et al. · A Neural Probabilistic Language Model (2003)</a><p>§2 and Figure 1: fixed-window word-vector inputs and the neural next-word predictor.</p></li>
-  </ol><p>The river/loan word streams, diagram, three-word window, toy weights and probabilities are teaching illustrations.</p></div>
+  </ol><p>The river/loan sentences, diagram, window sizes, toy weights and probabilities are teaching illustrations.</p></div>
 </details>

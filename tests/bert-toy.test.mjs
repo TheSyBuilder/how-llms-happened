@@ -9,8 +9,10 @@ const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: "preact" },
 });
 const compiled = {};
-new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { countCompletions, compareContexts } = compiled;
+const base = createRequire(import.meta.url);
+// The game kit and stylesheets are browser-only; the clue logic does not need them.
+new Function("require", "exports", outputText)((id) => /\.css$|\/game\/|\/lib\/progress$/.test(id) ? {} : base(id), compiled);
+const { countCompletions, rounds, nearestFirst, stillFits, readers, pointsFor, fewestClues, maxPoints, bertStars } = compiled;
 const possible = (left, right) => countCompletions(left, right).predictions.filter((entry) => entry.count > 0).map((entry) => entry.word);
 
 test("left and right clues jointly distinguish words that either side leaves ambiguous", () => {
@@ -39,19 +41,31 @@ test("all supported clue choices have matches and conserve the displayed shares"
   }
 });
 
-test("changing a right clue leaves the left-only guesses fixed while changing the combined guess", () => {
-  const sky = compareContexts("metal", "sky");
-  const lake = compareContexts("metal", "lake");
-  assert.deepEqual(sky.left, lake.left);
-  assert.equal(sky.both.predictions.find(entry => entry.word === "plane").probability, 1);
-  assert.equal(lake.both.predictions.find(entry => entry.word === "boat").probability, 1);
-  assert.deepEqual(compareContexts("hungry", "sky").right, sky.right);
+test("every round ends on its answer, and the left side alone usually leaves doubt", () => {
+  assert.equal(rounds.length, 5);
+  for (const round of rounds) {
+    assert.equal(round.choices.length, 4);
+    assert.ok(round.choices.includes(round.answer));
+    assert.deepEqual(readers(round).bothWays, [round.answer]);
+    for (const clue of [...round.left, ...round.right]) if (clue.fits) assert.ok(clue.fits.includes(round.answer));
+  }
+  assert.deepEqual(rounds.map((round) => readers(round).leftOnly.length), [2, 4, 4, 2, 1]);
+  assert.deepEqual(rounds.map(fewestClues), [2, 1, 1, 2, 2]);
+  assert.equal(maxPoints, 12);
 });
 
-test("the comparison keeps ambiguity when both clues still allow two answers", () => {
-  const views = compareContexts("little", "sky");
-  assert.equal(views.left.matches.length, 4);
-  assert.equal(views.right.matches.length, 4);
-  assert.equal(views.both.matches.length, 2);
-  assert.deepEqual(views.both.predictions.filter(entry => entry.probability > 0).map(entry => [entry.word, entry.probability]), [["bird", 0.5], ["plane", 0.5]]);
+test("clues reveal nearest the gap first and combine across sides", () => {
+  const [metal, socks] = rounds;
+  assert.equal(nearestFirst(rounds[4], "left")[0].text, "old");
+  assert.deepEqual(stillFits(metal, [metal.left[0]]), ["plane", "boat"]);
+  assert.deepEqual(stillFits(metal, [metal.right[0]]), ["bird", "plane"]);
+  assert.deepEqual(stillFits(metal, [metal.left[0], metal.right[0]]), ["plane"]);
+  assert.deepEqual(readers(socks).leftOnly, socks.choices);
+  assert.deepEqual(stillFits(socks, [socks.right[0]]), ["socks"]);
+});
+
+test("fewer clues score more, a wrong guess scores nothing, and three stars need near-perfect reads", () => {
+  assert.deepEqual([1, 2, 3, 4].map((n) => pointsFor(n, true)), [3, 2, 1, 1]);
+  assert.equal(pointsFor(1, false), 0);
+  assert.deepEqual([12, 11, 10, 8, 7, 4, 3].map(bertStars), [3, 3, 2, 2, 1, 1, 0]);
 });

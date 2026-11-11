@@ -1,0 +1,29 @@
+.rs-game { display:grid; gap:14px; }
+.rs-game .goal-bar { margin-block-end:0; }
+.rs-intro { display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; padding:16px; background:var(--surface); border:2px solid var(--ink); border-radius:var(--radius); }
+.rs-board { display:grid; gap:12px; justify-items:center; padding:16px; background:var(--surface); border:2px solid var(--ink); border-radius:var(--radius); }
+.rs-numbers { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; inline-size:100%; max-inline-size:420px; }
+.rs-numbers > span { display:grid; justify-items:center; padding:8px 4px; border:2px solid var(--line); border-radius:var(--radius); }
+.rs-numbers small { color:var(--muted); font-size:13px; }
+.rs-numbers b { font:700 clamp(30px, 8vw, 44px)/1.1 var(--display); font-variant-numeric:tabular-nums; }
+.rs-numbers .rs-now { background:var(--accent); color:var(--on-accent); border-color:var(--ink); }
+.rs-numbers .rs-now small { color:inherit; }
+.rs-moves { color:var(--muted); font-size:15px; }
+.rs-path { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; min-block-size:40px; margin:0; padding:0; list-style:none; }
+.rs-path li { display:grid; place-items:center; min-inline-size:48px; block-size:36px; padding-inline:8px; border:2px solid var(--ink); border-radius:var(--radius-pill); font:700 16px var(--display); }
+.rs-path li.is-empty { border-style:dashed; border-color:var(--line); }
+.rs-ops { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.rs-ops .game-btn { min-inline-size:72px; font-size:20px; }
+.rs-message { min-block-size:1.5em; font-weight:600; text-align:center; }
+.rs-reveal { display:grid; gap:12px; padding:16px; background:var(--surface); border:2px solid var(--ink); border-radius:var(--radius); box-shadow:var(--shadow-hard); animation:rs-in 200ms ease-out; }
+.rs-reveal > .game-btn { justify-self:start; }
+.rs-tree { margin:0; }
+.rs-tree svg { display:block; inline-size:100%; max-inline-size:560px; block-size:auto; margin-inline:auto; }
+.rs-tree text { fill:var(--on-accent); font:700 12px var(--display); }
+.rs-tree figcaption { margin-block-start:8px; color:var(--muted); font-size:14px; }
+.rs-edge { stroke:var(--line); stroke-width:1.5; }
+.rs-edge.is-path { stroke:var(--ink); stroke-width:3; }
+.rs-node { fill:var(--muted); }
+.rs-node.is-path { fill:var(--accent); stroke:var(--ink); stroke-width:2; }
+@keyframes rs-in { from { opacity:0; transform:translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .rs-reveal { animation:none; } }

@@ -8,65 +8,73 @@ const source = readFileSync(new URL("../src/components/RetrievalToy.tsx", import
 const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: "preact" },
 });
+const base = createRequire(import.meta.url);
+// Styles and the game kit are browser-only; the logic under test never calls them.
+const stub = id => id.endsWith(".css") ? {} : id.includes("/game/") ? { default: () => null } : id.endsWith("/lib/progress") ? { markPlayed() {} } : base(id);
 const compiled = {};
-new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { library, retrieve, readOpeningTime, rankPassages } = compiled;
+new Function("require", "exports", outputText)(stub, compiled);
+const { library, retrieve, readOpeningTime, rankPassages, parseTime, askLibrary, canEdit, changedPages, poisonStars, retrievalResult } = compiled;
+const withText = (changes) => library.map(p => ({ ...p, text: changes[p.id] ?? p.text }));
 
-test("library edits change the sourced answer; a new question retrieves a different notice", () => {
-  const edited = library.map(p => ({ ...p, text: p.id === "a" ? "Moss Museum opens at 12:00." : p.text }));
-  const read = (subject, passages) => readOpeningTime(subject, retrieve(subject, passages, 1));
-  assert.equal(read("Moss Museum", library).time, "10:00");
-  assert.equal(read("Moss Museum", edited).time, "12:00");
-  assert.equal(read("Fern Cafe", edited).time, "08:00");
-  assert.deepEqual(read("Fern Cafe", edited).evidence, [{ id: "b", time: "08:00" }]);
+test("opening times parse H:MM, HH:MM, dotted times and am/pm; ambiguous or impossible times do not", () => {
+  const cases = { "9:00": "09:00", "09:30": "09:30", "10.30": "10:30", "9:30 am": "09:30", "9am": "09:00", "9 AM": "09:00", "12pm": "12:00", "12 am": "00:00", "7:15 pm": "19:15", "23:59": "23:59" };
+  for (const [raw, time] of Object.entries(cases)) assert.equal(parseTime(raw), time, raw);
+  for (const raw of ["9", "25:00", "12:99", "13pm", "0am", "noon", "", "9:5"]) assert.equal(parseTime(raw), null, raw);
+  for (const [text, time] of [["Moss Museum opens at 9:00.", "09:00"], ["Moss Museum opens at 10.30.", "10:30"], ["Moss Museum opens at 9 a.m. Free entry.", "09:00"], ["Moss Museum opens at 9:30 am", "09:30"]]) {
+    assert.deepEqual(readOpeningTime("Moss Museum", [{ id: "a", text }]), { status: "answer", time, evidence: [{ id: "a", time }] }, text);
+  }
+  assert.equal(readOpeningTime("Moss Museum", [{ id: "a", text: "Moss Museum opens at 10am." }, { id: "b", text: "Moss Museum opens at 10:00." }]).status, "answer");
+});
+
+test("the untouched library answers correctly from the FAQ and the official notice", () => {
+  assert.deepEqual(rankPassages("When does Moss Museum open?", library).map(p => [p.id, p.score]), [["b", 5], ["a", 2], ["d", 2], ["e", 1], ["c", 0]]);
+  const { found, result, verdict } = askLibrary(library);
+  assert.deepEqual(found.map(p => p.id), ["b", "a"]);
+  assert.equal(result.time, "10:00");
+  assert.equal(verdict, "correct");
   assert.equal(library[0].text, "Moss Museum opens at 10:00.");
 });
 
-test("excluded, irrelevant, empty, or unparseable evidence cannot supply an opening time", () => {
-  const excluded = library.map(p => ({ ...p, enabled: p.id !== "a" }));
-  const found = retrieve("Moss Museum", excluded, 2);
-  assert.deepEqual(found.map(p => p.id), ["c"]);
-  assert.equal(readOpeningTime("Moss Museum", found).status, "missing");
-  for (const text of ["", "Moss Museum opens at 25:00.", "Moss Museum opens at 12:99.", "Fern Cafe opens at 08:00.", "Moss Museum has a fern garden."]) {
-    const result = readOpeningTime("Moss Museum", [{ id: "a", text }]);
-    assert.equal(result.status, "missing");
-    assert.equal(result.time, null);
-  }
-  assert.deepEqual(retrieve("Unknown Place", library, 2), []);
-  assert.deepEqual(retrieve("Moss Museum", library.map(p => ({ ...p, enabled: false })), 2), []);
+test("a planted page must out-match the notice to fool the reader; a tie keeps the earlier letter", () => {
+  assert.equal(askLibrary(withText({ d: "Moss Museum opens at 9:00." })).verdict, "correct");
+  assert.equal(askLibrary(withText({ d: "Moss Museum opens at 9:00.", e: "Moss Museum opens at 9:00." })).verdict, "correct");
+  const fooled = askLibrary(withText({ d: "When does Moss Museum open? Moss Museum opens at 7:00." }));
+  assert.equal(fooled.verdict, "fooled");
+  assert.equal(fooled.result.time, "07:00");
+  assert.deepEqual(fooled.found.map(p => p.id), ["b", "d"]);
+  // Out-matching the notice without a readable time hides the answer rather than replacing it.
+  assert.equal(askLibrary(withText({ c: "When does Moss Museum open? It opens at noon." })).verdict, "missing");
 });
 
-test("reading more passages reveals conflicting times instead of silently choosing one", () => {
-  const conflicting = library.map(p => ({ ...p, text: p.id === "c" ? "Moss Museum opens at 03:00." : p.text }));
-  assert.deepEqual(retrieve("Moss Museum", conflicting, 2).map(p => p.id), ["a", "c"]);
-  assert.equal(readOpeningTime("Moss Museum", retrieve("Moss Museum", conflicting, 1)).time, "10:00");
-  const conflict = readOpeningTime("Moss Museum", retrieve("Moss Museum", conflicting, 2));
-  assert.equal(conflict.status, "conflict");
-  assert.equal(conflict.time, null);
-  assert.deepEqual(conflict.evidence, [{ id: "a", time: "10:00" }, { id: "c", time: "03:00" }]);
-  conflicting[2].text = "moss museum opens at 10:00.";
-  assert.equal(readOpeningTime("Moss Museum", retrieve("Moss Museum", conflicting, 2)).status, "answer");
+test("reading conflicting or missing evidence declines instead of guessing", () => {
+  assert.equal(askLibrary(withText({ b: "When does Moss Museum open? Moss Museum opens at 7:00." })).verdict, "conflict");
+  assert.equal(askLibrary(withText({ d: "When does Moss Museum open? It is lovely.", e: "When does Moss Museum open? Ask inside." })).verdict, "missing");
+  for (const text of ["", "Moss Museum opens at 25:00.", "Fern Cafe opens at 08:00.", "Moss Museum has a fern garden."]) assert.equal(readOpeningTime("Moss Museum", [{ id: "a", text }]).status, "missing");
+  for (const search of ["", "   ", "?!"]) assert.deepEqual(retrieve(search, library, 2), []);
 });
 
-test("a changed search can hide an available answer without changing the question", () => {
-  const one = retrieve("fern", library, 1);
-  const two = retrieve("fern", library, 2);
-  assert.deepEqual(one.map(p => p.id), ["b"]);
-  assert.deepEqual(two.map(p => p.id), ["b", "c"]);
-  assert.equal(readOpeningTime("Moss Museum", two).status, "missing");
-  assert.equal(readOpeningTime("Fern Cafe", one).time, "08:00");
-  assert.equal(readOpeningTime("Moss Museum", retrieve("Moss Museum", library, 1)).time, "10:00");
+test("the fix works by making the official notice retrievable again", () => {
+  const poisoned = { d: "When does Moss Museum open? Moss Museum opens at 7:00." };
+  assert.equal(askLibrary(withText({ ...poisoned, a: "When does Moss Museum open? Moss Museum opens at 10:00." })).verdict, "correct");
+  assert.equal(askLibrary(withText({ ...poisoned, b: "When does Moss Museum open? Moss Museum opens at 10:00." })).verdict, "conflict");
+  const both = { d: poisoned.d, e: "When does Moss Museum open? Moss Museum opens at 6am." };
+  assert.equal(askLibrary(withText({ ...both, a: "When does Moss Museum open? Moss Museum opens at 10 am." })).verdict, "correct");
 });
 
-test("repetition cannot boost a notice and an excluded high match cannot reach the reader", () => {
-  const edited = library.map(p => ({ ...p,
-    enabled: p.id !== "a",
-    text: p.id === "c" ? "Moss moss moss museum museum has a garden." : p.text,
-  }));
-  assert.deepEqual(rankPassages("MOSS, museum museum!", edited).map(p => [p.id, p.score]), [["c", 2], ["b", 0], ["a", 2]]);
-  assert.deepEqual(retrieve("MOSS, museum museum!", edited, 2).map(p => p.id), ["c"]);
-  for (const search of ["", "   ", "?!"]) {
-    assert.deepEqual(retrieve(search, library, 2), []);
-    assert.ok(rankPassages(search, library).every(p => p.score === 0));
-  }
+test("edit rules, counts, stars and the share result", () => {
+  const [a, , c] = library;
+  assert.equal(canEdit("poison", a), false);
+  assert.equal(canEdit("poison", c), true);
+  assert.equal(canEdit("fix", a), true);
+  assert.equal(canEdit("fix", c), false);
+  assert.equal(canEdit("done", c), false);
+  const edited = withText({ c: "x", d: "y", a: "z" });
+  assert.equal(changedPages(edited, "web"), 2);
+  assert.equal(changedPages(edited, "museum"), 1);
+  assert.deepEqual([0, 1, 2, 3, 4].map(poisonStars), [0, 3, 2, 1, 1]);
+  const one = retrievalResult(1, 1, "07:00");
+  assert.equal(one.headline, "I fooled RAG in 1 edit.");
+  assert.equal(one.stars, 3);
+  assert.match(one.detail, /07:00/);
+  assert.equal(retrievalResult(2, 2, "06:00").headline, "I fooled RAG in 2 edits.");
 });

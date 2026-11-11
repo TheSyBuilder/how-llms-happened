@@ -159,8 +159,34 @@ if (chenFixtureBytes > 6 * 1024) {
   failures.push(`Chen–Goodman fixture is ${chenFixtureBytes} bytes; budget is 6144.`);
 }
 
+// Social cards: home plus every live chapter page (one without the "is-coming" marker) needs a
+// 1200 × 630 PNG under 300 KB at /og/<slug>.png.
+const chapterPages = htmlFiles
+  .map((path) => routeForFile(path).match(/^\/chapters\/([^/]+)\/$/)?.[1])
+  .filter((slug) => slug !== undefined);
+const liveChapterSlugs = chapterPages.filter(
+  (slug) => !/<article class="chapter-page[^"]*\bis-coming\b/.test(readFileSync(join(distRoot, "chapters", slug, "index.html"), "utf8")),
+);
+const ogImages = [];
+for (const slug of ["home", ...liveChapterSlugs]) {
+  const pngPath = join(distRoot, "og", `${slug}.png`);
+  if (!existsSync(pngPath)) {
+    failures.push(`/og/${slug}.png is missing.`);
+    continue;
+  }
+  const png = readFileSync(pngPath);
+  const isPng = png.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
+  const width = isPng ? png.readUInt32BE(16) : 0;
+  const height = isPng ? png.readUInt32BE(20) : 0;
+  if (width !== 1200 || height !== 630) failures.push(`/og/${slug}.png is ${width}×${height}; expected 1200×630.`);
+  if (png.byteLength > 300 * 1024) failures.push(`/og/${slug}.png is ${png.byteLength} bytes; budget is 307200.`);
+  ogImages.push({ slug, bytes: png.byteLength });
+}
+
 const report = {
   generatedAt: new Date().toISOString(),
+  ogImageCount: ogImages.length,
+  maxOgImageBytes: Math.max(0, ...ogImages.map((image) => image.bytes)),
   routeCount: routes.length,
   unresolvedReferenceCount: failures.length,
   katzFixtureBytes,

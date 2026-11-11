@@ -1,6 +1,7 @@
 ---
 import Discovery from "./Discovery.astro";
 import Gpt2Toy from "./Gpt2Toy";
+import Gpt2Challenge from "./hero/Gpt2Challenge";
 import { sourceLink } from "../lib/chapters";
 ---
 <section class="story-section" id="problem">
@@ -32,17 +33,18 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Same passage.<br />Change the invitation.</h2><Discovery slug="gpt-2" />
-  <p>Switch from continuing the story to summarising it. Then remove the cue. What tells the toy which kind of text should come next?</p>
-  <noscript><p>Enable JavaScript to try the toy. Its fixed snippets pair “Then” with story continuations, “TL;DR:” with summaries, and a question with answers.</p></noscript>
+  <h2>Prompt golf.</h2><Discovery slug="gpt-2" />
+  <p>One passage, four tasks, and the model never changes. Add cue cards to the end of the prompt until the toy does the job. Fewest cards wins.</p>
+  <noscript><p>Enable JavaScript to play. The toy pairs “Then” with a story continuation, “TL;DR:” with a summary, an example pair and “=” with a translation, and a question followed by “A:” with an answer.</p></noscript>
   <Gpt2Toy client:load />
+  <h3 class="g2-challenge-heading">Now play against the real GPT-2</h3>
+  <Gpt2Challenge client:visible />
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>A prompt becomes an interface.</h2>
   <p>GPT-2 made a compelling case for testing a pretrained writer on different tasks through text alone. A summary and an answer could use the same model, with no new output layer or fine-tuning step.</p>
   <p>Larger models generally improved across several of the report’s tasks. That raises the next question: how predictably does more model, more data, or more training improve a language model?</p>
-  <a class="next-chapter" href="/chapters/scaling-laws/"><span>Next · 2020</span><strong>Scaling laws ↗</strong><span>What changes when we make a language model bigger?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Objective, architecture, results & limits</span></summary>
@@ -58,7 +60,7 @@ import { sourceLink } from "../lib/chapters";
     <p>For summarisation, the authors appended <code>TL;DR:</code>, sampled 100 tokens while choosing among the two most likely next tokens, and kept the first three sentences. Table 4 reports an average ROUGE score of 21.40, versus 20.98 for three randomly selected article sentences and 15.03 without the hint. ROUGE measures textual overlap with reference summaries. The hint helps, but the result is still weak.</p>
     <p>Training text and test passages can overlap; avoiding task-specific training does not guarantee unseen content. Larger models broadly improved several tasks, but not every score rose at every size. These experiments do not establish dependable instruction following or factual accuracy.</p>
     <h3>What the toy leaves out</h3>
-    <p>The six invented snippets share one passage. The toy matches an edited cue to a fixed table, ignoring case and extra whitespace; an empty cue allows all six. The bars count available snippets by format. “Try another” cycles through them. The word builder keeps snippets beginning with your chosen words, then counts their next words. Undo widens those choices again. It splits at spaces, keeping punctuation attached. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.</p>
+    <p>The golf toy reads only the last cue card. “TL;DR:” selects the summary and “Then” the story. “=” selects the translation only when the example pair “cat = chat” sits before the passage, echoing the report’s translation prompts. “A:” answers the latest question card. Anything else, including polite instructions such as “Summarise this:”, matches nothing. Its five continuations are fixed and invented. No training occurs, and the table cannot generalise to new cues or passages. GPT-2 instead learns a token predictor from text and composes continuations token by token.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
@@ -68,5 +70,5 @@ import { sourceLink } from "../lib/chapters";
     <li><a href={sourceLink("radford-2019-openai-announcement")}>OpenAI · Better language models and their implications · February 14, 2019</a><p>The public introduction of GPT-2, its approximate size, next-word training, and early task abilities and limitations.</p></li>
     <li><a href={sourceLink("radford-2018-openai-preprint-full-text")}>Radford et al. · Improving Language Understanding by Generative Pre-Training</a><p>Sections 2–3: pretraining followed by supervised task fine-tuning, the earlier recipe.</p></li>
     <li><a href={sourceLink("devlin-2019-naacl-full-text")}>Devlin et al. · BERT</a><p>Sections 3.1–3.2: pretraining and task-specific fine-tuning.</p></li>
-  </ol><p>The Mira passage, diagram continuation, and six toy snippets are invented illustrations. Toy counts describe the fixed table, not GPT-2’s probabilities or results.</p></div>
+  </ol><p>The Mira passage, diagram continuation, and golf continuations are invented illustrations. The challenge below the golf game uses recorded GPT-2 outputs.</p></div>
 </details>

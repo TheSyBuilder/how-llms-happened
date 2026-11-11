@@ -1,0 +1,15 @@
+.dpo-game { display:grid; gap:14px; }
+.dpo-game .goal-bar { margin-block-end:0; }
+.dpo-meters { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px 16px; }
+.dpo-prompt { font:700 clamp(20px, 4vw, 26px)/1.3 var(--display); }
+.dpo-prompt span { display:inline-block; margin-inline-end:6px; padding:1px 10px; background:var(--ink); color:var(--paper); border-radius:var(--radius-pill); font-size:12px; letter-spacing:.05em; text-transform:uppercase; vertical-align:4px; }
+.dpo-answers { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
+.dpo-answer { display:grid; align-content:start; gap:8px; min-block-size:120px; padding:14px 16px; background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius); font:inherit; text-align:start; cursor:pointer; transition:transform 120ms ease, box-shadow 120ms ease; }
+.dpo-answer:hover { transform:translate(-2px, -2px); box-shadow:var(--shadow-hard); }
+.dpo-answer:active { transform:none; box-shadow:none; }
+.dpo-tag { color:var(--muted); font:700 13px var(--display); letter-spacing:.04em; text-transform:uppercase; }
+.dpo-text { font-size:17px; line-height:1.45; }
+.dpo-text em { font-style:italic; font-weight:700; color:var(--bad); }
+.dpo-last { min-block-size:1.5em; color:var(--muted); font-size:15px; }
+@media (max-width:560px) { .dpo-answers, .dpo-meters { grid-template-columns:1fr; } .dpo-answer { min-block-size:0; } }
+@media (prefers-reduced-motion: reduce) { .dpo-answer { transition:none; } .dpo-answer:hover { transform:none; } }

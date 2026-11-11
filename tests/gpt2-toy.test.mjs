@@ -9,58 +9,52 @@ const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: "preact" },
 });
 const compiled = {};
-new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { matchContinuations, continuationSnippets, nextWordChoices } = compiled;
+const base = createRequire(import.meta.url);
+// The game kit and stylesheets are browser-only; the cue lookup does not need them.
+new Function("require", "exports", outputText)((id) => /\.css$|\/game\/|\/lib\/progress$/.test(id) ? {} : base(id), compiled);
+const { readCue, holes, totalPar, golfStars, holeName, EXAMPLE, continuations } = compiled;
 
-test("a prompt cue narrows the same frozen snippets to a task format", () => {
-  const original = structuredClone(continuationSnippets);
-  for (const [cue, format] of [["Then", "Story"], ["TL;DR:", "Summary"], ["Q: Who found the cat? A:", "Answer"]]) {
-    const result = matchContinuations(cue);
-    assert.equal(result.matches.length, 2);
-    assert.ok(result.matches.every((entry) => entry.format === format));
-    assert.equal(result.formats.find((entry) => entry.format === format).share, 1);
+// Breadth-first search over card sequences from a hole's deck: the fewest cards that make the toy do the task.
+function fewestCards(hole) {
+  let frontier = [[]];
+  for (let depth = 1; depth <= hole.deck.length; depth++) {
+    frontier = frontier.flatMap((cards) => hole.deck.filter((card) => !cards.includes(card)).map((card) => [...cards, card]));
+    if (frontier.some((cards) => readCue(cards) === hole.target)) return depth;
   }
-  assert.deepEqual(continuationSnippets, original);
+  return Infinity;
+}
+
+test("the cue at the end of the prompt chooses the kind of continuation", () => {
+  assert.equal(readCue([]), null);
+  assert.equal(readCue(["TL;DR:"]), "summary");
+  assert.equal(readCue(["Then"]), "story");
+  assert.equal(readCue(["Then", "TL;DR:"]), "summary");
+  assert.equal(readCue(["TL;DR:", "Then"]), "story");
+  assert.equal(readCue(["Who?", "A:"]), "who");
+  assert.equal(readCue(["Who?", "What?", "A:"]), "what");
+  assert.equal(readCue(["A:"]), null);
 });
 
-test("removing the cue admits every format; normalised cues still work", () => {
-  const result = matchContinuations(" \n ");
-  assert.equal(result.matches.length, 6);
-  assert.ok(result.formats.every((entry) => entry.count === 2 && entry.share === 1 / 3));
-  assert.equal(matchContinuations("  tl;dr:  ").matches.length, 2);
-  assert.equal(matchContinuations("Q:  who found the cat?\n A:").matches.length, 2);
+test("translation needs an example pair, as in the GPT-2 report's prompts, and instructions alone do nothing", () => {
+  assert.equal(readCue(["="]), null);
+  assert.equal(readCue([EXAMPLE, "="]), "french");
+  assert.equal(readCue(["=", EXAMPLE]), null);
+  for (const cards of [["Summarise", "this:"], ["Please", "continue"], ["Translate", "into", "French:"], ["Answer"]]) assert.equal(readCue(cards), null);
 });
 
-test("unfamiliar and partial cues produce no invented answer or invalid shares", () => {
-  for (const cue of ["In a nutshell:", "Then write a summary", "TL;", "<script>"]) {
-    const result = matchContinuations(cue);
-    assert.deepEqual(result.matches, []);
-    assert.ok(result.formats.every((entry) => entry.count === 0 && entry.share === 0));
+test("every hole's par is the fewest cards that work, and every deck can reach its task", () => {
+  assert.deepEqual(holes.map((hole) => hole.target), ["story", "summary", "french", "who"]);
+  for (const hole of holes) {
+    assert.equal(fewestCards(hole), hole.par, hole.task);
+    assert.ok(continuations[hole.target]);
   }
+  assert.equal(totalPar, 6);
 });
 
-test("next words depend on both the cue and the words already written", () => {
-  assert.deepEqual(nextWordChoices("", []).choices, [
-    { word: "the", count: 1 }, { word: "Mira", count: 3 },
-    { word: "A", count: 1 }, { word: "Mira.", count: 1 },
-  ]);
-  assert.deepEqual(nextWordChoices("", ["Mira"]).choices, [
-    { word: "made", count: 1 }, { word: "took", count: 1 }, { word: "found", count: 1 },
-  ]);
-  assert.deepEqual(nextWordChoices("TL;DR:", ["Mira"]), { count: 1, choices: [{ word: "took", count: 1 }] });
-  assert.deepEqual(nextWordChoices("Then", ["Mira"]), { count: 1, choices: [{ word: "made", count: 1 }] });
-});
-
-test("every builder path ends at a fixed snippet and impossible prefixes stay empty", () => {
-  for (const snippet of continuationSnippets) {
-    const words = snippet.text.split(" ");
-    for (let index = 0; index < words.length; index++) {
-      const step = nextWordChoices(snippet.cue, words.slice(0, index));
-      assert.ok(step.choices.some(({ word }) => word === words[index]));
-      assert.equal(step.choices.reduce((sum, choice) => sum + choice.count, 0), step.count);
-    }
-    assert.deepEqual(nextWordChoices(snippet.cue, words), { count: 1, choices: [] });
-  }
-  assert.deepEqual(nextWordChoices("In a nutshell:", []), { count: 0, choices: [] });
-  assert.deepEqual(nextWordChoices("Then", ["Mira."]), { count: 0, choices: [] });
+test("stars and hole names follow strokes against par", () => {
+  assert.deepEqual([6, 7, 9, 10, 14, 15].map(golfStars), [3, 2, 2, 1, 1, 0]);
+  assert.equal(holeName(1, 1), "Par");
+  assert.equal(holeName(2, 1), "Bogey");
+  assert.equal(holeName(4, 2), "Double bogey");
+  assert.equal(holeName(6, 2), "4 over par");
 });

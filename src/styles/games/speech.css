@@ -1,0 +1,22 @@
+/* speech: "Wreck a nice beach." */
+.speech-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.speech-context { margin:0; padding:16px 18px; background:var(--paper); border:2px solid var(--ink); border-radius:var(--radius, 12px); font:600 clamp(19px, 4.2vw, 24px)/1.35 var(--display); text-align:start; }
+.speech-listen { display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; margin-block:14px 0; }
+.speech-sounds { margin:0; color:var(--muted); font-size:15px; }
+.speech-sounds q { color:var(--ink); font-weight:700; font-style:italic; }
+.speech-game .game-choices > button { font-size:20px; }
+.speech-verdict { min-block-size:1.3em; margin:0; font:700 clamp(22px, 5vw, 28px)/1.2 var(--display); }
+.speech-verdict:empty { min-block-size:0; }
+.speech-reveal { display:grid; gap:12px; margin-block-start:8px; animation:speech-in 200ms ease-out; }
+.speech-tally { margin:0; color:var(--muted); font-size:15px; font-variant-numeric:tabular-nums; }
+.speech-decoder { display:grid; gap:8px; padding:12px 14px; border:2px solid var(--line); border-radius:var(--radius, 12px); }
+.speech-decoder.is-right { border-color:var(--good, var(--ink)); }
+.speech-decoder.is-wrong { border-color:var(--bad, var(--ink)); border-style:dashed; }
+.speech-decoder-head { display:flex; justify-content:space-between; gap:10px; margin:0; }
+.speech-decoder.is-right .speech-decoder-head span { color:var(--good, var(--ink)); font-weight:700; }
+.speech-decoder.is-wrong .speech-decoder-head span { color:var(--bad, var(--ink)); font-weight:700; }
+.speech-why { margin:0; color:var(--muted); font-size:14px; }
+.speech-reveal > .game-btn { justify-self:start; }
+.speech-game .result-card { margin-block:0 16px; }
+@keyframes speech-in { from { opacity:0; transform:translateY(6px); } }
+@media (prefers-reduced-motion:reduce) { .speech-reveal { animation:none; } }

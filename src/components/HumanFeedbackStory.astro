@@ -32,17 +32,17 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Teach a taste.<br />Spot a blind spot.</h2><Discovery slug="human-feedback" />
-  <noscript><p>Enable JavaScript to compare answers. The toy learns a preference for length and wording, but cannot judge truth.</p></noscript>
+  <h2>Train<br />a judge.</h2><Discovery slug="human-feedback" />
+  <p>Two clicks train a judge, the reward model in this story. Watch what it thinks of a false answer. Then retrain it with four comparisons of your choosing and see whether it can tell truth from style on answers it has never seen.</p>
+  <noscript><p>Enable JavaScript to train the judge. It learns from the answers you prefer, and it can only learn what your comparisons make different.</p></noscript>
   <HumanFeedbackToy client:load />
 </section>
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>The training target<br />moves closer to you.</h2>
   <p>InstructGPT made human judgements part of training for many written requests. Better scores still did not guarantee truthful or safe answers.</p>
-  <p>Next, this approach meets a conversational interface: the ChatGPT moment.</p>
+  <p>Next, a model writes out its working before it answers.</p>
   <aside class="chapter-companions"><h3>Also in this chapter</h3><p><strong>Stiennon et al. (2020)</strong> used comparisons to improve summaries. <strong>FLAN</strong> and <strong>T0 (2021)</strong> trained on many tasks written as instructions, showing another route toward following requests: supervised examples.</p></aside>
-  <a class="next-chapter" href="/chapters/chatgpt/"><span>Next · 2022</span><strong>The ChatGPT moment ↗</strong><span>What changes when a language model becomes a conversation?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
   <summary>Go deeper <span>Preference learning, PPO, and whose preferences count</span></summary>
@@ -60,8 +60,8 @@ import { sourceLink, paperLink } from "../lib/chapters";
     <h3>A learned reward is still a proxy</h3>
     <p>A proxy is a stand-in for what you actually want. Stiennon and colleagues found that pushing their summary reward model too far could increase its score while human judgements of quality fell. InstructGPT also retained fabricated answers, bias and failures to follow instructions. Agreement with a scorer, agreement with a group of raters, and correctness are different things.</p>
     <h3>What if a model supplies the comparisons?</h3><p><strong>Constitutional AI (2022)</strong> explored another feedback source: a model critiques and revises answers using written principles, then supplies preference comparisons for reinforcement learning. The principles still come from people. This changes how training feedback is collected; it does not turn agreement with a scorer into a guarantee of truth.</p><h3>Inside this toy</h3>
-    <p>Each answer has two hand-assigned features (0-or-1 traits): short length and everyday wording. The scorer is <code>r(y) = wshort · fshort(y) + weveryday · feveryday(y)</code>. It starts at zero and fits the pairwise logistic loss from the selected comparisons, plus <code>0.1 · ||w||² / 2</code> to keep weights small. Changing a choice refits from zero, so clicks do not secretly accumulate extra labels.</p>
-    <p>The final bars use <code>p(y) = exp(s · r(y)) / Σz exp(s · r(z))</code> over three fixed answers, starting from equal chances. s is the slider value. This illustrates shifting probability toward reward; it does not implement PPO, generate text, or reproduce InstructGPT. The true and false short answers have identical visible features, so no choice can separate them. Feature labels and the false-answer annotation were written for this illustration, not inferred by the scorer.</p>
+    <p>Each answer has three hand-assigned features (0-or-1 traits): short length, everyday wording and truth. The judge is <code>r(y) = wshort · fshort(y) + weveryday · feveryday(y) + wtrue · ftrue(y)</code>. It starts at zero and fits the pairwise logistic loss from the comparisons you teach, plus <code>0.1 · ||w||² / 2</code> to keep weights small. Changing a choice refits from zero, so clicks do not secretly accumulate extra labels.</p>
+    <p>Every rain answer in the first step is true, so the truth feature never differs inside a pair and its weight stays at zero. That is why the true and false snow answers tie. In the challenge, the judge ranks eight hidden pairs where people prefer the true answer, or the clearer one when both are true. Pairs where the true answer is also the plainer one teach truth and style together; pairs where they pull apart teach the difference. This illustrates reward-model training only: it does not implement PPO, generate text or reproduce InstructGPT, and the feature labels were written for this illustration, not inferred by the judge.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">
@@ -73,6 +73,6 @@ import { sourceLink, paperLink } from "../lib/chapters";
     <li><a href={sourceLink("wei-2021-arxiv-record")}>Wei et al. · Finetuned Language Models Are Zero-Shot Learners · 2021</a><p>Abstract and introduction: FLAN’s instruction tuning on many tasks and evaluation on unseen task types. This supports the distinction between instruction examples and preference-based reinforcement learning.</p></li>
     <li><a href={sourceLink("sanh-2021-arxiv-record")}>Sanh et al. · Multitask Prompted Training Enables Zero-Shot Task Generalization · 2021</a><p>Abstract and Sections 2–3: T0’s supervised training on a mixture of tasks written as prompts, with evaluation on held-out tasks.</p></li>
     <li><a href={paperLink("constitutional-ai")}>Bai et al. · Constitutional AI: Harmlessness from AI Feedback · 2022</a><p>Abstract and method: principle-guided self-critique and revision, followed by reinforcement learning from model-generated preferences.</p></li>
-    <li><a href={paperLink("chatgpt-launch")}>OpenAI · Introducing ChatGPT · 2022</a><p>The next chapter’s conversational interface and its relationship to InstructGPT and reinforcement learning from human feedback.</p></li>
+    <li><a href={paperLink("chatgpt-launch")}>OpenAI · Introducing ChatGPT · 2022</a><p>A later chapter’s conversational interface and its relationship to InstructGPT and reinforcement learning from human feedback.</p></li>
   </ol><p>The diagram and toy are teaching illustrations. All toy answers, features, scores and probabilities are invented or computed in this browser; none is a paper result or a language model’s output.</p></div>
 </details>

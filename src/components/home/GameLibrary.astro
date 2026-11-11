@@ -1,0 +1,31 @@
+---
+// Every chapter's game, grouped by era and numbered chronologically. Progress badges come from the home page script.
+import ResearchGlyph from '../ResearchGlyph';
+import {firstSteps} from '../../lib/first-steps';
+import {chapters,chapterPaper} from '../../lib/chapters';
+import {eraGroups} from './eras';
+const paperFor=(slug:string)=>{const chapter=chapters.find(item=>item.slug===slug);return chapter?chapterPaper(chapter.anchor):undefined;};
+---
+<section class="library-section page-width" id="experiments" aria-labelledby="library-title">
+  <div class="library-head">
+    <div>
+      <h2 id="library-title">Every game, in order.</h2>
+      <p>Pick any year. Each game links to the paper behind it.</p>
+    </div>
+    <button type="button" class="game-btn" data-open-explorer>Search games</button>
+  </div>
+  <div class="library-grid">
+    {eraGroups.map(group => <section class="library-era" style={`--era:var(--era-${group.id})`} aria-labelledby={`era-${group.id}`}>
+      <div class="library-era-tile"><h3 id={`era-${group.id}`}>{group.label}</h3><span>{group.years}</span></div>
+      {group.stops.map(stop => {const paper=paperFor(stop.slug);return <article class="game-card" id={stop.slug} data-progress={stop.slug}>
+        <a class="game-card-main" href={`/chapters/${stop.slug}/#play`}>
+          <span class="game-card-meta"><span class="game-card-number">{String(stop.number).padStart(2, "0")}</span><time>{stop.year}</time><span class="game-card-badge"><span class="game-card-check" aria-hidden="true">✓</span><span class="screen-reader-only game-card-done">Completed</span><span class="game-card-stars" role="img" data-stars hidden></span></span></span>
+          <ResearchGlyph kind={stop.slug} />
+          <h4>{firstSteps[stop.slug]?.name ?? stop.title}</h4>
+          {firstSteps[stop.slug] && <p>{stop.title}</p>}
+        </a>
+        {paper && <a class="game-card-paper" target="_blank" rel="noopener noreferrer" href={paper.url} aria-label={`Read original paper: ${paper.title}`}>Paper ↗</a>}
+      </article>})}
+    </section>)}
+  </div>
+</section>

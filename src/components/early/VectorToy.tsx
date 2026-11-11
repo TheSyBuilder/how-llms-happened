@@ -1,21 +1,95 @@
 import '../../i18n/preact';
-import { useState } from 'preact/hooks';
-export const mapWords = [{word:'shore',x:.95,y:.15},{word:'raft',x:.8,y:.05},{word:'loan',x:.1,y:.95},{word:'coin',x:.25,y:.8}];
-export function nearestWords(x: number,y: number) { return mapWords.map(item=>({...item,similarity:(x*item.x+y*item.y)/(Math.hypot(x,y)*Math.hypot(item.x,item.y))})).sort((a,b)=>b.similarity-a.similarity); }
-export default function VectorToy() {
-  const [x,setX]=useState(.9); const [y,setY]=useState(.2); const neighbours=nearestWords(x,y);
-  return <div class="early-toy">
-    <div class="toy-topline"><span class="eyebrow">A word with two worlds</span><span class="toy-label">Toy · hand-placed vectors</span></div>
-    <div class="early-result" role="status"><strong>bank is closest in direction to {neighbours[0]!.word}.</strong><p>Move its two numbers. Nearby directions share a neighbourhood.</p></div>
-    <svg class="vector-map" viewBox="0 0 420 350" role="img" aria-label={`Bank vector: river ${x.toFixed(2)}, money ${y.toFixed(2)}. Closest word ${neighbours[0]!.word}.`}>
-      <path d="M45 20V295H405" class="early-line"/><text x="45" y="330">River-like →</text><text x="15" y="18">Money-like ↑</text>
-      {mapWords.map(item=><g><path d={`M45 295L${45+item.x*330} ${295-item.y*250}`} class="vector-ray"/><circle cx={45+item.x*330} cy={295-item.y*250} r="6"/><text x={item.word==='shore' ? 404 : item.word==='raft' ? 280 : 45+item.x*330} y={item.word==='shore' ? 238 : item.word==='raft' ? 278 : 280-item.y*250} text-anchor={item.word==='shore' || item.word==='raft' ? 'end' : 'middle'} class="map-word-label">{item.word}</text></g>)}
-      <path d={`M45 295L${45+x*330} ${295-y*250}`} class="vector-query"/><circle cx={45+x*330} cy={295-y*250} r="12" class="vector-bank"/><circle cx="330" cy="325" r="7" class="vector-bank"/><text x="345" y="331" class="bank-label">bank</text>
-    </svg>
-    <label class="early-label" for="river-coordinate">River coordinate <output>{x.toFixed(2)}</output></label><input id="river-coordinate" type="range" min="5" max="95" step="5" value={x*100} onInput={e=>setX(Number(e.currentTarget.value)/100)}/>
-    <label class="early-label" for="money-coordinate">Money coordinate <output>{y.toFixed(2)}</output></label><input id="money-coordinate" type="range" min="5" max="95" step="5" value={y*100} onInput={e=>setY(Number(e.currentTarget.value)/100)}/>
-    <div class="early-buttons"><button onClick={()=>{setX(.2);setY(.9);}}>Move to finance</button><button onClick={()=>{setX(.9);setY(.2);}}>Reset map</button></div>
-    <ol class="vector-neighbours">{neighbours.map(n=><li><span>{n.word}</span><output>{n.similarity.toFixed(3)} cosine</output></li>)}</ol>
-    <p class="early-small">Cosine compares direction. Real word vectors learn many coordinates without these named axes. A single vector for “bank” must serve different senses; this movable map illustrates that tension, not word2vec training.</p>
-  </div>;
+import '../../styles/games/word-vectors.css';
+import {useEffect,useMemo,useRef,useState} from 'preact/hooks';
+import GoalBar from '../game/GoalBar';
+import ResultCard,{type GameResult} from '../game/ResultCard';
+import {markPlayed} from '../../lib/progress';
+import {withSiteBase} from '../../i18n/core';
+import {closeness,dayNumber,hintRank,normalizeGuess,parseVectors,rankFrom,secretFor,shareStrip,tierOf,vectorStars,type VectorData} from './vector-game';
+const slug='word-vectors';
+type Guess={word:string;rank:number;sim:number;hint:boolean};
+let cache:Promise<VectorData>|undefined;
+function loadVectors(){
+ cache??=Promise.all([fetch(withSiteBase('/data/early-vectors.json')).then(r=>{if(!r.ok)throw new Error(String(r.status));return r.json();}),fetch(withSiteBase('/data/early-vectors.bin')).then(r=>{if(!r.ok)throw new Error(String(r.status));return r.arrayBuffer();})]).then(([json,bin])=>parseVectors(json,bin));
+ cache.catch(()=>{cache=undefined;});
+ return cache;
+}
+const guessesText=(n:number)=>`${n} ${n===1?'guess':'guesses'}`;
+export default function VectorToy(){
+ const [data,setData]=useState<VectorData|null>(null);
+ const [failed,setFailed]=useState(false);
+ const [day,setDay]=useState<number|null>(null);
+ const [practice,setPractice]=useState(0);
+ const [guesses,setGuesses]=useState<Guess[]>([]);
+ const [input,setInput]=useState('');
+ const [message,setMessage]=useState('');
+ const [gaveUp,setGaveUp]=useState(false);
+ const [confirmGiveUp,setConfirmGiveUp]=useState(false);
+ const played=useRef(false),field=useRef<HTMLInputElement>(null);
+ const load=()=>{setFailed(false);loadVectors().then(setData,()=>setFailed(true));};
+ useEffect(()=>{setDay(dayNumber(new Date()));load();},[]);
+ const secret=day===null?'':secretFor(day+practice);
+ const ranking=useMemo(()=>{const i=data?.index.get(secret);return data&&i!==undefined?rankFrom(data,i):null;},[data,secret]);
+ const solved=guesses.some(g=>g.rank===0),over=solved||gaveUp;
+ const best=guesses.length?Math.min(...guesses.map(g=>g.rank)):undefined;
+ const touch=()=>{if(!played.current){played.current=true;markPlayed(slug);}};
+ const add=(word:string,hint:boolean)=>{
+  if(!data||!ranking)return;
+  const i=data.index.get(word)!,g={word,rank:ranking.rank[i]!,sim:ranking.sims[i]!,hint};
+  setGuesses(list=>[...list,g]);
+  setMessage(g.rank===0?`${word}: found it.`:`${word}: closeness ${closeness(g.sim)}, #${g.rank}.`);
+ };
+ const submit=(e:Event)=>{
+  e.preventDefault();if(!data||over)return;touch();
+  const word=normalizeGuess(input,w=>data.index.has(w));
+  if(!word){setMessage(input.trim()?`“${input.trim()}” is not in the ${data.words.length.toLocaleString('en')}-word list.`:'Type a word first.');return;}
+  setInput('');
+  if(guesses.some(g=>g.word===word)){setMessage(`Already guessed “${word}”.`);return;}
+  add(word,false);
+ };
+ const hint=()=>{
+  if(!data||!ranking||over)return;touch();
+  let r=hintRank(best,data.words.length);
+  while(r>1&&guesses.some(g=>g.rank===r))r--;
+  if(guesses.some(g=>g.rank===r)){setMessage('You already have its nearest neighbour. The secret is very close to it.');return;}
+  add(data.words[ranking.order[r]!]!,true);
+ };
+ const replay=()=>{setPractice(p=>p+1);setGuesses([]);setGaveUp(false);setConfirmGiveUp(false);setMessage('');setInput('');requestAnimationFrame(()=>field.current?.focus());};
+ const label=practice?'practice':`#${day??0}`;
+ const strip=shareStrip(guesses.map(g=>g.rank)),n=guesses.length;
+ const neighbours=ranking&&data?ranking.order.slice(1,6).map(i=>data.words[i]!).join(', '):'';
+ const result:GameResult={slug,headline:solved?`Solved in ${guessesText(n)}.`:`Gave up after ${guessesText(n)}.`,detail:`The word was “${secret}”. Its nearest neighbours: ${neighbours}.`,score:{value:n,label:'Guesses'},stars:vectorStars(solved,n),shareText:solved?`Closest word ${label}: solved in ${guessesText(n)}. ${strip}`:`Closest word ${label}: gave up after ${guessesText(n)}. ${strip}`};
+ const sorted=[...guesses].sort((a,b)=>a.rank-b.rank),latest=guesses.at(-1);
+ const row=(g:Guess,extra='')=><li key={g.word+extra} class={`vector-guess is-${tierOf(g.rank)}${extra}`}>
+  <span class="vector-word" dir="ltr" translate={false}>{g.word}</span>
+  <span class="vector-close" dir="ltr">{closeness(g.sim)}</span>
+  <span class="vector-rank" dir="ltr">{g.rank===0?'✓':`#${g.rank}`}</span>
+  <span class="vector-bar" aria-hidden="true"><span style={`--value:${Math.max(0,g.sim)}`}/></span>
+  {g.hint&&<span class="vector-hint-tag">hint</span>}
+ </li>;
+ return <div class="vector-game">
+  <GoalBar goal="Find the secret word. Each guess shows how close its vector points to the secret's." status={day===null?'':practice?`Practice word · ${guessesText(n)}`:`Puzzle #${day} · ${guessesText(n)}`}/>
+  {over?<>
+   <ResultCard result={result} onReplay={replay}/>
+   {guesses.length>0&&<ol class="vector-list" aria-label="Your guesses, closest first">{sorted.map(g=>row(g))}</ol>}
+  </>:<>
+   <form class="vector-form" onSubmit={submit}>
+    <label class="vector-label" for="vector-guess">Your guess</label>
+    <div class="vector-entry">
+     <input id="vector-guess" ref={field} type="text" dir="ltr" lang="en" autocomplete="off" autocapitalize="none" spellcheck={false} enterkeyhint="go" maxLength={24} placeholder="Type a word" value={input} disabled={!data} onInput={e=>setInput(e.currentTarget.value)}/>
+     <button type="submit" class="game-btn is-primary" disabled={!data}>Guess</button>
+    </div>
+   </form>
+   <p class="vector-message" role="status">{failed?'The word vectors did not load.':!data?'Loading 5,006 word vectors…':message}</p>
+   {failed&&<button type="button" class="game-btn" onClick={load}>Try again</button>}
+   {latest&&<ol class="vector-list vector-latest" aria-hidden="true">{row(latest,' is-latest')}</ol>}
+   {guesses.length>0&&<ol class="vector-list" aria-label="Your guesses, closest first">{sorted.map(g=>row(g))}</ol>}
+   <div class="vector-tools">
+    <button type="button" class="game-btn" disabled={!data||best===1} onClick={hint}>Hint (counts as a guess)</button>
+    {confirmGiveUp?<button type="button" class="game-btn" onClick={()=>{touch();setGaveUp(true);}}>Reveal the word</button>:<button type="button" class="game-btn" disabled={!data} onClick={()=>setConfirmGiveUp(true)}>Give up</button>}
+   </div>
+   <p class="vector-key">Closeness is the cosine between two 50-number vectors, × 100. #1 is the secret’s nearest neighbour.</p>
+  </>}
+  <p class="toy-note">Real GloVe vectors (Stanford, 2014; public domain), a close cousin of word2vec, cut to 5,006 common words and stored as small integers.</p>
+ </div>;
 }

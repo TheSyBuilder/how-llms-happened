@@ -3606,9 +3606,9 @@
       ],
       "canonicalVersionId": "xu-rudnicky-2000-icslp-version",
       "preferredSourceIds": [
-        "icslp-2000-isca-index",
         "xu-rudnicky-2000-isca-record",
-        "xu-rudnicky-2000-isca-full-text"
+        "xu-rudnicky-2000-isca-full-text",
+        "icslp-2000-isca-index"
       ],
       "sourceIds": [
         "icslp-2000-isca-index",
@@ -7955,8 +7955,8 @@
       ],
       "canonicalVersionId": "gehring-2017-icml-version",
       "preferredSourceIds": [
-        "gehring-2017-pmlr-volume-record",
         "gehring-2017-pmlr-record",
+        "gehring-2017-pmlr-volume-record",
         "gehring-2017-pmlr-full-text",
         "gehring-2017-pmlr-supplement"
       ],

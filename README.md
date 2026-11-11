@@ -1,72 +1,55 @@
-# LLM Lineage
+# How LLMs happened
 
 **English** · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
 
-**[Play LLM Lineage](https://thesybuilder.github.io/how-llms-happened/)**
+**[Play it in your browser →](https://thesybuilder.github.io/how-llms-happened/)**
 
 ### How did counting letters turn into a machine you can talk to?
 
-LLM Lineage is an interactive history of the ideas that made large language models possible. Follow 30 turning points from Markov's letter counts in 1913 to modern systems that hold conversations, use tools and work through problems.
+LLM Lineage tells the history of large language models as 32 tiny browser games, from Markov counting vowels in Pushkin in 1913 to the agents of 2026. Every game is built on a real paper, has a goal, and ends with a result you can share.
 
-Every chapter gives you an idea to play with. Change a word to see how context changes a prediction. Decide what a network remembers. Spend a training budget and discover why bigger doesn't always mean better. Small experiments run right in your browser, alongside visual explanations and the original research.
+**32 games · 1913 → 2026 · No ML background needed · English, 简体中文, العربية**
 
-**30 playable chapters · 1913–2026 · Tiny experiments, real ideas**
+![The home page: "Are you smarter than GPT-2?" next to the headline, with the era timeline below](docs/images/home.png)
 
-![The LLM Lineage playground: choose a turning point and jump into its experiment](docs/images/playground.png)
+## Start with a challenge
 
-No machine-learning background needed. Start with a question that interests you, try the experiment, and leave with an idea you can explain to a friend. The equations and research details are there whenever you want to go further.
+The home page opens on **Are you smarter than GPT-2?** You get ten sentences and pick the real next word from four options before the timer runs out. GPT-2 small's choices were recorded once from the real 124M-parameter model, so you play against what it actually picked. Nothing runs live.
 
-## One word changes everything
+Then pick a game from the timeline. A few favourites:
 
-Keep **metal**. Change **sky** to **lake**. Which word belongs in the gap now?
+| Game | Year | The idea it teaches |
+| --- | --- | --- |
+| **Can you be random?** Press A or B thirty times while a 1913 counting trick predicts you. | 1913 | Markov chains |
+| **Break ELIZA.** Catch the first chatbot out with three of its tells. | 1966 | Pattern matching and the ELIZA effect |
+| **Closest word.** A daily puzzle: find the secret word using real word-vector closeness. | 2013 | Word embeddings |
+| **How many tokens is your name?** Type anything and watch real GPT-2 tokens appear. | 2016 | Byte-pair encoding |
+| **Attention puzzles.** Steer which words a word listens to, in as few moves as you can. | 2017 | The Transformer |
+| **Train a judge.** Teach a reward model, then watch it rate a confident falsehood as highly as the truth. | 2022 | Learning from human feedback |
+| **Will it run on my laptop?** Find the biggest open model that fits your memory. | 2023 | Open weights and quantisation |
+| **Reach the target.** Solve number puzzles, then see the search tree a reasoning model explores. | 2024 | Reasoning by search |
 
-| A clue from the sky | A clue from the lake |
-| --- | --- |
-| ![BERT toy: metal and sky leave plane as the only match](docs/images/bert-sky.png) | ![BERT toy: changing sky to lake makes boat the only match](docs/images/bert-lake.png) |
-| **plane** fits. | Now **boat** fits. |
+Each chapter opens on its game. **Story** explains the problem, the idea and what it changed. **Math & sources** has the equations and links to the original papers.
 
-That is the starting idea behind the BERT chapter: words after a gap can help, too. These screenshots show an illustration with eight invented sentences, not a running BERT model. The percentages count matches in that tiny set.
-
-## Pick your first “oh, I get it”
-
-| Try this | Then ask yourself |
-| --- | --- |
-| **Guess the next letter.** Print a few letters, then switch memory off. | Do the same numbers of A and B always make the same pattern? |
-| **Give words a map.** Move “bank” from river words toward money words. | Which neighbours change? |
-| **Open the memory drawer.** Protect, hide and replace a stored number. | Is hiding the same as forgetting? |
-| **Let words share clues.** In the Transformer toy, hide future words. | Can the first word peek at the ending? |
-| **Teach by choosing.** Prefer the short, clear answer. | Can an answer sound helpful and still be wrong? |
-| **Build a delivery helper.** Give it notes, a map and time to try routes. | Can more trying fix an old map? |
-
-The home page suggests three gentle starting games. **Explore** lets you search all 30 experiments and find their original papers.
+![A finished "Can you be random?" game: the result card reads "It predicted you 50% of the time." with buttons to share on X, copy the link, save an image or play again](docs/images/result-card.png)
 
 <details>
-<summary><strong>Take a peek on a phone</strong></summary>
+<summary><strong>How honest are the games?</strong></summary>
 
 <br />
-<img src="docs/images/letter-press-mobile.png" width="320" alt="The letter-guessing game on a phone, with a memory switch, chance bars and a large Print next letter button" />
 
-The controls work with touch, a mouse or a keyboard. Motion respects your reduced-motion setting.
+The games are small teaching models, built so that one mechanism is visible. Most learn from tiny datasets or use hand-written rules, and each says so in one line under the game. Where a game uses real model data, the data is the real thing:
+
+- **GPT-2 challenge:** next-word probabilities from GPT-2 small (124M), recorded with transformers.js on 11 November 2026 ([`scripts/record-gpt2.mjs`](scripts/record-gpt2.mjs)).
+- **Tokens:** the GPT-2 byte-level BPE vocabulary and merges, checked against a reference tokenizer.
+- **Closest word:** GloVe 6B 50-dimensional vectors, cut to about 5,000 common words.
+- **Will it run on my laptop?:** parameter counts from each model's official card.
 
 </details>
 
-## Play first. Go deeper when you want.
-
-Every chapter starts with an everyday explanation and a **Try this first** prompt. Make a guess, change something, then open **What’s going on?** to connect the result to the idea.
-
-- **Play** puts the experiment in front of you.
-- **Story** explains the problem, the breakthrough and what it made possible, with a diagram and a takeaway.
-- **Math & sources** opens the equations, architecture, results, limitations and original research.
-
-Switching views keeps your experiment's state. Short introductions also have a **Listen to the idea** button when your browser supports reading aloud.
-
-The story runs from early letter counts through memory, word vectors, attention and the Transformer, then on to ChatGPT, retrieval, tools and reasoning. Each chapter is a turning point, with an anchor paper and related reading.
-
-**The experiments are small teaching toys.** Some learn from tiny datasets; others use hand-written rules. They run in your browser and make one mechanism visible. The chapter explains how the real research goes further.
-
 ## Run it on your computer
 
-You need **Node.js 22.12+** and **npm 9.6.5+**. Clone the repository, then run:
+You need **Node.js 22.12+** and **npm 9.6.5+**.
 
 ```sh
 git clone https://github.com/TheSyBuilder/how-llms-happened.git
@@ -75,21 +58,29 @@ npm install
 npm run dev
 ```
 
-Open the local address printed in the terminal, or [explore all 30 chapters online](https://thesybuilder.github.io/how-llms-happened/).
+The site works in light and dark mode, on phones from 320 px wide, and with touch, mouse or keyboard. Arabic pages use right-to-left layouts.
 
-The whole website is available in **English, 简体中文 and العربية**. Switch languages in the top bar; your chapter stays open. Chinese uses everyday explanations, and Arabic uses a conversational Saudi voice with right-to-left layouts. The screenshots below show the English edition.
+<details>
+<summary><strong>On a phone</strong></summary>
+
+<br />
+<img src="docs/images/home-mobile.png" width="320" alt="The home page on a phone in dark mode: the headline, then the GPT-2 challenge with four answer buttons" />
+
+</details>
 
 <details>
 <summary><strong>For contributors: code and checks</strong></summary>
 
-Built with **Astro + Preact**, with SVG diagrams and small browser experiments.
+Built with **Astro + Preact**. The design and game-kit contract is in [`docs/launch-redesign.md`](docs/launch-redesign.md).
 
 | Looking for… | Start here |
 | --- | --- |
-| Chapter order and metadata | [`src/lib/chapters.ts`](src/lib/chapters.ts) |
-| Everyday introductions and first actions | [`src/lib/first-steps.ts`](src/lib/first-steps.ts) |
-| Stories and interactive toys | [`src/components/`](src/components/) |
+| Chapter order, years and eras | [`src/lib/chapter-meta.ts`](src/lib/chapter-meta.ts), [`src/lib/chapters.ts`](src/lib/chapters.ts) |
+| Game names and first prompts | [`src/lib/first-steps.ts`](src/lib/first-steps.ts) |
+| Shared goal bar, result card and progress | [`src/components/game/`](src/components/game/), [`src/lib/progress.ts`](src/lib/progress.ts) |
+| Games and stories | [`src/components/`](src/components/) |
 | Paper facts and links | [`data/corpus.json`](data/corpus.json), [`src/lib/chapter-papers.ts`](src/lib/chapter-papers.ts) |
+| Translations | [`src/i18n/`](src/i18n/) |
 
 ```sh
 npm run check
@@ -98,12 +89,16 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser checks cover desktop and narrow phone layouts, mouse/touch/keyboard interactions, redirects and console errors. They also save screenshots for visual review.
+`npm run build` also generates a 1200 × 630 social image per chapter (`/og/<slug>.png`) and audits links, anchors and per-page size budgets.
 
 </details>
 
+## Credits
+
+Data: GPT-2 weights and tokenizer files by OpenAI (MIT licence); GloVe vectors by Pennington, Socher & Manning (Public Domain Dedication and License); the ENABLE word list (public domain). Fonts: Space Grotesk and DM Sans (SIL Open Font License). Every chapter links the papers it is built on.
+
 ## Help the next person understand
 
-Found a moment that made the idea click? Share it. Got stuck? [Open an issue](https://github.com/TheSyBuilder/how-llms-happened/issues) with the chapter, what you tried and where we lost you. Clearer examples and corrections backed by original sources are welcome.
+Found a moment that made an idea click, or a game that confused you? [Open an issue](https://github.com/TheSyBuilder/how-llms-happened/issues) with the chapter and what you tried. Corrections backed by original sources are welcome.
 
-If you enjoyed the playground, a **star** helps other curious people find it.
+If you enjoyed it, a **star** helps other curious people find it.

@@ -8,44 +8,48 @@ const source = readFileSync(new URL('../src/components/RecurrenceToy.tsx', impor
 const { outputText } = ts.transpileModule(source, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: 'preact' },
 });
+const base = createRequire(import.meta.url);
+const require = id => id.endsWith('.css') || id.includes('/game/') || id.endsWith('/progress') ? {} : base(id);
 const compiled = {};
-new Function('require', 'exports', outputText)(createRequire(import.meta.url), compiled);
-const { spreadSignal, signalRoutes } = compiled;
-const positions = state => state.reached.flatMap((yes, i) => yes ? [i + 1] : []);
+new Function('require', 'exports', outputText)(require, compiled);
+const { plan, finishTick, reachAt, winners, raceLengths, raceStars, readsPerTick, ticksPerStep } = compiled;
 
-test('a new window reads the previous layer, not partially updated neighbours', () => {
-  assert.deepEqual(positions(spreadSignal('local', 0)), [1]);
-  assert.deepEqual(positions(spreadSignal('local', 1)), [1, 2]);
-  assert.deepEqual(positions(spreadSignal('local', 2)), [1, 2, 3]);
-  assert.deepEqual(positions(spreadSignal('dilated', 2)), [1, 2, 3, 4]);
-  assert.deepEqual(positions(spreadSignal('dilated', 3)), [1, 2, 3, 4, 5, 6, 7, 8]);
+test('step counts follow each wiring: a chain of hops, widening layers, one all-pairs read', () => {
+  assert.deepEqual(plan('chain', 8), { steps: 7, reads: 2 });
+  assert.deepEqual(plan('conv', 8), { steps: 3, reads: 24 });
+  assert.deepEqual(plan('attention', 8), { steps: 1, reads: 64 });
+  // Spacing cycles 1, 2, 4, 8, 16, then starts again.
+  assert.equal(plan('conv', 32).steps, 5);
+  assert.equal(plan('conv', 64).steps, 11);
 });
 
-test('arrival labels agree with the first path to the last word for each route', () => {
-  for (const route of signalRoutes) {
-    const arrival = Array.from({ length: 8 }, (_, hops) => spreadSignal(route.id, hops).reached[7]).indexOf(true);
-    assert.equal(arrival, route.arrival);
-    assert.deepEqual(positions(spreadSignal(route.id, 0)), [1]);
+test('a step needing more reads than the chip offers takes several ticks', () => {
+  assert.equal(readsPerTick, 128);
+  assert.equal(ticksPerStep('attention', 64), 32);
+  assert.equal(ticksPerStep('conv', 64), 2);
+  assert.equal(ticksPerStep('chain', 64), 1);
+  assert.deepEqual(raceLengths.map(n => finishTick('attention', n)), [1, 2, 8, 32]);
+  assert.deepEqual(raceLengths.map(n => finishTick('conv', n)), [3, 4, 5, 22]);
+  assert.deepEqual(raceLengths.map(n => finishTick('chain', n)), [7, 15, 31, 63]);
+});
+
+test('attention wins the short races and the widening stack wins the long ones', () => {
+  assert.deepEqual(raceLengths.map(n => winners(n)), [['attention'], ['attention'], ['conv'], ['conv']]);
+});
+
+test('reach grows only when a step completes and arrives exactly at the finish tick', () => {
+  for (const n of raceLengths) for (const wiring of ['chain', 'conv', 'attention']) {
+    const finish = finishTick(wiring, n);
+    assert.equal(reachAt(wiring, n, 0), 1);
+    assert.ok(reachAt(wiring, n, finish - 1) < n);
+    assert.equal(reachAt(wiring, n, finish), n);
+    for (let t = 1; t <= finish; t++) assert.ok(reachAt(wiring, n, t) >= reachAt(wiring, n, t - 1));
   }
+  assert.equal(reachAt('attention', 64, 31), 1);
+  assert.equal(reachAt('conv', 8, 1), 2);
+  assert.equal(reachAt('conv', 8, 2), 4);
 });
 
-test('serial and parallel updates have different connectivity despite equal local reach', () => {
-  const serial = spreadSignal('recurrent', 2);
-  const local = spreadSignal('local', 2);
-  assert.deepEqual(serial.reached, local.reached);
-  assert.equal(serial.edges.length, 1);
-  assert.equal(new Set(local.edges.map(edge => edge.to)).size, 8);
-  const direct = spreadSignal('attention', 1);
-  assert.equal(direct.edges.length, 64);
-  assert.equal(direct.edges.filter(edge => edge.carries).length, 8);
-});
-
-test('the widening schedule resets and boundary connections stay within the sentence', () => {
-  const sixth = spreadSignal('dilated', 6);
-  assert.ok(sixth.edges.some(edge => edge.from === 0 && edge.to === 1));
-  for (const route of signalRoutes) for (let hops = 0; hops <= 7; hops++) {
-    const state = spreadSignal(route.id, hops);
-    assert.ok(state.edges.every(edge => edge.from >= 0 && edge.from < 8 && edge.to >= 0 && edge.to < 8));
-    assert.ok(state.before.every((lit, i) => !lit || state.reached[i]));
-  }
+test('stars need every bet right for three', () => {
+  assert.deepEqual([4, 3, 2, 1, 0].map(raceStars), [3, 2, 1, 0, 0]);
 });

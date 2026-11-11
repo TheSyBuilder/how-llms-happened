@@ -1,40 +1,35 @@
 ---
-import {firstSteps} from "../lib/first-steps";
-import LineageStage from "../components/LineageStage";
-import ResearchGlyph from "../components/ResearchGlyph";
 import LineageLayout from "../layouts/LineageLayout.astro";
-import "../styles/timeline-navigation.css";
-import { timeline, chapters, chapterHref, chapterPaper } from "../lib/chapters";
-const live = chapters.filter(chapter => chapter.status === "live");
-const latest = timeline.filter(chapter => chapter.status === "live").at(-1)!;
-const picks=[['transformer','Look closer'],['bert','Read both ways'],['gpt-3','Learn from examples'],['retrieval','Find the evidence'],['human-feedback','Learn a preference'],['reasoning','Try another path']];
-const stops=picks.map(([slug,verb])=>{const c=chapters.find(c=>c.slug===slug)!;const p=chapterPaper(c.anchor)!;return {slug:c.slug,title:c.title,year:c.year,paper:p.title,url:p.url,verb:verb!};});
+import Gpt2Challenge from "../components/hero/Gpt2Challenge";
+import EraSpine from "../components/home/EraSpine.astro";
+import GameLibrary from "../components/home/GameLibrary.astro";
+import { chapterMeta } from "../lib/chapter-meta";
+import "../styles/game.css";
+import "../styles/home.css";
+const first = chapterMeta[0]!;
 ---
 <LineageLayout title="LLM Lineage — how language models happened" description="From letter counts to language models: an interactive timeline of the ideas that changed how computers work with words.">
-  <div class="stage-wrap page-width"><LineageStage stops={stops} client:load /></div>
-  <section class="gentle-start page-width" aria-label="Easy places to start"><p class="eyebrow">New here? Start small.</p><h2>One little game. One big idea.</h2><p>Try a button. Make a guess. See what changes. Read the story whenever you feel curious.</p><div><a href="/chapters/next-letter/#play">Guess the next letter <span>Start with A and B →</span></a><a href="/chapters/bert/#play">Find the missing word <span>Use the clues →</span></a><a href="/chapters/gpt-4/#play">Count the shapes <span>See what a picture adds →</span></a></div></section>
-  <section class="game-library page-width" id="experiments" aria-labelledby="library-title"><div class="library-heading"><div><p class="eyebrow">No homework needed.</p><h2 id="library-title">Pick something to play with.</h2></div><button data-open-explorer>Find an experiment <span aria-hidden="true">↗</span></button></div>
-  <div class="game-grid">{live.map((c,i)=>{const p=chapterPaper(c.anchor)!;return <article class="game-entry"><a href={`/chapters/${c.slug}/#play`} class="game-entry-main"><span class="game-entry-meta">{String(i+1).padStart(2,'0')} <time>{c.year}</time></span><ResearchGlyph kind={c.slug}/><h3>{firstSteps[c.slug]?.name ?? c.title}</h3><p class="game-original-title">{c.title}</p><span class="game-entry-play">Play experiment ↗</span></a><a class="game-paper-link" target="_blank" rel="noopener noreferrer" href={p.url} aria-label={`Read original paper: ${p.title}`}>Paper ↗</a></article>})}</div></section>
-  <section class="timeline-section" id="timeline" aria-labelledby="timeline-heading">
-    <div class="timeline-heading page-width"><div><p class="eyebrow">The story so far</p><h2 id="timeline-heading">Follow the thread.</h2></div><p>{live.length} {live.length === 1 ? "chapter" : "chapters"} live · {chapters.length} turning points<br /><span>Scroll across to travel through time →</span></p></div>
-    <nav class="era-jumps page-width" aria-label="Jump along the timeline"><span>Jump to</span><button data-era="next-letter">The beginnings</button><button data-era="transformer">2017 · Transformers</button><button data-era="gpt-3">2020 · Scaling up</button><button data-era="reasoning">2025 · Reasoning</button><button data-era="now">2026 · Today</button></nav>
-    <div class="timeline-navigator page-width" hidden>
-      <div class="timeline-position"><output for="timeline-position"><strong data-timeline-year>{timeline[0]!.year}</strong><span data-timeline-title>{timeline[0]!.title}</span></output><span data-timeline-count>01 / {timeline.length}</span></div>
-      <div class="timeline-scrubber"><button type="button" data-timeline-step="-1" aria-label="Previous turning point" aria-controls="timeline-strip">←</button><label><span class="sr-only">Chapter in timeline</span><input id="timeline-position" type="range" min="1" max={timeline.length} value="1" aria-controls="timeline-strip" aria-valuetext={`${timeline[0]!.year}: ${timeline[0]!.title}, 1 of ${timeline.length}`} /><span class="timeline-extents" aria-hidden="true"><span>1913</span><span>One stop per chapter</span><span>{timeline.at(-1)!.year}</span></span></label><button type="button" data-timeline-step="1" aria-label="Next turning point" aria-controls="timeline-strip">→</button></div>
+  <section class="home-hero page-width" aria-labelledby="home-title">
+    <div class="home-copy">
+      <p class="home-kicker"><button type="button" class="home-capsule" data-curiosity="1913" aria-label="Open the 1913 time capsule" title="A little history is hiding here">{first.year}</button><span>– today</span><span aria-hidden="true">·</span><span>{`${chapterMeta.length} tiny games`}</span></p>
+      <h1 id="home-title" class="home-title">How did counting letters turn into a machine you can <em>talk to</em>?</h1>
+      <p class="home-subtitle">From 1913 to today, one tiny game per idea. No ML needed. Every game is a real paper.</p>
     </div>
-    <div class="timeline-strip" id="timeline-strip" tabindex="0" aria-label="Chapter timeline, scroll horizontally with arrow keys">
-      <ol class="timeline-cards">
-        {timeline.map((chapter, i) => <li id={chapter.slug} class:list={["timeline-card", { "is-live": chapter.status === "live" }]}>
-          <div class="timeline-date"><time>{chapter.year}</time><span aria-hidden="true">{String(i + 1).padStart(2, "0")}</span></div>
-          <a href={chapterHref(chapter.slug)}><span class="chapter-status">{chapter.status === "live" ? "● Live · play now" : "Coming soon"}</span><h3>{chapter.title}</h3><p>{chapter.hook}</p><span class="card-arrow" aria-hidden="true">↗</span></a>
-        </li>)}
-      </ol>
+    <div class="home-game"><Gpt2Challenge client:load /></div>
+    <div class="home-actions">
+      <a class="game-btn is-primary" href={`/chapters/${first.slug}/#play`}>{`Start at ${first.year}`} <span class="home-arrow" aria-hidden="true">→</span></a>
+      <button type="button" class="game-btn" data-open-explorer>All games</button>
     </div>
-    <div class="timeline-bottom page-width"><span>Small experiments, right in your browser.</span><a href={chapterHref(latest.slug)}>Jump to the latest chapter →</a></div>
+  </section>
+  <EraSpine />
+  <GameLibrary />
+  <section class="home-why page-width" aria-labelledby="why-title">
+    <h2 id="why-title">Why this exists</h2>
+    <p>Most explanations of language models start at the end. This one starts in 1913 and lets you play every step.</p>
+    <div class="home-why-links"><a class="game-btn" href="https://x.com/TheSyBuilder" target="_blank" rel="noopener noreferrer">Follow on X ↗</a><a class="game-btn" href="https://github.com/TheSyBuilder/how-llms-happened" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a></div>
   </section>
 </LineageLayout>
 
 <script>
-import { setupTimeline } from '../lib/timeline-navigation';
-setupTimeline();
+import "../components/home/progress-marks";
 </script>

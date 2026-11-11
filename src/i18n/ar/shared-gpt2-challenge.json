@@ -1,0 +1,30 @@
+{
+  "rich": {},
+  "text": {
+    "You {0} · GPT-2 {1}. You beat GPT-2.": "أنت {0} · GPT-2 {1}. لقد تغلّبت على GPT-2.",
+    "You {0} · GPT-2 {1}. GPT-2 wins this time.": "أنت {0} · GPT-2 {1}. فاز GPT-2 هذه المرة.",
+    "You {0} · GPT-2 {1}. It's a tie.": "أنت {0} · GPT-2 {1}. تعادل.",
+    "I scored {0}/{1} vs GPT-2's {2}/{3} on \"Are you smarter than GPT-2?\"": "سجّلتُ {0}/{1} مقابل {2}/{3} لـ GPT-2 في «هل أنت أذكى من GPT-2؟»",
+    "You {0} · GPT-2 {1}": "أنت {0} · GPT-2 {1}",
+    "Round {0} / {1}": "الجولة {0} / {1}",
+    "{0} seconds left": "بقيت {0} ثانية",
+    "Are you smarter than GPT-2?": "هل أنت أذكى من GPT-2؟",
+    "Pick the real next word. Beat GPT-2.": "اختر الكلمة التالية الحقيقية، وتغلّب على GPT-2.",
+    "Final score": "النتيجة النهائية",
+    "No timer": "بلا مؤقّت",
+    "(next word)": "(الكلمة التالية)",
+    "Choose the next word": "اختر الكلمة التالية",
+    "You": "أنت",
+    "Right!": "صحيح!",
+    "Time's up.": "انتهى الوقت.",
+    "Not this time.": "ليس هذه المرة.",
+    "GPT-2 got it right.": "أصاب GPT-2.",
+    "GPT-2 got it wrong.": "أخطأ GPT-2.",
+    "Its top guess from its whole vocabulary:": "تخمينه الأول من بين مفرداته كلها:",
+    "Next word": "الكلمة التالية",
+    "See your result": "اعرض نتيجتك",
+    "Your score": "نتيجتك",
+    "GPT-2 is good at idioms and famous lines, and weak at sums, negation and facts it never read.": "يُجيد GPT-2 الأمثال والعبارات الشهيرة، ويضعف في الحساب والنفي والحقائق التي لم يقرأها قط.",
+    "GPT-2 small (124M parameters, 2019). Its choices were recorded once with transformers.js; nothing runs live.": "GPT-2 الصغير (124 مليون معامل، 2019). سُجّلت اختياراته مرة واحدة باستخدام transformers.js، ولا يعمل أي نموذج مباشرة هنا."
+  }
+}

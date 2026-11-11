@@ -6,53 +6,56 @@ import ts from 'typescript';
 
 const source = readFileSync(new URL('../src/components/NeuralLanguageToy.tsx', import.meta.url), 'utf8');
 const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, jsxImportSource: 'preact' } });
+const base = createRequire(import.meta.url);
+// The game kit, progress store and stylesheet are not needed to test the model and scoring.
+const require = id => id.endsWith('.css') || id.includes('/game/') || id.endsWith('/progress') ? {} : base(id);
 const toy = {};
-new Function('require', 'exports', outputText)(createRequire(import.meta.url), toy);
-const { freshLanguageModel, sleepChance, teachNextWord, placeDog, lessonLimit } = toy;
+new Function('require', 'exports', outputText)(require, toy);
+const { words, vectors, lessons, freshPredictor, satChance, teach, shiftsAfter, movers, scoreCalls, neuralStars, maxScore, shiftThreshold } = toy;
+const dot = (a, b) => a.reduce((sum, x, i) => sum + x * b[i], 0);
 
-test('learning transfers to an unobserved context without adding its counts or changing its vector', () => {
-  const before = freshLanguageModel();
-  const after = teachNextWord(before, 'cat');
-  assert.equal(sleepChance(before, 'dog'), .5);
-  assert.ok(sleepChance(after, 'cat') > sleepChance(after, 'dog'));
-  assert.ok(sleepChance(after, 'dog') > .5);
-  assert.equal(sleepChance(after, 'car'), .5);
-  assert.deepEqual(after.counts, { cat: [1, 0], dog: [0, 0], car: [0, 0] });
-  assert.deepEqual(after.vectors.dog, before.vectors.dog);
-  assert.deepEqual(before, freshLanguageModel());
-});
-
-test('prediction training updates both the observed vector and shared weights and lowers its loss', () => {
-  const once = teachNextWord(freshLanguageModel(), 'cat');
-  const twice = teachNextWord(once, 'cat');
-  assert.notDeepEqual(twice.vectors.cat, once.vectors.cat);
-  assert.notDeepEqual(twice.weights, once.weights);
-  assert.ok(-Math.log(sleepChance(twice, 'cat')) < -Math.log(sleepChance(once, 'cat')));
-  assert.deepEqual(twice.vectors.car, once.vectors.car);
-});
-
-test('changing an untaught representation changes transfer but never adds training evidence', () => {
-  let model = freshLanguageModel();
-  for (let i = 0; i < 4; i++) model = teachNextWord(teachNextWord(model, 'cat'), 'car');
-  const nearCat = placeDog(model, 0), nearCar = placeDog(model, 100);
-  assert.ok(sleepChance(nearCat, 'dog') > .5);
-  assert.ok(sleepChance(nearCar, 'dog') < .5);
-  assert.deepEqual(nearCar.weights, model.weights);
-  assert.deepEqual(nearCar.counts, model.counts);
-  assert.equal(nearCar.steps, model.steps);
-  assert.deepEqual(placeDog(model, -10).vectors.dog, [1, 0]);
-  assert.deepEqual(placeDog(model, 110).vectors.dog, [0, 1]);
-});
-
-test('opposing lessons remain finite through the full session and stop at its limit', () => {
-  for (const sequence of [['cat'], ['car'], ['cat', 'car']]) {
-    let model = freshLanguageModel();
-    for (let i = 0; i < lessonLimit; i++) {
-      model = teachNextWord(model, sequence[i % sequence.length]);
-      for (const word of ['cat', 'dog', 'car']) assert.ok(sleepChance(model, word) > 0 && sleepChance(model, word) < 1);
+test('a lesson moves exactly the words that share a feature with the taught word', () => {
+  let model = freshPredictor();
+  for (const lesson of lessons) {
+    const shifts = shiftsAfter(model, lesson);
+    for (const word of words) {
+      if (word === lesson.word) continue;
+      const overlap = dot(vectors[word], vectors[lesson.word]);
+      if (overlap === 0) assert.equal(shifts[word], 0);
+      // Every non-zero shift clears the threshold comfortably, so no call is a coin flip.
+      else assert.ok(Math.abs(shifts[word]) >= shiftThreshold + .5, `${lesson.word} → ${word}: ${shifts[word]}`);
     }
-    assert.equal(model.steps, lessonLimit);
-    assert.equal(teachNextWord(model, 'cat'), model);
-    assert.deepEqual(model.counts.dog, [0, 0]);
+    model = teach(model, lesson);
   }
+});
+
+test('teaching cat helps dog without a lesson of its own, and a horse lesson can lower cat', () => {
+  const start = freshPredictor();
+  for (const word of words) assert.equal(satChance(start, word), .5);
+  assert.deepEqual(movers(start, lessons[0]), ['dog', 'horse']);
+  const afterCat = teach(start, lessons[0]);
+  assert.ok(satChance(afterCat, 'dog') > .6);
+  assert.equal(satChance(afterCat, 'car'), .5);
+  const afterCar = teach(afterCat, lessons[1]);
+  assert.ok(shiftsAfter(afterCar, lessons[2]).cat < -1);
+  assert.deepEqual(start, freshPredictor());
+});
+
+test('a sat lesson lowers that word’s loss and a stopped lesson lowers its chance of sat', () => {
+  const model = freshPredictor();
+  assert.ok(satChance(teach(model, { word: 'cat', next: 'sat' }), 'cat') > .5);
+  assert.ok(satChance(teach(model, { word: 'car', next: 'stopped' }), 'car') < .5);
+  assert.equal(teach(model, lessons[0]).steps, 1);
+});
+
+test('calls score one point per other word and stars need near-perfect reading', () => {
+  const model = freshPredictor();
+  assert.equal(scoreCalls(model, lessons[0], ['dog', 'horse']), 4);
+  assert.equal(scoreCalls(model, lessons[0], []), 2);
+  assert.equal(scoreCalls(model, lessons[0], ['bike', 'car']), 0);
+  assert.equal(maxScore, 24);
+  let perfect = 0, m = freshPredictor();
+  for (const lesson of lessons) { perfect += scoreCalls(m, lesson, movers(m, lesson)); m = teach(m, lesson); }
+  assert.equal(perfect, maxScore);
+  assert.deepEqual([24, 22, 21, 19, 18, 15, 14, 0].map(neuralStars), [3, 3, 2, 2, 1, 1, 0, 0]);
 });

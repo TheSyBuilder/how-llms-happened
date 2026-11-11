@@ -1,0 +1,19 @@
+/* "Place your bet": race three wirings from word 1 to the last word. Tokens only; logical properties. */
+.race-game { margin-block-start:28px; padding:clamp(14px, 4vw, 28px); background:var(--surface); color:var(--ink); border:2px solid var(--ink); border-radius:var(--radius, 12px); box-shadow:var(--shadow-hard, 4px 4px 0 var(--ink)); }
+.race-budget { margin-block:0 14px; font:600 clamp(17px, 4.2vw, 20px)/1.4 var(--display); }
+.race-lanes { display:grid; gap:10px; }
+.race-lane { display:grid; gap:6px; padding:12px 14px; background:var(--paper); border:2px solid var(--line); border-radius:var(--radius, 12px); transition:border-color 160ms ease; }
+.race-lane.is-bet { border-color:var(--ink); }
+.race-lane.is-winner { border-color:var(--good); box-shadow:inset 0 0 0 2px var(--good); }
+.race-lane h3 { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; font:700 18px/1.25 var(--display); }
+.race-badge { padding:1px 10px; background:var(--accent); color:var(--on-accent, var(--ink)); border:2px solid var(--ink); border-radius:var(--radius-pill, 999px); font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+.race-plan, .race-time { margin:0; color:var(--muted); font-size:14px; font-variant-numeric:tabular-nums; }
+.race-time { color:var(--ink); }
+.race-track { display:block; block-size:14px; overflow:hidden; background:var(--surface); border:2px solid var(--ink); border-radius:var(--radius-pill, 999px); }
+.race-fill { display:block; block-size:100%; inline-size:calc(clamp(0, var(--value, 0), 1) * 100%); background:var(--accent); transition:inline-size 120ms linear; }
+.is-winner .race-fill { background:var(--good); }
+.race-bets { margin-block:16px 0; }
+.race-clock { margin-block:16px 0 0; }
+.race-feedback { min-block-size:1.5em; margin-block:12px 0; font-weight:600; }
+.race-actions { display:flex; flex-wrap:wrap; gap:10px; }
+@media (prefers-reduced-motion: reduce) { .race-fill, .race-lane { transition:none; } }

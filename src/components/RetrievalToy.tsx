@@ -1,14 +1,27 @@
 import '../i18n/preact';
-import { useState } from "preact/hooks";
+import '../styles/games/retrieval.css';
+import { useRef, useState } from "preact/hooks";
+import GoalBar from "./game/GoalBar";
+import ResultCard, { type GameResult } from "./game/ResultCard";
+import { markPlayed } from "../lib/progress";
 
-export type Passage = { id: string; title: string; text: string; enabled: boolean };
+export type Owner = "museum" | "web";
+export type Passage = { id: string; title: string; text: string; owner: Owner };
+// The museum writes A and B; anyone can post C–E. The reader reads the top two matches.
 export const library: Passage[] = [
-  { id: "a", title: "Museum notice", text: "Moss Museum opens at 10:00.", enabled: true },
-  { id: "b", title: "Cafe notice", text: "Fern Cafe opens at 08:00.", enabled: true },
-  { id: "c", title: "Garden note", text: "Moss Museum has a fern garden.", enabled: true },
+  { id: "a", title: "Official notice", text: "Moss Museum opens at 10:00.", owner: "museum" },
+  { id: "b", title: "Museum FAQ", text: "When does Moss Museum open? See the notice by the door.", owner: "museum" },
+  { id: "c", title: "Cafe notice", text: "Fern Cafe opens at 08:00.", owner: "web" },
+  { id: "d", title: "Garden blog", text: "Moss Museum has a fern garden.", owner: "web" },
+  { id: "e", title: "Visitor review", text: "Lovely moss rooms and a quiet cafe.", owner: "web" },
 ];
-export const questions = ["Moss Museum", "Fern Cafe"];
-const words = (text: string) => new Set(text.toLowerCase().match(/[a-z0-9]+/g) ?? []);
+export const QUESTION = "When does Moss Museum open?";
+export const SUBJECT = "Moss Museum";
+export const TRUE_TIME = "10:00";
+export const READ_COUNT = 2;
+export type Phase = "poison" | "fix" | "done";
+
+export const words = (text: string) => new Set(text.toLowerCase().match(/[a-z0-9]+/g) ?? []);
 const normalise = (text: string) => text.trim().toLowerCase().replace(/\s+/g, " ");
 
 export function rankPassages(search: string, passages: Passage[]) {
@@ -17,89 +30,134 @@ export function rankPassages(search: string, passages: Passage[]) {
     const tokens = words(passage.text);
     const matched = [...query].filter(word => tokens.has(word));
     return { ...passage, matched, score: matched.length };
-  }).sort((a, b) => Number(b.enabled) - Number(a.enabled) || b.score - a.score || a.id.localeCompare(b.id));
+  }).sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
 }
 
 export function retrieve(search: string, passages: Passage[], count: number) {
-  return rankPassages(search, passages).filter(passage => passage.enabled && passage.score > 0).slice(0, count);
+  return rankPassages(search, passages).filter(passage => passage.score > 0).slice(0, count);
 }
 
-export function readOpeningTime(subject: string, passages: Passage[]) {
-  const evidence = passages.flatMap(passage => passage.text.split(/[.!?\n]+/).flatMap(sentence => {
-    const match = sentence.trim().match(/^(.+?)\s+opens at\s+((?:[01]\d|2[0-3]):[0-5]\d)$/i);
-    return match && normalise(match[1]!) === normalise(subject) ? [{ id: passage.id, time: match[2]! }] : [];
+// Accepts 9:30, 09:30, 10.30, 9am, 9 am, 9:30 pm and 9 a.m.; a bare "9" is too ambiguous to read.
+export function parseTime(raw: string): string | null {
+  const match = raw.trim().toLowerCase().match(/^(\d{1,2})(?:[:.](\d{2}))?\s*(am|pm)?$/);
+  if (!match) return null;
+  const [, h, m, meridiem] = match;
+  if (m === undefined && meridiem === undefined) return null;
+  let hour = Number(h);
+  const minute = m === undefined ? 0 : Number(m);
+  if (minute > 59) return null;
+  if (meridiem) {
+    if (hour < 1 || hour > 12) return null;
+    hour = hour % 12 + (meridiem === "pm" ? 12 : 0);
+  } else if (hour > 23) return null;
+  return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
+// A full stop ends a sentence unless it sits between two digits (10.30).
+export const sentences = (text: string) => text.replace(/\b([ap])\.\s?m\b\.?/gi, "$1m.").split(/[!?\n]+|(?<!\d)\.|\.(?!\d)/);
+
+export function readOpeningTime(subject: string, passages: Pick<Passage, "id" | "text">[]) {
+  const evidence = passages.flatMap(passage => sentences(passage.text).flatMap(sentence => {
+    const match = sentence.trim().match(/^(.+?)\s+opens at\s+(.+)$/i);
+    const time = match ? parseTime(match[2]!) : null;
+    return match && time && normalise(match[1]!) === normalise(subject) ? [{ id: passage.id, time }] : [];
   }));
   const times = [...new Set(evidence.map(item => item.time))];
-  return { status: times.length === 0 ? "missing" : times.length === 1 ? "answer" : "conflict", time: times.length === 1 ? times[0] : null, evidence };
+  return { status: times.length === 0 ? "missing" : times.length === 1 ? "answer" : "conflict", time: times.length === 1 ? times[0]! : null, evidence } as const;
 }
 
+export type Verdict = "correct" | "fooled" | "conflict" | "missing";
+export function askLibrary(passages: Passage[]) {
+  const found = retrieve(QUESTION, passages, READ_COUNT);
+  const result = readOpeningTime(SUBJECT, found);
+  const verdict: Verdict = result.status !== "answer" ? result.status : result.time === TRUE_TIME ? "correct" : "fooled";
+  return { found, result, verdict };
+}
+
+export const canEdit = (phase: Phase, passage: Passage) => phase === "poison" ? passage.owner === "web" : phase === "fix" && passage.owner === "museum";
+export const changedPages = (passages: Passage[], owner: Owner) => passages.filter(p => p.owner === owner && p.text !== library.find(o => o.id === p.id)!.text).length;
+export const poisonStars = (edits: number): 0 | 1 | 2 | 3 => edits <= 0 ? 0 : edits === 1 ? 3 : edits === 2 ? 2 : 1;
+
+export function retrievalResult(poisonEdits: number, fixEdits: number, wrongTime: string): GameResult {
+  const one = poisonEdits === 1;
+  return {
+    slug: "retrieval",
+    headline: one ? "I fooled RAG in 1 edit." : `I fooled RAG in ${poisonEdits} edits.`,
+    detail: fixEdits === 1 ? `It answered ${wrongTime} with no doubt. Your fix took 1 edit.` : `It answered ${wrongTime} with no doubt. Your fix took ${fixEdits} edits.`,
+    score: { value: poisonEdits, label: "Edits to fool it" },
+    stars: poisonStars(poisonEdits),
+    shareText: one ? "I poisoned the library and fooled RAG in 1 edit. Can you?" : `I poisoned the library and fooled RAG in ${poisonEdits} edits. Can you do it in 1?`,
+  };
+}
+
+const reduced = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+// A button, not a #hash link: the chapter page treats unknown hashes as a view change.
+function showPassage(id: string) {
+  const field = document.getElementById(`rag-passage-${id}`);
+  if (!field) return;
+  field.scrollIntoView({ block: "center", behavior: reduced() ? "auto" : "smooth" });
+  field.focus({ preventScroll: true });
+}
+
+const fresh = () => library.map(passage => ({ ...passage }));
+const verdictLabel: Record<Verdict, string> = { correct: "Correct", fooled: "Confident and wrong", conflict: "Sources disagree", missing: "No time found" };
+
 export default function RetrievalToy() {
-  const [passages, setPassages] = useState(() => library.map(passage => ({ ...passage })));
-  const [subject, setSubject] = useState(questions[0]!);
-  const [count, setCount] = useState(1);
-  const [customSearch, setCustomSearch] = useState<string | null>(null);
-  const search = customSearch ?? subject;
-  const querySize = words(search).size;
-  const ranked = rankPassages(search, passages);
-  const found = retrieve(search, passages, count);
-  const result = readOpeningTime(subject, found);
-  const update = (id: string, change: Partial<Passage>) => setPassages(current => current.map(passage => passage.id === id ? { ...passage, ...change } : passage));
+  const [passages, setPassages] = useState(fresh);
+  const [phase, setPhase] = useState<Phase>("poison");
+  const [trick, setTrick] = useState<{ edits: number; time: string } | null>(null);
+  const [result, setResult] = useState<GameResult | null>(null);
+  const played = useRef(false);
+  const { found, result: answer, verdict } = askLibrary(passages);
+  const ranked = rankPassages(QUESTION, passages);
+  const queryWords = [...words(QUESTION)];
+  const poisonEdits = changedPages(passages, "web");
+  const fixEdits = changedPages(passages, "museum");
+  const touch = () => { if (!played.current) { played.current = true; markPlayed("retrieval"); } };
+  const edit = (id: string, text: string) => { touch(); setPassages(current => current.map(p => p.id === id ? { ...p, text } : p)); };
+  const restart = () => { setPassages(fresh()); setPhase("poison"); setTrick(null); setResult(null); };
+  const lockTrick = () => { setTrick({ edits: poisonEdits, time: answer.time! }); setPhase("fix"); };
+  const lockFix = () => { setPhase("done"); setResult(retrievalResult(trick!.edits, fixEdits, trick!.time)); };
+  const goal = phase === "poison" ? "Make it give a confident wrong time. Change as few pages as you can." : phase === "fix" ? "Now win back the true time, 10:00. You can edit only the museum’s pages." : "You fooled it, then fixed it.";
+  const status = phase === "poison" ? (poisonEdits === 1 ? "1 page changed" : `${poisonEdits} pages changed`) : (fixEdits === 1 ? "Fix: 1 page changed" : `Fix: ${fixEdits} pages changed`);
+  const ready = (phase === "poison" && verdict === "fooled") || (phase === "fix" && verdict === "correct");
   return (
-    <div class="retrieval-toy">
-      <div class="toy-topline"><strong>Give it a library.</strong><span class="toy-label">Toy · invented places</span></div>
-      <p>Change 10:00 to 12:00 in A. The answer updates immediately. No training happens.</p>
-      <fieldset class="retrieval-question">
-        <legend>When does this place open?</legend>
-        <div class="retrieval-options">{questions.map(name => <label><input type="radio" name="retrieval-question" checked={subject === name} onChange={() => { setSubject(name); setCustomSearch(null); }} /><bdi dir="ltr">{name}</bdi></label>)}</div>
-      </fieldset>
-      <div class="toy-controls">
-        <label for="passage-count">Passages to read <output for="passage-count">{count}</output></label>
-        <input id="passage-count" type="range" min="1" max="2" step="1" value={count} aria-valuetext={`Read up to ${count} passages`} onInput={event => setCount(Number(event.currentTarget.value))} />
-        <div class="range-ends"><span>1 · closest match</span><span>2 · more context</span></div>
-      </div>
-      <div class="retrieval-workbench">
-      <div class="retrieval-answer" aria-live="polite" aria-atomic="true">
-        <span>Template answer · from the passages read</span>
-        <p class="retrieval-query">Searching for: <bdi dir="ltr" data-testid="retrieval-query">{search || "None"}</bdi></p>
-        <output data-testid="retrieval-answer">{result.status === "answer" ? `${subject} opens at ${result.time}.` : result.status === "conflict" ? "Sources disagree." : "No opening time found."}</output>
-        <p data-testid="retrieval-evidence">{result.status === "answer" ? "Read from: " : result.status === "conflict" ? "Different times in: " : found.length === 0 ? "No matching passage reached the reader." : "The retrieved text has no matching opening-time sentence."}{result.evidence.map((item, i) => <span key={`${item.id}-${i}`}>{i > 0 && ", "}<a href={`#passage-${item.id}`} onClick={() => document.getElementById(`passage-${item.id}`)?.focus()}>{item.id.toUpperCase()} · {item.time}</a></span>)}</p>
-      </div>
-      <details class="retrieval-search toy-corpus">
-        <summary>Follow the search</summary>
-        <p>Try fern. The question stays the same; only the search changes.</p>
-        <label for="retrieval-search">Search words · English toy text</label>
-        <div class="retrieval-search-controls">
-          <input id="retrieval-search" type="text" dir="ltr" maxLength={80} value={search} onInput={event => setCustomSearch(event.currentTarget.value)} spellcheck={false} />
-          <button class="another-continuation" disabled={customSearch === null} onClick={() => setCustomSearch(null)}>Use place name</button>
+    <div class="rag-game">
+      <GoalBar goal={goal} status={status} {...(trick ? { score: { value: trick.edits, label: "Edits to fool it" } } : {})} />
+      {result ? <ResultCard result={result} onReplay={restart} /> : <>
+        <div class="rag-answer" data-verdict={verdict}>
+          <p class="rag-question"><span>Question</span> <bdi dir="ltr" translate={false}>{QUESTION}</bdi></p>
+          <div aria-live="polite" aria-atomic="true">
+            <output data-testid="retrieval-answer">{answer.status === "answer" ? `${SUBJECT} opens at ${answer.time}.` : answer.status === "conflict" ? "Sources disagree." : "No opening time found."}</output>
+            <span class="rag-verdict">{verdictLabel[verdict]}</span>
+          </div>
+          <p class="rag-evidence" data-testid="retrieval-evidence"><span>{`Read the top ${READ_COUNT} matches:`}</span>{found.map(p => <button type="button" class="rag-chip" key={p.id} onClick={() => showPassage(p.id)}><bdi dir="ltr">{`${p.id.toUpperCase()}${answer.evidence.some(item => item.id === p.id) ? ` · ${answer.evidence.find(item => item.id === p.id)!.time}` : ""}`}</bdi></button>)}</p>
+          {ready && <button type="button" class="game-btn is-primary rag-lock" onClick={phase === "poison" ? lockTrick : lockFix}>{phase === "poison" ? "Lock in the trick" : "Lock in the fix"}</button>}
         </div>
-        <table>
-          <caption><span>Search order · ties use</span> <bdi dir="ltr">A, B, C</bdi></caption>
-          <thead><tr><th scope="col">Passage</th><th scope="col">Shared words</th><th scope="col">Reader gets</th></tr></thead>
-          <tbody>{ranked.map(passage => {
-            const position = found.findIndex(item => item.id === passage.id);
-            return <tr key={passage.id} data-testid={`search-row-${passage.id}`} class={position >= 0 ? "is-sent" : ""}>
-              <th scope="row"><a href={`#passage-${passage.id}`} onClick={() => document.getElementById(`passage-${passage.id}`)?.focus()}><bdi dir="ltr">{passage.id.toUpperCase()}</bdi></a></th>
-              <td>{passage.matched.length > 0 ? <bdi dir="ltr">{passage.matched.join(", ")}</bdi> : "None"}</td>
-              <td>{!passage.enabled ? "Excluded" : position >= 0 ? <><span>Read</span> <bdi dir="ltr">#{position + 1}</bdi></> : passage.score === 0 ? "No shared words" : "Below cutoff"}</td>
-            </tr>;
-          })}</tbody>
-        </table>
-        <p>A shared word earns one point, even if repeated. Reading more cannot rescue a passage with no shared words.</p>
-      </details>
-      <div class="retrieval-library" aria-label="Editable toy library">{passages.map(passage => {
-        const position = found.findIndex(item => item.id === passage.id);
-        const score = ranked.find(item => item.id === passage.id)!.score;
-        return <div key={passage.id} class={`library-passage ${position >= 0 ? "is-retrieved" : ""}`}>
-          <div class="passage-heading"><label for={`passage-${passage.id}`}>{passage.id.toUpperCase()} · {passage.title}</label><span data-testid={`retrieved-${passage.id}`}>{position >= 0 ? `Read #${position + 1}` : passage.enabled ? "Not read" : "Excluded"}</span></div>
-          <textarea id={`passage-${passage.id}`} dir="ltr" rows={2} maxLength={240} value={passage.text} onInput={event => update(passage.id, { text: event.currentTarget.value })} spellcheck={false} />
-          <div class="passage-bottom"><label><input type="checkbox" checked={passage.enabled} onChange={event => update(passage.id, { enabled: event.currentTarget.checked })} />Include {passage.id.toUpperCase()}</label><span>{querySize > 0 ? `${score} / ${querySize} words match` : "No search words"}</span></div>
-          <div class="retrieval-score" aria-hidden="true"><span style={{ width: `${querySize > 0 ? 100 * score / querySize : 0}%` }} /></div>
-        </div>;
-      })}</div>
-      </div>
-      <details class="toy-corpus"><summary>Try breaking the evidence</summary><p>Exclude A: a matching garden note cannot answer. Or write “Moss Museum opens at 03:00.” in C, then read two passages: the sources disagree. A plausible match can still be wrong.</p></details>
-      <button class="another-continuation" onClick={() => { setPassages(library.map(passage => ({ ...passage }))); setSubject(questions[0]!); setCount(1); setCustomSearch(null); }}>Reset library</button>
-      <details class="toy-method"><summary>About this toy</summary><p class="toy-footnote">Keyword search, then a fixed template: “Place opens at HH:MM.” Ties use A–B–C order. This is not a neural retriever or a language model. Real RAG can still invent an answer; this toy declines missing or conflicting evidence.</p></details>
+        <ol class="rag-library" aria-label="Library">{passages.map(original => {
+          // Fixed A–E order: re-sorting while someone types would move the focused field.
+          const passage = ranked.find(p => p.id === original.id)!;
+          const editable = canEdit(phase, passage);
+          const read = found.findIndex(p => p.id === passage.id);
+          const tied = read < 0 && passage.score > 0 && passage.score === ranked[READ_COUNT - 1]!.score;
+          return <li key={passage.id} class={`rag-passage${read >= 0 ? " is-read" : ""}${editable ? " is-editable" : ""}`}>
+            <div class="rag-passage-head">
+              <label for={`rag-passage-${passage.id}`}><bdi dir="ltr">{passage.id.toUpperCase()}</bdi> · {passage.title}</label>
+              <span class="rag-owner">{passage.owner === "museum" ? "Museum page" : "Anyone can post"}</span>
+              <span class="rag-rank" data-testid={`retrieved-${passage.id}`}>{read >= 0 ? `Read #${read + 1}` : "Not read"}</span>
+            </div>
+            <textarea id={`rag-passage-${passage.id}`} dir="ltr" translate={false} rows={2} maxLength={200} spellcheck={false} value={passage.text} readOnly={!editable} aria-describedby={`rag-match-${passage.id}`} onInput={event => edit(passage.id, event.currentTarget.value)} />
+            <p class="rag-match" id={`rag-match-${passage.id}`}>
+              <span>{`Question words: ${passage.score} / ${queryWords.length}`}</span>
+              {passage.matched.length > 0 && <bdi dir="ltr" translate={false}>{passage.matched.join(", ")}</bdi>}
+              {tied && <span class="rag-tie">{`Tie: the earlier letter is read`}</span>}
+              {!editable && <span class="rag-locked">{phase === "poison" ? "Locked: the museum’s page" : "Locked: already posted"}</span>}
+            </p>
+          </li>;
+        })}</ol>
+        <button type="button" class="game-btn rag-restart" onClick={restart}>Start over</button>
+      </>}
+      <p class="toy-note">A toy: word-matching search plus a fixed sentence reader, not a neural retriever or a language model.</p>
     </div>
   );
 }

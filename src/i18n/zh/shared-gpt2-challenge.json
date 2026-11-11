@@ -1,0 +1,30 @@
+{
+  "rich": {},
+  "text": {
+    "You {0} · GPT-2 {1}. You beat GPT-2.": "你 {0} · GPT-2 {1}。你赢了 GPT-2。",
+    "You {0} · GPT-2 {1}. GPT-2 wins this time.": "你 {0} · GPT-2 {1}。这次 GPT-2 赢了。",
+    "You {0} · GPT-2 {1}. It's a tie.": "你 {0} · GPT-2 {1}。打平了。",
+    "I scored {0}/{1} vs GPT-2's {2}/{3} on \"Are you smarter than GPT-2?\"": "我在“你比 GPT-2 聪明吗？”里拿了 {0}/{1}，GPT-2 拿了 {2}/{3}。",
+    "You {0} · GPT-2 {1}": "你 {0} · GPT-2 {1}",
+    "Round {0} / {1}": "第 {0} / {1} 轮",
+    "{0} seconds left": "还剩 {0} 秒",
+    "Are you smarter than GPT-2?": "你比 GPT-2 聪明吗？",
+    "Pick the real next word. Beat GPT-2.": "选出真正的下一个词，赢过 GPT-2。",
+    "Final score": "最终比分",
+    "No timer": "不计时",
+    "(next word)": "（下一个词）",
+    "Choose the next word": "选择下一个词",
+    "You": "你",
+    "Right!": "答对了！",
+    "Time's up.": "时间到。",
+    "Not this time.": "这次没猜中。",
+    "GPT-2 got it right.": "GPT-2 答对了。",
+    "GPT-2 got it wrong.": "GPT-2 答错了。",
+    "Its top guess from its whole vocabulary:": "在整个词表里，它最想接的是：",
+    "Next word": "下一个词",
+    "See your result": "查看结果",
+    "Your score": "你的得分",
+    "GPT-2 is good at idioms and famous lines, and weak at sums, negation and facts it never read.": "GPT-2 擅长俗语和名句，却不擅长算术、否定，以及它从没读到过的事实。",
+    "GPT-2 small (124M parameters, 2019). Its choices were recorded once with transformers.js; nothing runs live.": "GPT-2 small（1.24 亿参数，2019 年）。它的选择用 transformers.js 预先记录了一次，页面上不会实时运行模型。"
+  }
+}

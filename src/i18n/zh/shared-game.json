@@ -1,0 +1,25 @@
+{
+  "rich": {},
+  "text": {
+    "Goal": "目标",
+    "Share on X": "分享到 X",
+    "Copy link": "复制链接",
+    "Save image": "保存图片",
+    "Play again": "再玩一次",
+    "Saving image…": "正在生成图片…",
+    "Image saved.": "图片已保存。",
+    "Image shared.": "图片已分享。",
+    "Could not make the image.": "图片生成失败。",
+    "Link copied.": "链接已复制。",
+    "Could not copy the link.": "没能复制链接。",
+    "{0} of {1} stars": "{0} / {1} 颗星",
+    "Next: {0} · {1}": "下一章：{0} · {1}",
+    "LLM Lineage · How LLMs happened": "LLM Lineage · 语言模型是怎么来的",
+    "Counting": "计数",
+    "Memory": "记忆",
+    "Attention": "注意力",
+    "Scale": "规模",
+    "Chat": "对话",
+    "Reasoning & agents": "推理与智能体"
+  }
+}

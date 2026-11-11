@@ -1,12 +1,13 @@
 ---
 import {chapters,chapterPaper} from '../lib/chapters';
+import {eraOf} from '../lib/chapter-meta';
 const live=chapters.filter(c=>c.status==='live');
 ---
 <dialog class="experiment-switcher" aria-labelledby="switcher-title">
- <div class="switcher-top"><div><p class="eyebrow">LLM Lineage</p><h2 id="switcher-title">Pick your next idea.</h2></div><button class="close-switcher" aria-label="Close experiments">×</button></div>
+ <div class="switcher-top"><div><p class="eyebrow">LLM Lineage</p><h2 id="switcher-title">Pick your next idea.</h2></div><button class="close-switcher" type="button" aria-label="Close experiments">×</button></div>
  <label class="switcher-search"><span class="screen-reader-only">Search experiments and papers</span><input type="search" placeholder="Search an idea, paper, or year…" autocomplete="off" /></label>
  <div class="switcher-labels"><span>{live.length} experiments</span><span>Play / original paper</span></div>
- <ul class="switcher-list">{live.map((c,i)=>{const p=chapterPaper(c.anchor)!;return <li data-search={`${c.title} ${c.year} ${p.title}`.toLowerCase()}><a class="switcher-game" href={`/chapters/${c.slug}/#play`}><span>{String(i+1).padStart(2,'0')}</span><strong>{c.title}<small>{c.year}</small></strong><b aria-hidden="true">↗</b></a><a class="switcher-paper" target="_blank" rel="noopener noreferrer" href={p.url} aria-label={`Original paper: ${p.title}`} title={p.title}>Paper ↗</a></li>})}</ul>
+ <ul class="switcher-list">{live.map((c,i)=>{const p=chapterPaper(c.anchor)!;return <li data-search={`${c.title} ${c.year} ${p.title}`.toLowerCase()}><a class="switcher-game" data-era={eraOf(c.year)} href={`/chapters/${c.slug}/#play`}><span>{String(i+1).padStart(2,'0')}</span><i class="era-dot" aria-hidden="true"></i><strong>{c.title}<small>{c.year}</small></strong><b class="dir-arrow" aria-hidden="true">↗</b></a><a class="switcher-paper" target="_blank" rel="noopener noreferrer" href={p.url} aria-label={`Original paper: ${p.title}`} title={p.title}>Paper ↗</a></li>})}</ul>
  <p class="switcher-empty" hidden>No match. Try “attention”, “BERT”, or a year.</p>
 </dialog>
 <script>
