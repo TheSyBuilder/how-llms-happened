@@ -301,10 +301,94 @@ test('current systems combine evidence, tools and effort with mouse, touch and k
   expect(errors).toEqual([]);
 });
 
+for (const locale of ["en", "zh", "ar"]) {
+  test(`${locale} retrieval separates search words from the question`, async ({ page }, info) => {
+    const errors: string[] = [];
+    page.on("pageerror", error => errors.push(error.message));
+    page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+    await page.route("https://fonts.googleapis.com/**", route => route.fulfill({ contentType: "text/css", body: "" }));
+    const activate = async (element: ReturnType<typeof page.locator>) => {
+      if (info.project.name === "mobile-chromium") await element.tap(); else await element.click();
+    };
+    await page.goto(`${locale === "en" ? "" : `/${locale}`}/chapters/retrieval/`);
+    await expect(page.locator("astro-island")).not.toHaveAttribute("ssr", "");
+    await page.locator(".chapter-hero").screenshot({ path: info.outputPath(`${locale}-retrieval-hero.png`) });
+    await page.locator(".retrieval-diagram").screenshot({ path: info.outputPath(`${locale}-retrieval-diagram.png`) });
+    await activate(page.locator('.chapter-nav a[href="#play"]'));
+    const toy = page.locator(".retrieval-toy");
+    const inspector = toy.locator(".retrieval-search");
+    const summary = inspector.locator("summary");
+    const search = inspector.getByRole("textbox");
+    const restore = inspector.getByRole("button");
+    const answer = page.getByTestId("retrieval-answer");
+    const missing = locale === "zh" ? "没找到开门时间。" : locale === "ar" ? "ما لقينا وقت افتتاح." : "No opening time found.";
+    const readOne = locale === "zh" ? "已读 #1" : locale === "ar" ? "مقروءة #1" : "Read #1";
+    const cutoff = locale === "zh" ? "未进入前几名" : locale === "ar" ? "خارج العدد المحدد" : "Below cutoff";
+    await summary.focus(); await page.keyboard.press("Enter");
+    await expect(summary).toHaveText(locale === "zh" ? "看看搜索过程" : locale === "ar" ? "تابع البحث" : "Follow the search");
+    await expect(inspector).toHaveCSS("direction", locale === "ar" ? "rtl" : "ltr");
+    await expect(search).toHaveValue("Moss Museum");
+    await expect(search).toHaveAccessibleName(locale === "zh" ? "搜索词 · 演示文本为英文" : locale === "ar" ? "كلمات البحث · نص التجربة بالإنجليزية" : "Search words · English toy text");
+    await expect(restore).toBeDisabled();
+    await expect(page.getByTestId("search-row-a")).toContainText(readOne);
+    await expect(page.getByTestId("search-row-c")).toContainText(cutoff);
+    await activate(search);
+    await page.keyboard.press("ControlOrMeta+A"); await page.keyboard.type("fern");
+    await expect(answer).toHaveText(missing);
+    await expect(page.getByTestId("retrieved-b")).toHaveText(readOne);
+    await expect(page.getByTestId("search-row-b").locator("td").first()).toHaveText("fern");
+    await expect(page.getByTestId("search-row-a")).toContainText(locale === "zh" ? "没有共同词" : locale === "ar" ? "ما فيه كلمات مشتركة" : "No shared words");
+    await toy.getByRole("slider").focus(); await page.keyboard.press("End");
+    await expect(page.getByTestId("retrieved-c")).toHaveText(locale === "zh" ? "已读 #2" : locale === "ar" ? "مقروءة #2" : "Read #2");
+    await expect(answer).toHaveText(missing);
+    await inspector.screenshot({ path: info.outputPath(`${locale}-retrieval-search.png`), animations: "disabled", style: ".retrieval-answer { position: static !important; }" });
+    await toy.screenshot({ path: info.outputPath(`${locale}-retrieval-misdirected.png`), animations: "disabled", style: ".retrieval-answer { position: static !important; }" });
+    await activate(summary); await activate(summary);
+    await expect(search).toHaveValue("fern");
+    await restore.focus(); await page.keyboard.press("Enter");
+    await expect(answer).toContainText("10:00");
+    await search.fill("MOSS, museum MUSEUM!");
+    await expect(page.getByTestId("search-row-a").locator("td").first()).toHaveText("moss, museum");
+    await expect(answer).toContainText("10:00");
+    // An answer-bearing notice still cannot help when it is excluded.
+    await activate(toy.locator(".library-passage").first().getByRole("checkbox"));
+    await expect(answer).toHaveText(missing);
+    await expect(page.getByTestId("search-row-a")).toContainText(locale === "zh" ? "已排除" : locale === "ar" ? "مستبعدة" : "Excluded");
+    await toy.screenshot({ path: info.outputPath(`${locale}-retrieval-excluded.png`), animations: "disabled", style: ".retrieval-answer { position: static !important; }" });
+    await search.fill("");
+    await expect(answer).toHaveText(missing);
+    await expect(page.getByTestId("retrieval-evidence")).toHaveText(locale === "zh" ? "没有匹配段落传给阅读器。" : locale === "ar" ? "ما وصلت للقارئ فقرة مطابقة." : "No matching passage reached the reader.");
+    await expect(toy.locator('.retrieval-score > span').first()).toHaveAttribute("style", /width: 0%/);
+    await search.fill("garden");
+    await activate(toy.getByRole("radio").nth(1));
+    await expect(search).toHaveValue("Fern Cafe");
+    await expect(answer).toContainText("08:00");
+    await search.fill("garden");
+    await activate(toy.getByRole("button").last());
+    await expect(search).toHaveValue("Moss Museum");
+    await expect(answer).toContainText("10:00");
+    await expect(toy.getByRole("slider")).toHaveValue("1");
+    await expect(toy.locator(".library-passage").first().getByRole("checkbox")).toBeChecked();
+    await expect(restore).toBeDisabled();
+    await expect(search).toHaveCSS("direction", "ltr");
+    await expect(page.locator("#passage-a")).toHaveCSS("direction", "ltr");
+    await expect(page.getByTestId("retrieval-query")).toHaveAttribute("dir", "ltr");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(page.locator(".retrieval-score > span").first()).toHaveCSS("transition-duration", "0s");
+    if (locale === "en") {
+      const words = await page.locator(".chapter-hero, .story-section").allTextContents();
+      expect(words.join(" ").trim().split(/\s+/).length).toBeLessThan(800);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    expect(errors).toEqual([]);
+  });
+}
+
 test("retrieval reads an editable library with mouse, touch, and keyboard", async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  await page.route("https://fonts.googleapis.com/**", route => route.fulfill({ contentType: "text/css", body: "" }));
   await page.goto("/");
   await expect(page.getByText("30 chapters live · 30 turning points")).toBeVisible();
   await expect(page.locator("#retrieval")).toHaveClass(/is-live/);

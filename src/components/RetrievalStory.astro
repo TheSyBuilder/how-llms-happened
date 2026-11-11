@@ -13,8 +13,8 @@ import { sourceLink } from "../lib/chapters";
   <p class="eyebrow">02 / The big idea</p>
   <h2>Look first.<br />Then write.</h2>
   <p>Patrick Lewis and colleagues introduced <strong>retrieval-augmented generation</strong>, or RAG, in 2020. A <strong>retriever</strong> finds useful text. A <strong>generator</strong> uses it to write an answer.</p>
-  <p>The library was Wikipedia. To search it, the retriever represented questions and passages as <strong>vectors</strong>: lists of numbers used to score how well they match. The generator was BART, a model already trained to read input text and produce new text. Training adjusted the question-searching and writing parts together.</p>
-  <p>This created two places to keep knowledge: the learned parameters and an external library. You could replace the library without retraining the model. But finding a passage was no guarantee that it was correct, or that the answer would follow it.</p>
+  <p>The library was Wikipedia. Questions and passages became <strong>vectors</strong>, lists of numbers used to score their match. BART, a model trained to read and write text, generated the answer. Training adjusted the question-searching and writing parts together.</p>
+  <p>RAG kept knowledge in learned parameters and an external library. Replacing the library needed no retraining. Finding a passage still did not guarantee a correct answer.</p>
   <figure class="idea-diagram retrieval-diagram">
     <svg viewBox="0 0 400 485" role="img" aria-labelledby="retrieval-title retrieval-desc">
       <title id="retrieval-title">A question takes a detour through a library</title>
@@ -42,9 +42,9 @@ import { sourceLink } from "../lib/chapters";
 <section class="story-section" id="mattered">
   <p class="eyebrow">04 / Why it mattered</p>
   <h2>Knowledge gets<br />a door you can open.</h2>
-  <p>RAG extended learned retrieval into a system that could generate answers. Its external passages made some information inspectable and replaceable. The paper tested question answering, question generation, and fact checking.</p>
-  <p>Finding information leaves another question: how do you teach a model to give the kind of answer people actually want? Next, human demonstrations and comparisons become training signals.</p>
-  <aside class="chapter-companions"><h3>Also in this chapter</h3><p><strong>ORQA (2019)</strong> learned to retrieve and extract answers from question–answer pairs. <strong>REALM (2020)</strong> used retrieval during initial training to predict hidden words. <strong>DPR (2020)</strong> trained question and passage vectors for search; RAG used it to initialise its retriever.</p></aside>
+  <p>RAG combined learned retrieval with answer generation. External passages made some information inspectable and replaceable. The paper tested answering questions, generating questions, and checking facts.</p>
+  <p>How do you teach a model to give the kind of answer people want? Next, human demonstrations and comparisons become training signals.</p>
+  <aside class="chapter-companions"><h3>Also in this chapter</h3><p><strong>ORQA (2019)</strong> learned retrieval and answer extraction from question-answer pairs. <strong>REALM (2020)</strong> retrieved text during pretraining to predict hidden words. <strong>DPR (2020)</strong> supplied RAG's starting retriever.</p></aside>
   <a class="next-chapter" href="/chapters/human-feedback/"><span>Next · 2022</span><strong>Learning from human feedback ↗</strong><span>How can people teach a model what a good answer feels like?</span></a>
 </section>
 <details class="chapter-disclosure" id="deeper">
@@ -66,7 +66,8 @@ import { sourceLink } from "../lib/chapters";
     <h3>What retrieval cannot promise</h3>
     <p>Search can miss useful evidence. A retrieved passage can be outdated or misleading. The generator can still produce unsupported text, and attaching a passage does not prove an answer follows from it. The paper’s task results and limited update experiment do not establish universal factuality or deletion of knowledge from model parameters.</p>
     <h3>Inside the toy</h3>
-    <p>The selected place’s words are matched against each included passage. Positive matches are sorted by word count, with alphabetical passage IDs breaking ties. The top one or two go to a fixed sentence reader, which recognises “Place opens at HH:MM.” It uses a 24-hour clock and ignores other sentences. One distinct time produces a template answer, no times produces a missing-evidence message, and different times produce a conflict. This deliberately cautious reader is an illustration, not RAG’s generator.</p>
+    <p>The search inspector lets you change the search words while the reader still answers the selected place’s question. It counts distinct English words, ignoring case, punctuation and repeats. Excluded passages appear last and cannot be read. Changing the place or resetting the library restores the place name as the search. Closing the inspector keeps your edits. Unlike this keyword toy, RAG searches with learned vectors.</p>
+    <p>The search words are matched against each included passage. Positive matches are sorted by word count, with alphabetical passage IDs breaking ties. The top one or two go to a fixed sentence reader, which recognises “Place opens at HH:MM.” It uses a 24-hour clock and ignores other sentences. One distinct time produces a template answer, no times produces a missing-evidence message, and different times produce a conflict. This deliberately cautious reader is an illustration, not RAG’s generator.</p>
   </div>
 </details>
 <details class="chapter-disclosure" id="sources">

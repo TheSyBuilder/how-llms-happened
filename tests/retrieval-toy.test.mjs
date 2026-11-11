@@ -10,7 +10,7 @@ const { outputText } = ts.transpileModule(source, {
 });
 const compiled = {};
 new Function("require", "exports", outputText)(createRequire(import.meta.url), compiled);
-const { library, retrieve, readOpeningTime } = compiled;
+const { library, retrieve, readOpeningTime, rankPassages } = compiled;
 
 test("library edits change the sourced answer; a new question retrieves a different notice", () => {
   const edited = library.map(p => ({ ...p, text: p.id === "a" ? "Moss Museum opens at 12:00." : p.text }));
@@ -46,4 +46,27 @@ test("reading more passages reveals conflicting times instead of silently choosi
   assert.deepEqual(conflict.evidence, [{ id: "a", time: "10:00" }, { id: "c", time: "03:00" }]);
   conflicting[2].text = "moss museum opens at 10:00.";
   assert.equal(readOpeningTime("Moss Museum", retrieve("Moss Museum", conflicting, 2)).status, "answer");
+});
+
+test("a changed search can hide an available answer without changing the question", () => {
+  const one = retrieve("fern", library, 1);
+  const two = retrieve("fern", library, 2);
+  assert.deepEqual(one.map(p => p.id), ["b"]);
+  assert.deepEqual(two.map(p => p.id), ["b", "c"]);
+  assert.equal(readOpeningTime("Moss Museum", two).status, "missing");
+  assert.equal(readOpeningTime("Fern Cafe", one).time, "08:00");
+  assert.equal(readOpeningTime("Moss Museum", retrieve("Moss Museum", library, 1)).time, "10:00");
+});
+
+test("repetition cannot boost a notice and an excluded high match cannot reach the reader", () => {
+  const edited = library.map(p => ({ ...p,
+    enabled: p.id !== "a",
+    text: p.id === "c" ? "Moss moss moss museum museum has a garden." : p.text,
+  }));
+  assert.deepEqual(rankPassages("MOSS, museum museum!", edited).map(p => [p.id, p.score]), [["c", 2], ["b", 0], ["a", 2]]);
+  assert.deepEqual(retrieve("MOSS, museum museum!", edited, 2).map(p => p.id), ["c"]);
+  for (const search of ["", "   ", "?!"]) {
+    assert.deepEqual(retrieve(search, library, 2), []);
+    assert.ok(rankPassages(search, library).every(p => p.score === 0));
+  }
 });
