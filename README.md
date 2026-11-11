@@ -95,6 +95,8 @@ npm run test:e2e
 
 ## Credits
 
+The code is released under the [MIT License](LICENSE).
+
 Data: GPT-2 weights and tokenizer files by OpenAI (MIT licence); GloVe vectors by Pennington, Socher & Manning (Public Domain Dedication and License); the ENABLE word list (public domain). Fonts: Space Grotesk and DM Sans (SIL Open Font License). Every chapter links the papers it is built on.
 
 ## Help the next person understand
