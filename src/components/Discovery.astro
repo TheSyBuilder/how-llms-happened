@@ -1,6 +1,0 @@
----
-import { firstSteps } from '../lib/first-steps';
-const {slug}=Astro.props;
-const step=firstSteps[slug];
----
-{step && <aside class="discovery"><p class="first-move"><strong>Try this first</strong> {step.action}</p><p class="wonder-question">{step.question}</p><details><summary>What’s going on? <span aria-hidden="true">+</span></summary><p class="discovery-hint">{step.answer}</p></details></aside>}

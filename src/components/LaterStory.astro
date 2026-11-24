@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import IdeaDiagram from "./IdeaDiagram.astro";
 import { chapterPaper, type Chapter } from '../lib/chapters';
 import { laterStories } from '../lib/later-stories';
@@ -17,7 +17,7 @@ const slug = chapter.slug;
 ---
 <section class="story-section" id="problem"><p class="eyebrow">01 / The problem before</p><h2>{story.headline}</h2><p>{story.problem}</p></section>
 <section class="story-section" id="idea"><p class="eyebrow">02 / The big idea</p><h2>{story.diagram[1]}</h2>{story.idea.map(p => <p>{p}</p>)}<IdeaDiagram kind={chapter.slug} /></section>
-<section class="story-section toy-section" id="play"><p class="eyebrow">03 / Play with it</p><h2>{story.play}</h2><Discovery slug={chapter.slug} /><noscript>Enable JavaScript to use this toy.</noscript>{slug === 'chinchilla' ? <Chinchilla client:load /> : slug === 'open-models' ? <OpenModels client:load /> : slug === 'mixture-of-experts' ? <MixtureOfExperts client:load /> : slug === 'tools-and-agents' ? <ToolsAndAgents client:load /> : slug === 'dpo' ? <Dpo client:load /> : slug === 'chain-of-thought' ? <ChainOfThought client:load /> : slug === 'reasoning' ? <Reasoning client:load /> : null}</section>
+<section class="story-section toy-section" id="play"><p class="eyebrow">03 / Play with it</p><h2>{story.play}</h2><ChapterBrief slug={chapter.slug} /><noscript>Enable JavaScript to use this toy.</noscript>{slug === 'chinchilla' ? <Chinchilla client:load /> : slug === 'open-models' ? <OpenModels client:load /> : slug === 'mixture-of-experts' ? <MixtureOfExperts client:load /> : slug === 'tools-and-agents' ? <ToolsAndAgents client:load /> : slug === 'dpo' ? <Dpo client:load /> : slug === 'chain-of-thought' ? <ChainOfThought client:load /> : slug === 'reasoning' ? <Reasoning client:load /> : null}</section>
 <section class="story-section" id="mattered"><p class="eyebrow">04 / Why it mattered</p><h2>{endings[chapter.slug]}</h2><p>{story.mattered}</p></section>
 <details class="chapter-disclosure" id="deeper"><summary>Go deeper <span>{story.deeperTitle}</span></summary><div class="disclosure-body"><h3>{story.deeperTitle}</h3><p>{story.deeper}</p></div></details>
 <details class="chapter-disclosure" id="sources"><summary>Sources <span>Papers and further reading</span></summary><div class="disclosure-body"><p>{story.sourceNote}</p><ol class="source-list">{[chapter.anchor,...chapter.related].map(id=>{const p=chapterPaper(id)!;return <li><a href={p.url}>{p.title} ↗</a></li>})}</ol>{chapter.related.length>0 && <p>Also in this chapter: the related works listed above.</p>}</div></details>

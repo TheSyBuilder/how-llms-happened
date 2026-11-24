@@ -4,7 +4,6 @@
     "<strong>Recurrence</strong> means passing a running state from one position to the next. It gives a network a way to carry context, but creates a queue: a later state needs the earlier one. Even with the whole training sentence available, that chain cannot be computed all at once.": "<strong>循环</strong>就是把一个不断更新的状态，从一个位置传到下一个位置。它让网络带着上下文向前走，却也排起了队：后面的状态依赖前面的状态。即使训练时已拿到整句话，也不能把这条链一次算完。",
     "A <strong>convolution</strong> applies the same small window of computation at each position. Windows in one layer can run together; stacking layers spreads information farther. Gehring and colleagues’ <strong>ConvS2S (2017)</strong> used convolution in both the input-reading encoder and output-writing decoder, with attention letting each decoder layer consult the input.": "<strong>卷积</strong>在每个位置应用同一个小计算窗口。同一层的窗口可以一起算，叠加多层则让信息传得更远。Gehring 等人的 <strong>ConvS2S（2017）</strong>在读取输入的编码器和写出输出的解码器中都使用卷积，再用注意力让每个解码层查阅输入。",
     "<strong>ByteNet (2016)</strong> widened its reach using <strong>dilation</strong>: spacing out the positions a window reads. Parikh and colleagues took another route in 2016: <strong>attention</strong>, a weighted read from other positions. Their model aligned and compared two sentences to decide whether one supported, contradicted, or left the other undecided, without a recurrent sentence reader.": "<strong>ByteNet（2016）</strong>通过<strong>膨胀</strong>扩大覆盖范围，也就是把窗口读取的位置间隔拉开。Parikh 和同事在 2016 年走了另一条路：<strong>注意力</strong>，即按权重读取其他位置。他们的模型对齐并比较两个句子，判断一个是否支持、反驳另一个，或无法确定，全程不需要循环式句子阅读器。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "The queue<br>was a choice.": "原来，<br>不一定要排队。",
     "These systems showed that useful sentence processing could work without recurrent state chains. The Transformer paper explicitly compared convolution’s paths with attention’s direct connections, then made self-attention—attention within one sequence—its central mixing operation. <a href=\"/chapters/transformer/\">Try that next step ↗</a>": "这些系统表明，没有循环状态链，也能进行有用的句子处理。Transformer 论文明确比较了卷积路径与注意力的直接连接，随后把自注意力——同一序列内部的注意力——作为核心信息混合操作。<a href=\"/chapters/transformer/\">试试下一步 ↗</a>",
     "Parikh’s decomposable attention and ByteNet take the two alternative routes above. Earlier, <strong>End-To-End Memory Networks (2015)</strong> made repeated attention reads over stored inputs; <strong>Cheng, Dong and Lapata (2016)</strong> combined attention with a recurrent reader. Attention and recurrence could coexist.": "Parikh 的可分解注意力和 ByteNet 分别走了上面的两条路线。更早的 <strong>End-To-End Memory Networks（2015）</strong>对存储输入进行多次注意力读取；<strong>Cheng、Dong 和 Lapata（2016）</strong>则把注意力与循环阅读器结合。注意力与循环，也可以共存。",
@@ -16,8 +15,6 @@
     "← The timeline": "← 时间线",
     "Racing to drop recurrence": "摆脱循环的竞赛",
     "Can we process a sentence without stepping through every word?": "处理一句话，能不能不用逐词走过去？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -103,6 +100,8 @@
     "{0} tie at tick {1}. Bet lost.": "{0} 在第 {1} 拍打平。没押中。",
     "See my score": "看我的得分",
     "Next race": "下一场",
-    "Toy accounting: one tick is one round of up to {0} reads. It shows how path length and total work trade off, not measured speeds.": "玩具记账：一拍是一轮最多 {0} 次读取。它展示路径长度与总工作量如何取舍，而不是实测速度。"
+    "Toy accounting: one tick is one round of up to {0} reads. It shows how path length and total work trade off, not measured speeds.": "玩具记账：一拍是一轮最多 {0} 次读取。它展示路径长度与总工作量如何取舍，而不是实测速度。",
+    "Translation with recurrent networks makes each position wait for earlier steps during training. Gehring and colleagues used stacked convolutions, the same small sliding window applied at every position, plus attention, so all positions could be processed together. This offered another route to parallel training, while generation still produced one piece at a time.": "用循环网络翻译时，训练中的每个位置都要等待前面的步骤。Gehring 和同事使用堆叠卷积，也就是在每个位置应用同一个小滑动窗口，再配合注意力，让所有位置能够一起处理。这提供了另一条并行训练的路线，但生成时仍要逐片输出。",
+    "Pick the wiring you think will win the first race by pressing “Recurrent chain”, “Convolution stack” or “All-pairs attention”.": "按“循环链”、“卷积堆叠”或“两两注意力”，选择你认为会赢得第一场比赛的连接方式。"
   }
 }

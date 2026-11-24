@@ -1,5 +1,5 @@
 ---
-import Discovery from './Discovery.astro';
+import ChapterBrief from './ChapterBrief.astro';
 import RecurrenceToy from './RecurrenceToy';
 import { sourceLink } from '../lib/chapters';
 import '../styles/recurrence.css';
@@ -31,7 +31,7 @@ import '../styles/recurrence.css';
   </figure>
 </section>
 <section class="story-section toy-section" id="play">
-  <p class="eyebrow">03 / Play with it</p><h2>Place<br />your bet.</h2><Discovery slug="drop-recurrence" />
+  <p class="eyebrow">03 / Play with it</p><h2>Place<br />your bet.</h2><ChapterBrief slug="drop-recurrence" />
   <p>Four races, from 8 to 64 words. Before each one, bet which wiring gets word 1’s message to the last word first. Fewer steps help, but every step has to fit through the same chip.</p>
   <noscript><p>Enable JavaScript to race. In this game, attention wins the 8- and 16-word races in one step; at 32 and 64 words its all-pairs reads grow so large that the widening convolution stack arrives first.</p></noscript>
   <RecurrenceToy client:load />

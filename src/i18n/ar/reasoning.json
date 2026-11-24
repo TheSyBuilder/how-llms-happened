@@ -1,14 +1,11 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي صار؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Learning and searching are different</span>": "تعمّق أكثر <span>التعلّم والبحث عمليتان مختلفتان</span>",
     "Sources <span>Papers and further reading</span>": "المصادر <span>الأوراق وقراءات إضافية</span>"
   },
   "text": {
     "← The timeline": "← الخط الزمني",
     "Reasoning models": "نماذج الاستدلال",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -72,6 +69,8 @@
     "I beat the clock on all 3 search puzzles: {0} points. Thinking time is a budget too.": "سبقت الوقت في ألغاز البحث الثلاثة: {0} نقطة. وقت التفكير ميزانية بعد.",
     "I solved {0} of 3 search puzzles against the clock. Thinking time is a budget too.": "حللت {0} من 3 ألغاز بحث قبل ما يخلص الوقت. وقت التفكير ميزانية بعد.",
     "The tree is a plain depth-first search. o1 and R1 learned to try, check and back up in written reasoning; they do not draw a tree like this.": "الشجرة بحث عادي بالعمق أولًا. o1 وR1 تعلّموا يجرّبون ويتحقّقون ويتراجعون في استدلال مكتوب، وما يرسمون شجرة مثل هذي.",
-    "More answer-time effort can explore more candidates. A check distinguishes a promising path from a dead end. These are teaching illustrations.": "لما النموذج يبذل جهد حسابي أكبر وقت الإجابة، يقدر يفحص خيارات أكثر. والمراجعة تفرّق بين مسار واعد وطريق مسدود. هذي رسومات للتوضيح."
+    "More answer-time effort can explore more candidates. A check distinguishes a promising path from a dead end. These are teaching illustrations.": "لما النموذج يبذل جهد حسابي أكبر وقت الإجابة، يقدر يفحص خيارات أكثر. والمراجعة تفرّق بين مسار واعد وطريق مسدود. هذي رسومات للتوضيح.",
+    "Some problems need an answer to be worked out and checked. OpenAI’s o1 in 2024 improved with more thinking time while answering, and DeepSeek’s 2025 R1 report found that models trained with rewards for correct final answers learned to write out more of their reasoning. Extra thinking still could not guarantee a correct answer.": "بعض المسائل تحتاج نشتغل على الجواب ونتحقّق منه. تحسّن o1 من OpenAI في 2024 مع وقت تفكير أطول عند الإجابة، ووجد تقرير R1 من DeepSeek في 2025 إن النماذج اللي تدرّبت بمكافآت للأجوبة النهائية الصحيحة تعلّمت تكتب قدر أكبر من خطوات استدلالها. بس التفكير الإضافي ظلّ ما يضمن جواب صحيح.",
+    "Press “Start” to reveal the first number puzzle.": "اضغطوا «ابدأ» عشان تشوفون أول لغز أرقام."
   }
 }

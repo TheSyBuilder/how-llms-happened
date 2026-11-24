@@ -4,20 +4,16 @@
     "Words and pictures in.<br>Words out.": "يدخل نص وصورة،<br>ويطلع رد نصّي.",
     "OpenAI introduced GPT-4 in March 2023. The report described a <strong>multimodal</strong> model: one that can work with more than one kind of input. GPT-4 could accept images alongside text and produce a text response.": "OpenAI قدّمت GPT-4 في مارس 2023. وصفه التقرير بأنه <strong>متعدد الوسائط</strong>، يعني يتعامل مع أكثر من نوع من المدخلات. يقدر يستقبل صور مع النص ويرد بنص.",
     "The broad training recipe still involved predicting the next <strong>token</strong>, a piece of text, followed by training to improve behaviour. The report did not reveal the detailed image-processing architecture. We can explain what visual input makes possible without inventing how GPT-4 encoded it.": "التدريب عمومًا كان للحين يشمل توقّع <strong>التوكن</strong> (token) اللي بعده، والتوكن قطعة من النص، وبعدها تدريب يحسّن السلوك. التقرير ما كشف تفاصيل بنية معالجة الصور. نقدر نشرح وش تضيف الصورة بدون ما نفترض كيف GPT-4 يرمّزها.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "The prompt can<br>point beyond prose.": "البرومبت (prompt) يقدر يشير<br>لشي في الصورة.",
     "Go deeper <span>What the report reveals—and leaves open</span>": "للتعمّق <span>وش كشف التقرير ووش ما كشف؟</span>",
     "Sources <span>Technical report and official launch</span>": "المصادر <span>التقرير التقني والإعلان الرسمي</span>",
-    "What’s in<br>the picture?": "وش في<br>الصورة؟",
-    "<strong>Try this first</strong> Open one tile, then guess the picture.": "<strong>أول خطوة</strong> اكشفوا مربع واحد، وبعدين خمّنوا الصورة."
+    "What’s in<br>the picture?": "وش في<br>الصورة؟"
   },
   "text": {
     "← The timeline": "← الخط الزمني",
     "2023 / Live chapter": "2023 / فصل متاح",
     "Beyond text: GPT-4": "أبعد من النص: GPT-4",
     "What changes when a model can read a picture too?": "وش يتغيّر لما يقدر النموذج يقرأ صورة أيضًا؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -130,6 +126,8 @@
     "A picture can answer what words leave open. A model that also takes images in has evidence a text-only model never gets.": "الصورة تجاوب على اللي تخليه الكلمات مفتوح. النموذج اللي يستقبل الصور بعد عنده دليل ما يوصل للنموذج النصي أبد.",
     "Open one tile, then guess the picture.": "اكشفوا مربع واحد، وبعدين خمّنوا الصورة.",
     "How did the text-only model guess?": "كيف خمّن النموذج النصي؟",
-    "Only from the caption’s words. It never saw a single tile, so a vague caption fooled it.": "من كلمات التعليق بس. ما شاف ولا مربع، فخدعه التعليق الغامض."
+    "Only from the caption’s words. It never saw a single tile, so a vague caption fooled it.": "من كلمات التعليق بس. ما شاف ولا مربع، فخدعه التعليق الغامض.",
+    "A question about a picture leaves a text-only model without the picture’s evidence. The GPT-4 report described a model accepting images alongside text and producing text answers. Its examples showed a question pointing straight at a photo, diagram or document, though the report noted errors and overconfidence and withheld architecture details.": "السؤال عن صورة يترك النموذج النصّي بدون الأدلة اللي فيها. وصف تقرير GPT-4 نموذج يستقبل الصور مع النص ويطلع أجوبة نصّية. وضّحت أمثلته كيف يقدر السؤال يشير مباشرة لصورة أو رسم أو مستند، بس التقرير ذكر الأخطاء والثقة الزائدة وما كشف تفاصيل البنية.",
+    "Press a “?” tile to uncover part of the picture.": "اضغطوا مربع «?» عشان تكشفون جزء من الصورة."
   }
 }

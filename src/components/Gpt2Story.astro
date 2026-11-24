@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import Gpt2Toy from "./Gpt2Toy";
 import Gpt2Challenge from "./hero/Gpt2Challenge";
 import { sourceLink } from "../lib/chapters";
@@ -33,7 +33,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Prompt golf.</h2><Discovery slug="gpt-2" />
+  <h2>Prompt golf.</h2><ChapterBrief slug="gpt-2" />
   <p>One passage, four tasks, and the model never changes. Add cue cards to the end of the prompt until the toy does the job. Fewest cards wins.</p>
   <noscript><p>Enable JavaScript to play. The toy pairs “Then” with a story continuation, “TL;DR:” with a summary, an example pair and “=” with a translation, and a question followed by “A:” with an answer.</p></noscript>
   <Gpt2Toy client:load />

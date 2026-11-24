@@ -1,7 +1,6 @@
 {
   "rich": {
     "An <strong>acoustic likelihood</strong> measures how compatible the observed sound evidence is with a candidate. A <strong>language prior</strong> assigns the candidate a probability before using that sound evidence. Multiplying the two gives a score for choosing between candidates.": "<strong>声学似然</strong>衡量听到的声音与某个候选说法有多相符。<strong>语言先验</strong>则是在利用声音之前，先给候选说法一个概率。两者相乘，就得到用于比较候选项的分数。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "深入了解 <span>机制、证据与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -10,8 +9,6 @@
     "1975 / Live chapter": "1975 / 已上线",
     "IBM makes speech models practical": "IBM 让语音模型走向实用",
     "Can likely words help a computer hear a sentence?": "词语的可能性，能帮电脑听清一句话吗？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -84,6 +81,8 @@
     "You got {0} of 5. The 1975-style decoder got {1}.": "你答对了 5 个中的 {0} 个。1975 年风格的解码器对了 {1} 个。",
     "Sound alone got {0} of 5. The language model fixed most mix-ups, but it only sees two words, so it missed the goalie.": "只靠声音对了 5 个中的 {0} 个。语言模型纠正了大部分混淆，但它只看两个词，所以没猜对守门员那题。",
     "You": "你",
-    "\"Wreck a nice beach\": I got {0}/5, a 1975-style speech decoder got {1}/5, and sound alone got {2}/5.": "“Wreck a nice beach”：我答对 {0}/5，1975 年风格的语音解码器 {1}/5，只靠声音 {2}/5。"
+    "\"Wreck a nice beach\": I got {0}/5, a 1975-style speech decoder got {1}/5, and sound alone got {2}/5.": "“Wreck a nice beach”：我答对 {0}/5，1975 年风格的语音解码器 {1}/5，只靠声音 {2}/5。",
+    "Similar sounds can fit different words, so sound alone may not settle a transcript. Jelinek and colleagues designed a decoder that combined sound matches with the probability of a word sequence. Language prediction could help choose between uncertain interpretations.": "相似的声音可能对应不同的词，只听声音未必能确定文字。耶利内克和同事设计的解码器，把声音的匹配程度与词序列的概率结合起来。语言预测由此能帮助系统在不确定的解释之间做选择。",
+    "Press “Hear it” if you see it, then choose one of the two phrases using the sound or the “Sounds like” line.": "如果看到“听一听”按钮，先按一下，再根据声音或“听起来像”这一行，从两个短语中选一个。"
   }
 }

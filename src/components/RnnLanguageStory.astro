@@ -1,5 +1,5 @@
 ---
-import Discovery from './Discovery.astro';
+import ChapterBrief from './ChapterBrief.astro';
 import RnnLanguageToy from './RnnLanguageToy';
 import {sourceLink} from '../lib/chapters';
 import '../styles/early.css';
@@ -31,7 +31,7 @@ import '../styles/rnn-language.css';
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p><h2>Beat<br/>the window.</h2>
-  <Discovery slug="rnn-language-model"/>
+  <ChapterBrief slug="rnn-language-model"/>
   <p>Build a sentence that ends in “bank”. A fixed-window reader sees only the last few words; a running memory reads them all. Push the clue just past the window’s edge, in as few words as you can, and the two readers disagree.</p>
   <noscript><p>Enable JavaScript to play. In the game, “river we walked to the bank” keeps the clue for the running memory but not for a three-word window.</p></noscript>
   <RnnLanguageToy client:load/>

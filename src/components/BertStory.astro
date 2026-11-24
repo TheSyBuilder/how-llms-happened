@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import BertToy from "./BertToy";
 import { sourceLink, paperLink } from "../lib/chapters";
 ---
@@ -33,7 +33,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Guess the [MASK].</h2><Discovery slug="bert" />
+  <h2>Guess the [MASK].</h2><ChapterBrief slug="bert" />
   <p>Five hidden words. Reveal clues from the left or the right of the gap, and guess whenever you are sure. Fewer clues, more points.</p>
   <noscript><p>Enable JavaScript to play. In “The metal ___ flew over the clouds.”, “metal” leaves plane or boat and “flew over” leaves bird or plane. Together they leave plane.</p></noscript>
   <BertToy client:load />

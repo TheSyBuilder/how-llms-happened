@@ -3,7 +3,6 @@
     "The 2017 Transformer replaced recurrence and convolution (mixing nearby positions) with attention and small networks applied at each position. <strong>Self-attention</strong> means positions in the same sequence read information from one another.": "Transformer في 2017 استبدل التكرار والالتفاف، يعني مزج المعلومات بين المواضع القريبة، بالانتباه وشبكات صغيرة تشتغل في كل موضع. <strong>الانتباه الذاتي</strong> يعني إن مواضع التسلسل نفسه تقرا معلومات من بعضها.",
     "Picture a library desk. A <strong>query</strong> is what you are looking for; a <strong>key</strong> is a label to match against; a <strong>value</strong> is the information you take away. Attention scores the matches, turns them into weights, and mixes the values. Several <strong>heads</strong> perform different learned reads in parallel.": "تخيّلوا مكتب الاستعلامات في مكتبة. <strong>الاستعلام</strong> هو الشي اللي تدوّرون عليه، و<strong>المفتاح</strong> وصف تقارنونه بطلبكم، و<strong>القيمة</strong> المعلومة اللي تاخذونها. الانتباه يعطي كل تطابق درجة، ويحوّل الدرجات لأوزان، وبعدين يمزج القيم. عدة <strong>رؤوس انتباه</strong> تتعلّم قراءات مختلفة وتنفّذها بالتوازي.",
     "<strong>Positional encodings</strong> add information about word order. During training, the decoder—the part that writes the output—can process known target words in parallel while hiding later words. Generating a new translation still proceeds one token at a time; a <strong>token</strong> is a chunk of text.": "<strong>ترميزات المواضع</strong> تضيف معلومات عن ترتيب الكلمات. وقت التدريب، يقدر مفكّك الترميز، وهو الجزء اللي يكتب الناتج، يعالج كلمات الهدف المعروفة بالتوازي ويخفي الكلمات اللي بعدها. بس لما يكتب ترجمة جديدة، يولّد توكن واحد كل مرة، و<strong>التوكن</strong> (token) قطعة من النص.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Equations, architecture, results &amp; limits</span>": "للتعمّق <span>المعادلات والبنية والنتائج والحدود</span>",
     "Sources <span>The original work, with a reading guide</span>": "المصادر <span>البحث الأصلي ودليل للقراءة</span>",
     "Five puzzles.<br>One attention head.": "خمسة ألغاز.<br>رأس انتباه واحد."
@@ -14,8 +13,6 @@
     "Original paper record": "سجل البحث الأصلي",
     "The Transformer": "Transformer",
     "What if every word could look at the others directly?": "وش يصير لو كل كلمة تقدر تطالع الكلمات الثانية مباشرة؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -138,6 +135,8 @@
     "Total: {0} moves": "المجموع: {0} حركات",
     "{0} · skipped": "{0} · تخطّيتوه",
     "{0} · {1} moves": "{0} · {1} حركات",
-    "{0}, word {1}": "{0}، الكلمة {1}"
+    "{0}, word {1}": "{0}، الكلمة {1}",
+    "Recurrent networks handle words one at a time, making training wait for earlier steps. The Transformer used attention to let words read each other directly, so training could run in parallel. Generating new text still happens one piece at a time.": "الشبكات المتكررة تعالج الكلمات وحدة ورا الثانية، فالتدريب ينتظر الخطوات اللي قبل. استخدم Transformer الانتباه عشان تقرا الكلمات من بعضها مباشرة، وهذا خلّى التدريب يصير بالتوازي. أما توليد نص جديد، فللحين يمشي جزء ورا جزء.",
+    "Choose “The”, then press “Hide future words”.": "اختاروا «The»، وبعدين اضغطوا «إخفاء الكلمات اللاحقة»."
   }
 }

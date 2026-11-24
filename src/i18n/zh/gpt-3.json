@@ -3,7 +3,6 @@
     "A new task.<br>Another training run?": "换个新任务，<br>还要重新训练？",
     "The examples are<br>part of the question.": "把例子<br>放进问题里。",
     "To ask for a translation, put a few word pairs in the <strong>prompt</strong>, the text given to the model. Then leave the next pair unfinished. This is <strong>in-context learning</strong>: using examples inside the prompt to guide the answer, without updating the model’s parameters.": "想让模型翻译，可以在<strong>提示词</strong>——给模型的文本——中放几对词，再留下一对没写完。这就是<strong>上下文学习</strong>：用提示词里的例子引导回答，而不更新模型参数。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Frozen weights, scale &amp; limits</span>": "继续深入 <span>固定权重、规模与局限</span>",
     "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>",
     "Pretraining gave models a head start. A new task usually still needed labelled examples and <strong>fine-tuning</strong>, updating the model's learned numbers for that task.": "预训练给了模型一个起点。面对新任务，通常仍需带标签的例子和<strong>微调</strong>，也就是为该任务更新模型学到的数值。",
@@ -15,8 +14,6 @@
     "2020 / Live chapter": "2020 / 已上线",
     "GPT-3 and in-context learning": "GPT-3 与上下文学习",
     "Can examples in a prompt teach a new pattern?": "提示词里的例子，能教会一种新模式吗？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -109,6 +106,8 @@
     "You beat the filter by {0}: {1} points.": "你比筛选器早了 {0} 个例子：得 {1} 分。",
     "Answer now for {0} points.": "现在回答可得 {0} 分。",
     "Puzzle {0} / 5 · streak {1}": "第 {0} / 5 题 · 连胜 {1}",
-    "Best streak: {0}": "最长连胜：{0}"
+    "Best streak: {0}": "最长连胜：{0}",
+    "Preparing a new training set for every task is costly. GPT-3 tested whether task descriptions and a few examples in the prompt could guide a large language model without retraining it. This broadened what one model could attempt through text, but success depended on the task and examples.": "为每项任务准备新的训练集，成本很高。GPT-3 测试了能否用提示词里的任务描述和少量示例，引导大型语言模型，而不重新训练它。这扩展了同一个模型通过文本可以尝试的任务，但效果取决于任务和示例。",
+    "Read the first example, then press one of the word-pair answers below it.": "先读第一个示例，再按下方的一个词对答案。"
   }
 }

@@ -4,20 +4,16 @@
     "Words and pictures in.<br>Words out.": "读入文字和图片，<br>用文字回答。",
     "OpenAI introduced GPT-4 in March 2023. The report described a <strong>multimodal</strong> model: one that can work with more than one kind of input. GPT-4 could accept images alongside text and produce a text response.": "OpenAI 于 2023 年 3 月推出 GPT-4。报告描述了一个<strong>多模态</strong>模型：能处理不止一种输入类型。GPT-4 可以同时接收图像和文字，并用文字回复。",
     "The broad training recipe still involved predicting the next <strong>token</strong>, a piece of text, followed by training to improve behaviour. The report did not reveal the detailed image-processing architecture. We can explain what visual input makes possible without inventing how GPT-4 encoded it.": "总体训练方式依然包括预测下一个 <strong>token</strong>（文本片段），随后再训练以改善行为。报告没有公开图像处理架构的细节。我们可以解释图像输入带来什么，而不猜测 GPT-4 如何编码图像。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "The prompt can<br>point beyond prose.": "提示里，<br>不必只有文字。",
     "Go deeper <span>What the report reveals—and leaves open</span>": "深入看看 <span>报告说了什么，又留下哪些未知</span>",
     "Sources <span>Technical report and official launch</span>": "资料来源 <span>技术报告与官方发布公告</span>",
-    "What’s in<br>the picture?": "图里<br>画的是什么？",
-    "<strong>Try this first</strong> Open one tile, then guess the picture.": "<strong>先试试这个</strong> 揭开一块，然后猜猜画的是什么。"
+    "What’s in<br>the picture?": "图里<br>画的是什么？"
   },
   "text": {
     "← The timeline": "← 时间线",
     "2023 / Live chapter": "2023 / 已上线",
     "Beyond text: GPT-4": "不止文字：GPT-4",
     "What changes when a model can read a picture too?": "模型也能看图时，会发生什么变化？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -130,6 +126,8 @@
     "A picture can answer what words leave open. A model that also takes images in has evidence a text-only model never gets.": "文字说不清的，图片能回答。能同时接收图片的模型，拥有纯文字模型永远拿不到的证据。",
     "Open one tile, then guess the picture.": "揭开一块，然后猜猜画的是什么。",
     "How did the text-only model guess?": "纯文字模型是怎么猜的？",
-    "Only from the caption’s words. It never saw a single tile, so a vague caption fooled it.": "只靠图片说明里的词。它一块格子都没看到，所以含糊的说明骗过了它。"
+    "Only from the caption’s words. It never saw a single tile, so a vague caption fooled it.": "只靠图片说明里的词。它一块格子都没看到，所以含糊的说明骗过了它。",
+    "A question about a picture leaves a text-only model without the picture’s evidence. The GPT-4 report described a model accepting images alongside text and producing text answers. Its examples showed a question pointing straight at a photo, diagram or document, though the report noted errors and overconfidence and withheld architecture details.": "面对图片问题，纯文本模型拿不到图片里的证据。GPT-4 报告介绍了一个能够同时接收图像和文本、输出文本答案的模型。示例展示了问题如何直接指向照片、图表或文档，但报告也指出了错误和过度自信，并未公开架构细节。",
+    "Press a “?” tile to uncover part of the picture.": "按一个“?”方块，揭开图片的一部分。"
   }
 }

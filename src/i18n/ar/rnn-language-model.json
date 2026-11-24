@@ -3,7 +3,6 @@
     "Read a word.<br>Update a memory.": "نقرا كلمة.<br>ونحدّث الذاكرة.",
     "In 2010, Tomáš Mikolov and colleagues used a simple recurrent network for next-word prediction. <strong>Recurrent</strong> means that a calculation feeds its result into the next step. Their model uses the Elman network’s loop.": "في 2010، استخدم توماش ميكولوف وزملاؤه شبكة متكررة بسيطة عشان يتوقعون الكلمة اللي بعدها. <strong>التكرار</strong> هنا يعني إن ناتج الحساب يدخل في الخطوة اللي بعدها. ونموذجهم يستخدم حلقة شبكة إلمان.",
     "At each step, the current word and the previous <strong>hidden state</strong>—a small list of numbers summarizing earlier input—produce a new state. The model turns that state into probabilities for the next word. Reading another word updates the same state with the same learned weights.": "في كل خطوة، الكلمة الحالية مع <strong>الحالة المخفية</strong> السابقة، وهي قائمة أرقام صغيرة تلخّص اللي قبلها، يطلّعون حالة جديدة. النموذج يحوّل هالحالة إلى احتمالات للكلمة اللي بعدها. ولما يقرا كلمة ثانية، يحدّث نفس الحالة بنفس الأوزان اللي تعلّمها.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>The recurrence, training, results &amp; limits</span>": "للتعمّق <span>التكرار والتدريب والنتائج والحدود</span>",
     "<code>sₜ = sigmoid(Awₜ + Rsₜ₋₁)</code><br><code>P(wₜ₊₁ = k) = softmax(Bsₜ)ₖ</code>": "<code>sₜ = sigmoid(Awₜ + Rsₜ₋₁)</code><br><code>P(wₜ₊₁ = k) = softmax(Bsₜ)ₖ</code>",
     "Sources <span>The original paper, with a reading guide</span>": "المصادر <span>الورقة الأصلية مع دليل للقراءة</span>",
@@ -15,8 +14,6 @@
     "Read the four-page paper": "اقرؤوا البحث اللي من أربع صفحات",
     "Mikolov’s RNN language model": "نموذج Mikolov المتكرر للغة",
     "Can a running memory help predict the next word?": "هل تساعد ذاكرة تتحدّث باستمرار في توقع الكلمة التالية؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -112,6 +109,8 @@
     "Next target": "الهدف التالي",
     "Read it to both models": "اقروها على النموذجين",
     "Clear": "امسح",
-    "A toy: two hand-set memory units, not Mikolov’s trained network. The window is the same reader restarted on the last few words.": "لعبة مبسّطة: وحدتين ذاكرة مضبوطتين يدويًا، مو شبكة ميكولوف المدرّبة. والنافذة هي نفس القارئ يبدأ من جديد على الكلمات الأخيرة بس."
+    "A toy: two hand-set memory units, not Mikolov’s trained network. The window is the same reader restarted on the last few words.": "لعبة مبسّطة: وحدتين ذاكرة مضبوطتين يدويًا، مو شبكة ميكولوف المدرّبة. والنافذة هي نفس القارئ يبدأ من جديد على الكلمات الأخيرة بس.",
+    "A fixed window drops a clue as soon as it passes the edge. Mikolov and colleagues used a changing recurrent state to predict the next word, letting earlier words keep some influence. Combined with count models, it improved speech recognition in their tests, though long context remained difficult.": "نافذة السياق الثابتة تفقد التلميح أول ما يطلع من حدودها. استخدم ميكولوف وزملاؤه حالة متكررة تتغيّر عشان تتوقّع الكلمة الجاية، وتخلي للكلمات الأقدم بعض التأثير. ولما جمعوها مع نماذج العدّ تحسّن التعرّف على الكلام في اختباراتهم، بس ظلّ السياق الطويل صعب.",
+    "Tap “river” in the word tiles to add the first clue to your sentence.": "اضغطوا «river» ضمن بطاقات الكلمات عشان تضيفون أول تلميح لجملتكم."
   }
 }

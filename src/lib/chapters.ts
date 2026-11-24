@@ -284,6 +284,24 @@ export const chapterPaper = (id: string) => {
     };
   return addedPapers.find((work) => work.id === id);
 };
+// Server-only credit: the chapter's displayed year is valid only when an anchor event supports it.
+export function chapterSourceCredit(chapter: Pick<Chapter, "anchor" | "year">) {
+  const work = corpus.works.find((item) => item.id === chapter.anchor);
+  if (work) {
+    const years = work.chronology.events.map((event) => Number(event.date.value.slice(0, 4)));
+    const ordering = work.chronology.events.find((event) => event.id === work.chronology.orderingEventId);
+    const year = years.includes(chapter.year) ? chapter.year : Number(ordering?.date.value.slice(0, 4));
+    const multiple = work.authors.length >= 4;
+    // The cited people use family names last; retain Good's explicitly requested initials.
+    const surnames = work.authors.map((name) => name === "I. J. Good" ? name : name.split(" ").at(-1)!);
+    const author = multiple ? surnames[0]! : surnames.length === 1 ? surnames[0]! : `${surnames.slice(0, -1).join(", ")} & ${surnames.at(-1)}`;
+    return { year, author, multiple };
+  }
+  const added = addedPapers.find((item) => item.id === chapter.anchor);
+  if (added && "credit" in added && added.credit) return { year: added.year, ...added.credit };
+  return undefined;
+}
+
 export function paperLink(id: string) {
   return chapterPaper(id)?.url;
 }

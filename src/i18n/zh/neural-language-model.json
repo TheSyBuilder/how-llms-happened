@@ -2,7 +2,6 @@
   "rich": {
     "In their 2003 paper, Yoshua Bengio and colleagues learned word representations and a next-word predictor together. A <strong>word vector</strong> is a short list of numbers locating a word in a learned space. Words used in similar ways can acquire nearby vectors.": "在 2003 年的论文中，Yoshua Bengio 和同事把词表示与下一个词的预测器放在一起学习。<strong>词向量</strong>是一小串数字，用来确定一个词在学出的空间里的位置。用法相似的词，可能得到相邻的向量。",
     "The model looks up vectors for a fixed window of previous words, joins them, and sends them through a <strong>neural network</strong>: layers of learned, weighted calculations. A <strong>softmax</strong> converts the resulting scores into probabilities that add to one. Training increases the probability of the next word actually seen, adjusting both the vectors and the predictor.": "模型取出前面固定数量的词的向量，把它们拼接起来，送入<strong>神经网络</strong>——由多层带有可学习权重的计算组成。<strong>Softmax</strong> 把输出分数转换成总和为 1 的概率。训练会提高实际出现的下一个词的概率，同时调整词向量和预测器。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, learning, results &amp; limits</span>": "深入了解 <span>架构、学习、结果与局限</span>",
     "<code>y = b + Wx + U tanh(d + Hx)</code><br><code>P(wₜ = i | context) = exp(yᵢ) / Σⱼ exp(yⱼ)</code>": "<code>y = b + Wx + U tanh(d + Hx)</code><br><code>P(wₜ = i | context) = exp(yᵢ) / Σⱼ exp(yⱼ)</code>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>",
@@ -14,8 +13,6 @@
     "Read the paper": "阅读论文",
     "Bengio’s neural language model": "Bengio 的神经语言模型",
     "Can similar word sequences share what they learn?": "相似的词序列，能分享彼此学到的东西吗？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -104,6 +101,8 @@
     "See my score": "看我的得分",
     "Next lesson": "下一课",
     "Teach it": "开始教",
-    "A toy: five words with hand-placed three-number vectors, and one shared predictor that each lesson nudges.": "一个玩具：五个词，各有一个人为摆放的三维向量，外加一个共享的预测器，每节课推它一下。"
+    "A toy: five words with hand-placed three-number vectors, and one shared predictor that each lesson nudges.": "一个玩具：五个词，各有一个人为摆放的三维向量，外加一个共享的预测器，每节课推它一下。",
+    "Counting exact phrases treats similar sentences as separate cases. Bengio and colleagues learned word vectors and a next-word predictor together, so learning from one context could help with similar ones. This improved prediction beyond the count models they tested, while still using a fixed context window.": "按原样统计短语，会把相似的句子当成互不相干的情况。Bengio 和同事一起训练词向量与下一个词的预测器，让一个上下文中学到的东西也能帮助相似的上下文。它的预测超过了论文测试的计数模型，但仍只看固定长度的前文。",
+    "Tap the word cards you think will change, such as “dog”, then press “Teach it”.": "点选你认为会变化的词卡，例如“dog”，再按“开始教”。"
   }
 }

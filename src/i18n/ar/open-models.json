@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Weights are only the start</span>": "للتعمّق <span>الأوزان هي البداية بس</span>",
     "Sources <span>Papers and further reading</span>": "المصادر <span>الأوراق وقراءات إضافية</span>"
   },
@@ -9,8 +8,6 @@
     "2023 / Live chapter": "2023 / فصل متاح",
     "Open models": "النماذج المفتوحة",
     "What becomes possible when you can run the model yourself?": "وش يصير ممكن لما تقدر تشغّل النموذج بنفسك؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -81,6 +78,8 @@
     "{0}-bit": "{0} بت",
     "{0} GB": "{0} GB",
     "A service gives you outputs. A weights release also gives you learned numbers to load and study on your own hardware. These are teaching illustrations.": "الخدمة تعطيكم مخرجات. أما نشر الأوزان فيعطيكم بعد الأرقام اللي تعلّمها النموذج، تحمّلونها وتدرسونها على أجهزتكم. هذي أمثلة تعليمية.",
-    "{0} at {1}-bit: {2} GB. It fits. Is there a bigger one?": "{0} بدقة {1} بت: {2} GB. يتّسع. فيه أكبر منه؟"
+    "{0} at {1}-bit: {2} GB. It fits. Is there a bigger one?": "{0} بدقة {1} بت: {2} GB. يتّسع. فيه أكبر منه؟",
+    "Using a model through a website does not give you the weights needed to run it yourself. The LLaMA team released its own models’ weights so researchers could run, study and adapt those models on their own hardware. This made experiments less dependent on a hosted API, though the researchers’ available memory still limited what would fit.": "لو استخدمتوا نموذج من موقع، هذا ما يعطيكم الأوزان اللي تحتاجونها عشان تشغّلونه بأنفسكم. أتاح فريق LLaMA أوزان نماذجه عشان يقدر الباحثون يشغّلون هالنماذج ويدرسونها ويكيّفونها على أجهزتهم الخاصة. كذا صار التجريب أقل اعتمادًا على API مستضاف، بس ذاكرة أجهزة الباحثين ظلّت تحدّ حجم النموذج اللي تتسع له.",
+    "Pick a device with “Laptop”, “Phone” or “Desktop”, then choose its memory, such as “16 GB”.": "اختاروا جهاز من «لابتوب» أو «جوال» أو «كمبيوتر مكتبي»، وبعدين اختاروا ذاكرته، مثل «16 GB»."
   }
 }

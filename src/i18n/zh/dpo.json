@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>A pairwise objective</span>": "深入了解 <span>比较两个回答的训练目标</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
@@ -9,8 +8,6 @@
     "2023 / Live chapter": "2023 / 已上线",
     "Simpler alignment": "更简单的对齐方法",
     "Can comparing two answers be enough to improve a model?": "比较两个回答，就能让模型进步吗？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -92,6 +89,8 @@
     "10 clicks of preference training turned my model {0}% pirate.": "点了 10 次偏好训练，我的模型变成了 {0}% 海盗腔。",
     "I preference-trained a model in 10 clicks: {0}% helpful, {1}% pirate.": "我点 10 次完成了偏好训练：有用 {0}%，海盗腔 {1}%。",
     "A two-trait model trained with the real DPO update. Real DPO adjusts billions of weights from many pairs.": "一个只有两个特征的模型，用真实的 DPO 更新训练。真正的 DPO 会根据大量回答对调整数十亿个权重。",
-    "The chosen and rejected answers meet in one comparison against a fixed reference. Training changes the model, not the reference. These are teaching illustrations.": "两条回答都以同一个固定参考模型为基准进行比较。训练改变的是模型，参考模型不动。这是帮助理解的示意图。"
+    "The chosen and rejected answers meet in one comparison against a fixed reference. Training changes the model, not the reference. These are teaching illustrations.": "两条回答都以同一个固定参考模型为基准进行比较。训练改变的是模型，参考模型不动。这是帮助理解的示意图。",
+    "Training from human preferences often meant learning a separate scorer, then using its scores as rewards for further training. Direct Preference Optimization (DPO) learned straight from preferred and rejected answers, measuring changes against an unchanged starting copy of the model. This simplified that training stage, but the comparisons still had to be good.": "用人类偏好训练模型，往往要先训练单独的评分器，再把评分当作奖励，继续训练。直接偏好优化（DPO）直接从偏好答案和被拒答案中学习，以保持不变的模型初始副本为基准衡量变化。这简化了这一训练阶段，但比较数据仍然要好。",
+    "Compare “Answer A” and “Answer B”, then press the answer you prefer.": "比较“回答 A”和“回答 B”，再按你更喜欢的答案。"
   }
 }

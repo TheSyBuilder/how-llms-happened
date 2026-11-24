@@ -2,7 +2,6 @@
   "rich": {
     "In 1913, Andrey Markov studied 20,000 letters from <em>Eugene Onegin</em>, classifying them as vowels or consonants. A vowel’s frequency changed sharply depending on the preceding category. His study investigated statistical dependence; it was not a machine for writing Russian.": "في 1913، درس أندريه ماركوف 20,000 حرف من <em>يفغيني أونيغين</em>، وصنّفها إلى حروف علّة وحروف ساكنة. لاحظ إن تكرار حرف العلّة يتغيّر كثيرًا حسب نوع الحرف اللي قبله. كان يدرس الاعتماد الإحصائي، وما كان يبني آلة تكتب بالروسية.",
     "A <strong>conditional probability</strong> is a chance computed given some known context. Instead of asking “How often is B seen?”, ask “How often does B follow A?” A <strong>Markov chain</strong> chooses its next state using the current state. A letter can be that state.": "<strong>الاحتمال الشرطي</strong> هو احتمال نحسبه بعد ما نعرف معلومة معيّنة. بدل ما نسأل «كم مرة يظهر B؟»، نسأل «كم مرة يجي B بعد A؟». <strong>سلسلة ماركوف</strong> تختار الحالة الجاية اعتمادًا على الحالة الحالية، والحرف ممكن يمثّل هالحالة.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "للتعمّق <span>الآلية والأدلة والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>"
   },
@@ -11,8 +10,6 @@
     "1913 / Live chapter": "1913 / فصل متاح",
     "Guessing the next letter": "توقّع الحرف الجاي",
     "How much can the last letter tell us about the next?": "وش نقدر نعرف عن الحرف الجاي من الحرف اللي قبله؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -80,6 +77,8 @@
     "The predictor is only these four tallies, the same kind of count Markov made by hand.": "المتنبئ هو بس هالعدّات الأربع، ونفس نوع العدّ اللي سوّاه ماركوف بيده.",
     "It predicted you {0}% of the time.": "توقّعكم في {0}% من المرات.",
     "It counted what followed each pair of your presses and caught {0} of {1}.": "عدّ اللي يجي بعد كل زوج من ضغطاتكم، وكشف {0} من {1}.",
-    "A 1913 idea predicted my \"random\" choices {0}% of the time.": "فكرة من 1913 توقّعت اختياراتي «العشوائية» في {0}% من المرات."
+    "A 1913 idea predicted my \"random\" choices {0}% of the time.": "فكرة من 1913 توقّعت اختياراتي «العشوائية» في {0}% من المرات.",
+    "Press “A” or “B” as unpredictably as you can while the counter tries to guess your next press.": "اضغطوا «A» أو «B» بشكل يصعب توقّعه بينما يحاول العدّاد يخمّن ضغطتكم الجاية.",
+    "Counting letters alone loses their order. Markov counted vowels and consonants in a poem and showed that what came next depended on the preceding category. That made context something people could measure.": "عدّ الحروف لحالها يضيّع ترتيبها. عدّ ماركوف حروف العلة والحروف الساكنة في قصيدة، وبيّن إن فئة الحرف اللي يجي بعده تعتمد على فئة الحرف اللي قبله. كذا صرنا نقدر نقيس أثر السياق."
   }
 }

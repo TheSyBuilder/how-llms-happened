@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Budget and loss</span>": "للتعمّق <span>الميزانية والخسارة</span>",
     "Sources <span>Papers and further reading</span>": "المصادر <span>الأوراق وقراءات إضافية</span>"
   },
@@ -9,8 +8,6 @@
     "2022 / Live chapter": "2022 / فصل متاح",
     "Compute-optimal training": "كيف توزّع ميزانية التدريب؟",
     "Should a budget buy a bigger model or more reading?": "تصرف الميزانية على نموذج أكبر أو قراءة أكثر؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -84,6 +81,8 @@
     "I tried to split a training budget like Chinchilla: {0}/300.": "حاولت أقسّم ميزانية تدريب مثل Chinchilla: ‏{0}/300.",
     "Loss uses the Chinchilla paper’s formula with the 2024 refit by Besiroglu et al. Real training runs vary.": "تُحسب الخسارة بدالة ورقة Chinchilla مع إعادة الملاءمة التي نشرها Besiroglu وزملاؤه عام 2024. نتائج التدريب الحقيقية تتفاوت.",
     "{0} FLOPs": "{0} عملية فاصلة عائمة",
-    "Equal area, different allocations. A fixed training budget can buy a small model with more reading, or a large one with less. These are teaching illustrations.": "نفس المساحة، وتوزيع مختلف. ميزانية تدريب ثابتة تكفي نموذج صغير بقراءة أكثر أو نموذج أكبر بقراءة أقل. هذي رسومات تعليمية."
+    "Equal area, different allocations. A fixed training budget can buy a small model with more reading, or a large one with less. These are teaching illustrations.": "نفس المساحة، وتوزيع مختلف. ميزانية تدريب ثابتة تكفي نموذج صغير بقراءة أكثر أو نموذج أكبر بقراءة أقل. هذي رسومات تعليمية.",
+    "Spending a training budget mostly on model size can leave too little text to learn from. The Chinchilla study found that model size and training text should grow roughly together. Its 70-billion-parameter model, trained on more text, beat the 280-billion-parameter Gopher on most reported evaluations at the same training compute.": "صرف أغلب ميزانية التدريب على حجم النموذج ممكن يترك نص قليل يتعلّم منه. لقت دراسة Chinchilla إن حجم النموذج وكمية نص التدريب يفترض يزيدون تقريبًا مع بعض. نموذجها اللي فيه 70 مليار معامل، وتدرّب على نص أكثر، تفوّق على Gopher اللي فيه 280 مليار معامل في أغلب التقييمات المذكورة بنفس حوسبة التدريب.",
+    "Press “Smaller model” to change the split, then press “Lock in this split”.": "اضغطوا «نموذج أصغر» عشان تغيّرون التقسيم، وبعدين اضغطوا «تثبيت التقسيم»."
   }
 }

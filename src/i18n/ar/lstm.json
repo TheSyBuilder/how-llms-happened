@@ -2,7 +2,6 @@
   "rich": {
     "<strong>Long short-term memory</strong>, or LSTM, introduced a memory cell with a protected additive state. Hochreiter and Schmidhuber’s 1997 design used an input gate to control writing and an output gate to control exposure. A <strong>gate</strong> is a learned multiplier that opens or closes a route for information.": "قدّمت <strong>الذاكرة طويلة قصيرة المدى</strong>، أو LSTM، خلية ذاكرة بحالة محمية تتغيّر بالجمع. في تصميم Hochreiter وSchmidhuber سنة 1997، بوابة الإدخال تتحكم في الكتابة، وبوابة الإخراج تتحكم في اللي يظهر. <strong>البوابة</strong> معامل ضرب يتعلّمه النموذج عشان يفتح مسار المعلومات أو يقفله.",
     "Gers, Schmidhuber and Cummins later added the <strong>forget gate</strong>, presented in 1999 and developed in a 2000 journal paper. It scales the old state, letting the network retain, fade or clear its memory. The original 1997 cell did not have this gate.": "أضاف Gers وSchmidhuber وCummins بعدين <strong>بوابة النسيان</strong>، وعرضوها سنة 1999 وبعدها فصّلوها في ورقة بمجلة سنة 2000. هالبوابة تضبط كم يبقى من الحالة القديمة، فتقدر الشبكة تحتفظ بالذاكرة أو تخففها أو تمسحها. خلية 1997 الأصلية ما كان فيها هالبوابة.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "للتعمّق <span>الآلية والأدلة والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>"
   },
@@ -11,8 +10,6 @@
     "1997 / Live chapter": "1997 / فصل متاح",
     "Learning what to remember": "تعلّم ما يستحق التذكّر",
     "Can a network learn what to keep and what to forget?": "هل تقدر الشبكة تتعلّم وش تحتفظ به ووش تنساه؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -102,6 +99,8 @@
     "Opened {0} of 3 vaults.": "فتحتوا {0} من 3 خزائن.",
     "Keep held the code, Write let it in, and Read gave it back at the bell. An LSTM learns to work these gates itself.": "«احتفظ» حفظ الرمز، و«اكتب» دخّله، و«اقرأ» رجّعه عند الجرس. وLSTM تتعلم تشغّل هالبوابات بنفسها.",
     "Vaults": "الخزائن",
-    "I worked an LSTM's memory gates by hand and opened {0} of 3 vaults.": "شغّلتُ بوابات ذاكرة LSTM بيدي وفتحت {0} من 3 خزائن."
+    "I worked an LSTM's memory gates by hand and opened {0} of 3 vaults.": "شغّلتُ بوابات ذاكرة LSTM بيدي وفتحت {0} من 3 خزائن.",
+    "Early recurrent networks struggled to learn from clues far back in a sequence. LSTM used a memory cell with gates controlling what enters and what gets read out. This helped preserve learning signals across long gaps; later work added a forget gate.": "الشبكات المتكررة الأولى كانت تتعب وهي تتعلّم من تلميح بعيد في التسلسل. استخدم LSTM خلية ذاكرة وبوابات تتحكّم في اللي يدخل واللي ينقرا منها. هذا ساعد على حفظ إشارات التعلّم عبر فواصل طويلة، وبعدها أضافت أبحاث ثانية بوابة النسيان.",
+    "Press “Start vault 1” to begin the incoming stream.": "اضغطوا «ابدؤوا الخزنة 1» عشان يبدأ تدفّق المدخلات."
   }
 }

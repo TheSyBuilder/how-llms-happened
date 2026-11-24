@@ -1,5 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
+import { readFileSync, readdirSync } from "node:fs";
 import type { Locator, Page } from "@playwright/test";
+import { firstSteps } from "../src/lib/first-steps";
 import { CLOCK_START, games, type Driver, type Input } from "./helpers/games";
 import {
   at, chapterMeta, chapterPath, expect, hydrated, localePath, locales, noHorizontalOverflow, openChapter, siteBase, SITE_ORIGIN, slugs, test, type Locale,
@@ -7,6 +9,77 @@ import {
 
 const normalRun = !siteBase;
 const href = (path: string) => `${siteBase}${path}`;
+const speechChapters = ["zero-counts", "transformer", "open-models"] as const;
+const representativeSources: Record<string, { year: number; author: string; multiple: boolean }> = {
+  "zero-counts": { year: 1953, author: "I. J. Good", multiple: false },
+  transformer: { year: 2017, author: "Vaswani", multiple: true },
+  "open-models": { year: 2023, author: "Touvron", multiple: true },
+  lstm: { year: 1997, author: "Hochreiter & Schmidhuber", multiple: false },
+  reasoning: { year: 2025, author: "DeepSeek-AI", multiple: false },
+};
+const firstGameControl = (page: Page) => page.locator('#play astro-island :is(button,input,select,textarea,[role="button"]):not(:disabled):not([aria-disabled="true"]):visible').first();
+type Catalog = { text: Record<string, string> };
+const readCatalog = (locale: "zh" | "ar", name: string) => JSON.parse(readFileSync(new URL(`../src/i18n/${locale}/${name}`, import.meta.url), "utf8")) as Catalog;
+const chapterMessages = Object.fromEntries(["zh", "ar"].map((language) => {
+  const locale = language as "zh" | "ar";
+  const shared = readdirSync(new URL(`../src/i18n/${locale}/`, import.meta.url)).filter((name) => name.startsWith("shared-") && name.endsWith(".json"));
+  return [locale, Object.fromEntries(slugs.map((slug) => [slug, Object.assign({}, ...shared.map((name) => readCatalog(locale, name).text), readCatalog(locale, `${slug}.json`).text, readCatalog(locale, "common.json").text)]))];
+})) as Record<"zh" | "ar", Record<string, Record<string, string>>>;
+const chapterText = (locale: Locale, slug: string, source: string) => locale === "en" ? source : chapterMessages[locale][slug]![source] ?? source;
+const speechState = (page: Page) => page.evaluate(() => (window as unknown as { __speech: { calls: { text: string; lang: string }[]; cancels: number } }).__speech);
+
+async function checkChapterBrief(page: Page, slug: string, locale: Locale) {
+  const brief = page.locator("#play .chapter-brief"), step = firstSteps[slug]!;
+  await expect(brief).toBeVisible();
+  await expect(brief.locator(".chapter-brief-copy")).toHaveText(chapterText(locale, slug, step.brief!));
+  await expect(brief.locator(".chapter-brief-how-to")).toHaveText(chapterText(locale, slug, step.howTo!));
+  await expect(brief.locator(".chapter-brief-label")).toContainText(chapterText(locale, slug, "How to play"));
+  await expect(brief.locator(".chapter-brief-listen")).toHaveText(chapterText(locale, slug, "Listen"));
+  const sourceLine = brief.locator(".chapter-brief-source");
+  await expect(sourceLine).toBeVisible();
+  await expect(sourceLine.locator('bdi[dir="ltr"]')).toHaveCount(2);
+  await expect(sourceLine.locator("bdi").nth(0)).toHaveText(/^\d{4}$/);
+  await expect(sourceLine.locator("bdi").nth(1)).not.toBeEmpty();
+  await expect(sourceLine).toContainText(" · ");
+  const source = representativeSources[slug];
+  if (source) await expect(sourceLine).toHaveText(`${source.year} · ${source.author}${source.multiple ? ` ${chapterText(locale, slug, "et al.")}` : ""}`);
+  expect(await sourceLine.evaluate((element) => parseFloat(getComputedStyle(element).fontSize)), "source stays readable").toBeGreaterThanOrEqual(12);
+  const tabs = page.locator(".chapter-nav a");
+  await expect(tabs).toHaveText(["Play", "Story", "Math & sources", "Paper ↗"].map((text) => chapterText(locale, slug, text)));
+  await expect(tabs.nth(0)).toHaveAttribute("aria-current", "true");
+  await expect(firstGameControl(page)).toBeVisible();
+  await expect(page.locator(".chapter-hero .first-look, #play .discovery")).toHaveCount(0);
+  const why = page.locator("details.why-it-works");
+  await expect(why).toBeVisible();
+  await expect(why).toHaveJSProperty("open", false);
+  await expect(why.locator("summary")).toContainText(chapterText(locale, slug, "Why it works"));
+  await expect(why.locator(".wonder-question")).toHaveText(chapterText(locale, slug, step.question));
+  await expect(why.locator(".discovery-hint")).toHaveText(chapterText(locale, slug, step.answer));
+  expect(await page.evaluate(() => {
+    const before = (a: Element | null, b: Element | null) => !!a && !!b && !!(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING);
+    const brief = document.querySelector(".chapter-brief"), why = document.querySelector(".why-it-works");
+    return before(document.querySelector(".chapter-nav"), brief) && before(brief, document.querySelector("#play .goal-bar")) && before(document.querySelector("#play .toy-note"), why) && before(why, document.querySelector(".chapter-end"));
+  }), "tabs, brief, goal, honesty note, disclosure and share keep their order").toBe(true);
+  for (const target of [brief.locator(".chapter-brief-listen"), why.locator("summary"), ...await tabs.all()]) {
+    const box = await target.boundingBox();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+  }
+  if (locale === "ar") {
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    expect(await brief.evaluate((root) => {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        if (/[A-Za-z0-9]/.test(node.textContent ?? "") && !node.parentElement?.closest('bdi[dir="ltr"], [dir="ltr"]')) return false;
+      }
+      const howTo = root.querySelector(".chapter-brief-how-to")!;
+      const quotedRuns = [...(howTo.textContent ?? "").matchAll(/«[^«»\u0600-\u06ff]*[A-Za-z0-9][^«»\u0600-\u06ff]*»/g)];
+      if (quotedRuns.some(([quoted]) => ![...howTo.querySelectorAll('bdi[dir="ltr"]')].some((run) => run.textContent === quoted))) return false;
+      return getComputedStyle(root).direction === "rtl";
+    }), "Arabic Latin names and numbers stay isolated").toBe(true);
+  }
+  await noHorizontalOverflow(page);
+}
 
 // ---------------------------------------------------------------------------------------------
 // 1. Smoke: every chapter in every language.
@@ -23,6 +96,7 @@ test.describe("chapter smoke", () => {
         await expect(page.locator("#play .goal-bar").first()).toBeVisible();
         await expect(page.locator("#play .goal-bar .goal-text").first()).not.toBeEmpty();
         await expect(page.locator(".chapter-end"), "share box").toBeVisible();
+        await checkChapterBrief(page, slug, locale);
 
         // Dock: chronological, no Previous on the first chapter, and the last Next goes home.
         const dock = page.locator(".game-dock");
@@ -254,6 +328,112 @@ test.describe("home", () => {
 test.describe("chapter views", () => {
   test.skip(!normalRun, "base-path run");
   const view = (page: Page) => page.locator(".chapter-page");
+
+  for (const locale of locales) for (const slug of speechChapters) {
+    test(`${locale} ${slug} brief reads localized copy and follows chapter views`, async ({ page, errors }, info) => {
+      test.skip(info.project.name !== "chromium", "desktop only");
+      await openChapter(page, slug, { locale });
+      const brief = page.locator("#play .chapter-brief"), listen = brief.locator(".chapter-brief-listen");
+      const why = page.locator("details.why-it-works"), step = firstSteps[slug]!;
+      const read = async () => {
+        const before = await speechState(page);
+        await listen.click();
+        const state = await speechState(page), spoken = state.calls.at(-1)!;
+        expect(state.calls).toHaveLength(before.calls.length + 1);
+        expect(spoken.text).toContain(chapterText(locale, slug, step.brief!));
+        expect(spoken.text).toContain(chapterText(locale, slug, step.howTo!));
+        expect(spoken.lang).toBe(locale === "ar" ? "ar-SA" : locale === "zh" ? "zh-CN" : "en");
+        await expect(listen).toHaveText(chapterText(locale, slug, "Stop reading"));
+        return state.cancels;
+      };
+      const cancellations = await read();
+      await listen.click();
+      expect((await speechState(page)).cancels).toBeGreaterThan(cancellations);
+      await expect(listen).toHaveText(chapterText(locale, slug, "Listen"));
+      await expect(brief.locator(".chapter-brief-status")).toHaveText(chapterText(locale, slug, "Stopped."));
+
+      const beforePageHide = await read();
+      await page.evaluate(() => {
+        window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: true }));
+        window.dispatchEvent(new PageTransitionEvent("pageshow", { persisted: true }));
+      });
+      expect((await speechState(page)).cancels).toBeGreaterThan(beforePageHide);
+      await expect(listen).toHaveText(chapterText(locale, slug, "Listen"));
+      await expect(brief.locator(".chapter-brief-status")).toHaveText(chapterText(locale, slug, "Stopped."));
+      await read();
+      await listen.click();
+
+      await why.locator("summary").click();
+      await expect(why).toHaveAttribute("open", "");
+      await expect(why).toContainText(chapterText(locale, slug, step.question));
+      await expect(why).toContainText(chapterText(locale, slug, step.answer));
+      await why.locator("summary").click();
+      for (const [hash, mode] of [["#problem", "story"], ["#deeper", "reference"]] as const) {
+        const beforeTab = await read();
+        await page.locator(`[data-chapter-view="${mode}"]`).click();
+        await expect(view(page)).toHaveAttribute("data-view", mode);
+        await expect(brief).toBeHidden();
+        await expect(why).toBeHidden();
+        expect((await speechState(page)).cancels).toBeGreaterThan(beforeTab);
+        // Direct Story and Math links must also omit both Play-only additions.
+        await openChapter(page, slug, { locale, hash });
+        await expect(view(page)).toHaveAttribute("data-view", mode);
+        await expect(brief).toBeHidden();
+        await expect(why).toBeHidden();
+        await page.locator('[data-chapter-view="play"]').click();
+        await expect(view(page)).toHaveAttribute("data-view", "play");
+        await expect(brief).toBeVisible();
+        await expect(listen).toHaveText(chapterText(locale, slug, "Listen"));
+      }
+      expect(errors).toEqual([]);
+    });
+  }
+
+  for (const locale of locales) for (const slug of slugs) {
+    test(`${locale} ${slug} fits the desktop and phone first view`, async ({ page }, info) => {
+      test.skip(info.project.name !== "chromium", "explicit viewport sizes");
+      for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }, { width: 320, height: 844 }]) {
+        await page.setViewportSize(viewport);
+        await openChapter(page, slug, { locale });
+        expect(await page.evaluate(() => window.scrollY)).toBe(0);
+        const target = viewport.width === 1440
+          ? firstGameControl(page)
+          : page.locator("#play .goal-bar").first();
+        await expect(target).toBeVisible();
+        if (viewport.width >= 390) {
+          const box = await target.boundingBox();
+          expect(box!.y, "first target starts in the viewport").toBeGreaterThanOrEqual(0);
+          expect(box!.y + box!.height, "whole first control or goal bar is visible without scrolling").toBeLessThanOrEqual(viewport.height);
+        }
+        const positions = await page.evaluate(() => {
+          const box = (selector: string) => document.querySelector(selector)!.getBoundingClientRect();
+          const source = box(".chapter-brief-source"), listen = box(".chapter-brief-listen");
+          const rtl = document.documentElement.dir === "rtl";
+          const start = (rect: DOMRect) => rtl ? rect.right : rect.left;
+          return {
+            source: start(source), brief: start(box(".chapter-brief")), goal: start(box("#play .goal-bar")),
+            game: start(box("#play astro-island > div")), title: start(box(".chapter-hero h1")), tabs: start(box(".chapter-nav")),
+            disclosure: start(box(".why-it-works")), share: start(box(".chapter-end")),
+            sourceCenter: source.y + source.height / 2, listenCenter: listen.y + listen.height / 2,
+            listenGap: rtl ? source.left - listen.right : listen.left - source.right,
+          };
+        });
+        expect(Math.abs(positions.sourceCenter - positions.listenCenter), "Listen and source share a vertical center").toBeLessThanOrEqual(2);
+        expect(positions.listenGap, "Listen follows the inline source credit").toBeGreaterThanOrEqual(0);
+        expect(positions.listenGap, "Listen stays beside the source credit").toBeLessThanOrEqual(20);
+        if (viewport.width >= 390) {
+          const aligned = {
+            source: positions.source, goal: positions.goal, game: positions.game, disclosure: positions.disclosure, share: positions.share,
+            ...(viewport.width === 1440 ? { title: positions.title, tabs: positions.tabs } : {}),
+          };
+          for (const [label, start] of Object.entries(aligned)) {
+            expect(Math.abs(positions.brief - start), `brief aligns with ${label} at inline start`).toBeLessThanOrEqual(2);
+          }
+        }
+        await noHorizontalOverflow(page);
+      }
+    });
+  }
 
   test("#problem opens Story and #deeper opens Math & sources", async ({ page }) => {
     await openChapter(page, "retrieval", { hash: "#problem" });

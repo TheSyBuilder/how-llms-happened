@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Budget and loss</span>": "深入看看 <span>预算与损失</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
@@ -9,8 +8,6 @@
     "2022 / Live chapter": "2022 / 已上线",
     "Compute-optimal training": "把训练算力用在刀刃上",
     "Should a budget buy a bigger model or more reading?": "预算应该买更大的模型，还是更多阅读？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -84,6 +81,8 @@
     "I tried to split a training budget like Chinchilla: {0}/300.": "我试着像 Chinchilla 一样分配训练预算：{0}/300。",
     "Loss uses the Chinchilla paper’s formula with the 2024 refit by Besiroglu et al. Real training runs vary.": "损失按 Chinchilla 论文的公式计算，系数取自 Besiroglu 等人 2024 年的重新拟合。真实训练结果会有出入。",
     "{0} FLOPs": "{0} 次浮点运算",
-    "Equal area, different allocations. A fixed training budget can buy a small model with more reading, or a large one with less. These are teaching illustrations.": "面积一样，分配不同。固定训练预算可以买小模型配更多阅读，也可以买大模型配更少阅读。这些只是教学示意。"
+    "Equal area, different allocations. A fixed training budget can buy a small model with more reading, or a large one with less. These are teaching illustrations.": "面积一样，分配不同。固定训练预算可以买小模型配更多阅读，也可以买大模型配更少阅读。这些只是教学示意。",
+    "Spending a training budget mostly on model size can leave too little text to learn from. The Chinchilla study found that model size and training text should grow roughly together. Its 70-billion-parameter model, trained on more text, beat the 280-billion-parameter Gopher on most reported evaluations at the same training compute.": "把训练预算主要花在模型大小上，可能会留下太少的学习文本。Chinchilla 研究发现，模型大小和训练文本量应该大致同步增长。它的模型有 700 亿参数，用更多文本训练后，在相同训练计算量下，在报告的大多数评测中超过了有 2800 亿参数的 Gopher。",
+    "Press “Smaller model” to change the split, then press “Lock in this split”.": "按“模型小一点”调整分配，再按“就这样分”。"
   }
 }

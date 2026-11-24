@@ -2,7 +2,6 @@
   "rich": {
     "In their 2003 paper, Yoshua Bengio and colleagues learned word representations and a next-word predictor together. A <strong>word vector</strong> is a short list of numbers locating a word in a learned space. Words used in similar ways can acquire nearby vectors.": "في ورقتهم سنة 2003، درّب يوشوا بنجيو وزملاؤه تمثيلات الكلمات ومتنبئ الكلمة اللي بعدها مع بعض. <strong>متجه الكلمة</strong> قائمة قصيرة من الأرقام تحدد مكان الكلمة في فضاء يتعلّمه النموذج. والكلمات اللي تنستخدم بطرق متشابهة ممكن تاخذ متجهات قريبة من بعض.",
     "The model looks up vectors for a fixed window of previous words, joins them, and sends them through a <strong>neural network</strong>: layers of learned, weighted calculations. A <strong>softmax</strong> converts the resulting scores into probabilities that add to one. Training increases the probability of the next word actually seen, adjusting both the vectors and the predictor.": "النموذج يجيب متجهات عدد ثابت من الكلمات السابقة، يضمّها، ويمررها على <strong>شبكة عصبية</strong>: طبقات حسابات لها أوزان يتعلّمها. بعدها <strong>سوفتماكس</strong> تحوّل الدرجات الناتجة إلى احتمالات مجموعها واحد. ومع التدريب يرتفع احتمال الكلمة اللي جات فعلًا بعدها، وتتعدّل المتجهات والمتنبئ مع بعض.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, learning, results &amp; limits</span>": "للتعمّق <span>البنية والتعلّم والنتائج والحدود</span>",
     "<code>y = b + Wx + U tanh(d + Hx)</code><br><code>P(wₜ = i | context) = exp(yᵢ) / Σⱼ exp(yⱼ)</code>": "<code>y = b + Wx + U tanh(d + Hx)</code><br><code>P(wₜ = i | context) = exp(yᵢ) / Σⱼ exp(yⱼ)</code>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>",
@@ -14,8 +13,6 @@
     "Read the paper": "اقرؤوا البحث",
     "Bengio’s neural language model": "نموذج Bengio العصبي للغة",
     "Can similar word sequences share what they learn?": "هل تقدر تسلسلات الكلمات المتشابهة تتشارك ما تتعلّمه؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -104,6 +101,8 @@
     "See my score": "اعرض نتيجتي",
     "Next lesson": "الدرس التالي",
     "Teach it": "علّموه",
-    "A toy: five words with hand-placed three-number vectors, and one shared predictor that each lesson nudges.": "لعبة مبسّطة: خمس كلمات لكل وحدة منها متجه من ثلاثة أرقام حطيناه يدويًا، ومتنبئ مشترك واحد يحرّكه كل درس شوي."
+    "A toy: five words with hand-placed three-number vectors, and one shared predictor that each lesson nudges.": "لعبة مبسّطة: خمس كلمات لكل وحدة منها متجه من ثلاثة أرقام حطيناه يدويًا، ومتنبئ مشترك واحد يحرّكه كل درس شوي.",
+    "Counting exact phrases treats similar sentences as separate cases. Bengio and colleagues learned word vectors and a next-word predictor together, so learning from one context could help with similar ones. This improved prediction beyond the count models they tested, while still using a fixed context window.": "عدّ العبارات بحروفها يعامل الجمل المتشابهة كأنها حالات منفصلة. درّب بنجيو وزملاؤه متجهات الكلمات ومتنبّئ الكلمة الجاية مع بعض، فصار التعلّم من سياق يفيد سياقات تشبهه. تحسّن التوقّع مقارنة بنماذج العدّ اللي اختبروها، بس ظلّت نافذة السياق ثابتة.",
+    "Tap the word cards you think will change, such as “dog”, then press “Teach it”.": "اضغطوا بطاقات الكلمات اللي تتوقّعون تتغيّر، مثل «dog»، وبعدين اضغطوا «علّموه»."
   }
 }

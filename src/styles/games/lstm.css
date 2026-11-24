@@ -34,3 +34,10 @@
 @keyframes vault-arrive { from { transform:translateY(-8px); opacity:.3; } }
 @media (max-width:380px) { .vault-gate b { font-size:17px; } .vault-gate span { font-size:11px; } }
 @media (prefers-reduced-motion:reduce) { .vault-incoming { animation:none; } }
+
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] :is(.vault-incoming, .vault-cell) { min-block-size:96px; padding:8px; }
+ .chapter-page[data-view=play] :is(.vault-incoming, .vault-cell) strong { font-size:52px; }
+ .chapter-page[data-view=play] .vault-gate { min-block-size:64px; }
+ .chapter-page[data-view=play] .vault-verdict:empty { min-block-size:0; margin-block:0; }
+}

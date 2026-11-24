@@ -1,9 +1,8 @@
 {
   "rich": {
-    "<strong>Smoothing</strong> shifts some probability from observed events toward possibilities the sample missed. In 1953, I. J. Good described how frequencies of rare species could inform that estimate, crediting Alan Turing for the central adjusted-count formula. A word type can play the role of a species.": "<strong>التنعيم</strong> ينقل جزءًا من احتمال الأحداث اللي شفناها إلى الاحتمالات اللي ما ظهرت في العينة. في 1953، شرح I. J. Good كيف نستفيد من تكرار الأنواع النادرة لتقدير هذا الجزء، ونسب معادلة تعديل العدد الأساسية إلى آلان تورينغ. ونقدر نتعامل مع نوع الكلمة مثل نوع الكائن الحي في الحساب.",
+    "<strong>Smoothing</strong> shifts some probability from observed events toward possibilities the sample missed. In 1953, I. J. Good described how frequencies of rare species could inform that estimate, crediting Alan Turing for the central adjusted-count formula. A word type can play the role of a species.": "<strong>التنعيم</strong> ينقل جزءًا من احتمال الأحداث اللي شفناها إلى الاحتمالات اللي ما ظهرت في العينة. في 1953، شرح غود كيف نستفيد من تكرار الأنواع النادرة لتقدير هذا الجزء، ونسب معادلة تعديل العدد الأساسية إلى آلان تورينغ. ونقدر نتعامل مع نوع الكلمة مثل نوع الكائن الحي في الحساب.",
     "<strong>Discounting</strong> means reducing the probability assigned from observed counts. Katz’s 1987 method discounts low counts and backs off—uses a shorter context—when the higher-order estimate is zero.": "<strong>الخصم</strong> يعني نقلّل الاحتمال اللي خصصناه بناءً على العدّ. طريقة كاتز سنة 1987 تخصم من الأعداد الصغيرة، وترجع لسياق أقصر إذا كان تقدير السياق الأطول صفرًا.",
     "Kneser and Ney’s 1995 work changed the fallback question: does a word appear after many different contexts? Chen and Goodman’s 1998 study developed a modified, interpolated form. <strong>Interpolation</strong> mixes detailed and broader estimates, so broader evidence can help even when a phrase was seen.": "في 1995، غيّر كنيسر وناي سؤال التقدير البديل: هل الكلمة تجي بعد سياقات مختلفة كثيرة؟ وفي 1998 طوّر تشن وغودمان صيغة معدّلة تستخدم <strong>الاستيفاء</strong>، أي مزج التقدير المفصّل بالتقدير الأوسع. كذا يفيدنا السياق الأوسع حتى لو شفنا العبارة من قبل.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "للتعمّق <span>الآلية والأدلة والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>"
   },
@@ -12,8 +11,6 @@
     "1953 / Live chapter": "1953 / فصل متاح",
     "The zero-count problem": "مشكلة الاحتمال الصفري",
     "How do you allow for a word you have never seen?": "كيف نعطي فرصة لكلمة ما شفناها قبل؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -38,7 +35,7 @@
     "04 / Why it mattered": "04 / ليش كانت مهمة؟",
     "A missing count stops being a dead end.": "العدد الناقص ما عاد يقفل الطريق.",
     "A model can now assign a chance to combinations outside its sample. The remaining choice is where to spend that chance: equally, by raw frequency, or by broader context evidence.": "صار النموذج يقدر يعطي احتمالًا لتركيبات خارج عينته. يبقى السؤال: كيف نوزّع هالاحتمال؟ بالتساوي، أو حسب التكرار، أو حسب الأدلة من سياقات أوسع؟",
-    "That matters when a language model must help choose between uncertain speech transcripts. Next, ELIZA shows how far a few hand-written word rules could go without any probabilities.": "هذا مهم لما يساعد نموذج اللغة في الاختيار بين نصوص محتملة للكلام المسموع. في الفصل الجاي تبيّن لنا إليزا وين ممكن توصل كم قاعدة كلمات مكتوبة باليد، بدون أي احتمالات.",
+    "That matters when a language model must help choose between uncertain speech transcripts. Next, ELIZA shows how far a few hand-written word rules could go without any probabilities.": "هذا مهم لما يساعد نموذج اللغة في الاختيار بين نصوص محتملة للكلام المسموع. في الفصل الجاي تبيّن لنا ELIZA وين ممكن توصل كم قاعدة كلمات مكتوبة باليد، بدون أي احتمالات.",
     "Also in this chapter": "وفي هذا الفصل أيضًا",
     "This chapter joins Good–Turing estimation, Katz backoff, Kneser–Ney continuation counts and Chen–Goodman’s modified interpolation.": "هذا الفصل يجمع تقدير Good–Turing، والرجوع لسياق أقصر عند كاتز، وعدّ سياقات الاستمرار عند Kneser–Ney، والاستيفاء المعدّل عند تشن وغودمان.",
     "Good–Turing: count the counts": "Good–Turing: عدّ التكرارات نفسها",
@@ -94,6 +91,8 @@
     "{0}% was the best reserve: {1} of tonight’s {2} cups were drinks it had never counted.": "أفضل حجز كان {0}%: {1} من أكواب الليلة الـ {2} مشروبات عمره ما عدّها.",
     "The best reserve was {0}% ({1} bits): {2} of tonight’s {3} cups were drinks it had never counted.": "أفضل حجز كان {0}% ({1} بت): {2} من أكواب الليلة الـ {3} مشروبات عمره ما عدّها.",
     "Total surprise (bits)": "الدهشة الإجمالية (بت)",
-    "I crashed a 1953 word counter with infinite surprise 3 times, then rescued it at {0} bits.": "حطّمتُ عدّاد من 1953 بدهشة لا نهائية ثلاث مرات، وبعدها أنقذته عند {0} بت."
+    "I crashed a 1953 word counter with infinite surprise 3 times, then rescued it at {0} bits.": "حطّمتُ عدّاد من 1953 بدهشة لا نهائية ثلاث مرات، وبعدها أنقذته عند {0} بت.",
+    "A counter that only tallies past words gives every new word zero probability, so one unseen word makes the whole sequence score zero. The statistician I. J. Good used the number of things seen only once to estimate how much probability to save for the unseen. His method built on an idea from Alan Turing.": "العدّاد اللي يعتمد على الكلمات اللي شافها يعطي كل كلمة جديدة احتمال صفر، فتكفي كلمة وحدة جديدة عشان يصير احتمال التسلسل كله صفر. استخدم الإحصائي غود عدد الأشياء اللي ظهرت مرة واحدة بس عشان يقدّر كم نحجز من الاحتمال للي ما شفناه. وطريقته اعتمدت على فكرة من آلان تورينغ.",
+    "Fill the three cups with drinks, including one at 0%, then press “Serve the order”.": "عبّوا الأكواب الثلاثة بمشروبات، بينها مشروب عند 0%، وبعدين اضغطوا «قدّموا الطلب»."
   }
 }

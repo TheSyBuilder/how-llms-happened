@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import HumanFeedbackToy from "./HumanFeedbackToy";
 import { sourceLink, paperLink } from "../lib/chapters";
 ---
@@ -32,7 +32,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Train<br />a judge.</h2><Discovery slug="human-feedback" />
+  <h2>Train<br />a judge.</h2><ChapterBrief slug="human-feedback" />
   <p>Two clicks train a judge, the reward model in this story. Watch what it thinks of a false answer. Then retrain it with four comparisons of your choosing and see whether it can tell truth from style on answers it has never seen.</p>
   <noscript><p>Enable JavaScript to train the judge. It learns from the answers you prefer, and it can only learn what your comparisons make different.</p></noscript>
   <HumanFeedbackToy client:load />

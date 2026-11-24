@@ -4,7 +4,6 @@
     "GPT-1 and BERT offered a useful recipe: learn from text first, then adapt to a job with labelled examples. <strong>Fine-tuning</strong> means updating a model’s adjustable numbers for that job. Want another task? Prepare another set of examples and train again.": "GPT-1 和 BERT 提供了一套实用方法：先从文本中学习，再用带标签的例子适应某项任务。<strong>微调</strong>就是为这项任务调整模型内部的数值。想换一项任务？再准备一批例子，再训练一次。",
     "In 2019, GPT-2 explored this possibility with a larger Transformer trained on WebText, a collection of web pages. Its exercise stayed simple: predict the next <strong>token</strong>, a piece of text, using the tokens before it.": "2019 年，GPT-2 用一个更大的 Transformer 探索了这种可能性。它在 WebText 这个网页文本集合上训练，练习依旧很简单：根据前面的文本片段，预测下一个<strong>词元</strong>，也就是一小段文本。",
     "This is <strong>zero-shot transfer</strong>: trying a task without training the model on a labelled dataset for that task. GPT-2 showed signs of several abilities this way, but its summaries could confuse details and its answers could be shallow. Continuing convincingly is not the same as answering correctly.": "这叫<strong>零样本迁移</strong>：没有用某项任务的标注数据训练模型，就直接让它试做这项任务。GPT-2 由此展现了多种能力的苗头，但摘要可能混淆细节，回答也可能很肤浅。续写得像那么回事，不等于答得正确。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Objective, architecture, results &amp; limits</span>": "继续深入 <span>目标、结构、结果与局限</span>",
     "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>",
     "A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>, short for “too long; didn’t read”, and a summary can follow. End a question with <code>A:</code>, and an answer can follow. The model’s numbers stay fixed.": "<strong>提示词</strong>就是让模型续写之前给它的文本。在文章末尾加上 <code>TL;DR:</code>，也就是“太长了，没读”的缩写，后面就可以接摘要。问题末尾加上 <code>A:</code>，后面就可以接答案。模型内部的数值保持不变。"
@@ -14,8 +13,6 @@
     "2019 / Live chapter": "2019 / 已上线",
     "GPT-2 and zero-shot": "GPT-2 与零样本任务",
     "Can a task be hidden inside a piece of text?": "一段文字里，能藏着一项任务吗？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "故事",
     "Math": "数学",
@@ -108,6 +105,8 @@
     "{0} (gave up)": "{0}（放弃）",
     "{0} over par": "超出标准杆 {0} 杆",
     "Hole {0} · {1}": "第 {0} 洞 · {1}",
-    "Par {0}": "标准杆 {0}"
+    "Par {0}": "标准杆 {0}",
+    "Adapting a model to each task usually meant more labelled examples and training. GPT-2 explored doing several tasks by continuing text with task cues, while keeping the model unchanged. Its results made prompts a useful way to try tasks, though answers remained unreliable.": "让模型适应每项任务，通常都要再准备标注示例并训练。GPT-2 尝试只靠续写带有任务线索的文本来完成多种任务，同时保持模型不变。结果表明，提示词是尝试不同任务的一种有用方式，但答案仍不可靠。",
+    "Press the “Then” cue card to add it to the prompt.": "按“Then”提示卡，把它加到提示词中。"
   }
 }

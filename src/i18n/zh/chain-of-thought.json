@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Prompting is not a guarantee</span>": "深入了解 <span>提示不能保证正确</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
@@ -9,8 +8,6 @@
     "2022 / Live chapter": "2022 / 已上线",
     "Show your working": "把解题步骤写出来",
     "Can examples of intermediate steps help solve a problem?": "带有中间步骤的例子，能帮助解题吗？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -90,6 +87,8 @@
     "Every solution looked fluent. One step in each was wrong, and every step after it followed the mistake faithfully.": "每道解答看起来都很流畅。但每道都有一步是错的，后面的步骤都忠实地沿着错误往下算。",
     "I spotted {0} of 5 wrong steps in worked solutions, {1} points. Showing the working only helps if someone checks it.": "我在解题过程中找出了 5 个错误步骤中的 {0} 个，得 {1} 分。写出过程，只有有人检查才有用。",
     "These solutions were written by hand with one planted error each; no language model wrote them.": "这些解答是人工写的，每道都故意埋了一处错误；不是语言模型写的。",
-    "An intermediate subtotal separates two operations. Each step gives you something concrete to inspect. These are teaching illustrations.": "中间小计把两步运算分开了。每一步都给你一个具体可检查的结果。这是帮助理解的示意图。"
+    "An intermediate subtotal separates two operations. Each step gives you something concrete to inspect. These are teaching illustrations.": "中间小计把两步运算分开了。每一步都给你一个具体可检查的结果。这是帮助理解的示意图。",
+    "Examples that show only an answer hide the steps needed for a multi-step problem. Wei and colleagues added intermediate reasoning steps to prompt examples. This improved some reasoning tasks in sufficiently large models, without changing their weights, though written steps could still contain mistakes.": "只展示答案的示例，隐藏了多步骤问题所需的中间过程。Wei 及同事在提示词示例里加入了中间推理步骤。这在足够大的模型上改善了部分推理任务的表现，不必改变权重，但写出的步骤仍可能有错。",
+    "Press “Start” to reveal the first worked solution.": "按“开始”，查看第一份解题过程。"
   }
 }

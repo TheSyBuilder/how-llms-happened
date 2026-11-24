@@ -1,5 +1,5 @@
 ---
-import Discovery from './Discovery.astro';
+import ChapterBrief from './ChapterBrief.astro';
 import NeuralLanguageToy from './NeuralLanguageToy';
 import {sourceLink,paperLink} from '../lib/chapters';
 import '../styles/early.css';
@@ -31,7 +31,7 @@ import '../styles/neural-language.css';
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p><h2>Teach a cat.<br/>Will dog change?</h2>
-  <Discovery slug="neural-language-model"/>
+  <ChapterBrief slug="neural-language-model"/>
   <p>Six lessons, one sentence each. Before a lesson runs, call which other words will change their guess. Dog never gets a lesson of its own, so watch what it borrows.</p>
   <noscript><p>Enable JavaScript to play. Every word starts at an even chance of “sat”; a lesson moves the words that share features with the word being taught.</p></noscript>
   <NeuralLanguageToy client:load/>

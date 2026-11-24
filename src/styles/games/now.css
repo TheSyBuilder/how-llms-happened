@@ -9,3 +9,9 @@
 .now-send { display:flex; flex-wrap:wrap; gap:10px; margin-block:18px 12px; }
 .now-game .now-result[data-state="blocked"], .now-game .now-result[data-state="missing"], .now-game .now-result[data-state="budget"] { border-block-color:var(--bad); }
 .now-as-of { display:inline-block; margin-block:0 8px; padding:2px 12px; border:2px solid var(--ink); border-radius:var(--radius-pill); color:var(--ink); font:600 14px/1.6 var(--display); }
+
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] .now-result[data-state="ready"] { margin-block:8px 12px; padding-block:8px; }
+ .chapter-page[data-view=play] .now-result[data-state="ready"] output { margin-block:6px; }
+ .chapter-page[data-view=play] .now-result[data-state="ready"] p { margin-block:0; }
+}

@@ -2,7 +2,6 @@
   "rich": {
     "Alex Graves’s 2013 paper demonstrated generation with deep LSTM networks. An <strong>LSTM</strong> is a recurrent network with gates that control what its memory stores and reveals. Here, several recurrent layers work together to predict the next element.": "Alex Graves 在 2013 年的论文中，用深层 LSTM 网络演示了生成。<strong>LSTM</strong> 是一种循环网络，用门来控制记忆存什么、显示什么。这里，多层循环网络一起工作，预测下一个元素。",
     "For text, the network produces a probability for each possible next symbol. <strong>Sampling</strong> means making a random choice weighted by those probabilities. Feed the chosen symbol back in, update the memory, and repeat. The output becomes a sequence one choice at a time.": "生成文本时，网络会给每个可能的下一个符号一个概率。<strong>采样</strong>就是按照这些概率随机选一个。把选出的符号送回去，更新记忆，再来一遍。输出就这样，一次选一个，逐渐成为一段序列。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, equations, results &amp; limits</span>": "深入了解 <span>架构、方程、结果与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -12,8 +11,6 @@
     "Read the paper": "阅读论文",
     "Graves generates text": "Graves 让模型生成文本",
     "What happens when a model reads its own predictions?": "模型读回自己预测的内容，会发生什么？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -95,6 +92,8 @@
     "Your bot’s lines appear here.": "你的机器人写的句子会出现在这里。",
     "Earlier lines": "之前的句子",
     "{0} stars": "{0} 颗星",
-    "Your bot is a small letter counter trained in this tab, not Graves’s LSTM, but it writes with the same loop: predict, pick, feed back. Your text never leaves the page.": "你的机器人是在这个标签页里训练的小型字母计数器，不是 Graves 的 LSTM，但它用同样的循环写作：预测、挑选、送回去。你的文字不会离开这个页面。"
+    "Your bot is a small letter counter trained in this tab, not Graves’s LSTM, but it writes with the same loop: predict, pick, feed back. Your text never leaves the page.": "你的机器人是在这个标签页里训练的小型字母计数器，不是 Graves 的 LSTM，但它用同样的循环写作：预测、挑选、送回去。你的文字不会离开这个页面。",
+    "Predicting one character is only a start if a model is going to write. Graves used deep LSTM networks to pick a next character and feed that choice back in, repeating the loop to generate text. The samples showed recognizable local patterns, but lost coherence beyond short phrases.": "模型要写出文字，只预测一个字符还不够。格雷夫斯用深层 LSTM 网络选出下一个字符，再把它送回输入，循环生成文本。样本里能看出熟悉的局部规律，但超过短语的范围就难以保持连贯。",
+    "Press “Train my bot” to train on the sample text already in the box.": "按“训练我的机器人”，用文本框里现成的样文训练。"
   }
 }

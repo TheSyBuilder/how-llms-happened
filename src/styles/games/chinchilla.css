@@ -33,3 +33,15 @@
 @keyframes chin-in { from { opacity:0; transform:translateY(6px); } }
 @media (max-width:480px) { .chin-readout > span { padding:6px 8px; font-size:12px; } .chin-readout b { font-size:18px; } }
 @media (prefers-reduced-motion: reduce) { .chin-reveal { animation:none; } .chin-game .budget-visual rect { transition:none; } }
+
+/* Keep the budget diagram beside the slider, with full-width goals and result states. */
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] .chin-game:has(> .chin-slider) { grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px 24px; align-items:start; }
+ .chapter-page[data-view=play] .chin-game > * { grid-column:1 / -1; min-inline-size:0; }
+ .chapter-page[data-view=play] .chin-game > .goal-bar { grid-row:1; }
+ .chapter-page[data-view=play] .chin-budget { grid-row:2; }
+ .chapter-page[data-view=play] .chin-game > .budget-visual { grid-column:1; grid-row:3 / span 3; }
+ .chapter-page[data-view=play] .chin-slider { grid-column:2; grid-row:3; }
+ .chapter-page[data-view=play] .chin-readout { grid-column:2; grid-row:4; }
+ .chapter-page[data-view=play] .chin-actions { grid-column:2; grid-row:5; }
+}

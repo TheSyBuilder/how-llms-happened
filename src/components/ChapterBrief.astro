@@ -1,0 +1,33 @@
+---
+import { firstSteps } from '../lib/first-steps';
+import { chapters, chapterSourceCredit } from '../lib/chapters';
+const { slug } = Astro.props;
+const step = firstSteps[slug];
+const chapter = chapters.find((item) => item.slug === slug);
+const source = chapter && chapterSourceCredit(chapter);
+---
+{step && <aside class="chapter-brief">
+ <div class="chapter-brief-top">
+ {source && <p class="chapter-brief-source"><bdi dir="ltr">{source.year}</bdi><span aria-hidden="true"> · </span><bdi dir="ltr" translate="no">{source.author}</bdi>{source.multiple && <><span> </span><span>et al.</span></>}</p>}
+ <button type="button" class="chapter-brief-listen" hidden>Listen</button>
+ </div>
+ <p class="chapter-brief-copy">{step.brief}</p>
+ <p class="chapter-brief-instruction"><span class="chapter-brief-label">How to play</span> <span class="chapter-brief-how-to">{step.howTo}</span></p>
+ <span class="chapter-brief-status screen-reader-only" role="status"></span>
+</aside>}
+<script>
+import { initSpeechReader } from '../lib/chapter-speech';
+for (const root of document.querySelectorAll<HTMLElement>('.chapter-brief')) {
+ initSpeechReader({
+  root,
+  button: root.querySelector<HTMLButtonElement>('.chapter-brief-listen')!,
+  status: root.querySelector<HTMLElement>('.chapter-brief-status')!,
+  label: 'Listen',
+  text: () => [
+   root.querySelector('.chapter-brief-copy')!.textContent,
+   `${root.querySelector('.chapter-brief-label')!.textContent}: ${root.querySelector('.chapter-brief-how-to')!.textContent}`,
+  ].join(' '),
+  stopOnViewExit: true,
+ });
+}
+</script>

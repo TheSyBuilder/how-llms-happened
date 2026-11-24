@@ -4,7 +4,6 @@
     "<strong>BERT</strong> arrived in 2018 with a fill-in-the-blank exercise. Hide some text, then predict what belonged there. This is <strong>masked language modelling</strong>: learning to recover selected pieces of text from a partly hidden input. The original text supplies the answers.": "<strong>BERT</strong> 在 2018 年带来了一种填空练习：遮住一些文本，再猜原来是什么。这叫<strong>掩码语言建模</strong>：从部分被隐藏的输入中恢复选定的文本片段。答案就在原文里。",
     "BERT’s <strong>encoder</strong> turns the input into useful numbers. <strong>Attention</strong> lets words share clues from either side of the gap. The answer must be hidden, or the model could just copy it.": "BERT 的<strong>编码器</strong>把输入变成有用的数值。<strong>注意力</strong>让空缺两侧的词交换线索。答案必须藏起来，不然模型直接照抄就行。",
     "The original BERT also practised deciding whether two text spans followed each other. These reading exercises are <strong>pretraining</strong>: learning before a particular job. <strong>Fine-tuning</strong> means updating the model with examples of that job. BERT adapted its whole network plus a small new output layer to locate answers or categorise sentences.": "原始 BERT 还练习判断两段文本是否前后相接。这些阅读练习就是<strong>预训练</strong>：在具体工作之前先学。<strong>微调</strong>则用具体工作的示例更新模型。BERT 调整整个网络，再加一个小输出层，用来找答案或给句子分类。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Masking, architecture, results &amp; limits</span>": "继续深入 <span>遮罩、结构、结果与局限</span>",
     "The input combines token, position, and text-span embeddings—learned lists of numbers. <code>[CLS]</code> is a special leading token used for classification; <code>[SEP]</code> marks span boundaries. The two spans attend to each other inside one encoder. BERT Base has 12 layers, 768-dimensional states, 12 attention heads (separate learned reads), and 110 million parameters (adjustable numbers). BERT Large has 24 layers, 1,024-dimensional states, 16 heads, and 340 million parameters.": "输入组合了词元、位置和文本段的嵌入——学习得到的数值列表。<code>[CLS]</code> 是开头用于分类的特殊词元，<code>[SEP]</code> 标记文本段边界。两段文本在同一个编码器里互相做注意力读取。BERT Base 有 12 层、768 维状态、12 个注意力头（独立学习的读取方式）和 1.1 亿个参数（可调整的数值）。BERT Large 有 24 层、1,024 维状态、16 个头和 3.4 亿个参数。",
     "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>"
@@ -14,8 +13,6 @@
     "2018 / Live chapter": "2018 / 已上线",
     "BERT": "BERT",
     "What can a missing word teach a model?": "一个空缺的词，能教会模型什么？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -106,6 +103,8 @@
     "Right, for {0} points.": "猜对了，得 {0} 分。",
     "Right: {0}. {1} points.": "猜对了：{0}。得 {1} 分。",
     "Round {0} / 5": "第 {0} / 5 轮",
-    "Clue: {0}": "线索：{0}"
+    "Clue: {0}": "线索：{0}",
+    "Predicting only the next word leaves out clues that come later. BERT learned to recover hidden text using words on both sides of the gap. This gave tasks such as sentence classification and finding answers a reusable reader to adapt.": "只预测下一个词，会错过后面才出现的线索。BERT 利用空缺两边的词，学习还原被隐藏的文本。这样，句子分类、查找答案等任务就有了一个可以继续调整使用的阅读模型。",
+    "Press “Reveal a right clue”, then choose a word for the gap.": "按“揭开右边的线索”，再选择一个词填入空缺。"
   }
 }

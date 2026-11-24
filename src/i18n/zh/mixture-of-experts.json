@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Routing and capacity</span>": "深入看看 <span>路由与容量</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
@@ -9,8 +8,6 @@
     "2021 / Live chapter": "2021 / 已上线",
     "Mixture of experts": "混合专家",
     "Does every word need to use every part of a model?": "每个词都需要动用模型的每个部分吗？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -72,6 +69,8 @@
     "I played router for a mixture-of-experts model: {0} tokens in 30 seconds, {1}% of a learned router’s score.": "我给混合专家模型当了一回路由器：30 秒处理 {0} 个 token，得分是学习型路由器的 {1}%。",
     "A toy with invented timings; the “learned router” is a rule that acts like a trained, load-balanced one. In Switch, a dropped token skips the expert through a residual connection.": "时间是虚构的；“学习型路由器”是一条模仿训练好、负载均衡的路由器的规则。在 Switch 中，被丢弃的 token 会经残差连接跳过专家。",
     "Expert {0}": "专家 {0}",
-    "Three tokens take different routes through one sparse layer. Each token uses one expert here; all experts still exist. These are teaching illustrations.": "三个 token 在同一个稀疏层里走不同路线。这里每个 token 只用一个专家，但所有专家都仍然存在。这些是教学示意。"
+    "Three tokens take different routes through one sparse layer. Each token uses one expert here; all experts still exist. These are teaching illustrations.": "三个 token 在同一个稀疏层里走不同路线。这里每个 token 只用一个专家，但所有专家都仍然存在。这些是教学示意。",
+    "A larger model usually means more work for every piece of text. Switch Transformers routed each token to one selected expert network instead of running every expert. This let the model add capacity without using all of it on every token, while making balanced routing important.": "模型更大，通常意味着处理每段文本都要做更多计算。Switch Transformers 把每个词元交给一个选中的专家网络，而不是运行所有专家。这样可以增加模型容量，又不用每次都动用全部容量，但也需要均衡地分配工作。",
+    "Press “Start routing” to open the token queue and enable the experts.": "按“开始分配”，打开词元队列并启用专家。"
   }
 }

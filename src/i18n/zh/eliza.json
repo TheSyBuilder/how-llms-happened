@@ -5,8 +5,6 @@
     "Find a keyword.<br>Turn the sentence around.": "找到关键词，<br>把句子倒过来说。",
     "There was no understanding inside. ELIZA scanned your sentence for <strong>keywords</strong> such as “mother”, “always” or “computer”, each with a rank. The top keyword chose a <strong>decomposition rule</strong>, a pattern that cut the sentence into parts, and a <strong>reassembly rule</strong> that put some parts back into a reply. On the way it swapped pronouns, “I” for “you” and “my” for “your”. When nothing matched, it used a line that fits almost anything, such as “Please go on.”": "它内部没有任何理解。ELIZA 在你的句子里寻找<strong>关键词</strong>，比如 “mother”、“always” 或 “computer”，每个关键词都有一个等级。等级最高的关键词选出一条<strong>分解规则</strong>，也就是把句子切成几段的模式，再用一条<strong>重组规则</strong>把其中几段放回回复里。过程中它还会对换代词：“I” 换成 “you”，“my” 换成 “your”。什么都匹配不上时，它就用一句几乎放在哪里都行的话，比如 “Please go on.”（请继续）。",
     "Break ELIZA.<br>Catch its three tells.": "拆穿 ELIZA，<br>抓住它的三种破绽。",
-    "<strong>Try this first</strong> Type “I feel angry at you.”": "<strong>先试这一步</strong> 输入 “I feel angry at you.”",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Fluent is not<br>the same as understanding.": "说得流利，<br>不等于真的理解。",
     "People read care and insight into ELIZA’s replies, even when they knew how simple it was. This became known as the <strong>ELIZA effect</strong>: we fill in meaning that a system does not have. It worried Weizenbaum enough that he spent much of his later career warning against handing human judgment to machines.": "人们会从 ELIZA 的回复里读出关心和洞察，即使他们知道它有多简单。这后来被称为 <strong>ELIZA 效应</strong>：我们替一个系统补上了它根本没有的意义。这让魏森鲍姆深感不安，他后半生的大部分时间都在警告人们，不要把人的判断交给机器。",
     "Go deeper <span>How the script machinery works</span>": "深入了解 <span>脚本机制如何运作</span>",
@@ -82,6 +80,8 @@
     "Introduction, pages 6–7: the secretary, how quickly people became involved with DOCTOR, and his later warnings.": "引言，第 6–7 页：那位秘书、人们多快就对 DOCTOR 投入感情，以及他后来的警告。",
     "The rules, the tell detector and the 2026 replies were written for this page. The modern replies are examples written by Claude in November 2026, not recordings of a product.": "规则、破绽检测器和 2026 年的回复都是为本页写的。现代回复是 Claude 在 2026 年 11 月写的示例，不是某个产品的真实记录。",
     "swap: my → your, me → you": "对换：my → your，me → you",
-    "keyword “my” · pattern * your * (family) *": "关键词 “my” · 模式 * your * (family) *"
+    "keyword “my” · pattern * your * (family) *": "关键词 “my” · 模式 * your * (family) *",
+    "A typed reply can seem to understand you even when a program only follows rules. Weizenbaum’s ELIZA picked keywords, rearranged sentence parts and swapped pronouns to make replies. It showed how easily people can read meaning into a fluent response.": "程序即使只会照规则办事，打出来的回复也可能像是理解了你。魏岑鲍姆的 ELIZA 通过挑关键词、重排句子片段和替换代词来回复。它让人看到，我们很容易从流畅的回答里读出含义。",
+    "Type “I feel angry at you.” in the message box, then press “Send”.": "在消息框里输入“I feel angry at you.”，再按“发送”。"
   }
 }

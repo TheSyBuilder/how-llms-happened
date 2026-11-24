@@ -2,7 +2,6 @@
   "rich": {
     "Their work appeared as a preprint in 2014 and at ICLR in 2015. The encoder keeps a representation at each source position. <strong>Attention</strong> is a weighted read of those representations, with the weights recomputed for each output step.": "طلع بحثهم كمسودة في 2014، وبعدها في ICLR سنة 2015. المُرمِّز يحتفظ بتمثيل عند كل موضع في النص الأصلي. <strong>الانتباه</strong> قراءة لهالتمثيلات بأوزان مختلفة، تنحسب من جديد عند كل خطوة إخراج.",
     "The decoder’s previous state scores each source representation. A <strong>softmax</strong> turns scores into positive weights that sum to one. Multiply each source representation by its weight, add them up, and the decoder receives a fresh <strong>context vector</strong>: a numerical mixture of source information.": "حالة مفكّك الترميز السابقة تعطي درجة لكل تمثيل في المصدر. بعدها <strong>softmax</strong> تحوّل الدرجات لأوزان موجبة مجموعها واحد. نضرب كل تمثيل في وزنه ونجمعها، فيوصل لمفكّك الترميز <strong>متجه سياق</strong> جديد: مزيج رقمي من معلومات النص الأصلي.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, equations, results &amp; limits</span>": "للتعمّق <span>البنية والمعادلات والنتائج والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>البحث الأصلي ودليل للقراءة</span>"
   },
@@ -12,8 +11,6 @@
     "Read the attention paper": "اقرؤوا بحث الانتباه",
     "Attention": "الانتباه",
     "What if a translator could look back at the source?": "وش لو المترجم يقدر يرجع للنص الأصلي؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -21,7 +18,7 @@
     "01 / The problem before": "01 / المشكلة قبل الفكرة",
     "One summary has a lot to carry.": "ملخص واحد، وحِمل كبير.",
     "A decoder may need different details for different output words. If it receives only one final source summary, every useful detail has to survive that handoff.": "مفكّك الترميز ممكن يحتاج تفاصيل مختلفة لكل كلمة يكتبها. وإذا وصله ملخص نهائي واحد بس للمصدر، لازم كل التفاصيل المفيدة تنجو من هالتسليم.",
-    "Bahdanau, Cho and Bengio proposed that this could limit translation, especially for long sentences. Instead of demanding a perfect single summary, they let the decoder look back.": "Bahdanau وCho وبنجيو اقترحوا إن هذا ممكن يحدّ من الترجمة، خصوصًا في الجمل الطويلة. وبدل ما يطلبون ملخص واحد مثالي، خلّوا مفكّك الترميز يرجع للنص.",
+    "Bahdanau, Cho and Bengio proposed that this could limit translation, especially for long sentences. Instead of demanding a perfect single summary, they let the decoder look back.": "باهدانو وتشو وبنجيو اقترحوا إن هذا ممكن يحدّ من الترجمة، خصوصًا في الجمل الطويلة. وبدل ما يطلبون ملخص واحد مثالي، خلّوا مفكّك الترميز يرجع للنص.",
     "02 / The big idea": "02 / الفكرة الأساسية",
     "Ask again at every word.": "نسأل من جديد عند كل كلمة.",
     "This read can shift or move backward along the source as word order changes. The scoring mechanism learns with the translator; it does not require a separate list of correct word alignments.": "القراءة تقدر تتحرك أو ترجع للخلف مع تغيّر ترتيب الكلمات. آلية التقييم تتعلّم مع المترجم، وما تحتاج قائمة منفصلة بمحاذاة الكلمات الصحيحة.",
@@ -48,7 +45,7 @@
     "Luong, Pham": "Luong, Pham",
     "Manning · Effective Approaches to Attention-based Neural Machine Translation (2015).": "Manning · Effective Approaches to Attention-based Neural Machine Translation (2015).",
     "Scores become a weighted read": "الدرجات تتحول إلى قراءة موزونة",
-    "Bahdanau’s additive scorer combines the previous decoder state s with each source annotation h. The softmax runs across source positions j, separately at each output step i. The source encoder is bidirectional: hⱼ joins forward and backward states, so it represents surrounding context as well as the word at j.": "يجمع مقيّم Bahdanau الإضافي حالة مفكّك الترميز السابقة s مع كل تمثيل مصدر h. تعمل softmax عبر مواضع المصدر j، بشكل مستقل عند كل خطوة إخراج i. مُرمِّز المصدر ثنائي الاتجاه: يجمع hⱼ الحالتين الأمامية والخلفية، فيمثّل السياق المحيط والكلمة عند j.",
+    "Bahdanau’s additive scorer combines the previous decoder state s with each source annotation h. The softmax runs across source positions j, separately at each output step i. The source encoder is bidirectional: hⱼ joins forward and backward states, so it represents surrounding context as well as the word at j.": "يجمع مقيّم باهدانو الإضافي حالة مفكّك الترميز السابقة s مع كل تمثيل مصدر h. تعمل softmax عبر مواضع المصدر j، بشكل مستقل عند كل خطوة إخراج i. مُرمِّز المصدر ثنائي الاتجاه: يجمع hⱼ الحالتين الأمامية والخلفية، فيمثّل السياق المحيط والكلمة عند j.",
     "Soft alignment can learn": "المحاذاة المرنة قابلة للتعلّم",
     "The weighted sum is differentiable, so translation-loss gradients train the scorer together with the encoder and decoder. Every permitted source position contributes to a global read. Over source length S and target length T, this requires S × T score evaluations. Attention weights describe how source representations are mixed; a large weight is not a guarantee of a correct output or a complete explanation of a model’s decision.": "المجموع الموزون قابل للاشتقاق، فتدرّب تدرّجات خسارة الترجمة المقيّم مع المُرمِّز ومفكّك الترميز. يساهم كل موضع مسموح من المصدر في القراءة العامة. لطول مصدر S وهدف T، يلزم S × T تقييمًا. تصف أوزان الانتباه مزج تمثيلات المصدر؛ والوزن الكبير ما يضمن إخراجًا صحيحًا أو تفسيرًا كاملًا لقرار النموذج.",
     "What the results say": "وش تقول النتائج",
@@ -94,6 +91,8 @@
     "Next sentence": "الجملة التالية",
     "Show the model’s attention": "اعرض انتباه النموذج",
     "Clear": "امسح",
-    "The heatmaps are hand-made in the style of the paper’s learned alignments; no translation model runs here.": "الخرائط الحرارية مرسومة يدويًا على طريقة المحاذاة المتعلَّمة في الورقة، وما فيه أي نموذج ترجمة يشتغل هنا."
+    "The heatmaps are hand-made in the style of the paper’s learned alignments; no translation model runs here.": "الخرائط الحرارية مرسومة يدويًا على طريقة المحاذاة المتعلَّمة في الورقة، وما فيه أي نموذج ترجمة يشتغل هنا.",
+    "One fixed summary may lose details a translator needs later. Bahdanau and colleagues let the decoder read a fresh weighted mixture of source positions for every output word. Their model translated better and handled long sentences better in tests that also changed model capacity and added reading in both directions.": "ملخّص ثابت واحد ممكن يضيّع تفاصيل يحتاجها المترجم بعدين. خلّى باهدانو وزملاؤه مفكّك الترميز يقرا مزيجًا جديدًا موزونًا من مواضع المصدر لكل كلمة يكتبها. نموذجهم ترجم أفضل وتعامل مع الجمل الطويلة أفضل في اختبارات غيّرت بعد سعة النموذج وأضافت القراءة بالاتجاهين.",
+    "Tap “red” on the English side, then “rouge” on the French side to draw your first link.": "اضغطوا «red» في جهة الإنجليزية، وبعدين «rouge» في جهة الفرنسية عشان ترسمون أول وصلة."
   }
 }

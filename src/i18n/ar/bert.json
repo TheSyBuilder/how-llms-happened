@@ -4,7 +4,6 @@
     "<strong>BERT</strong> arrived in 2018 with a fill-in-the-blank exercise. Hide some text, then predict what belonged there. This is <strong>masked language modelling</strong>: learning to recover selected pieces of text from a partly hidden input. The original text supplies the answers.": "جاء <strong>BERT</strong> في 2018 بتمرين لإكمال الفراغ: نخفي جزء من النص ونتوقّع وش كان فيه. هذي هي <strong>نمذجة اللغة المحجوبة</strong>: نتعلّم نرجّع أجزاء محددة من مدخل مخفي جزئيًا. والنص الأصلي هو اللي يعطينا الأجوبة.",
     "BERT’s <strong>encoder</strong> turns the input into useful numbers. <strong>Attention</strong> lets words share clues from either side of the gap. The answer must be hidden, or the model could just copy it.": "<strong>المُرمِّز</strong> في BERT يحوّل المدخل لأرقام مفيدة. و<strong>الانتباه</strong> يخلّي الكلمات تستفيد من المعلومات اللي على جهتي الفراغ. ولازم نخفي الجواب، وإلا النموذج ينسخه وخلاص.",
     "The original BERT also practised deciding whether two text spans followed each other. These reading exercises are <strong>pretraining</strong>: learning before a particular job. <strong>Fine-tuning</strong> means updating the model with examples of that job. BERT adapted its whole network plus a small new output layer to locate answers or categorise sentences.": "BERT الأصلي تدرّب بعد على معرفة هل مقطعين من النص ورا بعض. هذي التمارين هي <strong>التدريب المسبق</strong>: تعلّم قبل المهمة المحددة. أما <strong>الضبط الدقيق</strong> فيحدّث النموذج بأمثلة المهمة. BERT عدّل الشبكة كلها مع طبقة مخرجات صغيرة جديدة عشان يحدد مكان الأجوبة أو يصنّف الجمل.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Masking, architecture, results &amp; limits</span>": "للتعمّق <span>الحجب والبنية والنتائج والحدود</span>",
     "The input combines token, position, and text-span embeddings—learned lists of numbers. <code>[CLS]</code> is a special leading token used for classification; <code>[SEP]</code> marks span boundaries. The two spans attend to each other inside one encoder. BERT Base has 12 layers, 768-dimensional states, 12 attention heads (separate learned reads), and 110 million parameters (adjustable numbers). BERT Large has 24 layers, 1,024-dimensional states, 16 heads, and 340 million parameters.": "يجمع المدخل تضمينات التوكن والموضع والمقطع النصي، وهي قوائم أرقام متعلّمة. <code>[CLS]</code> توكن خاص في البداية يُستخدم للتصنيف، و<code>[SEP]</code> يحدد حدود المقاطع. يتبادل المقطعان الانتباه داخل مُرمِّز واحد. BERT Base فيه 12 طبقة وحالات ذات 768 بُعدًا و12 رأس انتباه لقراءات متعلّمة مستقلة و110 ملايين معامل قابل للتعديل. أما BERT Large ففيه 24 طبقة وحالات ذات 1,024 بُعدًا و16 رأسًا و340 مليون معامل.",
     "Sources <span>Original papers, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل للقراءة</span>"
@@ -14,8 +13,6 @@
     "2018 / Live chapter": "2018 / فصل متاح",
     "BERT": "BERT",
     "What can a missing word teach a model?": "وش يتعلّم النموذج من كلمة ناقصة؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -106,6 +103,8 @@
     "Right, for {0} points.": "صح، وأخذتوا {0} نقاط.",
     "Right: {0}. {1} points.": "صح: {0}. {1} نقاط.",
     "Round {0} / 5": "الجولة {0} / 5",
-    "Clue: {0}": "دليل: {0}"
+    "Clue: {0}": "دليل: {0}",
+    "Predicting only the next word leaves out clues that come later. BERT learned to recover hidden text using words on both sides of the gap. This gave tasks such as sentence classification and finding answers a reusable reader to adapt.": "توقّع الكلمة الجاية بس يترك الأدلة اللي تجي بعدها. تعلّم BERT يسترجع النص المخفي باستخدام الكلمات على جهتي الفراغ. وصار عندنا قارئ نقدر نكيّفه لمهام مثل تصنيف الجمل وتحديد مكان الجواب.",
+    "Press “Reveal a right clue”, then choose a word for the gap.": "اضغطوا «دليل من اليمين»، وبعدين اختاروا كلمة للفراغ."
   }
 }

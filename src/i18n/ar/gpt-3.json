@@ -3,7 +3,6 @@
     "A new task.<br>Another training run?": "مهمة جديدة.<br>نحتاج تدريب جديد؟",
     "The examples are<br>part of the question.": "الأمثلة تصير<br>جزء من السؤال.",
     "To ask for a translation, put a few word pairs in the <strong>prompt</strong>, the text given to the model. Then leave the next pair unfinished. This is <strong>in-context learning</strong>: using examples inside the prompt to guide the answer, without updating the model’s parameters.": "إذا تبون ترجمة، حطوا كم زوج كلمات في <strong>البرومبت</strong> (prompt)، وهو النص اللي نعطيه للنموذج، واتركوا الزوج اللي بعده ناقص. هذا <strong>التعلّم من السياق</strong>: نستخدم أمثلة داخل البرومبت عشان نوجّه الجواب، بدون ما نحدّث معاملات النموذج.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Frozen weights, scale &amp; limits</span>": "للتعمّق <span>الأوزان الثابتة والحجم والحدود</span>",
     "Sources <span>Original papers, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل للقراءة</span>",
     "Pretraining gave models a head start. A new task usually still needed labelled examples and <strong>fine-tuning</strong>, updating the model's learned numbers for that task.": "التدريب المسبق أعطى النماذج بداية مفيدة. بس المهمة الجديدة غالبًا تحتاج أمثلة مصنّفة و<strong>ضبط دقيق</strong>، يعني نحدّث الأرقام اللي تعلّمها النموذج عشان تناسب المهمة.",
@@ -15,8 +14,6 @@
     "2020 / Live chapter": "2020 / فصل متاح",
     "GPT-3 and in-context learning": "GPT-3 والتعلّم من السياق",
     "Can examples in a prompt teach a new pattern?": "هل أمثلة الطلب تعلّم النموذج نمطًا جديدًا؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -109,6 +106,8 @@
     "You beat the filter by {0}: {1} points.": "غلبتوا الفلتر بفرق {0}: {1} نقاط.",
     "Answer now for {0} points.": "جاوبوا الحين وخذوا {0} نقاط.",
     "Puzzle {0} / 5 · streak {1}": "اللغز {0} / 5 · السلسلة {1}",
-    "Best streak: {0}": "أطول سلسلة: {0}"
+    "Best streak: {0}": "أطول سلسلة: {0}",
+    "Preparing a new training set for every task is costly. GPT-3 tested whether task descriptions and a few examples in the prompt could guide a large language model without retraining it. This broadened what one model could attempt through text, but success depended on the task and examples.": "تجهيز بيانات تدريب جديدة لكل مهمة له تكلفة. اختبر GPT-3 هل وصف المهمة وأمثلة قليلة في البرومبت (prompt) تقدر توجّه نموذج لغوي كبير بدون إعادة تدريبه. هذا وسّع المهام اللي يقدر نموذج واحد يجرّبها بالنص، بس النجاح يعتمد على المهمة والأمثلة.",
+    "Read the first example, then press one of the word-pair answers below it.": "اقروا المثال الأول، وبعدين اضغطوا واحد من أجوبة أزواج الكلمات اللي تحته."
   }
 }

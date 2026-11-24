@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import ScalingToy from "./ScalingToy";
 import { sourceLink } from "../lib/chapters";
 ---
@@ -31,7 +31,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Find the<br />sweet spot.</h2><Discovery slug="scaling-laws" />
+  <h2>Find the<br />sweet spot.</h2><ChapterBrief slug="scaling-laws" />
   <p>Three budgets, one hidden curve each. Spend the budget on a bigger model or on more text, drop your guess, then see how close you came. Earlier curves stay on the chart as clues.</p>
   <noscript><p>Enable JavaScript to play. At a fixed budget, this illustration trades a larger model for fewer text units; neither extreme gives its lowest score, and the best size grows with the budget.</p></noscript>
   <ScalingToy client:load />

@@ -1,0 +1,10 @@
+---
+import { firstSteps } from '../lib/first-steps';
+const { slug } = Astro.props;
+const step = firstSteps[slug];
+---
+{step && <details class="why-it-works">
+ <summary>Why it works</summary>
+ <p class="wonder-question">{step.question}</p>
+ <p class="discovery-hint">{step.answer}</p>
+</details>}

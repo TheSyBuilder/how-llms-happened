@@ -3,7 +3,6 @@
     "Read a word.<br>Update a memory.": "读一个词。<br>更新一份记忆。",
     "In 2010, Tomáš Mikolov and colleagues used a simple recurrent network for next-word prediction. <strong>Recurrent</strong> means that a calculation feeds its result into the next step. Their model uses the Elman network’s loop.": "2010 年，Tomáš Mikolov 和同事用简单循环网络预测下一个词。<strong>循环</strong>指的是把一次计算的结果送入下一步。他们的模型沿用了 Elman 网络的循环结构。",
     "At each step, the current word and the previous <strong>hidden state</strong>—a small list of numbers summarizing earlier input—produce a new state. The model turns that state into probabilities for the next word. Reading another word updates the same state with the same learned weights.": "每一步，当前词和之前的<strong>隐藏状态</strong>——一小串概括前文的数字——共同生成新状态。模型把这个状态转换成下一个词的概率。再读一个词，就用同一组学出的权重更新这份状态。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>The recurrence, training, results &amp; limits</span>": "深入了解 <span>循环、训练、结果与局限</span>",
     "<code>sₜ = sigmoid(Awₜ + Rsₜ₋₁)</code><br><code>P(wₜ₊₁ = k) = softmax(Bsₜ)ₖ</code>": "<code>sₜ = sigmoid(Awₜ + Rsₜ₋₁)</code><br><code>P(wₜ₊₁ = k) = softmax(Bsₜ)ₖ</code>",
     "Sources <span>The original paper, with a reading guide</span>": "来源 <span>原始论文与阅读提示</span>",
@@ -15,8 +14,6 @@
     "Read the four-page paper": "阅读这篇四页论文",
     "Mikolov’s RNN language model": "Mikolov 的 RNN 语言模型",
     "Can a running memory help predict the next word?": "不断更新的记忆，能帮助预测下一个词吗？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -112,6 +109,8 @@
     "Next target": "下一关",
     "Read it to both models": "读给两个模型听",
     "Clear": "清空",
-    "A toy: two hand-set memory units, not Mikolov’s trained network. The window is the same reader restarted on the last few words.": "一个玩具：两个手工设定的记忆单元，不是 Mikolov 训练出的网络。窗口就是同一个读者，只从最后几个词重新开始读。"
+    "A toy: two hand-set memory units, not Mikolov’s trained network. The window is the same reader restarted on the last few words.": "一个玩具：两个手工设定的记忆单元，不是 Mikolov 训练出的网络。窗口就是同一个读者，只从最后几个词重新开始读。",
+    "A fixed window drops a clue as soon as it passes the edge. Mikolov and colleagues used a changing recurrent state to predict the next word, letting earlier words keep some influence. Combined with count models, it improved speech recognition in their tests, though long context remained difficult.": "固定窗口会在一条线索越过边界时把它丢掉。米科洛夫和同事用不断更新的循环状态预测下一个词，让更早的词还能产生一些影响。在他们的测试中，它与计数模型结合后改善了语音识别，但长上下文仍然难处理。",
+    "Tap “river” in the word tiles to add the first clue to your sentence.": "点词块里的“river”，给句子加上第一条线索。"
   }
 }

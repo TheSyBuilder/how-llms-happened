@@ -59,3 +59,7 @@
 @media (max-width: 480px) { .eliza-line { max-inline-size:100%; } .eliza-text { font-size:16px; } }
 @media (prefers-reduced-motion: reduce) { .eliza-line { animation:none; } }
 .eliza-log:focus-visible { outline:3px solid var(--deep); outline-offset:2px; }
+
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] .eliza-log { min-block-size:132px; }
+}

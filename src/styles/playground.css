@@ -46,11 +46,6 @@
 .chapter-page[data-view=play] #play > .eyebrow,.chapter-page[data-view=play] #play > h2 { display:none; }
 .chapter-page[data-view=play] .back-link { font-size:12px; }
 .chapter-page[data-view=play] .chapter-hero > .eyebrow { display:none; }
-.discovery { border:0; border-bottom:1px solid var(--line); background:none; padding:0 0 12px; margin:12px 0 20px; }
-.discovery details { margin:0; }
-.discovery summary { display:flex; align-items:center; justify-content:space-between; min-height:44px; text-decoration:none; font-size:13px; }
-.discovery summary span { font-size:20px; }
-.discovery .discovery-hint { border-inline-start:2px solid var(--line); padding-inline-start:14px; font-size:13px; }
 .game-dock { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:800px; margin:25px auto 60px; padding:16px 22px; border-block:1px solid var(--line); font-size:13px; }
 .game-dock a { text-decoration:none; min-height:44px; min-width:44px; display:inline-flex; gap:8px; align-items:center; justify-content:center; padding:0 16px; border:2px solid var(--ink); border-radius:var(--radius-pill); background:var(--surface); font-weight:600; max-width:36%; }
 .game-dock a:hover { background:var(--accent); color:var(--on-accent); }
@@ -81,25 +76,7 @@
 .chapter-nav .nav-paper { margin-inline-start:auto; font-size:12px; }
 @media(max-width:380px) { .chapter-nav a { padding-inline:7px; font-size:11px; } .chapter-nav .nav-paper { font-size:11px; } }
 
-/* A short, approachable first layer before the paper details. */
-.first-look { max-width:670px; margin:24px 0; padding:20px 24px; border-inline-start:4px solid var(--accent); background:var(--surface); border-start-end-radius:6px; border-end-end-radius:6px; }
-.first-look p { font-size:20px; line-height:1.65; }
-.first-look > div { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:12px; }
-.first-look a,.listen-idea { font-size:15px; min-height:44px; display:inline-flex; align-items:center; }
-.listen-idea { background:none; border:1px solid var(--line); border-radius:5px; padding:8px 12px; color:var(--ink); cursor:pointer; }
-.listen-idea[hidden] { display:none; }
-.listen-status { display:block; font-size:13px; }
-.chapter-page[data-view=reference] .first-look {display:none;}
-.chapter-page[data-view=play] .first-look { margin-block:15px; padding:12px 18px; }
-.chapter-page[data-view=play] .first-look p {font-size:16px;}
-.chapter-page[data-view=play] .first-look a {display:none;}
-.discovery .first-move { font-size:17px; line-height:1.6; margin:0; }
-.first-move strong { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--deep); margin-bottom:5px; }
-.discovery .wonder-question { font-size:16px; margin-top:12px; font-weight:600; }
-.discovery summary { font-size:15px; }
-.discovery .discovery-hint {font-size:16px;line-height:1.6;}
 .toy-method { font-size:14px; }
-@media(max-width:700px) { .first-look {padding:16px;} .first-look p {font-size:18px;} }
 
 /* Language navigation and scripts with different reading directions. */
 /* Header: one row at every width; every control is a 44 px target. */
@@ -155,3 +132,40 @@ html[dir=rtl] :is(.range-ends) {direction:ltr;}
 html[dir=rtl] :is(.range-ends)>* {direction:rtl;}
 html[dir=rtl] :is(.game-dock button>span) {direction:ltr;unicode-bidi:isolate;}
 html[dir=rtl] #letter-text {direction:ltr;unicode-bidi:isolate;}
+
+/* A flat reading layer between the existing tabs and goal bar. */
+.chapter-brief { max-width:65ch; margin:0 0 16px; color:var(--ink); font:400 16px/1.5 var(--body); overflow-wrap:anywhere; }
+.chapter-brief-top { display:flex; align-items:center; gap:12px; min-height:44px; }
+.chapter-brief-source { min-width:0; font-size:14px; line-height:1.5; color:var(--muted); }
+.chapter-brief-copy { margin-block:8px; }
+.chapter-brief-instruction { margin-block:8px 0; }
+.chapter-brief-label { font-size:14px; font-weight:600; color:var(--deep); margin-inline-end:.45em; }
+.chapter-brief-label::after { content:":"; }
+:lang(zh-CN) .chapter-brief-label::after { content:"："; }
+.chapter-brief-how-to { font-size:16px; }
+.chapter-brief-listen { display:inline-flex; align-items:center; justify-content:center; min-width:44px; min-height:44px; flex:none; padding:0 8px; border:0; background:none; color:var(--deep); font:500 14px/1.4 var(--body); text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+.chapter-brief-listen[hidden] { display:none; }
+.chapter-brief-listen:focus-visible { outline:2px solid var(--deep); outline-offset:2px; }
+.why-it-works { display:none; max-width:65ch; border-block:1px solid var(--line); margin-block:8px 24px; font-size:16px; line-height:1.6; }
+.chapter-page[data-view=play] .why-it-works { display:block; }
+.why-it-works > summary { display:list-item; min-height:44px; padding-block:10px; color:var(--ink); cursor:pointer; font-size:16px; }
+.why-it-works > p { margin-block:8px 16px; }
+.why-it-works .wonder-question { font-weight:600; }
+.why-it-works .discovery-hint { color:var(--muted); }
+.chapter-page[data-view=play] .chapter-hero { padding-block:12px 0; }
+.chapter-page[data-view=play] .back-link { margin-block:0 4px; }
+.chapter-page[data-view=play] .chapter-hero h1 { margin-block:8px; }
+.chapter-page[data-view=play] .chapter-hook { margin-block:8px 0; }
+.chapter-page[data-view=play] .chapter-nav { margin-block-start:12px; }
+.chapter-page[data-view=play] #play { border:0; padding-block:12px 8px; }
+@media(min-width:701px) {
+ /* Align the Play section and its following blocks to the hero content edges. */
+ .chapter-page[data-view=play] :is(#play,.why-it-works,.chapter-end) { margin-inline:calc(min(50vw, 425px) - min(50vw, 500px) + var(--space) - 24px); }
+}
+.chapter-page .chapter-nav a { min-inline-size:44px; }
+@media(max-width:700px) {
+ .chapter-page[data-view=play] .chapter-hero { padding-block-start:8px; }
+ .chapter-page[data-view=play] .chapter-nav { margin-block-start:8px; }
+ .chapter-brief { line-height:1.45; margin-block-end:12px; }
+}
+.chapter-page:not([data-view=play]) .chapter-brief { display:none; }

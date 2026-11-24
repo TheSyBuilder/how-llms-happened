@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي صار؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>A pairwise objective</span>": "تعمّق أكثر <span>هدف تدريبي يقارن إجابتين</span>",
     "Sources <span>Papers and further reading</span>": "المصادر <span>الأوراق وقراءات إضافية</span>"
   },
@@ -9,8 +8,6 @@
     "2023 / Live chapter": "2023 / فصل متاح",
     "Simpler alignment": "تعلّم التفضيلات بطريقة أبسط",
     "Can comparing two answers be enough to improve a model?": "هل تكفي المقارنة بين إجابتين عشان يتحسّن النموذج؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -92,6 +89,8 @@
     "10 clicks of preference training turned my model {0}% pirate.": "عشر نقرات من تدريب التفضيلات خلّت نموذجي قرصان بنسبة {0}%.",
     "I preference-trained a model in 10 clicks: {0}% helpful, {1}% pirate.": "درّبت نموذج على التفضيلات في 10 نقرات: مفيد {0}%، قرصان {1}%.",
     "A two-trait model trained with the real DPO update. Real DPO adjusts billions of weights from many pairs.": "نموذج بسمتين يتدرّب بتحديث DPO الحقيقي. أما DPO الحقيقي فيعدّل مليارات الأوزان من أزواج كثيرة.",
-    "The chosen and rejected answers meet in one comparison against a fixed reference. Training changes the model, not the reference. These are teaching illustrations.": "نقارن الجواب المختار والمرفوض بالنسبة لمرجع ثابت. التدريب يغيّر النموذج، والمرجع يبقى مثل ما هو. هذي رسومات للتوضيح."
+    "The chosen and rejected answers meet in one comparison against a fixed reference. Training changes the model, not the reference. These are teaching illustrations.": "نقارن الجواب المختار والمرفوض بالنسبة لمرجع ثابت. التدريب يغيّر النموذج، والمرجع يبقى مثل ما هو. هذي رسومات للتوضيح.",
+    "Training from human preferences often meant learning a separate scorer, then using its scores as rewards for further training. Direct Preference Optimization (DPO) learned straight from preferred and rejected answers, measuring changes against an unchanged starting copy of the model. This simplified that training stage, but the comparisons still had to be good.": "التدريب على تفضيلات الناس كان غالبًا يحتاج تدريب مقيّم منفصل، وبعدين استخدام درجاته كمكافآت لتدريب إضافي. تعلّم التحسين المباشر للتفضيلات (DPO) مباشرة من الأجوبة المفضّلة والمرفوضة، وقاس التغيّر مقارنة بنسخة بداية من النموذج تبقى بدون تعديل. كذا بسّط مرحلة التدريب هذي، بس المقارنات ظلّ لازم تكون جيدة.",
+    "Compare “Answer A” and “Answer B”, then press the answer you prefer.": "قارنوا «الجواب A» و«الجواب B»، وبعدين اضغطوا الجواب اللي تفضّلونه."
   }
 }

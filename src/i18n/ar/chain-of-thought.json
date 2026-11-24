@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي صار؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Prompting is not a guarantee</span>": "تعمّق أكثر <span>البرومبت ما يضمن الصح</span>",
     "Sources <span>Papers and further reading</span>": "المصادر <span>الأوراق وقراءات إضافية</span>"
   },
@@ -9,8 +8,6 @@
     "2022 / Live chapter": "2022 / فصل متاح",
     "Show your working": "ورّنا خطوات الحل",
     "Can examples of intermediate steps help solve a problem?": "هل عرض أمثلة بخطواتها يساعد في حل المسألة؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -20,7 +17,7 @@
     "An answer-only example hides how the answer was reached. For a question with several operations, the reader may need to keep track of an intermediate quantity.": "المثال اللي يعطي الجواب بس ما يورّي كيف وصل له. وإذا المسألة فيها أكثر من عملية، القارئ ممكن يحتاج يحتفظ بنتيجة مؤقتة وهو يكمل.",
     "02 / The big idea": "02 / الفكرة الجديدة",
     "Intermediate steps": "خطوات وسطية",
-    "Chain-of-thought prompting supplies examples with intermediate reasoning steps before the final answer. Wei and colleagues showed in 2022 that this could improve arithmetic, commonsense and symbolic reasoning in sufficiently large language models.": "طريقة «سلسلة التفكير» تعطي النموذج أمثلة فيها خطوات الاستدلال قبل الجواب النهائي. وWei وزملاؤه بيّنوا في 2022 إن هالطريقة ممكن تحسّن الاستدلال الحسابي والاستدلال بالمعرفة العامة والاستدلال الرمزي في النماذج اللغوية الكبيرة بما يكفي.",
+    "Chain-of-thought prompting supplies examples with intermediate reasoning steps before the final answer. Wei and colleagues showed in 2022 that this could improve arithmetic, commonsense and symbolic reasoning in sufficiently large language models.": "طريقة «سلسلة التفكير» تعطي النموذج أمثلة فيها خطوات الاستدلال قبل الجواب النهائي. وجيسون وي وزملاؤه بيّنوا في 2022 إن هالطريقة ممكن تحسّن الاستدلال الحسابي والاستدلال بالمعرفة العامة والاستدلال الرمزي في النماذج اللغوية الكبيرة بما يكفي.",
     "3 notebooks · $4 each · $3 delivery": "3 دفاتر · $4 للدفتر · $3 توصيل",
     "$12 + $3 delivery = $15": "$12 + $3 = $15",
     "The subtotal is a place to check.": "المجموع الجزئي فرصة للمراجعة.",
@@ -90,6 +87,8 @@
     "Every solution looked fluent. One step in each was wrong, and every step after it followed the mistake faithfully.": "كل حل كان يبان سلس. بس في كل واحد خطوة غلط، وكل خطوة بعدها مشت ورا الغلط بأمانة.",
     "I spotted {0} of 5 wrong steps in worked solutions, {1} points. Showing the working only helps if someone checks it.": "اكتشفت {0} من 5 خطوات خاطئة في حلول مكتوبة، {1} نقطة. عرض خطوات الحل ما يفيد إلا إذا أحد راجعها.",
     "These solutions were written by hand with one planted error each; no language model wrote them.": "هذي الحلول مكتوبة يدويًا، وفي كل واحد منها خطأ مزروع واحد. ما كتبها نموذج لغوي.",
-    "An intermediate subtotal separates two operations. Each step gives you something concrete to inspect. These are teaching illustrations.": "المجموع الجزئي يفصل بين عمليتين. كل خطوة تعطيكم شي محدّد تراجعونه. هذي رسومات للتوضيح."
+    "An intermediate subtotal separates two operations. Each step gives you something concrete to inspect. These are teaching illustrations.": "المجموع الجزئي يفصل بين عمليتين. كل خطوة تعطيكم شي محدّد تراجعونه. هذي رسومات للتوضيح.",
+    "Examples that show only an answer hide the steps needed for a multi-step problem. Wei and colleagues added intermediate reasoning steps to prompt examples. This improved some reasoning tasks in sufficiently large models, without changing their weights, though written steps could still contain mistakes.": "الأمثلة اللي تعرض الجواب بس تخفي الخطوات اللي تحتاجها مسألة من كذا خطوة. أضاف جيسون وي وزملاؤه خطوات تفكير وسطية لأمثلة البرومبت (prompt). تحسّنت بعض مهام الاستدلال في النماذج الكبيرة بما يكفي بدون تغيير أوزانها، بس الخطوات المكتوبة ممكن تظلّ فيها أخطاء.",
+    "Press “Start” to reveal the first worked solution.": "اضغطوا «ابدأ» عشان تشوفون أول حل بخطواته."
   }
 }

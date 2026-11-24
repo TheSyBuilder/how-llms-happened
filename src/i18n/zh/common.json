@@ -101,7 +101,6 @@
     "You found the sentence machine": "你找到了句子生成器",
     "{0}: vowel": "{0}：元音",
     "{0}: consonant": "{0}：辅音",
-    "Listen to the idea": "听听这个想法",
     "Stop reading": "停止朗读",
     "Stopped.": "已停止。",
     "Finished.": "朗读完毕。",
@@ -115,8 +114,6 @@
     "Previous": "上一章",
     "Next": "下一章",
     "Switch experiment": "切换实验",
-    "Try this first": "先试这一步",
-    "What’s going on?": "这是怎么回事？",
     "Tell a friend": "讲给朋友听",
     "Copy experiment link": "复制实验链接",
     "Enjoyed this? Star on GitHub ↗": "喜欢这个实验？到 GitHub 点个 Star ↗",
@@ -187,6 +184,10 @@
     "Why this exists": "为什么做这个",
     "Most explanations of language models start at the end. This one starts in 1913 and lets you play every step.": "大多数介绍语言模型的文章都从结局讲起。这里从 1913 年讲起，每一步都能亲手玩。",
     "Follow on X ↗": "在 X 上关注 ↗",
-    "Source on GitHub ↗": "GitHub 上的源码 ↗"
+    "Source on GitHub ↗": "GitHub 上的源码 ↗",
+    "Listen": "听一听",
+    "How to play": "玩法",
+    "Why it works": "为什么会这样",
+    "et al.": "等"
   }
 }

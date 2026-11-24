@@ -3,7 +3,6 @@
     "A bigger bet.<br>But how much better?": "投入更多，<br>究竟能好多少？",
     "A model has <strong>parameters</strong>: the adjustable numbers it learns during training. More parameters, more text, and more computation all cost something. Which one is holding progress back?": "模型有<strong>参数</strong>：训练过程中会调整的数值。增加参数、文本或计算量，都有代价。究竟是哪一项卡住了进步？",
     "In 2020, Jared Kaplan and colleagues measured language models across many sizes and training budgets. They tracked <strong>loss</strong>: a score that penalises a model for assigning low probability to the next piece of real text. Lower is better.": "2020 年，Jared Kaplan 和同事测量了不同规模、不同训练预算的语言模型。他们观察<strong>损失</strong>：当模型给真实文本的下一个片段分配太低的概率时，就会受到惩罚。这个分数越低越好。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Power laws, compute &amp; limits</span>": "继续深入 <span>幂律、计算量与局限</span>",
     "Table 6 estimates <code>Nopt ∝ Cmin^0.73</code> and, assuming one pass through the data, <code>Dopt ∝ Cmin^0.27</code>. Cmin is estimated minimum compute in the small-batch limit; it is not elapsed time or hardware cost. The finding favours growing the model faster than its training text. It does not say to hold the data fixed forever.": "表 6 估计 <code>Nopt ∝ Cmin^0.73</code>，并在数据只读一遍的假设下，给出 <code>Dopt ∝ Cmin^0.27</code>。Cmin 是小批量极限下估计的最低计算量，不是耗时或硬件成本。结果倾向于让模型比训练文本增长得更快，并不是说数据量应该永远不变。",
     "The paper explicitly expects its extrapolated trends to break down and does not show that every downstream task improves with loss. In 2022, <a href=\"/chapters/chinchilla/\">Chinchilla</a> revisited the allocation question and found a more even scaling of model size and training tokens. A fitted exponent depends on the experiments behind it.": "论文明确预期：外推趋势终会失效，也没有证明每一项下游任务都会随着损失下降而改善。2022 年，<a href=\"/chapters/chinchilla/\">Chinchilla</a> 重新研究了资源分配，发现模型大小和训练词元数量应当更均衡地增长。拟合出的指数，取决于背后的实验。",
@@ -17,8 +16,6 @@
     "2020 / Live chapter": "2020 / 已上线",
     "Scaling laws": "缩放定律",
     "What changes when we make a language model bigger?": "把语言模型做大，会发生什么？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -93,7 +90,7 @@
     "The sweet spot was elsewhere.": "最佳点在别处。",
     "Next budget": "下一个预算",
     "See your result": "查看结果",
-    "Drop my guess": "放下我的猜测",
+    "Drop my guess": "确定我的猜测",
     "An invented curve in toy units, shaped like Kaplan’s trade-off but not the paper’s fitted numbers.": "这是一条用演示单位虚构的曲线，形状模仿 Kaplan 的权衡关系，但不是论文拟合出的数字。",
     "Your three guesses against the revealed toy loss curves.": "你的三次猜测，与揭晓的演示损失曲线对比。",
     "I guessed the compute-optimal model size for 3 budgets, {0} off on average. Scaling laws, played as a game.": "我猜了 3 个预算下算力最优的模型大小，平均误差 {0}。把缩放定律玩成了游戏。",
@@ -109,6 +106,8 @@
     "{0} units": "{0} 单位",
     "model {0}": "模型 {0}",
     "text {0}": "文本 {0}",
-    "{0} off": "差 {0}"
+    "{0} off": "差 {0}",
+    "Bigger models, more text and longer training all cost money, so how should a training budget be spent? Kaplan and colleagues found that prediction error fell along smooth, predictable curves as each grew. Their fits favoured putting most of a bigger budget into bigger models trained for fewer steps, within the conditions they studied.": "模型更大、文本更多、训练更久，都要花钱，训练预算该怎么分？Kaplan 及同事发现，随着各项资源增加，预测误差沿着平滑、可预测的曲线下降。在他们研究的条件下，拟合结果更倾向于把新增预算的大部分用在更大的模型上，只训练较少的步数。",
+    "Move “Your guess · model size”, then press “Drop my guess”.": "拖动“你的猜测 · 模型大小”，再按“确定我的猜测”。"
   }
 }

@@ -2,22 +2,18 @@
   "rich": {
     "A bigger brain still<br>needs the right help.": "حتى لو صار أذكى،<br>يحتاج المساعدة المناسبة.",
     "<strong>Context</strong> is the information supplied for the current answer. A <strong>tool</strong> is a program the system can call for information or an action. <strong>Inference compute</strong> is the computation spent producing an answer. These resources do different jobs.": "<strong>السياق</strong> هو المعلومات المتاحة للإجابة الحالية. و<strong>الأداة</strong> برنامج يستدعيه النظام للحصول على معلومة أو تنفيذ إجراء. أما <strong>حسابات وقت الإجابة</strong> فهي الحسابات المستخدمة لإنتاج الإجابة. كل مورد له دور مختلف.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي صار؟ <span aria-hidden=\"true\">+</span>",
     "The system is<br>part of the story.": "النظام المحيط بالنموذج<br>جزء من القصة.",
     "Go deeper <span>Context memory, effort and limits</span>": "تعمّق أكثر <span>ذاكرة السياق والجهد والحدود</span>",
     "<strong>FlashAttention (2022)</strong> computes exact attention in blocks, moving less data between a graphics processor’s fast local memory and its larger main memory. It avoids storing the full attention-score matrix there; this is different from compressing a generation-time KV cache. <strong>Mamba (2023)</strong> uses a selective state space model: a running state whose update depends on the current input. Its architecture replaces attention and uses a parallel algorithm during training. It offers another approach to long sequences, with different tradeoffs. These papers are alternatives to explore, not claims about the internals of every model named above.": "يحسب <strong>FlashAttention (2022)</strong> الانتباه الدقيق على شكل كتل، فيقلّل نقل البيانات بين الذاكرة المحلية السريعة للمعالج الرسومي وذاكرته الرئيسية الأكبر. ويتجنّب تخزين مصفوفة درجات الانتباه كاملة هناك؛ وهذا يختلف عن ضغط ذاكرة KV المؤقتة أثناء التوليد. يستخدم <strong>Mamba (2023)</strong> نموذج فضاء حالة انتقائيًا: حالة مستمرة تتغيّر طريقة تحديثها بحسب المدخل الحالي. تستبدل بنيته الانتباه وتستخدم خوارزمية متوازية في التدريب. وهو طريق آخر للتعامل مع التسلسلات الطويلة، بمزايا وتنازلات مختلفة. هذه أوراق لطرق بديلة تستحق الاستكشاف، وليست وصفًا لبنية كل نموذج ذُكر فوق.",
     "Sources <span>Primary papers and official model reports</span>": "المصادر <span>الأوراق الأصلية وتقارير النماذج الرسمية</span>",
     "In 2026, that combination is visible across model families. DeepSeek-V4 and V4.1-Flash support million-token contexts; a <strong>token</strong> is a piece of text. Gemini 4 Argon’s model card describes text, image, audio and video input sharing a million-token window. Anthropic’s Opus 5.5 and OpenAI’s GPT-6 Astra announcements emphasize tool-using work. These are examples of the combination, not a ranking. Newer releases continue the pattern: Google describes Gemini 4 Carbon (28 October) as built for sustained agentic workflows, and Anthropic’s Claude Fable 5.2 (9 November) can coordinate smaller models as an orchestrator.": "في 2026 نشوف هالتركيبة في عائلات نماذج مختلفة. DeepSeek-V4 وV4.1-Flash يدعمون سياقًا بمليون توكن؛ <strong>التوكن</strong> (token) قطعة صغيرة من النص. بطاقة Gemini 4 Argon تصف إدخال النص والصور والصوت والفيديو ضمن نافذة مشتركة بمليون توكن. وإعلانات Opus 5.5 من Anthropic وGPT-6 Astra من OpenAI تركّز على إنجاز العمل باستخدام الأدوات. هذي أمثلة على التركيبة، مو ترتيب للأفضل. والإصدارات الأحدث تكمل النمط: Google تصف Gemini 4 Carbon (28 أكتوبر) بأنه مبني لسير عمل وكيلي متواصل، وClaude Fable 5.2 من Anthropic (9 نوفمبر) يقدر ينسّق نماذج أصغر بدور المنسّق.",
-    "Get the parcel there.<br>Spend as little as you can.": "وصّلوا الطرد،<br>وادفعوا أقل ما يمكن.",
-    "<strong>Try this first</strong> Send all three notes and one route, with no tool, and see if the old map is right today.": "<strong>أول خطوة</strong> أرسلوا الملاحظات الثلاث وطريق واحد بدون أداة، وشوفوا هل الخريطة القديمة صحيحة اليوم."
+    "Get the parcel there.<br>Spend as little as you can.": "وصّلوا الطرد،<br>وادفعوا أقل ما يمكن."
   },
   "text": {
     "← The timeline": "← الخط الزمني",
     "2026 / Live chapter": "2026 / فصل متاح",
     "Where we are now": "وين وصلنا؟",
     "What does a useful model need around it?": "وش يحتاج النموذج حوله عشان يصير مفيد؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -153,6 +149,8 @@
     "A useful system needs the right facts, fresh tools and enough effort, and each one costs something. Paying for the wrong one is waste.": "النظام المفيد يحتاج المعلومات الصحيحة وأدوات محدّثة وجهد كافي، وكل واحد له ثمن. الدفع للشي الغلط هدر.",
     "Send all three notes and one route, with no tool, and see if the old map is right today.": "أرسلوا الملاحظات الثلاث وطريق واحد بدون أداة، وشوفوا هل الخريطة القديمة صحيحة اليوم.",
     "When is the road-status tool worth its 2 credits?": "متى تستاهل أداة حالة الطرق نقطتيها؟",
-    "Only when a road on the planner’s first choice is closed. Then no amount of extra trying fixes the old map.": "بس إذا كان فيه طريق مقفل في اختيار المخطِّط الأول. وقتها مهما زادت المحاولات ما تصلّح الخريطة القديمة."
+    "Only when a road on the planner’s first choice is closed. Then no amount of extra trying fixes the old map.": "بس إذا كان فيه طريق مقفل في اختيار المخطِّط الأول. وقتها مهما زادت المحاولات ما تصلّح الخريطة القديمة.",
+    "Long conversations fill memory with notes about earlier text. DeepSeek-V4.1-Flash reused and compressed those notes, reporting a cache about a quarter the size of its predecessor’s. In the game, you spend a budget on context notes, a road-status tool, and the effort of trying more routes.": "المحادثات الطويلة تملأ الذاكرة بملاحظات عن النص السابق. أعاد DeepSeek-V4.1-Flash استخدام هالملاحظات وضغطها، وذكر إن ذاكرته المؤقتة تشغل حوالي ربع حجم الذاكرة المؤقتة في النموذج السابق. في اللعبة، تصرفون ميزانية على ملاحظات السياق، وأداة لحالة الطرق، والجهد لتجربة مسارات أكثر.",
+    "Move “Notes to send” to 3 to include the address.": "حرّكوا «الملاحظات المرسلة» إلى 3 عشان ترسلون العنوان معها."
   }
 }

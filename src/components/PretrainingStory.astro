@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import PretrainingToy from "./PretrainingToy";
 import { sourceLink, paperLink } from "../lib/chapters";
 ---
@@ -32,7 +32,7 @@ import { sourceLink, paperLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>How few labels<br />does it need?</h2><Discovery slug="pretraining" />
+  <h2>How few labels<br />does it need?</h2><ChapterBrief slug="pretraining" />
   <p>Both learners get the same labels, one at a time. Only one read the sentences first. Spot the misleading sentence, then choose labels so the reader gets every review right.</p>
   <noscript><p>Enable JavaScript to try the toy. Reading groups adjectives by the words that follow them. A few review labels can then teach a rating for a whole group.</p></noscript>
   <PretrainingToy client:load />

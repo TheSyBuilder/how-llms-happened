@@ -2,7 +2,6 @@
   "rich": {
     "<strong>Long short-term memory</strong>, or LSTM, introduced a memory cell with a protected additive state. Hochreiter and Schmidhuber’s 1997 design used an input gate to control writing and an output gate to control exposure. A <strong>gate</strong> is a learned multiplier that opens or closes a route for information.": "<strong>长短期记忆</strong>（LSTM）引入了一个记忆单元，用加法更新、保护其中的状态。Hochreiter 和 Schmidhuber 在 1997 年提出的设计，用输入门控制写入，用输出门控制显示。<strong>门</strong>是一个通过学习得到的乘数，负责让信息通过或把它拦住。",
     "Gers, Schmidhuber and Cummins later added the <strong>forget gate</strong>, presented in 1999 and developed in a 2000 journal paper. It scales the old state, letting the network retain, fade or clear its memory. The original 1997 cell did not have this gate.": "后来，Gers、Schmidhuber 和 Cummins 加入了<strong>遗忘门</strong>：1999 年首次发表，2000 年的期刊论文进一步展开。它调整旧状态的保留比例，让网络能够保留、淡化或清空记忆。1997 年的原始单元还没有这扇门。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "深入了解 <span>机制、证据与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -11,8 +10,6 @@
     "1997 / Live chapter": "1997 / 已上线",
     "Learning what to remember": "学会记住什么",
     "Can a network learn what to keep and what to forget?": "网络能学会该记住什么、忘掉什么吗？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -102,6 +99,8 @@
     "Opened {0} of 3 vaults.": "打开了 3 个保险库中的 {0} 个。",
     "Keep held the code, Write let it in, and Read gave it back at the bell. An LSTM learns to work these gates itself.": "“保持”守住密码，“写入”把它放进来，“读取”在铃响时把它交出来。LSTM 会自己学会操作这些门。",
     "Vaults": "保险库",
-    "I worked an LSTM's memory gates by hand and opened {0} of 3 vaults.": "我亲手操作 LSTM 的记忆门，打开了 3 个保险库中的 {0} 个。"
+    "I worked an LSTM's memory gates by hand and opened {0} of 3 vaults.": "我亲手操作 LSTM 的记忆门，打开了 3 个保险库中的 {0} 个。",
+    "Early recurrent networks struggled to learn from clues far back in a sequence. LSTM used a memory cell with gates controlling what enters and what gets read out. This helped preserve learning signals across long gaps; later work added a forget gate.": "早期循环网络很难从序列中很久以前的线索里学习。LSTM 用记忆单元保存信息，让门控制什么能进入、什么能被读出。这有助于让学习信号跨过很长的间隔；后来的研究又加入了遗忘门。",
+    "Press “Start vault 1” to begin the incoming stream.": "按“开始第 1 个保险库”，让输入流开始。"
   }
 }

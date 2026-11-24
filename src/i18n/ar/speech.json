@@ -1,7 +1,6 @@
 {
   "rich": {
     "An <strong>acoustic likelihood</strong> measures how compatible the observed sound evidence is with a candidate. A <strong>language prior</strong> assigns the candidate a probability before using that sound evidence. Multiplying the two gives a score for choosing between candidates.": "<strong>الإمكان الصوتي</strong> يقيس مدى توافق الصوت المسموع مع عبارة مرشّحة. أما <strong>الاحتمال اللغوي المسبق</strong> فيعطي العبارة احتمالًا قبل النظر إلى الصوت. نضرب الاثنين عشان نحصل على درجة نقارن فيها العبارات.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "للتعمّق <span>الآلية والأدلة والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>"
   },
@@ -10,8 +9,6 @@
     "1975 / Live chapter": "1975 / فصل متاح",
     "IBM makes speech models practical": "IBM تقرّب نماذج الكلام من الاستخدام العملي",
     "Can likely words help a computer hear a sentence?": "هل الكلمات المتوقعة تساعد الكمبيوتر يفهم الجملة المسموعة؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -84,6 +81,8 @@
     "You got {0} of 5. The 1975-style decoder got {1}.": "نتيجتكم {0} من 5، ومفكّك الترميز على طراز 1975 جاب {1}.",
     "Sound alone got {0} of 5. The language model fixed most mix-ups, but it only sees two words, so it missed the goalie.": "الصوت لحاله جاب {0} من 5. النموذج اللغوي صلّح أغلب الالتباسات، بس ما يشوف إلا كلمتين، ففاته سؤال حارس المرمى.",
     "You": "أنتم",
-    "\"Wreck a nice beach\": I got {0}/5, a 1975-style speech decoder got {1}/5, and sound alone got {2}/5.": "«Wreck a nice beach»: أصبتُ {0}/5، ومفكّك ترميز الكلام على طراز 1975 أصاب {1}/5، والصوت وحده {2}/5."
+    "\"Wreck a nice beach\": I got {0}/5, a 1975-style speech decoder got {1}/5, and sound alone got {2}/5.": "«Wreck a nice beach»: أصبتُ {0}/5، ومفكّك ترميز الكلام على طراز 1975 أصاب {1}/5، والصوت وحده {2}/5.",
+    "Similar sounds can fit different words, so sound alone may not settle a transcript. Jelinek and colleagues designed a decoder that combined sound matches with the probability of a word sequence. Language prediction could help choose between uncertain interpretations.": "الأصوات المتشابهة ممكن تكون كلمات مختلفة، فالصوت لحاله مو دايم يحسم النص. صمّم يلينيك وزملاؤه مفكّك ترميز يجمع توافق الصوت مع احتمال تسلسل الكلمات. كذا صار توقّع اللغة يساعد في الاختيار بين قراءات مو مؤكدة.",
+    "Press “Hear it” if you see it, then choose one of the two phrases using the sound or the “Sounds like” line.": "إذا ظهر زر «استمع»، اضغطوا عليه، وبعدين اختاروا واحد من العبارتين حسب الصوت أو سطر «صوتها مثل»."
   }
 }

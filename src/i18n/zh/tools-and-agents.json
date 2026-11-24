@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>The loop and its limits</span>": "深入看看 <span>行动循环及其局限</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
@@ -8,8 +7,6 @@
     "← The timeline": "← 时间线",
     "Tools and agents": "工具与智能体",
     "What if the next token could start an action?": "如果下一个 token 能启动一个动作呢？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -84,6 +81,8 @@
     "I played the AI agent: right answer in {0} tool calls, while the no-tools model was confidently wrong.": "我当了一回 AI 智能体：{0} 次工具调用就答对了，而不用工具的模型自信地答错了。",
     "I played the AI agent and got the bill wrong. Tools only help with the right inputs.": "我当了一回 AI 智能体，结果把账算错了。工具只有输入对了才有用。",
     "The menu, prices and exchange rate are invented, and the tools run in your browser.": "菜单、价格和汇率都是虚构的，工具在你的浏览器里运行。",
-    "An action leaves the model, a tool returns an observation, and the next decision uses that observation. These are teaching illustrations.": "模型发起行动，工具返回观察结果，下一次决策利用它。这些是教学示意。"
+    "An action leaves the model, a tool returns an observation, and the next decision uses that observation. These are teaching illustrations.": "模型发起行动，工具返回观察结果，下一次决策利用它。这些是教学示意。",
+    "A language model’s fluent answer can lack facts or correct calculations. ReAct alternated reasoning, actions and observations, letting a model use a tool’s result to choose its next step. This gave answers a way to gather outside information and act on it, with mistakes still possible.": "语言模型回答流畅，也可能缺少事实或算错。ReAct 让推理、行动和观察交替进行，模型可以利用工具返回的结果选择下一步。这让回答过程能够获取外部信息并采取行动，但仍可能出错。",
+    "Press “Search”, then choose “Sushi Kanda omakase price”.": "按“搜索”，再选择“Sushi Kanda 主厨套餐价格”。"
   }
 }

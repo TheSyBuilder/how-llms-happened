@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import RetrievalToy from "./RetrievalToy";
 import { sourceLink } from "../lib/chapters";
 ---
@@ -34,7 +34,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Poison<br />the library.</h2><Discovery slug="retrieval" />
+  <h2>Poison<br />the library.</h2><ChapterBrief slug="retrieval" />
   <p>The reader trusts whatever the search hands it. Plant a page that makes it give the wrong opening time with full confidence, in as few edits as you can. Then switch sides and win the true answer back.</p>
   <noscript><p>Enable JavaScript to edit the library. The toy searches five pages for the question’s words and reads an opening time from the top two.</p></noscript>
   <RetrievalToy client:load />

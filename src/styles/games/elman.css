@@ -26,3 +26,11 @@
 .elman-verdict:empty { min-block-size:0; margin:0; }
 .elman-game .result-card { margin-block:0 16px; }
 @media (prefers-reduced-motion:reduce) { .elman-words li i { transition:none; } }
+
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] .elman-setup { margin-block-end:8px; }
+ .chapter-page[data-view=play] .elman-words { margin-block-end:8px; }
+ .chapter-page[data-view=play] .elman-words li { grid-template-rows:auto 16px; }
+ .chapter-page[data-view=play] .elman-line { margin-block:4px 8px; }
+ .chapter-page[data-view=play] .elman-bet-label { flex:1 1 240px; }
+}

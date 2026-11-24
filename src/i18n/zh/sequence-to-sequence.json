@@ -2,7 +2,6 @@
   "rich": {
     "An <strong>encoder</strong> reads the source into a numerical summary. A <strong>decoder</strong> uses that summary and its previously produced words to generate an output sequence. Training on paired examples teaches the two parts together.": "<strong>编码器</strong>把源文本读成一份数字摘要。<strong>解码器</strong>利用这份摘要和自己已经生成的词，输出一个序列。成对的训练样本，让两部分一起学。",
     "In 2014, Ilya Sutskever, Oriol Vinyals and Quoc Le used two deep LSTM networks for this handoff. The first reads the input; its final state initializes the second. An <strong>end symbol</strong> lets the decoder stop, so the output need not have the input’s length.": "2014 年，Ilya Sutskever、Oriol Vinyals 和 Quoc Le 用两个深层 LSTM 网络完成这种交接。第一个读输入，它的最终状态用于初始化第二个。<strong>结束符</strong>告诉解码器什么时候停，所以输出不必和输入一样长。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, equations, results &amp; limits</span>": "深入了解 <span>架构、方程、结果与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -12,8 +11,6 @@
     "Read the sequence-to-sequence paper": "阅读序列到序列论文",
     "Sequence-to-sequence": "序列到序列",
     "How can one network turn a sentence into another?": "网络怎样把一个句子变成另一个句子？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -92,6 +89,8 @@
     "See my score": "看我的得分",
     "Next sentence": "下一句",
     "Send the note": "递出纸条",
-    "A toy: a three-fact note stands in for the encoder’s fixed-size vector, and hand-written habits stand in for a trained decoder. The real system wrote French.": "一个玩具：三条信息的纸条代替编码器的固定大小向量，手写的习惯代替训练好的解码器。真实系统写的是法语。"
+    "A toy: a three-fact note stands in for the encoder’s fixed-size vector, and hand-written habits stand in for a trained decoder. The real system wrote French.": "一个玩具：三条信息的纸条代替编码器的固定大小向量，手写的习惯代替训练好的解码器。真实系统写的是法语。",
+    "Translation needs to turn one sequence into another with a different length or word order. Sutskever and colleagues trained one LSTM to read a sentence into a fixed-size summary and another to write from it. The pair could learn direct sentence translation, but every detail had to fit in that summary.": "翻译要把一个序列变成另一个，长度和词序都可能不同。Sutskever 和同事训练一个 LSTM 把句子读成固定大小的摘要，再让另一个根据摘要写出来。这一对网络能直接学习整句翻译，但所有细节都得装进同一个摘要。",
+    "Tap three facts from the sentence, such as “fox”, then press “Send the note”.": "点选句子中的三个事实，例如“fox”，再按“递出纸条”。"
   }
 }

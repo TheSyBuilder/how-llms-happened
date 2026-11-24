@@ -1,14 +1,11 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Learning and searching are different</span>": "深入了解 <span>学习和搜索是两回事</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
   "text": {
     "← The timeline": "← 时间线",
     "Reasoning models": "推理模型",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -72,6 +69,8 @@
     "I beat the clock on all 3 search puzzles: {0} points. Thinking time is a budget too.": "3 道搜索题我都赶在时间内解出：{0} 分。思考时间也是一种预算。",
     "I solved {0} of 3 search puzzles against the clock. Thinking time is a budget too.": "限时之下，我解出了 3 道搜索题中的 {0} 道。思考时间也是一种预算。",
     "The tree is a plain depth-first search. o1 and R1 learned to try, check and back up in written reasoning; they do not draw a tree like this.": "这棵树只是普通的深度优先搜索。o1 和 R1 学会的是在文字推理中尝试、检查、回退，它们并不画这样的树。",
-    "More answer-time effort can explore more candidates. A check distinguishes a promising path from a dead end. These are teaching illustrations.": "回答时投入更多计算，可以探索更多候选方案。检查结果，才能分清有希望的路和死胡同。这是帮助理解的示意图。"
+    "More answer-time effort can explore more candidates. A check distinguishes a promising path from a dead end. These are teaching illustrations.": "回答时投入更多计算，可以探索更多候选方案。检查结果，才能分清有希望的路和死胡同。这是帮助理解的示意图。",
+    "Some problems need an answer to be worked out and checked. OpenAI’s o1 in 2024 improved with more thinking time while answering, and DeepSeek’s 2025 R1 report found that models trained with rewards for correct final answers learned to write out more of their reasoning. Extra thinking still could not guarantee a correct answer.": "有些问题的答案需要推导和检查。2024 年 OpenAI 的 o1 在回答时多花时间思考，表现就会提升，而 2025 年 DeepSeek 的 R1 报告发现，以正确最终答案为奖励训练的模型学会了写出更多推理过程。但多想一会儿仍不能保证答对。",
+    "Press “Start” to reveal the first number puzzle.": "按“开始”，查看第一道数字谜题。"
   }
 }

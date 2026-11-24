@@ -1,7 +1,6 @@
 {
   "rich": {
     "A <strong>hidden state</strong> is an internal numerical representation computed by a network. In Elman’s 1990 recurrent network, the previous hidden pattern is copied into context units and used alongside the next input. The new hidden pattern becomes the next memory.": "<strong>隐藏状态</strong>是网络内部算出的一组数字表示。在 Elman 1990 年的循环网络中，上一步的隐藏模式被复制到上下文单元，与下一个输入一起使用。新算出的隐藏模式又成为下一步的记忆。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "深入了解 <span>机制、证据与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -10,8 +9,6 @@
     "1990 / Live chapter": "1990 / 已上线",
     "Elman’s recurrent network": "Elman 的循环网络",
     "What can a network remember from the previous word?": "网络能从前一个词里记住什么？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -80,6 +77,8 @@
     "I scored {0} of 9 betting how long a clue lasts.": "押注线索能撑多久，我拿到了 9 分中的 {0} 分。",
     "The clue lasted {0} filler words. Copying back a little more of the state made it last much longer.": "线索分别撑过了 {0} 个填充词。多回传一点状态，线索就能撑得久得多。",
     "Points": "得分",
-    "I bet how long a clue survives inside a 1990 recurrent network and scored {0}/9.": "我押注一条线索能在 1990 年的循环网络里撑多久，得了 {0}/9 分。"
+    "I bet how long a clue survives inside a 1990 recurrent network and scored {0}/9.": "我押注一条线索能在 1990 年的循环网络里撑多久，得了 {0}/9 分。",
+    "The same word can call for different predictions after different histories. Elman’s network copied its previous hidden state into the next step, giving each new input a trace of earlier ones. Predicting sequences could teach it structure without supplied word-class labels.": "同一个词接在不同的前文后面，可能需要不同的预测。埃尔曼的网络把上一步的隐藏状态复制到下一步，让每个新输入都带着前文的痕迹。通过预测序列，它能学到结构，而不需要人先标出词类。",
+    "Set how many filler words you think the clue survives with “−” and “+”, then press “Lock in” followed by your chosen number.": "用“−”和“+”设定你认为线索能撑过几个填充词，再按写着“锁定”和所选数字的按钮。"
   }
 }

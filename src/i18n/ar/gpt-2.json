@@ -4,7 +4,6 @@
     "GPT-1 and BERT offered a useful recipe: learn from text first, then adapt to a job with labelled examples. <strong>Fine-tuning</strong> means updating a model’s adjustable numbers for that job. Want another task? Prepare another set of examples and train again.": "GPT-1 وBERT قدّموا طريقة مفيدة: النموذج يتعلّم من النصوص أول، وبعدين يتكيّف مع مهمة باستخدام أمثلة مصنّفة. <strong>الضبط الدقيق</strong> يعني نعدّل أرقام النموذج القابلة للتعلّم عشان يؤدي هالمهمة. تبون مهمة ثانية؟ جهّزوا أمثلة جديدة ودرّبوه من جديد.",
     "In 2019, GPT-2 explored this possibility with a larger Transformer trained on WebText, a collection of web pages. Its exercise stayed simple: predict the next <strong>token</strong>, a piece of text, using the tokens before it.": "في 2019، جرّب GPT-2 هالفكرة باستخدام Transformer أكبر، تدرّب على WebText، وهي مجموعة نصوص من صفحات الويب. تمرينه ظل بسيط: يتوقّع <strong>التوكن</strong> (token) اللي بعده، والتوكن قطعة من النص، بالاعتماد على التوكنات اللي قبله.",
     "This is <strong>zero-shot transfer</strong>: trying a task without training the model on a labelled dataset for that task. GPT-2 showed signs of several abilities this way, but its summaries could confuse details and its answers could be shallow. Continuing convincingly is not the same as answering correctly.": "هذا اسمه <strong>النقل بدون أمثلة تدريب للمهمة</strong>: نجرّب مهمة بدون ما ندرّب النموذج على بيانات مصنّفة خاصة فيها. GPT-2 بيّن بوادر قدرات مختلفة بهالطريقة، بس ملخصاته ممكن تخلط التفاصيل وأجوبته ممكن تكون سطحية. التكملة المقنعة مو بالضرورة جواب صحيح.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Objective, architecture, results &amp; limits</span>": "للتعمّق <span>هدف التدريب والبنية والنتائج والحدود</span>",
     "Sources <span>Original papers, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل للقراءة</span>",
     "A <strong>prompt</strong> is the text supplied before a continuation. End an article with <code>TL;DR:</code>, short for “too long; didn’t read”, and a summary can follow. End a question with <code>A:</code>, and an answer can follow. The model’s numbers stay fixed.": "<strong>البرومبت</strong> (prompt) هو الكلام اللي نعطيه للنموذج قبل ما يكمل. لو ختمنا المقال بـ <code>TL;DR:</code>، اختصار “طويل؛ ما قريت”، ممكن يجي بعدها ملخص. ولو ختمنا السؤال بـ <code>A:</code>، ممكن يجي بعدها جواب. أرقام النموذج تبقى ثابتة."
@@ -14,8 +13,6 @@
     "2019 / Live chapter": "2019 / فصل متاح",
     "GPT-2 and zero-shot": "GPT-2 والتعلّم بدون أمثلة",
     "Can a task be hidden inside a piece of text?": "ممكن النص نفسه يوضّح للنموذج وش المطلوب؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "قصة",
     "Math": "الرياضيات",
@@ -108,6 +105,8 @@
     "{0} (gave up)": "{0} (استسلمت)",
     "{0} over par": "{0} فوق المعدّل",
     "Hole {0} · {1}": "الحفرة {0} · {1}",
-    "Par {0}": "المعدّل {0}"
+    "Par {0}": "المعدّل {0}",
+    "Adapting a model to each task usually meant more labelled examples and training. GPT-2 explored doing several tasks by continuing text with task cues, while keeping the model unchanged. Its results made prompts a useful way to try tasks, though answers remained unreliable.": "تكييف نموذج لكل مهمة كان غالبًا يحتاج أمثلة مصنّفة وتدريب إضافي. جرّب GPT-2 مهام مختلفة بتكملة نص فيه إشارات للمهمة، مع بقاء النموذج نفسه. وبيّنت النتائج إن البرومبت (prompt) وسيلة مفيدة لتجربة المهام، بس الأجوبة ظلّت غير موثوقة.",
+    "Press the “Then” cue card to add it to the prompt.": "اضغطوا بطاقة «Then» عشان تضيفونها للبرومبت."
   }
 }

@@ -43,6 +43,23 @@ export function localizeHTML(html:string,path:string):string {
  // Arabic sentences quote English example words; isolate “word” so its quotes stay in reading order
  // (islands do the same through game/bidi.tsx after hydration).
  if(locale==='ar'){
+  // Keep whole copy leaves intact through exact lookup, then isolate mixed-script runs in the chapter brief.
+  const briefRuns = /(«[^«»\u0600-\u06ff]*[A-Za-z0-9][^«»\u0600-\u06ff]*»|“[^“”\u0600-\u06ff]*[A-Za-z0-9][^“”\u0600-\u06ff]*”|"[^"\u0600-\u06ff]*[A-Za-z0-9][^"\u0600-\u06ff]*"|[A-Za-z0-9]+(?:[.,]\d+)*(?:[ .'’:/+%-]+[A-Za-z0-9]+)*(?:[%٪])?)/;
+  for (const element of document.querySelectorAll('.chapter-brief-copy,.chapter-brief-how-to')) {
+   const nodes: Text[] = [];
+   const collect = (node: Node) => {
+    if (node.nodeType === 3) { if (!node.parentElement?.closest('bdi')) nodes.push(node as Text); return; }
+    for (const child of node.childNodes) collect(child);
+   };
+   collect(element);
+   for (const node of nodes) {
+    const parts = (node.textContent ?? '').split(briefRuns);
+    if (parts.length > 1) node.replaceWith(...parts.map((part, index) => {
+     if (index % 2 === 0) return document.createTextNode(part);
+     const bdi = document.createElement('bdi'); bdi.setAttribute('dir', 'ltr'); bdi.textContent = part; return bdi;
+    }));
+   }
+  }
   const quoted=/(“[^“”\u0600-\u06ff]*[A-Za-z][^“”\u0600-\u06ff]*”)/;const nodes:Text[]=[];
   const walk=(node:Node)=>{if(node.nodeType===3){if(quoted.test(node.textContent??'')&&!node.parentElement?.closest(`${noTranslate},astro-island,head,title,option,textarea,bdi,svg`))nodes.push(node as Text);return;}for(const child of node.childNodes)walk(child);};
   walk(document.body);

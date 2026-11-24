@@ -4,7 +4,6 @@
     "A model keeps learned patterns in its <strong>parameters</strong>: numbers changed during training. Updating a fact inside those numbers is harder than replacing a library notice.": "يحفظ النموذج الأنماط اللي تعلّمها في <strong>معاملاته</strong>: أرقام تتغيّر أثناء التدريب. تحديث معلومة داخل هالأرقام أصعب من تغيير إعلان في مكتبة.",
     "Look first.<br>Then write.": "يبحث أول.<br>وبعدين يكتب.",
     "Patrick Lewis and colleagues introduced <strong>retrieval-augmented generation</strong>, or RAG, in 2020. A <strong>retriever</strong> finds useful text. A <strong>generator</strong> uses it to write an answer.": "في 2020، قدّم Patrick Lewis وزملاؤه <strong>التوليد المعزّز بالاسترجاع</strong>، أو RAG. <strong>المسترجِع</strong> يبحث عن نص مفيد، و<strong>المولّد</strong> يستخدمه لكتابة الإجابة.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Knowledge gets<br>a door you can open.": "المعرفة صار لها<br>باب نقدر نفتحه.",
     "Go deeper <span>Two memories, two ways to mix passages</span>": "للتعمّق <span>ذاكرتان وطريقتان لدمج الفقرات</span>",
     "A token is a piece of text. Let y be an answer, y&lt;t its earlier tokens, K the retrieved passages, and θ the generator parameters. <strong>RAG-Sequence</strong> keeps one passage for the entire answer within each possibility, then sums the possibilities:": "التوكن (token) قطعة من النص. ليكن y إجابة، وy&lt;t توكناتها السابقة، وK الفقرات المسترجعة، وθ معاملات المولّد. يحتفظ <strong>RAG-Sequence</strong> بفقرة واحدة للإجابة كلها ضمن كل احتمال، ثم يجمع الاحتمالات:",
@@ -12,16 +11,13 @@
     "Sources <span>Original papers, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل للقراءة</span>",
     "The library was Wikipedia. Questions and passages became <strong>vectors</strong>, lists of numbers used to score their match. BART, a model trained to read and write text, generated the answer. Training adjusted the question-searching and writing parts together.": "كانت المكتبة ويكيبيديا. تحوّلت الأسئلة والفقرات إلى <strong>متجهات</strong>، قوائم أرقام نستخدمها عشان نقيّم التطابق. وBART، نموذج تدرّب على قراءة النص وكتابته، هو اللي ولّد الجواب. والتدريب عدّل جزء البحث بالسؤال وجزء الكتابة مع بعض.",
     "<strong>ORQA (2019)</strong> learned retrieval and answer extraction from question-answer pairs. <strong>REALM (2020)</strong> retrieved text during pretraining to predict hidden words. <strong>DPR (2020)</strong> supplied RAG's starting retriever.": "تعلّم <strong>ORQA، عام 2019،</strong> الاسترجاع واستخراج الإجابات من أزواج الأسئلة والأجوبة. واسترجع <strong>REALM، عام 2020،</strong> نصوصًا أثناء التدريب المسبق لتوقّع الكلمات المخفية. وقدّم <strong>DPR، عام 2020،</strong> مسترجِع RAG الأولي.",
-    "Poison<br>the library.": "سمّموا<br>المكتبة.",
-    "<strong>Try this first</strong> Copy the question’s words into a page, then add a wrong time.": "<strong>أول خطوة</strong> انسخوا كلمات السؤال في صفحة، وبعدين أضيفوا وقت غلط."
+    "Poison<br>the library.": "سمّموا<br>المكتبة."
   },
   "text": {
     "← The timeline": "← الخط الزمني",
     "2020 / Live chapter": "2020 / فصل متاح",
     "Look it up": "خلّه يبحث",
     "What if a model could read a source before answering?": "وش لو النموذج يقرأ مصدرًا قبل ما يجاوب؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -133,6 +129,8 @@
     "Copy the question’s words into a page, then add a wrong time.": "انسخوا كلمات السؤال في صفحة، وبعدين أضيفوا وقت غلط.",
     "Why did that page win over the official notice?": "ليش فازت هذيك الصفحة على الإعلان الرسمي؟",
     "It shared more words with the question, so the search ranked it higher. The reader never checks who wrote a page.": "شاركت السؤال في كلمات أكثر، فرفعها البحث في الترتيب. القارئ ما يتحقق أبدًا مين كتب الصفحة.",
-    "You fooled it, then fixed it.": "خدعتوه، وبعدين صلّحتوه."
+    "You fooled it, then fixed it.": "خدعتوه، وبعدين صلّحتوه.",
+    "A model relying only on what it learned during training can be hard to update with new facts. RAG, retrieval-augmented generation, let a text generator read passages fetched from an external library before answering. Changing that library offered a way to update information without retraining the whole model.": "النموذج اللي يعتمد بس على اللي تعلّمه وقت التدريب يصعب تحديثه بمعلومات جديدة. خلّى التوليد المعزّز بالاسترجاع، أو RAG، مولّد النص يقرأ مقاطع مسترجعة من مكتبة خارجية قبل ما يجاوب. وتغيير المكتبة أعطى طريقة لتحديث المعلومات بدون إعادة تدريب النموذج كامل.",
+    "Edit page “C” in the library, copying the question’s words and adding a wrong opening time.": "عدّلوا الصفحة «C» في المكتبة، وانسخوا كلمات السؤال وأضيفوا وقت فتح غلط."
   }
 }

@@ -23,3 +23,16 @@
 .sl-final path { stroke: var(--deep); }
 .sl-final-0 path { stroke: var(--muted); }
 .sl-final-1 path { stroke-dasharray: 8 5; }
+
+/* The active curve and its controls share a row; the final recap keeps its original layout. */
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] .sl-game:has(> .sl-controls) { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px 24px; align-items:start; }
+ .chapter-page[data-view=play] .sl-game:has(> .sl-controls) > * { grid-column:1 / -1; min-inline-size:0; }
+ .chapter-page[data-view=play] .sl-game:has(> .sl-controls) > .goal-bar { grid-row:1; margin-block-end:0; }
+ .chapter-page[data-view=play] .sl-game:has(> .sl-controls) > .sl-rule { grid-row:2; margin:0; }
+ .chapter-page[data-view=play] .sl-game:has(> .sl-controls) > .sl-chart { grid-column:1; grid-row:3 / span 2; inline-size:100%; margin:0; }
+ .chapter-page[data-view=play] .sl-game > .sl-controls { grid-column:2; grid-row:3; }
+ .chapter-page[data-view=play] .sl-controls > label { flex-wrap:wrap; }
+ .chapter-page[data-view=play] .sl-game > :is(.sl-drop, .sl-reveal) { grid-column:2; grid-row:4; margin-block-start:0; }
+ .chapter-page[data-view=play] .sl-game > .sl-drop { justify-self:start; }
+}

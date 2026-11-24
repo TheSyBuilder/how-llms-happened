@@ -4,20 +4,16 @@
     "The follow-up<br>becomes the interface.": "سؤال المتابعة<br>صار هو الواجهة.",
     "Human trainers wrote conversations, playing both user and assistant. They also compared alternative replies. <strong>Reinforcement learning from human feedback</strong>, or RLHF, uses rewards learned from those comparisons to guide training. ChatGPT adapted the approach used for InstructGPT to conversation.": "كتب المدرّبون محادثات، مرة بدور المستخدم ومرة بدور المساعد، وقارنوا بين ردود مختلفة. <strong>التعلّم المعزّز من ملاحظات البشر</strong>، أو RLHF، يتعلّم مكافآت من هالمقارنات ويستخدمها عشان يوجّه التدريب. وChatGPT أخذ طريقة InstructGPT وعدّلها عشان تناسب المحادثة.",
     "<strong>Context</strong> is the information supplied to a model for its next response. Earlier messages can make “it” or “that city” meaningful. This is different from changing the model’s <strong>parameters</strong>—the numbers learned during training. The toy makes that distinction visible.": "<strong>السياق</strong> هو المعلومات اللي تصل للنموذج عشان يرد. الرسائل السابقة توضّح المقصود بكلمات مثل «هو» أو «هالمدينة». هذا يختلف عن تغيير <strong>معاملات النموذج</strong>، وهي الأرقام اللي تعلّمها وقت التدريب. التجربة توضّح الفرق.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي صار؟ <span aria-hidden=\"true\">+</span>",
     "A reply can become<br>your next starting point.": "الرد يقدر يكون<br>بداية سؤالكم الجاي.",
     "Go deeper <span>Dialogue training and context</span>": "تعمّق أكثر <span>تدريب المحادثة والسياق</span>",
     "Sources <span>Official announcement and training paper</span>": "المصادر <span>الإعلان الرسمي وورقة التدريب</span>",
-    "Make it<br>forget.": "خلّوه<br>ينسى.",
-    "<strong>Try this first</strong> Pick the 4-message window, then say your name and the Oslo change last.": "<strong>أول خطوة</strong> اختاروا نافذة الأربع رسائل، وبعدين قولوا اسمكم وتغيير Oslo في الآخر."
+    "Make it<br>forget.": "خلّوه<br>ينسى."
   },
   "text": {
     "← The timeline": "← الخط الزمني",
     "2022 / Live chapter": "2022 / فصل متاح",
     "The ChatGPT moment": "لحظة ChatGPT",
     "What changes when a language model becomes a conversation?": "وش يتغيّر لما يصير التعامل مع النموذج محادثة؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -118,6 +114,8 @@
     "Pick the 4-message window, then say your name and the Oslo change last.": "اختاروا نافذة الأربع رسائل، وبعدين قولوا اسمكم وتغيير Oslo في الآخر.",
     "Why does the order of your messages matter?": "ليش ترتيب رسائلكم مهم؟",
     "Only the newest messages fit. Facts you say last are still in view when it answers; facts you said first have slid out.": "ما يتسع إلا لأحدث الرسائل. اللي تقولونه في الآخر يبقى ظاهر وقت الجواب، واللي قلتوه أول طلع من النافذة.",
-    "Window: {0} messages · Sent {1} / {2}": "النافذة: {0} رسائل · أرسلتوا {1} / {2}"
+    "Window: {0} messages · Sent {1} / {2}": "النافذة: {0} رسائل · أرسلتوا {1} / {2}",
+    "An isolated answer cannot handle every follow-up or correction in a conversation. ChatGPT adapted training from human-written examples and ranked replies to dialogue, reading earlier messages as context for each reply. OpenAI’s public research preview let people refine a request over several turns, and its launch announcement warned about confident errors and sensitivity to wording.": "الجواب المنفصل ما يكفي لكل متابعة أو تصحيح في محادثة. كيّف ChatGPT التدريب بالأمثلة اللي كتبها الناس والردود اللي رتّبوها للحوار، وقرأ الرسائل السابقة كسياق لكل رد. معاينة OpenAI البحثية العامة خلّت الناس يعدّلون طلبهم عبر كذا جولة، وحذّر إعلان إطلاقها من الأخطاء الواثقة والتأثر بصياغة الكلام.",
+    "Type your name in “Your name”, then choose “4 messages”.": "اكتبوا اسمكم في «اسمكم»، وبعدين اختاروا «4 رسائل»."
   }
 }

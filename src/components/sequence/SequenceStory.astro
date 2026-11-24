@@ -1,7 +1,7 @@
 ---
 import {sequenceStories} from '../../lib/sequence-stories';
 import {sourceLink} from '../../lib/chapters';
-import Discovery from '../Discovery.astro';
+import ChapterBrief from '../ChapterBrief.astro';
 import SequenceDiagram from './SequenceDiagram.astro';
 import GravesToy from './GravesToy';
 import EncoderToy from './EncoderToy';
@@ -13,7 +13,7 @@ const story=sequenceStories[slug]!;
 ---
 <section class="story-section" id="problem"><p class="eyebrow">01 / The problem before</p><h2>{story.problemTitle}</h2>{story.problem.map(p=><p>{p}</p>)}</section>
 <section class="story-section" id="idea"><p class="eyebrow">02 / The big idea</p><h2>{story.ideaTitle}</h2>{story.idea.map(p=><p set:html={p}/>)}<SequenceDiagram slug={slug} caption={story.caption}/></section>
-<section class="story-section toy-section" id="play"><p class="eyebrow">03 / Play with it</p><h2>{story.playTitle}</h2><Discovery slug={slug}/><p>{story.invitation}</p><noscript><p>Enable JavaScript to play with this toy. The explanation, diagram and sources are available below.</p></noscript>{slug==='graves'?<GravesToy client:load/>:slug==='sequence-to-sequence'?<EncoderToy client:load/>:<SourceAttentionToy client:load/>}</section>
+<section class="story-section toy-section" id="play"><p class="eyebrow">03 / Play with it</p><h2>{story.playTitle}</h2><ChapterBrief slug={slug}/><p>{story.invitation}</p><noscript><p>Enable JavaScript to play with this toy. The explanation, diagram and sources are available below.</p></noscript>{slug==='graves'?<GravesToy client:load/>:slug==='sequence-to-sequence'?<EncoderToy client:load/>:<SourceAttentionToy client:load/>}</section>
 <section class="story-section" id="mattered"><p class="eyebrow">04 / Why it mattered</p><h2>{story.matteredTitle}</h2>{story.mattered.map(p=><p>{p}</p>)}{story.companions&&<aside class="chapter-companions"><h3>Also in this chapter</h3><p>{story.companions}</p></aside>}</section>
 <details class="chapter-disclosure" id="deeper"><summary>Go deeper <span>Architecture, equations, results &amp; limits</span></summary><div class="disclosure-body">{story.deeper.map(part=><><h3>{part.title}</h3><p>{part.text}</p>{part.formula&&<code class="sequence-formula">{part.formula.split('\n').map(line=><>{line}<br/></>)}</code>}</>)}</div></details>
 <details class="chapter-disclosure" id="sources"><summary>Sources <span>Original work, with a reading guide</span></summary><div class="disclosure-body"><ol class="source-list">{story.sources.map(source=><li><a href={sourceLink(source.id)}>{source.title}</a><p>{source.guide}</p></li>)}</ol></div></details>

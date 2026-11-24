@@ -1,7 +1,6 @@
 {
   "rich": {
     "A <strong>hidden state</strong> is an internal numerical representation computed by a network. In Elman’s 1990 recurrent network, the previous hidden pattern is copied into context units and used alongside the next input. The new hidden pattern becomes the next memory.": "<strong>الحالة المخفية</strong> تمثيل رقمي داخلي تحسبه الشبكة. في شبكة إلمان المتكررة سنة 1990، النمط المخفي السابق ينتسخ إلى وحدات السياق وينستخدم مع الإدخال الجاي. والنمط المخفي الجديد يصير الذاكرة الجاية.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "للتعمّق <span>الآلية والأدلة والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>"
   },
@@ -10,8 +9,6 @@
     "1990 / Live chapter": "1990 / فصل متاح",
     "Elman’s recurrent network": "شبكة إلمان التكرارية",
     "What can a network remember from the previous word?": "وش تقدر الشبكة تتذكّر من الكلمة السابقة؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -80,6 +77,8 @@
     "I scored {0} of 9 betting how long a clue lasts.": "سجّلتُ {0} من 9 في الرهان على مدة بقاء الدليل.",
     "The clue lasted {0} filler words. Copying back a little more of the state made it last much longer.": "الدليل صمد {0} كلمات حشو. ولما نسخنا قدر أكبر شوي من الحالة، دام أطول بكثير.",
     "Points": "النقاط",
-    "I bet how long a clue survives inside a 1990 recurrent network and scored {0}/9.": "راهنتُ على مدة بقاء دليل داخل شبكة متكررة من 1990 وسجّلت {0}/9."
+    "I bet how long a clue survives inside a 1990 recurrent network and scored {0}/9.": "راهنتُ على مدة بقاء دليل داخل شبكة متكررة من 1990 وسجّلت {0}/9.",
+    "The same word can call for different predictions after different histories. Elman’s network copied its previous hidden state into the next step, giving each new input a trace of earlier ones. Predicting sequences could teach it structure without supplied word-class labels.": "الكلمة نفسها ممكن تحتاج توقّع مختلف حسب اللي جا قبلها. شبكة إلمان تنسخ الحالة المخفية السابقة للخطوة الجاية، فيوصل مع كل مدخل أثر من المدخلات اللي قبله. وتوقّع التسلسل يعلّمها بنية الكلمات بدون ما نعطيها تسميات لفئاتها.",
+    "Set how many filler words you think the clue survives with “−” and “+”, then press “Lock in” followed by your chosen number.": "حدّدوا كم كلمة حشو تتوقّعون يصمد بعدها التلميح باستخدام «−» و«+»، وبعدين اضغطوا «ثبّت» ومعها الرقم اللي اخترتوه."
   }
 }

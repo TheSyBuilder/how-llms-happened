@@ -2,7 +2,6 @@
   "rich": {
     "Alex Graves’s 2013 paper demonstrated generation with deep LSTM networks. An <strong>LSTM</strong> is a recurrent network with gates that control what its memory stores and reveals. Here, several recurrent layers work together to predict the next element.": "ورقة أليكس غريفز في 2013 عرضت التوليد بشبكات LSTM عميقة. <strong>LSTM</strong> شبكة متكررة فيها بوابات تتحكم في اللي تخزّنه ذاكرتها واللي تظهره. وهنا عدة طبقات متكررة تشتغل مع بعض عشان تتوقع العنصر اللي بعده.",
     "For text, the network produces a probability for each possible next symbol. <strong>Sampling</strong> means making a random choice weighted by those probabilities. Feed the chosen symbol back in, update the memory, and repeat. The output becomes a sequence one choice at a time.": "في النصوص، النموذج يطلّع احتمال لكل رمز ممكن يجي بعده. <strong>أخذ العينة</strong> يعني اختيار عشوائي ترجّحه هالاحتمالات. نرجّع الرمز المختار للشبكة، ونحدّث الذاكرة، ونكرر. وكذا يتكوّن التسلسل اختيار بعد اختيار.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, equations, results &amp; limits</span>": "للتعمّق <span>البنية والمعادلات والنتائج والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>"
   },
@@ -12,8 +11,6 @@
     "Read the paper": "اقرؤوا البحث",
     "Graves generates text": "Graves يجعل النموذج يولّد نصًا",
     "What happens when a model reads its own predictions?": "وش يصير لما يقرأ النموذج توقعاته بنفسه؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -95,6 +92,8 @@
     "Your bot’s lines appear here.": "أسطر روبوتكم تظهر هنا.",
     "Earlier lines": "الأسطر السابقة",
     "{0} stars": "{0} نجوم",
-    "Your bot is a small letter counter trained in this tab, not Graves’s LSTM, but it writes with the same loop: predict, pick, feed back. Your text never leaves the page.": "روبوتكم عدّاد حروف صغير تدرّب في هالصفحة، ومو LSTM حقت غريفز، بس يكتب بنفس الحلقة: يتوقع، يختار، ويرجّع الإدخال. ونصكم ما يطلع من الصفحة أبد."
+    "Your bot is a small letter counter trained in this tab, not Graves’s LSTM, but it writes with the same loop: predict, pick, feed back. Your text never leaves the page.": "روبوتكم عدّاد حروف صغير تدرّب في هالصفحة، ومو LSTM حقت غريفز، بس يكتب بنفس الحلقة: يتوقع، يختار، ويرجّع الإدخال. ونصكم ما يطلع من الصفحة أبد.",
+    "Predicting one character is only a start if a model is going to write. Graves used deep LSTM networks to pick a next character and feed that choice back in, repeating the loop to generate text. The samples showed recognizable local patterns, but lost coherence beyond short phrases.": "توقّع حرف واحد مجرد بداية إذا نبي النموذج يكتب. استخدم غريفز شبكات LSTM عميقة تختار الحرف الجاي وترجّع اختيارها كمدخل، وتكرّر الحلقة عشان تولّد نص. العينات أظهرت أنماط محلية مألوفة، بس فقدت الترابط بعد العبارات القصيرة.",
+    "Press “Train my bot” to train on the sample text already in the box.": "اضغطوا «درّب روبوتي» عشان تدرّبونه على النص الجاهز في الخانة."
   }
 }

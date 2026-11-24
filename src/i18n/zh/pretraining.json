@@ -5,7 +5,6 @@
     "<strong>Pretraining</strong> is learning before a particular task. Predicting words supplies its own answers: the text tells you what comes next. <strong>Fine-tuning</strong> then updates the model using task examples. Think of reading widely before learning a new job.": "<strong>预训练</strong>是在具体任务之前先学习。预测词语自带答案：原文会告诉你后面是什么。之后，<strong>微调</strong>再用任务示例更新模型。就像先广泛阅读，再学一份新工作。",
     "Three projects tried this. <strong>ELMo</strong> supplied context-sensitive representations: “bank” could look different beside “river” and “money.” <strong>ULMFiT</strong> adapted a model that processed words one at a time, first to the task’s unlabelled text, then to labels, changing its layers carefully.": "三个项目尝试了这条路。<strong>ELMo</strong>提供随语境变化的表示：“bank”在“river”和“money”旁边会有所不同。<strong>ULMFiT</strong>使用逐词处理的模型，先适应任务的无标签文本，再学习标签，并谨慎调整各层。",
     "<strong>GPT-1</strong> used a Transformer—a network where words exchange information through attention. It predicted the next chunk of text in books using earlier text, then adapted the network with a small task-specific output. The starting point was now an entire pretrained Transformer.": "<strong>GPT-1</strong>使用 Transformer——让词语通过注意力交换信息的网络。它根据书中已有的文本预测下一块文本，再接上一个小的任务输出模块来调整整个网络。可供复用的起点，变成了一整套预训练好的 Transformer。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Objectives, transfer routes, results &amp; limits</span>": "继续深入 <span>目标、迁移方式、结果与局限</span>",
     "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>",
     "How few labels<br>does it need?": "最少要几个标签，<br>它才能学会？"
@@ -15,8 +14,6 @@
     "2018 / Live chapter": "2018 / 已上线",
     "Pretrain, then fine-tune": "先预训练，再微调",
     "Can reading first make a model easier to teach?": "先大量阅读，会让模型更好教吗？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -122,6 +119,8 @@
     "Labels handed out: {0}": "已给出的标签：{0}",
     "{0}: negative. Read first: {1} of 8 right. From scratch: {2} of 8 right.": "{0}：负面。先读过的学习者：8 条对了 {1} 条。从零训练的：8 条对了 {2} 条。",
     "{0}: positive. Read first: {1} of 8 right. From scratch: {2} of 8 right.": "{0}：正面。先读过的学习者：8 条对了 {1} 条。从零训练的：8 条对了 {2} 条。",
-    "{0}% positive": "{0}% 正面"
+    "{0}% positive": "{0}% 正面",
+    "Teaching each task from scratch needs labelled examples that take work to collect. Radford and colleagues first trained a Transformer to predict text in books, then adapted it with labelled task examples. Reading first gave the same network a useful starting point for other jobs.": "每个任务都从零教起，就需要收集费工夫的标注样本。Radford 和同事先让 Transformer 预测书里的文字，再用任务的标注样本去调整它。先读书，让同一个网络在学习其他任务时有了可用的起点。",
+    "Read the eight sentences, then tap a review word such as “delightful” to give its label.": "读完八个句子，再点一个影评词，例如“delightful”，交出它的标签。"
   }
 }

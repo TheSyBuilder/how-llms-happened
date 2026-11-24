@@ -4,7 +4,6 @@
     "A model keeps learned patterns in its <strong>parameters</strong>: numbers changed during training. Updating a fact inside those numbers is harder than replacing a library notice.": "模型把学到的规律保存在<strong>参数</strong>里，也就是训练中改变的数值。更新这些数值里的一条事实，比替换图书馆公告难得多。",
     "Look first.<br>Then write.": "先查资料，<br>再写答案。",
     "Patrick Lewis and colleagues introduced <strong>retrieval-augmented generation</strong>, or RAG, in 2020. A <strong>retriever</strong> finds useful text. A <strong>generator</strong> uses it to write an answer.": "2020 年，Patrick Lewis 和同事提出了<strong>检索增强生成</strong>，简称 RAG。<strong>检索器</strong>寻找有用的文本，<strong>生成器</strong>利用它写出答案。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Knowledge gets<br>a door you can open.": "给知识<br>开一扇能进出的门。",
     "Go deeper <span>Two memories, two ways to mix passages</span>": "继续深入 <span>两种记忆，两种段落融合方式</span>",
     "A token is a piece of text. Let y be an answer, y&lt;t its earlier tokens, K the retrieved passages, and θ the generator parameters. <strong>RAG-Sequence</strong> keeps one passage for the entire answer within each possibility, then sums the possibilities:": "词元是一小段文本。设 y 为答案，y&lt;t 为此前的词元，K 为检索到的段落，θ 为生成器参数。<strong>RAG-Sequence</strong>在每种可能情况中，用同一段落支持整个答案，再把这些可能性相加：",
@@ -12,16 +11,13 @@
     "Sources <span>Original papers, with a reading guide</span>": "资料来源 <span>原始论文与阅读指引</span>",
     "The library was Wikipedia. Questions and passages became <strong>vectors</strong>, lists of numbers used to score their match. BART, a model trained to read and write text, generated the answer. Training adjusted the question-searching and writing parts together.": "资料库是维基百科。问题和段落变成<strong>向量</strong>，也就是用来计算匹配程度的一组数值。BART 是已经学过读写文本的模型，负责生成答案。训练同时调整负责搜索问题和写作的部分。",
     "<strong>ORQA (2019)</strong> learned retrieval and answer extraction from question-answer pairs. <strong>REALM (2020)</strong> retrieved text during pretraining to predict hidden words. <strong>DPR (2020)</strong> supplied RAG's starting retriever.": "<strong>ORQA（2019）</strong>从问答对中学习检索和抽取答案。<strong>REALM（2020）</strong>在预训练中检索文本，预测被遮住的词。<strong>DPR（2020）</strong>为 RAG 提供了初始检索器。",
-    "Poison<br>the library.": "给资料库<br>下毒。",
-    "<strong>Try this first</strong> Copy the question’s words into a page, then add a wrong time.": "<strong>先试试这个</strong> 把问题里的词抄进一页，再写上一个错的时间。"
+    "Poison<br>the library.": "给资料库<br>下毒。"
   },
   "text": {
     "← The timeline": "← 时间线",
     "2020 / Live chapter": "2020 / 已上线",
     "Look it up": "先查一查",
     "What if a model could read a source before answering?": "如果模型能先读资料，再回答呢？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -133,6 +129,8 @@
     "Copy the question’s words into a page, then add a wrong time.": "把问题里的词抄进一页，再写上一个错的时间。",
     "Why did that page win over the official notice?": "为什么那一页赢过了官方公告？",
     "It shared more words with the question, so the search ranked it higher. The reader never checks who wrote a page.": "它和问题共有的词更多，所以搜索把它排得更高。读取器从不检查一页是谁写的。",
-    "You fooled it, then fixed it.": "你骗过了它，又把它修好了。"
+    "You fooled it, then fixed it.": "你骗过了它，又把它修好了。",
+    "A model relying only on what it learned during training can be hard to update with new facts. RAG, retrieval-augmented generation, let a text generator read passages fetched from an external library before answering. Changing that library offered a way to update information without retraining the whole model.": "如果模型只能依靠训练时学到的知识，就很难更新事实。检索增强生成，也就是 RAG，让文本生成器先阅读从外部资料库检索到的段落，再作答。修改资料库，就提供了一种不用重新训练整个模型也能更新信息的方式。",
+    "Edit page “C” in the library, copying the question’s words and adding a wrong opening time.": "编辑资料库里的“C”页，复制问题中的词，再加上一个错误的开门时间。"
   }
 }

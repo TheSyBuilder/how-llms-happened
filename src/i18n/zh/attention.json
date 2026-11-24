@@ -2,7 +2,6 @@
   "rich": {
     "Their work appeared as a preprint in 2014 and at ICLR in 2015. The encoder keeps a representation at each source position. <strong>Attention</strong> is a weighted read of those representations, with the weights recomputed for each output step.": "他们的研究于 2014 年发布预印本，2015 年发表于 ICLR。编码器为原文每个位置保留一个表示。<strong>注意力</strong>就是按不同权重读取这些表示，每生成一个词，都重新计算权重。",
     "The decoder’s previous state scores each source representation. A <strong>softmax</strong> turns scores into positive weights that sum to one. Multiply each source representation by its weight, add them up, and the decoder receives a fresh <strong>context vector</strong>: a numerical mixture of source information.": "解码器用上一步状态给每个原文表示打分。<strong>softmax</strong> 把分数转成总和为 1 的正权重。每个表示乘上权重，再相加，解码器就得到一个新的<strong>上下文向量</strong>：将原文信息混合起来的一组数字。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Architecture, equations, results &amp; limits</span>": "继续深入 <span>结构、公式、结果与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读指引</span>"
   },
@@ -12,8 +11,6 @@
     "Read the attention paper": "阅读注意力论文",
     "Attention": "注意力",
     "What if a translator could look back at the source?": "如果翻译者可以回头看原文呢？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -94,6 +91,8 @@
     "Next sentence": "下一句",
     "Show the model’s attention": "显示模型的注意力",
     "Clear": "清空",
-    "The heatmaps are hand-made in the style of the paper’s learned alignments; no translation model runs here.": "热图是仿照论文学出的对齐手工画的；这里没有运行任何翻译模型。"
+    "The heatmaps are hand-made in the style of the paper’s learned alignments; no translation model runs here.": "热图是仿照论文学出的对齐手工画的；这里没有运行任何翻译模型。",
+    "One fixed summary may lose details a translator needs later. Bahdanau and colleagues let the decoder read a fresh weighted mixture of source positions for every output word. Their model translated better and handled long sentences better in tests that also changed model capacity and added reading in both directions.": "一个固定的摘要，可能丢掉翻译后面才需要的细节。Bahdanau 和同事让解码器每写一个词，都重新对原文各位置加权读取。他们的模型在测试中翻译得更好，也更能处理长句，但这些测试还改变了模型容量，并加入了双向读取。",
+    "Tap “red” on the English side, then “rouge” on the French side to draw your first link.": "点英语一侧的“red”，再点法语一侧的“rouge”，画出第一条连线。"
   }
 }

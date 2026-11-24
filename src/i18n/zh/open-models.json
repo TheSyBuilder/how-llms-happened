@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Weights are only the start</span>": "深入看看 <span>拿到权重只是开始</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
   },
@@ -9,8 +8,6 @@
     "2023 / Live chapter": "2023 / 已上线",
     "Open models": "开放模型",
     "What becomes possible when you can run the model yourself?": "能自己运行模型，会带来哪些可能？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -81,6 +78,8 @@
     "{0}-bit": "{0} 位",
     "{0} GB": "{0} GB",
     "A service gives you outputs. A weights release also gives you learned numbers to load and study on your own hardware. These are teaching illustrations.": "服务给你输出；公开权重还给你训练得到的数字，可以在自己的硬件上加载、研究。这些只是教学示意。",
-    "{0} at {1}-bit: {2} GB. It fits. Is there a bigger one?": "{0}，{1} 位：{2} GB。装得下。还有更大的吗？"
+    "{0} at {1}-bit: {2} GB. It fits. Is there a bigger one?": "{0}，{1} 位：{2} GB。装得下。还有更大的吗？",
+    "Using a model through a website does not give you the weights needed to run it yourself. The LLaMA team released its own models’ weights so researchers could run, study and adapt those models on their own hardware. This made experiments less dependent on a hosted API, though the researchers’ available memory still limited what would fit.": "通过网站使用模型，并不能拿到自己运行它所需的权重。LLaMA 团队发布了自家模型的权重，让研究人员能在自己的硬件上运行、研究和调整这些模型。这降低了实验对托管 API 的依赖，但研究人员可用的内存仍限制着能装下什么模型。",
+    "Pick a device with “Laptop”, “Phone” or “Desktop”, then choose its memory, such as “16 GB”.": "用“笔记本电脑”、“手机”或“台式机”选择设备，再选择它的内存，例如“16 GB”。"
   }
 }

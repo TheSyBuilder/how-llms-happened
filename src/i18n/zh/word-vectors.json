@@ -1,7 +1,6 @@
 {
   "rich": {
     "A <strong>vector</strong> is a list of numbers. In a <strong>distributed representation</strong>, meaning-relevant features are spread across those numbers, and a feature can help represent many items. Hinton’s 1986 family-relation experiment demonstrated learned compact representations of people and relations.": "<strong>向量</strong>就是一串数字。在<strong>分布式表示</strong>中，与含义有关的特征分散在这些数字里，同一个特征也能帮助描述多个对象。Hinton 在 1986 年的亲属关系实验中，展示了网络学到的、用于描述人物和关系的紧凑表示。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "深入了解 <span>机制、证据与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>",
     "<strong>Cosine similarity</strong> compares vectors by their direction. The puzzle below scores your guesses with real 50-number GloVe vectors, a 2014 method learned from word co-occurrence counts with results close to word2vec. Their coordinates have no tidy names—and similar usage need not mean identical meaning.": "<strong>余弦相似度</strong>按方向比较向量。下面的谜题用真实的 50 维 GloVe 向量给你的猜测打分。GloVe 是 2014 年的方法，从词语共现次数中学习，效果与 word2vec 接近。它的坐标没有整齐的名字，而且用法相似并不等于意思相同。"
@@ -11,8 +10,6 @@
     "2013 / Live chapter": "2013 / 已上线",
     "Words as vectors": "把词语变成向量",
     "What if similar words lived near each other?": "如果相似的词也住得近，会怎样？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -93,6 +90,8 @@
     "Reveal the word": "揭晓答案",
     "Give up": "放弃",
     "Closeness is the cosine between two 50-number vectors, × 100. #1 is the secret’s nearest neighbour.": "接近度是两个 50 维向量之间的余弦值乘以 100。第 1 名是秘密词最近的邻居。",
-    "Real GloVe vectors (Stanford, 2014; public domain), a close cousin of word2vec, cut to 5,006 common words and stored as small integers.": "真实的 GloVe 向量（斯坦福，2014 年；公共领域），是 word2vec 的近亲，截取了 5,006 个常见词，并存成小整数。"
+    "Real GloVe vectors (Stanford, 2014; public domain), a close cousin of word2vec, cut to 5,006 common words and stored as small integers.": "真实的 GloVe 向量（斯坦福，2014 年；公共领域），是 word2vec 的近亲，截取了 5,006 个常见词，并存成小整数。",
+    "Comparing words as separate names misses how they are used alike. Word2vec learned word vectors by predicting nearby words or a word from its neighbours. Words used in similar contexts could sit near each other, making useful word relationships visible as numerical distances.": "只把词当作一个个独立的名字，就看不到它们用法上的相似之处。Word2vec 通过预测周围的词，或根据周围的词预测中间的词，来学习词向量。用法相近的词可以靠得很近，让词之间的关系表现为可计算的距离。",
+    "Type an English word such as “water” in “Your guess”, then press “Guess”.": "在“你的猜测”里输入一个英语单词，例如“water”，再按“猜”。"
   }
 }

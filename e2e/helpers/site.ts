@@ -29,17 +29,20 @@ function seededRandom() {
   Math.random = random;
   // Speech games and the first-look reader speak aloud; record the calls instead.
   const spoken: string[] = [];
+  const speech = { calls: [] as { text: string; lang: string }[], cancels: 0 };
   class Utterance { text: string; lang = ""; rate = 1; constructor(text: string) { this.text = text; } }
   Object.defineProperty(window, "SpeechSynthesisUtterance", { configurable: true, value: Utterance });
   Object.defineProperty(window, "speechSynthesis", {
     configurable: true,
     value: {
       speaking: false, pending: false, paused: false,
-      speak: (u: Utterance) => { spoken.push(u.text); }, cancel() {}, pause() {}, resume() {},
+      speak: (u: Utterance) => { spoken.push(u.text); speech.calls.push({ text: u.text, lang: u.lang }); },
+      cancel() { speech.cancels++; }, pause() {}, resume() {},
       getVoices: () => [], addEventListener() {}, removeEventListener() {},
     },
   });
   (window as unknown as { __spoken: string[] }).__spoken = spoken;
+  (window as unknown as { __speech: typeof speech }).__speech = speech;
 }
 
 type Fixtures = { errors: string[] };

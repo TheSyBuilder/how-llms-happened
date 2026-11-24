@@ -3,7 +3,6 @@
     "<strong>Smoothing</strong> shifts some probability from observed events toward possibilities the sample missed. In 1953, I. J. Good described how frequencies of rare species could inform that estimate, crediting Alan Turing for the central adjusted-count formula. A word type can play the role of a species.": "<strong>平滑</strong>把一部分概率从已经观察到的事件挪给样本中没出现的可能性。1953 年，I. J. Good 说明了如何利用稀有物种的出现频率来估计这一部分，并将核心的调整计数公式归功于艾伦·图灵。把一个词看作一种“物种”，同样能用这个思路。",
     "<strong>Discounting</strong> means reducing the probability assigned from observed counts. Katz’s 1987 method discounts low counts and backs off—uses a shorter context—when the higher-order estimate is zero.": "<strong>折扣</strong>就是调低从已有计数分配出的概率。Katz 在 1987 年的方法会对较小的计数打折；当高阶估计为零时，就回退到更短的上下文。",
     "Kneser and Ney’s 1995 work changed the fallback question: does a word appear after many different contexts? Chen and Goodman’s 1998 study developed a modified, interpolated form. <strong>Interpolation</strong> mixes detailed and broader estimates, so broader evidence can help even when a phrase was seen.": "Kneser 和 Ney 在 1995 年换了一个回退问题：这个词是否出现在许多不同的上下文之后？Chen 和 Goodman 在 1998 年的研究中提出了修改后的插值形式。<strong>插值</strong>将细致估计与更宽泛的估计混合起来，所以即使某个短语已经出现过，较广的证据也能提供帮助。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "深入了解 <span>机制、证据与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -12,8 +11,6 @@
     "1953 / Live chapter": "1953 / 已上线",
     "The zero-count problem": "零计数难题",
     "How do you allow for a word you have never seen?": "没见过的词，该给它留多少机会？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -94,6 +91,8 @@
     "{0}% was the best reserve: {1} of tonight’s {2} cups were drinks it had never counted.": "{0}% 是最好的预留：今晚 {2} 杯中有 {1} 杯是它从没数到过的饮料。",
     "The best reserve was {0}% ({1} bits): {2} of tonight’s {3} cups were drinks it had never counted.": "最好的预留是 {0}%（{1} 比特）：今晚 {3} 杯中有 {2} 杯是它从没数到过的饮料。",
     "Total surprise (bits)": "总意外程度（比特）",
-    "I crashed a 1953 word counter with infinite surprise 3 times, then rescued it at {0} bits.": "我用无穷大的意外让一个 1953 年的计数器崩溃了 3 次，又以 {0} 比特把它救了回来。"
+    "I crashed a 1953 word counter with infinite surprise 3 times, then rescued it at {0} bits.": "我用无穷大的意外让一个 1953 年的计数器崩溃了 3 次，又以 {0} 比特把它救了回来。",
+    "A counter that only tallies past words gives every new word zero probability, so one unseen word makes the whole sequence score zero. The statistician I. J. Good used the number of things seen only once to estimate how much probability to save for the unseen. His method built on an idea from Alan Turing.": "只统计见过的词，会给每个新词零概率，一个没见过的词就会让整个序列的概率变成零。统计学家古德用只出现过一次的事物数量，估计该给未见过的事物留多少概率。他的方法建立在艾伦·图灵的一个想法上。",
+    "Fill the three cups with drinks, including one at 0%, then press “Serve the order”.": "把三个杯子装上饮料，至少选一种概率为 0% 的，再按“上饮料”。"
   }
 }

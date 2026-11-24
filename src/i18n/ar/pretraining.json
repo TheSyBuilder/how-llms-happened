@@ -5,7 +5,6 @@
     "<strong>Pretraining</strong> is learning before a particular task. Predicting words supplies its own answers: the text tells you what comes next. <strong>Fine-tuning</strong> then updates the model using task examples. Think of reading widely before learning a new job.": "<strong>التدريب المسبق</strong> تعلّم يجي قبل المهمة المحددة. توقّع الكلمات يعطي أجوبته بنفسه، لأن النص نفسه يقول وش الكلمة اللي بعدها. وبعدين <strong>الضبط الدقيق</strong> يحدّث النموذج بأمثلة المهمة. تخيّلوا واحد يقرا كثير قبل ما يتعلّم شغل جديد.",
     "Three projects tried this. <strong>ELMo</strong> supplied context-sensitive representations: “bank” could look different beside “river” and “money.” <strong>ULMFiT</strong> adapted a model that processed words one at a time, first to the task’s unlabelled text, then to labels, changing its layers carefully.": "ثلاثة مشاريع جرّبت الفكرة. <strong>ELMo</strong> قدّم تمثيلات تتغيّر حسب السياق: كلمة “bank” يختلف تمثيلها جنب “river” عن جنب “money”. و<strong>ULMFiT</strong> كيّف نموذج يعالج الكلمات وحدة وحدة، أول شي مع نصوص المهمة غير المصنّفة، وبعدين مع التصنيفات، ويعدّل طبقاته بحذر.",
     "<strong>GPT-1</strong> used a Transformer—a network where words exchange information through attention. It predicted the next chunk of text in books using earlier text, then adapted the network with a small task-specific output. The starting point was now an entire pretrained Transformer.": "<strong>GPT-1</strong> استخدم Transformer، وهي شبكة تتبادل فيها الكلمات المعلومات عن طريق الانتباه. توقّع الجزء الجاي من نصوص الكتب من اللي قبله، وبعدين عدّل الشبكة مع مخرج صغير مخصص للمهمة. وصارت نقطة البداية Transformer كامل مدرّب مسبقًا.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Objectives, transfer routes, results &amp; limits</span>": "للتعمّق <span>الأهداف وطرق نقل التعلّم والنتائج والحدود</span>",
     "Sources <span>Original papers, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل للقراءة</span>",
     "How few labels<br>does it need?": "أقل شي،<br>كم تصنيف يحتاج؟"
@@ -15,8 +14,6 @@
     "2018 / Live chapter": "2018 / فصل متاح",
     "Pretrain, then fine-tune": "تدريب مسبق، ثم ضبط دقيق",
     "Can reading first make a model easier to teach?": "هل القراءة أولًا تخلي تعليم النموذج أسهل؟",
-    "Try the little game →": "جرّب بنفسك →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -122,6 +119,8 @@
     "Labels handed out: {0}": "التصنيفات الموزّعة: {0}",
     "{0}: negative. Read first: {1} of 8 right. From scratch: {2} of 8 right.": "{0}: سلبي. اللي قرا قبل: {1} من 8 صح. اللي بدأ من الصفر: {2} من 8 صح.",
     "{0}: positive. Read first: {1} of 8 right. From scratch: {2} of 8 right.": "{0}: إيجابي. اللي قرا قبل: {1} من 8 صح. اللي بدأ من الصفر: {2} من 8 صح.",
-    "{0}% positive": "{0}% إيجابي"
+    "{0}% positive": "{0}% إيجابي",
+    "Teaching each task from scratch needs labelled examples that take work to collect. Radford and colleagues first trained a Transformer to predict text in books, then adapted it with labelled task examples. Reading first gave the same network a useful starting point for other jobs.": "تعليم كل مهمة من الصفر يحتاج أمثلة بإجابات جاهزة، وجمعها ياخذ جهد. درّب رادفورد وزملاؤه Transformer أولًا على توقّع نص الكتب، وبعدين عدّلوه بأمثلة عليها تسميات للمهمة. القراءة أول عطت الشبكة نفسها بداية مفيدة لأعمال ثانية.",
+    "Read the eight sentences, then tap a review word such as “delightful” to give its label.": "اقروا الجمل الثمان، وبعدين اضغطوا كلمة من التقييمات مثل «delightful» عشان تعطونها تسميتها."
   }
 }

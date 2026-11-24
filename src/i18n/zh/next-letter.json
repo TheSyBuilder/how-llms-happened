@@ -2,7 +2,6 @@
   "rich": {
     "In 1913, Andrey Markov studied 20,000 letters from <em>Eugene Onegin</em>, classifying them as vowels or consonants. A vowel’s frequency changed sharply depending on the preceding category. His study investigated statistical dependence; it was not a machine for writing Russian.": "1913 年，安德雷·马尔可夫研究了《<em>叶甫盖尼·奥涅金</em>》中的 20,000 个字母，将它们分为元音和辅音。一个字母是元音的频率，会随前一个字母的类别明显变化。这项研究考察的是统计依赖关系，并不是一台会写俄语的机器。",
     "A <strong>conditional probability</strong> is a chance computed given some known context. Instead of asking “How often is B seen?”, ask “How often does B follow A?” A <strong>Markov chain</strong> chooses its next state using the current state. A letter can be that state.": "<strong>条件概率</strong>就是在已知某些线索的情况下计算机会大小。问题从“B 出现得多不多？”变成了“A 后面出现 B 的机会有多大？”<strong>马尔可夫链</strong>根据当前状态选择下一个状态，一个字母就可以代表一个状态。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "深入了解 <span>机制、证据与局限</span>",
     "Sources <span>Original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读提示</span>"
   },
@@ -11,8 +10,6 @@
     "1913 / Live chapter": "1913 / 已上线",
     "Guessing the next letter": "猜下一个字母",
     "How much can the last letter tell us about the next?": "上一个字母，能给下一个字母多少线索？",
-    "Try the little game →": "玩个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -80,6 +77,8 @@
     "The predictor is only these four tallies, the same kind of count Markov made by hand.": "这个预测器只有这四组计数，和马尔可夫手工做的统计是同一种。",
     "It predicted you {0}% of the time.": "它猜中了你 {0}% 的选择。",
     "It counted what followed each pair of your presses and caught {0} of {1}.": "它统计你每两次按键之后出现什么，{1} 次中猜中了 {0} 次。",
-    "A 1913 idea predicted my \"random\" choices {0}% of the time.": "一个 1913 年的想法猜中了我 {0}% 的“随机”选择。"
+    "A 1913 idea predicted my \"random\" choices {0}% of the time.": "一个 1913 年的想法猜中了我 {0}% 的“随机”选择。",
+    "Press “A” or “B” as unpredictably as you can while the counter tries to guess your next press.": "尽量让人猜不到地按“A”或“B”，同时计数器会试着猜你的下一次按键。",
+    "Counting letters alone loses their order. Markov counted vowels and consonants in a poem and showed that what came next depended on the preceding category. That made context something people could measure.": "只数每个字母出现了几次，会丢掉它们的顺序。马尔可夫统计一首诗里的元音和辅音，说明下一个字母属于哪一类，与前一个字母的类别有关。上下文由此成了可以测量的东西。"
   }
 }

@@ -9,30 +9,35 @@ export const addedPapers = [
   {
     id: "word2vec",
     year: 2013,
+    credit: { author: "Mikolov", multiple: true },
     title: "Efficient Estimation of Word Representations in Vector Space",
     url: "https://arxiv.org/abs/1301.3781",
   },
   {
     id: "chatgpt-launch",
     year: 2022,
+    credit: { author: "OpenAI", multiple: false },
     title: "Introducing ChatGPT",
     url: "https://openai.com/index/chatgpt/",
   },
   {
     id: "gpt-4-report",
     year: 2023,
+    credit: { author: "OpenAI", multiple: false },
     title: "GPT-4 Technical Report",
     url: "https://arxiv.org/abs/2303.08774",
   },
   {
     id: "llama",
     year: 2023,
+    credit: { author: "Touvron", multiple: true },
     title: "LLaMA: Open and Efficient Foundation Language Models",
     url: "https://arxiv.org/abs/2302.13971",
   },
   {
     id: "chain-of-thought",
     year: 2022,
+    credit: { author: "Wei", multiple: true },
     title:
       "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
     url: "https://arxiv.org/abs/2201.11903",
@@ -53,6 +58,7 @@ export const addedPapers = [
   {
     id: "deepseek-v4-1",
     year: 2026,
+    credit: { author: "DeepSeek-AI", multiple: false },
     title: "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
     url: "https://arxiv.org/abs/2609.19969",
   },
@@ -119,6 +125,7 @@ export const addedPapers = [
   {
     id: "weizenbaum-1966",
     year: 1966,
+    credit: { author: "Weizenbaum", multiple: false },
     title: "ELIZA—A Computer Program for the Study of Natural Language Communication between Man and Machine",
     url: "https://doi.org/10.1145/365153.365168",
   },
@@ -131,6 +138,7 @@ export const addedPapers = [
   {
     id: "sennrich-2016",
     year: 2016,
+    credit: { author: "Sennrich, Haddow & Birch", multiple: false },
     title: "Neural Machine Translation of Rare Words with Subword Units",
     url: "https://arxiv.org/abs/1508.07909",
   },

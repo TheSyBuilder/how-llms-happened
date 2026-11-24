@@ -101,7 +101,6 @@
     "You found the sentence machine": "لقيتوا تجربة تكوين الجمل",
     "{0}: vowel": "{0}: حرف علة",
     "{0}: consonant": "{0}: حرف ساكن",
-    "Listen to the idea": "اسمع الشرح",
     "Stop reading": "وقف القراءة",
     "Stopped.": "توقفت القراءة.",
     "Finished.": "انتهت القراءة.",
@@ -115,8 +114,6 @@
     "Previous": "السابق",
     "Next": "التالي",
     "Switch experiment": "غيّر التجربة",
-    "Try this first": "أول خطوة",
-    "What’s going on?": "وش اللي يصير؟",
     "Tell a friend": "اشرحوها لغيركم",
     "Copy experiment link": "انسخ رابط التجربة",
     "Enjoyed this? Star on GitHub ↗": "عجبتكم التجربة؟ عطوها Star على GitHub ↗",
@@ -187,6 +184,10 @@
     "Why this exists": "ليش هذا الموقع",
     "Most explanations of language models start at the end. This one starts in 1913 and lets you play every step.": "أغلب الشروحات عن النماذج اللغوية تبدأ من النهاية. هنا نبدأ من 1913، وتقدرون تلعبون كل خطوة بنفسكم.",
     "Follow on X ↗": "تابعنا على X ↗",
-    "Source on GitHub ↗": "الكود على GitHub ↗"
+    "Source on GitHub ↗": "الكود على GitHub ↗",
+    "Listen": "اسمعوا",
+    "How to play": "طريقة اللعب",
+    "Why it works": "ليش يصير كذا؟",
+    "et al.": "وزملاؤه"
   }
 }

@@ -1,7 +1,6 @@
 {
   "rich": {
     "A <strong>vector</strong> is a list of numbers. In a <strong>distributed representation</strong>, meaning-relevant features are spread across those numbers, and a feature can help represent many items. Hinton’s 1986 family-relation experiment demonstrated learned compact representations of people and relations.": "<strong>المتجه</strong> قائمة أرقام. في <strong>التمثيل الموزّع</strong>، تتوزّع الصفات المرتبطة بالمعنى بين هالأرقام، والصفة نفسها تفيد في تمثيل أكثر من عنصر. تجربة هنتون عن القرابة في 1986 عرضت تمثيلات مختصرة تعلّمها النموذج للأشخاص والعلاقات.",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي يصير؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Mechanism, evidence and limits</span>": "للتعمّق <span>الآلية والأدلة والحدود</span>",
     "Sources <span>Original work, with a reading guide</span>": "المصادر <span>الأبحاث الأصلية ودليل لقراءتها</span>",
     "<strong>Cosine similarity</strong> compares vectors by their direction. The puzzle below scores your guesses with real 50-number GloVe vectors, a 2014 method learned from word co-occurrence counts with results close to word2vec. Their coordinates have no tidy names—and similar usage need not mean identical meaning.": "<strong>تشابه جيب التمام</strong> يقارن المتجهات حسب اتجاهها. اللغز اللي تحت يقيّم تخميناتكم بمتجهات GloVe حقيقية من 50 رقم، وهي طريقة من 2014 تتعلم من عدّ تجاور الكلمات ونتائجها قريبة من word2vec. إحداثياتها ما لها أسماء مرتبة، والاستعمال المتشابه مو شرط يعني معنى متطابق."
@@ -11,8 +10,6 @@
     "2013 / Live chapter": "2013 / فصل متاح",
     "Words as vectors": "تمثيل الكلمات كمتجهات",
     "What if similar words lived near each other?": "وش لو الكلمات المتشابهة تكون قريبة من بعض؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -93,6 +90,8 @@
     "Reveal the word": "اكشف الكلمة",
     "Give up": "استسلم",
     "Closeness is the cosine between two 50-number vectors, × 100. #1 is the secret’s nearest neighbour.": "القرب هو جيب التمام بين متجهين من 50 رقم، مضروب في 100. الرتبة 1 هي أقرب جار للكلمة السرية.",
-    "Real GloVe vectors (Stanford, 2014; public domain), a close cousin of word2vec, cut to 5,006 common words and stored as small integers.": "متجهات GloVe حقيقية (ستانفورد، 2014؛ ملكية عامة)، قريبة من word2vec، مقتصرة على 5,006 كلمات شائعة ومخزنة كأعداد صحيحة صغيرة."
+    "Real GloVe vectors (Stanford, 2014; public domain), a close cousin of word2vec, cut to 5,006 common words and stored as small integers.": "متجهات GloVe حقيقية (ستانفورد، 2014؛ ملكية عامة)، قريبة من word2vec، مقتصرة على 5,006 كلمات شائعة ومخزنة كأعداد صحيحة صغيرة.",
+    "Comparing words as separate names misses how they are used alike. Word2vec learned word vectors by predicting nearby words or a word from its neighbours. Words used in similar contexts could sit near each other, making useful word relationships visible as numerical distances.": "لو قارنا الكلمات كأسماء منفصلة، نفوّت تشابه استخدامها. تعلّم Word2vec متجهات الكلمات بتوقّع الكلمات القريبة، أو بتوقّع كلمة من جيرانها. الكلمات اللي تجي في سياقات متشابهة تقدر تكون قريبة من بعض، فتصير علاقاتها مسافات نقدر نحسبها.",
+    "Type an English word such as “water” in “Your guess”, then press “Guess”.": "اكتبوا كلمة إنجليزية مثل «water» في «تخمينكم»، وبعدين اضغطوا «خمّن»."
   }
 }

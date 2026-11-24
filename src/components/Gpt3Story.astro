@@ -1,5 +1,5 @@
 ---
-import Discovery from "./Discovery.astro";
+import ChapterBrief from "./ChapterBrief.astro";
 import Gpt3Toy from "./Gpt3Toy";
 import { sourceLink } from "../lib/chapters";
 ---
@@ -33,7 +33,7 @@ import { sourceLink } from "../lib/chapters";
 </section>
 <section class="story-section toy-section" id="play">
   <p class="eyebrow">03 / Play with it</p>
-  <h2>Beat the model.</h2><Discovery slug="gpt-3" />
+  <h2>Beat the model.</h2><ChapterBrief slug="gpt-3" />
   <p>Five guess-the-rule puzzles that get harder. The rule filter waits until the examples leave only one answer. Answer before it does for more points, and keep your streak alive.</p>
   <noscript><p>Enable JavaScript to play. “cat cat → cat cat” fits all four pair rules. Adding “cat dog → dog cat” identifies the swap rule.</p></noscript>
   <Gpt3Toy client:load />

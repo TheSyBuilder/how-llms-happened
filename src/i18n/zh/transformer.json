@@ -3,7 +3,6 @@
     "The 2017 Transformer replaced recurrence and convolution (mixing nearby positions) with attention and small networks applied at each position. <strong>Self-attention</strong> means positions in the same sequence read information from one another.": "2017 年的 Transformer 用注意力和作用于各个位置的小网络，替代了循环与卷积（混合相邻位置的信息）。<strong>自注意力</strong>就是让同一序列中的各个位置读取彼此的信息。",
     "Picture a library desk. A <strong>query</strong> is what you are looking for; a <strong>key</strong> is a label to match against; a <strong>value</strong> is the information you take away. Attention scores the matches, turns them into weights, and mixes the values. Several <strong>heads</strong> perform different learned reads in parallel.": "想象图书馆的服务台。<strong>查询</strong>是你要找什么；<strong>键</strong>是用来匹配的标签；<strong>值</strong>是找到后拿走的信息。注意力给匹配程度打分，把分数变成权重，再混合各个值。多个<strong>注意力头</strong>可以同时进行不同的、通过学习得到的读取。",
     "<strong>Positional encodings</strong> add information about word order. During training, the decoder—the part that writes the output—can process known target words in parallel while hiding later words. Generating a new translation still proceeds one token at a time; a <strong>token</strong> is a chunk of text.": "<strong>位置编码</strong>补充词序信息。训练时，解码器——负责写出结果的部分——可以并行处理已知的目标词，同时遮住后面的词。不过，生成一段新译文时，仍然一次生成一个词元；<strong>词元</strong>是一小块文本。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Equations, architecture, results &amp; limits</span>": "继续深入 <span>公式、结构、结果与局限</span>",
     "Sources <span>The original work, with a reading guide</span>": "资料来源 <span>原始研究与阅读指引</span>",
     "Five puzzles.<br>One attention head.": "五道谜题，<br>一个注意力头。"
@@ -14,8 +13,6 @@
     "Original paper record": "原始论文记录",
     "The Transformer": "Transformer",
     "What if every word could look at the others directly?": "如果每个词都能直接看见其他词呢？",
-    "Try the little game →": "试试小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -138,6 +135,8 @@
     "Total: {0} moves": "共 {0} 步",
     "{0} · skipped": "{0} · 已跳过",
     "{0} · {1} moves": "{0} · {1} 步",
-    "{0}, word {1}": "{0}，第 {1} 个词"
+    "{0}, word {1}": "{0}，第 {1} 个词",
+    "Recurrent networks handle words one at a time, making training wait for earlier steps. The Transformer used attention to let words read each other directly, so training could run in parallel. Generating new text still happens one piece at a time.": "循环网络逐词处理，训练时后面的步骤得等前面的步骤完成。Transformer 用注意力让词直接读取其他词的信息，训练就能并行进行。生成新文本时，仍然要一块接一块地写。",
+    "Choose “The”, then press “Hide future words”.": "选“The”，再按“隐藏后面的词”。"
   }
 }

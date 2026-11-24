@@ -1,6 +1,5 @@
 {
   "rich": {
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "وش اللي صار؟ <span aria-hidden=\"true\">+</span>",
     "Go deeper <span>The loop and its limits</span>": "تعمّق أكثر <span>الدورة وحدودها</span>",
     "Sources <span>Papers and further reading</span>": "المصادر <span>الأوراق وقراءات إضافية</span>"
   },
@@ -8,8 +7,6 @@
     "← The timeline": "← الخط الزمني",
     "Tools and agents": "الأدوات والوكلاء",
     "What if the next token could start an action?": "وش لو الوحدة النصية الجاية تبدأ إجراء؟",
-    "Try the little game →": "جرّب اللعبة →",
-    "Listen to the idea": "اسمع الفكرة",
     "Play": "جرّب",
     "Story": "القصة",
     "Math": "الرياضيات",
@@ -84,6 +81,8 @@
     "I played the AI agent: right answer in {0} tool calls, while the no-tools model was confidently wrong.": "لعبت دور وكيل الذكاء الاصطناعي: إجابة صحيحة في {0} استدعاءات أدوات، بينما النموذج اللي بدون أدوات غلط وهو واثق.",
     "I played the AI agent and got the bill wrong. Tools only help with the right inputs.": "لعبت دور وكيل الذكاء الاصطناعي وغلطت في الفاتورة. الأدوات ما تفيد إلا بالمدخلات الصحيحة.",
     "The menu, prices and exchange rate are invented, and the tools run in your browser.": "القائمة والأسعار وسعر الصرف متخيّلة، والأدوات تشتغل في متصفحكم.",
-    "An action leaves the model, a tool returns an observation, and the next decision uses that observation. These are teaching illustrations.": "الإجراء يطلع من النموذج، والأداة ترجع بنتيجة، والقرار الجاي يستخدمها. هذي رسومات تعليمية."
+    "An action leaves the model, a tool returns an observation, and the next decision uses that observation. These are teaching illustrations.": "الإجراء يطلع من النموذج، والأداة ترجع بنتيجة، والقرار الجاي يستخدمها. هذي رسومات تعليمية.",
+    "A language model’s fluent answer can lack facts or correct calculations. ReAct alternated reasoning, actions and observations, letting a model use a tool’s result to choose its next step. This gave answers a way to gather outside information and act on it, with mistakes still possible.": "جواب النموذج اللغوي ممكن يكون سلس بس تنقصه معلومات أو حساباته غلط. بدّل ReAct بين التفكير والأفعال والملاحظات، عشان يستخدم النموذج نتيجة الأداة في اختيار خطوته الجاية. كذا صار يقدر يجمع معلومات خارجية ويتصرّف بناءً عليها، مع بقاء احتمال الخطأ.",
+    "Press “Search”, then choose “Sushi Kanda omakase price”.": "اضغطوا «بحث»، وبعدين اختاروا «سعر أوماكاسي في Sushi Kanda»."
   }
 }

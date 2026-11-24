@@ -4,20 +4,16 @@
     "The follow-up<br>becomes the interface.": "追问，<br>成了操作方式。",
     "Human trainers wrote conversations, playing both user and assistant. They also compared alternative replies. <strong>Reinforcement learning from human feedback</strong>, or RLHF, uses rewards learned from those comparisons to guide training. ChatGPT adapted the approach used for InstructGPT to conversation.": "训练人员分别扮演用户和助手，写出对话，也比较不同的回复。<strong>基于人类反馈的强化学习</strong>（RLHF）先从这些比较中学出奖励，再用奖励指导训练。ChatGPT 将 InstructGPT 的方法用于对话。",
     "<strong>Context</strong> is the information supplied to a model for its next response. Earlier messages can make “it” or “that city” meaningful. This is different from changing the model’s <strong>parameters</strong>—the numbers learned during training. The toy makes that distinction visible.": "<strong>上下文</strong>是模型生成下一条回复时收到的信息。前面的消息让“它”或“那个城市”有了明确所指。这与改变模型的<strong>参数</strong>——训练中学到的数字——是两回事。小实验会展示这个区别。",
-    "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "A reply can become<br>your next starting point.": "一个回答，<br>也是下一个问题的起点。",
     "Go deeper <span>Dialogue training and context</span>": "深入看看 <span>对话训练与上下文</span>",
     "Sources <span>Official announcement and training paper</span>": "资料来源 <span>官方公告与训练论文</span>",
-    "Make it<br>forget.": "让它<br>忘记。",
-    "<strong>Try this first</strong> Pick the 4-message window, then say your name and the Oslo change last.": "<strong>先试试这个</strong> 选 4 条消息的窗口，然后最后才说出名字和改去 Oslo。"
+    "Make it<br>forget.": "让它<br>忘记。"
   },
   "text": {
     "← The timeline": "← 时间线",
     "2022 / Live chapter": "2022 / 已上线",
     "The ChatGPT moment": "ChatGPT 登场",
     "What changes when a language model becomes a conversation?": "语言模型变成对话伙伴，会带来什么变化？",
-    "Try the little game →": "试试这个小游戏 →",
-    "Listen to the idea": "听听这个想法",
     "Play": "动手玩",
     "Story": "读故事",
     "Math": "数学",
@@ -118,6 +114,8 @@
     "Pick the 4-message window, then say your name and the Oslo change last.": "选 4 条消息的窗口，然后最后才说出名字和改去 Oslo。",
     "Why does the order of your messages matter?": "为什么消息的先后顺序很重要？",
     "Only the newest messages fit. Facts you say last are still in view when it answers; facts you said first have slid out.": "只有最新的几条装得下。你最后说的事，它回答时还看得到；你最先说的，早就滑出去了。",
-    "Window: {0} messages · Sent {1} / {2}": "窗口：{0} 条消息 · 已发 {1} / {2}"
+    "Window: {0} messages · Sent {1} / {2}": "窗口：{0} 条消息 · 已发 {1} / {2}",
+    "An isolated answer cannot handle every follow-up or correction in a conversation. ChatGPT adapted training from human-written examples and ranked replies to dialogue, reading earlier messages as context for each reply. OpenAI’s public research preview let people refine a request over several turns, and its launch announcement warned about confident errors and sensitivity to wording.": "单独一个答案，无法应对对话中的所有追问和纠正。ChatGPT 把人工编写的示例和排序后的回复用于对话训练，利用之前的消息作为每次回复的上下文。OpenAI 的公开研究预览让人们能通过多轮对话逐步调整请求，发布公告也警告，它会自信地答错，且对措辞敏感。",
+    "Type your name in “Your name”, then choose “4 messages”.": "在“你的名字”里输入名字，再选择“4 条消息”。"
   }
 }

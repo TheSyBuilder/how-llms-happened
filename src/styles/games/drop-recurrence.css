@@ -17,3 +17,14 @@
 .race-feedback { min-block-size:1.5em; margin-block:12px 0; font-weight:600; }
 .race-actions { display:flex; flex-wrap:wrap; gap:10px; }
 @media (prefers-reduced-motion: reduce) { .race-fill, .race-lane { transition:none; } }
+
+/* Keep the choice in view while all three wiring diagrams stay available together. */
+@media (min-width:1000px) {
+ .chapter-page[data-view=play] .race-game:has(> .race-lanes) { display:grid; }
+ .chapter-page[data-view=play] .race-game > * { min-inline-size:0; }
+ .chapter-page[data-view=play] .race-game > .goal-bar { grid-row:1; }
+ .chapter-page[data-view=play] .race-budget { grid-row:2; }
+ .chapter-page[data-view=play] .race-bets { grid-row:3; margin-block:0 16px; }
+ .chapter-page[data-view=play] .race-lanes { grid-row:4; grid-template-columns:repeat(3, minmax(0, 1fr)); }
+ .chapter-page[data-view=play] .race-lane { align-content:start; }
+}
