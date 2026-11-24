@@ -9,6 +9,7 @@
   "text": {
     "← The timeline": "← 时间线",
     "2013 / Live chapter": "2013 / 已上线",
+    "Read the paper": "阅读论文",
     "Graves generates text": "Graves 让模型生成文本",
     "What happens when a model reads its own predictions?": "模型读回自己预测的内容，会发生什么？",
     "Try the little game →": "玩个小游戏 →",

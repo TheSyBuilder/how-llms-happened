@@ -3,7 +3,9 @@ import '../../styles/games/lstm.css';
 import {useEffect,useRef,useState} from 'preact/hooks';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
+import {ownsGameKey,useGameActive} from '../game/useGameActive';
 import {markPlayed} from '../../lib/progress';
+import {shortcutLetter} from './letter-game';
 import {READ_WINDOW_MS,expectedCode,makeStream,vaultLevels,vaultStars,vaultStep,type Beat,type Gates} from './vault-game';
 const slug='lstm',levels=vaultLevels.length;
 type Phase='ready'|'running'|'bell'|'result'|'finished';
@@ -21,6 +23,7 @@ export default function GateToy(){
  const [now,setNow]=useState(0);
  const gatesRef=useRef(gates),cellRef=useRef(0),startedAt=useRef(0),played=useRef(false),root=useRef<HTMLDivElement>(null),mainButton=useRef<HTMLButtonElement>(null),readButton=useRef<HTMLButtonElement>(null);
  gatesRef.current=gates;cellRef.current=cell;
+ const active=useGameActive(root);
  const spec=vaultLevels[Math.min(level,levels-1)]!;
  const focusMain=()=>requestAnimationFrame(()=>mainButton.current?.focus());
  const start=()=>{
@@ -29,34 +32,40 @@ export default function GateToy(){
   startedAt.current=Date.now();setNow(Date.now());setPhase('running');
  };
  const finishLevel=(read:number|null)=>{const code=expectedCode(stream);setOutcomes(o=>[...o,{ok:read===code,read,code}]);setPhase('result');focusMain();};
+ // A pause moves the current beat's start forward by its length, so the beat resumes with the time it had left.
+ useEffect(()=>{
+  if(active||(phase!=='running'&&phase!=='bell'))return;
+  const pausedAt=Date.now();
+  return ()=>{startedAt.current+=Date.now()-pausedAt;setNow(Date.now());};
+ },[active,phase]);
  // Each beat commits the gates as they stand when the beat ends.
  useEffect(()=>{
-  if(phase!=='running')return;
+  if(phase!=='running'||!active)return;
   const timer=setTimeout(()=>{
    const b=stream[beat]!,before=cellRef.current,after=vaultStep(before,b,gatesRef.current);
    setCell(after);setLog(l=>[...l,{beat:b,gates:{...gatesRef.current},before,after}]);
    startedAt.current=Date.now();
    if(beat+1>=stream.length){setPhase('bell');requestAnimationFrame(()=>readButton.current?.focus());}else setBeat(beat+1);
-  },spec.beatMs);
+  },Math.max(0,spec.beatMs-(Date.now()-startedAt.current)));
   return ()=>clearTimeout(timer);
- },[phase,beat,stream]);
+ },[phase,beat,stream,active]);
  useEffect(()=>{
-  if(phase!=='bell')return;
-  const timer=setTimeout(()=>finishLevel(null),READ_WINDOW_MS);return ()=>clearTimeout(timer);
- },[phase]);
+  if(phase!=='bell'||!active)return;
+  const timer=setTimeout(()=>finishLevel(null),Math.max(0,READ_WINDOW_MS-(Date.now()-startedAt.current)));return ()=>clearTimeout(timer);
+ },[phase,active]);
  useEffect(()=>{
-  if(phase!=='running'&&phase!=='bell')return;
+  if((phase!=='running'&&phase!=='bell')||!active)return;
   const tick=setInterval(()=>setNow(Date.now()),100);return ()=>clearInterval(tick);
- },[phase]);
+ },[phase,active]);
  const toggle=(name:keyof Gates)=>{if(phase==='running')setGates(g=>({...g,[name]:!g[name]}));};
  const read=()=>{if(phase==='bell')finishLevel(cellRef.current);};
  const keys=useRef({toggle,read});keys.current={toggle,read};
  useEffect(()=>{
   const onKey=(e:KeyboardEvent)=>{
-   if(e.metaKey||e.ctrlKey||e.altKey)return;
+   if(e.metaKey||e.ctrlKey||e.altKey||!ownsGameKey(root.current,e))return;
    const target=e.target as HTMLElement|null;if(target?.closest('input,textarea,select,[contenteditable]'))return;
    const active=document.activeElement;if(active&&active!==document.body&&!root.current?.contains(active))return;
-   const k=e.key.toLowerCase();
+   const k=shortcutLetter(e.key,e.code);
    if(k==='k'){e.preventDefault();keys.current.toggle('keep');}
    else if(k==='w'){e.preventDefault();keys.current.toggle('write');}
    else if(k==='r'){e.preventDefault();keys.current.read();}

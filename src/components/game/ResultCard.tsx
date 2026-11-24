@@ -1,12 +1,12 @@
 import '../../i18n/preact';
 import '../../styles/game.css';
-import {useEffect,useRef,useState} from 'preact/hooks';
+import {useEffect,useLayoutEffect,useRef,useState} from 'preact/hooks';
 import {t} from '../../i18n/core';
 import {eras,metaFor,nextChapter} from '../../lib/chapter-meta';
-import {markCompleted} from '../../lib/progress';
+import {markCompleted,markPlayed} from '../../lib/progress';
 import {chapterUrl,drawResultImage,resultKey,saveResultImage,scoreText,xIntentUrl} from '../../lib/share';
 import {isolateRuns} from './bidi';
-export type GameResult={slug:string;headline:string;detail?:string;score?:{value:number;max?:number;label:string};stars?:0|1|2|3;shareText:string};
+export type GameResult={slug:string;progressSlug?:string;completed?:boolean;headline:string;detail?:string;score?:{value:number;max?:number;label:string};stars?:0|1|2|3;shareText:string};
 const reduced=()=>typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 async function copy(text:string){
  try{await navigator.clipboard.writeText(text);return true;}catch{return false;}
@@ -15,8 +15,13 @@ export default function ResultCard({result,onReplay}:{result:GameResult;onReplay
  const heading=useRef<HTMLHeadingElement>(null);const [status,setStatus]=useState('');const [burst,setBurst]=useState(false);
  const meta=metaFor(result.slug),next=nextChapter(result.slug),era=meta&&eras.find(item=>item.id===meta.era);
  const url=chapterUrl(result.slug),key=resultKey(result);
+ // A layout effect runs in the same task as the DOM commit, so a visible card is always a saved result.
+ useLayoutEffect(()=>{
+  const slug=result.progressSlug??result.slug;
+  if(result.completed===false)markPlayed(slug);
+  else markCompleted(slug,{best:result.headline,...(result.stars===undefined?{}:{stars:result.stars})});
+ },[key,result.progressSlug,result.completed]);
  useEffect(()=>{
-  markCompleted(result.slug,{best:result.headline,...(result.stars===undefined?{}:{stars:result.stars})});
   const target=heading.current;target?.focus({preventScroll:true});target?.scrollIntoView({block:'nearest',behavior:reduced()?'auto':'smooth'});setStatus('');
   if((result.stars??0)>=1&&!reduced()){setBurst(true);navigator.vibrate?.(10);const timer=setTimeout(()=>setBurst(false),700);return ()=>clearTimeout(timer);}
   return undefined;

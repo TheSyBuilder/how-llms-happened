@@ -11,6 +11,7 @@
   "text": {
     "← The timeline": "← 时间线",
     "2003 / Live chapter": "2003 / 已上线",
+    "Read the paper": "阅读论文",
     "Bengio’s neural language model": "Bengio 的神经语言模型",
     "Can similar word sequences share what they learn?": "相似的词序列，能分享彼此学到的东西吗？",
     "Try the little game →": "玩个小游戏 →",
@@ -37,7 +38,6 @@
     "A fixed window enters one shared system. The output is a probability for every vocabulary word; training changes both stages.": "固定窗口内的词进入同一个共享系统。输出是词表中每个词的概率；训练会改变这两个阶段。",
     "03 / Play with it": "03 / 动手试试",
     "Did dog need a lesson of its own?": "dog 也得单独上一课吗？",
-    "0 examples": "0 个样本",
     "dog": "dog",
     "car": "car",
     "Inside this toy": "玩具内部怎么算",

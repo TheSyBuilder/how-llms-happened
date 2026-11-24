@@ -3,6 +3,7 @@ import '../../styles/games/chain-of-thought.css';
 import {useEffect,useRef,useState} from 'preact/hooks';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
+import {useGameActive} from '../game/useGameActive';
 import {usePlayed} from './played';
 
 export const SECONDS=20;
@@ -27,25 +28,26 @@ export default function ChainOfThought(){
  const [picked,setPicked]=useState<number|null>(null);const [timedOut,setTimedOut]=useState(false);
  const [remaining,setRemaining]=useState(SECONDS);const [points,setPoints]=useState(0);const [found,setFound]=useState(0);
  const [result,setResult]=useState<GameResult|null>(null);const [gain,setGain]=useState(0);
- const clock=useRef({elapsed:0,last:0});
+ const clock=useRef({elapsed:0,last:0}),root=useRef<HTMLDivElement>(null),active=useGameActive(root);
  const puzzle=index>=0?puzzles[order[index]!]!:null,answered=picked!==null||timedOut;
  useEffect(()=>{
-  if(!puzzle||answered)return undefined;
-  clock.current={elapsed:0,last:performance.now()};
+  if(!puzzle||answered||!active)return undefined;
+  clock.current.last=performance.now();
   const timer=setInterval(()=>{
    const now=performance.now();clock.current.elapsed+=Math.min(.25,(now-clock.current.last)/1000);clock.current.last=now;
    const left=SECONDS-clock.current.elapsed;setRemaining(Math.max(0,left));if(left<=0)setTimedOut(true);
   },100);
-  return ()=>clearInterval(timer);
- },[index,answered]);
- const start=()=>{touch();setIndex(0);setPicked(null);setTimedOut(false);setRemaining(SECONDS);};
+  // Charge the part of a tick played before a pause, so pausing never adds time.
+  return ()=>{clearInterval(timer);clock.current.elapsed+=Math.min(.25,(performance.now()-clock.current.last)/1000);};
+ },[index,answered,active]);
+ const start=()=>{touch();clock.current.elapsed=0;setIndex(0);setPicked(null);setTimedOut(false);setRemaining(SECONDS);};
  const pick=(i:number)=>{
   if(!puzzle||answered)return;touch();
   const left=SECONDS-clock.current.elapsed;setPicked(i);
   const won=stepPoints(i===puzzle.bad,left);setGain(won);if(won){setFound(f=>f+1);setPoints(p=>p+won);}
  };
  const next=()=>{
-  if(index+1<puzzles.length){setIndex(index+1);setPicked(null);setTimedOut(false);setRemaining(SECONDS);return;}
+  if(index+1<puzzles.length){clock.current.elapsed=0;setIndex(index+1);setPicked(null);setTimedOut(false);setRemaining(SECONDS);return;}
   const stars=chainStars(found,points);
   setResult({slug:'chain-of-thought',stars,score:{value:points,max:MAX_POINTS,label:'Points'},
    headline:found===puzzles.length?`I caught all 5 wrong steps. ${points} points.`:`I caught ${found} of 5 wrong steps. ${points} points.`,
@@ -54,7 +56,7 @@ export default function ChainOfThought(){
  };
  const replay=()=>{setOrder(shuffled());setIndex(-1);setPicked(null);setTimedOut(false);setRemaining(SECONDS);setPoints(0);setFound(0);setResult(null);};
  const left=Math.ceil(remaining);
- return <div class="later-game cot-game">
+ return <div class="later-game cot-game" ref={root}>
   <GoalBar goal="Five worked solutions. Each has one wrong step. Tap it before the clock runs out." status={result?'Done':index<0?'Ready':`Solution ${index+1} / ${puzzles.length}`} score={{value:points,max:MAX_POINTS,label:'Points'}}/>
   {result?<ResultCard result={result} onReplay={replay}/>:!puzzle?<div class="cot-start"><p>Fast and careful beats fast. Each solution gives you 20 seconds.</p><button type="button" class="game-btn is-primary" onClick={start}>Start</button></div>:<>
    <div class="cot-head"><span class={`game-timer${!answered&&left<=5?' is-low':''}`} role="timer" aria-label={`${left} seconds left`}>{`0:${String(left).padStart(2,'0')}`}</span><p class="cot-question">{puzzle.q}</p></div>

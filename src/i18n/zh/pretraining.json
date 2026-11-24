@@ -120,6 +120,8 @@
     "I taught a pre-read learner film reviews with {0} labels. From scratch it needed {1}.": "我只用 {0} 个标签，就教会了一个先读过书的学习者判断影评。从零开始要 {1} 个。",
     "I taught it with {0} labels; from scratch it needed {1}.": "我只用 {0} 个标签就教会了它；从零开始要 {1} 个。",
     "Labels handed out: {0}": "已给出的标签：{0}",
+    "{0}: negative. Read first: {1} of 8 right. From scratch: {2} of 8 right.": "{0}：负面。先读过的学习者：8 条对了 {1} 条。从零训练的：8 条对了 {2} 条。",
+    "{0}: positive. Read first: {1} of 8 right. From scratch: {2} of 8 right.": "{0}：正面。先读过的学习者：8 条对了 {1} 条。从零训练的：8 条对了 {2} 条。",
     "{0}% positive": "{0}% 正面"
   }
 }

@@ -33,7 +33,6 @@
     "A forget-gate cell combines kept memory and gated new input, then an output gate decides how much to expose. This schematic includes the later forget gate.": "带遗忘门的单元，把保留下来的记忆和经输入门控制的新信息相加，再由输出门决定显示多少。图中包含后来加入的遗忘门。",
     "03 / Play with it": "03 / 动手试试",
     "Enable JavaScript to change the controls. The explanation, diagram, equations and sources remain available below.": "启用 JavaScript 后即可操作。下方的解释、示意图、公式和资料仍可阅读。",
-    "Protect": "保护",
     "Replace": "替换",
     "Hide": "隐藏",
     "04 / Why it mattered": "04 / 为什么重要",

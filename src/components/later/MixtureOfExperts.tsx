@@ -3,6 +3,7 @@ import '../../styles/games/mixture-of-experts.css';
 import {useEffect,useRef,useState} from 'preact/hooks';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
+import {ownsGameKey,useGameActive} from '../game/useGameActive';
 import {starsFor,usePlayed} from './played';
 
 export const DURATION=30,ARRIVE=.7,SLOTS=2,WORK=3.2,QUEUE=3;
@@ -49,22 +50,25 @@ export function learnedRouter(seed:number):Sim{
  return advance(sim,DURATION);
 }
 export const moeStars=(mine:number,router:number)=>starsFor(router?mine/router:0,[.5,.75,.92]);
+// Layouts that type another script (Arabic ٢) report the physical digit in e.code. Latin layouts keep e.key.
+const digitKey=(e:KeyboardEvent)=>/^[^\x00-\x7f]+$/u.test(e.key)?/^(?:Digit|Numpad)(\d)$/.exec(e.code)?.[1]??e.key:e.key;
 
 export default function MixtureOfExperts(){
  const touch=usePlayed('mixture-of-experts');
  const [seed,setSeed]=useState(()=>Date.now());const [sim,setSim]=useState(()=>newSim(seed));
  const [running,setRunning]=useState(false);const [result,setResult]=useState<GameResult|null>(null);
  const [flash,setFlash]=useState('');
- const clock=useRef({elapsed:0,last:0});
+ const clock=useRef({elapsed:0,last:0}),root=useRef<HTMLDivElement>(null),active=useGameActive(root);
  useEffect(()=>{
-  if(!running)return undefined;
-  clock.current={elapsed:0,last:performance.now()};
+  if(!running||!active)return undefined;
+  clock.current.last=performance.now();
   const timer=setInterval(()=>{
    const now=performance.now();clock.current.elapsed+=Math.min(.25,(now-clock.current.last)/1000);clock.current.last=now;
    setSim(s=>advance(s,clock.current.elapsed));
   },100);
-  return ()=>clearInterval(timer);
- },[running]);
+  // Charge the part of a tick played before a pause, so pausing never adds time.
+  return ()=>{clearInterval(timer);clock.current.elapsed+=Math.min(.25,(performance.now()-clock.current.last)/1000);};
+ },[running,active]);
  useEffect(()=>{
   if(!running||sim.t<DURATION)return;
   setRunning(false);
@@ -81,13 +85,13 @@ export default function MixtureOfExperts(){
  };
  useEffect(()=>{
   if(!running)return undefined;
-  const key=(e:KeyboardEvent)=>{if(e.target instanceof HTMLInputElement||e.metaKey||e.ctrlKey||e.altKey)return;const i=['1','2','3'].indexOf(e.key);if(i>=0){e.preventDefault();send(i);}};
+  const key=(e:KeyboardEvent)=>{if(e.target instanceof HTMLInputElement||e.metaKey||e.ctrlKey||e.altKey||!ownsGameKey(root.current,e))return;const i=['1','2','3'].indexOf(digitKey(e));if(i>=0){e.preventDefault();send(i);}};
   window.addEventListener('keydown',key);return ()=>window.removeEventListener('keydown',key);
  });
- const start=()=>{touch();setFlash('');setSim(newSim(seed));setRunning(true);};
+ const start=()=>{touch();clock.current.elapsed=0;setFlash('');setSim(newSim(seed));setRunning(true);};
  const replay=()=>{const next=Date.now();setSeed(next);setSim(newSim(next));setResult(null);setFlash('');};
  const left=Math.ceil(DURATION-sim.t),front=sim.queue[0];
- return <div class="later-game moe-game">
+ return <div class="later-game moe-game" ref={root}>
   <GoalBar goal="Route tokens to experts for 30 seconds. A token scores 3 points at its specialist, 2 anywhere else, 0 if dropped." status={running?`${sim.processed} processed · ${sim.dropped} dropped`:result?'Done':'Ready'} score={{value:sim.points,label:'Points'}}/>
   {result?<ResultCard result={result} onReplay={replay}/>:<>
    <div class="moe-top">

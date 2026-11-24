@@ -40,6 +40,15 @@ test('chapter URLs are absolute, localised and include the site base',()=>{
  assert.equal(hosted.chapterUrl('bert',{origin,locale:'en'}),'https://thesybuilder.github.io/how-llms-happened/chapters/bert/#play');
  assert.equal(hosted.chapterUrl('bert',{origin,locale:'ar'}),'https://thesybuilder.github.io/how-llms-happened/ar/chapters/bert/#play');
 });
+test('malformed stored entries are dropped and stars clamp to 0-3',()=>{
+ const raw=JSON.stringify({a:{completed:true,stars:7},b:{completed:true,stars:-4},c:{played:true,stars:1.5},d:{played:true,stars:'2'},e:5,f:null});
+ const stored=load('lib/progress.ts',{storage:memory({'lineage-progress-v1':raw})}).getProgress();
+ assert.deepEqual(stored,{a:{played:true,completed:true,stars:3},b:{played:true,completed:true,stars:0},c:{played:true,completed:false,stars:1},d:{played:true,completed:false}});
+});
+test('X intent URLs survive lone surrogates and keep whole emoji',()=>{
+ const {xIntentUrl}=load('lib/share.ts'),url=xIntentUrl('a\uD83C b\uDF89 🎉','https://a.io/\uD83D');
+ const parsed=new URL(url);assert.equal(parsed.searchParams.get('text'),'a� b� 🎉');assert.equal(parsed.searchParams.get('url'),'https://a.io/�');
+});
 test('X intent URLs encode the post text and link',()=>{
  const {xIntentUrl}=load('lib/share.ts'),url=xIntentUrl('It guessed me 71% of the time & "won" #LLM — 预测','https://a.io/zh/chapters/bert/#play');
  assert.ok(url.startsWith('https://x.com/intent/post?text='));

@@ -124,7 +124,7 @@ export default function VisionToy() {
           ? <span key={tile} class="vision-tile is-open" role="img" aria-label={`Tile ${tile + 1}: ${description}`} />
           : <button key={tile} type="button" class="vision-tile" aria-label={`Reveal tile ${tile + 1}`} onClick={() => reveal(tile)}><span aria-hidden="true">?</span></button>)}
         </div>
-        <figcaption><span>Caption</span> “{picture.caption}”</figcaption>
+        <figcaption><span>Caption</span> “<bdi>{picture.caption}</bdi>”</figcaption>
       </figure>
       <div class="vision-side">
         {!guess ? <>

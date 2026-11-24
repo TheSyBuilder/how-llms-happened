@@ -1,6 +1,5 @@
 {
   "rich": {
-    "<strong>Try this first</strong> Turn on “Crowd expert A”.": "<strong>先试这一步</strong> 打开“挤向专家 A”。",
     "What’s going on? <span aria-hidden=\"true\">+</span>": "这是怎么回事？<span aria-hidden=\"true\">+</span>",
     "Go deeper <span>Routing and capacity</span>": "深入看看 <span>路由与容量</span>",
     "Sources <span>Papers and further reading</span>": "资料来源 <span>论文与延伸阅读</span>"
@@ -61,7 +60,8 @@
     "Places": "地名",
     "Verbs": "动词",
     "Expert {0} was full. Token dropped.": "专家 {0} 满了。token 被丢弃。",
-    "Next token: {0}": "下一个 token：{0}",
+    "Also in this chapter: the related works listed above.": "本章还会提到上面列出的相关研究。",
+    "Next: {0}": "下一个：{0}",
     "Waiting for a token": "等待 token",
     "Press start. Then tap an expert, or press 1, 2 or 3.": "点开始，然后点一位专家，或按 1、2、3。",
     "Experts": "专家",

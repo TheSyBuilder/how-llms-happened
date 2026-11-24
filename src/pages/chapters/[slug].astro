@@ -65,5 +65,5 @@ function syncChapterView(){
 }
 // The target was hidden when the browser tried to scroll to it, so scroll once the story is shown.
 if(article.dataset.view&&syncChapterView()==='story')requestAnimationFrame(()=>hashTarget()?.scrollIntoView());
-window.addEventListener('hashchange',()=>{if(!article.dataset.view)return;const before=article.dataset.view;const view=syncChapterView();if(view===before)return;requestAnimationFrame(()=>{if(view==='story')hashTarget()?.scrollIntoView();else window.scrollTo({top:0,behavior:'instant'});});});
+window.addEventListener('hashchange',()=>{if(!article.dataset.view)return;const before=article.dataset.view;const view=syncChapterView();if(view===before)return;requestAnimationFrame(()=>{const target=view==='story'||(view==='reference'&&location.hash!=='#deeper')?hashTarget():null;if(target)target.scrollIntoView();else window.scrollTo({top:0,behavior:'instant'});});});
 </script>

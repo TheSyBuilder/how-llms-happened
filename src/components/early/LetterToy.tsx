@@ -3,6 +3,7 @@ import '../../styles/games/next-letter.css';
 import {useEffect,useRef,useState} from 'preact/hooks';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
+import {ownsGameKey} from '../game/useGameActive';
 import {markPlayed} from '../../lib/progress';
 import {ROUNDS,contexts,keyPress,letterStars,predictNext,tallyPairs,type Press} from './letter-game';
 type Move={press:Press;guess:Press};
@@ -19,12 +20,12 @@ export default function LetterToy(){
  };
  useEffect(()=>{
   const onKey=(e:KeyboardEvent)=>{
-   if(e.metaKey||e.ctrlKey||e.altKey)return;
+   if(e.metaKey||e.ctrlKey||e.altKey||!ownsGameKey(root.current,e))return;
    const target=e.target as HTMLElement|null;
    if(target?.closest('input,textarea,select,[contenteditable]'))return;
    const active=document.activeElement;
    if(active&&active!==document.body&&!root.current?.contains(active))return;
-   const p=keyPress(e.key);if(!p||!root.current?.querySelector('.markov-keys'))return;
+   const p=keyPress(e.key,e.code);if(!p||!root.current?.querySelector('.markov-keys'))return;
    e.preventDefault();press(p);
   };
   window.addEventListener('keydown',onKey);return ()=>window.removeEventListener('keydown',onKey);

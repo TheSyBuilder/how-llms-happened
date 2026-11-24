@@ -48,7 +48,8 @@ export const script: Record<string, Keyword> = {
   // "you" in the user's text, already swapped to "i".
   you: { rank: 0, rules: [
     { pattern: '* i remind you of *', replies: ['=alike'] },
-    { pattern: '* i are *', replies: ['What makes you think I am $3?', 'Does it please you to believe I am $3?', 'Do you sometimes wish you were $3?', 'Perhaps you would like to be $3.'] },
+    { pattern: '* i are', replies: ['What do you think I am?', 'Am I what, exactly?', 'You stopped short. Am I what?', 'How would you finish that sentence about me?'] },
+    { pattern: '* i are *', replies: ['What makes you think I am $4?', 'Does it please you to believe I am $4?', 'Do you sometimes wish you were $4?', 'Perhaps you would like to be $4.'] },
     { pattern: '* i * you', replies: ['Why do you think I $3 you?', 'You like to think I $3 you, don\'t you?', 'What makes you think I $3 you?', 'Really, I $3 you?'] },
     { pattern: '* i *', replies: ['We were talking about you, not me.', 'Oh, I $3?', 'You are not really talking about me, are you?', 'What are your feelings now?'] },
   ] },
@@ -224,11 +225,13 @@ export function respond(input: string, state: ElizaState): Reply {
     const words = original.map((word, at) => {
       const entry = script[word];
       if (entry && (entry.rules || entry.link)) stack.push({ word, rank: entry.rank, at });
-      return subs[word] ?? word;
+      return Object.hasOwn(subs, word) ? subs[word]! : word;
     });
     if (!stack.length) continue; // a clause without keywords is dropped, as in 1966
     stack.sort((a, b) => b.rank - a.rank || a.at - b.at);
-    for (const key of stack) {
+    // A clause ending in "you are" has nothing to quote, and any other keyword's reply would echo "I are".
+    const bare = words.at(-2) === 'i' && words.at(-1) === 'are';
+    for (const key of bare ? stack.filter(({ word }) => word === 'you') : stack) {
       const attempt = tryKeyword(key.word, words, state);
       if (attempt && attempt !== 'newkey') {
         if (attempt.memory) state.memory.push(attempt.memory);

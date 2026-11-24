@@ -18,24 +18,25 @@ export const minChars=200, maxChars=6000, order=4, triesPerGame=8, minWords=6, m
 const mix=[.9,.7,.7,.7,1];
 type Counts={total:number;next:Map<string,number>};
 export type CharModel={table:Map<string,Counts>;starts:string[];vocab:Set<string>;chars:number};
-export const wordsOf=(text:string)=>text.match(/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu)??[];
+export const wordsOf=(text:string)=>text.match(/[\p{L}\p{N}][\p{L}\p{M}\p{N}]*(?:['’][\p{L}\p{N}][\p{L}\p{M}\p{N}]*)*/gu)??[];
 /** "Training" counts which character follows each context of up to four characters. */
 export function trainCharModel(raw:string):CharModel {
-  const text=raw.replace(/\r\n?/g,'\n').slice(0,maxChars);
+  // Code points, so an emoji is one symbol and is never cut in half.
+  const chars=Array.from(raw.replace(/\r\n?/g,'\n')).slice(0,maxChars),text=chars.join('');
   const table=new Map<string,Counts>();
-  for(let i=0;i<text.length;i++)for(let k=0;k<=order&&k<=i;k++){
-    const context=text.slice(i-k,i);let counts=table.get(context);
+  for(let i=0;i<chars.length;i++)for(let k=0;k<=order&&k<=i;k++){
+    const context=chars.slice(i-k,i).join('');let counts=table.get(context);
     if(!counts)table.set(context,counts={total:0,next:new Map()});
-    counts.total++;counts.next.set(text[i]!,(counts.next.get(text[i]!)??0)+1);
+    counts.total++;counts.next.set(chars[i]!,(counts.next.get(chars[i]!)??0)+1);
   }
-  const starts=[...text.matchAll(/(?:^|[.!?]\s+|\n)\s*([\p{L}\p{N}][\p{L}\p{N}'’]*)/gu)].map(match=>match[1]!);
-  return {table,starts:starts.length?starts:wordsOf(text).slice(0,1),vocab:new Set(wordsOf(text).map(word=>word.toLowerCase())),chars:text.length};
+  const starts=[...text.matchAll(/(?:^|[.!?]\s+|\n)\s*([\p{L}\p{N}][\p{L}\p{M}\p{N}'’]*)/gu)].map(match=>match[1]!);
+  return {table,starts:starts.length?starts:wordsOf(text).slice(0,1),vocab:new Set(wordsOf(text).map(word=>word.toLowerCase())),chars:chars.length};
 }
 /** Next-character probabilities: longer contexts first, with the leftover weight passed to shorter ones. */
 export function nextDistribution(model:CharModel,context:string):[string,number][] {
-  const p=new Map<string,number>();let used=0;
-  for(let k=Math.min(order,context.length);k>=0;k--){
-    const counts=model.table.get(context.slice(context.length-k));if(!counts)continue;
+  const p=new Map<string,number>(),recent=Array.from(context).slice(-order);let used=0;
+  for(let k=recent.length;k>=0;k--){
+    const counts=model.table.get(recent.slice(recent.length-k).join(''));if(!counts)continue;
     const weight=mix[order-k]!*(1-used);
     for(const [char,n] of counts.next)p.set(char,(p.get(char)??0)+weight*n/counts.total);
     used+=weight;
@@ -52,7 +53,7 @@ export function random(seed:number){let s=seed>>>0;return ()=>{s=(s+0x6d2b79f5)>
 export function generateLine(model:CharModel,temperature:number,seed:number):string {
   const draw=random(seed);
   let line=`${model.starts[Math.floor(draw()*model.starts.length)]??''} `;
-  while(line.length<maxLineChars){
+  for(let length=Array.from(line).length;length<maxLineChars;length++){
     const choices=withTemperature(nextDistribution(model,line),temperature);
     let r=draw(),char=choices.at(-1)?.[0]??'\n';
     for(const [candidate,p] of choices){r-=p;if(r<0){char=candidate;break;}}
@@ -76,8 +77,11 @@ export function bestAttempt(attempts:Attempt[]):Attempt|undefined {
   const realShare=(a:Attempt)=>a.count?(a.count-a.invented.length)/a.count:0;
   return [...attempts].sort((a,b)=>b.stars-a.stars||(b.stars?b.count-a.count:realShare(b)-realShare(a))||b.temperature-a.temperature)[0];
 }
-export const quote=(line:string,limit=90)=>line.length>limit?`${line.slice(0,limit-1).trimEnd()}…`:line;
+export const quote=(line:string,limit=90)=>{const chars=Array.from(line);return chars.length>limit?`${chars.slice(0,limit-1).join('').trimEnd()}…`:line;};
 const temp=(t:number)=>t.toFixed(1);
+// Rendering the sentence with a placeholder lets the i18n hook translate it without ever looking up the typed words.
+const SLOT='\uE000';
+const withWords=(sentence:string,words:string)=><>{String((<span>{sentence}</span>).props.children).split(SLOT).map((part,i)=><>{i>0&&<bdi translate={false}>{words}</bdi>}{part}</>)}</>;
 
 export default function GravesToy() {
   const [text,setText]=useState(sampleText);
@@ -133,7 +137,7 @@ export default function GravesToy() {
       <div class="graves-paper" aria-live="polite">
         {latest?<>
           <p class="graves-line" dir="auto" translate={false}>{latest.line.split(/(\s+)/).map((piece,i)=>{const bad=wordsOf(piece).some(word=>latest.invented.includes(word));return bad?<mark key={i} translate={false}>{piece}</mark>:piece;})}</p>
-          <p class="graves-verdict">{latest.stars?`${latest.count} real words at ${temp(latest.temperature)}. ${'★'.repeat(latest.stars)}`:latest.invented.length?`Invented: ${latest.invented.slice(0,4).join(', ')}`:`Only ${latest.count} words. It needs ${minWords}.`}</p>
+          <p class="graves-verdict">{latest.stars?`${latest.count} real words at ${temp(latest.temperature)}. ${'★'.repeat(latest.stars)}`:latest.invented.length?withWords(`Invented: ${SLOT}`,latest.invented.slice(0,4).join(', ')):`Only ${latest.count} words. It needs ${minWords}.`}</p>
         </>:<p class="graves-empty">Your bot’s lines appear here.</p>}
       </div>
       {attempts.length>1&&<ol class="graves-history" aria-label="Earlier lines">{attempts.slice(0,-1).reverse().map((attempt,i)=><li key={i}><span dir="ltr">{temp(attempt.temperature)}</span> <span dir="auto" translate={false}>{quote(attempt.line,60)}</span> <b aria-label={`${attempt.stars} stars`}>{'★'.repeat(attempt.stars)||'·'}</b></li>)}</ol>}

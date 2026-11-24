@@ -53,7 +53,6 @@
     "Dock": "码头",
     "Studio": "工作室",
     "Museum": "博物馆",
-    "Notes: 2 · Lookups: 0 · Checks: 0": "便条：2 · 查询：0 · 检查：0",
     "No route is checked without an address.": "没有地址，就不会检查路线。",
     "04 / Why it mattered": "04 / 为什么重要",
     "Look beyond the model’s name: what evidence reaches it, what can it check, and what work happens before the answer? The toy lets you separate those questions. Real systems must also learn when to use each resource, and can still make mistakes.": "别只看模型的名字，还要看：哪些证据传到了它面前？它能检查什么？回答前做了哪些工作？玩具让你把这几个问题分开观察。真实系统还得学会何时使用哪种资源，而且依然可能犯错。",

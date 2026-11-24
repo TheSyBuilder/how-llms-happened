@@ -3,7 +3,9 @@ import type {Era} from './chapter-meta';
 export function chapterUrl(slug:string,{origin=typeof location==='undefined'?'':location.origin,locale=currentLocale()}:{origin?:string;locale?:Locale}={}):string {
  return `${origin.replace(/\/$/,'')}${withSiteBase(localePath(`/chapters/${slug}/`,locale))}#play`;
 }
-export const xIntentUrl=(text:string,url:string)=>`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+// encodeURIComponent throws on a lone surrogate. In `u` mode valid pairs read as one code point, so only lone halves match.
+const wellFormed=(text:string)=>text.replace(/\p{Cs}/gu,'�');
+export const xIntentUrl=(text:string,url:string)=>`https://x.com/intent/post?text=${encodeURIComponent(wellFormed(text))}&url=${encodeURIComponent(wellFormed(url))}`;
 // Light-theme values from the contract: the image is the same in either theme.
 const eraHex:Record<Era,string>={counting:'#e8a33d',memory:'#4fa3a5',attention:'#8a7ff0',scale:'#e8714f',chat:'#4b95e0',agents:'#b9e64b'};
 const paper='#f6f4ed',ink='#252821',muted='#64685e';

@@ -1,6 +1,6 @@
 import '../../i18n/preact';
 import '../../styles/games/dpo.css';
-import {useState} from 'preact/hooks';
+import {useEffect,useState} from 'preact/hooks';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
 import {starsFor,usePlayed} from './played';
@@ -49,11 +49,14 @@ export function answerText(round:number,traits:Traits,p:Policy){
  const style=flair[traitOdds(p).pirate>.8?1:0]!;
  return {start:style.start,body,end:style.end};
 }
+const randomFlips=()=>Array.from({length:ROUNDS},()=>Math.random()<.5);
 
 export default function Dpo(){
  const touch=usePlayed('dpo');
  const [policy,setPolicy]=useState<Policy>(reference);const [round,setRound]=useState(0);
- const [flip,setFlip]=useState(()=>Array.from({length:ROUNDS},()=>Math.random()<.5));
+ // The first render is fixed so the server and hydration agree; the order is shuffled once mounted.
+ const [flip,setFlip]=useState<boolean[]>(()=>Array.from({length:ROUNDS},()=>false));
+ useEffect(()=>setFlip(randomFlips()),[]);
  const [last,setLast]=useState('');const [result,setResult]=useState<GameResult|null>(null);
  const odds=traitOdds(policy),score=plainHelpful(policy);
  const pair=pairFor(policy,round),shown=flip[round]?[pair[1],pair[0]]:pair;
@@ -68,7 +71,7 @@ export default function Dpo(){
    detail:'Every pick moved the model toward the answer you chose and away from the one you passed over, measured against where it started.',
    shareText:f>50?`10 clicks of preference training turned my model ${f}% pirate.`:`I preference-trained a model in 10 clicks: ${h}% helpful, ${f}% pirate.`});
  };
- const replay=()=>{setPolicy(reference);setRound(0);setFlip(Array.from({length:ROUNDS},()=>Math.random()<.5));setLast('');setResult(null);};
+ const replay=()=>{setPolicy(reference);setRound(0);setFlip(randomFlips());setLast('');setResult(null);};
  return <div class="later-game dpo-game">
   <GoalBar goal="Pick the better answer 10 times. Finish with a model that is helpful and plain." status={result?'Done':`Round ${round+1} / ${ROUNDS}`} score={{value:score,max:100,label:'Helpful and plain'}}/>
   <div class="dpo-meters">

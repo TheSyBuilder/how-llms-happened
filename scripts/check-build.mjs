@@ -60,11 +60,79 @@ function documentAnchors(path) {
   return documentCache.get(path);
 }
 
+// A project site is served only under its base, so a root-relative URL without it is a 404 in
+// production even though the file exists in dist/.
+function missesBase(value) {
+  if (!base || !/^\/(?![/\\])/.test(value)) return false;
+  const { pathname } = new URL(value, "https://local.invalid");
+  return pathname !== base && !pathname.startsWith(`${base}/`);
+}
+
+function attributeUrls(html) {
+  const markup = html.replace(/(<(script|style)\b[^>]*>)[\s\S]*?<\/\2>/gi, "$1");
+  const attributes = /\s(href|src|srcset|action|formaction|poster|component-url|renderer-url|before-hydration-url)=(?:"([^"]*)"|'([^']*)')/gi;
+  return new Set([...markup.matchAll(attributes)].flatMap((match) => {
+    const value = match[2] ?? match[3];
+    return match[1].toLowerCase() === "srcset" ? value.split(",").map((item) => item.trim().split(/\s+/)[0]) : [value];
+  }));
+}
+
+// The games fetch these at runtime, so no link check reaches them. Mirrors parseVectors, unpackVocab and decodeWords.
+function checkRuntimeData() {
+  const check = (name, parse) => {
+    const path = join(distRoot, "data", name);
+    if (!existsSync(path)) {
+      failures.push(`/data/${name} is missing.`);
+      return;
+    }
+    try {
+      parse(readFileSync(path));
+    } catch (error) {
+      failures.push(`/data/${name} does not parse: ${error.message}`);
+    }
+  };
+  let vectors;
+  check("early-vectors.json", (bytes) => {
+    const json = JSON.parse(bytes.toString("utf8"));
+    const validWords = Array.isArray(json.words) && json.words.length > 0 && json.words.every((word) => typeof word === "string");
+    if (!validWords || !Number.isInteger(json.dim) || json.dim < 1) throw new Error("expected a word list and a dimension");
+    vectors = json;
+  });
+  check("early-vectors.bin", (bytes) => {
+    if (vectors && bytes.byteLength !== vectors.words.length * vectors.dim) throw new Error("size does not match the word list");
+  });
+  check("tokens-gpt2.bin", (bytes) => {
+    if (bytes.byteLength < 8 || bytes.readUInt32LE(0) !== 0x32545047) throw new Error("bad magic number");
+    const end = 8 + bytes.readUInt32LE(4);
+    if (end > bytes.byteLength) throw new Error("header runs past the end of the file");
+    JSON.parse(bytes.subarray(8, end).toString("utf8"));
+    const merges = bytes.byteLength - end;
+    if (merges === 0 || merges % 4 !== 0) throw new Error("merge table is not a whole number of pairs");
+  });
+  check("tokens-words.txt", (bytes) => {
+    const text = bytes.toString("utf8");
+    const split = text.indexOf("\n");
+    if (split < 0) throw new Error("missing header line");
+    const meta = JSON.parse(text.slice(0, split));
+    const body = text.slice(split + 1).trim();
+    let count = 0;
+    for (let at = 0; at < body.length; count += 1) {
+      at += 1;
+      while (at < body.length && body.charCodeAt(at) >= 97) at += 1;
+    }
+    if (count === 0 || count !== meta.count) throw new Error(`header says ${meta.count} words, body has ${count}`);
+  });
+}
+
 for (const htmlPath of htmlFiles) {
   const html = readFileSync(htmlPath, "utf8");
   const route = routeForFile(htmlPath);
+  for (const url of attributeUrls(html)) {
+    if (missesBase(url)) failures.push(`${route} has root-relative URL ${url} without the ${base} base.`);
+  }
   const redirect = html.match(/http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"/i);
   if (redirect) {
+    if (missesBase(redirect[1])) failures.push(`${route} redirects to ${redirect[1]} without the ${base} base.`);
     const target = fileForPathname(new URL(redirect[1], "https://local.invalid").pathname);
     if (!existsSync(target)) failures.push(`${route} redirects to a missing page.`);
     continue;
@@ -142,6 +210,8 @@ for (const htmlPath of htmlFiles) {
     clientAssetCount: assetPaths.size,
   });
 }
+
+checkRuntimeData();
 
 const katzFixturePath = resolve("data/fixtures/katz-probability-mass.json");
 const katzFixtureBytes = existsSync(katzFixturePath) ? readFileSync(katzFixturePath).byteLength : 0;

@@ -5,11 +5,13 @@ import {t} from '../../i18n/core';
 import {markPlayed} from '../../lib/progress';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
+import {isGameActive,ownsGameKey,useGameActive} from '../game/useGameActive';
 import data from '../../data/gpt2-challenge.json';
 
 export type Item={id:string;prefix:string;options:string[];answer:number;probs:number[];top1:string};
 export const items:Item[]=data.items;
-export const ROUNDS=10,SECONDS=15,SLUG='gpt-2';
+// The hero links to the gpt-2 chapter but keeps its own progress, so it never completes Prompt golf.
+export const ROUNDS=10,SECONDS=15,SLUG='gpt-2',PROGRESS_SLUG='gpt-2-home';
 // The first round of a page view is fixed so the server render and hydration agree; the other nine are drawn on mount.
 export const OPENING=Math.max(0,items.findIndex(item=>item.id==='canberra'));
 
@@ -27,10 +29,10 @@ export function score(rounds:Item[],picks:number[]){
  picks.forEach((pick,i)=>{const item=rounds[i];if(!item)return;if(pick===item.answer)you++;if(gpt2Pick(item.probs)===item.answer)gpt++;});
  return {you,gpt};
 }
-export const stars=(you:number,gpt:number):0|1|2|3=>you>=9?3:you>gpt?2:you===gpt?1:0;
+export const stars=(you:number,gpt:number):0|1|2|3=>you>=9&&you>=gpt?3:you>gpt?2:you===gpt&&you>0?1:0;
 export function outcome(you:number,gpt:number,max=ROUNDS):GameResult{
  const tally=`You ${you} · GPT-2 ${gpt}.`;
- return {slug:SLUG,stars:stars(you,gpt),
+ return {slug:SLUG,progressSlug:PROGRESS_SLUG,stars:stars(you,gpt),
   headline:t(you>gpt?`${tally} You beat GPT-2.`:you<gpt?`${tally} GPT-2 wins this time.`:`${tally} It's a tie.`),
   detail:t('GPT-2 is good at idioms and famous lines, and weak at sums, negation and facts it never read.'),
   score:{value:you,max,label:t('Your score')},
@@ -38,6 +40,8 @@ export function outcome(you:number,gpt:number,max=ROUNDS):GameResult{
 }
 const percent=(p:number)=>p<.01?'<1%':p>.99?'>99%':`${Math.round(p*100)}%`;
 const editable=(target:EventTarget|null)=>target instanceof HTMLElement&&(target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+// Layouts that type another script (Arabic ٢) report the physical digit in e.code. Latin layouts keep e.key.
+const digitKey=(e:KeyboardEvent)=>/^[^\x00-\x7f]+$/u.test(e.key)?/^(?:Digit|Numpad)(\d)$/.exec(e.code)?.[1]??e.key:e.key;
 
 export default function Gpt2Challenge(){
  const [order,setOrder]=useState(()=>pickRounds(0,ROUNDS,items.length,OPENING));
@@ -48,7 +52,7 @@ export default function Gpt2Challenge(){
  const [inView,setInView]=useState(false);
  const root=useRef<HTMLElement>(null),played=useRef(false),focusNext=useRef<'next'|'choice'|null>(null);
  const rounds=order.map(i=>items[i]!),round=picks.length-(revealed?1:0),item=rounds[round],done=round>=ROUNDS;
- const {you,gpt}=score(rounds,picks);
+ const {you,gpt}=score(rounds,picks),active=useGameActive(root);
 
  useEffect(()=>{
   setOrder(pickRounds(Math.random()*2**32,ROUNDS,items.length,OPENING));
@@ -60,7 +64,7 @@ export default function Gpt2Challenge(){
 
  const choose=(pick:number)=>{
   if(revealed||done)return;
-  if(pick>=0&&!played.current){played.current=true;markPlayed(SLUG);}
+  if(pick>=0&&!played.current){played.current=true;markPlayed(PROGRESS_SLUG);}
   focusNext.current=root.current?.contains(document.activeElement)?'next':null;
   setPicks([...picks,pick]);setRevealed(true);
  };
@@ -71,22 +75,23 @@ export default function Gpt2Challenge(){
  };
  const replay=()=>{setOrder(pickRounds(Math.random()*2**32));setPicks([]);setRevealed(false);setLeft(SECONDS*1000);focusNext.current='choice';};
 
- // The clock only runs while the game is on screen and the tab is visible.
+ // The clock only runs while the game is on screen and active, and resumes from the time left.
  useEffect(()=>{
-  if(!timed||revealed||done||!inView)return;
+  if(!timed||revealed||done||!inView||!active)return;
   let last=performance.now();
   const id=setInterval(()=>{
    const now=performance.now(),step=document.hidden?0:now-last;last=now;
    setLeft(value=>Math.max(0,value-step));
   },100);
-  return ()=>clearInterval(id);
- },[timed,revealed,done,inView,round]);
+  // Charge the part of a tick played before a pause, so pausing never adds time.
+  return ()=>{clearInterval(id);if(!isGameActive(root.current))setLeft(value=>Math.max(0,value-(performance.now()-last)));};
+ },[timed,revealed,done,inView,active,round]);
  useEffect(()=>{if(timed&&left<=0&&!revealed&&!done)choose(-1);},[left]);
 
  useEffect(()=>{
   const onKey=(event:KeyboardEvent)=>{
-   if(!inView||done||event.altKey||event.ctrlKey||event.metaKey||editable(event.target))return;
-   const number=Number(event.key);
+   if(!inView||done||event.altKey||event.ctrlKey||event.metaKey||editable(event.target)||!ownsGameKey(root.current,event))return;
+   const number=Number(digitKey(event));
    if(!revealed&&number>=1&&number<=4&&item&&number<=item.options.length){event.preventDefault();choose(number-1);}
    else if(revealed&&event.key==='Enter'&&!(event.target instanceof HTMLElement&&event.target.closest('button,a'))){event.preventDefault();next();}
   };

@@ -14,6 +14,18 @@ test('the highest-ranked keyword wins and pronouns are swapped',()=>{
  const [hate]=chat('You hate me.');assert.equal(hate.text,'Why do you think I hate you?');assert.deepEqual(hate.tells,[]);
  const [clause]=chat('Hmm, well, I remember the sea');assert.equal(clause.keyword,'remember');assert.equal(clause.text,'Do you often think of the sea?');
 });
+test('"you are X" quotes X, and words naming Object members are not substituted',()=>{
+ assert.equal(chat('You are smart.')[0].text,'What makes you think I am smart?');
+ assert.equal(chat('my constructor')[0].text,'Your constructor?');
+});
+test('nothing after "you are" never prints "I are", across every reply in the cycle',()=>{
+ const {replies}=eliza.script.you.rules.find(rule=>rule.pattern==='* i are');
+ for(const input of ['You are.','I know you are.','My friend says you are.']){
+  const seen=new Set(chat(...Array(replies.length*2).fill(input)).map(reply=>reply.text));
+  assert.deepEqual([...seen].sort(),[...replies].sort(),input);
+  for(const text of seen)assert.doesNotMatch(text,/\bI are\b/i);
+ }
+});
 test('reassembly rules are used in turn and "my" fills the memory queue',()=>{
  const replies=chat('I am sad.','I am sad.','My mother worries about me.','Pizza and chips.');
  assert.notEqual(replies[0].text,replies[1].text);assert.deepEqual(replies[1].choice,[2,4]);

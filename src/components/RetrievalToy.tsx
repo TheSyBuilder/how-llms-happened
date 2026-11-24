@@ -142,7 +142,7 @@ export default function RetrievalToy() {
           const tied = read < 0 && passage.score > 0 && passage.score === ranked[READ_COUNT - 1]!.score;
           return <li key={passage.id} class={`rag-passage${read >= 0 ? " is-read" : ""}${editable ? " is-editable" : ""}`}>
             <div class="rag-passage-head">
-              <label for={`rag-passage-${passage.id}`}><bdi dir="ltr">{passage.id.toUpperCase()}</bdi> · {passage.title}</label>
+              <label for={`rag-passage-${passage.id}`}><bdi dir="ltr">{passage.id.toUpperCase()}</bdi> · <span>{passage.title}</span></label>
               <span class="rag-owner">{passage.owner === "museum" ? "Museum page" : "Anyone can post"}</span>
               <span class="rag-rank" data-testid={`retrieved-${passage.id}`}>{read >= 0 ? `Read #${read + 1}` : "Not read"}</span>
             </div>

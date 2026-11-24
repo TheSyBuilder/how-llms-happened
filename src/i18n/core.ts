@@ -19,6 +19,8 @@ export const normalize=(value:string)=>value.replace(/\s+/g,' ').trim();
 // `onUse` receives every normalized catalog key a lookup used: the exact key, or the template and its translated slot values.
 export function translator(messages:Messages,onUse?:(key:string)=>void) {
  messages=Object.fromEntries(Object.entries(messages).map(([key,value])=>[normalize(key),value]));
+ // Own keys only: text such as `constructor` must not resolve to an Object.prototype member.
+ const lookup=(key:string)=>Object.hasOwn(messages,key)?messages[key]:undefined;
  // Most specific first: a template with more literal characters wins over a shorter one that also matches.
  const literal=(key:string)=>key.replace(/\{\d+\}/g,'').length;
  const templates=Object.entries(messages).filter(([key])=>/\{\d+\}/.test(key)).sort(([a],[b])=>literal(b)-literal(a)).map(([key,value])=>{
@@ -27,9 +29,9 @@ export function translator(messages:Messages,onUse?:(key:string)=>void) {
  });
  return (source:string):string=>{
   const key=normalize(source);if(!key)return source;
-  let value=messages[key];
+  let value=lookup(key);
   if(value!==undefined)onUse?.(key);
-  else for(const template of templates){const match=key.match(template.regex);if(match){onUse?.(template.key);const values:Record<number,string>={};template.slots.forEach((slot,i)=>{const part=normalize(match[i+1]!),known=messages[part];if(known!==undefined)onUse?.(part);values[slot]=known??match[i+1]!;});value=template.value.replace(/\{(\d+)\}/g,(_,slot)=>values[Number(slot)]??'');break;}}
+  else for(const template of templates){const match=key.match(template.regex);if(match){onUse?.(template.key);const values:Record<number,string>={};template.slots.forEach((slot,i)=>{const part=normalize(match[i+1]!),known=lookup(part);if(known!==undefined)onUse?.(part);values[slot]=known??match[i+1]!;});value=template.value.replace(/\{(\d+)\}/g,(_,slot)=>values[Number(slot)]??'');break;}}
   if(value===undefined)return source;
   return (source.match(/^\s*/)?.[0]??'')+value+(source.match(/\s*$/)?.[0]??'');
  };

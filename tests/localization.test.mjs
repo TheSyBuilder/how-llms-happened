@@ -29,6 +29,11 @@ test('templates match most specific first, whatever their catalog order',()=>{
  assert.equal(t('Par 3 · best 2'),'标准杆 3 · 最佳 2');
  assert.equal(t('Par 4'),'标准杆 4');
 });
+test('catalog and slot lookups ignore Object.prototype',()=>{
+ const t=api.translator({'Word {0}':'词 {0}'});
+ assert.equal(t('constructor'),'constructor');
+ assert.equal(t('Word constructor'),'词 constructor');
+});
 test('the client catalog keeps island and runtime strings and drops static-only ones',()=>{
  const used=[];const t=api.translator({'Story paragraph.':'故事。','Play again':'再玩一次','Score {0}':'得分 {0}','Hidden until play':'玩后才出现','Counting':'计数'},key=>used.push(key));
  t('Story paragraph.');t('Score Counting');

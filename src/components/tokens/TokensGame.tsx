@@ -1,7 +1,8 @@
 import '../../i18n/preact';
 import '../../styles/games/tokens.css';
+import type {ComponentChildren} from 'preact';
 import {useEffect,useState} from 'preact/hooks';
-import {withSiteBase} from '../../i18n/core';
+import {t,withSiteBase} from '../../i18n/core';
 import {markPlayed} from '../../lib/progress';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
@@ -11,25 +12,28 @@ import {decodeWords,type WordList} from './words';
 export const SLUG='tokens',LONG=10,MANY=6,BOARD=5;
 type Entry={word:string;tokens:number};
 const letters=(word:string)=>[...word].length;
+// Notes carry this placeholder for the typed word, so the catalog can translate the sentence but never the word.
+const SLOT='\uE000';
+const withWord=(note:string,word:string)=><>{t(note).split(SLOT).map((part,i)=><>{i>0&&<bdi translate={false}>{word}</bdi>}{part}</>)}</>;
 
 // Challenge (a): one word of 10+ letters that GPT-2 reads, after a space, as a single token.
 export function longCheck(word:string,vocab:Vocab){
  word=word.trim();
  if(!word)return {done:false,note:''};
- if(!/^\p{L}+$/u.test(word))return {done:false,note:'Use one word, letters only.'};
- const n=tokenize(` ${word}`,vocab).length;
- if(letters(word)<LONG)return {done:false,note:`${letters(word)} letters. It needs ${LONG} or more.`};
+ if(!/^\p{L}[\p{L}\p{M}]*$/u.test(word))return {done:false,note:'Use one word, letters only.'};
+ const n=tokenize(` ${word}`,vocab).length,count=letters(word.replace(/\p{M}/gu,''));
+ if(count<LONG)return {done:false,note:`${count} letters. It needs ${LONG} or more.`};
  if(n>1)return {done:false,note:`${n} tokens. Keep looking.`};
  return {done:true,note:'One token. GPT-2 saw this word so often that it earned its own number.'};
 }
 // Challenge (b): the leaderboard keeps the best distinct dictionary words.
-export function addWord(board:Entry[],word:string,vocab:Vocab,words:WordList):{board:Entry[];note:string}{
+export function addWord(board:Entry[],word:string,vocab:Vocab,words:WordList):{board:Entry[];note:string;word?:string}{
  word=word.trim().toLowerCase();
  if(!/^[a-z]+$/.test(word))return {board,note:'One word, letters a–z only.'};
- if(!words.has(word))return {board,note:`“${word}” is not in the word list.`};
+ if(!words.has(word))return {board,note:`“${SLOT}” is not in the word list.`,word};
  const tokens=tokenize(` ${word}`,vocab).length;
  const next=[...board.filter(entry=>entry.word!==word),{word,tokens}].sort((a,b)=>b.tokens-a.tokens||a.word.length-b.word.length||a.word.localeCompare(b.word)).slice(0,BOARD);
- return {board:next,note:tokens===1?`“${word}” costs 1 token.`:`“${word}” costs ${tokens} tokens.`};
+ return {board:next,note:tokens===1?`“${SLOT}” costs 1 token.`:`“${SLOT}” costs ${tokens} tokens.`,word};
 }
 export function outcome(nameTokens:number,cleared:number):GameResult{
  return {slug:SLUG,stars:Math.min(3,cleared) as 0|1|2|3,
@@ -53,7 +57,7 @@ function Chips({tokens,label}:{tokens:Token[];label:string}){
 export default function TokensGame(){
  const [vocab,setVocab]=useState<Vocab>();const [words,setWords]=useState<WordList>();const [failed,setFailed]=useState(false);
  const [name,setName]=useState('');const [long,setLong]=useState('');const [entry,setEntry]=useState('');
- const [board,setBoard]=useState<Entry[]>([]);const [boardNote,setBoardNote]=useState('');
+ const [board,setBoard]=useState<Entry[]>([]);const [boardNote,setBoardNote]=useState<ComponentChildren>('');
  const [pick,setPick]=useState<number>();const [done,setDone]=useState({long:false,many:false,count:false});
  const [result,setResult]=useState(false);const [played,setPlayed]=useState(false);
  useEffect(()=>{
@@ -75,7 +79,7 @@ export default function TokensGame(){
 
  const submitWord=(event:Event)=>{
   event.preventDefault();if(!vocab||!words)return;touch();
-  const next=addWord(board,entry,vocab,words);setBoard(next.board);setBoardNote(next.note);
+  const next=addWord(board,entry,vocab,words);setBoard(next.board);setBoardNote(next.word?withWord(next.note,next.word):next.note);
   if((next.board[0]?.tokens??0)>=MANY&&!done.many)setDone(d=>({...d,many:true}));
  };
  const choose=(n:number)=>{touch();setPick(n);if(n===3&&!done.count)setDone(d=>({...d,count:true}));};

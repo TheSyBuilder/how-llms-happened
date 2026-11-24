@@ -9,6 +9,7 @@
   "text": {
     "← The timeline": "← 时间线",
     "2015 / Live chapter": "2015 / 已上线",
+    "Read the attention paper": "阅读注意力论文",
     "Attention": "注意力",
     "What if a translator could look back at the source?": "如果翻译者可以回头看原文呢？",
     "Try the little game →": "试试小游戏 →",
@@ -88,6 +89,7 @@
     "The model’s attention: one row per French word": "模型的注意力：每个法语词一行",
     "Strongest reads: {0}": "最强的读取：{0}",
     "{0} of {1} links matched, {2} extra. +{3}": "{1} 条连线对上 {0} 条，多画了 {2} 条。+{3}",
+    "{0} of {1} links matched. +{2}": "{1} 条连线对上 {0} 条。+{2}",
     "See my score": "看我的得分",
     "Next sentence": "下一句",
     "Show the model’s attention": "显示模型的注意力",

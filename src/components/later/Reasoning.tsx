@@ -3,6 +3,7 @@ import '../../styles/games/reasoning.css';
 import {useEffect,useRef,useState} from 'preact/hooks';
 import GoalBar from '../game/GoalBar';
 import ResultCard,{type GameResult} from '../game/ResultCard';
+import {useGameActive} from '../game/useGameActive';
 import {usePlayed} from './played';
 
 export const SECONDS=45;
@@ -53,19 +54,20 @@ export default function Reasoning(){
  const [status,setStatus]=useState<'play'|'solved'|'timeout'>('play');const [remaining,setRemaining]=useState(SECONDS);
  const [points,setPoints]=useState(0);const [solved,setSolved]=useState(0);const [gain,setGain]=useState(0);
  const [result,setResult]=useState<GameResult|null>(null);
- const clock=useRef({elapsed:0,last:0});
+ const clock=useRef({elapsed:0,last:0}),root=useRef<HTMLDivElement>(null),active=useGameActive(root);
  const puzzle=index>=0?puzzles[index]!:null;
  const value=puzzle?path.reduce(applyOp,puzzle.start):0;
  useEffect(()=>{
-  if(!puzzle||status!=='play')return undefined;
-  clock.current={elapsed:0,last:performance.now()};
+  if(!puzzle||status!=='play'||!active)return undefined;
+  clock.current.last=performance.now();
   const timer=setInterval(()=>{
    const now=performance.now();clock.current.elapsed+=Math.min(.25,(now-clock.current.last)/1000);clock.current.last=now;
    const left=SECONDS-clock.current.elapsed;setRemaining(Math.max(0,left));if(left<=0)setStatus('timeout');
   },100);
-  return ()=>clearInterval(timer);
- },[index,status]);
- const begin=(i:number)=>{setIndex(i);setPath([]);setStatus('play');setRemaining(SECONDS);};
+  // Charge the part of a tick played before a pause, so pausing never adds time.
+  return ()=>{clearInterval(timer);clock.current.elapsed+=Math.min(.25,(performance.now()-clock.current.last)/1000);};
+ },[index,status,active]);
+ const begin=(i:number)=>{clock.current.elapsed=0;setIndex(i);setPath([]);setStatus('play');setRemaining(SECONDS);};
  const press=(o:Op)=>{
   if(!puzzle||status!=='play'||path.length>=puzzle.moves)return;touch();
   const next=[...path,o];setPath(next);
@@ -82,7 +84,7 @@ export default function Reasoning(){
  };
  const replay=()=>{setIndex(-1);setPath([]);setStatus('play');setRemaining(SECONDS);setPoints(0);setSolved(0);setResult(null);};
  const left=Math.ceil(remaining),done=puzzle&&path.length===puzzle.moves&&status==='play';
- return <div class="later-game rs-game">
+ return <div class="later-game rs-game" ref={root}>
   <GoalBar goal="Reach the target number using exactly the moves allowed, before the clock runs out." status={result?'Done':index<0?'Ready':`Puzzle ${index+1} / 3`} score={{value:points,max:285,label:'Points'}}/>
   {result?<ResultCard result={result} onReplay={replay}/>:!puzzle?<div class="rs-intro"><p>Three puzzles, 45 seconds each. Undo is free. Only one path works.</p><button type="button" class="game-btn is-primary" onClick={()=>{touch();begin(0);}}>Start</button></div>:<>
    <div class="rs-board">

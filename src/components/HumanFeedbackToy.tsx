@@ -89,8 +89,8 @@ export function feedbackResult(score: number, firstScore: number): GameResult {
   };
 }
 
-// Separate strings so each trait word is translated on its own.
-const tags = (features: Features) => [features[0] ? "Short" : "Long", " · ", features[1] ? "Everyday" : "Technical", " · ", features[2] ? "True" : "False"];
+// Separate elements so each trait word is translated on its own, in server HTML too.
+const tags = (features: Features) => <><span>{features[0] ? "Short" : "Long"}</span> · <span>{features[1] ? "Everyday" : "Technical"}</span> · <span>{features[2] ? "True" : "False"}</span></>;
 const signed = (value: number) => `${value >= 0 ? "+" : "−"}${Math.abs(value).toFixed(2)}`;
 
 function JudgeMeters({ weights }: { weights: Features }) {
@@ -133,7 +133,7 @@ export default function HumanFeedbackToy() {
     <GoalBar goal={goal} status={status} />
     {phase === "reveal" && <>
       <div class="hf-pairs">{comparisons.map((pair, i) => <fieldset class="hf-pair" key={i}>
-        <legend>{`Pair ${i + 1}`} · {pair.prompt}</legend>
+        <legend><span>{`Pair ${i + 1}`}</span> · <span>{pair.prompt}</span></legend>
         <div class="hf-options">{(["a", "b"] as const).map(key => <AnswerButton key={key} answer={pair[key]} picked={choices[i] === key} disabled={false} onPick={() => { touch(); setChoices(current => current.map((c, j) => j === i ? key : c)); }} />)}</div>
       </fieldset>)}</div>
       {revealed && <section class="hf-reveal" ref={reveal} aria-labelledby="hf-reveal-title">

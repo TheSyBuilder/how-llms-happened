@@ -27,6 +27,10 @@ export function dayNumber(date:Date):number {
 }
 // 37 is coprime with the list length, so consecutive days walk through every word before repeating.
 export function secretFor(day:number):string {const n=secrets.length;return secrets[((day*37)%n+n)%n]!;}
+// The daily cycle uses every word in `secrets`, so "Play again" draws from a separate list and can never reveal one.
+export const practiceWords=['window','table','chair','door','floor','wall','roof','garage','bedroom','mirror','soap','bottle','glass','plate','knife','basket','hammer','clock','watch','jacket','shirt','shoe','hat','pocket','ticket','stamp','paper','map','button','key','lock','bell','drum','circus','theater','library','office','factory','restaurant','hotel','stadium','harbor','valley','lake','cave','volcano','sheep','deer','wolf','bear','eagle','duck','butter','salt','pepper','rice','soup','orange'];
+// 37 is coprime with the list length, so consecutive practice rounds walk through every word before repeating.
+export function practiceSecretFor(day:number,round:number):string {const n=practiceWords.length;return practiceWords[(((day+round)*37)%n+n)%n]!;}
 export function normalizeGuess(raw:string,has:(word:string)=>boolean):string|undefined {
  const w=raw.toLowerCase().trim().replace(/[^a-z]/g,'');
  if(!w)return undefined;

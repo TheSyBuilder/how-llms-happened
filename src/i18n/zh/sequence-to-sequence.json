@@ -9,6 +9,7 @@
   "text": {
     "← The timeline": "← 时间线",
     "2014 / Live chapter": "2014 / 已上线",
+    "Read the sequence-to-sequence paper": "阅读序列到序列论文",
     "Sequence-to-sequence": "序列到序列",
     "How can one network turn a sentence into another?": "网络怎样把一个句子变成另一个句子？",
     "Try the little game →": "玩个小游戏 →",
@@ -32,7 +33,6 @@
     "le · renard · rouge · court · END": "le · renard · rouge · court · END",
     "03 / Play with it": "03 / 动手试试",
     "Enable JavaScript to play with this toy. The explanation, diagram and sources are available below.": "请启用 JavaScript 来玩这个玩具。下面仍可阅读解释、图示和来源。",
-    "Read the source": "读入源文本",
     "red": "red",
     "fox": "fox",
     "runs": "runs",

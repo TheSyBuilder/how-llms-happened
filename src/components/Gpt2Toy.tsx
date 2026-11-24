@@ -105,7 +105,7 @@ export default function Gpt2Toy() {
       <GoalBar
         goal={finished ? "Four holes played." : `Hole ${index + 1} · ${hole!.task}`}
         status={finished ? `Par ${totalPar}` : `Par ${hole!.par} · stroke ${strokes}`}
-        score={{ value: total + (done ? 0 : strokes), max: runningPar + (finished ? 0 : hole!.par), label: "Strokes / par" }}
+        score={{ value: total + (done ? 0 : strokes), max: runningPar + (finished || done ? 0 : hole!.par), label: "Strokes / par" }}
       />
       <p class="screen-reader-only" role="status">{announce}</p>
       {finished || !hole ? (

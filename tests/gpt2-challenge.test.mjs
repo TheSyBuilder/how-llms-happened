@@ -4,7 +4,7 @@ import {createRequire} from './helpers/component-require.mjs';
 import test from 'node:test';
 import ts from 'typescript';
 const data=JSON.parse(readFileSync(new URL('../src/data/gpt2-challenge.json',import.meta.url),'utf8'));
-const stubs={'../../styles/gpt2-challenge.css':{},'../../i18n/core':{t:s=>s},'../../lib/progress':{markPlayed(){}},'../game/GoalBar':{default:()=>null},'../game/ResultCard':{default:()=>null},'../../data/gpt2-challenge.json':data};
+const stubs={'../../styles/gpt2-challenge.css':{},'../../i18n/core':{t:s=>s},'../../lib/progress':{markPlayed(){}},'../game/GoalBar':{default:()=>null},'../game/ResultCard':{default:()=>null},'../game/useGameActive':{},'../../data/gpt2-challenge.json':data};
 const {outputText}=ts.transpileModule(readFileSync(new URL('../src/components/hero/Gpt2Challenge.tsx',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,jsxImportSource:'preact',esModuleInterop:true}});
 const api={};new Function('require','exports',outputText)(id=>stubs[id]??createRequire(import.meta.url)(id),api);
 
@@ -43,7 +43,7 @@ test('GPT-2 picks the most probable option and scoring counts both players',()=>
  assert.deepEqual(api.score(rounds,[1]),{you:0,gpt:1});
 });
 test('stars and the result card reflect who won',()=>{
- assert.equal(api.stars(9,10),3);assert.equal(api.stars(10,4),3);assert.equal(api.stars(7,5),2);assert.equal(api.stars(5,5),1);assert.equal(api.stars(4,6),0);
+ assert.equal(api.stars(9,10),0);assert.equal(api.stars(9,9),3);assert.equal(api.stars(0,0),0);assert.equal(api.stars(10,4),3);assert.equal(api.stars(7,5),2);assert.equal(api.stars(5,5),1);assert.equal(api.stars(4,6),0);
  const win=api.outcome(7,5);
  assert.equal(win.slug,'gpt-2');assert.equal(win.headline,'You 7 · GPT-2 5. You beat GPT-2.');assert.equal(win.stars,2);
  assert.equal(win.shareText,'I scored 7/10 vs GPT-2\'s 5/10 on "Are you smarter than GPT-2?"');

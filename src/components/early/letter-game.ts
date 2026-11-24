@@ -30,7 +30,11 @@ export function scoreRun(history:readonly Press[]):{hits:number;total:number;rat
  return {hits,total:history.length,rate:history.length?hits/history.length:0,marks};
 }
 export function letterStars(rate:number):0|1|2|3 {return rate<=.55?3:rate<=.62?2:rate<=.70?1:0;}
-export function keyPress(key:string):Press|undefined {
- const k=key.toLowerCase();
+// Layouts that type another script (Arabic ش) report the physical letter in e.code. Latin layouts keep e.key.
+export function shortcutLetter(key:string,code=''):string {
+ return /^[^\x00-\x7f]+$/u.test(key)&&/^Key[A-Z]$/.test(code)?code.charAt(3).toLowerCase():key.toLowerCase();
+}
+export function keyPress(key:string,code=''):Press|undefined {
+ const k=shortcutLetter(key,code);
  return k==='a'||k==='arrowleft'?'A':k==='b'||k==='arrowright'?'B':undefined;
 }
